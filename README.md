@@ -16,4 +16,4 @@ If you are certain there is an issue with the tutorial, please create a new issu
 
 # Interested In Contributing Updates?
 
-If you would like to suggest changes or fixes to make, or have an idea for a new tutorial you'd like to see, feel free to [create a new issue]() and a community member will check it out.
+If you would like to suggest changes or fixes to make, or have an idea for a new tutorial you'd like to see, feel free to [create a new issue](https://github.com/h2oai/tutorials/issues) and a community member will check it out.
