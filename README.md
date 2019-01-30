@@ -1,3 +1,6 @@
+
+![h2o-ai-logo-plain](.github/h2o-ai-logo-plain.png)
+
 # AI-Tutorials
 
 H2O created AI Tutorials out of inspiration for democratizing open source, distribute machine learning. Our tutorials are open to any one in the community who would like to learn Distributed Machine Learning through step-by-step tutorials. Tutorials housed here are targetted at people of all skill levels.
