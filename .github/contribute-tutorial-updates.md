@@ -36,6 +36,6 @@ Once the checklist above is satisfied, [make a pull request](https://github.com/
 
 If you are new to Github, below are references to help you build the necessary skills to get up and running with contributing.
 
-- [Get Started: Github and a Hello World example](https://guides.github.com/activities/hello-world/
-- [Contribute: Learn about contributing to projects](https://guides.github.com/activities/contributing-to-open-source/
-- [Make Updates: Fork projects and make pull requests](https://guides.github.com/activities/forking/
+- [Get Started: Github and a Hello World example](https://guides.github.com/activities/hello-world/)
+- [Contribute: Learn about contributing to projects](https://guides.github.com/activities/contributing-to-open-source/)
+- [Make Updates: Fork projects and make pull requests](https://guides.github.com/activities/forking/)
