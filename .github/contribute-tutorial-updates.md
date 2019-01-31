@@ -9,10 +9,10 @@ If you're looking to contribute a new tutorial, you've come to the right place! 
 
 ## Outline
 
-- [Create A New Issue]()
-- [Fork The Repository And Make Changes]()
-- [Make A Pull Request]()
-- [Appendix A: New To Github?]()
+- [Create A New Issue](#create-a-new-issue)
+- [Fork The Repository And Make Changes](#fork-the-repository-and-make-changes)
+- [Make A Pull Request](#make-a-pull-request)
+- [Appendix A: New To Github?](#appendix-a-new-to-github)
 
 ## Create A New Issue
 
