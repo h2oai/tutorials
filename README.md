@@ -22,7 +22,7 @@ If you are certain there is an issue with the tutorial, please [create a new iss
 
 Fix issues, help clarify topics, update a tutorial to be compatible with newest releases, or even create a brand new tutorial!
 
-[Contribute Tutorial Updates](https://github.com/h2oai/tutorials/blob/master/.github/contribute-tutorial-updates.md)
-Write A New Tutorial (coming soon)
+- [Contribute Tutorial Updates](https://github.com/h2oai/tutorials/blob/master/.github/contribute-tutorial-updates.md)
+- Write A New Tutorial (coming soon)
 
-If you'd rather simply suggest changes or fixes to make, or have an idea for a new tutorial you'd like to see, feel free to create a [new issue](https://github.com/h2oai/tutorials/issues)  and a community member will check it out
+If you'd rather simply suggest changes or fixes to make, or have an idea for a new tutorial you'd like to see, feel free to create a [new issue](https://github.com/h2oai/tutorials/issues)  and a community member will check it out.
