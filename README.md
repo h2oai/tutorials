@@ -1,4 +1,5 @@
 
+
 ![h2o-ai-logo-plain](.github/h2o-ai-logo-plain.png)
 
 # AI-Tutorials
@@ -15,8 +16,13 @@ Begin your journey by browsing the tutorials directory of this Git repository.
 
 If you run into problems that prevent you from completing a tutorial, head on over to [H2O's Slack Channel](https://www.h2o.ai/community/driverless-ai-community/) and chat with Data Scientist all over the world.
 
-If you are certain there is an issue with the tutorial, please create a new issue on Github and we will do our best to resolve resolve it.
+If you are certain there is an issue with the tutorial, please [create a new issue on Github](https://github.com/h2oai/tutorials/issues) and we will do our best to resolve resolve it.
 
-# Interested In Contributing Updates?
+## Interested In Contributing Updates Or New Tutorials?
 
-If you would like to suggest changes or fixes to make, or have an idea for a new tutorial you'd like to see, feel free to [create a new issue](https://github.com/h2oai/tutorials/issues) and a community member will check it out.
+Fix issues, help clarify topics, update a tutorial to be compatible with newest releases, or even create a brand new tutorial!
+
+[Contribute Tutorial Updates](https://github.com/h2oai/tutorials/blob/master/.github/contribute-tutorial-updates.md)
+Write A New Tutorial (coming soon)
+
+If you'd rather simply suggest changes or fixes to make, or have an idea for a new tutorial you'd like to see, feel free to create a [new issue](https://github.com/h2oai/tutorials/issues)  and a community member will check it out
