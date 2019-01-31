@@ -2,17 +2,17 @@
 
 ![h2o-ai-logo-plain](.github/h2o-ai-logo-plain.png)
 
-# AI-Tutorials
+## AI-Tutorials
 
 H2O created AI Tutorials out of inspiration for democratizing open source, distribute machine learning. Our tutorials are open to any one in the community who would like to learn Distributed Machine Learning through step-by-step tutorials. Tutorials housed here are targetted at people of all skill levels.
 
 Tutorials are developed and maintained on Github and published onto the H2O site.
 
-# New to AI?
+## New to AI?
 
 Begin your journey by browsing the tutorials directory of this Git repository.
 
-# Running Into Issues With Tutorials?
+## Running Into Issues With Tutorials?
 
 If you run into problems that prevent you from completing a tutorial, head on over to [H2O's Slack Channel](https://www.h2o.ai/community/driverless-ai-community/) and chat with Data Scientist all over the world.
 
