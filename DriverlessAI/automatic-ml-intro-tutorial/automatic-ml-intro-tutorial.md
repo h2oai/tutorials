@@ -4,15 +4,15 @@
 Outline:
 - [Objective](#objective)
 - [Prerequisites](#prerequisites)
-- [Task 1: Get Environment & Product Tour](#taks-1-get-environment-&-product-tour)
+- [Task 1: Get Environment & Product Tour](#task-1-get-environment-&-product-tour)
 - [Task 2: Automatic Machine Learning Concepts](#task-2-automatic-machine-learning-concepts)
-- [Task 3: Load Data](#task-3-load-ata)
+- [Task 3: Load Data](#task-3-load-data)
 - [Task 4: Explore Data Details & AutoViz](#task-4-explore-data-details-&-autoviz)
 - [Task 5: Launch first experiment](#task-5-launch-first-experiment)
 - [Task 6: Explore Feature Engineering](#task-6-explore-feature-engineering)
 - [Task 7: Explore Experiment Results](#task-7-explore-experiment-results)
 - [Task 8: MLI Report](#task-8-mli-report)
-- [Task 9: Experiment Summary](#task-9-experiment-summary)
+- [Task 9: Experiment Summary](#task-9-autodocs)
 - [Task 10: Challenge](#task-10-challenge)
 
 ## Objective
