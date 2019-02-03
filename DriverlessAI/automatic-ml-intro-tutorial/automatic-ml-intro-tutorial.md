@@ -4,15 +4,15 @@
 Outline:
 - [Objective](#objective)
 - [Prerequisites](#prerequisites)
-- [Task 1: Get Environment & Product Tour](#taks-1-get-environment-&-product-tour)
+- [Task 1: Get Environment and Product Tour](#task-1-get-environment-and-product-tour)
 - [Task 2: Automatic Machine Learning Concepts](#task-2-automatic-machine-learning-concepts)
-- [Task 3: Load Data](#task-3-load-ata)
-- [Task 4: Explore Data Details & AutoViz](#task-4-explore-data-details-&-autoviz)
-- [Task 5: Launch first experiment](#task-5-launch-first-experiment)
+- [Task 3: Load Data](#task-3-load-data)
+- [Task 4: Explore Data Details and AutoViz](#task-4-explore-data-details-and-autoviz)
+- [Task 5: Launch First Experiment](#task-5-launch-first-experiment)
 - [Task 6: Explore Feature Engineering](#task-6-explore-feature-engineering)
 - [Task 7: Explore Experiment Results](#task-7-explore-experiment-results)
 - [Task 8: MLI Report](#task-8-mli-report)
-- [Task 9: Experiment Summary](#task-9-experiment-summary)
+- [Task 9: Experiment Summary](#task-9-autodocs)
 - [Task 10: Challenge](#task-10-challenge)
 
 ## Objective
@@ -36,7 +36,7 @@ Note: The processing time for the trial license key will take an estimated time 
 Other prerequisites:
 - Basic knowledge of Machine Learning and Statistics
 
-## Task 1: Get Environment & Product Tour
+## Task 1: Get Environment and Product Tour
 
 ### Get Environment
 
@@ -87,7 +87,7 @@ Welcome to the Driverless home page!
 The Driverless UI is easy to navigate.The following features are found on the welcome page. We will explore these features as we launch an experiment in the next tasks.
 
 1. **Datasets**: View of current datasets. You can also upload or delete a dataset. 
->Note: If this is your first time loging in the list will be empty.
+>Note: If this is your first time logging in the list will be empty.
 
 2. **Experiments**: View of completed experiments. Experiments can be revised or deleted. 
 >Note: If no experiments have been run then the list will be empty.
@@ -268,7 +268,7 @@ Navigate back to the H2O Driverless Welcome page.
 - [Learn more about the type of dataset file formats that can be uploaded on page 11](http://docs.h2o.ai/driverless-ai/latest-stable/docs/booklets/DriverlessAIBooklet.pdf) 
 
 - For more datasets check out [Kaggle Datasets](https://www.kaggle.com/datasets)
-## Task 4: Explore Data Details & AutoViz
+## Task 4: Explore Data Details and AutoViz
 
 ### Details
 
@@ -471,7 +471,7 @@ Once the experiment is completed an Experiment Summary will appear:
 - [Review the Driverless AI Booklet to learn more about running experiments](http://docs.h2o.ai/driverless-ai/latest-stable/docs/booklets/DriverlessAIBooklet.pdf) 
 
 
-### Task 6: Explore Feature Engineering
+## Task 6: Explore Feature Engineering
 Driverless AI performs feature Engineering on the dataset to determine the optimal representation of the data. Various stages of the features appear throughout the iteration of the data. These can be viewed by hovering over points on the Iteration Data - Validation Graph and seeing the updates on the **Variable Importance** section.
 
 ![feature-engineering-1](assets/feature-engineering-1.jpg)
