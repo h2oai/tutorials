@@ -31,6 +31,7 @@ For this tutorial we will approach the Titanic dataset from the perspective of a
 In order to successfully install H2O Driverless AI a license key is necessary. The license key can be obtained through the 21-Day Free Trial:
 
 - [21-Day Free Trial: H2O Driverless AI license Key](https://www.h2o.ai/products/h2o-driverless-ai/)
+
 Note: The processing time for the trial license key will take an estimated time of 5 minutes
 
 Other prerequisites:
