@@ -727,7 +727,7 @@ When you open the zip file the following files should be included:
 - Target transformations tuning leaderboard
 - Leaderboard
 
-2\. Open the auto-generated pdf report and review the experiment results.
+2\. Open the auto-generated .doc report and review the experiment results.
 
 ### Deeper Dive and Resources
 
