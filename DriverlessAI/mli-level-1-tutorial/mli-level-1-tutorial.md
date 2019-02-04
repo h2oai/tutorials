@@ -67,7 +67,7 @@ This dataset has a total 25 Features(columns) and 30,000 Clients(rows).
 ### Download Dataset
 Download the Default Payments of Credit Card Clients in Taiwan from 2005 to your local drive.
 
-- [UCI_Credit_Card.csv](https://archive.ics.uci.edu/ml/datasets/default+of+credit+card+clients)
+- [UCI_Credit_Card.csv](https://archive.ics.uci.edu/ml/machine-learning-databases/00350/)
 
 ### Launch Experiment 
 
@@ -85,9 +85,9 @@ Let’s have a look at the columns:
 1. **ID** - Row identifier (which will not be used for this experiment)
 2. **LIMIT_BAL** - Credit Limit
 3. **Sex**
-4.  *EDUCATION**- Education Level
-5.  **MARRIAGE** - Marital Status
-6.  **Age**
+4. **EDUCATION**- Education Level
+5. **MARRIAGE** - Marital Status
+6. **Age**
 7. **PAY0-PAY6**: Payment Information including most recent repayment status
  	 Status Values:
 -2: Paid in full

@@ -68,7 +68,7 @@ For example:
 ![driverless-agreement](assets/driverless-agreement.jpg)
 
 
-3\. Log in by creating a unique **username/password**. Save your username and password so that you can return to the experiments you have worked on. 
+3\.  Sign in by creating a unique **username/password**. Save your username and password so you can return to the experiments you have worked on. 
 
 ![driverless-sign-in](assets/driverless-sign-in.jpg)
 
@@ -761,7 +761,7 @@ When you open the zip file the following files should be included:
 - Target transformations tuning leaderboard
 - Leaderboard
 
-2\. Open the auto-generated pdf report and review the experiment results.
+2\. Open the auto-generated .doc report and review the experiment results.
 
 ### Deeper Dive and Resources
 
