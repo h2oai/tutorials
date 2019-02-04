@@ -107,7 +107,7 @@ The Driverless UI is easy to navigate.The following features are found on the we
 
 7. **Resources**: The Resources dropdown menu provides you with links to view System Information and the Driverless AI User Guide. From this dropdown menu, you can also download the Python Client and the MOJO2 runtime. 
 
->Note: TThis is an early feature that will eventually support multiple different deployments. At this point, Driverless AI can only deploy the trained MOJO scoring pipeline as an [AWS Lambda Function](https://aws.amazon.com/lambda/), i.e., a server-less scorer running in Amazon Cloud and charged by the actual usage.
+>Note: This is an early feature that will eventually support multiple different deployments. At this point, Driverless AI can only deploy the trained MOJO scoring pipeline as an [AWS Lambda Function](https://aws.amazon.com/lambda/), i.e., a server-less scorer running in Amazon Cloud and charged by the actual usage.
 
 8. **Messages[ ]**: View news and upcoming Driverless AI events.
 
@@ -122,7 +122,7 @@ The Driverless UI is easy to navigate.The following features are found on the we
 13. **Add a Dataset(or Drag and Drop)**: Upload or add a dataset.
 
 ### Deeper Dive and Resources :
--  [Join the H2O community on Slack to Ask Questions](https://h2oai-community.slack.com/) . Post your questions, discuss use cases, give feedback,  stay informed about the latest H2O.ai updates and more.
+-  [Join the H2O community on Slack to Ask Questions](https://h2oai-community.slack.com/). Post your questions, discuss use cases, give feedback,  stay informed about the latest H2O.ai updates and more.
 
 - Learn more are about H2O Driverless through the [H2O documentation](http://docs.h2o.ai/driverless-ai/latest-stable/docs/booklets/DriverlessAIBooklet.pdf).
 
