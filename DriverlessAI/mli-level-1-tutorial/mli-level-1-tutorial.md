@@ -528,7 +528,7 @@ ICE is simply the prediction of the model for the person in question, in our cas
 1\. Select **Dashboard**
 
 
-![dashboard](assets/dashboard)
+![dashboard](assets/dashboard.jpg)
 
 *Things to note*:
 1. ICE (grey dots)
