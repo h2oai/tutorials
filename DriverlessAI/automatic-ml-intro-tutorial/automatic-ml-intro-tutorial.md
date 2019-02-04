@@ -46,7 +46,6 @@ Other prerequisites:
 There are multiple ways to install the environment: cloud, local, server. The installation steps assume that you have a license key for Driverless AI
 
 - [Aquarium](https://github.com/h2oai/tutorials/blob/master/DriverlessAI/aquarium/aquarium.md)
-- [H2O riverless AI Prerelease](http://prerelease.h2o.ai/)
 - Cloud Installation
   - [H2O Driverless AI on AWS Marketplace](https://aws.amazon.com/marketplace/pp/B07JN71K8N?qid=1547700275918&sr=0-6&ref_=srh_res_product_title)
   - [H2O Driverless AI on Azure HDInsight](https://azuremarketplace.microsoft.com/en-gb/marketplace/apps/h2o-ai.h2o-driverles-ai?tab=Overview) 
