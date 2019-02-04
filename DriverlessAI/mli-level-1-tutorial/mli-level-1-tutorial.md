@@ -12,15 +12,17 @@
 - [Task 9: Putting It All Together: Dashboard View](#task-9-putting-it-all-together-dashboard-view)
 
 ## Objective 
+
 As the field of machine learning continues to grow, more industries from healthcare to banking are adopting machine learning models to generate predictions. These predictions are being used to justify the cost of healthcare e and for loan approvals or denials. For Regulated industries that are adopting machine learning, **interpretability** is a requirement. In [“Towards a rigorous science of interpretable machine learning”](https://arxiv.org/pdf/1702.08608.pdf) by Finale Doshi-Velez and Been Kim“ interpretability, is the “The ability to explain or to present in understandable terms to a human”. This is a straightforward definition of interpretability. See the Deeper Dive and Resource section of the Goal section to read more about other takes on  interpretability. 
 
 The motivations for interpretability are:
-Better human understanding of impactful technologies
-Regulation compliance and GDPR “Right to explanation” 
-Check and balance against accidental or intentional discrimination
-Hacking and adversarial attacks
+
+* Better human understanding of impactful technologies
+* Regulation compliance and GDPR “Right to explanation” 
+* Check and balance against accidental or intentional discrimination
+* Hacking and adversarial attacks
   
-In this tutorial, we will generate a machine learning model using an example  financial dataset and explore some of the most popular ways to interpret a generated machine learning model. Furthermore, we will learn to interpret the results, graphs, scores and reason  code values of H2O Driverless AI generated models.
+In this tutorial, we will generate a machine learning model using an example financial dataset and explore some of the most popular ways to interpret a generated machine learning model. Furthermore, we will learn to interpret the results, graphs, scores and reason code values of H2O Driverless AI generated models.
 
 ### Deeper Diver and Resources 
 
@@ -34,7 +36,7 @@ In this tutorial, we will generate a machine learning model using an example  fi
 
 **License Key**
 
-In order to successfully install H2O Driverless AI a license key is necessary. The license key can be obtained through the 21-Day Free Trial:
+In order to successfully install H2O Driverless AI, a license key is necessary. The license key can be obtained through the 21-Day Free Trial:
 
 - [21-Day Free Trial: H2O Driverless AI license Key](https://www.h2o.ai/products/h2o-driverless-ai/)
 
@@ -58,7 +60,7 @@ In order to successfully install H2O Driverless AI a license key is necessary. T
 
 This dataset contains information about credit card clients in Taiwan from April 2005 to September 2005. Features include demographic factors, repayment statuses, history of payment, bill statements and default payments. 
 
-The data set comes from the[ UCI Machine Learning Repository Irvine, CA: University of California, School of Information and Computer Science](https://archive.ics.uci.edu/ml/datasets/default+of+credit+card+clients#)
+The data set comes from the [UCI Machine Learning Repository Irvine, CA: University of California, School of Information and Computer Science](https://archive.ics.uci.edu/ml/datasets/default+of+credit+card+clients#)
 
 This dataset has a total 25 Features(columns) and 30,000 Clients(rows).
 
@@ -95,24 +97,24 @@ Let’s have a look at the columns:
 2: 2 Months late
 Up to 9 Months late
 
-3\. Continue scrolling  current  page to see more columns (image is not included)
+3\. Continue scrolling  current  page to see more columns.(Image is not included.)
 
 8. **BILL_AMT0-BILL_AMT6** - Recent credit card bills up to 6 months ago
 9. **PAYAMT0-_PAY_AMT6** - Recent payment towards their bill up to 6 months ago
 10. **default.payment.next.month**- Prediction of whether someone will default on the next month’s payment using given information.
 
-4\. Return to the **Datasets** page
-5\. Click on the **UCI_Credit_Card.csv** file then select **Predict**
+4\. Return to the **Datasets** page.
+5\. Click on the **UCI_Credit_Card.csv** file then select **Predict**.
 6\. Select **Not Now** on the **First time Driverless AI, Click Yes to get a tour!**. A similar image should appear:
 
 ![experiment-page](assets/experiment-page.jpg)
 
-7\. Select **Target Column** then Select **default.payment.next.month** as the target
+7\. Select **Target Column**, then Select **default.payment.next.month** as the target.
 
 
 ![select-default-payment-next-month-column](assets/select-default-payment-next-month-column.jpg)
 
-8\. **Launch Experiment** using the default settings suggested by Driverless AI
+8\. **Launch Experiment** using the default settings suggested by Driverless AI.
 
 
 ![run-experiment-default-setup](assets/run-experiment-default-setup.jpg)
@@ -158,7 +160,7 @@ In the context of machine learning models and results, interpretability has been
 
 The more complex a function, the more difficult it is to explain. Simple functions can be used to explain more complex functions, and not all explanatory techniques are a good match for all types of models. Hence, it’s convenient to have a classification system for response function complexity.
 
-**Linear, monotonic functions**: Response functions created by linear regression algorithms are probably the most popular, accountable, and transparent class of machine learning models. These models will be referred to here as linear and monotonic. They are transparent because changing any given input feature (or sometimes a combination or function of an input feature) changes the response function output at a defined rate, in only one direction, and at a magnitude represented by a readily available coefficient. Monotonicity also enables accountability through intuitive, and even automatic, reasoning about predictions. For instance, if a lender rejects a credit card application, they can say exactly why because their probability of default model often assumes that credit scores, account balances, and the length of credit history are linearly and monotonically related to the ability to pay a credit card bill. When these explanations are created automatically and listed in plain English, they are typically called reason codes. In Driverless AI, linear and monotonic functions are fit to very complex machine learning models to generate reason codes using a technique known as K-LIME discussed in **Task 6 **.
+**Linear, monotonic functions**: Response functions created by linear regression algorithms are probably the most popular, accountable, and transparent class of machine learning models. These models will be referred to here as linear and monotonic. They are transparent because changing any given input feature (or sometimes a combination or function of an input feature) changes the response function output at a defined rate, in only one direction, and at a magnitude represented by a readily available coefficient. Monotonicity also enables accountability through intuitive, and even automatic, reasoning about predictions. For instance, if a lender rejects a credit card application, they can say exactly why because their probability of default model often assumes that credit scores, account balances, and the length of credit history are linearly and monotonically related to the ability to pay a credit card bill. When these explanations are created automatically and listed in plain English, they are typically called reason codes. In Driverless AI, linear and monotonic functions are fit to very complex machine learning models to generate reason codes using a technique known as K-LIME discussed in **Task 6**.
 
 **Nonlinear, monotonic functions**: Although most machine learned response functions are nonlinear, some can be constrained to be monotonic with respect to any given input feature. While there is no single coefficient that represents the change in the response function induced by a change in a single input feature, nonlinear and monotonic functions are fairly transparent because their output always changes in one direction as a single input feature changes.
 
@@ -174,9 +176,9 @@ Traditional linear models are globally interpretable because they exhibit the sa
 
 **Global Versus Local Analysis Motif**: Driverless AI provides both global and local explanations for complex, nonlinear, non-monotonic machine learning models. Reasoning about the accountability and trustworthiness of such complex functions can be difficult, but comparing global versus local behavior is often a productive starting point. A few examples of global versus local investigation include:
 
-For observations with globally extreme predictions, determine if their local explanations justify their extreme predictions or probabilities. 
-For observations with local explanations that differ drastically from global explanations, determine if their local explanations are reasonable. 
-For observations with globally median predictions or probabilities, analyze whether their local behavior is similar to the model’s global behavior.
+* For observations with globally extreme predictions, determine if their local explanations justify their extreme predictions or probabilities. 
+* For observations with local explanations that differ drastically from global explanations, determine if their local explanations are reasonable. 
+* For observations with globally median predictions or probabilities, analyze whether their local behavior is similar to the model’s global behavior.
 
 ### Application Domain 
 
@@ -205,7 +207,7 @@ It is well understood that for the same set of input features and prediction tar
 - [An Introduction to Machine Learning Interpretability](https://www.oreilly.com/library/view/an-introduction-to/9781492033158/)
 - [Testing machine learning explanation techniques](https://www.oreilly.com/ideas/testing-machine-learning-interpretability-techniques) 
 - [Awesome Machine Learning Interpretability](https://github.com/jphall663/awesome-machine-learning-interpretability)
-- [Concept References](https://www.h2o.ai/wp-content/uploads/2017/09/driverlessai/references.html)  
+- [Concept References](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/references.html)  
 
 ## Task 3: Global Shapley Values/Feature Importance
 
@@ -218,7 +220,7 @@ Global feature importance values give an indication of the magnitude of a featur
 (In  contrast, local feature importance describes how the combination of the learned model rules or parameters and an individual observation’s attributes affect a model’s prediction for that observation while taking nonlinearity and interactions into effect.)
 
 - Scope of Interpretability. 
-(1) Random forest feature importance is a global interpretability measure. (2) Shapley and LOCO feature importance is a local interpretability measure, but can be aggregated to become global.
+(1) Random forest feature importance is a global interpretability measure. (2) Shapley and LOCO feature importance is a local interpretability measure but can be aggregated to become global.
 
 - Appropriate Response Function Complexity.Random forest, Shapley, and LOCO feature importance can be used to explain tree-based response functions of nearly any complexity.
 
@@ -228,36 +230,36 @@ Global feature importance values give an indication of the magnitude of a featur
 
 ### Shapley and Feature Importance Plots
 
-1\. On the right-upper corner of the MLI page, select **DAI Model** then Shapley.
+1\. On the right-upper corner of the MLI page, select **DAI Model**, then **Shapley**.
 
 ![global-shapley-feature-importance](assets/global-shapley-feature-importance.jpg)
 
 
 The plot above is a sample of a Shapley plot. Shapley is an “old”, very advanced tool, now being applied to machine learning. This plot shows the global  importance value of the derived features. Notice the feature importance values are signed (scroll down to see the rest of the Shapley plot). The sign determines in which direction the values impact the model predictions on average. Shapley plots help by providing accurate and consistent variable importance even if data changes slightly.
  
-Viewing the Global Shapley values plot  is good place to start  because it provides a global view of feature importance and we can see which features are driving the model from an overall perspective. 
+Viewing the Global Shapley values plot is good place to start  because it provides a global view of feature importance and we can see which features are driving the model from an overall perspective. 
 
 Derived features can be difficult to understand. For that reason, it helps also to look at this complex system from the space of the original inputs, surrogate models allows to us to do this.
 
-2\. Click on **Surrogate Models**,**Random Forest**, then **Feature Importance**
+2\. Click on **Surrogate Models**, **Random Forest**, then **Feature Importance**.
 
 ![feature-importance-plot](assets/feature-importance-plot.jpg)
 
-The **Feature Importance** plot, ranks the original features. These features are the original drivers of the model in the original feature space. These values were calculated by building  a **Random Forest** between the original features and the predictions of the complex driverless AI model that was just trained. 
+The **Feature Importance** plot ranks the original features. These features are the original drivers of the model in the original feature space. These values were calculated by building  a **Random Forest** between the original features and the predictions of the complex driverless AI model that was just trained. 
 
 3\. View the **Surrogate Model Summary **, **Random Forest** summary:
 
 ![summary-random-forest](assets/summary-random-forest.jpg)
 
-This single **Random Forest** model of a complex Driverless AI model is very helpful because we can see  that this is a trustworthy model between the original inputs to the system and the predictions of the system. Note the low mean squared error(0.035), high R2 (96.72%). 
+This single **Random Forest** model of a complex Driverless AI model is very helpful because we can see that this is a trustworthy model between the original inputs to the system and the predictions of the system. Note the low mean squared error(0.035), high R2 (96.72%). 
 
-4\. Go back to the Shapley plot and find the feature importance of LIMIT_BAL. How important was LIMIT_BAL  in the global feature importance space? Was LIMIT_BAL a main driver in this space?
+4\. Go back to the Shapley plot and find the feature importance of LIMIT_BAL. How important was LIMIT_BAL in the global feature importance space? Was LIMIT_BAL a main driver in this space?
 
 5\. Look for LIMIT_BAL in the **Feature Importance** under **Surrogate Models**. How important was LIMIT_BAL in the original feature importance space? Was LIMIT_BAL a main driver in this space?
 
 ### Deeper Dive and Resources
 
-- [Driverless AI Global and Local Variable Importance](https://www.h2o.ai/wp-content/uploads/2017/09/driverlessai/interpreting.html#global-and-local-variable-importance)
+- [Understanding the Model Interpretation Page](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/interpreting.html#understanding-the-model-interpretation-page)
 
 
 ## Task 4: Partial Dependency Plot
@@ -303,7 +305,7 @@ The grey area is the standard deviation of the partial dependence. The wider the
 
 ### Deeper Dive and Resources
 
-- [Driverless AI Partial Dependency Plot](https://www.h2o.ai/wp-content/uploads/2017/09/driverlessai/interpreting.html?highlight=feature%20importance#partial-dependence-and-individual-conditional-expectation-ice)
+- [Partial Dependence and Individual Conditional Expectation (ICE)](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/interpreting.html#partial-dependence-and-individual-conditional-expectation-ice)
 
 
 ## Task 5: Decision Tree Surrogate
@@ -369,7 +371,7 @@ Based on the **Decision Tree**, to end up at the high probability of default buc
 
 ### Deeper Dive and Resources
 
-- [H2O Decision Tree Surrogate Model ](https://www.h2o.ai/wp-content/uploads/2017/09/driverlessai/interpreting.html?highlight=feature%20importance#decision-tree-surrogate-model)
+- [Decision Tree](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/interpreting.html#decision-tree)
 
 ## Task 6: K-LIME
 
@@ -384,15 +386,15 @@ K-LIME provides several different scales of interpretability: (1) coefficients o
 (1) K-LIME can create explanations for machine learning models of high complexity. (2) K-LIME accuracy can decrease when the Driverless AI model becomes too nonlinear.
 
 - Understanding and Trust
-(1) K-LIME increases transparency by revealing important input features and their linear trends. (2) K-LIME enhances accountability by creating explanations for each observation in a dataset. (3) K-LIME bolsters trust and fairness when the important features and their linear trends around specific records conform to human domain knowledge and reasonable expectations
+(1) K-LIME increases transparency by revealing important input features and their linear trends. (2) K-LIME enhances accountability by creating explanations for each observation in a dataset. (3) K-LIME bolsters trust and fairness when the important features and their linear trends around specific records conform to human domain knowledge and reasonable expectations.
 
-- Application Domain. K-LIME is model agnostic
+- Application Domain. K-LIME is model agnostic.
 
 ### K-LIME Plot
 
 The recent tasks have focused on the model’s global behavior for the entire dataset, but how does the model behave for a single person? A great but complex tool for this is K-Lime.
 
-1\. Under **Surrogate Models** select **K-LIME**
+1\. Under **Surrogate Models**, select **K-LIME**.
 
 ![k-lime-plot](assets/k-lime-plot.jpg)
 
@@ -407,7 +409,7 @@ The recent tasks have focused on the model’s global behavior for the entire da
 *Things to note*:
 
 This plot is the predictions of the Driverless AI model from lowest to highest. 
-The x-axis is the index of the rows that causes that ranking to occur from lowest to highest
+The x-axis is the index of the rows that causes that ranking to occur from lowest to highest.
 
 4\. Add **Actual Target** by clicking on it, the plot should look similar to the one below:
 
@@ -419,7 +421,7 @@ The x-axis is the index of the rows that causes that ranking to occur from lowes
 
 Adding the **Actual Target** to the plot allows us to check if the model is not entirely wrong. From the plot,  the density of  line (2) near the low ranked predictions show that many people made their payments on time while those in line (1) had missed payments since the line is scattered. Towards the high ranked predictions, the density of line (1) shows the high likelihood of missing payments while the sparseness of line (2) shows those who have stopped making payments. These observations are a good sanity check. 
 
-5\. Now, click on **LIME Model Prediction**
+5\. Now, click on **LIME Model Prediction**.
 
 ![k-lime-lime-model-prediction](assets/k-lime-lime-model-prediction.jpg)
 
@@ -428,7 +430,7 @@ Adding the **Actual Target** to the plot allows us to check if the model is not 
 
 This single linear model trained on the original inputs of the system to predict the predictions of the Driverless AI model shows that the Driverless AI model predictions are highly linear. The plot above is an implementation of LIME or Local Interpretable Model Agnostic Explanations which often uses linear surrogate models to help reason about the predictions of a complex model.
 
-6\. Go to Task 7 
+6\. Go to Task 7.
 
 **K-LIME Advance Features**
 
@@ -438,9 +440,9 @@ This single linear model trained on the original inputs of the system to predict
 
 ![k-lime-cluster-13](assets/k-lime-cluster-13.jpg)
 
-1. Change cluster to cluster 13 and note the R2 value is still very high
-2. Pick a point on the top-right section of the plot
-3. Examine Reason Codes
+1. Change cluster to cluster 13 and note the R2 value is still very high.
+2. Pick a point on the top-right section of the plot.
+3. Examine Reason Codes.
 
 The local model predictions (white points) can be used to reason through the Driverless AI model (yellow) in some local region.
 
@@ -450,21 +452,21 @@ The local model predictions (white points) can be used to reason through the Dri
 
 *Things to note*:
 
-1. The reason codes shows that the Driverless model prediction gave this person .71 percent probability of defaulting. LIME gave them a .69 percent probability of defaulting and in this case we can say that LIME is 97.2% accurate. Based on this observation, it can concluded that the local reason codes are fairly trustworthy. If **Lime Prediction Accuracy** drops below 75% then we can say that the numbers are probably untrustworthy and the Shapley plot or LOCO plot should be revisited since the Shapley values are always accurate, and LOCO accounts for nonlinearity and interactions
+1. The reason codes shows that the Driverless model prediction gave this person .71 percent probability of defaulting. LIME gave them a .69 percent probability of defaulting and in this case we can say that LIME is 97.2% accurate. Based on this observation, it can concluded that the local reason codes are fairly trustworthy. If **Lime Prediction Accuracy** drops below 75%, then we can say that the numbers are probably untrustworthy, and the Shapley plot or LOCO plot should be revisited because the Shapley values are always accurate, and LOCO accounts for nonlinearity and interactions.
 
 2. PAY_0 = 3 months late is the top positive local attribute for this person and contributes .35 probability points to their prediction according to this linear model. 0.35 is the local linear model coefficient for level 3 of the categorical variable PAY_0.
 
 3. Cluster 13 reason codes show the average linear trends in the data region around this person. 
 
-10\. Continue scrolling down on the page to view Global reason codes
+10\. Continue scrolling down on the page to view Global reason codes.
 
 4. Global reason codes show the average linear trends in the data set as a whole.
 
 
 ### Deeper Dive and Resources
 
-- [H2O K-LIME](https://www.h2o.ai/wp-content/uploads/2017/09/driverlessai/interpreting.html?highlight=feature%20importance#k-lime) 
-- [H2O Viewing Explanations](https://www.h2o.ai/wp-content/uploads/2017/09/driverlessai/viewing-explanations.html) 
+- [K-LIME and LIME-SUP](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/interpreting.html#k-lime-and-lime-sup) 
+- [Viewing Explanations](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/viewing-explanations.html) 
 
 ## Task 7: Local Shapley and LOCO
  
@@ -492,7 +494,7 @@ The grey bars or local numeric contributions can be used to generated reason cod
 
 ![local-shapley-value-plot](assets/local-shapley-value-plot.jpg)
 
->Note: The Shapley plot will depend on K-LIME point you selected
+>Note: The Shapley plot will depend on K-LIME point you selected.
 
 Things to note:
 1. Row number being observed
@@ -514,7 +516,7 @@ Based on the **Decision Tree** above, for the high probability person in row 114
 
 ### Deeper Dive and Resources
 
-- [Driverless AI LOCO](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/interpreting.html?highlight=loco#loco)
+- [Driverless AI LOCO](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/interpreting.html#loco)
 
 ## Task 8: Individual Conditional Expectation
  
@@ -543,7 +545,7 @@ We can observe divergence on the ICE plot and confirm possible interactions with
 ### Deeper Dive and Resources
 
 - [On the Art and Science of Machine Learning Explanations](https://arxiv.org/abs/1810.02909)
-- [H2O ICE](https://www.h2o.ai/wp-content/uploads/2017/09/driverlessai/interpreting.html?highlight=ice#partial-dependence-and-individual-conditional-expectation-ice) 
+- [H2O ICE Technique](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/interpreting.html#the-ice-technique) 
 
 ## Task 9: Putting It All Together: Dashboard View
 
@@ -555,8 +557,8 @@ Using the techniques together to find interactions and other interesting model b
 
 - [Explainable Artificial Intelligence XAI Google Slides](https://docs.google.com/viewer?url=https%3A%2F%2Fwww.darpa.mil%2Fattachments%2FXAIIndustryDay_Final.pptx)
 
-- [DARPA-BAA-16-53](https://www.darpa.mil/attachments/DARPA-BAA-16-53.pdf) 
-https://www.darpa.mil/attachments/XAIProgramUpdate.pdf 
+- [DARPA-BAA-16-53](https://www.darpa.mil/attachments/DARPA-BAA-16-53.pdf) and 
+[https://www.darpa.mil/attachments/XAIProgramUpdate.pdf](https://www.darpa.mil/attachments/XAIProgramUpdate.pdf)
 
 - [MLI Cheatsheet](https://github.com/h2oai/mli-resources/blob/master/cheatsheet.png) 
 
