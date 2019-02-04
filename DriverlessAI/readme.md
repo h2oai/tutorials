@@ -5,13 +5,13 @@ This repository has tutorials that focus on Driverless AI version **1.5.2**
 
 Check out our tutorials:
 
-- [automatic-ml-intro-tutorial](https://github.com/h2oai/tutorials/blob/master/DriverlessAI/automatic-ml-intro-tutorial/automatic-ml-intro-tutorial.md)
+- [Automatic ML Intro Tutorial](https://github.com/h2oai/tutorials/blob/master/DriverlessAI/automatic-ml-intro-tutorial/automatic-ml-intro-tutorial.md)
 
-- [mli-level-1-turorial](https://github.com/h2oai/tutorials/tree/master/DriverlessAI/mli-level-1-tutorial)
+- [MLI Level 1 Turorial](https://github.com/h2oai/tutorials/tree/master/DriverlessAI/mli-level-1-tutorial)
 
 For Driverless AI 1.4.2 tutorials check out:
 
-- [automatic-ml-intro-tutorial](https://github.com/h2oai/tutorials/tree/1.4.2/DriverlessAI/automatic-ml-intro-tutorial)
+- [Automatic ML Intro Tutorial](https://github.com/h2oai/tutorials/tree/1.4.2/DriverlessAI/automatic-ml-intro-tutorial)
 
 ## Running Into Issues With Tutorials?
 
