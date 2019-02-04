@@ -1,7 +1,7 @@
 ## Outline
 - [Objective](#objective)
 - [Prerequisites](#prerequisites)
-- [Task 1: Launch Experiment and MLI](#task-1-launch-experiment-and-MLI) 
+- [Task 1: Launch Experiment and MLI](#task-1-launch-experiment-and-mli) 
 - [Task 2: ML Explainability Concepts](#task-2-ml-explainability-concepts)
 - [Task 3: Global Shapley Values and Feature Importance](#task-3-global-shapley-values-and-feature-importance)
 - [Task 4: Partial Dependence Plot](#task-4-partial-dependence-plot)
@@ -209,7 +209,7 @@ It is well understood that for the same set of input features and prediction tar
 - [Awesome Machine Learning Interpretability](https://github.com/jphall663/awesome-machine-learning-interpretability)
 - [Concept References](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/references.html)  
 
-## Task 3: Global Shapley Values/Feature Importance
+## Task 3: Global Shapley Values and Feature Importance
 
 ### Global Shapley Values and Feature Importance Concepts
 
