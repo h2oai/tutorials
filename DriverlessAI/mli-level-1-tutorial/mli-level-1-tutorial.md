@@ -262,7 +262,7 @@ This single **Random Forest** model of a complex Driverless AI model is very hel
 - [Understanding the Model Interpretation Page](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/interpreting.html#understanding-the-model-interpretation-page)
 
 
-## Task 4: Partial Dependency Plot
+## Task 4: Partial Dependence Plot
 
 ### Partial Dependence Concepts
 
