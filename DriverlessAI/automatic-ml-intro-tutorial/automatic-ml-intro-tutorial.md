@@ -67,7 +67,7 @@ For example:
 ![driverless-agreement](assets/driverless-agreement.jpg)
 
 
-3\.  Log in by creating a unique **username/password**. Save your username and password so you can return to the experiments you have worked on. 
+3\.  Sign in by creating a unique **username/password**. Save your username and password so you can return to the experiments you have worked on. 
 
 ![driverless-sign-in](assets/driverless-sign-in.jpg)
 
