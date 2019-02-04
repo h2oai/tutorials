@@ -54,7 +54,7 @@ In order to successfully install H2O Driverless AI, a license key is necessary. 
 **Other prerequisites**:
 - Basic knowledge of Machine Learning and Statistics
 
-##  Task 1: Launch Experiment & MLI
+##  Task 1: Launch Experiment and MLI
 
 ### About the Dataset
 
