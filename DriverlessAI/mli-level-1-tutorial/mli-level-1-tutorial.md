@@ -83,9 +83,9 @@ Let’s have a look at the columns:
 1. **ID** - Row identifier (which will not be used for this experiment)
 2. **LIMIT_BAL** - Credit Limit
 3. **Sex**
-4.  *EDUCATION**- Education Level
-5.  **MARRIAGE** - Marital Status
-6.  **Age**
+4. **EDUCATION**- Education Level
+5. **MARRIAGE** - Marital Status
+6. **Age**
 7. **PAY0-PAY6**: Payment Information including most recent repayment status
  	 Status Values:
 -2: Paid in full
