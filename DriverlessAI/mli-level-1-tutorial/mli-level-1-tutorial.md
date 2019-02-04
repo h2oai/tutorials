@@ -65,7 +65,7 @@ This dataset has a total 25 Features(columns) and 30,000 Clients(rows).
 ### Download Dataset
 Download the Default Payments of Credit Card Clients in Taiwan from 2005 to your local drive.
 
-- [UCI_Credit_Card.csv](https://archive.ics.uci.edu/ml/datasets/default+of+credit+card+clients)
+- [UCI_Credit_Card.csv](https://archive.ics.uci.edu/ml/machine-learning-databases/00350/)
 
 ### Launch Experiment 
 
