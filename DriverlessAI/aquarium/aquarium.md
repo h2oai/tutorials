@@ -7,6 +7,7 @@
 - [Resetting the password ](#resetting-the-password)
 - [How to Start a Lab Session](#how-to-start-a-lab-session)
 - [Logout](#logout)
+- [Questions](#questions)
 
 ## Aquarium
 
@@ -100,3 +101,13 @@ Note:
 1\. To log out, click on the box on the top-right corner of the page and select logout.
 
 ![aquarium-logout](assets/aquarium-logout.jpg) 
+
+## Questions
+
+Have any questions about Aquarium? Sign up for H2O's Slack Channel and post your questions under the #cloud channel. Members of the H2O community will respond as soon as they are available.
+
+- [Join the H2O community on Slack to Ask Questions #cloud](https://h2oai-community.slack.com/
+
+
+
+
