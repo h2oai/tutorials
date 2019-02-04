@@ -11,7 +11,7 @@ Check out our tutorials:
 
 For Driverless AI 1.4.2 tutorials check out:
 
-- [Automatic ML Intro Tutorial](https://github.com/h2oai/tutorials/tree/1.4.2/DriverlessAI/automatic-ml-intro-tutorial)
+- [Automatic ML Intro Tutorial](https://github.com/h2oai/tutorials/blob/1.4.2/DriverlessAI/automatic-ml-intro-tutorial/automatic-ml-intro-tutorial.md)
 
 ## Running Into Issues With Tutorials?
 
