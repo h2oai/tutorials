@@ -10,7 +10,7 @@ Tutorials are developed and maintained on Github and published onto the H2O site
 
 ## New to AI?
 
-Begin your journey by browsing the tutorials directory of this Git repository.
+Begin your journey by browsing the tutorials directory of this GitHub repository.
 
 ## Running Into Issues With Tutorials?
 
