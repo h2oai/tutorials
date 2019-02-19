@@ -48,7 +48,7 @@ There are multiple ways to install the environment: cloud, local, server. The in
 
 - [Aquarium](https://github.com/h2oai/tutorials/blob/master/DriverlessAI/aquarium/aquarium.md)
 - Cloud Installation
-  - [H2O Driverless AI on AWS Marketplace](https://aws.amazon.com/marketplace/pp/B07JN71K8N?qid=1547700275918&sr=0-6&ref_=srh_res_product_title)
+  - [H2O Driverless AI on AWS](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/install/aws.html)
   - [H2O Driverless AI on Azure HDInsight](https://azuremarketplace.microsoft.com/en-gb/marketplace/apps/h2o-ai.h2o-driverles-ai?tab=Overview) 
   - [H2O.ai Driverless AI (BYOL) on Google Cloud Platform](https://console.cloud.google.com/marketplace/details/h2o-public/h2oai-driverless-ai-byol?pli=1) 
 - [Local Installation](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/installing.html) 
@@ -155,13 +155,12 @@ Explainable AI is in the news, and for good reason. Financial services companies
 * The Fair Housing Act, Federal Reserve SR 11-7
 * European Union (EU) Greater Data Privacy Regulation (GDPR) Article 22
 
-So if you are a decision maker using or planning to use AI in your company, then understanding how you create trust in AI is going to be crucial to your success.
 
 #### Gentle Introduction to Interpretable Machine Learning
 
 As a business person who is using machine learning to make decisions, there are a few fundamental concepts that you need to understand in order to have intelligent discussions with executives and make smart choices when using machine learning models to make decisions.
 
-First of all, let’s clarify the terms “AI” and “machine learning”. AI is the broader field that encompasses the study and practice of enabling computers to have human-level (or better) intelligence. Machine learning is probably currently the most practical and popular subfield of AI, where computer systems learn from past data how to make decisions about certain topics like, "will someone pay their credit card bill?" or "what diagnosis should a medical patient should receive?" The fad today is to use “AI” and “machine learning” somewhat interchangeably, and that’s what we will do in the rest of this tutorial.
+First of all, let’s clarify the terms “AI” and “machine learning”. AI is the broader field that encompasses the study and practice of enabling computers to have human-level (or better) intelligence. Machine learning is probably currently the most practical and popular subfield of AI, where computer systems learn from past data how to make decisions about certain topics like, "will someone pay their credit card bill?" or "what diagnosis should a medical patient receive?" The fad today is to use “AI” and “machine learning” somewhat interchangeably, and that’s what we will do in the rest of this tutorial.
 
 Second, there is an entire field of research dedicated to the area of machine learning interpretability, and “interpretability” itself is basically a loosely-defined (or over-defined) umbrella term that encompasses at least:
 
@@ -171,11 +170,11 @@ Second, there is an entire field of research dedicated to the area of machine le
 - Ensuring fairness in algorithmic decision-making
 - Model documentation
 
-Third, there is plenty of real work already happening in this field. There is an area known as [FAT, for Fairness, Accountability, and Transparency](http://www.fatml.org/), and [XAI for explainable AI](https://www.darpa.mil/program/explainable-artificial-intelligence), and numerous other outlets that are surfacing applicable technologies, such as the [2018 AI for Finance Services Workshop](https://sites.google.com/view/feap-ai4fin-2018/schedule?authuser=0) at the NeurlPS conference. Depending on your industry, you will likely hear or see other terms, conferences, workshops, or white papers on similar topics. Generally speaking, researchers and product vendors are already working on the problem of how to build understanding and trust in AI and machine learning systems. Bottom line: a lot of brilliant people are thinking about this today, and some of their work is already usable! (If you are reasonably technical and interested in this topic in more depth, I suggest reading *An Introduction to Machine Learning Interpretability, An Applied Perspective on Fairness, Accountability, Transparency, and Explainable AI* by Patrick Hall and Navdeep Gill, published by [O’Reilly Media](https://www.safaribooksonline.com/library/view/an-introduction-to/9781492033158/)).
+Third, there is plenty of real work already happening in this field. There is an area known as [FAT, for Fairness, Accountability, and Transparency](http://www.fatml.org/), and [XAI for explainable AI](https://www.darpa.mil/program/explainable-artificial-intelligence), and numerous other outlets that are surfacing applicable technologies, such as the [2018 AI for Finance Services Workshop](https://sites.google.com/view/feap-ai4fin-2018/schedule?authuser=0) at the NeurlPS conference. Depending on your industry, you will likely hear or see other terms, conferences, workshops, or white papers on similar topics. Generally speaking, researchers and product vendors are already working on the problem of how to build understanding and trust in AI and machine learning systems. Bottom line: a lot of brilliant people are thinking about this today, and some of their work is already usable! (If you are reasonably technical and interested in this topic in more depth, we suggest reading *An Introduction to Machine Learning Interpretability, An Applied Perspective on Fairness, Accountability, Transparency, and Explainable AI* by Patrick Hall and Navdeep Gill, published by [O’Reilly Media](https://www.safaribooksonline.com/library/view/an-introduction-to/9781492033158/)).
 
 #### Some Techniques
 
-To actually get started with machine learning interpretability, I would begin by understanding the goal. You want to use AI and machine learning models because they will help you make more objective, data-driven, higher-value decisions that can help your business. You need to trust that these models are making the right choices because you, and people like you, are ultimately accountable for the decisions. Generally speaking, business people feel they can trust a machine learning model when they have an understanding of why that model is making a particular prediction and when it behaves as expected in realistic test or simulation scenarios. When a model deviates from our knowledge of our business, we also want to understand why. Below are some of the best-known techniques you can use to develop understanding and trust in AI so that you can scale your AI adoption.
+To actually get started with machine learning interpretability, we can begin by understanding the goal. You want to use AI and machine learning models because they will help you make more objective, data-driven, higher-value decisions that can help your business. You need to trust that these models are making the right choices because you, and people like you, are ultimately accountable for the decisions. Generally speaking, business people feel they can trust a machine learning model when they have an understanding of why that model is making a particular prediction and when it behaves as expected in realistic test or simulation scenarios. When a model deviates from our knowledge of our business, we also want to understand why. Below are some of the best-known techniques you can use to develop understanding and trust in AI so that you can scale your AI adoption.
 
 ### General Approaches
 
@@ -313,7 +312,8 @@ We are now going to explore the training set that we just loaded.
 
 *Things to note:*
 
-1. The **Dataset Details Page** provides a summary of the dataset of the first 20 rows. This summary lists each column that is included in the dataset along with the type, the count, the mean, minimum, maximum, standard deviation, frequency, and the number of unique values.
+1. The **Dataset Details Page** provides a summary of the dataset. This summary lists each column that is included in the dataset along with the type, the count, the mean, minimum, maximum, standard deviation, frequency, and the number of unique values.
+Hover over the top of a column to view the first 20 rows of that column.
 >Note: Driverless AI recognizes the following column types: integer, string, real, and boolean. Date columns are given a string "str" type.
 
 2. You can view information for a specific column by entering the name of the column in the field above the graph.
@@ -505,14 +505,13 @@ Once the experiment is completed, an Experiment Summary will appear:
  - Score on Another Dataset
  - Transform Another Dataset
  - Download Validation Predictions
- - Download Python Scoring Pipeline - A standalone Python Scoring 
- - Pipeline for H2O Driverless
+ - Download Python Scoring Pipeline - A standalone Python Scoring and pipeline for H2O Driverless
  - Download Experiment Summary - A zip file containing the following:
  	- Summary of Experiment
  	- Experiment Features along with relevant importance
  	- Ensemble information
  	- Experiment preview 
- 	- PDF and markdown versions of an auto-generated report for the experiment
+ 	- Word versions of an auto-generated report for the experiment
  	- Target transformations tuning leaderboard
  	- Leaderboard
  - Download Logs 
@@ -545,7 +544,7 @@ Transformations in Driverless AI are applied to columns in the data. The transfo
 These transformations created with the following transformers:
 	
 - Numeric to Categorical Target Encoding Transformer = ‘_NumCatTE’
-- Cross Validation Target Encoding = ‘_CVCatNumEn’
+- Categorical To Numeric Encoding= ‘_CVCatNumEn’
 - Text Transformer = ‘_TXT’
 
 The complete list of features used in the final model is available in the Experiment Summary artifacts. The Experiment Summary also provides a list of the original features and their estimated feature importance.  
