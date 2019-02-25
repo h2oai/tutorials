@@ -154,7 +154,7 @@ Supervised learning takes labeled examples and allows a model that is being trai
 
 A machine learning model is as good as the data that is used to train it. If you use garbage data to train your model, you will get a garbage model. With this said, before uploading a dataset into tools that will assist you with building your machine learning model such as Driverless AI, ensure that the dataset has been cleaned and prepared for training. Data preparation includes the dataset being in the correct format for what you are trying to do. Duplicates have been removed, and missing data has been fixed or removed. Additionally, a reasonable sample size to train your model has been selected (training, test and validation sets) and proper transformations have been done on the dataset such as scaling, decomposition, and aggregation otherwise known as feature engineering [2].
 
-#### Data Transformation 
+### Data Transformation 
 
 Data transformation or feature engineering is the process of creating new features from the existing ones. Some data transformations include looking at all the features and identifying which features can be combined to make new ones that will be more useful to the performance of the model. For categorical features, the recommendation is for classes that have few observations to be grouped to reduce the likelihood of the model overfitting. Additionally, dummy variables are introduced for categorical features to facilitate machine learning since many algorithms cannot handle categorical features directly.  Last but not least, remove features that are not used or are redundant [3]. These are only a few suggestions when approaching feature engineering. Feature engineering is very time consuming and do its repetitive nature; it can also be very expensive. The next step in creating a model is selecting an algorithm.
 
@@ -162,7 +162,7 @@ Data transformation or feature engineering is the process of creating new featur
 
 “Machine learning algorithms are described as learning a target function (f) that best maps input variables (x) to an output variable(y): Y= f(x)” [4]. In supervised learning, there are many algorithms to select from for training. The type of algorithm(s) will depend on the size of your data set, structure and the type of problem you are trying to solve.  Through trial and error, the best performing algorithms can be found for your dataset. Some of those algorithms include linear regression, classification, regression trees, random forests, naive Bayes and random forest, boosting to name a few [5]. 
 
-#### Model Training
+### Model Training
 
 One good practice when training a machine learning model is to split up your dataset into subsets: training, validation and testing sets. A good ratio for the entire dataset is 70-15-15, 70% of the entire dataset for training, 15% for validation and the remaining 15% for testing.The training set is the data that will be used to train the model, and it needs to be big enough to get significant results from it. The validation set is the data that has been held back from the training and will be used to evaluate and adjust the hyperparameters of the trained model and hence adjust the performance. Finally, the test set is data that has also been held back and will be used to confirm the results of the final model [1].
 
