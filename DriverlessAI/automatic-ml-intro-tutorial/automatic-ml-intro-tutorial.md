@@ -134,93 +134,70 @@ The Driverless UI is easy to navigate. The following features are found on the w
 
 ## Task 2: Automatic Machine Learning Concepts
 
-#### What are the challenges in AI Model Development?
+###  Artificial Intelligence and Machine Learning
 
-One of the major challenges faced in developing a single production-ready model is that it can take weeks or months to develop. Developing a model involves feature engineering, model building, and model deployment. All tasks are very repetitive, time-consuming, require advanced knowledge of feature generation, algorithms, parameters, and model deployment. Finally, there needs to be in-depth knowledge and confidence in how the model was generated in order to explain and justify how the model made its decisions.
+The concepts found in this section are meant to provide a high-level overview of Machine Learning. At the end of this section, you can find links to resources that offer a more in-depth explanation of the concepts covered here.
 
-#### What is Automated Machine Learning and why is it important?
+ Machine learning is a subset of Artificial intelligence where the focus is to create machines that can simulate human intelligence. One critical distinction between artificial intelligence and machine learning is that machine learning models “learn” from the data they get exposed to. Arthur Samuel a machine learning pioneer back in 1959 defined machine learning as a”field of study that gives computers the ability to learn without being explicitly programmed”[1]. Machine learning algorithm train on a dataset to make predictions. These predictions are sometimes used to optimize a system or assist with decision making.
 
-AutoML or Automated Machine Learning is the process of automating algorithm selection, feature generation, hyperparameter tuning, iterative modeling, and model assessment. AutoML makes it easy to train and evaluate machine learning models. Automating the repetitive tasks of Machine Learning Development allows data scientists to focus on the data and the business problems they are trying to solve.
+### Machine Learning Training
 
-#### Explaining AI to the Business Person
+The advances in technology have made it easier for data to be collected and made available.  The type of data that is available will determine the kind of training that the machine learning model can undergo. There are two types of machine learning  training, supervised and unsupervised learning. Supervised learning is when the dataset contains the output that you are trying to predict. For those cases where the predicting variable is not present it's called unsupervised learning. Both types of training define the relationship between input variables and output variables.
 
-Explainable AI is in the news, and for good reason. Financial services companies have cited the ability to explain AI-based decisions as one of the critical roadblocks to further adoption of AI for their [industry](https://blogs.wsj.com/cio/2018/08/22/wall-street-finds-limits-with-current-ai-applications/?mod=djemCIO_h). Moreover, interpretability, fairness, and transparency of data-driven decision-support systems based on AI and machine learning, or more traditional statistical or rule-based approaches are serious regulatory mandates in banking, insurance, healthcare, and other industries. In regulatory statutes potential governing these industries’ use of AI include:
+In machine learning the input variables are called **features** and the output variables **labels**. The labels, in this case, are what we are trying to predict. The goal is to take the inputs/ features and use them to come up with predictions on never-before-seen data. In linear regression, the features are the x-variables and the labels are the y-variables. 
 
-* The Civil Rights Acts of 1964 and 1991
-* The Americans with Disabilities Act
-* The Genetic Information Nondiscrimination Act
-* The Health Insurance Portability and Accountability Act
-* The Equal Credit Opportunity Act
-* The Fair Credit Reporting Act
-* The Fair Housing Act, Federal Reserve SR 11-7
-* European Union (EU) Greater Data Privacy Regulation (GDPR) Article 22
+A machine learning model defines the relationship between features and labels. When models are trained, you can train a model by feeding it examples. Examples are a particular instance of data.  You can have two types of examples: labeled and unlabeled.
+Labeled examples are those where the x and y values (features, labels) are known. Unlabeled examples are those where we know the x value, but we don't know what the y value is (feature,?)[1]. Your dataset is like an example; the columns that will be used for training are the features; the rows are the instances of those features. The column that you want to predict is the label.
+Supervised learning takes labeled examples and allows a model that is being trained to learn the relationship between features and labels. The trained model is then tested with unlabeled data and its given the opportunity to predict the y value (label) for the unlabeled data. Testing a trained model with unlabeled data is called unsupervised training [1]. Note that H2O Driverless AI creates models with labeled examples.
+
+### Data Preparation 
+
+A machine learning model is as good as the data that is used to train it. If you use garbage data to train your model, you will get a garbage model. With this said, before uploading a dataset into tools that will assist you with building your machine learning model such as Driverless AI, ensure that the dataset has been cleaned and prepared for training. Data preparation includes the dataset being in the correct format for what you are trying to do. Duplicates have been removed, and missing data has been fixed or removed. Additionally, a reasonable sample size to train your model has been selected (training, test and validation sets) and proper transformations have been done on the dataset such as scaling, decomposition, and aggregation otherwise known as feature engineering [2].
+
+#### Data Transformation 
+
+Data transformation or feature engineering is the process of creating new features from the existing ones. Some data transformations include looking at all the features and identifying which features can be combined to make new ones that will be more useful to the performance of the model. For categorical features, the recommendation is for classes that have few observations to be grouped to reduce the likelihood of the model overfitting. Additionally, dummy variables are introduced for categorical features to facilitate machine learning since many algorithms cannot handle categorical features directly.  Last but not least, remove features that are not used or are redundant [3]. These are only a few suggestions when approaching feature engineering. Feature engineering is very time consuming and do its repetitive nature; it can also be very expensive. The next step in creating a model is selecting an algorithm.
+
+### Algorithm Selection
+
+“Machine learning algorithms are described as learning a target function (f) that best maps input variables (x) to an output variable(y): Y= f(x)” [4]. In supervised learning, there are many algorithms to select from for training. The type of algorithm(s) will depend on the size of your data set, structure and the type of problem you are trying to solve.  Through trial and error, the best performing algorithms can be found for your dataset. Some of those algorithms include linear regression, classification, regression trees, random forests, naive Bayes and random forest, boosting to name a few [5]. 
+
+#### Model Training
+
+One good practice when training a machine learning model is to split up your dataset into subsets: training, validation and testing sets. A good ratio for the entire dataset is 70-15-15, 70% of the entire dataset for training, 15% for validation and the remaining 15% for testing.The training set is the data that will be used to train the model, and it needs to be big enough to get significant results from it. The validation set is the data that has been held back from the training and will be used to evaluate and adjust the hyperparameters of the trained model and hence adjust the performance. Finally, the test set is data that has also been held back and will be used to confirm the results of the final model [1].
+
+Another part of model training is fitting and tuning the models. To do this hyperparameters need to be tuned and cross-validation needs to take place using only the training data. Various hyperparameters values will need to be tested. Additionally, a cross-validation loop will be set to calculate the cross-validation score for each set of hyperparameters for each algorithm. Based on the cross-validation score and hyperparameter values you can select the model for each algorithm that has been tuned with training data and test is it using your test set.  The performance of your regression model can be evaluated by performance metrics such as the Mean Square Error (MSE), ROC Curve, Prec-Recall, LIFT and Gain to name a few.
+
+### What are the challenges in AI Model Development?
+
+One of the significant challenges faced in developing a single production-ready model is that it can take weeks or months to develop it. Developing a model involves feature engineering, model building, and model deployment. All tasks are very repetitive, time-consuming, require advanced knowledge of feature generation, algorithms, parameters, and model deployment. Finally, there needs to be in-depth knowledge and confidence in how the model was generated to explain and justify how the model made its decisions.
 
 
-#### Gentle Introduction to Interpretable Machine Learning
+### What is Automated Machine Learning and why is it important?
 
-As a business person who is using machine learning to make decisions, there are a few fundamental concepts that you need to understand in order to have intelligent discussions with executives and make smart choices when using machine learning models to make decisions.
+AutoML or Automated Machine Learning is the process of automating algorithm selection, feature generation, hyperparameter tuning, iterative modeling, and model assessment. AutoML tools such as H2O Driverless AI makes it easy to train and evaluate machine learning models. Automating the repetitive tasks of Machine Learning Development allows people in industry to focus on the data and the business problems they are trying to solve. 
 
-First of all, let’s clarify the terms “AI” and “machine learning”. AI is the broader field that encompasses the study and practice of enabling computers to have human-level (or better) intelligence. Machine learning is probably currently the most practical and popular subfield of AI, where computer systems learn from past data how to make decisions about certain topics like, "will someone pay their credit card bill?" or "what diagnosis should a medical patient receive?" The fad today is to use “AI” and “machine learning” somewhat interchangeably, and that’s what we will do in the rest of this tutorial.
-
-Second, there is an entire field of research dedicated to the area of machine learning interpretability, and “interpretability” itself is basically a loosely-defined (or over-defined) umbrella term that encompasses at least:
-
-- Directly transparent “white-box” models
-- Explanation of “black-box” models to enhance transparency
-- Debugging models to increase trust
-- Ensuring fairness in algorithmic decision-making
-- Model documentation
-
-Third, there is plenty of real work already happening in this field. There is an area known as [FAT, for Fairness, Accountability, and Transparency](http://www.fatml.org/), and [XAI for explainable AI](https://www.darpa.mil/program/explainable-artificial-intelligence), and numerous other outlets that are surfacing applicable technologies, such as the [2018 AI for Finance Services Workshop](https://sites.google.com/view/feap-ai4fin-2018/schedule?authuser=0) at the NeurlPS conference. Depending on your industry, you will likely hear or see other terms, conferences, workshops, or white papers on similar topics. Generally speaking, researchers and product vendors are already working on the problem of how to build understanding and trust in AI and machine learning systems. Bottom line: a lot of brilliant people are thinking about this today, and some of their work is already usable! (If you are reasonably technical and interested in this topic in more depth, we suggest reading *An Introduction to Machine Learning Interpretability, An Applied Perspective on Fairness, Accountability, Transparency, and Explainable AI* by Patrick Hall and Navdeep Gill, published by [O’Reilly Media](https://www.safaribooksonline.com/library/view/an-introduction-to/9781492033158/)).
-
-#### Some Techniques
-
-To actually get started with machine learning interpretability, we can begin by understanding the goal. You want to use AI and machine learning models because they will help you make more objective, data-driven, higher-value decisions that can help your business. You need to trust that these models are making the right choices because you, and people like you, are ultimately accountable for the decisions. Generally speaking, business people feel they can trust a machine learning model when they have an understanding of why that model is making a particular prediction and when it behaves as expected in realistic test or simulation scenarios. When a model deviates from our knowledge of our business, we also want to understand why. Below are some of the best-known techniques you can use to develop understanding and trust in AI so that you can scale your AI adoption.
-
-### General Approaches
-
-#### Exploratory Data Analysis (EDA, i.e. “Know Thy Data”) 
-
-The mantra of garbage in, garbage out still applies. The model learns from the data you put into it. The better you know what you are feeding your model, the more likely you are to understand and make sense of the outputs. You can use a host of visualization tools to gain a better understanding of your data. The best ones will highlight those areas of the data that could cause problems. These problem areas include incomplete data, distant outliers, missing values, strong correlations between variables, and other data quality issues.
-
-#### Accurate and Interpretable Models 
-
-In general, the more directly interpretable your machine learning model is to begin with, the less explanation, compliance, documentation, and potential regulation headaches you will have in the future. Some interpretable modeling techniques are oldie-goldies, like statistical regression models and decision trees. These can be great to get started with! For those looking for more cutting edge and accurate interpretable models, you might want to check out techniques with names like scalable Bayesian rule lists or monotonic gradient boosting machines.
-
-#### Global Explanations
-
-A complex machine learning model is like a multidimensional topographic map with highs and lows where different variables have different influence at various locations. Global explanatory techniques help you get a 30,000 ft. perspective on that landscape.
-
-#### Variable Importance Chart 
-
-This allows you to see what variables were the most important in all of the model’s predictions taken as a whole. You may be surprised by which variables had the most impact, but at least you can see what those are and compare them against your domain knowledge and how you would make the decision. If you find there are only a few variables that really matter, that could also help you build a simpler model with fewer inputs which is typically faster for production use cases and easier to understand.
-
-#### Partial Dependence Chart
-
-Once you know what variables are the main drivers of the business problem you’re modeling, partial dependence charts can show you how these variables behave inside the model. Partial dependence plots show the average prediction of the model for the values of an input variable. For instance, these charts would allow you to verify that as customers’ savings account balances increase, their overall probability of paying their credit card bill also increases according to your model.
-
-#### Surrogate Tree Models 
-
-When you can’t understand the sophisticated version of a model, a simple version can help explain what is going on. Decision trees are particularly suitable for this as they show the splits and decision points in a way that is easy for people to understand, like a flowchart. For example, how does the model decide what drug dosage to provide? First, it looks at the person’s age, then their gender, and then at related conditions. This simple representation helps model stakeholders and users understand the fundamental decisions the model is making and this flowchart view can help you understand the interactions between important variables found by your machine learning model. (These interactions are important insights too and might be really hard for people to find on their own).
-
-#### Local Explanations and Reason Codes
-
-The next tool helps you zoom into a local area of your data and model and really get a handle on what the model is doing for an individual or a small group. Your goal is to understand why a model provided any single prediction. In particular, you want to understand the factors that influenced the decision.
-
-Many new explanation techniques focus on understanding small areas of the data and their corresponding predictions. The methods you should look for have names like LIME and Shapley. The vital thing to know is that these techniques will help you, or your data team, explain what is going on in a small area of your input data and model outputs and will help generate the information you need for trustworthy real-time decision making. LIME, for example, allows you to zoom in on a small area of the model where it describes that area with a trend line, which is relatively easy to understand. This technique provides a simple view of which variables had the most significant influence on that area of the model. In practice, this information is often used to create reason codes.
-
-#### Reason Codes 
-
-When an AI system provides a predictive score based on the model, it should also offer individual reason codes. Reason codes are required in industries like financial services when providing credit decisions and can be very helpful to clinicians when using AI-driven diagnostic assistants. These automated data points show how the key variables influenced the model’s prediction for just a single individual. For example, when deciding to decline a new credit card for one specific consumer, the reason codes could show that missing a recent payment, short credit history, and low credit score were the critical factors in the decision.
-
-Up until this point, we have covered an introduction to interpretable AI and machine learning as well as some of the best-known techniques you can use to explain AI systems.
 
 ### Deeper Dive and Resources
+
 
 - [Explore the replays from H2O World around the world](
 http://h2oworld.h2o.ai/h2o-world-london/) 
 - [Explore the webinar replays](
 https://www.brighttalk.com/search/?q=driverless+ai) 
 - [Explore the various H2O Driverless AI playlists on youtube](https://www.youtube.com/user/0xdata/playlists) 
+
+[1][Google’s Machine Learning Crash Course](https://developers.google.com/machine-learning/crash-course/training-and-test-sets/splitting-data)
+
+[2][About Train, Validation and Test Sets in Machine Learning](https://towardsdatascience.com/train-validation-and-test-sets-72cb40cba9e7)
+
+[3][Data Science Primer - Data Cleaning](https://elitedatascience.com/data-cleaning)
+
+[3][Feature Engineering](https://elitedatascience.com/feature-engineering) 
+
+[4][Towards Data Science- Supervised vs Unsupervised Learning](https://towardsdatascience.com/supervised-vs-unsupervised-learning-14f68e32ea8d) 
+
+[5][Selecting the best Machine Learning Algorithm for your regression problem](https://towardsdatascience.com/selecting-the-best-machine-learning-algorithm-for-your-regression-problem-20c330bad4ef)
 
 ## Task 3: Load Data
 
