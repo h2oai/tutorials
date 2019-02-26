@@ -13,7 +13,7 @@
 
 H2O Aquarium is H2O's cloud environment that provides access to various tools for workshops, conferences, and training.
 
-All labs have a specific **Lab Duration*** time to complete the lab. If you would like to continue exploring H2O's Driverless AI, request a [21-Day Free Trial: H2O Driverless AI license Key](https://www.h2o.ai/products/h2o-driverless-ai/) to use with [H2O Driverless AI Prerelease Environment](http://prerelease.h2o.ai/).
+All labs have a specific **Lab Duration*** time to complete the lab. If you would like to continue exploring H2O's Driverless AI, request a [21-Day Free Trial: H2O Driverless AI license Key](https://www.h2o.ai/products/h2o-driverless-ai/).
 
 ## How to Create an Aquarium Account
 
@@ -77,7 +77,7 @@ Note:
 
 3\. To start a Lab, select **View Details** on the Lab you want to work on, then click on **Start Lab**. You will see an image similar to the one below:
 
-![sample-start-lab](assets/sample-start-lab.jpg)
+![sample-start-lab-with-instructions](assets/sample-start-lab-with-instructions.jpg)
 
 
 4\. Aquarium will then start the Lab session for you (this will take a few minutes). A similar image should appear:
@@ -90,7 +90,7 @@ Note:
  - Driverless AI URL
  - End Lab 
 
-5\. Once the Lab has started, a Driverless AI URL will appear at the bottom-left corner of the page. Click on that URL. This will take you to the H2O Driverless License Agreement Form. 
+5\. Once the Lab has started, a Driverless AI URL will appear at the of the page. Click on that URL. This will take you to the H2O Driverless License Agreement Form. 
 
 6\. If you need to pause and come back to your session, select **End Lab**.
 
