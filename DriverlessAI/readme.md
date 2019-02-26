@@ -7,7 +7,7 @@ Check out our tutorials:
 
 - [Automatic ML Intro Tutorial](https://github.com/h2oai/tutorials/blob/master/DriverlessAI/automatic-ml-intro-tutorial/automatic-ml-intro-tutorial.md)
 
-- [MLI Level 1 Turorial](https://github.com/h2oai/tutorials/blob/master/DriverlessAI/mli-level-1-tutorial/mli-level-1-tutorial.md)
+- [Machine Learning Interpretability](https://github.com/h2oai/tutorials/blob/master/DriverlessAI/machine-learning-interpretability-tutorial/machine-learning-interpretability-tutorial.md)
 
 For Driverless AI 1.4.2 tutorials, check out:
 
