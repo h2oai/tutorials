@@ -103,7 +103,9 @@ Up to 9 Months late
 10. **default.payment.next.month**- Prediction of whether someone will default on the next month’s payment using given information.
 
 4\. Return to the **Datasets** page.
+
 5\. Click on the **UCI_Credit_Card.csv** file then select **Predict**.
+
 6\. Select **Not Now** on the **First time Driverless AI, Click Yes to get a tour!**. A similar image should appear:
 
 ![experiment-page](assets/experiment-page.jpg)
