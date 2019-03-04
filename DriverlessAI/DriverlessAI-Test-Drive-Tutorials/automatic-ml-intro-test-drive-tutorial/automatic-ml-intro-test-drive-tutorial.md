@@ -168,8 +168,8 @@ The dataset used for this experiment is the infamous Titanic Dataset. We will cr
 |passenger Id|Id randomly generated|  |
 |pclass|Passenger Class| 1= 1st, 2 =2nd, 3=3rd|
 |survived|Survival| 0=No, 1=Yes|
-|name|Passenger name|  |
-|name(without salutation)|Passenger name without salutations|  |
+|name_with_salutations|Passenger name|  |
+|name_without_salutations|Passenger name without salutations|  |
 |sex|Sex|Female, Male|
 |age|Age in years|  |
 |sibsp|Number of siblings/Spouse aboard|  |
@@ -182,21 +182,23 @@ The dataset used for this experiment is the infamous Titanic Dataset. We will cr
 |body|Body number|  |
 |home.des|Home Destination| |
 
-### Download the Titanic Datasets
 
-- [Titanic Set](https://s3.amazonaws.com/data.h2o.ai/DAI-Tutorials/titanic.csv)
-
-### Load the Data 
+### Add the Data 
 
 Navigate back to the H2O Driverless Welcome page.
-1. Click on **Add a Dataset(or Drag and Drop)**  
-2. Select **UPLOAD FILE** 
 
-![add-dataset](assets/add-dataset.jpg)
+1\. Click on **Add a Dataset(or Drag and Drop)**  
 
-1\. In your local machine, navigate to the directory where the **titanic.csv** dataset was downloaded and select the file
+2\. Select **FILE SYSTEM**
 
-2\. If the file was uploaded successfully then you should see an  image similar to the one below:
+![add-dataset-file-system](assets/add-dataset-file-system.jpg)
+
+3\. Enter the following */data/TestDrive/titanic.csv* into the search bar. Select *titanic.csv* then **Click to Import Selection**. 
+
+![select-titanic-dataset](assets/select-titanic-dataset.jpg)
+
+
+4\. If the file loaded successfully then you should see an  image similar to the one below:
 
 ![titanic-set-overview](assets/titanic-set-overview.jpg)
 
