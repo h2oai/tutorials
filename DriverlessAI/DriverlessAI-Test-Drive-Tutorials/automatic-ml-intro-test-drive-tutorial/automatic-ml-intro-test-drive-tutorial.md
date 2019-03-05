@@ -34,12 +34,15 @@ For this tutorial, we will approach the Titanic dataset from the perspective of 
 
 ## Task 1: Product Tour
 
+**Note: Each Test Drive instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore Driverless AI you can always launch another Test Drive instance.**
+
 Review and accept the Driverless AI Evaluation Agreement by clicking on **I agree to these terms**. Below is a preview of the Evaluation Agreement:
 
 ![driverless-agreement](assets/driverless-agreement.jpg)
 
 
 Welcome to the Driverless AI home page! 
+
  
 ![driverless-welcome-page](assets/driverless-welcome-page.jpg)
 
