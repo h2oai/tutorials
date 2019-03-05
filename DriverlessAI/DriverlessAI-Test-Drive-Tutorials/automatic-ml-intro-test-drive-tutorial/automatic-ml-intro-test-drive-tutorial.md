@@ -723,7 +723,7 @@ Sample set of records:
 
 2\. Run an experiment where the target column is “DEFAULT_PAYMENT_NEXT_MONTH”.
 
-3\. **Interpret this model ** [Review the MLI Booklet which uses the CreditCard data set for its example and explanations](http://docs.h2o.ai/driverless-ai/latest-stable/docs/booklets/DriverlessAIBooklet.pdf)
+3\. **Interpret this model** [Review the MLI Booklet which uses the CreditCard data set for its example and explanations](http://docs.h2o.ai/driverless-ai/latest-stable/docs/booklets/DriverlessAIBooklet.pdf)
 
 4\. Read through MLI Report and determine:
 
