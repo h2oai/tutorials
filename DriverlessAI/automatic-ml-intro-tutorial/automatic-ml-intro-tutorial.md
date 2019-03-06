@@ -30,6 +30,8 @@ For this tutorial, we will approach the Titanic dataset from the perspective of 
 
 ## Prerequisites
 
+### 21-Day Free Trial 
+
 In order to successfully install H2O Driverless AI, a license key is necessary. The license key can be obtained through the 21-Day Free Trial:
 
 - [21-Day Free Trial: H2O Driverless AI license Key](https://www.h2o.ai/products/h2o-driverless-ai/)
@@ -46,7 +48,7 @@ Other prerequisites:
 
 There are multiple ways to install the environment: cloud, local, server. The installation steps assume that you have a license key for Driverless AI
 
-- [Aquarium](https://github.com/h2oai/tutorials/blob/master/DriverlessAI/aquarium/aquarium.md)
+- [Two Hour Trial](http://aquarium.h2o.ai/lab/dai-testdrive)
 - Cloud Installation
   - [H2O Driverless AI on AWS](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/install/aws.html)
   - [H2O Driverless AI on Azure HDInsight](https://azuremarketplace.microsoft.com/en-gb/marketplace/apps/h2o-ai.h2o-driverles-ai?tab=Overview) 
