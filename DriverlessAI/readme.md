@@ -1,4 +1,7 @@
 
+![h2o-ai-logo-plain](https://github.com/h2oai/tutorials/blob/master/.github/h2o-ai-logo-plain.png)
+
+
 # Driverless AI
 
 This repository has tutorials that focus on Driverless AI version **1.5.2**
