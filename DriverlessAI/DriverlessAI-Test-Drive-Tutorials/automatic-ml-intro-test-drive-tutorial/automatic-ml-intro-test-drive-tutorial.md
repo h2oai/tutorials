@@ -30,11 +30,15 @@ For this tutorial, we will approach the Titanic dataset from the perspective of 
 
 ## Prerequisites
 
-- Basic knowledge of Machine Learning and Statistics
-
-## Task 1: Product Tour
+- Two Hour Test Drive Sesssion 
 
 **Note: Each Test Drive instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore Driverless AI you can always launch another Test Drive instance.**
+
+- Basic knowledge of Machine Learning and Statistics
+
+
+
+## Task 1: Product Tour
 
 Review and accept the Driverless AI Evaluation Agreement by clicking on **I agree to these terms**. Below is a preview of the Evaluation Agreement:
 
@@ -390,7 +394,7 @@ The quick tour will cover the following items:
 
 Continuing on with our experiment:
 
-4\. Click **Dropped Columns**, drop the the following columns: Passenger_Id, name_with_salutations, name_without_salutations, boat, body and homme.dest. Then select **Done**. 
+5\. Click **Dropped Columns**, drop the the following columns: Passenger_Id, name_with_salutations, name_without_salutations, boat, body and homme.dest. Then select **Done**. 
 
 ![train-set-drop-columns](assets/train-set-drop-columns.jpg)
 
@@ -398,14 +402,17 @@ These attributes (columns) were removed to create a cleaner dataset. Attributes 
 
 A clean dataset is essential for the creation of a good predictive model. The process of data cleansing needs to be done with all datasets to rid the set of any unwanted observations, structural errors, unwanted outliers or missing data. 
 
+6\. Select **Test Dataset** and then click on **test**
 
-5\. Now select the **Target Column**. In our case, the column will be ‘survived’.
+![add-test-set](assets/add-test-set.jpg)
+
+7\. Now select the **Target Column**. In our case, the column will be ‘survived’.
 
 ![train-set-drop-name-column](assets/train-set-drop-name-column.jpg)
 
 The survived attribute was selected because as an insurance company we want to know what other attributes can contribute to the survival of passengers aboard a ship and incorporate that into our insurance rates.
 
-6\. Your Experiment page should look similar to the one below:
+8\. Your experiment page should look similar to the one below, these are the system suggestions:
 
 ![experiment-settings](assets/experiment-settings.jpg)
 
@@ -416,11 +423,21 @@ The survived attribute was selected because as an insurance company we want to k
 	- Accuracy - Relative accuracy – higher values, should lead to higher confidence in model performance (accuracy).
   	- Time - Relative time for completing the experiment. Higher values will take longer for the experiment to complete.
   	- Interpretability-  The degree to which a human can understand the cause of the decision.  
-4. Launch Experiment: The dataset and the target column are the minimum elements required to launch an experiment.
 
-7\. Select **Launch Experiment**
 
-![experiment-running-90](assets/experiment-running-90.jpg)
+9\. Update the following experiment settings so that they match the image below, then select **Launch Experiment**.
+
+- Accuracy : 4
+- Time: 2
+- Interpretability: 6
+
+![update-experiment-settings](assets/update-experiment-settings.jpg)
+
+>Note: To Launch an Experiment: The dataset and the target column are the minimum elements required to launch an experiment.
+
+10\. The **Experiment** page will look similar to the one below after 47% complete:
+
+![experiment-running-47](assets/experiment-running-47.jpg)
 
 *Things to note:*
 1. Experiment Name - Randomly generated experiment name. Name can be changed at any time
