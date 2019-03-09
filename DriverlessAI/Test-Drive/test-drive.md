@@ -3,7 +3,7 @@
 
 - [Driverless AI Test Drive](#driverless-ai-test-drive)
 - [How to Obtain a Two Hour Test Drive Session](#how-to-obtain-a-two-hour-test-drive-session)
-- [How to Create a Test Drive Account](#how-to-create-a-test-drive-account)
+- [How to Create an Aquarium Account](#how-to-create-an-aquarium-account)
 - [How to Login](#how-to-login)
 - [Reset Password ](#reset-password)
 - [How to Start and End the Test Drive Lab Session](#how-to-start-and-end-the-test-drive-lab-session)
