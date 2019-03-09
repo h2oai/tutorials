@@ -12,7 +12,7 @@
 
 ## Driverless AI Test Drive 
 
-Test Drive is a two-hour lab session that exists H2O's Aquarium. Aquarium is H2O's cloud environment that provides access to various tools for workshops, conferences, and training.
+Test Drive is a two-hour lab session that exists in H2O's Aquarium. Aquarium is H2O's cloud environment that provides access to various tools for workshops, conferences, and training.
 
 All labs have a specific **Lab Duration*** to complete the lab. All Test Drive Lab session's will terminate after two-hours. No work will be saved!
 
