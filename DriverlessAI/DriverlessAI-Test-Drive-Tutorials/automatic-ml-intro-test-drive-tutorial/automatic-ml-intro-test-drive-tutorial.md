@@ -42,11 +42,6 @@ For this tutorial, we will approach the Titanic dataset from the perspective of 
 
 ## Task 1: Product Tour
 
-Review and accept the Driverless AI Evaluation Agreement by clicking on **I agree to these terms**. Below is a preview of the Evaluation Agreement:
-
-![driverless-agreement](assets/driverless-agreement.jpg)
-
-
 Welcome to the Driverless AI home page! 
 
  
