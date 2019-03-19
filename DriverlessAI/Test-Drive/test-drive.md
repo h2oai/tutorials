@@ -41,7 +41,7 @@ If you would like to continue exploring H2O's Driverless AI, request a [21-Day F
 
 2\. Select **Create a new account**
 
-![aquarium-create-a-new-account](assets/test-drive-create-a-new-account.jpg)
+![test-drive-create-a-new-account](assets/test-drive-create-a-new-account.jpg)
 
 3\. Enter:
 
@@ -112,7 +112,7 @@ After a successful login the Driverless AI Test Drive Lab will appear:
 
 ## Logout
 
-1\. To log out, click on the box on the top-right corner of the page and select logout.
+1\. To logout, click on the box on the top-right corner of the page and select logout.
 
 ![test-drive-logout](assets/test-drive-logout.jpg) 
 
