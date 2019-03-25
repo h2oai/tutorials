@@ -1,0 +1,25 @@
+{
+  "environment": "web",
+  "source": "1PdW9niq7KfIhxiDhqzJHjICAIatS29shu8RcBuBGsaQ",
+  "format": "html",
+  "prefix": ".",
+  "mainga": "UA-49880327-14",
+  "updated": "2019-03-22T03:55:34Z",
+  "id": "test-drive-codelabs",
+  "duration": 7,
+  "title": "Getting Started with Driverless AI Test Drive",
+  "author": "h2otutorials",
+  "summary": "This is a test drive tutorial",
+  "theme": "category",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "category"
+  ],
+  "tags": [
+    "web"
+  ],
+  "feedback": "https://github.com/h2oai/tutorials/issues",
+  "url": "test-drive-codelabs"
+}
