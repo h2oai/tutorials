@@ -20,7 +20,7 @@ If you would like to continue exploring H2O's Driverless AI, request a [21-Day F
 
 ## How to Obtain a Two Hour Test Drive Session
 
-1\. Select **Free Trial** at the top-right corner of the [H2O.ai](https://www.h2o.ai/) home page or simply clik [here](https://www.h2o.ai/try-driverless-ai/).
+1\. Select **Free Trial** at the top-right corner of the [H2O.ai](https://www.h2o.ai/) home page or simply click [here](https://www.h2o.ai/try-driverless-ai/).
 
 2\. A similar form will appear, fill out the **Request a 21 day free trial** form then select **Send This Secure Message**:
 
