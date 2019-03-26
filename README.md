@@ -38,7 +38,7 @@ authors: Edgar Orendain <edgar.orendain@h2o.ai>, Ana Castro <ana.castro@h2o.ai>
 claat -f html -prefix "../assets" <relative-path-to-markdown-file> -ga <global GA account>
 ```
 
->> Note: For `<global GA account>` (e.g. GA-12345), check with Marketing (not available at time of this writing)
+> Note: For `<global GA account>` (e.g. GA-12345), check with Marketing (not available at time of this writing)
 
 This will generate a folder (titled after the generated tutorial) with all required files.  Drop this folder into the `gh-pages` branch of the tutorials repo.
 
