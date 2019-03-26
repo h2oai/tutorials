@@ -187,6 +187,10 @@ transition: opacity 0.5s linear;
       opacity: 0;
 }
 
+paper-card {
+    max-height: 430px;
+}
+
 .paper-card-0 {
 display: block;
       position: relative;
