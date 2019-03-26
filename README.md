@@ -1,4 +1,4 @@
-### Converting tutorials
+# Converting and publishing tutorials
 
 This doc walks you through how to convert a properly-formatted tutorial (in markdown) to a codelab and subsequently add that generated codelab to the tutorials landing page.
 
