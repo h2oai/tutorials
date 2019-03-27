@@ -35,7 +35,7 @@ authors: Edgar Orendain <edgar.orendain@h2o.ai>, Ana Castro <ana.castro@h2o.ai>
 1. Download the latest claat binary from from https://github.com/googlecodelabs/tools/releases (v2.0.2 at the time of this writing)
 2. Run the following command to convert a markdown (.md) file into a codelab.
 ```
-claat -f html -prefix "../assets" <relative-path-to-markdown-file> -ga <global GA account>
+claat export -f html -prefix "../assets" <relative-path-to-markdown-file> -ga <global GA account>
 ```
 
 > Note: For `<global GA account>` (e.g. GA-12345), check with Marketing (not available at time of this writing)
