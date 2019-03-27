@@ -30,7 +30,7 @@ If you would like to continue exploring H2O's Driverless AI, request a [21-Day F
 
 ![2-hour-test-drive](assets/2-hour-test-drive.jpg)
 
-4\. This will take you to the Aquarium login page where you need to create and account.
+4\. This will take you to the Aquarium login page where you need to create an account.
 
 
 ## How to Create an Aquarium Account
