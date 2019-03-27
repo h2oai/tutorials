@@ -1,25 +1,26 @@
 {
   "environment": "web",
-  "source": "1PdW9niq7KfIhxiDhqzJHjICAIatS29shu8RcBuBGsaQ",
+  "source": "/Users/acastro/Desktop/Test-Drive/test-drive.md",
   "format": "html",
-  "prefix": ".",
+  "prefix": "../assets",
   "mainga": "UA-49880327-14",
-  "updated": "2019-03-22T03:55:34Z",
-  "id": "test-drive-codelabs",
-  "duration": 7,
+  "updated": "2019-03-26T20:01:53-07:00",
+  "id": "test-drive",
+  "duration": 0,
   "title": "Getting Started with Driverless AI Test Drive",
-  "author": "h2otutorials",
-  "summary": "This is a test drive tutorial",
-  "theme": "category",
+  "summary": "Check the list",
+  "theme": "",
   "status": [
     "draft"
   ],
   "category": [
-    "category"
+    "driverless"
   ],
   "tags": [
-    "web"
+    "aquarium",
+    "driverless",
+    "security",
+    "test-drive"
   ],
-  "feedback": "https://github.com/h2oai/tutorials/issues",
-  "url": "test-drive-codelabs"
+  "url": "test-drive"
 }
