@@ -1,0 +1,24 @@
+{
+  "environment": "web",
+  "source": "/Users/acastro/Desktop/automatic-ml-intro-tutorial/automatic-ml-intro-tutorial.md",
+  "format": "html",
+  "prefix": "../assets",
+  "mainga": "UA-49880327-14",
+  "updated": "2019-03-26T21:10:10-07:00",
+  "id": "automatic-ml-intro-tutorial",
+  "duration": 0,
+  "title": "Automatic Machine Learning Introduction with Driverless AI",
+  "summary": "Check the list",
+  "theme": "",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "driverless"
+  ],
+  "tags": [
+    "driverless",
+    "machine-learning"
+  ],
+  "url": "automatic-ml-intro-tutorial"
+}
