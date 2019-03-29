@@ -565,7 +565,7 @@ Using the techniques together to find interactions and other interesting model b
 
 - [MLI Cheatsheet](https://github.com/h2oai/mli-resources/blob/master/cheatsheet.png) 
 
-- [Testing machine learning explanation techniques](https://www.oreilly.com/ideas/testing-machine-learning-interpretability-techniques)
+- [Testing Machine Learning Explanation Techniques](https://www.oreilly.com/ideas/testing-machine-learning-interpretability-techniques)
 
 - [Strata Data Conference](https://conferences.oreilly.com/strata/strata-ca/public/schedule/detail/72421) 
 
@@ -576,6 +576,8 @@ Using the techniques together to find interactions and other interesting model b
 - [Building Explainable Machine Learning Systems: The Good, the Bad, and the Ugly (May 18)](https://www.youtube.com/watch?v=Q8rTrmqUQsU)
 
 - [Interpretable Machine Learning  (April, 17)](https://www.youtube.com/watch?v=3uLegw5HhYk)
+
+- [Ideas on Machine Learning Interpretability](https://www.youtube.com/watch?v=Ds1eRF7wpCU&amp=&feature=youtu.be)
 
 - [Driverless AI Hands-On Focused on Machine Learning Interpretability - H2O.ai (Dec 17)](
 https://www.youtube.com/watch?v=axIqeaUhow0) 
