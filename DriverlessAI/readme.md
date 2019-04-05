@@ -4,13 +4,13 @@
 
 # Driverless AI
 
-This repository has tutorials that focus on Driverless AI version **1.5.2**
+This repository has tutorials that focus on Driverless AI version **1.5.2**.
 
-Check out our tutorials:
+Check out our new [tutorials portal](https://h2oai.github.io/tutorials/) where you will find our latest DAI tutorials including: 
 
-- [Automatic ML Intro Tutorial](https://github.com/h2oai/tutorials/blob/master/DriverlessAI/automatic-ml-intro-tutorial/automatic-ml-intro-tutorial.md)
+- [Automatic ML Intro Tutorial](https://h2oai.github.io/tutorials/automatic-ml-intro-tutorial/#0)
 
-- [Machine Learning Interpretability](https://github.com/h2oai/tutorials/blob/master/DriverlessAI/machine-learning-interpretability-tutorial/machine-learning-interpretability-tutorial.md)
+- [Machine Learning Interpretability](https://h2oai.github.io/tutorials/machine-learning-interpretability-tutorial/#0)
 
 For Driverless AI 1.4.2 tutorials, check out:
 
