@@ -6,7 +6,7 @@
 
 H2O created AI Tutorials out of inspiration for democratizing open source, distributed machine learning. Our tutorials are open to anyone in the community who would like to learn Distributed Machine Learning through step-by-step tutorials. Tutorials housed here are targeted at people of all skill levels.
 
-Tutorials are developed and maintained on Github and published onto the H2O site.
+Tutorials are developed and maintained on Github and published onto the [H2O tutorials portal](https://h2oai.github.io/tutorials/). 
 
 ## New to AI?
 
