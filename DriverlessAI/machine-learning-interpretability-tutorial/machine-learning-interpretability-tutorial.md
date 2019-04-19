@@ -67,17 +67,17 @@ This dataset has a total 25 Features(columns) and 30,000 Clients(rows).
 
 ### Download Dataset
 
-1\. Go to the [UCI Machine Learning Databases](https://archive.ics.uci.edu/ml/machine-learning-databases/00350/) and select the .xls file named **default of credit card clients.xls**. Clicking on the .xls file will download the Default Payments of Credit Card Clients in Taiwan from 2005 to your local drive. 
+1\. Go to the [UCI Machine Learning Databases](https://archive.ics.uci.edu/ml/machine-learning-databases/00350/) and select the .xls file named `default of credit card clients.xls`. Clicking on the .xls file will download the Default Payments of Credit Card Clients in Taiwan from 2005 to your local drive. 
 
-2\. Once in your local drive, open the **default_of_credit_card_clients.xls** file and delete the first row. This row has column names X1, X2, X3...X22, X23, Y that are nonessential to the DAI experiment.
+2\. Once in your local drive, open the `default of credit card clients.xls` file and delete the first row. This row has column names X1, X2, X3...X22, X23, Y that are nonessential to the DAI experiment.
 
-3\. After deleting the first row, save the file into your local drive with the following name and extension: **UCI_Credit_Card.csv** 
+3\. After deleting the first row, save the file into your local drive with the following name and extension: `UCI_Credit_Card.csv`
 
 ### Launch Experiment 
 
 1\. Load the UCI_Credit_Card.csv to Driverless AI by clicking **Add Dataset (or Drag and Drop)** on the **Datasets overview** page.  
 
-2\. Click on the **UCI_Credit_Card.csv** file then select **Details**.
+2\. Click on the `UCI_Credit_Card.csv` file then select **Details**.
 
 ![dataset-details-selection](assets/dataset-details-selection.jpg)
 
