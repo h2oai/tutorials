@@ -34,7 +34,7 @@ For this tutorial, we will approach the Titanic dataset from the perspective of 
 
 A **Two Hour Test Drive session**: Test Drive is H2O's Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform. 
 
-- Need a **Two Hour Test Drive** session? [Try it Now](https://www.h2o.ai/test-drive/). Follow the instructions [on this quick tutorial](https://h2oai.github.io/tutorials/test-drive/#0) to get a Test Drive Session started. After the Driverless AI Test Drive session starts, continue reading the remaining prerequisites of this tutorial then start Task 1: Product Tour.
+- Need a **Two Hour Test Drive** session? [Try it Now](https://www.h2o.ai/test-drive/). Follow the instructions [on this quick tutorial](https://h2oai.github.io/tutorials/test-drive/#0) to get a Test Drive session started. After the Driverless AI Test Drive session starts, continue reading the remaining prerequisites of this tutorial then start Task 1: Product Tour.
 
 - Already have a **Two Hour Test Drive** session? Continue reading the remaining prerequisites of this tutorial then start Task 1: Product Tour. 
 
