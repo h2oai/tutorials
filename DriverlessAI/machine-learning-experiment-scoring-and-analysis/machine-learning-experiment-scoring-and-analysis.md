@@ -1114,7 +1114,7 @@ A **report** file is included in the **experiment** summary. This report provide
 
 ## Next Steps
 
-Check out the next tutorial : [Machine Learning Interpretability](https://h2oai.github.io/tutorials/machine-learning-interpretability-tutorial/#0) where you will learn how to:
+Check out the next tutorial : [Machine Learning Interpretability]https://github.com/h2oai/tutorials/blob/master/DriverlessAI/machine-learning-interpretability-tutorial/machine-learning-interpretability-tutorial.md) where you will learn how to:
 - Launch an experiment
 - Create ML interpretability report
 - Explore explainability concepts such as:
