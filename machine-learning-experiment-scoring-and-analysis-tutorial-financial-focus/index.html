@@ -26,7 +26,7 @@
                   feedback-link="">
     
       <google-codelab-step label="Objective" duration="0">
-        <p>Many tools, such as ROC and Precision-Recall Curves, are available to evaluate how good or bad a classification model is predicting outcomes. In this tutorial, we will use a subset of the Freddie Mac Single-Family Loan-Level dataset to build a classification model and use it to predict if a loan will become delinquent. Through H2O&#39;s DAI Diagnostic tool, we will explore the financial impacts the false positive and false negative predictions have while exploring tools like ROC Curve, Prec-Recall- Gain and Lift Charts, K-S Chart. Finally, we will explore a few metrics such as AUC, F-Scores, GINI, MCC, and Log Loss to assist us with evaluating the performance of the generated model.</p>
+        <p>Many tools, such as ROC and Precision-Recall Curves, are available to evaluate how good or bad a classification model is predicting outcomes. In this tutorial, we will use a subset of the Freddie Mac Single-Family Loan-Level dataset to build a classification model and use it to predict if a loan will become delinquent. Through H2O&#39;s DAI Diagnostic tool, we will explore the financial impacts the false positive and false negative predictions have while exploring tools like ROC Curve, Prec-Recall, Gain and Lift Charts, K-S Chart. Finally, we will explore a few metrics such as AUC, F-Scores, GINI, MCC, and Log Loss to assist us with evaluating the performance of the generated model.</p>
 
 
       </google-codelab-step>
@@ -370,13 +370,13 @@
 <p>[3] <a href="https://classeval.wordpress.com/introduction/introduction-to-the-roc-receiver-operating-characteristics-plot/" target="_blank">Introduction to ROC</a></p>
 <p>[4] <a href="https://www.youtube.com/watch?v=OAl6eAyP-yo" target="_blank">ROC Curves and Under the Curve (AUC) Explained</a></p>
 <p>[5] <a href="https://classeval.wordpress.com/introduction/introduction-to-the-precision-recall-plot/" target="_blank">Introduction to Precision-Recall</a></p>
-<p>[6] <a href="https://doi.org/10.1016/j.aci.2018.08.003" target="_blank">Tharwat, Applied Computing and Informatics (2018)</a></p>
-<p>[7] <a href="https://www.saedsayad.com/model_evaluation_c.htm" target="_blank">Model Evaluation Classification</a></p>
+<p>[6]<a href="https://doi.org/10.1016/j.aci.2018.08.003" target="_blank">Tharwat, Applied Computing and Informatics (2018)</a></p>
+<p>[7]<a href="https://www.saedsayad.com/model_evaluation_c.htm" target="_blank">Model Evaluation Classification</a></p>
 <p>[8]<a href="https://en.wikipedia.org/wiki/Accuracy_and_precision" target="_blank">Wiki Accuracy</a></p>
 <p>[9]<a href="https://en.wikipedia.org/wiki/F1_score" target="_blank">Wiki F1 Score</a></p>
 <p>[10] <a href="https://en.wikipedia.org/wiki/Matthews_correlation_coefficient" target="_blank">Wiki Matthew&#39;s Correlation Coefficient</a></p>
-<p>[11] <a href="http://wiki.fast.ai/index.php/Log_Loss" target="_blank">Wiki Log Loss</a></p>
-<p>[12] <a href="http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/scorers/scorers_gini.html?highlight=gini" target="_blank">H2O&#39;s GINI Index</a></p>
+<p>[11]<a href="http://wiki.fast.ai/index.php/Log_Loss" target="_blank">Wiki Log Loss</a></p>
+<p>[12]<a href="http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/scorers/scorers_gini.html?highlight=gini" target="_blank">H2O&#39;s GINI Index</a></p>
 <p>[13]<a href="http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-graphs.html?highlight=mcc" target="_blank">H2O&#39;s Kolmogorov-Smirnov</a></p>
 <p>[14]<a href="https://www.saedsayad.com/model_evaluation_c.htm" target="_blank">Model Evaluation- Classification</a></p>
 <p>[15]<a href="https://www.quora.com/What-is-Information-gain-in-Machine-Learning" target="_blank">What is Information Gain in Machine Learning</a></p>
@@ -542,7 +542,14 @@
 <p>Recall that Log loss is measured in the range of 0 to 1, where a model with a log loss of 0 would be the perfect classifier and 1 the worst. Our model  scored  a LOGLOSS value = .1187+/- .0164 after testing it with test dataset. From the confusion matrix, we saw that the model had issues classifying perfectly; however, it was able to classify with an ACCURACY of .9643 +/- .0055. The financial implications of the misclassifications have been covered in the confusion matrix section above.</p>
 <p>Driverless AI has the option to change the type of scorer used for the experiment. Recall that for this dataset the scorer was selected to be <strong>logloss</strong>. An experiment can be re-run with another scorer. For general imbalanced classification problems, AUCPR and MCC scorers are good choices, while F05, F1, and F2 are designed to balance recall against precision.<br>The AUC is designed for ranking problems. Gini is similar to the AUC but measures the quality of ranking (inequality) for regression problems.</p>
 <p>In the next few tasks we will explore the scorer further and the <strong>Scores</strong> values in relation to the residual plots.</p>
+<h2>References</h2>
 <p>[1] <a href="https://investinganswers.com/calculators/loan/amortization-schedule-calculator-what-repayment-schedule-my-mortgage-2859" target="_blank">Amortization Schedule Calculator</a></p>
+<h2>Deeper Dive and Resources</h2>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Confusion_matrix" target="_blank">Wiki Confusion Matrix</a></li>
+<li><a href="https://www.dataschool.io/simple-guide-to-confusion-matrix-terminology/" target="_blank">Simple guide to confusion matrix</a></li>
+<li><a href="http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/diagnosing.html" target="_blank">Diagnosing a model with DAI</a></li>
+</ul>
 
 
       </google-codelab-step>
@@ -639,8 +646,15 @@
       <google-codelab-step label="Task 7: ER: Prec-Recall" duration="0">
         <p>Continuing on the diagnostics page, select the <strong>P-R</strong> curve. The P-R curve should look similar to the one below:</p>
 <p><img alt="diagnostics-pr-curve" src="img/2460426f936397ed.jpg"></p>
-<p>Remember that for the<strong>Prec-Recall</strong>:<br>The precision-recall plot uses recall on the x-axis and precision on the y-axis. Recall is identical to sensitivity, and precision is identical to the positive predictive value.</p>
-<p>ROC curves should be used when there are roughly equal numbers of observations for each class.<br>Precision-Recall curves should be used when there is a moderate to large class imbalance.<br>Similar to ROC, the AUCPR (Area under the curve of Precision-recall curve) is a measure of model accuracy and higher the better.<br>In both the ROC and Prec-recall curve, DAI will indicate points that are the best thresholds for Accuracy (ACC), F1 or MCC (Matthews correlation coefficient). To learn more</p>
+<p>Remember that for the <strong>Prec-Recall</strong>:</p>
+<ul>
+<li>The precision-recall plot uses recall on the x-axis and precision on the y-axis.</li>
+<li>Recall is identical to sensitivity, and precision is identical to the positive predictive value.</li>
+<li>ROC curves should be used when there are roughly equal numbers of observations for each class.</li>
+<li>Precision-Recall curves should be used when there is a moderate to large class imbalance.</li>
+<li>Similar to ROC, the AUCPR (Area under the curve of Precision-recall curve) is a measure of model accuracy and higher the better.</li>
+<li>In both the ROC and Prec-recall curve, DAI will indicate points that are the best thresholds for Accuracy (ACC), F1 or MCC (Matthews correlation coefficient).</li>
+</ul>
 <p>Looking at the  P-R curve results, is this a good model to determine if a customer will default on their home loan? Let&#39;s take a look at the values found on the P-R curve.</p>
 <p>1. Based on the P-R curve that Driverless AI model generated for you experiment identify the AUC.</p>
 <p>2. For each of the following points on the curve, determine the True Positive Rate, False Positive rate, and threshold by hovering over each point below as seen on the image below:</p>
@@ -678,7 +692,13 @@
         <p>Continuing on the diagnostics page, select the <strong>GAINS</strong> curve. The Gains curve should look similar to the one below:</p>
 <p><img alt="diagnostics-gains" src="img/a1df814fb5937daf.jpg"></p>
 <p>Remember that for the <strong>Gains</strong> curve:</p>
-<p>A cumulative gains chart is a visual aids for measuring model performance.<br>The y-axis shows the percentage of positive responses. This is a percentage of the total possible positive responses<br>The x-axis shows the percentage of all customers from the Freddie Mac dataset who did not default, which is a fraction of the total cases<br>The dashed line is the baseline (overall response rate)<br>It helps answer the question of  &#34;What fraction of all observations of the positive target class are in the top predicted 1%, 2%, 10%, etc. (cumulative)?&#34; By definition, the Gains at 100% are 1.0.</p>
+<ul>
+<li>A cumulative gains chart is a visual aids for measuring model performance.</li>
+<li>The y-axis shows the percentage of positive responses. This is a percentage of the total possible positive responses</li>
+<li>The x-axis shows the percentage of all customers from the Freddie Mac dataset who did not default, which is a fraction of the total cases</li>
+<li>The dashed line is the baseline (overall response rate)</li>
+<li>It helps answer the question of  &#34;What fraction of all observations of the positive target class are in the top predicted 1%, 2%, 10%, etc. (cumulative)?&#34; By definition, the Gains at 100% are 1.0.</li>
+</ul>
 <aside class="special"><p>Note: The y-axis of the plot has been adjusted to represent quantiles, this allows for focus on the quantiles that have the most data and therefore the most impact.</p>
 </aside>
 <p>1. Hover over the various quantile points on the Gains chart to view the quantile percentage and cumulative gain values</p>
@@ -746,7 +766,8 @@
 <p>4. Exit out of the K-S chart by clicking on the <strong>x</strong> located at the top-right corner of the plot, next to the <strong>Download</strong> option</p>
 <h2>Deeper Dive and Resources</h2>
 <ul>
-<li><a href="https://towardsdatascience.com/kolmogorov-smirnov-test-84c92fb4158d" target="_blank">Kolmogorov-Smirnov Test</a><br>-<a href="https://www.statisticshowto.datasciencecentral.com/kolmogorov-smirnov-test/" target="_blank">Kolmogorov-Smirnov Goodness of Fit Test</a></li>
+<li><a href="https://towardsdatascience.com/kolmogorov-smirnov-test-84c92fb4158d" target="_blank">Kolmogorov-Smirnov Test</a></li>
+<li><a href="https://www.statisticshowto.datasciencecentral.com/kolmogorov-smirnov-test/" target="_blank">Kolmogorov-Smirnov Goodness of Fit Test</a></li>
 </ul>
 
 
