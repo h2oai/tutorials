@@ -341,7 +341,7 @@ Below are four types of ROC Curves with its AUC:
 
 The Perfect ROC Curve (in red) below can separate classes with 100% accuracy and has an AUC of 1.0  (in blue):
 
-![roc-auc-1](assets/roc-acu-1.jpg)  			
+![roc-auc-1](assets/roc-auc-1.jpg)  			
 
 The ROC Curve below is very close to the left corner, and therefore it does a good job in separating classes with an AUC of 0.7 or 70%:
 
@@ -495,7 +495,7 @@ How can we identify the best case scenario in relation to the random model? To d
 
 - **Base Rate** = (TP+FN) /Sample Size
 
-![cumulative-gains-chart-best-case](asset/cumulative-gains-chart-best-case.jpg)
+![cumulative-gains-chart-best-case](assets/cumulative-gains-chart-best-case.jpg)
 
 The above chart represents the best case scenario of a cumulative gains chart assuming a base rate of 20%. In this scenario all the positive cases were identified before reaching the base rate.
 
@@ -530,7 +530,7 @@ The KS statistic is the maximum difference between the cumulative percentage of 
 
 [1] [Confusion Matrix definition“ A Dictionary of Psychology“](http://www.oxfordreference.com/view/10.1093/acref/9780199534067.001.0001/acref-9780199534067-e-1778)
 
-[2] [Towards Data Science - Understanding AUC- ROC Curve](https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5)
+[2] [Towards Data Science - Understanding AUC- ROC Curve](https://towardsdatascience.com/understanding-auc-curve-68b2303cc9c5)
 
 [3] [Introduction to ROC](https://classeval.wordpress.com/introduction/introduction-to-the-roc-receiver-operating-characteristics-plot/)
 
