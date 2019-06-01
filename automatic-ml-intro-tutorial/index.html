@@ -41,8 +41,7 @@
 <ul>
 <li><a href="https://www.h2o.ai/products/h2o-driverless-ai/" target="_blank">21-Day Free Trial: H2O Driverless AI license Key</a></li>
 </ul>
-<aside class="special"><p>Note: The processing time for the trial license key will take an estimated time of 5 minutes</p>
-</aside>
+<p><strong>Note</strong>: The processing time for the trial license key will take an estimated time of 5 minutes</p>
 <p>Other prerequisites:</p>
 <ul>
 <li>Basic knowledge of Machine Learning and Statistics</li>
@@ -84,20 +83,12 @@
 <p><img alt="driverless-welcome-page" src="img/e38f96b8f385ec19.jpg"></p>
 <p>The Driverless UI is easy to navigate. The following features are found on the welcome page. We will explore these features as we launch an experiment in the next tasks.</p>
 <ol type="1">
-<li><strong>Datasets</strong>: View of current datasets. You can also upload or delete a dataset.</li>
-</ol>
-<aside class="special"><p>Note: If this is your first time logging in, the list will be empty.</p>
-</aside>
-<ol type="1">
-<li><strong>Experiments</strong>: View of completed experiments. Experiments can be revised or deleted.</li>
-</ol>
-<aside class="special"><p>Note: If no experiments have been run, then the list will be empty.</p>
-</aside>
-<ol type="1">
-<li><strong>MLI</strong>: View a list of interpreted models or interpret a model.</li>
-</ol>
-<p>Positive<br>:Note: If no experiments have been run, then the list will be empty.</p>
-<ol type="1">
+<li><strong>Datasets</strong>: View of current datasets. You can also upload or delete a dataset.<br>Positive</li>
+<li>Note: If this is your first time logging in, the list will be empty.</li>
+<li><strong>Experiments</strong>: View of completed experiments. Experiments can be revised or deleted.<br>Positive</li>
+<li>Note: If no experiments have been run, then the list will be empty.</li>
+<li><strong>MLI</strong>: View a list of interpreted models or interpret a model.<br>Positive</li>
+<li>Note: If no experiments have been run, then the list will be empty.</li>
 <li><strong>Autoviz</strong>: Visualize a dataset with all available graphs.</li>
 <li><strong>Diagnostics</strong>: Diagnose a model and view model performance for multiple scorers based on existing model and dataset.</li>
 <li><strong>Deployments</strong>: Deploy the MOJO scoring pipeline for you to test and/or to integrate into a final product.</li>
@@ -184,11 +175,11 @@
 </td><td colspan="1" rowspan="1"><p>Survival</p>
 </td><td colspan="1" rowspan="1"><p>0=No, 1=Yes</p>
 </td></tr>
-<tr><td colspan="1" rowspan="1"><p>name</p>
+<tr><td colspan="1" rowspan="1"><p>name_with_salutations</p>
 </td><td colspan="1" rowspan="1"><p>Passenger name</p>
 </td><td colspan="1" rowspan="1"><p>-</p>
 </td></tr>
-<tr><td colspan="1" rowspan="1"><p>name(without salutation)</p>
+<tr><td colspan="1" rowspan="1"><p>name_without_salutations</p>
 </td><td colspan="1" rowspan="1"><p>Passenger name without salutations</p>
 </td><td colspan="1" rowspan="1"><p>-</p>
 </td></tr>
@@ -406,10 +397,10 @@
 <p>A clean dataset is essential for the creation of a good predictive model. The process of data cleansing needs to be done with all datasets to rid the set of any unwanted observations, structural errors, unwanted outliers or missing data.</p>
 <p>6. Select <strong>Test Dataset</strong> and then click on <strong>test</strong></p>
 <p><img alt="add-test-set" src="img/2e16a563f2ebd6f3.jpg"></p>
-<p>7. Now select the <strong>Target Column</strong>. In our case, the column will be <code>survived</code>.</p>
+<p>7. Now select the <strong>Target Column</strong>. In our case, the column will be ‘survived&#39;.</p>
 <p><img alt="train-set-drop-name-column" src="img/6fb5bcd7bd9d5efd.jpg"></p>
 <p>The survived attribute was selected because as an insurance company we want to know what other attributes can contribute to the survival of passengers aboard a ship and incorporate that into our insurance rates.</p>
-<p>8. Your Experiment page should look similar to the one below:</p>
+<p>8. Your experiment page should look similar to the one below, these are the system suggestions:</p>
 <p><img alt="experiment-settings" src="img/fcab5ffd83bf62a.jpg"></p>
 <p><em>Things to note:</em></p>
 <ol type="1">
@@ -690,7 +681,7 @@
 <li><a href="https://s3.amazonaws.com/data.h2o.ai/DAI-Tutorials/credit-card-test.csv" target="_blank">CreditCard Test</a></li>
 </ul>
 <p>2. Run an experiment where the target column is &#34;DEFAULT_PAYMENT_NEXT_MONTH&#34;.</p>
-<p>3. **Interpret this model ** <a href="http://docs.h2o.ai/driverless-ai/latest-stable/docs/booklets/DriverlessAIBooklet.pdf" target="_blank">Review the MLI Booklet which uses the CreditCard data set for its example and explanations</a></p>
+<p>3. <strong>Interpret this model</strong><a href="http://docs.h2o.ai/driverless-ai/latest-stable/docs/booklets/DriverlessAIBooklet.pdf" target="_blank">Review the MLI Booklet which uses the CreditCard data set for its example and explanations</a></p>
 <p>4. Read through MLI Report and determine:</p>
 <ul>
 <li>What variables increase the likelihood of defaulting on a credit card payment?</li>
@@ -704,9 +695,27 @@
 
       </google-codelab-step>
     
-      <google-codelab-step label="Further Reading" duration="0">
+      <google-codelab-step label="Next Steps" duration="0">
         <ul>
-<li>Check out Driverss AI <a href="https://github.com/h2oai/tutorials/blob/master/DriverlessAI/machine-learning-interpretability-tutorial/machine-learning-interpretability-tutorial.md" target="_blank">Machine Learning Interpretability Tutorial</a></li>
+<li>Check out Driverss AI next tutorial <a href="https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#0" target="_blank">Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus</a><br>where you will learn how to:<ul>
+<li>Evaluate a DAI model through tools like:<br><br><ul>
+<li>ROC</li>
+<li>Prec-Recall</li>
+<li>Gain and Lift Charts</li>
+<li>K-S Chart</li>
+</ul>
+</li>
+<li>Metrics such as:<br><br><ul>
+<li>AUC</li>
+<li>F-Scores</li>
+<li>GINI</li>
+<li>MCC</li>
+<li>Log Loss</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Request a <a href="https://www.h2o.ai/products/h2o-driverless-ai/" target="_blank">21-Day Free Trial: H2O Driverless AI license Key</a></li>
 </ul>
 
 
