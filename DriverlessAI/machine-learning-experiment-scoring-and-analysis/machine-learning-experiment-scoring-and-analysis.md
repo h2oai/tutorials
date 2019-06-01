@@ -773,8 +773,17 @@ The AUC is designed for ranking problems. Gini is similar to the AUC but measure
 
 In the next few tasks we will explore the scorer further and the **Scores** values in relation to the residual plots.
 
+### References
+
 [1] [Amortization Schedule Calculator](https://investinganswers.com/calculators/loan/amortization-schedule-calculator-what-repayment-schedule-my-mortgage-2859) 
 
+### Deeper Dive and Resources
+
+- [Wiki Confusion Matrix](https://en.wikipedia.org/wiki/Confusion_matrix)
+
+- [Simple guide to confusion matrix](https://www.dataschool.io/simple-guide-to-confusion-matrix-terminology/)
+
+- [Diagnosing a model with DAI](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/diagnosing.html)
 
 ## Task 6: ER: ROC
 
@@ -907,13 +916,14 @@ Continuing on the diagnostics page, select the **P-R** curve. The P-R curve shou
 
 ![diagnostics-pr-curve](assets/diagnostics-prec-recall.jpg)
 
-Remember that for the**Prec-Recall**:
-The precision-recall plot uses recall on the x-axis and precision on the y-axis. Recall is identical to sensitivity, and precision is identical to the positive predictive value.
+Remember that for the **Prec-Recall**:
 
-ROC curves should be used when there are roughly equal numbers of observations for each class.
-Precision-Recall curves should be used when there is a moderate to large class imbalance.
-Similar to ROC, the AUCPR (Area under the curve of Precision-recall curve) is a measure of model accuracy and higher the better. 
-In both the ROC and Prec-recall curve, DAI will indicate points that are the best thresholds for Accuracy (ACC), F1 or MCC (Matthews correlation coefficient). To learn more 
+- The precision-recall plot uses recall on the x-axis and precision on the y-axis. 
+- Recall is identical to sensitivity, and precision is identical to the positive predictive value.
+- ROC curves should be used when there are roughly equal numbers of observations for each class.
+- Precision-Recall curves should be used when there is a moderate to large class imbalance.
+- Similar to ROC, the AUCPR (Area under the curve of Precision-recall curve) is a measure of model accuracy and higher the better. 
+- In both the ROC and Prec-recall curve, DAI will indicate points that are the best thresholds for Accuracy (ACC), F1 or MCC (Matthews correlation coefficient).
 
 Looking at the  P-R curve results, is this a good model to determine if a customer will default on their home loan? Let’s take a look at the values found on the P-R curve.
 
@@ -955,17 +965,18 @@ To review how to run a new experiment with the same parameters and a different s
 - [Introduction to Precision-Recall](https://classeval.wordpress.com/introduction/introduction-to-the-precision-recall-plot/)
 
 ## Task 8: ER: Gains
+
 Continuing on the diagnostics page, select the **GAINS** curve. The Gains curve should look similar to the one below:
 
 ![diagnostics-gains](assets/diagnostics-gains.jpg)
 
 Remember that for the **Gains** curve:
 
-A cumulative gains chart is a visual aids for measuring model performance. 
-The y-axis shows the percentage of positive responses. This is a percentage of the total possible positive responses 
-The x-axis shows the percentage of all customers from the Freddie Mac dataset who did not default, which is a fraction of the total cases
-The dashed line is the baseline (overall response rate)
-It helps answer the question of  “What fraction of all observations of the positive target class are in the top predicted 1%, 2%, 10%, etc. (cumulative)?” By definition, the Gains at 100% are 1.0.
+- A cumulative gains chart is a visual aids for measuring model performance. 
+- The y-axis shows the percentage of positive responses. This is a percentage of the total possible positive responses 
+- The x-axis shows the percentage of all customers from the Freddie Mac dataset who did not default, which is a fraction of the total cases
+- The dashed line is the baseline (overall response rate)
+- It helps answer the question of  “What fraction of all observations of the positive target class are in the top predicted 1%, 2%, 10%, etc. (cumulative)?” By definition, the Gains at 100% are 1.0.
 
 > Note: The y-axis of the plot has been adjusted to represent quantiles, this allows for focus on the quantiles that have the most data and therefore the most impact.
 
@@ -1037,7 +1048,7 @@ Remember that for the K-S chart:
 - K-S measures the performance of classification models by measuring the degree of separation between positives and negatives for validation or test data.
 - The K-S is 100 if the scores partition the population into two separate groups in which one group contains all the positives and the other all the negatives
 - If the model cannot differentiate between positives and negatives, then it is as if the model selects cases randomly from the population and the K-S would be 0
-- The K-S range is between 0 and 1,
+- The K-S range is between 0 and 1
 - The higher the K-S value, the better the model is at separating the positive from negative cases
 
 > Note : The y-axis of the plot has been adjusted to represent quantiles, this allows for focus on the quantiles that have the most data and therefore the most impact.
@@ -1060,7 +1071,7 @@ For this K-S chart, if we look at the top  20% of the data, the at-chance model 
 ### Deeper Dive and Resources
 
 - [Kolmogorov-Smirnov Test](https://towardsdatascience.com/kolmogorov-smirnov-test-84c92fb4158d)
--[Kolmogorov-Smirnov Goodness of Fit Test](https://www.statisticshowto.datasciencecentral.com/kolmogorov-smirnov-test/)
+- [Kolmogorov-Smirnov Goodness of Fit Test](https://www.statisticshowto.datasciencecentral.com/kolmogorov-smirnov-test/)
 
 
 ## Task 11: Experiment AutoDocs
