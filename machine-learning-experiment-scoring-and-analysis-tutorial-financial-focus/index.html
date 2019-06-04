@@ -111,11 +111,10 @@
 <li>Change the split value to .75 by adjusting the slider to 75% or entering .75 in the section that says Train/Valid Split Ratio</li>
 <li>Save</li>
 </ol>
-<p>The ratio of .75 was selected for this particular dataset to not generalize the model given the total size of the data set.</p>
 <p>The training set contains 375k rows, each row representing a loan, and 27 columns representing the attributes of each loan including the column that has the label we are trying to predict.  Note: the actual data in training and test split vary by user, as the data is split randomly. The Test set contains 125k rows, each row representing a loan, and 27 attribute columns representing attributes of each loan.</p>
-<p>7. Verify that there are three datasets, <strong>freddie_mac_500_test</strong>,<strong>freddie_mac</strong><em>500</em><strong> train</strong> and <strong>loan_level_500k.csv</strong>:</p>
+<p>7. Verify that there are three datasets, <strong>freddie_mac_500_test</strong>, <strong>freddie_mac_500_train</strong> and <strong>loan_level_500k.csv</strong>:</p>
 <p><img alt="loan-level-three-datasets" src="img/b7cf47e9cfc5a95e.jpg"></p>
-<p>8. Click on the <strong>freddie_mac</strong><em>500</em><strong> train</strong> file then select <strong>Predict</strong>.</p>
+<p>8. Click on the <strong>freddie_mac_500_train</strong> file then select <strong>Predict</strong>.</p>
 <p>9. Select <strong>Not Now</strong> on the <strong>First time Driverless AI, Click Yes to get a tour!</strong>. A similar image should appear:</p>
 <p><img alt="loan-level-predict" src="img/53ccdf563bb7deff.jpg"></p>
 <p>10. Select <strong>Dropped Cols</strong>, drop the following 2 columns:</p>
@@ -143,10 +142,10 @@
 <ul>
 <li><strong>Accuracy</strong> - Relative accuracy – higher values, should lead to higher confidence in model performance (accuracy).</li>
 <li><strong>Time</strong> - Relative time for completing the experiment. Higher values will take longer for the experiment to complete.</li>
-<li><strong>Interpretability</strong>-  The degree to which a human can understand the cause of the decision.<br></li>
+<li><strong>Interpretability</strong> -  The ability to explain or to present in understandable terms to a human. The higher the interpretability the simpler the features that will be extracted.</li>
 </ul>
 <h2>Accuracy</h2>
-<p>By increasing the accuracy setting (as indicated by the tournament_* toml settings), Driverless AI gradually adjusts the method for performing the evolution and ensemble. A machine learning ensemble consists of multiple learning algorithms to obtain a better predictive performance that could be obtained from any one single learning algorithm[2]. With a  low accuracy setting, Driverless AI varies features(from feature engineering) and models, but they all compete evenly against each other. At higher accuracy, each independent main model will evolve independently and be part of the final ensemble as an ensemble over different main models. At higher accuracies, Driverless AI will evolve+ensemble feature types like Target Encoding on and off that evolve independently. Finally, at highest accuracies, Driverless AI performs both model and feature tracking and ensembles all those variations.</p>
+<p>By increasing the accuracy setting, Driverless AI gradually adjusts the method for performing the evolution and ensemble. A machine learning ensemble consists of multiple learning algorithms to obtain a better predictive performance that could be obtained from any one single learning algorithm[2]. With a  low accuracy setting, Driverless AI varies features(from feature engineering) and models, but they all compete evenly against each other. At higher accuracy, each independent main model will evolve independently and be part of the final ensemble as an ensemble over different main models. At higher accuracies, Driverless AI will evolve+ensemble feature types like Target Encoding on and off that evolve independently. Finally, at highest accuracies, Driverless AI performs both model and feature tracking and ensembles all those variations.</p>
 <h2>Time</h2>
 <p>Time specifies the relative time for completing the experiment (i.e., higher settings take longer). Early stopping will take place if the experiment doesn&#39;t improve the score for the specified amount of iterations. The higher the time value, the more time will be allotted for further iterations, which means that the recipe will have more time to investigate new transformations in feature engineering and model&#39;s hyperparameter tuning.</p>
 <h2>Interpretability</h2>
@@ -223,7 +222,7 @@
 <h2>Deeper Dive</h2>
 <ul>
 <li><a href="http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-settings.html?highlight=interpretability#accuracy-time-and-interpretability-knobs" target="_blank">To better understand the impact of setting the Accuracy, Time and Interpretability Knobs between 1 and 10 in H2O Driverless AI</a></li>
-<li>For more information about additional setting in<a href="http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/expert-settings.html?highlight=expert%20settings" target="_blank">Expert Settings for H2O Driverless AI</a></li>
+<li>For more information about additional setting in <a href="http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/expert-settings.html?highlight=expert%20settings" target="_blank">Expert Settings for H2O Driverless AI</a></li>
 </ul>
 
 
@@ -297,7 +296,7 @@
 <p><img alt="prec-recall-07" src="img/306d139a633fa537.jpg"></p>
 <p>Finally, this Prec-Recall Curve represents the worst case scenario where the model is making generating 100% false positives and false negatives. This Prec-Recall Curve has an AUC of 0.0 or 0%:</p>
 <p><img alt="prec-recall-00" src="img/e50f34be40a27fd6.jpg"></p>
-<p>From the Prec-Recall plot some metrics are derived that can be helpful in assessing the model&#39;s performance, such as accuracy and Fᵦ scores.These metrics will be explained in more depth on the next section of the concepts. Just note that accuracy or ACC is the ratio number of correct predictions divided by the total number of predictions and Fᵦ is the harmonic mean of recall and precision.</p>
+<p>From the Prec-Recall plot some metrics are derived that can be helpful in assessing the model&#39;s performance, such as accuracy and Fᵦ scores.These metrics will be explained in more depth in the next section of the concepts. Just note that accuracy or ACC is the ratio number of correct predictions divided by the total number of predictions and Fᵦ is the harmonic mean of recall and precision.</p>
 <p>When looking at ACC in Prec-Recall is imperative to note that ACC does not perform well imbalanced datasets. This is why the <strong>F-scores</strong> can be used to account for the skewed dataset in Prec-Recall.</p>
 <p>As you consider the accuracy of a model for the positive cases you want to know a couple of things:</p>
 <ul>
@@ -324,7 +323,7 @@
 <p>The F1 Score is another measurement of classification accuracy. It represents the harmonic average of the precision and recall. F1 is measured in the range of 0 to 1, where 0 means that there are no true positives, and 1 when there is neither false negatives nor false positives or perfect precision and recall[9].</p>
 <p>Using the confusion matrix table, the F1 score can be calculated in the following manner:</p>
 <p><strong>F1</strong> = 2TP /( 2TP + FN + FP)</p>
-<p><strong>F05</strong> equation:<br>𝐹0.5=1.25((𝑝𝑟𝑒𝑐𝑖𝑠𝑖𝑜𝑛)(𝑟𝑒𝑐𝑎𝑙𝑙)/0.25𝑝𝑟𝑒𝑐𝑖𝑠𝑖𝑜𝑛+𝑟𝑒𝑐𝑎𝑙𝑙)</p>
+<p><strong>F05</strong> equation:<br>F0.5 = 1.25((precision)(recall)/ 0.25precision + recall)</p>
 <p>Where:<br>precision is the positive observations (true positives) the model correctly identified from all the observations it labeled as positive (the true positives + the false positives). Recall is the positive observations (true positives) the model correctly identified from all the actual positive cases (the true positives + the false negatives)[15].</p>
 <p>The <strong>F2 score</strong> is the weighted harmonic mean of the precision and recall (given a threshold value). Unlike the F1 score, which gives equal weight to precision and recall, the F2 score gives more weight to recall than to precision. More weight should be given to recall for cases where False Negatives are considered worse than False Positives. For example, if your use case is to predict which customers will churn, you may consider False Negatives worse than False Positives. In this case, you want your predictions to capture all of the customers that will churn. Some of these customers may not be at risk for churning, but the extra attention they receive is not harmful. More importantly, no customers actually at risk of churning have been missed[15].</p>
 <h3>MCC</h3>
@@ -370,18 +369,18 @@
 <p>[3] <a href="https://classeval.wordpress.com/introduction/introduction-to-the-roc-receiver-operating-characteristics-plot/" target="_blank">Introduction to ROC</a></p>
 <p>[4] <a href="https://www.youtube.com/watch?v=OAl6eAyP-yo" target="_blank">ROC Curves and Under the Curve (AUC) Explained</a></p>
 <p>[5] <a href="https://classeval.wordpress.com/introduction/introduction-to-the-precision-recall-plot/" target="_blank">Introduction to Precision-Recall</a></p>
-<p>[6]<a href="https://doi.org/10.1016/j.aci.2018.08.003" target="_blank">Tharwat, Applied Computing and Informatics (2018)</a></p>
-<p>[7]<a href="https://www.saedsayad.com/model_evaluation_c.htm" target="_blank">Model Evaluation Classification</a></p>
-<p>[8]<a href="https://en.wikipedia.org/wiki/Accuracy_and_precision" target="_blank">Wiki Accuracy</a></p>
-<p>[9]<a href="https://en.wikipedia.org/wiki/F1_score" target="_blank">Wiki F1 Score</a></p>
+<p>[6] <a href="https://doi.org/10.1016/j.aci.2018.08.003" target="_blank">Tharwat, Applied Computing and Informatics (2018)</a></p>
+<p>[7] <a href="https://www.saedsayad.com/model_evaluation_c.htm" target="_blank">Model Evaluation Classification</a></p>
+<p>[8] <a href="https://en.wikipedia.org/wiki/Accuracy_and_precision" target="_blank">Wiki Accuracy</a></p>
+<p>[9] <a href="https://en.wikipedia.org/wiki/F1_score" target="_blank">Wiki F1 Score</a></p>
 <p>[10] <a href="https://en.wikipedia.org/wiki/Matthews_correlation_coefficient" target="_blank">Wiki Matthew&#39;s Correlation Coefficient</a></p>
-<p>[11]<a href="http://wiki.fast.ai/index.php/Log_Loss" target="_blank">Wiki Log Loss</a></p>
-<p>[12]<a href="http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/scorers/scorers_gini.html?highlight=gini" target="_blank">H2O&#39;s GINI Index</a></p>
-<p>[13]<a href="http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-graphs.html?highlight=mcc" target="_blank">H2O&#39;s Kolmogorov-Smirnov</a></p>
-<p>[14]<a href="https://www.saedsayad.com/model_evaluation_c.htm" target="_blank">Model Evaluation- Classification</a></p>
-<p>[15]<a href="https://www.quora.com/What-is-Information-gain-in-Machine-Learning" target="_blank">What is Information Gain in Machine Learning</a></p>
-<p>[16]<a href="https://www.kdnuggets.com/2016/03/lift-analysis-data-scientist-secret-weapon.html" target="_blank">Lift Analysis Data Scientist Secret Weapon</a></p>
-<p>[17]<a href="https://www.machinelearningplus.com/machine-learning/evaluation-metrics-classification-models-r/" target="_blank">Machine Learning Evaluation Metrics Classification Models</a></p>
+<p>[11] <a href="http://wiki.fast.ai/index.php/Log_Loss" target="_blank">Wiki Log Loss</a></p>
+<p>[12] <a href="http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/scorers/scorers_gini.html?highlight=gini" target="_blank">H2O&#39;s GINI Index</a></p>
+<p>[13] <a href="http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-graphs.html?highlight=mcc" target="_blank">H2O&#39;s Kolmogorov-Smirnov</a></p>
+<p>[14] <a href="https://www.saedsayad.com/model_evaluation_c.htm" target="_blank">Model Evaluation- Classification</a></p>
+<p>[15] <a href="https://www.quora.com/What-is-Information-gain-in-Machine-Learning" target="_blank">What is Information Gain in Machine Learning</a></p>
+<p>[16] <a href="https://www.kdnuggets.com/2016/03/lift-analysis-data-scientist-secret-weapon.html" target="_blank">Lift Analysis Data Scientist Secret Weapon</a></p>
+<p>[17] <a href="https://www.machinelearningplus.com/machine-learning/evaluation-metrics-classification-models-r/" target="_blank">Machine Learning Evaluation Metrics Classification Models</a></p>
 <h2>Deeper Dive and Resources</h2>
 <ul>
 <li><a href="https://machinelearningmastery.com/roc-curves-and-precision-recall-curves-for-classification-in-python/" target="_blank">How and when to use ROC Curves and Precision-Recall Curves for Classification in Python</a></li>
@@ -448,7 +447,7 @@
         <p>Now we are going to run a model diagnostics on the freddie_mac_500_test set. The diagnostics model allows you to view model performance for multiple scorers based on an existing model and dataset through the Python API.</p>
 <p>1. Select <strong>Diagnostics</strong></p>
 <p><img alt="diagnostics-select" src="img/4a52b02e490a79eb.jpg"></p>
-<p>2. Once in the <strong>Diagnostics</strong> page, select <strong>+ Diagnose Model</strong></p>
+<p>2. Once in the <strong>Diagnostics</strong> page, select <strong>+Diagnose Model</strong></p>
 <p><img alt="diagnose-model" src="img/bab8cd7c91ee3112.jpg"></p>
 <p>3. In the <strong>Create new model diagnostics</strong> :</p>
 <ol type="1">
@@ -510,10 +509,11 @@
 <p>The final layer of the confusion matrix we will explore are the errors. The errors section is one of the first places where we can check how well the model performed. The better the model does at classifying labels on the test dataset the lower the error rate will be. The <strong>error rate</strong> is also known as the <strong>misclassification rate</strong> which answers the question of how often is the model wrong?</p>
 <p>For this particular model these are the errors:</p>
 <ul>
-<li>148⁄120,537 = 0.00012 or .012%  times the model classified actual cases that did not default as defaulting out of the actual non-defaulting group</li>
+<li>148⁄120537 = 0.00012 or .012%  times the model classified actual cases that did not default as defaulting out of the actual non-defaulting group</li>
 <li>4321⁄4498 = 0.9606 or 96.06% times the model classified actual cases that did default as not defaulting out of the actual defaulting group</li>
-<li>4321⁄124,710 = 0.0347 or 3.47% times the model classified predicted cases that did default as not defaulting out of the total predicted not defaulting group</li>
-<li>177⁄325 = 0.4554  or 45.54% times the model classified predicted cases that defaulted as defaulting out of the total predicted defaulting group<br>(4321 + 148) / 125035 = <strong>0.0357</strong>  This means that this model incorrectly classifies  .0357 or 3.57% of the time.</li>
+<li>4321⁄124710 = 0.0347 or 3.47% times the model classified predicted cases that did default as not defaulting out of the total predicted not defaulting group</li>
+<li>177⁄325 = 0.4554  or 45.54% times the model classified predicted cases that defaulted as defaulting out of the total predicted defaulting group</li>
+<li>(4321 + 148) / 125035 = <strong>0.0357</strong>  This means that this model incorrectly classifies  .0357 or 3.57% of the time.</li>
 </ul>
 <p>What does the misclassification error of .0357 mean?<br>One of the best ways to understand the impact of this misclassification error is to look at the financial implications of the False Positives and False Negatives. As mentioned previously, the False Positives represent the loans predicted not to default and in reality did default.<br>Additionally, we can look at the mortgages that Freddie Mac missed out on by not granting loans because the model predicted that they would default when in reality they did not default.</p>
 <p>One way to look at the financial implications for Freddie Mac is to look at the total paid interest rate per loan. The mortgages on this dataset are traditional home equity loans which means that the loans are:<br>A fixed borrowed amount<br>Fixed interest rate<br>Loan term and monthly payments are both fixed</p>
@@ -538,7 +538,7 @@
 </ul>
 <p>The image below represents the scores for the <strong>lekecucu</strong> model using the freddie_mac_500_test dataset:</p>
 <p><img alt="diagnostics-scores" src="img/a28ede41828ad202.jpg"></p>
-<p>When the experiment was run for this classification model, Driverless AI determined that the best scorer for it was the Logarithmic Loss or  <strong>LOGLOSS</strong> due to the imbalanced nature of the dataset. ** LOGLOSS** focuses on getting the probabilities right (strongly penalizes wrong probabilities). The selection of Logarithmic Loss makes sense since we want a model that can correctly classify those who are most likely to default while ensuring that those that qualify for a loan get can get one.</p>
+<p>When the experiment was run for this classification model, Driverless AI determined that the best scorer for it was the Logarithmic Loss or  <strong>LOGLOSS</strong> due to the imbalanced nature of the dataset. <strong>LOGLOSS</strong> focuses on getting the probabilities right (strongly penalizes wrong probabilities). The selection of Logarithmic Loss makes sense since we want a model that can correctly classify those who are most likely to default while ensuring that those that qualify for a loan get can get one.</p>
 <p>Recall that Log loss is measured in the range of 0 to 1, where a model with a log loss of 0 would be the perfect classifier and 1 the worst. Our model  scored  a LOGLOSS value = .1187+/- .0164 after testing it with test dataset. From the confusion matrix, we saw that the model had issues classifying perfectly; however, it was able to classify with an ACCURACY of .9643 +/- .0055. The financial implications of the misclassifications have been covered in the confusion matrix section above.</p>
 <p>Driverless AI has the option to change the type of scorer used for the experiment. Recall that for this dataset the scorer was selected to be <strong>logloss</strong>. An experiment can be re-run with another scorer. For general imbalanced classification problems, AUCPR and MCC scorers are good choices, while F05, F1, and F2 are designed to balance recall against precision.<br>The AUC is designed for ranking problems. Gini is similar to the AUC but measures the quality of ranking (inequality) for regression problems.</p>
 <p>In the next few tasks we will explore the scorer further and the <strong>Scores</strong> values in relation to the residual plots.</p>
