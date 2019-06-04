@@ -112,15 +112,14 @@ Download H2O’s subset of the Freddie Mac Single-Family Loan-Level dataset to y
 4. Change the split value to .75 by adjusting the slider to 75% or entering .75 in the section that says Train/Valid Split Ratio
 5. Save
 
-The ratio of .75 was selected for this particular dataset to not generalize the model given the total size of the data set.
 
 The training set contains 375k rows, each row representing a loan, and 27 columns representing the attributes of each loan including the column that has the label we are trying to predict.  Note: the actual data in training and test split vary by user, as the data is split randomly. The Test set contains 125k rows, each row representing a loan, and 27 attribute columns representing attributes of each loan.
 
-7\. Verify that there are three datasets, **freddie_mac_500_test**,**freddie_mac_500_ train** and **loan_level_500k.csv**:
+7\. Verify that there are three datasets, **freddie_mac_500_test**, **freddie_mac_500_train** and **loan_level_500k.csv**:
 
 ![loan-level-three-datasets](assets/loan-level-three-datasets.jpg)
 
-8\. Click on the **freddie_mac_500_ train** file then select **Predict**.
+8\. Click on the **freddie_mac_500_train** file then select **Predict**.
 
 9\. Select **Not Now** on the **First time Driverless AI, Click Yes to get a tour!**. A similar image should appear:
 
@@ -159,12 +158,12 @@ Here is an overview of the Experiments settings:
 
 - **Accuracy** - Relative accuracy – higher values, should lead to higher confidence in model performance (accuracy).
 - **Time** - Relative time for completing the experiment. Higher values will take longer for the experiment to complete.
-- **Interpretability**-  The degree to which a human can understand the cause of the decision.  
+- **Interpretability**-  The ability to explain or to present in understandable terms to a human. The higher the interpretability the simpler the features that will be extracted.  
 
 
 ### Accuracy
 
-By increasing the accuracy setting (as indicated by the tournament_* toml settings), Driverless AI gradually adjusts the method for performing the evolution and ensemble. A machine learning ensemble consists of multiple learning algorithms to obtain a better predictive performance that could be obtained from any one single learning algorithm[2]. With a  low accuracy setting, Driverless AI varies features(from feature engineering) and models, but they all compete evenly against each other. At higher accuracy, each independent main model will evolve independently and be part of the final ensemble as an ensemble over different main models. At higher accuracies, Driverless AI will evolve+ensemble feature types like Target Encoding on and off that evolve independently. Finally, at highest accuracies, Driverless AI performs both model and feature tracking and ensembles all those variations.
+By increasing the accuracy setting, Driverless AI gradually adjusts the method for performing the evolution and ensemble. A machine learning ensemble consists of multiple learning algorithms to obtain a better predictive performance that could be obtained from any one single learning algorithm[2]. With a  low accuracy setting, Driverless AI varies features(from feature engineering) and models, but they all compete evenly against each other. At higher accuracy, each independent main model will evolve independently and be part of the final ensemble as an ensemble over different main models. At higher accuracies, Driverless AI will evolve+ensemble feature types like Target Encoding on and off that evolve independently. Finally, at highest accuracies, Driverless AI performs both model and feature tracking and ensembles all those variations.
 
 ### Time
 
@@ -397,7 +396,7 @@ Finally, this Prec-Recall Curve represents the worst case scenario where the mod
 
 ![prec-recall-00](assets/prec-recall-00.jpg)
 
-From the Prec-Recall plot some metrics are derived that can be helpful in assessing the model’s performance, such as accuracy and Fᵦ scores.These metrics will be explained in more depth on the next section of the concepts. Just note that accuracy or ACC is the ratio number of correct predictions divided by the total number of predictions and Fᵦ is the harmonic mean of recall and precision.
+From the Prec-Recall plot some metrics are derived that can be helpful in assessing the model’s performance, such as accuracy and Fᵦ scores.These metrics will be explained in more depth in the next section of the concepts. Just note that accuracy or ACC is the ratio number of correct predictions divided by the total number of predictions and Fᵦ is the harmonic mean of recall and precision.
 
 When looking at ACC in Prec-Recall is imperative to note that ACC does not perform well imbalanced datasets. This is why the **F-scores** can be used to account for the skewed dataset in Prec-Recall. 
 
@@ -445,7 +444,7 @@ Using the confusion matrix table, the F1 score can be calculated in the followin
 **F1** = 2TP /( 2TP + FN + FP)
 
 **F05** equation:
-𝐹0.5=1.25((𝑝𝑟𝑒𝑐𝑖𝑠𝑖𝑜𝑛)(𝑟𝑒𝑐𝑎𝑙𝑙)/0.25𝑝𝑟𝑒𝑐𝑖𝑠𝑖𝑜𝑛+𝑟𝑒𝑐𝑎𝑙𝑙)
+F0.5 = 1.25((precision)(recall)/ 0.25precision + recall)
 
 Where:
 precision is the positive observations (true positives) the model correctly identified from all the observations it labeled as positive (the true positives + the false positives). Recall is the positive observations (true positives) the model correctly identified from all the actual positive cases (the true positives + the false negatives)[15].
@@ -542,9 +541,9 @@ The KS statistic is the maximum difference between the cumulative percentage of 
 
 [7] [Model Evaluation Classification](https://www.saedsayad.com/model_evaluation_c.htm)
 
-[8][Wiki Accuracy](https://en.wikipedia.org/wiki/Accuracy_and_precision)
+[8] [Wiki Accuracy](https://en.wikipedia.org/wiki/Accuracy_and_precision)
 
-[9][Wiki F1 Score](https://en.wikipedia.org/wiki/F1_score)
+[9] [Wiki F1 Score](https://en.wikipedia.org/wiki/F1_score)
 
 [10] [Wiki Matthew’s Correlation Coefficient](https://en.wikipedia.org/wiki/Matthews_correlation_coefficient)
 
@@ -552,15 +551,15 @@ The KS statistic is the maximum difference between the cumulative percentage of 
 
 [12] [H2O’s GINI Index](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/scorers/scorers_gini.html?highlight=gini) 
 
-[13][H2O’s Kolmogorov-Smirnov](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-graphs.html?highlight=mcc)
+[13] [H2O’s Kolmogorov-Smirnov](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-graphs.html?highlight=mcc)
 
-[14][Model Evaluation- Classification](https://www.saedsayad.com/model_evaluation_c.htm)
+[14] [Model Evaluation- Classification](https://www.saedsayad.com/model_evaluation_c.htm)
 
-[15][What is Information Gain in Machine Learning](https://www.quora.com/What-is-Information-gain-in-Machine-Learning)
+[15] [What is Information Gain in Machine Learning](https://www.quora.com/What-is-Information-gain-in-Machine-Learning)
 
-[16][Lift Analysis Data Scientist Secret Weapon](https://www.kdnuggets.com/2016/03/lift-analysis-data-scientist-secret-weapon.html)
+[16] [Lift Analysis Data Scientist Secret Weapon](https://www.kdnuggets.com/2016/03/lift-analysis-data-scientist-secret-weapon.html)
 
-[17][Machine Learning Evaluation Metrics Classification Models](https://www.machinelearningplus.com/machine-learning/evaluation-metrics-classification-models-r/) 
+[17] [Machine Learning Evaluation Metrics Classification Models](https://www.machinelearningplus.com/machine-learning/evaluation-metrics-classification-models-r/) 
 
 ### Deeper Dive and Resources
 
@@ -723,7 +722,7 @@ For this particular model these are the errors:
 - 4321/4498 = 0.9606 or 96.06% times the model classified actual cases that did default as not defaulting out of the actual defaulting group
 - 4321/124,710 = 0.0347 or 3.47% times the model classified predicted cases that did default as not defaulting out of the total predicted not defaulting group
 - 177/325 = 0.4554  or 45.54% times the model classified predicted cases that defaulted as defaulting out of the total predicted defaulting group
-(4321 + 148) / 125035 = **0.0357**  This means that this model incorrectly classifies  .0357 or 3.57% of the time.
+- (4321 + 148) / 125035 = **0.0357**  This means that this model incorrectly classifies  .0357 or 3.57% of the time.
  
 What does the misclassification error of .0357 mean?
 One of the best ways to understand the impact of this misclassification error is to look at the financial implications of the False Positives and False Negatives. As mentioned previously, the False Positives represent the loans predicted not to default and in reality did default. 
@@ -764,7 +763,7 @@ The image below represents the scores for the **lekecucu** model using the fredd
 
 ![diagnostics-scores](assets/diagnostics-scores.jpg)
 
-When the experiment was run for this classification model, Driverless AI determined that the best scorer for it was the Logarithmic Loss or  **LOGLOSS** due to the imbalanced nature of the dataset. ** LOGLOSS** focuses on getting the probabilities right (strongly penalizes wrong probabilities). The selection of Logarithmic Loss makes sense since we want a model that can correctly classify those who are most likely to default while ensuring that those that qualify for a loan get can get one.
+When the experiment was run for this classification model, Driverless AI determined that the best scorer for it was the Logarithmic Loss or  **LOGLOSS** due to the imbalanced nature of the dataset. **LOGLOSS** focuses on getting the probabilities right (strongly penalizes wrong probabilities). The selection of Logarithmic Loss makes sense since we want a model that can correctly classify those who are most likely to default while ensuring that those that qualify for a loan get can get one.
 
 Recall that Log loss is measured in the range of 0 to 1, where a model with a log loss of 0 would be the perfect classifier and 1 the worst. Our model  scored  a LOGLOSS value = .1187+/- .0164 after testing it with test dataset. From the confusion matrix, we saw that the model had issues classifying perfectly; however, it was able to classify with an ACCURACY of .9643 +/- .0055. The financial implications of the misclassifications have been covered in the confusion matrix section above.
 
@@ -854,7 +853,7 @@ We are going to use this new experiment to run a new diagnostics test. You will 
 
 4\. Go to the **Diagnostics** tab.
 
-5\. Once in the **Diagnostics** page, select ** + Diagnose Model**
+5\. Once in the **Diagnostics** page, select **+Diagnose Model**
 
 6\. In the **Create new model diagnostics** : 
 1. Click on Diagnosed Experiment then select the experiment that you completed in Task  in this case the experiment name is **mumidocu** 
