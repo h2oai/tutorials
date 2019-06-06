@@ -99,7 +99,7 @@ The Driverless UI is easy to navigate. The following features are found on the w
 
 The concepts found in this section are meant to provide a high-level overview of Machine Learning. At the end of this section, you can find links to resources that offer a more in-depth explanation of the concepts covered here.
 
- Machine learning is a subset of Artificial intelligence where the focus is to create machines that can simulate human intelligence. One critical distinction between artificial intelligence and machine learning is that machine learning models “learn” from the data they get exposed to. Arthur Samuel a machine learning pioneer back in 1959 defined machine learning as a”field of study that gives computers the ability to learn without being explicitly programmed”[1]. Machine learning algorithm train on a dataset to make predictions. These predictions are sometimes used to optimize a system or assist with decision making.
+ Machine learning is a subset of Artificial intelligence where the focus is to create machines that can simulate human intelligence. One critical distinction between artificial intelligence and machine learning is that machine learning models “learn” from the data they get exposed to. Arthur Samuel a machine learning pioneer back in 1959 defined machine learning as a” field of study that gives computers the ability to learn without being explicitly programmed”[1]. Machine learning algorithm trains on a dataset to make predictions. These predictions are sometimes used to optimize a system or assist with decision making.
 
 ### Machine Learning Training
 
@@ -109,7 +109,7 @@ In machine learning the input variables are called **features** and the output v
 
 A machine learning model defines the relationship between features and labels. When models are trained, you can train a model by feeding it examples. Examples are a particular instance of data.  You can have two types of examples: labeled and unlabeled.
 Labeled examples are those where the x and y values (features, labels) are known. Unlabeled examples are those where we know the x value, but we don't know what the y value is (feature,?)[1]. Your dataset is like an example; the columns that will be used for training are the features; the rows are the instances of those features. The column that you want to predict is the label.
-Supervised learning takes labeled examples and allows a model that is being trained to learn the relationship between features and labels. The trained model is then tested with unlabeled data and its given the opportunity to predict the y value (label) for the unlabeled data. Testing a trained model with unlabeled data is called unsupervised training [1]. Note that H2O Driverless AI creates models with labeled examples.
+Supervised learning takes labeled examples and allows a model that is being trained to learn the relationship between features and labels. The trained model is then tested with unlabeled data and it's given the opportunity to predict the y value (label) for the unlabeled data. Testing a trained model with unlabeled data is called unsupervised training [1]. Note that H2O Driverless AI creates models with labeled examples.
 
 ### Data Preparation 
 
@@ -510,9 +510,9 @@ The complete list of features used in the final model is available in the Experi
 
 - [H2O World London 2018 Feature Engineering session replay](https://www.youtube.com/watch?v=d6UMEmeXB6o ) and [slides  by Dmitry](https://www.slideshare.net/0xdata/feature-engineering-in-h2o-driverless-ai-dmitry-larko-h2o-ai-world-london-2018 ) 
 
-## Task 7: Explore Experiment Results
+Let’s explore the results of the experiment. The results are found on the **Experiment Summary** at the left-bottom of Experiment page. The resulting plots are insights from the training and validation data. Each plot will be given an brief overview. 
 
-Let’s explore the results of the experiment to determine how good the generated model is. The results are found on the **Experiment Summary** at the left-bottom of Experiment page.
+If you are interested in learning more about each plot and the metrics derived from those plots covered in this section, then check out our next tutorial [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#0).
 
 1\. Summary
 
@@ -525,48 +525,57 @@ Let’s explore the results of the experiment to determine how good the generate
 
 This type of graph is called a Receiver Operating Characteristic curve (or ROC curve.) It is a plot of the true positive rate against the false positive rate for the different possible cutpoints of a diagnostic test.
 
-An ROC curve demonstrates several things:
+An ROC curve is a useful tool because it only focuses on how well the model was able to distinguish between classes. “AUC’s can help represent the probability that the classifier will rank a randomly selected positive observation higher than a randomly selected negative observation”[1].  However, for models where the prediction happens rarely a high AUC could provide a false sense that the model is correctly predicting the results.  This is where the notion of precision and recall become important.
 
-- It shows the tradeoff between sensitivity (True Positive Rate or TPR) and specificity (1-FPR or False Positive Rate). Any increase in sensitivity will be accompanied by a decrease in specificity.
-- The closer the curve follows the left-hand border and then the top border of the ROC space, the more accurate the model.
-- The closer the curve comes to the 45-degree diagonal of the ROC space, the less accurate the model.
-- The slope of the tangent line at a cutpoint gives the likelihood ratio (LR) for that value of the test. You can check this out on the graph below. Recall that the LR for T4 < 5 is 52. This corresponds to the far left, steep portion of the curve. The LR for T4 > 9 is 0.2. This corresponds to the far right, nearly horizontal portion of the curve.
-- The area under the curve is a measure of model accuracy. 
+The ROC curve below shows Receiver-Operator Characteristics curve stats on validation data along with the best Accuracy, FCC, and F1 values[2].
 
 ![experiment-results-roc-graph](assets/experiment-results-roc-graph.jpg)
 
+This ROC gives an Area Under the Curve or AUC of .8452. This tells us that the model is able to correctly classify the survirvors 84.52% of the time. 
+
+Learn more about the ROC Curve on [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus: ROC](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#7).
+
 3\. Prec-Recall - Precision-Recall graph
 
-The precision-recall plot uses recall on the x-axis and precision on the y-axis. Recall is identical with sensitivity, and precision is identical with positive predictive value.
+Prec-Recall is a complementary tool to ROC curves, especially when the dataset has a significant skew. The Prec-Recall curve plots the precision or positive predictive value (y-axis) versus sensitivity or true positive rate (x-axis) for every possible classification threshold. At a high level, we can think of precision as a measure of exactness or quality of the results while recall as a measure of completeness or quantity of the results obtained by the model. Prec-Recall measures the relevance of the results obtained by the model.
 
-- ROC curves should be used when there are roughly equal numbers of observations for each class.
-- Precision-Recall curves should be used when there is a moderate to large class imbalance.
-- Similar to ROC, the AUCPR (Area under the curve of Precision-recall curve) is a measure of model accuracy and higher the better. 
-- In both the ROC and Prec-recall curve, DAI will indicate points that are the best thresholds for Accuracy (ACC), F1 or MCC (Matthews correlation coefficient).
+The Prec-Recall plot beolow shows the Precision-Recall curve on validation data along with the best Accuracy, FCC, and F1 values. The area under this curve is called AUCPR.
 
 ![experiment-results-prec-recall-graph](assets/experiment-results-prec-recall-graph.jpg)
 
-4\. Lift Chart & Gains
+Similarly to the ROC curve, when we take a look at the area under the curve of the Prec-Recall Curve of AUCPR we get a value of .8121. This tells us that the model brings forth relevant results or those cases of the passengers that actually survived 81.21% of the time.
 
-- Cumulative gains and lift charts are visual aids for measuring model performance
-- Both charts consist of a lift curve and a baseline
-- The greater the area between the lift curve and the baseline, the better the model
+Learn more about the Prec-Curve Curve on [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus: Prec-Recall](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#8).
 
-![experiment-results-lift-graph](assets/experiment-results-lift-graph.jpg)
+4\. Cumulative Gains Chart
 
-- Lift is a measure of the effectiveness of a predictive model calculated as the ratio between the results obtained with and without the predictive model.
-- The lift chart shows how much more likely we are to receive respondents than if we contact a random sample of customers.
-- It is calculated by determining the ratio between the result predicted by our model and the result using no model.
-- Example: For contacting 10% of customers, using no model we should get 10% of responders and using the given model we should get 30% of responders. The y-value of the lift curve at 10% is 30 / 10 = 3
+Gain and Lift charts measure the effectiveness of a classification model by looking at the ratio between the results obtained with a trained model versus a random model(or no model)[3]. The Gain and Lift charts help us evaluate the performance of the classifier as well as answer questions such as what percentage of the dataset captured has a positive response as a function of selected percentage of a sample. Additionally, we can explore how much better we can expect do with a model compared to a random model(or no model)[4].
 
-5\. Gains Chart
+For better visualization the percentage of positive responses compared to a selected percentage sample, we use Cumulative Gains and Quantile. 
 
-The y-axis shows the percentage of positive responses. This is a percentage of the total possible positive responses. 
-The x-axis shows the percentage of passangers that survived, which is a fraction of the total passengers.
+In the Gains Chart below the x-axis shows the percentage of cases from the total number of cases in the test dataset, while the y-axis shows the percentage of positive outcomes or survirvors in terms of quantiles.
+
+The Cumulative Gains Chart below shows Gains stats on validation data. For example, “What fraction of all observations of the positive target class are in the top predicted 1%, 2%, 10%, etc. (cumulative)?” By definition, the Gains at 100% are 1.0.
 
 ![experiment-results-gains-graph](assets/experiment-results-gains-graph.jpg)
 
+The Gains chart above tells us that when looking at the 20% quantile the model is able to positively identify ~46% of the survirvors compared to the a random model(or no model) which would be able to positively identify about ~20% of the survirvors at the 20% quantile.
+
+Learn more about the Cummulative Gains Chart on [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus: Cummulative Gains](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#9).
+
+5\. Cumulative Lift Chart 
+
+Lift can help us answer the question of how much better one can expect to do with the predictive model compared to a random model(or no model). Lift is a measure of the effectiveness of a predictive model calculated as the ratio between the results obtained with a model and with a random model(or no model). In other words, the ratio of gain% to the random expectation % at a given quantile. The random expectation of the xth quantile is x%[4].
+
+The Cumulative Lift chart shows lift stats on validation data. For example, “How many times more observations of the positive target class are in the top predicted 1%, 2%, 10%, etc. (cumulative) compared to selecting observations randomly?” By definition, the Lift at 100% is 1.0.
+
+![experiment-results-lift-graph](assets/experiment-results-lift-graph.jpg)
+
+Learn more about the Cumulative Lift Chart on [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus: Cumulative Lift](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#10).
+
 6\. K-S
+
+Kolmogorov-Smirnov or K-S measures the performance of classification models by measuring the degree of separation between positives and negatives for validation or test data[5]. “The K-S is 100 if the scores partition the population into two separate groups in which one group contains all the positives and the other all the negatives. On the other hand, If the model cannot differentiate between positives and negatives, then it is as if the model selects cases randomly from the population. The K-S would be 0. In most classification models the K-S will fall between 0 and 100, and that the higher the value, the better the model is at separating the positive from negative cases.”[6].
 
 K-S or the Kolmogorov-Smirnov chart measures the degree of separation between positives and negatives for validation or test data.
 
@@ -574,9 +583,31 @@ Hover over a point in the chart to view the quantile percentage and Kolmogorov-S
 
 ![experiment-results-gains-k-s](assets/experiment-results-gains-k-s.jpg)
 
+For the K-S chart above, if we look at the top 60% of the data, the at-chance model (the dotted diagonal line) tells us that only 60% of the data was successfully separate between positives and negatives (defaulted and not defaulted). However, with the model it was able to do .442 or about 44% of the cases were successfully separated between positives and negatives.
+
+
+Learn more about the the Kolmogorov-Smirnov chart on [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus: Kolmogorov-Smirnov chart](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#11).
+
+
+### Resources
+ 
+[1] [ROC Curves and Under the Curve (AUC) Explained](https://www.youtube.com/watch?v=OAl6eAyP-yo)
+
+[2] [H2O DAi - Experiment Graphs](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-graphs.html?highlight=roc%20curve)
+
+[3] [Model Evaluation Classification](https://www.saedsayad.com/model_evaluation_c.htm)
+
+[4] [Lift Analysis Data Scientist Secret Weapon](https://www.kdnuggets.com/2016/03/lift-analysis-data-scientist-secret-weapon.html)
+
+[5][H2O’s Kolmogorov-Smirnov](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-graphs.html?highlight=mcc)
+
+[6][Model Evaluation- Classification](https://www.saedsayad.com/model_evaluation_c.htm)
+
+
 ### Deeper Dive and Resources
 
 - [The Best Metric to Measure Accuracy of Classification Models](https://clevertap.com/blog/the-best-metric-to-measure-accuracy-of-classification-models/)
+
 
 ## Task 8: MLI Report
 
@@ -642,6 +673,10 @@ The decision Tree Surrogate model displays the model’s approximate flowchart o
 Higher and more frequent features are more important. Features above or below one-another can indicate an interaction. Finally, the thickest edges are the most common decision paths through the tree that lead to a predicted numerical outcome.
 
 - What is the most common decision path for the Titanic Training set?
+
+Solution:
+
+![decision-tree-task-9-answer](assets/decision-tree-task-9-answer.jpg)
 
 4\. Partial Dependence and Individual conditional expectation plot. This plot represents the model prediction for different values of the original variables. It shows the average model behavior for important original variables.
 The grey bar represent the standard deviation of predictions. The green dot represents the average predictions.
