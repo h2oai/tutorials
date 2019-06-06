@@ -510,6 +510,9 @@ The complete list of features used in the final model is available in the Experi
 
 - [H2O World London 2018 Feature Engineering session replay](https://www.youtube.com/watch?v=d6UMEmeXB6o ) and [slides  by Dmitry](https://www.slideshare.net/0xdata/feature-engineering-in-h2o-driverless-ai-dmitry-larko-h2o-ai-world-london-2018 ) 
 
+
+## Task 7: Explore Experiment Results
+
 Let’s explore the results of the experiment. The results are found on the **Experiment Summary** at the left-bottom of Experiment page. The resulting plots are insights from the training and validation data. Each plot will be given an brief overview. 
 
 If you are interested in learning more about each plot and the metrics derived from those plots covered in this section, then check out our next tutorial [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#0).
@@ -676,7 +679,7 @@ Higher and more frequent features are more important. Features above or below on
 
 Solution:
 
-![decision-tree-task-9-answer](assets/decision-tree-task-9-answer.jpg)
+![decision-tree-task-8-answer](assets/decision-tree-task-8-answer.jpg)
 
 4\. Partial Dependence and Individual conditional expectation plot. This plot represents the model prediction for different values of the original variables. It shows the average model behavior for important original variables.
 The grey bar represent the standard deviation of predictions. The green dot represents the average predictions.
