@@ -56,7 +56,7 @@ Download H2O’s subset of the Freddie Mac Single-Family Loan-Level dataset to y
 
 ### Launch Experiment 
 
-1\. Load the loan_level.csv to Driverless AI by clicking **Add Dataset (or Drag and Drop)** on the **Datasets overview** page. Click on **Upload File**, then select **loan_level.csv** file. Once the file uploaded, select **Details**.
+1\. Load the loan_level.csv to Driverless AI by clicking **Add Dataset (or Drag and Drop)** on the **Datasets overview** page. Click on **Upload File**, then select **loan_level.csv** file. Once the file is uploaded, select **Details**.
 
 ![loan-level-details-selection](assets/loan-level-details-selection.jpg)
 
@@ -72,7 +72,7 @@ Download H2O’s subset of the Freddie Mac Single-Family Loan-Level dataset to y
 - C6 - MORTGAGE_INSURANCE_PERCENTAGE
 - C7 - NUMBER_OF_UNITS
 
-3\. Continue scrolling the current page to see more columns (image is not included)
+3\. Continue scrolling through the current page to see more columns (image is not included)
 - C8 - OCCUPANCY_STATUS
 - C9 - ORIGINAL_COMBINED_LOAN_TO_VALUE
 - C10 - ORIGINAL_DEBT_TO_INCOME_RATIO
@@ -95,7 +95,7 @@ Download H2O’s subset of the Freddie Mac Single-Family Loan-Level dataset to y
 - C27 - DELINQUENT- This column is the label we are interested in predicting where False -> not defaulted and True->defaulted
 
 
-4\. Return to the **Datasets** page
+4\. Return to the **Datasets** overview page
 
 5\. Click on the **loan_level_500k.csv** file then split 
 
@@ -152,7 +152,7 @@ On task 2, we will explore and update the **Experiment Settings**.
 
 1\.  Hover over to **Experiment Settings** and note the three knobs, **Accuracy**, **Time** and **Interpretability**.
 
-The **Experiment Settings** describes the Accuracy, Time and Interpretability of your specific experiment. The knobs on the experiment settings are adjustable, as the values change the meaning of the settings on the left-bottom page change.
+The **Experiment Settings** describe the Accuracy, Time, and Interpretability of your specific experiment. The knobs on the experiment settings are adjustable, as the values change the meaning of the settings on the left-bottom page change.
 
 Here is an overview of the Experiments settings: 
 
@@ -270,7 +270,7 @@ As we learned in the [Automatic Machine Learning Introduction Tutorial Concepts]
 
 ### Binary Classifier
 
-Let’s take a look at binary classification model. A binary classification model predicts if an outcome is one of two values such as true or false. In the case of our example, either you default on your home loan or not. The generated model should be able to predict those two outcomes.
+Let’s take a look at binary classification model. A binary classification model predicts in what two categories(classes) the elements of a given set belong to. In the case of our example, the two categories(classes) are **defaulting** on your home loan and **not defaulting**. The generated model should be able to predict in which category each customer falls under.
 
 ![binary-output](assets/binary-output.jpg)
 
@@ -302,8 +302,7 @@ An essential tool for classification problems is the ROC Curve or Receiver Opera
 
 Once the model has been built and trained using the training dataset, it gets passed through a classification method (Logistic Regression, Naive Bayes Classifier, support vector machines, decision trees, random forest, etc…), this will give the probability of each customer defaulting. 
 
-The ROC curve plots the Sensitivity or true positive rate (y-axis) versus 1-Specificity or false positive rate (x-axis) for every possible classification threshold. A classification threshold or decision threshold is the probability value that the model will use to determine where a class belongs to. The threshold acts like a boundary between classes do determine one class from another. Since we are dealing with probabilities of values between 0 and 1 an example of a threshold can be 0.5. This tells the model that anything below 0.5 is part of one class and anything above 0.5 belongs to a different class. The threshold can be selected to maximize the true positives while minimizing false positives. A threshold is dependent on the scenario that the 
-ROC curve is being applied to and the type of output we look to maximize. Learn more about the application of  threshold and its implications on [Task 6: ER: ROC](#task-6-er-roc).
+The ROC curve plots the Sensitivity or true positive rate (y-axis) versus 1-Specificity or false positive rate (x-axis) for every possible classification threshold. A classification threshold or decision threshold is the probability value that the model will use to determine where a class belongs to. The threshold acts like a boundary between classes to determine one class from another. Since we are dealing with probabilities of values between 0 and 1 an example of a threshold can be 0.5. This tells the model that anything below 0.5 is part of one class and anything above 0.5 belongs to a different class. The threshold can be selected to maximize the true positives while minimizing false positives. A threshold is dependent on the scenario that the ROC curve is being applied to and the type of output we look to maximize. Learn more about the application of  threshold and its implications on [Task 6: ER: ROC](#task-6-er-roc).
 
 
 Given our example of use case of predicting loans the following provides a description for the values in the confusion matrix:
@@ -348,13 +347,13 @@ The ROC Curve below is very close to the left corner, and therefore it does a go
 
 In the case above 70% of the cases the model correctly predicted the positive and negative outcome and 30% of the cases it did some mix of FP or FN.
 
-This ROC Curve lies on the diagonal line that splits the graph in half. Since it is further away from the left corner, it does a very poor job at distinguishes between classes, this is the worst case scenario, and it has an AUC of .05 or 50%:
+This ROC Curve lies on the diagonal line that splits the graph in half. Since it is further away from the left corner, it does a very poor job at distinguishing between classes, this is the worst case scenario, and it has an AUC of .05 or 50%:
 
 ![roc-auc-05](assets/roc-auc-05.jpg)
 
-An AUC of 0.5, tells us that our model is a good as a random model that has a 50% chance of predicting the outcome. Our model does not better than flipping a coin, 50% of the chance the model can correctly predict the outcome. 
+An AUC of 0.5, tells us that our model is as good as a random model that has a 50% chance of predicting the outcome. Our model is not better than flipping a coin, 50% of the time the model can correctly predict the outcome. 
 
-Finally, the ROC Curve below represents another perfect scenario! When the ROC curve lies below the 50% model or the random chance model, then the model needs to be reviewed carefully. The reason for this is that there could have been potential mislabeling of the negatives and positives which caused the values to be reversed and hence the ROC curve below the random chance model. Although this ROC Curve looks like it has an AUC of 0.0 or 0% when we flip it we get an AUC of 1 or 100%.
+Finally, the ROC Curve below represents another perfect scenario! When the ROC curve lies below the 50% model or the random chance model, then the model needs to be reviewed carefully. The reason for this is that there could have been potential mislabeling of the negatives and positives which caused the values to be reversed and hence the ROC curve is below the random chance model. Although this ROC Curve looks like it has an AUC of 0.0 or 0% when we flip it we get an AUC of 1 or 100%.
 
 ![roc-auc-0](assets/roc-auc-0.jpg)
 
@@ -380,7 +379,7 @@ Below is another way of visualizing Precision and Recall, this image was borrowe
 
 A Prec-Recall Curve is created by connecting all precision-recall points through non-linear interpolation [5]. The Pre-Recall plot is broken down into two sections, “Good” and “Poor” performance. “Good” performance can be found on the upper right corner of the plot and “Poor” performance on the lower left corner, see the image below to view the perfect Pre-Recall plot. This division is generated by the baseline. The baseline for Prec-Recall is determined by the ratio of Positives(P) and Negatives(N), where y = P/(P+N), this function represents a classifier with a random performance level[6]. When the dataset is balanced the value of the baseline is y = 0.5. If the dataset is imbalanced where the number of P’s is higher than N’s then the baseline will be adjusted accordingly and vice versa.
 
-The Perfect Prec-Recall Curve is a combination of two straight lines (in red). The plot tells us that the model made no prediction errors! In other words, no false positives(perfect precision) and no false negatives (perfect recall) assuming a baseline of 0.5. 
+The Perfect Prec-Recall Curve is a combination of two straight lines (in red). The plot tells us that the model made no prediction errors! In other words, no false positives (perfect precision) and no false negatives (perfect recall) assuming a baseline of 0.5. 
 
 ![prec-recall-1](assets/prec-recall-1.jpg)
 
@@ -392,13 +391,13 @@ This Prec-Recall Curve in red below has an AUC of approximately 0.7 (in blue) wi
 
 ![prec-recall-07](assets/prec-recall-07.jpg)
 
-Finally, this Prec-Recall Curve represents the worst case scenario where the model is making generating 100% false positives and false negatives. This Prec-Recall Curve has an AUC of 0.0 or 0%:
+Finally, this Prec-Recall Curve represents the worst case scenario where the model is generating 100% false positives and false negatives. This Prec-Recall Curve has an AUC of 0.0 or 0%:
 
 ![prec-recall-00](assets/prec-recall-00.jpg)
 
 From the Prec-Recall plot some metrics are derived that can be helpful in assessing the model’s performance, such as accuracy and Fᵦ scores.These metrics will be explained in more depth in the next section of the concepts. Just note that accuracy or ACC is the ratio number of correct predictions divided by the total number of predictions and Fᵦ is the harmonic mean of recall and precision.
 
-When looking at ACC in Prec-Recall is imperative to note that ACC does not perform well imbalanced datasets. This is why the **F-scores** can be used to account for the skewed dataset in Prec-Recall. 
+When looking at ACC in Prec-Recall precision is the positive observations imperative to note that ACC does not perform well imbalanced datasets. This is why the **F-scores** can be used to account for the skewed dataset in Prec-Recall. 
 
 As you consider the accuracy of a model for the positive cases you want to know a couple of things:
 
@@ -447,7 +446,7 @@ Using the confusion matrix table, the F1 score can be calculated in the followin
 F0.5 = 1.25((precision)(recall)/ 0.25precision + recall)
 
 Where:
-precision is the positive observations (true positives) the model correctly identified from all the observations it labeled as positive (the true positives + the false positives). Recall is the positive observations (true positives) the model correctly identified from all the actual positive cases (the true positives + the false negatives)[15].
+Precision is the positive observations (true positives) the model correctly identified from all the observations it labeled as positive (the true positives + the false positives). Recall is the positive observations (true positives) the model correctly identified from all the actual positive cases (the true positives + the false negatives)[15].
 
 The **F2 score** is the weighted harmonic mean of the precision and recall (given a threshold value). Unlike the F1 score, which gives equal weight to precision and recall, the F2 score gives more weight to recall than to precision. More weight should be given to recall for cases where False Negatives are considered worse than False Positives. For example, if your use case is to predict which customers will churn, you may consider False Negatives worse than False Positives. In this case, you want your predictions to capture all of the customers that will churn. Some of these customers may not be at risk for churning, but the extra attention they receive is not harmful. More importantly, no customers actually at risk of churning have been missed[15].
 
@@ -687,7 +686,7 @@ Click on the confusion matrix located on the **Metrics Plot** section of the Dia
 
 Let’s take a closer look at the confusion matrix generated by the Driverless AI model.
 
-The first part of the confusion matrix we are going to look at is the **Predicted labels** and **Actual labels**.  As shown on the image below the **Predicted label** values for **Predicted Condition Negative** or  **0** and **Predicted Condition Positive**or **1**  run vertically while the **Actual label** values for **Actual Condition Negative** or **0** and **Actual Condition Positive** or **1** run horizontally on the matrix.
+The first part of the confusion matrix we are going to look at is the **Predicted labels** and **Actual labels**.  As shown on the image below the **Predicted label** values for **Predicted Condition Negative** or  **0** and **Predicted Condition Positive** or **1**  run vertically while the **Actual label** values for **Actual Condition Negative** or **0** and **Actual Condition Positive** or **1** run horizontally on the matrix.
 
 Using this layout, we will be able to determine how well the model predicted the people that defaulted and those that did not from our Freddie Mac test dataset. Additionally, we will be able to compare it to the actual labels from the test dataset.
 
@@ -702,7 +701,7 @@ Moving into the inner part of the matrix, we find the number of cases for True N
 
 ![diagnostics-confusion-matrix-2](assets/diagnostics-confusion-matrix-2.jpg)
 
-The next layer we will look at is the **Total** sections for **Predicted label** and ** Actual label**. 
+The next layer we will look at is the **Total** sections for **Predicted label** and **Actual label**. 
 
 On the right side of the confusion matrix are the totals for the **Actual label**  and at the base of the confusion matrix, the totals for the **Predicted label**.
 
@@ -764,7 +763,7 @@ The image below represents the scores for the **lekecucu** model using the fredd
 
 ![diagnostics-scores](assets/diagnostics-scores.jpg)
 
-When the experiment was run for this classification model, Driverless AI determined that the best scorer for it was the Logarithmic Loss or  **LOGLOSS** due to the imbalanced nature of the dataset. **LOGLOSS** focuses on getting the probabilities right (strongly penalizes wrong probabilities). The selection of Logarithmic Loss makes sense since we want a model that can correctly classify those who are most likely to default while ensuring that those that qualify for a loan get can get one.
+When the experiment was run for this classification model, Driverless AI determined that the best scorer for it was the Logarithmic Loss or **LOGLOSS** due to the imbalanced nature of the dataset. **LOGLOSS** focuses on getting the probabilities right (strongly penalizes wrong probabilities). The selection of Logarithmic Loss makes sense since we want a model that can correctly classify those who are most likely to default while ensuring that those that qualify for a loan get can get one.
 
 Recall that Log loss is measured in the range of 0 to 1, where a model with a log loss of 0 would be the perfect classifier and 1 the worst. Our model  scored  a LOGLOSS value = .1187+/- .0164 after testing it with test dataset. From the confusion matrix, we saw that the model had issues classifying perfectly; however, it was able to classify with an ACCURACY of .9643 +/- .0055. The financial implications of the misclassifications have been covered in the confusion matrix section above.
 
@@ -819,14 +818,14 @@ At this threshold, the model predicted:
 - FN = 0 = 4337 cases predicted to not default and defaulted
 
 
-3\.   From the AUC, Best MCC, F1 and Accuracy values from the ROC curve, how would you qualify your model, is it a good or bad model? 
+3\.  From the AUC, Best MCC, F1, and Accuracy values from the ROC curve, how would you qualify your model, is it a good or bad model? Use the key points below to help you asses the ROC Curve.
 
 
 Remember that for the **ROC** curve: 
-The perfect classification model has an AUC of 1
-MCC is measured in the range between -1 and +1 where +1 is the perfect prediction, 0 no better than a random prediction and -1 all incorrect predictions.
-F1 is measured in the range of 0 to 1, where 0 means that there are no true positives, and 1 when there is neither false negatives nor false positives or perfect precision and recall.
-Accuracy is measured in the range of 0 to 1, where 1 is perfect accuracy or perfect classification, and 0 is poor accuracy or poor classification.
+- The perfect classification model has an AUC of 1
+- MCC is measured in the range between -1 and +1 where +1 is the perfect prediction, 0 no better than a random prediction and -1 all incorrect predictions.
+- F1 is measured in the range of 0 to 1, where 0 means that there are no true positives, and 1 when there is neither false negatives nor false positives or perfect precision and recall.
+- Accuracy is measured in the range of 0 to 1, where 1 is perfect accuracy or perfect classification, and 0 is poor accuracy or poor classification.
 
 > Note: If you are not sure what AUC, MCC, F1, and Accuracy are or how they are calculated review the concepts section of this tutorial.
 
@@ -857,7 +856,7 @@ We are going to use this new experiment to run a new diagnostics test. You will 
 5\. Once in the **Diagnostics** page, select **+Diagnose Model**
 
 6\. In the **Create new model diagnostics** : 
-1. Click on Diagnosed Experiment then select the experiment that you completed in Task  in this case the experiment name is **mumidocu** 
+1. Click on Diagnosed Experiment then select the experiment that you completed in Task in this case the experiment name is **mumidocu** 
 2. Click on Dataset then select the freddie_mac_500_test dataset
 3. Initiate the diagnostics model by clicking on **Launch Diagnostics** 
 
@@ -894,7 +893,7 @@ The first model predicted:
 
 The threshold for best accuracy changed from .5098 for the first diagnostics model to .7630 for the new model. This increase in threshold improved accuracy or the number of correct predictions made as a ratio of all predictions made. Note, however, that while the number of FP decreased the number of FN increased.  We were able to reduce the number of cases that were predicted to falsy default, but in doing so, we increased the number of FN or cases that were predicted not to default and did.
 
-The takeaway is that there is no win-win, sacrifices need to be made. In the case of accuracy, we increased the number of mortgage loans, especially for those who were denied a mortgage because they were predicted to default when in reality they did not. However, we also increased the number of cases that should not have been granted a loan and did.  As a mortgage lender, would you prefer to reduce the number of False Positives or False Negatives?
+The takeaway is that there is no win-win; sacrifices need to be made. In the case of accuracy, we increased the number of mortgage loans, especially for those who were denied a mortgage because they were predicted to default when, in reality, they did not. However, we also increased the number of cases that should not have been granted a loan and did.  As a mortgage lender, would you prefer to reduce the number of False Positives or False Negatives?
 
 10\. Exit out of the ROC curve by clicking on the **x** located at the top-right corner of the plot, next to the **Download** option
 
@@ -936,7 +935,7 @@ Looking at the  P-R curve results, is this a good model to determine if a custom
 
 ![diagnostics-prec-recall-best-mccr](assets/diagnostics-prec-recall-best-mcc.jpg)
 
-3\.  From the observed AUC, Best MCC, F1 and Accuracy values for P-R, how would you qualify your model, is it a good or bad model? 
+3\.  From the observed AUC, Best MCC, F1 and Accuracy values for P-R, how would you qualify your model, is it a good or bad model? Use the key points below to help you asses the P-R curve.
 
 Remember that for the **P-R** curve :
 
@@ -986,9 +985,9 @@ Remember that for the **Gains** curve:
 
 ![diagnostics-gains-10-percent](assets/diagnostics-gains-10-percent.jpg)
 
-For this Gain Chart, if we look at the top 1% of the data, the at-chance model (the dotted diagonal line) tells us that only we would have correctly identified 1% of the defaulted mortgage cases. The model generated (yellow curve) shows that it was able to identify about 12% of the defaulted mortgage cases. 
+For this Gain Chart, if we look at the top 1% of the data, the at-chance model (the dotted diagonal line) tells us that we would have correctly identified 1% of the defaulted mortgage cases. The model generated (yellow curve) shows that it was able to identify about 12% of the defaulted mortgage cases. 
 
-If we hover over to the top 10% of the data, the at-chance model (the dotted diagonal line) tells us that only we would have correctly identified 10% of the defaulted mortgage cases. The model generated (yellow curve) says that it was able to identify about 54% of the defaulted mortgage cases. 
+If we hover over to the top 10% of the data, the at-chance model (the dotted diagonal line) tells us that we would have correctly identified 10% of the defaulted mortgage cases. The model generated (yellow curve) says that it was able to identify about 54% of the defaulted mortgage cases. 
 
 3\. Based on the shape of the gain curve and the baseline (white diagonal dashed line) would you consider this a good model? 
 
@@ -1063,7 +1062,6 @@ Remember that for the K-S chart:
 For this K-S chart, if we look at the top  20% of the data, the at-chance model (the dotted diagonal line) tells us that only 20% of the data was successfully separate between positives and negatives (defaulted and not defaulted). However, with the model it was able to do .5573 or about 56% of the cases were successfully separated between positives and negatives.
 
 3\. Based on the K-S curve(yellow) and the baseline (white diagonal dashed line) is this a good model?
-
 
 
 4\. Exit out of the K-S chart by clicking on the **x** located at the top-right corner of the plot, next to the **Download** option
