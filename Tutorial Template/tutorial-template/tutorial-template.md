@@ -89,6 +89,8 @@ To number the steps on an image we use the Snagit **Step** shape below:
 
 ![snagit-step](assets/snagit-step.jpg)
 
+![snagit-step-1](assets/snagit-step-1.jpg)
+
 If there are items that you want to point further out, make a note after the image, and you can use that space to highlight items on that image as such:
 
 **Note** : Bold any word or DAI tool Keyword using asterisks ** **.
