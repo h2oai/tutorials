@@ -18,7 +18,7 @@ feedback: https://github.com/h2oai/tutorials/issues
 - [Task 2: Concepts](#task-2-concepts)
 - [Task 3: Title 3](#task-3-title-3) 
 - [Task 4: Next Steps](#task-4-next-steps) 
-- [Task 5: Appendix A: Title of Appendix](#task-5-appendix-a-tittle-of-appendix)
+- [Task 5: Appendix A: Title of Appendix](#task-5-appendix-a-title-of-appendix)
 
 ## Objective
 
