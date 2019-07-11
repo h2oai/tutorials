@@ -18,7 +18,7 @@ feedback: https://github.com/h2oai/tutorials/issues
 - [Task 2: Concepts](#task-2-concepts)
 - [Task 3: Title 3](#task-3-title-3) 
 - [Task 4: Next Steps](#task-4-next-steps) 
-- [Task 5: Appendix A:](#task-5-appendix-a)
+- [Task 5: Appendix A: Title of Appendix](#task-5-appendix-a-tittle-of-appendix)
 
 ## Objective
 
@@ -106,11 +106,13 @@ The focus of breaking the tutorial into tasks is to allow readers to digest very
 At the end of every task include any references an additional resources that you think would be useful for readers:
 
 ### References
+
 [1] [Reference 1](URL to the reference)
 
 [2] [Reference 2](URL to the reference)
 
 ### Deeper Dive and Resources
+
 [1] [Resource 1](URL to resource 1)
 
 [2] [Resource 2](URL to resource 2)
@@ -124,7 +126,7 @@ In the section of **Next Steps**, share with readers other tutorials that would 
   - Visualize ...
   
 
-### Task 5: Appendix A:
+## Task 5: Appendix A: Title of Appendix
 
 The appendix can include:
 
