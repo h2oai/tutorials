@@ -79,9 +79,9 @@ provide the right color of text highlighting on our website.
 For many readers, this might be the first time they are coming across the content. Provide a high-level introduction to concepts that will help readers understand and navigate the tutorial.
 The section can be used as a reference for terminology brought up throughout the tutorial.
 
-Try to provide images highlighting significant steps. We try to highlight the steps within the image with tools like Snagit.
+Save the images with names that are meaningful and reference the action you are tyring to highligh. Also, save the images as with a jpg format and at 75% quality. Try to provide images highlighting significant steps. We try to highlight the steps within the image with tools like Snagit.
 
-In Snagit, we use the color green (R: 26, G:142, B:18) and use the shape seen on the image below to highlight items.
+In Snagit, we use the color green **(R: 26, G:142, B:18)** and use the shape seen on the image below to highlight items.
 
 ![snagit-shape](assets/snagit-shape.jpg)
 
