@@ -83,11 +83,11 @@ Try to provide images highlighting significant steps. We try to highlight the st
 
 In Snagit, we use the color green (R: 26, G:142, B:18) and use the shape seen on the image below to highlight items.
 
-![snagit-shape](assets/snagit-shape)
+![snagit-shape](assets/snagit-shape.jpg)
 
 To number the steps on an image we use the Snagit **Step** shape below:
 
-![snagit-step](assets/snagit-step)
+![snagit-step](assets/snagit-step.jpg)
 
 If there are items that you want to point further out, make a note after the image, and you can use that space to highlight items on that image as such:
 
