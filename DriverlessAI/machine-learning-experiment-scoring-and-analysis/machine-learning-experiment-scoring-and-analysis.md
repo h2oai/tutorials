@@ -1076,7 +1076,7 @@ For this K-S chart, if we look at the top  20% of the data, the at-chance model 
 
 Driverless AI makes it easy to download the results of your experiments, all at the click of a button.  
 
-1\. Let’s explore the auto generated documents for this experiment. On the ** Experiment** page select **Download Experiment Summary**.
+1\. Let’s explore the auto generated documents for this experiment. On the **Experiment** page select **Download Experiment Summary**.
 
 ![download-experiment-summary](assets/download-experiment-summary.jpg)
 
