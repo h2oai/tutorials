@@ -67,7 +67,7 @@ Download H2O’s subset of the Freddie Mac Single-Family Loan-Level dataset to y
 2\. Let’s take a quick look at the columns:
 
 ![loan-level-details-page](assets/loan-level-details-page.jpg)
-**Things to Note:**
+*Things to note:*
 - C1 - CREDIT_SCORE
 - C2 - FIRST_PAYMENT_DATE
 - C3 - FIRST_TIME_HOMEBUYER_FLAG
@@ -195,7 +195,7 @@ This configuration was selected to generate a model quickly with a sufficient le
 3\. Hover over to **Expert Settings** and click on it. An image similar to the one below will appear:
 
 ![expert-settings-1](assets/expert-settings-1.jpg)
-**Things to Note:**
+*Things to note:*
 1. **Upload Custom Recipe**
 2. **Load Custom Recipe From URL** 
 3. **General**
@@ -711,7 +711,7 @@ Now we are going to run a model diagnostics on the freddie_mac_500_test set. The
 
 ![new-model-diagnostics](assets/new-model-diagnostics.jpg) 
 
-**Things to Note** :
+*Things to note*:
 
 1. Name of new diagnostics model
 2. **Model**: Name of ML model used for diagnostics
@@ -725,7 +725,7 @@ Now we are going to run a model diagnostics on the freddie_mac_500_test set. The
 
 ![diagnostics-model-results](assets/diagnostics-model-results.jpg)
 
-**Things to Note**:
+*Things to note*:
 
 1. **Info**: Information about the diagnostics model including the name of the test dataset, name of the experiment used and the target column used for the experiment
 2. **Scores**: Summary for the values for GINI, MCC, F05, F1, F2, Accuracy, Log loss, AUC and AUCPR in relation to how well the experiment model scored against a “new” dataset
