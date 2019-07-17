@@ -4,7 +4,7 @@
 
 # Driverless AI
 
-This repository has tutorials that focus on Driverless AI version **1.5.2**.
+This repository has tutorials that focus on Driverless AI version **1.7.0**.
 
 Check out our new [tutorials portal](https://h2oai.github.io/tutorials/) where you will find our latest DAI tutorials including: 
 
@@ -15,6 +15,9 @@ Check out our new [tutorials portal](https://h2oai.github.io/tutorials/) where y
 For Driverless AI 1.4.2 tutorials, check out:
 
 - [Automatic ML Intro Tutorial](https://github.com/h2oai/tutorials/blob/1.4.2/DriverlessAI/automatic-ml-intro-tutorial/automatic-ml-intro-tutorial.md)
+
+For Driverless AI 1.6.0 tutorials, check out:
+- [Automatic ML Intro Tutorial](https://github.com/h2oai/tutorials/blob/1.6.0/DriverlessAI/automatic-ml-intro-tutorial/automatic-ml-intro-tutorial.md)
 
 ## Running Into Issues With Tutorials?
 
@@ -27,6 +30,6 @@ If you are certain there is an issue with the tutorial, please [create a new iss
 Fix issues, help clarify topics, update a tutorial to be compatible with the newest releases, or even create a brand new tutorial!
 
 - [Contribute Tutorial Updates](https://github.com/h2oai/tutorials/blob/master/.github/contribute-tutorial-updates.md)
-- Write A New Tutorial (coming soon)
+- [Write A New Tutorial](https://github.com/h2oai/tutorials/wiki/Write-a-New-Tutorial)
 
 If you'd rather simply suggest changes or fixes to make, or if you have an idea for a new tutorial you'd like to see, feel free to create a [new issue](https://github.com/h2oai/tutorials/issues), and a community member will check it out.
