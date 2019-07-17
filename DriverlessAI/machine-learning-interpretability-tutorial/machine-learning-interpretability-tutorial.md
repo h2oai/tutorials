@@ -26,6 +26,8 @@ The motivations for interpretability are:
   
 In this tutorial, we will generate a machine learning model using an example financial dataset and explore some of the most popular ways to interpret a generated machine learning model. Furthermore, we will learn to interpret the results, graphs, scores and reason code values of H2O Driverless AI generated models.
 
+**Note**: We recommend that you go over the entire tutorial first to review all the concepts, that way, once you start the experiment, you will be more familiar with the content.
+
 ### Deeper Diver and Resources 
 
 **Learn more about Interpretability**:
@@ -101,7 +103,7 @@ Let’s have a look at the columns:
 2: 2 Months late
 Up to 9 Months late
 
-3\. Continue scrolling  current  page to see more columns.(Image is not included.)
+3\. Continue scrolling the current page to see more columns.(Image is not included.)
 
 8. **BILL_AMT0-BILL_AMT6** - Recent credit card bills up to 6 months ago
 9. **PAYAMT0-_PAY_AMT6** - Recent payment towards their bill up to 6 months ago
@@ -170,7 +172,7 @@ The more complex a function, the more difficult it is to explain. Simple functio
 
 **Nonlinear, monotonic functions**: Although most machine learned response functions are nonlinear, some can be constrained to be monotonic with respect to any given input feature. While there is no single coefficient that represents the change in the response function induced by a change in a single input feature, nonlinear and monotonic functions are fairly transparent because their output always changes in one direction as a single input feature changes.
 
-**Nonlinear, monotonic response functions** also enable accountability through the generation of both reason codes and feature importance measures. Moreover, nonlinear, monotonic response functions may even be suitable for use in regulated applications. In Driverless AI, users may soon be able to train nonlinear, monotonic models for additional interpretability. Nonlinear, non-monotonic functions: Most machine learning algorithms create nonlinear, non-monotonic response functions. This class of functions are typically the least transparent and accountable of the three classes of functions discussed here. Their output can change in a positive or negative direction and at a varying rate for any change in an input feature. Typically, the only standard transparency measure these functions provide are global feature importance measures. By default, Driverless AI trains nonlinear, non-monotonic functions.
+**Nonlinear, monotonic response functions** also enable accountability through the generation of both reason codes and feature importance measures. Moreover, nonlinear, monotonic response functions may even be suitable for use in regulated applications. In Driverless AI, users may soon be able to train nonlinear, monotonic models for additional interpretability. Nonlinear, non-monotonic functions: Most machine learning algorithms create nonlinear, non-monotonic response functions. This class of functions is typically the least transparent and accountable of the three classes of functions discussed here. Their output can change in a positive or negative direction and at a varying rate for any change in an input feature. Typically, the only standard transparency measure these functions provide are global feature importance measures. By default, Driverless AI trains nonlinear, non-monotonic functions.
 
 ### Scope 
 
@@ -245,7 +247,7 @@ The plot above is a sample of a Shapley plot. Shapley is an “old”, very adva
  
 Viewing the Global Shapley values plot is good place to start  because it provides a global view of feature importance and we can see which features are driving the model from an overall perspective. 
 
-Derived features can be difficult to understand. For that reason, it helps also to look at this complex system from the space of the original inputs, surrogate models allows to us to do this.
+Derived features can be difficult to understand. For that reason, it also helps to look at this complex system from the space of the original inputs, surrogate models allows to us to do this.
 
 2\. Click on **Surrogate Models**, **Random Forest**, then **Feature Importance**.
 
@@ -253,11 +255,11 @@ Derived features can be difficult to understand. For that reason, it helps also 
 
 The **Feature Importance** plot ranks the original features. These features are the original drivers of the model in the original feature space. These values were calculated by building  a **Random Forest** between the original features and the predictions of the complex driverless AI model that was just trained. 
 
-3\. View the **Surrogate Model Summary **, **Random Forest** summary:
+3\. View the **Surrogate Model Summary**, **Random Forest** summary:
 
 ![summary-random-forest](assets/summary-random-forest.jpg)
 
-This single **Random Forest** model of a complex Driverless AI model is very helpful because we can see that this is a trustworthy model between the original inputs to the system and the predictions of the system. Note the low mean squared error(0.035), high R2 (96.72%). 
+This single **Random Forest** model of a complex Driverless AI model is very helpful because we can see that this is a trustworthy model between the original inputs to the system and the predictions of the system. Note the low mean squared error(0.044), high R2 (95%). 
 
 4\. Go back to the Shapley plot and find the feature importance of LIMIT_BAL. How important was LIMIT_BAL in the global feature importance space? Was LIMIT_BAL a main driver in this space?
 
@@ -286,8 +288,8 @@ Through the **Shapley Values** and **Feature Importance**, we got a global persp
 
 *Things to note*:
 1.  These values of PAY_0  represent the average predictions of all persons that paid on time or did not use their credit card
-2. This value represents the average prediction of persons who where late one month for PAY_0
-3.  PAY_0 =2 has an average default probability of 0.600, then the default probability slowly drops all the way to month 8. Does this make sense to you?
+2. This value represents the average prediction of persons who were late one month for PAY_0
+3.  PAY_0 =2 has an average default probability of 0.590, then the default probability slowly drops all the way to month 8. Does this make sense to you?
 
 The results indicate that overall, in the entire dataset, the worst thing for a person to be in regarding defaulting with respect to PAY_0 is to be two months late. This behavior insight needs to be judged by the user who can determine whether this model should be trusted.
 
@@ -330,7 +332,7 @@ The grey area is the standard deviation of the partial dependence. The wider the
 
 Now we are going to gain some insights into interactions. There are two ways in Driverless AI to do this, one of them is the **Decision Tree**. A **Decision Tree** is another surrogate model.
 
-1\. Select **Surrogate Models**,  then **Decision Tree**
+1\. Select **Surrogate Models**, then **Decision Tree**
 
 ![decision-tree](assets/decision-tree.jpg)
 
@@ -373,7 +375,7 @@ It is important to note that what we are confirming is not whether the model's r
 1. **Decision Tree** path for low default probability 
 2. **Decision Tree** path for high default probability. 
 
-Based on the **Decision Tree**, to end up at the high probability of default bucket, a person would need to miss the first payment (PAY_0), for PAY_3 not make any purchases or miss the payment and be late on PAY_5. A history of poor repayment behavior from 5 months ago would more than likely place a person down the path of defaulting on their total bill payment. Just like the path with low default probability, the behavior of the variables for the high default probability need to be analyzed and ensure that their interactions and conclusions make sense.
+Based on the **Decision Tree**, to end up at the high probability of default bucket, a person would need to miss the first payment (PAY_0), for PAY_3 not make any purchases or miss the payment and be late on PAY_6. A history of poor repayment behavior from 5 months ago would more than likely place a person down the path of defaulting on their total bill payment. Just like the path with low default probability, the behavior of the variables for the high default probability need to be analyzed and ensure that their interactions and conclusions make sense.
 
 ### Deeper Dive and Resources
 
@@ -386,7 +388,7 @@ Based on the **Decision Tree**, to end up at the high probability of default buc
 K-LIME is a variant of the LIME technique proposed by Ribeiro at al (2016). K-LIME generates global and local explanations that increase the transparency of the Driverless AI model, and allow model behavior to be validated and debugged by analyzing the provided plots, and comparing global and local explanations to one-another, to known standards, to domain knowledge, and to reasonable expectations.
 
 - Scope of Interpretability 
-K-LIME provides several different scales of interpretability: (1) coefficients of the global GLM surrogate provide information about global, average trends, (2) coefficients of in-segment GLM surrogates display average trends in local regions, and (3) when evaluated for specific in-segment observations, K-LIME provides reason codes on a per-observation basis.
+K-LIME provides several different scales of interpretability: (1) coefficients of the global GLM surrogate provide information about global, average trends, (2) coefficients of in-segment GLM surrogates display average trends in local regions, and (3) when evaluated for specific in-segment observations, K-LIME provides reason codes on a pre-observation basis.
 
 - Appropriate Response Function Complexity 
 (1) K-LIME can create explanations for machine learning models of high complexity. (2) K-LIME accuracy can decrease when the Driverless AI model becomes too nonlinear.
@@ -432,7 +434,7 @@ Adding the **Actual Target** to the plot allows us to check if the model is not 
 ![k-lime-lime-model-prediction](assets/k-lime-lime-model-prediction.jpg)
 
 *Things to note*:
-1. The high value of R2=89.70% and low RMSE=0.063 value show that this is a highly accurate linear model. In other words this surrogate model is good enough to proceed, and explains almost 90% of the variance in the Driverless AI model predictions. 
+1. The high value of R2=88% and low RMSE=0.0695 value show that this is a highly accurate linear model. In other words this surrogate model is good enough to proceed, and explains almost 90% of the variance in the Driverless AI model predictions. 
 
 This single linear model trained on the original inputs of the system to predict the predictions of the Driverless AI model shows that the Driverless AI model predictions are highly linear. The plot above is an implementation of LIME or Local Interpretable Model Agnostic Explanations which often uses linear surrogate models to help reason about the predictions of a complex model.
 
@@ -458,9 +460,9 @@ The local model predictions (white points) can be used to reason through the Dri
 
 *Things to note*:
 
-1. The reason codes shows that the Driverless model prediction gave this person .71 percent probability of defaulting. LIME gave them a .69 percent probability of defaulting and in this case we can say that LIME is 97.2% accurate. Based on this observation, it can concluded that the local reason codes are fairly trustworthy. If **Lime Prediction Accuracy** drops below 75%, then we can say that the numbers are probably untrustworthy, and the Shapley plot or LOCO plot should be revisited because the Shapley values are always accurate, and LOCO accounts for nonlinearity and interactions.
+1. The reason codes shows that the Driverless model prediction gave this person .76 percent probability of defaulting. LIME gave them a .72 percent probability of defaulting and in this case we can say that LIME is 94.7% accurate. Based on this observation, it can concluded that the local reason codes are fairly trustworthy. If **Lime Prediction Accuracy** drops below 75%, then we can say that the numbers are probably untrustworthy, and the Shapley plot or LOCO plot should be revisited because the Shapley values are always accurate, and LOCO accounts for nonlinearity and interactions.
 
-2. PAY_0 = 3 months late is the top positive local attribute for this person and contributes .35 probability points to their prediction according to this linear model. 0.35 is the local linear model coefficient for level 3 of the categorical variable PAY_0.
+2. PAY_0 = 2 months late is the top positive local attribute for this person and contributes .35 probability points to their prediction according to this linear model. 0.35 is the local linear model coefficient for level 3 of the categorical variable PAY_0.
 
 3. Cluster 13 reason codes show the average linear trends in the data region around this person. 
 
@@ -505,7 +507,7 @@ The grey bars or local numeric contributions can be used to generated reason cod
 Things to note:
 1. Row number being observed
 2. Global Shapley value 
-3. A sample of a Shapley Local  numeric contribution of a variable for the high probability person in row 11427
+3. A sample of a Shapley Local  numeric contribution of a variable for the high probability person in row 15454
  
 3\. Pick another high probability person on the **K-LIME** plot and return to the **Shapley** plot and determine what local Shapley values have influenced the person you selected from defaulting (look for the largest grey bars)?
 
@@ -515,7 +517,7 @@ Things to note:
 
 ![decision-tree-local-value](assets/decision-tree-local-value.jpg)
 
-Based on the **Decision Tree** above, for the high probability person in row 11427 the grey path is consistent with the largest grey bars in the Shapley Local plot.
+Based on the **Decision Tree** above, for the high probability person in row 15454 the grey path is consistent with the largest grey bars in the Shapley Local plot.
 
 6\. Is the **Decision Tree** path you selected consistent with the Shapley Local values you noted for question 3?
 
@@ -530,7 +532,7 @@ Based on the **Decision Tree** above, for the high probability person in row 114
 
 Individual conditional expectation (ICE) plots, a newer and less well-known adaptation of partial dependence plots, can be used to create more localized explanations for a single individual using the same basic ideas as partial dependence plots. ICE Plots were described by Goldstein et al (2015). ICE values are simply disaggregated partial dependence, but ICE is also a type of nonlinear sensitivity analysis in which the model predictions for a single row are measured while a variable of interest is varied over its domain. ICE plots enable a user to determine whether the model’s treatment of an individual row of data is outside one standard deviation from the average model behavior, whether the treatment of a specific row is valid in comparison to average model behavior, known standards, domain knowledge, and reasonable expectations, and how a model will behave in hypothetical situations where one variable in a selected row is varied across its domain.
 
-ICE is simply the prediction of the model for the person in question, in our case row 11427. The data for this row was fixed except for PAY_0 then it was cycled through different pay values. The plot above is the result of this cycling. If the ICE values (grey dots) diverge from the partial dependence (yellow dots). In other words, if ICE values are going up and partial dependence going down. This behavior can be indicative of an interaction. The reason for this is that the individual behavior (grey dots) is different since it is diverging from the average behavior.
+ICE is simply the prediction of the model for the person in question, in our case row 15454. The data for this row was fixed except for PAY_0 then it was cycled through different pay values. The plot above is the result of this cycling. If the ICE values (grey dots) diverge from the partial dependence (yellow dots). In other words, if ICE values are going up and partial dependence going down. This behavior can be indicative of an interaction. The reason for this is that the individual behavior (grey dots) is different since it is diverging from the average behavior.
 
 ### ICE Plots
 1\. Select **Dashboard**
@@ -541,8 +543,8 @@ ICE is simply the prediction of the model for the person in question, in our cas
 *Things to note*:
 1. ICE (grey dots)
 2. Partial Dependence (yellow dots)
-3. LOCO feature Importance for the person in row 11427 (grey bars) in relation to global feature importance 
-4. Decision Tree Path for the person in row 11427
+3. LOCO feature Importance for the person in row 15454 (grey bars) in relation to global feature importance 
+4. Decision Tree Path for the person in row 15454
 
 We can observe divergence on the ICE plot and confirm possible interactions with the surrogate decision tree (the grey path). There seems to be interactions between PAY_0, PAY_3 and PAY_6 when PAY_0 = 3 - 4.
 
