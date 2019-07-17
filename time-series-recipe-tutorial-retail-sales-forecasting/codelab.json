@@ -1,0 +1,25 @@
+{
+  "environment": "web",
+  "source": "/Users/acastro/Desktop/time-series-recipe-tutorial-retail-sales-forecasting/time-series-recipe-tutorial-retail-sales-forecasting.md",
+  "format": "html",
+  "prefix": "../assets",
+  "mainga": "UA-49880327-14",
+  "updated": "2019-07-16T21:15:57-07:00",
+  "id": "time-series-recipe-tutorial-retail-sales-forecasting",
+  "duration": 0,
+  "title": "Time Series Recipe Tutorial",
+  "summary": "Check the list",
+  "theme": "",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "driverless"
+  ],
+  "tags": [
+    "driverless",
+    "machine-learning",
+    "time-series"
+  ],
+  "url": "time-series-recipe-tutorial-retail-sales-forecasting"
+}

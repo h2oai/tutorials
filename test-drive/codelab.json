@@ -1,11 +1,11 @@
 {
   "environment": "web",
-  "source": "/Users/acastro/Desktop/Test-Drive/test-drive.md",
+  "source": "/Users/acastro/Desktop/test-drive/test-drive.md",
   "format": "html",
   "prefix": "../assets",
   "mainga": "UA-49880327-14",
-  "updated": "2019-03-26T20:34:18-07:00",
-  "id": "test-drive",
+  "updated": "2019-07-16T21:18:38-07:00",
+  "id": "getting-started-with-driverless-ai-test-drive",
   "duration": 0,
   "title": "Getting Started with Driverless AI Test Drive",
   "summary": "Check the list",
@@ -19,8 +19,8 @@
   "tags": [
     "aquarium",
     "driverless",
-    "security",
+    "machine-learning",
     "test-drive"
   ],
-  "url": "test-drive"
+  "url": "getting-started-with-driverless-ai-test-drive"
 }
