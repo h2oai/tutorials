@@ -29,7 +29,7 @@ Basic knowledge of Driverless AI or doing the Automatic Machine Learning Intro t
 
 You can get more information about getting a Driverless AI environment or trial from the following:
 
--[A Two Hour Test Drive Session](https://github.com/h2oai/tutorials/blob/master/DriverlessAI/Test-Drive/test-drive.md)  
+- [A Two Hour Test Drive Session](https://github.com/h2oai/tutorials/blob/master/DriverlessAI/Test-Drive/test-drive.md)  
 - [H2O Driverless AI License Key](https://github.com/h2oai/tutorials/blob/master/DriverlessAI/automatic-ml-intro-tutorial/automatic-ml-intro-tutorial.md#prerequisites) 
 - [H2O Driverless AI Environment and Product Tour](https://github.com/h2oai/tutorials/blob/master/DriverlessAI/automatic-ml-intro-tutorial/automatic-ml-intro-tutorial.md#task-1-get-environment-and-product-tour) 
 
@@ -70,7 +70,7 @@ If you are using Aquarium as your environment then the following labs, **Test Dr
 - **Date** - the week
 - **Weekly_Sales** - sales for the given department in the given store, what we are trying to predict
 MarkDown1-5 - anonymized data related to promotional markdowns that this global retail store is running. MarkDown data is only available after Nov 2011, and is not available for all stores all the time. Any missing value is marked with an NA. 
-- **MarkDown1** - 
+- **MarkDown1** 
 - **MarkDown2**
 - **MarkDown3**
 
@@ -576,9 +576,9 @@ At the end of the experiment, a similar page will appear:
 ![mli-time-series-group-test-metrics](assets/mli-time-series-group-test-metrics.jpg)
 
 9\. On the **Group Search** box:
-Enter the following Dept and Store numbers: ``3,12``
-(Dept, Store) options will appear below the **Group Search** box, select ``3,12`` 
-A plot similar to the one below will appear with the actual and predicted values plotted for Department 3, Store 12:
+1. Enter the following Dept and Store numbers: ``3,12``
+2. (Dept, Store) options will appear below the **Group Search** box, select ``3,12`` 
+3. A plot similar to the one below will appear with the actual and predicted values plotted for Department 3, Store 12:
 
 ![mli-group-dept-3-12-actual-vs-predicted](assets/mli-group-dept-3-12-actual-vs-predicted.jpg)
 
