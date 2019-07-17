@@ -62,7 +62,7 @@ Download H2O’s subset of the Freddie Mac Single-Family Loan-Level dataset to y
 
 ![loan-level-details-selection](assets/loan-level-details-selection.jpg)
 
-> Note: You will see two more datasets, but you can ignore them, as we will be working with the loan_level_500k.csv file. 
+**Note**: You will see two more datasets, but you can ignore them, as we will be working with the loan_level_500k.csv file. 
 
 2\. Let’s take a quick look at the columns:
 
@@ -113,12 +113,14 @@ Download H2O’s subset of the Freddie Mac Single-Family Loan-Level dataset to y
 1. Type 'freddie_mac_500_train' for OUTPUT NAME 1, this will serve as the training set
 2. Type 'freddie_mac_500_test' for OUTPUT NAME 2, this will serve as the test set
 3. For Target Column select **Delinquent**
-4. You can set the Random Seed to any number you'd like, we chose 42, by choosing a random seed, we will obtaine a consistent split
+4. You can set the Random Seed to any number you'd like, we chose 42, by choosing a random seed, we will obtain a consistent split
 5. Change the split value to .75 by adjusting the slider to 75% or entering .75 in the section that says Train/Valid Split Ratio
 6. Save
 
 
-The training set contains 375k rows, each row representing a loan, and 27 columns representing the attributes of each loan including the column that has the label we are trying to predict.  Note: the actual data in training and test split vary by user, as the data is split randomly. The Test set contains 125k rows, each row representing a loan, and 27 attribute columns representing attributes of each loan.
+The training set contains 375k rows, each row representing a loan, and 27 columns representing the attributes of each loan including the column that has the label we are trying to predict. 
+
+ **Note**: the actual data in training and test split vary by user, as the data is split randomly. The Test set contains 125k rows, each row representing a loan, and 27 attribute columns representing attributes of each loan.
 
 7\. Verify that there are three datasets, **freddie_mac_500_test**, **freddie_mac_500_train** and **loan_level_500k.csv**:
 
@@ -390,7 +392,7 @@ A ROC Curve is also able to tell you how well your model did by quantifying its 
 
 Below are four types of ROC Curves with its AUC:
 
-> Note: The closer the ROC Curve is to the left ( the bigger the AUC percentage), the better the model is at separating between classes. 
+**Note**: The closer the ROC Curve is to the left ( the bigger the AUC percentage), the better the model is at separating between classes. 
 
 The Perfect ROC Curve (in red) below can separate classes with 100% accuracy and has an AUC of 1.0  (in blue):
 
@@ -440,7 +442,7 @@ The Perfect Prec-Recall Curve is a combination of two straight lines (in red). T
 
 Similarly to the ROC curve, we can use the area under the curve or AUC to help us compare the performance of the model with other models. 
 
-> Note: The closer the Prec-Recall Curve is to the upper-right corner (the bigger the AUC percentage) the better the model is at correctly predicting the true positives. 
+**Note**: The closer the Prec-Recall Curve is to the upper-right corner (the bigger the AUC percentage) the better the model is at correctly predicting the true positives. 
 
 This Prec-Recall Curve in red below has an AUC of approximately 0.7 (in blue) with a relative baseline of 0.5:
 
@@ -670,7 +672,7 @@ Below are three questions to test your understanding of the experiment summary a
 
 2\.  Take a look at the validation Score for the final pipeline and compare that value to the test score. Based on those scores would you consider this model a good or bad model?
 	
-> Note: If you are not sure what Log loss is, feel free to review the concepts section of this tutorial.
+**Note**: If you are not sure what Log loss is, feel free to review the concepts section of this tutorial.
 
 
 3\. So what do the Log Loss values tell us?  The essential Log Loss value is the test score value. This value tells us how well the model generated did against the freddie_mac_500_test set based on the error rate. In case of experiment **fubuviti**, the test score LogLoss = .1179 which is the log of the misclassification rate. The greater the log loss value (closer to 1) the more significant the misclassification. For this experiment, the Log Loss was relatively small meaning the error rate for misclassification was not as substantial. But what would a score like this mean for an institution like Freddie Mac?
@@ -727,11 +729,13 @@ Now we are going to run a model diagnostics on the freddie_mac_500_test set. The
 
 1. **Info**: Information about the diagnostics model including the name of the test dataset, name of the experiment used and the target column used for the experiment
 2. **Scores**: Summary for the values for GINI, MCC, F05, F1, F2, Accuracy, Log loss, AUC and AUCPR in relation to how well the experiment model scored against a “new” dataset
-Note: The new dataset must be the same format and with the same number of columns as the training dataset 
+
+**Note** : The new dataset must be the same format and with the same number of columns as the training dataset 
+
 3. **Metric Plots**: Metrics used to score the experiment model including ROC Curve, Pre-Recall Curve, Cumulative Gains, Lift Chart, Kolmogorov-Smirnov Chart, and Confusion Matrix
 4. **Download Predictions**: Download the diagnostics predictions
  
-> Note: The scores will be different for the train dataset and the validation dataset used during  the training of the model.
+**Note**: The scores will be different for the train dataset and the validation dataset used during  the training of the model.
 
 #### Confusion Matrix 
 
@@ -776,20 +780,20 @@ On the right side of the confusion matrix are the totals for the **Actual label*
 The final layer of the confusion matrix we will explore are the errors. The errors section is one of the first places where we can check how well the model performed. The better the model does at classifying labels on the test dataset the lower the error rate will be. The **error rate** is also known as the **misclassification rate** which answers the question of how often is the model wrong?
 
 For this particular model these are the errors:
-- 152/120,537 = 0.0012 or 0.12%  times the model classified actual cases that did not default as defaulting out of the actual non-defaulting group
-- 4,282/4,498 = 0.952 or 95.2% times the model classified actual cases that did default as not defaulting out of the actual defaulting group
-- 4,282/124,667 = 0.0343 or 3.43% times the model classified predicted cases that did default as not defaulting out of the total predicted not defaulting group
+- 152/120537 = 0.0012 or 0.12%  times the model classified actual cases that did not default as defaulting out of the actual non-defaulting group
+- 4282/4498 = 0.952 or 95.2% times the model classified actual cases that did default as not defaulting out of the actual defaulting group
+- 4282/124667 = 0.0343 or 3.43% times the model classified predicted cases that did default as not defaulting out of the total predicted not defaulting group
 - 216/368 = 0.587  or 58.7% times the model classified predicted cases that defaulted as defaulting out of the total predicted defaulting group
-- (4,282 + 152) / 125,035 = **0.0355**  This means that this model incorrectly classifies  .0355 or 3.55% of the time.
+- (4282 + 152) / 125035 = **0.0355**  This means that this model incorrectly classifies  .0355 or 3.55% of the time.
  
 What does the misclassification error of .0355 mean?
 One of the best ways to understand the impact of this misclassification error is to look at the financial implications of the False Positives and False Negatives. As mentioned previously, the False Positives represent the loans predicted not to default and in reality did default. 
 Additionally, we can look at the mortgages that Freddie Mac missed out on by not granting loans because the model predicted that they would default when in reality they did not default. 
 
 One way to look at the financial implications for Freddie Mac is to look at the total paid interest rate per loan. The mortgages on this dataset are traditional home equity loans which means that the loans are:
-A fixed borrowed amount
-Fixed interest rate
-Loan term and monthly payments are both fixed
+- A fixed borrowed amount
+- Fixed interest rate
+- Loan term and monthly payments are both fixed
 
 For this tutorial, we will assume a 6% Annual Percent Rate(APR) over 30 years. APR is the amount one pays to borrow the funds. Additionally, we are going to assume an average home loan of $167,473(this average was calculated by taking the sum of all the loans on the freddie_mac_500.csv dataset and dividing it by 30,001 which is the total number of mortgages on this dataset). For a mortgage of $167,473 the total interest paid after 30 years would be $143,739.01[1]. 
 
@@ -885,7 +889,7 @@ Remember that for the **ROC** curve:
 - F1 is measured in the range of 0 to 1, where 0 means that there are no true positives, and 1 when there is neither false negatives nor false positives or perfect precision and recall.
 - Accuracy is measured in the range of 0 to 1, where 1 is perfect accuracy or perfect classification, and 0 is poor accuracy or poor classification.
 
-> Note: If you are not sure what AUC, MCC, F1, and Accuracy are or how they are calculated review the concepts section of this tutorial.
+**Note**: If you are not sure what AUC, MCC, F1, and Accuracy are or how they are calculated review the concepts section of this tutorial.
 
 ### New Model with Same Parameters
 
@@ -1003,7 +1007,7 @@ Remember that for the **P-R** curve :
 - Accuracy is measured in the range of 0 to 1, where 1 is perfect accuracy or perfect classification, and 0 is poor accuracy or poor classification.
 
 
-> Note: If you are not sure what AUC, MCC, F1, and Accuracy are or how they are calculated review the concepts section of this tutorial.
+**Note**: If you are not sure what AUC, MCC, F1, and Accuracy are or how they are calculated review the concepts section of this tutorial.
 
 ### New Model with Same Parameters
 
@@ -1035,7 +1039,7 @@ Remember that for the **Gains** curve:
 - The dashed line is the baseline (overall response rate)
 - It helps answer the question of  “What fraction of all observations of the positive target class are in the top predicted 1%, 2%, 10%, etc. (cumulative)?” By definition, the Gains at 100% are 1.0.
 
-> Note: The y-axis of the plot has been adjusted to represent quantiles, this allows for focus on the quantiles that have the most data and therefore the most impact.
+**Note**: The y-axis of the plot has been adjusted to represent quantiles, this allows for focus on the quantiles that have the most data and therefore the most impact.
 
 1\. Hover over the various quantile points on the Gains chart to view the quantile percentage and cumulative gain values
 
@@ -1051,7 +1055,7 @@ If we hover over to the top 10% of the data, the at-chance model (the dotted dia
 
 Remember that the perfect prediction model starts out pretty steep, and as a rule of thumb the steeper the curve, the higher the gain. The area between the baseline (white diagonal dashed line) and the gain curve (yellow curve) better known as the area under the curve visually shows us how much better our model is than that of the random model. There is always room for improvement. The gain curve can be steeper.
 
-> Note: If you are not sure what AUC or what the gain chart is, feel free to review the concepts section of this tutorial.
+**Note**: If you are not sure what AUC or what the gain chart is, feel free to review the concepts section of this tutorial.
 
 4\. Exit out of the Gains chart by clicking on the **x** located at the top-right corner of the plot, next to the **Download** option
 
@@ -1074,7 +1078,7 @@ A Lift chart is a visual aid for measuring model performance.
 - The greater the area between the lift curve and the baseline, the better the model.
 - It helps answer the question of “How many times more observations of the positive target class are in the top predicted 1%, 2%, 10%, etc. (cumulative) compared to selecting observations randomly?” By definition, the Lift at 100% is 1.0.
 
-> Note:  The y-axis of the plot has been adjusted to represent quantiles, this allows for focus on the quantiles that have the most data and therefore the most impact.
+**Note**:  The y-axis of the plot has been adjusted to represent quantiles, this allows for focus on the quantiles that have the most data and therefore the most impact.
 
 
 1\. Hover over the various quantile points on the Lift chart to view the quantile percentage and cumulative lift values
@@ -1108,7 +1112,7 @@ Remember that for the K-S chart:
 - The K-S range is between 0 and 1
 - The higher the K-S value, the better the model is at separating the positive from negative cases
 
-> Note : The y-axis of the plot has been adjusted to represent quantiles, this allows for focus on the quantiles that have the most data and therefore the most impact.
+**Note**: The y-axis of the plot has been adjusted to represent quantiles, this allows for focus on the quantiles that have the most data and therefore the most impact.
 
 1\. Hover over the various quantile points on the Lift chart to view the quantile percentage and cumulative lift values
 
@@ -1134,7 +1138,7 @@ For this K-S chart, if we look at the top  20% of the data, the at-chance model 
 
 Driverless AI makes it easy to download the results of your experiments, all at the click of a button.  
 
-1\. Let’s explore the auto generated documents for this experiment. On the ** Experiment** page select **Download Experiment Summary**.
+1\. Let’s explore the auto generated documents for this experiment. On the **Experiment** page select **Download Experiment Summary**.
 
 ![download-experiment-summary](assets/download-experiment-summary.jpg)
 
