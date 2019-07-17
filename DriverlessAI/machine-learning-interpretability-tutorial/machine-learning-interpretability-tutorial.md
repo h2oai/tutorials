@@ -131,7 +131,7 @@ Up to 9 Months late
 
 ![experiment-page-brief-explanation](assets/experiment-page-brief-explanation.jpg)
 
-Things to note:
+*Things to note*:
 1. **Interpretability**  - The interpretability knob is adjustable. The higher the interpretability, the simpler the features the main modeling routine will extract from the dataset.
 If the interpretability is high enough then a monotonically constrained model will be generated.
 2. **Time** - The number of generations a genetic algorithm you can wait for. Higher the time the longer the wait since Driverless AI will work to engineer many features.
@@ -336,7 +336,7 @@ Now we are going to gain some insights into interactions. There are two ways in 
 
 ![decision-tree](assets/decision-tree.jpg)
 
-Things to note:
+*Things to note*:
 
 1. The RMSE value is low and the R2 value is fairly high
 2. The values at the top of the **Decision Tree** are those variables of higher importance. 
@@ -352,7 +352,7 @@ A potential interaction happens when a variable is below another variable in the
 
 ![decision-tree-variable-interaction](assets/decision-tree-variable-interaction.jpg)
 
-Things to note:
+*Things to note*:
 1. Potential Interaction between PAY_0 and PAY_2. This observation can be strengthened by looking at the Shapley Plot and locating any PAY_0 and PAY_2 interactions.
 
 2. The thickness of the yellow line indicates that this is the most common path through the decision tree. This path is the lowest probability of default leaf node. Does this make sense from a business perspective?
@@ -502,9 +502,9 @@ The grey bars or local numeric contributions can be used to generated reason cod
 
 ![local-shapley-value-plot](assets/local-shapley-value-plot.jpg)
 
->Note: The Shapley plot will depend on K-LIME point you selected.
+**Note**: The Shapley plot will depend on K-LIME point you selected.
 
-Things to note:
+*Things to note*:
 1. Row number being observed
 2. Global Shapley value 
 3. A sample of a Shapley Local  numeric contribution of a variable for the high probability person in row 15454
