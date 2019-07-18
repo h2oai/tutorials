@@ -27,7 +27,7 @@
     
       <google-codelab-step label="Objective" duration="0">
         <p>Many tools, such as ROC and Precision-Recall Curves, are available to evaluate how good or bad a classification model is predicting outcomes. In this tutorial, we will use a subset of the Freddie Mac Single-Family Loan-Level dataset to build a classification model and use it to predict if a loan will become delinquent. Through H2O&#39;s DAI Diagnostic tool, we will explore the financial impacts the false positive and false negative predictions have while exploring tools like ROC Curve, Prec-Recall, Gain and Lift Charts, K-S Chart. Finally, we will explore a few metrics such as AUC, F-Scores, GINI, MCC, and Log Loss to assist us in evaluating the performance of the generated model.</p>
-<p><strong>Note</strong>: We recommend that you go over the entire tutorial first to review all the concepts, that way, once you start the experiment, you will be more familiar with the content.</p>
+<p><strong>Note:</strong> We recommend that you go over the entire tutorial first to review all the concepts, that way, once you start the experiment, you will be more familiar with the content.</p>
 
 
       </google-codelab-step>
@@ -66,9 +66,9 @@
 <h2>Launch Experiment</h2>
 <p>1. Load the loan_level.csv to Driverless AI by clicking <strong>Add Dataset (or Drag and Drop)</strong> on the <strong>Datasets overview</strong> page. Click on <strong>Upload File</strong>, then select <strong>loan_level.csv</strong> file. Once the file is uploaded, select <strong>Details</strong>.</p>
 <p><img alt="loan-level-details-selection" src="img/2c4b0b6300ddcb1b.jpg"></p>
-<p><strong>Note</strong>: You will see two more datasets, but you can ignore them, as we will be working with the loan_level_500k.csv file.</p>
+<p><strong>Note:</strong> You will see two more datasets, but you can ignore them, as we will be working with the loan_level_500k.csv file.</p>
 <p>2. Let&#39;s take a quick look at the columns:</p>
-<p><img alt="loan-level-details-page" src="img/29c71991cc943618.jpg"><strong>Things to Note:</strong></p>
+<p><img alt="loan-level-details-page" src="img/29c71991cc943618.jpg"><em>Things to Note:</em></p>
 <ul>
 <li>C1 - CREDIT_SCORE</li>
 <li>C2 - FIRST_PAYMENT_DATE</li>
@@ -105,16 +105,17 @@
 <p>5. Click on the <strong>loan_level_500k.csv</strong> file then split</p>
 <p><img alt="loan-level-split-1" src="img/c89b200fed4966d3.jpg"></p>
 <p>6.  Split the data into two sets: <strong>freddie_mac_500_train</strong> and <strong>freddie_mac_500_test</strong>. Use the image below as a guide:</p>
-<p><img alt="loan-level-split-2" src="img/7da4718e2fd8fd47.jpg"><em>Things to note</em></p>
+<p><img alt="loan-level-split-2" src="img/7da4718e2fd8fd47.jpg"><em>Things to Note:</em></p>
 <ol type="1">
 <li>Type ‘freddie_mac_500_train&#39; for OUTPUT NAME 1, this will serve as the training set</li>
 <li>Type ‘freddie_mac_500_test&#39; for OUTPUT NAME 2, this will serve as the test set</li>
 <li>For Target Column select <strong>Delinquent</strong></li>
-<li>You can set the Random Seed to any number you&#39;d like, we chose 42, by choosing a random seed, we will obtaine a consistent split</li>
+<li>You can set the Random Seed to any number you&#39;d like, we chose 42, by choosing a random seed, we will obtain a consistent split</li>
 <li>Change the split value to .75 by adjusting the slider to 75% or entering .75 in the section that says Train/Valid Split Ratio</li>
 <li>Save</li>
 </ol>
-<p>The training set contains 375k rows, each row representing a loan, and 27 columns representing the attributes of each loan including the column that has the label we are trying to predict.  Note: the actual data in training and test split vary by user, as the data is split randomly. The Test set contains 125k rows, each row representing a loan, and 27 attribute columns representing attributes of each loan.</p>
+<p>The training set contains 375k rows, each row representing a loan, and 27 columns representing the attributes of each loan including the column that has the label we are trying to predict.</p>
+<p><strong>Note:</strong> the actual data in training and test split vary by user, as the data is split randomly. The Test set contains 125k rows, each row representing a loan, and 27 attribute columns representing attributes of each loan.</p>
 <p>7. Verify that there are three datasets, <strong>freddie_mac_500_test</strong>, <strong>freddie_mac_500_train</strong> and <strong>loan_level_500k.csv</strong>:</p>
 <p><img alt="loan-level-three-datasets" src="img/216b0af938db1731.jpg"></p>
 <p>8. Click on the <strong>freddie_mac_500_train</strong> file then select <strong>Predict</strong>.</p>
@@ -164,7 +165,7 @@
 <p><img alt="experiment-settings-2" src="img/3c5120b13aaa724c.jpg"></p>
 <h2>Expert Settings</h2>
 <p>3. Hover over to <strong>Expert Settings</strong> and click on it. An image similar to the one below will appear:</p>
-<p><img alt="expert-settings-1" src="img/62f18b5f1dafbf55.jpg"><strong>Things to Note:</strong></p>
+<p><img alt="expert-settings-1" src="img/62f18b5f1dafbf55.jpg"><em>Things to Note:</em></p>
 <ol type="1">
 <li><strong>Upload Custom Recipe</strong></li>
 <li><strong>Load Custom Recipe From URL</strong></li>
@@ -325,7 +326,7 @@
 <p><strong>1 -Specificity</strong> =  False Positive Rate = 1- True Negative Rate = FP / (FP + TN )</p>
 <p>A ROC Curve is also able to tell you how well your model did by quantifying its performance. The scoring is determined by the percent of the area that is under the ROC curve otherwise known as Area Under the Curve or AUC.</p>
 <p>Below are four types of ROC Curves with its AUC:</p>
-<p><strong>Note</strong>: The closer the ROC Curve is to the left ( the bigger the AUC percentage), the better the model is at separating between classes.</p>
+<p><strong>Note:</strong> The closer the ROC Curve is to the left ( the bigger the AUC percentage), the better the model is at separating between classes.</p>
 <p>The Perfect ROC Curve (in red) below can separate classes with 100% accuracy and has an AUC of 1.0  (in blue):</p>
 <p><img alt="roc-auc-1" src="img/b57984f111c4f15.jpg"></p>
 <p>The ROC Curve below is very close to the left corner, and therefore it does a good job in separating classes with an AUC of 0.7 or 70%:</p>
@@ -350,7 +351,7 @@
 <p>The Perfect Prec-Recall Curve is a combination of two straight lines (in red). The plot tells us that the model made no prediction errors! In other words, no false positives (perfect precision) and no false negatives (perfect recall) assuming a baseline of 0.5.</p>
 <p><img alt="prec-recall-1" src="img/d09e47814b7baf0c.jpg"></p>
 <p>Similarly to the ROC curve, we can use the area under the curve or AUC to help us compare the performance of the model with other models.</p>
-<p><strong>Note</strong>: The closer the Prec-Recall Curve is to the upper-right corner (the bigger the AUC percentage) the better the model is at correctly predicting the true positives.</p>
+<p><strong>Note:</strong> The closer the Prec-Recall Curve is to the upper-right corner (the bigger the AUC percentage) the better the model is at correctly predicting the true positives.</p>
 <p>This Prec-Recall Curve in red below has an AUC of approximately 0.7 (in blue) with a relative baseline of 0.5:</p>
 <p><img alt="prec-recall-07" src="img/306d139a633fa537.jpg"></p>
 <p>Finally, this Prec-Recall Curve represents the worst case scenario where the model is generating 100% false positives and false negatives. This Prec-Recall Curve has an AUC of 0.0 or 0%:</p>
@@ -493,7 +494,7 @@
 <p>Below are three questions to test your understanding of the experiment summary and frame the motivation for the following section.</p>
 <p>1. Find the number of features that were scored for your model and the total features that were selected.</p>
 <p>2.  Take a look at the validation Score for the final pipeline and compare that value to the test score. Based on those scores would you consider this model a good or bad model?</p>
-<p><strong>Note</strong>: If you are not sure what Log loss is, feel free to review the concepts section of this tutorial.</p>
+<p><strong>Note:</strong> If you are not sure what Log loss is, feel free to review the concepts section of this tutorial.</p>
 <p>3. So what do the Log Loss values tell us?  The essential Log Loss value is the test score value. This value tells us how well the model generated did against the freddie_mac_500_test set based on the error rate. In case of experiment <strong>fubuviti</strong>, the test score LogLoss = .1179 which is the log of the misclassification rate. The greater the log loss value (closer to 1) the more significant the misclassification. For this experiment, the Log Loss was relatively small meaning the error rate for misclassification was not as substantial. But what would a score like this mean for an institution like Freddie Mac?</p>
 <p>In the next few tasks we will explore the financial implications of misclassification by exploring the confusion matrix and plots derived from it.</p>
 <h2>Deeper Dive and Resources</h2>
@@ -520,7 +521,7 @@
 <p><img alt="create-new-model-diagnostic" src="img/844b8ec4083de426.jpg"></p>
 <p>4.After the model diagnostics is done running, a model similar to the one below will appear:</p>
 <p><img alt="new-model-diagnostics" src="img/b735bed52a1d1ee9.jpg"></p>
-<p><strong>Things to Note</strong> :</p>
+<p><em>Things to Note:</em></p>
 <ol type="1">
 <li>Name of new diagnostics model</li>
 <li><strong>Model</strong>: Name of ML model used for diagnostics</li>
@@ -532,14 +533,17 @@
 </ol>
 <p>5. Click on the new diagnostics model and a page similar to the one below will appear:</p>
 <p><img alt="diagnostics-model-results" src="img/fc545944e0c086b8.jpg"></p>
-<p><strong>Things to Note</strong>:</p>
+<p><em>Things to Note:</em></p>
 <ol type="1">
 <li><strong>Info</strong>: Information about the diagnostics model including the name of the test dataset, name of the experiment used and the target column used for the experiment</li>
-<li><strong>Scores</strong>: Summary for the values for GINI, MCC, F05, F1, F2, Accuracy, Log loss, AUC and AUCPR in relation to how well the experiment model scored against a &#34;new&#34; dataset<br>Note: The new dataset must be the same format and with the same number of columns as the training dataset</li>
+<li><strong>Scores</strong>: Summary for the values for GINI, MCC, F05, F1, F2, Accuracy, Log loss, AUC and AUCPR in relation to how well the experiment model scored against a &#34;new&#34; dataset</li>
+</ol>
+<p><strong>Note:</strong> The new dataset must be the same format and with the same number of columns as the training dataset</p>
+<ol type="1">
 <li><strong>Metric Plots</strong>: Metrics used to score the experiment model including ROC Curve, Pre-Recall Curve, Cumulative Gains, Lift Chart, Kolmogorov-Smirnov Chart, and Confusion Matrix</li>
 <li><strong>Download Predictions</strong>: Download the diagnostics predictions</li>
 </ol>
-<p><strong>Note</strong>: The scores will be different for the train dataset and the validation dataset used during  the training of the model.</p>
+<p><strong>Note:</strong> The scores will be different for the train dataset and the validation dataset used during  the training of the model.</p>
 <h3>Confusion Matrix</h3>
 <p>As mentioned in the concepts section, the confusion matrix is the root from where most metrics used to test the performance of a model originate. The confusion matrix provides an overview performance of a supervised model&#39;s ability to classify.</p>
 <p>Click on the confusion matrix located on the <strong>Metrics Plot</strong> section of the Diagnostics page, bottom-right corner. An image similar to the one below will come up:</p>
@@ -572,14 +576,19 @@
 <p>The final layer of the confusion matrix we will explore are the errors. The errors section is one of the first places where we can check how well the model performed. The better the model does at classifying labels on the test dataset the lower the error rate will be. The <strong>error rate</strong> is also known as the <strong>misclassification rate</strong> which answers the question of how often is the model wrong?</p>
 <p>For this particular model these are the errors:</p>
 <ul>
-<li>152⁄120,537 = 0.0012 or 0.12%  times the model classified actual cases that did not default as defaulting out of the actual non-defaulting group</li>
-<li>4,282⁄4,498 = 0.952 or 95.2% times the model classified actual cases that did default as not defaulting out of the actual defaulting group</li>
-<li>4,282⁄124,667 = 0.0343 or 3.43% times the model classified predicted cases that did default as not defaulting out of the total predicted not defaulting group</li>
+<li>152⁄120537 = 0.0012 or 0.12%  times the model classified actual cases that did not default as defaulting out of the actual non-defaulting group</li>
+<li>4282⁄4498 = 0.952 or 95.2% times the model classified actual cases that did default as not defaulting out of the actual defaulting group</li>
+<li>4282⁄124667 = 0.0343 or 3.43% times the model classified predicted cases that did default as not defaulting out of the total predicted not defaulting group</li>
 <li>216⁄368 = 0.587  or 58.7% times the model classified predicted cases that defaulted as defaulting out of the total predicted defaulting group</li>
-<li>(4,282 + 152) / 125,035 = <strong>0.0355</strong>  This means that this model incorrectly classifies  .0355 or 3.55% of the time.</li>
+<li>(4282 + 152) / 125035 = <strong>0.0355</strong>  This means that this model incorrectly classifies  .0355 or 3.55% of the time.</li>
 </ul>
 <p>What does the misclassification error of .0355 mean?<br>One of the best ways to understand the impact of this misclassification error is to look at the financial implications of the False Positives and False Negatives. As mentioned previously, the False Positives represent the loans predicted not to default and in reality did default.<br>Additionally, we can look at the mortgages that Freddie Mac missed out on by not granting loans because the model predicted that they would default when in reality they did not default.</p>
-<p>One way to look at the financial implications for Freddie Mac is to look at the total paid interest rate per loan. The mortgages on this dataset are traditional home equity loans which means that the loans are:<br>A fixed borrowed amount<br>Fixed interest rate<br>Loan term and monthly payments are both fixed</p>
+<p>One way to look at the financial implications for Freddie Mac is to look at the total paid interest rate per loan. The mortgages on this dataset are traditional home equity loans which means that the loans are:</p>
+<ul>
+<li>A fixed borrowed amount</li>
+<li>Fixed interest rate</li>
+<li>Loan term and monthly payments are both fixed</li>
+</ul>
 <p>For this tutorial, we will assume a 6% Annual Percent Rate(APR) over 30 years. APR is the amount one pays to borrow the funds. Additionally, we are going to assume an average home loan of $167,473(this average was calculated by taking the sum of all the loans on the freddie_mac_500.csv dataset and dividing it by 30,001 which is the total number of mortgages on this dataset). For a mortgage of $167,473 the total interest paid after 30 years would be $143,739.01[1].</p>
 <p>When looking at the False Positives, we can think about 152 cases of people which the model predicted should be not be granted a home loan because they were predicted to default on their mortgage. These 152 loans translate to over 21 million dollars in loss of potential income (152 * $143,739.01) in interest.</p>
 <p>Now, looking at the True Positives, we do the same and take the 4,282 cases that were granted a loan because the model predicted that they would not default on their home loan. These 4,282 cases translate to about over 615 million dollars in interest losses since the 4,Oaky282 cases defaulted.</p>
@@ -653,7 +662,7 @@
 <li>F1 is measured in the range of 0 to 1, where 0 means that there are no true positives, and 1 when there is neither false negatives nor false positives or perfect precision and recall.</li>
 <li>Accuracy is measured in the range of 0 to 1, where 1 is perfect accuracy or perfect classification, and 0 is poor accuracy or poor classification.</li>
 </ul>
-<p><strong>Note</strong>: If you are not sure what AUC, MCC, F1, and Accuracy are or how they are calculated review the concepts section of this tutorial.</p>
+<p><strong>Note:</strong> If you are not sure what AUC, MCC, F1, and Accuracy are or how they are calculated review the concepts section of this tutorial.</p>
 <h2>New Model with Same Parameters</h2>
 <p>In case you were curious and wanted to know if you could improve the accuracy of the model, this can be done by changing the scorer from Logloss to Accuracy.</p>
 <p>1. To do this, click on the <strong>Experiments</strong>  page.</p>
@@ -740,7 +749,7 @@
 <li>F1 is measured in the range of 0 to 1, where 0 means that there are no true positives, and 1 when there is neither false negatives nor false positives or perfect precision and recall.</li>
 <li>Accuracy is measured in the range of 0 to 1, where 1 is perfect accuracy or perfect classification, and 0 is poor accuracy or poor classification.</li>
 </ul>
-<p><strong>Note</strong>: If you are not sure what AUC, MCC, F1, and Accuracy are or how they are calculated review the concepts section of this tutorial.</p>
+<p><strong>Note:</strong> If you are not sure what AUC, MCC, F1, and Accuracy are or how they are calculated review the concepts section of this tutorial.</p>
 <h2>New Model with Same Parameters</h2>
 <p>Similarly to task 6, we can improve the area under the curve for precision-recall by creating a new model with the same parameters. Note that you do need to change the Scorer from <strong>Logloss</strong> to <strong>AUCPR</strong>.</p>
 <p>To review how to run a new experiment with the same parameters and a different scorer, follow the step on task 6, section <strong>New Model with Same Parameters</strong>.</p>
@@ -766,7 +775,7 @@
 <li>The dashed line is the baseline (overall response rate)</li>
 <li>It helps answer the question of  &#34;What fraction of all observations of the positive target class are in the top predicted 1%, 2%, 10%, etc. (cumulative)?&#34; By definition, the Gains at 100% are 1.0.</li>
 </ul>
-<p><strong>Note</strong>: The y-axis of the plot has been adjusted to represent quantiles, this allows for focus on the quantiles that have the most data and therefore the most impact.</p>
+<p><strong>Note:</strong> The y-axis of the plot has been adjusted to represent quantiles, this allows for focus on the quantiles that have the most data and therefore the most impact.</p>
 <p>1. Hover over the various quantile points on the Gains chart to view the quantile percentage and cumulative gain values</p>
 <p>2. What is the cumulative gain at  1%, 2%, 10% quantiles?</p>
 <p><img alt="diagnostics-gains-10-percent" src="img/284f07fab07859ec.jpg"></p>
@@ -774,7 +783,7 @@
 <p>If we hover over to the top 10% of the data, the at-chance model (the dotted diagonal line) tells us that we would have correctly identified 10% of the defaulted mortgage cases. The model generated (yellow curve) says that it was able to identify about 54% of the defaulted mortgage cases.</p>
 <p>3. Based on the shape of the gain curve and the baseline (white diagonal dashed line) would you consider this a good model?</p>
 <p>Remember that the perfect prediction model starts out pretty steep, and as a rule of thumb the steeper the curve, the higher the gain. The area between the baseline (white diagonal dashed line) and the gain curve (yellow curve) better known as the area under the curve visually shows us how much better our model is than that of the random model. There is always room for improvement. The gain curve can be steeper.</p>
-<p><strong>Note</strong>: If you are not sure what AUC or what the gain chart is, feel free to review the concepts section of this tutorial.</p>
+<p><strong>Note:</strong> If you are not sure what AUC or what the gain chart is, feel free to review the concepts section of this tutorial.</p>
 <p>4. Exit out of the Gains chart by clicking on the <strong>x</strong> located at the top-right corner of the plot, next to the <strong>Download</strong> option</p>
 <h2>Deeper Dive and Resources</h2>
 <ul>
@@ -795,7 +804,7 @@
 <li>The greater the area between the lift curve and the baseline, the better the model.</li>
 <li>It helps answer the question of &#34;How many times more observations of the positive target class are in the top predicted 1%, 2%, 10%, etc. (cumulative) compared to selecting observations randomly?&#34; By definition, the Lift at 100% is 1.0.</li>
 </ul>
-<p><strong>Note</strong>:  The y-axis of the plot has been adjusted to represent quantiles, this allows for focus on the quantiles that have the most data and therefore the most impact.</p>
+<p><strong>Note:</strong>  The y-axis of the plot has been adjusted to represent quantiles, this allows for focus on the quantiles that have the most data and therefore the most impact.</p>
 <p>1. Hover over the various quantile points on the Lift chart to view the quantile percentage and cumulative lift values</p>
 <p>2. What is the cumulative lift at 1%, 2%, 10% quantiles?<br><img alt="diagnostics-lift-10-percent" src="img/7ffbb6d085cd4d2b.jpg"><br>For this Lift Chart, all the predictions were sorted according to decreasing scores generated by the model. In other words, uncertainty increases as the quantile moves to the right. At the 10% quantile, our model predicted a cumulative lift of about 5.4%, meaning that among the top 10% of the cases, there were five times more defaults.</p>
 <p>3. Based on the area between the lift curve and the baseline (white horizontal dashed line) is this a good model?</p>
@@ -820,7 +829,7 @@
 <li>The K-S range is between 0 and 1</li>
 <li>The higher the K-S value, the better the model is at separating the positive from negative cases</li>
 </ul>
-<p><strong>Note</strong>: The y-axis of the plot has been adjusted to represent quantiles, this allows for focus on the quantiles that have the most data and therefore the most impact.</p>
+<p><strong>Note:</strong> The y-axis of the plot has been adjusted to represent quantiles, this allows for focus on the quantiles that have the most data and therefore the most impact.</p>
 <p>1. Hover over the various quantile points on the Lift chart to view the quantile percentage and cumulative lift values</p>
 <p>2. What is the cumulative lift at 1%, 2%, 10% quantiles?</p>
 <p><img alt="diagnostics-ks-20-percent" src="img/4e47fb5917d9fcda.jpg"></p>
@@ -838,7 +847,7 @@
     
       <google-codelab-step label="Task 11: Experiment AutoDocs" duration="0">
         <p>Driverless AI makes it easy to download the results of your experiments, all at the click of a button.</p>
-<p>1. Let&#39;s explore the auto generated documents for this experiment. On the ** Experiment** page select <strong>Download Experiment Summary</strong>.</p>
+<p>1. Let&#39;s explore the auto generated documents for this experiment. On the <strong>Experiment</strong> page select <strong>Download Experiment Summary</strong>.</p>
 <p><img alt="download-experiment-summary" src="img/51c919e3cf310680.jpg"></p>
 <p>The <strong>Experiment Summary</strong> contains the following:</p>
 <ul>

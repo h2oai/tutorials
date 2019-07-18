@@ -79,9 +79,9 @@
 <p><strong>Note</strong>: If the correct license key was entered, the <strong>Status</strong> box will show further details about the license.</p>
 <p><img alt="driverless-license-key" src="img/83da7309a7c70ac7.jpg"></p>
 <h2>Quick Product Tour</h2>
-<p>1. Welcome to the Driverless AI home page!</p>
+<p>1. Welcome to the Driverless AI <strong>Datasets</strong> page!</p>
 <p><img alt="driverless-welcome-page" src="img/d02cd9a921d01c79.jpg"></p>
-<p>The Driverless UI is easy to navigate. The following features are found on the welcome page. We will explore these features as we launch an experiment in the next tasks.</p>
+<p>The Driverless UI is easy to navigate. The following features are found on the page. We will explore these features as we launch an experiment in the next tasks.</p>
 <ol type="1">
 <li><strong>Projects</strong>: Projects menu option</li>
 <li><strong>Datasets</strong>: View of current datasets. You can also upload or delete a dataset.</li>
@@ -94,12 +94,12 @@
 <li><strong>Messages[ ]</strong>: View news and upcoming Driverless AI events.</li>
 <li><strong>Logout H2OAI</strong>: Logs you out of your current session.</li>
 <li><strong>&lt;</strong>: Go back to the previous page.</li>
-<li><strong>H2OAI</strong>: Takes you back to the H2OAI Welcome Page.</li>
+<li><strong>H2OAI</strong>: Takes you back to the H2OAI <strong>Datasets</strong> Page.</li>
 <li><strong>Driverless AI 1.X.X</strong>: Version of Driverless AI</li>
 <li><strong>Add a Dataset(or Drag and Drop)</strong>: Upload or add a dataset.</li>
 </ol>
 <p>2. Select <strong>Projects</strong> , an image similar to the one below will appear:<br><img alt="projects-page" src="img/e5697c8e1f04661f.jpg"></p>
-<p><strong>Things to note</strong>:</p>
+<p><em>Things to note</em>:</p>
 <ol type="1">
 <li><strong>Projects</strong>: Projects menu option</li>
 <li>Pre-created <strong>Project</strong> which includes:<br><br><ul>
@@ -120,7 +120,7 @@
 <li><strong>+New Project</strong>: Option to create a new project</li>
 </ol>
 <p>3. Open the <strong>Time Series Tutorial</strong>, an image similar to the one below will appear:<br><img alt="projects-page-time-series" src="img/802f9eddbc81251f.jpg"></p>
-<p><strong>Things to note</strong>:</p>
+<p><em>Things to note</em>:</p>
 <ol type="1">
 <li><strong>Datasets</strong><ul>
 <li><strong>Selected Datasets Type</strong>: Training, Testing or Validation</li>
@@ -211,19 +211,15 @@
       </google-codelab-step>
     
       <google-codelab-step label="Task 3: Load Data" duration="0">
-        <h2>About the Dataset</h2>
+        <p>1. Navigate back to the H2O Driverless <strong>Datasets</strong> page.</p>
+<h2>About the Dataset</h2>
 <p>The dataset used for this experiment is the infamous Titanic Dataset. We will create a predictive model to determine what factors contributed to a passenger surviving. This dataset contains the list of estimated passengers aboard the RMS Titanic.</p>
 <p><strong>Titanic dataset</strong>:</p>
 <p>1309 rows, one row per passenger, and 16 columns representing attributes of each passenger:</p>
 <table>
 <tr></tr>
-<tr><td colspan="1" rowspan="1"><p>Attribute</p>
-</td><td colspan="1" rowspan="1"><p>Definition</p>
-</td><td colspan="1" rowspan="1"><p>Key</p>
-</td></tr>
 <tr><td colspan="1" rowspan="1"><p>passenger Id</p>
 </td><td colspan="1" rowspan="1"><p>Id randomly generated</p>
-</td><td colspan="1" rowspan="1"><p>-</p>
 </td></tr>
 <tr><td colspan="1" rowspan="1"><p>pclass</p>
 </td><td colspan="1" rowspan="1"><p>Passenger Class</p>
@@ -233,13 +229,11 @@
 </td><td colspan="1" rowspan="1"><p>Survival</p>
 </td><td colspan="1" rowspan="1"><p>0=No, 1=Yes</p>
 </td></tr>
-<tr><td colspan="1" rowspan="1"><p>name_with_salutations</p>
+<tr><td colspan="1" rowspan="1"><p>name</p>
 </td><td colspan="1" rowspan="1"><p>Passenger name</p>
-</td><td colspan="1" rowspan="1"><p>-</p>
 </td></tr>
-<tr><td colspan="1" rowspan="1"><p>name_without_salutations</p>
+<tr><td colspan="1" rowspan="1"><p>name(without salutation)</p>
 </td><td colspan="1" rowspan="1"><p>Passenger name without salutations</p>
-</td><td colspan="1" rowspan="1"><p>-</p>
 </td></tr>
 <tr><td colspan="1" rowspan="1"><p>sex</p>
 </td><td colspan="1" rowspan="1"><p>Sex</p>
@@ -247,27 +241,21 @@
 </td></tr>
 <tr><td colspan="1" rowspan="1"><p>age</p>
 </td><td colspan="1" rowspan="1"><p>Age in years</p>
-</td><td colspan="1" rowspan="1"><p>-</p>
 </td></tr>
 <tr><td colspan="1" rowspan="1"><p>sibsp</p>
 </td><td colspan="1" rowspan="1"><p>Number of siblings/Spouse aboard</p>
-</td><td colspan="1" rowspan="1"><p>-</p>
 </td></tr>
 <tr><td colspan="1" rowspan="1"><p>parch</p>
 </td><td colspan="1" rowspan="1"><p>Number of Parents/Children aboard</p>
-</td><td colspan="1" rowspan="1"><p>-</p>
 </td></tr>
 <tr><td colspan="1" rowspan="1"><p>ticket</p>
 </td><td colspan="1" rowspan="1"><p>Ticket number</p>
-</td><td colspan="1" rowspan="1"><p>-</p>
 </td></tr>
 <tr><td colspan="1" rowspan="1"><p>fare</p>
 </td><td colspan="1" rowspan="1"><p>Passenger fare</p>
-</td><td colspan="1" rowspan="1"><p>-</p>
 </td></tr>
 <tr><td colspan="1" rowspan="1"><p>cabin</p>
 </td><td colspan="1" rowspan="1"><p>Cabin number</p>
-</td><td colspan="1" rowspan="1"><p>-</p>
 </td></tr>
 <tr><td colspan="1" rowspan="1"><p>embarked</p>
 </td><td colspan="1" rowspan="1"><p>Port of Embarkment</p>
@@ -275,15 +263,12 @@
 </td></tr>
 <tr><td colspan="1" rowspan="1"><p>boat</p>
 </td><td colspan="1" rowspan="1"><p>Boat number</p>
-</td><td colspan="1" rowspan="1"><p>-</p>
 </td></tr>
 <tr><td colspan="1" rowspan="1"><p>body</p>
 </td><td colspan="1" rowspan="1"><p>Body number</p>
-</td><td colspan="1" rowspan="1"><p>-</p>
 </td></tr>
 <tr><td colspan="1" rowspan="1"><p>home.des</p>
 </td><td colspan="1" rowspan="1"><p>Home Destination</p>
-</td><td colspan="1" rowspan="1"><p>-</p>
 </td></tr>
 </table>
 <h2>Download the Titanic Datasets</h2>
@@ -291,14 +276,13 @@
 <li><a href="https://s3.amazonaws.com/data.h2o.ai/DAI-Tutorials/titanic.csv" target="_blank">Titanic Set</a></li>
 </ul>
 <h2>Load the Data</h2>
-<p>Navigate back to the H2O Driverless Welcome page.</p>
 <ol type="1">
 <li>Click on <strong>Add a Dataset(or Drag and Drop)<br></strong></li>
 <li>Select <strong>UPLOAD FILE</strong></li>
 </ol>
 <p><img alt="add-dataset" src="img/dd2ef2e3b700b047.jpg"></p>
-<p>1. In your local machine, navigate to the directory where the <strong>titanic.csv</strong> dataset was downloaded and select the file</p>
-<p>2. If the file was uploaded successfully then you should see an  image similar to the one below:</p>
+<p>2. In your local machine, navigate to the directory where the <strong>titanic.csv</strong> dataset was downloaded and select the file</p>
+<p>3. If the file was uploaded successfully then you should see an  image similar to the one below:</p>
 <p><img alt="titanic-set-overview" src="img/45b97e15c0e3ef22.jpg"></p>
 <p><em>Things to note</em>:</p>
 <ol type="1">
@@ -340,10 +324,13 @@
 <p><img alt="titanic-set-details-page" src="img/c3e47c15f4b312ec.jpg"></p>
 <p><em>Things to note:</em></p>
 <ol type="1">
-<li>The <strong>Dataset Details Page</strong> provides a summary of the dataset. This summary lists each column that is included in the dataset along with the type, the count, the mean, minimum, maximum, standard deviation, frequency, and the number of unique values.<br>Hover over the top of a column to view the first 20 rows of that column.<br><strong>Note</strong>: Driverless AI recognizes the following column types: integer, string, real, and boolean. Date columns are given a string &#34;str&#34; type.</li>
+<li>The <strong>Dataset Details Page</strong> provides a summary of the dataset. This summary lists each column that is included in the dataset along with the type, the count, the mean, minimum, maximum, standard deviation, frequency, and the number of unique values.<br>Hover over the top of a column to view the first 20 rows of that column.</li>
+</ol>
+<p><strong>Note</strong>: Driverless AI recognizes the following column types: integer, string, real, and boolean. Date columns are given a string &#34;str&#34; type.</p>
+<ol type="1">
 <li>You can view information for a specific column by entering the name of the column in the field above the graph.</li>
 <li><strong>Dataset Rows</strong> allows you to preview the dataset</li>
-<li>Option to exit and return to the H2O Welcome page</li>
+<li>Option to exit and return to the H2O <strong>Datasets</strong> page</li>
 </ol>
 <p>3. Select  <strong>Dataset Rows</strong></p>
 <p><img alt="titanic-set-rows-page" src="img/c04a9f32a8d31506.jpg"></p>
@@ -352,7 +339,7 @@
 <li>Preview the dataset</li>
 <li>View the remaining rows</li>
 <li>Return to the <strong>Dataset Overview</strong></li>
-<li>Option to Exit and return to the H2O Welcome page</li>
+<li>Option to Exit and return to the H2O <strong>Datasets</strong> page</li>
 </ol>
 <p>4. Exit and return to <strong>Datasets Overview</strong> page.</p>
 <h2>Split the Dataset</h2>

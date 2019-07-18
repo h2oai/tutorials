@@ -51,9 +51,9 @@
       </google-codelab-step>
     
       <google-codelab-step label="Task 1: Product Tour" duration="0">
-        <p>Welcome to the Driverless AI home page!</p>
+        <p>Welcome to the Driverless AI <strong>Datasets</strong> page!</p>
 <p><img alt="driverless-welcome-page" src="img/d02cd9a921d01c79.jpg"></p>
-<p>The Driverless UI is easy to navigate. The following features as well as two datasets are found on the welcome page. We will explore these features as we launch an experiment in the next tasks.</p>
+<p>The Driverless UI is easy to navigate. The following features as well as two datasets are found on the <strong>Datasets</strong> page. We will explore these features as we launch an experiment in the next tasks.</p>
 <ol type="1">
 <li><strong>Projects</strong>: Projects menu option</li>
 <li><strong>Datasets</strong>: View of current datasets. You can also upload or delete a dataset.</li>
@@ -66,12 +66,12 @@
 <li><strong>Messages[ ]</strong>: View news and upcoming Driverless AI events.</li>
 <li><strong>Logout H2OAI</strong>: Logs you out of your current session.</li>
 <li><strong>&lt;</strong>: Go back to the previous page.</li>
-<li><strong>H2OAI</strong>: Takes you back to the H2OAI Welcome Page.</li>
+<li><strong>H2OAI</strong>: Takes you back to the H2OAI <strong>Datasets</strong> Page.</li>
 <li><strong>Driverless AI 1.X.X</strong>: Version of Driverless AI</li>
 <li><strong>Add a Dataset(or Drag and Drop)</strong>: Upload or add a dataset.</li>
 </ol>
 <p>2. Select <strong>Projects</strong> , an image similar to the one below will appear:<br><img alt="projects-page" src="img/e5697c8e1f04661f.jpg"></p>
-<p><strong>Things to note</strong>:</p>
+<p><em>Things to Note:</em></p>
 <ol type="1">
 <li><strong>Projects</strong>: Projects menu option</li>
 <li>Pre-created <strong>Project</strong> which includes:<br><br><ul>
@@ -92,7 +92,7 @@
 <li><strong>+New Project</strong>: Option to create a new project</li>
 </ol>
 <p>3. Open the <strong>Time Series Tutorial</strong>, an image similar to the one below will appear:<br><img alt="projects-page-time-series" src="img/802f9eddbc81251f.jpg"></p>
-<p><strong>Things to note</strong>:</p>
+<p><em>Things to Note:</em></p>
 <ol type="1">
 <li><strong>Datasets</strong><ul>
 <li><strong>Selected Datasets Type</strong>: Training, Testing or Validation</li>
@@ -183,19 +183,15 @@
       </google-codelab-step>
     
       <google-codelab-step label="Task 3: Load Data" duration="0">
-        <h2>About the Dataset</h2>
+        <p>1. Navigate back to the H2O Driverless <strong>Datasets</strong> page.</p>
+<h2>About the Dataset</h2>
 <p>The dataset used for this experiment is the infamous Titanic Dataset. We will create a predictive model to determine what factors contributed to a passenger surviving. This dataset contains the list of estimated passengers aboard the RMS Titanic.</p>
 <p><strong>Titanic dataset</strong>:</p>
 <p>1309 rows, one row per passenger, and 16 columns representing attributes of each passenger:</p>
 <table>
 <tr></tr>
-<tr><td colspan="1" rowspan="1"><p>Attribute</p>
-</td><td colspan="1" rowspan="1"><p>Definition</p>
-</td><td colspan="1" rowspan="1"><p>Key</p>
-</td></tr>
 <tr><td colspan="1" rowspan="1"><p>passenger Id</p>
 </td><td colspan="1" rowspan="1"><p>Id randomly generated</p>
-</td><td colspan="1" rowspan="1"><p>-</p>
 </td></tr>
 <tr><td colspan="1" rowspan="1"><p>pclass</p>
 </td><td colspan="1" rowspan="1"><p>Passenger Class</p>
@@ -207,11 +203,9 @@
 </td></tr>
 <tr><td colspan="1" rowspan="1"><p>name_with_salutations</p>
 </td><td colspan="1" rowspan="1"><p>Passenger name</p>
-</td><td colspan="1" rowspan="1"><p>-</p>
 </td></tr>
 <tr><td colspan="1" rowspan="1"><p>name_without_salutations</p>
 </td><td colspan="1" rowspan="1"><p>Passenger name without salutations</p>
-</td><td colspan="1" rowspan="1"><p>-</p>
 </td></tr>
 <tr><td colspan="1" rowspan="1"><p>sex</p>
 </td><td colspan="1" rowspan="1"><p>Sex</p>
@@ -219,27 +213,21 @@
 </td></tr>
 <tr><td colspan="1" rowspan="1"><p>age</p>
 </td><td colspan="1" rowspan="1"><p>Age in years</p>
-</td><td colspan="1" rowspan="1"><p>-</p>
 </td></tr>
 <tr><td colspan="1" rowspan="1"><p>sibsp</p>
 </td><td colspan="1" rowspan="1"><p>Number of siblings/Spouse aboard</p>
-</td><td colspan="1" rowspan="1"><p>-</p>
 </td></tr>
 <tr><td colspan="1" rowspan="1"><p>parch</p>
 </td><td colspan="1" rowspan="1"><p>Number of Parents/Children aboard</p>
-</td><td colspan="1" rowspan="1"><p>-</p>
 </td></tr>
 <tr><td colspan="1" rowspan="1"><p>ticket</p>
 </td><td colspan="1" rowspan="1"><p>Ticket number</p>
-</td><td colspan="1" rowspan="1"><p>-</p>
 </td></tr>
 <tr><td colspan="1" rowspan="1"><p>fare</p>
 </td><td colspan="1" rowspan="1"><p>Passenger fare</p>
-</td><td colspan="1" rowspan="1"><p>-</p>
 </td></tr>
 <tr><td colspan="1" rowspan="1"><p>cabin</p>
 </td><td colspan="1" rowspan="1"><p>Cabin number</p>
-</td><td colspan="1" rowspan="1"><p>-</p>
 </td></tr>
 <tr><td colspan="1" rowspan="1"><p>embarked</p>
 </td><td colspan="1" rowspan="1"><p>Port of Embarkment</p>
@@ -247,19 +235,15 @@
 </td></tr>
 <tr><td colspan="1" rowspan="1"><p>boat</p>
 </td><td colspan="1" rowspan="1"><p>Boat number</p>
-</td><td colspan="1" rowspan="1"><p>-</p>
 </td></tr>
 <tr><td colspan="1" rowspan="1"><p>body</p>
 </td><td colspan="1" rowspan="1"><p>Body number</p>
-</td><td colspan="1" rowspan="1"><p>-</p>
 </td></tr>
 <tr><td colspan="1" rowspan="1"><p>home.des</p>
 </td><td colspan="1" rowspan="1"><p>Home Destination</p>
-</td><td colspan="1" rowspan="1"><p>-</p>
 </td></tr>
 </table>
 <h2>Add the Data</h2>
-<p>Navigate back to the H2O Driverless Welcome page.</p>
 <p>1. Click on <strong>Add a Dataset(or Drag and Drop)</strong></p>
 <p>2. Select <strong>FILE SYSTEM</strong></p>
 <p><img alt="add-dataset-file-system" src="img/9a0d3a3e198b72b8.jpg"></p>
@@ -267,7 +251,7 @@
 <p><img alt="select-titanic-dataset" src="img/f38f0fea5db9d237.jpg"></p>
 <p>4. If the file loaded successfully then you should see an  image similar to the one below:</p>
 <p><img alt="titanic-set-overview" src="img/948efd60359a63.jpg"></p>
-<p><em>Things to note</em>:</p>
+<p><em>Things to Note:</em></p>
 <ol type="1">
 <li>You can view:<ul>
 <li>Dataset filename</li>
@@ -304,21 +288,24 @@
 <p>2. Confirm that the dataset uploaded correctly and that it has the correct number of rows and columns are present.</p>
 <p>3. Click on <strong>Details</strong>. This will take you to the <strong>Dataset Details Page</strong></p>
 <p><img alt="titanic-set-details-page" src="img/c3e47c15f4b312ec.jpg"></p>
-<p><em>Things to note:</em></p>
+<p><em>Things to Note:</em></p>
 <ol type="1">
-<li>The <strong>Dataset Details Page</strong> provides a summary of the dataset. This summary lists each column that is included in the dataset along with the type, the count, the mean, minimum, maximum, standard deviation, frequency, and the number of unique values.<br>Hover over the top of a column to view the first 20 rows of that column.<br><strong>Note</strong>: Driverless AI recognizes the following column types: integer, string, real, and boolean. Date columns are given a string &#34;str&#34; type.</li>
+<li>The <strong>Dataset Details Page</strong> provides a summary of the dataset. This summary lists each column that is included in the dataset along with the type, the count, the mean, minimum, maximum, standard deviation, frequency, and the number of unique values.<br>Hover over the top of a column to view the first 20 rows of that column.</li>
+</ol>
+<p><strong>Note</strong>: Driverless AI recognizes the following column types: integer, string, real, and boolean. Date columns are given a string &#34;str&#34; type.</p>
+<ol type="1">
 <li>You can view information for a specific column by entering the name of the column in the field above the graph.</li>
 <li><strong>Dataset Rows</strong> allows you to preview the dataset</li>
-<li>Option to exit and return to the H2O Welcome page</li>
+<li>Option to exit and return to the H2O <strong>Datasets</strong> page</li>
 </ol>
 <p>3. Select  <strong>Dataset Rows</strong></p>
 <p><img alt="titanic-set-rows-page" src="img/c04a9f32a8d31506.jpg"></p>
-<p><em>Things to note:</em></p>
+<p><em>Things to Note:</em></p>
 <ol type="1">
 <li>Preview the dataset</li>
 <li>View the remaining rows</li>
 <li>Return to the <strong>Dataset Overview</strong></li>
-<li>Option to Exit and return to the H2O Welcome page</li>
+<li>Option to Exit and return to the H2O <strong>Datasets</strong> page</li>
 </ol>
 <p>4. Exit and return to <strong>Datasets Overview</strong> page.</p>
 <h2>Split the Dataset</h2>
@@ -327,7 +314,7 @@
 <p><img alt="titanic-set-split-1" src="img/dbafb4117c756c0f.jpg"></p>
 <p>2. Split the data into two sets: titanic_train and titanic_test. Use the image below as a guide:</p>
 <p><img alt="titanic-set-split-2" src="img/d75e07a3c9a4537b.jpg"></p>
-<p><em>Things to Note</em>:</p>
+<p><em>Things to Note:</em></p>
 <ol type="1">
 <li>Type ‘titanic_train&#39; for OUTPUT NAME 1, this will serve as the training set</li>
 <li>Type ‘titanic_test&#39; for OUTPUT NAME 2, this will serve as the test set</li>
@@ -356,7 +343,7 @@
 <p>3. Take a minute to read about the how the correlation graph was constructed and how variables are color coded to show their correlations.</p>
 <p>4. Take the ‘survived&#39; variable and drag it slightly to have a better look at the other variables it has been found to be correlated to. What variables are strongly correlated with the ‘survived&#39; variable?</p>
 <p><img alt="train-set-correlation-graph" src="img/d6d31388345726cc.jpg"></p>
-<p><em>Things to note:</em></p>
+<p><em>Things to Note:</em></p>
 <ul>
 <li>The <strong>Help</strong> button provides an explanation of the <strong>Correlation Graph</strong>. This feature is available for all graphs.</li>
 <li><strong>Download</strong> allows for a full-scale image of the graph to be downloaded</li>
@@ -406,7 +393,7 @@
 <p>3. Select <strong>Not Now</strong> to come back and take the tour another time.</p>
 <p>4. The following  <strong>Experiment</strong> page will appear:</p>
 <p><img alt="train-set-experiment-page" src="img/8e6bbf05dab7ce6d.jpg"></p>
-<p><em>Things to note:</em></p>
+<p><em>Things to Note:</em></p>
 <ol type="1">
 <li>Select Target Column - What do you want to predict?</li>
 <li>Dropped Columns - Drop column(s) from your dataset that you don&#39;t want to use in the experiment</li>
@@ -426,7 +413,7 @@
 <p>The survived attribute was selected because as an insurance company we want to know what other attributes can contribute to the survival of passengers aboard a ship and incorporate that into our insurance rates.</p>
 <p>8. Your experiment page should look similar to the one below, these are the system suggestions:</p>
 <p><img alt="experiment-settings" src="img/3f5fa2744c79a3f2.jpg"></p>
-<p><em>Things to note:</em></p>
+<p><em>Things to Note:</em></p>
 <ol type="1">
 <li>Assistant - Highlights the different items that you can hover over and get additional information on</li>
 <li>Sample of an Assistant Highlight</li>
@@ -448,7 +435,7 @@
 <p><strong>Note</strong>: To Launch an Experiment: The dataset and the target column are the minimum elements required to launch an experiment.</p>
 <p>10. The <strong>Experiment</strong> page will look similar to the one below after 46% complete:</p>
 <p><img alt="experiment-running-47" src="img/d9acbfe82d4144c7.jpg"></p>
-<p><em>Things to note:</em></p>
+<p><em>Things to Note:</em></p>
 <ol type="1">
 <li>Experiment Name - Randomly generated experiment name. Name can be changed at any time</li>
 <li>Training Data - Dataset details</li>
@@ -460,7 +447,7 @@
 </ol>
 <p>Once the experiment is completed, an Experiment Summary will appear:</p>
 <p><img alt="experiment-summary" src="img/74d1f6bd96562ac3.jpg"></p>
-<p><em>Things to note:</em></p>
+<p><em>Things to Note:</em></p>
 <ol type="1">
 <li>Status Complete Options<br><br><ul>
 <li>Deploy (Local and Cloud)</li>
@@ -594,7 +581,7 @@
 <p>3. Once the <strong>MLI Experiment is finished</strong> pop up comes up, go to MLI page by clicking <strong>Yes</strong>.</p>
 <p>4. The MLI Interpretability Page has the explanations to the model results in a human-readable format.</p>
 <p><img alt="mli-report-page" src="img/e2f1c0a33c2aed34.jpg"></p>
-<p><em>Things to note:</em></p>
+<p><em>Things to Note:</em></p>
 <ol type="1">
 <li>Summary -  Summary of MLI experiment</li>
 <li>DAI Model - Feature importance and Shapley plots for transformed features</li>
@@ -730,26 +717,23 @@
       </google-codelab-step>
     
       <google-codelab-step label="Next Steps" duration="0">
-        <ul>
-<li>Check out Driverss AI next tutorial <a href="https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#0" target="_blank">Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus</a><br>where you will learn how to:<ul>
-<li>Evaluate a DAI model through tools like:<br><br><ul>
+        <p>Check out Driverss AI next tutorial <a href="https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#0" target="_blank">Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus</a></p>
+<p>Where you will learn how to:</p>
+<ul>
+<li>Evaluate a DAI model through tools like:<ul>
 <li>ROC</li>
 <li>Prec-Recall</li>
 <li>Gain and Lift Charts</li>
 <li>K-S Chart</li>
+<li>Metrics such as:</li>
 </ul>
 </li>
-<li>Metrics such as:<br><br><ul>
 <li>AUC</li>
 <li>F-Scores</li>
 <li>GINI</li>
 <li>MCC</li>
 <li>Log Loss</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Request a <a href="https://www.h2o.ai/products/h2o-driverless-ai/" target="_blank">21-Day Free Trial: H2O Driverless AI license Key</a></li>
+<li>Request a 21-Day Free Trial: H2O Driverless AI license Key</li>
 </ul>
 
 
