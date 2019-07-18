@@ -19,7 +19,7 @@ Time-series forecasting is one of the most common and important tasks in busines
 
 Driverless AI has its own recipes for time-series forecasting that combines advanced time-series analysis and H2O’s own Kaggle Grand Masters’ time-series recipes. In this tutorial we will walk through the process of creating a time series experiment and compare the results to a pre-loaded time series experiment based on the same dataset just higher experiment settings.
 
-**Note**: We recommend that you go over the entire tutorial first to review all the concepts, that way, once you start the experiment, you will be more familiar with the content.
+**Note:** We recommend that you go over the entire tutorial first to review all the concepts, that way, once you start the experiment, you will be more familiar with the content.
 
 ## Prerequisites
 You will need the following to be able to do this tutorial:
@@ -63,7 +63,7 @@ If you are using Aquarium as your environment then the following labs, **Test Dr
 
 ![retail-store-train-detail-page](assets/retail-store-train-detail-page.jpg)
 
-**Things to Note:** 
+*Things to Note:* 
 
 - **Store** - the store number
 - **Dept** - the department number
@@ -90,7 +90,7 @@ As mentioned on the objectives, this tutorial includes a pre-ran experiment that
 
 ![projects-page](assets/projects-page.jpg)
 
-**Things to note**:
+*Things to Note:*
 
 1. **Projects**: Projects menu option
 2. Pre-created **Project** which includes:
@@ -221,7 +221,7 @@ Now we will update the experiment settings for our retail sales dataset.
 ![add-test-set](assets/add-test-set.jpg)
 
 2\.  To start the time series experiment you need to select **Time Column**, then select **Date**. 
-**Note**: The date will be defined in the time field, when this is done then Time Series will be enabled, then the  **Time Series Settings** will appear on the top-right side of the page. 
+**Note:** The date will be defined in the time field, when this is done then Time Series will be enabled, then the  **Time Series Settings** will appear on the top-right side of the page. 
 
 ![add-time-column](assets/add-weight-column.jpg)
 
@@ -257,7 +257,7 @@ then select **R2** as the scorer:
 
 8\. Under **Experiment Settings**, update Accuracy, Time and Interpretability to values below, then click on **Launch Experiment**:
 
-**Note**: These settings were selected to conform to the Aquarium/Test Drive Environment. The goal is to walk-through the mechanics of setting up a time series experiment. 
+**Note:**: These settings were selected to conform to the Aquarium/Test Drive Environment. The goal is to walk-through the mechanics of setting up a time series experiment. 
 
 - **Accuracy** : 6
 - **Time** : 1
@@ -376,8 +376,8 @@ The primary generated time series features are lag features, which are a variabl
 
 ![time-series-lag](assets/time-series-lag.jpg)
 
-Note: 
-The top section is the original dataset with training data, the gap and the period we want to predict is also known as the test. 
+**Note:** The top section is the original dataset with training data, the gap and the period we want to predict is also known as the test. 
+
 - The training data expands a certain number of time units. The time units can be anything, it can be years, months, weeks, seconds or just an integer value that increments over time. When the training data stops, then the test data period begins, these are the periods we want to make predictions for. 
 - Another item to note is the gap, which DAI accounts for. The gap is when you don’t have the most recent information available when you want to make predictions. For instance, when we want to make a prediction for tomorrow but we only have data from yesterday because our dataset was not updated today. This means that the only data available to make the predictions are all the data up to yesterday.
 The second section of the image is what happens behind the scenes in DAI to optimize for the top dataset. Here a window which includes test and gap are taken and DAI tries to replicate them internally. We go to the most recent part of the training data and form a validation dataset. This new validation dataset will be of the same size as the test dataset with an artificially added gap so that it matches the original window. Then DAI uses any remaining periods to generate periods to form a training dataset.
@@ -479,7 +479,7 @@ At the end of the experiment, a similar page will appear:
 
 ![experiment-results-summary-page](assets/experiment-results-summary-page.jpg)
 
-*Things to note:**
+*Things to Note:*
 
 1. Status: Complete
     - **Deploy To Cloud**
@@ -532,7 +532,7 @@ At the end of the experiment, a similar page will appear:
 
 ![mli-time-series-explanations-and-debugging-2](assets/mli-time-series-explanations-and-debugging-2.jpg)
 
-**Things to note**:
+*Things to Note:*
 
 1. **MLI TS HELP** 
 
@@ -565,13 +565,13 @@ At the end of the experiment, a similar page will appear:
 6\. Select **Hide Summary**
 
 7\. Hover over the **Forecast Horizon** of the **R2 Time Series Plot**. 
-**Note**: R2 or the coefficient of determination is mainly used to analyze how well a variable can predict another one. In other words,  it is a statistical measure of how well the regression line approximates the real values. It represents the strength of the relationship between two time series or variables.The values observed in that range are the percentage of change of variable **x** that can be explained by changes in variable **y**.  The values of R2 range between 0 and 1, where 1 indicates that the values in this range can be entirely explained by pre-existing values. 
+**Note:** R2 or the coefficient of determination is mainly used to analyze how well a variable can predict another one. In other words,  it is a statistical measure of how well the regression line approximates the real values. It represents the strength of the relationship between two time series or variables.The values observed in that range are the percentage of change of variable **x** that can be explained by changes in variable **y**.  The values of R2 range between 0 and 1, where 1 indicates that the values in this range can be entirely explained by pre-existing values. 
 
 ![mli-time-series-r2-plot](assets/mli-time-series-r2-plot.jpg)
 
 8\. Under **Top Groups Test Metrics** and **Bottom Group Test Metrics**,  which Department(s) and Store(s) had the top R2 values? How about the Department(s) and Store(s) with the lowest  R2?  
  
-**Note**: Columns is the number of unique cases in that time series composed of department and store appear of test data.
+**Note:** Columns is the number of unique cases in that time series composed of department and store appear of test data.
 
 ![mli-time-series-group-test-metrics](assets/mli-time-series-group-test-metrics.jpg)
 
@@ -604,7 +604,7 @@ At exactly the peak, it is clear that the lag of 51 weeks is the most important 
 1. Select **Add Panel**
 2. On the new panel, click on the **Select a model interpretation**, then select the Time Series Model named : ``dodumeva:bitesihu``. This will bring in the pre-ran experiment’s MLI results. Click on **Show Summary** for both experiments to compare experiment settings:
 
-**Note** the **DAI Experiment Runtime** for both experiments. The pre-ran experiment took more than two hours to run. 
+**Note:** the **DAI Experiment Runtime** for both experiments. The pre-ran experiment took more than two hours to run. 
 
 ![mli-new-experiment-and-preran-experiment](assets/mli-new-experiment-and-preran-experiment.jpg)
 
@@ -670,7 +670,7 @@ One important thing to note is why we changed the **Scorer**  that DAI suggested
 
 ![comparing-two-items-3](assets/comparing-two-items-3.jpg)
 
-**Things to note**:
+*Things to Note:*
 
 1. The experiment with the lower settings had 6 times less features scored compared to the pre-ran experiment. This means that DAI tested 454 features from which only 10 were found useful compared to the pre-ran experiment which tested 2821 features and found 19 features useful for feature engineering. At higher settings, DAI does a more thorough evaluation. 
 
