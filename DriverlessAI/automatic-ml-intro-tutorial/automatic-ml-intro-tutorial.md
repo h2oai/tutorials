@@ -15,7 +15,7 @@
 - [Task 8: MLI Report](#task-8-mli-report)
 - [Task 9: Experiment Summary](#task-9-autodocs)
 - [Task 10: Challenge](#task-10-challenge)
-- [Further Reading](#further-reading)
+- [Task 11: Next Steps](#task-11-next-steps)
 
 ## Objective
 
@@ -902,6 +902,21 @@ Sample set of records:
 
 - [Try running an experiment without the Driverless AI UI using the Python Client](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/examples/h2oai_client_demo.html?highlight=experiment%20summary)
 
-## Further Reading
+## Task 11: Next Steps
 
-- Check out Driverless AI [Machine Learning Interpretability Tutorial](https://github.com/h2oai/tutorials/blob/master/DriverlessAI/machine-learning-interpretability-tutorial/machine-learning-interpretability-tutorial.md)
+Check out Driverss AI next tutorial [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#0)
+
+Where you will learn how to:
+
+- Evaluate a DAI model through tools like:
+	- ROC
+	- Prec-Recall
+	- Gain and Lift Charts
+	- K-S Chart
+	- Metrics such as:
+	- AUC
+	- F-Scores
+	- GINI
+	- MCC
+	- Log Loss
+- Request a [21-Day Free Trial: H2O Driverless AI license Key](https://www.h2o.ai/products/h2o-driverless-ai/)
