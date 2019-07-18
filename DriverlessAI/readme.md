@@ -4,7 +4,7 @@
 
 # Driverless AI
 
-This repository has tutorials that focus on Driverless AI version **1.5.2**.
+This repository has tutorials that focus on Driverless AI version **1.6.0**.
 
 Check out our new [tutorials portal](https://h2oai.github.io/tutorials/) where you will find our latest DAI tutorials including: 
 
