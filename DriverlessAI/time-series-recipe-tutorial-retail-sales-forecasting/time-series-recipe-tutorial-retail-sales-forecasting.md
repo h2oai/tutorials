@@ -118,7 +118,7 @@ Completed Experiment
 
 ![projects-new-experiment](assets/projects-new-experiment.jpg)
 
-5\.  Select **Not Now ** on the **First time Driverless AI, Click Yes to get a tour!**. A similar image should appear, then select **Click to select or import a dataset...**
+5\.  Select **Not Now** on the **First time Driverless AI, Click Yes to get a tour!**. A similar image should appear, then select **Click to select or import a dataset...**
 
 
 ![new-project-training-data](assets/new-project-training-data.jpg)
@@ -286,15 +286,15 @@ then select **R2** as the scorer:
 Time series is a collection of observations generated sequentially through time. In time series, data is ordered with respect to time, and it is expected that successive observations are dependent, an example is ocean tides[1].
 
 Characteristics of time series data:
-Natural temporal ordering
-Natural one-way ordering of time 
-Order of time
-Stationary: do not have trend or seasonal effects
-Non-stationary: contain trends and seasonality
-Observations close together in time will be more closely related than that data further apart
-Predictions for a given period are made on the natural one-way order rather than future events
-Time Series is different from cross-section studies where a group of people from a particular point of time are studied, this does not follow a natural order
-Time series is different to data collected with time differences due to geographical locations
+- Natural temporal ordering
+- Natural one-way ordering of time 
+- Order of time
+- Stationary: do not have trend or seasonal effects
+- Non-stationary: contain trends and seasonality
+- Observations close together in time will be more closely related than that data further apart
+- Predictions for a given period are made on the natural one-way order rather than future events
+- Time Series is different from cross-section studies where a group of people from a particular point of time are studied, this does not follow a natural order
+- Time series is different to data collected with time differences due to geographical locations
 
 The plots below are examples of non-stationary time series where the time series dataset shows seasonality and trends. 
 
@@ -319,28 +319,27 @@ Here is a short list of the many real-world applications of time-series:
 Driverless AI has its own recipes for time-series forecasting that combines advanced time-series analysis and H2O’s own Kaggle Grand Masters’ time-series recipes.
 
 These are the key features/recipes that make the automation possible: 
-Automatic handling of time groups (e.g., different stores and departments)
-Robust time-series validation
-Accounts for gaps and forecast horizon
-Uses past information only (i.e., no data leakage)
-Time-series-specific feature engineering recipes
-Date features like day of week, day of month, etc.
-AutoRegressive features, like optimal lag and lag-features interaction
-Different types of exponentially weighted moving averages
-Aggregation of past information (different time groups and time intervals)
-Target transformations and differentiation
-Integration with existing feature engineering functions (recipes and optimization)
-Automatic pipeline generation
+- Automatic handling of time groups (e.g., different stores and departments)
+- Robust time-series validation
+- Accounts for gaps and forecast horizon
+- Uses past information only (i.e., no data leakage)
+- Time-series-specific feature engineering recipes
+- Date features like day of week, day of month, etc.
+- AutoRegressive features, like optimal lag and lag-features interaction
+- Different types of exponentially weighted moving averages
+- Aggregation of past information (different time groups and time intervals)
+- Target transformations and differentiation
+- Integration with existing feature engineering functions (recipes and optimization)
+- Automatic pipeline generation
 ### DAI  Modeling Approach
 
 Driverless AI uses GBMs, GLMs and neural networks with a focus on time-series-specific feature engineering. The feature engineering includes:
 
-Autoregressive elements: creating lag variables
-Aggregated features on lagged variables: moving averages, exponential smoothing descriptive statistics, correlations
-Date-specific features: week number, day of week, month, year
-Target transformations: Integration/Differentiation, univariate transforms (like logs, square roots)
-This approach is combined with AutoDL features as part of the genetic algorithm. The selection is still based on validation accuracy. In other words, the same transformations/genes apply; plus there are new transformations that come from time series. Some transformations (like target encoding) are deactivated.
-When running a time-series experiment, Driverless AI builds multiple models by rolling the validation window back in time (and potentially using less and less training data).
+- Autoregressive elements: creating lag variables
+- Aggregated features on lagged variables: moving averages, exponential smoothing descriptive statistics, correlations
+- Date-specific features: week number, day of week, month, year
+- Target transformations: Integration/Differentiation, univariate transforms (like logs, square roots). This approach is combined with AutoDL features as part of the genetic algorithm. The selection is still based on validation accuracy. In other words, the same transformations/genes apply; plus there are new transformations that come from time series. Some transformations (like target encoding) are deactivated.
+- When running a time-series experiment, Driverless AI builds multiple models by rolling the validation window back in time (and potentially using less and less training data).
 ### Gap and Horizon 
 
 The guiding principle for properly modeling a time series forecasting problem is to use the historical data in the model training dataset such that it mimics the data/information environment at scoring time (i.e. deployed predictions). Specifically, you want to partition the training set to account for: 
