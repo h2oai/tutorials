@@ -6,11 +6,19 @@
 
 This repository has tutorials that focus on Driverless AI version **1.6.0**.
 
-Check out our new [tutorials portal](https://h2oai.github.io/tutorials/) where you will find our latest DAI tutorials including: 
+Check out our new [tutorials portal](https://h2oai.github.io/tutorials/) where you will find our **latest DAI tutorials** including: 
 
-- [Automatic ML Intro Tutorial](https://h2oai.github.io/tutorials/automatic-ml-intro-tutorial/#0)
+- [Getting Started with Driverless AI Test Drive](https://h2oai.github.io/tutorials/test-drive/#0)
+
+- [Automatic MLIntro with Test Drive](https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#0)
+
+- [Automatic ML Intro Tutorial with Driverless AI](https://h2oai.github.io/tutorials/automatic-ml-intro-tutorial/#0)
+
+- [Machine Learning Scoring and Analysis Tutorial - Financial Focus](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#0)
 
 - [Machine Learning Interpretability](https://h2oai.github.io/tutorials/machine-learning-interpretability-tutorial/#0)
+
+- [Time Series Tutorial - Retail Sales Forecasting](https://h2oai.github.io/tutorials/time-series-recipe-tutorial-retail-sales-forecasting/#0)
 
 For Driverless AI 1.4.2 tutorials, check out:
 
