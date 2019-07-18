@@ -26,7 +26,7 @@ The motivations for interpretability are:
   
 In this tutorial, we will generate a machine learning model using an example financial dataset and explore some of the most popular ways to interpret a generated machine learning model. Furthermore, we will learn to interpret the results, graphs, scores and reason code values of H2O Driverless AI generated models.
 
-**Note**: We recommend that you go over the entire tutorial first to review all the concepts, that way, once you start the experiment, you will be more familiar with the content.
+**Note:** We recommend that you go over the entire tutorial first to review all the concepts, that way, once you start the experiment, you will be more familiar with the content.
 
 ### Deeper Diver and Resources 
 
@@ -87,7 +87,7 @@ Let’s have a look at the columns:
 
 ![dataset-details-page](assets/dataset-details-page.jpg)
 
-*Things to note*:
+*Things to Note:*
 1. **ID** - Row identifier (which will not be used for this experiment)
 2. **LIMIT_BAL** - Credit Limit
 3. **Sex**
@@ -131,7 +131,7 @@ Up to 9 Months late
 
 ![experiment-page-brief-explanation](assets/experiment-page-brief-explanation.jpg)
 
-*Things to note*:
+*Things to Note:*
 1. **Interpretability**  - The interpretability knob is adjustable. The higher the interpretability, the simpler the features the main modeling routine will extract from the dataset.
 If the interpretability is high enough then a monotonically constrained model will be generated.
 2. **Time** - The number of generations a genetic algorithm you can wait for. Higher the time the longer the wait since Driverless AI will work to engineer many features.
@@ -150,7 +150,7 @@ While the model is being interpreted an image similar to the one below will appe
 
 ![mli-regression-and-classification-explanations](assets/mli-regression-and-classification-explanations.jpg)
 
-*Things to note*:
+*Things to Note:*
 1. Summary of some basic facts about the model
 2. Ranked variable importance in the space of the derived features (harder to understand)
 3. Accuracy of surrogate models, or simple models of complex models 
@@ -286,7 +286,7 @@ Through the **Shapley Values** and **Feature Importance**, we got a global persp
 
 ![partial-dependecy-plot](assets/partial-dependecy-plot.jpg)
 
-*Things to note*:
+*Things to Note:*
 1.  These values of PAY_0  represent the average predictions of all persons that paid on time or did not use their credit card
 2. This value represents the average prediction of persons who were late one month for PAY_0
 3.  PAY_0 =2 has an average default probability of 0.590, then the default probability slowly drops all the way to month 8. Does this make sense to you?
@@ -336,7 +336,7 @@ Now we are going to gain some insights into interactions. There are two ways in 
 
 ![decision-tree](assets/decision-tree.jpg)
 
-*Things to note*:
+*Things to Note:*
 
 1. The RMSE value is low and the R2 value is fairly high
 2. The values at the top of the **Decision Tree** are those variables of higher importance. 
@@ -352,7 +352,7 @@ A potential interaction happens when a variable is below another variable in the
 
 ![decision-tree-variable-interaction](assets/decision-tree-variable-interaction.jpg)
 
-*Things to note*:
+*Things to Note:*
 1. Potential Interaction between PAY_0 and PAY_2. This observation can be strengthened by looking at the Shapley Plot and locating any PAY_0 and PAY_2 interactions.
 
 2. The thickness of the yellow line indicates that this is the most common path through the decision tree. This path is the lowest probability of default leaf node. Does this make sense from a business perspective?
@@ -371,7 +371,7 @@ It is important to note that what we are confirming is not whether the model's r
 
 ![decision-tree-low-and-high-default-paths](assets/decision-tree-low-and-high-default-paths.jpg)
 
-*Things to note*:
+*Things to Note:*
 1. **Decision Tree** path for low default probability 
 2. **Decision Tree** path for high default probability. 
 
@@ -423,7 +423,7 @@ The x-axis is the index of the rows that causes that ranking to occur from lowes
 
 ![k-lime-actual-target](assets/k-lime-actual-target.jpg)
 
-*Things to note*:
+*Things to Note:*
 1. People who did not pay their bills on time
 2. People who paid their bills on time 
 
@@ -433,7 +433,7 @@ Adding the **Actual Target** to the plot allows us to check if the model is not 
 
 ![k-lime-lime-model-prediction](assets/k-lime-lime-model-prediction.jpg)
 
-*Things to note*:
+*Things to Note:*
 1. The high value of R2=88% and low RMSE=0.0695 value show that this is a highly accurate linear model. In other words this surrogate model is good enough to proceed, and explains almost 90% of the variance in the Driverless AI model predictions. 
 
 This single linear model trained on the original inputs of the system to predict the predictions of the Driverless AI model shows that the Driverless AI model predictions are highly linear. The plot above is an implementation of LIME or Local Interpretable Model Agnostic Explanations which often uses linear surrogate models to help reason about the predictions of a complex model.
@@ -458,7 +458,7 @@ The local model predictions (white points) can be used to reason through the Dri
 
 ![reason-codes-for-row-269](assets/reason-codes-for-row-269.jpg)
 
-*Things to note*:
+*Things to Note:*
 
 1. The reason codes shows that the Driverless model prediction gave this person .76 percent probability of defaulting. LIME gave them a .72 percent probability of defaulting and in this case we can say that LIME is 94.7% accurate. Based on this observation, it can concluded that the local reason codes are fairly trustworthy. If **Lime Prediction Accuracy** drops below 75%, then we can say that the numbers are probably untrustworthy, and the Shapley plot or LOCO plot should be revisited because the Shapley values are always accurate, and LOCO accounts for nonlinearity and interactions.
 
@@ -502,9 +502,9 @@ The grey bars or local numeric contributions can be used to generated reason cod
 
 ![local-shapley-value-plot](assets/local-shapley-value-plot.jpg)
 
-**Note**: The Shapley plot will depend on K-LIME point you selected.
+**Note:** The Shapley plot will depend on K-LIME point you selected.
 
-*Things to note*:
+*Things to Note:*
 1. Row number being observed
 2. Global Shapley value 
 3. A sample of a Shapley Local  numeric contribution of a variable for the high probability person in row 15454
@@ -540,7 +540,7 @@ ICE is simply the prediction of the model for the person in question, in our cas
 
 ![dashboard](assets/dashboard.jpg)
 
-*Things to note*:
+*Things to Note:*
 1. ICE (grey dots)
 2. Partial Dependence (yellow dots)
 3. LOCO feature Importance for the person in row 15454 (grey bars) in relation to global feature importance 
