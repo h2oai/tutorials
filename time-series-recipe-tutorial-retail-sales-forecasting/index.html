@@ -279,7 +279,19 @@
 <li>The information available to the model when making predictions</li>
 <li>The length of predictions to make.<br>Given a training dataset, gap and prediction length are parameters that determine how to split the training dataset into training samples and validation samples.</li>
 </ol>
-<p><strong>Gap</strong>: is the amount of missing time bins between the end of a training set and the start of test set (with regards to time).<br>Assume you have daily data with days 1⁄1, 1⁄2, 1⁄3, 1⁄4 in train.<br>The corresponding time bins would be 1, 2, 3, 4 for a time period of 1 day.<br>Given that, the first valid time bin to predict is 5.<br>As a result, Gap = max(time bin train) - min(time bin test) - 1.<img alt="time-series-gap" src="img/d1dbb835e855e1dc.jpg"><br>Quite often, it is not possible to have the most recent data available when applying a model (or it is costly to update the data table too often); hence models need to be built accounting for a &#34;future gap&#34;. For example if it takes a week to update a certain data table, ideally we would like to predict &#34;7 days ahead&#34; with the data as it is &#34;today&#34;; hence a gap of 7 days would be sensible. Not specifying a gap and predicting 7 days ahead with the data as it is 7 days ahead is unrealistic (and cannot happen as we update the data on a weekly basis in this example).</p>
+<p><strong>Gap</strong>: is the amount of missing time bins between the end of a training set and the start of test set (with regards to time). For example:</p>
+<ul>
+<li>Assume there are daily data with days 1/1/2019, 2/1/2019, 3/1/2019, 4/1/2019 in train. There are 4 days in total for training .</li>
+<li>In addition the test data will start from 6/1/2019. There is only 1 day in the test data.</li>
+<li>The previous day (5/1/2019) does not belong to the train data. It is a day that cannot be used for training (i.e because information from that day may not be available at scoring time). This day cannot be used to derive information (such as historical lags) for the test data either.</li>
+<li>Here the time bin (or time unit) is 1 day. This is the time interval that separates the different samples/rows in the data.</li>
+<li>In summary there are 4 time bins/units for the train data and 1 time bin/unit for the test data plus the Gap.</li>
+<li>In order to estimate the Gap between the end of the train data and the beginning of the test data, the following formula is applied.</li>
+<li>Gap = min(time bin test) - max(time bin train) - 1.<br>in this case min(time bin test) is 6 (or 6/1/2019). This is the earliest (and only) day in the test data max(time bin train) is 4 (or 4/1/2019). This is the latest (or the most recent) day in the train data.</li>
+<li>Thefore the GAP is 1 time bin (or 1 day in this case), because Gap = 6 - 4 - 1 or Gap = 1</li>
+</ul>
+<p><img alt="time-series-gap" src="img/d1dbb835e855e1dc.jpg"></p>
+<p>Quite often, it is not possible to have the most recent data available when applying a model (or it is costly to update the data table too often); hence models need to be built accounting for a &#34;future gap&#34;. For example if it takes a week to update a certain data table, ideally we would like to predict &#34;7 days ahead&#34; with the data as it is &#34;today&#34;; hence a gap of 7 days would be sensible. Not specifying a gap and predicting 7 days ahead with the data as it is 7 days ahead is unrealistic (and cannot happen as we update the data on a weekly basis in this example).</p>
 <p>Similarly, gap can be used for those who want to forecast further in advance. For example, users want to know what will happen in 7 days in the future, they will set the gap to 7 days.</p>
 <p><strong>Horizon</strong>  (or prediction length) is the period that the test data spans for (for example, one day, one week, etc.). In other words it is the future period that the model can make predictions for.</p>
 <p><img alt="time-series-horizon" src="img/d776869dd18ad4ed.jpg"></p>
@@ -363,6 +375,7 @@
 <li><a href="http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/transformations.html?highlight=interactions" target="_blank">Driverless AI Transformations</a></li>
 <li><a href="http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/time-series.html?highlight=time%20groups" target="_blank">H2O&#39;s Time Series in Driverless AI</a></li>
 <li><a href="https://www.youtube.com/watch?v=EGVY7-Spv8E" target="_blank">Time Series with Driverless AI - Marios Michailidis and Mathias Müller - H2O AI World London 2018</a></li>
+<li><a href="https://github.com/h2oai/h2oai/blob/dev/docs/time-series.rst#gap-and-horizon" target="_blank">Time Series with Driverless AI - GitHub Docs</a></li>
 </ul>
 
 
