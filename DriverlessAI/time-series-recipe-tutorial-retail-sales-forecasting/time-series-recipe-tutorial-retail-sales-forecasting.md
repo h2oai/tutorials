@@ -347,11 +347,21 @@ The guiding principle for properly modeling a time series forecasting problem is
 2. The length of predictions to make.
 Given a training dataset, gap and prediction length are parameters that determine how to split the training dataset into training samples and validation samples.
 
-**Gap**: is the amount of missing time bins between the end of a training set and the start of test set (with regards to time).
-Assume you have daily data with days 1/1, 1/2, 1/3, 1/4 in train.
-The corresponding time bins would be 1, 2, 3, 4 for a time period of 1 day.
-Given that, the first valid time bin to predict is 5.
-As a result, Gap = max(time bin train) - min(time bin test) - 1.![time-series-gap](assets/time-series-gap.jpg)
+**Gap**: is the amount of missing time bins between the end of a training set and the start of test set (with regards to time). For example:
+
+- Assume there are daily data with days 1/1/2019, 2/1/2019, 3/1/2019, 4/1/2019 in train. There are 4 days in total for training .
+- In addition the test data will start from 6/1/2019. There is only 1 day in the test data.
+- The previous day (5/1/2019) does not belong to the train data. It is a day that cannot be used for training (i.e because information from that day may not be available at scoring time). This day cannot be used to derive information (such as historical lags) for the test data either.
+- Here the time bin (or time unit) is 1 day. This is the time interval that separates the different samples/rows in the data.
+- In summary there are 4 time bins/units for the train data and 1 time bin/unit for the test data plus the Gap.
+- In order to estimate the Gap between the end of the train data and the beginning of the test data, the following formula is applied.
+- Gap = min(time bin test) - max(time bin train) - 1.
+in this case min(time bin test) is 6 (or 6/1/2019). This is the earliest (and only) day in the test data max(time bin train) is 4 (or 4/1/2019). This is the latest (or the most recent) day in the train data.
+- Thefore the GAP is 1 time bin (or 1 day in this case), because Gap = 6 - 4 - 1 or Gap = 1
+
+
+![time-series-gap](assets/time-series-gap.jpg)
+
 Quite often, it is not possible to have the most recent data available when applying a model (or it is costly to update the data table too often); hence models need to be built accounting for a “future gap”. For example if it takes a week to update a certain data table, ideally we would like to predict “7 days ahead” with the data as it is “today”; hence a gap of 7 days would be sensible. Not specifying a gap and predicting 7 days ahead with the data as it is 7 days ahead is unrealistic (and cannot happen as we update the data on a weekly basis in this example).
 
 Similarly, gap can be used for those who want to forecast further in advance. For example, users want to know what will happen in 7 days in the future, they will set the gap to 7 days.
