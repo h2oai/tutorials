@@ -266,7 +266,7 @@ https://raw.githubusercontent.com/h2oai/driverlessai-recipes/master/transformers
 
 12\. You can verify that the transformer was included in the experiment on the Experiments page by looking under “What do these settings mean?” > “Interpretability” as **Sum**
 
-![exp2-check-transformer](exp2-check-transformer.jpg)
+![exp2-check-transformer](assets/exp2-check-transformer.jpg)
 
 13\. Select **Launch Experiment **
 
@@ -330,7 +330,7 @@ https://raw.githubusercontent.com/h2oai/driverlessai-recipes/rel-1.7.0/scorers/c
  
 12\. Select the **Brier** Scorer by clicking on it:
 
-[exp3-select-brier](assets\exp3-select-brier.jpg)
+![exp3-select-brier](assets/exp3-select-brier.jpg)
 
 13\. Your experiment page should look similar to the one below with **Brier** as your new scorer. Since we selected to create a new experiment from the baseline experiment this experiment does not have the transformer we loaded on task 2.
 
