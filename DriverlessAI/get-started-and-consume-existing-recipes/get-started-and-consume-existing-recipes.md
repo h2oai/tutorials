@@ -2,8 +2,8 @@
 
 ## Outline
 
-- [Prerequisites](#prerequisites) 
 - [Objective](#objective)
+- [Prerequisites](#prerequisites) 
 - [Task 1: Introduction to Driverless AI ML Optimization Extensions Recipe](#task-1-introduction-to-driverless-ai-ml-optimization-extensions-recipe)
 - [Task 2: Launch an Experiment and Consume a Recipe](#task-2-launch-an-experiment-and-consume-a-recipe) 
 - [Task 3: Recipe: Transformer](#task-3-recipe-transformer)
@@ -12,6 +12,14 @@
 - [Task 6: Comparing Final Model Results](#task-6-comparing-final-model-results) 
 - [Task 7: Appendix A: How to Access DAI Custom Recipes](#task-7-appendix-a-how-to-access-dai-custom-recipes)
 - [Task 8: Next Steps](#task-8-next-steps)
+
+## Objective
+
+We believe that every company can and should be an AI company. This is a fundamental concept for the future of every business and organization today. As you embark on this AI journey to make your own AI, we want you to explore the key considerations as well as the technology that will make your own AI a possibility.
+
+To make your own AI, with an automatic machine learning platform, it needs to be open and extensible. This allows data scientists to influence the automatic machine learning optimization process and for it to consider additional feature engineering, custom scorers, and other algorithms. Data scientists can add their insights, customizations, and build the most accurate models for their use cases. Driverless AI uses the concept of recipes to optimize the machine learning process, and with Driverless AI 1.7 user can add custom recipes and develop new recipes.
+
+In this tutorial, we will cover what a recipe is, the different types of recipes available, and how to upload existing recipes to DAI through the URL option. The three types of custom recipes that will be covered are transformer, scorer, and model.
 
 ## Prerequisites
 
@@ -29,14 +37,6 @@ You can get more information about getting a Driverless AI environment or trial 
 If you are not familiar with Driverless AI please review and do this tutorial:
 
 - [Automatic Machine Learning Intro Tutorial](https://github.com/h2oai/tutorials/blob/master/DriverlessAI/automatic-ml-intro-tutorial/automatic-ml-intro-tutorial.md) 
-
-## Objective
-
-We believe that every company can and should be an AI company. This is a fundamental concept for the future of every business and organization today. As you embark on this AI journey to make your own AI, we want you to explore the key considerations as well as the technology that will make your own AI a possibility.
-
-To make your own AI, with an automatic machine learning platform, it needs to be open and extensible. This allows data scientists to influence the automatic machine learning optimization process and for it to consider additional feature engineering, custom scorers, and other algorithms. Data scientists can add their insights, customizations, and build the most accurate models for their use cases. Driverless AI uses the concept of recipes to optimize the machine learning process, and with Driverless AI 1.7 user can add custom recipes and develop new recipes.
-
-In this tutorial, we will cover what a recipe is, the different types of recipes available, and how to upload existing recipes to DAI through the URL option. The three types of custom recipes that will be covered are transformer, scorer, and model.
 
 ## Task 1: Introduction to Driverless AI ML Optimization Extensions Recipe
 
@@ -268,7 +268,7 @@ https://raw.githubusercontent.com/h2oai/driverlessai-recipes/master/transformers
 
 ![exp2-check-transformer](assets/exp2-check-transformer.jpg)
 
-13\. Select **Launch Experiment **
+13\. Select **Launch Experiment**
 
 14\. At the end of the experiments, you will see an experiment summary similar to the one below, make sure to change the experiment name to  ```Exp 2  - Transformer```
 
@@ -284,7 +284,7 @@ The results of the experiment will be discussed at the end of task 6.
 
 In this task, we will be importing a Scorer recipe to see if this scorer will help improve the performance of the model. 
 
-### Import a Transformer Recipe
+### Import a Scorer Recipe
 
 The model recipe that will be used for this experiment is the Brier Loss Scorer, to learn more about the Brier Loss model see the **Deeper Dive and Resources** at the end of this task.
 
