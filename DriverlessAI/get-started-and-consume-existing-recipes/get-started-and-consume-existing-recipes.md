@@ -60,7 +60,7 @@ During the training of a supervised machine learning modeling pipeline, Driverle
 
 Below is a diagram of how recipes work in DAI and how the Automatic Model Optimization process is extended:
 
-![dai-byor-how-it-works](assets/dai-byor-how-it-works)
+![dai-byor-how-it-works](assets/dai-byor-how-it-works.jpg)
 
 
 The image below is a deeper dive into the **BYOR** architecture for a multi-class problem:
@@ -420,7 +420,7 @@ Now we are going to compare the results of all the experiments through the **Pro
 
 1\. Click on **Projects** 
 
-![projects-select](assets/projects-select)
+![projects-select](assets/projects-select.jpg)
 
 2\. Select **+New Project**
 
@@ -523,7 +523,7 @@ For this tutorial, we are using DAI 1.7.0, therefore, we will be working off the
 
 1\. Open the link below on a separate tab. Make sure the branch is **rel-1.7.0**
 
-[H2O Driverless AI Recipes GitHub Repo](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.7.0)
+- [H2O Driverless AI Recipes GitHub Repo](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.7.0)
 
 2\. Make sure it is Branch rel-1-7-0, then click on **Clone or Download**, then on **Download ZIP**. This will download the entire rel1-7.0 repo to your desktop. If you prefer not to download the entire repo then use the URL method. 
 
@@ -554,3 +554,5 @@ For this tutorial, we are using DAI 1.7.0, therefore, we will be working off the
 ## Task 8: Next Steps
 
 - Develop Your Own Custom Recipe Tutorial - Coming Soon!
+
+- Blog: [Custom Machine Learning Recipes: The ingridients for success by H2O's Parul Pandey](https://www.h2o.ai/blog/custom-machine-learning-recipes-the-ingredients-for-success/)
