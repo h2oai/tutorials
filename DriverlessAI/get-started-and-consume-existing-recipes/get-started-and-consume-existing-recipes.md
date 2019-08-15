@@ -314,6 +314,8 @@ https://raw.githubusercontent.com/h2oai/driverlessai-recipes/rel-1.7.0/scorers/c
 
 7\. On the **Expert Experiment Settings** find **Recipes** and click on it
 
+![exp2-expert-settings-recipes](assets/exp2-expert-settings-recipes.jpg)
+
 8\. Click on **Select Value** under **Include Specific Scorers**, we are going to verify that the scorer we loaded did indeed load.
 
 ![exp3-expert-settings-scorer-select-values](assets/exp3-expert-settings-scorer-select-values.jpg)
@@ -353,7 +355,7 @@ https://raw.githubusercontent.com/h2oai/driverlessai-recipes/rel-1.7.0/scorers/c
 
 ## Task 5: Recipe: Model
 
-In this task, we will be importing a model recipe, with the goal of seeing if this new custom model recipe will help improve our churn model. 
+In this task, we will be importing a model recipe, to see if this new custom model recipe will help improve our churn model. 
 
 ### Import a Model Recipe
 
@@ -557,4 +559,4 @@ For this tutorial, we are using DAI 1.7.0, therefore, we will be working off the
 
 - Webinar: [Extending the H2O Driverless AI Platform with Your Recipes by H2O's Arno Candel](https://www.brighttalk.com/webcast/16463/360533) 
 
-- Blog: [Custom Machine Learning Recipes: The ingridients for success by H2O's Parul Pandey](https://www.h2o.ai/blog/custom-machine-learning-recipes-the-ingredients-for-success/)
+- Blog: [Custom Machine Learning Recipes: The ingredients for success by H2O's Parul Pandey](https://www.h2o.ai/blog/custom-machine-learning-recipes-the-ingredients-for-success/)
