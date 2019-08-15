@@ -559,8 +559,7 @@ For this tutorial, we are using DAI 1.7.0, therefore, we will be working off the
 
 - Webinar: [Extending the H2O Driverless AI Platform with Your Recipes by H2O's Arno Candel](https://www.brighttalk.com/webcast/16463/360533) 
 
-<<<<<<< HEAD
 - Blog: [Custom Machine Learning Recipes: The ingredients for success by H2O's Parul Pandey](https://www.h2o.ai/blog/custom-machine-learning-recipes-the-ingredients-for-success/)
-=======
+
 - Blog: [Custom Machine Learning Recipes: The ingredients for success by H2O's Parul Pandey](https://www.h2o.ai/blog/custom-machine-learning-recipes-the-ingredients-for-success/)
->>>>>>> c299da15cda0baa048a3f03b8d05c817b4570134
+
