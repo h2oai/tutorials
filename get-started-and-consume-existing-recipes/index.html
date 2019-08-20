@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
   <meta name="theme-color" content="#4F7DC9">
   <meta charset="UTF-8">
-  <title>Get Started and Consume Existing Recipes</title>
+  <title></title>
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
   <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="../assets/codelab-elements/codelab-elements.css">
@@ -21,7 +21,7 @@
 </head>
 <body>
   <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
-  <google-codelab title="Get Started and Consume Existing Recipes"
+  <google-codelab title=""
                   environment="web"
                   feedback-link="">
     
@@ -42,7 +42,7 @@
 </ul>
 <p>You can get more information about getting a Driverless AI environment or trial from the following:</p>
 <ul>
-<li><a href="https://github.com/h2oai/tutorials/blob/master/DriverlessAI/Test-Drive/test-drive.md" target="_blank">A Two Hour Test Drive Session</a><br></li>
+<li><a href="https://github.com/h2oai/tutorials/blob/master/DriverlessAI/Test-Drive/test-drive.md" target="_blank">A Two Hour Test Drive Session</a></li>
 <li><a href="https://github.com/h2oai/tutorials/blob/master/DriverlessAI/automatic-ml-intro-tutorial/automatic-ml-intro-tutorial.md#prerequisites" target="_blank">H2O Driverless AI License Key</a></li>
 <li><a href="https://github.com/h2oai/tutorials/blob/master/DriverlessAI/automatic-ml-intro-tutorial/automatic-ml-intro-tutorial.md#task-1-get-environment-and-product-tour" target="_blank">H2O Driverless AI Environment and Product Tour</a></li>
 </ul>
@@ -54,10 +54,10 @@
 
       </google-codelab-step>
     
-      <google-codelab-step label="Task 1: Introduction to Driverless AI ML Optimization Extensions Recipe" duration="0">
-        <p>H2O Driverless AI is an artificial intelligence (AI) platform for automatic machine learning. Driverless AI automates some of the most difficult and tedious data science and machine learning tasks such as feature engineering, algorithm selection, model validation, model tuning, model selection, model explanation, model documentation and model deployment. It aims to achieve the highest predictive accuracy, comparable to expert data scientists, but in a much shorter time thanks to end-to-end automation. Currently, Driverless AI does not allow for data manipulation or augmentation once data has been loaded to DAI.  Data preparation needs to be done before loading the data.</p>
-<p>In Driverless AI, a pipeline (which we call an experiment) is made up of building blocks, or recipes, that produce a model. These recipes are Python code snippets. Recipes have the following types: ML algorithms, feature engineering (transformers), scorers, and configuration.  In Driverless AI 1.7, we&#39;ve added support for BYOR (Bring Your Own Recipe). With BYOR, you can use your own recipes in combination with or instead of all built-in code recipes. This allows you to influence the DAI Automatic ML pipeline and gives you control over the optimization choices that Driverless AI makes.</p>
-<p>Recipes can be uploaded into DAI at runtime without having to restart DAI, just like a plugin. There are over 78 open-source recipes that have been created by H2O and curated in the recipe library by data science experts that can be used as-is or as templates and expand upon.</p>
+      <google-codelab-step label="Task 1: Introduction to Driverless AI Bring Your Own Recipe" duration="0">
+        <p>H2O Driverless AI is an artificial intelligence (AI) platform for automatic machine learning. Driverless AI automates some of the most difficult and tedious data science and machine learning tasks such as feature engineering, algorithm selection, model validation, model tuning, model selection, model explanation, model documentation and model deployment. It aims to achieve the highest predictive accuracy, comparable to expert data scientists, but in a much shorter time thanks to end-to-end automation. The current scope of Driverless AI does not include extensive data manipulation or augmentation before starting an experiment, hence most of the data preparation needs to be done before loading the data.</p>
+<p>In Driverless AI, a pipeline (which we call an experiment) is made up of building blocks, or recipes, that produce a model. These recipes are Python code snippets. Recipes have the following types: ML algorithms, feature engineering (transformers), scorers, and configuration. In Driverless AI 1.7, we&#39;ve added support for BYOR (Bring Your Own Recipe). With BYOR, you can use your own recipes in combination with or instead of all built-in recipes. This allows you to influence the DAI Automatic ML pipeline and gives you control over the optimization choices that Driverless AI makes.</p>
+<p>Recipes can be uploaded into DAI at runtime without having to restart DAI, just like a plugin. There are already close to 100 open-source recipes that have been created by H2O and curated in the recipe library by data science experts that can be used as-is or as templates and expanded upon.</p>
 <p>Existing recipes include templates for:</p>
 <ul>
 <li><strong>Transformers</strong></li>
@@ -246,6 +246,7 @@
 <p><img alt="exp3-load-custom-recipe-scorer-raw-url" src="img/7865483b2dde7855.jpg"></p>
 <p>6. There will be a message updating you on the status of loading of the recipe, then Expert Experiment Settings page will re-appear</p>
 <p>7. On the <strong>Expert Experiment Settings</strong> find <strong>Recipes</strong> and click on it</p>
+<p><img alt="exp2-expert-settings-recipes" src="img/47237b3539c5bdaf.jpg"></p>
 <p>8. Click on <strong>Select Value</strong> under <strong>Include Specific Scorers</strong>, we are going to verify that the scorer we loaded did indeed load.</p>
 <p><img alt="exp3-expert-settings-scorer-select-values" src="img/5b733c5ca9c74050.jpg"></p>
 <p>9. On the list of Scores that comes up look for <code>BRIER</code>, if the Scorer loaded correctly, then it will appear as shown below, highlighted meaning that it will be used by DAI:</p>
@@ -272,7 +273,7 @@
       </google-codelab-step>
     
       <google-codelab-step label="Task 5: Recipe: Model" duration="0">
-        <p>In this task, we will be importing a model recipe, with the goal of seeing if this new custom model recipe will help improve our churn model.</p>
+        <p>In this task, we will be importing a model recipe, to see if this new custom model recipe will help improve our churn model.</p>
 <h2>Import a Model Recipe</h2>
 <p>The model recipe that will be used for this experiment is an <strong>ExtraTrees</strong> which is an extremely randomized tree (ExtraTrees) from sklearn, to learn more about the <strong>Extra Trees</strong> model see the <strong>Deeper Dive and Resources</strong> at the end of this task.</p>
 <p>1.Select <strong>Experiments</strong> located at the top of the <strong>Experiment</strong> page</p>
@@ -399,7 +400,7 @@
         <ul>
 <li>Develop Your Own Custom Recipe Tutorial - Coming Soon!</li>
 <li>Webinar: <a href="https://www.brighttalk.com/webcast/16463/360533" target="_blank">Extending the H2O Driverless AI Platform with Your Recipes by H2O&#39;s Arno Candel</a></li>
-<li>Blog: <a href="https://www.h2o.ai/blog/custom-machine-learning-recipes-the-ingredients-for-success/" target="_blank">Custom Machine Learning Recipes: The ingridients for success by H2O&#39;s Parul Pandey</a></li>
+<li>Blog: <a href="https://www.h2o.ai/blog/custom-machine-learning-recipes-the-ingredients-for-success/" target="_blank">Custom Machine Learning Recipes: The ingredients for success by H2O&#39;s Parul Pandey</a></li>
 </ul>
 
 
