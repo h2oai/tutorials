@@ -375,35 +375,33 @@ The model recipe that will be used for this experiment is an **ExtraTrees** whic
 
 5\. Copy and paste  the following “Raw” URL into the **Load Custom Recipe** box then click on **Save**
 
-6\. Copy and paste  the following “Raw” URL into the **Load Custom Recipe** box then click on **Save**
-
 ~~~html
 https://raw.githubusercontent.com/h2oai/driverlessai-recipes/rel-1.7.0/models/algorithms/extra_trees.py 
 ~~~
 
 ![exp4-load-custom-recipe-model-raw-url](assets/exp4-load-custom-recipe-model-raw-url.jpg)
 
-7\. There will be a message updating you on the status of loading of the recipe, then the **Expert Experiment Settings** page will re-appear
+6\. There will be a message updating you on the status of loading of the recipe, then the **Expert Experiment Settings** page will re-appear
 
-8\. On the **Expert Experiment Settings** find **Recipes** and click on it
+7\. On the **Expert Experiment Settings** find **Recipes** and click on it
 
-9\. Click on **Select Value** under **Include Specific Model**, we are going to verify that the custom model we loaded did indeed load then we will only select the **ExtraTress** model to run on our new experiment:
+8\. Click on **Select Value** under **Include Specific Model**, we are going to verify that the custom model we loaded did indeed load then we will only select the **ExtraTress** model to run on our new experiment:
 
 ![exp4-expert-settings-model-select-values](assets/exp4-expert-settings-model-select-values.jpg)
 
-10\. Click on **Unselect all**, then select the **ExtraTress** model and click **Done**
+9\. Click on **Unselect all**, then select the **ExtraTreess** model and click **Done**
 
 ![exp4-custom-extratrees-model](assets/exp4-custom-extratrees-model.jpg)
 
-11\. Select **Save** on the **Expert Experiment Settings** page
+10\. Select **Save** on the **Expert Experiment Settings** page
 
-12\. You can verify that the custom model was included on the experiment on the **Experiments** page by looking under “What do these settings mean?”, the settings have been updated to reflect the new ExtraTrees custom model:
+11\. You can verify that the custom model was included on the experiment on the **Experiments** page by looking under “What do these settings mean?”, the settings have been updated to reflect the new ExtraTrees custom model:
 
 ![exp4-w-extratrees-model](assets/exp4-w-extratrees-model.jpg)
 
-13\. Select Launch Experiment 
+12\. Select Launch Experiment 
 
-14\. At the end of the experiment, you will see an experiment summary similar to the one below, make sure to change the experiment name to  ```Exp 4  - Model```
+13\. At the end of the experiment, you will see an experiment summary similar to the one below, make sure to change the experiment name to  ```Exp 4  - Model```
 
 ![exp4-summary](assets/exp4-summary.jpg)
 
@@ -495,7 +493,7 @@ We are going to get the raw URL for **Brier Loss** Scorer we used in Task 4 and 
 
 1\. Select the folder titled **scorer**
 
-!dai-scorers-folder](assets/dai-scorers-folder.jpg)
+![dai-scorers-folder](assets/dai-scorers-folder.jpg)
 
 2\. Select the folder titled **classification** then the folder titled **binary**
 
