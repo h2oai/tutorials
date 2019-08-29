@@ -111,8 +111,8 @@ This dataset set has 3333 customers(rows) and 21 columns representing attributes
 
 ![add-dataset-file-system](assets/add-dataset-file-system.jpg)
 
-3\. Enter the following ```/data/Spunk/Churn``` into the search bar.
-
+3\. Enter the following ```/data/Splunk/churn``` into the search bar.
+u
 4\. Select ```church.csv``` 
 
 5\. **Click to Import Selection**
