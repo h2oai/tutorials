@@ -113,7 +113,7 @@ This dataset set has 3333 customers(rows) and 21 columns representing attributes
 
 3\. Enter the following ```/data/Splunk/churn``` into the search bar.
 u
-4\. Select ```church.csv``` 
+4\. Select ```churn.csv``` 
 
 5\. **Click to Import Selection**
 
