@@ -24,6 +24,7 @@ In this tutorial we will take a deeper dive into the process of custom recipe bu
 - [Get Started and Consume Existing Recipes Tutorial](https://h2oai.github.io/tutorials/get-started-and-consume-existing-recipes/#0) 
  - [Cloned the Driverless AI 1.7.0 Recipe GitHub Repo](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.7.0) 
 - A text editor or developer environment to create .py  text files containing source code (Examples: PyCharm, Jupyter, Spider or a Text Editor like Atom or Visual Studio Code)
+
 **Note**: For this tutorial we will use Visual Studio Code Community for MacOS
 [Visual Studio Code Community](https://code.visualstudio.com/Download)
 
