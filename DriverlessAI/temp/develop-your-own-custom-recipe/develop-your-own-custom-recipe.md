@@ -141,8 +141,8 @@ In the next three tasks we will be building three simple recipes, a transformer,
 
 ### Deeper Dive and Resources
 
-[H2O’s Enabling Data Connectors ](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/connectors.html?highlight=connectors) 
-[H2O’s The Driverless AI Scoring Pipelines](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/python-mojo-pipelines.html#scoring-pipeline) 
+- [H2O’s Enabling Data Connectors ](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/connectors.html?highlight=connectors) 
+- [H2O’s The Driverless AI Scoring Pipelines](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/python-mojo-pipelines.html#scoring-pipeline) 
 
 ## Task 2: Build a Recipe: Transformer
 
@@ -160,7 +160,7 @@ A transformer (or feature) recipe is a collection of programmatic steps, the sam
  
 - PyTorch deep learning model for text similarity analysis, computes a similarity score for any given two text input columns.
  
--ARIMA model for time-series forecasting
+- ARIMA model for time-series forecasting
  
 - Data augmentation, such as replacing a zip code with demographic information, or replacing a date column with a National holiday flag.
  
@@ -401,7 +401,7 @@ We will be using the Iris Dataset to test our new transformer custom recipe.” 
 
 ### Deeper Dive and Resources
 
--[Driverless AI Transformers Repo](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.7.0/transformers) 
+- [Driverless AI Transformers Repo](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.7.0/transformers) 
 
 - [BYOR Transformer Template](https://github.com/h2oai/driverlessai-recipes/blob/master/transformers/transformer_template.py) 
 - [How to Debug a Transformer](https://github.com/h2oai/driverlessai-recipes/blob/master/transformers/how_to_debug_transformer.py)
