@@ -71,7 +71,7 @@ The workflow is as follows, first we start with tabular data in the format of  X
 - **kdp+**
 - **Minio**
 
-See Deeper Dive and Resources for more information about Enabling Data Connectors
+See **Deeper Dive and Resources** at the of this task for more information about Enabling Data Connectors.
 
 Once the data has been loaded to DAI, DAI performs Automatic Visualizations of the data and outputs the available graphs for the dataset that is being used. This allows you to have a better understanding of your data. 
 
