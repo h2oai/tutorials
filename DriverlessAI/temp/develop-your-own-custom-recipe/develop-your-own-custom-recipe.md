@@ -516,7 +516,7 @@ That's nothing to worry about. It's unlikely that your features have the stronge
 
 ### Deeper Dive and Resources
 
-- [How do I collect logs by ](https://support.h2o.ai/support/solutions/articles/17000090847-how-do-i-collect-logs-)  
+- [How do I collect DAI logs?](https://support.h2o.ai/support/solutions/articles/17000090847-how-do-i-collect-logs-)  
 - [Driverless AI community Slack channel](https://www.h2o.ai/community/driverless-ai-community/#chat) 
 - [ Driverless AI Recipe Debugging Example](https://github.com/h2oai/driverlessai-recipes/blob/rel-1.7.0/transformers/how_to_debug_transformer.py) 
  
