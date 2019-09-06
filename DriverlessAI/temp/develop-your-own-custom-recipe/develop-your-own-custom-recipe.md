@@ -479,7 +479,7 @@ Driverless AI has Model recipes for the following categories:
 
 When uploading a new recipe to Driverless AI, there are multiple things that can happen:
 
-- The recipe did not make the cut (recipe did was not loaded into Driverless AI )
+- The recipe did not make the cut (recipe was not loaded into Driverless AI )
 - The recipe made the cut but Driverless did not end up using it for the experiment
 
 ###  Recipe Did Not Make the Cut 
