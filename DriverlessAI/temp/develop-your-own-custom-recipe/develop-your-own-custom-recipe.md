@@ -46,7 +46,7 @@ Types of DAI open source recipes available (Transformers, Scorers and Models)
 How to upload the recipes into DAI as raw URL’s and .py files
 Compared the final models of the experiments that were run with custom recipes to DAI’s default settings experiment. 
 
-**Note:**If you have not done so, complete the [Get Started and Consume Existing Recipes Tutorial](https://h2oai.github.io/tutorials/get-started-and-consume-existing-recipes/#0), the material covered will be needed for the successful completion of this tutorial.
+**Note:** If you have not done so, complete the [Get Started and Consume Existing Recipes Tutorial](https://h2oai.github.io/tutorials/get-started-and-consume-existing-recipes/#0), the material covered will be needed for the successful completion of this tutorial.
 
 Just to recap, H2O Driverless AI is an artificial intelligence (AI) platform for automatic machine learning. Driverless AI automates some of the most difficult and tedious data science and machine learning tasks such as feature engineering, algorithm selection, model validation, model tuning, model selection, model explanation, model documentation and model deployment. It aims to achieve the highest predictive accuracy, comparable to expert data scientists, but in a much shorter time thanks to end-to-end automation.
 
