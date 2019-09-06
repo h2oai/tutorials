@@ -132,9 +132,9 @@ Recipes are meant to be built by people you trust and each recipe should be code
 
 **The Writing Recipes Proces**
 
-First write and test your idea on sample data before wrapping as a recipe
-Download the Driverless AI Recipes Repository for easy access to examples
-Use the Recipe Templates to ensure you have all the required components. 
+1. First write and test your idea on sample data before wrapping as a recipe
+2. Download the Driverless AI Recipes Repository for easy access to examples
+3. Use the Recipe Templates to ensure you have all the required components. 
 
 
 In the next three tasks we will be building three simple recipes, a transformer, scorer, and a model. It is assumed that you have downloaded the [Driverless AI Recipes Repository rel 1.7.0](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.7.0) and that you have access to the examples and recipe templates.
@@ -178,7 +178,7 @@ A transformer (or feature) recipe is a collection of programmatic steps, the sam
 - TargetCoding
 - TimeSeries
 
-See the deeper dive and resources at the end of this task to learn more about Driverless AI Transformers GitHub Repo.
+See the **Deeper Dive and Resources** at the end of this task to learn more about the Driverless AI Transformers GitHub Repo and more.
 
 ### Custom Transformer Recipe
 
@@ -197,11 +197,11 @@ This transformer recipe will add 3 or more numeric columns and give the sum. For
 
 These are the main steps in building our transformer:
 
-- Extending the Base Class
-- Decide which columns can be used
-- How to transform the training data
-- How to transform testing data
-- When to use the transformer
+1. Extending the Base Class
+2. Decide which columns can be used
+3. How to transform the training data
+4. How to transform testing data
+5. When to use the transformer
 
 ### Extending the Base Class
 
@@ -239,7 +239,7 @@ class SumTransformer(CustomTransformer):
 **Note:** 
 The name of the file and the extension .py ```sum_transformer.py```
 
-### Select which columns to use 
+### Select which Columns to Use 
 
 Next, we will let Driverless AI know which columns can be used with this transformer. 
 
@@ -271,7 +271,7 @@ The relative importance will be set to 1 for the most part, however, if you want
 
 ![transformer-select-column-types](assets/transformer-select-column-types.jpg)
 
-### Transforming training data
+### Transforming Training Data
 
 Now we are going to fit the transformer. 
 
@@ -294,7 +294,7 @@ The ```fit_transform()``` method always comes before the ```transform()``` metho
 
 ![transformer-fit](assets/transformer-fit.jpg)
 
-### Transforming testing data
+### Transforming Testing Data
 
 The next lines of code that will be added are for  the ```transform``` method which will be used for the testing data. ```The transform()``` can be used for testing, validation or brand new data. 
 
@@ -320,7 +320,7 @@ You can return a datatable, a Pandas DataFrame or a Numpy Array, Driverless AI c
 
 ![transformer-transform](assets/transformer-transform.jpg)
 
-### When to use the transformer
+### When to Use the Transformer
 
 The last part of the code that will be added is the section that will determine when this transformer should be used. 
 
@@ -339,21 +339,21 @@ _is_reproducible = True _included_model_classes = None # List[str]
 
 When writing transformers we need to ask ourselves the following types of questions:
 
-There will be situations where it will not be appropriate to use this transformer so we need to specify what types of ML problems are allowed for this transformer? For our Sum Transformer the ML cases below are always applicable therefore we set the following variable values to True. 
-``_regression = true```
-```_binary = true```
-``_multiclass = true```
+- What types of ML problems are allowed for my custom transformer? There will be situations where it will not be appropriate to use this transformer so we need to specify what types of ML problems are allowed for this transformer. For our Sum Transformer the ML cases below are always applicable therefore we set the following variable values to True. 
+	- ```_regression = true```
+	- ```_binary = true```
+	- ```_multiclass = true```
 
-Does the transformer return a number? There are some models that can’t take strings as values for example GLM so we need to be explicit about whether or not the output will be numeric or not. In our case the output is always numeric therefore we set **Numeric Output** variable value to True.
-```_numeric_output = true```
+- Does the transformer return a number? There are some models that can’t take strings as values for example GLM so we need to be explicit about whether or not the output will be numeric or not. In our case the output is always numeric therefore we set **Numeric Output** variable value to True.
+	- ```_numeric_output = true```
 
-Is this function reproducible, DAI has the ability to recreate models which you can run on the same hardware and get the exact same features, scores etc. If the transformer is not reproducible then we need to let DAI know that the transformer is not reproducible so that users know not to expect that for this particular transformer is used in a model. In our case this transformer is a reproducible and we set the **is_reproducible** variable to true.
-```is_reproducible= true```
+- Is this function reproducible, DAI has the ability to recreate models which you can run on the same hardware and get the exact same features, scores etc. If the transformer is not reproducible then we need to let DAI know that the transformer is not reproducible so that users know not to expect that for this particular transformer is used in a model. In our case this transformer is a reproducible and we set the **is_reproducible** variable to true.
+	- ```is_reproducible= true```
 
-Are there are models that need to be included or excluded? Maybe the transformer will not be able to work with TensorFlow or it only works with TensorFlow. If there are models that are to be included or excluded then we write the list as strings.
+- Are there are models that need to be included or excluded? Maybe the transformer will not be able to work with TensorFlow or it only works with TensorFlow. If there are models that are to be included or excluded then we write the list as strings.
 In our case there are no models that we need to exclude so we set value to None to the two variables below:
-```_included_model_classes = None```
-```_excluded _model_classes = None```
+	- ```_included_model_classes = None```
+	- ```_excluded _model_classes = None```
 
 7\. Copy and paste the code for the **When to use the transformer** right  below the ```class SumTransformer(CustomTransformer):``` section of  code of your .py file, your text editor should look similar to the page below:
 
@@ -384,7 +384,7 @@ We will be using the Iris Dataset to test our new transformer custom recipe.” 
 
 5\. Select **Target Column** and click on **Species**
 
-6.\. Select **Expert Settings**
+6\. Select **Expert Settings**
 
 7\. Click on **+Upload Custom Recipe** and select your ```sum_transformer.py``` file
 
@@ -417,10 +417,11 @@ A scorer recipe is a recipe that helps evaluate the performance of your model. T
 
 Where can scorers be used? 
 
-- An oil and gas company could predict oil-well output by developing a time-series regression model and use the Mean Absolute Scaled Error recipe to measure the accuracy of the forecasted output.
+- **An oil and gas company** could predict oil-well output by developing a time-series regression model and use the Mean Absolute Scaled Error recipe to measure the accuracy of the forecasted output.
 
-- A transportation and logistics company could use the precision-recall classification recipe to accurately predict the on-time delivery of perishable products by tweaking the threshold depending upon weather conditions.
-A marketing and lead-gen company could improve the effectiveness of its products by accurately predicting its ROI for its customers, using the marketing campaign scorer recipe.
+- **A transportation and logistics company** could use the precision-recall classification recipe to accurately predict the on-time delivery of perishable products by tweaking the threshold depending upon weather conditions.
+
+- **A marketing and lead-gen company** could improve the effectiveness of its products by accurately predicting its ROI for its customers, using the marketing campaign scorer recipe.
 
 - Maybe you want to optimize your predictions for the top decile for a regression problem..
  
@@ -448,11 +449,11 @@ A model recipe is a recipe for a machine learning technique that can be used to 
 
 Where can models be used? 
 
-- An insurance provider could recommend the right insurance product to its customers by building a gradient boost model based on the CatBoost algorithm recipe.
+- **An insurance provider** could recommend the right insurance product to its customers by building a gradient boost model based on the CatBoost algorithm recipe.
 
-- A media television company could use the historic mean time-series recipe to smooth out the distribution graph of the # of viewers throughout a busy sports tournament by breaking the entire season in discrete time windows.
+- **A media television company** could use the historic mean time-series recipe to smooth out the distribution graph of the # of viewers throughout a busy sports tournament by breaking the entire season in discrete time windows.
 
-- A sports and entertainment event broadcast company could do NLP for specific Twitter handles and hashtags, and classify sentiments of every event using the Intel DAAL models, enabling them to be smart about targeting demographics.
+- **A sports and entertainment event broadcast company** could do NLP for specific Twitter handles and hashtags, and classify sentiments of every event using the Intel DAAL models, enabling them to be smart about targeting demographics.
 
 - All H2O-3 Algorithms including H2O AutoML
  
@@ -470,8 +471,9 @@ Driverless AI has Model recipes for the following categories:
 
 ### Deeper Dive and Resources
 
-[Driverless AI Models Repo](https://github.com/h2oai/driverlessai-recipes/tree/master/models) 
-[BYOR Model Template](https://github.com/h2oai/driverlessai-recipes/blob/master/models/model_template.py)  
+- [Driverless AI Models Repo](https://github.com/h2oai/driverlessai-recipes/tree/master/models) 
+
+- [BYOR Model Template](https://github.com/h2oai/driverlessai-recipes/blob/master/models/model_template.py)  
 
 ## Task 5: Troubleshooting
 
@@ -480,7 +482,7 @@ When uploading a new recipe to Driverless AI, there are multiple things that can
 - The recipe did not make the cut (recipe did was not loaded into Driverless AI )
 - The recipe made the cut but Driverless did not end up using it for the experiment
 
-###  Recipe did not Make the Cut 
+###  Recipe Did Not Make the Cut 
 
 One of the biggest advantages when loading a recipe to Driverless AI is that Driverless AI will subject your recipe to its acceptance tests. If your recipe did not pass the acceptance Driverless AI will  let you know right away if your recipe made the cut. If your recipe did not make the cut you then you will receive feedback from Driverless AI on how to improve it. 
 
