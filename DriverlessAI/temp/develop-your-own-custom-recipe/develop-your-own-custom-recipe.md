@@ -231,7 +231,9 @@ class SumTransformer(CustomTransformer):
 ~~~
 
 1\. Open your text editor and create a new file
+
 2\. Save  the new file as sum_transformer.py
+
 3\. Copy and paste the code above into your .py file, your text editor should look similar to the page below:
 
 ![transformer-extending-base](assets/transformer-extending-base.jpg)
