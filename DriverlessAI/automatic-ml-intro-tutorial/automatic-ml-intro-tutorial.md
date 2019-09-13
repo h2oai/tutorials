@@ -254,11 +254,11 @@ https://www.brighttalk.com/search/?q=driverless+ai)
 
 [3][Data Science Primer - Data Cleaning](https://elitedatascience.com/data-cleaning)
 
-[3][Feature Engineering](https://elitedatascience.com/feature-engineering) 
+[4][Feature Engineering](https://elitedatascience.com/feature-engineering) 
 
-[4][Towards Data Science- Supervised vs Unsupervised Learning](https://towardsdatascience.com/supervised-vs-unsupervised-learning-14f68e32ea8d) 
+[5][Towards Data Science- Supervised vs Unsupervised Learning](https://towardsdatascience.com/supervised-vs-unsupervised-learning-14f68e32ea8d) 
 
-[5][Selecting the best Machine Learning Algorithm for your regression problem](https://towardsdatascience.com/selecting-the-best-machine-learning-algorithm-for-your-regression-problem-20c330bad4ef)
+[6][Selecting the best Machine Learning Algorithm for your regression problem](https://towardsdatascience.com/selecting-the-best-machine-learning-algorithm-for-your-regression-problem-20c330bad4ef)
 
 ## Task 3: Load Data
 
@@ -914,9 +914,9 @@ Where you will learn how to:
 	- Gain and Lift Charts
 	- K-S Chart
 	- Metrics such as:
-	- AUC
-	- F-Scores
-	- GINI
-	- MCC
-	- Log Loss
+	  - AUC
+	  - F-Scores
+	  - GINI
+	  - MCC
+	  - Log Loss
 - Request a [21-Day Free Trial: H2O Driverless AI license Key](https://www.h2o.ai/products/h2o-driverless-ai/)
