@@ -20,6 +20,8 @@ Check out our [**New Tutorials Portal**](https://h2oai.github.io/tutorials/) whe
 
 - [Time Series Tutorial - Retail Sales Forecasting](https://h2oai.github.io/tutorials/time-series-recipe-tutorial-retail-sales-forecasting/#0)
 
+- **NEW** [Get Started and Consume Existing Recipes](https://h2oai.github.io/tutorials/get-started-and-consume-existing-recipes/#0)
+
 For **Driverless AI 1.6.0 tutorials**, check out:
 
 - [Driverless AI Tutorials 1.6.0 Repo](https://github.com/h2oai/tutorials/tree/1.6.0/DriverlessAI)
