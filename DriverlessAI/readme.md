@@ -4,9 +4,21 @@
 
 # Driverless AI
 
-This repository has tutorials that focus on Driverless AI version **1.6.0**.
+This repository has tutorials that focus on **Driverless AI version 1.6.0**.
 
-Check out our new [tutorials portal](https://h2oai.github.io/tutorials/) where you will find our **latest DAI tutorials** including: 
+- [Getting Started with Driverless AI Test Drive](https://github.com/h2oai/tutorials/blob/1.6.0/DriverlessAI/Test-Drive/test-drive.md)
+
+- [Automatic MLIntro with Test Drive](https://github.com/h2oai/tutorials/blob/1.6.0/DriverlessAI/DriverlessAI-Test-Drive-Tutorials/automatic-ml-intro-test-drive-tutorial/automatic-ml-intro-test-drive-tutorial.md)
+
+- [Automatic ML Intro Tutorial with Driverless AI](https://github.com/h2oai/tutorials/blob/1.6.0/DriverlessAI/DriverlessAI-Test-Drive-Tutorials/automatic-ml-intro-test-drive-tutorial/automatic-ml-intro-test-drive-tutorial.md)
+
+- [Machine Learning Scoring and Analysis Tutorial - Financial Focus](https://github.com/h2oai/tutorials/blob/1.6.0/DriverlessAI/machine-learning-experiment-scoring-and-analysis/machine-learning-experiment-scoring-and-analysis.md)
+
+- [Machine Learning Interpretability](https://github.com/h2oai/tutorials/blob/1.6.0/DriverlessAI/machine-learning-interpretability-tutorial/machine-learning-interpretability-tutorial.md)
+
+
+
+Check out our [**NEW Tutorials Portal**](https://h2oai.github.io/tutorials/) where you will find our **latest DAI tutorials** including: 
 
 - [Getting Started with Driverless AI Test Drive](https://h2oai.github.io/tutorials/test-drive/#0)
 
