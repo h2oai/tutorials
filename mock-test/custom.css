@@ -1,15 +1,15 @@
 #controls {
-  display: none;
+  display: none !important; 
 }
 
 #drawer {
-  display: none;
+  display: none !important;
 }
 
 #codelab-nav-buttons {
-  display: none;
+  display: none !important;
 }
 
 #codelab-time-container {
-  display: none;
+  display: none !important;
 }
