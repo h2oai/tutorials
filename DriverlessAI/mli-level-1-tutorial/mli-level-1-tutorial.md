@@ -1,1 +1,0 @@
-**This tutorial has been moved to** [Machine Learning Interpretability Tutorial](https://github.com/h2oai/tutorials/blob/master/DriverlessAI/machine-learning-interpretability-tutorial/machine-learning-interpretability-tutorial.md).
