@@ -524,7 +524,7 @@ At the end of the experiment, a similar page will appear:
 
 ### Deeper Dive and Resources
 
-[Interpreting this Model Button - Time Series](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/interpreting.html#interpret-this-model-button-time-series) 
+- [Interpreting this Model Button - Time Series](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/interpreting.html#interpret-this-model-button-time-series) 
 
 ## Task 5: Model Interpretability
 
@@ -629,7 +629,7 @@ When looking at both MLI results, we can see that for the pre-ran experiment the
 
 ### Deeper Dive and Resources
 
-[H2O’s DAI Multi Group Time Series MLI](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/interpret-ts.html?highlight=top%20group%20test%20metrics#multi-group-time-series-mli)
+- [H2O’s DAI Multi Group Time Series MLI](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/interpret-ts.html?highlight=top%20group%20test%20metrics#multi-group-time-series-mli)
 
 ## Task 6: Analysis
 
@@ -702,7 +702,7 @@ Learn more about DAI’s Test Augmentation by visiting H2O’s documentation sit
 
 ### Deeper Dive and Resources
 
-[DAI’s Test Augmentation](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/time-series.html#using-a-driverless-ai-time-series-model-to-forecast) 
+- [DAI’s Test Augmentation](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/time-series.html#using-a-driverless-ai-time-series-model-to-forecast) 
 
 ## Task 7: Appendix A: Add the Datasets
 
@@ -728,4 +728,14 @@ walmart_tts_small_train.csv
 
 ## Task 8 Next Steps
 
-Coming soon, NLP Recipe Tutorial.
+Check out Driverss AI next tutorial [Natural Language Processing Tutorial - Sentiment Analysis]()
+
+Where you will learn:
+
+- How to launch a sentiment analysis experirement
+- Sentiment Analysis Experiment settings 
+- NLP Concepts
+- Driverless Ai NLP Recipe 
+- and more....
+
+
