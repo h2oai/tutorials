@@ -53,6 +53,7 @@ In the **Get Started and Consume Existing Recipes** Tutorial we covered the foll
 Just to recap, H2O Driverless AI is an artificial intelligence (AI) platform for automatic machine learning. Driverless AI automates some of the most difficult and tedious data science and machine learning tasks such as feature engineering, algorithm selection, model validation, model tuning, model selection, model explanation, model documentation and model deployment. It aims to achieve the highest predictive accuracy, comparable to expert data scientists, but in a much shorter time thanks to end-to-end automation.
 
 Driverless AI 1.8.0 allows Domain Scientists to combine their subject matter expertise with the broadness of Driverless by giving Data Scientists the option to upload their own transformers, scorers, and custom datasets. Driverless AI’s Bring Your Own Recipe (BYOR) lets you apply your domain expertise and optimize your specific DAI model(s) with just a few clicks. Driverless AI treats customer recipes as first-class citizens in the automatic machine learning workflow. 
+
 ### DAI’s Automatic Machine Learning Workflow
 
 Driverless AI’s Automatic Machine Learning workflow is represented on the image below:
@@ -336,7 +337,7 @@ _binary = True
 _multiclass = True
 _numeric_output = True
 _is_reproducible = True _included_model_classes = None # List[str]
- _excluded_model_classes = None # List[str]
+_excluded_model_classes = None # List[str]
 					
 ~~~
 
@@ -877,7 +878,7 @@ That's nothing to worry about. It's unlikely that your features have the stronge
 
 ### Deeper Dive and Resources
 
-- [How do I collect logs by ](https://support.h2o.ai/support/solutions/articles/17000090847-how-do-i-collect-logs-)  
+- [How do I collect logs? ](https://support.h2o.ai/support/solutions/articles/17000090847-how-do-i-collect-logs-)  
 - [Driverless AI community Slack channel](https://www.h2o.ai/community/driverless-ai-community/#chat) 
 - [ Driverless AI Recipe Debugging Example](https://github.com/h2oai/driverlessai-recipes/blob/rel-1.7.0/transformers/how_to_debug_transformer.py) 
  
