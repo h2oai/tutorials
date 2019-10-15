@@ -712,7 +712,7 @@ Generate the MLI report:
 
 *Things to Note:*
 1. Summary -  Summary of MLI experiment
-2. DAI Model - Feature importance and Shapley plots for transformed features
+2. DAI Model - Feature importance, Shapley plots for transformed features, and Disparate Impact Analysis
 3. Surrogate Models - KLIME and Decision Tree plots
 4. Dashboard - The Model Interpretation Page includes the following:
 	- Global Interpretability model explanation plot
