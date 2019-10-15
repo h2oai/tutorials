@@ -37,7 +37,7 @@ If you are not familiar with Driverless AI please review and do this tutorial:
 
 - [Automatic Machine Learning Intro Tutorial](https://github.com/h2oai/tutorials/blob/master/DriverlessAI/automatic-ml-intro-tutorial/automatic-ml-intro-tutorial.md) 
 
-## Task 1:  Launch Time Series Experiment
+## Task 1: Launch Time Series Experiment
 
 ### About the Dataset 
 
