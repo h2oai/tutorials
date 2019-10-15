@@ -112,7 +112,7 @@ This dataset set has 3333 customers(rows) and 21 columns representing attributes
 ![add-dataset-file-system](assets/add-dataset-file-system.jpg)
 
 3\. Enter the following ```/data/Splunk/churn``` into the search bar.
-u
+
 4\. Select ```churn.csv``` 
 
 5\. **Click to Import Selection**
@@ -122,6 +122,8 @@ u
 6\.  If the file loaded successfully then you should see an image similar to the one below:
 
 ![churn-dataset-overview](assets/churn-dataset-overview.jpg)
+
+**Note:** you can ignore the other datasets as they are used in other tutorials. 
 
 7\. Let’s take a quick look at the columns of the churn dataset:
 
@@ -169,13 +171,15 @@ u
 
 ![select-churn](assets/select-churn.jpg)
 
-4\. Verify that the experiment looks similar to the one below, then select **Launch Experiment**:
+4\. Name your experiment ```Exp 1 - Baseline``` and verify that the experiment looks similar to the one below, then select **Launch Experiment**:
+
+**Note:** You might have to update the default settings to the ones shown below
 
 ![exp1-settings](assets/exp1-settings.jpg)
 
 5\. Once the experiment is completed, a similar page will appear with experiment results:
 
-**Experiment 1 Results:**!
+**Experiment 1 Results:**
 
 ![exp1-summary](assets/exp1-summary.jpg)
 
@@ -185,17 +189,17 @@ u
 
 *Things to Note:*
 
-- **Under summary**: The validation score is .91557 with an accuracy of .9397 (click on ROC then hover over Best ACC)
+- **Under summary**: The validation score is .91046 with an accuracy of .9391 (click on ROC then hover over Best ACC)
 
-- **Variable Importance**: The top variables that led to a customer churning according to this model was the total amount a customer was being charged for their "day calls." The other variable of most importance was the number of times the customer had to call customer service; intuitively this makes sense because if a customer is overpaying for calls in the morning when they might the most active and they had to call customer service many times, it could have led a dissatisfied customer.
+- **Variable Importance**: The top variables that led to a customer churning according to this model was the number of times the customer had to call customer service. The other variable of most importance was the total amount a customer was being charged for their "day calls." Intuitively this makes sense because if a customer is overpaying for calls in the morning when they might be the most active and they had to call customer service many times, it could have led a dissatisfied customer.
 
-6/. Hover over the experiment name, a pencil will appear, click on it: 
+<!--6/. Hover over the experiment name, a pencil will appear, click on it: 
 
 ![exp-1-edit-name](assets/exp-1-edit-name.jpg)
 
 7\. Change the experiment name to ```Exp 1 - Baseline``` then click **Enter**, the name of your experiment should look similar to the one below:
 
-![exp1-name-update](assets/exp1-name-update.jpg)
+![exp1-name-update](assets/exp1-name-update.jpg) -->
 
 ### Deeper Dive and Resources
 
@@ -203,18 +207,18 @@ u
 
 ## Task 3: Recipe: Transformer
 
-On task 2, we ran an experiment to build a model that would predict customer churn. The Driverless AI model that was generated with the default settings gave us the results below:
+On task 2, we ran an experiment to build a model that would predict customer churn. The Driverless AI model that was generated with the settings shown below and gave us the results below:
 
 **Summary of results**:
 
 | - | Experiment 1(Base)|
 |---| ---|
-| Experiment Settings | 7-2-8 | 
+| Experiment Settings | 5-2-8 | 
 | Scorer | AUC |
-| Model | LightGBM |
-| Feature Importance | Day Charge|
-| AUC Score | .9156|
-| Accuracy | .9397 |
+| Model | XGBoostGBM |
+| Feature Importance | Customer Service|
+| AUC Score | .91046|
+| Accuracy | .9391 |
 
 When a dataset is selected for an experiment, Driverless AI optimizes its settings by selecting the best Scorer, Model(s) and Transformers for the dataset. However, this does not mean we cannot import other scorer’s, models or transformers to see if we can further optimize our model. In this task, we will be importing a transformer recipe, to see how the features in the feature engineering change.
 
@@ -245,7 +249,7 @@ The goal of importing the new transformer recipe is to see if we can further opt
 6\. Copy and paste  the following “Raw” URL for the SumTransformer into the **Load Custom Recipe** box then click on **Save**
 
 ```html
-https://raw.githubusercontent.com/h2oai/driverlessai-recipes/master/transformers/numeric/sum.py 
+https://raw.githubusercontent.com/h2oai/driverlessai-recipes/rel-1.8.0/transformers/numeric/sum.py
 ```
 
 ![exp2-load-custom-recipe-transformer-raw-url](assets/exp2-load-custom-recipe-transformer-raw-url.jpg)
@@ -266,13 +270,11 @@ https://raw.githubusercontent.com/h2oai/driverlessai-recipes/master/transformers
 
 11\. Select **Save** on the **Expert Experiment Settings** page
 
-12\. You can verify that the transformer was included in the experiment on the Experiments page by looking under “What do these settings mean?” > “Interpretability” as **Sum**
+12\. Name your experiment ```Exp 2  - Transformer.``` Also, verify that the transformer was included in the experiment on the Experiments page by looking under “What do these settings mean?” > “Interpretability” as **Sum.** 
 
 ![exp2-check-transformer](assets/exp2-check-transformer.jpg)
 
 13\. Select **Launch Experiment**
-
-14\. At the end of the experiments, you will see an experiment summary similar to the one below, make sure to change the experiment name to  ```Exp 2  - Transformer```
 
 ![exp2-summary](assets/exp2-summary.jpg)
 
@@ -290,7 +292,7 @@ In this task, we will be importing a Scorer recipe to see if this scorer will he
 
 The model recipe that will be used for this experiment is the Brier Loss Scorer, to learn more about the Brier Loss model see the **Deeper Dive and Resources** at the end of this task.
 
-1\.Select **Experiments** located at the top of the **Experiment** page
+1\. Select **Experiments** located at the top of the **Experiment** page
 
 2\. Hover over **Exp 1 - Baseline**, then click on the three stacked small boxes located on the right side of **Exp 1 - Baseline** and select **New Model with Same Params**, this will create a new experiment with the same parameters that you used for **Exp 1 - Baseline**:
 
@@ -307,7 +309,7 @@ The model recipe that will be used for this experiment is the Brier Loss Scorer,
 5\. Copy and paste  the following “Raw” URL for the Custom Brier Loss recipe into the **Load Custom Recipe** box then click on **Save**
 
 ~~~html
-https://raw.githubusercontent.com/h2oai/driverlessai-recipes/rel-1.7.0/scorers/classification/binary/brier_loss.py 
+https://raw.githubusercontent.com/h2oai/driverlessai-recipes/rel-1.8.0/scorers/classification/binary/brier_loss.py
 ~~~
 
 ![exp3-load-custom-recipe-scorer-raw-url](assets/exp3-load-custom-recipe-scorer-raw-url.jpg)
@@ -328,7 +330,7 @@ https://raw.githubusercontent.com/h2oai/driverlessai-recipes/rel-1.7.0/scorers/c
 
 10\. Select **Save** on the **Expert Experiment Settings** page
 
-11\.Once back on the **Experiment** page, click on the Scorer setting which has **AUC** as seen on the image below:
+11\. Once back on the **Experiment** page, click on the Scorer setting which has **AUC** as seen on the image below:
 
 ![exp3-scorer-update](assets/exp3-scorer-update.jpg)
  
@@ -336,13 +338,11 @@ https://raw.githubusercontent.com/h2oai/driverlessai-recipes/rel-1.7.0/scorers/c
 
 ![exp3-select-brier](assets/exp3-select-brier.jpg)
 
-13\. Your experiment page should look similar to the one below with **Brier** as your new scorer. Since we selected to create a new experiment from the baseline experiment this experiment does not have the transformer we loaded on task 2.
+13\. Name your experiment ```Exp 3  - Scorer``` and now your experiment page should look similar to the one below with **Brier** as your new scorer. Since we selected to create a new experiment from the baseline experiment this experiment does not have the transformer we loaded on task 2. 
 
 ![exp3-experiment-page-with-brier](assets/exp3-experiment-page-with-brier.jpg) 
 
 14\. Select Launch Experiment 
-
-15\. At the end of the experiment, you will see an experiment summary similar to the one below, make sure to change the experiment name to  ```Exp 3  - Scorer```
 
 ![exp3-summary](assets/exp3-summary.jpg)
 
@@ -376,7 +376,7 @@ The model recipe that will be used for this experiment is an **ExtraTrees** whic
 5\. Copy and paste  the following “Raw” URL into the **Load Custom Recipe** box then click on **Save**
 
 ~~~html
-https://raw.githubusercontent.com/h2oai/driverlessai-recipes/rel-1.7.0/models/algorithms/extra_trees.py 
+https://raw.githubusercontent.com/h2oai/driverlessai-recipes/rel-1.8.0/models/algorithms/extra_trees.py 
 ~~~
 
 ![exp4-load-custom-recipe-model-raw-url](assets/exp4-load-custom-recipe-model-raw-url.jpg)
@@ -395,13 +395,11 @@ https://raw.githubusercontent.com/h2oai/driverlessai-recipes/rel-1.7.0/models/al
 
 10\. Select **Save** on the **Expert Experiment Settings** page
 
-11\. You can verify that the custom model was included on the experiment on the **Experiments** page by looking under “What do these settings mean?”, the settings have been updated to reflect the new ExtraTrees custom model:
+11\. Name your experiment ```Exp 4 - Model``` and verify that the custom model was included on the experiment on the **Experiments** page by looking under “What do these settings mean?”, the settings have been updated to reflect the new ExtraTrees custom model:
 
 ![exp4-w-extratrees-model](assets/exp4-w-extratrees-model.jpg)
 
 12\. Select Launch Experiment 
-
-13\. At the end of the experiment, you will see an experiment summary similar to the one below, make sure to change the experiment name to  ```Exp 4  - Model```
 
 ![exp4-summary](assets/exp4-summary.jpg)
 
@@ -438,7 +436,9 @@ Customer Churn Recipe Comparison
 Comparison of customer churn experiments using various recipes.
 ~~~
 
-4\. Select **Create Project**
+4\. Select **Create a New Project**
+
+![create-project](assets/create-project.jpg)
 
 5\. Click on **+Link Experiment** 
 
@@ -464,7 +464,9 @@ ROC Curves for each model selected:
 
 ![project-model-comparison2](assets/project-model-comparison2.jpg)
 
-We can see that when we used the Transformer recipe, the model had better AUC with an accuracy of .9670 compared to Exp 1 - Baseline, which had an accuracy of .9424. Even with Exp 3 - Scorer, although the AUC did not significantly improve, there was an improvement in the accuracy with .9575. Also, when looking at the variables of importance, we see a slight variation on the variables that were selected to have the largest contribution to customers churning. In Exp 1 - Baseline the variable with most importance when it came to customers churning was "Day Charge." Exp 2, where we used the Transformer to sum columns with similar numerical data, we have the most important variable being the "sum of: Day Charge, Eve Charge, and Night Charge." 
+We can see that when we used the Transformer recipe, the model had better AUC with an accuracy of .9670 compared to Exp 1 - Baseline, which had an accuracy of .9547. Even with Exp 3 - Scorer, although the AUC did not significantly improve, there was an improvement in the accuracy with .9690. However, we do not see much difference in the variables selected to have the largest contibution to customer churning. In the above varibale importance, we can not see how DAI used the Sum transformer, but we do see how it slightly improved the scores. Below you can see how the Sum transformer was used in another experiment with similar settings, where it added the following three columns: Day Charge, Intl calls, and Intl charge.  <!-- Also, when looking at the variables of importance, we see a slight variation on the variables that were selected to have the largest contribution to customers churning. In Exp 1 - Baseline the variable with most importance when it came to customers churning was "Calls Day Charge." Exp 2, where we used the Transformer to sum columns with similar numerical data, we have the most important variable being the "sum of: Day Charge, Eve Charge, and Night Charge." --> 
+
+![sum-transformer](assets/sum-transformer.jpg)
 
 ### Deeper Dive and Resources
 
@@ -475,17 +477,23 @@ We can see that when we used the Transformer recipe, the model had better AUC wi
 
 H2O custom recipes reside in the H2O Driverless AI Recipes GitHub repo. **There are multiple branches of DAI recipes so make sure that you are using the same branch as the DAI version you have.**
 
-For this tutorial, we are using **DAI 1.7.0**, therefore, we will be working off the DAI 1.7.0 branch.
+For this tutorial, we are using **DAI 1.8.0**, therefore, we will be working off the DAI 1.8.0 branch.
 
-1\. Open the link below on a separate tab. Make sure the branch is **rel-1.7.0**
+1\. Open the link below on a separate tab. Make sure the branch is **rel-1.8.0**
 
-- [H2O Driverless AI Recipes GitHub Repo](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.7.0)
+- [H2O Driverless AI Recipes GitHub Repo](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.8.0)
 
-The rel-1.7.0 branch will similar to the page below:
+The rel-1.8.0 branch will similar to the page below:
 
 ![dai-recipes-github-page](assets/dai-recipes-github-page.jpg)
 
-2\. Recipes can be uploaded to DAI by copying and pasting the raw URL as shown on this tutorial or you can also upload the .py file from your local machine. 
+2\. Recipes can be uploaded to DAI by:
+- Uploading custom recipes from your local machine
+- Loading custom recipes from URL, by copying and pasting the raw URL as shown on this tutorial. 
+- Going to the official recipes (external) repo and search for the recipe that you need.
+
+![upload-recipes](assets/upload-recipes.jpg)
+
 
 ### Uploading Recipes via the Raw URL
 
@@ -514,30 +522,30 @@ We are going to get the raw URL for **Brier Loss** Scorer we used in Task 4 and 
 6\. The raw URL for this version of the recipe should be the one below. This URL is then pasted into DAI.
 
 ~~~html
-https://raw.githubusercontent.com/h2oai/driverlessai-recipes/rel-1.7.0/scorers/classification/binary/brier_loss.py
+https://raw.githubusercontent.com/h2oai/driverlessai-recipes/rel-1.8.0/scorers/classification/binary/brier_loss.py
 ~~~
 
 7\. See task 4 of this tutorial to follow the process of uploading a recipe via the raw URL
 
 ### Uploading Recipes from Local Machine 
 
-For this tutorial, we are using DAI 1.7.0, therefore, we will be working off the DAI 1.7.0 branch.
+For this tutorial, we are using DAI 1.8.0, therefore, we will be working off the DAI 1.8.0 branch.
 
-1\. Open the link below on a separate tab. Make sure the branch is **rel-1.7.0**
+1\. Open the link below on a separate tab. Make sure the branch is **rel-1.8.0**
 
-- [H2O Driverless AI Recipes GitHub Repo](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.7.0)
+- [H2O Driverless AI Recipes GitHub Repo](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.8.0)
 
-2\. Make sure it is Branch rel-1-7-0, then click on **Clone or Download**, then on **Download ZIP**. This will download the entire rel1-7.0 repo to your desktop. If you prefer not to download the entire repo then use the URL method. 
+2\. Make sure it is Branch rel-1-8-0, then click on **Clone or Download**, then on **Download ZIP**. This will download the entire rel1-8.0 repo to your desktop. If you prefer not to download the entire repo then use the URL method. 
 
 ![dai-recipes-repo-download](assets/dai-recipes-repo-download.jpg)
 
-3\. Unzip the driverless-recipes-rel-1.7.0 file and save it on your local machine your directory of choice.
+3\. Unzip the driverless-recipes-rel-1.8.0 file and save it on your local machine your directory of choice.
 
 4\. On DAI, start an Experiment, then select Expert Settings. Now instead of selecting **+Load Custom Recipe From URL**, you will select **+Upload Custom Recipe**
 
 ![dai-upload-custom-recipe](assets/dai-upload-custom-recipe.jpg)
 
-5\. After you click on **Upload Custom Recipe**, go to the directory where you saved the **driverlessai-recipes-rel-1-7-0** folder
+5\. After you click on **Upload Custom Recipe**, go to the directory where you saved the **driverlessai-recipes-rel-1-8-0** folder
 
 6\. Select the **scorer** folder
 

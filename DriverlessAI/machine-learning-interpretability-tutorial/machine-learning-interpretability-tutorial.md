@@ -9,9 +9,10 @@
 - [Task 4: Partial Dependence Plot](#task-4-partial-dependence-plot)
 - [Task 5: Decision Tree Surrogate](#task-5-decision-tree-surrogate)
 - [Task 6: K-LIME](#task-6-k-lime)
-- [Task 7: Local Shapley and LOCO](#task-7-local-shapley-and-loco)
-- [Task 8: Individual Conditional Expectation](#task-8-individual-conditional-expectation)
-- [Task 9: Putting It All Together: Dashboard View](#task-9-putting-it-all-together-dashboard-view)
+- [Task 7: Putting It All Together: Dashboard View](#task-7-putting-it-all-together-dashboard-view)
+<!-- - [Task 7: Local Shapley and LOCO](#task-7-local-shapley-and-loco)
+- [Task 8: Individual Conditional Expectation](#task-8-individual-conditional-expectation) 
+- [Task 9: Putting It All Together: Dashboard View](#task-9-putting-it-all-together-dashboard-view)-->
 
 ## Objective 
 
@@ -117,6 +118,8 @@ Up to 9 Months late
 
 ![experiment-page](assets/experiment-page.jpg)
 
+Name your experiment `UCI_CC Classification Tutorial`
+
 7\. Select **Target Column**, then Select **default.payment.next.month** as the target.
 
 
@@ -144,11 +147,13 @@ If the interpretability is high enough then a monotonically constrained model wi
 ![select-interpret-this-model](assets/select-interpret-this-model.jpg)
 
 While the model is being interpreted an image similar to the one below will appear. The goal is to explain the model that was just trained, which will take a few minutes. 
+
 ![mli-interpret-model](assets/mli-interpret-model.jpg)
 
 11\. Once the **MLI Experiment is Finished** page comes up, select **Yes**, an image similar to the one below will appear:
 
-![mli-regression-and-classification-explanations](assets/mli-regression-and-classification-explanations.jpg)
+![mli-regression-and-classification-explanations1](assets/mli-regression-and-classification-explanations1.jpg)
+![mli-regression-and-classification-explanations2](assets/mli-regression-and-classification-explanations2.jpg)
 
 *Things to Note:*
 1. Summary of some basic facts about the model
@@ -259,7 +264,7 @@ The **Feature Importance** plot ranks the original features. These features are 
 
 ![summary-random-forest](assets/summary-random-forest.jpg)
 
-This single **Random Forest** model of a complex Driverless AI model is very helpful because we can see that this is a trustworthy model between the original inputs to the system and the predictions of the system. Note the low mean squared error(0.044), high R2 (95%). 
+This single **Random Forest** model of a complex Driverless AI model is very helpful because we can see that this is a trustworthy model between the original inputs to the system and the predictions of the system. Note the low mean squared error(0.0319), high R2 (97%). 
 
 4\. Go back to the Shapley plot and find the feature importance of LIMIT_BAL. How important was LIMIT_BAL in the global feature importance space? Was LIMIT_BAL a main driver in this space?
 
@@ -434,21 +439,21 @@ Adding the **Actual Target** to the plot allows us to check if the model is not 
 ![k-lime-lime-model-prediction](assets/k-lime-lime-model-prediction.jpg)
 
 *Things to Note:*
-1. The high value of R2=88% and low RMSE=0.0695 value show that this is a highly accurate linear model. In other words this surrogate model is good enough to proceed, and explains almost 90% of the variance in the Driverless AI model predictions. 
+1. The high value of R2=91% and low RMSE=0.0581 value show that this is a highly accurate linear model. In other words this surrogate model is good enough to proceed, and explains about 90% of the variance in the Driverless AI model predictions. 
 
 This single linear model trained on the original inputs of the system to predict the predictions of the Driverless AI model shows that the Driverless AI model predictions are highly linear. The plot above is an implementation of LIME or Local Interpretable Model Agnostic Explanations which often uses linear surrogate models to help reason about the predictions of a complex model.
-
+<!--
 6\. Go to Task 7.
 
 **K-LIME Advance Features**
 
-7\. On the K-LIME plot, change the Cluster to Cluster 13.
+7\. On the K-LIME plot, change the Cluster to Cluster 2.
 
 8\. Select another high probability default person from this K-LIME cluster by clicking on one of the white points on the top-right section of the plot
 
 ![k-lime-cluster-13](assets/k-lime-cluster-13.jpg)
 
-1. Change cluster to cluster 13 and note the R2 value is still very high.
+1. Change cluster to cluster 3 and note the R2 value is still very high.
 2. Pick a point on the top-right section of the plot.
 3. Examine Reason Codes.
 
@@ -456,15 +461,16 @@ The local model predictions (white points) can be used to reason through the Dri
 
 9\. Select **Explanations** on the **K-LIME** plot
 
-![reason-codes-for-row-269](assets/reason-codes-for-row-269.jpg)
+![reason-codes-for-row-233-1](assets/reason-codes-for-row-233-1.jpg)
+![reason-codes-for-row-233-2](assets/reason-codes-for-row-233-2.jpg)
 
 *Things to Note:*
 
-1. The reason codes shows that the Driverless model prediction gave this person .76 percent probability of defaulting. LIME gave them a .72 percent probability of defaulting and in this case we can say that LIME is 94.7% accurate. Based on this observation, it can concluded that the local reason codes are fairly trustworthy. If **Lime Prediction Accuracy** drops below 75%, then we can say that the numbers are probably untrustworthy, and the Shapley plot or LOCO plot should be revisited because the Shapley values are always accurate, and LOCO accounts for nonlinearity and interactions.
+1. The reason codes shows that the Driverless model prediction gave this person .76 percent probability of defaulting. LIME gave them a .75 percent probability of defaulting and in this case we can say that LIME is 96.2% accurate. Based on this observation, it can concluded that the local reason codes are fairly trustworthy. If **Lime Prediction Accuracy** drops below 75%, then we can say that the numbers are probably untrustworthy, and the Shapley plot or LOCO plot should be revisited because the Shapley values are always accurate, and LOCO accounts for nonlinearity and interactions.
 
-2. PAY_0 = 2 months late is the top positive local attribute for this person and contributes .35 probability points to their prediction according to this linear model. 0.35 is the local linear model coefficient for level 3 of the categorical variable PAY_0.
+2. PAY_0 = 2 months late is the top positive local attribute for this person and contributes .47 probability points to their prediction according to this linear model. 0.47 is the local linear model coefficient for level 3 of the categorical variable PAY_0.
 
-3. Cluster 13 reason codes show the average linear trends in the data region around this person. 
+3. Cluster 2 reason codes show the average linear trends in the data region around this person. 
 
 10\. Continue scrolling down on the page to view Global reason codes.
 
@@ -507,7 +513,7 @@ The grey bars or local numeric contributions can be used to generated reason cod
 *Things to Note:*
 1. Row number being observed
 2. Global Shapley value 
-3. A sample of a Shapley Local  numeric contribution of a variable for the high probability person in row 15454
+3. A sample of a Shapley Local  numeric contribution of a variable for the high probability person in row 1144
  
 3\. Pick another high probability person on the **K-LIME** plot and return to the **Shapley** plot and determine what local Shapley values have influenced the person you selected from defaulting (look for the largest grey bars)?
 
@@ -517,7 +523,7 @@ The grey bars or local numeric contributions can be used to generated reason cod
 
 ![decision-tree-local-value](assets/decision-tree-local-value.jpg)
 
-Based on the **Decision Tree** above, for the high probability person in row 15454 the grey path is consistent with the largest grey bars in the Shapley Local plot.
+Based on the **Decision Tree** above, for the high probability person in row 1144, the grey path is consistent with the longest yellow bars in the Shapley Local plot.
 
 6\. Is the **Decision Tree** path you selected consistent with the Shapley Local values you noted for question 3?
 
@@ -543,8 +549,8 @@ ICE is simply the prediction of the model for the person in question, in our cas
 *Things to Note:*
 1. ICE (grey dots)
 2. Partial Dependence (yellow dots)
-3. LOCO feature Importance for the person in row 15454 (grey bars) in relation to global feature importance 
-4. Decision Tree Path for the person in row 15454
+3. LOCO feature Importance for the person in row 1144 (grey bars) in relation to global feature importance 
+4. Decision Tree Path for the person in row 1144
 
 We can observe divergence on the ICE plot and confirm possible interactions with the surrogate decision tree (the grey path). There seems to be interactions between PAY_0, PAY_3 and PAY_6 when PAY_0 = 3 - 4.
 
@@ -555,7 +561,9 @@ We can observe divergence on the ICE plot and confirm possible interactions with
 - [On the Art and Science of Machine Learning Explanations](https://arxiv.org/abs/1810.02909)
 - [H2O ICE Technique](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/interpreting.html#the-ice-technique) 
 
-## Task 9: Putting It All Together: Dashboard View
+-->
+
+## Task 7: Putting It All Together: Dashboard View
 
 Using the techniques together to find interactions and other interesting model behavior. What can you find using the Dashboard view?
 
