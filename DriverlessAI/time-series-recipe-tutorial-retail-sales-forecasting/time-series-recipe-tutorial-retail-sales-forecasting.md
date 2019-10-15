@@ -22,10 +22,11 @@ Driverless AI has its own recipes for time-series forecasting that combines adva
 **Note:** We recommend that you go over the entire tutorial first to review all the concepts, that way, once you start the experiment, you will be more familiar with the content.
 
 ## Prerequisites
-You will need the following to be able to do this tutorial:
-Basic knowledge of Machine Learning and Statistics
-A Driverless AI environment
-Basic knowledge of Driverless AI or doing the Automatic Machine Learning Intro tutorial.
+
+- You will need the following to be able to do this tutorial:
+- Basic knowledge of Machine Learning and Statistics
+- A Driverless AI environment
+- Basic knowledge of Driverless AI or doing the Automatic Machine Learning Intro tutorial.
 
 You can get more information about getting a Driverless AI environment or trial from the following:
 
@@ -742,7 +743,6 @@ walmart_tts_small_train.csv
 5\. Verify that both dataset were added to the **Datasets Overview**, your screen should look similar to the  page below:
 
 ![retail-store-train-test-datasets](assets/retail-store-train-test-datasets.jpg)
-
 
 ## Task 8 Next Steps
 
