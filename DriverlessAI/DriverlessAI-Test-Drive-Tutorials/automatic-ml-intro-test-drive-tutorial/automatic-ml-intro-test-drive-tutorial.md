@@ -230,22 +230,22 @@ The dataset used for this experiment is the infamous Titanic Dataset. We will cr
 
 |Attribute|Definition|Key|
 |---|---|---|
-|passenger Id|Id randomly generated|  |
+|passenger Id|Id randomly generated| - |
 |pclass|Passenger Class| 1= 1st, 2 =2nd, 3=3rd|
 |survived|Survival| 0=No, 1=Yes|
-|name_with_salutations|Passenger name|  |
-|name_without_salutations|Passenger name without salutations|  |
+|name_with_salutations|Passenger name| - |
+|name_without_salutations|Passenger name without salutations| - |
 |sex|Sex|Female, Male|
-|age|Age in years|  |
-|sibsp|Number of siblings/Spouse aboard|  |
-|parch|Number of Parents/Children aboard|  |
-|ticket|Ticket number|  |
-|fare|Passenger fare|  |
-|cabin|Cabin number|  |
+|age|Age in years| - |
+|sibsp|Number of siblings/Spouse aboard| - |
+|parch|Number of Parents/Children aboard| - |
+|ticket|Ticket number| - |
+|fare|Passenger fare| - |
+|cabin|Cabin number| - |
 |embarked|Port of Embarkment|C = Cherbourg, Q = Queenstown, S = Southampton|
-|boat|Boat number|  |
-|body|Body number|  |
-|home.des|Home Destination| |
+|boat|Boat number| - |
+|body|Body number| - |
+|home.des|Home Destination| - |
 
 
 ### Add the Data 
@@ -541,11 +541,11 @@ Once the experiment is completed, an Experiment Summary will appear:
  - Download Logs
  - Download Autoreports 
 
-You will see a notification tab, but you can ignore it for now. We will address it in a later tutorial.
-
 2. Iteration Data - Validation/Variable Importance - Summary of top 20 - Feature Engineered variables
 
 3. Experiment Summary 
+
+You will see a notification tab, but you can ignore it for now. We will address it in a later tutorial.
 
 ### Deeper Dive and Resources
 
