@@ -11,6 +11,7 @@
 - [Task 6: Custom Recipe to Improve Predictions](#task-6-custom-recipe-to-improve-predictions) 
 - [Task 7: Challenge](#task-7-challenge)
 - [Task 8: Appendix A: Add the Datasets](#task-8-appendix-a-add-the-datasets)
+- [Task 9: Next Steps](#task-9-next-steps)
 
 
 ## Objective
@@ -653,3 +654,15 @@ Import Amazon Fine Food Reviews training and test datasets to the Datasets Overv
 
 5\. If the file loaded successfully then the following image should appear on the screen
 ![](assets/Task-8/datasets.png)
+
+## Task 9: Next Steps
+
+Check out the [Get Started and Consume Existing Recipes](https://h2oai.github.io/tutorials/get-started-and-consume-existing-recipes/#0) tutorial
+
+Where you will learn:
+
+- What is Bring Your Own Recipe
+- What is recipe?
+- Types of DAI open-source recipes available
+- How to upload the recipes into DAI as raw URL’s and .py files
+- Compared the final models of the experiments that were run with custom recipes to DAI’s default settings experiment
