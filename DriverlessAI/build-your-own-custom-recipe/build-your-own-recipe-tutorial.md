@@ -636,7 +636,7 @@ Driverless AI has Model recipes for the following categories:
 
 ### Custom Model Recipe 
 
-Models are complex and harder to build therefor in this tutorial a high-level model will build to understand the general mechanics of building a model. There will be additional information at the end of this task to help you learn more about custom model making and how to get started. 
+Models are complex and harder to build therefor in this tutorial a high-level model will build to understand the general mechanics of building a model. <!--There will be additional information at the end of this task to help you learn more about custom model making and how to get started.--> 
 
 The custom model that we will build is sklearn’s **Extra Trees** or extremely randomized trees model. There is Extra Trees for classification ```ExtraTreeClassifier```[1] and regression ```ExtraTreeRegression```[2].
 
