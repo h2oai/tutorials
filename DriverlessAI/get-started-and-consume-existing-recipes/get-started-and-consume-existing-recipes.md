@@ -566,11 +566,11 @@ For this tutorial, we are using DAI 1.8.0, therefore, we will be working off the
 Check out Driverless AI next tutorial[Develop Your Own Custom Recipe Tutorial]()
 
 Where you will learn to build:
+  - Custom Transformer Recipe
+  - Custom Scorer Recipe
+  - Custom Model Recipe
 
-- Custom Transformer Recipe
-- Custom Scorer Recipe
-- Custom Model Recipe
 
-- Webinar: [Extending the H2O Driverless AI Platform with Your Recipes by H2O's Arno Candel](https://www.brighttalk.com/webcast/16463/360533) 
+Webinar: [Extending the H2O Driverless AI Platform with Your Recipes by H2O's Arno Candel](https://www.brighttalk.com/webcast/16463/360533) 
 
-- Blog: [Custom Machine Learning Recipes: The ingredients for success by H2O's Parul Pandey](https://www.h2o.ai/blog/custom-machine-learning-recipes-the-ingredients-for-success/)
+Blog: [Custom Machine Learning Recipes: The ingredients for success by H2O's Parul Pandey](https://www.h2o.ai/blog/custom-machine-learning-recipes-the-ingredients-for-success/)
