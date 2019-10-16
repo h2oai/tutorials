@@ -147,7 +147,7 @@ These two columns are dropped because they are both clear indicators that the lo
  11\. Select **Target Column**, then select **Delinquent**
 ![train-set-select-delinquent](assets/train-set-select-delinquent.jpg)
 
-12\. Select **Test Dataset**, then **test**
+12\. Select **Test Dataset**, then **freddie_mac_500_test**
 
 ![add-test-set](assets/add-test-set.jpg)
 
@@ -172,7 +172,7 @@ Here is an overview of the Experiments settings:
 
 ### Accuracy
 
-By increasing the accuracy setting, Driverless AI gradually adjusts the method for performing the evolution and ensemble. A machine learning ensemble consists of multiple learning algorithms to obtain a better predictive performance that could be obtained from any one single learning algorithm[2]. With a  low accuracy setting, Driverless AI varies features(from feature engineering) and models, but they all compete evenly against each other. At higher accuracy, each independent main model will evolve independently and be part of the final ensemble as an ensemble over different main models. At higher accuracies, Driverless AI will evolve+ensemble feature types like Target Encoding on and off that evolve independently. Finally, at highest accuracies, Driverless AI performs both model and feature tracking and ensembles all those variations.
+By increasing the accuracy setting, Driverless AI gradually adjusts the method for performing the evolution and ensemble. A machine learning ensemble consists of multiple learning algorithms to obtain a better predictive performance that could be obtained from any one single learning algorithm[1]. With a  low accuracy setting, Driverless AI varies features(from feature engineering) and models, but they all compete evenly against each other. At higher accuracy, each independent main model will evolve independently and be part of the final ensemble as an ensemble over different main models. At higher accuracies, Driverless AI will evolve+ensemble feature types like Target Encoding on and off that evolve independently. Finally, at highest accuracies, Driverless AI performs both model and feature tracking and ensembles all those variations.
 
 ### Time
 
@@ -368,7 +368,7 @@ This configuration was selected to generate a model quickly with a sufficient le
 
 4\. For this experiment turn ON **RuleFit models**, under **Model** tab the select **Save**. 
 
-The RuleFit[1] algorithm creates an optimal set of decision rules by first fitting a tree model and then fitting a Lasso (L1-regularized) GLM model to create a linear model consisting of the most important tree leaves (rules). The RuleFit model helps with exceeding the accuracy of Random Forests while retaining explainability of decision trees.
+The RuleFit[2] algorithm creates an optimal set of decision rules by first fitting a tree model and then fitting a Lasso (L1-regularized) GLM model to create a linear model consisting of the most important tree leaves (rules). The RuleFit model helps with exceeding the accuracy of Random Forests while retaining explainability of decision trees.
 
 ![expert-settings-rulefit-on](assets/expert-settings-rulefit-on.jpg)
 
@@ -380,9 +380,10 @@ Learn more about what each setting means and how it can be updated from its defa
 
 ### Resources
 
-[1] [J. Friedman, B. Popescu. “Predictive Learning via Rule Ensembles”. 2005](http://statweb.stanford.edu/~jhf/ftp/RuleFit.pdf)
+[1] [Ensemble Learning](https://en.wikipedia.org/wiki/Ensemble_learning)
 
-[2] [Ensemble Learning](https://en.wikipedia.org/wiki/Ensemble_learning)
+[2] [J. Friedman, B. Popescu. “Predictive Learning via Rule Ensembles”. 2005](http://statweb.stanford.edu/~jhf/ftp/RuleFit.pdf)
+
 
 ### Deeper Dive 
 - [To better understand the impact of setting the Accuracy, Time and Interpretability Knobs between 1 and 10 in H2O Driverless AI](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-settings.html?highlight=interpretability#accuracy-time-and-interpretability-knobs)
@@ -803,7 +804,7 @@ Now we are going to run a model diagnostics on the freddie_mac_500_test set. The
 1. **Info**: Information about the diagnostics model including the name of the test dataset, name of the experiment used and the target column used for the experiment
 2. **Scores**: Summary for the values for GINI, MCC, F05, F1, F2, Accuracy, Log loss, AUC and AUCPR in relation to how well the experiment model scored against a “new” dataset
 
-**Note:** The new dataset must be the same format and with the same number of columns as the training dataset 
+    **Note:** The new dataset must be the same format and with the same number of columns as the training dataset 
 
 3. **Metric Plots**: Metrics used to score the experiment model including ROC Curve, Pre-Recall Curve, Cumulative Gains, Lift Chart, Kolmogorov-Smirnov Chart, and Confusion Matrix
 
