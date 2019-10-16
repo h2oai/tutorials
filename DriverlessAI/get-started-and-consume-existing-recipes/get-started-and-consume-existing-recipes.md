@@ -4,7 +4,7 @@
 
 - [Objective](#objective)
 - [Prerequisites](#prerequisites) 
-- [Task 1: Introduction to Driverless AI ML Optimization Extensions Recipe](#task-1-introduction-to-driverless-ai-ml-optimization-extensions-recipe)
+- [Task 1: Introduction to Driverless AI Bring Your Own Recipe](#task-1-introduction-to-driverless-ai-bring-your-own-recipe)
 - [Task 2: Launch an Experiment and Consume a Recipe](#task-2-launch-an-experiment-and-consume-a-recipe) 
 - [Task 3: Recipe: Transformer](#task-3-recipe-transformer)
 - [Task 4: Recipe: Scorer](#task-4-recipe-scorer)
@@ -17,7 +17,7 @@
 
 We believe that every company can and should be an AI company. This is a fundamental concept for the future of every business and organization today. As you embark on this AI journey to make your own AI, we want you to explore the key considerations as well as the technology that will make your own AI a possibility.
 
-To make your own AI, with an automatic machine learning platform, it needs to be open and extensible. This allows data scientists to influence the automatic machine learning optimization process and for it to consider additional feature engineering, custom scorers, and other algorithms. Data scientists can add their insights, customizations, and build the most accurate models for their use cases. Driverless AI uses the concept of recipes to optimize the machine learning process, and with Driverless AI 1.7 user can add custom recipes and develop new recipes.
+To make your own AI, with an automatic machine learning platform, it needs to be open and extensible. This allows data scientists to influence the automatic machine learning optimization process and for it to consider additional feature engineering, custom scorers, and other algorithms. Data scientists can add their insights, customizations, and build the most accurate models for their use cases. Driverless AI uses the concept of recipes to optimize the machine learning process, and with Driverless AI 1.7.0 and newer versions users can add custom recipes and develop new recipes.
 
 In this tutorial, we will cover what a recipe is, the different types of recipes available, and how to upload existing recipes to DAI through the URL option. The three types of custom recipes that will be covered are transformer, scorer, and model.
 
@@ -44,7 +44,7 @@ If you are not familiar with Driverless AI please review and do this tutorial:
 
 H2O Driverless AI is an artificial intelligence (AI) platform for automatic machine learning. Driverless AI automates some of the most difficult and tedious data science and machine learning tasks such as feature engineering, algorithm selection, model validation, model tuning, model selection, model explanation, model documentation and model deployment. It aims to achieve the highest predictive accuracy, comparable to expert data scientists, but in a much shorter time thanks to end-to-end automation. The current scope of Driverless AI does not include extensive data manipulation or augmentation before starting an experiment, hence most of the data preparation needs to be done before loading the data.
 	
-In Driverless AI, a pipeline (which we call an experiment) is made up of building blocks, or recipes, that produce a model. These recipes are Python code snippets. Recipes have the following types: ML algorithms, feature engineering (transformers), scorers, and configuration. In Driverless AI 1.7, we’ve added support for BYOR (Bring Your Own Recipe). With BYOR, you can use your own recipes in combination with or instead of all built-in recipes. This allows you to influence the DAI Automatic ML pipeline and gives you control over the optimization choices that Driverless AI makes.
+In Driverless AI, a pipeline (which we call an experiment) is made up of building blocks, or recipes, that produce a model. These recipes are Python code snippets. Recipes have the following types: ML algorithms, feature engineering (transformers), scorers, and configuration. In Driverless AI 1.7.0, we added support for BYOR (Bring Your Own Recipe). With BYOR, you can use your own recipes in combination with or instead of all built-in recipes. This allows you to influence the DAI Automatic ML pipeline and gives you control over the optimization choices that Driverless AI makes.
 
 Recipes can be uploaded into DAI at runtime without having to restart DAI, just like a plugin. There are already close to 100 open-source recipes that have been created by H2O and curated in the recipe library by data science experts that can be used as-is or as templates and expanded upon.
 
@@ -216,7 +216,7 @@ On task 2, we ran an experiment to build a model that would predict customer chu
 | Experiment Settings | 5-2-8 | 
 | Scorer | AUC |
 | Model | XGBoostGBM |
-| Feature Importance | Customer Service|
+| Feature Importance | Customer Service Calls, and Day Charge|
 | AUC Score | .91046|
 | Accuracy | .9391 |
 
@@ -246,7 +246,7 @@ The goal of importing the new transformer recipe is to see if we can further opt
 
 ![exp2-load-custom-recipe-transformer](assets/exp2-load-custom-recipe-transformer.jpg)
 
-6\. Copy and paste  the following “Raw” URL for the SumTransformer into the **Load Custom Recipe** box then click on **Save**
+6\. Copy and paste  the following “Raw” URL for the SumTransformer into the **Load Custom Recipe** box then click on **Save.** Make sure no extra spaces are added after the link in the **Load Custom Recipe** box, as it might give you an error. 
 
 ```html
 https://raw.githubusercontent.com/h2oai/driverlessai-recipes/rel-1.8.0/transformers/numeric/sum.py
@@ -353,7 +353,7 @@ https://raw.githubusercontent.com/h2oai/driverlessai-recipes/rel-1.8.0/scorers/c
 ### Deeper Dive and Resources
 
 - [Wikipedia Brier Score](https://en.wikipedia.org/wiki/Brier_score)
-- [H2O’s Driverless AI Recipes  - Brier Loss](https://github.com/h2oai/driverlessai-recipes/blob/rel-1.7.0/scorers/classification/binary/brier_loss.py) 
+- [H2O’s Driverless AI Recipes  - Brier Loss](https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.0/scorers/classification/binary/brier_loss.py) 
 
 ## Task 5: Recipe: Model
 
@@ -405,7 +405,7 @@ https://raw.githubusercontent.com/h2oai/driverlessai-recipes/rel-1.8.0/models/al
 
 ### Deeper Dive and Resources
 
-- [H2O’s Driverless AI Recipes - ExtraTrees Model ](https://github.com/h2oai/driverlessai-recipes/blob/rel-1.7.0/models/algorithms/extra_trees.py) 
+- [H2O’s Driverless AI Recipes - ExtraTrees Model ](https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.0/models/algorithms/extra_trees.py) 
 
 ## Task 6: Comparing Final Model Results 
 
