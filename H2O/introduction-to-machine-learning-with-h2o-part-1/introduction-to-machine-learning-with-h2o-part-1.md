@@ -68,10 +68,13 @@ Make sure that the dataset is in the same directory as your Jupyter Notebook. Fo
 ``` python
 #Import the dataset 
 loan_level = h2o.import_file("https://s3.amazonaws.com/data.h2o.ai/DAI-Tutorials/loan_level_500k.csv")
+```
+```
 Parse progress: |█████████████████████████████████████████████████████████| 100%
 ```
 
 Now that we have our dataset, we will explore some concepts and then do some exploration of the data and prepare it for modeling.
+
 ## Task 2: Concepts 
 
 ### H2O
@@ -230,14 +233,14 @@ Next, we need to choose our **predictors**, or **x variable**, and our **respons
 
 Return to your Jupyter Notebook; for our y variable, we will choose `DELINQUENT` because we want to predict whether or not a loan will default. For the x variable, we will choose all but 4 features. One is the feature that we will predict, and then `PREPAID` and `PREPAYMENT_PENALTY_MORTGAGE_FLAG` because they are clear indicators if a loan is or is not delinquent and we will not have the information at the time deciding whether to give a loan or not. In machine learning terms, introducing these types of features is called leakage. And lastly, `PRODUCT_TYPE` because that’s a constant value for every row, meaning all samples have the same value; therefore, this feature will not have any predictive value.
 
-There are several ways to choose your predictors, but for this tutorial, we will use a **for** loop that will ignore the four features mentioned above. 
+There are several ways to choose your predictors, but for this tutorial, just substract the columns in `ignored` from the names in the training set. 
 
 ``` python
 y = "DELINQUENT"
 
 ignore = ["DELINQUENT", "PREPAID", "PREPAYMENT_PENALTY_MORTGAGE_FLAG", "PRODUCT_TYPE"] 
 
-x = [i for i in train.names if i not in ignore]
+x = list(set(train.names) - set(ignore))
 ```
 
 If you want to see the list of the features that are in your x variable, just print x.
@@ -285,6 +288,7 @@ From the report, we can look at the metrics on the training and validation data,
 ![default-glm-validation-metrics](assets/default-glm-validation-metrics.jpg)
 
 From the report, we can also see the max F1 score. For the default GLM, we obtained a training F1 score of **0.2888** and a validation F1 score of **0.2835.** 
+
 **Training maximum metrics**
 
 ![default-glm-training-max-metrics](assets/default-glm-training-max-metrics.jpg)
@@ -404,7 +408,7 @@ Let’s build an RF model in Flow. Scroll up again to the Assist” Cell, and cl
 
 ![flow-build-model](assets/flow-build-model.jpg)
 
-In the select algorithm option, choose **Distributed Random Forest,** then change the model id to “flow_default_rf.” click on the *training_frame* option and select **train.**  Change *nfolds* so that it is 5. Choose "DELINQUENT" for your *response_column* and for the ignored columns, choose  "PREPAYMENT_PENALTY_MORTGAGE_FLAG," "PRODUCT_TYPE," "PREPAID."
+In the select algorithm option, choose **Distributed Random Forest,** then change the model id to `flow_default_rf.` Click on the *training_frame* option and select **train.**  Change *nfolds* so that it is 5. Choose "DELINQUENT" for your *response_column* and for the ignored columns, choose  "PREPAYMENT_PENALTY_MORTGAGE_FLAG," "PRODUCT_TYPE," "PREPAID."
 ![flow-default-rf](assets/flow-default-rf.gif)
 
 If you would like, you can view the outputs of your RF model in Flow. However, we can also generate the plots in our Jupyter Notebook.
@@ -961,6 +965,6 @@ h2o.cluster().shutdown()
 
 ## Task 12: Next Steps
 
-Regression Tutorial coming soon.
+Introduction to Machine Learning with H2O - Part 2 coming soon
 
 
