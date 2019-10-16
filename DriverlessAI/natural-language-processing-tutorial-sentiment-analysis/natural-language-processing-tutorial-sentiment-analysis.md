@@ -60,14 +60,12 @@ Our aim is to study these reviews and try and predict whether a review is positi
 The data has been originally hosted by SNAP ([Stanford Large Network Dataset Collection](http://snap.stanford.edu/data/index.html)), a collection of more than 50 large network datasets from tens of thousands of nodes and edges to tens of millions of nodes and edges. In includes social networks, web graphs, road networks, internet networks, citation networks, collaboration networks, and communication networks [2].
 
 The dataset provided is a CSV file containing 568,454 rows and a total of 10 features (columns).
-
  
 ### Dataset Overview
 
-If you are using **Aquarium** as the environment, then the lab **Driverless AI Test Drive** has the Amazon fine review dataset already pre-loaded with separate training and test datasets. The datasets can be located on the Datasets Overview page. However, you can also upload the datasets externally. To learn more about how to add the two datasets from the DAI file system then see [Appendix A: Add the Datasets.](#task-8-appendix-a-add-the-datasets)
+If you are using **Aquarium** as the environment, then the lab **Driverless AI Test Drive** has the Amazon fine review dataset already pre-loaded with separate training and test datasets. The datasets can be located on the Datasets Overview page. However, you can also upload the datasets externally. To learn more about how to add the two datasets from the DAI file system then see [Appendix A: Add the Datasets].(#task-8-appendix-a-add-the-datasets)
 
-On clicking the highlighted `Start lab`button , you will be taken  to a Driverless AI platform with several pre-loaded data sets and pre-run visualizations, models, interpretations, and deployments. Here  you will have access to both the training and testing set for Amazon fine food reviews.
-
+On clicking the highlighted `Start lab` button , you will be taken  to a Driverless AI platform with several pre-loaded data sets and pre-run visualizations, models, interpretations, and deployments. Here  you will have access to both the training and testing set for Amazon fine food reviews.
 
 1\. Verify that both datasets are on the Datasets Overview, your screen should look similar to the page below:
 
@@ -110,7 +108,7 @@ As mentioned in the objectives, this tutorial includes a pre-ran sentiment analy
 
 ![](assets/Task-1/4-predict.png)
 
-2\. As soon as you select the `Predict` option, you are asked for a tour of Driverless AI environment. Skip it for now by clicking `Not Now` . However, it is recommended to get the intuitive tour incase you are new to the environment. An image similar to the one below should appear. 
+2\. As soon as you select the `Predict` option, you are asked for a tour of Driverless AI environment. Skip it for now by clicking `Not Now`. However, it is recommended to get the intuitive tour incase you are new to the environment. An image similar to the one below should appear. 
 
 ![Task-1/5-initial-experiment](assets/Task-1/5-initial-experiment.jpg)
 
