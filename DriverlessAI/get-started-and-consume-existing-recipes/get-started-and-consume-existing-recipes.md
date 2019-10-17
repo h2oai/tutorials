@@ -11,7 +11,7 @@
 - [Task 5: Recipe:  Model](#task-5-recipe-model)
 - [Task 6: Comparing Final Model Results](#task-6-comparing-final-model-results) 
 - [Task 7: Appendix A: How to Access DAI Custom Recipes](#task-7-appendix-a-how-to-access-dai-custom-recipes)
-- [Task 8: Next Steps](#task-8-next-steps)
+- [Next Steps](#next-steps)
 
 ## Objective
 
@@ -30,15 +30,14 @@ You will need the following to be able to do this tutorial:
 - Basic knowledge of Driverless AI or doing the Automatic Machine Learning Intro tutorial
 
 You can get more information about getting a Driverless AI environment or trial from the following:
-- [A Two Hour Test Drive Session](https://github.com/h2oai/tutorials/blob/master/DriverlessAI/Test-Drive/test-drive.md)
+- [A Two Hour Test Drive Session](https://h2oai.github.io/tutorials/getting-started-with-driverless-ai-test-drive/#1)  
 
-- [H2O Driverless AI License Key](https://github.com/h2oai/tutorials/blob/master/DriverlessAI/automatic-ml-intro-tutorial/automatic-ml-intro-tutorial.md#prerequisites)
+- [H2O Driverless AI License Key](https://www.h2o.ai/try-driverless-ai/)
 
-- [H2O Driverless AI Environment and Product Tour](https://github.com/h2oai/tutorials/blob/master/DriverlessAI/automatic-ml-intro-tutorial/automatic-ml-intro-tutorial.md#task-1-get-environment-and-product-tour) 
+- [H2O Driverless AI Environment and Product Tour](https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#2) 
 
 If you are not familiar with Driverless AI please review and do this tutorial:
-
-- [Automatic Machine Learning Intro Tutorial](https://github.com/h2oai/tutorials/blob/master/DriverlessAI/automatic-ml-intro-tutorial/automatic-ml-intro-tutorial.md) 
+- [Automatic Machine Learning Intro Tutorial](https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#0)  
 
 ## Task 1: Introduction to Driverless AI Bring Your Own Recipe
 
@@ -191,15 +190,7 @@ This dataset set has 3333 customers(rows) and 21 columns representing attributes
 
 - **Under summary**: The validation score is .91046 with an accuracy of .9391 (click on ROC then hover over Best ACC)
 
-- **Variable Importance**: The top variables that led to a customer churning according to this model was the number of times the customer had to call customer service. The other variable of most importance was the total amount a customer was being charged for their "day calls." Intuitively this makes sense because if a customer is overpaying for calls in the morning when they might be the most active and they had to call customer service many times, it could have led a dissatisfied customer.
-
-<!--6/. Hover over the experiment name, a pencil will appear, click on it: 
-
-![exp-1-edit-name](assets/exp-1-edit-name.jpg)
-
-7\. Change the experiment name to ```Exp 1 - Baseline``` then click **Enter**, the name of your experiment should look similar to the one below:
-
-![exp1-name-update](assets/exp1-name-update.jpg) -->
+- **Variable Importance**: The top variables that led to a customer churning according to this model was the number of times the customer had to call customer service. The other variable of most importance was the total amount a customer was being charged for their "day calls." Intuitively this makes sense because if a customer is overpaying for calls in the morning when they might be the most active and they had to call customer service many times, it could have led a dissatisfied customer.Ne
 
 ### Deeper Dive and Resources
 
@@ -563,7 +554,7 @@ For this tutorial, we are using DAI 1.8.0, therefore, we will be working off the
 
 ## Task 8: Next Steps
 
-Check out Driverless AI next tutorial[Develop Your Own Custom Recipe Tutorial]()
+Check out Driverless AI next tutorial [Develop Your Own Custom Recipe Tutorial](https://h2oai.github.io/tutorials/build-your-own-custom-recipe-tutorial/#0)
 
 Where you will learn to build:
   - Custom Transformer Recipe
