@@ -13,6 +13,7 @@
 <!-- - [Task 7: Local Shapley and LOCO](#task-7-local-shapley-and-loco)
 - [Task 8: Individual Conditional Expectation](#task-8-individual-conditional-expectation) 
 - [Task 9: Putting It All Together: Dashboard View](#task-9-putting-it-all-together-dashboard-view)-->
+- [Next Steps](#next-steps)
 
 ## Objective 
 
@@ -47,7 +48,8 @@ In order to successfully install H2O Driverless AI, a license key is necessary. 
 
 **Get Environment**
 
-- [Two Hour Trial ](http://aquarium.h2o.ai/login)
+- [Two Hour Trial ](https://h2oai.github.io/tutorials/getting-started-with-driverless-ai-test-drive/#1)
+
 - Cloud Installation
   - [H2O Driverless AI on AWS Marketplace](https://aws.amazon.com/marketplace/pp/B07JN71K8N?qid=1547700275918&sr=0-6&ref_=srh_res_product_title)
   - [H2O Driverless AI on Azure HDInsight](https://azuremarketplace.microsoft.com/en-gb/marketplace/apps/h2o-ai.h2o-driverles-ai?tab=Overview) 
@@ -475,7 +477,7 @@ The local model predictions (white points) can be used to reason through the Dri
 
 10\. Continue scrolling down on the page to view Global reason codes.
 
-4. Global reason codes show the average linear trends in the data set as a whole.
+4. Global reason codes show the average linear trends in the data set as a whole.-->
 
 
 ### Deeper Dive and Resources
@@ -483,7 +485,7 @@ The local model predictions (white points) can be used to reason through the Dri
 - [K-LIME and LIME-SUP](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/interpreting.html#k-lime-and-lime-sup) 
 - [Viewing Explanations](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/viewing-explanations.html) 
 
-## Task 7: Local Shapley and LOCO
+<!-- ## Task 7: Local Shapley and LOCO
  
 ### Local Shapley Concepts
 
@@ -595,3 +597,15 @@ Using the techniques together to find interactions and other interesting model b
 
 - [Driverless AI Hands-On Focused on Machine Learning Interpretability - H2O.ai (Dec 17)](
 https://www.youtube.com/watch?v=axIqeaUhow0) 
+
+## Next Steps
+
+Check out the next tutorial : [Time Series Tutorial - Retail Sales Forecasting](https://h2oai.github.io/tutorials/time-series-recipe-tutorial-retail-sales-forecasting/#0) where you will learn more about:
+
+- Time-series:
+    - Time-series concepts
+    - Forecasting
+    - Experiment settings
+    - Experiment results summary
+    - Model interpretability
+    - Analysis
