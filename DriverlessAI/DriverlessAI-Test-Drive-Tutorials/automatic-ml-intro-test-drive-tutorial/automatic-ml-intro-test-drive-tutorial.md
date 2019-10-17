@@ -230,7 +230,6 @@ The dataset used for this experiment is the infamous Titanic Dataset. We will cr
 
 |Attribute|Definition|Key|
 |---|---|---|
-<!--|Attribute|Definition|Key|-->
 |passenger Id|Id randomly generated| - |
 |pclass|Passenger Class| 1= 1st, 2 =2nd, 3=3rd|
 |survived|Survival| 0=No, 1=Yes|

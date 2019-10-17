@@ -10,7 +10,7 @@
 - [Task 4: Build a Recipe: Model](#task-4-build-a-recipe-model)
 - [Task 5: Troubleshooting](#task-5-troubleshooting)
 - [Task 6: Challenge: Write Your Own Recipe](#task-6-challenge-write-your-own-recipe)
-- [Task 7: Next Steps](#task-7-next-steps)
+- [Next Steps](#next-steps)
 
 ## Objective
 
@@ -191,7 +191,6 @@ This transformer recipe will add 3 or more numeric columns and give the sum. For
 
 | ID | X1| X2| X3| SUM|
 | --- | --- | --- | --- | --- |
-<!---| ID | X1| X2| X3| SUM|-->
 | 1 | 10 | 4 | 3 | 18 |
 | 2 | 1 | 2 | 3 | 6 |
 | 3 | 0 | 9 | 0 | 9 |
@@ -888,7 +887,7 @@ That's nothing to worry about. It's unlikely that your features have the stronge
 
 Try to build your own recipe. Driverless AI has many dataset that you can use to test you new custom recipe. 
 
-## Task 7: Next Steps
+## Next Steps
 
 - Webinar : [How to Make a Recipe with H2O Driverless AI](https://www.h2o.ai/webinars/?commid=364997&utm_campaign=communication_reminder_starting_now_registrants&utm_medium=email&utm_source=brighttalk-transact&utm_content=button) 
 
