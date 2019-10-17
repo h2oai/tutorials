@@ -4,7 +4,7 @@
 
 - [Objective](#objective)
 - [Prerequisites](#prerequisites) 
-- [Task 1: DAI Bring Your Own Recipes](#task-1-dai-bring-your-own-recipes)
+- [Task 1: Driverless AI Bring Your Own Recipes](#task-1-driverless-ai-bring-your-own-recipes)
 - [Task 2: Build a Recipe: Transformer](#task-2-build-a-recipe-transformer)
 - [Task 3: Build a Recipe: Scorer](#task-3-build-a-recipe-scorer)
 - [Task 4: Build a Recipe: Model](#task-4-build-a-recipe-model)
@@ -39,22 +39,22 @@ You can get more information about getting a Driverless AI environment or trial 
 If you are not familiar with Driverless AI please review and do this tutorial:
 - [Automatic Machine Learning Intro Tutorial](https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#0)
 
-## Task 1: DAI Bring Your Own Recipes
+## Task 1: Driverless AI Bring Your Own Recipes
 
 In the **Get Started and Consume Existing Recipes** Tutorial we covered the following:
-- Bring Your Own Recipe (BYOR) for DAI 1.8.0
+- Bring Your Own Recipe (BYOR) for Driverless AI 1.8.0
 - What is a recipe?
-- Types of DAI open-source recipes available (Transformers, Scorers, and Models)
-- How to upload the recipes into DAI as raw URL’s and .py files
-- Compared the final models of the experiments that were run with custom recipes to DAI’s default settings experiment. 
+- Types of Driverless AI open-source recipes available (Transformers, Scorers, and Models)
+- How to upload the recipes into Driverless AI as raw URL’s and .py files
+- Compared the final models of the experiments that were run with custom recipes to Driverless AI’s default settings experiment. 
 
 **Note:** If you have not done so, complete the [Get Started and Consume Existing Recipes Tutorial](https://h2oai.github.io/tutorials/get-started-and-consume-existing-recipes/#0), the material covered will be needed for the successful completion of this tutorial.
 
 Just to recap, H2O Driverless AI is an artificial intelligence (AI) platform for automatic machine learning. Driverless AI automates some of the most difficult and tedious data science and machine learning tasks such as feature engineering, algorithm selection, model validation, model tuning, model selection, model explanation, model documentation and model deployment. It aims to achieve the highest predictive accuracy, comparable to expert data scientists, but in a much shorter time thanks to end-to-end automation.
 
-Driverless AI 1.8.0 allows Domain Scientists to combine their subject matter expertise with the broadness of Driverless by giving Data Scientists the option to upload their own transformers, scorers, and custom datasets. Driverless AI’s Bring Your Own Recipe (BYOR) lets you apply your domain expertise and optimize your specific DAI model(s) with just a few clicks. Driverless AI treats customer recipes as first-class citizens in the automatic machine learning workflow. 
+Driverless AI 1.8.0 allows Domain Scientists to combine their subject matter expertise with the broadness of Driverless by giving Data Scientists the option to upload their own transformers, scorers, and custom datasets. Driverless AI’s Bring Your Own Recipe (BYOR) lets you apply your domain expertise and optimize your specific Driverless AI model(s) with just a few clicks. Driverless AI treats customer recipes as first-class citizens in the automatic machine learning workflow. 
 
-### DAI’s Automatic Machine Learning Workflow
+### Driverless AI’s Automatic Machine Learning Workflow
 
 Driverless AI’s Automatic Machine Learning workflow is represented on the image below:
 
@@ -75,15 +75,15 @@ The workflow is as follows, first, we start with tabular data in the format of  
 
 See **Deeper Dive and Resources** at the end of this task for more information about Enabling Data Connectors.
 
-Once the data has been loaded to DAI, DAI performs Automatic Visualizations of the data and outputs the available graphs for the dataset that is being used. This allows you to have a better understanding of your data. 
+Once the data has been loaded to Driverless AI, Driverless AI performs Automatic Visualizations of the data and outputs the available graphs for the dataset that is being used. This allows you to have a better understanding of your data. 
 
-The data is then sent through DAI’s Automatic Model Optimization. The Automatic Model Optimization is a generic algorithm that learns over time what is working and what is not to make the best model for your data. This includes model recipes, advanced feature engineering, algorithms ( such as Xgboost,TensorFlow, LightGBM) and model tuning. 
+The data is then sent through Driverless AI’s Automatic Model Optimization. The Automatic Model Optimization is a generic algorithm that learns over time what is working and what is not to make the best model for your data. This includes model recipes, advanced feature engineering, algorithms ( such as Xgboost,TensorFlow, LightGBM) and model tuning. 
 
-After the model has been finalized, DAI then auto-generates model documentation that provides an explanation of everything that happened in the experiment and how the model generated makes decisions. Additionally, there is Machine Learning Interpretability of the models generated to explain modeling results in a human-readable format. Once experiments have been completed DAI automatically generates both Python and Java scoring pipelines so that the model is ready to go for production.
+After the model has been finalized, Driverless AI then auto-generates model documentation that provides an explanation of everything that happened in the experiment and how the model generated makes decisions. Additionally, there is Machine Learning Interpretability of the models generated to explain modeling results in a human-readable format. Once experiments have been completed Driverless AI automatically generates both Python and Java scoring pipelines so that the model is ready to go for production.
 
 ### BYOR
 
-**Bring Your Own Recipe** (BYOR) is part of the Automatic Model Optimization process. It is here, that Data scientists through their subject matter expertise and domain knowledge that they get to augment the Automatic Model Optimization by creating and uploading their own transformations, scorers and algorithms. DAI allows the uploaded scorer, algorithm and transformations to compete with the existing DAI recipes and allows the best recipe to be used.
+**Bring Your Own Recipe** (BYOR) is part of the Automatic Model Optimization process. It is here, that Data scientists through their subject matter expertise and domain knowledge that they get to augment the Automatic Model Optimization by creating and uploading their own transformations, scorers and algorithms. Driverless AI allows the uploaded scorer, algorithm and transformations to compete with the existing Driverless AI recipes and allows the best recipe to be used.
 
 ![dai-byor-how-it-works-w-recipes](assets/dai-byor-how-it-works-w-recipes.jpg)
 
@@ -191,6 +191,7 @@ This transformer recipe will add 3 or more numeric columns and give the sum. For
 
 | ID | X1| X2| X3| SUM|
 | --- | --- | --- | --- | --- |
+| ID | X1| X2| X3| SUM|
 | 1 | 10 | 4 | 3 | 18 |
 | 2 | 1 | 2 | 3 | 6 |
 | 3 | 0 | 9 | 0 | 9 |
@@ -265,9 +266,9 @@ The list below are the col_types that can be used:
 
 ![transformer-dict-types](assets/transformer-dict-types.jpg)
 
-After selecting the column type we will select the minimum and the maximum number of columns. Since DAI comes with a transformer that is able to sum 2 columns, we will set the minimum number of columns to 3 and the maximum number of columns to all for our transformer. This means that when DAI runs our transformer it will always choose between 3 and all columns. 
+After selecting the column type we will select the minimum and the maximum number of columns. Since Driverless AI comes with a transformer that is able to sum 2 columns, we will set the minimum number of columns to 3 and the maximum number of columns to all for our transformer. This means that when Driverless AI runs our transformer it will always choose between 3 and all columns. 
 
-The relative importance will be set to 1 for the most part, however, if you want your custom transformer to have higher importance you can always increase the value of importance which will let DAI know that your custom transformer should have higher priority in the generic algorithm through ```relative_importance```.
+The relative importance will be set to 1 for the most part, however, if you want your custom transformer to have higher importance you can always increase the value of importance which will let Driverless AI know that your custom transformer should have higher priority in the generic algorithm through ```relative_importance```.
 
 
 4\. Copy and paste the code for **Selecting which Columns to Use** right  below the ```#Extend base class``` section of code of your .py file, your text editor should look similar to the page below:
@@ -352,7 +353,7 @@ When writing transformers we need to ask ourselves the following types of questi
 - Does the transformer return a number? There are some models that can’t take strings as values, for example, GLM so we need to be explicit about whether or not the output will be numeric or not. In our case, the output is always numeric therefore we set **Numeric Output** variable value to True.
   - ```_numeric_output = true```
 
-- Is this function reproducible, DAI has the ability to recreate models which you can run on the same hardware and get the exact same features, scores, etc. If the transformer is not reproducible then we need to let DAI know that the transformer is not reproducible so that users know not to expect that for this particular transformer is used in a model. In our case, this transformer is reproducible and we set the **is_reproducible** variable to true.
+- Is this function reproducible, Driverless AI has the ability to recreate models which you can run on the same hardware and get the exact same features, scores, etc. If the transformer is not reproducible then we need to let Driverless AI know that the transformer is not reproducible so that users know not to expect that for this particular transformer is used in a model. In our case, this transformer is reproducible and we set the **is_reproducible** variable to true.
   - ```is_reproducible= true```
 
 - Are there are models that need to be included or excluded? Maybe the transformer will not be able to work with TensorFlow or it only works with TensorFlow. If there are models that are to be included or excluded then we write the list as strings.
@@ -375,44 +376,10 @@ Take the new custom sum_transformer and test it in a dataset of your choice.
 
 If you have questions on how to upload the transformer recipe to Driverless AI see  [“Get Started and Consume Existing Recipes Tutorial - Task 3: Recipe: Transformer”](https://h2oai.github.io/tutorials/get-started-and-consume-existing-recipes/#4).
 
-<!--There are various ways to test the new custom transformer recipe:
-
-Upload to Driverless AI to Automatically test on sample data
-Use the DAI Python or R client to automate this process
-Test locally using a dummy version of the Recipe Transformer class we will be extending
-
-If you have questions on how to upload the transformer recipe to Driverless AI see  [“Get Started and Consume Existing Recipes Tutorial - Task 3: Recipe: Transformer”](https://h2oai.github.io/tutorials/get-started-and-consume-existing-recipes/#4).
-
-
-This tutorial will only focus on the first option of testing, to upload the custom recipe to Driverless AI  and Automatically test on sample data. If you have questions on how to do this visit the [“Get Started and Consume Existing Recipes Tutorial - Task 3: Recipe: Transformer”](https://h2oai.github.io/tutorials/get-started-and-consume-existing-recipes/#4).
-
-We will be using the Iris Dataset to test our new transformer custom recipe.” The data set contains 3 classes of 50 instances each, where each class refers to a type of iris plant. One class is linearly separable from the other 2; the latter are NOT linearly separable from each other.”[2]
-
-
-1\. On Driverless AI, add the following datasets by clicking on **+Add Dataset(or Drag and Drop)**, **File System**. Enter the following path ```/data/iris/```.
-
-2\. Select the ```irist_train.csv```
-
-3\. On the ***Dataset** page click on the ```iris_train.csv`` dataset and select **Predict**
-
-4\. Click on NO to the message **First time using Driverless AI? Click Yes to get a Tour?**
-
-5\. Select **Target Column** and click on **Species**
-
-6\. Select **Expert Settings**
-
-7\. Click on **+Upload Custom Recipe** and select your ```sum_transformer.py``` file
-
-8\. The custom recipe should upload with no errors. If you get any errors, return to the top of this task and double-check that all your code is correct and that the code has the correct indentations. 
-
-9\. Once the recipe has loaded correctly, you see as part of the experiments page under  **What do these settings mean?** > **Feature Engineering search Space**.
-
-10\. Launch Experiment -->
 
 ### References
 
 [1] [How to write a Transformer Recipe for Driverless AI by Ashrith Barthur](https://github.com/h2oai/driverlessai-recipes/blob/master/how_to_write_a_recipe/how_to_write_a_recipe.md)
-
 
 
 ### Deeper Dive and Resources
@@ -423,7 +390,7 @@ We will be using the Iris Dataset to test our new transformer custom recipe.” 
 - [How to Debug a Transformer](https://github.com/h2oai/driverlessai-recipes/blob/master/transformers/how_to_debug_transformer.py)
 
 - [How to Test a Transformer from the PyClient](https://github.com/h2oai/driverlessai-recipes/blob/master/transformers/how_to_test_from_py_client.py) 
-[DAI Expert Settings - Transformers PDF](assets/PDF_Transformers.pdf)
+[Driverless AI Expert Settings - Transformers PDF](assets/PDF_Transformers.pdf)
 
 
 ## Task 3: Build a Recipe: Scorer
@@ -514,7 +481,7 @@ The next step is to write the scoring function. The function will have four inpu
 
     - For multi-classification problems then the **predicted** value will be multiple numeric values that represent the probabilities for every class. 
 
-3. **sample_weight**: DAI has an option to incorporate sample weights. This option allows for some rows to be given higher importance than other rows. The **sample_weight** column is usually assigned by the user when setting up the experiment.
+3. **sample_weight**: Driverless AI has an option to incorporate sample weights. This option allows for some rows to be given higher importance than other rows. The **sample_weight** column is usually assigned by the user when setting up the experiment.
 
 4. **labels**: This is another optional input for classification problems that help with the labeling data.
 
@@ -891,4 +858,4 @@ Try to build your own recipe. Driverless AI has many dataset that you can use to
 
 - Webinar : [How to Make a Recipe with H2O Driverless AI](https://www.h2o.ai/webinars/?commid=364997&utm_campaign=communication_reminder_starting_now_registrants&utm_medium=email&utm_source=brighttalk-transact&utm_content=button) 
 
-- [Checkout the Catalog of Existing Recipes](http://catalog.h2o.ai/)
+- [Checkout the Catalog of Open Source Custom Recipes](http://catalog.h2o.ai/)
