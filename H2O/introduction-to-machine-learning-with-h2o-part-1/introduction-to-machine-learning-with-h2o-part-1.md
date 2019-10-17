@@ -3,37 +3,44 @@
 ## Outline
 
 - [Objective](#objective)
-- [Pre-requisites](#pre-requisites) 
-- [Overview](#overview)
-- [Task 1: Import H2O, libraries, and estimators. Initialize H2O and load the dataset](#task-1-import-h2o-libraries-and-estimators-initialize-h2o-and-load-the-dataset)
+- [Prerequisites](#prerequisites) 
+- [Task 1: Initial Setup](#task-1-initial-setup)
 - [Task 2: Concepts](#task-2-concepts)
-- [Task 3: Take a quick look at the data, split the dataset , and select the predictor(s) and response variables](#task-3-take-a-quick-look-at-the-data-split-the-dataset-and-select-the-predictor(s)-and-response-variables)
-- [Task 4: Build a GLM with default settings and inspect the results](#task-4-build-a-glm-with-default-settings-and-inspect-the-results)
-- [Task 5: Build a Random Forest with default settings and inspect the initial results](#task-5-build-a-random-forest-with-default-settings-and-inspect-the-initial-results)
-- [Task 6: Build a GBM with default settings](#task-6-build-a-GBM-with-default-settings)
+- [Task 3: Start Experiment](#task-3-start-experiment)
+- [Task 4: Build a GLM](#task-4-build-a-glm)
+- [Task 5: Build a Random Forest](#task-5-build-a-random-forest)
+- [Task 6: Build a GBM](#task-6-build-a-GBM)
 - [Task 7: Tuning the GLM with H2O GridSearch](#task-7-tuning-the-glm-with-h2o-gridsearch)
 - [Task 8: Tuning the RF model with H2O GridSearch](#task-8-tuning-the-rf-model-with-h2o-gridsearch)
 - [Task 9: Tuning the GBM model with H2O-GridSearch](#task-9-tuning-the-gbm-model-with-h2o-gridsearch)
-- [Task 10: Test set Performance](#task-10-test-set-performance)
-- [Task 11: Challenge & Shutting down your Cluster](#task-11-challenge-&-shutting-down-your-cluster)
-- [Task 12: Next Steps](#task-12-next-steps)
+- [Task 10: Test Set Performance](#task-10-test-set-performance)
+- [Task 11: Challenge](#task-11-challenge)
+- [Next Steps](#next-steps)
 
 ## Objective
+
 We will be using a subset of the Freddie Mac Single-Family dataset to try to predict whether or not a mortgage loan will be delinquent using H2O’s GLM, Random Forest, and GBM models. We will go over how to use these models for classification problems, and we will demonstrate how to use H2O’s grid search to tune the hyper-parameters of each model.
 
-## Pre-requisites 
-Some basic knowledge of machine learning. Familiarity with Python. Make sure you have Jupyter Notebook installed on your local machine, and that you have already installed H2O-3.
+## Prerequisites 
 
-If you do not have H2O-3, you can follow the installation guide on the [H2O Documentation page](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/downloading.html)
+- Some basic knowledge of machine learning. 
+- Familiarity with Python. 
+- Jupyter Notebook installed on your local machine with H2O-3 installed.
 
-We recommend creating an Anaconda Cloud environment, as shown in the installation guide, [Install on Anaconda Could.](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/downloading.html#install-on-anaconda-cloud) This would guarantee that you will have everything that you need to do this tutorial. 
-## Overview
+    - If you do not have H2O-3, you can follow the installation guide on the [H2O Documentation page](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/downloading.html)
+
+We recommend creating an Anaconda Cloud environment, as shown in the installation guide, [Install on Anaconda Could.](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/downloading.html#install-on-anaconda-cloud) This would guarantee that you will have everything that you need to do this tutorial.
+
+
+## Task 1: Start Experiment
+
+### Overview
 The data set we’re using comes from Freddie Mac and contains 20 years of mortgage history for each loan and contains information about "loan-level credit performance data on a portion of fully amortizing fixed-rate mortgages that Freddie Mac bought between 1999 to 2017. Features include demographic factors, monthly loan performance, credit performance including property disposition, voluntary prepayments, MI Recoveries, non-MI recoveries, expenses, current deferred UPB and due date of last paid installment."[1] 
 
 We’re going to use machine learning with H2O to predict whether or not a loan holder will default. To do this we are going to build three classification models: a Linear model, Random Forest, and a Gradient Boosting Machine model, to predict whether or not a loan will be delinquent. Complete this tutorial to see how we achieved those results.
 
 [1] Our dataset is a subset of the [Freddie Mac Single-Family Loan-Level Dataset.](http://www.freddiemac.com/research/datasets/sf_loanlevel_dataset.html) It contains about 500,000 rows and is about 80 MB.
-## Task 1: Import H2O, libraries, and estimators. Initialize H2O and load the dataset
+
 We will start by importing H2O, the estimators for the algorithms that we will use, and also the function to perform Grid Search on those algorithms. 
 
 ``` python
@@ -248,7 +255,7 @@ print(x)
 ```
 ['CREDIT_SCORE', 'FIRST_PAYMENT_DATE', 'FIRST_TIME_HOMEBUYER_FLAG', 'MATURITY_DATE', 'METROPOLITAN_STATISTICAL_AREA', 'MORTGAGE_INSURANCE_PERCENTAGE', 'NUMBER_OF_UNITS', 'OCCUPANCY_STATUS', 'ORIGINAL_COMBINED_LOAN_TO_VALUE', 'ORIGINAL_DEBT_TO_INCOME_RATIO', 'ORIGINAL_UPB', 'ORIGINAL_LOAN_TO_VALUE', 'ORIGINAL_INTEREST_RATE', 'CHANNEL', 'PROPERTY_STATE', 'PROPERTY_TYPE', 'POSTAL_CODE', 'LOAN_SEQUENCE_NUMBER', 'LOAN_PURPOSE', 'ORIGINAL_LOAN_TERM', 'NUMBER_OF_BORROWERS', 'SELLER_NAME', 'SERVICER_NAME']
 ``` 
-## Task 4: Build a GLM with default settings and inspect the results
+## Task 4: Build a GLM with Default Settings and Inspect the Results
 
 Now that we have our train, valid, and test sets, as well as our x and y variables defined, we can start building models! We will start with an H2O Generalized Linear Model (GLM). A GLM fits a generalized linear model, specified by a response variable, a set of predictors, and a description of the error distribution. Since we have a binomial classification problem, we have to specify the family, in this case, it will be “binomial.” 
 
@@ -945,7 +952,12 @@ print ("GBM Confusion Matrix ",  gbm_test_per.confusion_matrix())
 Again, all three scores are very close to each other, and the best one being the GBM, second the RF, and lastly our GLM. For the Misclassification error, we see the opposite pattern to the F1 Score, the misclassification error for both RF and GBM increased, and it slightly decreased for the GLM. However, it is important to note that for both RF and GBM the error for the TRUE predicted label decreased, and for the GLM increased. This, along with a relatively low F1 Score is due to the highly imbalanced dataset. 
 
 For this dataset, we obtained a good AUC for all three models. We obtained an okay F1 Score, given that our dataset is highly imbalanced, and we also obtained a good overall misclassification error, although due to the given imbalanced data, the error for the TRUE label was not so low. Overall, The best model trained on our dataset was the GBM, followed by the RF, and lastly the GLM.
-## Task 11: Challenge & Shutting down your Cluster
+
+### Shut down Cluster
+
+
+## Task 11: Challenge
+
 After building three models, you are now familiar with the syntax of H2O-3 models. Now, try to build a Naive Bayes Classifier! We will help you by showing you how to import the model. The rest is up to you. Try it and see what’s the best training, validation and test AUC that you can get with the Naive Bayes Classifier and compare it to the models that we built in this tutorial.
 
 
@@ -959,7 +971,9 @@ Once you are done with the tutorial, remember to shut down the cluster.
 h2o.cluster().shutdown()
 ```
 
-## Task 12: Next Steps
+### Shut down Cluster
+
+## Next Steps
 
 Regression Tutorial coming soon.
 

@@ -670,7 +670,6 @@ Summary of suggested settings for Time-Series Experiments:
 
 | Setting |  Recommended Value | Lowest  Value|
 |---|---|---|
-<!---| Setting |  Recommended Value | Lowest  Value|-->
 | Accuracy | 10 | 5 |
 | Time | Default | 3 |
 | Interpretability | Default | 5|
