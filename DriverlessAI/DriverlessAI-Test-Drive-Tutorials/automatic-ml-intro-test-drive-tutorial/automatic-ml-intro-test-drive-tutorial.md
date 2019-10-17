@@ -15,7 +15,7 @@
 - [Task 8: MLI Report](#task-8-mli-report)
 - [Task 9: Experiment Summary](#task-9-autodocs)
 - [Task 10: Challenge](#task-10-challenge)
-- [Task 11: Next Steps](#task-11-next-steps)
+- [Next Steps](#next-steps)
 
 
 ## Objective
@@ -230,6 +230,7 @@ The dataset used for this experiment is the infamous Titanic Dataset. We will cr
 
 |Attribute|Definition|Key|
 |---|---|---|
+<!--|Attribute|Definition|Key|-->
 |passenger Id|Id randomly generated| - |
 |pclass|Passenger Class| 1= 1st, 2 =2nd, 3=3rd|
 |survived|Survival| 0=No, 1=Yes|
@@ -864,7 +865,7 @@ Sample set of records:
 - [Try running an experiment without the Driverless AI UI using the Python Client](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/examples/h2oai_client_demo.html?highlight=experiment%20summary)
 
 
-## Task 11: Next Steps
+## Next Steps
 
 Check out Driverss AI next tutorial [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#0)
 
