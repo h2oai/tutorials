@@ -11,13 +11,12 @@
 - [Task 6: Custom Recipe to Improve Predictions](#task-6-custom-recipe-to-improve-predictions) 
 - [Task 7: Challenge](#task-7-challenge)
 - [Task 8: Appendix A: Add the Datasets](#task-8-appendix-a-add-the-datasets)
-- [Task 9: Next Steps](#task-9-next-steps)
+- [Next Steps](#tnext-steps)
 
 
 ## Objective
 
 Sentiment analysis, also known as opinion mining is a subfield of Natural Language Processing (NLP) that tries to identify and extract opinions from a given text. The aim of sentiment analysis is to gauge the attitudes, sentiments, and emotions of a speaker/writer based on the computational treatment of subjectivity in a text. This can be in the form of like/dislike binary rating or in the form of numerical ratings from 1 to 5.
-
 
 ![sentiment-analysis](assets/sentiment-analysis.jpg)
 
@@ -25,9 +24,7 @@ Sentiment analysis, also known as opinion mining is a subfield of Natural Langua
 
 Sentiment Analysis is an important sub-field of NLP. It can help to create targeted brand messages and assist a company in understanding consumer’s preferences. These insights could be critical for a company to increase its reach and influence across a range of sectors.
 
-  
 Here are some of the uses of Sentiment analysis from a business perspective:
-
 
 ![](assets/sentiment-analysis-business-uses.png)
 
@@ -46,9 +43,15 @@ You will need the following to be able to do this tutorial:
     
 You can get more information about getting a Driverless AI environment or trial from the following:
 
-- [A Two Hour Test Drive Session](https://github.com/h2oai/tutorials/blob/master/DriverlessAI/Test-Drive/test-drive.md)
-- [H2O Driverless AI License Key](https://github.com/h2oai/tutorials/blob/master/DriverlessAI/automatic-ml-intro-tutorial/automatic-ml-intro-tutorial.md#prerequisites)
-- [H2O Driverless AI Environment and Product Tour](https://github.com/h2oai/tutorials/blob/master/DriverlessAI/automatic-ml-intro-tutorial/automatic-ml-intro-tutorial.md#task-1-get-environment-and-product-tour)
+- [A Two Hour Test Drive Session](https://h2oai.github.io/tutorials/getting-started-with-driverless-ai-test-drive/#1)  
+
+- [H2O Driverless AI License Key](https://www.h2o.ai/try-driverless-ai/)
+
+- [H2O Driverless AI Environment and Product Tour](https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#2) 
+
+If you are not familiar with Driverless AI please review and do this tutorial:
+
+- [Automatic Machine Learning Intro Tutorial](https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#0) 
 
 ## Task 1: Launch Sentiment Analysis Experiment
 
@@ -89,8 +92,7 @@ The dataset consists of 10 columns which are as follows:
 -  **Summary** - Brief summary of the review
 -  **Score** - Rating between 1 and 5
 -  **HelpfulnessDenominator** - Number of users who indicated whether they found the review helpful or not
--  **ProfileName** - Profile name of the user             
-    
+-  **ProfileName** - Profile name of the user          
 
 4\. Continue scrolling the current page to see more columns (image is not included)
 
@@ -146,9 +148,9 @@ In **Task 2**, we shall explore and update the Experiment Settings.
 
 ### References
 
-- [1] [Amazon Fine Food Reviews - Analyze ~500,000 food reviews from Amazon](https://www.kaggle.com/snap/amazon-fine-food-reviews)
+[1] [Amazon Fine Food Reviews - Analyze ~500,000 food reviews from Amazon](https://www.kaggle.com/snap/amazon-fine-food-reviews)
 
-- [2] [Stanford Network Analysis Project](https://www.kaggle.com/snap)
+[2] [Stanford Network Analysis Project](https://www.kaggle.com/snap)
 
 ### Deeper Dive and Resources
 
@@ -229,9 +231,9 @@ This experiment will run between 50 minutes and 1 hour. However, the time taken 
 
 ### Resources
 
-- [1] [J. Friedman, B. Popescu. "Predictive Learning via Rule Ensembles". 2005](http://statweb.stanford.edu/~jhf/ftp/RuleFit.pdf)
+[1] [J. Friedman, B. Popescu. "Predictive Learning via Rule Ensembles". 2005](http://statweb.stanford.edu/~jhf/ftp/RuleFit.pdf)
 
-- [2] [Ensemble Learning](https://en.wikipedia.org/wiki/Ensemble_learning)
+[2] [Ensemble Learning](https://en.wikipedia.org/wiki/Ensemble_learning)
 
 ### Deeper Dive
 
@@ -369,17 +371,17 @@ Once the features have been extracted, they can then be used for training a clas
 
 ### References
 
-- [1] [Natural language processing - WIkipedia](https://stackedit.io/%5Bhttps://en.wikipedia.org/wiki/Natural_language_processing%5D(https://en.wikipedia.org/wiki/Natural_language_processing))
+[1] [Natural language processing - WIkipedia](https://stackedit.io/%5Bhttps://en.wikipedia.org/wiki/Natural_language_processing%5D(https://en.wikipedia.org/wiki/Natural_language_processing))
 
-- [2] [TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)
+[2] [TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)
 
-- [3] [SVD](https://en.wikipedia.org/wiki/Singular_value_decomposition)
+[3] [SVD](https://en.wikipedia.org/wiki/Singular_value_decomposition)
 
-- [4] [Word2vec Model](https://code.google.com/archive/p/word2vec/)
+[4] [Word2vec Model](https://code.google.com/archive/p/word2vec/)
 
-- [5] [Understanding Convolutional Neural Networks for NLP](http://www.wildml.com/2015/11/understanding-convolutional-neural-networks-for-nlp/)
+[5] [Understanding Convolutional Neural Networks for NLP](http://www.wildml.com/2015/11/understanding-convolutional-neural-networks-for-nlp/)
 
-- [6] [Convolutional Neural Networks for Sentence Classification](https://arxiv.org/pdf/1408.5882.pdf)
+[6] [Convolutional Neural Networks for Sentence Classification](https://arxiv.org/pdf/1408.5882.pdf)
 
 [7] [Text Classification, Part 2 - sentence-level Attentional RNN](https://richliao.github.io/supervised/classification/2016/12/26/textclassifier-RNN/)
 
@@ -397,31 +399,31 @@ Text data can contain critical information to inform better predictions. H2O Dri
 
 ### Key Capabilities of Driverless AI NLP Recipe
 
-1\.**TFIDF of n-grams**
+1.**TFIDF of n-grams**
 
 Frequency-based features are multiplied with inverse document frequency to get TFIDF vectors.
 
-2\. **Frequency of n-grams**
+2. **Frequency of n-grams**
 
 Frequency-based features represent the count of each word in the given text in the form of vectors. Frequency-based features are created for different n-gram values[2]. The dimensions of the output vectors are quite high. Words/n-grams that occur more number of times will get higher weightage than the ones that occur less frequently.
 
-3\. **Truncated SVD Features**
+3. **Truncated SVD Features**
 
 Both TFIDF and Frequency of n-grams result in a higher dimension. To tackle this, we use Truncated SVD to decompose the vector arrays in lower dimensions.
 
-4\. **Linear models on TF/IDF vectors**
+4. **Linear models on TF/IDF vectors**
 
 In our NLP recipe, we also have linear models on top of n-gram TFIDF / frequency vectors. This capture linear dependencies that are simple yet significant in achieving the best accuracies.
 
-5\. **Word Embeddings**
+5. **Word Embeddings**
 
 Driverless AI NLP recipe makes use of the power of word embeddings where words or phrases from the vocabulary are mapped to vectors of real numbers.
 
-6\. **Bi-direction GRU models on word embeddings**
+6. **Bi-direction GRU models on word embeddings**
 
 A Bi-directional GRU model is like putting two independent RNN models in one. Taking note of accuracy as well as speed in our experiments, we have decided to take advantage of high speed and almost similar accuracies of GRU architecture compared to its counterpart LSTM.
 
-7\. **Convolution neural network models on:**
+7. **Convolution neural network models on:**
 
 - **word embeddings**
 
@@ -460,31 +462,31 @@ Please note that the lab also provides a pre-ran experiment. You can either wait
 
 _Things to Note:_
 
-### 1. Status Complete Options
+1. Status Complete Options
     
--   **Deploy :** Whether to deploy the Model to Cloud or keep it local.
--   **Interpret this Model**  - Refers to  [Interpreting a Model](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/interpreting.html). Currently not supported for NLP experiments.
--   **Diagnose Model on New Dataset**  - allows you to view model performance for multiple scorers based on existing model and a test dataset
--   **Score on another Dataset**  - After you generate a model, you can use that model to make predictions on another dataset.
--   **Transform Another Dataset** - One can specify to transform the new dataset after adding it to Driverless AI, and the same transformations that Driverless AI applied to the original dataset will be applied to these new rows.
+     -  **Deploy :** Whether to deploy the Model to Cloud or keep it local.
+     -  **Interpret this Model**  - Refers to  [Interpreting a Model](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/interpreting.html). Currently not supported for NLP experiments.
+     - **Diagnose Model on New Dataset**  - allows you to view model performance for multiple scorers based on existing model and a test dataset
+     - **Score on another Dataset**  - After you generate a model, you can use that model to make predictions on another dataset.
+     - **Transform Another Dataset** - One can specify to transform the new dataset after adding it to Driverless AI, and the same transformations that Driverless AI applied to the original dataset will be applied to these new rows.
 
--   **Download Predictions**
-     - **Training (Holdout) Predictions** : In csv format, available if a validation set was NOT provided.
-     - **Validation Set Predictions** : In csv format, available if a validation set was provided.
-     - **Test Set Predictions** : In csv format, available if a test dataset is used.
--   **Download Python Scoring Pipeline**  - A standalone Python scoring pipeline for H2O Driverless AI
--   **Build MOJO Scoring Pipeline** - A standalone Model ObJect, Optimized scoring pipeline that can be easily embeddable in java environment'
--   **Download Experiment Summary**  - An experiment summary is available for each completed experiment as zip file.
--   **Download Logs**
+     - **Download Predictions**
+          - **Training (Holdout) Predictions** : In csv format, available if a validation set was NOT provided.
+          - **Validation Set Predictions** : In csv format, available if a validation set was provided.
+          - **Test Set Predictions** : In csv format, available if a test dataset is used.
+     -  **Download Python Scoring Pipeline**  - A standalone Python scoring pipeline for H2O Driverless AI
+     - **Build MOJO Scoring Pipeline** - A standalone Model ObJect, Optimized scoring pipeline that can be easily embeddable in java environment'
+     - **Download Experiment Summary**  - An experiment summary is available for each completed experiment as zip file.
+     - **Download Logs**
 
-### 2. Iteration Data - Validation
+2. Iteration Data - Validation
 
-The winning model's validation score and the algorithm used are as follows:
+- The winning model's validation score and the algorithm used are as follows:
 
--   Validation Score - .2353
--   Model Type: XGBoostGBM
+   - Validation Score - .2353
+   - Model Type: XGBoostGBM
 
-### 3. Variable Importance: Summary of top 20 - Feature Engineered variables
+ 3. Variable Importance: Summary of top 20 - Feature Engineered variables
 
 Driverless AI performs feature Engineering on the dataset to determine the optimal representation of the data. Various stages of the features appear throughout the iteration of the data. These can be viewed by hovering over points on the Iteration Data - Validation Graph and seeing the updates on the  **Variable Importance** section.
 
@@ -494,7 +496,7 @@ Look at some of the variables in Variable of Importance list. These are the new,
 
 These transformations created with the following transformers:
 
--   **TextBiGRUTransformer** : Trains a bi-directional GRU TensorFlow model on word embeddings created from a text feature to predict the response column
+- **TextBiGRUTransformer** : Trains a bi-directional GRU TensorFlow model on word embeddings created from a text feature to predict the response column
 
 -   **TextCNNTransformer** : Trains a CNN TensorFlow model on word embeddings created from a text feature to predict the response column.
 
@@ -506,7 +508,7 @@ These transformations created with the following transformers:
 
 The complete list of features used in the final model is available in the Experiment Summary artifacts. The Experiment Summary also provides a list of the original features and their estimated feature importance.
 
-### 4. Summary
+4. Summary
 
 This option gives a brief summary of the entire experiment including :
 
@@ -589,11 +591,11 @@ https://raw.githubusercontent.com/h2oai/driverlessai-recipes/master/transformers
 
 ### References
 
-- [1] [Custom Machine Learning Recipes: The ingredients for success](https://www.h2o.ai/blog/custom-machine-learning-recipes-the-ingredients-for-success/)
+[1] [Custom Machine Learning Recipes: The ingredients for success](https://www.h2o.ai/blog/custom-machine-learning-recipes-the-ingredients-for-success/)
 
-- [2] [Driverless AI Recipes](https://github.com/h2oai/driverlessai-recipes)
+[2] [Driverless AI Recipes](https://github.com/h2oai/driverlessai-recipes)
 
-- [3] [TextBlob](https://textblob.readthedocs.io/en/dev/)
+[3] [TextBlob](https://textblob.readthedocs.io/en/dev/)
 
 ### Deeper Dive and Resources
 
@@ -630,7 +632,7 @@ Here are some samples from the dataset:
 - Which experiment out of the three gives the minimum Logloss value and why?
 - How variable importance changes as you change the selected transformers.
 
-Deeper Dive and Resources
+### Deeper Dive and Resources
 
 - [Try running an experiment without the Driverless AI UI using the Python Client](https://github.com/h2oai/driverlessai-tutorials/blob/master/driverlessai_experiments/nlp/airline_sentiment_experiment/demo_nlp_airline_sentiment.ipynb)
 
@@ -655,7 +657,7 @@ Import Amazon Fine Food Reviews training and test datasets to the Datasets Overv
 5\. If the file loaded successfully then the following image should appear on the screen
 ![](assets/Task-8/datasets.png)
 
-## Task 9: Next Steps
+## Next Steps
 
 Check out the [Get Started and Consume Existing Recipes](https://h2oai.github.io/tutorials/get-started-and-consume-existing-recipes/#0) tutorial
 
