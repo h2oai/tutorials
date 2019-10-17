@@ -1,5 +1,5 @@
 
-## Automatic Machine Learning Introduction with Driverless AI
+# Automatic Machine Learning Introduction with Driverless AI
 
 ## Outline
 

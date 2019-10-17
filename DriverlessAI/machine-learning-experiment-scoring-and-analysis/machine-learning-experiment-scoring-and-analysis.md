@@ -32,12 +32,14 @@ You will need the following to be able to do this tutorial:
 
 You can get more information about getting a Driverless AI env or trial from the following:
 
-- [A Two Hour Test Drive Session](https://github.com/h2oai/tutorials/blob/master/DriverlessAI/Test-Drive/test-drive.md)  
-- [H2O Driverless AI License Key](https://github.com/h2oai/tutorials/blob/master/DriverlessAI/automatic-ml-intro-tutorial/automatic-ml-intro-tutorial.md#prerequisites) 
-- [H2O Driverless AI Environment and Product Tour](https://github.com/h2oai/tutorials/blob/master/DriverlessAI/automatic-ml-intro-tutorial/automatic-ml-intro-tutorial.md#task-1-get-environment-and-product-tour) 
+- [A Two Hour Test Drive Session](https://h2oai.github.io/tutorials/getting-started-with-driverless-ai-test-drive/#1)  
+
+- [H2O Driverless AI License Key](https://www.h2o.ai/try-driverless-ai/)
+
+- [H2O Driverless AI Environment and Product Tour](https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#2) 
 
 If you are not familiar with Driverless AI please review and do this tutorial:
-- [Automatic Machine Learning Intro Tutorial](https://github.com/h2oai/tutorials/blob/master/DriverlessAI/automatic-ml-intro-tutorial/automatic-ml-intro-tutorial.md) 
+- [Automatic Machine Learning Intro Tutorial](https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#0) 
 
 
 ## Task 1: Launch Experiment
@@ -1261,7 +1263,7 @@ A **report** file is included in the **experiment** summary. This report provide
 
 ## Next Steps
 
-Check out the next tutorial : [Machine Learning Interpretability](https://github.com/h2oai/tutorials/blob/master/DriverlessAI/machine-learning-interpretability-tutorial/machine-learning-interpretability-tutorial.md) where you will learn how to:
+Check out the next tutorial : [Machine Learning Interpretability](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#0) where you will learn how to:
 - Launch an experiment
 - Create ML interpretability report
 - Explore explainability concepts such as:
