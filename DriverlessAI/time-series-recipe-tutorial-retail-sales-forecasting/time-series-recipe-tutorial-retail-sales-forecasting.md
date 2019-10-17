@@ -1,4 +1,4 @@
-# Time Series Recipe Tutorial
+# Time Series Recipe Tutorial - Retail Sales Forecasting
 
 ## Outline
 - [Objective](#objective)
@@ -10,7 +10,7 @@
 - [Task 5: Model Interpretability](#task-5-model-interpretability)
 - [Task 6: Analysis](#task-6-analysis) 
 - [Task 7: Appendix A: Add the Datasets](#task-7-appendix-a-add-the-datasets)
-- [Task 8: Next Steps](#task-8-next-steps)
+- [Next Steps](#next-steps)
 
 
 ## Objective
@@ -30,13 +30,15 @@ Driverless AI has its own recipes for time-series forecasting that combines adva
 
 You can get more information about getting a Driverless AI environment or trial from the following:
 
-- [A Two Hour Test Drive Session](https://github.com/h2oai/tutorials/blob/master/DriverlessAI/Test-Drive/test-drive.md)  
-- [H2O Driverless AI License Key](https://github.com/h2oai/tutorials/blob/master/DriverlessAI/automatic-ml-intro-tutorial/automatic-ml-intro-tutorial.md#prerequisites) 
-- [H2O Driverless AI Environment and Product Tour](https://github.com/h2oai/tutorials/blob/master/DriverlessAI/automatic-ml-intro-tutorial/automatic-ml-intro-tutorial.md#task-1-get-environment-and-product-tour) 
+- [A Two Hour Test Drive Session](https://h2oai.github.io/tutorials/getting-started-with-driverless-ai-test-drive/#1)  
+
+- [H2O Driverless AI License Key](https://www.h2o.ai/try-driverless-ai/)
+
+- [H2O Driverless AI Environment and Product Tour](https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#2) 
 
 If you are not familiar with Driverless AI please review and do this tutorial:
+- [Automatic Machine Learning Intro Tutorial](https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#0) 
 
-- [Automatic Machine Learning Intro Tutorial](https://github.com/h2oai/tutorials/blob/master/DriverlessAI/automatic-ml-intro-tutorial/automatic-ml-intro-tutorial.md) 
 
 ## Task 1: Launch Time Series Experiment
 
@@ -629,7 +631,7 @@ At exactly the peak, it is clear that the lag of 52 weeks is the most important 
 
 ![mli-new-experiment-and-preran-experiment-2](assets/mli-new-experiment-and-preran-experiment-2.jpg)
 
-<!--When looking at both MLI results, we can see that for the pre-ran experiment the Shapley value that had the most importance for the peak value was `33 EWMA Lag (1 year back)` compared to the lag of 52 weeks for the new experiment. `Since the pre-ran experiment ran with higher DAI settings it was able accurately associate the lag of 52 weeks to the peak point which makes sense given how seasonal sales are it makes sense that the 52 weeks is the most important feature.` <- **Fix it**-->
+<!--- When looking at both MLI results, we can see that for the pre-ran experiment the Shapley value that had the most importance for the peak value was `33 EWMA Lag (1 year back)` compared to the lag of 52 weeks for the new experiment. `Since the pre-ran experiment ran with higher DAI settings it was able accurately associate the lag of 52 weeks to the peak point which makes sense given how seasonal sales are it makes sense that the 52 weeks is the most important feature.` <- **Fix it**-->
 
 When looking at both MLI results, we can see that for the pre-ran experiment the Shapley value that had the most importance for the peak value was `33 EWMA Lag` or the Exponentially Weighted Moving Average, which calculates the exponentially moving average of a target or feature lag, compared to the lag of 52 weeks for the new experiment. The feature that we see in the pre-ran experiment is a weighted moving average of what happened in various weeks over a course of 2 years; this is a more complex feature than the 52 weeks lag, and that is expected because we built a more complex model from the pre-ran experiment. Although the 52 weeks lag would help make the prediction for a peak value more accurate, our more complex model is trained to be able to predict any point in time, compared to our simple model which would make predictions based on the 1 year lag. Note that the 52 lag is indeed, one of the important variables in the complex model, but is not the most important one.
 
@@ -668,6 +670,7 @@ Summary of suggested settings for Time-Series Experiments:
 
 | Setting |  Recommended Value | Lowest  Value|
 |---|---|---|
+<!---| Setting |  Recommended Value | Lowest  Value|-->
 | Accuracy | 10 | 5 |
 | Time | Default | 3 |
 | Interpretability | Default | 5|
@@ -701,11 +704,11 @@ One important thing to note is why we changed the **Scorer**  that DAI suggested
 
 8\. We have two models, a complex model, and a simple model. The complex model performed better than the simple model, but yielded some features that are not very easy to interpret, thus making the model less interpretable. On the other hand, we have a simple model that produced intuitive features but had a lower score than the complex model. Choosing the "best" or most accurate model depends on the specific application, and one has to decide if they want:
 
-1. The most accurate or best possible model 
+- The most accurate or best possible model 
 
 Or
 
-2. The most interpretable model
+- The most interpretable model
 
 This decision needs to be made according to each particular case. 
 
@@ -744,9 +747,9 @@ walmart_tts_small_train.csv
 
 ![retail-store-train-test-datasets](assets/retail-store-train-test-datasets.jpg)
 
-## Task 8 Next Steps
+## Next Steps
 
-Check out Driverss AI next tutorial [Natural Language Processing Tutorial - Sentiment Analysis]()
+Check out Driverss AI next tutorial [Natural Language Processing Tutorial - Sentiment Analysis](https://h2oai.github.io/tutorials/natural-language-processing-tutorial-sentiment-analysis/#0)
 
 Where you will learn:
 
