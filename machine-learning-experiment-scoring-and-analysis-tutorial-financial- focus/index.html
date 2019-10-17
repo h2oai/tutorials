@@ -131,7 +131,7 @@
 <p>These two columns are dropped because they are both clear indicators that the loans will become delinquent and will cause data leakage.</p>
 <p><img alt="train-set-drop-columns" src="img/d220ade37d8cc59b.jpg"></p>
 <p>11. Select <strong>Target Column</strong>, then select <strong>Delinquent</strong><img alt="train-set-select-delinquent" src="img/56c23fe5cea3c0d7.jpg"></p>
-<p>12. Select <strong>Test Dataset</strong>, then <strong>test</strong></p>
+<p>12. Select <strong>Test Dataset</strong>, then <strong>freddie_mac_500_test</strong></p>
 <p><img alt="add-test-set" src="img/c6b8cce36e00ae0f.jpg"></p>
 <p>13. A similar Experiment page should appear:</p>
 <p><img alt="experiment-settings-1" src="img/f151b24d9daff1b.jpg"></p>
@@ -150,7 +150,7 @@
 <li><strong>Interpretability</strong>-  The ability to explain or to present in understandable terms to a human. The higher the interpretability the simpler the features that will be extracted.<br></li>
 </ul>
 <h2>Accuracy</h2>
-<p>By increasing the accuracy setting, Driverless AI gradually adjusts the method for performing the evolution and ensemble. A machine learning ensemble consists of multiple learning algorithms to obtain a better predictive performance that could be obtained from any one single learning algorithm[2]. With a  low accuracy setting, Driverless AI varies features(from feature engineering) and models, but they all compete evenly against each other. At higher accuracy, each independent main model will evolve independently and be part of the final ensemble as an ensemble over different main models. At higher accuracies, Driverless AI will evolve+ensemble feature types like Target Encoding on and off that evolve independently. Finally, at highest accuracies, Driverless AI performs both model and feature tracking and ensembles all those variations.</p>
+<p>By increasing the accuracy setting, Driverless AI gradually adjusts the method for performing the evolution and ensemble. A machine learning ensemble consists of multiple learning algorithms to obtain a better predictive performance that could be obtained from any one single learning algorithm[1]. With a  low accuracy setting, Driverless AI varies features(from feature engineering) and models, but they all compete evenly against each other. At higher accuracy, each independent main model will evolve independently and be part of the final ensemble as an ensemble over different main models. At higher accuracies, Driverless AI will evolve+ensemble feature types like Target Encoding on and off that evolve independently. Finally, at highest accuracies, Driverless AI performs both model and feature tracking and ensembles all those variations.</p>
 <h2>Time</h2>
 <p>Time specifies the relative time for completing the experiment (i.e., higher settings take longer). Early stopping will take place if the experiment doesn&#39;t improve the score for the specified amount of iterations. The higher the time value, the more time will be allotted for further iterations, which means that the recipe will have more time to investigate new transformations in feature engineering and model&#39;s hyperparameter tuning.</p>
 <h2>Interpretability</h2>
@@ -340,14 +340,14 @@
 <li>Enable Debug Log Level</li>
 </ul>
 <p>4. For this experiment turn ON <strong>RuleFit models</strong>, under <strong>Model</strong> tab the select <strong>Save</strong>.</p>
-<p>The RuleFit[1] algorithm creates an optimal set of decision rules by first fitting a tree model and then fitting a Lasso (L1-regularized) GLM model to create a linear model consisting of the most important tree leaves (rules). The RuleFit model helps with exceeding the accuracy of Random Forests while retaining explainability of decision trees.</p>
+<p>The RuleFit[2] algorithm creates an optimal set of decision rules by first fitting a tree model and then fitting a Lasso (L1-regularized) GLM model to create a linear model consisting of the most important tree leaves (rules). The RuleFit model helps with exceeding the accuracy of Random Forests while retaining explainability of decision trees.</p>
 <p><img alt="expert-settings-rulefit-on" src="img/84db6090b3555641.jpg"></p>
 <p>Turning on the RuleFit model will be added to the list of algorithms that Driverless AI will consider for the experiment.  The selection of the algorithm depends on the data and the configuration selected.</p>
 <p>5. Before selecting <strong>Launch</strong>, make sure that your <strong>Experiment</strong> page looks similar to the one below, once ready, click on <strong>Launch</strong>.</p>
 <p>Learn more about what each setting means and how it can be updated from its default values by visiting H2O&#39;s Documentation- <a href="http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/expert-settings.html?highlight=expert%20settings" target="_blank">Expert Settings</a></p>
 <h2>Resources</h2>
-<p>[1] <a href="http://statweb.stanford.edu/~jhf/ftp/RuleFit.pdf" target="_blank">J. Friedman, B. Popescu. &#34;Predictive Learning via Rule Ensembles&#34;. 2005</a></p>
-<p>[2] <a href="https://en.wikipedia.org/wiki/Ensemble_learning" target="_blank">Ensemble Learning</a></p>
+<p>[1] <a href="https://en.wikipedia.org/wiki/Ensemble_learning" target="_blank">Ensemble Learning</a></p>
+<p>[2] <a href="http://statweb.stanford.edu/~jhf/ftp/RuleFit.pdf" target="_blank">J. Friedman, B. Popescu. &#34;Predictive Learning via Rule Ensembles&#34;. 2005</a></p>
 <h2>Deeper Dive</h2>
 <ul>
 <li><a href="http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-settings.html?highlight=interpretability#accuracy-time-and-interpretability-knobs" target="_blank">To better understand the impact of setting the Accuracy, Time and Interpretability Knobs between 1 and 10 in H2O Driverless AI</a></li>
@@ -604,10 +604,7 @@
 <p><em>Things to Note:</em></p>
 <ol type="1">
 <li><strong>Info</strong>: Information about the diagnostics model including the name of the test dataset, name of the experiment used and the target column used for the experiment</li>
-<li><strong>Scores</strong>: Summary for the values for GINI, MCC, F05, F1, F2, Accuracy, Log loss, AUC and AUCPR in relation to how well the experiment model scored against a &#34;new&#34; dataset</li>
-</ol>
-<p><strong>Note:</strong> The new dataset must be the same format and with the same number of columns as the training dataset</p>
-<ol type="1">
+<li><strong>Scores</strong>: Summary for the values for GINI, MCC, F05, F1, F2, Accuracy, Log loss, AUC and AUCPR in relation to how well the experiment model scored against a &#34;new&#34; dataset<strong>Note:</strong> The new dataset must be the same format and with the same number of columns as the training dataset</li>
 <li><strong>Metric Plots</strong>: Metrics used to score the experiment model including ROC Curve, Pre-Recall Curve, Cumulative Gains, Lift Chart, Kolmogorov-Smirnov Chart, and Confusion Matrix</li>
 <li><strong>Download Predictions</strong>: Download the diagnostics predictions</li>
 </ol>
@@ -955,14 +952,14 @@
 </ul>
 <h2>Deeper Dive and Resources</h2>
 <ul>
-<li><a href="http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-summary.html?highlight=experiment%20overview" target="_blank">H2O&#39;s Summary Report </a></li>
+<li><a href="http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-summary.html?highlight=experiment%20overview" target="_blank">H2O&#39;s Summary Report</a></li>
 </ul>
 
 
       </google-codelab-step>
     
       <google-codelab-step label="Next Steps" duration="0">
-        <p>Check out the next tutorial : [Machine Learning Interpretability]https://github.com/h2oai/tutorials/blob/master/DriverlessAI/machine-learning-interpretability-tutorial/machine-learning-interpretability-tutorial.md) where you will learn how to:</p>
+        <p>Check out the next tutorial : <a href="https://github.com/h2oai/tutorials/blob/master/DriverlessAI/machine-learning-interpretability-tutorial/machine-learning-interpretability-tutorial.md" target="_blank">Machine Learning Interpretability</a> where you will learn how to:</p>
 <ul>
 <li>Launch an experiment</li>
 <li>Create ML interpretability report</li>

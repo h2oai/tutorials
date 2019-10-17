@@ -218,8 +218,13 @@
 <p>1309 rows, one row per passenger, and 16 columns representing attributes of each passenger:</p>
 <table>
 <tr></tr>
+<tr><td colspan="1" rowspan="1"><p>Attribute</p>
+</td><td colspan="1" rowspan="1"><p>Definition</p>
+</td><td colspan="1" rowspan="1"><p>Key</p>
+</td></tr>
 <tr><td colspan="1" rowspan="1"><p>passenger Id</p>
 </td><td colspan="1" rowspan="1"><p>Id randomly generated</p>
+</td><td colspan="1" rowspan="1"><p>-</p>
 </td></tr>
 <tr><td colspan="1" rowspan="1"><p>pclass</p>
 </td><td colspan="1" rowspan="1"><p>Passenger Class</p>
@@ -231,9 +236,11 @@
 </td></tr>
 <tr><td colspan="1" rowspan="1"><p>name</p>
 </td><td colspan="1" rowspan="1"><p>Passenger name</p>
+</td><td colspan="1" rowspan="1"><p>-</p>
 </td></tr>
 <tr><td colspan="1" rowspan="1"><p>name(without salutation)</p>
 </td><td colspan="1" rowspan="1"><p>Passenger name without salutations</p>
+</td><td colspan="1" rowspan="1"><p>-</p>
 </td></tr>
 <tr><td colspan="1" rowspan="1"><p>sex</p>
 </td><td colspan="1" rowspan="1"><p>Sex</p>
@@ -241,21 +248,27 @@
 </td></tr>
 <tr><td colspan="1" rowspan="1"><p>age</p>
 </td><td colspan="1" rowspan="1"><p>Age in years</p>
+</td><td colspan="1" rowspan="1"><p>-</p>
 </td></tr>
 <tr><td colspan="1" rowspan="1"><p>sibsp</p>
 </td><td colspan="1" rowspan="1"><p>Number of siblings/Spouse aboard</p>
+</td><td colspan="1" rowspan="1"><p>-</p>
 </td></tr>
 <tr><td colspan="1" rowspan="1"><p>parch</p>
 </td><td colspan="1" rowspan="1"><p>Number of Parents/Children aboard</p>
+</td><td colspan="1" rowspan="1"><p>-</p>
 </td></tr>
 <tr><td colspan="1" rowspan="1"><p>ticket</p>
 </td><td colspan="1" rowspan="1"><p>Ticket number</p>
+</td><td colspan="1" rowspan="1"><p>-</p>
 </td></tr>
 <tr><td colspan="1" rowspan="1"><p>fare</p>
 </td><td colspan="1" rowspan="1"><p>Passenger fare</p>
+</td><td colspan="1" rowspan="1"><p>-</p>
 </td></tr>
 <tr><td colspan="1" rowspan="1"><p>cabin</p>
 </td><td colspan="1" rowspan="1"><p>Cabin number</p>
+</td><td colspan="1" rowspan="1"><p>-</p>
 </td></tr>
 <tr><td colspan="1" rowspan="1"><p>embarked</p>
 </td><td colspan="1" rowspan="1"><p>Port of Embarkment</p>
@@ -263,12 +276,15 @@
 </td></tr>
 <tr><td colspan="1" rowspan="1"><p>boat</p>
 </td><td colspan="1" rowspan="1"><p>Boat number</p>
+</td><td colspan="1" rowspan="1"><p>-</p>
 </td></tr>
 <tr><td colspan="1" rowspan="1"><p>body</p>
 </td><td colspan="1" rowspan="1"><p>Body number</p>
+</td><td colspan="1" rowspan="1"><p>-</p>
 </td></tr>
 <tr><td colspan="1" rowspan="1"><p>home.des</p>
 </td><td colspan="1" rowspan="1"><p>Home Destination</p>
+</td><td colspan="1" rowspan="1"><p>-</p>
 </td></tr>
 </table>
 <h2>Download the Titanic Datasets</h2>
@@ -482,7 +498,7 @@
 <p><img alt="experiment-summary" src="img/eee90dcd2ee3bf22.jpg"></p>
 <p><em>Things to note:</em></p>
 <ol type="1">
-<li>Status Complete Options<br><br><ul>
+<li>Status Complete Options<ul>
 <li>Deploy (Local and Cloud)</li>
 <li>Interpret This Model</li>
 <li>Diagnose Model On New Dataset</li>
@@ -502,15 +518,13 @@
 <li>Target transformations tuning leaderboard</li>
 <li>Leaderboard</li>
 <li>Download Logs</li>
-<li>Download Autoreports</li>
+<li>Download Autoreports<br></li>
 </ul>
 </li>
-</ol>
-<p>You will see a notification tab, you can ignore it for now, we will address it in a later tutorial.</p>
-<ol type="1">
 <li>Iteration Data - Validation/Variable Importance - Summary of top 20 - Feature Engineered variables</li>
 <li>Experiment Summary</li>
 </ol>
+<p>You will see a notification tab, you can ignore it for now, we will address it in a later tutorial.</p>
 <h2>Deeper Dive and Resources</h2>
 <ul>
 <li><a href="http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/running-experiment.html#" target="_blank">Learn more about running Experiments from H2O Driverless AI docs</a></li>
