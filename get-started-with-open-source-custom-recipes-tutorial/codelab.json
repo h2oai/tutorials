@@ -4,8 +4,8 @@
   "format": "html",
   "prefix": "../assets",
   "mainga": "UA-49880327-14",
-  "updated": "2019-10-17T16:37:40-07:00",
-  "id": "get-started-and-consume-existing-recipes",
+  "updated": "2019-10-17T19:01:26-07:00",
+  "id": "get-started-with-open-source-custom-recipes-tutorial",
   "duration": 0,
   "title": "Get Started with Open Source Custom Recipes Tutorial",
   "summary": "Check the list",
@@ -25,5 +25,5 @@
     "scores",
     "transformer"
   ],
-  "url": "get-started-and-consume-existing-recipes"
+  "url": "get-started-with-open-source-custom-recipes-tutorial"
 }
