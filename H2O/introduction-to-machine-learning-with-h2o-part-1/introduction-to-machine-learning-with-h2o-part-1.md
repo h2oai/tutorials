@@ -77,6 +77,8 @@ loan_level = h2o.import_file("https://s3.amazonaws.com/data.h2o.ai/DAI-Tutorials
 
 Now that we have our dataset, we will explore some concepts and then do some exploration of the data and prepare it for modeling.
 
+### References
+
 [1] Our dataset is a subset of the [Freddie Mac Single-Family Loan-Level Dataset.](http://www.freddiemac.com/research/datasets/sf_loanlevel_dataset.html) It contains about 500,000 rows and is about 80 MB.
 
 ## Task 2: Machine Learning Concepts 
@@ -146,6 +148,8 @@ Log loss also measures the performance of classification models with a focus on 
 
 ### Cross-Validation
 Cross validation is a model validation technique in which you can check how well a statistical analysis or model, will perform on an independent dataset. We use cross validation to see how our model will predict on unseen data. We will explore two cross validation approaches. The first one is to take the training data and split it into training and validation set, which is similar to a test set. This approach is called **validation set cross validation.** Also, there is **K-Fold** cross validation, in which you do not need to split the data, but use the entire dataset. Depending on the number of *folds* that you choose during training, the data is divided into k groups; k-1 groups are trained, and then, the last group serves to evaluate. After every group has been used to evaluate the model, the average of all the scores is obtained; and thus, we obtain a validation score[6].
+
+### References
 
 [1] [Towards Data Science - Understanding AUC- ROC Curve](https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5)
  
@@ -379,6 +383,8 @@ Then select ‘default_glm’
 
 
 You can inspect all the plots and outputs from your model in Flow. The plots that we generated in the Jupyter Notebook are automatically created in Flow, so if you prefer, you can just create your model in Jupyter and then analyze the results in Flow. 
+
+### References
 
 [1] [H2O-3 GLM Logistic Regression](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/data-science/glm.html#logistic-regression-binomial-family)
 
