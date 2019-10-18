@@ -5,14 +5,14 @@
 - [Objective](#objective)
 - [Prerequisites](#prerequisites) 
 - [Task 1: Initial Setup](#task-1-initial-setup)
-- [Task 2: Concepts](#task-2-concepts)
+- [Task 2: Machine Learning Concepts](#task-2-machine-learning-concepts)
 - [Task 3: Start Experiment](#task-3-start-experiment)
 - [Task 4: Build a GLM](#task-4-build-a-glm)
 - [Task 5: Build a Random Forest](#task-5-build-a-random-forest)
-- [Task 6: Build a GBM](#task-6-build-a-GBM)
-- [Task 7: Tuning the GLM with H2O GridSearch](#task-7-tuning-the-glm-with-h2o-gridsearch)
-- [Task 8: Tuning the RF model with H2O GridSearch](#task-8-tuning-the-rf-model-with-h2o-gridsearch)
-- [Task 9: Tuning the GBM model with H2O-GridSearch](#task-9-tuning-the-gbm-model-with-h2o-gridsearch)
+- [Task 6: Build a GBM](#task-6-build-a-gbm)
+- [Task 7: Tune the GLM with H2O GridSearch](#task-7-tune-the-glm-with-h2o-gridsearch)
+- [Task 8: Tune the RF model with H2O GridSearch](#task-8-tune-the-rf-model-with-h2o-gridsearch)
+- [Task 9: Tune the GBM model with H2O-GridSearch](#task-9-tune-the-gbm-model-with-h2o-gridsearch)
 - [Task 10: Test Set Performance](#task-10-test-set-performance)
 - [Task 11: Challenge](#task-11-challenge)
 - [Next Steps](#next-steps)
@@ -32,14 +32,12 @@ We will be using a subset of the Freddie Mac Single-Family dataset to try to pre
 We recommend creating an Anaconda Cloud environment, as shown in the installation guide, [Install on Anaconda Could.](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/downloading.html#install-on-anaconda-cloud) This would guarantee that you will have everything that you need to do this tutorial.
 
 
-## Task 1: Start Experiment
+## Task 1: Initial Setup
 
 ### Overview
 The data set we’re using comes from Freddie Mac and contains 20 years of mortgage history for each loan and contains information about "loan-level credit performance data on a portion of fully amortizing fixed-rate mortgages that Freddie Mac bought between 1999 to 2017. Features include demographic factors, monthly loan performance, credit performance including property disposition, voluntary prepayments, MI Recoveries, non-MI recoveries, expenses, current deferred UPB and due date of last paid installment."[1] 
 
 We’re going to use machine learning with H2O to predict whether or not a loan holder will default. To do this we are going to build three classification models: a Linear model, Random Forest, and a Gradient Boosting Machine model, to predict whether or not a loan will be delinquent. Complete this tutorial to see how we achieved those results.
-
-[1] Our dataset is a subset of the [Freddie Mac Single-Family Loan-Level Dataset.](http://www.freddiemac.com/research/datasets/sf_loanlevel_dataset.html) It contains about 500,000 rows and is about 80 MB.
 
 We will start by importing H2O, the estimators for the algorithms that we will use, and also the function to perform Grid Search on those algorithms. 
 
@@ -76,13 +74,12 @@ Make sure that the dataset is in the same directory as your Jupyter Notebook. Fo
 #Import the dataset 
 loan_level = h2o.import_file("https://s3.amazonaws.com/data.h2o.ai/DAI-Tutorials/loan_level_500k.csv")
 ```
-```
-Parse progress: |█████████████████████████████████████████████████████████| 100%
-```
 
 Now that we have our dataset, we will explore some concepts and then do some exploration of the data and prepare it for modeling.
 
-## Task 2: Concepts 
+[1] Our dataset is a subset of the [Freddie Mac Single-Family Loan-Level Dataset.](http://www.freddiemac.com/research/datasets/sf_loanlevel_dataset.html) It contains about 500,000 rows and is about 80 MB.
+
+## Task 2: Machine Learning Concepts 
 
 ### H2O
 H2O is an open-source, in-memory, distributed, fast, and scalable machine learning and predictive analytics platform that allows you to build machine learning models on big data and provides easy productionalization of those models in an enterprise environment.
@@ -162,7 +159,7 @@ Cross validation is a model validation technique in which you can check how well
  
 [6] [Towards Data Science - Cross-Validation](https://towardsdatascience.com/cross-validation-70289113a072)
 
-## Task 3: Take a quick look at the data, split the dataset, and select the predictor(s) and response variables
+## Task 3: Start Experiment
 
 To ensure the dataset was properly imported use the `.head()` command 
 
@@ -240,7 +237,7 @@ Next, we need to choose our **predictors**, or **x variable**, and our **respons
 
 Return to your Jupyter Notebook; for our y variable, we will choose `DELINQUENT` because we want to predict whether or not a loan will default. For the x variable, we will choose all but 4 features. One is the feature that we will predict, and then `PREPAID` and `PREPAYMENT_PENALTY_MORTGAGE_FLAG` because they are clear indicators if a loan is or is not delinquent and we will not have the information at the time deciding whether to give a loan or not. In machine learning terms, introducing these types of features is called leakage. And lastly, `PRODUCT_TYPE` because that’s a constant value for every row, meaning all samples have the same value; therefore, this feature will not have any predictive value.
 
-There are several ways to choose your predictors, but for this tutorial, just substract the columns in `ignored` from the names in the training set. 
+There are several ways to choose your predictors, but for this tutorial, we will substract the list in the variable `ignore` from all the names in our training set. 
 
 ``` python
 y = "DELINQUENT"
@@ -258,7 +255,7 @@ print(x)
 ```
 ['CREDIT_SCORE', 'FIRST_PAYMENT_DATE', 'FIRST_TIME_HOMEBUYER_FLAG', 'MATURITY_DATE', 'METROPOLITAN_STATISTICAL_AREA', 'MORTGAGE_INSURANCE_PERCENTAGE', 'NUMBER_OF_UNITS', 'OCCUPANCY_STATUS', 'ORIGINAL_COMBINED_LOAN_TO_VALUE', 'ORIGINAL_DEBT_TO_INCOME_RATIO', 'ORIGINAL_UPB', 'ORIGINAL_LOAN_TO_VALUE', 'ORIGINAL_INTEREST_RATE', 'CHANNEL', 'PROPERTY_STATE', 'PROPERTY_TYPE', 'POSTAL_CODE', 'LOAN_SEQUENCE_NUMBER', 'LOAN_PURPOSE', 'ORIGINAL_LOAN_TERM', 'NUMBER_OF_BORROWERS', 'SELLER_NAME', 'SERVICER_NAME']
 ``` 
-## Task 4: Build a GLM with Default Settings and Inspect the Results
+## Task 4: Build a GLM
 
 Now that we have our train, valid, and test sets, as well as our x and y variables defined, we can start building models! We will start with an H2O Generalized Linear Model (GLM). A GLM fits a generalized linear model, specified by a response variable, a set of predictors, and a description of the error distribution. Since we have a binomial classification problem, we have to specify the family, in this case, it will be “binomial.” 
 
@@ -295,7 +292,6 @@ From the report, we can look at the metrics on the training and validation data,
 ![default-glm-validation-metrics](assets/default-glm-validation-metrics.jpg)
 
 From the report, we can also see the max F1 score. For the default GLM, we obtained a training F1 score of **0.2888** and a validation F1 score of **0.2835.** 
-
 **Training maximum metrics**
 
 ![default-glm-training-max-metrics](assets/default-glm-training-max-metrics.jpg)
@@ -386,7 +382,8 @@ You can inspect all the plots and outputs from your model in Flow. The plots tha
 
 [1] [H2O-3 GLM Logistic Regression](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/data-science/glm.html#logistic-regression-binomial-family)
 
-## Task 5: Build a Random Forest with default settings and inspect the initial results
+## Task 5: Build a Random Forest
+
 We will build a default Distributed Random Forest (DRF) model and see how it performs on our validation set. DRF generates a forest of classification or regression trees, rather than a single classification or regression tree. Each of these trees is a weak learner built on a subset of rows and columns. More trees will reduce the variance. Both classification and regression take the average prediction over all of their trees to make a final prediction, whether predicting for a class or numeric value. 
 
 To build and train our Random Forest or RF(as we will be referring to from this point on) model, simply run the following two lines of code:
@@ -415,7 +412,7 @@ Let’s build an RF model in Flow. Scroll up again to the Assist” Cell, and cl
 
 ![flow-build-model](assets/flow-build-model.jpg)
 
-In the select algorithm option, choose **Distributed Random Forest,** then change the model id to `flow_default_rf.` Click on the *training_frame* option and select **train.**  Change *nfolds* so that it is 5. Choose "DELINQUENT" for your *response_column* and for the ignored columns, choose  "PREPAYMENT_PENALTY_MORTGAGE_FLAG," "PRODUCT_TYPE," "PREPAID."
+In the select algorithm option, choose **Distributed Random Forest,** then change the model id to “flow_default_rf.” click on the *training_frame* option and select **train.**  Change *nfolds* so that it is 5. Choose "DELINQUENT" for your *response_column* and for the ignored columns, choose  "PREPAYMENT_PENALTY_MORTGAGE_FLAG," "PRODUCT_TYPE," "PREPAID."
 ![flow-default-rf](assets/flow-default-rf.gif)
 
 If you would like, you can view the outputs of your RF model in Flow. However, we can also generate the plots in our Jupyter Notebook.
@@ -469,7 +466,7 @@ Again, save the model performance on the validation data
 ```python
 rf_default_per = rf.model_performance(valid)
 ```
-## Task 6: Build a GBM with default settings
+## Task 6: Build a GBM
 
 Gradient Boosting Machine (for Regression and Classification) is a forward learning ensemble method. H2O’s GBM sequentially builds classification trees on all the features of the dataset in a fully distributed way - each tree is built in parallel. H2O’s GBM fits consecutive trees where each solves for the net loss of the prior trees. 
 Sometimes GBMs tend to be the best possible models because they are robust and directly optimize the cost function. On the other hand, they tend to overfit, so you need to find the proper stopping point; they are sensitive to noise, and they have several hyper-parameters.
@@ -522,7 +519,8 @@ As we did with the other two models, save the model performance.
 default_gbm_per = gbm.model_performance(valid)
 ```
 Next, we will tune our models and see if we can achieve better performance. 
-## Task 7: Tuning the GLM with H2O GridSearch 
+
+## Task 7: Tune the GLM with H2O GridSearch 
 H2O supports two types of grid search – traditional (or “cartesian”) grid search and random grid search. In a cartesian grid search, you specify a set of values for each hyperparameter that you want to search over, and H2O will train a model for every combination of the hyperparameter values. This means that if you have three hyperparameters and you specify 5, 10 and 2 values for each, your grid will contain a total of 5*10*2 = 100 models.
 
 In a random grid search, you specify the hyperparameter space in the exact same way, except H2O will sample uniformly from the set of all possible hyperparameter value combinations. In the random grid search, you also specify a stopping criterion, which controls when the random grid search is completed. You can tell the random grid search to stop by specifying a maximum number of models or the maximum number of seconds allowed for the search. You can also specify a performance-metric-based stopping criterion, which will stop the random grid search when the performance stops improving by a specified amount.
@@ -613,7 +611,7 @@ Output:
 ``` 
 Default GLM AUC: 0.8451 
 Tuned GLM AUC:0.8460
-``` 
+```
 
 The AUC did not really improve. Statistically, it would not be considered an improvement, but it slightly changed. We did not expect the GLM model to perform great, or to have a great improvement with the grid search, as it is just a linear model, and in order to perform well, we would need a linear distribution of our data and response variable. 
 
@@ -642,7 +640,7 @@ print ("Tuned GLM: ",  tuned_glm_perf.confusion_matrix())
 Notice how the overall error slightly decreased, as well as the error for the FALSE class that was correctly classified. But the error for the TRUE class went up, meaning the model is classifying more samples that are actually TRUE as FALSE. We see that our model has a hard time classifying the TRUE labels, and this is due to the highly imbalanced dataset that we are working on. 
 
 We will do the test evaluation after we tune our other two models.
-## Task 8: Tuning the RF model with H2O GridSearch 
+## Task 8: Tune the RF model with H2O GridSearch 
 
 We will do the grid search a bit differently this time. We are going to define each parameter of the grid search separately, and then add it to the grid search.
 
@@ -788,7 +786,9 @@ print ("Tuned RF: ",  tuned_rf_per.confusion_matrix())
 
 The AUC for our tuned model actually improved, as well as the F1 Scored. However, the misclassification error slightly increased. The new model is predicting fewer FALSE labels that are actually FALSE, and is also predicting more TRUE labels as FALSE, and for that reason the misclassification error for the FALSE predicted label slightly increased. On the other hand, the error for the TRUE predicted label decreased, and that is because the model is predicting more TRUE labels that are actually TRUE. It is good to see that the model is now predicts more TRUE labels as TRUE, because we saw that the default model, as well as the GLM were also having a hard time doing those predictions. 
 Now, we will see if we can improve our GBM model.
-## Task 9: Tuning the GBM model with H2O GridSearch 
+
+## Task 9: Tune the GBM model with H2O GridSearch 
+
 We will take a similar approach to the tuning of the RF model. We could do the grid search for a list of a number of trees, but since the scoring history will show us the validation score based on the number of trees, we will obtain that number from the plot. We will be using 150 trees just so that we can see the different number of trees being used. For a GBM model, conceptually speaking, the **max_depth** and **ntrees** is the same as the RF model. However, we will see that the values are smaller than the ones used for the RF.
 
 ``` python
@@ -958,27 +958,23 @@ Again, all three scores are very close to each other, and the best one being the
 For this dataset, we obtained a good AUC for all three models. We obtained an okay F1 Score, given that our dataset is highly imbalanced, and we also obtained a good overall misclassification error, although due to the given imbalanced data, the error for the TRUE label was not so low. Overall, The best model trained on our dataset was the GBM, followed by the RF, and lastly the GLM.
 
 ### Shut down Cluster
-
-
-## Task 11: Challenge
-
-After building three models, you are now familiar with the syntax of H2O-3 models. Now, try to build a Naive Bayes Classifier! We will help you by showing you how to import the model. The rest is up to you. Try it and see what’s the best training, validation and test AUC that you can get with the Naive Bayes Classifier and compare it to the models that we built in this tutorial.
-
-
-``` python
-from h2o.estimators import H2ONaiveBayesEstimator
-```
-
-Once you are done with the tutorial, remember to shut down the cluster.
+Once you are done with the tutorial, remember to shut down the cluster, unless you want to try the challenge after this task, in which case you can shut it down after you are done with the challenge. 
 
 ``` python
 h2o.cluster().shutdown()
 ```
 
-### Shut down Cluster
+## Task 11: Challenge
+
+After building three models, you are now familiar with the syntax of H2O-3 models. Now, try to build a Naive Bayes Classifier! We will help you by showing you how to import the model. The rest is up to you. Try it and see what’s the best training, validation and test AUC that you can get with the Naive Bayes Classifier and compare it to the models that we built in this tutorial.
+
+``` python
+from h2o.estimators import H2ONaiveBayesEstimator
+```
+Remember to shut down the cluster if you have not done so.
 
 ## Next Steps
 
-Introduction to Machine Learning with H2O - Part 2 coming soon
+Introduction to Machine Learning with H2O - Part 2 coming soon.
 
 
