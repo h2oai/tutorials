@@ -31,24 +31,25 @@
 
       </google-codelab-step>
     
-      <google-codelab-step label="Pre-requisites" duration="0">
-        <p>Some basic knowledge of machine learning. Familiarity with Python. Make sure you have Jupyter Notebook installed on your local machine, and that you have already installed H2O-3.</p>
-<p>If you do not have H2O-3, you can follow the installation guide on the <a href="http://docs.h2o.ai/h2o/latest-stable/h2o-docs/downloading.html" target="_blank">H2O Documentation page</a></p>
+      <google-codelab-step label="Prerequisites" duration="0">
+        <ul>
+<li>Some basic knowledge of machine learning.</li>
+<li>Familiarity with Python.</li>
+<li>Jupyter Notebook installed on your local machine with H2O-3 installed.<ul>
+<li>If you do not have H2O-3, you can follow the installation guide on the <a href="http://docs.h2o.ai/h2o/latest-stable/h2o-docs/downloading.html" target="_blank">H2O Documentation page</a></li>
+</ul>
+</li>
+</ul>
 <p>We recommend creating an Anaconda Cloud environment, as shown in the installation guide, <a href="http://docs.h2o.ai/h2o/latest-stable/h2o-docs/downloading.html#install-on-anaconda-cloud" target="_blank">Install on Anaconda Could.</a> This would guarantee that you will have everything that you need to do this tutorial.</p>
 
 
       </google-codelab-step>
     
-      <google-codelab-step label="Overview" duration="0">
-        <p>The data set we&#39;re using comes from Freddie Mac and contains 20 years of mortgage history for each loan and contains information about &#34;loan-level credit performance data on a portion of fully amortizing fixed-rate mortgages that Freddie Mac bought between 1999 to 2017. Features include demographic factors, monthly loan performance, credit performance including property disposition, voluntary prepayments, MI Recoveries, non-MI recoveries, expenses, current deferred UPB and due date of last paid installment.&#34;[1]</p>
+      <google-codelab-step label="Task 1: Initial Setup" duration="0">
+        <h2>Overview</h2>
+<p>The data set we&#39;re using comes from Freddie Mac and contains 20 years of mortgage history for each loan and contains information about &#34;loan-level credit performance data on a portion of fully amortizing fixed-rate mortgages that Freddie Mac bought between 1999 to 2017. Features include demographic factors, monthly loan performance, credit performance including property disposition, voluntary prepayments, MI Recoveries, non-MI recoveries, expenses, current deferred UPB and due date of last paid installment.&#34;[1]</p>
 <p>We&#39;re going to use machine learning with H2O to predict whether or not a loan holder will default. To do this we are going to build three classification models: a Linear model, Random Forest, and a Gradient Boosting Machine model, to predict whether or not a loan will be delinquent. Complete this tutorial to see how we achieved those results.</p>
-<p>[1] Our dataset is a subset of the <a href="http://www.freddiemac.com/research/datasets/sf_loanlevel_dataset.html" target="_blank">Freddie Mac Single-Family Loan-Level Dataset.</a> It contains about 500,000 rows and is about 80 MB.</p>
-
-
-      </google-codelab-step>
-    
-      <google-codelab-step label="Task 1: Import H2O, libraries, and estimators. Initialize H2O and load the dataset" duration="0">
-        <p>We will start by importing H2O, the estimators for the algorithms that we will use, and also the function to perform Grid Search on those algorithms.</p>
+<p>We will start by importing H2O, the estimators for the algorithms that we will use, and also the function to perform Grid Search on those algorithms.</p>
 <pre><code>#Import H2O and other libraries that will be used in this tutorial 
 import h2o
 import matplotlib as plt
@@ -71,14 +72,15 @@ from h2o.grid.grid_search import H2OGridSearch
 <p>Next, we will import the dataset. You can download H2O&#39;s subset of the Freddie Mac Single-Family Loan-Level dataset to your local drive and save it at as csv file. Loan_level_500k.csv. <a href="https://s3.amazonaws.com/data.h2o.ai/DAI-Tutorials/loan_level_500k.csv" target="_blank">Loan_Level_500k.csv</a><br>Make sure that the dataset is in the same directory as your Jupyter Notebook. For example, if your Jupyter file is in your <strong>Documents</strong> save the csv file there. Or, you can just specify the path of where the file is located; in our case, the file is in S3. That&#39;s why we&#39;ll just do the following:</p>
 <pre><code>#Import the dataset 
 loan_level = h2o.import_file(&#34;https://s3.amazonaws.com/data.h2o.ai/DAI-Tutorials/loan_level_500k.csv&#34;)
-Parse progress: |█████████████████████████████████████████████████████████| 100%
 </code></pre>
 <p>Now that we have our dataset, we will explore some concepts and then do some exploration of the data and prepare it for modeling.</p>
+<h2>References</h2>
+<p>[1] Our dataset is a subset of the <a href="http://www.freddiemac.com/research/datasets/sf_loanlevel_dataset.html" target="_blank">Freddie Mac Single-Family Loan-Level Dataset.</a> It contains about 500,000 rows and is about 80 MB.</p>
 
 
       </google-codelab-step>
     
-      <google-codelab-step label="Task 2: Concepts" duration="0">
+      <google-codelab-step label="Task 2: Machine Learning Concepts" duration="0">
         <h2>H2O</h2>
 <p>H2O is an open-source, in-memory, distributed, fast, and scalable machine learning and predictive analytics platform that allows you to build machine learning models on big data and provides easy productionalization of those models in an enterprise environment.</p>
 <p>H2O&#39;s core code is written in Java. Inside H2O, a Distributed Key/Value store is used to access and reference data, models, objects, etc. across all nodes and machines. The algorithms are implemented on top of H2O&#39;s distributed Map/Reduce framework and utilize the Java Fork/Join framework for multi-threading. The data is read in parallel and is distributed across the cluster and stored in memory in a columnar format in a compressed way. H2Oâ€™s data parser has built-in intelligence to guess the schema of the incoming dataset and supports data ingest from multiple sources in various formats.</p>
@@ -111,6 +113,7 @@ Parse progress: |█████████████████████
 <p>Log loss also measures the performance of classification models with a focus on the uncertainty between predictions and actual results. The log loss score is the average log-loss across all observations. Log loss is measured in the range of 0 to 1, where a model with a log loss of 0 would be the perfect classifier and 1 the worst. When the model is unable to make correct predictions, the log loss increases making the model a poor model[5].</p>
 <h2>Cross-Validation</h2>
 <p>Cross validation is a model validation technique in which you can check how well a statistical analysis or model, will perform on an independent dataset. We use cross validation to see how our model will predict on unseen data. We will explore two cross validation approaches. The first one is to take the training data and split it into training and validation set, which is similar to a test set. This approach is called <strong>validation set cross validation.</strong> Also, there is <strong>K-Fold</strong> cross validation, in which you do not need to split the data, but use the entire dataset. Depending on the number of <em>folds</em> that you choose during training, the data is divided into k groups; k-1 groups are trained, and then, the last group serves to evaluate. After every group has been used to evaluate the model, the average of all the scores is obtained; and thus, we obtain a validation score[6].</p>
+<h2>References</h2>
 <p>[1] <a href="https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5" target="_blank">Towards Data Science - Understanding AUC- ROC Curve</a></p>
 <p>[2] <a href="https://www.youtube.com/watch?v=OAl6eAyP-yo" target="_blank">ROC Curves and Under the Curve (AUC) Explained</a></p>
 <p>[3] <a href="https://en.wikipedia.org/wiki/F1_score" target="_blank">Wiki F1 Score</a></p>
@@ -121,7 +124,7 @@ Parse progress: |█████████████████████
 
       </google-codelab-step>
     
-      <google-codelab-step label="Task 3: Take a quick look at the data, split the dataset, and select the predictor(s) and response variables" duration="0">
+      <google-codelab-step label="Task 3: Start Experiment" duration="0">
         <p>To ensure the dataset was properly imported use the <code>.head()</code> command</p>
 <pre><code>loan_level.head()
 </code></pre>
@@ -160,12 +163,12 @@ train:350268 valid:74971 test:74898
 <p><img alt="flow-split-data" src="img/af3b6ac8339b1201.gif"></p>
 <p>Next, we need to choose our <strong>predictors</strong>, or <strong>x variable</strong>, and our <strong>response</strong> or <strong>y variable</strong>. For the H2O-3 estimators, we do not use the actual data frame, but strings containing the name of the columns in our dataset.</p>
 <p>Return to your Jupyter Notebook; for our y variable, we will choose <code>DELINQUENT</code> because we want to predict whether or not a loan will default. For the x variable, we will choose all but 4 features. One is the feature that we will predict, and then <code>PREPAID</code> and <code>PREPAYMENT_PENALTY_MORTGAGE_FLAG</code> because they are clear indicators if a loan is or is not delinquent and we will not have the information at the time deciding whether to give a loan or not. In machine learning terms, introducing these types of features is called leakage. And lastly, <code>PRODUCT_TYPE</code> because that&#39;s a constant value for every row, meaning all samples have the same value; therefore, this feature will not have any predictive value.</p>
-<p>There are several ways to choose your predictors, but for this tutorial, we will use a <strong>for</strong> loop that will ignore the four features mentioned above.</p>
+<p>There are several ways to choose your predictors, but for this tutorial, we will substract the list in the variable <code>ignore</code> from all the names in our training set.</p>
 <pre><code>y = &#34;DELINQUENT&#34;
 
 ignore = [&#34;DELINQUENT&#34;, &#34;PREPAID&#34;, &#34;PREPAYMENT_PENALTY_MORTGAGE_FLAG&#34;, &#34;PRODUCT_TYPE&#34;] 
 
-x = [i for i in train.names if i not in ignore]
+x = list(set(train.names) - set(ignore))
 </code></pre>
 <p>If you want to see the list of the features that are in your x variable, just print x.</p>
 <pre><code>print(x)
@@ -176,7 +179,7 @@ x = [i for i in train.names if i not in ignore]
 
       </google-codelab-step>
     
-      <google-codelab-step label="Task 4: Build a GLM with default settings and inspect the results" duration="0">
+      <google-codelab-step label="Task 4: Build a GLM" duration="0">
         <p>Now that we have our train, valid, and test sets, as well as our x and y variables defined, we can start building models! We will start with an H2O Generalized Linear Model (GLM). A GLM fits a generalized linear model, specified by a response variable, a set of predictors, and a description of the error distribution. Since we have a binomial classification problem, we have to specify the family, in this case, it will be &#34;binomial.&#34;</p>
 <p>Since we already imported the H2O GLM estimator, we will just instantiate our model. For simplicity, the name of our model will be <code>glm</code>. To build a GLM, you just need to define the family and you are ready to go. However, we will set a random seed for reproducibility purposes, and also a model id to be able to retrieve the model later on if we need to access it. You can instantiate your GLM as shown below.</p>
 <pre><code>glm = H2OGeneralizedLinearEstimator(family = &#34;binomial&#34;, seed=42, model_id = &#39;default_glm&#39;)
@@ -232,12 +235,13 @@ x = [i for i in train.names if i not in ignore]
 <p>Then select ‘default_glm&#39;</p>
 <p><img alt="flow-list-of-models" src="img/532fb881f6e66a17.jpg"></p>
 <p>You can inspect all the plots and outputs from your model in Flow. The plots that we generated in the Jupyter Notebook are automatically created in Flow, so if you prefer, you can just create your model in Jupyter and then analyze the results in Flow.</p>
+<h2>References</h2>
 <p>[1] <a href="http://docs.h2o.ai/h2o/latest-stable/h2o-docs/data-science/glm.html#logistic-regression-binomial-family" target="_blank">H2O-3 GLM Logistic Regression</a></p>
 
 
       </google-codelab-step>
     
-      <google-codelab-step label="Task 5: Build a Random Forest with default settings and inspect the initial results" duration="0">
+      <google-codelab-step label="Task 5: Build a Random Forest" duration="0">
         <p>We will build a default Distributed Random Forest (DRF) model and see how it performs on our validation set. DRF generates a forest of classification or regression trees, rather than a single classification or regression tree. Each of these trees is a weak learner built on a subset of rows and columns. More trees will reduce the variance. Both classification and regression take the average prediction over all of their trees to make a final prediction, whether predicting for a class or numeric value.</p>
 <p>To build and train our Random Forest or RF(as we will be referring to from this point on) model, simply run the following two lines of code:</p>
 <pre><code>rf = H2ORandomForestEstimator (seed=42, model_id=&#39;default_random_forest&#39;)
@@ -286,7 +290,7 @@ x = [i for i in train.names if i not in ignore]
 
       </google-codelab-step>
     
-      <google-codelab-step label="Task 6: Build a GBM with default settings" duration="0">
+      <google-codelab-step label="Task 6: Build a GBM" duration="0">
         <p>Gradient Boosting Machine (for Regression and Classification) is a forward learning ensemble method. H2O&#39;s GBM sequentially builds classification trees on all the features of the dataset in a fully distributed way - each tree is built in parallel. H2O&#39;s GBM fits consecutive trees where each solves for the net loss of the prior trees.<br>Sometimes GBMs tend to be the best possible models because they are robust and directly optimize the cost function. On the other hand, they tend to overfit, so you need to find the proper stopping point; they are sensitive to noise, and they have several hyper-parameters.</p>
 <p>Defining a GBM model is as simple as the other models we have been working with.</p>
 <pre><code>gbm= H2OGradientBoostingEstimator(seed=42, model_id=&#39;default_gbm&#39;)
@@ -317,7 +321,7 @@ x = [i for i in train.names if i not in ignore]
 
       </google-codelab-step>
     
-      <google-codelab-step label="Task 7: Tuning the GLM with H2O GridSearch" duration="0">
+      <google-codelab-step label="Task 7: Tune the GLM with H2O GridSearch" duration="0">
         <p>H2O supports two types of grid search – traditional (or &#34;cartesian&#34;) grid search and random grid search. In a cartesian grid search, you specify a set of values for each hyperparameter that you want to search over, and H2O will train a model for every combination of the hyperparameter values. This means that if you have three hyperparameters and you specify 5, 10 and 2 values for each, your grid will contain a total of 5*10*2 = 100 models.</p>
 <p>In a random grid search, you specify the hyperparameter space in the exact same way, except H2O will sample uniformly from the set of all possible hyperparameter value combinations. In the random grid search, you also specify a stopping criterion, which controls when the random grid search is completed. You can tell the random grid search to stop by specifying a maximum number of models or the maximum number of seconds allowed for the search. You can also specify a performance-metric-based stopping criterion, which will stop the random grid search when the performance stops improving by a specified amount.<br>Once the grid search is complete, you can query the grid object and sort the models by a particular performance metric (for example, &#34;AUC&#34;). All models are stored in the H2O cluster and are accessible by model id.</p>
 <p>To save some time, we will do a random grid search for our GLM model instead of the cartesian search. The H2OGridSearch has <strong>4 parameters,</strong> and in order to use it, you need <strong>at least three</strong> of them. The first parameter for the grid search is the <strong>model</strong> that you want to tune. Next are your <strong>hyperparameters,</strong> which needs to be a string of parameters, and a list of values to be explored by grid search. The third one is optional, which is the <strong>grid id,</strong> and if you do not specify one, an id will automatically be generated. Lastly, the <strong>search criteria,</strong> where you can specify if you want to do a cartesian or random search.</p>
@@ -400,7 +404,7 @@ print (&#34;Tuned GLM: &#34;,  tuned_glm_perf.confusion_matrix())
 
       </google-codelab-step>
     
-      <google-codelab-step label="Task 8: Tuning the RF model with H2O GridSearch" duration="0">
+      <google-codelab-step label="Task 8: Tune the RF model with H2O GridSearch" duration="0">
         <p>We will do the grid search a bit differently this time. We are going to define each parameter of the grid search separately, and then add it to the grid search.</p>
 <p>We will first find the two most important parameters for a RF, the maximum depth and then the number of trees. First, we will start with the maximum depth.<br><strong>max_depth</strong> defines the number of nodes along the longest path from the start of the tree to the farthest leaf node. Higher values will make the model more complex and can lead to overfitting. Setting this value to 0 specifies no limit. This value defaults to 20. We will first look for the best value for the <strong>max_depth,</strong> this would save us some computational time when we tune the other parameters. As we mentioned before, we will use a slightly different approach for the grid search. We are going to instantiate each parameter for the grid search, and then pass each one into it.</p>
 <pre><code>hyper_parameters = {&#39;max_depth&#39;:[1,3,5,6,7,8,9,10,12,13,15,20,25,35]}
@@ -507,7 +511,7 @@ print (&#34;Tuned RF: &#34;,  tuned_rf_per.confusion_matrix())
 
       </google-codelab-step>
     
-      <google-codelab-step label="Task 9: Tuning the GBM model with H2O GridSearch" duration="0">
+      <google-codelab-step label="Task 9: Tune the GBM model with H2O GridSearch" duration="0">
         <p>We will take a similar approach to the tuning of the RF model. We could do the grid search for a list of a number of trees, but since the scoring history will show us the validation score based on the number of trees, we will obtain that number from the plot. We will be using 150 trees just so that we can see the different number of trees being used. For a GBM model, conceptually speaking, the <strong>max_depth</strong> and <strong>ntrees</strong> is the same as the RF model. However, we will see that the values are smaller than the ones used for the RF.</p>
 <pre><code>hyper_params = {&#39;max_depth&#39; : [1,3,5,6,7,8,9,10,12,13,15],
                }
@@ -635,23 +639,25 @@ print (&#34;GBM Confusion Matrix &#34;,  gbm_test_per.confusion_matrix())
 <p><img alt="confusion-matrix-test" src="img/7e22954dcaa47fde.jpg"></p>
 <p>Again, all three scores are very close to each other, and the best one being the GBM, second the RF, and lastly our GLM. For the Misclassification error, we see the opposite pattern to the F1 Score, the misclassification error for both RF and GBM increased, and it slightly decreased for the GLM. However, it is important to note that for both RF and GBM the error for the TRUE predicted label decreased, and for the GLM increased. This, along with a relatively low F1 Score is due to the highly imbalanced dataset.</p>
 <p>For this dataset, we obtained a good AUC for all three models. We obtained an okay F1 Score, given that our dataset is highly imbalanced, and we also obtained a good overall misclassification error, although due to the given imbalanced data, the error for the TRUE label was not so low. Overall, The best model trained on our dataset was the GBM, followed by the RF, and lastly the GLM.</p>
-
-
-      </google-codelab-step>
-    
-      <google-codelab-step label="Task 11: Challenge &amp; Shutting down your Cluster" duration="0">
-        <p>After building three models, you are now familiar with the syntax of H2O-3 models. Now, try to build a Naive Bayes Classifier! We will help you by showing you how to import the model. The rest is up to you. Try it and see what&#39;s the best training, validation and test AUC that you can get with the Naive Bayes Classifier and compare it to the models that we built in this tutorial.</p>
-<pre><code>from h2o.estimators import H2ONaiveBayesEstimator
-</code></pre>
-<p>Once you are done with the tutorial, remember to shut down the cluster.</p>
+<h2>Shut down Cluster</h2>
+<p>Once you are done with the tutorial, remember to shut down the cluster, unless you want to try the challenge after this task, in which case you can shut it down after you are done with the challenge.</p>
 <pre><code>h2o.cluster().shutdown()
 </code></pre>
 
 
       </google-codelab-step>
     
-      <google-codelab-step label="Task 12: Next Steps" duration="0">
-        <p>Regression Tutorial coming soon.</p>
+      <google-codelab-step label="Task 11: Challenge" duration="0">
+        <p>After building three models, you are now familiar with the syntax of H2O-3 models. Now, try to build a Naive Bayes Classifier! We will help you by showing you how to import the model. The rest is up to you. Try it and see what&#39;s the best training, validation and test AUC that you can get with the Naive Bayes Classifier and compare it to the models that we built in this tutorial.</p>
+<pre><code>from h2o.estimators import H2ONaiveBayesEstimator
+</code></pre>
+<p>Remember to shut down the cluster if you have not done so.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Next Steps" duration="0">
+        <p>Introduction to <strong>Machine Learning with H2O - Part 2</strong> coming soon.</p>
 
 
       </google-codelab-step>

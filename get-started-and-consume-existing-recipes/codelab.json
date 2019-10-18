@@ -1,13 +1,13 @@
 {
   "environment": "web",
-  "source": "/Users/acastro/Desktop/get-started-and-consume-existing-recipes/get-started-and-consume-existing-recipes.md",
+  "source": "/Users/acastro/Desktop/get-started-with-open-source-custom-recipes-tutorial/get-started-with-open-source-custom-recipes-tutorial.md",
   "format": "html",
   "prefix": "../assets",
   "mainga": "UA-49880327-14",
-  "updated": "2019-10-15T18:24:11-07:00",
+  "updated": "2019-10-17T16:37:40-07:00",
   "id": "get-started-and-consume-existing-recipes",
   "duration": 0,
-  "title": "Get Started and Consume Existing Recipes",
+  "title": "Get Started with Open Source Custom Recipes Tutorial",
   "summary": "Check the list",
   "theme": "",
   "status": [

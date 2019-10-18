@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
   <meta name="theme-color" content="#4F7DC9">
   <meta charset="UTF-8">
-  <title>Get Started and Consume Existing Recipes</title>
+  <title>Get Started with Open Source Custom Recipes Tutorial</title>
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
   <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="../assets/codelab-elements/codelab-elements.css">
@@ -21,14 +21,14 @@
 </head>
 <body>
   <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
-  <google-codelab title="Get Started and Consume Existing Recipes"
+  <google-codelab title="Get Started with Open Source Custom Recipes Tutorial"
                   environment="web"
                   feedback-link="">
     
       <google-codelab-step label="Objective" duration="0">
         <p>We believe that every company can and should be an AI company. This is a fundamental concept for the future of every business and organization today. As you embark on this AI journey to make your own AI, we want you to explore the key considerations as well as the technology that will make your own AI a possibility.</p>
 <p>To make your own AI, with an automatic machine learning platform, it needs to be open and extensible. This allows data scientists to influence the automatic machine learning optimization process and for it to consider additional feature engineering, custom scorers, and other algorithms. Data scientists can add their insights, customizations, and build the most accurate models for their use cases. Driverless AI uses the concept of recipes to optimize the machine learning process, and with Driverless AI 1.7.0 and newer versions users can add custom recipes and develop new recipes.</p>
-<p>In this tutorial, we will cover what a recipe is, the different types of recipes available, and how to upload existing recipes to DAI through the URL option. The three types of custom recipes that will be covered are transformer, scorer, and model.</p>
+<p>In this tutorial, we will cover what a recipe is, the different types of recipes available, and how to upload existing recipes to Driverless AI through the URL option. The three types of custom recipes that will be covered are transformer, scorer, and model.</p>
 
 
       </google-codelab-step>
@@ -42,13 +42,13 @@
 </ul>
 <p>You can get more information about getting a Driverless AI environment or trial from the following:</p>
 <ul>
-<li><a href="https://github.com/h2oai/tutorials/blob/master/DriverlessAI/Test-Drive/test-drive.md" target="_blank">A Two Hour Test Drive Session</a></li>
-<li><a href="https://github.com/h2oai/tutorials/blob/master/DriverlessAI/automatic-ml-intro-tutorial/automatic-ml-intro-tutorial.md#prerequisites" target="_blank">H2O Driverless AI License Key</a></li>
-<li><a href="https://github.com/h2oai/tutorials/blob/master/DriverlessAI/automatic-ml-intro-tutorial/automatic-ml-intro-tutorial.md#task-1-get-environment-and-product-tour" target="_blank">H2O Driverless AI Environment and Product Tour</a></li>
+<li><a href="https://h2oai.github.io/tutorials/getting-started-with-driverless-ai-test-drive/#1" target="_blank">A Two Hour Test Drive Session</a></li>
+<li><a href="https://www.h2o.ai/try-driverless-ai/" target="_blank">H2O Driverless AI License Key</a></li>
+<li><a href="https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#2" target="_blank">H2O Driverless AI Environment and Product Tour</a></li>
 </ul>
 <p>If you are not familiar with Driverless AI please review and do this tutorial:</p>
 <ul>
-<li><a href="https://github.com/h2oai/tutorials/blob/master/DriverlessAI/automatic-ml-intro-tutorial/automatic-ml-intro-tutorial.md" target="_blank">Automatic Machine Learning Intro Tutorial</a></li>
+<li><a href="https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#0" target="_blank">Automatic Machine Learning Intro Tutorial</a><br></li>
 </ul>
 
 
@@ -56,8 +56,8 @@
     
       <google-codelab-step label="Task 1: Introduction to Driverless AI Bring Your Own Recipe" duration="0">
         <p>H2O Driverless AI is an artificial intelligence (AI) platform for automatic machine learning. Driverless AI automates some of the most difficult and tedious data science and machine learning tasks such as feature engineering, algorithm selection, model validation, model tuning, model selection, model explanation, model documentation and model deployment. It aims to achieve the highest predictive accuracy, comparable to expert data scientists, but in a much shorter time thanks to end-to-end automation. The current scope of Driverless AI does not include extensive data manipulation or augmentation before starting an experiment, hence most of the data preparation needs to be done before loading the data.</p>
-<p>In Driverless AI, a pipeline (which we call an experiment) is made up of building blocks, or recipes, that produce a model. These recipes are Python code snippets. Recipes have the following types: ML algorithms, feature engineering (transformers), scorers, and configuration. In Driverless AI 1.7.0, we added support for BYOR (Bring Your Own Recipe). With BYOR, you can use your own recipes in combination with or instead of all built-in recipes. This allows you to influence the DAI Automatic ML pipeline and gives you control over the optimization choices that Driverless AI makes.</p>
-<p>Recipes can be uploaded into DAI at runtime without having to restart DAI, just like a plugin. There are already close to 100 open-source recipes that have been created by H2O and curated in the recipe library by data science experts that can be used as-is or as templates and expanded upon.</p>
+<p>In Driverless AI, a pipeline (which we call an experiment) is made up of building blocks, or recipes, that produce a model. These recipes are Python code snippets. Recipes have the following types: ML algorithms, feature engineering (transformers), scorers, and configuration. In Driverless AI 1.7.0, we added support for BYOR (Bring Your Own Recipe). With BYOR, you can use your own recipes in combination with or instead of all built-in recipes. This allows you to influence the Driverless AI Automatic ML pipeline and gives you control over the optimization choices that Driverless AI makes.</p>
+<p>Recipes can be uploaded into Driverless AI at runtime without having to restart Driverless AI, just like a plugin. There are already close to 100 open-source recipes that have been created by H2O and curated in the recipe library by data science experts that can be used as-is or as templates and expanded upon.</p>
 <p>Existing recipes include templates for:</p>
 <ul>
 <li><strong>Transformers</strong></li>
@@ -65,9 +65,9 @@
 <li><strong>Models</strong></li>
 </ul>
 <p>The various types of templates and how to use them will be described in the remaining tasks of the tutorial.</p>
-<h2>How do recipes work in DAI?</h2>
+<h2>How do recipes work in Driverless AI?</h2>
 <p>During the training of a supervised machine learning modeling pipeline, Driverless AI can use the recipes or code snippets as building blocks, independent or in combination with all built-in code pieces. The recipes act the same way as if it was written by H2O. It&#39;s the same python code and backend, so there is no performance penalty.</p>
-<p>Below is a diagram of how recipes work in DAI and how the Automatic Model Optimization process is extended:</p>
+<p>Below is a diagram of how recipes work in Driverless AI and how the Automatic Model Optimization process is extended:</p>
 <p><img alt="dai-byor-how-it-works" src="img/19c0e46d6cf96f0d.jpg"></p>
 <p>The image below is a deeper dive into the <strong>BYOR</strong> architecture for a multi-class problem:</p>
 <p><img alt="dai-byor-architecture-diagram-1" src="img/eed8ff3f17393b90.jpg"></p>
@@ -154,7 +154,7 @@
 <p><em>Things to Note:</em></p>
 <ul>
 <li><strong>Under summary</strong>: The validation score is .91046 with an accuracy of .9391 (click on ROC then hover over Best ACC)</li>
-<li><strong>Variable Importance</strong>: The top variables that led to a customer churning according to this model was the number of times the customer had to call customer service. The other variable of most importance was the total amount a customer was being charged for their &#34;day calls.&#34; Intuitively this makes sense because if a customer is overpaying for calls in the morning when they might be the most active and they had to call customer service many times, it could have led a dissatisfied customer.</li>
+<li><strong>Variable Importance</strong>: The top variables that led to a customer churning according to this model was the number of times the customer had to call customer service. The other variable of most importance was the total amount a customer was being charged for their &#34;day calls.&#34; Intuitively this makes sense because if a customer is overpaying for calls in the morning when they might be the most active and they had to call customer service many times, it could have led a dissatisfied customer.Ne</li>
 </ul>
 <h2>Deeper Dive and Resources</h2>
 <ul>
@@ -169,6 +169,9 @@
 <p><strong>Summary of results</strong>:</p>
 <table>
 <tr></tr>
+<tr><td colspan="1" rowspan="1"><p>-</p>
+</td><td colspan="1" rowspan="1"><p>Experiment 1(Base)</p>
+</td></tr>
 <tr><td colspan="1" rowspan="1"><p>Experiment Settings</p>
 </td><td colspan="1" rowspan="1"><p>5-2-8</p>
 </td></tr>
@@ -189,7 +192,7 @@
 </td></tr>
 </table>
 <p>When a dataset is selected for an experiment, Driverless AI optimizes its settings by selecting the best Scorer, Model(s) and Transformers for the dataset. However, this does not mean we cannot import other scorer&#39;s, models or transformers to see if we can further optimize our model. In this task, we will be importing a transformer recipe, to see how the features in the feature engineering change.</p>
-<p>Now we are going to import a recipe to add related numeric features such as day minutes, evening minutes, and night minutes. DAI doesn&#39;t add 3 or more columns so we will add a recipe that will do this for us. We will see if DAI is able to use this new transformation in determining variable importance.</p>
+<p>Now we are going to import a recipe to add related numeric features such as day minutes, evening minutes, and night minutes. Driverless AI doesn&#39;t add 3 or more columns so we will add a recipe that will do this for us. We will see if Driverless AI is able to use this new transformation in determining variable importance.</p>
 <h2>Import a Transformer Recipe</h2>
 <p>The goal of importing the new transformer recipe is to see if we can further optimize our baseline model. To do this, we are going to take our baseline experiment and import the <a href="https://github.com/h2oai/driverlessai-recipes/blob/master/transformers/numeric/sum.py" target="_blank">sum.py transformer</a></p>
 <p>1. Select <strong>Experiments</strong> located at the top of the <strong>Experiment</strong> page:</p>
@@ -210,7 +213,7 @@
 <p><img alt="exp2-expert-settings-recipes" src="img/92192dfed69a9843.jpg"></p>
 <p>9. Click on <strong>Select Value</strong> under <strong>Include Specific Transformer</strong>, we are going to verify that the transformer we loaded did indeed load.</p>
 <p><img alt="exp2-expert-settings-transformer-select-values" src="img/fff319a75343bd09.jpg"></p>
-<p>10. Type <code>SumTransformer</code> on the search bar, if the Transformer loaded correctly, then it will appear as shown below, highlighted meaning that it will be used by DAI:</p>
+<p>10. Type <code>SumTransformer</code> on the search bar, if the Transformer loaded correctly, then it will appear as shown below, highlighted meaning that it will be used by Driverless AI:</p>
 <p><img alt="exp2-sum-transformer" src="img/fb585c223841602c.jpg"></p>
 <p>11. Select <strong>Save</strong> on the <strong>Expert Experiment Settings</strong> page</p>
 <p>12. Name your experiment <code>Exp 2  - Transformer.</code> Also, verify that the transformer was included in the experiment on the Experiments page by looking under &#34;What do these settings mean?&#34; &gt; &#34;Interpretability&#34; as <strong>Sum.</strong></p>
@@ -246,7 +249,7 @@
 <p><img alt="exp2-expert-settings-recipes" src="img/92192dfed69a9843.jpg"></p>
 <p>8. Click on <strong>Select Value</strong> under <strong>Include Specific Scorers</strong>, we are going to verify that the scorer we loaded did indeed load.</p>
 <p><img alt="exp3-expert-settings-scorer-select-values" src="img/312b91d7d06f92f.jpg"></p>
-<p>9. On the list of Scores that comes up look for <code>BRIER</code>, if the Scorer loaded correctly, then it will appear as shown below, highlighted meaning that it will be used by DAI:</p>
+<p>9. On the list of Scores that comes up look for <code>BRIER</code>, if the Scorer loaded correctly, then it will appear as shown below, highlighted meaning that it will be used by Driverless AI:</p>
 <p><img alt="exp3-brier-scorer" src="img/6a8b6ecfc25bb5ce.jpg"></p>
 <p>10. Select <strong>Save</strong> on the <strong>Expert Experiment Settings</strong> page</p>
 <p>11. Once back on the <strong>Experiment</strong> page, click on the Scorer setting which has <strong>AUC</strong> as seen on the image below:</p>
@@ -303,7 +306,7 @@
       <google-codelab-step label="Task 6: Comparing Final Model Results" duration="0">
         <p>So far we ran four experiments, a baseline, and the baseline with three different types of recipes:</p>
 <ul>
-<li>DAI default settings</li>
+<li>Driverless AI default settings</li>
 <li>Transformer</li>
 <li>Scorer</li>
 <li>Model</li>
@@ -333,7 +336,7 @@
 <p><img alt="project-model-comparison1" src="img/67f19f854e8485c5.jpg"></p>
 <p>ROC Curves for each model selected:</p>
 <p><img alt="project-model-comparison2" src="img/5ba83cd48bce9c8a.jpg"></p>
-<p>We can see that when we used the Transformer recipe, the model had better AUC with an accuracy of .9670 compared to Exp 1 - Baseline, which had an accuracy of .9547. Even with Exp 3 - Scorer, although the AUC did not significantly improve, there was an improvement in the accuracy with .9690. However, we do not see much difference in the variables selected to have the largest contibution to customer churning. In the above varibale importance, we can not see how DAI used the Sum transformer, but we do see how it slightly improved the scores. Below you can see how the Sum transformer was used in another experiment with similar settings, where it added the following three columns: Day Charge, Intl calls, and Intl charge.  </p>
+<p>We can see that when we used the Transformer recipe, the model had better AUC with an accuracy of .9670 compared to Exp 1 - Baseline, which had an accuracy of .9547. Even with Exp 3 - Scorer, although the AUC did not significantly improve, there was an improvement in the accuracy with .9690. However, we do not see much difference in the variables selected to have the largest contibution to customer churning. In the above varibale importance, we can not see how Driverless AI used the Sum transformer, but we do see how it slightly improved the scores. Below you can see how the Sum transformer was used in another experiment with similar settings, where it added the following three columns: Day Charge, Intl calls, and Intl charge.</p>
 <p><img alt="sum-transformer" src="img/a8fa2d84b18b90cb.jpg"></p>
 <h2>Deeper Dive and Resources</h2>
 <ul>
@@ -343,16 +346,16 @@
 
       </google-codelab-step>
     
-      <google-codelab-step label="Task 7: Appendix A: How to Access DAI Custom Recipes" duration="0">
-        <p>H2O custom recipes reside in the H2O Driverless AI Recipes GitHub repo. <strong>There are multiple branches of DAI recipes so make sure that you are using the same branch as the DAI version you have.</strong></p>
-<p>For this tutorial, we are using <strong>DAI 1.8.0</strong>, therefore, we will be working off the DAI 1.8.0 branch.</p>
+      <google-codelab-step label="Task 7: Appendix A: How to Access Driverless AI Custom Recipes" duration="0">
+        <p>H2O custom recipes reside in the H2O Driverless AI Recipes GitHub repo. <strong>There are multiple branches of Driverless AI recipes so make sure that you are using the same branch as the Driverless AI version you have.</strong></p>
+<p>For this tutorial, we are using <strong>Driverless AI 1.8.0</strong>, therefore, we will be working off the Driverless AI 1.8.0 branch.</p>
 <p>1. Open the link below on a separate tab. Make sure the branch is <strong>rel-1.8.0</strong></p>
 <ul>
 <li><a href="https://github.com/h2oai/driverlessai-recipes/tree/rel-1.8.0" target="_blank">H2O Driverless AI Recipes GitHub Repo</a></li>
 </ul>
 <p>The rel-1.8.0 branch will similar to the page below:</p>
 <p><img alt="dai-recipes-github-page" src="img/a424a7d4ff079931.jpg"></p>
-<p>2. Recipes can be uploaded to DAI by:</p>
+<p>2. Recipes can be uploaded to Driverless AI by:</p>
 <ul>
 <li>Uploading custom recipes from your local machine</li>
 <li>Loading custom recipes from URL, by copying and pasting the raw URL as shown on this tutorial.</li>
@@ -360,7 +363,7 @@
 </ul>
 <p><img alt="upload-recipes" src="img/ecbb0a14928a253d.jpg"></p>
 <h2>Uploading Recipes via the Raw URL</h2>
-<p>We are going to get the raw URL for <strong>Brier Loss</strong> Scorer we used in Task 4 and upload it to DAI.</p>
+<p>We are going to get the raw URL for <strong>Brier Loss</strong> Scorer we used in Task 4 and upload it to Driverless AI.</p>
 <p>1. Select the folder titled <strong>scorer</strong></p>
 <p><img alt="dai-scorers-folder" src="img/9c32616ea374fd21.jpg"></p>
 <p>2. Select the folder titled <strong>classification</strong> then the folder titled <strong>binary</strong></p>
@@ -371,12 +374,12 @@
 <p><img alt="dai-brier-loss-raw" src="img/a80b4cf17874954c.jpg"></p>
 <p>5. Copy the URL located at the top of the page</p>
 <p><img alt="dai-brier-loss-raw-url" src="img/ac8dea3202edbada.jpg"></p>
-<p>6. The raw URL for this version of the recipe should be the one below. This URL is then pasted into DAI.</p>
+<p>6. The raw URL for this version of the recipe should be the one below. This URL is then pasted into Driverless AI.</p>
 <pre><code>https://raw.githubusercontent.com/h2oai/driverlessai-recipes/rel-1.8.0/scorers/classification/binary/brier_loss.py
 </code></pre>
 <p>7. See task 4 of this tutorial to follow the process of uploading a recipe via the raw URL</p>
 <h2>Uploading Recipes from Local Machine</h2>
-<p>For this tutorial, we are using DAI 1.8.0, therefore, we will be working off the DAI 1.8.0 branch.</p>
+<p>For this tutorial, we are using Driverless AI 1.8.0, therefore, we will be working off the Driverless AI 1.8.0 branch.</p>
 <p>1. Open the link below on a separate tab. Make sure the branch is <strong>rel-1.8.0</strong></p>
 <ul>
 <li><a href="https://github.com/h2oai/driverlessai-recipes/tree/rel-1.8.0" target="_blank">H2O Driverless AI Recipes GitHub Repo</a></li>
@@ -384,7 +387,7 @@
 <p>2. Make sure it is Branch rel-1-8-0, then click on <strong>Clone or Download</strong>, then on <strong>Download ZIP</strong>. This will download the entire rel1-8.0 repo to your desktop. If you prefer not to download the entire repo then use the URL method.</p>
 <p><img alt="dai-recipes-repo-download" src="img/bd56402b6a9fa774.jpg"></p>
 <p>3. Unzip the driverless-recipes-rel-1.8.0 file and save it on your local machine your directory of choice.</p>
-<p>4. On DAI, start an Experiment, then select Expert Settings. Now instead of selecting <strong>+Load Custom Recipe From URL</strong>, you will select <strong>+Upload Custom Recipe</strong></p>
+<p>4. On Driverless AI, start an Experiment, then select Expert Settings. Now instead of selecting <strong>+Load Custom Recipe From URL</strong>, you will select <strong>+Upload Custom Recipe</strong></p>
 <p><img alt="dai-upload-custom-recipe" src="img/7145ac74cc4e4e3f.jpg"></p>
 <p>5. After you click on <strong>Upload Custom Recipe</strong>, go to the directory where you saved the <strong>driverlessai-recipes-rel-1-8-0</strong> folder</p>
 <p>6. Select the <strong>scorer</strong> folder</p>
@@ -399,7 +402,7 @@
       </google-codelab-step>
     
       <google-codelab-step label="Task 8: Next Steps" duration="0">
-        <p>Check out Driverless AI next tutorial[Develop Your Own Custom Recipe Tutorial]()</p>
+        <p>Check out Driverless AI next tutorial <a href="https://h2oai.github.io/tutorials/build-your-own-custom-recipe-tutorial/#0" target="_blank">Develop Your Own Custom Recipe Tutorial</a></p>
 <p>Where you will learn to build:</p>
 <ul>
 <li>Custom Transformer Recipe</li>
@@ -408,6 +411,7 @@
 </ul>
 <p>Webinar: <a href="https://www.brighttalk.com/webcast/16463/360533" target="_blank">Extending the H2O Driverless AI Platform with Your Recipes by H2O&#39;s Arno Candel</a></p>
 <p>Blog: <a href="https://www.h2o.ai/blog/custom-machine-learning-recipes-the-ingredients-for-success/" target="_blank">Custom Machine Learning Recipes: The ingredients for success by H2O&#39;s Parul Pandey</a></p>
+<p>Catalog: <a href="http://catalog.h2o.ai/" target="_blank">Existing Open Source Custom Recipes</a></p>
 
 
       </google-codelab-step>
