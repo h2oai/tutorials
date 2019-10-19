@@ -54,7 +54,7 @@ The training dataset in this tutorial contains 73,165 rows and a total of 11 fea
 
 If you are using Aquarium as your environment then the following labs, **Test Drive** and **Introduction to Driverless AI**, will have this tutorials training and test subsets of the Retail Store Forecasting dataset preloaded for you. The datasets will be located on **Datasets Overview** page. You will also see two extra data sets, which you can ignore for now as they are used for another tutorial. 
 
-**NOTE:** To learn how to add the two datasets from the Driveless AI file system see [**Appendix A: Add the Datasets**](#task-7-add-the-datasets).
+**NOTE:** To learn how to add the two datasets from the Driveless AI file system see [Appendix A: Add the Datasets](#task-7-add-the-datasets).
 
 1\. Verify that both dataset are on the **Datasets Overview**, your screen should look similar to the  page below:
 
