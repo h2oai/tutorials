@@ -369,7 +369,8 @@ _excluded_model_classes = None # List[str]
 import typing
 import numpy as np
 from h2oaicore.metrics import CustomScorer
-from sklearn.preprocessing import LabelEncoder from sklearn.metrics import confusion_matrix
+from sklearn.preprocessing import LabelEncoder 
+from sklearn.metrics import confusion_matrix
                         
 class FalseDiscoveryRateScorer(CustomScorer):
 
@@ -591,7 +592,7 @@ importances = np.array(model.feature_importances_)
 <p>6. Copy and paste the code above for <strong>set model parameters</strong>, below the <code>#Fitting the model</code> section of code of your .py file, your text editor should look similar to the page below:</p>
 <p><img alt="model-set-predictions" src="img/878248380208151b.jpg"></p>
 <h2>Challenge</h2>
-<p>The final step in building the custom model recipe is to upload the custom recipe to Driverless and check that it passes the <strong>acceptance test</strong>. If your recipe is not passing the Driverless AI&#39;s acceptance test see  <strong>Task 5: Troubleshooting</strong>.</p>
+<p>The final step in building the custom model recipe is to individualize this custom recipe such determining the "n_estimators" and setting up test code for testing for null values. Once those are set then you can upload the custom recipe to Driverless and check that it passes the <strong>acceptance test</strong>. If your recipe is not passing the Driverless AI&#39;s acceptance test see  <strong>Task 5: Troubleshooting</strong>.</p>
 <p>Take the extra_tress_model and test it using a dataset of your choice</p>
 <p><strong>Note:</strong> The dataset needs be for a binary classification problem</p>
 <p>If you have questions on how to upload the transformer recipe to Driverless AI see  <a href=" https://h2oai.github.io/tutorials/get-started-with-open-source-custom-recipes-tutorial/#5" target="_blank">&#34;Get Started with Open Source Custom Recipes Tutorial - Task 5: Recipe: Model&#34;</a>.</p>
