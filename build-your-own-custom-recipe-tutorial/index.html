@@ -26,7 +26,7 @@
                   feedback-link="">
     
       <google-codelab-step label="Objective" duration="0">
-        <p>In this tutorial, we will take a deeper dive into the process of custom recipe building to enhance Driverless AI. We will build three recipes: a transformer, a model and a scorer using Visual Studio Code text editor. Each recipe will then be uploaded and tested using Driverless AI.</p>
+        <p>In this tutorial, we will take a deeper dive into the process of custom recipe building to enhance Driverless AI. We will build three custom recipes: a transformer, a model and a scorer using Visual Studio Code text editor.</p>
 
 
       </google-codelab-step>
@@ -37,7 +37,7 @@
 <li>Ability to write Python Code</li>
 <li>A Driverless AI environment (release 1.8.0)</li>
 <li>Basic knowledge of Driverless AI or doing the Automatic Machine Learning Intro tutorial<ul>
-<li><a href="https://h2oai.github.io/tutorials/get-started-and-consume-existing-recipes/#0" target="_blank">Get Started and Consume Existing Recipes Tutorial</a></li>
+<li><a href="https://h2oai.github.io/tutorials/get-started-with-open-source-custom-recipes-tutorial/#0" target="_blank">Get Started with Open Source Custom Recipes Tutorial</a></li>
 </ul>
 </li>
 <li>A text editor or developer environment to create .py  text files containing source code (Examples: PyCharm, Jupyter, Spider or a Text Editor like Atom or Visual Studio Code)</li>
@@ -66,7 +66,7 @@
 <li>How to upload the recipes into Driverless AI as raw URL&#39;s and .py files</li>
 <li>Compared the final models of the experiments that were run with custom recipes to Driverless AI&#39;s default settings experiment.</li>
 </ul>
-<p><strong>Note:</strong> If you have not done so, complete the <a href="https://h2oai.github.io/tutorials/get-started-and-consume-existing-recipes/#0" target="_blank">Get Started and Consume Existing Recipes Tutorial</a>, the material covered will be needed for the successful completion of this tutorial.</p>
+<p><strong>Note:</strong> If you have not done so, complete the <a href="https://h2oai.github.io/tutorials/get-started-with-open-source-custom-recipes-tutorial/#0" target="_blank">Get Started with Open Source Custom Recipes Tutorial</a>, the material covered will be needed for the successful completion of this tutorial.</p>
 <p>Just to recap, H2O Driverless AI is an artificial intelligence (AI) platform for automatic machine learning. Driverless AI automates some of the most difficult and tedious data science and machine learning tasks such as feature engineering, algorithm selection, model validation, model tuning, model selection, model explanation, model documentation and model deployment. It aims to achieve the highest predictive accuracy, comparable to expert data scientists, but in a much shorter time thanks to end-to-end automation.</p>
 <p>Driverless AI 1.8.0 allows Domain Scientists to combine their subject matter expertise with the broadness of Driverless by giving Data Scientists the option to upload their own transformers, scorers, and custom datasets. Driverless AI&#39;s Bring Your Own Recipe (BYOR) lets you apply your domain expertise and optimize your specific Driverless AI model(s) with just a few clicks. Driverless AI treats customer recipes as first-class citizens in the automatic machine learning workflow.</p>
 <h2>Driverless AI&#39;s Automatic Machine Learning Workflow</h2>
@@ -319,7 +319,7 @@ _excluded_model_classes = None # List[str]
 <p>The final step in building the custom transformer recipe is to upload the custom recipe to Driverless AI and check that it passes the <strong>acceptance test</strong>. If your recipe is not passing the Driverless AI&#39;s acceptance test see  <strong>Task 5: Troubleshooting</strong>.</p>
 <p>Take the new custom sum_transformer and test it in a dataset of your choice.</p>
 <p><strong>Note:</strong> The dataset needs to have more than three quantitative columns that can be added together</p>
-<p>If you have questions on how to upload the transformer recipe to Driverless AI see  <a href="https://h2oai.github.io/tutorials/get-started-and-consume-existing-recipes/#4" target="_blank">&#34;Get Started and Consume Existing Recipes Tutorial - Task 3: Recipe: Transformer&#34;</a>.</p>
+<p>If you have questions on how to upload the transformer recipe to Driverless AI see  <a https://h2oai.github.io/tutorials/get-started-with-open-source-custom-recipes-tutorial/#4" target="_blank">&#34;Get Started with Open Source Custom Recipes Tutorial - Task 3: Recipe: Transformer&#34;</a>.</p>
 <h2>References</h2>
 <p>[1] <a href="https://github.com/h2oai/driverlessai-recipes/blob/master/how_to_write_a_recipe/how_to_write_a_recipe.md" target="_blank">How to write a Transformer Recipe for Driverless AI by Ashrith Barthur</a></p>
 <h2>Deeper Dive and Resources</h2>
@@ -441,7 +441,7 @@ def score(self,
 <p>The final step in building the custom scorer recipe is to upload the custom recipe to Driverless and check that it passes the <strong>acceptance test</strong>. If your recipe is not passing the Driverless AI&#39;s acceptance test see  <strong>Task 5: Troubleshooting</strong>.</p>
 <p>Take the false_discovery_rate_scorer and test it in a dataset of your choice.</p>
 <p><strong>Note:</strong> The dataset needs be for a binaryclassification problem</p>
-<p>If you have questions on how to upload the transformer recipe to Driverless AI see  <a href="https://h2oai.github.io/tutorials/get-started-and-consume-existing-recipes/#5" target="_blank">&#34;Get Started and Consume Existing Recipes Tutorial - Task 4: Recipe: Scorer&#34;</a>.</p>
+<p>If you have questions on how to upload the transformer recipe to Driverless AI see  <a href="https://h2oai.github.io/tutorials/get-started-with-open-source-custom-recipes-tutorial/#5" target="_blank">&#34;Get Started with Open Source Recipes Tutorial - Task 4: Recipe: Scorer&#34;</a>.</p>
 <h2>Deeper Dive and Resources</h2>
 <ul>
 <li><a href="https://github.com/h2oai/driverlessai-recipes/tree/master/scorers" target="_blank">Driverless AI Scorers Repo</a></li>
@@ -594,7 +594,7 @@ importances = np.array(model.feature_importances_)
 <p>The final step in building the custom model recipe is to upload the custom recipe to Driverless and check that it passes the <strong>acceptance test</strong>. If your recipe is not passing the Driverless AI&#39;s acceptance test see  <strong>Task 5: Troubleshooting</strong>.</p>
 <p>Take the extra_tress_model and test it using a dataset of your choice</p>
 <p><strong>Note:</strong> The dataset needs be for a binary classification problem</p>
-<p>If you have questions on how to upload the transformer recipe to Driverless AI see  <a href="https://h2oai.github.io/tutorials/get-started-and-consume-existing-recipes/#5" target="_blank">&#34;Get Started and Consume Existing Recipes Tutorial - Task 5: Recipe: Model&#34;</a>.</p>
+<p>If you have questions on how to upload the transformer recipe to Driverless AI see  <a href=" https://h2oai.github.io/tutorials/get-started-with-open-source-custom-recipes-tutorial/#5" target="_blank">&#34;Get Started with Open Source Custom Recipes Tutorial - Task 5: Recipe: Model&#34;</a>.</p>
 <h2>References</h2>
 <p>[1] <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.ExtraTreesClassifier.html" target="_blank">sklearn Extra Trees Classifier</a></p>
 <p>[2] sklearn Extra Trees Regressor](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.ExtraTreesRegressor.html)</p>
