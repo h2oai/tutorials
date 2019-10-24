@@ -298,40 +298,18 @@
 <p><img src="img/3f5c0c4ec9690d7f.png"></p>
 <h2>Key Capabilities of Driverless AI NLP Recipe</h2>
 <ol type="1">
-<li><strong>TFIDF of n-grams</strong></li>
-</ol>
-<p>Frequency-based features are multiplied with inverse document frequency to get TFIDF vectors.</p>
-<ol type="1">
-<li><strong>Frequency of n-grams</strong></li>
-</ol>
-<p>Frequency-based features represent the count of each word in the given text in the form of vectors. Frequency-based features are created for different n-gram values[2]. The dimensions of the output vectors are quite high. Words/n-grams that occur more number of times will get higher weightage than the ones that occur less frequently.</p>
-<ol type="1">
-<li><strong>Truncated SVD Features</strong></li>
-</ol>
-<p>Both TFIDF and Frequency of n-grams result in a higher dimension. To tackle this, we use Truncated SVD to decompose the vector arrays in lower dimensions.</p>
-<ol type="1">
-<li><strong>Linear models on TF/IDF vectors</strong></li>
-</ol>
-<p>In our NLP recipe, we also have linear models on top of n-gram TFIDF / frequency vectors. This capture linear dependencies that are simple yet significant in achieving the best accuracies.</p>
-<ol type="1">
-<li><strong>Word Embeddings</strong></li>
-</ol>
-<p>Driverless AI NLP recipe makes use of the power of word embeddings where words or phrases from the vocabulary are mapped to vectors of real numbers.</p>
-<ol type="1">
-<li><strong>Bi-direction GRU models on word embeddings</strong></li>
-</ol>
-<p>A Bi-directional GRU model is like putting two independent RNN models in one. Taking note of accuracy as well as speed in our experiments, we have decided to take advantage of high speed and almost similar accuracies of GRU architecture compared to its counterpart LSTM.</p>
-<ol type="1">
-<li><strong>Convolution neural network models on:</strong></li>
-</ol>
-<ul>
-<li><strong>word embeddings</strong></li>
+<li><strong>TFIDF of n-grams</strong>: Frequency-based features are multiplied with inverse document frequency to get TFIDF vectors.</li>
+<li><strong>Frequency of n-grams</strong>: Frequency-based features represent the count of each word in the given text in the form of vectors. Frequency-based features are created for different n-gram values[2]. The dimensions of the output vectors are quite high. Words/n-grams that occur more number of times will get higher weightage than the ones that occur less frequently.</li>
+<li><strong>Truncated SVD Features</strong>: Both TFIDF and Frequency of n-grams result in a higher dimension. To tackle this, we use Truncated SVD to decompose the vector arrays in lower dimensions.</li>
+<li><strong>Linear models on TF/IDF vectors</strong>: In our NLP recipe, we also have linear models on top of n-gram TFIDF / frequency vectors. This capture linear dependencies that are simple yet significant in achieving the best accuracies.</li>
+<li><strong>Word Embeddings</strong>: Driverless AI NLP recipe makes use of the power of word embeddings where words or phrases from the vocabulary are mapped to vectors of real numbers.</li>
+<li><strong>Bi-direction GRU models on word embeddings</strong>: A Bi-directional GRU model is like putting two independent RNN models in one. Taking note of accuracy as well as speed in our experiments, we have decided to take advantage of high speed and almost similar accuracies of GRU architecture compared to its counterpart LSTM.</li>
+<li><strong>Convolution neural network models on:</strong>:<ul>
+<li><strong>word embeddings</strong>: In Driverless AI, we pass word embeddings as input to CNN models, get cross-validated predictions from it and use them as a new set of features.</li>
+<li><strong>CNN models on character embeddings</strong>: Natural language processing is complex as the language is hard to understand given small data and different languages.Targeting languages like Japanese, Chinese where characters play a major role, we have character level embeddings in our recipe as well.</li>
 </ul>
-<p>In Driverless AI, we pass word embeddings as input to CNN models, get cross-validated predictions from it and use them as a new set of features.</p>
-<ul>
-<li><strong>CNN models on character embeddings</strong></li>
-</ul>
-<p>Natural language processing is complex as the language is hard to understand given small data and different languages.Targeting languages like Japanese, Chinese where characters play a major role, we have character level embeddings in our recipe as well.</p>
+</li>
+</ol>
 <p>In character embeddings, each character gets represented in the form of vectors rather than words. Driverless AI uses character level embeddings as input to CNN models and later extract class probabilities to feed as features for downstream models. This gives the ability to work in languages other than English also. In case of languages like Japanese, Chinese etc where there is no concept of words, character embeddings will be useful.</p>
 <h2>Deeper Dive and Resources</h2>
 <ul>
@@ -374,15 +352,14 @@
 <li><strong>Download Logs</strong></li>
 </ul>
 </li>
-<li>Iteration Data - Validation</li>
-</ol>
-<p>The winning model&#39;s validation score and the algorithm used are as follows:</p>
-<ul>
+<li>Iteration Data - Validation: The winning model&#39;s validation score and the algorithm used are as follows:<ul>
 <li>Validation Score - .2353</li>
 <li>Model Type: XGBoostGBM</li>
 </ul>
 <ol type="1">
 <li>Variable Importance: Summary of top 20 - Feature Engineered variables</li>
+</ol>
+</li>
 </ol>
 <p>Driverless AI performs feature Engineering on the dataset to determine the optimal representation of the data. Various stages of the features appear throughout the iteration of the data. These can be viewed by hovering over points on the Iteration Data - Validation Graph and seeing the updates on the  <strong>Variable Importance</strong> section.</p>
 <p><img src="img/a1cc482e5a86214b.png"></p>
