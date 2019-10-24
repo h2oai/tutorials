@@ -101,17 +101,12 @@
 <p><img alt="Task-1/5-initial-experiment" src="img/8e1ff08035a18a1a.jpg"></p>
 <p>3. Next, you will need to feed in the following information into Driverless AI :</p>
 <p><img src="img/35a6117510e30b0a.png"></p>
-<ol type="1">
-<li><strong>Display Name</strong> - Give a name to your expeiment. You can choose according to your choice but it is recommended to choose a name that highlights the purpose of the experiment. Let&#39;s name our current experiment as <strong>Sentiment Analysis</strong>.</li>
-<li><strong>Target Column</strong> -  The <em>Target column</em> contains the value that we intend to predict through the experiment. Click on the <code>Select Target Column</code> tab and select <strong>Positive Review</strong> as the target column. The aim of the experiment is to try to predict whether a fiven review is positive or negative, hence the Positive Review is selected as the target column. The column has only two values i.e Positive and Negative.</li>
-</ol>
+<p>4. <strong>Display Name</strong> - Give a name to your expeiment. You can choose according to your choice but it is recommended to choose a name that highlights the purpose of the experiment. Let&#39;s name our current experiment as <strong>Sentiment Analysis</strong>.</p>
+<p>5. <strong>Target Column</strong> -  The <em>Target column</em> contains the value that we intend to predict through the experiment. Click on the <code>Select Target Column</code> tab and select <strong>Positive Review</strong> as the target column. The aim of the experiment is to try to predict whether a fiven review is positive or negative, hence the Positive Review is selected as the target column. The column has only two values i.e Positive and Negative.</p>
 <p><img src="img/ca6400140c9790c6.png"></p>
-<ol type="1">
-<li><strong>Test Dataset</strong> -  The <em>Test dataset</em> is a dataset used to provide an unbiased evaluation of a <em>final</em> model fit on the training dataset. It is not used during training of the model and results are available at the end of the experiment. Select the <code>AmazonFineFoodReviews-test-26k.csv</code> dataset as follows:</li>
-</ol>
+<p>6. <strong>Test Dataset</strong> -  The <em>Test dataset</em> is a dataset used to provide an unbiased evaluation of a <em>final</em> model fit on the training dataset. It is not used during training of the model and results are available at the end of the experiment. Select the <code>AmazonFineFoodReviews-test-26k.csv</code> dataset as follows:</p>
 <p><img src="img/4036da3ee0ebf6b.png"></p>
-<li><strong>Dropped Columns</strong> - The <em>Dropped Columns</em> feature enable us to  drop column(s) from your dataset that you don&#39;t want to use in the experiment.For this experiment we shall only use the text columns so we shall drop all columns that are not in text format.</li>
-</ol>
+<p>7. <strong>Dropped Columns</strong> - The <em>Dropped Columns</em> feature enable us to  drop column(s) from your dataset that you don&#39;t want to use in the experiment.For this experiment we shall only use the text columns so we shall drop all columns that are not in text format.</p>
 <p><img src="img/993dd0d7e570c33d.png"></p>
 <p>However, please note that you can also choose to keep the non-text columns and NLP algorithms will work on that too.</p>
 <p>The experiment screen will finally look like the image below:</p>
@@ -302,7 +297,9 @@
         <p>Text data can contain critical information to inform better predictions. H2O Driverless AI automatically converts text strings into features using powerful techniques like TFIDF, CNN, and GRU. With TensorFlow, Driverless AI can also process larger text blocks and build models using all available data to solve business problems like sentiment analysis, document classification and content tagging. In particular, Driverless AI implements the following recipes and models.</p>
 <p><img src="img/3f5c0c4ec9690d7f.png"></p>
 <h2>Key Capabilities of Driverless AI NLP Recipe</h2>
-<p>1.<strong>TFIDF of n-grams</strong></p>
+<ol type="1">
+<li><strong>TFIDF of n-grams</strong></li>
+</ol>
 <p>Frequency-based features are multiplied with inverse document frequency to get TFIDF vectors.</p>
 <ol type="1">
 <li><strong>Frequency of n-grams</strong></li>
@@ -379,16 +376,14 @@
 </li>
 <li>Iteration Data - Validation</li>
 </ol>
+<p>The winning model&#39;s validation score and the algorithm used are as follows:</p>
 <ul>
-<li>The winning model&#39;s validation score and the algorithm used are as follows:<ul>
 <li>Validation Score - .2353</li>
 <li>Model Type: XGBoostGBM</li>
 </ul>
 <ol type="1">
 <li>Variable Importance: Summary of top 20 - Feature Engineered variables</li>
 </ol>
-</li>
-</ul>
 <p>Driverless AI performs feature Engineering on the dataset to determine the optimal representation of the data. Various stages of the features appear throughout the iteration of the data. These can be viewed by hovering over points on the Iteration Data - Validation Graph and seeing the updates on the  <strong>Variable Importance</strong> section.</p>
 <p><img src="img/a1cc482e5a86214b.png"></p>
 <p>Look at some of the variables in Variable of Importance list. These are the new, high-value features for our training dataset.</p>
