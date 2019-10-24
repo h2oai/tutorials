@@ -1,0 +1,29 @@
+{
+  "environment": "web",
+  "source": "/Users/acastro/Desktop/get-started-with-open-source-custom-recipes-tutorial/get-started-with-open-source-custom-recipes-tutorial.md",
+  "format": "html",
+  "prefix": "../assets",
+  "mainga": "UA-49880327-14",
+  "updated": "2019-10-24T14:31:27-07:00",
+  "id": "get-started-with-open-source-custom-recipes-tutorial",
+  "duration": 0,
+  "title": "Get Started with Open Source Custom Recipes Tutorial",
+  "summary": "Check the list",
+  "theme": "",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "driverless"
+  ],
+  "tags": [
+    "custom",
+    "driverless",
+    "machine-learning",
+    "models",
+    "recipes",
+    "scores",
+    "transformer"
+  ],
+  "url": "get-started-with-open-source-custom-recipes-tutorial"
+}

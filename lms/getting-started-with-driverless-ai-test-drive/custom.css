@@ -1,0 +1,15 @@
+#controls {
+  display: none !important; 
+}
+
+#drawer {
+  display: none !important;
+}
+
+#codelab-nav-buttons {
+  display: none !important;
+}
+
+#codelab-time-container {
+  display: none !important;
+}
