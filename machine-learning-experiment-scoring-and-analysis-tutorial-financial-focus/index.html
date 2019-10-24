@@ -26,7 +26,7 @@
                   feedback-link="">
     
       <google-codelab-step label="Objective" duration="0">
-        <p>Many tools, such as ROC and Precision-Recall Curves, are available to evaluate how good or bad a classification model is predicting outcomes. In this tutorial, we will use a subset of the Freddie Mac Single-Family Loan-Level dataset to build a classification model and use it to predict if a loan will become delinquent. Through H2O&#39;s DAI Diagnostic tool, we will explore the financial impacts the false positive and false negative predictions have while exploring tools like ROC Curve, Prec-Recall, Gain and Lift Charts, K-S Chart. Finally, we will explore a few metrics such as AUC, F-Scores, GINI, MCC, and Log Loss to assist us in evaluating the performance of the generated model.</p>
+        <p>Many tools, such as ROC and Precision-Recall Curves, are available to evaluate how good or bad a classification model is predicting outcomes. In this tutorial, we will use a subset of the Freddie Mac Single-Family Loan-Level dataset to build a classification model and use it to predict if a loan will become delinquent. Through H2O&#39;s Driverless AI Diagnostic tool, we will explore the financial impacts the false positive and false negative predictions have while exploring tools like ROC Curve, Prec-Recall, Gain and Lift Charts, K-S Chart. Finally, we will explore a few metrics such as AUC, F-Scores, GINI, MCC, and Log Loss to assist us in evaluating the performance of the generated model.</p>
 <p><strong>Note:</strong> We recommend that you go over the entire tutorial first to review all the concepts, that way, once you start the experiment, you will be more familiar with the content.</p>
 
 
@@ -197,7 +197,7 @@
 <li>Feature Brain Save Every Which Iteration</li>
 <li>Feature Brain Restart from Which Iteration</li>
 <li>Feature Brain Adds Features with New Columns Even During Retraining of Final Model</li>
-<li>Min DAI Iterations</li>
+<li>Min Driverless AI Iterations</li>
 <li>Select Target Transformation of the Target for Regression Problems</li>
 <li>Tournament Model for Genetic Algorithm</li>
 <li>Enable Extra Logging for Ensemble Meta Learner</li>
@@ -685,7 +685,7 @@
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/Confusion_matrix" target="_blank">Wiki Confusion Matrix</a></li>
 <li><a href="https://www.dataschool.io/simple-guide-to-confusion-matrix-terminology/" target="_blank">Simple guide to confusion matrix</a></li>
-<li><a href="http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/diagnosing.html" target="_blank">Diagnosing a model with DAI</a></li>
+<li><a href="http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/diagnosing.html" target="_blank">Diagnosing a model with Driverless AI</a></li>
 </ul>
 
 
@@ -795,7 +795,7 @@
 <li>ROC curves should be used when there are roughly equal numbers of observations for each class.</li>
 <li>Precision-Recall curves should be used when there is a moderate to large class imbalance.</li>
 <li>Similar to ROC, the AUCPR (Area under the curve of Precision-recall curve) is a measure of model accuracy and higher the better.</li>
-<li>In both the ROC and Prec-recall curve, DAI will indicate points that are the best thresholds for Accuracy (ACC), F1 or MCC (Matthews correlation coefficient).</li>
+<li>In both the ROC and Prec-recall curve, Driverless AI will indicate points that are the best thresholds for Accuracy (ACC), F1 or MCC (Matthews correlation coefficient).</li>
 </ul>
 <p>Looking at the  P-R curve results, is this a good model to determine if a customer will default on their home loan? Let&#39;s take a look at the values found on the P-R curve.</p>
 <p>1. Based on the P-R curve that Driverless AI model generated for you experiment identify the AUC.</p>
