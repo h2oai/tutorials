@@ -339,6 +339,7 @@ These are the key features/recipes that make the automation possible:
 - Target transformations and differentiation
 - Integration with existing feature engineering functions (recipes and optimization)
 - Automatic pipeline generation
+
 ### Driveless AI  Modeling Approach
 
 Driverless AI uses GBMs, GLMs and neural networks with a focus on time-series-specific feature engineering. The feature engineering includes:

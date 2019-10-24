@@ -67,7 +67,7 @@ The dataset provided is a CSV file containing 568,454 rows and a total of 10 fea
  
 ### Dataset Overview
 
-If you are using **Aquarium** as the environment, then the lab **Driverless AI Test Drive** has the Amazon fine review dataset already pre-loaded with separate training and test datasets. The datasets can be located on the Datasets Overview page. However, you can also upload the datasets externally. To learn more about how to add the two datasets from the DAI file system then see [Appendix A: Add the Datasets].(#task-8-appendix-a-add-the-datasets)
+If you are using **Aquarium** as the environment, then the lab **Driverless AI Test Drive** has the Amazon fine review dataset already pre-loaded with separate training and test datasets. The datasets can be located on the Datasets Overview page. However, you can also upload the datasets externally. To learn more about how to add the two datasets from the Driverless AI file system then see [Appendix A: Add the Datasets].(#task-8-appendix-a-add-the-datasets)
 
 On clicking the highlighted `Start lab` button , you will be taken  to a Driverless AI platform with several pre-loaded data sets and pre-run visualizations, models, interpretations, and deployments. Here  you will have access to both the training and testing set for Amazon fine food reviews.
 
@@ -665,6 +665,6 @@ Where you will learn:
 
 - What is Bring Your Own Recipe
 - What is recipe?
-- Types of DAI open-source recipes available
-- How to upload the recipes into DAI as raw URL’s and .py files
-- Compared the final models of the experiments that were run with custom recipes to DAI’s default settings experiment
+- Types of Driverless AI open-source recipes available
+- How to upload the recipes into Driverless AI as raw URL’s and .py files
+- Compared the final models of the experiments that were run with custom recipes to Driverless AI’s default settings experiment

@@ -712,7 +712,7 @@ Learn more about the Kolmogorov-Smirnov chart on [Machine Learning Experiment Sc
  
 [1] [ROC Curves and Under the Curve (AUC) Explained](https://www.youtube.com/watch?v=OAl6eAyP-yo)
 
-[2] [H2O DAi - Experiment Graphs](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-graphs.html?highlight=roc%20curve)
+[2] [H2O Driveless AI - Experiment Graphs](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-graphs.html?highlight=roc%20curve)
 
 [3] [Model Evaluation Classification](https://www.saedsayad.com/model_evaluation_c.htm)
 
@@ -755,7 +755,7 @@ Generate the MLI report:
 
 *Things to note:*
 1. Summary -  Summary of MLI experiment
-2. DAI Model - Feature importance, Shapley plots for transformed features, and Disparate Impact Analysis
+2. Driveless AI Model - Feature importance, Shapley plots for transformed features, and Disparate Impact Analysis
 3. Surrogate Models - KLIME and Decision Tree plots
 4. Dashboard - The Model Interpretation Page includes the following:
 	- Global Interpretability model explanation plot
@@ -810,9 +810,9 @@ Explanations provides a detailed easy-to-read **Reason Codes** for the top Globa
 
 - Determine the top 2 global attributions associated with ‘survived’
 
-6\. Driverless AI offers other plots located under DAI Model and Surrogate Models, take a few minutes to explore these plots, they are all interactive. **About this Plot** will provide an explanation of each plot.
+6\. Driverless AI offers other plots located under Driveless AI Model and Surrogate Models, take a few minutes to explore these plots, they are all interactive. **About this Plot** will provide an explanation of each plot.
 
-DAI Model
+Driveless AI Model
 - Feature Importance
 - Shapley
 - Partial Dependence Plot
@@ -912,7 +912,7 @@ Check out Driverss AI next tutorial [Machine Learning Experiment Scoring and Ana
 
 Where you will learn how to:
 
-- Evaluate a DAI model through tools like:
+- Evaluate a Driveless AI model through tools like:
 	- ROC
 	- Prec-Recall
 	- Gain and Lift Charts

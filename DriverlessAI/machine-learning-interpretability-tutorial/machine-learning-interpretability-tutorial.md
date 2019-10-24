@@ -74,7 +74,7 @@ This dataset has a total 25 Features(columns) and 30,000 Clients(rows).
 
 1\. Go to the [UCI Machine Learning Databases](https://archive.ics.uci.edu/ml/machine-learning-databases/00350/) and select the .xls file named `default of credit card clients.xls`. Clicking on the .xls file will download the Default Payments of Credit Card Clients in Taiwan from 2005 to your local drive. 
 
-2\. Once in your local drive, open the `default of credit card clients.xls` file and delete the first row. This row has column names X1, X2, X3...X22, X23, Y that are nonessential to the DAI experiment.
+2\. Once in your local drive, open the `default of credit card clients.xls` file and delete the first row. This row has column names X1, X2, X3...X22, X23, Y that are nonessential to the Driveless AI experiment.
 
 3\. After deleting the first row, save the file into your local drive with the following name and extension: `UCI_Credit_Card.csv`
 
@@ -246,7 +246,7 @@ Global feature importance values give an indication of the magnitude of a featur
 
 ### Shapley and Feature Importance Plots
 
-1\. On the right-upper corner of the MLI page, select **DAI Model**, then **Shapley**.
+1\. On the right-upper corner of the MLI page, select **Driveless AI Model**, then **Shapley**.
 
 ![global-shapley-feature-importance](assets/global-shapley-feature-importance.jpg)
 
@@ -507,7 +507,7 @@ The grey bars or local numeric contributions can be used to generated reason cod
 
 1\. Select a high probability default person on the K-LIME plot by clicking on one of the white points in the top-right corner of the plot
 
-2\. Then under the **DAI Model** select **Shapley**
+2\. Then under the **Driveless AI Model** select **Shapley**
 
 ![local-shapley-value-plot](assets/local-shapley-value-plot.jpg)
 
