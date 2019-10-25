@@ -10,9 +10,9 @@
 - [Logout](#logout)
 - [Questions](#questions)
 
-## Driverless AI Test Drive 
+## Driverless AI Test Drive
 
-Test Drive is a two-hour lab session that exists in H2O's Aquarium. Aquarium is H2O's cloud environment that provides access to various tools for workshops, conferences, and training.
+I removed that entire paragraph.
 
 All labs have a specific **Lab Duration*** to complete the lab. All Test Drive Lab session's will terminate after two-hours. No work will be saved!
 
@@ -65,7 +65,7 @@ If you would like to continue exploring H2O's Driverless AI, request a [21-Day F
 
 ![test-drive-login](assets/test-drive-login.jpg)
 
-## Reset Password 
+## Reset Password
 
 ![resetting-password](assets/resetting-password.jpg)
 
@@ -81,7 +81,7 @@ After a successful login the Driverless AI Test Drive Lab will appear:
 
 ![driverless-ai-test-drive-page](assets/driverless-ai-test-drive-page.jpg)
 
-> Note: 
+> Note:
 
 - Lab duration is 120 minutes, after the session will terminate
 - Selecting `click here` will take to you to the Driverless AI Automatic Machine Learning Tutorial
@@ -99,7 +99,7 @@ After a successful login the Driverless AI Test Drive Lab will appear:
 
  - The time remaining for the instance use
  - Driverless AI URL
- - End Lab 
+ - End Lab
 
 3\. Once the Lab has started, a Driverless AI URL will appear at the of the page. Click on that URL. This will take you to the H2O Driverless Welcome Page.
 
@@ -114,14 +114,10 @@ After a successful login the Driverless AI Test Drive Lab will appear:
 
 1\. To logout, click on the box on the top-right corner of the page and select logout.
 
-![test-drive-logout](assets/test-drive-logout.jpg) 
+![test-drive-logout](assets/test-drive-logout.jpg)
 
 ## Questions
 
 Have any questions about Aquarium? Sign up for H2O's Slack Community and post your questions under the #cloud channel. Members of the H2O community will respond as soon as they are available.
 
 - [Join the H2O community on Slack to Ask Questions #cloud](https://h2oai-community.slack.com/)
-
-
-
-
