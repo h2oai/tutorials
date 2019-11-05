@@ -110,7 +110,7 @@ loan_level = h2o.import_file(&#34;https://s3.amazonaws.com/data.h2o.ai/DAI-Tutor
 <h2>Accuracy</h2>
 <p>Accuracy or ACC (not to be confused with AUC or area under the curve) is a single metric in binary classification problems. ACC is the ratio of the number of correct predictions divided by the total number of predictions. In other words, it describes how well the model can correctly identify both the true positives and true negatives. Accuracy is measured in the range of 0 to 1, where 1 is perfect accuracy or perfect classification, and 0 is poor accuracy or poor classification[4].<br>Using the confusion matrix table, ACC can be calculated in the following manner:<br>Accuracy = (TP + TN) / (TP + TN + FP + FN)</p>
 <h2>Log loss</h2>
-<p>Log loss also measures the performance of classification models with a focus on the uncertainty between predictions and actual results. The log loss score is the average log-loss across all observations. Log loss is measured in the range of 0 to 1, where a model with a log loss of 0 would be the perfect classifier and 1 the worst. When the model is unable to make correct predictions, the log loss increases making the model a poor model[5].</p>
+<p>The logarithmic loss metric can be used to evaluate the performance of a binomial or multinomial classifier. Unlike AUC which looks at how well a model can classify a binary target, logloss evaluates how close a model&#39;s predicted values (uncalibrated probability estimates) are to the actual target value. For example, does a model tend to assign a high predicted value like .80 for the positive class, or does it show a poor ability to recognize the positive class and assign a lower predicted value like .50? A model with a log loss of 0 would be the perfect classifier. When the model is unable to make correct predictions, the log loss increases making the model a poor model[5].</p>
 <h2>Cross-Validation</h2>
 <p>Cross validation is a model validation technique in which you can check how well a statistical analysis or model, will perform on an independent dataset. We use cross validation to see how our model will predict on unseen data. We will explore two cross validation approaches. The first one is to take the training data and split it into training and validation set, which is similar to a test set. This approach is called <strong>validation set cross validation.</strong> Also, there is <strong>K-Fold</strong> cross validation, in which you do not need to split the data, but use the entire dataset. Depending on the number of <em>folds</em> that you choose during training, the data is divided into k groups; k-1 groups are trained, and then, the last group serves to evaluate. After every group has been used to evaluate the model, the average of all the scores is obtained; and thus, we obtain a validation score[6].</p>
 <h2>References</h2>
@@ -657,7 +657,7 @@ print (&#34;GBM Confusion Matrix &#34;,  gbm_test_per.confusion_matrix())
       </google-codelab-step>
     
       <google-codelab-step label="Next Steps" duration="0">
-        <p>Introduction to <strong>Machine Learning with H2O - Part 2</strong> coming soon.</p>
+        <p>Introduction to Machine Learning with H2O - Part 2 coming soon.</p>
 
 
       </google-codelab-step>
