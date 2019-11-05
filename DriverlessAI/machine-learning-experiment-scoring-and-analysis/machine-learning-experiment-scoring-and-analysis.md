@@ -588,9 +588,25 @@ Using the confusion matrix table MCC can be calculated in the following manner:
 
 **MCC** =  (TP * TN- FP* FN) / [(TP + FP) * (FN + TN) * (FP + TN) * (TP + FN)] ^ ½
 
-#### Log Loss
+#### Log Loss (Logloss)
+ 
+The logarithmic loss metric can be used to evaluate the performance of a binomial or multinomial classifier. Unlike AUC which looks at how well a model can classify a binary target, logloss evaluates how close a model’s predicted values (uncalibrated probability estimates) are to the actual target value. For example, does a model tend to assign a high predicted value like .80 for the positive class, or does it show a poor ability to recognize the positive class and assign a lower predicted value like .50? A model with a log loss of 0 would be the perfect classifier. When the model is unable to make correct predictions, the log loss increases making the model a poor model[11].
 
-Log loss also measures the performance of classification models with a focus on the uncertainty between predictions and actual results. The log loss score is the average log-loss across all observations. Log loss is measured in the range of 0 to 1, where a model with a log loss of 0 would be the perfect classifier and 1 the worst. When the model is unable to make correct predictions, the log loss increases making the model a poor model[11].
+**Binary classification equation:**
+
+![logloss-binary-classification-equation](assets/logloss-binary-classification-equation.jpg)
+
+**Multiclass classification equation:**
+
+![logloss-multiclass-classification-equation](assets/logloss-multiclass-classification-equation.jpg)
+
+Where:
+
+- N is the total number of rows (observations) of your corresponding dataframe.
+- w is the per row user-defined weight (defaults is 1).
+- C is the total number of classes (C=2 for binary classification).
+- p is the predicted value (uncalibrated probability) assigned to a given row (observation).
+- y is the actual target value.
 
 Driverless AI Diagnostics calculates the ACC, F1, MCC values and plots those values in each ROC and Pre-Recall curves making it easier to identify the best threshold for the model generated. Additionally, it also calculates the log loss score for your model allowing you to quickly assess whether the model you generated is a good model or not. 
 
@@ -751,7 +767,7 @@ Below are three questions to test your understanding of the experiment summary a
 **Note:** If you are not sure what Log loss is, feel free to review the concepts section of this tutorial.
 
 
-3\. So what do the Log Loss values tell us?  The essential Log Loss value is the test score value. This value tells us how well the model generated did against the freddie_mac_500_test set based on the error rate. In case of experiment **Freddie Mac Classification Tutorial**, the test score LogLoss = .1180 which is the log of the misclassification rate. The greater the log loss value (closer to 1) the more significant the misclassification. For this experiment, the Log Loss was relatively small meaning the error rate for misclassification was not as substantial. But what would a score like this mean for an institution like Freddie Mac?
+3\. So what do the Log Loss values tell us?  The essential Log Loss value is the test score value. This value tells us how well the model generated did against the freddie_mac_500_test set based on the error rate. In case of experiment **Freddie Mac Classification Tutorial**, the test score LogLoss = .1180 which is the log of the misclassification rate. The greater the Log loss value the more significant the misclassification. For this experiment, the Log Loss was relatively small meaning the error rate for misclassification was not as substantial. But what would a score like this mean for an institution like Freddie Mac?
 
 In the next few tasks we will explore the financial implications of misclassification by exploring the confusion matrix and plots derived from it. 
 
@@ -904,7 +920,7 @@ The image below represents the scores for the **Freddie Mac Classification Tutor
 
 When the experiment was run for this classification model, Driverless AI determined that the best scorer for it was the Logarithmic Loss or **LOGLOSS** due to the imbalanced nature of the dataset. **LOGLOSS** focuses on getting the probabilities right (strongly penalizes wrong probabilities). The selection of Logarithmic Loss makes sense since we want a model that can correctly classify those who are most likely to default while ensuring that those that qualify for a loan get can get one.
 
-Recall that Log loss is measured in the range of 0 to 1, where a model with a log loss of 0 would be the perfect classifier and 1 the worst. Our model  scored  a LOGLOSS value = .1198+/- .0016 after testing it with test dataset. From the confusion matrix, we saw that the model had issues classifying perfectly; however, it was able to classify with an ACCURACY of .9646 +/- .0006. The financial implications of the misclassifications have been covered in the confusion matrix section above.
+Recall that Log loss is the logarithmic loss metric that can be used to evaluate the performance of a binomial or multinomial classifier, where a model with a Log loss of 0 would be the perfect classifier. Our model  scored  a LOGLOSS value = .1198+/- .0016 after testing it with test dataset. From the confusion matrix, we saw that the model had issues classifying perfectly; however, it was able to classify with an ACCURACY of .9646 +/- .0006. The financial implications of the misclassifications have been covered in the confusion matrix section above.
 
 Driverless AI has the option to change the type of scorer used for the experiment. Recall that for this dataset the scorer was selected to be **logloss**. An experiment can be re-run with another scorer. For general imbalanced classification problems, AUCPR and MCC scorers are good choices, while F05, F1, and F2 are designed to balance recall against precision.
 The AUC is designed for ranking problems. Gini is similar to the AUC but measures the quality of ranking (inequality) for regression problems. 
