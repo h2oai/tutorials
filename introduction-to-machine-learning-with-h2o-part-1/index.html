@@ -348,11 +348,6 @@ x = list(set(train.names) - set(ignore))
         }
 )
 %time glm_grid.train(x=x, y=y, training_frame=train, validation_frame = valid)
-
-        }
-    )
-
-%time glm_grid.train(x=x, y=y, training_frame=train, validation_frame = valid)
 </code></pre>
 <p>You can easily see all <strong>four parameters</strong> for our grid search in the code sample above. We defined our GLM model the same way we did before. Then, we take care of the hyper-parameters and notice that we have used a for loop for the ranges of both alpha and lambda in order to cover more possible values. Because the number of possible models is really big, in our search criteria, we specify that we want a maximum number of 100 models, or that the grid search runs for only 300 seconds.</p>
 <p>Now we will print the models in descending order, sorted by the AUC. By default, the grid will return the best models based on the <code>logloss</code>. Therefore, in order to get the best model based on the AUC, we will specify that we want to sort the models by AUC. You can change this to other metrics, depending on what you are looking for.</p>
