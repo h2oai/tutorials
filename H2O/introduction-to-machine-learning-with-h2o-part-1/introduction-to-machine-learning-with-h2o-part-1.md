@@ -561,11 +561,6 @@ glm_grid = h2o.grid.H2OGridSearch (
         }
 )
 %time glm_grid.train(x=x, y=y, training_frame=train, validation_frame = valid)
-
-        }
-    )
-
-%time glm_grid.train(x=x, y=y, training_frame=train, validation_frame = valid)
 ```
  You can easily see all **four parameters** for our grid search in the code sample above. We defined our GLM model the same way we did before. Then, we take care of the hyper-parameters and notice that we have used a for loop for the ranges of both alpha and lambda in order to cover more possible values. Because the number of possible models is really big, in our search criteria, we specify that we want a maximum number of 100 models, or that the grid search runs for only 300 seconds.
  
