@@ -1,4 +1,4 @@
-# Time Series Recipe Tutorial
+# Time Series Recipe Tutorial - Retail Sales Forecasting
 
 ## Outline
 - [Objective](#objective)
@@ -10,7 +10,7 @@
 - [Task 5: Model Interpretability](#task-5-model-interpretability)
 - [Task 6: Analysis](#task-6-analysis) 
 - [Task 7: Appendix A: Add the Datasets](#task-7-appendix-a-add-the-datasets)
-- [Task 8: Next Steps](#task-8-next-steps)
+- [Next Steps](#next-steps)
 
 
 ## Objective
@@ -22,26 +22,29 @@ Driverless AI has its own recipes for time-series forecasting that combines adva
 **Note:** We recommend that you go over the entire tutorial first to review all the concepts, that way, once you start the experiment, you will be more familiar with the content.
 
 ## Prerequisites
-You will need the following to be able to do this tutorial:
-Basic knowledge of Machine Learning and Statistics
-A Driverless AI environment
-Basic knowledge of Driverless AI or doing the Automatic Machine Learning Intro tutorial.
+
+- You will need the following to be able to do this tutorial:
+- Basic knowledge of Machine Learning and Statistics
+- A Driverless AI environment
+- Basic knowledge of Driverless AI or doing the Automatic Machine Learning Intro tutorial.
 
 You can get more information about getting a Driverless AI environment or trial from the following:
 
-- [A Two Hour Test Drive Session](https://github.com/h2oai/tutorials/blob/master/DriverlessAI/Test-Drive/test-drive.md)  
-- [H2O Driverless AI License Key](https://github.com/h2oai/tutorials/blob/master/DriverlessAI/automatic-ml-intro-tutorial/automatic-ml-intro-tutorial.md#prerequisites) 
-- [H2O Driverless AI Environment and Product Tour](https://github.com/h2oai/tutorials/blob/master/DriverlessAI/automatic-ml-intro-tutorial/automatic-ml-intro-tutorial.md#task-1-get-environment-and-product-tour) 
+- [A Two Hour Test Drive Session](https://h2oai.github.io/tutorials/getting-started-with-driverless-ai-test-drive/#1)  
+
+- [H2O Driverless AI License Key](https://www.h2o.ai/try-driverless-ai/)
+
+- [H2O Driverless AI Environment and Product Tour](https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#2) 
 
 If you are not familiar with Driverless AI please review and do this tutorial:
+- [Automatic Machine Learning Intro Tutorial](https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#0) 
 
-- [Automatic Machine Learning Intro Tutorial](https://github.com/h2oai/tutorials/blob/master/DriverlessAI/automatic-ml-intro-tutorial/automatic-ml-intro-tutorial.md) 
 
-## Task 1:  Launch Time Series Experiment
+## Task 1: Launch Time Series Experiment
 
 ### About the Dataset 
 
-This dataset contains information about a global retail store. It includes historical data for 45 of its stores located in different regions of the United States for 02-05-2010 to 11-01-2012. Each numbered store contains a number of departments, the stores specific markdowns(promotional) events they have throughout the year which typically happen before prominent holidays such as the Superbowl, Labor Day, Thanksgiving and Christmas. Additional information included are the weekly sales, dates of those sale, the fuel price in the region, consumer price index and unemployment rate. The dataset was used in a Kaggle in 2014 competition with the goal of helping this retail store forecast sales of their stores. 
+This dataset contains information about a global retail store. It includes historical data for 45 of its stores located in different regions of the United States from 02-05-2010 to 11-01-2012. Each numbered store contains a number of departments, the stores specific markdowns(promotional) events they have throughout the year which typically happen before prominent holidays such as the Superbowl, Labor Day, Thanksgiving and Christmas. Additional information included are the weekly sales, dates of those sale, the fuel price in the region, consumer price index and unemployment rate. The dataset was used in a Kaggle in 2014 competition with the goal of helping this retail store forecast sales of their stores. 
 
 [1] Our training dataset is a synthesis of the csv data sources provided for the Kaggle Store Sales Forecasting competition. The three datasets were train.csv, stores.csv and features.csv.  The train.csv has the store number, department, date, weekly sales and whether or not that day was a holiday. The stores.csv had the types of stores and their size while the features.csv which had additional demographic information about the specific region the store was located in.
 
@@ -49,7 +52,9 @@ The training dataset in this tutorial contains 73,165 rows and a total of 11 fea
 
 ### Datasets Overview
 
-If you are using Aquarium as your environment then the following labs, **Test Drive** and **Introduction to Driverless AI**, will have this tutorials training and test subsets of the Retail Store Forecasting dataset preloaded for you. The datasets will be located on **Datasets Overview** page. To learn more about how to add the two datasets from the DAI file system then see [Appendix A: Add the Datasets](#task-7-add-the-datasets).
+If you are using Aquarium as your environment then the following labs, **Test Drive** and **Introduction to Driverless AI**, will have this tutorials training and test subsets of the Retail Store Forecasting dataset preloaded for you. The datasets will be located on **Datasets Overview** page. You will also see two extra data sets, which you can ignore for now as they are used for another tutorial. 
+
+**NOTE:** To learn how to add the two datasets from the Driveless AI file system see [Appendix A: Add the Datasets](#task-7-appendix-a-add-the-datasets).
 
 1\. Verify that both dataset are on the **Datasets Overview**, your screen should look similar to the  page below:
 
@@ -84,7 +89,7 @@ MarkDown1-5 - anonymized data related to promotional markdowns that this global 
 
 ### Launch Experiment 
 
-As mentioned on the objectives, this tutorial includes a pre-ran experiment that has been linked to the **Projects Workspace**. **Projects** is a new feature of DAI 1.7.0 and it is a workspace for managing datasets and experiments related to a specific business problem or use case. The **Projects** page allows for easy comparisons of performance and results and identify the best solution for your problem. See [Deeper Dive and Resources](#deeper-dive-and-resources) at the end of this task for additional information on the **Projects Workspace**.
+As mentioned on the objectives, this tutorial includes a pre-ran experiment that has been linked to the **Projects Workspace**. **Projects** is a feature introduced in Driveless AI 1.7.0 and it is a workspace for managing datasets and experiments related to a specific business problem or use case. The **Projects** page allows for easy comparisons of performance and results and identify the best solution for your problem. See [Deeper Dive and Resources](#deeper-dive-and-resources) at the end of this task for additional information on the **Projects Workspace**.
 
 2\. Select **Projects** , an image similar to the one below will appear:
 
@@ -127,6 +132,8 @@ Completed Experiment
 
 ![new-project-select-train-dataset](assets/new-project-select-train-dataset.jpg)
 
+Name your experiment: `Time Series Forecasting`
+
 7\. A similar experiment page will appear:
 
 ![retail-store-predict](assets/retail-store-predict.jpg)
@@ -156,7 +163,7 @@ In this task, we are going to update the experiment settings. Unlike the other e
   - **Time**
   - **Interpretability**
 
-Below are high level descriptions of the DAI settings that will be updated for this time series tutorial. To learn more about each scorer see the **Deeper Dive and Resources** at the end of this task.
+Below are high level descriptions of the Driveless AI settings that will be updated for this time series tutorial. To learn more about each scorer see the **Deeper Dive and Resources** at the end of this task.
 
 **Test Dataset**
 The test dataset is used for testing the modeling pipeline and creating test predictions. The test set is never used during training of the modeling pipeline. (Results are the same whether a test set is provided or not.) If a test dataset is provided, then test set predictions will be available at the end of the experiment. Adding the test dataset will also hint Driverless AI of the expected horizon and gap. Driverless AI measures the length of the Test dataset as well as the timing of when it commences (compared to the end of the training data) to decide on these values.  
@@ -171,7 +178,7 @@ The values in this column must be a datetime format understood by pandas.to_date
 
 **Time Groups**
 
-Time Groups are categorical columns in the data that can significantly help predict the target variable in time series problems. Examples of time groups would be a combination of customer and product (assuming each has its own history), where you might want to see if a customer wants to buy one of your specific products. You can look into the direct time series and view how many times a customer has bought that particular product in the past time points. The two time groups (customer and product) or multiple time series can be blended together in DAI.
+Time Groups are categorical columns in the data that can significantly help predict the target variable in time series problems. Examples of time groups would be a combination of customer and product (assuming each has its own history), where you might want to see if a customer wants to buy one of your specific products. You can look into the direct time series and view how many times a customer has bought that particular product in the past time points. The two time groups (customer and product) or multiple time series can be blended together in Driveless AI.
 
 **Scorers**
 
@@ -221,9 +228,10 @@ Now we will update the experiment settings for our retail sales dataset.
 ![add-test-set](assets/add-test-set.jpg)
 
 2\.  To start the time series experiment you need to select **Time Column**, then select **Date**. 
+
 **Note:** The date will be defined in the time field, when this is done then Time Series will be enabled, then the  **Time Series Settings** will appear on the top-right side of the page. 
 
-![add-time-column](assets/add-weight-column.jpg)
+![add-time-column](assets/add-time-column.jpg)
 
 3\. Select **Weight Column**, then select **sample_weight**
 
@@ -236,8 +244,7 @@ Now we will update the experiment settings for our retail sales dataset.
 
 Under **Time Series Settings** located on the top-right side:
 
-5\. Select **Time Groups Columns**, then select the columns below, followed by:
-- **Done**.
+5\. Select **Time Groups Columns**, then select the columns below, followed by: **Done**.
 - **Store**
 - **Dept**
 - **Date**
@@ -253,15 +260,16 @@ Under **Time Series Settings** located on the top-right side:
 ![expert-settings-scorer](assets/expert-settings-scorer.jpg)
 
 then select **R2** as the scorer:
+
 ![add-scorer-r2](assets/add-scorer-r2.jpg)
 
 8\. Under **Experiment Settings**, update Accuracy, Time and Interpretability to values below, then click on **Launch Experiment**:
 
-**Note:**: These settings were selected to conform to the Aquarium/Test Drive Environment. The goal is to walk-through the mechanics of setting up a time series experiment. 
+**Note:**: These settings were selected to conform to the Aquarium/Test Drive Environment. The goal is to walk-through the mechanics of setting up a time series experiment. Having an interpretability of 10 means that we want a simple model that will be easy to interpret.
 
-- **Accuracy** : 6
+- **Accuracy** : 1
 - **Time** : 1
-- **Interpretability** : 5
+- **Interpretability** : 10
 
 ![experiment-settings-6-1-5](assets/experiment-settings-6-1-5.jpg)
 
@@ -271,12 +279,12 @@ then select **R2** as the scorer:
 
 ### References
 
-[1] [H2O’s DAI Scorer Tips](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/tips-n-tricks.html?highlight=scorer#scorer-tips)
+[1] [H2O’s Driveless AI Scorer Tips](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/tips-n-tricks.html?highlight=scorer#scorer-tips)
 
 
 ### Deeper Dive and Resources
 
--  [H2O’s DAI More on Scores](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/scorers.html?highlight=scorer#scorers) 
+-  [H2O’s Driveless AI More on Scores](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/scorers.html?highlight=scorer#scorers) 
 - [H2O’s Time Series in Driverless AI](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/time-series.html?highlight=time%20groups)
 
 ## Task 3: Time Series Experiment Concepts
@@ -315,7 +323,7 @@ Here is a short list of the many real-world applications of time-series:
 - Stock market 
 - Energy demand
 
-### Time Series Forecasting in DAI
+### Time Series Forecasting in Driveless AI
 Driverless AI has its own recipes for time-series forecasting that combines advanced time-series analysis and H2O’s own Kaggle Grand Masters’ time-series recipes.
 
 These are the key features/recipes that make the automation possible: 
@@ -331,7 +339,8 @@ These are the key features/recipes that make the automation possible:
 - Target transformations and differentiation
 - Integration with existing feature engineering functions (recipes and optimization)
 - Automatic pipeline generation
-### DAI  Modeling Approach
+
+### Driveless AI  Modeling Approach
 
 Driverless AI uses GBMs, GLMs and neural networks with a focus on time-series-specific feature engineering. The feature engineering includes:
 
@@ -377,7 +386,7 @@ Time-series has multiple groups, which combines multiple time-series together. G
  
 For example, if we don’t know that the store is available in the data, and we try to see the distribution of sales along time (with all stores mixed together), it may look like the chart below:
 ![time-series-sales-per-day-all-groups](assets/time-series-sales-per-day-all-groups.jpg)
-Note the format **Date(Time)**, **Group(Groups)** and **Target(Sales)** plus other independent features. This is the ideal format the data needs to be in or order for DAI Time-Series to work. 
+Note the format **Date(Time)**, **Group(Groups)** and **Target(Sales)** plus other independent features. This is the ideal format the data needs to be in or order for Driveless AI Time-Series to work. 
 ### Lag
 
 The primary generated time series features are lag features, which are a variable’s past values. At a given sample with time stamp *t*, features at some time difference *T*(lag) in the past are considered. For example, if the sales today are 300, and sales of yesterday are 250, then the lag of one day for sales is 250. Lags can be created on any feature as well as on the target.
@@ -388,8 +397,8 @@ The primary generated time series features are lag features, which are a variabl
 **Note:** The top section is the original dataset with training data, the gap and the period we want to predict is also known as the test. 
 
 - The training data expands a certain number of time units. The time units can be anything, it can be years, months, weeks, seconds or just an integer value that increments over time. When the training data stops, then the test data period begins, these are the periods we want to make predictions for. 
-- Another item to note is the gap, which DAI accounts for. The gap is when you don’t have the most recent information available when you want to make predictions. For instance, when we want to make a prediction for tomorrow but we only have data from yesterday because our dataset was not updated today. This means that the only data available to make the predictions are all the data up to yesterday.
-The second section of the image is what happens behind the scenes in DAI to optimize for the top dataset. Here a window which includes test and gap are taken and DAI tries to replicate them internally. We go to the most recent part of the training data and form a validation dataset. This new validation dataset will be of the same size as the test dataset with an artificially added gap so that it matches the original window. Then DAI uses any remaining periods to generate periods to form a training dataset.
+- Another item to note is the gap, which Driveless AI accounts for. The gap is when you don’t have the most recent information available when you want to make predictions. For instance, when we want to make a prediction for tomorrow but we only have data from yesterday because our dataset was not updated today. This means that the only data available to make the predictions are all the data up to yesterday.
+The second section of the image is what happens behind the scenes in Driveless AI to optimize for the top dataset. Here a window which includes test and gap are taken and Driveless AI tries to replicate them internally. We go to the most recent part of the training data and form a validation dataset. This new validation dataset will be of the same size as the test dataset with an artificially added gap so that it matches the original window. Then Driveless AI uses any remaining periods to generate periods to form a training dataset.
 
 As previously noted, the training dataset is appropriately split such that the amount of validation data samples equals that of the testing dataset samples. If we want to determine valid lags, we must consider what happens when we will evaluate our model on the testing dataset. Essentially, the minimum lag size must be greater than the gap size.
 
@@ -397,7 +406,7 @@ As previously noted, the training dataset is appropriately split such that the a
 
 ### Validation Schemas 
 
-DAI uses the most recent training data as the validation data. Data can be validated by the following validation schemas:
+Driveless AI uses the most recent training data as the validation data. Data can be validated by the following validation schemas:
 
 - **Time split**
   - Single Time
@@ -412,20 +421,20 @@ Below is an example of a time series dataset, we will use it to showcase some of
 
 **Time Split**
 
-The number of time splits is highly dependent on the value of accuracy set on the experiment page. If the accuracy is set low when setting up the experiment, then DAI selects a single time split which in turn will only generate one model for validation. A single time split takes the most recent data and makes it the validation data. The validation data will be the same size as the forecast horizon and it will include a gap if there was a gap. 
+The number of time splits is highly dependent on the value of accuracy set on the experiment page. If the accuracy is set low when setting up the experiment, then Driveless AI selects a single time split which in turn will only generate one model for validation. A single time split takes the most recent data and makes it the validation data. The validation data will be the same size as the forecast horizon and it will include a gap if there was a gap. 
 
 Single Time Split
 
 ![validation-schema-time-split](assets/validation-schema-time-split.jpg)
 
-When accuracy is set to higher values, then the number of time splits increases and DAI does a more thorough cross validation and we start generating multiple folds with a rolling window. A rolling window means that we keep shifting the validation set to the past and we use again any data before that for a training dataset, this process will be done multiple times. For example when Accuracy is set to 10, then the number of time splits increases to 6, this means there will be more rolling windows.  The number of rolling windows is a factor of accuracy.
+When accuracy is set to higher values, then the number of time splits increases and Driveless AI does a more thorough cross validation and we start generating multiple folds with a rolling window. A rolling window means that we keep shifting the validation set to the past and we use again any data before that for a training dataset, this process will be done multiple times. For example when Accuracy is set to 10, then the number of time splits increases to 6, this means there will be more rolling windows.  The number of rolling windows is a factor of accuracy.
 
 **Multi window** 
 
 ![validation-schema-multi-window](assets/validation-schema-multi-window.jpg)
 
 ### Time Series Feature Engineering
-The following are the types of time series families that DAI creates:
+The following are the types of time series families that Driveless AI creates:
 
 **Date Decomposition** extracts:
 - Year
@@ -466,7 +475,7 @@ Windows can be also used to obtain other descriptive statistics such as:
 
 ![feature-engineering-trends](assets/feature-engineering-trends.jpg)
 
-**Target transformations**:  DAI also does target transformation so that instead of modeling on the target(label), we can model on the square root of the target. For example when using RMSLE as the scorer, DAI converts the target to the log of the target. 
+**Target transformations**:  Driveless AI also does target transformation so that instead of modeling on the target(label), we can model on the square root of the target. For example when using RMSLE as the scorer, Driveless AI converts the target to the log of the target. 
 Other transformations include:
 Square Root 
 Log 
@@ -504,9 +513,11 @@ At the end of the experiment, a similar page will appear:
     - **Build MOJO Scoring Pipeline** - A standalone Model Object, Optimized scoring pipeline
     - **Download Experiment Summary** - An experiment summary is available for each completed experiment as zip file
     - **Download Logs** 
+    - **Download Autoreport**
+
 2. Iteration Data - Validation
-    - Validation Score - .8677 
-    - Model Type: LightGBM
+    - Validation Score - 0.7642 
+    - Model Type: XGBoostGBM
     - Variable Importance
 3. Summary:
 - Summary: See image below:
@@ -524,7 +535,7 @@ At the end of the experiment, a similar page will appear:
 
 ### Deeper Dive and Resources
 
-[Interpreting this Model Button - Time Series](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/interpreting.html#interpret-this-model-button-time-series) 
+- [Interpreting this Model Button - Time Series](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/interpreting.html#interpret-this-model-button-time-series) 
 
 ## Task 5: Model Interpretability
 
@@ -555,6 +566,7 @@ At the end of the experiment, a similar page will appear:
 
     - **Download Logs** : Download a zip file of the logs that were generated during this interpretation
     - **Show Summary** : Button provides details about the experiment settings that were used
+    - **Download Group Metrics** : retrieve the averages of each group’s scorer, as well as each group’s sample size.
     - **Input Box** : this box lists the ID of the current model. The ID value can be changed to view other models. This can be done by adding a panel and searching in the input box for the new ID.
     - **Time Series Plot** : If the test set includes actual results, then a time series plot will be displayed
 
@@ -592,7 +604,7 @@ At the end of the experiment, a similar page will appear:
 
 ![mli-group-dept-3-12-actual-vs-predicted](assets/mli-group-dept-3-12-actual-vs-predicted.jpg)
 
-4. Hover over to the  **Forecast Horizon** and note the **Actual** plot in yellow and the **Predicted** plot in white.  While there hover over the peak point of the plot then compare the  actual vs predicted values generated by the model for store ``3, 12``. 
+4. Hover over to the  **Forecast Horizon** and note the **Actual** plot in yellow and the **Predicted** plot in white.  While there hover over the peak point of the plot then compare the  actual vs predicted values generated by the model for store ``3,12``. 
 
 5. This is the option to download the plot 
 
@@ -600,7 +612,7 @@ At the end of the experiment, a similar page will appear:
 
 ![mli-group-dept-3-12-peak-point-shapley-value](assets/mli-group-dept-3-12-peak-point-shapley-value.jpg)
 
-At exactly the peak, it is clear that the lag of 51 weeks is the most important feature that drives this prediction that high.
+At exactly the peak, it is clear that the lag of 52 weeks is the most important feature that drives this prediction that high.
 
 7. While at the **Actual vs Predicted** chart find a point somewhere at the plateau and double click on it, a local Shapley value will appear right below the plot:
 
@@ -612,9 +624,9 @@ At exactly the peak, it is clear that the lag of 51 weeks is the most important 
 10\. Go to the top of the page and:
 
 1. Select **Add Panel**
-2. On the new panel, click on the **Select a model interpretation**, then select the Time Series Model named : ``dodumeva:bitesihu``. This will bring in the pre-ran experiment’s MLI results. Click on **Show Summary** for both experiments to compare experiment settings:
+2. On the new panel, click on the **Select a model interpretation**, then select the Time Series Model named : ``Time Series Forecasting - Experiment 2: dahecaga``. This will bring in the pre-ran experiment’s MLI results. Click on **Show Summary** for both experiments to compare experiment settings:
 
-**Note:** the **DAI Experiment Runtime** for both experiments. The pre-ran experiment took more than two hours to run. 
+**Note:** the **Driveless AI Experiment Runtime** for both experiments. The pre-ran experiment took more than seven hours to run. 
 
 ![mli-new-experiment-and-preran-experiment](assets/mli-new-experiment-and-preran-experiment.jpg)
 
@@ -622,14 +634,16 @@ At exactly the peak, it is clear that the lag of 51 weeks is the most important 
 
 ![mli-new-experiment-and-preran-experiment-2](assets/mli-new-experiment-and-preran-experiment-2.jpg)
 
-When looking at both MLI results, we can see that for the pre-ran experiment the Shapley value that had the most importance for the peak value was the lag of 52 weeks (1 year back) compared to the lag of 51 weeks for the new experiment. Since the pre-ran experiment ran with higher DAI settings it was able accurately associate the lag of 52 weeks to the peak point which makes sense given how seasonal sales are it makes sense that the 52 weeks is the most important feature.
+<!--- When looking at both MLI results, we can see that for the pre-ran experiment the Shapley value that had the most importance for the peak value was `33 EWMA Lag (1 year back)` compared to the lag of 52 weeks for the new experiment. `Since the pre-ran experiment ran with higher Driveless AI settings it was able accurately associate the lag of 52 weeks to the peak point which makes sense given how seasonal sales are it makes sense that the 52 weeks is the most important feature.` <- **Fix it**-->
+
+When looking at both MLI results, we can see that for the pre-ran experiment the Shapley value that had the most importance for the peak value was `33 EWMA Lag` or the Exponentially Weighted Moving Average, which calculates the exponentially moving average of a target or feature lag, compared to the lag of 52 weeks for the new experiment. The feature that we see in the pre-ran experiment is a weighted moving average of what happened in various weeks over a course of 2 years; this is a more complex feature than the 52 weeks lag, and that is expected because we built a more complex model from the pre-ran experiment. Although the 52 weeks lag would help make the prediction for a peak value more accurate, our more complex model is trained to be able to predict any point in time, compared to our simple model which would make predictions based on the 1 year lag. Note that the 52 lag is indeed, one of the important variables in the complex model, but is not the most important one.
 
 4. Find the shapley values for a point on the plateau for the pre-ran experiment and compare the values between the pre-ran experiment and the new experiment MLI results.
 
 
 ### Deeper Dive and Resources
 
-[H2O’s DAI Multi Group Time Series MLI](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/interpret-ts.html?highlight=top%20group%20test%20metrics#multi-group-time-series-mli)
+- [H2O’s Driveless AI Multi Group Time Series MLI](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/interpret-ts.html?highlight=top%20group%20test%20metrics#multi-group-time-series-mli)
 
 ## Task 6: Analysis
 
@@ -639,7 +653,7 @@ Now we are going to take a look at the pre-ran Time-Series experiment and compar
 
 2\. Select **Projects**, then click on the **Time Series Tutorial** Project.
 
-3\. On the experiments section of the Projects page click on the pre-ran time-series experiment with name **dodumeva**. The following image should appear:
+3\. On the experiments section of the Projects page click on the pre-ran time-series experiment with name **Time Series Forecasting - Experiment 2**. The following image should appear:
 
 ![pre-ran-experiment-settings-10-6-6](assets/pre-ran-experiment-settings-10-6-6.jpg)
 
@@ -649,11 +663,11 @@ This experiment was run in another environment with similar parameters except fo
 - **Time** : 6
 - **Interpretability** : 6 
 
-The above settings are the default settings given by DAI, notice the high accuracy, time and interpretability compared to the settings from task 2. Time-series experiments are very special  cases as a result it is highly encouraged that the experiments are run with the default settings given by Driverless AI. 
+The above settings are recommended settings for timeseries problems, notice the high accuracy, time and lower interpretability compared to the settings from task 2. Time-series experiments are very special  cases as a result it is highly encouraged that the experiments are run with the default settings given by Driverless AI. 
 
 For a time-series experiment an **Accuracy** of 10 is highly encouraged because it forces many time splits (time splits are critical for stability and prevents overfitting) and allows for multiple window validation. If you must run a time-series experiment with anything lower than a 10, the lowest recommended setting for accuracy is a 5.
 
- **Time** is more flexible and can be ran with the DAI default value, or the lowest time value being 3. Regarding **interpretability**, use default results, for good results use interpretability values of either 5 or 6, anything less than 5 will tend to overfit. 
+ **Time** is more flexible and can be ran with the Driveless AI default value, or the lowest time value being 3. Regarding **interpretability**, use default results, for good results use interpretability values of either 5 or 6, anything less than 5 will tend to overfit. 
 
 Summary of suggested settings for Time-Series Experiments:
 
@@ -663,13 +677,13 @@ Summary of suggested settings for Time-Series Experiments:
 | Time | Default | 3 |
 | Interpretability | Default | 5|
 
-One important thing to note is why we changed the **Scorer**  that DAI suggested initially from **RMSE** to **R2** .  Even though DAI suggested RMSE as the scorer, we updated the scorer to R2 because for this particular dataset it’s easier to generate similar results across different experiments since we can expect less fluctuation and more stability in terms of the results. 
+One important thing to note is why we changed the **Scorer**  that Driveless AI suggested initially from **RMSE** to **R2** .  Even though Driveless AI suggested RMSE as the scorer, we updated the scorer to R2 because for this particular dataset it’s easier to generate similar results across different experiments since we can expect less fluctuation and more stability in terms of the results. 
 
 4\. Click on **<** located at the top-left side of the Experiments page, this will take you back to the **Project Time Series Tutorial**  page.
 
 5\. On the experiments section of the **Projects** page:
 
-1. Click on the pre-ran time-series experiment with name **dodumeva** and the name of the time-series experiment you ran for task 2
+1. Click on the pre-ran time-series experiment with name **Time Series Forecasting - Experiment 2** and the name of the time-series experiment you ran for task 2
 2. Then select **Compare 2 Items**
 
 ![comparing-two-items](assets/comparing-two-items.jpg)
@@ -682,27 +696,37 @@ One important thing to note is why we changed the **Scorer**  that DAI suggested
 
 *Things to Note:*
 
-1. The experiment with the lower settings had 6 times less features scored compared to the pre-ran experiment. This means that DAI tested 454 features from which only 10 were found useful compared to the pre-ran experiment which tested 2821 features and found 19 features useful for feature engineering. At higher settings, DAI does a more thorough evaluation. 
+1. The experiment with the lower settings had less features scored compared to the pre-ran experiment. This means that Driveless AI tested 45 features from which only 7 were found useful compared to the pre-ran experiment which tested 2700 features and found 18 features useful for feature engineering. At higher settings, Driveless AI does a more thorough evaluation. 
 
-2. The lower settings experiment had an R2 value of .94389 compared to .95676 for the pre-ran experiment.
+2. The lower settings experiment had an R2 value of .95146 compared to .95852 for the pre-ran experiment.
 
 3. The variables under variable importance for the low settings are very simple lags compared to the pre-ran experiment that has very sophisticated variables. 
 
 4. On the **Actual vs Predicted** plots, the pre-ran experiment shows the points less dispersed compared to the low settings experiment. This translates to higher accuracy on the predictions.
 
-8\. You have a finished model that you are satisfied with, what is next? What if you wanted to make predictions outside of the 26 week forecast horizon? 
+8\. We have two models, a complex model, and a simple model. The complex model performed better than the simple model, but yielded some features that are not very easy to interpret, thus making the model less interpretable. On the other hand, we have a simple model that produced intuitive features but had a lower score than the complex model. Choosing the "best" or most accurate model depends on the specific application, and one has to decide if they want:
+
+- The most accurate or best possible model 
+
+Or
+
+- The most interpretable model
+
+This decision needs to be made according to each particular case. 
+
+9\. You have a finished model that you are satisfied with, what is next? What if you wanted to make predictions outside of the 26 week forecast horizon? 
 
 Some of the options are:
 
 - Retrain entire pipeline with the most recent data
 - Build a new model with most recent data
-- Use recent model using [DAI’s Test Augmentation](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/time-series.html#using-a-driverless-ai-time-series-model-to-forecast)
+- Use recent model using [Driveless AI’s Test Augmentation](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/time-series.html#using-a-driverless-ai-time-series-model-to-forecast)
 
-Learn more about DAI’s Test Augmentation by visiting H2O’s documentation site. 
+Learn more about Driveless AI’s Test Augmentation by visiting H2O’s documentation site. 
 
 ### Deeper Dive and Resources
 
-[DAI’s Test Augmentation](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/time-series.html#using-a-driverless-ai-time-series-model-to-forecast) 
+- [Driveless AI’s Test Augmentation](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/time-series.html#using-a-driverless-ai-time-series-model-to-forecast) 
 
 ## Task 7: Appendix A: Add the Datasets
 
@@ -725,7 +749,16 @@ walmart_tts_small_train.csv
 
 ![retail-store-train-test-datasets](assets/retail-store-train-test-datasets.jpg)
 
+## Next Steps
 
-## Task 8 Next Steps
+Check out Driverss AI next tutorial [Natural Language Processing Tutorial - Sentiment Analysis](https://h2oai.github.io/tutorials/natural-language-processing-tutorial-sentiment-analysis/#0)
 
-Coming soon, NLP Recipe Tutorial.
+Where you will learn:
+
+- How to launch a sentiment analysis experirement
+- Sentiment Analysis Experiment settings 
+- NLP Concepts
+- Driverless Ai NLP Recipe 
+- and more....
+
+

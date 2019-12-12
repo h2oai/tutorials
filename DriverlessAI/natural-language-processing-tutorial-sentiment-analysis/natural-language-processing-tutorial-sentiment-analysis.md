@@ -28,7 +28,6 @@ Here are some of the uses of Sentiment analysis from a business perspective:
 
 ![sentiment-analysis-business-uses](assets/sentiment-analysis-business-uses.png)
 
-
 In this tutorial, you will learn how to apply automatic machine learning to build a model to classify customer reviews. You will learn some core NLP concepts and then load a dataset, explore it, run an experiment to build a model and explore the results.
 
 **Note**: It is highly recommended that you go over the entire tutorial before starting the experiment. This would help you to become more familiar with the content and aid you while you are performing the experiment.
@@ -71,6 +70,7 @@ If you are using **Aquarium** as the environment, then the lab **Driverless AI T
 
 On clicking the highlighted `Start lab` button , you will be taken  to a Driverless AI platform with several pre-loaded data sets and pre-run visualizations, models, interpretations, and deployments. Here  you will have access to both the training and testing set for Amazon fine food reviews.
 
+
 1\. Verify that both datasets are on the Datasets Overview, your screen should look similar to the page below:
 
 ![datasets-overview](assets/datasets-overview.png)
@@ -82,6 +82,7 @@ On clicking the highlighted `Start lab` button , you will be taken  to a Driverl
 3\. Let’s take a quick look at the columns of the training set:
 
 ![dataset-columns-info](assets/dataset-columns-info.png)
+
 
 *Things to Note:*
 
@@ -535,9 +536,7 @@ Recipes are customizations and extensions to the Driverless AI platform. They ar
 
 -   Custom machine learning models
 -   Custom scorers (classification or regression)
--   Custom transformers
-    
-
+-   Custom transformers  
 
 ![recipes-workflow](assets/recipes-workflow.png)
 
@@ -582,6 +581,7 @@ https://raw.githubusercontent.com/h2oai/driverlessai-recipes/master/transformers
 4. Enable if you want to skip failure of transformers
     
 5. Enable if you want to skip failure of models
+    
     
 7\. Click Save to save the settings. The selected transformer should now appear on the main Experiment screen as follows.
 
@@ -655,6 +655,7 @@ Import Amazon Fine Food Reviews training and test datasets to the Datasets Overv
 4\. Click to Import Selection
 
 5\. If the file loaded successfully then the following image should appear on the screen
+
 ![Appendix_upload-dataset](assets/Appendix_upload-dataset.png)
 
 ## Next Steps

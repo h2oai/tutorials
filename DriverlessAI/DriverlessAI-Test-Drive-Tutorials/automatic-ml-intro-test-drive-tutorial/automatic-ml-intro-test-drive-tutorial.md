@@ -1,5 +1,5 @@
 
-## Automatic Machine Learning Introduction with Driverless AI
+# Automatic Machine Learning Introduction with Driverless AI
 
 ## Outline
 
@@ -15,7 +15,7 @@
 - [Task 8: MLI Report](#task-8-mli-report)
 - [Task 9: Experiment Summary](#task-9-autodocs)
 - [Task 10: Challenge](#task-10-challenge)
-- [Task 11: Next Steps](#task-11-next-steps)
+- [Next Steps](#next-steps)
 
 
 ## Objective
@@ -210,11 +210,11 @@ https://www.brighttalk.com/search/?q=driverless+ai)
 
 [3][Data Science Primer - Data Cleaning](https://elitedatascience.com/data-cleaning)
 
-[3][Feature Engineering](https://elitedatascience.com/feature-engineering) 
+[4][Feature Engineering](https://elitedatascience.com/feature-engineering) 
 
-[4][Towards Data Science- Supervised vs Unsupervised Learning](https://towardsdatascience.com/supervised-vs-unsupervised-learning-14f68e32ea8d) 
+[5][Towards Data Science- Supervised vs Unsupervised Learning](https://towardsdatascience.com/supervised-vs-unsupervised-learning-14f68e32ea8d) 
 
-[5][Selecting the best Machine Learning Algorithm for your regression problem](https://towardsdatascience.com/selecting-the-best-machine-learning-algorithm-for-your-regression-problem-20c330bad4ef)
+[6][Selecting the best Machine Learning Algorithm for your regression problem](https://towardsdatascience.com/selecting-the-best-machine-learning-algorithm-for-your-regression-problem-20c330bad4ef)
 
 ## Task 3: Load Data
 
@@ -230,22 +230,22 @@ The dataset used for this experiment is the infamous Titanic Dataset. We will cr
 
 |Attribute|Definition|Key|
 |---|---|---|
-|passenger Id|Id randomly generated|  |
+|passenger Id|Id randomly generated| - |
 |pclass|Passenger Class| 1= 1st, 2 =2nd, 3=3rd|
 |survived|Survival| 0=No, 1=Yes|
-|name_with_salutations|Passenger name|  |
-|name_without_salutations|Passenger name without salutations|  |
+|name_with_salutations|Passenger name| - |
+|name_without_salutations|Passenger name without salutations| - |
 |sex|Sex|Female, Male|
-|age|Age in years|  |
-|sibsp|Number of siblings/Spouse aboard|  |
-|parch|Number of Parents/Children aboard|  |
-|ticket|Ticket number|  |
-|fare|Passenger fare|  |
-|cabin|Cabin number|  |
+|age|Age in years| - |
+|sibsp|Number of siblings/Spouse aboard| - |
+|parch|Number of Parents/Children aboard| - |
+|ticket|Ticket number| - |
+|fare|Passenger fare| - |
+|cabin|Cabin number| - |
 |embarked|Port of Embarkment|C = Cherbourg, Q = Queenstown, S = Southampton|
-|boat|Boat number|  |
-|body|Body number|  |
-|home.des|Home Destination| |
+|boat|Boat number| - |
+|body|Body number| - |
+|home.des|Home Destination| - |
 
 
 ### Add the Data 
@@ -293,10 +293,10 @@ We are now going to explore the titanic dataset that we just loaded.
 ![titanic-set-actions](assets/titanic-set-actions.jpg)
 
  - Details - View a summary of the dataset or preview the dataset
- - Download - Download the dataset
- - Split - Split the dataset
  - Visualize - Visualize the dataset with available graphs
+ - Split - Split the dataset
  - Predict - Run an experiment using Driverless AI
+ - Download - Download the dataset
  - Delete - Delete the dataset 
 
 **Note**: A dataset can only be deleted if it’s not being used in an experiment. Otherwise, you must delete the experiment first, then the dataset can be deleted.
@@ -309,7 +309,7 @@ We are now going to explore the titanic dataset that we just loaded.
 
 *Things to Note:*
 
-1. The **Dataset Details Page** provides a summary of the dataset. This summary lists each column that is included in the dataset along with the type, the count, the mean, minimum, maximum, standard deviation, frequency, and the number of unique values.
+1. The **Dataset Details Page** provides a summary of the dataset. This summary lists each column that is included in the dataset along with the logical type, format, storage type, the count, the mean, minimum, maximum, standard deviation, frequency, and the number of unique values.
 Hover over the top of a column to view the first 20 rows of that column.
 
 **Note**: Driverless AI recognizes the following column types: integer, string, real, and boolean. Date columns are given a string "str" type.
@@ -399,22 +399,20 @@ Let’s explore the correlation between the ‘survived’ variable and other va
 
 Driverless AI  shows the graphs that are “relevant” aspects of the data. The following are the type of graphs available:
 
-- Clumpy Scatterplots
 - Correlated Scatterplots
-- Unusual Scatterplots
 - Spikey Histograms
 - Skewed Histograms
 - Varying Boxplots
 - Heteroscedastic Boxplots
 - Biplots
 - Outliers
+- Correlation Graph
 - Parallel Coordinates Plot
 - Radar Plot
 - Data Heatmap
 - Missing Values Heatmap
 - Gaps Histogram
-- Missing Values Heatmap
-- Gaps Histogram
+
 
 ### Deeper Dive and Resources
 
@@ -450,11 +448,14 @@ The quick tour will cover the following items:
 ![train-set-experiment-page](assets/train-set-experiment-page.jpg)
 
 *Things to Note:*
-1. Select Target Column - What do you want to predict?
-2. Dropped Columns - Drop column(s) from your dataset that you don’t want to use in the experiment
-3. Validation Dataset - Select the dataset you want to validate. This set will be used to validate parameters like models, features etc.
-4. Test Dataset - The dataset that will be used to test the model generated from the training dataset. It is not used during training of the model and results are available at the end of the experiment.
-5. Time Column - Provides a time order(time stamps for observations)
+1. Display Name - Type the name for your experiment 
+2. Select Target Column - What do you want to predict?
+3. Dropped Columns - Drop column(s) from your dataset that you don’t want to use in the experiment
+4. Validation Dataset - Select the dataset you want to validate. This set will be used to validate parameters like models, features etc.
+5. Test Dataset - The dataset that will be used to test the model generated from the training dataset. It is not used during training of the model and results are available at the end of the experiment.
+6. Time Column - Provides a time order(time stamps for observations)
+
+Name your experiment `Titanic Classification Tutorial.` 
 
 Continuing on with our experiment:
 
@@ -500,12 +501,12 @@ The survived attribute was selected because as an insurance company we want to k
 
 **Note**: To Launch an Experiment: The dataset and the target column are the minimum elements required to launch an experiment.
 
-10\. The **Experiment** page will look similar to the one below after 46% complete:
+10\. The **Experiment** page will look similar to the one below after 39% complete:
 
 ![experiment-running-47](assets/experiment-running-47.jpg)
 
 *Things to Note:*
-1. Experiment Name - Randomly generated experiment name. Name can be changed at any time
+1. Experiment Name - Name of your experiment. If you do not assign a name to it, a random name will be generated. Name can be changed at any time
 2. Training Data - Dataset details 
 3. Running Status Display - Status of parameter tuning followed by feature engineering and scoring pipeline. Experiments can be Stopped by clicking the Finish button.
 4. Experiment Settings - Overview of experiment settings (unable to adjust the while experiment is running)
@@ -522,11 +523,13 @@ Once the experiment is completed, an Experiment Summary will appear:
  - Deploy (Local and Cloud)
  - Interpret This Model 
  - Diagnose Model On New Dataset 
+ - Score on Another Dataset
  - Transform Another Dataset
  - Download Predictions
+	- Training Predictions
     - Test Set Predictions
  - Download Python Scoring Pipeline - A standalone Python Scoring and pipeline for H2O Driverless
- - Download MOJO Scoring Pipeline 
+ - Build MOJO Scoring Pipeline 
  - Download Experiment Summary - A zip file containing the following:
  	- Summary of Experiment
  	- Experiment Features along with relevant importance
@@ -535,13 +538,14 @@ Once the experiment is completed, an Experiment Summary will appear:
  	- Word versions of an auto-generated report for the experiment
  	- Target transformations tuning leaderboard
  	- Leaderboard
- - Download Logs 
-
-You will see a notification tab, but you can ignore it for now. We will address it in a later tutorial.
+ - Download Logs
+ - Download Autoreports 
 
 2. Iteration Data - Validation/Variable Importance - Summary of top 20 - Feature Engineered variables
 
 3. Experiment Summary 
+
+You will see a notification tab, but you can ignore it for now. We will address it in a later tutorial.
 
 ### Deeper Dive and Resources
 
@@ -562,10 +566,11 @@ Driverless AI performs feature Engineering on the dataset to determine the optim
 
 Transformations in Driverless AI are applied to columns in the data. The transformers create the engineered features in experiments. There are many types of transformers, below are just some of the transformers found in our dataset:
 
-1\. Look at some of the variables in **Variable of Importance** , note that some of the variables start with ‘Freq‘ and have multiple columns in between. Some other variables might also start with ‘_NumCatTE’, ‘_CVCatNumEn’ or ‘_TXT’ depending on the experiment you run. These are the new, high-value features for our training dataset.
+1\. Look at some of the variables in **Variable of Importance** , note that some of the variables start with ‘CVTE‘ followed by a column from the dataset. Some other variables might also start with ‘_NumCatTE’, ‘_CVCatNumEn’ or ‘_TXT’ depending on the experiment you run. These are the new, high-value features for our training dataset.
 
-These transformations created with the following transformers:
+These transformations are created with the following transformers:
 
+- Cross Validation Target Encoding Transformer: ‘_CVTargetEncode’
 - Frequent Transformer: ‘Freq‘	
 - Numeric to Categorical Target Encoding Transformer = ‘_NumCatTE’
 - Categorical To Numeric Encoding= ‘_CVCatNumEn’
@@ -604,7 +609,7 @@ The ROC curve below shows Receiver-Operator Characteristics curve stats on valid
 
 ![experiment-results-roc-graph](assets/experiment-results-roc-graph.jpg)
 
-This ROC gives an Area Under the Curve or AUC of .8657. This tells us that the model is able to correctly classify the survivors 86.57% of the time.  
+This ROC gives an Area Under the Curve or AUC of .8644. This tells us that the model is able to correctly classify the survivors 86.44% of the time.  
 
 Learn more about the ROC Curve on [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus: ROC](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#7).
 
@@ -616,7 +621,7 @@ The Prec-Recall plot below shows the Precision-Recall curve on validation data a
 
 ![experiment-results-prec-recall-graph](assets/experiment-results-prec-recall-graph.jpg)
 
-Similarly to the ROC curve, when we take a look at the area under the curve of the Prec-Recall Curve of AUCPR we get a value of .8234. This tells us that the model brings forth relevant results or those cases of the passengers that actually survived 82.34% of the time.
+Similarly to the ROC curve, when we take a look at the area under the curve of the Prec-Recall Curve of AUCPR we get a value of .8234. This tells us that the model brings forth relevant results or those cases of the passengers that actually survived 81.69% of the time.
 
 Learn more about the Prec-Curve Curve on [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus: Prec-Recall](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#8).
 
@@ -632,7 +637,7 @@ The Cumulative Gains Chart below shows Gains stats on validation data. For examp
 
 ![experiment-results-gains-graph](assets/experiment-results-gains-graph.jpg)
 
-The Gains chart above tells us that when looking at the 20% quantile the model is able to positively identify ~48% of the survivors compared to the a random model(or no model) which would be able to positively identify about ~20% of the survivors at the 20% quantile.
+The Gains chart above tells us that when looking at the 20% quantile the model is able to positively identify ~44% of the survivors compared to the a random model(or no model) which would be able to positively identify about ~20% of the survivors at the 20% quantile.
 
 Learn more about the Cumulative Gains Chart on [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus: Cumulative Gains](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#9).
 
@@ -656,7 +661,7 @@ Hover over a point in the chart to view the quantile percentage and Kolmogorov-S
 
 ![experiment-results-gains-k-s](assets/experiment-results-gains-k-s.jpg)
 
-For the K-S chart above, if we look at the top 60% of the data, the at-chance model (the dotted diagonal line) tells us that only 60% of the data was successfully separate between positives and negatives (survived and did not survived). However, with the model it was able to do .491 or about 49% of the cases were successfully separated between positives and negatives.
+For the K-S chart above, if we look at the top 60% of the data, the at-chance model (the dotted diagonal line) tells us that only 60% of the data was successfully separate between positives and negatives (survived and did not survived). However, with the model it was able to do .499 or about 50% of the cases were successfully separated between positives and negatives.
 
 Learn more about the Kolmogorov-Smirnov chart on [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus: Kolmogorov-Smirnov chart](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#11).
 
@@ -664,7 +669,7 @@ Learn more about the Kolmogorov-Smirnov chart on [Machine Learning Experiment Sc
  
 [1] [ROC Curves and Under the Curve (AUC) Explained](https://www.youtube.com/watch?v=OAl6eAyP-yo)
 
-[2] [H2O DAi - Experiment Graphs](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-graphs.html?highlight=roc%20curve)
+[2] [H2O Driverless AI - Experiment Graphs](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-graphs.html?highlight=roc%20curve)
 
 [3] [Model Evaluation Classification](https://www.saedsayad.com/model_evaluation_c.htm)
 
@@ -707,7 +712,7 @@ Generate the MLI report:
 
 *Things to Note:*
 1. Summary -  Summary of MLI experiment
-2. DAI Model - Feature importance and Shapley plots for transformed features
+2. Driverless AI Model - Feature importance, Shapley plots for transformed features, and Disparate Impact Analysis
 3. Surrogate Models - KLIME and Decision Tree plots
 4. Dashboard - The Model Interpretation Page includes the following:
 	- Global Interpretability model explanation plot
@@ -762,11 +767,13 @@ Explanations provides a detailed easy-to-read **Reason Codes** for the top Globa
 
 - Determine the top 2 global attributions associated with ‘survived’
 
-6\. Driverless AI offers other plots located under DAI Model and Surrogate Models, take a few minutes to explore these plots, they are all interactive. **About this Plot** will provide an explanation of each plot.
+6\. Driverless AI offers other plots located under Driverless AI Model and Surrogate Models, take a few minutes to explore these plots, they are all interactive. **About this Plot** will provide an explanation of each plot.
 
-DAI Model
+Driverless AI Model
 - Feature Importance
 - Shapley
+- Partial Dependence Plot
+- Disparate Impact Analysis
 
 Surrogate Models
 - KLime
@@ -857,21 +864,21 @@ Sample set of records:
 - [Try running an experiment without the Driverless AI UI using the Python Client](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/examples/h2oai_client_demo.html?highlight=experiment%20summary)
 
 
-## Task 11: Next Steps
+## Next Steps
 
 Check out Driverss AI next tutorial [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#0)
 
 Where you will learn how to:
 
-- Evaluate a DAI model through tools like:
+- Evaluate a Driverless AI model through tools like:
 	- ROC
 	- Prec-Recall
 	- Gain and Lift Charts
 	- K-S Chart
 	- Metrics such as:
-	- AUC
-	- F-Scores
-	- GINI
-	- MCC
-	- Log Loss
+	  - AUC
+	  - F-Scores
+	  - GINI
+	  - MCC
+	  - Log Loss
 - Request a [21-Day Free Trial: H2O Driverless AI license Key](https://www.h2o.ai/products/h2o-driverless-ai/)
