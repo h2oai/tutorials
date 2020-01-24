@@ -14,9 +14,9 @@
 
 Test Drive is a two-hour lab session that exists in H2O's Aquarium. Aquarium is H2O's cloud environment that provides access to various tools for workshops, conferences, and training.
 
-All labs have a specific **Lab Duration*** to complete the lab. All Test Drive Lab session's will terminate after two-hours. No work will be saved!
+All labs have a specific **Lab Duration*** to complete the lab. **All Driverless AI Test Drive Lab session's will terminate after two-hours. No work will be saved!**
 
-If you would like to continue exploring H2O's Driverless AI, request a [21-Day Free Trial: H2O Driverless AI license Key](https://www.h2o.ai/products/h2o-driverless-ai/).
+If you would like to continue exploring H2O's Driverless AI, request a [21-Day Free Trial: H2O Driverless AI license Key](https://www.h2o.ai/try-driverless-ai/).
 
 ## How to Obtain a Two Hour Test Drive Session
 
@@ -47,11 +47,13 @@ If you would like to continue exploring H2O's Driverless AI, request a [21-Day F
 
  - First Name
  - Last Name
+ - Organization
+ - Country
  - Email
 
 4\. Click on **Create account and email temporary password** at the bottom of the page.
 
- > A password will be sent to your email within minutes.
+**Note**: A password will be sent to your email within minutes.
 
 5\. Check your email for the password.
 
@@ -67,13 +69,13 @@ If you would like to continue exploring H2O's Driverless AI, request a [21-Day F
 
 ## Reset Password 
 
-![resetting-password](assets/resetting-password.jpg)
-
 1\. If you forgot your password, select **I forgot my password**.
 
-![reset-password](assets/reset-password.jpg)
+![resetting-password](assets/resetting-password.jpg)
 
 2\. Enter your email, and another password will be emailed to you.
+
+![reset-password](assets/reset-password.jpg)
 
 ## How to Start and End the Test Drive Lab Session
 
@@ -81,10 +83,12 @@ After a successful login the Driverless AI Test Drive Lab will appear:
 
 ![driverless-ai-test-drive-page](assets/driverless-ai-test-drive-page.jpg)
 
-> Note: 
+**Note**: 
 
-- Lab duration is 120 minutes, after the session will terminate
+- Lab duration is 120 minutes, after that the session will terminate
 - Selecting `click here` will take to you to the Driverless AI Automatic Machine Learning Tutorial
+- Check out the complete set of [Driverless AI tutorials](https://h2oai.github.io/tutorials/)
+- Post questions on the [Driverless AI Community](https://www.h2o.ai/community/home)
 - **Start** button starts the lab session
 
 1\. To start a Lab click on **Start Lab**. You will see an image similar to the one below:
@@ -95,7 +99,7 @@ After a successful login the Driverless AI Test Drive Lab will appear:
 
 ![test-drive-session](assets/test-drive-session.jpg)
 
-> Note:
+**Note**:
 
  - The time remaining for the instance use
  - Driverless AI URL
@@ -103,11 +107,7 @@ After a successful login the Driverless AI Test Drive Lab will appear:
 
 3\. Once the Lab has started, a Driverless AI URL will appear at the of the page. Click on that URL. This will take you to the H2O Driverless Welcome Page.
 
-![dai-welcome-page](assets/dai-welcome-page.jpg)
-
-6\. If you need to pause and come back to your session, select **End Lab**.
-
-![test-drive-end-lab](assets/test-drive-end-lab.jpg)
+![dai-datasets-page](assets/dai-datasets-page.jpg)
 
 
 ## Logout
@@ -118,7 +118,7 @@ After a successful login the Driverless AI Test Drive Lab will appear:
 
 ## Questions
 
-Have any questions about Aquarium? Sign up for H2O's Slack Community and post your questions under the #cloud channel. Members of the H2O community will respond as soon as they are available.
+Have any questions about Aquarium? Sign up for H2O's Slack Community and post your questions under the **#cloud** channel. Members of the H2O community will respond as soon as they are available.
 
 - [Join the H2O community on Slack to Ask Questions #cloud](https://h2oai-community.slack.com/)
 
