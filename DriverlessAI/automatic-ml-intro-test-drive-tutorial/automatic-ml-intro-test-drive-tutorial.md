@@ -153,7 +153,7 @@ AutoML or Automated Machine Learning is the process of automating algorithm sele
 
 [6] [Selecting the best Machine Learning Algorithm for your regression problem](https://towardsdatascience.com/selecting-the-best-machine-learning-algorithm-for-your-regression-problem-20c330bad4ef)
 
-### Deeper Dive
+### Deeper Dive and Resources
 
 - [Explore the replays from H2O World around the world](
 https://www.h2o.ai/h2oworldnewyork/) 
@@ -267,9 +267,13 @@ We are now going to explore the Titanic dataset that we just loaded.
 1. The **Dataset Details Page** provides a summary of the dataset. This summary lists each column that is included in the dataset along with:
 
 - Logical type (can be changed)
+
 ![logical-type-options](assets/logical-type-options.jpg)
+
 - Format for Date and Datetime columns(can be changed)
+
 ![dataset-details-format-option](assets/dataset-details-format-option.jpg)
+
 - Storage type
 - Count
 - Number of missing values
@@ -710,7 +714,7 @@ For the K-S chart above, if we look at the top 60% of the data, the at-chance mo
 
 Learn more about the Kolmogorov-Smirnov chart on [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus: Kolmogorov-Smirnov chart](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#11).
 
-### Resources
+### References
  
 [1] [ROC Curves and Under the Curve (AUC) Explained](https://www.youtube.com/watch?v=OAl6eAyP-yo)
 
@@ -804,27 +808,28 @@ This section describes MLI functionality and features for regular experiments. F
     - [See documentation for multiclass classification and time-series experiments](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/interpret-non-ts.html#summary-page)
 
 3. Surrogate Models - For classification and regression experiments
-    - KLIME
+
+    - **KLIME**
 
     ![surrogate-models-klime](assets/surrogate-models-klime.jpg)
 
-    - Decision Tree
+    - **Decision Tree**
 
     ![surrogate-models-decision-tree](assets/surrogate-models-decision-tree.jpg)
 
-    - Random Forest - Feature Importance
+    - **Random Forest - Feature Importance**
 
     ![surrogate-models-rf-feature-importance](assets/surrogate-models-rf-feature-importance.jpg)
     
-    - Random Forest - Partial Dependence
+    - **Random Forest - Partial Dependence**
 
-    !![surrogate-models-rf-partial-dependence-plot](assets/surrogate-models-rf-partial-dependence-plot.jpg)
+    ![surrogate-models-rf-partial-dependence-plot](assets/surrogate-models-rf-partial-dependence-plot.jpg)
 
-    - Random Forest - LOCO
+    - **Random Forest - LOCO**
 
     ![surrogate-models-rf-loco](assets/surrogate-models-rf-loco.jpg)
 
-4. Dashboard - The Model Interpretation Page includes the following:
+4. **Dashboard** - The Model Interpretation Page includes the following:
     - K-Lime: Global Interpretability Model Explanation Plot
     - Feature Importance: Surrogate RF Feature Importance
     - Decision Tree Surrogate model
@@ -1079,9 +1084,9 @@ To create a Project Workspace:
 3. Specify a name for the project and provide a description
 4. Click **Create Project**. This creates an empty Project page
 
-Learn more about projects in Driverless AI; check out the [Project Workspace Documentation](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/projects.html?highlight=projects%20workspace).
+- Learn more about projects in Driverless AI; check out the [Project Workspace Documentation](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/projects.html?highlight=projects%20workspace).
 
-A more extensive application of **Project Workspace** can be explored in the [Time Series Tutorial - Retail Sales Forecasting](https://h2oai.github.io/tutorials/time-series-recipe-tutorial-retail-sales-forecasting/#0). 
+- A more extensive application of **Project Workspace** can be explored in the [Time Series Tutorial - Retail Sales Forecasting](https://h2oai.github.io/tutorials/time-series-recipe-tutorial-retail-sales-forecasting/#0). 
  
 
  
