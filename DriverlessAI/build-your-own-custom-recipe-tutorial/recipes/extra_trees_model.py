@@ -5,45 +5,84 @@ import numpy as np
 from h2oaicore.models import CustomModel
 from sklearn.ensemble import ExtraTreesClassifier, ExtraTreesRegressor
 from sklearn.preprocessing import LabelEncoder
+from h2oaicore.systemutils import physical_cores_count
 
 class ExtraTreesModel(CustomModel):
+    """
+    #Code for when to use the model, and how to set the parameters, and n_estimators
+    
+    _regression = True
+    _binary = True
+    _multiclass = True
+    _display_name = "ExtraTrees"
+    _description = "Extra Trees Model based on sklearn"
 
-    #Fitting the model
+    def set_default_params(self, accuracy=None, time_tolerance=None,
+                           interpretability=None, **kwargs):
+                           
+    #Fill up parameters we care about
+        self.params = dict(random_state=kwargs.get("random_state", 1234),
+                           n_estimators=min(kwargs.get("n_estimators", 100), 1000),
+                           criterion="gini" if self.num_classes >= 2 else "mse",
+                           n_jobs=self.params_base.get('n_jobs', max(1, physical_cores_count)))
+    
+    """
+
     def fit(self, X, y, sample_weight=None, eval_set=None, sample_weight_eval_set=None, **kwargs):
 
         orig_cols = list(X.names)
-
+ 
         if self.num_classes >= 2:
-            lb = LabelEncoder()
-            lb.fit(self.labels)
-            y = lb.transform(y)
-            model = ExtraTreesClassifier(**self.params)
+           lb = LabelEncoder()
+           lb.fit(self.labels)
+           y = lb.transform(y)
+           model = ExtraTreesClassifier(**self.params)
         else:
-            model = ExtraTreesRegressor(**self.params)
-
-        #Can your model handle missing values??
-        X = X.to_numpy() 
-
+           model = ExtraTreesRegressor(**self.params)
+           
+        # Can your model handle missing values??
+        # Add your code here 
+        """
+        self.min = dict()
+        for col in X.names:
+            XX = X[:, col]
+            self.min[col] = XX.min1()
+            if self.min[col] is None or np.isnan(self.min[col]):
+                self.min[col] = -1e10
+            else:
+                self.min[col] -= 1
+            XX.replace(None, self.min[col])
+            X[:, col] = XX
+            assert X[dt.isna(dt.f[col]), col].nrows == 0
+        X = X.to_numpy()
+       """
         model.fit(X, y)
-
-        importances = np.array(model.feature_importances_)
-
+       
         #Set model parameters
-        self.set_model_properties(model=model, 
-                        features=orig_cols,
-                        importances=importances.tolist(), 
-                        iterations=self.params['n_estimators'])
+        importances = np.array(model.feature_importances_)
+ 
+        self.set_model_properties(model=model,
+                       features=orig_cols,
+                       importances=importances.tolist(),
+                       iterations=self.params['n_estimators'])
 
     #Get predictions
     def predict(self, X, **kwargs):
 
-        model, _, _, _ = self.get_model_properties()
-
         #Can your model handle missing values??
+        #Add your code here
+        """
+        X = dt.Frame(X)
+        for col in X.names:
+            XX = X[:, col]
+            XX.replace(None, self.min[col])
+            X[:, col] = XX
+        model, _, _, _ = self.get_model_properties()
         X = X.to_numpy()
-
-        if self.num_classes == 1: 
-            preds = model.predict(X)
+        """
+ 
+        if self.num_classes == 1:
+           preds = model.predict(X)
         else:
-            preds = model.predict_proba(X)
+           preds = model.predict_proba(X)
         return preds
