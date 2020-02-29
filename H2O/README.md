@@ -4,7 +4,7 @@ This repository has tutorials that focus on H2O-3 Open Source Machine Learning P
 
 Check out our [**New Tutorials Portal**](https://h2oai.github.io/tutorials/) where you will find our **latest Driverless AI and H2O-3 tutorials** including: 
 
-- [New Tutorial Name HERE]()
+- [Introduction to Machine Learning with H2O - Part 1](https://h2oai.github.io/tutorials/introduction-to-machine-learning-with-h2o-part-1/#0)
 
 ## Running Into Issues With Tutorials?
 

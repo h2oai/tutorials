@@ -4,15 +4,13 @@
 
 # Driverless AI
 
-This repository has tutorials that focus on **Driverless AI version 1.8.0**.
+This repository has tutorials that focus on **Driverless AI version 1.8.4**.
 
 Check out our [**New Tutorials Portal**](https://h2oai.github.io/tutorials/) where you will find our **latest Driverless AI and H2O-3 tutorials** including: 
 
 - [Getting Started with Driverless AI Test Drive](https://h2oai.github.io/tutorials/test-drive/#0)
 
-- [Automatic MLIntro with Test Drive](https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#0)
-
-- [Automatic ML Intro Tutorial with Driverless AI](https://h2oai.github.io/tutorials/automatic-ml-intro-tutorial/#0)
+- [Automatic ML Intro with Driverless Test Drive](https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#0)
 
 - [Machine Learning Scoring and Analysis Tutorial - Financial Focus](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#0)
 
@@ -20,23 +18,20 @@ Check out our [**New Tutorials Portal**](https://h2oai.github.io/tutorials/) whe
 
 - [Time Series Tutorial - Retail Sales Forecasting](https://h2oai.github.io/tutorials/time-series-recipe-tutorial-retail-sales-forecasting/#0)
 
-**NEW Tutorials** 
+- [Natural Langue Processing Tutorial - Sentiment Analysis](https://h2oai.github.io/tutorials/natural-language-processing-tutorial-sentiment-analysis/#0)
 
 - [Get Started and Consume Existing Recipes](https://h2oai.github.io/tutorials/get-started-and-consume-existing-recipes/#0)
 
-- [Build Your Own Recipe Tutorial]()
+- [Build Your Own Recipe Tutorial](https://h2oai.github.io/tutorials/build-your-own-custom-recipe-tutorial/#0)
 
-- [Natural Langue Processing Tutorial - Sentiment Analysis]()
 
-For **Driverless AI 1.7.0 tutorials**, check out:
+For other versions of the **Driverless AI tutorials**, check out the following repo's:
+
+- [Driverless AI Tutorials 1.8.0 Repo]()
 
 - [Driverless AI Tutorials 1.7.0 Repo](https://github.com/h2oai/tutorials/tree/1.7.0/DriverlessAI)
 
-For **Driverless AI 1.6.0 tutorials**, check out:
-
 - [Driverless AI Tutorials 1.6.0 Repo](https://github.com/h2oai/tutorials/tree/1.6.0/DriverlessAI)
-
-For **Driverless AI 1.4.2 tutorials**, check out:
 
 - [Driverless AI Tutorials 1.4.2 Repo](https://github.com/h2oai/tutorials/tree/1.4.2/DriverlessAI)
 

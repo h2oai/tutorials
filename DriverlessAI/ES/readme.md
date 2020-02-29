@@ -2,6 +2,6 @@
 
 # Driverless AI
 
-Este repositorio tiene tutoriales que se centran en Driverless AI versión 1.8.0
+Este repositorio contiene tutoriales que se centran en Driverless AI versión 1.8.4
 
 Próximamente..
