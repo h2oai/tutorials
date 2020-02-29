@@ -28,6 +28,7 @@ Here are some of the uses of Sentiment analysis from a business perspective:
 
 ![sentiment-analysis-business-uses](assets/sentiment-analysis-business-uses.png)
 
+
 In this tutorial, you will learn how to apply automatic machine learning to build a model to classify customer reviews. You will learn some core NLP concepts and then load a dataset, explore it, run an experiment to build a model and explore the results.
 
 **Note**: It is highly recommended that you go over the entire tutorial before starting the experiment. This would help you to become more familiar with the content and aid you while you are performing the experiment.
@@ -38,11 +39,11 @@ You will need the following to be able to do this tutorial:
 
 - Basic knowledge of Machine Learning and Statistics  
 - A hands on knowledge of Driverless AI environment
-- Prior completion of [Automatic Machine Learning Intro Tutorial](https://github.com/h2oai/tutorials/blob/master/DriverlessAI/automatic-ml-intro-tutorial/automatic-ml-intro-tutorial.md)
+- Prior completion of [Automatic Machine Learning Intro Tutorial](https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#0)
     
 You can get more information about getting a Driverless AI environment or trial from the following:
 
-- [A Two Hour Test Drive Session](https://h2oai.github.io/tutorials/getting-started-with-driverless-ai-test-drive/#1)  
+- [A Two Hour Test Drive Session](https://h2oai.github.io/tutorials/getting-started-with-driverless-ai-test-drive/#0)  
 
 - [H2O Driverless AI License Key](https://www.h2o.ai/try-driverless-ai/)
 
@@ -56,7 +57,7 @@ If you are not familiar with Driverless AI please review and do this tutorial:
 
 ### About the Dataset
 
-The dataset consists of reviews of fine foods from Amazon. The data spans a period of more than 10 years, from Oct 1999 up to October 2012. Reviews include product and user information, ratings, and a plain text review. It also includes reviews from all other Amazon categories[1]. The data consists of 568,454 reviews, 256,059 users, 74,258 products and 260 users with > 50 reviews.
+The dataset consists of reviews of fine foods from [Amazon](https://www.amazon.com/). The data spans a period of more than 10 years, from Oct 1999 up to October 2012. Reviews include product and user information, ratings, and a plain text review. It also includes reviews from all other Amazon categories[1]. The data consists of 568,454 reviews, 256,059 users, 74,258 products and 260 users with > 50 reviews.
 
 Our aim is to study these reviews and try and predict whether a review is positive or negative.
 
@@ -66,12 +67,11 @@ The dataset provided is a CSV file containing 568,454 rows and a total of 10 fea
  
 ### Dataset Overview
 
-If you are using **Aquarium** as the environment, then the lab **Driverless AI Test Drive** has the Amazon fine review dataset already pre-loaded with separate training and test datasets. The datasets can be located on the Datasets Overview page. However, you can also upload the datasets externally. To learn more about how to add the two datasets from the Driverless AI file system then see [Appendix A: Add the Datasets].(#task-8-appendix-a-add-the-datasets)
+If you are using **Aquarium** as the environment, then the lab **Driverless AI Test Drive** has the Amazon fine review dataset already pre-loaded with separate training and test datasets. The datasets can be located on the Datasets Overview page. However, you can also upload the datasets externally. To learn more about how to add the two datasets from the Driverless AI file system then see [Appendix A: Add the Datasets](#task-8-appendix-a-add-the-datasets)
 
 On clicking the highlighted `Start lab` button , you will be taken  to a Driverless AI platform with several pre-loaded data sets and pre-run visualizations, models, interpretations, and deployments. Here  you will have access to both the training and testing set for Amazon fine food reviews.
 
-
-1\. Verify that both datasets are on the Datasets Overview, your screen should look similar to the page below:
+1\. Verify that both datasets are on the Datasets Overview and your screen should look similar to the page below:
 
 ![datasets-overview](assets/datasets-overview.png)
 
@@ -83,38 +83,37 @@ On clicking the highlighted `Start lab` button , you will be taken  to a Driverl
 
 ![dataset-columns-info](assets/dataset-columns-info.png)
 
-
 *Things to Note:*
 
 The dataset consists of 10 columns which are as follows:
--  **UserId** - Unique identifier for the user
--  **ProductId** - Unique identifier for the product
--  **Id** - Row Id
--  **Summary** - Brief summary of the review
--  **Score** - Rating between 1 and 5
--  **HelpfulnessDenominator** - Number of users who indicated whether they found the review helpful or not
--  **ProfileName** - Profile name of the user          
+
+-  **1. UserId** - Unique identifier for the user
+-  **2. ProductId** - Unique identifier for the product
+-  **3. Id** - Row Id
+-  **4. Summary** - Brief summary of the review
+-  **5. Score** - Rating between 1 and 5
+-  **6. HelpfulnessDenominator** - Number of users who indicated whether they found the review helpful or not
+-  **7. ProfileName** - Profile name of the user          
 
 4\. Continue scrolling the current page to see more columns (image is not included)
 
--  **HelpfulnessNumerator** - Number of users who found the review helpful 
--  **Time** - Timestamp for the review 
--  **Description** - Text of the review
--  **Positive Review** - Whether the review is Positive or Negative
+-  **8. HelpfulnessNumerator** - Number of users who found the review helpful 
+-  **9. Time** - Timestamp for the review 
+-  **10. Description** - Text of the review
+-  **11. Positive Review** - Whether the review is Positive or Negative
 
 5\. Return to the **Datasets** Page
 
 ### Launch Experiment
 
-As mentioned in the objectives, this tutorial includes a pre-ran sentiment analysis experiment which includes all the datasets that are required for the experiment.
 
-1\. On the Datasets page click on the **AmazonFineFoodReviews-train-26k.csv** dataset and select Predict
+1\. On the Datasets page click on the `**AmazonFineFoodReviews-train-26k.csv**` dataset and select Predict
 
 ![launch_experiment](assets/launch_experiment.png)
 
 2\. As soon as you select the `Predict` option, you are asked for a tour of Driverless AI environment. Skip it for now by clicking `Not Now`. However, it is recommended to get the intuitive tour incase you are new to the environment. An image similar to the one below should appear. 
 
-![initial_experiment_overview](assets/initial_experiment_overview.jpg)
+![initial_experiment_overview](assets/initial_experiment_overview.png)
 
 3\. Next, you will need to feed in the following information into Driverless AI :
 
@@ -126,21 +125,24 @@ As mentioned in the objectives, this tutorial includes a pre-ran sentiment analy
 
 ![target_column](assets/target_column.png)
 
-3. **Test Dataset** -  The *Test dataset* is a dataset used to provide an unbiased evaluation of a _final_ model fit on the training dataset. It is not used during training of the model and results are available at the end of the experiment. Select the `AmazonFineFoodReviews-test-26k.csv` dataset as follows:
+3. **Dropped Columns** - The *Dropped Columns* feature enable us to  drop column(s) from your dataset that you don't want to use in the experiment.For this experiment we shall only use the text columns so we shall drop all columns that are not in text format. 
 
-![Test_dataset](assets/Test_dataset.png)
-
-4. **Dropped Columns** - The *Dropped Columns* feature enable us to  drop column(s) from your dataset that you don't want to use in the experiment.For this experiment we shall only use the text columns so we shall drop all columns that are not in text format. 
 
 ![Dropped-Columns](assets/Dropped-Columns.png)
 
 However, please note that you can also choose to keep the non-text columns and NLP algorithms will work on that too.
 
+4. **Test Dataset** -  The *Test dataset* is a dataset used to provide an unbiased evaluation of a _final_ model fit on the training dataset. It is not used during training of the model and results are available at the end of the experiment. Select the `AmazonFineFoodReviews-test-26k.csv` dataset as follows:
+
+![Test_dataset](assets/Test_dataset.png)
+
+
+
 The experiment screen will finally look like the image below:
 
 ![final_experiment_screen](assets/final_experiment_screen.png)
 
-In **Task 2**, we shall explore and update the Experiment Settings.
+In **Task 2**, we shall explore and update the Experiment Settings. 
 
 
 ### Acknowledgement
@@ -228,7 +230,7 @@ Update the following experiment settings so that they match the image below, the
 -   **Scorer**: LogLoss
     
 
-This experiment will run between 50 minutes and 1 hour. However, the time taken depends on the memory and availability of GPU in a system. If the system do not have a GPU, it might run for a longer time.
+This experiment will run between 50 minutes and 1 hour. However, the time taken depends on the memory and availability of GPU in a system. If the system does not have a GPU, it might run for a longer time.
 
 ### Resources
 
@@ -400,7 +402,7 @@ Text data can contain critical information to inform better predictions. H2O Dri
 
 ### Key Capabilities of Driverless AI NLP Recipe
 
-1.**TFIDF of n-grams**
+1. **TFIDF of n-grams**
 
 Frequency-based features are multiplied with inverse document frequency to get TFIDF vectors.
 
@@ -426,11 +428,11 @@ A Bi-directional GRU model is like putting two independent RNN models in one. Ta
 
 7. **Convolution neural network models on:**
 
-- **word embeddings**
+- **Word Embeddings**
 
 In Driverless AI, we pass word embeddings as input to CNN models, get cross-validated predictions from it and use them as a new set of features.
 
--  **CNN models on character embeddings**
+-  **Character Embeddings**
 
 Natural language processing is complex as the language is hard to understand given small data and different languages.Targeting languages like Japanese, Chinese where characters play a major role, we have character level embeddings in our recipe as well.
 
@@ -438,7 +440,7 @@ In character embeddings, each character gets represented in the form of vectors 
 
 ### Deeper Dive and Resources
 
-- [NLP with Driverless AI - SRK - H2O AI World London 2019](https://www.youtube.com/watch?v=EGVY7-Spv8E)
+- [NLP with Driverless AI - SRK - H2O AI World NYC 2019](https://www.youtube.com/watch?v=4FkXd8ICCa4)
 
 - [Natural Language Processing (NLP) with Driverless AI -Webinar](https://www.brighttalk.com/webcast/16463/337294)
 
@@ -530,13 +532,15 @@ There are also several plots adjacent to the summary tab that give insight into 
 
 ## Task 6: Custom Recipe to Improve Predictions
 
-The latest version(1.7.0) of Driverless AI implements a key feature called BYOR[1] which stands for Bring Your Own Recipes. This feature has been designed to enable Data Scientists or domain experts to influence and customize the machine learning optimization used by Driverless AI as per their business needs. This additional feature engineering technique is aimed towards improving the accuracy of the model.
+The latest version(1.7.0 onwards) of Driverless AI implements a key feature called BYOR[1] which stands for Bring Your Own Recipes. This feature has been designed to enable Data Scientists or domain experts to influence and customize the machine learning optimization used by Driverless AI as per their business needs. This additional feature engineering technique is aimed towards improving the accuracy of the model.
 
 Recipes are customizations and extensions to the Driverless AI platform. They are nothing but Python code snippets that can be uploaded into Driverless AI at runtime, like plugins. Recipes can be either one or a combination of the following:
 
 -   Custom machine learning models
 -   Custom scorers (classification or regression)
--   Custom transformers  
+-   Custom transformers
+    
+
 
 ![recipes-workflow](assets/recipes-workflow.png)
 
@@ -564,11 +568,15 @@ https://raw.githubusercontent.com/h2oai/driverlessai-recipes/master/transformers
   
 ![Uploading-Recipe-from-url](assets/Uploading-Recipe-from-url.png)
 
-5\. Once the recipe is uploaded, the following screen will appear. Driverless AI automatically performs basic acceptance tests for all custom recipes unless disabled.
+5\. You’re welcome to create your own recipes, or you can select from a number of recipes available in the https://github.com/h2oai/driverlessai-recipes/tree/rel-1.8.4 repository. The `OFFICIAL RECIPES(EXTERNAL)` tab will directly take you to the recipes compatible with the Driverless AI version that you are using.
+
+![Github-Repo-Recipes](assets/Github-Repo-Recipes.png)
+
+6\. Once the recipe is uploaded, the following screen will appear. Driverless AI automatically performs basic acceptance tests for all custom recipes unless disabled.
 
 ![Acceptance-tests](assets/Acceptance-tests.png)
 
-6\. Click on Recipe and select or deselect specific transformers, models and scorers.![Selecting-Specific-Transformers](assets/Selecting-Specific-Transformers.png)
+7\. Click on Recipe and select or deselect specific transformers, models and scorers.![Selecting-Specific-Transformers](assets/Selecting-Specific-Transformers.png)
 
 *Things to Note*
 
@@ -582,12 +590,11 @@ https://raw.githubusercontent.com/h2oai/driverlessai-recipes/master/transformers
     
 5. Enable if you want to skip failure of models
     
-    
-7\. Click Save to save the settings. The selected transformer should now appear on the main Experiment screen as follows.
+8\. Click Save to save the settings. The selected transformer should now appear on the main Experiment screen as follows.
 
 ![main-screen_after_expert_settings](assets/main-screen_after_expert_settings.png)
 
-8\. Launch the Experiment with the Custom Recipe.
+9\. Launch the Experiment with the Custom Recipe.
 
 ### References
 
@@ -642,21 +649,22 @@ Here are some samples from the dataset:
 
 Import Amazon Fine Food Reviews training and test datasets to the Datasets Overview Page.
 
-1\. Select +Add Dataset(or Drag and Drop) then click on File System
+1\. Select `+Add Dataset(or Drag and Drop)` then click on File System
 
-![Appendix_add-datasets](assets/Appendix_add-datasets.jpg)
+![Appendix_add-datasets](assets/Appendix_add-datasets.png)
 
 2\. Enter the following : `data/Kaggle/AmazonFineFoodReviews/` into the search bar
 
 3\. Select AmazonFineFoodReviews’ training and test datasets.
 
-![Appendix_datasets_preview](assets/Appendix_datasets_preview.png)
+![Appendix_datasets_preview](assets/Appendix_upload-dataset.png)
 
 4\. Click to Import Selection
 
 5\. If the file loaded successfully then the following image should appear on the screen
+![Appendix_upload-dataset](assets/Appendix_datasets_preview.png)
 
-![Appendix_upload-dataset](assets/Appendix_upload-dataset.png)
+You can see that a new set of datasets now appear on the screen.
 
 ## Next Steps
 
