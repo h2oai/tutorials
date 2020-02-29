@@ -4,7 +4,7 @@
 
 # Driverless AI
 
-This repository has tutorials that focus on **Driverless AI version 1.8.4**.
+This repository has tutorials that focus on **Driverless AI version 1.8.4.1**.
 
 Check out our [**New Tutorials Portal**](https://h2oai.github.io/tutorials/) where you will find our **latest Driverless AI and H2O-3 tutorials** including: 
 
@@ -14,7 +14,7 @@ Check out our [**New Tutorials Portal**](https://h2oai.github.io/tutorials/) whe
 
 - [Machine Learning Scoring and Analysis Tutorial - Financial Focus](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#0)
 
-- [Machine Learning Interpretability](https://h2oai.github.io/tutorials/machine-learning-interpretability-tutorial/#0)
+<!-- - [Machine Learning Interpretability](https://h2oai.github.io/tutorials/machine-learning-interpretability-tutorial/#0) -->
 
 - [Time Series Tutorial - Retail Sales Forecasting](https://h2oai.github.io/tutorials/time-series-recipe-tutorial-retail-sales-forecasting/#0)
 
@@ -27,7 +27,7 @@ Check out our [**New Tutorials Portal**](https://h2oai.github.io/tutorials/) whe
 
 For other versions of the **Driverless AI tutorials**, check out the following repo's:
 
-- [Driverless AI Tutorials 1.8.0 Repo]()
+- [Driverless AI Tutorials 1.8.0 Repo](https://github.com/h2oai/tutorials/tree/1.8.0/DriverlessAI)
 
 - [Driverless AI Tutorials 1.7.0 Repo](https://github.com/h2oai/tutorials/tree/1.7.0/DriverlessAI)
 
