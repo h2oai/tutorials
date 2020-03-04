@@ -442,8 +442,6 @@ We will use `max_depth` equal to 9 to try to tune the next parameters. We will k
 
 Since we have several parameters, we will be doing a random search; we will be using early stopping, and for our stopping criteria, we will set a limit of 100 models or 15 minutes. You can change these settings in the “search_criteria_tune” parameter for the grid search. 
 
-In this grid search, we will use a new parameter introduced in H2O version `3.28.0.1,` which is parallelism. This allows our grid search to train several models at the same time, instead of training one model at the time. When using this feature, it is recommended to set `parallelism` to two times the number of cores in your cluster. In our case, our cluster has 16 cores, meaning we can use `parallelism=32.` To learn more about this feature in H2O, please make you check the blog [Parallel Grid Search in H2O](https://www.pavel.cool/h2o-3/h2o-parallel-grid-search/) by Pavel Pscheidl. 
-
 ```python
 xgb = H2OXGBoostEstimator(model_id='xgb_grid', max_depth=9, ntrees=100, 
                           stopping_rounds=5, #default
@@ -467,7 +465,6 @@ search_criteria_tune = {'strategy': "RandomDiscrete",
 xgb_grid = H2OGridSearch(xgb, hyper_params,
                          grid_id = 'random_grid',
                          search_criteria=search_criteria_tune,
-                         parallelism=32
                          )
 
 %time xgb_grid.train(x=x, y=y, training_frame=train, validation_frame = valid)
@@ -484,7 +481,7 @@ Please note that the results might not be exactly the same.
 
 ![xgb-top-model](assets/xgb-top-model.jpg)
 
-With the grid search that we just did, setting `parallelism=32` allowed us to train a total of 90 models (not all the models are shown). As you can see, the top model has a gbtree booster with a gaussian distribution, and the second-best model also has a gbtree booster with a tweedie distribution. We can also see that the next two models with the dart booster yield good scores. Since the dart booster configuration yields good results, we will try to tune some extra parameters for the third model, which uses the `dart` booster. Dart booster is a “method to add dropout techniques from the deep neural net community to boosted trees” [1]. We could further tune the best model from the above grid search, and to do so, we could try tuning the `sample_rate,` `col_sample_rate,` `col_sample_rate_per_tree,`  `min_rows` and `gamma` among others. However, we want to show you the Dart functionality of XGBoost. 
+With the grid search that we just did allowed us to train a total of 41 models (not all the models are shown). As you can see, the top model has a gbtree booster with a gaussian distribution, and the second-best model also has a gbtree booster with a tweedie distribution. We can also see that the next two models with the dart booster yield good scores. Since the dart booster configuration yields good results, we will try to tune some extra parameters for the third model, which uses the `dart` booster. Dart booster is a “method to add dropout techniques from the deep neural net community to boosted trees” [1]. We could further tune the best model from the above grid search, and to do so, we could try tuning the `sample_rate,` `col_sample_rate,` `col_sample_rate_per_tree,`  `min_rows` and `gamma` among others. However, we want to show you the Dart functionality of XGBoost. 
 
 These are five extra parameters that we can tune when using Dart boosting, and we will try to see if we can get any improvement by changing some of those parameters
 
@@ -537,7 +534,6 @@ search_criteria_tune = {'strategy': "RandomDiscrete",
 xgb_grid = H2OGridSearch(xgb, hyper_params,
                          grid_id = 'dart_booster_grid',
                          search_criteria=search_criteria_tune,
-                         parallelism=1
                          )
 
 %time xgb_grid.train(x=x, y=y, training_frame=train, validation_frame = valid)
@@ -612,9 +608,9 @@ Print both RMSE and MAE
 print("Default XGB RMSE: %.4f \nTuned XGB RMSE:%.4f" % (default_xgb_per.rmse(), tuned_xgb_per.rmse()))
 ```
 **Output:**
-```
+``` python
 Default XGB RMSE: 0.4244 
-Tuned XGB RMSE:0.4149
+Tuned XGB RMSE:0.4117
 ```
 Our RMSE slightly improved with the tuning that we did. As we mentioned before, we only let each random search run for 15 minutes. To see if we can obtain a much better model, we would have to let it run for much longer. 
 
@@ -625,7 +621,7 @@ print("Default XGB MAE: %.4f \nTuned XGB MAE:%.4f" % (default_xgb_per.mae(), tun
 **Output:**
 ```python
 Default XGB MAE: 0.3108 
-Tuned XGB MAE:0.2996
+Tuned XGB MAE:0.2992
 ```
 The MAE also improved, which is a good indication. Our model did improve with the grid search that we did. One more thing that we could do is build an XGBoost model with all the parameters that we found, and increase the number of trees, similar to what we did in the first tutorial. 
 
@@ -751,7 +747,6 @@ search_criteria_tune = {'strategy': "Cartesian",
 dl_grid = H2OGridSearch(model=dl, hyper_params=hyper_params,
                          grid_id = 'rate_grid',
                          search_criteria=search_criteria_tune,
-                         parallelism=1
                          )
 
 %time dl_grid.train(x=x, y=y, training_frame=train, validation_frame = valid)
@@ -810,7 +805,6 @@ dl_grid = H2OGridSearch(model=dl,
                         hyper_params=hyper_params,
                         grid_id = 'rate_random_grid',
                         search_criteria=search_criteria_tune,
-                        parallelism=1
                          )
 
 %time dl_grid.train(x=x, y=y, training_frame=train, validation_frame = valid)
@@ -912,7 +906,7 @@ print("XGBoost Test RMSE: %.4f  \nDeep Learning Model Test RMSE: %.4f " %
 ```
 **Output:**
 ```python
-XGBoost Test RMSE: 0.4146  
+XGBoost Test RMSE: 0.4138  
 Deep Learning Model Test RMSE: 0.4194
 ```
 
@@ -926,7 +920,7 @@ print("XGBoost Test MAE: %.4f  \nDeep Learning model Test MAE: %.4f " %
 ```
 **Output:**
 ```python 
-XGBoost Test MAE: 0.2997  
+XGBoost Test MAE: 0.2992  
 Deep Learning model Test MAE: 0.3042
 ```
 
