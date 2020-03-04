@@ -147,7 +147,7 @@ While the model is being interpreted an image similar to the one below will appe
 
 11\. Once the **MLI Experiment is Finished** page comes up, select **Yes**, an image similar to the one below will appear:
 
-![mli-regression-and-classifications-explanations-1](assets/mli-regression-and-classifications-explanations-1.jpg)
+![mli-regression-and-classification-explanations-1](assets/mli-regression-and-classification-explanations-1.jpg)
 
 ![mli-regression-and-classification-explanations-2](assets/mli-regression-and-classification-explanations-2.jpg)
 
@@ -261,7 +261,7 @@ The **Feature Importance** plot ranks the original features. These features are 
 
 ![summary-random-forest](assets/summary-random-forest.jpg)
 
-This single **Random Forest** model of a complex Driverless AI model is very helpful because we can see that this is a trustworthy model between the original inputs to the system and the predictions of the system. Note the low mean squared error(0.0319), high R2 (97%). 
+This single **Random Forest** model of a complex Driverless AI model is very helpful because we can see that this is a trustworthy model between the original inputs to the system and the predictions of the system. Note the low mean squared error(0.0459), high R2 (95%). 
 
 4\. Go back to the Shapley plot and find the feature importance of LIMIT_BAL. How important was LIMIT_BAL in the global feature importance space? Was LIMIT_BAL a main driver in this space?
 
@@ -291,7 +291,7 @@ Through the **Shapley Values** and **Feature Importance**, we got a global persp
 *Things to Note:*
 1.  These values of PAY_0  represent the average predictions of all persons that paid on time or did not use their credit card
 2. This value represents the average prediction of persons who were late one month for PAY_0
-3.  PAY_0 =2 has an average default probability of 0.573, then the default probability slowly and slightly decreases all the way to month 8. Does this make sense to you?
+3.  PAY_0 =2 has an average default probability of 0.573, then the default probability slowly and slightly decreases all the way to month 8.
 
 The results indicate that overall, in the entire dataset, the worst thing for a person to be in regarding defaulting with respect to PAY_0 is to be two months late. This behavior insight needs to be judged by the user who can determine whether this model should be trusted.
 
@@ -444,7 +444,7 @@ This single linear model trained on the original inputs of the system to predict
 
 **K-LIME Advance Features**
 
-7\. On the K-LIME plot, change the Cluster to Cluster 2.
+7\. On the K-LIME plot, change the Cluster to Cluster 13.
 
 8\. Select another high probability default person from this K-LIME cluster by clicking on one of the white points on the top-right section of the plot
 
@@ -459,6 +459,7 @@ The local model predictions (white points) can be used to reason through the Dri
 9\. Select **Explanations** on the **K-LIME** plot
 
 ![reason-codes-for-row-233-1](assets/reason-codes-for-row-233-1.jpg)
+
 ![reason-codes-for-row-233-2](assets/reason-codes-for-row-233-2.jpg)
 
 *Things to Note:*
@@ -469,7 +470,7 @@ The local model predictions (white points) can be used to reason through the Dri
 
 3. Cluster 13 reason codes show the average linear trends in the data region around this person. 
 
-4. Global reason codes show the average linear trends in the data set as a whole.-->
+4. Global reason codes show the average linear trends in the data set as a whole.
 
 
 ### Deeper Dive and Resources
@@ -547,7 +548,7 @@ ICE is simply the prediction of the model for the person in question, in our cas
 3. LOCO feature Importance for the person in row 11427 (grey bars) in relation to global feature importance 
 4. Decision Tree Path for the person in row 11427
 
-We can observe divergence on the ICE plot and confirm possible interactions with the surrogate decision tree (the grey path). There seems to be interactions between PAY_0, PAY_3 and PAY_6 when PAY_0 = 3 - 4.
+We can observe divergence on the ICE plot and confirm possible interactions with the surrogate decision tree (the grey path). There seems to be interactions between PAY_0, PAY_3 and PAY_5 when PAY_0 = 3 - 4.
 
 2\. **Return to Task 6 question 7** to conclude K-LIME.
 
