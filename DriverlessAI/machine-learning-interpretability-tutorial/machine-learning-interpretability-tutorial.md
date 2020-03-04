@@ -119,11 +119,9 @@ Name your experiment `UCI_CC Classification Tutorial`
 
 7\. Select **Target Column**, then Select **default.payment.next.month** as the target.
 
-
 ![select-default-payment-next-month-column](assets/select-default-payment-next-month-column.jpg)
 
 8\. **Launch Experiment** using the default settings suggested by Driverless AI.
-
 
 ![run-experiment-default-setup](assets/run-experiment-default-setup.jpg)
 
@@ -293,7 +291,7 @@ Through the **Shapley Values** and **Feature Importance**, we got a global persp
 *Things to Note:*
 1.  These values of PAY_0  represent the average predictions of all persons that paid on time or did not use their credit card
 2. This value represents the average prediction of persons who were late one month for PAY_0
-3.  PAY_0 =2 has an average default probability of 0.47, then the default probability slowly and slightly decreases all the way to month 8. Does this make sense to you?
+3.  PAY_0 =2 has an average default probability of 0.573, then the default probability slowly and slightly decreases all the way to month 8. Does this make sense to you?
 
 The results indicate that overall, in the entire dataset, the worst thing for a person to be in regarding defaulting with respect to PAY_0 is to be two months late. This behavior insight needs to be judged by the user who can determine whether this model should be trusted.
 
@@ -438,7 +436,7 @@ Adding the **Actual Target** to the plot allows us to check if the model is not 
 ![k-lime-lime-model-prediction](assets/k-lime-lime-model-prediction.jpg)
 
 *Things to Note:*
-1. The high value of R2=91% and low RMSE=0.0581 value show that this is a highly accurate linear model. In other words this surrogate model is good enough to proceed, and explains about 90% of the variance in the Driverless AI model predictions. 
+1. The high value of R2=87% and low RMSE=0.0711 value show that this is a highly accurate linear model. In other words this surrogate model is good enough to proceed, and explains about 90% of the variance in the Driverless AI model predictions. 
 
 This single linear model trained on the original inputs of the system to predict the predictions of the Driverless AI model shows that the Driverless AI model predictions are highly linear. The plot above is an implementation of LIME or Local Interpretable Model Agnostic Explanations which often uses linear surrogate models to help reason about the predictions of a complex model.
 
@@ -465,13 +463,11 @@ The local model predictions (white points) can be used to reason through the Dri
 
 *Things to Note:*
 
-1. The reason codes shows that the Driverless model prediction gave this person .73 percent probability of defaulting. LIME gave them a .78 percent probability of defaulting and in this case we can say that LIME is 93.6% accurate. Based on this observation, it can concluded that the local reason codes are fairly trustworthy. If **Lime Prediction Accuracy** drops below 75%, then we can say that the numbers are probably untrustworthy, and the Shapley plot or LOCO plot should be revisited because the Shapley values are always accurate, and LOCO accounts for nonlinearity and interactions.
+1. The reason codes shows that the Driverless model prediction value gave this person .82 percent probability of defaulting. LIME prediction value gave them a .77 percent probability of defaulting and in this case we can say that LIME prediction accuracy is 93.9% accurate. Based on this observation, it can concluded that the local reason codes are fairly trustworthy. If **Lime Prediction Accuracy** drops below 75%, then we can say that the numbers are probably untrustworthy, and the Shapley plot or LOCO plot should be revisited because the Shapley values are always accurate, and LOCO accounts for nonlinearity and interactions.
 
-2. PAY_0 = 2 months late is the top positive local attribute for this person and contributes .37 probability points to their prediction according to this linear model. 0.37 is the local linear model coefficient for level 3 of the categorical variable PAY_0.
+2. PAY_0 = 2 months late is the top positive local attribute for this person and contributes .35 probability points to their prediction according to this linear model. 0.35 is the local linear model coefficient for level 3 of the categorical variable PAY_0.
 
-3. Cluster 2 reason codes show the average linear trends in the data region around this person. 
-
-10\. Continue scrolling down on the page to view Global reason codes.
+3. Cluster 13 reason codes show the average linear trends in the data region around this person. 
 
 4. Global reason codes show the average linear trends in the data set as a whole.-->
 
@@ -512,7 +508,7 @@ The grey bars or local numeric contributions can be used to generated reason cod
 *Things to Note:*
 1. Row number being observed
 2. Global Shapley value 
-3. A sample of a Shapley Local  numeric contribution of a variable for the high probability person in row 1144
+3. A sample of a Shapley Local  numeric contribution of a variable for the high probability person in row 11427
  
 3\. Pick another high probability person on the **K-LIME** plot and return to the **Shapley** plot and determine what local Shapley values have influenced the person you selected from defaulting (look for the largest grey bars)?
 
@@ -522,7 +518,7 @@ The grey bars or local numeric contributions can be used to generated reason cod
 
 ![decision-tree-local-value](assets/decision-tree-local-value.jpg)
 
-Based on the **Decision Tree** above, for the high probability person in row 1144, the grey path is consistent with the longest yellow bars in the Shapley Local plot.
+Based on the **Decision Tree** above, for the high probability person in row 11427, the grey path is consistent with the longest yellow bars in the Shapley Local plot.
 
 6\. Is the **Decision Tree** path you selected consistent with the Shapley Local values you noted for question 3?
 
@@ -537,7 +533,7 @@ Based on the **Decision Tree** above, for the high probability person in row 114
 
 Individual conditional expectation (ICE) plots, a newer and less well-known adaptation of partial dependence plots, can be used to create more localized explanations for a single individual using the same basic ideas as partial dependence plots. ICE Plots were described by Goldstein et al (2015). ICE values are simply disaggregated partial dependence, but ICE is also a type of nonlinear sensitivity analysis in which the model predictions for a single row are measured while a variable of interest is varied over its domain. ICE plots enable a user to determine whether the model’s treatment of an individual row of data is outside one standard deviation from the average model behavior, whether the treatment of a specific row is valid in comparison to average model behavior, known standards, domain knowledge, and reasonable expectations, and how a model will behave in hypothetical situations where one variable in a selected row is varied across its domain.
 
-ICE is simply the prediction of the model for the person in question, in our case row 15454. The data for this row was fixed except for PAY_0 then it was cycled through different pay values. The plot above is the result of this cycling. If the ICE values (grey dots) diverge from the partial dependence (yellow dots). In other words, if ICE values are going up and partial dependence going down. This behavior can be indicative of an interaction. The reason for this is that the individual behavior (grey dots) is different since it is diverging from the average behavior.
+ICE is simply the prediction of the model for the person in question, in our case row 11427. The data for this row was fixed except for PAY_0 then it was cycled through different pay values. The plot above is the result of this cycling. If the ICE values (grey dots) diverge from the partial dependence (yellow dots). In other words, if ICE values are going up and partial dependence going down. This behavior can be indicative of an interaction. The reason for this is that the individual behavior (grey dots) is different since it is diverging from the average behavior.
 
 ### ICE Plots
 1\. Select **Dashboard**
@@ -548,8 +544,8 @@ ICE is simply the prediction of the model for the person in question, in our cas
 *Things to Note:*
 1. ICE (grey dots)
 2. Partial Dependence (yellow dots)
-3. LOCO feature Importance for the person in row 1144 (grey bars) in relation to global feature importance 
-4. Decision Tree Path for the person in row 1144
+3. LOCO feature Importance for the person in row 11427 (grey bars) in relation to global feature importance 
+4. Decision Tree Path for the person in row 11427
 
 We can observe divergence on the ICE plot and confirm possible interactions with the surrogate decision tree (the grey path). There seems to be interactions between PAY_0, PAY_3 and PAY_6 when PAY_0 = 3 - 4.
 
