@@ -43,11 +43,11 @@
 <ul>
 <li>Basic knowledge of Machine Learning and Statistics<br></li>
 <li>A hands on knowledge of Driverless AI environment</li>
-<li>Prior completion of <a href="https://github.com/h2oai/tutorials/blob/master/DriverlessAI/automatic-ml-intro-tutorial/automatic-ml-intro-tutorial.md" target="_blank">Automatic Machine Learning Intro Tutorial</a><br></li>
+<li>Prior completion of <a href="https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#0" target="_blank">Automatic Machine Learning Intro Tutorial</a><br></li>
 </ul>
 <p>You can get more information about getting a Driverless AI environment or trial from the following:</p>
 <ul>
-<li><a href="https://h2oai.github.io/tutorials/getting-started-with-driverless-ai-test-drive/#1" target="_blank">A Two Hour Test Drive Session</a></li>
+<li><a href="https://h2oai.github.io/tutorials/getting-started-with-driverless-ai-test-drive/#0" target="_blank">A Two Hour Test Drive Session</a></li>
 <li><a href="https://www.h2o.ai/try-driverless-ai/" target="_blank">H2O Driverless AI License Key</a></li>
 <li><a href="https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#2" target="_blank">H2O Driverless AI Environment and Product Tour</a></li>
 </ul>
@@ -61,58 +61,61 @@
     
       <google-codelab-step label="Task 1: Launch Sentiment Analysis Experiment" duration="0">
         <h2>About the Dataset</h2>
-<p>The dataset consists of reviews of fine foods from Amazon. The data spans a period of more than 10 years, from Oct 1999 up to October 2012. Reviews include product and user information, ratings, and a plain text review. It also includes reviews from all other Amazon categories[1]. The data consists of 568,454 reviews, 256,059 users, 74,258 products and 260 users with &gt; 50 reviews.</p>
+<p>The dataset consists of reviews of fine foods from <a href="https://www.amazon.com/" target="_blank">Amazon</a>. The data spans a period of more than 10 years, from Oct 1999 up to October 2012. Reviews include product and user information, ratings, and a plain text review. It also includes reviews from all other Amazon categories[1]. The data consists of 568,454 reviews, 256,059 users, 74,258 products and 260 users with &gt; 50 reviews.</p>
 <p>Our aim is to study these reviews and try and predict whether a review is positive or negative.</p>
 <p>The data has been originally hosted by SNAP (<a href="http://snap.stanford.edu/data/index.html" target="_blank">Stanford Large Network Dataset Collection</a>), a collection of more than 50 large network datasets from tens of thousands of nodes and edges to tens of millions of nodes and edges. In includes social networks, web graphs, road networks, internet networks, citation networks, collaboration networks, and communication networks [2].</p>
 <p>The dataset provided is a CSV file containing 568,454 rows and a total of 10 features (columns).</p>
 <h2>Dataset Overview</h2>
-<p>If you are using <strong>Aquarium</strong> as the environment, then the lab <strong>Driverless AI Test Drive</strong> has the Amazon fine review dataset already pre-loaded with separate training and test datasets. The datasets can be located on the Datasets Overview page. However, you can also upload the datasets externally. To learn more about how to add the two datasets from the Driverless AI file system then see [Appendix A: Add the Datasets].(#task-8-appendix-a-add-the-datasets)</p>
+<p>If you are using <strong>Aquarium</strong> as the environment, then the lab <strong>Driverless AI Test Drive</strong> has the Amazon fine review dataset already pre-loaded with separate training and test datasets. The datasets can be located on the Datasets Overview page. However, you can also upload the datasets externally. To learn more about how to add the two datasets from the Driverless AI file system then see Appendix A: Add the Datasets</p>
 <p>On clicking the highlighted <code>Start lab</code> button , you will be taken  to a Driverless AI platform with several pre-loaded data sets and pre-run visualizations, models, interpretations, and deployments. Here  you will have access to both the training and testing set for Amazon fine food reviews.</p>
-<p>1. Verify that both datasets are on the Datasets Overview, your screen should look similar to the page below:</p>
-<p><img alt="datasets-overview" src="img/7d22f055d15e2679.png"></p>
+<p>1. Verify that both datasets are on the Datasets Overview and your screen should look similar to the page below:</p>
+<p><img alt="datasets-overview" src="img/f10b5648dc6c6379.png"></p>
 <p>2. Click on the <code>AmazonFineFood_train</code> file and then on Details.</p>
-<p><img alt="dataset-details" src="img/50f6ce48025a0055.png"></p>
+<p><img alt="dataset-details" src="img/be5917bb0d680e73.png"></p>
 <p>3. Let&#39;s take a quick look at the columns of the training set:</p>
 <p><img alt="dataset-columns-info" src="img/9d20dba16af1273.png"></p>
 <p><em>Things to Note:</em></p>
 <p>The dataset consists of 10 columns which are as follows:</p>
 <ul>
-<li><strong>UserId</strong> - Unique identifier for the user</li>
-<li><strong>ProductId</strong> - Unique identifier for the product</li>
-<li><strong>Id</strong> - Row Id</li>
-<li><strong>Summary</strong> - Brief summary of the review</li>
-<li><strong>Score</strong> - Rating between 1 and 5</li>
-<li><strong>HelpfulnessDenominator</strong> - Number of users who indicated whether they found the review helpful or not</li>
-<li><strong>ProfileName</strong> - Profile name of the user<br></li>
+<li><strong>1. UserId</strong> - Unique identifier for the user</li>
+<li><strong>2. ProductId</strong> - Unique identifier for the product</li>
+<li><strong>3. Id</strong> - Row Id</li>
+<li><strong>4. Summary</strong> - Brief summary of the review</li>
+<li><strong>5. Score</strong> - Rating between 1 and 5</li>
+<li><strong>6. HelpfulnessDenominator</strong> - Number of users who indicated whether they found the review helpful or not</li>
+<li><strong>7. ProfileName</strong> - Profile name of the user<br></li>
 </ul>
 <p>4. Continue scrolling the current page to see more columns (image is not included)</p>
 <ul>
-<li><strong>HelpfulnessNumerator</strong> - Number of users who found the review helpful</li>
-<li><strong>Time</strong> - Timestamp for the review</li>
-<li><strong>Description</strong> - Text of the review</li>
-<li><strong>Positive Review</strong> - Whether the review is Positive or Negative</li>
+<li><strong>8. HelpfulnessNumerator</strong> - Number of users who found the review helpful</li>
+<li><strong>9. Time</strong> - Timestamp for the review</li>
+<li><strong>10. Description</strong> - Text of the review</li>
+<li><strong>11. Positive Review</strong> - Whether the review is Positive or Negative</li>
 </ul>
 <p>5. Return to the <strong>Datasets</strong> Page</p>
 <h2>Launch Experiment</h2>
-<p>As mentioned in the objectives, this tutorial includes a pre-ran sentiment analysis experiment which includes all the datasets that are required for the experiment.</p>
-<p>1. On the Datasets page click on the <strong>AmazonFineFoodReviews-train-26k.csv</strong> dataset and select Predict</p>
-<p><img alt="launch_experiment" src="img/d7552c1277029ec.png"></p>
+<p>1. On the Datasets page click on the <code>**AmazonFineFoodReviews-train-26k.csv**</code> dataset and select Predict</p>
+<p><img alt="launch_experiment" src="img/1cc3b352bf4ac245.png"></p>
 <p>2. As soon as you select the <code>Predict</code> option, you are asked for a tour of Driverless AI environment. Skip it for now by clicking <code>Not Now</code>. However, it is recommended to get the intuitive tour incase you are new to the environment. An image similar to the one below should appear.</p>
-<p><img alt="initial_experiment_overview" src="img/8e1ff08035a18a1a.jpg"></p>
+<p><img alt="initial_experiment_overview" src="img/69459d0f233740fb.png"></p>
 <p>3. Next, you will need to feed in the following information into Driverless AI :</p>
-<p><img alt="name_experiment" src="img/35a6117510e30b0a.png"></p>
+<p><img alt="name_experiment" src="img/fb95b9cfa81ce099.png"></p>
 <ol type="1">
 <li><strong>Display Name</strong> - Give a name to your expeiment. You can choose according to your choice but it is recommended to choose a name that highlights the purpose of the experiment. Let&#39;s name our current experiment as <strong>Sentiment Analysis</strong>.</li>
 <li><strong>Target Column</strong> -  The <em>Target column</em> contains the value that we intend to predict through the experiment. Click on the <code>Select Target Column</code> tab and select <strong>Positive Review</strong> as the target column. The aim of the experiment is to try to predict whether a fiven review is positive or negative, hence the Positive Review is selected as the target column. The column has only two values i.e Positive and Negative.</li>
-<img alt="target_column" src="img/ca6400140c9790c6.png">
-<li><strong>Test Dataset</strong> -  The <em>Test dataset</em> is a dataset used to provide an unbiased evaluation of a <em>final</em> model fit on the training dataset. It is not used during training of the model and results are available at the end of the experiment. Select the <code>AmazonFineFoodReviews-test-26k.csv</code> dataset as follows:</li>
-<img alt="Test_dataset" src="img/4036da3ee0ebf6b.png">
+</ol>
+<p><img alt="target_column" src="img/ca6400140c9790c6.png"></p>
+<ol type="1">
 <li><strong>Dropped Columns</strong> - The <em>Dropped Columns</em> feature enable us to  drop column(s) from your dataset that you don&#39;t want to use in the experiment.For this experiment we shall only use the text columns so we shall drop all columns that are not in text format.</li>
+</ol>
 <p><img alt="Dropped-Columns" src="img/993dd0d7e570c33d.png"></p>
 <p>However, please note that you can also choose to keep the non-text columns and NLP algorithms will work on that too.</p>
+<ol type="1">
+<li><strong>Test Dataset</strong> -  The <em>Test dataset</em> is a dataset used to provide an unbiased evaluation of a <em>final</em> model fit on the training dataset. It is not used during training of the model and results are available at the end of the experiment. Select the <code>AmazonFineFoodReviews-test-26k.csv</code> dataset as follows:</li>
 </ol>
+<p><img alt="Test_dataset" src="img/4036da3ee0ebf6b.png"></p>
 <p>The experiment screen will finally look like the image below:</p>
-<p><img alt="final_experiment_screen" src="img/210cd9de7f2df88c.png"></p>
+<p><img alt="final_experiment_screen" src="img/93daa76ba69eeae3.png"></p>
 <p>In <strong>Task 2</strong>, we shall explore and update the Experiment Settings.</p>
 <h2>Acknowledgement</h2>
 <ul>
@@ -136,7 +139,7 @@
 </ul>
 <p>Experiment Settings describe the Accuracy, Time and Interpretability of a specific experiment. The knobs on the experiment settings are adjustable. As values change, the meaning of the settings on the left-bottom page change.</p>
 <p>Here are the following settings that need to be updated for a typical NLP experiment.</p>
-<p><img alt="experiment-settings" src="img/b8b503d471b65953.png"></p>
+<p><img alt="experiment-settings" src="img/5c31d9eb5e322767.png"></p>
 <ol type="1">
 <li>Accuracy</li>
 <li>Time</li>
@@ -154,7 +157,7 @@
 <p>Scorer is the metric used to Evaluate the machine learning algorithm. The scorer used for this experiment is the LogLoss or logarithmic loss metric which is used to used to evaluate the performance of a binomial or multinomial classifier. Unlike AUC which looks at how well a model can classify a binary target, logloss evaluates how close a model&#39;s predicted values (uncalibrated probability estimates) are to the actual target value. The lower the Logloss value the better the better the model can predict the sentiment.</p>
 <h2>Expert Settings</h2>
 <p>Expert Settings can be tuned according to the type of experiment. To tune the NLP settings, click on the Expert settings and navigate to the NLP option :</p>
-<p><img alt="expert-settings-overview" src="img/e786373fc6c0f002.png"></p>
+<p><img alt="expert-settings-overview" src="img/b9d816ddf083aabe.png"></p>
 <p>Click on the NLP tab to enable NLP specific settings as shown below. This option allows you to specify whether to build <a href="https://github.com/tensorflow/tensorflow/blob/master/README.md" target="_blank">TensorFlow</a> models as part of the experiment (usually only for text features engineering and for the final model unless it&#39;s used exclusively). Enable these options for NLP experiments.</p>
 <p><img alt="nlp-expert-settings" src="img/863e27c413cf456f.png"></p>
 <p>Additionally, there are three buttons located beneath the experimental settings knob which stand for the following:</p>
@@ -164,14 +167,14 @@
 <li>Enable GPUs: Specify whether to enable GPUs. (Note that this option is ignored on CPU-only systems.)</li>
 </ul>
 <p>Update the following experiment settings so that they match the image below, then select Launch Experiment. This configuration is selected to generate a model quickly with a sufficient level of accuracy in the H2O Driverless Test Drive environment.</p>
-<p><img alt="final-experiment-launch" src="img/f1bf3c9e4c46e2c1.png"></p>
+<p><img alt="final-experiment-launch" src="img/52869da6a4bac3ea.png"></p>
 <ul>
 <li><strong>Accuracy</strong>: 5</li>
 <li><strong>Time</strong>: 2</li>
 <li><strong>Interpretability</strong>: 5</li>
 <li><strong>Scorer</strong>: LogLoss</li>
 </ul>
-<p>This experiment will run between 50 minutes and 1 hour. However, the time taken depends on the memory and availability of GPU in a system. If the system do not have a GPU, it might run for a longer time.</p>
+<p>This experiment will run between 50 minutes and 1 hour. However, the time taken depends on the memory and availability of GPU in a system. If the system does not have a GPU, it might run for a longer time.</p>
 <h2>Resources</h2>
 <p>[1] <a href="http://statweb.stanford.edu/~jhf/ftp/RuleFit.pdf" target="_blank">J. Friedman, B. Popescu. &#34;Predictive Learning via Rule Ensembles&#34;. 2005</a></p>
 <p>[2] <a href="https://en.wikipedia.org/wiki/Ensemble_learning" target="_blank">Ensemble Learning</a></p>
@@ -299,33 +302,45 @@
         <p>Text data can contain critical information to inform better predictions. H2O Driverless AI automatically converts text strings into features using powerful techniques like TFIDF, CNN, and GRU. With TensorFlow, Driverless AI can also process larger text blocks and build models using all available data to solve business problems like sentiment analysis, document classification and content tagging. In particular, Driverless AI implements the following recipes and models.</p>
 <p><img alt="Driverless-NLP-recipe" src="img/3f5c0c4ec9690d7f.png"></p>
 <h2>Key Capabilities of Driverless AI NLP Recipe</h2>
-<ol type="1" ></ol>
+<ol type="1">
 <li><strong>TFIDF of n-grams</strong></li>
+</ol>
 <p>Frequency-based features are multiplied with inverse document frequency to get TFIDF vectors.</p>
+<ol type="1">
 <li><strong>Frequency of n-grams</strong></li>
+</ol>
 <p>Frequency-based features represent the count of each word in the given text in the form of vectors. Frequency-based features are created for different n-gram values[2]. The dimensions of the output vectors are quite high. Words/n-grams that occur more number of times will get higher weightage than the ones that occur less frequently.</p>
+<ol type="1">
 <li><strong>Truncated SVD Features</strong></li>
+</ol>
 <p>Both TFIDF and Frequency of n-grams result in a higher dimension. To tackle this, we use Truncated SVD to decompose the vector arrays in lower dimensions.</p>
+<ol type="1">
 <li><strong>Linear models on TF/IDF vectors</strong></li>
+</ol>
 <p>In our NLP recipe, we also have linear models on top of n-gram TFIDF / frequency vectors. This capture linear dependencies that are simple yet significant in achieving the best accuracies.</p>
+<ol type="1">
 <li><strong>Word Embeddings</strong></li>
+</ol>
 <p>Driverless AI NLP recipe makes use of the power of word embeddings where words or phrases from the vocabulary are mapped to vectors of real numbers.</p>
+<ol type="1">
 <li><strong>Bi-direction GRU models on word embeddings</strong></li>
+</ol>
 <p>A Bi-directional GRU model is like putting two independent RNN models in one. Taking note of accuracy as well as speed in our experiments, we have decided to take advantage of high speed and almost similar accuracies of GRU architecture compared to its counterpart LSTM.</p>
+<ol type="1">
 <li><strong>Convolution neural network models on:</strong></li>
 </ol>
 <ul>
-<li><strong>word embeddings</strong></li>
+<li><strong>Word Embeddings</strong></li>
 </ul>
 <p>In Driverless AI, we pass word embeddings as input to CNN models, get cross-validated predictions from it and use them as a new set of features.</p>
 <ul>
-<li><strong>CNN models on character embeddings</strong></li>
+<li><strong>Character Embeddings</strong></li>
 </ul>
 <p>Natural language processing is complex as the language is hard to understand given small data and different languages.Targeting languages like Japanese, Chinese where characters play a major role, we have character level embeddings in our recipe as well.</p>
 <p>In character embeddings, each character gets represented in the form of vectors rather than words. Driverless AI uses character level embeddings as input to CNN models and later extract class probabilities to feed as features for downstream models. This gives the ability to work in languages other than English also. In case of languages like Japanese, Chinese etc where there is no concept of words, character embeddings will be useful.</p>
 <h2>Deeper Dive and Resources</h2>
 <ul>
-<li><a href="https://www.youtube.com/watch?v=EGVY7-Spv8E" target="_blank">NLP with Driverless AI - SRK - H2O AI World London 2019</a></li>
+<li><a href="https://www.youtube.com/watch?v=4FkXd8ICCa4" target="_blank">NLP with Driverless AI - SRK - H2O AI World NYC 2019</a></li>
 <li><a href="https://www.brighttalk.com/webcast/16463/337294" target="_blank">Natural Language Processing (NLP) with Driverless AI -Webinar</a></li>
 </ul>
 <h2>Industry Use Cases leveraging NLP</h2>
@@ -343,7 +358,7 @@
 <p><img alt="Experiment-results-UI" src="img/f673e63a3039be24.png"></p>
 <p>The Experiment Summary contains a lot of useful information which helps to understand what goes under the hood during the Sentiment Analysis Experiment. If you are interested in learning more about each plot and the metrics derived from those plots covered in this section, then check out our tutorial  <a href="https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#0" target="_blank">Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus</a>.</p>
 <p>Please note that the lab also provides a pre-ran experiment. You can either wait for your experiments to finish or use the results of the pre-ran experiment. Click on the <strong>Experiments</strong> tab and select the Amazon Fine Food reviews experiment as follows:</p>
-<p><img alt="pre-ran-experiment" src="img/3737377bbe5097c5.png"></p>
+<p><img alt="pre-ran-experiment" src="img/5a027cd0cf4407ae.png"></p>
 <p><em>Things to Note:</em></p>
 <ol type="1">
 <li>Status Complete Options<ul>
@@ -364,32 +379,38 @@
 <li><strong>Download Logs</strong></li>
 </ul>
 </li>
-<li>Iteration Data - Validation<ul>
-<li>The winning model&#39;s validation score and the algorithm used are as follows:</li>
+<li>Iteration Data - Validation</li>
+</ol>
+<ul>
+<li>The winning model&#39;s validation score and the algorithm used are as follows:<ul>
 <li>Validation Score - .2353</li>
 <li>Model Type: XGBoostGBM</li>
 </ul>
+<ol type="1">
+<li>Variable Importance: Summary of top 20 - Feature Engineered variables</li>
+</ol>
 </li>
-<li>Variable Importance: Summary of top 20 - Feature Engineered variables<ul>
+</ul>
 <p>Driverless AI performs feature Engineering on the dataset to determine the optimal representation of the data. Various stages of the features appear throughout the iteration of the data. These can be viewed by hovering over points on the Iteration Data - Validation Graph and seeing the updates on the  <strong>Variable Importance</strong> section.</p>
-<img alt="variable-importance" src="img/a1cc482e5a86214b.png">
+<p><img alt="variable-importance" src="img/a1cc482e5a86214b.png"></p>
 <p>Look at some of the variables in Variable of Importance list. These are the new, high-value features for our training dataset.</p>
 <p>These transformations created with the following transformers:</p>
+<ul>
 <li><strong>TextBiGRUTransformer</strong> : Trains a bi-directional GRU TensorFlow model on word embeddings created from a text feature to predict the response column</li>
 <li><strong>TextCNNTransformer</strong> : Trains a CNN TensorFlow model on word embeddings created from a text feature to predict the response column.</li>
 <li><strong>TextTransformer :</strong> Tokenizes a text column and creates a TF IDF matrix or count matrix</li>
 <li><strong>WeightOfEvidenceTransformer</strong>  : calculates Weight of Evidence for each value in categorical column(s). The Weight of Evidence is used as a new feature.</li>
-<img alt="woe" src="img/ba961d7376276380.png">
 </ul>
-</li>
+<p><img alt="woe" src="img/ba961d7376276380.png"></p>
 <p>The complete list of features used in the final model is available in the Experiment Summary artifacts. The Experiment Summary also provides a list of the original features and their estimated feature importance.</p>
+<ol type="1">
 <li>Summary</li>
+</ol>
 <p>This option gives a brief summary of the entire experiment including :</p>
 <ul>
 <li>How many features were tested and selected?</li>
 <li>How many models were trained for feature evolution?</li>
 </ul>
-</ol>
 <p>There are also several plots adjacent to the summary tab that give insight into the experiment. If you are interested in learning more about each plot and the metrics derived from those plots covered in this section, then check out our next tutorial <a href="https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#0" target="_blank">Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus</a>.</p>
 <h2>Deeper Dive and Resources</h2>
 <ul>
@@ -405,29 +426,31 @@
       </google-codelab-step>
     
       <google-codelab-step label="Task 6: Custom Recipe to Improve Predictions" duration="0">
-        <p>The latest version(1.7.0) of Driverless AI implements a key feature called BYOR[1] which stands for Bring Your Own Recipes. This feature has been designed to enable Data Scientists or domain experts to influence and customize the machine learning optimization used by Driverless AI as per their business needs. This additional feature engineering technique is aimed towards improving the accuracy of the model.</p>
+        <p>The latest version(1.7.0 onwards) of Driverless AI implements a key feature called BYOR[1] which stands for Bring Your Own Recipes. This feature has been designed to enable Data Scientists or domain experts to influence and customize the machine learning optimization used by Driverless AI as per their business needs. This additional feature engineering technique is aimed towards improving the accuracy of the model.</p>
 <p>Recipes are customizations and extensions to the Driverless AI platform. They are nothing but Python code snippets that can be uploaded into Driverless AI at runtime, like plugins. Recipes can be either one or a combination of the following:</p>
 <ul>
 <li>Custom machine learning models</li>
 <li>Custom scorers (classification or regression)</li>
-<li>Custom transformers<br></li>
+<li>Custom transformers<br><br></li>
 </ul>
 <p><img alt="recipes-workflow" src="img/deb58a83fc2b5888.png"></p>
 <h2>Uploading a Custom Recipe</h2>
 <p>H2O has built and open-sourced several recipes[2] which can be used as templates. For this experiment, we shall use the following recipe: <a href="https://github.com/h2oai/driverlessai-recipes/blob/master/transformers/nlp/text_sentiment_transformer.py" target="_blank">text_sentiment_transformer.py</a> which extracts sentiment from text using pre-trained models from TextBlob[3].</p>
 <p>1. Start a new Driverless AI experiment as explained in Task 1 and Task 2 and click on the Expert Settings.</p>
-<p><img alt="clickon_expert-settings" src="img/b7816dd7f8edeab.png"></p>
+<p><img alt="clickon_expert-settings" src="img/b1c5ad6f5a60359.png"></p>
 <p>2. A new window with Expert Experiment Settings pops up. Here you can either upload a custom recipe or load custom recipe from url.</p>
-<p><img alt="expert-experiment-settings_overview" src="img/6f7f6a6bc2e559fa.png"></p>
+<p><img alt="expert-experiment-settings_overview" src="img/3df983341315d6ac.png"></p>
 <p>3. To upload a custom recipe, Click on the UPLOAD CUSTOM RECIPE tab and select the desired recipe. Click save when done.</p>
 <p><img alt="Uploading-Recipe-1" src="img/f9fd7c69f02ab745.png"></p>
 <p>4. Alternately, you can also upload a recipe via URL. Click on the LOAD CUSTOM RECIPE FROM URL tab and enter the raw Github URL of the recipe. Click save when done</p>
 <pre><code>https://raw.githubusercontent.com/h2oai/driverlessai-recipes/master/transformers/nlp/text_sentiment_transformer.py
 </code></pre>
-<p><img alt="Uploading-Recipe-from-url" src="img/3fcb15d59f3d295d.png"></p>
-<p>5. Once the recipe is uploaded, the following screen will appear. Driverless AI automatically performs basic acceptance tests for all custom recipes unless disabled.</p>
+<p><img alt="Uploading-Recipe-from-url" src="img/8f725a085f771f1a.png"></p>
+<p>5. You&#39;re welcome to create your own recipes, or you can select from a number of recipes available in the https://github.com/h2oai/driverlessai-recipes/tree/rel-1.8.4 repository. The <code>OFFICIAL RECIPES(EXTERNAL)</code> tab will directly take you to the recipes compatible with the Driverless AI version that you are using.</p>
+<p><img alt="Github-Repo-Recipes" src="img/c5fdd61b7654ca69.png"></p>
+<p>6. Once the recipe is uploaded, the following screen will appear. Driverless AI automatically performs basic acceptance tests for all custom recipes unless disabled.</p>
 <p><img alt="Acceptance-tests" src="img/976375f4ac333ded.png"></p>
-<p>6. Click on Recipe and select or deselect specific transformers, models and scorers.<img alt="Selecting-Specific-Transformers" src="img/29ef191a343d4bac.png"></p>
+<p>7. Click on Recipe and select or deselect specific transformers, models and scorers.<img alt="Selecting-Specific-Transformers" src="img/29ef191a343d4bac.png"></p>
 <p><em>Things to Note</em></p>
 <ol type="1">
 <li>Select specific Transformers</li>
@@ -436,9 +459,9 @@
 <li>Enable if you want to skip failure of transformers</li>
 <li>Enable if you want to skip failure of models</li>
 </ol>
-<p>7. Click Save to save the settings. The selected transformer should now appear on the main Experiment screen as follows.</p>
-<p><img alt="main-screen_after_expert_settings" src="img/41033c4d4c578cfa.png"></p>
-<p>8. Launch the Experiment with the Custom Recipe.</p>
+<p>8. Click Save to save the settings. The selected transformer should now appear on the main Experiment screen as follows.</p>
+<p><img alt="main-screen_after_expert_settings" src="img/2dc0b59af1a5b1d0.png"></p>
+<p>9. Launch the Experiment with the Custom Recipe.</p>
 <h2>References</h2>
 <p>[1] <a href="https://www.h2o.ai/blog/custom-machine-learning-recipes-the-ingredients-for-success/" target="_blank">Custom Machine Learning Recipes: The ingredients for success</a></p>
 <p>[2] <a href="https://github.com/h2oai/driverlessai-recipes" target="_blank">Driverless AI Recipes</a></p>
@@ -482,14 +505,14 @@
       <google-codelab-step label="Task 8: Appendix A: Add the Datasets" duration="0">
         <h2>Add the Datasets</h2>
 <p>Import Amazon Fine Food Reviews training and test datasets to the Datasets Overview Page.</p>
-<p>1. Select +Add Dataset(or Drag and Drop) then click on File System</p>
-<p><img alt="Appendix_add-datasets" src="img/26474844284a0f41.jpg"></p>
+<p>1. Select <code>+Add Dataset(or Drag and Drop)</code> then click on File System</p>
+<p><img alt="Appendix_add-datasets" src="img/2b2ac6ed6b1d2a11.png"></p>
 <p>2. Enter the following : <code>data/Kaggle/AmazonFineFoodReviews/</code> into the search bar</p>
 <p>3. Select AmazonFineFoodReviews&#39; training and test datasets.</p>
-<p><img alt="Appendix_datasets_preview" src="img/734debad310ed6c7.png"></p>
+<p><img alt="Appendix_datasets_preview" src="img/39b85c5b5f7858da.png"></p>
 <p>4. Click to Import Selection</p>
-<p>5. If the file loaded successfully then the following image should appear on the screen</p>
-<p><img alt="Appendix_upload-dataset" src="img/39b85c5b5f7858da.png"></p>
+<p>5. If the file loaded successfully then the following image should appear on the screen<br><img alt="Appendix_upload-dataset" src="img/b17a819ad55e72df.png"></p>
+<p>You can see that a new set of datasets now appear on the screen.</p>
 
 
       </google-codelab-step>
