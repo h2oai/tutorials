@@ -250,17 +250,7 @@
 <p><img alt="titanic-set-details-page" src="img/9cfa4481d027a2f2.jpg"></p>
 <p><em>Things to Note:</em></p>
 <ol type="1">
-<li>The <strong>Dataset Details Page</strong> provides a summary of the dataset. This summary lists each column that is included in the dataset along with:</li>
-</ol>
-<ul>
-<li>Logical type (can be changed)</li>
-</ul>
-<p><img alt="logical-type-options" src="img/87471ab7d4454838.jpg"></p>
-<ul>
-<li>Format for Date and Datetime columns(can be changed)</li>
-</ul>
-<p><img alt="dataset-details-format-option" src="img/fdcf31ce233763be.jpg"></p>
-<ul>
+<li>The <strong>Dataset Details Page</strong> provides a summary of the dataset. This summary lists each column that is included in the dataset along with:<strong>Logical type (can be changed)</strong><img alt="logical-type-options" src="img/87471ab7d4454838.jpg"><strong>Format for Date and Datetime columns(can be changed)</strong><img alt="dataset-details-format-option" src="img/fdcf31ce233763be.jpg"><ul>
 <li>Storage type</li>
 <li>Count</li>
 <li>Number of missing values</li>
@@ -272,15 +262,13 @@
 <li>Number of unique values</li>
 <li>View the first 20 rows of a column</li>
 </ul>
-<p><img alt="datasets-details-first-20-rows" src="img/e5a91a658a18c502.jpg"></p>
-<p><strong>Note</strong>: Driverless AI recognizes the following column types: integer, string, real, boolean, and time. Date columns are given a string &#34;str&#34; type.</p>
-<ol type="1">
+<img alt="datasets-details-first-20-rows" src="img/e5a91a658a18c502.jpg"><strong>Note</strong>: Driverless AI recognizes the following column types: integer, string, real, boolean, and time. Date columns are given a string &#34;str&#34; type.</li>
 <li>You can view information for a specific column by entering the name of the column in the field above the graph.</li>
 <li><strong>Modify by Recipe</strong> allows you to create a new dataset by modifying an existing dataset with custom recipes.</li>
 <li><strong>Dataset Rows</strong> allows you to preview the dataset</li>
 <li>Option to exit and return to the H2O <strong>Datasets</strong> page</li>
 </ol>
-<p>3. Select  <strong>Dataset Rows</strong></p>
+<p>4. Select  <strong>Dataset Rows</strong></p>
 <p><img alt="titanic-set-rows-page" src="img/b145bed98b7370fd.jpg"></p>
 <p><em>Things to Note:</em></p>
 <ol type="1">
@@ -290,7 +278,7 @@
 <li>Return to the <strong>Dataset Overview</strong></li>
 <li>Option to Exit and return to the H2O <strong>Datasets</strong> page</li>
 </ol>
-<p>4. Exit and return to <strong>Datasets Overview</strong> page.</p>
+<p>5. Exit and return to <strong>Datasets Overview</strong> page.</p>
 <h2>Split the Dataset</h2>
 <p>From the Titanic.csv dataset, we are going to create two datasets, training and test. 75% of the data will be used for training the model, and 25% to test the trained model.</p>
 <p>1. Click on the titanic.csv file and select <strong>Split</strong></p>
@@ -448,24 +436,23 @@
 <p><img alt="experiment-summary" src="img/75767ce9165230ed.jpg"></p>
 <p><em>Things to Note:</em></p>
 <ol type="1">
-<li>Status Complete Options<br><br><ul>
+<li>Status Complete Options<ul>
 <li>Deploy (Local and Cloud)</li>
 <li>Interpret This Model</li>
 <li>Diagnose Model On New Dataset</li>
 <li>Score on Another Dataset</li>
 <li>Transform Another Dataset</li>
-<li>Download Predictions</li>
+<li>Download Predictions<br><br><ul>
 <li>Training Predictions</li>
 <li>Validation Set Predictions(available if a validation set was provided)</li>
 <li>Test Set Predictions</li>
+</ul>
+</li>
 <li>Download Python Scoring Pipeline - A standalone Python Scoring pipeline that downloads a package containing an exported model and Python 3.6 source code examples for productionizing models built using H2O Driverless AI.</li>
 <li>Download MOJO Scoring Pipeline - A standalone scoring pipeline that converts experiments to MOJO&#39;s, which can be scored in realtime. It is available as either Java runtime or a C++ runtime(with Python and R wrappers).</li>
 <li>Visualize Scoring Pipeline(Experimental): A visualization of the scoring pipeline is available for each completed experiment.</li>
 </ul>
-</li>
-</ol>
-<p><img alt="visualize-scoring-pipeline-experimental" src="img/94e2f01fcca25003.jpg"></p>
-<ul>
+<img alt="visualize-scoring-pipeline-experimental" src="img/94e2f01fcca25003.jpg"><ul>
 <li>Download Experiment Summary - A zip file providing textual explanations of the graphical representations that are shown in the Driverless AI UI.<ul>
 <li>Experiment logs (regular and anonymized)</li>
 <li>A summary of the experiment</li>
@@ -479,7 +466,7 @@
 </li>
 <li>Download Autoreport - This report provides insight into the training data and any detected shifts in distribution, the validation schema selected, model parameter tuning, feature evolution, and the final set of features chosen during the experiment.</li>
 </ul>
-<ol type="1">
+</li>
 <li>Iteration Data - Validation/Variable Importance - Summary of top 20 - Feature Engineered variables</li>
 <li>Experiment Graphs and Summary - This section describes the dashboard graphs that display for running and completed experiments. These graphs are interactive. Hover over a point on the graph for more details about the point.</li>
 </ol>

@@ -76,22 +76,22 @@
 <p><img alt="dataset-columns-info" src="img/9d20dba16af1273.png"></p>
 <p><em>Things to Note:</em></p>
 <p>The dataset consists of 10 columns which are as follows:</p>
-<ul>
-<li><strong>1. UserId</strong> - Unique identifier for the user</li>
-<li><strong>2. ProductId</strong> - Unique identifier for the product</li>
-<li><strong>3. Id</strong> - Row Id</li>
-<li><strong>4. Summary</strong> - Brief summary of the review</li>
-<li><strong>5. Score</strong> - Rating between 1 and 5</li>
-<li><strong>6. HelpfulnessDenominator</strong> - Number of users who indicated whether they found the review helpful or not</li>
-<li><strong>7. ProfileName</strong> - Profile name of the user<br></li>
-</ul>
+<ol type="1">
+<li><strong>UserId</strong> - Unique identifier for the user</li>
+<li><strong>ProductId</strong> - Unique identifier for the product</li>
+<li><strong>Id</strong> - Row Id</li>
+<li><strong>Summary</strong> - Brief summary of the review</li>
+<li><strong>Score</strong> - Rating between 1 and 5</li>
+<li><strong>HelpfulnessDenominator</strong> - Number of users who indicated whether they found the review helpful or not</li>
+<li><strong>ProfileName</strong> - Profile name of the user<br></li>
+</ol>
 <p>4. Continue scrolling the current page to see more columns (image is not included)</p>
-<ul>
-<li><strong>8. HelpfulnessNumerator</strong> - Number of users who found the review helpful</li>
-<li><strong>9. Time</strong> - Timestamp for the review</li>
-<li><strong>10. Description</strong> - Text of the review</li>
-<li><strong>11. Positive Review</strong> - Whether the review is Positive or Negative</li>
-</ul>
+<ol type="1">
+<li><strong>HelpfulnessNumerator</strong> - Number of users who found the review helpful</li>
+<li><strong>Time</strong> - Timestamp for the review</li>
+<li><strong>Description</strong> - Text of the review</li>
+<li><strong>Positive Review</strong> - Whether the review is Positive or Negative</li>
+</ol>
 <p>5. Return to the <strong>Datasets</strong> Page</p>
 <h2>Launch Experiment</h2>
 <p>1. On the Datasets page click on the <code>**AmazonFineFoodReviews-train-26k.csv**</code> dataset and select Predict</p>
@@ -101,21 +101,11 @@
 <p>3. Next, you will need to feed in the following information into Driverless AI :</p>
 <p><img alt="name_experiment" src="img/fb95b9cfa81ce099.png"></p>
 <ol type="1">
-<li><strong>Display Name</strong> - Give a name to your expeiment. You can choose according to your choice but it is recommended to choose a name that highlights the purpose of the experiment. Let&#39;s name our current experiment as <strong>Sentiment Analysis</strong>.</li>
-<li><strong>Target Column</strong> -  The <em>Target column</em> contains the value that we intend to predict through the experiment. Click on the <code>Select Target Column</code> tab and select <strong>Positive Review</strong> as the target column. The aim of the experiment is to try to predict whether a fiven review is positive or negative, hence the Positive Review is selected as the target column. The column has only two values i.e Positive and Negative.</li>
+<li><strong>Display Name</strong> - Give a name to your experiment. You can choose according to your choice but it is recommended to choose a name that highlights the purpose of the experiment. Let&#39;s name our current experiment as <strong>Sentiment Analysis</strong>.</li>
+<li><strong>Target Column</strong> -  The <em>Target column</em> contains the value that we intend to predict through the experiment. Click on the <code>Select Target Column</code> tab and select <strong>Positive Review</strong> as the target column. The aim of the experiment is to try to predict whether a fiven review is positive or negative, hence the Positive Review is selected as the target column. The column has only two values i.e Positive and Negative.<img alt="target_column" src="img/ca6400140c9790c6.png"></li>
+<li><strong>Dropped Columns</strong> - The <em>Dropped Columns</em> feature enable us to  drop column(s) from your dataset that you don&#39;t want to use in the experiment.For this experiment we shall only use the text columns so we shall drop all columns that are not in text format.<img alt="Dropped-Columns" src="img/993dd0d7e570c33d.png">However, please note that you can also choose to keep the non-text columns and NLP algorithms will work on that too.</li>
+<li><strong>Test Dataset</strong> -  The <em>Test dataset</em> is a dataset used to provide an unbiased evaluation of a <em>final</em> model fit on the training dataset. It is not used during training of the model and results are available at the end of the experiment. Select the <code>AmazonFineFoodReviews-test-26k.csv</code> dataset as follows:<img alt="Test_dataset" src="img/4036da3ee0ebf6b.png">The experiment screen will finally look like the image below:<img alt="final_experiment_screen" src="img/93daa76ba69eeae3.png"></li>
 </ol>
-<p><img alt="target_column" src="img/ca6400140c9790c6.png"></p>
-<ol type="1">
-<li><strong>Dropped Columns</strong> - The <em>Dropped Columns</em> feature enable us to  drop column(s) from your dataset that you don&#39;t want to use in the experiment.For this experiment we shall only use the text columns so we shall drop all columns that are not in text format.</li>
-</ol>
-<p><img alt="Dropped-Columns" src="img/993dd0d7e570c33d.png"></p>
-<p>However, please note that you can also choose to keep the non-text columns and NLP algorithms will work on that too.</p>
-<ol type="1">
-<li><strong>Test Dataset</strong> -  The <em>Test dataset</em> is a dataset used to provide an unbiased evaluation of a <em>final</em> model fit on the training dataset. It is not used during training of the model and results are available at the end of the experiment. Select the <code>AmazonFineFoodReviews-test-26k.csv</code> dataset as follows:</li>
-</ol>
-<p><img alt="Test_dataset" src="img/4036da3ee0ebf6b.png"></p>
-<p>The experiment screen will finally look like the image below:</p>
-<p><img alt="final_experiment_screen" src="img/93daa76ba69eeae3.png"></p>
 <p>In <strong>Task 2</strong>, we shall explore and update the Experiment Settings.</p>
 <h2>Acknowledgement</h2>
 <ul>
@@ -302,42 +292,39 @@
         <p>Text data can contain critical information to inform better predictions. H2O Driverless AI automatically converts text strings into features using powerful techniques like TFIDF, CNN, and GRU. With TensorFlow, Driverless AI can also process larger text blocks and build models using all available data to solve business problems like sentiment analysis, document classification and content tagging. In particular, Driverless AI implements the following recipes and models.</p>
 <p><img alt="Driverless-NLP-recipe" src="img/3f5c0c4ec9690d7f.png"></p>
 <h2>Key Capabilities of Driverless AI NLP Recipe</h2>
-<ol type="1">
+<ul>
 <li><strong>TFIDF of n-grams</strong></li>
-</ol>
+</ul>
 <p>Frequency-based features are multiplied with inverse document frequency to get TFIDF vectors.</p>
-<ol type="1">
+<ul>
 <li><strong>Frequency of n-grams</strong></li>
-</ol>
+</ul>
 <p>Frequency-based features represent the count of each word in the given text in the form of vectors. Frequency-based features are created for different n-gram values[2]. The dimensions of the output vectors are quite high. Words/n-grams that occur more number of times will get higher weightage than the ones that occur less frequently.</p>
-<ol type="1">
+<ul>
 <li><strong>Truncated SVD Features</strong></li>
-</ol>
+</ul>
 <p>Both TFIDF and Frequency of n-grams result in a higher dimension. To tackle this, we use Truncated SVD to decompose the vector arrays in lower dimensions.</p>
-<ol type="1">
+<ul>
 <li><strong>Linear models on TF/IDF vectors</strong></li>
-</ol>
+</ul>
 <p>In our NLP recipe, we also have linear models on top of n-gram TFIDF / frequency vectors. This capture linear dependencies that are simple yet significant in achieving the best accuracies.</p>
-<ol type="1">
-<li><strong>Word Embeddings</strong></li>
-</ol>
-<p>Driverless AI NLP recipe makes use of the power of word embeddings where words or phrases from the vocabulary are mapped to vectors of real numbers.</p>
-<ol type="1">
-<li><strong>Bi-direction GRU models on word embeddings</strong></li>
-</ol>
-<p>A Bi-directional GRU model is like putting two independent RNN models in one. Taking note of accuracy as well as speed in our experiments, we have decided to take advantage of high speed and almost similar accuracies of GRU architecture compared to its counterpart LSTM.</p>
-<ol type="1">
-<li><strong>Convolution neural network models on:</strong></li>
-</ol>
 <ul>
 <li><strong>Word Embeddings</strong></li>
 </ul>
-<p>In Driverless AI, we pass word embeddings as input to CNN models, get cross-validated predictions from it and use them as a new set of features.</p>
+<p>Driverless AI NLP recipe makes use of the power of word embeddings where words or phrases from the vocabulary are mapped to vectors of real numbers.</p>
 <ul>
+<li><strong>Bi-direction GRU models on word embeddings</strong></li>
+</ul>
+<p>A Bi-directional GRU model is like putting two independent RNN models in one. Taking note of accuracy as well as speed in our experiments, we have decided to take advantage of high speed and almost similar accuracies of GRU architecture compared to its counterpart LSTM.</p>
+<ul>
+<li><strong>Convolution neural network models on:</strong><ul>
+<li><strong>Word Embeddings</strong></li>
+</ul>
+In Driverless AI, we pass word embeddings as input to CNN models, get cross-validated predictions from it and use them as a new set of features.<ul>
 <li><strong>Character Embeddings</strong></li>
 </ul>
-<p>Natural language processing is complex as the language is hard to understand given small data and different languages.Targeting languages like Japanese, Chinese where characters play a major role, we have character level embeddings in our recipe as well.</p>
-<p>In character embeddings, each character gets represented in the form of vectors rather than words. Driverless AI uses character level embeddings as input to CNN models and later extract class probabilities to feed as features for downstream models. This gives the ability to work in languages other than English also. In case of languages like Japanese, Chinese etc where there is no concept of words, character embeddings will be useful.</p>
+Natural language processing is complex as the language is hard to understand given small data and different languages.Targeting languages like Japanese, Chinese where characters play a major role, we have character level embeddings in our recipe as well.In character embeddings, each character gets represented in the form of vectors rather than words. Driverless AI uses character level embeddings as input to CNN models and later extract class probabilities to feed as features for downstream models. This gives the ability to work in languages other than English also. In case of languages like Japanese, Chinese etc where there is no concept of words, character embeddings will be useful.</li>
+</ul>
 <h2>Deeper Dive and Resources</h2>
 <ul>
 <li><a href="https://www.youtube.com/watch?v=4FkXd8ICCa4" target="_blank">NLP with Driverless AI - SRK - H2O AI World NYC 2019</a></li>
@@ -379,31 +366,23 @@
 <li><strong>Download Logs</strong></li>
 </ul>
 </li>
-<li>Iteration Data - Validation</li>
-</ol>
-<ul>
-<li>The winning model&#39;s validation score and the algorithm used are as follows:<ul>
+<li>Iteration Data - Validation<ul>
+<li>The winning model&#39;s validation score and the algorithm used are as follows:<br><br><ul>
 <li>Validation Score - .2353</li>
 <li>Model Type: XGBoostGBM</li>
+</ul>
+</li>
 </ul>
 <ol type="1">
 <li>Variable Importance: Summary of top 20 - Feature Engineered variables</li>
 </ol>
-</li>
-</ul>
-<p>Driverless AI performs feature Engineering on the dataset to determine the optimal representation of the data. Various stages of the features appear throughout the iteration of the data. These can be viewed by hovering over points on the Iteration Data - Validation Graph and seeing the updates on the  <strong>Variable Importance</strong> section.</p>
-<p><img alt="variable-importance" src="img/a1cc482e5a86214b.png"></p>
-<p>Look at some of the variables in Variable of Importance list. These are the new, high-value features for our training dataset.</p>
-<p>These transformations created with the following transformers:</p>
-<ul>
+Driverless AI performs feature Engineering on the dataset to determine the optimal representation of the data. Various stages of the features appear throughout the iteration of the data. These can be viewed by hovering over points on the Iteration Data - Validation Graph and seeing the updates on the  <strong>Variable Importance</strong> section.<img alt="variable-importance" src="img/a1cc482e5a86214b.png">Look at some of the variables in Variable of Importance list. These are the new, high-value features for our training dataset.These transformations created with the following transformers:<ul>
 <li><strong>TextBiGRUTransformer</strong> : Trains a bi-directional GRU TensorFlow model on word embeddings created from a text feature to predict the response column</li>
 <li><strong>TextCNNTransformer</strong> : Trains a CNN TensorFlow model on word embeddings created from a text feature to predict the response column.</li>
 <li><strong>TextTransformer :</strong> Tokenizes a text column and creates a TF IDF matrix or count matrix</li>
 <li><strong>WeightOfEvidenceTransformer</strong>  : calculates Weight of Evidence for each value in categorical column(s). The Weight of Evidence is used as a new feature.</li>
 </ul>
-<p><img alt="woe" src="img/ba961d7376276380.png"></p>
-<p>The complete list of features used in the final model is available in the Experiment Summary artifacts. The Experiment Summary also provides a list of the original features and their estimated feature importance.</p>
-<ol type="1">
+<img alt="woe" src="img/ba961d7376276380.png">The complete list of features used in the final model is available in the Experiment Summary artifacts. The Experiment Summary also provides a list of the original features and their estimated feature importance.</li>
 <li>Summary</li>
 </ol>
 <p>This option gives a brief summary of the entire experiment including :</p>
@@ -450,7 +429,8 @@
 <p><img alt="Github-Repo-Recipes" src="img/c5fdd61b7654ca69.png"></p>
 <p>6. Once the recipe is uploaded, the following screen will appear. Driverless AI automatically performs basic acceptance tests for all custom recipes unless disabled.</p>
 <p><img alt="Acceptance-tests" src="img/976375f4ac333ded.png"></p>
-<p>7. Click on Recipe and select or deselect specific transformers, models and scorers.<img alt="Selecting-Specific-Transformers" src="img/29ef191a343d4bac.png"></p>
+<p>7. Click on Recipe and select or deselect specific transformers, models and scorers.</p>
+<p><img alt="Selecting-Specific-Transformers" src="img/29ef191a343d4bac.png"></p>
 <p><em>Things to Note</em></p>
 <ol type="1">
 <li>Select specific Transformers</li>
