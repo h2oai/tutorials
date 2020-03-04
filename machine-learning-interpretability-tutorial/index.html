@@ -79,15 +79,13 @@
 <p>The data set comes from the <a href="https://archive.ics.uci.edu/ml/datasets/default+of+credit+card+clients#" target="_blank">UCI Machine Learning Repository Irvine, CA: University of California, School of Information and Computer Science</a></p>
 <p>This dataset has a total 25 Features(columns) and 30,000 Clients(rows).</p>
 <h2>Download Dataset</h2>
-<p>1. Go to the <a href="https://archive.ics.uci.edu/ml/machine-learning-databases/00350/" target="_blank">UCI Machine Learning Databases</a> and select the .xls file named <code>default of credit card clients.xls</code>. Clicking on the .xls file will download the Default Payments of Credit Card Clients in Taiwan from 2005 to your local drive.</p>
-<p>2. Once in your local drive, open the <code>default of credit card clients.xls</code> file and delete the first row. This row has column names X1, X2, X3...X22, X23, Y that are nonessential to the Driverless AI experiment.</p>
-<p>3. After deleting the first row, save the file into your local drive with the following name and extension: <code>UCI_Credit_Card.csv</code></p>
+<p>1. Go to our S3 link <a href="https://s3.amazonaws.com/data.h2o.ai/DAI-Tutorials/TestDrive-Datasets/UCI_Credit_Card.csv" target="_blank">UCI_Credit_Card.csv</a> and download the file to your local drive.</p>
 <h2>Launch Experiment</h2>
 <p>1. Load the UCI_Credit_Card.csv to Driverless AI by clicking <strong>Add Dataset (or Drag and Drop)</strong> on the <strong>Datasets overview</strong> page.</p>
 <p>2. Click on the <code>UCI_Credit_Card.csv</code> file then select <strong>Details</strong>.</p>
-<p><img alt="dataset-details-selection" src="img/71592ce4264bae1a.jpg"></p>
+<p><img alt="dataset-details-selection" src="img/e5be666c35cf958a.jpg"></p>
 <p>Let&#39;s have a look at the columns:</p>
-<p><img alt="dataset-details-page" src="img/3c3ebaca67c09fdf.jpg"></p>
+<p><img alt="dataset-details-page" src="img/175832ff8247331.jpg"></p>
 <p><em>Things to Note:</em></p>
 <ol type="1">
 <li><strong>ID</strong> - Row identifier (which will not be used for this experiment)</li>
@@ -107,14 +105,14 @@
 <p>4. Return to the <strong>Datasets</strong> page.</p>
 <p>5. Click on the <strong>UCI_Credit_Card.csv</strong> file then select <strong>Predict</strong>.</p>
 <p>6. Select <strong>Not Now</strong> on the <strong>First time Driverless AI, Click Yes to get a tour!</strong>. A similar image should appear:</p>
-<p><img alt="experiment-page" src="img/6f91a708daeb0dc1.jpg"></p>
+<p><img alt="experiment-page" src="img/fb406055b7c59a3f.jpg"></p>
 <p>Name your experiment <code>UCI_CC Classification Tutorial</code></p>
 <p>7. Select <strong>Target Column</strong>, then Select <strong>default.payment.next.month</strong> as the target.</p>
-<p><img alt="select-default-payment-next-month-column" src="img/9300c6ade3fe97c4.jpg"></p>
+<p><img alt="select-default-payment-next-month-column" src="img/cf667df90b4eba99.jpg"></p>
 <p>8. <strong>Launch Experiment</strong> using the default settings suggested by Driverless AI.</p>
-<p><img alt="run-experiment-default-setup" src="img/41bb47ab0497deeb.jpg"></p>
+<p><img alt="run-experiment-default-setup" src="img/d98072de202c628.jpg"></p>
 <p>9. While on the <strong>Experiment</strong> page:</p>
-<p><img alt="experiment-page-brief-explanation" src="img/f72efbf1954656a6.jpg"></p>
+<p><img alt="experiment-page-brief-explanation" src="img/f662a57fc86a7658.jpg"></p>
 <p><em>Things to Note:</em></p>
 <ol type="1">
 <li><strong>Interpretability</strong>  - The interpretability knob is adjustable. The higher the interpretability, the simpler the features the main modeling routine will extract from the dataset.<br>If the interpretability is high enough then a monotonically constrained model will be generated.</li>
@@ -124,11 +122,12 @@
 <li><strong>Variable Importance</strong> - Engineered features</li>
 </ol>
 <p>10. Select <strong>Interpret this Model</strong></p>
-<p><img alt="select-interpret-this-model" src="img/734f526dc20d1f24.jpg"></p>
+<p><img alt="select-interpret-this-model" src="img/95a57e5b71cb29bf.jpg"></p>
 <p>While the model is being interpreted an image similar to the one below will appear. The goal is to explain the model that was just trained, which will take a few minutes.</p>
-<p><img alt="mli-interpret-model" src="img/6dc277065bf75513.jpg"></p>
+<p><img alt="mli-interpret-model" src="img/e9b8e495f4a9ceb1.jpg"></p>
 <p>11. Once the <strong>MLI Experiment is Finished</strong> page comes up, select <strong>Yes</strong>, an image similar to the one below will appear:</p>
-<p><img alt="mli-regression-and-classification-explanations1" src="img/cf6b911e528f87ef.jpg"><img alt="mli-regression-and-classification-explanations2" src="img/25e53d2cfefb14d.jpg"></p>
+<p><img alt="mli-regression-and-classification-explanations-1" src="img/a1d0aa538f07842d.jpg"></p>
+<p><img alt="mli-regression-and-classification-explanations-2" src="img/b18f43527298b709.jpg"></p>
 <p><em>Things to Note:</em></p>
 <ol type="1">
 <li>Summary of some basic facts about the model</li>
@@ -173,7 +172,7 @@
 <ul>
 <li><a href="http://docs.h2o.ai/driverless-ai/latest-stable/docs/booklets/MLIBooklet.pdf" target="_blank">Hall, P., Gill, N., Kurka, M., Phan, W. (Jan 2019). Machine Learning Interpretability with H2O Driverless AI.</a></li>
 <li><a href="https://arxiv.org/abs/1810.02909" target="_blank">On the Art and Science of Machine Learning Explanations</a></li>
-<li><a href="https://www.oreilly.com/library/view/an-introduction-to/9781492033158/" target="_blank">An Introduction to Machine Learning Interpretability</a></li>
+<li><a href="https://www.h2o.ai/oreilly-mli-booklet-2019/" target="_blank">An Introduction to Machine Learning Interpretability Second Edition</a> (2019)</li>
 <li><a href="https://www.oreilly.com/ideas/testing-machine-learning-interpretability-techniques" target="_blank">Testing machine learning explanation techniques</a></li>
 <li><a href="https://github.com/jphall663/awesome-machine-learning-interpretability" target="_blank">Awesome Machine Learning Interpretability</a></li>
 <li><a href="http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/references.html" target="_blank">Concept References</a><br></li>
@@ -196,17 +195,17 @@
 </li>
 </ul>
 <h2>Shapley and Feature Importance Plots</h2>
-<p>1. On the right-upper corner of the MLI page, select <strong>Driverless AI Model</strong>, then <strong>Shapley</strong>.</p>
-<p><img alt="global-shapley-feature-importance" src="img/68c18923874f6bac.jpg"></p>
+<p>1. On the right-upper corner of the MLI page, select <strong>Driveless AI Model</strong>, then <strong>Shapley</strong>.</p>
+<p><img alt="global-shapley-feature-importance" src="img/809b5e785daa63a5.jpg"></p>
 <p>The plot above is a sample of a Shapley plot. Shapley is an &#34;old&#34;, very advanced tool, now being applied to machine learning. This plot shows the global  importance value of the derived features. Notice the feature importance values are signed (scroll down to see the rest of the Shapley plot). The sign determines in which direction the values impact the model predictions on average. Shapley plots help by providing accurate and consistent variable importance even if data changes slightly.</p>
 <p>Viewing the Global Shapley values plot is good place to start  because it provides a global view of feature importance and we can see which features are driving the model from an overall perspective.</p>
 <p>Derived features can be difficult to understand. For that reason, it also helps to look at this complex system from the space of the original inputs, surrogate models allows to us to do this.</p>
 <p>2. Click on <strong>Surrogate Models</strong>, <strong>Random Forest</strong>, then <strong>Feature Importance</strong>.</p>
-<p><img alt="feature-importance-plot" src="img/f693e827c8ec65c7.jpg"></p>
+<p><img alt="feature-importance-plot" src="img/a4ef591b475f3b31.jpg"></p>
 <p>The <strong>Feature Importance</strong> plot ranks the original features. These features are the original drivers of the model in the original feature space. These values were calculated by building  a <strong>Random Forest</strong> between the original features and the predictions of the complex driverless AI model that was just trained.</p>
-<p>3. View the <strong>Surrogate Model Summary</strong>, <strong>Random Forest</strong> summary:</p>
-<p><img alt="summary-random-forest" src="img/e74f5379bd164227.jpg"></p>
-<p>This single <strong>Random Forest</strong> model of a complex Driverless AI model is very helpful because we can see that this is a trustworthy model between the original inputs to the system and the predictions of the system. Note the low mean squared error(0.0319), high R2 (97%).</p>
+<p>3. Go back to <strong>Summary</strong>. Scroll down the page until you can view the <strong>Surrogate Model Summary</strong> &gt; <strong>Random Forest</strong> summary:</p>
+<p><img alt="summary-random-forest" src="img/65312a2196c69c22.jpg"></p>
+<p>This single <strong>Random Forest</strong> model of a complex Driverless AI model is very helpful because we can see that this is a trustworthy model between the original inputs to the system and the predictions of the system. Note the low mean squared error(0.0459), high R2 (95%).</p>
 <p>4. Go back to the Shapley plot and find the feature importance of LIMIT_BAL. How important was LIMIT_BAL in the global feature importance space? Was LIMIT_BAL a main driver in this space?</p>
 <p>5. Look for LIMIT_BAL in the <strong>Feature Importance</strong> under <strong>Surrogate Models</strong>. How important was LIMIT_BAL in the original feature importance space? Was LIMIT_BAL a main driver in this space?</p>
 <h2>Deeper Dive and Resources</h2>
@@ -224,23 +223,23 @@
 <h2>Partial Dependence Plot</h2>
 <p>Through the <strong>Shapley Values</strong> and <strong>Feature Importance</strong>, we got a global perspective of the model. Now we will explore the global behavior of the features with respect to the model. This is done through the Partial Dependency Plot</p>
 <p>1. Select <strong>Surrogate Models</strong>, <strong>Random Forest</strong> then <strong>Partial Dependecy Plot</strong></p>
-<p><img alt="partial-dependecy-plot" src="img/b7620f140a8be34d.jpg"></p>
+<p><img alt="partial-dependency-plot" src="img/76c7f1ea6f118fe4.jpg"></p>
 <p><em>Things to Note:</em></p>
 <ol type="1">
 <li>These values of PAY_0  represent the average predictions of all persons that paid on time or did not use their credit card</li>
 <li>This value represents the average prediction of persons who were late one month for PAY_0</li>
-<li>PAY_0 =2 has an average default probability of 0.603, then the default probability slowly drops all the way to month 8. Does this make sense to you?</li>
+<li>PAY_0 =2 has an average default probability of 0.573, then the default probability slowly and slightly decreases all the way to month 8.</li>
 </ol>
 <p>The results indicate that overall, in the entire dataset, the worst thing for a person to be in regarding defaulting with respect to PAY_0 is to be two months late. This behavior insight needs to be judged by the user who can determine whether this model should be trusted.</p>
-<p>2. A good question to ask here is, is it worse to be two months late than being eight months late on your credit card bill?</p>
+<p>2. A good question to ask here is, is it worse to be two months late than being eight months late on your credit card bill? We might look to see a spike at month 2, then slight increases with each following month.</p>
 <p>3. Explore the partial dependence for <strong>Pay_2</strong> by changing the <strong>PDP Variable</strong> at the upper-left side of the <strong>Partial Dependence Plot</strong> to <strong>Pay_2</strong></p>
-<p><img alt="partial-dependence-pdp-variable" src="img/22f9f81c4e0d6a93.jpg"></p>
+<p><img alt="partial-dependence-pdp-variable" src="img/c5072bb1593d919c.jpg"></p>
 <p>4.  What is the average predicted default probability for PAY_2 = 2?</p>
-<p>5. Explore the partial dependence for <strong>LIMIT_BAL</strong> by changing the <strong>PDP Variable</strong> at the upper-left side of the <strong>Partial Dependence Plot</strong> to <strong>LIMIT_BAL</strong>, then hovering over the yellow circles.</p>
-<p><img alt="partial-dependence-pdp-variable-lmt-bal" src="img/f280eb23d944679c.jpg"></p>
+<p>5. Explore the partial dependence for <strong>PAY_AMT1</strong> by changing the <strong>PDP Variable</strong> at the upper-left side of the <strong>Partial Dependence Plot</strong> to <strong>PAY_AMT1</strong>, then hovering over the yellow circles.</p>
+<p><img alt="partial-dependence-pdp-variable-pay-amt" src="img/7ca9cc17522b7275.jpg"></p>
 <p>The grey area is the standard deviation of the partial dependence. The wider the standard deviation, the less trustworthy the average behavior (yellow line) is. In this case, the standard deviation follows the average behavior and is narrow enough, therefore trustworthy.</p>
-<p>6. What is the average default probability for the lowest credit limit? How about for the highest credit limit?</p>
-<p>7. What seems to be the trend regarding credit limit and a person defaulting on their payments?</p>
+<p>6. What is the average default probability for the lowest pay amount? How about for the highest pay amount?</p>
+<p>7. What seems to be the trend regarding pay amount and a person defaulting on their payments?</p>
 <h2>Deeper Dive and Resources</h2>
 <ul>
 <li><a href="http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/interpreting.html#partial-dependence-and-individual-conditional-expectation-ice" target="_blank">Partial Dependence and Individual Conditional Expectation (ICE)</a></li>
@@ -260,7 +259,7 @@
 <h2>Decision Tree</h2>
 <p>Now we are going to gain some insights into interactions. There are two ways in Driverless AI to do this, one of them is the <strong>Decision Tree</strong>. A <strong>Decision Tree</strong> is another surrogate model.</p>
 <p>1. Select <strong>Surrogate Models</strong>, then <strong>Decision Tree</strong></p>
-<p><img alt="decision-tree" src="img/a8511cf21c6b69cc.jpg"></p>
+<p><img alt="decision-tree" src="img/5ac39afa014ca395.jpg"></p>
 <p><em>Things to Note:</em></p>
 <ol type="1">
 <li>The RMSE value is low and the R2 value is fairly high</li>
@@ -270,7 +269,7 @@
 <p>Based on the low RMSE and the fairly high R2, it can be concluded that this is a somewhat trustworthy surrogate model. This single decision tree, provides an approximate overall flow chart of the complex model&#39;s behavior.</p>
 <p>2. What are the most important variables in the <strong>Decision Tree</strong>? How do those variables compare to the previous plots we have analyzed?</p>
 <p>A potential interaction happens when a variable is below another variable in the decision tree. In the image below, an potential interaction is observed between variables PAY_0 and PAY_2.</p>
-<p><img alt="decision-tree-variable-interaction" src="img/341fb70175cf0935.jpg"></p>
+<p><img alt="decision-tree-variable-interaction" src="img/81ec38f63dd7accd.jpg"></p>
 <p><em>Things to Note:</em></p>
 <ol type="1">
 <li>Potential Interaction between PAY_0 and PAY_2. This observation can be strengthened by looking at the Shapley Plot and locating any PAY_0 and PAY_2 interactions.</li>
@@ -279,15 +278,15 @@
 <p>It can be observed from the <strong>Decision Tree</strong> that most people tend to pay their bills on time based on the thickness of the path highlighted with green arrows. The people in the highlighted path, are those with the lowest default probability. This low default probability path on the <strong>Decision Tree</strong> is an approximation to how the complex model would place people in a low default probability &#34;bucket&#34;.</p>
 <p>Those who landed in that low default probability bucket had to have made their two most recent payments and have a  most recent bill payment of greater than or equal to 2168.500 Taiwanese dollars.</p>
 <p>The path to a low default probability can be confirmed by looking at the <strong>Partial Dependency</strong> plots (image below) for both PAY_0 and PAY_2. Both plots confirm the low default probability before month two. Below is the <strong>Partial Dependency</strong> PAY_0 plot with the low default probability values highlighted.</p>
-<p><img alt="partial-dependency-pay-0" src="img/7b3c74755ced3322.jpg"></p>
+<p><img alt="partial-dependency-pay-0" src="img/bc5d67686a87a770.jpg"></p>
 <p>It is important to note that what we are confirming is not whether the model&#39;s results are &#34;correct&#34; rather how is the model behaving. The model needs to be analyzed, and decisions need to be made about whether or not the model&#39;s behavior is correct.</p>
-<p><img alt="decision-tree-low-and-high-default-paths" src="img/bbc168a068048920.jpg"></p>
+<p><img alt="decision-tree-low-and-high-default-paths" src="img/e635785c92720ade.jpg"></p>
 <p><em>Things to Note:</em></p>
 <ol type="1">
 <li><strong>Decision Tree</strong> path for low default probability</li>
 <li><strong>Decision Tree</strong> path for high default probability.</li>
 </ol>
-<p>Based on the <strong>Decision Tree</strong>, to end up at the high probability of default bucket, a person would need to miss the first payment (PAY_0), be late on PAY_6 and make a low payment for PAY_AMT3. A history of poor repayment behavior from 5 months ago would more than likely place a person down the path of defaulting on their total bill payment. Just like the path with low default probability, the behavior of the variables for the high default probability need to be analyzed and ensure that their interactions and conclusions make sense.</p>
+<p>Based on the <strong>Decision Tree</strong>, to end up at the high probability of default bucket, a person would need to miss the first payment (PAY_0), be late on PAY_5 and be late on PAY_2. A history of poor repayment behavior from 6 months ago would more than likely place a person down the path of defaulting on their total bill payment. Just like the path with low default probability, the behavior of the variables for the high default probability need to be analyzed and ensure that their interactions and conclusions make sense.</p>
 <h2>Deeper Dive and Resources</h2>
 <ul>
 <li><a href="http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/interpreting.html#decision-tree" target="_blank">Decision Tree</a></li>
@@ -308,15 +307,15 @@
 <h2>K-LIME Plot</h2>
 <p>The recent tasks have focused on the model&#39;s global behavior for the entire dataset, but how does the model behave for a single person? A great but complex tool for this is K-Lime.</p>
 <p>1. Under <strong>Surrogate Models</strong>, select <strong>K-LIME</strong>.</p>
-<p><img alt="k-lime-plot" src="img/80a37e6e2c37a8e7.jpg"></p>
+<p><img alt="k-lime-plot" src="img/3db5d656c44b2aa1.jpg"></p>
 <p>2. On the green highlighted area of the K-LIME Plot click on <strong>Model Prediction</strong>, <strong>LIME Model Prediction</strong> then <strong>Actual Target</strong> . The K-LIME plot should look similar to the image below:</p>
-<p><img alt="empty-k-lime-plot" src="img/f8cc3961e008cca5.jpg"></p>
+<p><img alt="empty-k-lime-plot" src="img/b2aacb7bb0bd760f.jpg"></p>
 <p>3. Click on <strong>Model Prediction</strong> again, this time the plot will look similar to the one below:</p>
-<p><img alt="k-lime-model-prediction" src="img/f84156e76f762313.jpg"></p>
+<p><img alt="k-lime-model-prediction" src="img/3cb25b6a96aa14d0.jpg"></p>
 <p><em>Things to note</em>:</p>
 <p>This plot is the predictions of the Driverless AI model from lowest to highest.<br>The x-axis is the index of the rows that causes that ranking to occur from lowest to highest.</p>
 <p>4. Add <strong>Actual Target</strong> by clicking on it, the plot should look similar to the one below:</p>
-<p><img alt="k-lime-actual-target" src="img/a1e76e28c740ac1.jpg"></p>
+<p><img alt="k-lime-actual-target" src="img/c17f2d32eba25aac.jpg"></p>
 <p><em>Things to Note:</em></p>
 <ol type="1">
 <li>People who did not pay their bills on time</li>
@@ -324,25 +323,103 @@
 </ol>
 <p>Adding the <strong>Actual Target</strong> to the plot allows us to check if the model is not entirely wrong. From the plot,  the density of  line (2) near the low ranked predictions show that many people made their payments on time while those in line (1) had missed payments since the line is scattered. Towards the high ranked predictions, the density of line (1) shows the high likelihood of missing payments while the sparseness of line (2) shows those who have stopped making payments. These observations are a good sanity check.</p>
 <p>5. Now, click on <strong>LIME Model Prediction</strong>.</p>
-<p><img alt="k-lime-lime-model-prediction" src="img/5e848edd91d240e1.jpg"></p>
+<p><img alt="k-lime-lime-model-prediction" src="img/3973ed0e4b1cb996.jpg"></p>
 <p><em>Things to Note:</em></p>
 <ol type="1">
-<li>The high value of R2=91% and low RMSE=0.0581 value show that this is a highly accurate linear model. In other words this surrogate model is good enough to proceed, and explains about 90% of the variance in the Driverless AI model predictions.</li>
+<li>The high value of R2=87% and low RMSE=0.0711 value show that this is a highly accurate linear model. In other words this surrogate model is good enough to proceed, and explains about 90% of the variance in the Driverless AI model predictions.</li>
 </ol>
 <p>This single linear model trained on the original inputs of the system to predict the predictions of the Driverless AI model shows that the Driverless AI model predictions are highly linear. The plot above is an implementation of LIME or Local Interpretable Model Agnostic Explanations which often uses linear surrogate models to help reason about the predictions of a complex model.</p>
+<p>6. Go to Task 7.</p>
+<p><strong>K-LIME Advance Features</strong></p>
+<p>7. On the K-LIME plot, change the Cluster to Cluster 13.</p>
+<p>8. Select another high probability default person from this K-LIME cluster by clicking on one of the white points on the top-right section of the plot</p>
+<p><img alt="k-lime-cluster-13" src="img/aaf59cca504270d8.jpg"></p>
+<ol type="1">
+<li>Change cluster to cluster 3 and note the R2 value is still very high.</li>
+<li>Pick a point on the top-right section of the plot.</li>
+<li>Examine Reason Codes.</li>
+</ol>
+<p>The local model predictions (white points) can be used to reason through the Driverless AI model (yellow) in some local region.</p>
+<p>9. Select <strong>Explanations</strong> on the <strong>K-LIME</strong> plot</p>
+<p><img alt="reason-codes-for-row-233-1" src="img/3954c1f53d71829e.jpg"></p>
+<p><img alt="reason-codes-for-row-233-2" src="img/15f5f4e64b695f74.jpg"></p>
+<p><em>Things to Note:</em></p>
+<ol type="1">
+<li>The reason codes shows that the Driverless model prediction value gave this person .82 percent probability of defaulting. LIME prediction value gave them a .77 percent probability of defaulting and in this case we can say that LIME prediction accuracy is 93.9% accurate. Based on this observation, it can concluded that the local reason codes are fairly trustworthy. If <strong>Lime Prediction Accuracy</strong> drops below 75%, then we can say that the numbers are probably untrustworthy, and the Shapley plot or LOCO plot should be revisited because the Shapley values are always accurate, and LOCO accounts for nonlinearity and interactions.</li>
+<li>PAY_0 = 2 months late is the top positive local attribute for this person and contributes .35 probability points to their prediction according to this linear model. 0.35 is the local linear model coefficient for level 3 of the categorical variable PAY_0.</li>
+<li>Cluster 13 reason codes show the average linear trends in the data region around this person.</li>
+<li>Global reason codes show the average linear trends in the data set as a whole.</li>
+</ol>
 <h2>Deeper Dive and Resources</h2>
 <ul>
 <li><a href="http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/interpreting.html#k-lime-and-lime-sup" target="_blank">K-LIME and LIME-SUP</a></li>
 <li><a href="http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/viewing-explanations.html" target="_blank">Viewing Explanations</a></li>
 </ul>
+<p>## Task 7: Local Shapley and LOCO</p>
+<h2>Local Shapley Concepts</h2>
+<p>Shapley explanations are a technique with credible theoretical support that presents globally consistent global and locally accurate variable contributions. Local numeric Shapley values are calculated by repeatedly tracing single rows of data through a trained tree ensemble and aggregating the contribution of each input variable as the row of data moves through the trained ensemble.</p>
+<p>Shapley values sum to the prediction of the Driverless AI model before applying the link function or any regression transforms. (Global Shapley values are the average of the local Shapley values over every row of a data set.)</p>
+<h2>LOCO Concepts</h2>
+<p>Local feature importance describes how the combination of the learned model rules or parameters and an individual row&#39;s attributes affect a model&#39;s prediction for that row while taking nonlinearity and interactions into effect. Local feature importance values reported here are based on a variant of the leave-one-covariate-out (LOCO) method (Lei et al, 2017).</p>
+<p>In the LOCO-variant method, each local feature importance is found by re-scoring the trained Driverless AI model for each feature in the row of interest, while removing the contribution to the model prediction of splitting rules that contain that feature throughout the ensemble. The original prediction is then subtracted from this modified prediction to find the raw, signed importance for the feature. All local feature importance values for the row can be scaled between 0 and 1 for direct comparison with global feature importance values.</p>
+<h2>Local Shapley Plot</h2>
+<p>Local Shapley Plot is able to generate variable contribution values for every single row that the model predicts on. This means that we can generate for every person in our dataset the exact numeric contribution of each of the variables for each prediction of the model. For the <strong>Local Shapley</strong> plots, the yellow bars stay the same since they are the global variable contribution, however the grey bars will change when a different row or person is selected from the dataset using the row selection dialog box or by clicking on an individual in the K-LIME plot.</p>
+<p>The grey bars or local numeric contributions can be used to generated reason codes. The reason codes should be  suitable for regulated industries where modeling decisions need to be justified. For our dataset, we can select a person with a high default probability, select Shapley Local plot and pick out the largest grey bars as the biggest contributors for the decision of denying a future loan.</p>
+<p>1. Select a high probability default person on the K-LIME plot by clicking on one of the white points in the top-right corner of the plot</p>
+<p>2. Then under the <strong>Driveless AI Model</strong> select <strong>Shapley</strong></p>
+<p><img alt="local-shapley-value-plot" src="img/6ace2cd93d7053cd.jpg"></p>
+<p><strong>Note:</strong> The Shapley plot will depend on K-LIME point you selected.</p>
+<p><em>Things to Note:</em></p>
+<ol type="1">
+<li>Row number being observed</li>
+<li>Global Shapley value</li>
+<li>A sample of a Shapley Local  numeric contribution of a variable for the high probability person in row 11427</li>
+</ol>
+<p>3. Pick another high probability person on the <strong>K-LIME</strong> plot and return to the <strong>Shapley</strong> plot and determine what local Shapley values have influenced the person you selected from defaulting (look for the largest grey bars)?</p>
+<p>4. How do those Shapley local values compare to their perspective Shapley Global values? Are the local Shapley values leaning towards defaulting even though the Shapley global values are leaning towards not defaulting? How do the local Shapley values compare to the local K-LIME values?</p>
+<p>5. Under <strong>Surrogate Models</strong> select <strong>Decision Tree</strong></p>
+<p><img alt="decision-tree-local-value" src="img/89c66484b0d6a13d.jpg"></p>
+<p>Based on the <strong>Decision Tree</strong> above, for the high probability person in row 11427, the grey path is consistent with the longest yellow bars in the Shapley Local plot.</p>
+<p>6. Is the <strong>Decision Tree</strong> path you selected consistent with the Shapley Local values you noted for question 3?</p>
+<h2>Deeper Dive and Resources</h2>
+<ul>
+<li><a href="http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/interpreting.html#loco" target="_blank">Driverless AI LOCO</a></li>
+</ul>
 
 
       </google-codelab-step>
     
-      <google-codelab-step label="Task 7: Putting It All Together: Dashboard View" duration="0">
+      <google-codelab-step label="Task 8: Individual Conditional Expectation" duration="0">
+        <h2>The ICE Technique</h2>
+<p>Individual conditional expectation (ICE) plots, a newer and less well-known adaptation of partial dependence plots, can be used to create more localized explanations for a single individual using the same basic ideas as partial dependence plots. ICE Plots were described by Goldstein et al (2015). ICE values are simply disaggregated partial dependence, but ICE is also a type of nonlinear sensitivity analysis in which the model predictions for a single row are measured while a variable of interest is varied over its domain. ICE plots enable a user to determine whether the model&#39;s treatment of an individual row of data is outside one standard deviation from the average model behavior, whether the treatment of a specific row is valid in comparison to average model behavior, known standards, domain knowledge, and reasonable expectations, and how a model will behave in hypothetical situations where one variable in a selected row is varied across its domain.</p>
+<p>ICE is simply the prediction of the model for the person in question, in our case row 11427. The data for this row was fixed except for PAY_0 then it was cycled through different pay values. The plot above is the result of this cycling. If the ICE values (grey dots) diverge from the partial dependence (yellow dots). In other words, if ICE values are going up and partial dependence going down. This behavior can be indicative of an interaction. The reason for this is that the individual behavior (grey dots) is different since it is diverging from the average behavior.</p>
+<h2>ICE Plots</h2>
+<p>1. Select <strong>Dashboard</strong></p>
+<p><img alt="dashboard" src="img/71245b56429fb92e.jpg"></p>
+<p><em>Things to Note:</em></p>
+<ol type="1">
+<li>ICE (grey dots)</li>
+<li>Partial Dependence (yellow dots)</li>
+<li>LOCO feature Importance for the person in row 11427 (grey bars) in relation to global feature importance</li>
+<li>Decision Tree Path for the person in row 11427</li>
+</ol>
+<p>We can observe divergence on the ICE plot and confirm possible interactions with the surrogate decision tree (the grey path). There seems to be interactions between PAY_0, PAY_3 and PAY_5 when PAY_0 = 3 - 4.</p>
+<p>2. <strong>Return to Task 6 question 7</strong> to conclude K-LIME.</p>
+<h2>Deeper Dive and Resources</h2>
+<ul>
+<li><a href="https://arxiv.org/abs/1810.02909" target="_blank">On the Art and Science of Machine Learning Explanations</a></li>
+<li><a href="http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/interpreting.html#the-ice-technique" target="_blank">H2O ICE Technique</a></li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Task 9: Putting It All Together: Dashboard View" duration="0">
         <p>Using the techniques together to find interactions and other interesting model behavior. What can you find using the Dashboard view?</p>
 <h2>Deeper Dive and Resources</h2>
 <ul>
+<li><a href="https://www.h2o.ai/blog/interview-with-patrick-hall-machine-learning-h2o-ai-machine-learning-interpretability/" target="_blank">Machine Learning Interview with Patrick Hall</a>(Feb 2020)</li>
+<li><a href="https://www.h2o.ai/blog/interpretability-the-missing-link-between-machine-learning-healthcare-and-the-fda/" target="_blank">Interpretability: The misssing Link between Machine Learning, and the FDA</a>(Aug 2018)</li>
 <li><a href="https://www.darpa.mil/program/explainable-artificial-intelligence" target="_blank">Explainable Artificial Intelligence XAI</a></li>
 <li><a href="https://docs.google.com/viewer?url=https%3A%2F%2Fwww.darpa.mil%2Fattachments%2FXAIIndustryDay_Final.pptx" target="_blank">Explainable Artificial Intelligence XAI Google Slides</a></li>
 <li><a href="https://www.darpa.mil/attachments/DARPA-BAA-16-53.pdf" target="_blank">DARPA-BAA-16-53</a> and<br><a href="https://www.darpa.mil/attachments/XAIProgramUpdate.pdf" target="_blank">https://www.darpa.mil/attachments/XAIProgramUpdate.pdf</a></li>
@@ -361,7 +438,7 @@
       </google-codelab-step>
     
       <google-codelab-step label="Next Steps" duration="0">
-        <p>Check out the next tutorial : <a href="https://h2oai.github.io/tutorials/time-series-recipe-tutorial-retail-sales-forecasting/#0" target="_blank">Time Series Tutorial - Retail Sales Forecasting</a> where you will learn more about:</p>
+        <p>Check out the next tutorial: <a href="https://h2oai.github.io/tutorials/time-series-recipe-tutorial-retail-sales-forecasting/#0" target="_blank">Time Series Tutorial - Retail Sales Forecasting</a> where you will learn more about:</p>
 <ul>
 <li>Time-series:<br><br><ul>
 <li>Time-series concepts</li>
