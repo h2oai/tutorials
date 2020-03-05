@@ -87,20 +87,20 @@ On clicking the highlighted `Start lab` button , you will be taken  to a Driverl
 
 The dataset consists of 10 columns which are as follows:
 
--  **1. UserId** - Unique identifier for the user
--  **2. ProductId** - Unique identifier for the product
--  **3. Id** - Row Id
--  **4. Summary** - Brief summary of the review
--  **5. Score** - Rating between 1 and 5
--  **6. HelpfulnessDenominator** - Number of users who indicated whether they found the review helpful or not
--  **7. ProfileName** - Profile name of the user          
+1. **UserId** - Unique identifier for the user
+2. **ProductId** - Unique identifier for the product
+3. **Id** - Row Id
+4. **Summary** - Brief summary of the review
+5. **Score** - Rating between 1 and 5
+6. **HelpfulnessDenominator** - Number of users who indicated whether they found the review helpful or not
+7. **ProfileName** - Profile name of the user          
 
 4\. Continue scrolling the current page to see more columns (image is not included)
 
--  **8. HelpfulnessNumerator** - Number of users who found the review helpful 
--  **9. Time** - Timestamp for the review 
--  **10. Description** - Text of the review
--  **11. Positive Review** - Whether the review is Positive or Negative
+8. **HelpfulnessNumerator** - Number of users who found the review helpful 
+9. **Time** - Timestamp for the review 
+10. **Description** - Text of the review
+11. **Positive Review** - Whether the review is Positive or Negative
 
 5\. Return to the **Datasets** Page
 
@@ -119,28 +119,26 @@ The dataset consists of 10 columns which are as follows:
 
 ![name_experiment](assets/name_experiment.png)
 
- 1. **Display Name** - Give a name to your expeiment. You can choose according to your choice but it is recommended to choose a name that highlights the purpose of the experiment. Let's name our current experiment as **Sentiment Analysis**.
+ 1. **Display Name** - Give a name to your experiment. You can choose according to your choice but it is recommended to choose a name that highlights the purpose of the experiment. Let's name our current experiment as **Sentiment Analysis**.
 
  2. **Target Column** -  The *Target column* contains the value that we intend to predict through the experiment. Click on the `Select Target Column` tab and select **Positive Review** as the target column. The aim of the experiment is to try to predict whether a fiven review is positive or negative, hence the Positive Review is selected as the target column. The column has only two values i.e Positive and Negative.
 
-![target_column](assets/target_column.png)
+     ![target_column](assets/target_column.png)
 
 3. **Dropped Columns** - The *Dropped Columns* feature enable us to  drop column(s) from your dataset that you don't want to use in the experiment.For this experiment we shall only use the text columns so we shall drop all columns that are not in text format. 
 
 
-![Dropped-Columns](assets/Dropped-Columns.png)
+     ![Dropped-Columns](assets/Dropped-Columns.png)
 
-However, please note that you can also choose to keep the non-text columns and NLP algorithms will work on that too.
+     However, please note that you can also choose to keep the non-text columns and NLP algorithms will work on that too.
 
 4. **Test Dataset** -  The *Test dataset* is a dataset used to provide an unbiased evaluation of a _final_ model fit on the training dataset. It is not used during training of the model and results are available at the end of the experiment. Select the `AmazonFineFoodReviews-test-26k.csv` dataset as follows:
 
-![Test_dataset](assets/Test_dataset.png)
+     ![Test_dataset](assets/Test_dataset.png)
 
+     The experiment screen will finally look like the image below:
 
-
-The experiment screen will finally look like the image below:
-
-![final_experiment_screen](assets/final_experiment_screen.png)
+     ![final_experiment_screen](assets/final_experiment_screen.png)
 
 In **Task 2**, we shall explore and update the Experiment Settings. 
 
@@ -402,41 +400,41 @@ Text data can contain critical information to inform better predictions. H2O Dri
 
 ### Key Capabilities of Driverless AI NLP Recipe
 
-1. **TFIDF of n-grams**
+- **TFIDF of n-grams**
 
 Frequency-based features are multiplied with inverse document frequency to get TFIDF vectors.
 
-2. **Frequency of n-grams**
+- **Frequency of n-grams**
 
 Frequency-based features represent the count of each word in the given text in the form of vectors. Frequency-based features are created for different n-gram values[2]. The dimensions of the output vectors are quite high. Words/n-grams that occur more number of times will get higher weightage than the ones that occur less frequently.
 
-3. **Truncated SVD Features**
+- **Truncated SVD Features**
 
 Both TFIDF and Frequency of n-grams result in a higher dimension. To tackle this, we use Truncated SVD to decompose the vector arrays in lower dimensions.
 
-4. **Linear models on TF/IDF vectors**
+- **Linear models on TF/IDF vectors**
 
 In our NLP recipe, we also have linear models on top of n-gram TFIDF / frequency vectors. This capture linear dependencies that are simple yet significant in achieving the best accuracies.
 
-5. **Word Embeddings**
+- **Word Embeddings**
 
 Driverless AI NLP recipe makes use of the power of word embeddings where words or phrases from the vocabulary are mapped to vectors of real numbers.
 
-6. **Bi-direction GRU models on word embeddings**
+- **Bi-direction GRU models on word embeddings**
 
 A Bi-directional GRU model is like putting two independent RNN models in one. Taking note of accuracy as well as speed in our experiments, we have decided to take advantage of high speed and almost similar accuracies of GRU architecture compared to its counterpart LSTM.
 
-7. **Convolution neural network models on:**
+- **Convolution neural network models on:**
 
-- **Word Embeddings**
+     - **Word Embeddings**
 
-In Driverless AI, we pass word embeddings as input to CNN models, get cross-validated predictions from it and use them as a new set of features.
+     In Driverless AI, we pass word embeddings as input to CNN models, get cross-validated predictions from it and use them as a new set of features.
 
--  **Character Embeddings**
+     -  **Character Embeddings**
 
-Natural language processing is complex as the language is hard to understand given small data and different languages.Targeting languages like Japanese, Chinese where characters play a major role, we have character level embeddings in our recipe as well.
+     Natural language processing is complex as the language is hard to understand given small data and different languages.Targeting languages like Japanese, Chinese where characters play a major role, we have character level embeddings in our recipe as well.
 
-In character embeddings, each character gets represented in the form of vectors rather than words. Driverless AI uses character level embeddings as input to CNN models and later extract class probabilities to feed as features for downstream models. This gives the ability to work in languages other than English also. In case of languages like Japanese, Chinese etc where there is no concept of words, character embeddings will be useful.
+     In character embeddings, each character gets represented in the form of vectors rather than words. Driverless AI uses character level embeddings as input to CNN models and later extract class probabilities to feed as features for downstream models. This gives the ability to work in languages other than English also. In case of languages like Japanese, Chinese etc where there is no concept of words, character embeddings will be useful.
 
 ### Deeper Dive and Resources
 
@@ -484,39 +482,41 @@ _Things to Note:_
 
 2. Iteration Data - Validation
 
-- The winning model's validation score and the algorithm used are as follows:
+     - The winning model's validation score and the algorithm used are as follows:
+          - Validation Score - .2353
+          - Model Type: XGBoostGBM
 
-   - Validation Score - .2353
-   - Model Type: XGBoostGBM
 
  3. Variable Importance: Summary of top 20 - Feature Engineered variables
 
-Driverless AI performs feature Engineering on the dataset to determine the optimal representation of the data. Various stages of the features appear throughout the iteration of the data. These can be viewed by hovering over points on the Iteration Data - Validation Graph and seeing the updates on the  **Variable Importance** section.
+     Driverless AI performs feature Engineering on the dataset to determine the optimal representation of the data. Various stages of the features appear throughout the iteration of the data. These can be viewed by hovering over points on the Iteration Data - Validation Graph and seeing the updates on the  **Variable Importance** section.
 
-![variable-importance](assets/variable-importance.png)
 
-Look at some of the variables in Variable of Importance list. These are the new, high-value features for our training dataset.
+     ![variable-importance](assets/variable-importance.png)
 
-These transformations created with the following transformers:
 
-- **TextBiGRUTransformer** : Trains a bi-directional GRU TensorFlow model on word embeddings created from a text feature to predict the response column
+     Look at some of the variables in Variable of Importance list. These are the new, high-value features for our training dataset.
 
--   **TextCNNTransformer** : Trains a CNN TensorFlow model on word embeddings created from a text feature to predict the response column.
+     These transformations created with the following transformers:
 
--   **TextTransformer :** Tokenizes a text column and creates a TF IDF matrix or count matrix
+     - **TextBiGRUTransformer** : Trains a bi-directional GRU TensorFlow model on word embeddings created from a text feature to predict the response column
 
--   **WeightOfEvidenceTransformer**  : calculates Weight of Evidence for each value in categorical column(s). The Weight of Evidence is used as a new feature.
+     -   **TextCNNTransformer** : Trains a CNN TensorFlow model on word embeddings created from a text feature to predict the response column.
 
-![woe](assets/woe.png)
+     -   **TextTransformer :** Tokenizes a text column and creates a TF IDF matrix or count matrix
 
-The complete list of features used in the final model is available in the Experiment Summary artifacts. The Experiment Summary also provides a list of the original features and their estimated feature importance.
+     -   **WeightOfEvidenceTransformer**  : calculates Weight of Evidence for each value in categorical column(s). The Weight of Evidence is used as a new feature.
+
+     ![woe](assets/woe.png)
+
+     The complete list of features used in the final model is available in the Experiment Summary artifacts. The Experiment Summary also provides a list of the original features and their estimated feature importance.
 
 4. Summary
 
-This option gives a brief summary of the entire experiment including :
+     This option gives a brief summary of the entire experiment including :
 
--   How many features were tested and selected?
--   How many models were trained for feature evolution?
+     -   How many features were tested and selected?
+     -   How many models were trained for feature evolution?
 
 There are also several plots adjacent to the summary tab that give insight into the experiment. If you are interested in learning more about each plot and the metrics derived from those plots covered in this section, then check out our next tutorial [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#0).
 
@@ -576,7 +576,9 @@ https://raw.githubusercontent.com/h2oai/driverlessai-recipes/master/transformers
 
 ![Acceptance-tests](assets/Acceptance-tests.png)
 
-7\. Click on Recipe and select or deselect specific transformers, models and scorers.![Selecting-Specific-Transformers](assets/Selecting-Specific-Transformers.png)
+7\. Click on Recipe and select or deselect specific transformers, models and scorers.
+
+![Selecting-Specific-Transformers](assets/Selecting-Specific-Transformers.png)
 
 *Things to Note*
 

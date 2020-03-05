@@ -266,28 +266,28 @@ We are now going to explore the Titanic dataset that we just loaded.
 
 1. The **Dataset Details Page** provides a summary of the dataset. This summary lists each column that is included in the dataset along with:
 
-- Logical type (can be changed)
+    **Logical type (can be changed)**
 
-![logical-type-options](assets/logical-type-options.jpg)
+    ![logical-type-options](assets/logical-type-options.jpg)
 
-- Format for Date and Datetime columns(can be changed)
+    **Format for Date and Datetime columns(can be changed)**
 
-![dataset-details-format-option](assets/dataset-details-format-option.jpg)
+    ![dataset-details-format-option](assets/dataset-details-format-option.jpg)
 
-- Storage type
-- Count
-- Number of missing values
-- Mean
-- Minimum
-- Maximum
-- Standard deviation
-- Frequency
-- Number of unique values
-- View the first 20 rows of a column
+    - Storage type
+    - Count
+    - Number of missing values
+    - Mean
+    - Minimum
+    - Maximum
+    - Standard deviation
+    - Frequency
+    - Number of unique values
+    - View the first 20 rows of a column
 
-![datasets-details-first-20-rows](assets/datasets-details-first-20-rows.jpg)
+    ![datasets-details-first-20-rows](assets/datasets-details-first-20-rows.jpg)
 
-**Note**: Driverless AI recognizes the following column types: integer, string, real, boolean, and time. Date columns are given a string "str" type.
+    **Note**: Driverless AI recognizes the following column types: integer, string, real, boolean, and time. Date columns are given a string "str" type.
 
 2. You can view information for a specific column by entering the name of the column in the field above the graph.
 
@@ -297,7 +297,7 @@ We are now going to explore the Titanic dataset that we just loaded.
 
 5. Option to exit and return to the H2O **Datasets** page
 
-3\. Select  **Dataset Rows**    
+4\. Select  **Dataset Rows**    
 
 ![titanic-set-rows-page](assets/titanic-set-rows-page.jpg)
 
@@ -308,7 +308,7 @@ We are now going to explore the Titanic dataset that we just loaded.
  3. Return to the **Dataset Overview** 
  4. Option to Exit and return to the H2O **Datasets** page
 
-4\. Exit and return to **Datasets Overview** page.
+5\. Exit and return to **Datasets Overview** page.
 
 ### Split the Dataset
 
@@ -527,32 +527,32 @@ Once the experiment is complete, an **Experiment Summary** will appear:
 
 *Things to Note:*
 1. Status Complete Options
- - Deploy (Local and Cloud)
- - Interpret This Model 
- - Diagnose Model On New Dataset 
- - Score on Another Dataset
- - Transform Another Dataset
- - Download Predictions
-    - Training Predictions
-    - Validation Set Predictions(available if a validation set was provided)
-    - Test Set Predictions
- - Download Python Scoring Pipeline - A standalone Python Scoring pipeline that downloads a package containing an exported model and Python 3.6 source code examples for productionizing models built using H2O Driverless AI. 
- - Download MOJO Scoring Pipeline - A standalone scoring pipeline that converts experiments to MOJO's, which can be scored in realtime. It is available as either Java runtime or a C++ runtime(with Python and R wrappers).
- - Visualize Scoring Pipeline(Experimental): A visualization of the scoring pipeline is available for each completed experiment.
+    - Deploy (Local and Cloud)
+    - Interpret This Model 
+    - Diagnose Model On New Dataset 
+    - Score on Another Dataset
+    - Transform Another Dataset
+    - Download Predictions
+        - Training Predictions
+        - Validation Set Predictions(available if a validation set was provided)
+        - Test Set Predictions
+    - Download Python Scoring Pipeline - A standalone Python Scoring pipeline that downloads a package containing an exported model and Python 3.6 source code examples for productionizing models built using H2O Driverless AI. 
+    - Download MOJO Scoring Pipeline - A standalone scoring pipeline that converts experiments to MOJO's, which can be scored in realtime. It is available as either Java runtime or a C++ runtime(with Python and R wrappers).
+    - Visualize Scoring Pipeline(Experimental): A visualization of the scoring pipeline is available for each completed experiment.
 
- ![visualize-scoring-pipeline-experimental](assets/visualize-scoring-pipeline-experimental.jpg)
+    ![visualize-scoring-pipeline-experimental](assets/visualize-scoring-pipeline-experimental.jpg)
 
- - Download Experiment Summary - A zip file providing textual explanations of the graphical representations that are shown in the Driverless AI UI.
-    - Experiment logs (regular and anonymized)
-    - A summary of the experiment
-    - The experiment features along with their relative importance
-    - Ensemble information
-    - An experiment preview
-    - Word version of an auto-generated report for the experiment
-    - Target transformations tuning leaderboard
-    - A tuning leaderboard
+    - Download Experiment Summary - A zip file providing textual explanations of the graphical representations that are shown in the Driverless AI UI.
+        - Experiment logs (regular and anonymized)
+        - A summary of the experiment
+        - The experiment features along with their relative importance
+        - Ensemble information
+        - An experiment preview
+        - Word version of an auto-generated report for the experiment
+        - Target transformations tuning leaderboard
+        - A tuning leaderboard
  
- - Download Autoreport - This report provides insight into the training data and any detected shifts in distribution, the validation schema selected, model parameter tuning, feature evolution, and the final set of features chosen during the experiment.
+    - Download Autoreport - This report provides insight into the training data and any detected shifts in distribution, the validation schema selected, model parameter tuning, feature evolution, and the final set of features chosen during the experiment.
 
 2. Iteration Data - Validation/Variable Importance - Summary of top 20 - Feature Engineered variables
 
