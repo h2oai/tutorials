@@ -4,8 +4,8 @@
   "format": "html",
   "prefix": "../assets",
   "mainga": "UA-49880327-14",
-  "updated": "2020-03-02T15:39:46-08:00",
-  "id": "machine-learning-experiment-scoring-and-analysis-tutorial-financial- focus",
+  "updated": "2020-03-04T18:54:20-08:00",
+  "id": "machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus",
   "duration": 0,
   "title": "Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus",
   "summary": "Check the list",
@@ -23,5 +23,5 @@
     "metrics",
     "scoring"
   ],
-  "url": "machine-learning-experiment-scoring-and-analysis-tutorial-financial- focus"
+  "url": "machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus"
 }

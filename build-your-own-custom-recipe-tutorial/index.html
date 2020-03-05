@@ -26,7 +26,13 @@
                   feedback-link="">
     
       <google-codelab-step label="Objective" duration="0">
-        <p>In this tutorial, we will take a deeper dive into the process of custom recipe building to enhance Driverless AI. We will build three recipes: a transformer, a model, and a scorer using Visual Studio Code text editor. Each recipe will then be uploaded and tested using Driverless AI.</p>
+        <p>In this tutorial, we will take a deeper dive into the process of custom recipe building to enhance Driverless AI. We will build three recipes using Visual Studio Code text editor. Each recipe will then be uploaded and tested using Driverless AI.</p>
+<p>Recipes:</p>
+<ul>
+<li>transformer</li>
+<li>model</li>
+<li>scorer</li>
+</ul>
 
 
       </google-codelab-step>
@@ -42,7 +48,10 @@
 </li>
 <li>A text editor or developer environment to create .py  text files containing source code (Examples: PyCharm, Jupyter, Spider or a Text Editor like Atom or Visual Studio Code)</li>
 </ul>
-<p><strong>Note</strong>: For this tutorial, we will use Visual Studio Code Community for MacOS<br><a href="https://code.visualstudio.com/Download" target="_blank">Visual Studio Code Community</a></p>
+<p><strong>Note</strong>: For this tutorial, we will use Visual Studio Code Community for MacOS:</p>
+<ul>
+<li><a href="https://code.visualstudio.com/Download" target="_blank">Visual Studio Code Community</a></li>
+</ul>
 <p>You can get more information about getting a Driverless AI environment or trial from the following:</p>
 <ul>
 <li><a href="https://h2oai.github.io/tutorials/getting-started-with-driverless-ai-test-drive/#1" target="_blank">A Two Hour Test Drive Session</a></li>
@@ -51,7 +60,7 @@
 </ul>
 <p>If you are not familiar with Driverless AI, please review and do this tutorial:</p>
 <ul>
-<li><a href="https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#0" target="_blank">Automatic Machine Learning Intro Tutorial</a></li>
+<li><a href="https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#0" target="_blank">Automatic Machine Learning Intro with Test Drive Tutorial</a></li>
 </ul>
 
 
@@ -97,8 +106,9 @@
 <h2>Python API</h2>
 <p>Driverless AI custom recipes allow for full customization of the entire ML pipeline through the scikit learn Python API. The Python API allows for custom feature engineering, custom loss functions, and custom ML Algorithms. These API is based off on how scikit learn works.</p>
 <p>When building our custom recipes:</p>
-<p>For custom feature engineering or a transformer, you will have two main parts:<br>Fit_transform - takes the X and Y data and changes the X variables(pulls out the year from a date, does arithmetic in multiple columns, target encoding). It can also add new data such as the zip code with the zip code package and bring in population or cities.<br>Custom statistical Transformation<br>Embeddings for numbers, categories, text, date/time, time-series, image audio, zip, latitude/longitude, ICD</p>
-<p>Transform - the transform gets called when you run the model and get predictions. The transform will be inside the scoring pipeline. When used in production, the transform will be present and be used in the validation and test sets. The transform does not have access to Y, and it alters the data based on what happened on the fit_transform.</p>
+<p>For custom feature engineering or a transformer, you will have two main parts:</p>
+<p><strong>Fit_transform</strong> - takes the X and Y data and changes the X variables(pulls out the year from a date, does arithmetic in multiple columns, target encoding). It can also add new data such as the zip code with the zip code package and bring in population or cities.<br>Custom statistical Transformation<br>Embeddings for numbers, categories, text, date/time, time-series, image audio, zip, latitude/longitude, ICD</p>
+<p><strong>Transform</strong> - the transform gets called when you run the model and get predictions. The transform will be inside the scoring pipeline. When used in production, the transform will be present and be used in the validation and test sets. The transform does not have access to Y, and it alters the data based on what happened on the fit_transform.</p>
 <p>For custom optimization functions or scorers, you can bring ing loss or gain functions. We can look further into precision and recall of a model through variations of the F metric. Driverless AI comes with F1, F2, and F0.5 scorers, where F1 is the harmonic mean of precision and recall, and the F2 score gives more weight to recall than precision. If you wanted to give precision higher weight, you could incorporate and F4 or F6 function as recipes for scorers.</p>
 <p>Other things that can be done using scorers:</p>
 <ul>
@@ -139,7 +149,7 @@
       </google-codelab-step>
     
       <google-codelab-step label="Task 2: Build a Recipe: Transformer" duration="0">
-        <p>A transformer (or feature) recipe is a collection of programmatic steps, the same steps that a data scientist would write a code to build a column transformation. The recipe makes it possible to engineer the transformer in training and in production. The transformer recipe and recipes, in general, provides a data scientist the power to enhance the strengths of DriverlessAI with custom recipes. These custom recipes would bring in nuanced knowledge about certain domains - i.e. financial crimes, cybersecurity, anomaly detection. etc. It also provides the ability to extend DriverlessAI to solve custom solutions for time-series[1].</p>
+        <p>A <strong>transformer</strong> (or feature) recipe is a collection of programmatic steps, the same steps that a data scientist would write a code to build a column transformation. The recipe makes it possible to engineer the transformer in training and in production. The transformer recipe and recipes, in general, provides a data scientist the power to enhance the strengths of DriverlessAI with custom recipes. These custom recipes would bring in nuanced knowledge about certain domains - i.e. financial crimes, cybersecurity, anomaly detection. etc. It also provides the ability to extend DriverlessAI to solve custom solutions for time-series[1].</p>
 <h2>Where can Driverless AI Transformers be Used?</h2>
 <ul>
 <li><strong>A retailer</strong> could forecast annual sales based on seasonality, weather, and Ramadan holidays for its stores in Saudi Arabia.</li>
@@ -170,6 +180,12 @@
 <p>This transformer recipe will add three or more numeric columns and give the sum. For instance, it would take the values of X1, X2, and X3 to add them and give the Sum which might be predictive in our model.</p>
 <table>
 <tr></tr>
+<tr><td colspan="1" rowspan="1"><p>ID</p>
+</td><td colspan="1" rowspan="1"><p>X1</p>
+</td><td colspan="1" rowspan="1"><p>X2</p>
+</td><td colspan="1" rowspan="1"><p>X3</p>
+</td><td colspan="1" rowspan="1"><p>SUM</p>
+</td></tr>
 <tr><td colspan="1" rowspan="1"><p>1</p>
 </td><td colspan="1" rowspan="1"><p>10</p>
 </td><td colspan="1" rowspan="1"><p>4</p>
@@ -309,7 +325,7 @@ _excluded_model_classes = None # List[str]
 <p>7. Copy and paste the code for the <strong>When to use the transformer</strong> right below the <code>class SumTransformer(CustomTransformer):</code> section of code of your .py file. Your text editor should look similar to the page below:</p>
 <p><img alt="transformer-variables" src="img/62d59d969972101.jpg"></p>
 <h2>Challenge</h2>
-<p>The final step in building the custom transformer recipe is to upload the custom recipe to Driverless AI and check that it passes the <strong>acceptance test</strong>. If your recipe is not passing the Driverless AI&#39;s acceptance test, see  <strong>Task 5: Troubleshooting</strong>.</p>
+<p>The final step in building the custom transformer recipe is to upload the custom recipe to Driverless AI and check that it passes the <strong>acceptance test</strong>. If your recipe is not passing the Driverless AI&#39;s acceptance test, see  <a href="https://h2oai.github.io/tutorials/build-your-own-custom-recipe-tutorial/#6" target="_blank">Task 5: Troubleshooting</a>.</p>
 <p>Take the new custom sum_transformer and test it in a dataset of your choice.</p>
 <p><strong>Note:</strong> The dataset needs to have more than three quantitative columns that can be added together</p>
 <p>If you have questions on how to upload the transformer recipe to Driverless AI, see  <a href="https://h2oai.github.io/tutorials/get-started-with-open-source-custom-recipes-tutorial/#0" target="_blank">&#34;Get Started with Open Source Custom Recipes Tutorial - Task 3: Recipe: Transformer&#34;</a>.</p>
@@ -432,7 +448,7 @@ def score(self,
 <p>5. Copy and paste the code above for <strong>optimizing the scorer</strong>, below the <code>#Extend base class</code> section of code of your .py file, your text editor should look similar to the page below:</p>
 <p><img alt="scorer-optimizing-the-scorer" src="img/477774f9b25501b0.jpg"></p>
 <h2>Challenge</h2>
-<p>The final step in building the custom scorer recipe is to upload the custom recipe to Driverless and check that it passes the <strong>acceptance test</strong>. If your recipe is not passing the Driverless AI&#39;s acceptance test, see  <strong>Task 5: Troubleshooting</strong>.</p>
+<p>The final step in building the custom scorer recipe is to upload the custom recipe to Driverless and check that it passes the <strong>acceptance test</strong>. If your recipe is not passing the Driverless AI&#39;s acceptance test, see  <a href="https://h2oai.github.io/tutorials/build-your-own-custom-recipe-tutorial/#6" target="_blank">Task 5: Troubleshooting</a>.</p>
 <p>Take the false_discovery_rate_scorer and test it in a dataset of your choice.</p>
 <p><strong>Note:</strong> The dataset needs to be for a binary classification problem</p>
 <p>If you have questions on how to upload the transformer recipe to Driverless AI, see  <a href="https://h2oai.github.io/tutorials/get-started-with-open-source-custom-recipes-tutorial/#5" target="_blank">&#34;Get Started with Open Source Custom Recipes Tutorial - Task 4: Recipe: Scorer&#34;</a>.</p>
@@ -561,10 +577,12 @@ importances = np.array(model.feature_importances_)
                        iterations=self.params[&#39;n_estimators&#39;])
 </code></pre>
 <p>After the model has been fit, the next part is to set the model properties. There are four model properties that Driverless AI needs to know:</p>
-<p><strong>model</strong>: a model object that contains all large fitted objects related to the model, need it to make predictions later.</p>
-<p><strong>features</strong>: What features were used to create the model? In other words, the list of feature names fitted on. **This is the reason that all the features were saved for <code>orig_cols = list(X.names)</code>.</p>
-<p><strong>importance</strong>: list of associated numerical importance of features. Driverless AI uses this list when building the model. See Driverless AI UI for feature importance were the most important features are highlighted. Extra Trees comes with a function feature_ importances which takes care of populating this list for Driverless AI by returning that value. Driverless AI needs the list of importances populated, so keep that in mind ff the function that you are using does not return feature importances.</p>
-<p><strong>iterations</strong>: number of iterations used to predict on or re-use for fitting on full training data(number of models build)</p>
+<ul>
+<li><strong>model</strong>: a model object that contains all large fitted objects related to the model, need it to make predictions later.</li>
+<li><strong>features</strong>: What features were used to create the model? In other words, the list of feature names fitted on. **This is the reason that all the features were saved for <code>orig_cols = list(X.names)</code>.</li>
+<li><strong>importance</strong>: list of associated numerical importance of features. Driverless AI uses this list when building the model. See Driverless AI UI for feature importance were the most important features are highlighted. Extra Trees comes with a function feature_ importances which takes care of populating this list for Driverless AI by returning that value. Driverless AI needs the list of importances populated, so keep that in mind ff the function that you are using does not return feature importances.</li>
+<li><strong>iterations</strong>: number of iterations used to predict on or re-use for fitting on full training data(number of models build)</li>
+</ul>
 <p>5. Copy and paste the code above for <strong>set model parameters</strong>, below the <code>#Fitting the model</code> section of code of your .py file, your text editor should look similar to the page below:</p>
 <p><img alt="model-set-model-parameters" src="img/21cb74847f173311.jpg"></p>
 <h2>Get Predictions</h2>
@@ -599,7 +617,7 @@ importances = np.array(model.feature_importances_)
         X = X.to_numpy()
 </code></pre>
 <h2>Challenge</h2>
-<p>The final step in building the custom model recipe is to complete the parts that were left uncompleted. You will need to write a code to determine when to use the model. First, you need to specify if the model should work with a classification or regression case. You can also set a name and description for the model. Second, you need to determine the &#34;n_estimators&#34; and lastly, set up test code for testing for null values or handling missing values, like the examples that were given in each section. Once those are set, then you can upload the custom recipe to Driverless and check that it passes the acceptance test. If your recipe is not passing the Driverless AI&#39;s acceptance test, see <a href="https://h2oai.github.io/tutorials/build-your-own-custom-recipe-tutorial/#6" target="_blank">Task 5: Troubleshooting</a>.</p>
+<p>The final step in building the custom model recipe is to complete the parts that were left uncompleted. You will need to write a code to determine when to use the model. First, you need to specify if the model should work with a classification or regression case. You can also set a name and description for the model.Second, you need to determine the &#34;n_estimators&#34; and lastly, set up test code for testing for null values or handling missing values, like the examples that were given in each section. Once those are set, then you can upload the custom recipe to Driverless and check that it passes the acceptance test. If your recipe is not passing the Driverless AI&#39;s acceptance test, see <a href="https://h2oai.github.io/tutorials/build-your-own-custom-recipe-tutorial/#6" target="_blank">Task 5: Troubleshooting</a>.</p>
 <p>Here is a sample code that could be used to complete the first task of the challenge:</p>
 <pre><code>    _regression = True
     _binary = True

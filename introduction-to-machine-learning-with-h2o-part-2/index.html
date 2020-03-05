@@ -141,9 +141,7 @@ loan_level = h2o.import_file(&#34;https://s3.amazonaws.com/data.h2o.ai/DAI-Tutor
 <p>[1] <a href="https://web.stanford.edu/~hastie/TALKS/boost.pdf" target="_blank">Trevor Hastie - Boosting</a></p>
 <p>[2] <a href="http://neuralnetworksanddeeplearning.com/chap1.html" target="_blank">Michael A. Nielsen, &#34;Neural Networks and Deep Learning&#34;</a></p>
 <h2>Deeper Dive</h2>
-<ul>
-<li>Additive Logistic Regression: A statistical view of Boosting](https://projecteuclid.org/download/pdf_1/euclid.aos/1016218223)</li>
-</ul>
+<p><a href="https://projecteuclid.org/download/pdf_1/euclid.aos/1016218223" target="_blank">Additive Logistic Regression: A statistical view of Boosting</a></p>
 
 
       </google-codelab-step>
@@ -334,7 +332,6 @@ sorted_xgb.sorted_metric_table()
 <p>4. <code>distribution</code><strong>:</strong> Specify the distribution (i.e., the loss function). The options are AUTO, Bernoulli, multinomial, gaussian, poisson, gamma, or tweedie. Since our response is numeric, we will just include poisson, Tweedie, Gaussian, and gamma.</p>
 <p>5. <code>booster</code><strong>:</strong> Specify the booster type. This can be one of the following: &#34;gbtree,&#34; &#34;gblinear,&#34; or &#34;dart.&#34; Note that &#34;gbtree&#34; and &#34;dart&#34; use a tree-based model while &#34;gblinear&#34; uses a linear function. This value defaults to &#34;gbtree.&#34;</p>
 <p>Since we have several parameters, we will be doing a random search; we will be using early stopping, and for our stopping criteria, we will set a limit of 100 models or 15 minutes. You can change these settings in the &#34;search_criteria_tune&#34; parameter for the grid search.</p>
-<p>In this grid search, we will use a new parameter introduced in H2O version <code>3.28.0.1,</code> which is parallelism. This allows our grid search to train several models at the same time, instead of training one model at the time. When using this feature, it is recommended to set <code>parallelism</code> to two times the number of cores in your cluster. In our case, our cluster has 16 cores, meaning we can use <code>parallelism=32.</code> To learn more about this feature in H2O, please make you check the blog <a href="https://www.pavel.cool/h2o-3/h2o-parallel-grid-search/" target="_blank">Parallel Grid Search in H2O</a> by Pavel Pscheidl.</p>
 <pre><code>xgb = H2OXGBoostEstimator(model_id=&#39;xgb_grid&#39;, max_depth=9, ntrees=100, 
                           stopping_rounds=5, #default
                           stopping_tolerance=1e-4, #default
@@ -357,7 +354,6 @@ search_criteria_tune = {&#39;strategy&#39;: &#34;RandomDiscrete&#34;,
 xgb_grid = H2OGridSearch(xgb, hyper_params,
                          grid_id = &#39;random_grid&#39;,
                          search_criteria=search_criteria_tune,
-                         parallelism=32
                          )
 
 %time xgb_grid.train(x=x, y=y, training_frame=train, validation_frame = valid)
@@ -367,8 +363,8 @@ xgb_grid = H2OGridSearch(xgb, hyper_params,
 sorted_xgb.sorted_metric_table()
 </code></pre>
 <p>Please note that the results might not be exactly the same.</p>
-<p><img alt="xgb-top-model" src="img/6b016037ea5553d.jpg"></p>
-<p>With the grid search that we just did, setting <code>parallelism=32</code> allowed us to train a total of 90 models (not all the models are shown). As you can see, the top model has a gbtree booster with a gaussian distribution, and the second-best model also has a gbtree booster with a tweedie distribution. We can also see that the next two models with the dart booster yield good scores. Since the dart booster configuration yields good results, we will try to tune some extra parameters for the third model, which uses the <code>dart</code> booster. Dart booster is a &#34;method to add dropout techniques from the deep neural net community to boosted trees&#34; [1]. We could further tune the best model from the above grid search, and to do so, we could try tuning the <code>sample_rate,col_sample_rate,col_sample_rate_per_tree,min_rows</code> and <code>gamma</code> among others. However, we want to show you the Dart functionality of XGBoost.</p>
+<p><img alt="xgb-top-model" src="img/e7b9793f1d28c8f2.jpg"></p>
+<p>With the grid search that we just did allowed us to train a total of 41 models (not all the models are shown). As you can see, the top model has a gbtree booster with a gaussian distribution, and the second-best model also has a gbtree booster with a tweedie distribution. We can also see that the next two models with the dart booster yield good scores. Since the dart booster configuration yields good results, we will try to tune some extra parameters for the third model, which uses the <code>dart</code> booster. Dart booster is a &#34;method to add dropout techniques from the deep neural net community to boosted trees&#34; [1]. We could further tune the best model from the above grid search, and to do so, we could try tuning the <code>sample_rate,col_sample_rate,col_sample_rate_per_tree,min_rows</code> and <code>gamma</code> among others. However, we want to show you the Dart functionality of XGBoost.</p>
 <p>These are five extra parameters that we can tune when using Dart boosting, and we will try to see if we can get any improvement by changing some of those parameters</p>
 <p>1. <code>normalize_type</code><strong>:</strong> specify whether the normalization method. This can be one of the following:</p>
 <ul>
@@ -414,7 +410,6 @@ search_criteria_tune = {&#39;strategy&#39;: &#34;RandomDiscrete&#34;,
 xgb_grid = H2OGridSearch(xgb, hyper_params,
                          grid_id = &#39;dart_booster_grid&#39;,
                          search_criteria=search_criteria_tune,
-                         parallelism=1
                          )
 
 %time xgb_grid.train(x=x, y=y, training_frame=train, validation_frame = valid)
@@ -423,7 +418,7 @@ xgb_grid = H2OGridSearch(xgb, hyper_params,
 <pre><code>sorted_xgb = xgb_grid.get_grid(sort_by=&#39;rmse&#39;,decreasing=False)
 sorted_xgb.sorted_metric_table()
 </code></pre>
-<p><img alt="dart-tuning-params" src="img/8ffd2d45588205cb.jpg"></p>
+<p><img alt="dart-tuning-params" src="img/6410eb357062d597.jpg"></p>
 <p>The score slightly improved from what we obtained in the first random grid search; keep in mind that we are just exploring a small set of models; if we were trying to find the best model, we would have to add a wider range for each parameter and run the grid search for a longer period of time. We could also do a local search with the values we found and see if we could get better results. Let&#39;s do a quick random grid search for our XGBoost in Flow.</p>
 <p>Start by building an XGBoost model the same way we did in Task 4. Find the training set (the frame with 350k rows and 27 columns), assign a model id such <code>flow-xgb-grid</code> so that it is easy to find the models later on; for now, you can set<br><em>nfolds</em> to 3. Choose <code>ORIGINAL_INTEREST_RATE</code> for the <em>response_column,</em> select the same eight columns as before to be ignored.</p>
 <ul>
@@ -462,7 +457,7 @@ best_xgb_model
 </code></pre>
 <p><strong>Output:</strong></p>
 <pre><code>Default XGB RMSE: 0.4244 
-Tuned XGB RMSE:0.4149
+Tuned XGB RMSE:0.4117
 </code></pre>
 <p>Our RMSE slightly improved with the tuning that we did. As we mentioned before, we only let each random search run for 15 minutes. To see if we can obtain a much better model, we would have to let it run for much longer.</p>
 <p>We will check the MAE now,</p>
@@ -470,7 +465,7 @@ Tuned XGB RMSE:0.4149
 </code></pre>
 <p><strong>Output:</strong></p>
 <pre><code>Default XGB MAE: 0.3108 
-Tuned XGB MAE:0.2996
+Tuned XGB MAE:0.2992
 </code></pre>
 <p>The MAE also improved, which is a good indication. Our model did improve with the grid search that we did. One more thing that we could do is build an XGBoost model with all the parameters that we found, and increase the number of trees, similar to what we did in the first tutorial.</p>
 <p>Maybe for an interest rate decision, an MAE of 0.30 is good enough as it tells us that, on average, the model would predict a very close interest rate to what someone with &#34;x&#34; characteristics would get. However, for some companies that MAE might be too high, so it all depends on the application to decide whether or not our MAE results are satisfactory. We will see if the Deep Learning model can yield a lower RMSE and MAE.</p>
@@ -571,7 +566,6 @@ search_criteria_tune = {&#39;strategy&#39;: &#34;Cartesian&#34;,
 dl_grid = H2OGridSearch(model=dl, hyper_params=hyper_params,
                          grid_id = &#39;rate_grid&#39;,
                          search_criteria=search_criteria_tune,
-                         parallelism=1
                          )
 
 %time dl_grid.train(x=x, y=y, training_frame=train, validation_frame = valid)
@@ -618,7 +612,6 @@ dl_grid = H2OGridSearch(model=dl,
                         hyper_params=hyper_params,
                         grid_id = &#39;rate_random_grid&#39;,
                         search_criteria=search_criteria_tune,
-                        parallelism=1
                          )
 
 %time dl_grid.train(x=x, y=y, training_frame=train, validation_frame = valid)
@@ -695,7 +688,7 @@ xgb_test_per = best_xgb_model.model_performance(test)
       (xgb_test_per.rmse(), dl_test_per.rmse()))
 </code></pre>
 <p><strong>Output:</strong></p>
-<pre><code>XGBoost Test RMSE: 0.4146  
+<pre><code>XGBoost Test RMSE: 0.4138  
 Deep Learning Model Test RMSE: 0.4194
 </code></pre>
 <p>The test RMSE for both models is very close to the validation results, which means that our validation set cross-validation approach worked well. As we mentioned before, the RMSE score adds more penalty to larger errors. Based on the RMSE, on average, the tuned models&#39; predictions on the test set are about 0.41 off.</p>
@@ -704,7 +697,7 @@ Deep Learning Model Test RMSE: 0.4194
       (xgb_test_per.mae(), dl_test_per.mae()))
 </code></pre>
 <p><strong>Output:</strong></p>
-<pre><code>XGBoost Test MAE: 0.2997  
+<pre><code>XGBoost Test MAE: 0.2992  
 Deep Learning model Test MAE: 0.3042
 </code></pre>
 <p>If we do not take into consideration the penalty that the RMSE adds, and focus on the MAE to evaluate our models, we see that the predictions of the interest rate are 0.3 off from the actual values, which is a good indication that the model is making good predictions for the interest rate. Let&#39;s see some of the predictions for both models.</p>
