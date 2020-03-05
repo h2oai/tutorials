@@ -242,7 +242,7 @@ Global feature importance values give an indication of the magnitude of a featur
 
 1\. On the right-upper corner of the MLI page, select **Driveless AI Model**, then **Shapley**.
 
-![global-shapley-feature-importance](assets/global-shapley-values-feature-importance-2.jpg)
+![global-shapley-feature-importance](assets/global-shapley-feature-importance.jpg)
 
 
 The plot above is a sample of a Shapley plot. Shapley is an “old”, very advanced tool, now being applied to machine learning. This plot shows the global  importance value of the derived features. Notice the feature importance values are signed (scroll down to see the rest of the Shapley plot). The sign determines in which direction the values impact the model predictions on average. Shapley plots help by providing accurate and consistent variable importance even if data changes slightly.
@@ -303,15 +303,15 @@ The results indicate that overall, in the entire dataset, the worst thing for a 
 
 4\.  What is the average predicted default probability for PAY_2 = 2?
 
-5\. Explore the partial dependence for **PAY_AMT1** by changing the **PDP Variable** at the upper-left side of the **Partial Dependence Plot** to **PAY_AMT1**, then hovering over the yellow circles.
+5\. Explore the partial dependence for **LIMIT_BAL** by changing the **PDP Variable** at the upper-left side of the **Partial Dependence Plot** to **LIMIT_BAL**, then hovering over the yellow circles.
 
-![partial-dependence-pdp-variable-pay-amt](assets/partial-dependence-pdp-variable-pay-amt.jpg)
+![partial-dependence-pdp-variable-lmt-bal](assets/partial-dependence-pdp-variable-lmt-bal.jpg)
 
 The grey area is the standard deviation of the partial dependence. The wider the standard deviation, the less trustworthy the average behavior (yellow line) is. In this case, the standard deviation follows the average behavior and is narrow enough, therefore trustworthy.
 
-6\. What is the average default probability for the lowest pay amount? How about for the highest pay amount?
+6\. What is the average default probability for the lowest credit limit? How about for the highest credit limit?
 
-7\. What seems to be the trend regarding pay amount and a person defaulting on their payments?
+7\. What seems to be the trend regarding credit limit and a person defaulting on their payments?
 
 ### Deeper Dive and Resources
 

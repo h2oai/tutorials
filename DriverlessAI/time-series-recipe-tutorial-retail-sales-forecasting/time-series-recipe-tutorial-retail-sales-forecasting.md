@@ -78,7 +78,7 @@ If you are using Aquarium as your environment, then the following labs, **Test D
 
 ![retail-store-train-detail-page](assets/retail-store-train-detail-page.jpg)
 
-Once on the **Dataset Details** page click on **Dataset Rows**.
+4\. Once on the **Dataset Details** page click on **Dataset Rows**.
 
 ![retail-store-train-dataset-rows](assets/retail-store-train-dataset-rows.jpg)
 
@@ -107,7 +107,7 @@ As mentioned in the objectives, this tutorial includes a pre-ran experiment that
 
 See [Deeper Dive and Resources](#deeper-dive-and-resources) at the end of this task for additional information on the **Projects Workspace**.
 
-2\. Select **Projects** , an image similar to the one below will appear:
+1\. Select **Projects** , an image similar to the one below will appear:
 
 ![projects-page](assets/projects-page.jpg)
 
@@ -127,7 +127,7 @@ See [Deeper Dive and Resources](#deeper-dive-and-resources) at the end of this t
     - **Delete**
 4. **+New Project**: Option to create a new project 
 
-3\. Click on the **Time Series Tutorial** project, an image similar to the one below will appear:
+2\. Click on the **Time Series Tutorial** project, an image similar to the one below will appear:
 
 ![projects-page-time-series](assets/projects-page-time-series.jpg)
 
@@ -136,22 +136,22 @@ The project “Time Series Tutorial” has the pre-ran time series experiment li
 - All the datasets used in the pre-ran experiment
 - Completed Experiment 
 
-4\. Select **New Experiment** , located on the top-right corner of the page.
+3\. Select **New Experiment** , located on the top-right corner of the page.
 
 ![projects-new-experiment](assets/projects-new-experiment.jpg)
 
-5\.  Select **Not Now** on the **First time Driverless AI, Click Yes to get a tour!**. A similar image should appear, then under **Dataset** select **Click to select or import a dataset...**
+4\.  Select **Not Now** on the **First time Driverless AI, Click Yes to get a tour!**. A similar image should appear, then under **Dataset** select **Click to select or import a dataset...**
 
 
 ![new-project-training-data](assets/new-project-training-data.jpg)
 
-6\. Select the ```walmart_tts_small_train.csv``` dataset:
+5\. Select the ```walmart_tts_small_train.csv``` dataset:
 
 ![new-project-select-train-dataset](assets/new-project-select-train-dataset.jpg)
 
 Name your experiment: `Time Series Forecasting`
 
-7\. A similar experiment page will appear:
+6\. A similar experiment page will appear:
 
 ![retail-store-predict](assets/retail-store-predict.jpg)
 
@@ -298,7 +298,7 @@ then select **R2** as the scorer:
 
 8\. Under **Experiment Settings**, update Accuracy, Time and Interpretability to values below, then click on **Launch Experiment**:
 
-**Note:**: These settings were selected to conform to the Aquarium/Test Drive Environment. The goal is to walk-through the mechanics of setting up a time series experiment. Having an interpretability of 10 means that we want a simple model that will be easy to interpret.
+**Note:** These settings were selected to conform to the Aquarium/Test Drive Environment. The goal is to walk-through the mechanics of setting up a time series experiment. Having an interpretability of 10 means that we want a simple model that will be easy to interpret.
 
 - **Accuracy** : 1
 - **Time** : 1
@@ -587,17 +587,17 @@ At the end of the experiment, a similar page will appear:
     - Model Type: LigthGBM
     - Variable Importance
 3. Summary:
-- Summary: See image below:
+    - Summary: See image below:
 
-![experiment-results-summary](assets/experiment-results-summary.jpg)
+    ![experiment-results-summary](assets/experiment-results-summary.jpg)
 
-- Actual vs Predicted: See image below:
+    - Actual vs Predicted: See image below:
 
-![experiment-results-actual-vs-predicted](assets/experiment-results-actual-vs-predicted.jpg)
+    ![experiment-results-actual-vs-predicted](assets/experiment-results-actual-vs-predicted.jpg)
 
-- Residuals : See image below:
+    - Residuals : See image below:
 
-![experiment-results-residuals](assets/experiment-results-residuals.jpg)
+    ![experiment-results-residuals](assets/experiment-results-residuals.jpg)
 
 
 ### Deeper Dive and Resources
@@ -666,11 +666,12 @@ At the end of the experiment, a similar page will appear:
 ![mli-time-series-group-test-metrics](assets/mli-time-series-group-test-metrics.jpg)
 
 9\. On the **Group Search** box:
+
 1. Enter the following Dept and Store numbers: ``3,12``
 2. (Dept, Store) options will appear below the **Group Search** box, select ``3,12`` 
 3. A plot similar to the one below will appear with the actual and predicted values plotted for Department 3, Store 12:
 
-![mli-group-dept-3-12-actual-vs-predicted](assets/mli-group-dept-3-12-actual-vs-predicted.jpg)
+    ![mli-group-dept-3-12-actual-vs-predicted](assets/mli-group-dept-3-12-actual-vs-predicted.jpg)
 
 4. Hover over to the  **Forecast Horizon** and note the **Actual** plot in yellow and the **Predicted** plot in white.  While there hover over the peak point of the plot then compare the  actual vs predicted values generated by the model for store ``3,12``. 
 
@@ -678,16 +679,15 @@ At the end of the experiment, a similar page will appear:
 
 6. From the **Actual vs Predicted** chart find the peak point and double click on it, a local Shapley value will appear right below the plot:
 
-![mli-group-dept-3-12-peak-point-shapley-value](assets/mli-group-dept-3-12-peak-point-shapley-value.jpg)
+    ![mli-group-dept-3-12-peak-point-shapley-value](assets/mli-group-dept-3-12-peak-point-shapley-value.jpg)
 
-Hover over the first Shapley Value. The value should be something similar to ```7_TargetLag:Date:Dept:Store.52```
+    Hover over the first Shapley Value. The value should be something similar to ```7_TargetLag:Date:Dept:Store.52```
 
-At exactly the peak, it is clear that the lag of 52 weeks is the most important feature that drives this prediction that high.
+    At exactly the peak, it is clear that the lag of 52 weeks is the most important feature that drives this prediction that high.
 
 7. While at the **Actual vs Predicted** chart find a point somewhere at the plateau and double click on it, a local Shapley value will appear right below the plot:
 
-
-![mli-group-dept-3-12-plateau-point-shapley-value](assets/mli-group-dept-3-12-plateau-point-shapley-value.jpg)
+    ![mli-group-dept-3-12-plateau-point-shapley-value](assets/mli-group-dept-3-12-plateau-point-shapley-value.jpg)
 
 
 8. Explore other Departments and Stores **Actual vs Predicted** charts by clearing the “3, 12” value and entering another Department and Store in the Group Search box.
@@ -697,19 +697,19 @@ At exactly the peak, it is clear that the lag of 52 weeks is the most important 
 1. Select **Add Panel**
 2. On the new panel, click on the **Select a model interpretation**, then select the Time Series Model named : ``Time Series Forecasting: karitiwi``. This will bring in the pre-ran experiment’s MLI results. Click on **Show Summary** for both experiments to compare experiment settings:
 
-**Note:** the **Driveless AI Experiment Runtime** for both experiments. The pre-ran experiment took more than seven hours to run. 
+    - **Note:** the **Driveless AI Experiment Runtime** for both experiments. The pre-ran experiment took more than seven hours to run. 
 
-![mli-new-experiment-and-preran-experiment-1](assets/mli-new-experiment-and-preran-experiment-1.jpg)
+    ![mli-new-experiment-and-preran-experiment-1](assets/mli-new-experiment-and-preran-experiment-1.jpg)
 
 3. For the pre-ran experiment, enter Department 3, Store 12 and find the peak point as well as the Shapley values associated with the peak point. Compare the values of the experiment you ran to the pre-ran experiment:
 
-![mli-new-experiment-and-preran-experiment-2](assets/mli-new-experiment-and-preran-experiment.jpg)
+    ![mli-new-experiment-and-preran-experiment-2](assets/mli-new-experiment-and-preran-experiment.jpg)
 
-Note that the most importan Shapley Value in the new experiment was :
+    Note that the most importan Shapley Value in the new experiment was :
 
-![li-new-experiment-and-preran-experiment-3](assets/li-new-experiment-and-preran-experiment-3.jpg)
+    ![li-new-experiment-and-preran-experiment-3](assets/li-new-experiment-and-preran-experiment-3.jpg)
 
-When looking at both MLI results, we can see that for the pre-ran experiment the Shapley value that had the most importance for the peak value was the lag of 52 weeks, the same was the case for the new experiment. Since the pre-ran experiment ran with higher Driveless AI settings it was able accurately associate the lag of 52 weeks to the peak point which makes sense given how seasonal sales are it makes sense that the 52 weeks is the most important feature.
+    When looking at both MLI results, we can see that for the pre-ran experiment the Shapley value that had the most importance for the peak value was the lag of 52 weeks, the same was the case for the new experiment. Since the pre-ran experiment ran with higher Driveless AI settings it was able accurately associate the lag of 52 weeks to the peak point which makes sense given how seasonal sales are it makes sense that the 52 weeks is the most important feature.
 
 4. Find the shapley values for a point on the plateau for the pre-ran experiment and compare the values between the pre-ran experiment and the new experiment MLI results.
 
@@ -780,7 +780,7 @@ When looking at both varialbe importance results, we can see that for the pre-ra
 
 4. On the **Actual vs Predicted** plots, the pre-ran experiment shows the points less dispersed compared to the low settings experiment. This translates to higher accuracy on the predictions.
 
-8\. We have two models, a complex model, and a simple model. The complex model performed better than the simple model, but yielded some features that are not very easy to interpret, thus making the model less interpretable. On the other hand, we have a simple model that produced intuitive features but had a lower score than the complex model. Choosing the "best" or most accurate model depends on the specific application, and one has to decide if they want:
+7\. We have two models, a complex model, and a simple model. The complex model performed better than the simple model, but yielded some features that are not very easy to interpret, thus making the model less interpretable. On the other hand, we have a simple model that produced intuitive features but had a lower score than the complex model. Choosing the "best" or most accurate model depends on the specific application, and one has to decide if they want:
 
 - The most accurate or best possible model 
 
@@ -790,7 +790,7 @@ Or
 
 This decision needs to be made according to each particular case. 
 
-9\. You have a finished model that you are satisfied with, what is next? 
+8\. You have a finished model that you are satisfied with, what is next? 
 
 What if you wanted to make predictions outside of the 26 week forecast horizon? 
 

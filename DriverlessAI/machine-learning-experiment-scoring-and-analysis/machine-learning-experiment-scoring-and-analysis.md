@@ -112,8 +112,8 @@ Download H2O’s subset of the Freddie Mac Single-Family Loan-Level dataset to y
 ![loan-level-split-2](assets/loan-level-split-2.jpg)
 *Things to Note:*
 
-1. Type 'freddie_mac_500_train' for OUTPUT NAME 1, this will serve as the training set
-2. Type 'freddie_mac_500_test' for OUTPUT NAME 2, this will serve as the test set
+1. Type ```freddie_mac_500_train``` for OUTPUT NAME 1, this will serve as the training set
+2. Type ```freddie_mac_500_test``` for OUTPUT NAME 2, this will serve as the test set
 3. For Target Column select **Delinquent**
 4. You can set the Random Seed to any number you'd like, we chose 42, by choosing a random seed we will obtain a consistent split
 5. Change the split value to .75 by adjusting the slider to 75% or entering .75 in the section that says Train/Valid Split Ratio
@@ -868,7 +868,7 @@ Now we are going to run a model diagnostics on the freddie_mac_500_test set. The
 1. **Info**: Information about the diagnostics model including the name of the test dataset, name of the experiment used and the target column used for the experiment
 2. **Scores**: Summary for the values for GINI, MCC, F05, F1, F2, Accuracy, Log loss, AUC and AUCPR in relation to how well the experiment model scored against a “new” dataset
 
-    **Note:** The new dataset must be the same format and with the same number of columns as the training dataset 
+    -  **Note:** The new dataset must be the same format and with the same number of columns as the training dataset 
 
 3. **Metric Plots**: Metrics used to score the experiment model including ROC Curve, Pre-Recall Curve, Cumulative Gains, Lift Chart, Kolmogorov-Smirnov Chart, and Confusion Matrix
 
