@@ -1192,9 +1192,9 @@ A password will be sent to your email within minutes.
 
 ### How to Start and End your Lab Session
 
-1\. After a successful login, click on **Browse Labs,** and you should see a list like the one shown below. Look for the lab `H2O-3 and Sparkling Water Training.` 
+1\. After a successful login, click on **Browse Labs,** and you should see a list like the one shown below. Look for the lab `H2O.ai Open Source Tutorials,` **Lab ID:8.** 
 
-![click-lab-5](assets/click-lab-5.jpg)
+![click-lab-8](assets/click-lab-8.jpg)
 
 2\. Click on **Start Lab** and wait for your instance to be ready. 
 
@@ -1209,13 +1209,7 @@ A password will be sent to your email within minutes.
 - The time remaining for the instance
 - Lab URLs
 
-4\. Once the lab has started, you will see four URLs 
--  RStudio URL
-- H2O Flow URL
-- Jupyter URL
-- Spark URL 
-
-Click on the **Jupyter URL,** and that will take you to the following screen.
+4\. Once the lab has started, you will see a link to a Jupyter Notebook. Click on the **Jupyter URL,** and that will take you to the following screen.
 
 ![jupyter-notebook](assets/jupyter-notebook.jpg)
 
