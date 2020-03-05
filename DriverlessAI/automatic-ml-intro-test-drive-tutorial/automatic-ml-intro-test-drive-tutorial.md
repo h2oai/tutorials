@@ -324,8 +324,8 @@ From the Titanic.csv dataset, we are going to create two datasets, training and 
 
 *Things to Note:*
 
-1. For OUTPUT NAME 1: enter '**titanic_train**' (this will serve as the training set)
-2. For OUTPUT NAME 2: enter '**titanic_test**' (this will serve as the test set)
+1. For OUTPUT NAME 1: enter ```titanic_train``` (this will serve as the training set)
+2. For OUTPUT NAME 2: enter ```titanic_test``` (this will serve as the test set)
 3. You can change the Random Seed; this will generate the same split every time
 4. Change the split value to .75 by adjusting the slider to 75% or entering .75 in the section that says *Train/Valid Split Ratio*
 5. Save the changes you made 
