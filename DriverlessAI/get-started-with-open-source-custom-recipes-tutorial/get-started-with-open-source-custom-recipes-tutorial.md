@@ -79,7 +79,7 @@ The diagram above focuses on the parts of Driverless AI that are relevant to the
 
 The curated open-source recipes currently reside on the following GitHub repository:
 
-[H2O Curated Recipes GitHub Repo ](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.8.4.1#sample-recipes)
+[H2O Curated Recipes GitHub Repo ](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.8.4#sample-recipes)
 
 ### Deeper Dive and Resources
 
@@ -87,10 +87,10 @@ Explore the recipe Library and recipe recommendations
 
 Best Practices for Recipes:
 
-- [Security](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.8.4.1#security) 
-- [Safety](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.8.4.1#safety) 
-- [Performance](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.8.4.1#performance)
-- [Frequently Asked Questions](https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.4.1/FAQ.md) 
+- [Security](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.8.4#security) 
+- [Safety](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.8.4#safety) 
+- [Performance](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.8.4#performance)
+- [Frequently Asked Questions](https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.4/FAQ.md) 
 
 
 ## Task 2: Launch an Experiment and Consume a Recipe
@@ -218,7 +218,7 @@ Now we are going to import a recipe to add related numeric features such as day 
 
 ### Import a Transformer Recipe
 
-The goal of importing the new transformer recipe is to see if we can further optimize our baseline model. To do this, we are going to take our baseline experiment and import the [sum.py transformer](https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.4.1/transformers/numeric/sum.py) 
+The goal of importing the new transformer recipe is to see if we can further optimize our baseline model. To do this, we are going to take our baseline experiment and import the [sum.py transformer](https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.4/transformers/numeric/sum.py) 
 
 1\. Select **Experiments** located at the top of the **Experiment** page:
 
@@ -240,8 +240,10 @@ The goal of importing the new transformer recipe is to see if we can further opt
 
 6\. Copy and paste  the following URL for the SumTransformer into the **Load Custom Recipe** box then click on **Save.** Make sure no extra spaces are added after the link in the **Load Custom Recipe** box, as it might give you an error. 
 
+**Note:** The Driverless AI Recipes branches rel-1.8.4 and rel-1.8.4.1 are the same, and have been merged into rel-1.8.4; that is why we are using the links for the 1.8.4 branch.
+
 ```html
-https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.4.1/transformers/numeric/sum.py
+https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.4/transformers/numeric/sum.py
 ```
 
 ![exp2-load-custom-recipe-transformer-raw-url](assets/exp2-load-custom-recipe-transformer-raw-url.jpg)
@@ -274,7 +276,7 @@ As you can see in the variable importance section, some features start with "SUM
 
 ### Deeper Dive and Resources
 
-- [H2O’s Driverless AI Recipes - Sum Transformer](https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.4.1/transformers/numeric/sum.py)
+- [H2O’s Driverless AI Recipes - Sum Transformer](https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.4/transformers/numeric/sum.py)
 
 ## Task 4: Recipe: Scorer
 
@@ -301,7 +303,7 @@ The model recipe that will be used for this experiment is the Brier Loss Scorer;
 5\. Copy and paste  the following URL for the Custom Brier Loss recipe into the **Load Custom Recipe** box then click on **Save**
 
 ~~~html
-https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.4.1/scorers/classification/binary/brier_loss.py
+https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.4/scorers/classification/binary/brier_loss.py
 ~~~
 
 ![exp3-load-custom-recipe-scorer-raw-url](assets/exp3-load-custom-recipe-scorer-raw-url.jpg)
@@ -347,7 +349,7 @@ The ROC for this experiment was 0.9211, and the best accuracy was 0.9553.
 ### Deeper Dive and Resources
 
 - [Wikipedia Brier Score](https://en.wikipedia.org/wiki/Brier_score)
-- [H2O’s Driverless AI Recipes - Brier Loss](https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.4.1/scorers/classification/binary/brier_loss.py) 
+- [H2O’s Driverless AI Recipes - Brier Loss](https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.4/scorers/classification/binary/brier_loss.py) 
 
 ## Task 5: Recipe: Model
 
@@ -370,7 +372,7 @@ The model recipe that will be used for this experiment is an **ExtraTrees**, whi
 5\. Copy and paste  the following URL into the **Load Custom Recipe** box then click on **Save**
 
 ~~~html
-https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.4.1/models/algorithms/extra_trees.py
+https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.4/models/algorithms/extra_trees.py
 ~~~
 
 ![exp4-load-custom-recipe-model-raw-url](assets/exp4-load-custom-recipe-model-raw-url.jpg)
@@ -405,7 +407,7 @@ The AUC for this experiment was 0.9082, and the best accuracy was 0.9439
 
 ### Deeper Dive and Resources
 
-- [H2O’s Driverless AI Recipes - ExtraTrees Model ](https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.4.1/models/algorithms/extra_trees.py) 
+- [H2O’s Driverless AI Recipes - ExtraTrees Model ](https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.4/models/algorithms/extra_trees.py) 
 
 ## Task 6: Comparing Final Model Results 
 
@@ -481,13 +483,13 @@ We can see that when we used the Scorer recipe, the model had better AUC with an
 
 H2O custom recipes reside in the H2O Driverless AI Recipes GitHub repo. **There are multiple branches of Driverless AI recipes so make sure that you are using the same branch as the Driverless AI version you have.**
 
-For this tutorial, we are using **Driverless AI 1.8.4.1**; therefore, we will be working off the Driverless AI 1.8.4.1 branch.
+For this tutorial, we are using **Driverless AI 1.8.4.1,** but we will be working off the Driverless AI 1.8.4 branch, as both 1.8.4 and 1.8.4.1 branches have been merged.
 
-1\. Open the link below on a separate tab. Make sure the branch is **rel-1.8.4.1**
+1\. Open the link below on a separate tab. Make sure the branch is **rel-1.8.4**
 
-- [H2O Driverless AI Recipes GitHub Repo](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.8.4.1)
+- [H2O Driverless AI Recipes GitHub Repo](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.8.4)
 
-The rel-1.8.4.1 branch will similar to the page below:
+The rel-1.8.4 branch will similar to the page below:
 
 ![dai-recipes-github-page](assets/dai-recipes-github-page.jpg)
 
@@ -522,30 +524,30 @@ We are going to get the URL for **Brier Loss** Scorer we used in Task 4 and uplo
 5\. The URL for this version of the recipe should be the one below. This URL is then pasted into Driverless AI.
 
 ~~~html
-https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.4.1/scorers/classification/binary/brier_loss.py
+https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.4/scorers/classification/binary/brier_loss.py
 ~~~
 
 6\. See task 4 of this tutorial to follow the process of uploading a recipe via the raw URL
 
 ### Uploading Recipes from Local Machine 
 
-For this tutorial, we are using Driverless AI 1.8.4.1; therefore, we will be working off the Driverless AI 1.8.4.1 branch.
+For this tutorial, we are using **Driverless AI 1.8.4.1,** but we will be working off the Driverless AI 1.8.4 branch, as both, 1.8.4 and 1.8.4.1 branches have been merged.
 
-1\. Open the link below on a separate tab. Make sure the branch is **rel-1.8.4.1**
+1\. Open the link below on a separate tab. Make sure the branch is **rel-1.8.4**
 
-- [H2O Driverless AI Recipes GitHub Repo](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.8.4.1)
+- [H2O Driverless AI Recipes GitHub Repo](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.8.4)
 
-2\. Make sure it is Branch rel-1.8.4.1, then click on **Clone or Download**, then on **Download ZIP**. This will download the entire rel-1.8.4.1 repo to your desktop. If you prefer not to download the entire repo, then use the URL method. 
+2\. Make sure it is Branch rel-1.8.4, then click on **Clone or Download**, then on **Download ZIP**. This will download the entire rel-1.8.4 repo to your desktop. If you prefer not to download the entire repo, then use the URL method. 
 
 ![dai-recipes-repo-download](assets/dai-recipes-repo-download.jpg)
 
-3\. Unzip the driverless-recipes-rel-1.8.4.1 file and save it on your local machine, your directory of choice.
+3\. Unzip the driverless-recipes-rel-1.8.4 file and save it on your local machine, your directory of choice.
 
 4\. On Driverless AI, start an Experiment, then select Expert Settings. Now instead of selecting **+Load Custom Recipe From URL**, you will select **+Upload Custom Recipe**
 
 ![dai-upload-custom-recipe](assets/dai-upload-custom-recipe.jpg)
 
-5\. After you click on **Upload Custom Recipe**, go to the directory where you saved the **driverlessai-recipes-rel-1.8.4.1** folder
+5\. After you click on **Upload Custom Recipe**, go to the directory where you saved the **driverlessai-recipes-rel-1.8.4** folder
 
 6\. Select the **scorer** folder
 
