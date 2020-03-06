@@ -367,22 +367,23 @@ Natural language processing is complex as the language is hard to understand giv
 </ul>
 </li>
 <li>Iteration Data - Validation<ul>
-<li>The winning model&#39;s validation score and the algorithm used are as follows:<br><br><ul>
+<li>The winning model&#39;s validation score and the algorithm used are as follows:</li>
 <li>Validation Score - .2353</li>
 <li>Model Type: XGBoostGBM</li>
 </ul>
 </li>
-</ul>
-<ol type="1">
-<li>Variable Importance: Summary of top 20 - Feature Engineered variables</li>
-</ol>
-Driverless AI performs feature Engineering on the dataset to determine the optimal representation of the data. Various stages of the features appear throughout the iteration of the data. These can be viewed by hovering over points on the Iteration Data - Validation Graph and seeing the updates on the  <strong>Variable Importance</strong> section.<img alt="variable-importance" src="img/a1cc482e5a86214b.png">Look at some of the variables in Variable of Importance list. These are the new, high-value features for our training dataset.These transformations created with the following transformers:<ul>
+<li>Variable Importance: Summary of top 20 - Feature Engineered variables<ul>
+Driverless AI performs feature Engineering on the dataset to determine the optimal representation of the data. Various stages of the features appear throughout the iteration of the data. These can be viewed by hovering over points on the Iteration Data - Validation Graph and seeing the updates on the  <strong>Variable Importance</strong> section.
+<p><img alt="variable-importance" src="img/a1cc482e5a86214b.png"></p>
+<p>Look at some of the variables in Variable of Importance list. These are the new, high-value features for our training dataset.These transformations created with the following transformers:</p>
 <li><strong>TextBiGRUTransformer</strong> : Trains a bi-directional GRU TensorFlow model on word embeddings created from a text feature to predict the response column</li>
 <li><strong>TextCNNTransformer</strong> : Trains a CNN TensorFlow model on word embeddings created from a text feature to predict the response column.</li>
 <li><strong>TextTransformer :</strong> Tokenizes a text column and creates a TF IDF matrix or count matrix</li>
 <li><strong>WeightOfEvidenceTransformer</strong>  : calculates Weight of Evidence for each value in categorical column(s). The Weight of Evidence is used as a new feature.</li>
 </ul>
-<img alt="woe" src="img/ba961d7376276380.png">The complete list of features used in the final model is available in the Experiment Summary artifacts. The Experiment Summary also provides a list of the original features and their estimated feature importance.</li>
+</li>
+<p><img alt="woe" src="img/ba961d7376276380.png"></p>
+<p>The complete list of features used in the final model is available in the Experiment Summary artifacts. The Experiment Summary also provides a list of the original features and their estimated feature importance.</p></li>
 <li>SummaryThis option gives a brief summary of the entire experiment including :<ul>
 <li>How many features were tested and selected?</li>
 <li>How many models were trained for feature evolution?</li>
