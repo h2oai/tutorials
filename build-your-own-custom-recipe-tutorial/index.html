@@ -29,9 +29,9 @@
         <p>In this tutorial, we will take a deeper dive into the process of custom recipe building to enhance Driverless AI. We will build three recipes using Visual Studio Code text editor. Each recipe will then be uploaded and tested using Driverless AI.</p>
 <p>Recipes:</p>
 <ul>
-<li>transformer</li>
-<li>model</li>
-<li>scorer</li>
+<li>Transformer</li>
+<li>Model</li>
+<li>Scorer</li>
 </ul>
 
 
@@ -43,7 +43,7 @@
 <li>Ability to write Python Code</li>
 <li>A Driverless AI environment (release 1.8.4.1)</li>
 <li>Basic knowledge of Driverless AI or doing the Automatic Machine Learning Intro tutorial<ul>
-<li><a href="https://h2oai.github.io/tutorials/get-started-and-consume-existing-recipes/#0" target="_blank">Get Started and Consume Existing Recipes Tutorial</a></li>
+<li><a href="https://h2oai.github.io/tutorials/get-started-with-open-source-custom-recipes-tutorial/#0" target="_blank">Get Startedand with Open Source Custom Recipes Tutorial</a></li>
 </ul>
 </li>
 <li>A text editor or developer environment to create .py  text files containing source code (Examples: PyCharm, Jupyter, Spider or a Text Editor like Atom or Visual Studio Code)</li>
@@ -138,7 +138,8 @@
 <p>1. First, write and test your idea on sample data before wrapping as a recipe.</p>
 <p>2. Download the Driverless AI Recipes Repository for easy access to examples.</p>
 <p>3. Use the Recipe Templates to ensure you have all the required components.</p>
-<p>In the next three tasks, we will be building three simple recipes, a transformer, a scorer, and a model. It is assumed that you have downloaded the <a href="https://github.com/h2oai/driverlessai-recipes/tree/rel-1.8.4.1" target="_blank">Driverless AI Recipes Repository rel 1.8.4.1</a> and that you have access to the examples and recipe templates.</p>
+<p><strong>Note that the Driverless AI 1.8.4.1 Recipes branch is the same as the Driverless AI 1.8.4 Recipes branch.</strong></p>
+<p>In the next three tasks, we will be building three simple recipes, a transformer, a scorer, and a model. It is assumed that you have downloaded the <a href="https://github.com/h2oai/driverlessai-recipes/tree/rel-1.8.4" target="_blank">Driverless AI Recipes Repository rel 1.8.4</a> and that you have access to the examples and recipe templates.</p>
 <h2>Deeper Dive and Resources</h2>
 <ul>
 <li><a href="http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/connectors.html?highlight=connectors" target="_blank">H2O&#39;s Enabling Data Connectors </a></li>
@@ -156,9 +157,9 @@
 <li><strong>A network analytics company</strong> can improve its anti-IP-spoofing functionality by parsing IP addresses and checking if any of the properties look like a spam or a DoD attack.</li>
 <li><strong>A financial services company</strong> could calculate the historical volatility of markets in a configurable rolling time-window on time-series financial data.</li>
 <li>Suppose you have a string column that has values like &#34;A:B:10:5&#34;, &#34;A:C:4:10&#34;, ... It might make sense to split these values by &#34;:&#34; and create four output columns, potentially all numeric, such as [0,1,10,5], [0,2,4,10], ... to encode the information more clearly for the algorithm to learn better from.</li>
-<li>PyTorch deep learning model for <a href="https://github.com/h2oai/driverlessai-recipes/blob/master/transformers/nlp/text_embedding_similarity_transformers.py" target="_blank">text similarity analysis</a>, computes a similarity score for any given two text input columns.</li>
-<li>ARIMA model for <a href="https://github.com/h2oai/driverlessai-recipes/blob/master/transformers/timeseries/auto_arima_forecast.py" target="_blank">time-series forecasting</a></li>
-<li>Data augmentation, such as replacing a zip code with demographic information, or replacing a date column with a <a href="https://github.com/h2oai/driverlessai-recipes/blob/master/transformers/augmentation/singapore_public_holidays.py" target="_blank">National holiday flag</a>.</li>
+<li>PyTorch deep learning model for <a href="https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.4/transformers/nlp/text_embedding_similarity_transformers.py" target="_blank">text similarity analysis</a>, computes a similarity score for any given two text input columns.</li>
+<li>ARIMA model for <a href="https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.4/transformers/timeseries/auto_arima_forecast.py" target="_blank">time-series forecasting</a></li>
+<li>Data augmentation, such as replacing a zip code with demographic information, or replacing a date column with a <a href="https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.4/transformers/augmentation/singapore_public_holidays.py" target="_blank">National holiday flag</a>.</li>
 </ul>
 <p><strong>Driverless AI has recipes for the following categories:</strong></p>
 <ul>
@@ -328,15 +329,15 @@ _excluded_model_classes = None # List[str]
 <p>The final step in building the custom transformer recipe is to upload the custom recipe to Driverless AI and check that it passes the <strong>acceptance test</strong>. If your recipe is not passing the Driverless AI&#39;s acceptance test, see  <a href="https://h2oai.github.io/tutorials/build-your-own-custom-recipe-tutorial/#6" target="_blank">Task 5: Troubleshooting</a>.</p>
 <p>Take the new custom sum_transformer and test it in a dataset of your choice.</p>
 <p><strong>Note:</strong> The dataset needs to have more than three quantitative columns that can be added together</p>
-<p>If you have questions on how to upload the transformer recipe to Driverless AI, see  <a href="https://h2oai.github.io/tutorials/get-started-with-open-source-custom-recipes-tutorial/#0" target="_blank">&#34;Get Started with Open Source Custom Recipes Tutorial - Task 3: Recipe: Transformer&#34;</a>.</p>
+<p>If you have questions on how to upload the transformer recipe to Driverless AI, see  <a href="https://h2oai.github.io/tutorials/get-started-with-open-source-custom-recipes-tutorial/#4" target="_blank">&#34;Get Started with Open Source Custom Recipes Tutorial - Task 3: Recipe: Transformer&#34;</a>.</p>
 <h2>References</h2>
-<p>[1] <a href="https://h2oai.github.io/tutorials/get-started-with-open-source-custom-recipes-tutorial/#4" target="_blank">How to write a Transformer Recipe for Driverless AI by Ashrith Barthur</a></p>
+<p>[1] <a href="https://github.com/h2oai/driverlessai-recipes/tree/rel-1.8.4/how_to_write_a_recipe" target="_blank">How to write a Transformer Recipe for Driverless AI by Ashrith Barthur</a></p>
 <h2>Deeper Dive and Resources</h2>
 <ul>
-<li><a href="https://github.com/h2oai/driverlessai-recipes/tree/rel-1.8.4.1/transformers" target="_blank">Driverless AI Transformers Repo</a></li>
-<li><a href="https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.4.1/transformers/transformer_template.py" target="_blank">BYOR Transformer Template</a></li>
-<li><a href="https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.4.1/transformers/how_to_debug_transformer.py" target="_blank">How to Debug a Transformer</a></li>
-<li><a href="https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.4.1/transformers/how_to_test_from_py_client.py" target="_blank">How to Test a Transformer from the PyClient</a></li>
+<li><a href="https://github.com/h2oai/driverlessai-recipes/tree/rel-1.8.4/transformers" target="_blank">Driverless AI Transformers Repo</a></li>
+<li><a href="https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.4/transformers/transformer_template.py" target="_blank">BYOR Transformer Template</a></li>
+<li><a href="https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.4/transformers/how_to_debug_transformer.py" target="_blank">How to Debug a Transformer</a></li>
+<li><a href="https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.4/transformers/how_to_test_from_py_client.py" target="_blank">How to Test a Transformer from the PyClient</a></li>
 <li><a href="assets/PDF_Transformers.pdf" target="_blank">Driverless AI Expert Settings - Transformers PDF</a></li>
 </ul>
 
@@ -344,15 +345,15 @@ _excluded_model_classes = None # List[str]
       </google-codelab-step>
     
       <google-codelab-step label="Task 3: Build a Recipe: Scorer" duration="0">
-        <p>A scorer recipe is a recipe that helps evaluate the performance of your model. There are many methods of evaluating performance and Driverless AI has many scorers available by default; however, if you want to test a different scorer for your particular model then <strong>BYOR</strong> is an excellent way of testing a particular scorer and then compare the model results through Driverless AI&#39;s <a href="http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/projects.html?highlight=projects" target="_blank"><br>Project Workspace</a> feature.</p>
+        <p>A scorer recipe is a recipe that helps evaluate the performance of your model. There are many methods of evaluating performance and Driverless AI has many scorers available by default; however, if you want to test a different scorer for your particular model then <strong>BYOR</strong> is an excellent way of testing a particular scorer and then compare the model results through Driverless AI&#39;s <a href="http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/projects.html?highlight=projects" target="_blank">Project Workspace</a> feature.</p>
 <p><strong>Note</strong>: Driverless AI will compare the scorer you uploaded with the existing scorers and will select the best scorer fit for your dataset. If your scorer was not selected as the default scorer by Driverless AI in your experiment and you still would like to see how your dataset would perform with your scorer recipe, you can manually select your scorer in the <strong>Experiments Page</strong> under <strong>Scorers</strong>.</p>
 <h2>Where can scorers be used?</h2>
 <ul>
 <li><strong>An oil and gas company</strong> could predict oil-well output by developing a time-series regression model and use the Mean Absolute Scaled Error recipe to measure the accuracy of the forecasted output.</li>
 <li><strong>A transportation and logistics company</strong> could use the precision-recall classification recipe to accurately predict the on-time delivery of perishable products by tweaking the threshold depending upon weather conditions.</li>
 <li><strong>A marketing and lead-gen company</strong> could improve the effectiveness of its products by accurately predicting its ROI for its customers, using the marketing campaign scorer recipe.</li>
-<li>Maybe you want to optimize your predictions for the <a href="https://github.com/h2oai/driverlessai-recipes/blob/master/scorers/regression/top_decile.py" target="_blank">top decile</a> for a regression problem.</li>
-<li>Maybe you care about the <a href="https://github.com/h2oai/driverlessai-recipes/blob/master/scorers/classification/binary/false_discovery_rate.py" target="_blank">false discovery rate</a> for a binary classification problem.</li>
+<li>Maybe you want to optimize your predictions for the <a href="https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.4/scorers/regression/top_decile.py" target="_blank">top decile</a> for a regression problem.</li>
+<li>Maybe you care about the <a href="https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.4/scorers/classification/binary/false_discovery_rate.py" target="_blank">false discovery rate</a> for a binary classification problem.</li>
 </ul>
 <p>Driverless AI has Scorer recipes for the following categories:</p>
 <ul>
@@ -451,11 +452,11 @@ def score(self,
 <p>The final step in building the custom scorer recipe is to upload the custom recipe to Driverless and check that it passes the <strong>acceptance test</strong>. If your recipe is not passing the Driverless AI&#39;s acceptance test, see  <a href="https://h2oai.github.io/tutorials/build-your-own-custom-recipe-tutorial/#6" target="_blank">Task 5: Troubleshooting</a>.</p>
 <p>Take the false_discovery_rate_scorer and test it in a dataset of your choice.</p>
 <p><strong>Note:</strong> The dataset needs to be for a binary classification problem</p>
-<p>If you have questions on how to upload the transformer recipe to Driverless AI, see  <a href="https://h2oai.github.io/tutorials/get-started-with-open-source-custom-recipes-tutorial/#5" target="_blank">&#34;Get Started with Open Source Custom Recipes Tutorial - Task 4: Recipe: Scorer&#34;</a>.</p>
+<p>If you have questions on how to upload the transformer recipe to Driverless AI, see  <a href="https://h2oai.github.io/tutorials/get-started-with-open-source-custom-recipes-tutorial/#4" target="_blank">&#34;Get Started with Open Source Custom Recipes Tutorial - Task 4: Recipe: Scorer&#34;</a>.</p>
 <h2>Deeper Dive and Resources</h2>
 <ul>
-<li><a href="https://github.com/h2oai/driverlessai-recipes/tree/rel-1.8.4.1/scorers" target="_blank">Driverless AI Scorers Repo</a></li>
-<li><a href="https://github.com/h2oai/driverlessai-recipes/tree/rel-1.8.4.1/scorers" target="_blank">BYOR Scorer Template</a></li>
+<li><a href="https://github.com/h2oai/driverlessai-recipes/tree/rel-1.8.4/scorers" target="_blank">Driverless AI Scorers Repo</a></li>
+<li><a href="https://github.com/h2oai/driverlessai-recipes/tree/rel-1.8.4/scorers" target="_blank">BYOR Scorer Template</a></li>
 <li><a href="http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/projects.html?highlight=projects" target="_blank">Driverless AI Project Workspace</a></li>
 </ul>
 
@@ -463,7 +464,7 @@ def score(self,
       </google-codelab-step>
     
       <google-codelab-step label="Task 4: Build a Recipe: Model" duration="0">
-        <p>A model recipe is a recipe for a machine learning technique that can be used to build prediction models. Driverless AI has an extensive list of models by default; however, a new model can be loaded and be used to compare the Driverless AI models. Current Driverless models can be enhanced or slightly modified. Just like with the scorer&#39;s recipes, you can compare the results of the model recipe you created with the model that  Driverless AI selected for your dataset through  Driverless AI&#39;s <a href="http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/projects.html?highlight=projects" target="_blank"><br>Project Workspace</a> feature.</p>
+        <p>A model recipe is a recipe for a machine learning technique that can be used to build prediction models. Driverless AI has an extensive list of models by default; however, a new model can be loaded and be used to compare the Driverless AI models. Current Driverless models can be enhanced or slightly modified. Just like with the scorer&#39;s recipes, you can compare the results of the model recipe you created with the model that  Driverless AI selected for your dataset through  Driverless AI&#39;s <a href="http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/projects.html?highlight=projects" target="_blank">Project Workspace</a> feature.</p>
 <p><strong>Note</strong>: Driverless AI will compare the model you uploaded with the existing models and will select the best model fit for your dataset. If the model was not selected as the top model by Driverless AI and you still would like to see how your dataset would perform with your model recipe, you can turn off all default models in Driverless AI and only select your model.</p>
 <p>Where can models be used?</p>
 <ul>
@@ -641,8 +642,8 @@ importances = np.array(model.feature_importances_)
 <p>[2] <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.ExtraTreesRegressor.html" target="_blank">sklearn Extra Trees Regressor</a></p>
 <h2>Deeper Dive and Resources</h2>
 <ul>
-<li><a href="https://github.com/h2oai/driverlessai-recipes/tree/rel-1.8.4.1/models" target="_blank">Driverless AI Models Repo</a></li>
-<li><a href="https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.4.1/models/model_template.py" target="_blank">BYOR Model Template</a><br></li>
+<li><a href="https://github.com/h2oai/driverlessai-recipes/tree/rel-1.8.4/models" target="_blank">Driverless AI Models Repo</a></li>
+<li><a href="https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.4/models/model_template.py" target="_blank">BYOR Model Template</a><br></li>
 </ul>
 
 
@@ -659,13 +660,13 @@ importances = np.array(model.feature_importances_)
 <p>Other tips:</p>
 <ul>
 <li>Read the entire error message; it most likely contains the stack trace and helpful information on how to fix the problem.</li>
-<li>If you can&#39;t figure out how to fix the recipe, we suggest you post your questions in the <a href="https://www.h2o.ai/community/driverless-ai-community/#chat" target="_blank">Driverless AI community Slack channel</a></li>
+<li>If you can&#39;t figure out how to fix the recipe, we suggest you post your questions in the <a href="https://www.h2o.ai/slack-community/" target="_blank">Driverless AI community Slack channel</a></li>
 <li>You can also send us your experiment logs zip file, which will contain the recipe source files.</li>
 </ul>
 <p>How can I debug my recipe?</p>
 <ul>
 <li>The easiest way (for now) is to keep uploading it to the expert settings in Driverless AI until the recipe is accepted.</li>
-<li>Another way is to make minimal changes, as shown in <a href="https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.4.1/transformers/how_to_debug_transformer.py" target="_blank">this debugging example</a> and use PyCharm or a similar Python debugger.</li>
+<li>Another way is to make minimal changes, as shown in <a href="https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.4/transformers/how_to_debug_transformer.py" target="_blank">this debugging example</a> and use PyCharm or a similar Python debugger.</li>
 </ul>
 <h2>Recipe Made the Cut but Driverless and was not Used in the Experiment</h2>
 <p>You were able to successfully load your recipe to Driverless AI; however, your recipe was not used by Driverless AI, now what? Driverless AI takes best-fit recipes for your dataset, so if you don&#39;t see your recipe being used, you can manually select your recipe when setting up your Experiment.</p>
@@ -680,8 +681,8 @@ importances = np.array(model.feature_importances_)
 <h2>Deeper Dive and Resources</h2>
 <ul>
 <li><a href="https://support.h2o.ai/support/solutions/articles/17000090847-how-do-i-collect-logs-" target="_blank">How do I collect logs? </a><br></li>
-<li><a href="https://www.h2o.ai/community/driverless-ai-community/#chat" target="_blank">Driverless AI community Slack channel</a></li>
-<li><a href="https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.4.1/transformers/how_to_debug_transformer.py" target="_blank"> Driverless AI Recipe Debugging Example</a></li>
+<li><a href="https://www.h2o.ai/slack-community/" target="_blank">Driverless AI community Slack channel</a></li>
+<li><a href="https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.4/transformers/how_to_debug_transformer.py" target="_blank"> Driverless AI Recipe Debugging Example</a></li>
 </ul>
 
 
