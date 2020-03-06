@@ -1,6 +1,8 @@
 
 # Getting Started with Driverless AI Test Drive
 
+## Outline
+
 - [Driverless AI Test Drive](#driverless-ai-test-drive)
 - [How to Obtain a Two Hour Test Drive Session](#how-to-obtain-a-two-hour-test-drive-session)
 - [How to Create an Aquarium Account](#how-to-create-an-aquarium-account)
@@ -14,13 +16,17 @@
 
 Test Drive is a two-hour lab session that exists in H2O's Aquarium. Aquarium is H2O's cloud environment that provides access to various tools for workshops, conferences, and training.
 
-All labs have a specific **Lab Duration*** to complete the lab. **All Driverless AI Test Drive Lab session's will terminate after two-hours. No work will be saved!**
+All labs have a specific **Lab Duration*** to complete the lab. **All Driverless AI Test Drive Lab session's will terminate after two-hours. No work will be saved!**. However, you can retake the lab multiple times. 
 
-If you would like to continue exploring H2O's Driverless AI, request a [21-Day Free Trial: H2O Driverless AI license Key](https://www.h2o.ai/try-driverless-ai/).
+After registering in the [Try Driverless AI page](https://www.h2o.ai/try-driverless-ai/) you will have two options:
+
+- **21 Day Free Trial**: If you would like to continue exploring H2O's Driverless AI and run your experiments in a controlled environment where your data will be saved, you can leverage an on-prem or cloud environment with a 21-day trial period license.
+
+-  **2 Hour Test Drive**: Explore Driverless AI in two-hour intervals with guided Driverless AI tutorials.
 
 ## How to Obtain a Two Hour Test Drive Session
 
-1\. Select **Free Trial** at the top-right corner of the [H2O.ai](https://www.h2o.ai/) home page or simply click [here](https://www.h2o.ai/try-driverless-ai/).
+1\. If you are on the [H2O.ai](https://www.h2o.ai/) home page, select **Free Trial** at the top-right corner or [Try Driveless AI here](https://www.h2o.ai/try-driverless-ai/).
 
 2\. A similar form will appear, fill out the **Request a 21 day free trial** form then select **Send This Secure Message**:
 
@@ -86,8 +92,7 @@ After a successful login the Driverless AI Test Drive Lab will appear:
 **Note**: 
 
 - Lab duration is 120 minutes, after that the session will terminate
-- Selecting `click here` will take to you to the Driverless AI Automatic Machine Learning Tutorial
-- Check out the complete set of [Driverless AI tutorials](https://h2oai.github.io/tutorials/)
+- Check out the complete set of [Driverless AI Tutorials](https://h2oai.github.io/tutorials/)
 - Post questions on the [Driverless AI Community](https://www.h2o.ai/community/home)
 - **Start** button starts the lab session
 
