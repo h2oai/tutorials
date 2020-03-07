@@ -97,7 +97,7 @@ Best Practices for Recipes:
 
 ### About the Dataset
 
-This tutorial will use the customer churn Telco dataset from [Kaggle](https://www.kaggle.com/becksddf/churn-in-telecoms-dataset). The dataset has information about customers of a Telecommunications company. Some of the features included are customer demographic location, length of the account, and customer call history. We will be predicting customer churn.
+This tutorial will use the customer churn telco dataset from [Kaggle](https://www.kaggle.com/becksddf/churn-in-telecoms-dataset). The dataset has information about customers of a telecommunications company. Some of the features included are customer demographic location, length of the account, and customer call history. We will be predicting customer churn.
 
 [1] [Churn in Telcom’s dataset](https://www.kaggle.com/becksddf/churn-in-telecoms-dataset)  
 
@@ -105,7 +105,7 @@ This dataset set has 3333 customers(rows) and 21 columns representing attributes
 
 ### Add the Data
 
-1\. Click on **+ Add a Dataset(or Drag and Drop)**
+1\. Click on **+ Add a Dataset (or Drag and Drop)**
 
 2\. Select **FILE SYSTEM**
 
@@ -153,7 +153,7 @@ This dataset set has 3333 customers(rows) and 21 columns representing attributes
 18. **Intl Calls** - Total International Calls
 19. **Intl Charge** - Total International Charge  
 20. **CustServ Call** - Total Customer Service Calls 
-21. **Churn** - Did customer churn? True: customer churned, False: customer did not churn 
+21. **Churn** - Did customer churn? True.: customer churned, False.: customer did not churn 
 
 9\.  Return to the **Datasets** Page
 
@@ -199,11 +199,11 @@ This dataset set has 3333 customers(rows) and 21 columns representing attributes
 
 ## Task 3: Recipe: Transformer
 
-On task 2, we ran an experiment to build a model that would predict customer churn. The Driverless AI model that was generated with the settings shown below and gave us the results below:
+In Task 2, we ran an experiment to build a model that would predict customer churn. The Driverless AI model that was generated with the settings shown below and gave us the results below:
 
 **Summary of results**:
 
-| - | Experiment 1(Base)|
+| - | Experiment 1 (Base) |
 |---| ---|
 | Experiment Settings | 5-4-10 |
 | Scorer | AUC |
@@ -214,7 +214,7 @@ On task 2, we ran an experiment to build a model that would predict customer chu
 
 When a dataset is selected for an experiment, Driverless AI optimizes its settings by selecting the best Scorer, Model(s), and Transformers for the dataset. However, this does not mean we cannot import other scorers, models, or transformers to see if we can further optimize our model. In this task, we will be importing a transformer recipe, to see how the features in the feature engineering change.
 
-Now we are going to import a recipe to add related numeric features such as day minutes, evening minutes, and night minutes. Driverless AI doesn’t add three or more columns, so we will add a recipe that will do this for us. We will see if Driverless AI is able to use this new transformation in determining variable importance.
+Now we are going to import a recipe to add together related numeric features such as day minutes, evening minutes, and night minutes. Driverless AI doesn’t add three or more columns automatically, so we will add a recipe that will do this for us. We will see if this new feature ends up in the top features used by our final Driverless AI model. 
 
 ### Import a Transformer Recipe
 
@@ -238,7 +238,7 @@ The goal of importing the new transformer recipe is to see if we can further opt
 
 ![exp2-load-custom-recipe-transformer](assets/exp2-load-custom-recipe-transformer.jpg)
 
-6\. Copy and paste  the following URL for the SumTransformer into the **Load Custom Recipe** box then click on **Save.** Make sure no extra spaces are added after the link in the **Load Custom Recipe** box, as it might give you an error. 
+6\. Copy and paste  the following URL for the SumTransformer into the **Load Custom Recipe** box then click on **Save.**  
 
 **Note:** The Driverless AI Recipes branches rel-1.8.4 and rel-1.8.4.1 are the same, and have been merged into rel-1.8.4; that is why we are using the links for the 1.8.4 branch.
 
@@ -248,7 +248,7 @@ https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.4/transformers/numeri
 
 ![exp2-load-custom-recipe-transformer-raw-url](assets/exp2-load-custom-recipe-transformer-raw-url.jpg)
 
-7\. There will be a message updating you on the status of loading of the recipe; then Expert Experiment Settings page will re-appear
+7\. There will be a message updating you on the status of loading of the recipe; then the Expert Experiment Settings page will re-appear
 
 8\. On the **Expert Experiment Settings** find **Recipes** and click on it
 
@@ -264,7 +264,7 @@ https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.4/transformers/numeri
 
 11\. Select **Save** on the **Expert Experiment Settings** page
 
-12\. Name your experiment `Exp 2 - Transformer.` Also, verify that the transformer is in the experiment; on the Experiments page, look under “What do these settings mean?” > “Interpretability” and you should see the custom transformer as **Sum.** 
+12\. Name your experiment `Exp 2 - Transformer`. Also, verify that the transformer is in the experiment; on the Experiments page, look under “What do these settings mean?” > “Interpretability” and you should see the custom transformer as **Sum.** 
 
 ![exp2-check-transformer](assets/exp2-check-transformer.jpg)
 
@@ -280,7 +280,7 @@ As you can see in the variable importance section, some features start with "SUM
 
 ## Task 4: Recipe: Scorer
 
-In this task, we will be importing a Scorer recipe to see if this scorer will help improve the performance of the model. 
+In this task, we will be importing a Scorer recipe to optimize the modeling process for a metric that may be more important to our business than a standard statistical scorer.
 
 ### Import a Scorer Recipe
 
@@ -308,13 +308,13 @@ https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.4/scorers/classificat
 
 ![exp3-load-custom-recipe-scorer-raw-url](assets/exp3-load-custom-recipe-scorer-raw-url.jpg)
 
-6\. There will be a message updating you on the status of loading of the recipe; then Expert Experiment Settings page will re-appear
+6\. There will be a message updating you on the status of loading of the recipe; then the Expert Experiment Settings page will re-appear
 
 7\. On the **Expert Experiment Settings** find **Recipes** and click on it
 
 ![exp2-expert-settings-recipes](assets/exp2-expert-settings-recipes.jpg)
 
-8\. Click on **Select Value** under **Include Specific Scorers**, we are going to verify that the scorer we loaded did indeed load.
+8\. Click on **Select Value** under **Include Specific Scorers**, we are going to verify that the scorer we loaded did indeed load
 
 ![exp3-expert-settings-scorer-select-values](assets/exp3-expert-settings-scorer-select-values.jpg)
 
@@ -357,7 +357,7 @@ In this task, we will be importing a model recipe to see if this new custom mode
 
 ### Import a Model Recipe
 
-The model recipe that will be used for this experiment is an **ExtraTrees**, which is an extremely randomized tree (ExtraTrees) from sklearn, to learn more about the **Extra Trees** model see the **Deeper Dive and Resources** at the end of this task.
+The model recipe that will be used for this experiment is **ExtraTrees**, which is an extremely randomized tree (ExtraTrees) from sklearn. To learn more about the **Extra Trees** model see the **Deeper Dive and Resources** at the end of this task.
 
 1\.Select **Experiments** located at the top of the **Experiment** page
 
