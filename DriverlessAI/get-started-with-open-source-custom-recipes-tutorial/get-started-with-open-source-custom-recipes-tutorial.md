@@ -454,7 +454,7 @@ Comparison of customer churn experiments using various recipes.
 
 ![projects-all-models-selected](assets/projects-all-models-selected.jpg)
 
-8\. Select Exp 1, 3 and 4 to compare by clicking on the select box to the left of each model, and then on **Compare 3 Items**:
+8\. Select Exp 1, 2 and 3 to compare by clicking on the select box to the left of each model, and then on **Compare 3 Items**:
 
 ![project-select-models-to-compare](assets/project-select-models-to-compare.jpg)
 
@@ -466,13 +466,13 @@ Confusion Matrices for each of the selected models
 
 ![project-model-comparison-matrix](assets/project-model-comparison-matrix.jpg)
 
-From the confusion matrices shown above, we can get an idea of how the models with the custom recipes improved. We can see that both, the Transformer and the Scorer recipes, yielded a lower misclassification error. However, since we were working with a slightly imbalanced dataset, we need to take a closer look at the confusion matrices. We see that by using the custom recipes, the models started predicting more **False** labels correctly, in other words, we see more **True Negatives;** thus, we have a smaller misclassification error for the **False** class. On the other hand, only the Scorer recipe helped our model to predict more **True** labels correctly because, for the Transformer recipe, it was the opposite. The Scorer recipe helped the model to get more **True Positives** than the baseline model, but the Transformer recipe got less **True Positives** than the baseline model.  For that reason, we see that the misclassification error for the True label only improved for the model with the Scorer recipe.
+From the confusion matrices shown above, we can get an idea of how the models with the custom recipes improved. We can see that both, the Transformer and the Scorer recipes, yielded a lower misclassification error. However, since we were working with a slightly imbalanced dataset, we need to take a closer look at the confusion matrices. We see that by using the custom recipes, the models started predicting more **False** labels correctly, in other words, we see more **True Negatives;** thus, we have a smaller misclassification error for the **False** class. On the other hand, only the Scorer recipe helped our model to predict more **True** labels correctly because, for the Transformer recipe, it was the opposite. The Scorer recipe helped the model to get more **True Positives** than the baseline model, while the Transformer recipe got less **True Positives** than the baseline model.  For that reason, we see that the misclassification error for the True label only improved for the model with the Scorer recipe.
 
 ROC Curves for each model selected:
 
 ![project-model-comparison2](assets/project-model-comparison2.jpg)
 
-We can see that when we used the Scorer recipe, the model had better AUC with an accuracy of 0.9553 compared to Exp 1 - Baseline, which had an accuracy of 0.9472. Even with Exp 2 - Transformer, the AUC also improved, and there was a small improvement in the accuracy. Also, when looking at the variables of importance, we see a slight variation on the variables that were selected to have the largest contribution to customers churning. In Exp 1 - Baseline, the variables with most importance when it came to customers churning were "Day Charge," and "Eve Charge." Exp 2, where we used the Transformer to sum columns with similar numerical data, we have the most important variable "CustServ Calls" and the "sum of CustServ Calls, Day Mins, Eve Charge, Eve Mins, Intl Calls, Intl Charge, Intl Mins, Night Mins, and Vmail Message." 
+We can see that when we used the Scorer recipe, the model had better AUC with an accuracy of 0.9553 compared to Exp 1 - Baseline, which had an accuracy of 0.9472. Even with Exp 2 - Transformer, the AUC also improved, and there was a small improvement in the accuracy. Also, when looking at the variable importance, we see a slight variation on the variables that have the largest contribution to customers churning. In Exp 1 - Baseline, the variables with most importance when it came to customers churning were "Day Charge," and "Eve Charge." Exp 2, where we used the Transformer to sum columns with similar numerical data, we have the most important variable "CustServ Calls" and the "sum of CustServ Calls, Day Mins, Eve Charge, Eve Mins, Intl Calls, Intl Charge, Intl Mins, Night Mins, and Vmail Message." 
 
 ### Deeper Dive and Resources
 
@@ -495,8 +495,8 @@ The rel-1.8.4 branch will similar to the page below:
 
 2\. Recipes can be uploaded to Driverless AI by:
 - Uploading custom recipes from your local machine
-- Loading custom recipes from URL by copying and pasting the raw URL, as shown in this tutorial. 
-- Going to the official recipes (external) repo and search for the recipe that you need.
+- Loading custom recipes from URL by copying and pasting the URL, as shown in this tutorial. 
+- Going to the official recipes (external) repo and search for the recipe that you need and then copying the link to use in `+ Load Custom Recipe from URL`
 
 ![upload-recipes](assets/upload-recipes.jpg)
 
@@ -567,7 +567,7 @@ For this tutorial, we are using **Driverless AI 1.8.4.1,** but we will be workin
 
 Check out Driverless AI next tutorial [Develop Your Own Custom Recipe Tutorial](https://h2oai.github.io/tutorials/build-your-own-custom-recipe-tutorial/#0)
 
-Where you will learn to build:
+Where you will learn to build a:
   - Custom Transformer Recipe
   - Custom Scorer Recipe
   - Custom Model Recipe
