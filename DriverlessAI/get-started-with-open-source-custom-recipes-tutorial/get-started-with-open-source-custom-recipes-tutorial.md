@@ -58,7 +58,7 @@ The various types of templates and how to use them will be described in the rema
 
 ### How do recipes work in Driverless AI? 
 
-During the training of a supervised machine learning modeling pipeline, Driverless AI can use the recipes or code snippets as building blocks, independent or in combination with all built-in code pieces. The recipes act the same way as if it was written by H2O. It’s the same python code and backend, so there is no performance penalty.
+During the training of a supervised machine learning modeling pipeline, Driverless AI can use the custom recipes or code snippets as building blocks, independent or in combination with all built-in recipes that come with Driverless AI. The custom recipes act the same as if they were written by H2O.ai. It’s the same python template and backend, so there is no performance penalty.
 
 Below is a diagram of how recipes work in Driverless AI and how the Automatic Model Optimization process is extended:
 
@@ -69,17 +69,17 @@ The image below is a deeper dive into the **BYOR** architecture for a multi-clas
 
 ![dai-byor-architecture-diagram-1](assets/dai-byor-architecture-diagram-1.jpg)
 
-The diagram above focuses on the parts of Driverless AI that are relevant to the **BYOR** architecture. Automatic Visualization and Machine Learning Interpretability are not covered in this diagram. The diagram is the architecture representing a multi-class problem, but binary classification and regression problems are also supported. 
+The diagram above focuses on the parts of Driverless AI that are relevant to the **BYOR** architecture. Automatic Visualization and Machine Learning Interpretability are not covered in this diagram. The diagram is the architecture representing a multi-class problem. Binary classification and regression problems are also supported. 
 
 ### What is the role of recipes in ML?
 
-**BYOR** allows data Scientists to bring their own recipes or leverage the existing open-source recipes to manipulate, augment, and optimize their data. In this way, the expertise of those creating and using the recipes is leveraged to focus on domain-specific functions to build customizations. 
+**BYOR** allows Data Scientists to bring their own recipes or leverage the existing, open-source recipes to manipulate, augment, and optimize their data. In this way, the expertise of those creating and using the recipes is leveraged to focus on domain-specific functions to build customizations. 
 
 ### Where can you find the H2O open-source recipes?
 
-The curated open-source recipes currently reside on the following GitHub repository:
+The curated open-source recipes currently reside in the following GitHub repository:
 
-[H2O Curated Recipes GitHub Repo ](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.8.4#sample-recipes)
+[H2O Curated Recipes GitHub Repo](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.8.4#sample-recipes)
 
 ### Deeper Dive and Resources
 
