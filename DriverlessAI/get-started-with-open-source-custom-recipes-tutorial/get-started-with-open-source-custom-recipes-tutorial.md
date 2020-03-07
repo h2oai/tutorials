@@ -26,8 +26,8 @@ In this tutorial, we will cover what a recipe is, the different types of recipes
 You will need the following to be able to do this tutorial:
 - Basic knowledge of Machine Learning and Statistics
 
-- A Driverless AI environment
-- Basic knowledge of Driverless AI or doing the Automatic Machine Learning Intro tutorial
+- A Driverless AI environment that is version 1.7.0 or newer
+- Basic knowledge of Driverless AI such as completing the Automatic Machine Learning Intro tutorial
 
 You can get more information about getting a Driverless AI environment or trial from the following:
 - [A Two Hour Test Drive Session](https://h2oai.github.io/tutorials/getting-started-with-driverless-ai-test-drive/#1)  
@@ -36,7 +36,7 @@ You can get more information about getting a Driverless AI environment or trial 
 
 - [H2O Driverless AI Environment and Product Tour](https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#2) 
 
-If you are not familiar with Driverless AI, please review and do this tutorial:
+If you are not familiar with Driverless AI, please begin with this tutorial:
 - [Automatic Machine Learning Intro Tutorial](https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#0)  
 
 ## Task 1: Introduction to Driverless AI Bring Your Own Recipe
