@@ -15,9 +15,9 @@
 
 ## Objective
 
-We believe that every company can and should be an AI company. This is a fundamental concept for the future of every business and organization today. As you embark on this AI journey to make your own AI, we want you to explore the key considerations as well as the technology that will make your own AI a possibility.
+At H2O.ai, we believe that every company can and should be an AI company. This is a fundamental concept for the future of every business and organization today. As you embark on this AI journey to make your own AI, we want you to explore the key considerations as well as the technology that will make your own AI a possibility.
 
-To make your own AI, with an automatic machine learning platform, it needs to be open and extensible. This allows data scientists to influence the automatic machine learning optimization process and for it to consider additional feature engineering, custom scorers, and other algorithms. Data scientists can add their insights, customizations, and build the most accurate models for their use cases. Driverless AI uses the concept of recipes to optimize the machine learning process, and with Driverless AI 1.7.0 and newer versions, users can add custom recipes and develop new recipes.
+To make your own AI with an automatic machine learning platform, the platform needs to be open and extensible. This allows data scientists to influence the automatic machine learning optimization process and for the process to consider additional feature engineering, scorers metrics, and modeling algorithms. Data scientists can add their insights, customizations, and domain expertise to build the most accurate models for each use cases. Driverless AI uses the concept of recipes to optimize the machine learning process, and with Driverless AI 1.7.0 and later versions, users can add and develop custom recipes.
 
 In this tutorial, we will cover what a recipe is, the different types of recipes available, and how to upload existing recipes to Driverless AI through the URL option. The three types of custom recipes that will be covered are transformer, scorer, and model.
 
@@ -106,7 +106,7 @@ This dataset set has 3333 customers(rows) and 21 columns representing attributes
 ### Add the Data
 
 1\. Click on **+ Add a Dataset(or Drag and Drop)**
- 
+
 2\. Select **FILE SYSTEM**
 
 ![add-dataset-file-system](assets/add-dataset-file-system.jpg)
@@ -156,7 +156,7 @@ This dataset set has 3333 customers(rows) and 21 columns representing attributes
 21. **Churn** - Did customer churn? True: customer churned, False: customer did not churn 
 
 9\.  Return to the **Datasets** Page
- 
+
 ### Launch Experiment
 
 1\. On the **Datasets** page click on the ```churn.csv``` dataset and select **Predict**
@@ -205,7 +205,7 @@ On task 2, we ran an experiment to build a model that would predict customer chu
 
 | - | Experiment 1(Base)|
 |---| ---|
-| Experiment Settings | 5-4-10 | 
+| Experiment Settings | 5-4-10 |
 | Scorer | AUC |
 | Model | XGBoostGBM |
 | Feature Importance | Day Charge, and Eve Charge|
@@ -327,7 +327,7 @@ https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.4/scorers/classificat
 11\. Once back on the **Experiment** page, click on the Scorer setting which has **AUC** as seen on the image below:
 
 ![exp3-scorer-update](assets/exp3-scorer-update.jpg)
- 
+
 12\. Select the **Brier** Scorer by clicking on it:
 
 ![exp3-select-brier](assets/exp3-select-brier.jpg)
