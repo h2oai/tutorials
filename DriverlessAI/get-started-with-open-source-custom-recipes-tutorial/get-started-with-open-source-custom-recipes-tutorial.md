@@ -15,9 +15,9 @@
 
 ## Objective
 
-We believe that every company can and should be an AI company. This is a fundamental concept for the future of every business and organization today. As you embark on this AI journey to make your own AI, we want you to explore the key considerations as well as the technology that will make your own AI a possibility.
+At H2O.ai, we believe that every company can and should be an AI company. This is a fundamental concept for the future of every business and organization today. As you embark on this AI journey to make your own AI, we want you to explore the key considerations as well as the technology that will make your own AI a possibility.
 
-To make your own AI, with an automatic machine learning platform, it needs to be open and extensible. This allows data scientists to influence the automatic machine learning optimization process and for it to consider additional feature engineering, custom scorers, and other algorithms. Data scientists can add their insights, customizations, and build the most accurate models for their use cases. Driverless AI uses the concept of recipes to optimize the machine learning process, and with Driverless AI 1.7.0 and newer versions, users can add custom recipes and develop new recipes.
+To make your own AI with an automatic machine learning platform, the platform needs to be open and extensible. This allows data scientists to influence the automatic machine learning optimization process and for the process to consider additional feature engineering, scorers metrics, and modeling algorithms. Data scientists can add their insights, customizations, and domain expertise to build the most accurate models for each use cases. Driverless AI uses the concept of recipes to optimize the machine learning process, and with Driverless AI 1.7.0 and later versions, users can add and develop custom recipes.
 
 In this tutorial, we will cover what a recipe is, the different types of recipes available, and how to upload existing recipes to Driverless AI through the URL option. The three types of custom recipes that will be covered are transformer, scorer, and model.
 
@@ -26,8 +26,8 @@ In this tutorial, we will cover what a recipe is, the different types of recipes
 You will need the following to be able to do this tutorial:
 - Basic knowledge of Machine Learning and Statistics
 
-- A Driverless AI environment
-- Basic knowledge of Driverless AI or doing the Automatic Machine Learning Intro tutorial
+- A Driverless AI environment that is version 1.7.0 or newer
+- Basic knowledge of Driverless AI such as completing the Automatic Machine Learning Intro tutorial
 
 You can get more information about getting a Driverless AI environment or trial from the following:
 - [A Two Hour Test Drive Session](https://h2oai.github.io/tutorials/getting-started-with-driverless-ai-test-drive/#1)  
@@ -36,16 +36,16 @@ You can get more information about getting a Driverless AI environment or trial 
 
 - [H2O Driverless AI Environment and Product Tour](https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#2) 
 
-If you are not familiar with Driverless AI, please review and do this tutorial:
+If you are not familiar with Driverless AI, please begin with this tutorial:
 - [Automatic Machine Learning Intro Tutorial](https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#0)  
 
 ## Task 1: Introduction to Driverless AI Bring Your Own Recipe
 
 H2O Driverless AI is an artificial intelligence (AI) platform for automatic machine learning. Driverless AI automates some of the most difficult and tedious data science and machine learning tasks such as feature engineering, algorithm selection, model validation, model tuning, model selection, model explanation, model documentation, and model deployment. It aims to achieve the highest predictive accuracy, comparable to expert data scientists, but in a much shorter time thanks to end-to-end automation. The current scope of Driverless AI does not include extensive data manipulation or augmentation before starting an experiment; hence most of the data preparation needs to be done before loading the data.
-	
-In Driverless AI, a pipeline (which we call an experiment) is made up of building blocks, or recipes, that produce a model. These recipes are Python code snippets. Recipes have the following types: ML algorithms, feature engineering (transformers), scorers, and configuration. In Driverless AI 1.7.0, we added support for BYOR (Bring Your Own Recipe). With BYOR, you can use your own recipes in combination with or instead of all built-in recipes. This allows you to influence the Driverless AI Automatic ML pipeline and gives you control over the optimization choices that Driverless AI makes.
 
-Recipes can be uploaded into Driverless AI at runtime without having to restart Driverless AI, just like a plugin. There are approximately 150 open-source recipes that have been created by H2O and curated in the recipe library by data science experts that can be used as-is or as templates and expanded upon.
+Driverless AI uses an experiment to learn from your data and build an end-to-end scoring pipeline for productionalizing a model. The experiment process and the final pipeline are made up of building blocks, or recipes. These recipes are Python code snippets. Recipes have the following types: ML algorithms, feature engineering (transformers), scorers, and data. In Driverless AI 1.7.0, we added support for BYOR (Bring Your Own Recipe). With BYOR, you can use your own recipes in combination with or instead of all built-in recipes. This allows you to further influence the Driverless AI Automatic ML pipeline in addition to out-of-the-box control over the optimization choices that Driverless AI makes.
+
+Recipes can be uploaded into Driverless AI at runtime without having to restart the platform, just like a plugin. There are approximately 150 open-source recipes that have been created by H2O and curated in the recipe library by data science experts that can be used as-is or as templates and expanded upon.
 
 Existing recipes include templates for:
 
@@ -58,7 +58,7 @@ The various types of templates and how to use them will be described in the rema
 
 ### How do recipes work in Driverless AI? 
 
-During the training of a supervised machine learning modeling pipeline, Driverless AI can use the recipes or code snippets as building blocks, independent or in combination with all built-in code pieces. The recipes act the same way as if it was written by H2O. It’s the same python code and backend, so there is no performance penalty.
+During the training of a supervised machine learning modeling pipeline, Driverless AI can use the custom recipes or code snippets as building blocks, independent or in combination with all built-in recipes that come with Driverless AI. The custom recipes act the same as if they were written by H2O.ai. It’s the same python template and backend, so there is no performance penalty.
 
 Below is a diagram of how recipes work in Driverless AI and how the Automatic Model Optimization process is extended:
 
@@ -69,17 +69,17 @@ The image below is a deeper dive into the **BYOR** architecture for a multi-clas
 
 ![dai-byor-architecture-diagram-1](assets/dai-byor-architecture-diagram-1.jpg)
 
-The diagram above focuses on the parts of Driverless AI that are relevant to the **BYOR** architecture. Automatic Visualization and Machine Learning Interpretability are not covered in this diagram. The diagram is the architecture representing a multi-class problem, but binary classification and regression problems are also supported. 
+The diagram above focuses on the parts of Driverless AI that are relevant to the **BYOR** architecture. Automatic Visualization and Machine Learning Interpretability are not covered in this diagram. The diagram is the architecture representing a multi-class problem. Binary classification and regression problems are also supported. 
 
 ### What is the role of recipes in ML?
 
-**BYOR** allows data Scientists to bring their own recipes or leverage the existing open-source recipes to manipulate, augment, and optimize their data. In this way, the expertise of those creating and using the recipes is leveraged to focus on domain-specific functions to build customizations. 
+**BYOR** allows Data Scientists to bring their own recipes or leverage the existing, open-source recipes to manipulate, augment, and optimize their data. In this way, the expertise of those creating and using the recipes is leveraged to focus on domain-specific functions to build customizations. 
 
 ### Where can you find the H2O open-source recipes?
 
-The curated open-source recipes currently reside on the following GitHub repository:
+The curated open-source recipes currently reside in the following GitHub repository:
 
-[H2O Curated Recipes GitHub Repo ](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.8.4#sample-recipes)
+[H2O Curated Recipes GitHub Repo](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.8.4#sample-recipes)
 
 ### Deeper Dive and Resources
 
@@ -97,7 +97,7 @@ Best Practices for Recipes:
 
 ### About the Dataset
 
-This tutorial will use the customer churn Telco dataset from [Kaggle](https://www.kaggle.com/becksddf/churn-in-telecoms-dataset). The dataset has information about customers of a Telecommunications company. Some of the features included are customer demographic location, length of the account, and customer call history. We will be predicting customer churn.
+This tutorial will use the customer churn telco dataset from [Kaggle](https://www.kaggle.com/becksddf/churn-in-telecoms-dataset). The dataset has information about customers of a telecommunications company. Some of the features included are customer demographic location, length of the account, and customer call history. We will be predicting customer churn.
 
 [1] [Churn in Telcom’s dataset](https://www.kaggle.com/becksddf/churn-in-telecoms-dataset)  
 
@@ -105,8 +105,8 @@ This dataset set has 3333 customers(rows) and 21 columns representing attributes
 
 ### Add the Data
 
-1\. Click on **+ Add a Dataset(or Drag and Drop)**
- 
+1\. Click on **+ Add a Dataset (or Drag and Drop)**
+
 2\. Select **FILE SYSTEM**
 
 ![add-dataset-file-system](assets/add-dataset-file-system.jpg)
@@ -153,10 +153,10 @@ This dataset set has 3333 customers(rows) and 21 columns representing attributes
 18. **Intl Calls** - Total International Calls
 19. **Intl Charge** - Total International Charge  
 20. **CustServ Call** - Total Customer Service Calls 
-21. **Churn** - Did customer churn? True: customer churned, False: customer did not churn 
+21. **Churn** - Did customer churn? True.: customer churned, False.: customer did not churn 
 
 9\.  Return to the **Datasets** Page
- 
+
 ### Launch Experiment
 
 1\. On the **Datasets** page click on the ```churn.csv``` dataset and select **Predict**
@@ -199,13 +199,13 @@ This dataset set has 3333 customers(rows) and 21 columns representing attributes
 
 ## Task 3: Recipe: Transformer
 
-On task 2, we ran an experiment to build a model that would predict customer churn. The Driverless AI model that was generated with the settings shown below and gave us the results below:
+In Task 2, we ran an experiment to build a model that would predict customer churn. The Driverless AI model that was generated with the settings shown below and gave us the results below:
 
 **Summary of results**:
 
-| - | Experiment 1(Base)|
+| - | Experiment 1 (Base) |
 |---| ---|
-| Experiment Settings | 5-4-10 | 
+| Experiment Settings | 5-4-10 |
 | Scorer | AUC |
 | Model | XGBoostGBM |
 | Feature Importance | Day Charge, and Eve Charge|
@@ -214,7 +214,7 @@ On task 2, we ran an experiment to build a model that would predict customer chu
 
 When a dataset is selected for an experiment, Driverless AI optimizes its settings by selecting the best Scorer, Model(s), and Transformers for the dataset. However, this does not mean we cannot import other scorers, models, or transformers to see if we can further optimize our model. In this task, we will be importing a transformer recipe, to see how the features in the feature engineering change.
 
-Now we are going to import a recipe to add related numeric features such as day minutes, evening minutes, and night minutes. Driverless AI doesn’t add three or more columns, so we will add a recipe that will do this for us. We will see if Driverless AI is able to use this new transformation in determining variable importance.
+Now we are going to import a recipe to add together related numeric features such as day minutes, evening minutes, and night minutes. Driverless AI doesn’t add three or more columns automatically, so we will add a recipe that will do this for us. We will see if this new feature ends up in the top features used by our final Driverless AI model. 
 
 ### Import a Transformer Recipe
 
@@ -238,7 +238,7 @@ The goal of importing the new transformer recipe is to see if we can further opt
 
 ![exp2-load-custom-recipe-transformer](assets/exp2-load-custom-recipe-transformer.jpg)
 
-6\. Copy and paste  the following URL for the SumTransformer into the **Load Custom Recipe** box then click on **Save.** Make sure no extra spaces are added after the link in the **Load Custom Recipe** box, as it might give you an error. 
+6\. Copy and paste  the following URL for the SumTransformer into the **Load Custom Recipe** box then click on **Save.**  
 
 **Note:** The Driverless AI Recipes branches rel-1.8.4 and rel-1.8.4.1 are the same, and have been merged into rel-1.8.4; that is why we are using the links for the 1.8.4 branch.
 
@@ -248,7 +248,7 @@ https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.4/transformers/numeri
 
 ![exp2-load-custom-recipe-transformer-raw-url](assets/exp2-load-custom-recipe-transformer-raw-url.jpg)
 
-7\. There will be a message updating you on the status of loading of the recipe; then Expert Experiment Settings page will re-appear
+7\. There will be a message updating you on the status of loading of the recipe; then the Expert Experiment Settings page will re-appear
 
 8\. On the **Expert Experiment Settings** find **Recipes** and click on it
 
@@ -264,7 +264,7 @@ https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.4/transformers/numeri
 
 11\. Select **Save** on the **Expert Experiment Settings** page
 
-12\. Name your experiment `Exp 2 - Transformer.` Also, verify that the transformer is in the experiment; on the Experiments page, look under “What do these settings mean?” > “Interpretability” and you should see the custom transformer as **Sum.** 
+12\. Name your experiment `Exp 2 - Transformer`. Also, verify that the transformer is in the experiment; on the Experiments page, look under “What do these settings mean?” > “Interpretability” and you should see the custom transformer as **Sum.** 
 
 ![exp2-check-transformer](assets/exp2-check-transformer.jpg)
 
@@ -280,7 +280,7 @@ As you can see in the variable importance section, some features start with "SUM
 
 ## Task 4: Recipe: Scorer
 
-In this task, we will be importing a Scorer recipe to see if this scorer will help improve the performance of the model. 
+In this task, we will be importing a Scorer recipe to optimize the modeling process for a metric that may be more important to our business than a standard statistical scorer.
 
 ### Import a Scorer Recipe
 
@@ -308,13 +308,13 @@ https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.4/scorers/classificat
 
 ![exp3-load-custom-recipe-scorer-raw-url](assets/exp3-load-custom-recipe-scorer-raw-url.jpg)
 
-6\. There will be a message updating you on the status of loading of the recipe; then Expert Experiment Settings page will re-appear
+6\. There will be a message updating you on the status of loading of the recipe; then the Expert Experiment Settings page will re-appear
 
 7\. On the **Expert Experiment Settings** find **Recipes** and click on it
 
 ![exp2-expert-settings-recipes](assets/exp2-expert-settings-recipes.jpg)
 
-8\. Click on **Select Value** under **Include Specific Scorers**, we are going to verify that the scorer we loaded did indeed load.
+8\. Click on **Select Value** under **Include Specific Scorers**, we are going to verify that the scorer we loaded did indeed load
 
 ![exp3-expert-settings-scorer-select-values](assets/exp3-expert-settings-scorer-select-values.jpg)
 
@@ -327,7 +327,7 @@ https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.4/scorers/classificat
 11\. Once back on the **Experiment** page, click on the Scorer setting which has **AUC** as seen on the image below:
 
 ![exp3-scorer-update](assets/exp3-scorer-update.jpg)
- 
+
 12\. Select the **Brier** Scorer by clicking on it:
 
 ![exp3-select-brier](assets/exp3-select-brier.jpg)
@@ -357,7 +357,7 @@ In this task, we will be importing a model recipe to see if this new custom mode
 
 ### Import a Model Recipe
 
-The model recipe that will be used for this experiment is an **ExtraTrees**, which is an extremely randomized tree (ExtraTrees) from sklearn, to learn more about the **Extra Trees** model see the **Deeper Dive and Resources** at the end of this task.
+The model recipe that will be used for this experiment is **ExtraTrees**, which is an extremely randomized tree (ExtraTrees) from sklearn. To learn more about the **Extra Trees** model see the **Deeper Dive and Resources** at the end of this task.
 
 1\.Select **Experiments** located at the top of the **Experiment** page
 
@@ -454,7 +454,7 @@ Comparison of customer churn experiments using various recipes.
 
 ![projects-all-models-selected](assets/projects-all-models-selected.jpg)
 
-8\. Select Exp 1, 3 and 4 to compare by clicking on the select box to the left of each model, and then on **Compare 3 Items**:
+8\. Select Exp 1, 2 and 3 to compare by clicking on the select box to the left of each model, and then on **Compare 3 Items**:
 
 ![project-select-models-to-compare](assets/project-select-models-to-compare.jpg)
 
@@ -466,13 +466,13 @@ Confusion Matrices for each of the selected models
 
 ![project-model-comparison-matrix](assets/project-model-comparison-matrix.jpg)
 
-From the confusion matrices shown above, we can get an idea of how the models with the custom recipes improved. We can see that both, the Transformer and the Scorer recipes, yielded a lower misclassification error. However, since we were working with a slightly imbalanced dataset, we need to take a closer look at the confusion matrices. We see that by using the custom recipes, the models started predicting more **False** labels correctly, in other words, we see more **True Negatives;** thus, we have a smaller misclassification error for the **False** class. On the other hand, only the Scorer recipe helped our model to predict more **True** labels correctly because, for the Transformer recipe, it was the opposite. The Scorer recipe helped the model to get more **True Positives** than the baseline model, but the Transformer recipe got less **True Positives** than the baseline model.  For that reason, we see that the misclassification error for the True label only improved for the model with the Scorer recipe.
+From the confusion matrices shown above, we can get an idea of how the models with the custom recipes improved. We can see that both, the Transformer and the Scorer recipes, yielded a lower misclassification error. However, since we were working with a slightly imbalanced dataset, we need to take a closer look at the confusion matrices. We see that by using the custom recipes, the models started predicting more **False** labels correctly, in other words, we see more **True Negatives;** thus, we have a smaller misclassification error for the **False** class. On the other hand, only the Scorer recipe helped our model to predict more **True** labels correctly because, for the Transformer recipe, it was the opposite. The Scorer recipe helped the model to get more **True Positives** than the baseline model, while the Transformer recipe got less **True Positives** than the baseline model.  For that reason, we see that the misclassification error for the True label only improved for the model with the Scorer recipe.
 
 ROC Curves for each model selected:
 
 ![project-model-comparison2](assets/project-model-comparison2.jpg)
 
-We can see that when we used the Scorer recipe, the model had better AUC with an accuracy of 0.9553 compared to Exp 1 - Baseline, which had an accuracy of 0.9472. Even with Exp 2 - Transformer, the AUC also improved, and there was a small improvement in the accuracy. Also, when looking at the variables of importance, we see a slight variation on the variables that were selected to have the largest contribution to customers churning. In Exp 1 - Baseline, the variables with most importance when it came to customers churning were "Day Charge," and "Eve Charge." Exp 2, where we used the Transformer to sum columns with similar numerical data, we have the most important variable "CustServ Calls" and the "sum of CustServ Calls, Day Mins, Eve Charge, Eve Mins, Intl Calls, Intl Charge, Intl Mins, Night Mins, and Vmail Message." 
+We can see that when we used the Scorer recipe, the model had better AUC with an accuracy of 0.9553 compared to Exp 1 - Baseline, which had an accuracy of 0.9472. Even with Exp 2 - Transformer, the AUC also improved, and there was a small improvement in the accuracy. Also, when looking at the variable importance, we see a slight variation on the variables that have the largest contribution to customers churning. In Exp 1 - Baseline, the variables with most importance when it came to customers churning were "Day Charge," and "Eve Charge." Exp 2, where we used the Transformer to sum columns with similar numerical data, we have the most important variable "CustServ Calls" and the "sum of CustServ Calls, Day Mins, Eve Charge, Eve Mins, Intl Calls, Intl Charge, Intl Mins, Night Mins, and Vmail Message." 
 
 ### Deeper Dive and Resources
 
@@ -495,8 +495,8 @@ The rel-1.8.4 branch will similar to the page below:
 
 2\. Recipes can be uploaded to Driverless AI by:
 - Uploading custom recipes from your local machine
-- Loading custom recipes from URL by copying and pasting the raw URL, as shown in this tutorial. 
-- Going to the official recipes (external) repo and search for the recipe that you need.
+- Loading custom recipes from URL by copying and pasting the URL, as shown in this tutorial. 
+- Going to the official recipes (external) repo and search for the recipe that you need and then copying the link to use in `+ Load Custom Recipe from URL`
 
 ![upload-recipes](assets/upload-recipes.jpg)
 
@@ -567,7 +567,7 @@ For this tutorial, we are using **Driverless AI 1.8.4.1,** but we will be workin
 
 Check out Driverless AI next tutorial [Develop Your Own Custom Recipe Tutorial](https://h2oai.github.io/tutorials/build-your-own-custom-recipe-tutorial/#0)
 
-Where you will learn to build:
+Where you will learn to build a:
   - Custom Transformer Recipe
   - Custom Scorer Recipe
   - Custom Model Recipe
