@@ -488,7 +488,7 @@ Given our example of use case of predicting loans the following provides a descr
  - FN = 0 = Predicting that someone did not default on their bank loan but actually did.
 
 
-What are sensitivity and specificity? The true positive rate is the ratio of the number of true positive prediction divided by all positive predictions. This ratio is also known as **recall** or **sensitivity**, and it is measured from 0.0 to 1.0 where 0 is the worst and 1.0 is the best sensitivity. Sensitive is a measure of how well the model is predicting for the positive case.
+What are sensitivity and specificity? The true positive rate is the ratio of the number of true positive predictions divided by all positive actuals. This ratio is also known as **recall** or **sensitivity**, and it is measured from 0.0 to 1.0 where 0 is the worst and 1.0 is the best sensitivity. Sensitive is a measure of how well the model is predicting for the positive case.
 
 The true negative rate is the ratio of the number of true negative predictions divided by all positive predictions. This ratio is also known as **specificity** and is measured from 0.0 to 1.0 where 0 is the worst and 1.0 is the best specificity. Specificity is a measure for how well the model is predicting for the negative case correctly.  How often is it predicting a negative case correctly.
 
@@ -542,7 +542,7 @@ The Precision-Recall Curve or Prec-Recall or **P-R** is another tool for evaluat
  
 **Precision** = True positive predictions / Total number of positive predictions = TP  / (TP + FP)
 
-As mentioned in the ROC section, **Recall** is the true positive rate which is the ratio of the number of true positive prediction divided by all positive true predictions. Recall is a metric of the actual positive predictions. It tells us how many correct positive results occurred from all the positive samples available during the test of the model.
+As mentioned in the ROC section, **Recall** is the true positive rate which is the ratio of the number of true positive predictions divided by all positive actuals. Recall is a metric of the actual positive predictions. It tells us how many correct positive results occurred from all the positive samples available during the test of the model.
 
 **Recall** = **Sensitivity** = True Positive Rate = TP / (TP + FN)
 
