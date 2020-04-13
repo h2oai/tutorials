@@ -14,13 +14,13 @@
 
 ## Driverless AI Test Drive 
 
-Test Drive is a two-hour lab session that exists in H2O's Aquarium. Aquarium is H2O's cloud environment that provides access to various tools for workshops, conferences, and training.
+Test Drive is a two-hour lab session that exists in H2O.ai's Aquarium. Aquarium is H2O.ai's cloud environment that provides access to various tools for workshops, conferences, and training.
 
 All labs have a specific **Lab Duration*** to complete the lab. **All Driverless AI Test Drive Lab session's will terminate after two-hours. No work will be saved!**. However, you can retake the lab multiple times. 
 
 After registering in the [Try Driverless AI page](https://www.h2o.ai/try-driverless-ai/) you will have two options:
 
-- **21 Day Free Trial**: If you would like to continue exploring H2O's Driverless AI and run your experiments in a controlled environment where your data will be saved, you can leverage an on-prem or cloud environment with a 21-day trial period license.
+- **21 Day Free Trial**: If you would like to continue exploring H2O.ai's Driverless AI and run your experiments in a controlled environment where your data will be saved, you can leverage an on-prem or cloud environment with a 21-day trial period license.
 
 -  **2 Hour Test Drive**: Explore Driverless AI in two-hour intervals with guided Driverless AI tutorials.
 
@@ -32,9 +32,13 @@ After registering in the [Try Driverless AI page](https://www.h2o.ai/try-driverl
 
 ![try-driverless-ai-form](assets/try-driverless-ai-form.jpg)
 
-3\. After submitting the form the following options will appear, select **2 Hour Test Drive**:
+3\. After submitting the form the following options will appear, Hover over the **2-Hour Interval Test Drive**:
 
-![2-hour-test-drive](assets/2-hour-test-drive.jpg)
+![2-hour-test-drive-1](assets/2-hour-test-drive-1.jpg)
+ 
+ Click on **Test Drive**:
+
+![2-hour-test-drive-2](assets/2-hour-test-drive-2.jpg)
 
 4\. This will take you to the Aquarium login page where you need to create an account.
 
@@ -110,7 +114,7 @@ After a successful login the Driverless AI Test Drive Lab will appear:
  - Driverless AI URL
  - End Lab 
 
-3\. Once the Lab has started, a Driverless AI URL will appear at the of the page. Click on that URL. This will take you to the H2O Driverless Welcome Page.
+3\. Once the Lab has started, a Driverless AI URL will appear at the of the page. Click on that URL. This will take you to the H2O.ai Driverless AI Datasets Page.
 
 ![dai-datasets-page](assets/dai-datasets-page.jpg)
 
@@ -123,9 +127,9 @@ After a successful login the Driverless AI Test Drive Lab will appear:
 
 ## Questions
 
-Have any questions about Aquarium? Sign up for H2O's Slack Community and post your questions under the **#cloud** channel. Members of the H2O community will respond as soon as they are available.
+Have any questions about Aquarium? Sign up for H2O.ai's Slack Community and post your questions under the **#cloud** channel. Members of the H2O.ai community will respond as soon as they are available.
 
-- [Join the H2O community on Slack to Ask Questions #cloud](https://h2oai-community.slack.com/)
+- [Join the H2O.ai community on Slack to Ask Questions #cloud](https://h2oai-community.slack.com/)
 
 
 
