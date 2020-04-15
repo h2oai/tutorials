@@ -16,7 +16,7 @@
 
 O Test Drive é uma sessão de duas horas, disponível em um ambiente de teste na nuvem da H2O.ai (Aquarium), que fornece acesso à diversas ferramentas para workshops, conferências e treinamentos.  
 
-All labs have a specific **Lab Duration*** to complete the lab. **All Driverless AI Test Drive Lab session's will terminate after two-hours. No work will be saved!**. However, you can retake the lab multiple times. 
+**Cada um dos “labs” possui uma duração específica para ser completado e todos serão encerrados após duas horas**. Nenhum trabalho será salvo. No entanto, você pode refazer o laboratório várias vezes.. 
 
 Depois de ser registrar na [Try Driverless AI pagina](https://www.h2o.ai/try-driverless-ai/) você terá duas opções:
 
