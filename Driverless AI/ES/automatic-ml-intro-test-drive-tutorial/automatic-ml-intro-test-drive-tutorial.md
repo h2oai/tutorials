@@ -163,79 +163,134 @@ https://www.brighttalk.com/search/?q=driverless+ai)
 - [Explore the various H2O Driverless AI playlists on YouTube](https://www.youtube.com/user/0xdata/playlists) 
 
 
-## Task 3: Load Data
+[//]: # (*** ## Task 3: Load Data)
+## 3: Cargar datos
 
-1\. Navigate back to the H2O Driverless AI  **Datasets** page.
+[//]: # (1\. Navigate back to the H2O Driverless AI  **Datasets** page.)
+1\. Regresa a la pagina H2O Driverless AI  **Datasets**.
 
-### About the Dataset
+[//]: # (### About the Dataset)
+### Información del conjunto de datos
 
-The dataset used for this experiment is a version of the Titanic Kaggle dataset. This dataset contains the list of estimated passengers aboard the RMS Titanic.
+[//]: # (The dataset used for this experiment is a version of the Titanic Kaggle dataset.) 
+[//]: # (This dataset contains the list of estimated passengers aboard the RMS Titanic.)
+El conjunto de datos usados en este experimento es una version del conjunto del Titanic elaborado por Kaggle. 
+Este conjunto de datos contiene una lista de los pasajeros abordo del RMS Titanic.
 
-The RMS Titanic was a British commercial passenger liner that sank after colliding with an iceberg in the North Atlantic Ocean on April 15, 1912. More than 1,500 people lost their lives from an estimated 2,224 passengers and crew members while on their way to New York City from Southampton. 
+[//]: # (The RMS Titanic was a British commercial passenger liner that sank after colliding with an iceberg in the North Atlantic Ocean on April 15, 1912.) 
+[//]: # (More than 1,500 people lost their lives from an estimated 2,224 passengers and crew members while on their way to New York City from Southampton.)
+El RMS Titanic fue trasatlantico britanico que se hundió tras colicionar con un iceberg al norte del océano Atlantico el 15 de Abril de 1912. 
+De 2,224 pasageros y miebros de la tripulación, perdieron la vida más de 1,500 personas en la ruta maritima de la Ciudad de Nueva York a Southampton.
 
-This tragedy shocked the international community and led to better safety regulations for ships. The lack of lifeboats, amongst other things, was one of the factors that resulted in a significant loss of life. Although there was some element of luck involved in surviving the sinking, some groups of people were more likely to survive than others.
+[//]: # (This tragedy shocked the international community and led to better safety regulations for ships.) 
+[//]: # (The lack of lifeboats, amongst other things, was one of the factors that resulted in a significant loss of life.) 
+[//]: # (Although there was some element of luck involved in surviving the sinking, some groups of people were more likely to survive than others.)
+Esta tragedia impacto a la comunidad internacional, lo que impulsó mejores medidas de seguridad para barcos. 
+La falta de botes salvavidas entre otras cosas, fue uno de los factores determinantes en la perdida de vidas. 
+Sin embargo, hubo algunos elementos que influyeron para que hubiera sobrevivientes.
 
 ![rms-titanic](assets/rms-titanic.jpeg)
 
 [RMS Titanic-Wikipedia](https://en.wikipedia.org/wiki/RMS_Titanic#/media/File:RMS_Titanic_3.jpg)
 
-**Titanic dataset**:
+[//]: # (**Titanic dataset**:)
+**Conjunto de datos del Titanic**:
 
-1309 rows, one row per passenger, and 16 columns representing attributes of each passenger:
+[//]: # (1309 rows, one row per passenger, and 16 columns representing attributes of each passenger:)
+En el conjunto de datos encontrarás 1,309 filas, una fila por cada pasajero, y 16 columnas que representan loa atributos de cada pasajero.
 
-|Attribute|Definition|Key|
+[//]: # (|Attribute|Definition|Key|)
+[//]: # (|---|---|---|)
+[//]: # (|passenger Id|Id randomly generated| - |)
+[//]: # (|pclass|Passenger Class| 1= 1st, 2 =2nd, 3=3rd|)
+[//]: # (|survived|Survival| 0=No, 1=Yes|)
+[//]: # (|name_with_salutations|Passenger name| - |)
+[//]: # (|name_without_salutations|Passenger name without salutations| - |)
+[//]: # (|sex|Sex|Female, Male|)
+[//]: # (|age|Age in years| - |)
+[//]: # (|sibsp|Number of siblings/Spouse aboard| - |)
+[//]: # (|parch|Number of Parents/Children aboard| - |)
+[//]: # (|ticket|Ticket number| - |)
+[//]: # (|fare|Passenger fare| - |)
+[//]: # (|cabin|Cabin number| - |)
+[//]: # (|embarked|Port of Embarkment|C = Cherbourg, Q = Queenstown, S = Southampton|)
+[//]: # (|boat|Boat number| - |)
+[//]: # (|body|Body number| - |)
+[//]: # (|home.des|Home Destination| - |)
+
+|Atributos|Definición|Código|
 |---|---|---|
-|passenger Id|Id randomly generated| - |
-|pclass|Passenger Class| 1= 1st, 2 =2nd, 3=3rd|
-|survived|Survival| 0=No, 1=Yes|
-|name_with_salutations|Passenger name| - |
-|name_without_salutations|Passenger name without salutations| - |
-|sex|Sex|Female, Male|
-|age|Age in years| - |
-|sibsp|Number of siblings/Spouse aboard| - |
-|parch|Number of Parents/Children aboard| - |
-|ticket|Ticket number| - |
-|fare|Passenger fare| - |
-|cabin|Cabin number| - |
-|embarked|Port of Embarkment|C = Cherbourg, Q = Queenstown, S = Southampton|
-|boat|Boat number| - |
-|body|Body number| - |
-|home.des|Home Destination| - |
+|passanger Id|Identificador generado aleatoriamente| - |
+|pclass|Clase del pasajero| 1=Primera, 2 =Segunda, 3=Tercera|
+|survived|Sobrevivió| 0=No, 1=Si|
+|name_with_salutations|Nombre del pasajero| - |
+|name_without_salutations|Nombre del pasajero sin título personal| - |
+|sex|Sexo|Female=Mujer, Male=Hombre|
+|age|Edad en años| - |
+|sibsp|Número de parentesco  MISSING TRANLATION----Number of siblings/Spouse aboard----| - |
+|parch|Número de padres/hijos abordo| - |
+|ticket|Número de boleto| - |
+|fare|Tarifa de pasajero| - |
+|cabin|Número de cabina| - |
+|embarked|Puerti de enbarque|C = Cherbourg, Q = Queenstown, S = Southampton|
+|boat|Número de bote| - |
+|body|Npumero de cuerpo| - |
+|home.des|Destino| - |
 
 
-### Add the Data 
+[//]: # (### Add the Data)
+### Agregar los datos
 
-1\. Click on **Add a Dataset(or Drag and Drop)**  
+[//]: # (1\. Click on **Add a Dataset -or Drag and Drop**-) 
+1\. **Presiona en + ADD DATASET(OR DRAG & DROP)**  
 
-2\. Select **FILE SYSTEM**
+[//]: # (2\. Select **FILE SYSTEM**)
+2\. Selecciona **FILE SYSTEM**
 
 ![add-dataset-file-system](assets/add-dataset-file-system.jpg)
 
-3\. Enter the following */data/TestDrive/titanic.csv* into the search bar. Select *titanic.csv* then **Click to Import Selection**. 
+[//]: # (3\. Enter the following */data/TestDrive/titanic.csv* into the search bar.) 
+[//]: # (Select *titanic.csv* then **Click to Import Selection**.)
+3\. Ingresa los siguiente */data/TestDrive/titanic.csv* en la barra de busqueda. 
+Slecciona *titanic.csv* y despues **CLICK TO IMPORT SELECTION**. 
 
 ![select-titanic-dataset](assets/select-titanic-dataset.jpg)
 
 
-4\. If the file loaded successfully, then you should see an  image similar to the one below:
+[//]: # (4\. If the file loaded successfully, then you should see an  image similar to the one below:)
+4\. Si el archivo se carga con exito deberas ver lo siguiente:
 
 ![titanic-set-overview](assets/titanic-set-overview.jpg)
 
-*Things to Note:*
+[//]: # (*Things to Note:*)
+*Notas:*
 
-1. You can view:
+[//]: # (1. You can view:)
+1. Podrás ver en cada columna:
 
-  - Dataset filename
-  - File size
-  - Number of rows/columns 
-  - File status
+[//]: # (  - Dataset filename)
+[//]: # (  - File size)
+[//]: # (  - Number of rows/columns) 
+[//]: # (  - File status)
 
-2. Option to go back to the previous page  
+  - Nombre del archivo del conjunto de datos **Name**
+  - Ruta del archivo **Path**
+  - Tamaño del archivo **Size**
+  - Número de filas **Rows**
+  - Número de columnas **Columns** 
+  - Estado del archivo **Status**
 
-### Deeper Dive and Resources
+[//]: # (2. Option to go back to the previous page)
+2. Opción para regresar a la páguina anterior  
 
-- [Learn More About the Type of Dataset File formats that Can be Uploaded](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/datasets.html#adding-datasets) 
+[//]: # (### Deeper Dive and Resources)
+### Más información y recursos
 
-- For more datasets, check out [Kaggle Datasets](https://www.kaggle.com/datasets)
+[//]: # (- [Learn More About the Type of Dataset File formats that Can be Uploaded]-http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/datasets.html#adding-datasets-) 
+- [Aprende más sobre los tipo de formatos para archivos de conjunto de datos que se pueden cargar](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/datasets.html#adding-datasets) 
+
+[//]: # (- For more datasets, check out [Kaggle Datasets]-https://www.kaggle.com/datasets-)
+- Para descubrir más conjunto de datos, revisa [Conjunto de datos de Kaggle](https://www.kaggle.com/datasets)
 
 ## Task 4: Explore Data Details and AutoViz
 
