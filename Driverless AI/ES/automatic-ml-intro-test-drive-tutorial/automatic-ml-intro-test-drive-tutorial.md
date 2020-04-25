@@ -29,7 +29,7 @@ En este tutorial de Driverless AI, vamos a aprender a cargar datos, explorar det
 
 ## Requisitos Antes de Comenzar
 
-A **Two Hour Test Drive session**: Test Drive is H2O's Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform. 
+**Sesión de Dos Horas de Test Drive**: Test Drive es igual a H2O Driverless AI, pero la única diferencia siendo que Test Drive corre sobre AWS Cloud. No es necesario descargar ningún software para utilizar Test Drive y explorar todas las características y beneficios de la plataforma de H2O Automatic Learning.   
 
 - Need a **Two Hour Test Drive** session? [Try it Now](https://www.h2o.ai/test-drive/). Follow the instructions [on this quick tutorial](https://h2oai.github.io/tutorials/getting-started-with-driverless-ai-test-drive/#0) to get a Test Drive session started. After the Driverless AI Test Drive session starts, continue reading the remaining prerequisites of this tutorial then start [Task 1: Product Tour](https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#2).
 
