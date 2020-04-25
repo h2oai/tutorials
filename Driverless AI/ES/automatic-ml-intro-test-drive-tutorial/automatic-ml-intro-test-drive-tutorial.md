@@ -571,7 +571,7 @@ Una vez que se complete el experimento, aparecerá un **Experiment Summary** (Re
 - [Revise el folleto Driverless AI para obtener más información sobre cómo ejecutar experimentos](http://docs.h2o.ai/driverless-ai/latest-stable/docs/booklets/DriverlessAIBooklet.pdf) 
 
 
-## Task 6: Explore Feature Engineering
+## Tarea 6: Explore Feature Engineering
 
 Driverless AI performs feature Engineering on the dataset to determine the optimal representation of the data. Various stages of the features appear throughout the iteration of the data. These can be viewed by hovering over points on the Iteration Data - Validation Graph and seeing the updates on the **Variable Importance** section.
 
