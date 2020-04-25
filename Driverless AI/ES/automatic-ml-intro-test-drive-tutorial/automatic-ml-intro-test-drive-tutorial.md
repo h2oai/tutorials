@@ -571,7 +571,7 @@ Una vez que se complete el experimento, aparecerá un **Experiment Summary** (Re
 - [Revise el folleto Driverless AI para obtener más información sobre cómo ejecutar experimentos](http://docs.h2o.ai/driverless-ai/latest-stable/docs/booklets/DriverlessAIBooklet.pdf) 
 
 
-## Tarea 6: Explore Feature Engineering
+## Task 6: Explore Feature Engineering
 
 Driverless AI performs feature Engineering on the dataset to determine the optimal representation of the data. Various stages of the features appear throughout the iteration of the data. These can be viewed by hovering over points on the Iteration Data - Validation Graph and seeing the updates on the **Variable Importance** section.
 
@@ -733,57 +733,57 @@ Learn more about the Kolmogorov-Smirnov chart on [Machine Learning Experiment Sc
 
 - [The Best Metric to Measure Accuracy of Classification Models](https://clevertap.com/blog/the-best-metric-to-measure-accuracy-of-classification-models/)
 
-## Task 8: MLI Report for Non-Time-Series
+## Tarea 8: Informe MLI para series no cronológicas
 
-After the predictive model is finished, we can explore the interpretability of our model. In other words, what are the results and how did those results come to be?
+Una vez finalizado el modelo predictivo, podemos explorar la interpretabilidad de nuestro modelo. En otras palabras, ¿cuáles son los resultados y cómo llegaron a ser esos resultados?
 
-Questions to consider before viewing the MLI Report:
+Preguntas a considerar antes de ver el Informe MLI:
 
-- Which attributes from our Titanic Training Set are the most important in relation to surviving? Make a note of your top 2 attributes to compare it with the model's results
+- ¿Qué atributos de nuestro Titanic Training Set son los más importantes en relación con la supervivencia? Tome nota de sus 2 atributos principales para compararlo con los resultados del modelo.
 
-There are two ways to generate the MLI Report, selecting the **MLI** link on the upper-right corner of the UI or clicking **Interpret this Model** button on the **Experiment** page. 
+Hay dos formas de generar el Informe MLI, seleccionando el enlace **MLI** en la esquina superior derecha de la IU o haciendo clic en el botón **Interpret this Model** (Interpretar este modelo) en la página **Experiment** (Experimento).
 
-**Generate the MLI report**:
+**Genere el informe MLI**:
 
-1\. **On the Status: Complete** Options, select **Interpret this Model**
+1\. **On the Status: Complete** (En el estado: Completo) Opciones, seleccione **Interpret this Model** (Interpretar este modelo)
 
 ![interpret-this-model](assets/interpret-this-model.jpg)
 
-2\. Once the MLI model is complete, you should see an image similar to the one below:
+2\. Una vez que el modelo MLI esté completo, debería ver una imagen similar a la siguiente:
 
 ![finishing-up-mli](assets/finishing-up-mli.jpg)
 
-3\. Once the **MLI Experiment is finished** a pop up comes up, go to MLI page by clicking **Yes**.
+3\. Una vez que el **Experimento de MLI haya terminado**, aparecerá una ventana emergente, vaya a la página de MLI haciendo clic en **YES**.
 
-4\. The MLI Interpretability Page has the explanations to the model results in a human-readable format.  
+4\. La página de interpretabilidad de MLI tiene las explicaciones de los resultados del modelo en un formato legible para humanos.  
 
-This section describes MLI functionality and features for regular experiments. For non-time-series experiments, this page provides several visual explanations and reason codes for the trained Driverless AI  model, and it's results.  
+Esta sección describe la funcionalidad y características de MLI para experimentos regulares. Para experimentos que no son series de tiempo, esta página proporciona varias explicaciones visuales y códigos de razón para el modelo de Driverless AI entrenado, y sus resultados.  
 
 ![mli-report-page-1](assets/mli-report-page-1.jpg)
 ![mli-report-page-2](assets/mli-report-page-2.jpg)
 
-*Things to Note:*
-1. Summary -  Summary of MLI experiment. This page provides an overview of the interpretation, including the dataset and Driverless AI experiment (if available) that were used for the interpretation along with the feature space (original or transformed), target column, problem type, and k-Lime information.
+*Cosas a tener en cuenta:*
+1. Resumen: resumen del experimento MLI. Esta página proporciona una visión general de la interpretación, incluido el conjunto de datos y el experimento de  Driverless AI (si está disponible) que se utilizaron para la interpretación junto con el espacio de características (original o transformado), columna objetivo, tipo de problema e información de k-Lime.
 
-2. Driverless AI Model: For binary classification and regression experiments, the Driverless AI Model menu provides the following plots for Driverless AI models:
+2. Modelo de Driverless AI: Para los experimentos de regresión y clasificación binaria, el menú Modelo de Driverless AI proporciona los siguientes gráficos para los modelos de Driverless AI:
 
-    - **Feature Importance for transformed features**: This plot shows the Driverless AI feature importance. Driverless AI feature importance is a measure of the contribution of an input variable to the overall predictions of the Driverless AI model. Global feature importance is calculated by aggregating the improvement in splitting criterion caused by a single variable across all of the decision trees in the Driverless AI model.
+    - **Feature Importance** (Importancia de funciones para funciones transformadas): Este gráfico muestra la importancia de la función Driverless AI. La importancia de la característica de IDriverless AI es una medida de la contribución de una variable de entrada a las predicciones generales del modelo de Driverless AI. La importancia de la característica global se calcula agregando la mejora en el criterio de división causada por una sola variable en todos los árboles de decisión en el modelo de Driverless AI.
 
     ![dai-model-feature-importance](assets/dai-model-feature-importance.jpg)
 
-    - **Shapley plots for transformed features**: Shapley explanations are a technique with credible theoretical support that presents consistent global and local variable contributions. Local numeric Shapley values are calculated by tracing single rows of data through a trained tree ensemble and aggregating the contribution of each input variable as the row of data moves through the trained ensemble. For regression tasks, Shapley values sum to the prediction of the Driverless AI model. For classification problems, Shapley values sum to the prediction of the Driverless AI model before applying the link function. Global Shapley values are the average of the absolute Shapley values over every row of a dataset.
+    - **Gráficos de Shapley (Shapley plots) para características transformadas**: Las explicaciones de Shapley son una técnica con apoyo teórico creíble que presenta contribuciones variables globales y locales consistentes. Los valores numéricos locales de Shapley se calculan rastreando filas individuales de datos a través de un conjunto de árbol entrenado y agregando la contribución de cada variable de entrada a medida que la fila de datos se mueve a través del conjunto entrenado. Para las tareas de regresión, los valores de Shapley suman la predicción del modelo de IA sin conductor. Para problemas de clasificación, los valores de Shapley suman la predicción del modelo de IA sin controlador antes de aplicar la función de enlace. Los valores globales de Shapley son el promedio de los valores absolutos de Shapley en cada fila de un conjunto de datos.
 
     ![dai-model-shapley](assets/dai-model-shapley.jpg)
 
-    - **Partial Dependence/ICE Plot** :  
+    - **Parcela de dependencia parcial/ICE**:
     
-    Partial dependence is a measure of the average model prediction with respect to an input variable. Partial dependence plots display how machine-learned response functions change based on the values of an input variable of interest while considering nonlinearity and averaging out the effects of all other input variables. Partial dependence plots are well-known and described in the Elements of Statistical Learning (Hastie et al., 2001). Partial dependence plots enable increased transparency in Driverless AI models and the ability to validate and debug Driverless AI models by comparing a variable's average predictions across its domain to known standards, domain knowledge, and reasonable expectations. 
+    La dependencia parcial es una medida de la predicción promedio del modelo con respecto a una variable de entrada. Las gráficas de dependencia parcial muestran cómo cambian las funciones de respuesta aprendidas por la máquina en función de los valores de una variable de entrada de interés mientras se considera la no linealidad y se promedian los efectos de todas las demás variables de entrada. Los gráficos de dependencia parcial son bien conocidos y se describen en los Elementos del aprendizaje estadístico (Hastie et al., 2001). Las gráficas de dependencia parcial permiten una mayor transparencia en los modelos deDriverless AI y la capacidad de validar y depurar modelos de Driverless AI al comparar las predicciones promedio de una variable en su dominio con los estándares conocidos, el conocimiento del dominio y las expectativas razonables.
     
-    Individual conditional expectation (ICE) plots, a newer and less well-known adaptation of partial dependence plots, can be used to create more localized explanations for a single individual using the same basic ideas as partial dependence plots. ICE Plots were described by Goldstein et al. (2015). ICE values are simply disaggregated partial dependence, but ICE is also a type of nonlinear sensitivity analysis in which the model predictions for a single row are measured. At the same time, a variable of interest is varied over its domain. ICE plots enable a user to determine whether the model's treatment of an individual row of data is outside one standard deviation from the average model behavior, whether the treatment of a specific row is valid in comparison to average model behavior, known standards, domain knowledge, and reasonable expectations, and how a model will behave in hypothetical situations where one variable in a selected row is varied across its domain.
+    Individual conditional expectation (ICE) (Las gráficas de expectativa condicional individual (ICE)), una adaptación más nueva y menos conocida de las gráficas de dependencia parcial, se pueden usar para crear explicaciones más localizadas para un solo individuo usando las mismas ideas básicas que las gráficas de dependencia parcial. Las parcelas ICE fueron descritas por Goldstein et al. (2015) Los valores de ICE son simplemente dependencia parcial desagregada, pero ICE también es un tipo de análisis de sensibilidad no lineal en el que se miden las predicciones del modelo para una sola fila. Al mismo tiempo, una variable de interés varía según su dominio. Las gráficas ICE permiten a un usuario determinar si el tratamiento del modelo de una fila individual de datos está fuera de una desviación estándar del comportamiento promedio del modelo, si el tratamiento de una fila específica es válido en comparación con el comportamiento promedio del modelo, estándares conocidos, conocimiento del dominio, y expectativas razonables, y cómo se comportará un modelo en situaciones hipotéticas donde una variable en una fila seleccionada varía en su dominio.
 
     ![dai-model-partial-dependence-ice](assets/dai-model-partial-dependence-ice.jpg)
 
-    - **Disparate Impact Analysis(NEW)**: Disparate Impact Analysis is a technique that is used to evaluate fairness. Bias can be introduced to models during the process of collecting, processing, and labeling data—as a result, it is essential to determine whether a model is harming certain users by making a significant number of biased decisions. Learn more about [Disparate Impact Analysis](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/interpret-non-ts.html#disparate-impact-analysis).
+    - **Disparate Impact Analysis(NEW)** (Análisis de Impacto Disparado (NUEVO)): El Análisis de Impacto Disparado es una técnica que se utiliza para evaluar la equidad. El sesgo se puede introducir a los modelos durante el proceso de recopilación, procesamiento y etiquetado de datos; como resultado, es esencial determinar si un modelo está dañando a ciertos usuarios al tomar un número significativo de decisiones sesgadas. Aprender más sobre [Disparate Impact Analysis (Análisis de Impacto Disparado)](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/interpret-non-ts.html#disparate-impact-analysis).
 
     ![dai-disparate-impact-analysis-1](assets/dai-disparate-impact-analysis-1.jpg)
 
@@ -791,207 +791,204 @@ This section describes MLI functionality and features for regular experiments. F
 
     ![dai-disparate-impact-analysis-3](assets/dai-disparate-impact-analysis-3.jpg)
 
-    - **Sensitivity Analysis(NEW)** : 
+    - **Sensitivity Analysis(NEW)** (Análisis de sensibilidad (NUEVO)): 
     
-    Sensitivity Analysis (or "What if?") is a simple and powerful model debugging, explanation, fairness, and security tool. The idea behind Sensitivity Analysis is both direct and straightforward: Score your trained model on a single row, on multiple rows, or an entire dataset of potentially interesting simulated values and compare the model's new outcome to the predicted outcome on the original data.
+    El Análisis de sensibilidad (o "¿Qué pasaría si?") Es una herramienta de depuración, explicación, equidad y seguridad de modelo simple y potente. La idea detrás del análisis de sensibilidad es directa y directa: califique su modelo entrenado en una sola fila, en varias filas o en un conjunto de datos de valores simulados potencialmente interesantes y compare el nuevo resultado del modelo con el resultado predicho en los datos originales.
 
-    Sensitivity analysis investigates whether model behavior and outputs remain stable when data is intentionally perturbed, or other changes are simulated in the data. Machine learning models can make drastically differing predictions for only minor changes in input variable values. For example, when looking at predictions that determine financial decisions, SA can be used to help you understand the impact of changing the most important input variables and the impact of changing socially sensitive variables (such as Sex, Age, Race, etc.) in the model. If the model changes in reasonable and expected ways when important variable values are changed, this can enhance trust in the model. Similarly, if the model changes to sensitive variables have minimal impact on the model, then this is an indication of fairness in the model predictions.
+    El análisis de sensibilidad investiga si el comportamiento y los resultados del modelo permanecen estables cuando los datos se alteran intencionalmente o si se simulan otros cambios en los datos. Los modelos de aprendizaje automático pueden hacer predicciones drásticamente diferentes para solo cambios menores en los valores de las variables de entrada. Por ejemplo, al observar las predicciones que determinan las decisiones financieras, SA puede usarse para ayudarlo a comprender el impacto de cambiar las variables de entrada más importantes y el impacto de cambiar las variables socialmente sensibles (como Sex (Sexo),Age (Edad), Race (Raza), etc.) en el modelo. Si el modelo cambia de manera razonable y esperada cuando se cambian los valores variables importantes, esto puede mejorar la confianza en el modelo. Del mismo modo, si los cambios del modelo a variables sensibles tienen un impacto mínimo en el modelo, esto es una indicación de equidad en las predicciones del modelo.
 
-    Learn more about [Sensitivity Analysis](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/interpret-non-ts.html#sensitivity-analysis).
+    Aprender más sobre [Sensitivity Analysis](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/interpret-non-ts.html#sensitivity-analysis).
 
     ![dai-sensitivity-analysis](assets/dai-sensitivity-analysis.jpg)
 
-    - **NLP Tokens (for text experiments only)**: This plot shows both the global and local importance values of each token in a corpus (a large and structured set of texts). The corpus is automatically generated from text features used by Driverless AI models prior to the process of tokenization
+    - **NLP Tokens (Fichas de PNL) (solo para experimentos de texto)**: Esta gráfica muestra los valores de importancia global y local de cada ficha en un corpus (un conjunto de textos grande y estructurado). El corpus se genera automáticamente a partir de las características de texto utilizadas por los modelos AI sin controlador antes del proceso de tokenización
 
-    - **NLP LOCO (for text experiments)**: This plot applies a leave-one-covariate-out (LOCO) styled approach to NLP models by removing a specific token from all text features in a record and predicting local importance without that token. The difference between the resulting score and the original score (token included) is useful when trying to determine how specific changes to text features alter the predictions made by the model.
+    - **NLP LOCO (para experimentos de texto)**: Este gráfico aplica un enfoque de estilo de dejar una covariable (LOCO) a los modelos NLP al eliminar un token específico de todas las características de texto en un registro y predecir la importancia local sin ese token . La diferencia entre el puntaje resultante y el puntaje original (token incluido) es útil cuando se trata de determinar cómo los cambios específicos en las características del texto alteran las predicciones hechas por el modelo.
 
-    - [See documentation for multiclass classification and time-series experiments](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/interpret-non-ts.html#summary-page)
+    - [Ver documentación para clasificación multiclase y experimentos de series temporales](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/interpret-non-ts.html#summary-page)
 
-3. Surrogate Models - For classification and regression experiments
+3. Surrogate Models (Modelos sustitutos): para experimentos de clasificación y regresión
 
     - **KLIME**
 
     ![surrogate-models-klime](assets/surrogate-models-klime.jpg)
 
-    - **Decision Tree**
+    - **Decision Tree (Árbol de decisión)**
 
     ![surrogate-models-decision-tree](assets/surrogate-models-decision-tree.jpg)
 
-    - **Random Forest - Feature Importance**
+    - **Random Forest (Bosque aleatorio) - Importancia de la característica**
 
     ![surrogate-models-rf-feature-importance](assets/surrogate-models-rf-feature-importance.jpg)
     
-    - **Random Forest - Partial Dependence**
+    - **Random Forest (Bosque aleatorio) - Dependencia parcial**
 
     ![surrogate-models-rf-partial-dependence-plot](assets/surrogate-models-rf-partial-dependence-plot.jpg)
 
-    - **Random Forest - LOCO**
+    - **Random Forest (Bosque al azar) - LOCO**
 
     ![surrogate-models-rf-loco](assets/surrogate-models-rf-loco.jpg)
 
-4. **Dashboard** - The Model Interpretation Page includes the following:
-    - K-Lime: Global Interpretability Model Explanation Plot
-    - Feature Importance: Surrogate RF Feature Importance
-    - Decision Tree Surrogate model
-    - Partial Dependence and Individual Conditional Expectation (ICE) plots
+4. **Dashboard (Tablero)**: La página de interpretación del modelo incluye lo siguiente:
+    - K-Lime: Gráfico de Explicación del Modelo de Interpretabilidad Global
+    - Importancia de la característica: Importancia de la característica de RF sustituto
+    - Modelo sustituto del árbol de decisión
+    - Parcelas de dependencia parcial y expectativa condicional individual (ICE)
 
-5. MLI Docs - Link to the "Machine Learning Interpretability with 
-Driverless AI" booklet
-6. Download MLI Logs 
-7. Experiment - Link to return to the experiment that generated the current interpretation
-8. Scoring Pipeline - Download the scoring pipeline for the current interpretation
-9. Download Reason Codes - Download a CSV file of LIME or Shapley reason codes
-10. Datasets - Takes you back to the Datasets page 
-11. Experiments - Takes you back to the Experiments page
-12. MLI - Takes you back to the MLI page 
-13. Row selection - The row selection feature allows a user to search for a particular observation by row number or by an identifier column. Identifier columns cannot be specified by the user - MLI makes this choice automatically by choosing columns whose values are unique (dataset row count equals the number of unique values in a column).
+5. Documentos de MLI: Enlace a la "Interpretabilidad del aprendizaje automático conFolleto Driverless AI"
+6. Descargar MLI Logs 
+7. Experimento: enlace para volver al experimento que generó la interpretación actual
+8. Scoring Pipeline (Canalización de puntuación): Descargue la canalización de puntuación para la interpretación actual
+9. Descargar códigos de motivo: descargue un archivo CSV de LIME o códigos de motivo Shapley
+10. Conjuntos de datos: lo lleva de vuelta a la página Conjuntos de datos 
+11. Experimentos: Lo lleva de vuelta a la página Experimentos
+12. MLI: Te lleva de vuelta a la página de MLI
+13. Row selection (Selección de fila): La función de selección de fila permite al usuario buscar una observación particular por número de fila o por una columna de identificador. El usuario no puede especificar las columnas de identificación: MLI elige automáticamente las columnas cuyos valores son únicos (el recuento de filas del conjunto de datos es igual al número de valores únicos en una columna).
 
 
-### MLI Dashboard
+### Tablero MLI
 
-Select the MLI **Dashboard** and explore the different types of insights and explanations regarding the model and its results. All plots are interactive.
+Seleccione el MLI **Dashboard** (Tablero) y explore los diferentes tipos de ideas y explicaciones sobre el modelo y sus resultados. Todas las parcelas son interactivas.
 
 ![mli-dashboard](assets/mli-dashboard.jpg)
 
-1\. K-Lime - Global Interpretability model explanation plot: 
-This plot shows Driverless AI model and LIME model predictions in sorted order by the Driverless AI model predictions. In white, is the global linear model of Driverless AI predictions (middle green).
-1. Hover over any of the points of the plot and view the LIME reason codes for that value.
-2. Select a point where *Actual value* is 1 and note the reason codes for that prediction value
+1\. K-Lime: diagrama de explicación del modelo de interpretación global:Este gráfico muestra las predicciones del modelo Driverless AI y del modelo LIME en orden ordenado por las predicciones del modelo Driverless AI. En blanco, es el modelo lineal global de predicciones de Driverless AI (verde medio).
+1. Pase el mouse sobre cualquiera de los puntos de la gráfica y vea los códigos de razón LIME para ese valor.
+2. Seleccione un punto donde *El valor real* es 1 y observe los códigos de razón para ese valor de predicción
 
 ![dashboard-klime](assets/dashboard-klime.jpg)
 
-Learn more about K-Lime with our [Machine Learning Interpretability Tutorial](https://h2oai.github.io/tutorials/machine-learning-interpretability-tutorial/#7).
+Aprenda más sobre K-Lime con nuestro [Tutorial de interpretación de aprendizaje automático](https://h2oai.github.io/tutorials/machine-learning-interpretability-tutorial/#7).
 
-2\. Feature Importance - 
-This graph shows the essential features that drive the model behavior.
-1. Which attribute/feature had the most importance?
-2. Was this the same attribute that you hypothesized?
-3. View the explanation of the **Variable Importance** plot by selecting **About this plot**
+2\. Importancia de la característica - 
+Este gráfico muestra las características esenciales que impulsan el comportamiento del modelo.
+1. ¿Qué atributo / característica tuvo más importancia?
+2. ¿Era este el mismo atributo que hipotetizó?
+3. Vea la explicación de la gráfica **Variable Importance** (Importancia variable) seleccionando **About this plot** (Acerca de esta gráfica)
 
 ![dashboard-feature-importance](assets/dashboard-feature-importance.jpg)
 
-Learn more about Feature Importance with our [Machine Learning Interpretability TUtorial](https://h2oai.github.io/tutorials/machine-learning-interpretability-tutorial/#4).
+Obtenga más información sobre la importancia de las funciones con nuestro [TUtorial de interpretación de aprendizaje automático](https://h2oai.github.io/tutorials/machine-learning-interpretability-tutorial/#4).
 
-3\. Decision Tree Surrogate model
-The decision Tree Surrogate model displays the model's approximate flowchart of the complex Driverless AI model's decision making.                  
-Higher and more frequent features are more important. Features above or below one-another can indicate an interaction. Finally, the thickest edges are the most common decision paths through the tree that lead to a predicted numerical outcome.
+3\. Decision Tree Surrogate model (Modelo sustituto del árbol de decisión):
+El modelo de decisión Tree Surrogate muestra el diagrama de flujo aproximado del modelo de la toma de decisiones del modelo de Driverless AI complejo.Las características más altas y más frecuentes son más importantes. Las características superiores o inferiores entre sí pueden indicar una interacción. Finalmente, los bordes más gruesos son los caminos de decisión más comunes a través del árbol que conducen a un resultado numérico predicho.
 
-1. What is the most common decision path for the Titanic Training set?
+1. ¿Cuál es el camino de decisión más común para el set Titanic Training?
 
-Solution:
+Solución:
 
 ![decision-tree-task-8-answer](assets/decision-tree-task-8-answer.jpg)
 
-Learn more about Decision Trees with our [Machine Learning Interpretability Tutorial](https://h2oai.github.io/tutorials/machine-learning-interpretability-tutorial/#6).
+Obtenga más información sobre los árboles de decisión con nuestro [Tutorial de interpretación de aprendizaje automático](https://h2oai.github.io/tutorials/machine-learning-interpretability-tutorial/#6).
 
-4\. Partial Dependence and Individual Conditional Expectation (ICE) plot. This plot represents the model prediction for different values of the original variables. It shows the average model behavior for important original variables.
+4\. Gráfico de Dependencia Parcial y Expectativa Condicional Individual (ICE). Este gráfico representa la predicción del modelo para diferentes valores de las variables originales. Muestra el comportamiento promedio del modelo para variables originales importantes.
 
-The grey bar represents the standard deviation of predictions. The yellow dot represents the average predictions.
+La barra gris representa la desviación estándar de las predicciones. El punto amarillo representa las predicciones promedio.
 
 ![dashboard-partial-dependence-plot](assets/dashboard-partial-dependence-plot.jpg)
 
-1. Explore other average values for different variables and compare the results to your original observations. To change the variable, select **PDP Variable:** located at the top of the Partial Dependence plot.
+1. Explore otros valores promedio para diferentes variables y compare los resultados con sus observaciones originales. Para cambiar la variable, seleccione **PDP Variable (Variable PDP):** Ubicada en la parte superior del gráfico de dependencia parcial.
  
-Learn more about Partial Dependence Plots with our [Machine Learning Interpretability Tutorial](https://h2oai.github.io/tutorials/machine-learning-interpretability-tutorial/#5).
+Obtenga más información sobre los gráficos de dependencia parcial con nuestro [Tutorial de interpretación de aprendizaje automático](https://h2oai.github.io/tutorials/machine-learning-interpretability-tutorial/#5).
 
-5\. Explanations 
+5\. Explicaciones 
 
-Explanations provide a detailed, easy-to-read **Reason Codes** for the top Global/Local Attributions.
-1. Click on Explanations
+Las explicaciones proporcionan **Reason Codes (códigos de motivo)** detallados y fáciles de leer para las principales atribuciones globales/locales.
+1. Haga clic en explicaciones
 
 ![mli-dashboard-explanation](assets/mli-dashboard-explanation.jpg)
 
-2. Determine the top 2 global attributions associated with 'survived.'
+2. Determine las 2 principales atribuciones globales asociadas con 'survived'(sobrevivió).
 
-6\. Driverless AI offers other plots located under Driverless AI Model and Surrogate Models, take a few minutes to explore these plots; they are all interactive. **About this Plot** will provide an explanation of each plot.
+6\. Driverless AI ofrece otras parcelas ubicadas bajo el Modelo de Driverless AI y los Modelos sustitutos (Surrogate Models), tómese unos minutos para explorar estas tramas; Todos son interactivos. **About this Plot** (Acerca de esta trama) proporcionará una explicación de cada trama.
 
-Driverless AI Model
-- Feature Importance
-- Shapley
-- Partial Dependence Plot
-- Disparate Impact Analysis
-- Sensitivity Analysis 
+Modelo de Driverless AI 
+- Feature Importance (Importancia de la característica)
+- Shapley (Shapley)
+- Partial Dependence Plot (Parcela de dependencia parcial)
+- Disparate Impact Analysis (Análisis de Impacto Disparado)
+- Sensitivity Analysis (Análisis de sensibilidad)
 
-Surrogate Models
+Surrogate Models (Modelos sustitutos)
 - KLime
-- Random Forest
-    - Feature Importance
-    - Partial Dependency Plot
+- Random Forest (Bosque al azar)
+    - FImportancia de la característica
+    - Parcela de dependencia parcial
     - LOCO
 
-7\. Click on the MLI link and learn more about "Machine Learning Interpretability with Driverless AI."
+7\. Haga clic en el enlace MLI y obtenga más información sobre "Interpretabilidad del aprendizaje automático con Driverless AI".
 
-### Deeper Dive and Resources
+### Buceo más profundo y recursos
 
-- [Machine Learning, H2O.ai & Machine Learning  Interpretability | Interview with Patrick Hall](https://www.youtube.com/watch?v=TSmSBWnVSzc)
+- [Aprendizaje automático, H2O.ai e interpretación del aprendizaje automático | Entrevista con Patrick Hall](https://www.youtube.com/watch?v=TSmSBWnVSzc)
 
-- [H2O Driverless AI Machine Learning Interpretability walkthrough]( 
+- [Tutorial de interpretación de aprendizaje automático de Driverless AI H2O]( 
 https://www.youtube.com/watch?v=5jSU3CUReXY) (Oct 18)
 
-- [Practical Tips for Interpreting Machine Learning Models - Patrick Hall, H2O.ai Youtube Video](https://www.youtube.com/watch?v=vUqC8UPw9SU) (June 18)
+- [Consejos prácticos para interpretar modelos de aprendizaje automático - Patrick Hall, H2O.ai Youtube Video](https://www.youtube.com/watch?v=vUqC8UPw9SU) (June 18)
 
-- [Practical Tips for Interpreting Machine Learning Models - Patrick Hall, H2O.ai Slideshare](https://www.slideshare.net/0xdata/practical-tips-for-interpreting-machine-learning-models-patrick-hall-h2oai)
+- [Consejos prácticos para interpretar modelos de aprendizaje automático - Patrick Hall, H2O.ai Slideshare](https://www.slideshare.net/0xdata/practical-tips-for-interpreting-machine-learning-models-patrick-hall-h2oai)
 
-- [Building Explainable Machine Learning Systems: The Good, the Bad, and the Ugly](https://www.youtube.com/watch?v=Q8rTrmqUQsU) (May 18)
+- [Creación de sistemas de aprendizaje automático explicables: lo bueno, lo malo y lo feo](https://www.youtube.com/watch?v=Q8rTrmqUQsU) (May 18)
  
-- [An Introduction to Machine Learning Interpretability](https://www.oreilly.com/library/view/an-introduction-to/9781492033158/) 
+- [Una introducción a la interpretabilidad del aprendizaje automático](https://www.oreilly.com/library/view/an-introduction-to/9781492033158/) 
 
-- [Testing Machine Learning Explanation Techniques](https://www.oreilly.com/ideas/testing-machine-learning-interpretability-techniques)
+- [Prueba de técnicas de explicación de aprendizaje automático](https://www.oreilly.com/ideas/testing-machine-learning-interpretability-techniques)
 
-- [Patrick Hall and H2O Github - Machine Learning with Python](https://github.com/jphall663/interpretable_machine_learning_with_python)
+- [Patrick Hall y H2O Github - Aprendizaje automático con Python](https://github.com/jphall663/interpretable_machine_learning_with_python)
 
-- [Patrick Hall and H2O Github - Machine Learning Interpretability](https://github.com/jphall663/awesome-machine-learning-interpretability) 
+- [Patrick Hall y H2O Github - Interpretabilidad de aprendizaje automático](https://github.com/jphall663/awesome-machine-learning-interpretability) 
 
-- [Download the Driverless AI MLI Cheat Sheet](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/_downloads/5cb84bc81a49817d5f490dde39bf42ee/cheatsheet.png) 
+- [Descargue la hoja de trucos de Driverless AI MLI](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/_downloads/5cb84bc81a49817d5f490dde39bf42ee/cheatsheet.png) 
 
-## Task 9: Experiment Summary and Autoreport
+## Tarea 9: Resumen del experimento y autoinforme
 
-Driverless AI allows you to download auto-generated documents such as the Download Experiment Summary and the MLI Report, all at the click of a button. 
+Driverless AI permite descargar documentos generados automáticamente, como el Resumen del experimento de descarga y el Informe MLI, todo con solo hacer clic en un botón.
 
-###  Experiment Summary
+###  Resumen del experimento
 
-1\. Click on **Download Experiment Summary**
+1\. Haga clic en **Download Experiment Summary (Descargar resumen del experiment)**
 
 ![download-experiment-summary](assets/download-experiment-summary.jpg)
 
-When you open the zip file, the following files should be included:
+Cuando abre el archivo zip, se deben incluir los siguientes archivos:
 
-- Experiment logs (regular and anonymized)
-- A Summary of the Experiment
-- Experiment Features along with relevant importance
-- Ensemble information
-- Experiment preview 
-- Word version of an auto-generated report for the experiment
-- Target transformations tuning leaderboard
-- Tuning Leaderboard
+- Experiment logs (regular and anonymized) (Registros de experimentos (regulares y anonimizados))
+- Un resumen del experimento
+- Características del experimento junto con importancia relevante
+- Información del conjunto
+- Vista previa del experimento 
+- Versión de Word de un informe generado automáticamente para el experimento
+- Tabla de clasificación de ajuste de transformaciones de destino
+- Tuning Leaderboard (Tabla de posiciones de ajuste)
 
-2\. Open the auto-generated .doc report and review the experiment results.
+2\. Abra el auto-generated.doc (informe.doc generado automáticamente) y revise los resultados del experimento.
 
-3\. Click on **Download Autoreport**
+3\. Haga clic en **Download Autoreport** (Descargar Autoreport)
 
 ![download-autoreport](assets/download-autoreport.jpg)
 
-**Autoreport** is a Word version of an auto-generated report for the experiment. A report file (AutoDoc) is included in the experiment summary.
+**Autoreport** es una versión de Word de un informe generado automáticamente para el experimento. Se incluye un archivo de informe (AutoDoc) en el resumen del experimento.
 
-The zip file for the **Autoreport** provides insight into the following:
+El archivo zip del **Autoreport** proporciona información sobre lo siguiente:
 
-- Training data
-- Any Detected Shifts in Distribution
-- Validation Schema selected
-- Model Parameter Tuning 
-- Feature Evolution 
-- Final set of Features chosen during the Experiment
+- Datos de entrenamiento
+- Cualquier cambio detectado en la distribución
+- Esquema de validación seleccionado
+- Ajuste de parámetros del modelo
+- Evolución de funciones
+- Conjunto final de características elegidas durante el experimento
 
 
-### Deeper Dive and Resources
+### Buceo más profundo y recursos
 
-- [H2O.ai, Driverless AI Experiment Summary and Autoreport](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-summary.html#autoreport)
+- [H2O.ai, Resumen del experimento de Driverless AI y Autoinforme](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-summary.html#autoreport)
 
-- [Review this Webinar “Peek Under the Hood of H2O Driverless AI with Auto Doc”](https://www.brighttalk.com/webcast/16463/332693/peek-under-the-hood-of-h2o-driverless-ai-with-auto-doc) 
+- [Revise este seminario web "Mire bajo el capó de la IA sin controlador H2O con Auto Doc"](https://www.brighttalk.com/webcast/16463/332693/peek-under-the-hood-of-h2o-driverless-ai-with-auto-doc) 
 
-- [Try running an experiment without the Driverless AI UI using the Python Client](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/examples/h2oai_client_demo.html?highlight=experiment%20summary)
+- [Intente ejecutar un experimento sin la interfaz de usuario de AI sin controlador con Python Client](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/examples/h2oai_client_demo.html?highlight=experiment%20summary)
 
-- [Toward AutoML for Regulated Industry with H2O Driverless AI](https://www.h2o.ai/blog/toward-automl-for-regulated-industry-with-h2o-driverless-ai/)
+- [Hacia AutoML para la industria regulada con Driverless AI H2O](https://www.h2o.ai/blog/toward-automl-for-regulated-industry-with-h2o-driverless-ai/)
 
 ## Next Steps
 
