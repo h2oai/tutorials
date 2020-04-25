@@ -27,65 +27,66 @@ En este tutorial de Driverless AI, vamos a aprender a cargar datos, explorar det
 **Nota**: Este tutorial ha sido creado en Aquarium, lo cual es parte de H2O cloud y provee acceso a varias herramientas para talleres, conferencias, y entrenamientos de enseñanza. Los laboratorios en Aquarium tienen conjuntos de datos, experimentos, proyectos, y otros contenidos precargados. Si usted usa su propia versión de Driverless AI, no podrá ver el contenido precargado.
 
 
-## Prerequisites
+## Requisitos Antes de Comenzar
 
-A **Two Hour Test Drive session**: Test Drive is H2O's Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform. 
+**Sesión de Dos Horas de Test Drive**: Test Drive es igual a H2O Driverless AI, pero la única diferencia siendo que Test Drive corre sobre AWS Cloud. No es necesario descargar ningún software para utilizar Test Drive y explorar todas las características y beneficios de la plataforma de H2O Automatic Learning.    
 
-- Need a **Two Hour Test Drive** session? [Try it Now](https://www.h2o.ai/test-drive/). Follow the instructions [on this quick tutorial](https://h2oai.github.io/tutorials/getting-started-with-driverless-ai-test-drive/#0) to get a Test Drive session started. After the Driverless AI Test Drive session starts, continue reading the remaining prerequisites of this tutorial then start [Task 1: Product Tour](https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#2).
+- ¿Necesita una **Sesión de Dos Horas de Test Drive**? [Inténtelo ahora mismo](https://www.h2o.ai/test-drive/). Siga la instrucciones [en este tutorial](https://h2oai.github.io/tutorials/getting-started-with-driverless-ai-test-drive/#0) para comenzar su sesión. Después de comenzar la sesión de Driverless AI Test Drive, continue leyendo los requisitos restantes de este tutorial y proceda a comenzar [Tarea 1: Tour del Producto](https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#2) 
 
-- Already have a **Two Hour Test Drive** session? Continue reading the remaining prerequisites of this tutorial then start [Task 1: Product Tour](https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#2). 
+- ¿Ya tiene una sesión de **Test Drive**? Continue leyendo los requisitos restantes de este tutorial y proceda a comenzar [Tarea 1: Tour del Producto](https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#2) 
 
-**Note: Each Test Drive instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore Driverless AI, you can always launch another Test Drive instance or reach out to our sales team via the [contact us form](https://www.h2o.ai/company/contact/).**
+**Nota: Cada sesión de Test Drive será disponible por un máximo de dos horas. Después de las dos horas, la sesión terminará y su trabajo en la sesión no será guardado. Si necesita más tiempo para seguir explorando Driverless AI, puede lanzar una nueva sesión de Test Drive o puede contactar nuestro equipo de ventas por medio de nuestro [formulario de contacto](https://www.h2o.ai/company/contact/).** 
 
-- Basic knowledge of Machine Learning and Statistics
+- Conocimiento básico de Machine Learning y Estadísticas 
 
 
-## Task 1: Product Tour
+## Tarea 1: Tour del Producto
 
-Welcome to the Driverless AI **Datasets** page! 
+¡Bienvenido a la página **Datasets** de Driverless AI!
 
 ![dai-datasets-page](assets/dai-datasets-page.jpg)
 
-The Driverless UI is easy to navigate. The following features, as well as a few datasets, are found on the **Datasets** page. We will explore these features as we launch an experiment in the next tasks.
 
-1. **Projects**: Projects Workspace for managing datasets and experiments menu option.
+La interfaz del usuario (UI) de Driverless AI es muy fácil de navegar. Las siguientes características, al igual que algunos conjuntos de datos se pueden encontrar en la página de **Datasets**. Vamos a explorar estas características al tiempo de lanzar nuestro experimento en los siguientes pasos. 
 
-2. **Datasets**: View of current datasets. Other features for datasets include the options to add a dataset, get dataset details, visualize, split, predict, rename, download, and delete. 
+1. **Projects**: En el espacio de **Projects** su pueden encontrar y administrar conjuntos de datos y se encontrará la opción de menú de experimentos
 
-3. **Autoviz**: Visualize a dataset with all available graphs.
+2. **Datasets**: Muestra los conjuntos de datos disponibles. Algunas otras opciones incluyen la habilidad de agregar nuevos conjuntos de datos, obtener detalles sobre los datos, visualizar, dividir, predecir, renombrar, descargar, y eliminar.
 
-4. **Experiments**: View of completed experiments. Experiments can be revised or deleted. 
+3. **Autoviz**: Visualizar un conjunto de datos con todos los gráficos disponibles
 
-5. **Diagnostics**: Diagnose a model and view model performance for multiple scorers based on the existing model and dataset.
+4. **Experiments**: Muestra todos los experimentos que han sido completados. Experimentos pueden ser corregidos o borrados. 
 
-6. **MLI**: View a list of interpreted models or interpret a model.
+5. **Diagnostics**: Muestra diagnósticos acerca del modelo creado y puede ver los resultados de ese modelo usando diferentes formas de evaluación 
 
-7. **Deployments**: Deploy the MOJO and Python scoring pipelines for you to test or to integrate into a final product. You can also deploy locally or in the cloud.
+6. **MLI**: Muestra una lista de interpretaciones de los modelos y permite realizar una interpretación de un modelo nuevo
 
-8. **Resources**: The Resources dropdown menu provides you with links to view System Information, the Driverless AI User Guide and Help. From this dropdown menu, you can also download the Python Client, R Client, and the MOJO2 runtime, MOJO2 Py runtime, and MOJO2 R runtime.
+7. **Deployments**: Despliega los modos de evaluación de MOJO y Python para hacer pruebas e integrar a tu producto final, también se puede desplegar localmente o en cloud 
 
-9. **Messages[ ]**: View news and upcoming Driverless AI events.
+8. **Resources**: El menu de **Resources** permite ver enlaces a Información del Sistema, Guia de Uso de Driverless AI, and Ayuda. Desde este menu, también se puede descargar Python Client, R Client, MOJO2 Runtime, MOJO2 Py Runtime, y MOJO2 R Runtime.
 
-10. **Logout H2OAI**: Logs you out of your current session.
+9. **Messages[]**: Muestra noticias y próximos eventos de Driverless AI
 
-11. **<**: Go back to the previous page.
+10. **Logout H2OAI**: Permite salir de la sesión actual 
 
-12. **H2OAI**: Takes you back to the H2OAI **Datasets** Page.
+11. **<**: Regresa a la página anterior
 
-13. **Driverless AI 1.X.X**: Version of Driverless AI 
+12. **H2OAI**: Regresa a las página de **Datasets**
 
-14. **Add a Dataset(or Drag and Drop)**: Upload or add a dataset.
+13. **Driverless AI 1.X.X**: Version de Driverless AI
+
+14. **Add a Dataset(or Drag and Drop)**: Carga o añade un nuevo conjunto de datos 
 
 
-### Deeper Dive and Resources
+### Inmersión Más Profunda y Recursos
 
--  [Join the H2O community on Slack to Ask Questions](https://h2oai-community.slack.com/). Post your questions, discuss use cases, give feedback, stay informed about the latest H2O.ai updates, and more.
+- [Únete a la comunidad de H2O en Slack para hacer preguntas ](https://h2oai-community.slack.com/). Haz preguntas, discute posibles usos, da recomendaciones, mantente informado sobre lo mas nuevo de H2O.ai, y mucho más.
 
-- Learn more are about H2O Driverless through the [H2O documentation](http://docs.h2o.ai/driverless-ai/latest-stable/docs/booklets/DriverlessAIBooklet.pdf).
+- Aprende más sobre H2O Driverless por medio de nuestra [Documentacion de H2O](http://docs.h2o.ai/driverless-ai/latest-stable/docs/booklets/DriverlessAIBooklet.pdf). 
 
-- [Explore H2O Product Documentation](http://docs.h2o.ai/)
+- [Explora la Documentación del Producto de H2O ](http://docs.h2o.ai/)
 
-- [Learn more H2O Driverless by reviewing the FAQs](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/faq.html) 
+- [Aprende más sobre H2O Driverless al revisar nuestra lista de preguntas frecuentes](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/faq.html)
 
 ## Task 2: Automatic Machine Learning Concepts
 
