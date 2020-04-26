@@ -604,119 +604,119 @@ The complete list of features used in the final model is available in the Experi
 
 - [H2O World London 2018 Feature Engineering session replay](https://www.youtube.com/watch?v=d6UMEmeXB6o ) and [slides  by Dmitry](https://www.slideshare.net/0xdata/feature-engineering-in-h2o-driverless-ai-dmitry-larko-h2o-ai-world-london-2018 ) 
 
-## Task 7: Explore Experiment Results
+## Tarea 7: Explora Resultados del Experimento
 
-Let’s explore the results of this classification experiment. You can find the results on the **Experiment Summary** at the left-bottom of **Experiment** page. The resulting plots are insights from the training and validation data resulting from the classification problem. Each plot will be given a brief overview. 
+Vamos a explorar los resultados de este experimento de clasificación. Se pueden encontrar los resultados en la página **Experiment Summary** al final de la página de **Experiment** de lado izquierdo. Los gráficos de los resultados nos dan más información sobre los datos de entrenamiento y validación que resultan del problema de clasificación. Para cada gráfico, daremos una breve explicación.  
 
-If you are interested in learning more about each plot and the metrics derived from those plots covered in this section, then check out our next tutorial [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#0).
+Si está interesado/a en aprender más sobre cada gráfico y las métricas derivadas en esta sección, haga favor de leer nuestro proximo tutorial [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#0).  
 
 ![experiment-summary-expanded](assets/experiment-summary-expanded.jpg)
 
-1\. Summary
+1\. Resumen 
 
-Once the experiment is done, a summary is generated at the bottom-right corner of the **Experiment** page.
 
-The summary includes:
+En cuanto termine el experimento, un resumen is generado en la parte baja en la esquina derecha de la página de **Experiment**.
 
-- **Experiment**: experiment name,
-  - Version: the version of Driverless AI and the date it was launched
-  - Settings: selected experiment settings, seed, and amount of GPU’s enabled
-  - Train data: name of the training set, number of rows and columns
-  - Validation data: name of  the validation set, number of rows and columns
-  - Test data: name of the test set, number of rows and columns
-  - Target column: name of the target column (the type of data and % target class)
+El resumen incluye: 
 
-- **System Specs**: machine specs including RAM, number of CPU cores and GPU’s
-  - Max memory usage  
+- **Experiment**: nombre del experimento,
+  - Version: la versión de Driverless AI y la fecha en que fue lanzada
+  - Settings: preferencias del experimento seleccionado, semilla, y la cantidad de unidades de procesamiento gráfico (GPU) utilizados
+  - Train data: el nombre del set de datos de entrenamiento, con número de hileras y columnas
+  - Validation data: el nombre del set de datos de validación, con número de hileras y columnas
+  - Test data: el nombre del set de datos de examinación, con número de hileras y columnas
+  - Target column: el nombre de la columna usada como el objetivo del experimento (incluye el typo de data y el % de cada clase)
+
+- **System Specs**: detalles de la sistema como memoria de acceso aleatorio (RAM), número de núcleos de CPU y GPU  
+  - Uso máximo de memoria
 
 - **Recipe**: 
-  - Validation scheme: type of sampling, number of internal holdouts
-  - Feature Engineering: number of features scored and the final selection
+  - Validation scheme: esquema de validación que incluye el tipo de sampling y número interno de reservación 
+  - Feature Engineering: número de características que fueron evaluadas y la selección final   
 
 - **Timing**
-  - Data preparation 
-  - Shift/Leakage detection
-  - Model and feature tuning: total time for model and feature training and  number of models trained 
-  - Feature evolution: total time for feature evolution and number of models trained 
-  - Final pipeline training: total time for final pipeline training and the total models trained 
-  - Python / MOJO scorer building 
-- Validation Score: Log loss score +/- machine epsilon for the baseline
-- Validation Score: Log loss score +/- machine epsilon for the final pipeline
-- Test Score: Log loss score +/- machine epsilon score for the final pipeline 
+  - Preparación de datos
+  - Detección de desplazamiento o fuga de datos 
+  - Model and feature tuning: tiempo total para entrenar el modelo y las características, y el número de modelos entrenados 
+  - Feature evolution: tiempo total para la evolución de las características y el número de modelos entrenados
+  - Final pipeline training: tiempo total para el entrenamiento total y el número de modelos entrenados
+  - Python / MOJO constructor de evaluación 
+- Validation Score: valor de Pérdida Logarítmica +/- épsilon de la base de la máquina   
+- Test Score: valor de Pérdida Logarítmica +/- épsilon de la pipa final
 
-Most of the information in the Experiment Summary tab, along with additional detail, can be found in the Experiment Summary Report (Yellow Button “Download Experiment Summary”).
+La mayoría de la información en la página de **Experiment Summary**, junto con más detalles, puede ser encontrada en **Experiment Summary Report** (botón amarillo “Download Experiment Summary” el cual descarga la página)
 
-1. Find the number of features that were scored for your model and the total features that were selected. 
+1. Encuentra el número de características que fueron evaluadas para el modelo y el número de características que fueron seleccionadas 
 
-2. Take a look at the validation Score for the final pipeline and compare that value to the test score. Based on those scores, would you consider this model a good or bad model? 
+2. Encuentra el valor de validación de la pipa final y compara el valor con el valor de la examinación. ¿Basado en estos valores, consideras que el modelo es un buen modelo o no? 
 
-2\. ROC - Receiver Operating Characteristics
+2\. ROC - Característica Operativa del Receptor 
 
-This type of graph is called a Receiver Operating Characteristic curve (or ROC curve.) It is a plot of the true positive rate against the false-positive rate for the different possible cutpoints of a diagnostic test.
+A este tipo de gráfico se le llama curva Característica Operativa del Receptor (curva ROC). El gráfico demuestra el porcentaje de predicciones positivas correctas contra el porcentaje de predicciones positivas incorrectas.
 
-An ROC curve is a useful tool because it only focuses on how well the model was able to distinguish between classes. “AUC’s can help represent the probability that the classifier will rank a randomly selected positive observation higher than a randomly selected negative observation”[1].  However, for models where the prediction happens rarely, a high AUC could provide a false sense that the model is correctly predicting the results.  This is where the notion of precision and recall become essential.
+Una curva ROC es una herramienta muy útil porque solamente se enfoca en que bien el modelo pudo distinguir entre las dos clases. “El área debajo de la curva (AUC) ayuda en representar la probabilidad de que el clasificador organizará una observación positiva seleccionada al azar más arriba que una observación negativa seleccionada al azar”[1]. Tomando eso en cuenta, para modelos donde la predicción ocurre muy raramente, un valor alto de AUC puede proveer un sentido falso que el modelo está prediciendo los resultados correctamente. Aquí es donde la noción de precisión y recall se vuelven esenciales. 
 
-The ROC curve below shows Receiver-Operator Characteristics curve stats on validation data along with the best Accuracy, FCC, and F1 values[2].
+La curva ROC debajo demuestra estadísticas del ROC contra los datos de validación junto con la mejor Precisión, FCC, y valores de F1.
 
 ![experiment-results-roc-graph](assets/experiment-results-roc-graph.jpg)
 
-This ROC gives an Area Under the Curve or AUC of .8530. The AUC tells us that the model is able to classify the survivors 85.30% of the time correctly.  
+La curva ROC da un valor de área bajo la curva de .8530. Esta valor nos deja saber que el modelo es capaz de clasificar el número de sobrevivientes 85.30% de las veces correctamente.
 
-Learn more about the ROC Curve on [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus: ROC](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#7).
+Puedes encontrar más información sobre la curva ROC en [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus: ROC](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#7).
 
-3\. Prec-Recall - Precision-Recall graph
+3\. Prec-Recall - Gráfico de la Curva de Precision-Recall 
 
-Prec-Recall is a complementary tool to ROC curves, especially when the dataset has a significant skew. The Prec-Recall curve plots the precision or positive predictive value (y-axis) versus sensitivity or true positive rate (x-axis) for every possible classification threshold. At a high level, we can think of precision as a measure of exactness or quality of the results while recall as a measure of completeness or quantity of the results obtained by the model. Prec-Recall measures the relevance of the results obtained by the model.
+Prec-Recall es una herramienta complementaria a la curva ROC, especialmente cuando el conjunto de datos no está balanceado entre el número de casos positivos y negativos. La curva de PR demuestra la precisión contra la sensitividad o porcentaje de predicciones positivas correctas para cada límite de clasificación posible. A gran nivel, podemos pensar en precisión como una de medida de exactitud o calidad de los resultados, mientras que recall en una medida de que tan completo o cantidad de resultados obtenidos por el modelo. Prec-Recall mide la relevancia de los resultados obtenidos por el modelo. 
 
-The Prec-Recall plot below shows the Precision-Recall curve on validation data along with the best Accuracy, FCC, and F1 values. The area under this curve is called AUCPR.
+El gráfico debajo demuestra Prec-Recall contra los datos de validación junto con la mejor Accuracy, FCC, y valores F1. A la área debajo de esta curva se la llama AUCPR.
 
 ![experiment-results-prec-recall-graph](assets/experiment-results-prec-recall-graph.jpg)
 
-Similarly to the ROC curve, when we take a look at the area under the curve of the Prec-Recall Curve of AUCPR we get a value of .7960. This tells us that the model brings forth relevant results or those cases of the passengers that survived 79.60% of the time.
+Al igual que la curva ROC, cuando vemos el área debajo de la curva de la curva PR encontramos un valor de AUCPR de .7960. Esto nos deja saber que el modelo da resultados relevantes, o casos de pasajeros que sobrevivieron, 79.60% de las veces. 
 
-Learn more about the Prec-Curve Curve on [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus: Prec-Recall](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#8).
+Aprende más sobre la curva PR en [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus: Prec-Recall](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#8).
 
-4\. Cumulative Lift Chart 
+4\. Gráfico de Elevación Acumulativa
 
-Lift can help us answer the question of how much better one can expect to do with the predictive model compared to a random model(or no model). Lift is a measure of the effectiveness of a predictive model calculated as the ratio between the results obtained with a model and with a random model(or no model). In other words, the ratio of gain% to the random expectation % at a given quantile. The random expectation of the xth quantile is x%[4].
+El valor de elevación nos puede ayudar a contestar la pregunta de cuánto mejor podemos predecir con nuestro modelo al comparar los resultados con un modelo creado al azar (o sin ningún modelo). Elevación es una medida de la efectividad de un modelo de predicciones y es calculado como el porcentaje de los resultados obtenidos por nuestro modelo contra los resultados de un modelo creado al azar. En otras palabras, el porcentaje de ganancia dividido por el porcentaje de la expectativa al azar genera en cualquier cuantil. La expectativa al azar del cuantil x es x%.    
 
-The Cumulative Lift chart shows lift stats on validation data. For example, “How many times more observations of the positive target class are in the top predicted 1%, 2%, 10%, etc. (cumulative) compared to selecting observations randomly?” By definition, the Lift at 100% is 1.0.
+El gráfico de elevación acumulativa demuestra estadísticas sobre el valor de elevación para los datos de validación. Por ejemplo, ¿cuántas veces más sucede que los puntos de la clase positiva terminan el la clase alta de predicciones 1%, 2%, 10%, etc (acumulativo) al comparar con seleccionar puntos al azar?” Por definicion, la elevación al 100% es 1.0.  
 
 ![experiment-results-lift-graph](assets/experiment-results-lift-graph.jpg)
 
-Learn more about the Cumulative Lift Chart on [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus: Cumulative Lift](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#10).
+Aprende más sobre el gráfico de elevación acumulativa en [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus: Cumulative Lift](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#10).
 
-5\. Cumulative Gains Chart
+5\. Gráfico de Ganancia Acumulativa 
 
-Gain and Lift charts measure the effectiveness of a classification model by looking at the ratio between the results obtained with a trained model versus a random model(or no model)[3]. The Gain and Lift charts help us evaluate the performance of the classifier as well as answer questions such as what percentage of the dataset captured has a positive response as a function of the selected percentage of a sample. Additionally, we can explore how much better we can expect to do with a model compared to a random model(or no model)[4].
+Los gráficos de ganancia y elevación miden la eficacia de un modelo de clasificación al comparar el porcentaje entre los resultados obtenidos con un modelo entrenado contra los resultados obtenidos por un modelo creado al azar (o ningún modelo)[3]. Los gráficos nos ayudan a evaluar el rendimiento del modelo de clasificación al igual que contestar preguntas como “¿al seleccionar un cierto porcentaje del conjunto de datos como prueba, qué porcentaje del nuevo conjunto de datos tiene una respuesta positiva?” Adicionalmente, podemos explorar cual mejor podemos esperar ver con nuestro modelo que con un modelo creado al azar (o ningún modelo)[4]. 
 
-For better visualization, the percentage of positive responses compared to a selected percentage sample, we use Cumulative Gains and Quantile. 
+Para mejores visualizaciones, el porcentaje de respuestas positivas al comparar con un porcentaje seleccionado de prueba, utilizamos Ganancia Acumulativa y Cuantiles.
 
-In the Gains Chart below, the x-axis shows the percentage of cases from the total number of cases in the test dataset, while the y-axis shows the percentage of positive outcomes or survivors in terms of quantiles.
+En el gráfico debajo, el axis-x demuestra el porcentaje de casos del total número de casos en el conjunto de datos para prueba, mientras que el y-axis demuestra el porcentaje de casos positivos o sobrevivientes en término de cuantiles.  
 
-The Cumulative Gains Chart below shows Gains stats on validation data. For example, “What fraction of all observations of the positive target class are in the top predicted 1%, 2%, 10%, etc. (cumulative)?” By definition, the Gains at 100% are 1.0.
+El gráfico de ganancias acumulativas debajo demuestra estadísticas sobre el conjunto de datos de validación. Por ejemplo, “¿qué fracción de todas los observaciones de la clase positiva están en el primer 1%, 2%, 10%, etc. de todas las predicciones” Por definición, la ganancia al 100% es 1.0. 
 
 ![experiment-results-gains-graph](assets/experiment-results-gains-graph.jpg)
 
-The Gains chart above tells us that when looking at the 20% quantile, the model can positively identify ~45% of the survivors compared to a random model(or no model) which would be able to positively identify about ~20% of the survivors at the 20% quantile.
+El gráfico de arriba nos deja saber que al mirar el cuantil del 20%, el modelo puede positivamente identificar ~45% de los sobrevivientes al comparar con un modelo creado al azar (o ningún modelo), el cual podría positivamente identificar aproximadamente el 20% de los sobrevivientes en el cuantil de 20%. 
 
-Learn more about the Cumulative Gains Chart on [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus: Cumulative Gains](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#9).
+Aprende mas sobre el gráfico de ganancias acumulativas en [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus: Cumulative Gains](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#9).
 
 6\. K-S
 
-Kolmogorov-Smirnov or K-S measures the performance of classification models by measuring the degree of separation between positives and negatives for validation or test data[5]. “The K-S is 100 if the scores partition the population into two separate groups in which one group contains all the positives and the other all the negatives. On the other hand, If the model cannot differentiate between positives and negatives, then it is as if the model selects cases randomly from the population. The K-S would be 0. In most classification models, the K-S will fall between 0 and 100, and that the higher the value, the better the model is at separating the positive from negative cases.”[6].
+Kolmogorov-Smirnov o K-S es una forma de medir el rendimiento de modelos de clasificación por medio de medir el nivel de separación entre los positivos y negativos del conjunto de datos de validación o prueba[5]. “El K-S es 100 si los valores separan lo población en dos grupos distintos en cual un grupo contiene todos los valores positivos y el otro todos los negativos. Al contrario, si el modelo no puede diferenciar entre entre los positivos y negativos, entonces es como si el modelo seleccionara casos al azar de la población. El K-S en este caso sería 0. En la mayoría de modelos de clasificación, el K-S tendrá un valor entre 0 y 100, y entre más alto el valor, mejor será el modelo en separar los casos positivos de los negativos.”[6] 
 
-K-S or the Kolmogorov-Smirnov chart measures the degree of separation between positives and negatives for validation or test data.
+Gráficos de K-S o Kolmogorov-Smirnov miden la separación entre los casos positivos y los negativos para el conjunto de datos de validación o de prueba.
 
-Hover over a point in the chart to view the quantile percentage and Kolmogorov-Smirnov value for that point.
+Ponga su cursor sobre cualquier punto en el gráfico para ver el porcentaje del cuantil y el valor de K-S en ese punto.
 
 ![experiment-results-gains-k-s](assets/experiment-results-gains-k-s.jpg)
 
-For the K-S chart above, if we look at the top 60% of the data, the at-chance model (the dotted diagonal line) tells us that only 60% of the data was successfully separate between positives and negatives (survived and did not survived). However, with the model, it was able to do .499, or about 50% of the cases were successfully separated between positives and negatives.
+Para el gráfico de K-S de arriba, si nos enfocamos en los datos que componen el 60% más alto de todos los datos, el modelo al azar (la línea punteada) nos deja saber que sólo 60% de los datos fueron separados exitosamente entre los positivos y negativos (sobrevivientes y no-sobrevivientes). Sin embargo, el modelo fue capaz de hacerlo con .499 o ~50% de los casos fueron exitosamente separados en positivos y negativos.
 
-Learn more about the Kolmogorov-Smirnov chart on [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus: Kolmogorov-Smirnov chart](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#11).
+Aprende más sobre el gráfico de K-S en [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus: Kolmogorov-Smirnov chart](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#11).
 
-### References
+### Referencias
  
 [1] [ROC Curves and Under the Curve (AUC) Explained](https://www.youtube.com/watch?v=OAl6eAyP-yo)
 
@@ -731,7 +731,7 @@ Learn more about the Kolmogorov-Smirnov chart on [Machine Learning Experiment Sc
 [6] [Model Evaluation- Classification](https://www.saedsayad.com/model_evaluation_c.htm)
 
 
-### Deeper Dive and Resources
+### Inmersión Más Profunda y Recursos
 
 - [The Best Metric to Measure Accuracy of Classification Models](https://clevertap.com/blog/the-best-metric-to-measure-accuracy-of-classification-models/)
 
