@@ -236,41 +236,60 @@ This tragedy shocked the international community and led to better safety regula
 
 - For more datasets, check out [Kaggle Datasets](https://www.kaggle.com/datasets)
 
-## Task 4: Explore Data Details and AutoViz
+## Task 4: Explore Detalhes dos Dados e AutoViz
 
-### Details
+### Detalhes
 
-We are now going to explore the Titanic dataset that we just loaded. 
+
+We are now going to explore the Titanic dataset that we just loaded.
+Vamos agora explorar o dataset titanic, que acabamos de carregar.
+
 
 1\. Continuing on the **Dataset Overview page**, click on the titanic.csv dataset. The following options will appear:
+1\. Continuando na pagina **Dataset Overview**, clique em titanic.csv dataset. As seguintes opções vão aparecer:
 
 ![titanic-set-actions](assets/titanic-set-actions.jpg)
 
  - Details - View a summary of the dataset or preview the dataset
+ - Details - Veja um sumário do dataset ou pré-visualize o dataset
  - Visualize - Visualize the dataset with available graphs
+ - Visualize - Visualize o dataset com gráficos disponíveis.
  - Split - Split the dataset
+ - Split - Divida o dataset
  - Predict - Run an experiment using Driverless AI
+ - Predict - Rode um experimento usando Driverless AI
  - Rename - Rename the dataset
+ - Rename - Renomeie o dataset
  - Download - Download the dataset
+ - Download - Download do dataset
  - Delete - Delete the dataset 
+ - Delete - Remova o dataset
 
 **Note**: A dataset can only be deleted if it's not being used in an experiment. Otherwise, you must delete the experiment first, and then the dataset can be deleted.
+**Nota**: O Dataset somente poderá ser deletado se não estiver sendo usado em um experimento. Caso contrário, você deve remover o experimento primeiro, depois disso o dataset poderá ser deletado.
 
 2\. Next, we are going to confirm that the dataset loaded correctly and that it has the correct number of rows and columns by clicking on **Details**.
+2\. Agora, nós vamos confirmar que o dataset foi carregado corretamente, e que contêm o número correto de linhas e colunas. Clique em **Details**
 
 3\. Click on **Details**.  **Details** will take you to the **Dataset Details Page**
+3\. Clique em **Details**. **Details** te levará a página **Dataset Details**
  
  ![titanic-set-details-page](assets/titanic-set-details-page.jpg)
 
-*Things to Note:*
+*Things to Note:* 
+*Atenção nos seguintes:*
 
 1. The **Dataset Details Page** provides a summary of the dataset. This summary lists each column that is included in the dataset along with:
+1. A Página **Dataset Details* dará um sumário do dataset. Esse sumário lista cada coluna que é incluida no dataset juntamente com:
+
 
     **Logical type (can be changed)**
+    
 
     ![logical-type-options](assets/logical-type-options.jpg)
 
     **Format for Date and Datetime columns(can be changed)**
+    **Formato para colunas Date e Datetime(poderá ser modificado)**
 
     ![dataset-details-format-option](assets/dataset-details-format-option.jpg)
 
@@ -283,112 +302,166 @@ We are now going to explore the Titanic dataset that we just loaded.
     - Standard deviation
     - Frequency
     - Number of unique values
+    - Numero de valores únicos
     - View the first 20 rows of a column
+    - Veja as primeiras 20 linhas de uma coluna.
+    [comment]: <> (The last visualization on the h20 page as shown in the picture above contains only the field Unique. When describing the Unique field the tutorial is refering to "number of unique values"+"View first 20 rows of a colum". Either the page picture above is not showing all options or the information on the tutorial could be confusing.)
 
     ![datasets-details-first-20-rows](assets/datasets-details-first-20-rows.jpg)
 
     **Note**: Driverless AI recognizes the following column types: integer, string, real, boolean, and time. Date columns are given a string "str" type.
+    **Nota:** Driverless AI reconhece os seguintes tipos de colunas: integer, string, real, boolean e time. Colunas de Data são atribuídas tipo "str" (String).
 
 2. You can view information for a specific column by entering the name of the column in the field above the graph.
+2. Você pode ver as informações de uma coluna específica digitando o nome da coluna no campo a cima do gráfico.
 
 3. **Modify by Recipe** allows you to create a new dataset by modifying an existing dataset with custom recipes.
+3. **Modify by Recipe** Permite que seja criado um novo dataset, modificando um dataset existente com receitas personalizadas.
 
 4. **Dataset Rows** allows you to preview the dataset
+4. **Dataset Rows** Permite pré-visualize o dataset
 
 5. Option to exit and return to the H2O **Datasets** page
+5. Opção para sair e retornar à página **Datasets** do H20 Web App.
+[comment]: <> (on Item 5. above; I am refering to the program being ran as "H20 Web App" please let me know if this is the case.)
 
-4\. Select  **Dataset Rows**    
+4\. Select  **Dataset Rows** 
+4\. Seleção de **Dataset Rows**
 
 ![titanic-set-rows-page](assets/titanic-set-rows-page.jpg)
 
 *Things to Note:*
- 1. Preview the dataset 
+*Atenção nos Seguintes:*
+ 1. Preview the dataset
+ 1. Pré-Visualização do dataset
  2. View the remaining rows
+ 2. Ver as linhas remanecentes.
  3. **Modify by Recipe** - Modify the dataset through a custom recipe
+ 3. **Modify by Recipe** - Mofificar o dataset por meio de uma receita personalizada.
  3. Return to the **Dataset Overview** 
+ 3. Retornar ao **Dataset Overview**
  4. Option to Exit and return to the H2O **Datasets** page
-
+ 4. Opção para sair e retornar à página **Datasets** do H20 Web App.
+ [comment]: <> (There is a possible error here. there are 2 itens numbered 3. They are "**Modify by Recipe**" and "Return to the **Dataset Overview**")
+ [comment]: <> (on Item 4. above; I am refering to the program being ran as "H20 Web App" please let me know if this is the case.)
 5\. Exit and return to **Datasets Overview** page.
+5\. Sair e Retornar a página **Datasets Overview".
 
 ### Split the Dataset
+### Dividir Dataset
 
 From the Titanic.csv dataset, we are going to create two datasets, training and test. 75% of the data will be used for training the model, and 25% to test the trained model.
+Do dataset Titanic.csv, vamos agora criar dois datasets, treinamento e teste. 75% dos dados vão ser usados para o modelo de treinamento, e 25% vão para testar o modelo após treinado.
 
-1\. Click on the titanic.csv file and select **Split** 
+1\. Click on the titanic.csv file and select **Split**
+1\. Clique no arquivo Titanic.csv e selecione **Split** para iniciar a divisão dos datasets. 
 
 ![titanic-set-split-1](assets/titanic-set-split-1.jpg)
 
-2\. Split the data into two sets: titanic_train and titanic_test, then save the changes. Use the image below as a guide: 
+2\. Split the data into two sets: titanic_train and titanic_test, then save the changes. Use the image below as a guide:
+2\. Divida os dados em dois datasets: titanic_train e titanic_test. depois salve as modificações. Use a imagem seguinte como guia.
 
 ![titanic-set-split-2](assets/titanic-set-split-2.jpg)
 
 *Things to Note:*
+*Atenção nos seguintes*
 
 1. For OUTPUT NAME 1: enter ```titanic_train``` (this will serve as the training set)
+1. Para OUTPUT NAME 1: Digite ```titanic_train``` (esse servirá como dataset de treinamento)
 2. For OUTPUT NAME 2: enter ```titanic_test``` (this will serve as the test set)
+2. Para OUTPUT NAME 2: Digite ```titanic_test``` (esse servirá como dataset de teste)
 3. You can change the Random Seed; this will generate the same split every time
+3. Você pode mudar o Random Seed; isso vai gerar a mesma divisão toda vez
 4. Change the split value to .75 by adjusting the slider to 75% or entering .75 in the section that says *Train/Valid Split Ratio*
+4. Mude o valor de divisão para .75 ajustando a barra de rolagem para 75% ou digitando .75 na sessão *Train/Valid Split Ratio*
 5. Save the changes you made 
+5. Salve as alterações.
 
 The ratio of .75 was selected for this particular dataset to not generalize the model given the total size of the set.
+A proporção de .75 foi selecionada para esse dataset específico para não generalizar o modelo, dado o tamanho total do dataset.
 
 **The training set** contains 981 rows, each row representing a passenger, and 16 columns representing the attributes of each passenger.
+**O Training Set** contém 981 linhas, cada uma representando um passageiro, e 16 colunas representando os atributos de cada passageiro. 
 
-**The Test set** contains 328 rows, each row representing a passenger, and 16 attribute columns representing attributes of each passenger. 
+**The Test set** contains 328 rows, each row representing a passenger, and 16 attribute columns representing attributes of each passenger.
+**O Test Set** contém 328 linhas, cada uma representando um passageiro, e 16 colunas representando os atributos de cada passageiro.
 
 Verify that the three Titanic datasets, titanic_test, titanic_train and titanic.csv are there:
+Verifique que os três Titanic datasets, titanic_test, titanic_train e titanic.csv existem:
 
 ![three-datasets](assets/three-datasets.jpg)
 
 ### Autoviz
 
 Now that the titanic.csv dataset has been split, we will use the **titanic_train** set for the remaining of the tutorial.
+Agora que o titanic.csv dataset foi dividido, nos vamos usar o **titanic_train** dataset pelo restante do tutorial.
 
 There are two ways to visualize the training set:
+Existem duas formas de visualizar o training set(modelo de treinamento):
 
 ![titanic-train-visualize](assets/titanic-train-visualize.jpg)
 
 **Method 1** : Clicking on the **titanic_train** file, select **Visualize**, then click on the visualization file generated.
+**Método 1** : Clicando no arquivo **titanic_train**, selecione **Visualize**, em seguida clique no arquivo de visualização gerado.
 
 
 
 **Method 2**: Clicking on  **Autoviz** located at the top of the UI page, where you will be asked for the dataset you want to visualize.
+**Método 2**: Clicando no **Autoviz** localizado no topo da página UI, onde você vai selecionar qual dataset deseja visualizar. 
 
 1\. Pick a method to visualize the **titanic_train** dataset. A similar image should appear:
+1\. Escolha um método para visualizar **titanic_train** dataset. Uma imagem similar á seguinte deve aparecer:
 
 ![train-set-visualization-ready](assets/train-set-visualization-ready.jpg)
 
 Click on the **titanic_train** visualization, and the following screen will appear.
+Clique na visualização de **titanic_train** e a seguinte image vai parecer:
 
 ![train-set-visualizations](assets/train-set-visualizations.jpg)
 
 Is it possible to visualize how variables on the training set are correlated? Can we determine what other variables are strongly correlated to a passenger's survival? The answer to those questions is yes! One of the graphs that allow us to visualize the correlations between variables is the **Correlation Graph**.
+É possível visualizar como variáveis no training set se correlacionam? Podemos determinar que outras variáveis são fortemente correlacionadas com a chance de sobrevivência de um passageiro? A resposta para essas perguntas é sim!
+Um dos gráficos que nos permitem visualizar as correlações entre variáveis e o **Correlation Graph**.
 
 Let's explore the correlation between the 'survived' variable and other variables in the dataset.
+Vamos explorar a correlação entre a variável 'survived' e outras variáveis nesse dataset.
 
-2\. Select the **Correlation Graph** and then click on **Help** located at the lower-left corner of the graph. 
+2\. Select the **Correlation Graph** and then click on **Help** located at the lower-left corner of the graph.
+2\. Selecione **Correlation Graph** em seguida clique em **Help** localizado na parte inferior-esquerda do gráfico. 
 
-3\. Take a minute to read about how the correlation graph was constructed.  Learn more about how variables are color-coded to show their correlations. 
+3\. Take a minute to read about how the correlation graph was constructed.  Learn more about how variables are color-coded to show their correlations.
+3\. Separe um tempo para ler sobre como o gráfico de correlação foi construído. Aprenda mais sobre como variáveis são codificadas com cores para mostrar as suas correlacões.
 
-4\. Take the 'survived' variable and drag it slightly to have a better look at the other variables Driverless AI found it is correlated to. 
+4\. Take the 'survived' variable and drag it slightly to have a better look at the other variables Driverless AI found it is correlated to.
+4\. Clique na variável 'survived' e a arraste levemente para ver melhor as outras variáveis que Driverless AI acha que também se correlacionam com a mesma.
+
 
 What variables are strongly correlated with the 'survived' variable?
+Que variáveis são fortemente correlacionadas com a variável 'survived'?
 
 ![train-set-correlation-graph](assets/train-set-correlation-graph.jpg)
 
 *Things to Note:*
+*Atenção nos Seguintes*
 
  - The **Help** button explains the **Correlation Graph**. This feature is available for all graphs.
+ - O botão **Help** explica o **Correlation Graph**. Esta ferramenta está disponível em todos os gráficos.
  - **Download** allows for a full-scale image of the graph to be downloaded
+ - **Download** Permite que uma imagem em tamanho real do gráfico esteja disponível para download. 
 
 5\. Exit out of the **Correlation Graph** view by clicking on the **X** at the top-right corner of the graph.
+5\. Saia do modo **Correlation Graph** clicando no **X** na parte superior-direita do gráfico.
 
 6\. After you are done exploring the other graphs, go back to the **datasets page**.
+6\. Depois que terminar de explorar os outros gráficos, volte para a página **datasets**.
 
 Driverless AI  shows the graphs that are "relevant" aspects of the data. The following are the type of graphs available:
+Driverless AI mostra os gráficos de aspectos "relevantes" dos dados. Os gráficos seguintes são os tipos de gráficos disponíveis:
 
 - Correlated Scatterplots
+- Gráficos de dispersão correlacionados
 - Spikey Histograms
+- 
 - Skewed Histograms
 - Varying Boxplots
 - Heteroscedastic Boxplots
@@ -400,9 +473,11 @@ Driverless AI  shows the graphs that are "relevant" aspects of the data. The fol
 - Data Heatmap
 - Missing Values Heatmap
 - Gaps Histogram
+[comment]: <> (These are all technical names that should be revised by Alan in order to keep the translation accuracy of this tutorial. I was not able to find reliable sources for theses technical translations )
 
 
 ### Deeper Dive and Resources
+### Para um Mergulho mais profundo aqui estão alguns Recursos.
 
 - [Learn more about Automatic Visualization from the Driverless docs](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/datasets.html#visualizing-datasets)
 
