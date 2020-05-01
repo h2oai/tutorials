@@ -1,34 +1,34 @@
 
 # Automatic Machine Learning Introduction with Driverless AI
 
-## Outline
+## Contorno
 
-- [Objective](#objective)
-- [Prerequisites](#prerequisites)
-- [Task 1: Product Tour](#task-1-product-tour)
-- [Task 2: Automatic Machine Learning Concepts](#task-2-automatic-machine-learning-concepts)
+- [Objetivo](#objective)
+- [Requisitos Antes de Comenzar](#prerequisites)
+- [Tarea 1: Tour del Producto](#task-1-product-tour)
+- [Tarea 2: Conceptos de Machine Learning(Aprendizaje de maquina)](#task-2-automatic-machine-learning-concepts)
 - [Task 3: Load Data](#task-3-load-data)
-- [Task 4: Explore Data Details and AutoViz](#task-4-explore-data-details-and-autoviz)
-- [Task 5: Launch First Experiment](#task-5-launch-first-experiment)
-- [Task 6: Explore Feature Engineering](#task-6-explore-feature-engineering)
-- [Task 7: Explore Experiment Results](#task-7-explore-experiment-results)
-- [Task 8: MLI Report for Non-Time-Series](#task-8-mli-report-for-non-time-series)
-- [Task 9: Experiment Summary and Autoreport](#task-9-experiment-summary-and-autoreport)
-- [Next Steps](#next-steps)
-- [Appendix: Project Workspace](#appendix-project-workspace)
+- [Tarea 4: Explore los Detalles de Datos y AutoViz](#task-4-explore-data-details-and-autoviz)
+- [Tarea 5: Lanzar primer experimento](#task-5-launch-first-experiment)
+- [Tarea 6: Explora la Ingeniería de Características](#task-6-explore-feature-engineering)
+- [Tarea 7: Explora Resultados del Experimento](#task-7-explore-experiment-results)
+- [Tarea 8: Informe MLI para series no cronológicas](#task-8-mli-report-for-non-time-series)
+- [Tarea 9: Resumen del experimento y autoinforme](#task-9-experiment-summary-and-autoreport)
+- [Próximos pasos](#next-steps)
+- [Apéndice: Espacio de trabajo del proyecto](#appendix-project-workspace)
 
 
-## Objective
+## Objetivo
 
-For this tutorial, we will explore the Titanic dataset from the perspective of a passenger life insurance company with [H2O.ai's](https://www.h2o.ai/) enterprise product, [Driverless AI](https://www.h2o.ai/products/h2o-driverless-ai/). We will explore possible riks factors derived from this dataset that could have been considered when selling passenger insurance during this time. More specifically, we will create a predictive model to determine what factors contributed to a passenger surviving.
+Para este tutorial, exploraremos el conjunto de datos Titanic desde la perspectiva de una compañía de seguros de vida de pasajeros con el producto empresarial [H2O.ai's](https://www.h2o.ai/), [Driverless AI (AI sin conductor)](https://www.h2o.ai/products/h2o-driverless-ai/). Exploraremos posibles factores de riesgo derivados de este conjunto de datos que podrían haberse considerado al vender el seguro de pasajeros durante este tiempo. Más específicamente, crearemos un modelo predictivo para determinar qué factores contribuyeron a la supervivencia de un pasajero.
 
-In this overview of Driverless AI, you will learn how to load data, explore data details, generate Auto visualizations, launch an experiment, explore feature engineering, view experiment results and get a quick tour of the Machine Learning Interpretability report. 
+En esta descripción general de Driverless AI, aprenderá cómo cargar datos, explorar detalles de datos, generar visualizaciones automáticas, iniciar un experimento, explorar ingeniería de características, ver resultados de experimentos y obtener un recorrido rápido por el informe de Interpretabilidad de aprendizaje automático.
 
-**Note**: This tutorial has been built on Aquarium, which is H2O's cloud environment that provides access to various tools for workshops, conferences, and training. The labs in Aquarium have datasets, experiments, projects, and other content preloaded. If you use your version of Driverless AI, you will not see the preloaded content.
+**Nota**: Este tutorial se ha creado en Aquarium, que es el entorno de nube de H2O que proporciona acceso a varias herramientas para talleres, conferencias y capacitación. Los laboratorios en Aquarium tienen conjuntos de datos, experimentos, proyectos y otro contenido precargado. Si usa su versión de Driverless AI, no verá el contenido precargado.
 
 ## Requisitos Antes de Comenzar
 
-**Sesión de Dos Horas de Test Drive**: Test Drive es igual a H2O Driverless AI, pero la única diferencia siendo que Test Drive corre sobre AWS Cloud. No es necesario descargar ningún software para utilizar Test Drive y explorar todas las características y beneficios de la plataforma de H2O Automatic Learning.    
+**Sesión de Dos Horas de Test Drive**: Test Drive es igual a H2O Driverless AI, pero la única diferencia siendo que Test Drive corre sobre AWS Cloud (Amazon Web Service Cloud). No es necesario descargar ningún software para utilizar Test Drive y explorar todas las características y beneficios de la plataforma de H2O Automatic Learning.    
 
 - ¿Necesita una **Sesión de Dos Horas de Test Drive**? [Inténtelo ahora mismo](https://www.h2o.ai/test-drive/). Siga la instrucciones [en este tutorial](https://h2oai.github.io/tutorials/getting-started-with-driverless-ai-test-drive/#0) para comenzar su sesión. Después de comenzar la sesión de Driverless AI Test Drive, continue leyendo los requisitos restantes de este tutorial y proceda a comenzar [Tarea 1: Tour del Producto](https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#2) 
 
@@ -41,32 +41,32 @@ In this overview of Driverless AI, you will learn how to load data, explore data
 
 ## Tarea 1: Tour del Producto
 
-¡Bienvenido a la página **Datasets** de Driverless AI!
+¡Bienvenido a la página **Datasets (Conjunto de datos)** de Driverless AI!
 
 ![dai-datasets-page](assets/dai-datasets-page.jpg)
 
 
 La interfaz del usuario (UI) de Driverless AI es muy fácil de navegar. Las siguientes características, al igual que algunos conjuntos de datos se pueden encontrar en la página de **Datasets**. Vamos a explorar estas características al tiempo de lanzar nuestro experimento en los siguientes pasos. 
 
-1. **Projects**: En el espacio de **Projects** su pueden encontrar y administrar conjuntos de datos y se encontrará la opción de menú de experimentos
+1. **Projects (Proyectos)**: En el espacio de **Projects** su pueden encontrar y administrar conjuntos de datos y se encontrará la opción de menú de experimentos
 
-2. **Datasets**: Muestra los conjuntos de datos disponibles. Algunas otras opciones incluyen la habilidad de agregar nuevos conjuntos de datos, obtener detalles sobre los datos, visualizar, dividir, predecir, renombrar, descargar, y eliminar.
+2. **Datasets (Conjuntos de datos)**: Muestra los conjuntos de datos disponibles. Algunas otras opciones incluyen la habilidad de agregar nuevos conjuntos de datos, obtener detalles sobre los datos, visualizar, dividir, predecir, renombrar, descargar, y eliminar.
 
 3. **Autoviz**: Visualizar un conjunto de datos con todos los gráficos disponibles
 
-4. **Experiments**: Muestra todos los experimentos que han sido completados. Experimentos pueden ser corregidos o borrados. 
+4. **Experiments (Experimentos)**: Muestra todos los experimentos que han sido completados. Experimentos pueden ser corregidos o borrados. 
 
-5. **Diagnostics**: Muestra diagnósticos acerca del modelo creado y puede ver los resultados de ese modelo usando diferentes formas de evaluación 
+5. **Diagnostics (Diagnósticos)**: Muestra diagnósticos acerca del modelo creado y puede ver los resultados de ese modelo usando diferentes formas de evaluación 
 
 6. **MLI**: Muestra una lista de interpretaciones de los modelos y permite realizar una interpretación de un modelo nuevo
 
-7. **Deployments**: Despliega los modos de evaluación de MOJO y Python para hacer pruebas e integrar a tu producto final, también se puede desplegar localmente o en cloud 
+7. **Deployments (Implementaciones)**: Despliega los modos de evaluación de MOJO y Python para hacer pruebas e integrar a tu producto final, también se puede desplegar localmente o en cloud 
 
-8. **Resources**: El menu de **Resources** permite ver enlaces a Información del Sistema, Guia de Uso de Driverless AI, and Ayuda. Desde este menu, también se puede descargar Python Client, R Client, MOJO2 Runtime, MOJO2 Py Runtime, y MOJO2 R Runtime.
+8. **Resources (Recursos)**: El menu de **Resources** permite ver enlaces a Información del Sistema, Guia de Uso de Driverless AI, and Ayuda. Desde este menu, también se puede descargar Python Client, R Client, MOJO2 Runtime, MOJO2 Py Runtime, y MOJO2 R Runtime.
 
-9. **Messages[]**: Muestra noticias y próximos eventos de Driverless AI
+9. **Messages[] (Mensajes [])**: Muestra noticias y próximos eventos de Driverless AI
 
-10. **Logout H2OAI**: Permite salir de la sesión actual 
+10. **Logout H2OAI (Cerrar sesión H2OAI)**: Permite salir de la sesión actual 
 
 11. **<**: Regresa a la página anterior
 
@@ -74,7 +74,7 @@ La interfaz del usuario (UI) de Driverless AI es muy fácil de navegar. Las sigu
 
 13. **Driverless AI 1.X.X**: Version de Driverless AI
 
-14. **Add a Dataset(or Drag and Drop)**: Carga o añade un nuevo conjunto de datos 
+14. **Add a Dataset(or Drag and Drop) (Agregar un conjunto de datos (o arrastrar y soltar))**: Carga o añade un nuevo conjunto de datos 
 
 
 ### Inmersión Más Profunda y Recursos
