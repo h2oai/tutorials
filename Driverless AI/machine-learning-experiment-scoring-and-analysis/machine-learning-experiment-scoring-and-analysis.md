@@ -28,7 +28,7 @@ You will need the following to be able to do this tutorial:
 
 - Basic knowledge of Machine Learning and Statistics
 - A Driverless AI environment
-- Basic knowledge of Driverless AI or doing the [Automatic Machine Learning Intro with Test Drive Tutorial](https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#0)
+- Basic knowledge of Driverless AI or doing the [Automatic Machine Learning Introduction with Drivereless AI Test Drive](https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#0) 
 
 - A **Two-Hour Test Drive session** : Test Drive is H2O.ai's Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.
 
