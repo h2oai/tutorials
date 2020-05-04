@@ -29,7 +29,7 @@ Recipes:
 - A Driverless AI environment (release 1.8.4.1)
 - Basic knowledge of Driverless AI or doing the following tutorials:
 
-    - [Automatic Machine Learning Intro with Test Drive Tutorial](https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#0)
+    - [Automatic Machine Learning Introduction with Drivereless AI Test Drive](https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#0)
     - [Get Startedand with Open Source Custom Recipes Tutorial](https://h2oai.github.io/tutorials/get-started-with-open-source-custom-recipes-tutorial/#0) 
 
 - A text editor or developer environment to create .py  text files containing source code (Examples: PyCharm, Jupyter, Spider or a Text Editor like Atom or Visual Studio Code)

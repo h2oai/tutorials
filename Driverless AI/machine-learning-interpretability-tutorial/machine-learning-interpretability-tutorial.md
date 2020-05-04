@@ -39,6 +39,10 @@ In this tutorial, we will generate a machine learning model using an example fin
 
 ## Prerequisites
 
+- Basic knowledge of Machine Learning and Statistics
+
+- Basic knowledge of Driverless AI or doing the [Automatic Machine Learning Introduction with Drivereless AI Test Drive](https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#0) 
+
 - A **Two-Hour Test Drive session** : Test Drive is H2O.ai's Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.
 
   - Need a **Two-Hour Test Drive** session? Follow the instructions on [this quick tutorial](https://h2oai.github.io/tutorials/getting-started-with-driverless-ai-test-drive/#1) to get a Test Drive session started.  
@@ -54,8 +58,7 @@ Other installations:
 - [Local Installation](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/installing.html) 
 - [Server Installation](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/install/ibm-power.html)
 
-**Other prerequisites**:
-- Basic knowledge of Machine Learning and Statistics
+
 
 ##  Task 1: Launch Experiment and MLI
 
