@@ -237,7 +237,6 @@ En el conjunto de datos encontrarás 1,309 filas, una fila por cada pasajero, y 
 |body|Npumero de cuerpo| - |
 |home.des|Destino| - |
 
-
 [//]: # (### Add the Data)
 ### Agregar los datos
 
