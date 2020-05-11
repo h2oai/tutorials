@@ -89,11 +89,11 @@ La interfaz del usuario (UI) de Driverless AI es muy fácil de navegar. Las sigu
 
 ## Tarea 2: Conceptos de Machine Learning (Aprendizaje de Máquina)
 
-###  Inteligencia Artificial y Machine Learning
+###  Inteligencia Artificial y Aprendizaje de Máquina
 
 Los conceptos que se encuentran en esta sección están destinados a proporcionar una vista general de alto nivel de Aprendizaje de maquina. Al final de esta sección, podrás encontrar ligas(links) a recursos que ofrecen una explicación más profunda de los conceptos cubiertos aquí.
 
- Aprendizaje de Maquina es un sub-conjunto de Inteligencia Artificial donde el enfoque esta en crear maquinas que puedan simular la inteligencia humana. Una distinción crítica entre Intelifencia Artificial y Aprendizaje de Maquina es que los modelos de Aprendizaje de Maquina "aprenden" de los datos a los que los modelos son expuestos. Arthur Samuel, un pionero de Aprendizaje de Maquina en 1959, definió Aprendizaje de Maquina como un "campo del estudio que le da a las computadoras la habilidad de aprender sin ser explicitamente programadas" [1]. Un algoritmo de Aprendizaje de Maquina se entrena con un conjunto de datos para hacer predicciones. Estas predicciones son, a veces, utilizadas para optimizar un sistema o asistir con la toma de decisiones.
+ Aprendizaje de Maquina es un sub-conjunto de Inteligencia Artificial donde el enfoque esta en crear maquinas que puedan simular la inteligencia humana. Una distinción crítica entre Intelifencia Artificial y Aprendizaje de Máquina es que los modelos de Aprendizaje de Máquina "aprenden" de los datos a los que los modelos son expuestos. Arthur Samuel, un pionero de Aprendizaje de Maquina en 1959, definió Aprendizaje de Maquina como un "campo del estudio que le da a las computadoras la habilidad de aprender sin ser explicitamente programadas" [1]. Un algoritmo de Aprendizaje de Maquina se entrena con un conjunto de datos para hacer predicciones. Estas predicciones son, a veces, utilizadas para optimizar un sistema o asistir con la toma de decisiones.
 
 ### Entrenamiento del Aprendizaje de Maquina
 
