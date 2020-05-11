@@ -87,7 +87,7 @@ La interfaz del usuario (UI) de Driverless AI es muy fácil de navegar. Las sigu
 
 - [Aprende más sobre H2O Driverless al revisar nuestra lista de preguntas frecuentes](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/faq.html)
 
-## Tarea 2: Conceptos de Machine Learning(Aprendizaje de Máquina)
+## Tarea 2: Conceptos de Machine Learning (Aprendizaje de Máquina)
 
 ###  Inteligencia Artificial y Machine Learning
 
