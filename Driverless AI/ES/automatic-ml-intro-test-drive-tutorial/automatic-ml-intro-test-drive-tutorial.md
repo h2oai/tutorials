@@ -18,13 +18,13 @@
 - [Apéndice: Espacio de trabajo del proyecto](#appendix-project-workspace)
 
 
-## Objetivo
+## Objective
 
-Para este tutorial, exploraremos el conjunto de datos Titanic desde la perspectiva de una compañía de seguros de vida de pasajeros con el producto empresarial [H2O.ai's](https://www.h2o.ai/), [Driverless AI (AI sin conductor)](https://www.h2o.ai/products/h2o-driverless-ai/). Exploraremos posibles factores de riesgo derivados de este conjunto de datos que podrían haberse considerado al vender el seguro de pasajeros durante este tiempo. Más específicamente, crearemos un modelo predictivo para determinar qué factores contribuyeron a la supervivencia de un pasajero.
+For this tutorial, we will explore the Titanic dataset from the perspective of a passenger life insurance company with [H2O.ai's](https://www.h2o.ai/) enterprise product, [Driverless AI](https://www.h2o.ai/products/h2o-driverless-ai/). We will explore possible riks factors derived from this dataset that could have been considered when selling passenger insurance during this time. More specifically, we will create a predictive model to determine what factors contributed to a passenger surviving.
 
-En esta descripción general de Driverless AI, aprenderá cómo cargar datos, explorar detalles de datos, generar visualizaciones automáticas, iniciar un experimento, explorar ingeniería de características, ver resultados de experimentos y obtener un recorrido rápido por el informe de Interpretabilidad de aprendizaje automático.
+In this overview of Driverless AI, you will learn how to load data, explore data details, generate Auto visualizations, launch an experiment, explore feature engineering, view experiment results and get a quick tour of the Machine Learning Interpretability report.
 
-**Nota**: Este tutorial se ha creado en Aquarium, que es el entorno de nube de H2O que proporciona acceso a varias herramientas para talleres, conferencias y capacitación. Los laboratorios en Aquarium tienen conjuntos de datos, experimentos, proyectos y otro contenido precargado. Si usa su versión de Driverless AI, no verá el contenido precargado.
+**Note**: This tutorial has been built on Aquarium, which is H2O's cloud environment that provides access to various tools for workshops, conferences, and training. The labs in Aquarium have datasets, experiments, projects, and other content preloaded. If you use your version of Driverless AI, you will not see the preloaded content.
 
 ## Requisitos Antes de Comenzar
 
