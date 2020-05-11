@@ -4,8 +4,8 @@
 ## Contorno
 
 - [Objetivo](#objectivo)
-- [Requisitos Antes de Comenzar](#prerequisites)
-- [Tarea 1: Tour del Producto](#task-1-product-tour)
+- [Requisitos Antes de Comenzar](#Requisitos-Antes-de-Comenzar)
+- [Tarea 1: Tour del Producto](#Tarea-1:-Tour-del-Producto)
 - [Tarea 2: Conceptos de Machine Learning(Aprendizaje de maquina)](#task-2-automatic-machine-learning-concepts)
 - [Task 3: Load Data](#task-3-load-data)
 - [Tarea 4: Explore los Detalles de Datos y AutoViz](#task-4-explore-data-details-and-autoviz)
