@@ -20,7 +20,7 @@
 
 ## Objectivo
 
-Para este tutorial, vamos a explorar el conjunto de datos sobre el Titanic desde la perspectiva de una compañía de aseguranza de vidas usando el producto de empresa de [H2O.ai](https://www.h2o.ai/), [Driverless AI](https://www.h2o.ai/products/h2o-driverless-ai/). Vamos a explorar posibles factores de riesgos derivados desde este conjunto de datos que la compañía podría haber considerado al momento de vender aseguranza de vida a estos pasajeros. Específicamente, crearemos un modelo de predicción para determinar cuales factores contribuyeron a la supervivencia de los pasajeros.
+Para este tutorial, vamos a explorar el conjunto de datos sobre el Titanic desde la perspectiva de una compañía de aseguranza de vidas usando el producto empresarial [H2O.ai's](https://www.h2o.ai/), [Driverless AI (AI sin conductor)](https://www.h2o.ai/products/h2o-driverless-ai/). Vamos a explorar posibles factores de riesgos derivados desde este conjunto de datos que la compañía podría haber considerado al momento de vender aseguranza de vida a estos pasajeros. Específicamente, crearemos un modelo de predicción para determinar cuales factores contribuyeron a la supervivencia de los pasajeros.
 
 En este tutorial de Driverless AI, vamos a aprender a cargar datos, explorar detalles sobre los datos, generar auto-visualizaciones, lanzar un experimento, explorar feature engineering, desplegar los resultados del experimento, y daremos un pequeño tour del reporte de Machine Learning Interpretability.
 
@@ -28,7 +28,7 @@ En este tutorial de Driverless AI, vamos a aprender a cargar datos, explorar det
 
 ## Prerequisitos
 
-**Sesión de Dos Horas de Test Drive**: Test Drive es igual a H2O Driverless AI, pero la única diferencia siendo que Test Drive corre sobre AWS Cloud. No es necesario descargar ningún software para utilizar Test Drive y explorar todas las características y beneficios de la plataforma de H2O Automatic Learning.    
+**Sesión de Dos Horas de Test Drive**: Test Drive es igual a H2O Driverless AI, pero la única diferencia siendo que Test Drive corre sobre AWS Cloud (Amazon Web Services). No es necesario descargar ningún software para utilizar Test Drive y explorar todas las características y beneficios de la plataforma de H2O Automatic Learning.    
 
 - ¿Necesita una **Sesión de Dos Horas de Test Drive**? [Inténtelo ahora mismo](https://www.h2o.ai/test-drive/). Siga la instrucciones [en este tutorial](https://h2oai.github.io/tutorials/getting-started-with-driverless-ai-test-drive/#0) para comenzar su sesión. Después de comenzar la sesión de Driverless AI Test Drive, continue leyendo los requisitos restantes de este tutorial y proceda a comenzar [Tarea 1: Tour del Producto](https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#2) 
 
@@ -41,32 +41,32 @@ En este tutorial de Driverless AI, vamos a aprender a cargar datos, explorar det
 
 ## Tarea 1: Tour del Producto
 
-¡Bienvenido a la página **Datasets** de Driverless AI!
+¡Bienvenido a la página **Datasets (Conjunto de Datos)** de Driverless AI!
 
 ![dai-datasets-page](assets/dai-datasets-page.jpg)
 
 
 La interfaz del usuario (UI) de Driverless AI es muy fácil de navegar. Las siguientes características, al igual que algunos conjuntos de datos se pueden encontrar en la página de **Datasets**. Vamos a explorar estas características al tiempo de lanzar nuestro experimento en los siguientes pasos. 
 
-1. **Projects**: En el espacio de **Projects** su pueden encontrar y administrar conjuntos de datos y se encontrará la opción de menú de experimentos
+1. **Projects (Proyectos)**: En el espacio de **Projects** su pueden encontrar y administrar conjuntos de datos y se encontrará la opción de menú de experimentos
 
-2. **Datasets**: Muestra los conjuntos de datos disponibles. Algunas otras opciones incluyen la habilidad de agregar nuevos conjuntos de datos, obtener detalles sobre los datos, visualizar, dividir, predecir, renombrar, descargar, y eliminar.
+2. **Datasets (Conjunto de Datos)**: Muestra los conjuntos de datos disponibles. Algunas otras opciones incluyen la habilidad de agregar nuevos conjuntos de datos, obtener detalles sobre los datos, visualizar, dividir, predecir, renombrar, descargar, y eliminar.
 
 3. **Autoviz**: Visualizar un conjunto de datos con todos los gráficos disponibles
 
-4. **Experiments**: Muestra todos los experimentos que han sido completados. Experimentos pueden ser corregidos o borrados. 
+4. **Experiments (Experimentos)**: Muestra todos los experimentos que han sido completados. Experimentos pueden ser corregidos o borrados. 
 
-5. **Diagnostics**: Muestra diagnósticos acerca del modelo creado y puede ver los resultados de ese modelo usando diferentes formas de evaluación 
+5. **Diagnostics (Diagnósticos)**: Muestra diagnósticos acerca del modelo creado y puede ver los resultados de ese modelo usando diferentes formas de evaluación 
 
 6. **MLI**: Muestra una lista de interpretaciones de los modelos y permite realizar una interpretación de un modelo nuevo
 
-7. **Deployments**: Despliega los modos de evaluación de MOJO y Python para hacer pruebas e integrar a tu producto final, también se puede desplegar localmente o en cloud 
+7. **Deployments (Implementaciones)**: Despliega los modos de evaluación de MOJO y Python para hacer pruebas e integrar a tu producto final, también se puede desplegar localmente o en cloud 
 
-8. **Resources**: El menu de **Resources** permite ver enlaces a Información del Sistema, Guia de Uso de Driverless AI, and Ayuda. Desde este menu, también se puede descargar Python Client, R Client, MOJO2 Runtime, MOJO2 Py Runtime, y MOJO2 R Runtime.
+8. **Resources (Recursos)**: El menu de **Resources** permite ver enlaces a Información del Sistema, Guia de Uso de Driverless AI, and Ayuda. Desde este menu, también se puede descargar Python Client, R Client, MOJO2 Runtime, MOJO2 Py Runtime, y MOJO2 R Runtime.
 
-9. **Messages[]**: Muestra noticias y próximos eventos de Driverless AI
+9. **Messages[] (Mensajes[])**: Muestra noticias y próximos eventos de Driverless AI
 
-10. **Logout H2OAI**: Permite salir de la sesión actual 
+10. **Logout H2OAI (Cerrar la sesión)**: Permite salir de la sesión actual 
 
 11. **<**: Regresa a la página anterior
 
@@ -74,7 +74,7 @@ La interfaz del usuario (UI) de Driverless AI es muy fácil de navegar. Las sigu
 
 13. **Driverless AI 1.X.X**: Version de Driverless AI
 
-14. **Add a Dataset(or Drag and Drop)**: Carga o añade un nuevo conjunto de datos 
+14. **Add a Dataset(or Drag and Drop) (Agregar un Conjunto de Datos (o arrastrar y soltar))**: Carga o añade un nuevo conjunto de datos 
 
 
 ### Inmersión Más Profunda y Recursos
