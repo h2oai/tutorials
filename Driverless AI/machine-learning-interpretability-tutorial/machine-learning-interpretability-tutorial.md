@@ -479,7 +479,7 @@ The local model predictions (white points) can be used to reason through the Dri
 - [K-LIME and LIME-SUP](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/interpreting.html#k-lime-and-lime-sup) 
 - [Viewing Explanations](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/viewing-explanations.html) 
 
- ## Task 7: Local Shapley and LOCO
+## Task 7: Local Shapley and LOCO
  
 ### Local Shapley Concepts
 
