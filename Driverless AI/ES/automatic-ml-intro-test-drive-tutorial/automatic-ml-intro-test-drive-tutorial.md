@@ -6,7 +6,7 @@
 
 - [Objetivo](#objectivo)
 - [Requisitos Antes de Comenzar](#Prerrequisitos)
-- [Tarea 1: Tour del Producto](#Tarea-1:-Tour-del-Producto)
+- [Tarea 1: Tour del Producto](#Tarea-1-Tour-del-Producto)
 - [Tarea 2: Conceptos de aprendizaje automático de máquinas](#task-2-automatic-machine-learning-concepts)
 - [Tarea 3: Cargar datos](#task-3-load-data)
 - [Tarea 4: Explore los Detalles de Datos y AutoViz](#task-4-explore-data-details-and-autoviz)
