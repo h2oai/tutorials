@@ -28,18 +28,13 @@ You will need the following to be able to do this tutorial:
 
 - Basic knowledge of Machine Learning and Statistics
 - A Driverless AI environment
-- Basic knowledge of Driverless AI or doing the Automatic Machine Learning Intro tutorial.
+- Basic knowledge of Driverless AI or doing the [Automatic Machine Learning Introduction with Drivereless AI Test Drive](https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#0) 
 
-You can get more information about getting a Driverless AI environment or trial from the following:
+- A **Two-Hour Test Drive session** : Test Drive is H2O.ai's Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.
 
-- [A Two Hour Test Drive Session](https://h2oai.github.io/tutorials/getting-started-with-driverless-ai-test-drive/#0)  
+    - Need a **Two-Hour Test Drive** session? Follow the instructions on [this quick tutorial](https://h2oai.github.io/tutorials/getting-started-with-driverless-ai-test-drive/#1) to get a Test Drive session started.  
 
-- [H2O Driverless AI License Key](https://www.h2o.ai/try-driverless-ai/)
-
-- [H2O Driverless AI Environment and Product Tour](https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#2) 
-
-If you are not familiar with Driverless AI please review and do this tutorial:
-- [Automatic Machine Learning Introduction with Drivereless AI Test Drive](https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#0) 
+**Note:  Aquarium’s Driverless AI Test Drive lab has a license key built-in, so you don’t need to request one to use it. Each Driverless AI Test Drive instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore Driverless AI, you can always launch another Test Drive instance or reach out to our sales team via the [contact us form](https://www.h2o.ai/company/contact/).**
 
 
 ## Task 1: Launch Time Series Experiment
@@ -64,7 +59,7 @@ The training dataset in this tutorial contains 73,165 rows and a total of 11 fea
 
 If you are using Aquarium as your environment, then the following labs, **Test Drive** and **Introduction to Driverless AI**, will have this tutorial training and test subsets of the Retail Store Forecasting dataset preloaded for you. The datasets will be located on the **Datasets Overview** page. You will also see two extra data sets, which you can ignore for now as they are used for another tutorial. 
 
-**NOTE:** To learn how to add the two datasets from the Driveless AI file system see [Appendix A: Add the Datasets](#task-7-appendix-a-add-the-datasets).
+**NOTE:** To learn how to add the two datasets from the Driverless AI file system see [Appendix A: Add the Datasets](#task-7-appendix-a-add-the-datasets).
 
 1\. Verify that both dataset are on the **Datasets Overview**, your screen should look similar to the  page below:
 
@@ -312,12 +307,12 @@ then select **R2** as the scorer:
 
 ### References
 
-[1] [H2O.ai Driveless AI - Scorer Tips](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/tips-n-tricks.html?highlight=scorer#scorer-tips)
+[1] [H2O.ai Driverless AI - Scorer Tips](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/tips-n-tricks.html?highlight=scorer#scorer-tips)
 
 
 ### Deeper Dive and Resources
 
--  [H2O.ai Driveless AI -  More on Scores](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/scorers.html?highlight=scorer#scorers) 
+-  [H2O.ai Driverless AI -  More on Scores](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/scorers.html?highlight=scorer#scorers) 
 - [H2O.ai Driverless AI - Time Series in Driverless AI](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/time-series.html?highlight=time%20groups)
 
 ## Task 3: Time Series Experiment Concepts
@@ -356,7 +351,7 @@ Here is a shortlist of the many real-world applications of time-series:
 - Stock market 
 - Energy demand
 
-### Time Series Forecasting in Driveless AI
+### Time Series Forecasting in Driverless AI
 
 Driverless AI has recipes for time-series forecasting that combines advanced time-series analysis and H2O’s own Kaggle Grand Masters’ time-series recipes.
 
@@ -376,7 +371,7 @@ These are the key features/recipes that make the automation possible:
 - Rolling-window based predictions for time series experiments with test-time augmentation or re-fit
 - Automatic pipeline generation
 
-### Driveless AI Modeling Approach
+### Driverless AI Modeling Approach
 
 Driverless AI uses GBMs, GLMs and neural networks with a focus on time-series-specific feature engineering. The feature engineering includes:
 
@@ -433,7 +428,7 @@ For example, if we don’t know that the store is available in the data, and we 
 
 ![time-series-sales-per-day-all-groups](assets/time-series-sales-per-day-all-groups.jpg)
 
-Note the format **Date(Time)**, **Group(Groups)** and **Target(Sales)** plus other independent features. This is the ideal format the data needs to be in or order for Driveless AI Time-Series to work. 
+Note the format **Date(Time)**, **Group(Groups)** and **Target(Sales)** plus other independent features. This is the ideal format the data needs to be in or order for Driverless AI Time-Series to work. 
 
 ### Lag
 
@@ -445,8 +440,8 @@ The primary generated time series features are lag features, which are a variabl
 **Note:** The top section is the original dataset with training data, the gap and the period we want to predict is also known as the test. 
 
 - The training data expands a certain number of time units. The time units can be anything, it can be years, months, weeks, seconds or just an integer value that increments over time. When the training data stops, then the test data period begins, these are the periods we want to make predictions for. 
-- Another item to note is the gap, which Driveless AI accounts for. The gap is when you don’t have the most recent information available when you want to make predictions. For instance, when we want to make a prediction for tomorrow but we only have data from yesterday because our dataset was not updated today. This means that the only data available to make the predictions are all the data up to yesterday.
-The second section of the image is what happens behind the scenes in Driveless AI to optimize for the top dataset. Here a window which includes test and gap are taken and Driveless AI tries to replicate them internally. We go to the most recent part of the training data and form a validation dataset. This new validation dataset will be of the same size as the test dataset with an artificially added gap so that it matches the original window. Then Driveless AI uses any remaining periods to generate periods to form a training dataset.
+- Another item to note is the gap, which Driverless AI accounts for. The gap is when you don’t have the most recent information available when you want to make predictions. For instance, when we want to make a prediction for tomorrow but we only have data from yesterday because our dataset was not updated today. This means that the only data available to make the predictions are all the data up to yesterday.
+The second section of the image is what happens behind the scenes in Driverless AI to optimize for the top dataset. Here a window which includes test and gap are taken and Driverless AI tries to replicate them internally. We go to the most recent part of the training data and form a validation dataset. This new validation dataset will be of the same size as the test dataset with an artificially added gap so that it matches the original window. Then Driverless AI uses any remaining periods to generate periods to form a training dataset.
 
 As previously noted, the training dataset is appropriately split such that the amount of validation data samples equals that of the testing dataset samples. If we want to determine valid lags, we must consider what happens when we will evaluate our model on the testing dataset. Essentially, the minimum lag size must be greater than the gap size.
 
@@ -454,7 +449,7 @@ As previously noted, the training dataset is appropriately split such that the a
 
 ### Validation Schemas 
 
-Driveless AI uses the most recent training data as the validation data. Data can be validated by the following validation schemas:
+Driverless AI uses the most recent training data as the validation data. Data can be validated by the following validation schemas:
 
 - **Time split**
   - Single Time
@@ -469,13 +464,13 @@ Below is an example of a time series dataset, we will use it to showcase some of
 
 **Time Split**
 
-The number of time splits is highly dependent on the value of accuracy set on the experiment page. If the accuracy is set low when setting up the experiment, then Driveless AI selects a single time split which in turn will only generate one model for validation. A single time split takes the most recent data and makes it the validation data. The validation data will be the same size as the forecast horizon and it will include a gap if there was a gap. 
+The number of time splits is highly dependent on the value of accuracy set on the experiment page. If the accuracy is set low when setting up the experiment, then Driverless AI selects a single time split which in turn will only generate one model for validation. A single time split takes the most recent data and makes it the validation data. The validation data will be the same size as the forecast horizon and it will include a gap if there was a gap. 
 
 Single Time Split
 
 ![validation-schema-time-split](assets/validation-schema-time-split.jpg)
 
-When accuracy is set to higher values, then the number of time splits increases and Driveless AI does a more thorough cross validation and we start generating multiple folds with a **rolling window**. A **rolling window** means that we keep shifting the validation set to the past and we use again any data before that for a training dataset, this process will be done multiple times. For example when Accuracy is set to 10, then the number of time splits increases to 6, this means there will be more rolling windows.  The number of rolling windows is a factor of accuracy.
+When accuracy is set to higher values, then the number of time splits increases and Driverless AI does a more thorough cross validation and we start generating multiple folds with a **rolling window**. A **rolling window** means that we keep shifting the validation set to the past and we use again any data before that for a training dataset, this process will be done multiple times. For example when Accuracy is set to 10, then the number of time splits increases to 6, this means there will be more rolling windows.  The number of rolling windows is a factor of accuracy.
 
 **Multi window** 
 
@@ -500,7 +495,7 @@ For example, if you have a forecast of 7 days but you provide a test dataset wit
 
 ### Time Series Feature Engineering
 
-The following are the types of time series families that Driveless AI creates:
+The following are the types of time series families that Driverless AI creates:
 
 **Date Decomposition** extracts:
 - Year
@@ -541,7 +536,7 @@ Windows can be also used to obtain other descriptive statistics such as:
 
 ![feature-engineering-trends](assets/feature-engineering-trends.jpg)
 
-**Target transformations**:  Driveless AI also does target transformation so that instead of modeling on the target(label), we can model on the square root of the target. For example when using RMSLE as the scorer, Driveless AI converts the target to the log of the target. 
+**Target transformations**:  Driverless AI also does target transformation so that instead of modeling on the target(label), we can model on the square root of the target. For example when using RMSLE as the scorer, Driverless AI converts the target to the log of the target. 
 Other transformations include:
 Square Root 
 Log 
@@ -697,7 +692,7 @@ At the end of the experiment, a similar page will appear:
 1. Select **Add Panel**
 2. On the new panel, click on the **Select a model interpretation**, then select the Time Series Model named : ``Time Series Forecasting: karitiwi``. This will bring in the pre-ran experiment’s MLI results. Click on **Show Summary** for both experiments to compare experiment settings:
 
-    - **Note:** the **Driveless AI Experiment Runtime** for both experiments. The pre-ran experiment took more than seven hours to run. 
+    - **Note:** the **Driverless AI Experiment Runtime** for both experiments. The pre-ran experiment took more than seven hours to run. 
 
     ![mli-new-experiment-and-preran-experiment-1](assets/mli-new-experiment-and-preran-experiment-1.jpg)
 
@@ -709,14 +704,14 @@ At the end of the experiment, a similar page will appear:
 
     ![li-new-experiment-and-preran-experiment-3](assets/li-new-experiment-and-preran-experiment-3.jpg)
 
-    When looking at both MLI results, we can see that for the pre-ran experiment the Shapley value that had the most importance for the peak value was the lag of 52 weeks, the same was the case for the new experiment. Since the pre-ran experiment ran with higher Driveless AI settings it was able accurately associate the lag of 52 weeks to the peak point which makes sense given how seasonal sales are it makes sense that the 52 weeks is the most important feature.
+    When looking at both MLI results, we can see that for the pre-ran experiment the Shapley value that had the most importance for the peak value was the lag of 52 weeks, the same was the case for the new experiment. Since the pre-ran experiment ran with higher Driverless AI settings it was able accurately associate the lag of 52 weeks to the peak point which makes sense given how seasonal sales are it makes sense that the 52 weeks is the most important feature.
 
 4. Find the shapley values for a point on the plateau for the pre-ran experiment and compare the values between the pre-ran experiment and the new experiment MLI results.
 
 
 ### Deeper Dive and Resources
 
-- [H2O’s Driveless AI Multi Group Time Series MLI](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/interpret-ts.html?highlight=top%20group%20test%20metrics#multi-group-time-series-mli)
+- [H2O’s Driverless AI Multi Group Time Series MLI](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/interpret-ts.html?highlight=top%20group%20test%20metrics#multi-group-time-series-mli)
 
 ## Task 6: Analysis
 
@@ -740,7 +735,7 @@ The above settings are recommended settings for time series problems, notice the
 
 For a time-series experiment an **Accuracy** of 10 is highly encouraged because it forces many time splits (time splits are critical for stability and prevents overfitting) and allows for multiple window validation. If you must run a time-series experiment with anything lower than a 10, the lowest recommended setting for accuracy is a 5.
 
- **Time** is more flexible and can be ran with the Driveless AI default value, or the lowest time value being 3. Regarding **interpretability**, use default results, for good results use interpretability values of either 5 or 6, anything less than 5 will tend to overfit. 
+ **Time** is more flexible and can be ran with the Driverless AI default value, or the lowest time value being 3. Regarding **interpretability**, use default results, for good results use interpretability values of either 5 or 6, anything less than 5 will tend to overfit. 
 
 Summary of suggested settings for Time-Series Experiments:
 
@@ -750,7 +745,7 @@ Summary of suggested settings for Time-Series Experiments:
 | Time | Default | 3 |
 | Interpretability | Default | 5|
 
-One important thing to note is why we changed the **Scorer**  that Driveless AI suggested initially from **RMSE** to **R2** .  Even though Driveless AI suggested RMSE as the scorer, we updated the scorer to R2 because for this particular dataset it’s easier to generate similar results across different experiments since we can expect less fluctuation and more stability in terms of the results. 
+One important thing to note is why we changed the **Scorer**  that Driverless AI suggested initially from **RMSE** to **R2** .  Even though Driverless AI suggested RMSE as the scorer, we updated the scorer to R2 because for this particular dataset it’s easier to generate similar results across different experiments since we can expect less fluctuation and more stability in terms of the results. 
 
 4\. Click on **<** located at the top-left side of the Experiments page, this will take you back to the **Project Time Series Tutorial**  page.
 
@@ -770,7 +765,7 @@ One important thing to note is why we changed the **Scorer**  that Driveless AI 
 
 *Things to Note:*
 
-1. The experiment with the lower settings had less features scored compared to the pre-ran experiment. This means that Driveless AI tested 70 features from which only 8 were found useful compared to the pre-ran experiment which tested 2417 features and found 18 features useful for feature engineering. At higher settings, Driveless AI does a more thorough evaluation. 
+1. The experiment with the lower settings had less features scored compared to the pre-ran experiment. This means that Driverless AI tested 70 features from which only 8 were found useful compared to the pre-ran experiment which tested 2417 features and found 18 features useful for feature engineering. At higher settings, Driverless AI does a more thorough evaluation. 
 
 2. The lower settings experiment had an R2 value of .9395 compared to .9236 for the pre-ran experiment.
 
@@ -798,25 +793,25 @@ Some of the options are:
 
 - Retrain entire pipeline with the most recent data
 - Build a new model with most recent data
-- Use recent model using [Driveless AI’s Test Augmentation](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/time-series.html#using-a-driverless-ai-time-series-model-to-forecast)
+- Use recent model using [Driverless AI’s Test Augmentation](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/time-series.html#using-a-driverless-ai-time-series-model-to-forecast)
 
-Learn more about Driveless AI’s Test Augmentation by visiting H2O’s documentation site. 
+Learn more about Driverless AI’s Test Augmentation by visiting H2O’s documentation site. 
 
 ### Deeper Dive and Resources
 
-- [Driveless AI’s Test Augmentation](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/time-series.html#using-a-driverless-ai-time-series-model-to-forecast) 
+- [Driverless AI’s Test Augmentation](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/time-series.html#using-a-driverless-ai-time-series-model-to-forecast) 
 
 
 ## Next Steps
 
-Check out Driverss AI next tutorial [Natural Language Processing Tutorial - Sentiment Analysis](https://h2oai.github.io/tutorials/natural-language-processing-tutorial-sentiment-analysis/#0)
+Check out Driverless AI next tutorial [Natural Language Processing Tutorial - Sentiment Analysis](https://h2oai.github.io/tutorials/natural-language-processing-tutorial-sentiment-analysis/#0)
 
 Where you will learn:
 
 - How to launch a sentiment analysis experirement
 - Sentiment Analysis Experiment settings 
 - NLP Concepts
-- Driverless Ai NLP Recipe 
+- Driverless AI NLP Recipe 
 - and more....
 
 

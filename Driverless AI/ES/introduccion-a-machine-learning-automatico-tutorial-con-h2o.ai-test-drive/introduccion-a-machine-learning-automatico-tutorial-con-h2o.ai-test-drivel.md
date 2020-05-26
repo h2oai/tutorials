@@ -19,15 +19,15 @@
 - [Apéndice: Espacio de trabajo del proyecto](#appendix-project-workspace)
 
 
-## Objective
+## Objectivo
 
-For this tutorial, we will explore the Titanic dataset from the perspective of a passenger life insurance company with [H2O.ai's](https://www.h2o.ai/) enterprise product, [Driverless AI](https://www.h2o.ai/products/h2o-driverless-ai/). We will explore possible riks factors derived from this dataset that could have been considered when selling passenger insurance during this time. More specifically, we will create a predictive model to determine what factors contributed to a passenger surviving.
+Para este tutorial, vamos a explorar el conjunto de datos sobre el Titanic desde la perspectiva de una compañía de aseguranza de vidas usando el producto empresarial [H2O.ai's](https://www.h2o.ai/), [Driverless AI (AI sin conductor)](https://www.h2o.ai/products/h2o-driverless-ai/). Vamos a explorar posibles factores de riesgos derivados desde este conjunto de datos que la compañía podría haber considerado al momento de vender aseguranza de vida a estos pasajeros. Específicamente, crearemos un modelo de predicción para determinar cuales factores contribuyeron a la supervivencia de los pasajeros.
 
 In this overview of Driverless AI, you will learn how to load data, explore data details, generate Auto visualizations, launch an experiment, explore feature engineering, view experiment results and get a quick tour of the Machine Learning Interpretability report.
 
-**Note**: This tutorial has been built on Aquarium, which is H2O's cloud environment that provides access to various tools for workshops, conferences, and training. The labs in Aquarium have datasets, experiments, projects, and other content preloaded. If you use your version of Driverless AI, you will not see the preloaded content.
+**Nota**: Este tutorial ha sido creado en Aquarium, lo cual es parte de H2O cloud y provee acceso a varias herramientas para talleres, conferencias, y entrenamientos de enseñanza. Los laboratorios en Aquarium tienen conjuntos de datos, experimentos, proyectos, y otros contenidos precargados. Si usted usa su propia versión de Driverless AI, no podrá ver el contenido precargado.
 
-## Requisitos Antes de Comenzar
+## Prerequisitos
 
 **Sesión de Dos Horas de Test Drive**: Test Drive es igual a H2O Driverless AI, pero la única diferencia siendo que Test Drive corre sobre AWS Cloud (Amazon Web Service Cloud). No es necesario descargar ningún software para utilizar Test Drive y explorar todas las características y beneficios de la plataforma de H2O Automatic Learning.    
 
@@ -164,17 +164,17 @@ https://www.brighttalk.com/search/?q=driverless+ai)
 - [Explore the various H2O Driverless AI playlists on YouTube](https://www.youtube.com/user/0xdata/playlists) 
 
 
-## Task 3: Load Data
+## Tarea 3: Cargar Datos
 
-1\. Navigate back to the H2O Driverless AI  **Datasets** page.
+1\. Regresa a la pagina H2O Driverless AI **Datasets**.
 
-### About the Dataset
+### Información del conjunto de datos
 
-The dataset used for this experiment is a version of the Titanic Kaggle dataset. This dataset contains the list of estimated passengers aboard the RMS Titanic.
+El conjunto de datos usados en este experimento es una version del conjunto del Titanic elaborado por Kaggle. Este conjunto de datos contiene una lista de los pasajeros abordo del RMS Titanic.
 
-The RMS Titanic was a British commercial passenger liner that sank after colliding with an iceberg in the North Atlantic Ocean on April 15, 1912. More than 1,500 people lost their lives from an estimated 2,224 passengers and crew members while on their way to New York City from Southampton. 
+El RMS Titanic fue trasatlantico britanico que se hundió tras colicionar con un iceberg al norte del océano Atlantico el 15 de Abril de 1912. De 2,224 pasageros y miebros de la tripulación, perdieron la vida más de 1,500 personas en la ruta maritima de la Ciudad de Nueva York a Southampton.
 
-This tragedy shocked the international community and led to better safety regulations for ships. The lack of lifeboats, amongst other things, was one of the factors that resulted in a significant loss of life. Although there was some element of luck involved in surviving the sinking, some groups of people were more likely to survive than others.
+Esta tragedia impacto a la comunidad internacional, lo que impulsó mejores medidas de seguridad para barcos. La falta de botes salvavidas entre otras cosas, fue uno de los factores determinantes en la perdida de vidas. Sin embargo, hubo algunos elementos que influyeron para que hubiera sobrevivientes.
 
 ![rms-titanic](assets/rms-titanic.jpeg)
 
@@ -182,61 +182,64 @@ This tragedy shocked the international community and led to better safety regula
 
 **Titanic dataset**:
 
-1309 rows, one row per passenger, and 16 columns representing attributes of each passenger:
+Conjunto de datos del Titanic:
 
-|Attribute|Definition|Key|
+En el conjunto de datos encontrarás 1,309 filas, una fila por cada pasajero, y 16 columnas que representan loa atributos de cada pasajero.
+
+|Atributos |Definicion | Codigo |
 |---|---|---|
-|passenger Id|Id randomly generated| - |
-|pclass|Passenger Class| 1= 1st, 2 =2nd, 3=3rd|
-|survived|Survival| 0=No, 1=Yes|
-|name_with_salutations|Passenger name| - |
-|name_without_salutations|Passenger name without salutations| - |
-|sex|Sex|Female, Male|
-|age|Age in years| - |
-|sibsp|Number of siblings/Spouse aboard| - |
-|parch|Number of Parents/Children aboard| - |
-|ticket|Ticket number| - |
-|fare|Passenger fare| - |
-|cabin|Cabin number| - |
-|embarked|Port of Embarkment|C = Cherbourg, Q = Queenstown, S = Southampton|
-|boat|Boat number| - |
-|body|Body number| - |
-|home.des|Home Destination| - |
+|passenger Id|Identificador generado aleatoriamente| - |
+|pclass|Clase del pasajero| 1= Primera, 2 = Segunda, 3= Tercera|
+|survived|Sobrevivió| 0=No, 1=Si|
+|name_with_salutations|Nombre del pasajero| - |
+|name_without_salutations|Nombre del pasajero sin título personal| - |
+|sex|Sexo|Female=Mujer, Male=Hombre|
+|age|Edad en años| - |
+|sibsp|Number of siblings= Numero de parentesco/Spouse aboard| - |
+|parch|Number of Parents/Children aboard=Número de padres/hijos abordo| - |
+|ticket|Número de boleto| - |
+|fare|Tarifa de pasajero| - |
+|cabin|Número de cabina| - |
+|embarked|Puerto de enbarque|C = Cherbourg, Q = Queenstown, S = Southampton|
+|boat|Número de bote| - |
+|body|Numero de cuerpo| - |
+|home.des|Destino| - |
 
 
-### Add the Data 
+### Agregar los datos
 
-1\. Click on **Add a Dataset(or Drag and Drop)**  
+1\. Presiona en **Add a Dataset(or Drag and Drop)**  
 
-2\. Select **FILE SYSTEM**
+2\. Selecciona **FILE SYSTEM**
 
 ![add-dataset-file-system](assets/add-dataset-file-system.jpg)
 
-3\. Enter the following */data/TestDrive/titanic.csv* into the search bar. Select *titanic.csv* then **Click to Import Selection**. 
+3\. Ingresa los siguiente */data/TestDrive/titanic.csv* en la barra de busqueda. Selecciona titanic.csv y despues *titanic.csv* then **Click to Import Selection**. 
 
 ![select-titanic-dataset](assets/select-titanic-dataset.jpg)
 
-
-4\. If the file loaded successfully, then you should see an  image similar to the one below:
+4\. Si el archivo se carga con exito deberas ver lo siguiente:
 
 ![titanic-set-overview](assets/titanic-set-overview.jpg)
 
-*Things to Note:*
+*Notas*
 
-1. You can view:
+1. Podrás ver en cada columna:
 
-  - Dataset filename
-  - File size
-  - Number of rows/columns 
-  - File status
+- Nombre del archivo del conjunto de datos Name
+- Ruta del archivo Path
+- Tamaño del archivo Size
+- Número de filas Rows
+- Número de columnas Columns
+- Estado del archivo Status
 
-2. Option to go back to the previous page  
+2. Opción para regresar a la páguina anterior 
 
-### Deeper Dive and Resources
+### Más información y recursos
 
-- [Learn More About the Type of Dataset File formats that Can be Uploaded](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/datasets.html#adding-datasets) 
+- [Aprende más sobre los tipo de formatos para archivos de conjunto de datos que se pueden cargar](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/datasets.html#adding-datasets) 
 
-- For more datasets, check out [Kaggle Datasets](https://www.kaggle.com/datasets)
+- Para descubrir más conjunto de datos, revisa [Conjunto de datos Kaggle](https://www.kaggle.com/datasets)
 
 ## Tarea 4: Explore los Detalles de Datos y AutoViz
 
