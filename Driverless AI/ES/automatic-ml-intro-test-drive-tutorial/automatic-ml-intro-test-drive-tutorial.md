@@ -3,25 +3,12 @@
 
 ## Contorno
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-- [Objetivo](#Objetivo)
-- [Requisitos Antes de Comenzar](#Requisitos-Antes-de-Comenzar)
-- [Tarea 1: Tour del Producto](#task-1-product-tour)
-=======
-- [Objetivo](#objectivo)
-- [Requisitos Antes de Comenzar](#Prerrequisitos)
-- [Tarea 1: Tour del Producto](#Tarea-1:-Tour-del-Producto)
->>>>>>> sp/automatic-ml-intro-w-test-drive-es-translation-review
-- [Tarea 2: Conceptos de Machine Learning(Aprendizaje de maquina)](#task-2-automatic-machine-learning-concepts)
-- [Task 3: Load Data](#task-3-load-data)
-=======
+
 - [Objetivo](#objectivo)
 - [Requisitos Antes de Comenzar](#Prerrequisitos)
 - [Tarea 1: Tour del Producto](#Tarea-1:-Tour-del-Producto)
 - [Tarea 2: Conceptos de aprendizaje automático de máquinas](#task-2-automatic-machine-learning-concepts)
 - [Tarea 3: Cargar datos](#task-3-load-data)
->>>>>>> sp/automatic-ml-intro-w-test-drive-es-translation-review
 - [Tarea 4: Explore los Detalles de Datos y AutoViz](#task-4-explore-data-details-and-autoviz)
 - [Tarea 5: Lanzar primer experimento](#task-5-launch-first-experiment)
 - [Tarea 6: Explora la Ingeniería de Características](#task-6-explore-feature-engineering)
