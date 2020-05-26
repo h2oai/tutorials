@@ -22,22 +22,22 @@
 Many tools, such as ROC and Precision-Recall Curves, are available to evaluate how good or bad a classification model is predicting outcomes. In this tutorial, we will use a subset of the Freddie Mac Single-Family Loan-Level dataset to build a classification model and use it to predict if a loan will become delinquent. Through H2O’s Driverless AI Diagnostic tool, we will explore the financial impacts the false positive and false negative predictions have while exploring tools like ROC Curve, Prec-Recall, Gain and Lift Charts, K-S Chart. Finally, we will explore a few metrics such as AUC, F-Scores, GINI, MCC, and Log Loss to assist us in evaluating the performance of the generated model.
 
 **Note:** We recommend that you go over the entire tutorial first to review all the concepts, that way, once you start the experiment, you will be more familiar with the content.
-  
+
 ## Prerequisites
 You will need the following to be able to do this tutorial:
 
 - Basic knowledge of Machine Learning and Statistics
 - A Driverless AI environment
-- Basic knowledge of Driverless AI or doing the [Automatic Machine Learning Introduction with Drivereless AI Test Drive](https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#0) 
+- Basic knowledge of Driverless AI or doing the [Automatic Machine Learning Introduction with Drivereless AI Test Drive](https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#0)
 
 - A **Two-Hour Test Drive session** : Test Drive is H2O.ai's Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.
 
-  - Need a **Two-Hour Test Drive** session?Follow the instructions on [this quick tutorial](https://h2oai.github.io/tutorials/getting-started-with-driverless-ai-test-drive/#1) to get a Test Drive session started. 
+  - Need a **Two-Hour Test Drive** session?Follow the instructions on [this quick tutorial](https://h2oai.github.io/tutorials/getting-started-with-driverless-ai-test-drive/#1) to get a Test Drive session started.
 
 **Note:  Aquarium’s Driverless AI Test Drive lab has a license key built-in, so you don’t need to request one to use it. Each Driverless AI Test Drive instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore Driverless AI, you can always launch another Test Drive instance or reach out to our sales team via the [contact us form](https://www.h2o.ai/company/contact/).**
 ## Task 1: Launch Experiment
 
-### About the Dataset 
+### About the Dataset
 
 This dataset contains information about “loan-level credit performance data on a portion of fully amortizing fixed-rate mortgages that Freddie Mac bought between 1999 to 2017. Features include demographic factors, monthly loan performance, credit performance including property disposition, voluntary prepayments, MI Recoveries, non-MI recoveries, expenses, current deferred UPB and due date of last paid installment.”[1]
 
@@ -51,13 +51,13 @@ Download H2O’s subset of the Freddie Mac Single-Family Loan-Level dataset to y
 
 - [loan_level_500k.csv](https://s3.amazonaws.com/data.h2o.ai/DAI-Tutorials/loan_level_500k.csv)
 
-### Launch Experiment 
+### Launch Experiment
 
 1\. Load the loan_level.csv to Driverless AI by clicking **Add Dataset (or Drag and Drop)** on the **Datasets overview** page. Click on **Upload File**, then select **loan_level.csv** file. Once the file is uploaded, select **Details**.
 
 ![loan-level-details-selection](assets/loan-level-details-selection.jpg)
 
-**Note:** You will see four more datasets, but you can ignore them, as we will be working with the `loan_level_500k.csv` file. 
+**Note:** You will see four more datasets, but you can ignore them, as we will be working with the `loan_level_500k.csv` file.
 
 2\. Let’s take a quick look at the columns:
 
@@ -79,7 +79,7 @@ Download H2O’s subset of the Freddie Mac Single-Family Loan-Level dataset to y
 - C12 - ORIGINAL_LOAN_TO_VALUE
 - C13 - ORIGINAL_INTEREST_RATE
 - C14 - CHANNEL
-- C15 - PREPAYMENT_PENALTY_MORTGAGE_FLAG 
+- C15 - PREPAYMENT_PENALTY_MORTGAGE_FLAG
 - C16 -PRODUCT_TYPE
 - C17- PROPERTY_STATE
 - C18 - PROPERTY_TYPE
@@ -90,13 +90,13 @@ Download H2O’s subset of the Freddie Mac Single-Family Loan-Level dataset to y
 - C23 - NUMBER_OF_BORROWERS
 - C24 - SELLER_NAME
 - C25 - SERVICER_NAME
-- C26 - PREPAID Drop 
+- C26 - PREPAID Drop
 - C27 - DELINQUENT- This column is the label we are interested in predicting where False -> not defaulted and True->defaulted
 
 
 4\. Return to the **Datasets** overview page
 
-5\. Click on the **loan_level_500k.csv** file then split 
+5\. Click on the **loan_level_500k.csv** file then split
 
 ![loan-level-split-1](assets/loan-level-split-1.jpg)
 
@@ -113,7 +113,7 @@ Download H2O’s subset of the Freddie Mac Single-Family Loan-Level dataset to y
 6. Save
 
 
-The training set contains 375k rows, each row representing a loan, and 27 columns representing the attributes of each loan including the column that has the label we are trying to predict. 
+The training set contains 375k rows, each row representing a loan, and 27 columns representing the attributes of each loan including the column that has the label we are trying to predict.
 
  **Note:** the actual data in training and test split vary by user, as the data is split randomly. The Test set contains 125k rows, each row representing a loan, and 27 attribute columns representing attributes of each loan.
 
@@ -129,13 +129,13 @@ The training set contains 375k rows, each row representing a loan, and 27 column
 
 Name your experiment `Freddie Mac Classification Tutorial`
 
-10\. Select **Dropped Cols**, drop the following 2 columns: 
+10\. Select **Dropped Cols**, drop the following 2 columns:
 
-- Prepayment_Penalty_Mortgage_Flag 
+- Prepayment_Penalty_Mortgage_Flag
 - PREPAID
 - Select **Done**
 
-These two columns are dropped because they are both clear indicators that the loans will become delinquent and will cause data leakage. 
+These two columns are dropped because they are both clear indicators that the loans will become delinquent and will cause data leakage.
 
 ![train-set-drop-columns](assets/train-set-drop-columns.jpg)
 
@@ -158,7 +158,7 @@ On task 2, we will explore and update the **Experiment Settings**.
 
 The **Experiment Settings** describe the Accuracy, Time, and Interpretability of your specific experiment. The knobs on the experiment settings are adjustable, as the values change the meaning of the settings on the left-bottom page change.
 
-Here is an overview of the Experiments settings: 
+Here is an overview of the Experiments settings:
 
 - **Accuracy** - Relative accuracy – higher values, should lead to higher confidence in model performance (accuracy).
 - **Time** - Relative time for completing the experiment. Higher values will take longer for the experiment to complete.
@@ -173,15 +173,15 @@ By increasing the accuracy setting, Driverless AI gradually adjusts the method f
 
 Time specifies the relative time for completing the experiment (i.e., higher settings take longer). Early stopping will take place if the experiment doesn’t improve the score for the specified amount of iterations. The higher the time value, the more time will be allotted for further iterations, which means that the recipe will have more time to investigate new transformations in feature engineering and model’s hyperparameter tuning.
 
-### Interpretability 
+### Interpretability
 
 The interpretability knob is adjustable. The higher the interpretability, the simpler the features the main modeling routine will extract from the dataset. If the interpretability is high enough then a monotonically constrained model will be generated.
 
-2\.  For this tutorial update the following experiment settings so that they match the image below: 
+2\.  For this tutorial update the following experiment settings so that they match the image below:
 - Accuracy : 4
 - Time: 3
 - Interpretability: 4
-- Scorer: Logloss 
+- Scorer: Logloss
 
 This configuration was selected to generate a model quickly with a sufficient level of accuracy in the H2O Driverless Test Drive environment.
 
@@ -194,7 +194,7 @@ This configuration was selected to generate a model quickly with a sufficient le
 ![expert-settings-1](assets/expert-settings-1.jpg)
 *Things to Note:*
 1. **Upload Custom Recipe**
-2. **Load Custom Recipe From URL** 
+2. **Load Custom Recipe From URL**
 3. **Official Recipes (External)**
 4. **Experiment**
 5. **Model**
@@ -407,7 +407,7 @@ This configuration was selected to generate a model quickly with a sufficient le
 - Enable Logging Of System Information For Each Experiment
 
 
-4\. For this experiment turn ON **RuleFit models**, under **Model** tab the select **Save**. 
+4\. For this experiment turn ON **RuleFit models**, under **Model** tab the select **Save**.
 
 The RuleFit[2] algorithm creates an optimal set of decision rules by first fitting a tree model and then fitting a Lasso (L1-regularized) GLM model to create a linear model consisting of the most important tree leaves (rules). The RuleFit model helps with exceeding the accuracy of Random Forests while retaining explainability of decision trees.
 
@@ -415,7 +415,7 @@ The RuleFit[2] algorithm creates an optimal set of decision rules by first fitti
 
 Turning on the RuleFit model will be added to the list of algorithms that Driverless AI will consider for the experiment.  The selection of the algorithm depends on the data and the configuration selected.
 
-5\. Before selecting **Launch**, make sure that your **Experiment** page looks similar to the one above, once ready, click on **Launch**. 
+5\. Before selecting **Launch**, make sure that your **Experiment** page looks similar to the one above, once ready, click on **Launch**.
 
 Learn more about what each setting means and how it can be updated from its default values by visiting H2O’s Documentation- [Expert Settings](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/expert-settings.html?highlight=expert%20settings)
 
@@ -426,14 +426,14 @@ Learn more about what each setting means and how it can be updated from its defa
 [2] [J. Friedman, B. Popescu. “Predictive Learning via Rule Ensembles”. 2005](http://statweb.stanford.edu/~jhf/ftp/RuleFit.pdf)
 
 
-### Deeper Dive 
+### Deeper Dive
 - [To better understand the impact of setting the Accuracy, Time and Interpretability Knobs between 1 and 10 in H2O Driverless AI](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-settings.html?highlight=interpretability#accuracy-time-and-interpretability-knobs)
 
 - For more information about additional setting in[Expert Settings for H2O Driverless AI](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/expert-settings.html?highlight=expert%20settings)
 
 ## Task 3: Experiment Scoring and Analysis Concepts
 
-As we learned in the [Automatic Machine Learning Introduction Tutorial Concepts](https://github.com/h2oai/tutorials/blob/master/DriverlessAI/automatic-ml-intro-tutorial/automatic-ml-intro-tutorial.md#model-training) it is essential that once a model has been generated that its performance is evaluated. These metrics are used to evaluate the quality of the model that was built and what model score threshold should be used to make predictions  There are multiple metrics for assessing a binary classification machine learning models such as Receiver Operating Characteristics or ROC curve, Precision and Recall or Prec-Recall, Lift, Gain and K-S Charts to name a few. Each metric evaluates different aspects of the machine learning model. The concepts below are for metrics used in H2O’s Driverless AI to assess the performance of classification models that it generated. The concepts are covered at a very high level, to learn more in-depth about each metric covered here we have included additional resources at the end of this task. 
+As we learned in the [Automatic Machine Learning Introduction Tutorial Concepts](https://github.com/h2oai/tutorials/blob/master/DriverlessAI/automatic-ml-intro-tutorial/automatic-ml-intro-tutorial.md#model-training) it is essential that once a model has been generated that its performance is evaluated. These metrics are used to evaluate the quality of the model that was built and what model score threshold should be used to make predictions  There are multiple metrics for assessing a binary classification machine learning models such as Receiver Operating Characteristics or ROC curve, Precision and Recall or Prec-Recall, Lift, Gain and K-S Charts to name a few. Each metric evaluates different aspects of the machine learning model. The concepts below are for metrics used in H2O’s Driverless AI to assess the performance of classification models that it generated. The concepts are covered at a very high level, to learn more in-depth about each metric covered here we have included additional resources at the end of this task.
 
 
 ### Binary Classifier
@@ -444,15 +444,15 @@ Let’s take a look at binary classification model. A binary classification mode
 
 However, two other possible outcomes need to be considered, the false negative and false positives. These are the cases that the model predicted that someone did not default on their bank loan and did. The other case is when the model predicted that someone defaulted on their mortgage, but in reality, they did not. The total outcomes are visualized through a confusion matrix, which is the  two by two table seen below:
 
-Binary classifications produce four outcomes: 
+Binary classifications produce four outcomes:
 
 **Predicticted as Positive**:
 True Positive = TP
 False Positive = FP
 
 **Predicted as Negative**:
-True Negative = TN 
-False Negative = FN 
+True Negative = TN
+False Negative = FN
 
 ![binary-classifier-four-outcomes](assets/binary-classifier-four-outcomes.jpg)
 
@@ -462,13 +462,13 @@ False Negative = FN
 
 From this confusion table, we can measure error-rate, accuracy, specificity, sensitivity, and precision, all useful metrics to test how good our model is at classifying or predicting. These metrics will be defined and explained in the next sections.
 
-On a fun side note, you might be wondering why the name "Confusion Matrix"? Some might say that it's because a confusion matrix can be very confusing. Jokes aside, the confusion matrix is also known as the **error matrix** since it makes it easy to visualize the classification rate of the model including the error rate. The term "confusion matrix" is also used in psychology and the Oxford dictionary defines it as "A matrix representing the relative frequencies with which **each of a number of stimuli is mistaken for each of the others** by a person in a task requiring recognition or identification of stimuli. Analysis of these data allows a researcher to extract factors (2) indicating the underlying dimensions of similarity in the perception of the respondent. For example, in colour-identification tasks, relatively frequent **confusion** of reds with greens would tend to suggest daltonism." [1] In other words, how frequently does a person performing a classification task confuse one item for another. In the case of ML, a machine learning model is implementing the classification and evaluating the frequency in which the model confuses one label from another rather than a human. 
+On a fun side note, you might be wondering why the name "Confusion Matrix"? Some might say that it's because a confusion matrix can be very confusing. Jokes aside, the confusion matrix is also known as the **error matrix** since it makes it easy to visualize the classification rate of the model including the error rate. The term "confusion matrix" is also used in psychology and the Oxford dictionary defines it as "A matrix representing the relative frequencies with which **each of a number of stimuli is mistaken for each of the others** by a person in a task requiring recognition or identification of stimuli. Analysis of these data allows a researcher to extract factors (2) indicating the underlying dimensions of similarity in the perception of the respondent. For example, in colour-identification tasks, relatively frequent **confusion** of reds with greens would tend to suggest daltonism." [1] In other words, how frequently does a person performing a classification task confuse one item for another. In the case of ML, a machine learning model is implementing the classification and evaluating the frequency in which the model confuses one label from another rather than a human.
 
 ### ROC
 
-An essential tool for classification problems is the ROC Curve or Receiver Operating Characteristics Curve. The ROC Curve visually shows the performance of a binary classifier; in other words, it  “tells how much a model is capable of distinguishing between classes” [2] and the corresponding threshold. Continuing with the Freddie Mac example the output variable or the label is whether or not the customer will default on their loan and at what threshold. 
+An essential tool for classification problems is the ROC Curve or Receiver Operating Characteristics Curve. The ROC Curve visually shows the performance of a binary classifier; in other words, it  “tells how much a model is capable of distinguishing between classes” [2] and the corresponding threshold. Continuing with the Freddie Mac example the output variable or the label is whether or not the customer will default on their loan and at what threshold.
 
-Once the model has been built and trained using the training dataset, it gets passed through a classification method (Logistic Regression, Naive Bayes Classifier, support vector machines, decision trees, random forest, etc…), this will give the probability of each customer defaulting. 
+Once the model has been built and trained using the training dataset, it gets passed through a classification method (Logistic Regression, Naive Bayes Classifier, support vector machines, decision trees, random forest, etc…), this will give the probability of each customer defaulting.
 
 The ROC curve plots the Sensitivity or true positive rate (y-axis) versus 1-Specificity or false positive rate (x-axis) for every possible classification threshold. A classification threshold or decision threshold is the probability value that the model will use to determine where a class belongs to. The threshold acts as a boundary between classes to determine one class from another. Since we are dealing with probabilities of values between 0 and 1 an example of a threshold can be 0.5. This tells the model that anything below 0.5 is part of one class and anything above 0.5 belongs to a different class. The threshold can be selected to maximize the true positives while minimizing false positives. A threshold is dependent on the scenario that the ROC curve is being applied to and the type of output we look to maximize. Learn more about the application of  threshold and its implications on [Task 6: ER: ROC](#task-6-er-roc).
 
@@ -485,9 +485,9 @@ What are sensitivity and specificity? The true positive rate is the ratio of the
 
 The true negative rate is the ratio of the number of true negative predictions divided by all positive predictions. This ratio is also known as **specificity** and is measured from 0.0 to 1.0 where 0 is the worst and 1.0 is the best specificity. Specificity is a measure for how well the model is predicting for the negative case correctly.  How often is it predicting a negative case correctly.
 
-The false negative rate is *1- Specificity*, or it is the ratio of false positives divided by all negative predictions[3]. 
+The false negative rate is *1- Specificity*, or it is the ratio of false positives divided by all negative predictions[3].
 
-The following image provides an illustration of the ratios for sensitivity, specificity and false negative rate. 
+The following image provides an illustration of the ratios for sensitivity, specificity and false negative rate.
 
 ![sensitivity-and-specificity](assets/sensitivity-and-specificity.jpg)
 
@@ -499,11 +499,11 @@ The following image provides an illustration of the ratios for sensitivity, spec
 
 **1 -Specificity** =  False Positive Rate = 1- True Negative Rate = FP / (FP + TN )
 
-A ROC Curve is also able to tell you how well your model did by quantifying its performance. The scoring is determined by the percent of the area that is under the ROC curve otherwise known as Area Under the Curve or AUC. 
+A ROC Curve is also able to tell you how well your model did by quantifying its performance. The scoring is determined by the percent of the area that is under the ROC curve otherwise known as Area Under the Curve or AUC.
 
 Below are four types of ROC Curves with its AUC:
 
-**Note:** The closer the ROC Curve is to the left ( the bigger the AUC percentage), the better the model is at separating between classes. 
+**Note:** The closer the ROC Curve is to the left ( the bigger the AUC percentage), the better the model is at separating between classes.
 
 The Perfect ROC Curve (in red) below can separate classes with 100% accuracy and has an AUC of 1.0  (in blue):
 
@@ -519,7 +519,7 @@ This ROC Curve lies on the diagonal line that splits the graph in half. Since it
 
 ![roc-auc-05](assets/roc-auc-05.jpg)
 
-An AUC of 0.5, tells us that our model is as good as a random model that has a 50% chance of predicting the outcome. Our model is not better than flipping a coin, 50% of the time the model can correctly predict the outcome. 
+An AUC of 0.5, tells us that our model is as good as a random model that has a 50% chance of predicting the outcome. Our model is not better than flipping a coin, 50% of the time the model can correctly predict the outcome.
 
 Finally, the ROC Curve below represents another perfect scenario! When the ROC curve lies below the 50% model or the random chance model, then the model needs to be reviewed carefully. The reason for this is that there could have been potential mislabeling of the negatives and positives which caused the values to be reversed and hence the ROC curve is below the random chance model. Although this ROC Curve looks like it has an AUC of 0.0 or 0% when we flip it we get an AUC of 1 or 100%.
 
@@ -531,8 +531,8 @@ A ROC curve is a useful tool because it only focuses on how well the model was a
 
 The Precision-Recall Curve or Prec-Recall or **P-R** is another tool for evaluating classification models that is derived from the confusion matrix. Prec-Recall is a complementary tool to ROC curves, especially when the dataset has a significant skew. The Prec-Recall curve plots the precision or positive predictive value (y-axis) versus sensitivity or true positive rate (x-axis) for every possible classification threshold. At a high level, we can think of precision as a measure of exactness or quality of the results while recall as a measure of completeness or quantity of the results obtained by the model. Prec-Recall measures the relevance of the results obtained by the model.
 
-**Precision** is the ratio of correct positive predictions divided by the total number of positive predictions. This ratio is also known as **positive predictive value** and is measured from 0.0 to 1.0, where 0.0 is the worst and 1.0 is the best precision. Precision is more focused on the positive class than in the negative class, it actually measures the probability of correct detection of positive values (TP and FP). 
- 
+**Precision** is the ratio of correct positive predictions divided by the total number of positive predictions. This ratio is also known as **positive predictive value** and is measured from 0.0 to 1.0, where 0.0 is the worst and 1.0 is the best precision. Precision is more focused on the positive class than in the negative class, it actually measures the probability of correct detection of positive values (TP and FP).
+
 **Precision** = True positive predictions / Total number of positive predictions = TP  / (TP + FP)
 
 As mentioned in the ROC section, **Recall** is the true positive rate which is the ratio of the number of true positive predictions divided by all positive actuals. Recall is a metric of the actual positive predictions. It tells us how many correct positive results occurred from all the positive samples available during the test of the model.
@@ -547,13 +547,13 @@ Below is another way of visualizing Precision and Recall, this image was borrowe
 
 A Prec-Recall Curve is created by connecting all precision-recall points through non-linear interpolation [5]. The Pre-Recall plot is broken down into two sections, “Good” and “Poor” performance. “Good” performance can be found on the upper right corner of the plot and “Poor” performance on the lower left corner, see the image below to view the perfect Pre-Recall plot. This division is generated by the baseline. The baseline for Prec-Recall is determined by the ratio of Positives(P) and Negatives(N), where y = P/(P+N), this function represents a classifier with a random performance level[6]. When the dataset is balanced, the value of the baseline is y = 0.5. If the dataset is imbalanced where the number of P’s is higher than N’s then the baseline will be adjusted accordingly and vice versa.
 
-The Perfect Prec-Recall Curve is a combination of two straight lines (in red). The plot tells us that the model made no prediction errors! In other words, no false positives (perfect precision) and no false negatives (perfect recall) assuming a baseline of 0.5. 
+The Perfect Prec-Recall Curve is a combination of two straight lines (in red). The plot tells us that the model made no prediction errors! In other words, no false positives (perfect precision) and no false negatives (perfect recall) assuming a baseline of 0.5.
 
 ![prec-recall-1](assets/prec-recall-1.jpg)
 
-Similarly to the ROC curve, we can use the area under the curve or AUC to help us compare the performance of the model with other models. 
+Similarly to the ROC curve, we can use the area under the curve or AUC to help us compare the performance of the model with other models.
 
-**Note:** The closer the Prec-Recall Curve is to the upper-right corner (the bigger the AUC percentage) the better the model is at correctly predicting the true positives. 
+**Note:** The closer the Prec-Recall Curve is to the upper-right corner (the bigger the AUC percentage) the better the model is at correctly predicting the true positives.
 
 This Prec-Recall Curve in red below has an AUC of approximately 0.7 (in blue) with a relative baseline of 0.5:
 
@@ -565,7 +565,7 @@ Finally, this Prec-Recall Curve represents the worst case scenario where the mod
 
 From the Prec-Recall plot some metrics are derived that can be helpful in assessing the model’s performance, such as accuracy and Fᵦ scores.These metrics will be explained in more depth in the next section of the concepts. Just note that accuracy or ACC is the ratio number of correct predictions divided by the total number of predictions and Fᵦ is the harmonic mean of recall and precision.
 
-When looking at ACC in Prec-Recall precision is the positive observations imperative to note that ACC does not perform well-imbalanced datasets. This is why the **F-scores** can be used to account for the skewed dataset in Prec-Recall. 
+When looking at ACC in Prec-Recall precision is the positive observations imperative to note that ACC does not perform well-imbalanced datasets. This is why the **F-scores** can be used to account for the skewed dataset in Prec-Recall.
 
 As you consider the accuracy of a model for the positive cases you want to know a couple of things:
 
@@ -628,7 +628,7 @@ Using the confusion matrix table MCC can be calculated in the following manner:
 **MCC** =  (TP * TN- FP* FN) / [(TP + FP) * (FN + TN) * (FP + TN) * (TP + FN)] ^ ½
 
 #### Log Loss (Logloss)
- 
+
 The logarithmic loss metric can be used to evaluate the performance of a binomial or multinomial classifier. Unlike AUC which looks at how well a model can classify a binary target, logloss evaluates how close a model’s predicted values (uncalibrated probability estimates) are to the actual target value. For example, does a model tend to assign a high predicted value like .80 for the positive class, or does it show a poor ability to recognize the positive class and assign a lower predicted value like .50? A model with a log loss of 0 would be the perfect classifier. When the model is unable to make correct predictions, the log loss increases making the model a poor model[11].
 
 **Binary classification equation:**
@@ -647,7 +647,7 @@ Where:
 - p is the predicted value (uncalibrated probability) assigned to a given row (observation).
 - y is the actual target value.
 
-Driverless AI Diagnostics calculates the ACC, F1, MCC values and plots those values in each ROC and Pre-Recall curves making it easier to identify the best threshold for the model generated. Additionally, it also calculates the log loss score for your model allowing you to quickly assess whether the model you generated is a good model or not. 
+Driverless AI Diagnostics calculates the ACC, F1, MCC values and plots those values in each ROC and Pre-Recall curves making it easier to identify the best threshold for the model generated. Additionally, it also calculates the log loss score for your model allowing you to quickly assess whether the model you generated is a good model or not.
 
 Let’s get back to evaluating metrics results for models.
 
@@ -657,21 +657,21 @@ Let’s get back to evaluating metrics results for models.
 Gain and Lift charts measure the effectiveness of a classification model by looking at the ratio between the results obtained with a trained model versus a random model(or no model)[7]. The Gain and Lift charts help us evaluate the performance of the classifier as well as answer questions such as what percentage of the dataset captured has a positive response as a function of selected percentage of a sample. Additionally, we can explore how much better we can expect do with a model compared to a random model(or no model)[7].
 
 
-One way we can think of gain is “ for every step that is taken to predict an outcome the level of uncertainty decreases. A drop of uncertainty is the loss of entropy which leads to knowledge gain”[15]. The Gain Chart plots the true positive rate (sensitivity) versus the predictive positive rate(**support**) where: 
+One way we can think of gain is “ for every step that is taken to predict an outcome the level of uncertainty decreases. A drop of uncertainty is the loss of entropy which leads to knowledge gain”[15]. The Gain Chart plots the true positive rate (sensitivity) versus the predictive positive rate(**support**) where:
 
 **Sensitivity** = **Recall** = True Positive Rate = TP / (TP + FN)
 
-**Support** = **Predictive Positive Rate**  = TP + FP / (TP + FP + FN+TN) 
+**Support** = **Predictive Positive Rate**  = TP + FP / (TP + FP + FN+TN)
 
 ![sensitivity-and-support](assets/sensitivity-and-support.jpg)
 
-To better visualize the percentage of positive responses compared to a selected percentage sample, we use **Cumulative Gains** and **Quantile**. Cumulative gains is obtained by taking the predictive model and applying it to the test dataset which is a subset of the original dataset. The predictive model will score each case with a probability. The scores are then sorted in ascending order by the predictive score. The quantile takes the total number of cases(a finite number) and partitions the finite set into subsets of nearly equal sizes. The percentile is plotted from 0th and 100th percentile. We then plot the cumulative number of cases up to each quantile starting with the positive cases  at 0%  with the highest probabilities until we reach 100% with the positive cases that scored the lowest probabilities. 
+To better visualize the percentage of positive responses compared to a selected percentage sample, we use **Cumulative Gains** and **Quantile**. Cumulative gains is obtained by taking the predictive model and applying it to the test dataset which is a subset of the original dataset. The predictive model will score each case with a probability. The scores are then sorted in ascending order by the predictive score. The quantile takes the total number of cases(a finite number) and partitions the finite set into subsets of nearly equal sizes. The percentile is plotted from 0th and 100th percentile. We then plot the cumulative number of cases up to each quantile starting with the positive cases  at 0%  with the highest probabilities until we reach 100% with the positive cases that scored the lowest probabilities.
 
 In the cumulative gains chart, the x-axis shows the percentage of cases from the total number of cases in the test dataset, while the y-axis shows the percentage of positive responses in terms of quantiles. As mentioned, since the probabilities have been ordered in ascending order we can look at the percent of predictive positive cases found in the 10% or 20% as a way to narrow down the number of positive cases that we are interested in. Visually the performance of the predictive model can be compared to that of a random model(or no model). The random model is represented below in red as the worst case scenario of random sampling.
 
 ![cumulative-gains-chart-worst-case](assets/cumulative-gains-chart-worst-case.jpg)
 
-How can we identify the best case scenario in relation to the random model? To do this we need to identify a Base Rate first. The Base Rate sets the limits of the optimal curve. The best gains are always controlled by the Base Rate. An example of a Base Rate can be seen on the chart below (dashed green). 
+How can we identify the best case scenario in relation to the random model? To do this we need to identify a Base Rate first. The Base Rate sets the limits of the optimal curve. The best gains are always controlled by the Base Rate. An example of a Base Rate can be seen on the chart below (dashed green).
 
 - **Base Rate** is defined as:
 
@@ -681,7 +681,7 @@ How can we identify the best case scenario in relation to the random model? To d
 
 The above chart represents the best case scenario of a cumulative gains chart assuming a base rate of 20%. In this scenario all the positive cases were identified before reaching the base rate.
 
-The chart below represents an example of a predictive model (solid green curve). We can see how well the predictive model did in comparison to the random model(dotted red line). Now, we can pick a quantile and determine the percentage of positive cases up that quartile in relation to the entire test dataset. 
+The chart below represents an example of a predictive model (solid green curve). We can see how well the predictive model did in comparison to the random model(dotted red line). Now, we can pick a quantile and determine the percentage of positive cases up that quartile in relation to the entire test dataset.
 
 ![cumulative-gains-chart-predictive-model](assets/cumulative-gains-chart-predictive-model.jpg)
 
@@ -689,7 +689,7 @@ Lift can help us answer the question of how much better one can expect to do wit
 
 **Lift** = Predictive rate/ Actual rate
 
-When plotting lift, we also plot it against quantiles in order to help us visualize how likely it is that a positive case will take place since the Lift chart is derived from the cumulative gains chart. The points of the lift curve are calculated by determining the ratio between the result predicted by our model and the result using a random model(or no model). For instance, assuming a base rate (or hypothetical threshold) of 20% from a random model, we would take the cumulative gain percent at the 20% quantile, X and divide by it by 20. We do this for all the quantiles until we get the full lift curve. 
+When plotting lift, we also plot it against quantiles in order to help us visualize how likely it is that a positive case will take place since the Lift chart is derived from the cumulative gains chart. The points of the lift curve are calculated by determining the ratio between the result predicted by our model and the result using a random model(or no model). For instance, assuming a base rate (or hypothetical threshold) of 20% from a random model, we would take the cumulative gain percent at the 20% quantile, X and divide by it by 20. We do this for all the quantiles until we get the full lift curve.
 
 We can start the lift chart with the base rate as seen below, recall that the base rate is the target threshold.
 
@@ -700,7 +700,7 @@ When looking at the cumulative lift for the top quantiles, X, what it means is t
 
 ![lift-chart](assets/lift-chart.jpg)
 
-### K-S Chart 
+### K-S Chart
 
 Kolmogorov- Smirnov or K-S measures the performance of classification models by measuring the degree of separation between positives and negatives for validation or test data[13]. “The K-S is 100 if the scores partition the population into two separate groups in which one group contains all the positives and the other all the negatives. On the other hand, If the model cannot differentiate between positives and negatives, then it is as if the model selects cases randomly from the population. The K-S would be 0. In most classification models the K-S will fall between 0 and 100, and that the higher the value, the better the model is at separating the positive from negative cases.”[14].
 
@@ -732,7 +732,7 @@ The KS statistic is the maximum difference between the cumulative percentage of 
 
 [11] [Wiki Log Loss](http://wiki.fast.ai/index.php/Log_Loss)
 
-[12] [H2O’s GINI Index](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/scorers/scorers_gini.html?highlight=gini) 
+[12] [H2O’s GINI Index](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/scorers/scorers_gini.html?highlight=gini)
 
 [13] [H2O’s Kolmogorov-Smirnov](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-graphs.html?highlight=mcc)
 
@@ -742,7 +742,7 @@ The KS statistic is the maximum difference between the cumulative percentage of 
 
 [16] [Lift Analysis Data Scientist Secret Weapon](https://www.kdnuggets.com/2016/03/lift-analysis-data-scientist-secret-weapon.html)
 
-[17] [Machine Learning Evaluation Metrics Classification Models](https://www.machinelearningplus.com/machine-learning/evaluation-metrics-classification-models-r/) 
+[17] [Machine Learning Evaluation Metrics Classification Models](https://www.machinelearningplus.com/machine-learning/evaluation-metrics-classification-models-r/)
 
 ### Deeper Dive and Resources
 
@@ -780,49 +780,49 @@ The summary includes the following:
 - **System Specs**: machine specs including RAM, number of CPU cores and GPU’s
   - Max memory usage  
 
-- **Recipe**: 
+- **Recipe**:
   - Validation scheme: type of sampling, number of internal holdouts
   - Feature Engineering: number of features scored and the final selection
 
 - **Timing**
-  - Data preparation 
+  - Data preparation
   - Shift/Leakage detection
-  - Model and feature tuning: total time for model and feature training and  number of models trained 
-  - Feature evolution: total time for feature evolution and number of models trained 
-  - Final pipeline training: total time for final pipeline training and the total models trained 
-  - Python / MOJO scorer building 
+  - Model and feature tuning: total time for model and feature training and  number of models trained
+  - Feature evolution: total time for feature evolution and number of models trained
+  - Final pipeline training: total time for final pipeline training and the total models trained
+  - Python / MOJO scorer building
 - Validation Score: Log loss score +/- machine epsilon for the baseline
 - Validation Score: Log loss score +/- machine epsilon for the final pipeline
-- Test Score: Log loss score +/- machine epsilon score for the final pipeline 
+- Test Score: Log loss score +/- machine epsilon score for the final pipeline
 
 Most of the information in the Experiment Summary tab, along with additional detail, can be found in the Experiment Summary Report (Yellow Button “Download Experiment Summary”).
 
 Below are three questions to test your understanding of the experiment summary and frame the motivation for the following section.
 
-1\. Find the number of features that were scored for your model and the total features that were selected. 
+1\. Find the number of features that were scored for your model and the total features that were selected.
 
 2\.  Take a look at the validation Score for the final pipeline and compare that value to the test score. Based on those scores would you consider this model a good or bad model?
-	
+
 **Note:** If you are not sure what Log loss is, feel free to review the concepts section of this tutorial.
 
 
 3\. So what do the Log Loss values tell us?  The essential Log Loss value is the test score value. This value tells us how well the model generated did against the freddie_mac_500_test set based on the error rate. In case of experiment **Freddie Mac Classification Tutorial**, the test score LogLoss = .1180 which is the log of the misclassification rate. The greater the Log loss value the more significant the misclassification. For this experiment, the Log Loss was relatively small meaning the error rate for misclassification was not as substantial. But what would a score like this mean for an institution like Freddie Mac?
 
-In the next few tasks we will explore the financial implications of misclassification by exploring the confusion matrix and plots derived from it. 
+In the next few tasks we will explore the financial implications of misclassification by exploring the confusion matrix and plots derived from it.
 
 
 ### Deeper Dive and Resources
 
 - [H2O’s Experiment Summary](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-summary.html?highlight=experiment%20overview)
 
-- [H2O’s Internal Validation](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/internal-validation.html) 
+- [H2O’s Internal Validation](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/internal-validation.html)
 
 
 ## Task 5: Diagnostics Scores and Confusion Matrix
 
 Now we are going to run a model diagnostics on the freddie_mac_500_test set. The diagnostics model allows you to view model performance for multiple scorers based on an existing model and dataset through the Python API.
 
-1\. Select **Diagnostics** 
+1\. Select **Diagnostics**
 
 
 ![diagnostics-select](assets/diagnostics-select.jpg)
@@ -831,23 +831,23 @@ Now we are going to run a model diagnostics on the freddie_mac_500_test set. The
 
 ![diagnose-model](assets/diagnose-model.jpg)
 
-3\. In the **Create new model diagnostics** : 
+3\. In the **Create new model diagnostics** :
 1. Click on Diagnosed Experiment then select the experiment that you completed in Task 4: **Freddie Mac Classification Tutorial**
 2. Click on Dataset then select the freddie_mac_500_test dataset
-3.  Initiate the diagnostics model by clicking on **Launch Diagnostics** 
+3.  Initiate the diagnostics model by clicking on **Launch Diagnostics**
 
 ![create-new-model-diagnostic](assets/create-new-model-diagnostic.jpg)
 
 4\.After the model diagnostics is done running, a model similar to the one below will appear:
 
-![new-model-diagnostics](assets/new-model-diagnostics.jpg) 
+![new-model-diagnostics](assets/new-model-diagnostics.jpg)
 
 *Things to Note:*
 
 1. Name of new diagnostics model
 2. **Model**: Name of ML model used for diagnostics
 3. **Dataset**: name of the dataset used for diagnostic
-4. **Message** : Message regarding new diagnostics model 
+4. **Message** : Message regarding new diagnostics model
 5. **Status** : Status of new diagnostics model
 6. **Time** : Time it took for the  new diagnostics model to run
 7. Options for this model
@@ -861,15 +861,15 @@ Now we are going to run a model diagnostics on the freddie_mac_500_test set. The
 1. **Info**: Information about the diagnostics model including the name of the test dataset, name of the experiment used and the target column used for the experiment
 2. **Scores**: Summary for the values for GINI, MCC, F05, F1, F2, Accuracy, Log loss, AUC and AUCPR in relation to how well the experiment model scored against a “new” dataset
 
-    -  **Note:** The new dataset must be the same format and with the same number of columns as the training dataset 
+    -  **Note:** The new dataset must be the same format and with the same number of columns as the training dataset
 
 3. **Metric Plots**: Metrics used to score the experiment model including ROC Curve, Pre-Recall Curve, Cumulative Gains, Lift Chart, Kolmogorov-Smirnov Chart, and Confusion Matrix
 
 4. **Download Predictions**: Download the diagnostics predictions
- 
+
 **Note:** The scores will be different for the train dataset and the validation dataset used during  the training of the model.
 
-#### Confusion Matrix 
+#### Confusion Matrix
 
 As mentioned in the concepts section, the confusion matrix is the root from where most metrics used to test the performance of a model originate. The confusion matrix provides an overview performance of a supervised model’s ability to classify.
 
@@ -888,14 +888,14 @@ Using this layout, we will be able to determine how well the model predicted the
 
 Moving into the inner part of the matrix, we find the number of cases for True Negatives, False Positives, False Negatives and True Positive. The confusion matrix for this model generated tells us that :
 
-- TP = 1 = 213 cases were predicted as **defaulting** and **defaulted** in actuality 
-- TN = 0 = 120,382 cases were predicted as **not defaulting** and **did not default** 
+- TP = 1 = 213 cases were predicted as **defaulting** and **defaulted** in actuality
+- TN = 0 = 120,382 cases were predicted as **not defaulting** and **did not default**
 - FP = 1 = 155 cases were predicted as **defaulting** when in actuality they **did not default**
 - FN = 0 = 4,285 cases were predicted as **not defaulting** when in actuality they **defaulted**
 
 ![diagnostics-confusion-matrix-2](assets/diagnostics-confusion-matrix-2.jpg)
 
-The next layer we will look at is the **Total** sections for **Predicted label** and **Actual label**. 
+The next layer we will look at is the **Total** sections for **Predicted label** and **Actual label**.
 
 On the right side of the confusion matrix are the totals for the **Actual label**  and at the base of the confusion matrix, the totals for the **Predicted label**.
 
@@ -905,7 +905,7 @@ On the right side of the confusion matrix are the totals for the **Actual label*
 
 **Predicted label**
 - 124,667 : the number of cases that were predicted to not default on the test dataset
-- 368 :  the number of cases that were predicted to default on the test dataset 
+- 368 :  the number of cases that were predicted to default on the test dataset
 
 ![diagnostics-confusion-matrix-3](assets/diagnostics-confusion-matrix-3.jpg)
 
@@ -917,17 +917,17 @@ For this particular model these are the errors:
 - 4285/124667 = 0.0343 or 3.43% times the model classified predicted cases that did default as not defaulting out of the total predicted not defaulting group
 - 210/368 = 0.5706 or 57.1% times the model classified predicted cases that defaulted as defaulting out of the total predicted defaulting group
 - (4285 + 155) / 125035 = **0.0355**  This means that this model incorrectly classifies  .0355 or 3.55% of the time.
- 
+
 What does the misclassification error of .0355 mean?
-One of the best ways to understand the impact of this misclassification error is to look at the financial implications of the False Positives and False Negatives. As mentioned previously, the False Positives represent the loans predicted not to default and in reality did default. 
-Additionally, we can look at the mortgages that Freddie Mac missed out on by not granting loans because the model predicted that they would default when in reality they did not default. 
+One of the best ways to understand the impact of this misclassification error is to look at the financial implications of the False Positives and False Negatives. As mentioned previously, the False Positives represent the loans predicted not to default and in reality did default.
+Additionally, we can look at the mortgages that Freddie Mac missed out on by not granting loans because the model predicted that they would default when in reality they did not default.
 
 One way to look at the financial implications for Freddie Mac is to look at the total paid interest rate per loan. The mortgages on this dataset are traditional home equity loans which means that the loans are:
 - A fixed borrowed amount
 - Fixed interest rate
 - Loan term and monthly payments are both fixed
 
-For this tutorial, we will assume a 6% Annual Percent Rate(APR) over 30 years. APR is the amount one pays to borrow the funds. Additionally, we are going to assume an average home loan of $167,473(this average was calculated by taking the sum of all the loans on the freddie_mac_500.csv dataset and dividing it by 30,001 which is the total number of mortgages on this dataset). For a mortgage of $167,473 the total interest paid after 30 years would be $143,739.01[1]. 
+For this tutorial, we will assume a 6% Annual Percent Rate(APR) over 30 years. APR is the amount one pays to borrow the funds. Additionally, we are going to assume an average home loan of $167,473(this average was calculated by taking the sum of all the loans on the freddie_mac_500.csv dataset and dividing it by 30,001 which is the total number of mortgages on this dataset). For a mortgage of $167,473 the total interest paid after 30 years would be $143,739.01[1].
 
 When looking at the False Positives, we can think about 155 cases of people which the model predicted should be not be granted a home loan because they were predicted to default on their mortgage. These 155 loans translate to over 18 million dollars in loss of potential income (155 * $143,739.01) in interest.
 
@@ -935,11 +935,11 @@ Now, looking at the True Positives, we do the same and take the 4,285 cases that
 
 The misclassification rate provides a summary of the sum of the False Positives and False Negatives divided by the total cases in the test dataset. The misclassification rate for this model was .0355.  If this model were used to determine home loan approvals, the mortgage institutions would need to consider approximately 618 million dollars in losses for misclassified loans that got approved and shouldn’t have and 18 million dollars on loans that were not approved since they were classified as defaulting.
 
-One way to look at these results is to ask the question: is missing out on approximately 18 million dollars from loans that were not approved better than losing about 618 million dollars from loans that were approved and then defaulted? There is no definite answer to this question, and the answer depends on the mortgage institution. 
+One way to look at these results is to ask the question: is missing out on approximately 18 million dollars from loans that were not approved better than losing about 618 million dollars from loans that were approved and then defaulted? There is no definite answer to this question, and the answer depends on the mortgage institution.
 
 ![diagnostics-confusion-matrix-4](assets/diagnostics-confusion-matrix-4.jpg)
 
-#### Scores 
+#### Scores
 Driverless AI conveniently provides a summary of the scores for the performance of the model given the test dataset.
 
 The scores section provides a summary of the Best Scores found in the metrics plots:
@@ -962,13 +962,13 @@ When the experiment was run for this classification model, Driverless AI determi
 Recall that Log loss is the logarithmic loss metric that can be used to evaluate the performance of a binomial or multinomial classifier, where a model with a Log loss of 0 would be the perfect classifier. Our model  scored  a LOGLOSS value = .1193+/- .0017 after testing it with test dataset. From the confusion matrix, we saw that the model had issues classifying perfectly; however, it was able to classify with an ACCURACY of .9647 +/- .0006. The financial implications of the misclassifications have been covered in the confusion matrix section above.
 
 Driverless AI has the option to change the type of scorer used for the experiment. Recall that for this dataset the scorer was selected to be **logloss**. An experiment can be re-run with another scorer. For general imbalanced classification problems, AUCPR and MCC scorers are good choices, while F05, F1, and F2 are designed to balance recall against precision.
-The AUC is designed for ranking problems. Gini is similar to the AUC but measures the quality of ranking (inequality) for regression problems. 
+The AUC is designed for ranking problems. Gini is similar to the AUC but measures the quality of ranking (inequality) for regression problems.
 
 In the next few tasks we will explore the scorer further and the **Scores** values in relation to the residual plots.
 
 ### References
 
-[1] [Amortization Schedule Calculator](https://investinganswers.com/calculators/loan/amortization-schedule-calculator-what-repayment-schedule-my-mortgage-2859) 
+[1] [Amortization Schedule Calculator](https://investinganswers.com/calculators/loan/amortization-schedule-calculator-what-repayment-schedule-my-mortgage-2859)
 
 ### Deeper Dive and Resources
 
@@ -990,14 +990,14 @@ To review, an ROC curve demonstrates the following:
 - The closer the curve follows the left-hand border and then the top border of the ROC space, the more accurate the model.
 - The closer the curve comes to the 45-degree diagonal of the ROC space, the less accurate the model.
 - The slope of the tangent line at a cutpoint gives the likelihood ratio (LR) for that value of the test. You can check this out on the graph above.
-- The area under the curve is a measure of model accuracy. 
+- The area under the curve is a measure of model accuracy.
 
 Going back to the Freddie Mac dataset, even though the model was scored with the Logarithmic Loss to penalize for error we can still take a look at the ROC curve results and see if it supports our conclusions from the analysis of the confusion matrix and scores section of the diagnostics page.
 
 1\. Based on the ROC curve that Driverless AI model generated for your experiment, identify the AUC. Recall that a perfect classification model has an AUC of 1.
 
 2\. For each of the following points on the curve, determine the True Positive Rate, False Positive rate, and threshold by hovering over each point below as seen on the image below:
-- Best Accuracy 
+- Best Accuracy
 - Best F1
 - Best MCC
 
@@ -1015,7 +1015,7 @@ At this threshold, the model predicted:
 3\.  From the AUC, Best MCC, F1, and Accuracy values from the ROC curve, how would you qualify your model, is it a good or bad model? Use the key points below to help you asses the ROC Curve.
 
 
-Remember that for the **ROC** curve: 
+Remember that for the **ROC** curve:
 - The perfect classification model has an AUC of 1
 - MCC is measured in the range between -1 and +1 where +1 is the perfect prediction, 0 no better than a random prediction and -1 all incorrect predictions.
 - F1 is measured in the range of 0 to 1, where 0 means that there are no true positives, and 1 when there is neither false negatives nor false positives or perfect precision and recall.
@@ -1039,26 +1039,26 @@ An image similar to the one below will appear. Note that this page has the same 
 
 ![new-model-accuracy](assets/new-model-accuracy.jpg)
 
-Similarly to the experiment in Task 1, wait for the experiment to run. After the experiment is done running, a similar page will appear. Note that on the summary located on the bottom right-side both the validation and test scores are no longer being scored by **Logloss** instead by **Accuracy**. 
+Similarly to the experiment in Task 1, wait for the experiment to run. After the experiment is done running, a similar page will appear. Note that on the summary located on the bottom right-side both the validation and test scores are no longer being scored by **Logloss** instead by **Accuracy**.
 
 ![new-experiment-accuracy-summary](assets/new-experiment-accuracy-summary.jpg)
 
-We are going to use this new experiment to run a new diagnostics test. You will need the name of the new experiment. In this case, the experiment name is **1.Freddie Mac Classification Tutorial**. 
+We are going to use this new experiment to run a new diagnostics test. You will need the name of the new experiment. In this case, the experiment name is **1.Freddie Mac Classification Tutorial**.
 
 4\. Go to the **Diagnostics** tab.
 
 5\. Once in the **Diagnostics** page, select **+Diagnose Model**
 
-6\. In the **Create new model diagnostics** : 
-1. Click on Diagnosed Experiment then select the experiment that you completed in Task in this case the experiment name is **1.Freddie Mac Classification Tutorial** 
+6\. In the **Create new model diagnostics** :
+1. Click on Diagnosed Experiment then select the experiment that you completed in Task in this case the experiment name is **1.Freddie Mac Classification Tutorial**
 2. Click on Dataset then select the freddie_mac_500_test dataset
-3. Initiate the diagnostics model by clicking on **Launch Diagnostics** 
+3. Initiate the diagnostics model by clicking on **Launch Diagnostics**
 
 ![diagnostics-create-new-model-for-accuracy](assets/diagnostics-create-new-model-for-accuracy.jpg)
 
 7\. After the model diagnostics is done running a new diagnostic will appear
 
-8\. Click on the new diagnostics model. On the **Scores** section observe the accuracy value. Compare this Accuracy value to the Accuracy value from task 6. 
+8\. Click on the new diagnostics model. On the **Scores** section observe the accuracy value. Compare this Accuracy value to the Accuracy value from task 6.
 
 ![diagnostics-scores-accuracy-model](assets/diagnostics-scores-accuracy-model.jpg)
 
@@ -1068,7 +1068,7 @@ We are going to use this new experiment to run a new diagnostics test. You will 
 
 ![diagnostics-roc-curve-accuracy-model](assets/diagnostics-roc-curve-accuracy-model.jpg)
 
-How much improvement did we get from optimizing the accuracy via the scorer? 
+How much improvement did we get from optimizing the accuracy via the scorer?
 
 The new model predicted:
 - Threshold = .5532
@@ -1110,11 +1110,11 @@ Continuing on the diagnostics page, select the **P-R** curve. The P-R curve shou
 
 Remember that for the **Prec-Recall**:
 
-- The precision-recall plot uses recall on the x-axis and precision on the y-axis. 
+- The precision-recall plot uses recall on the x-axis and precision on the y-axis.
 - Recall is identical to sensitivity, and precision is identical to the positive predictive value.
 - ROC curves should be used when there are roughly equal numbers of observations for each class.
 - Precision-Recall curves should be used when there is a moderate to large class imbalance.
-- Similar to ROC, the AUCPR (Area under the curve of Precision-recall curve) is a measure of model accuracy and higher the better. 
+- Similar to ROC, the AUCPR (Area under the curve of Precision-recall curve) is a measure of model accuracy and higher the better.
 - In both the ROC and Prec-recall curve, Driverless AI will indicate points that are the best thresholds for Accuracy (ACC), F1 or MCC (Matthews correlation coefficient).
 
 Looking at the  P-R curve results, is this a good model to determine if a customer will default on their home loan? Let’s take a look at the values found on the P-R curve.
@@ -1122,7 +1122,7 @@ Looking at the  P-R curve results, is this a good model to determine if a custom
 1\. Based on the P-R curve that Driverless AI model generated for you experiment identify the AUC.
 
 2\. For each of the following points on the curve, determine the True Positive Rate, False Positive rate, and threshold by hovering over each point below as seen on the image below:
-- Best Accuracy 
+- Best Accuracy
 - Best F1
 - Best MCC
 
@@ -1142,7 +1142,7 @@ Remember that for the **P-R** curve :
 
 ### New Model with Same Parameters
 
-Similarly to task 6, we can improve the area under the curve for precision-recall by creating a new model with the same parameters. Note that you need to change the Scorer from **Logloss** to **AUCPR**. You can try this on your own. 
+Similarly to task 6, we can improve the area under the curve for precision-recall by creating a new model with the same parameters. Note that you need to change the Scorer from **Logloss** to **AUCPR**. You can try this on your own.
 
 To review how to run a new experiment with the same parameters and a different scorer, follow the step on task 6, section **New Model with Same Parameters**.
 
@@ -1166,8 +1166,8 @@ To review how to run a new experiment with the same parameters and a different s
 
 Remember that for the **Gains** curve:
 
-- A cumulative gains chart is a visual aid for measuring model performance. 
-- The y-axis shows the percentage of positive responses. This is a percentage of the total possible positive responses 
+- A cumulative gains chart is a visual aid for measuring model performance.
+- The y-axis shows the percentage of positive responses. This is a percentage of the total possible positive responses
 - The x-axis shows the percentage of all customers from the Freddie Mac dataset who did not default, which is a fraction of the total cases
 - The dashed line is the baseline (overall response rate)
 - It helps answer the question of  “What fraction of all observations of the positive target class are in the top predicted 1%, 2%, 10%, etc. (cumulative)?” By definition, the Gains at 100% are 1.0.
@@ -1180,11 +1180,11 @@ Remember that for the **Gains** curve:
 
 ![diagnostics-gains-10-percent](assets/diagnostics-gains-10-percent.jpg)
 
-For this Gain Chart, if we look at the top 1% of the data, the at-chance model (the dotted diagonal line) tells us that we would have correctly identified 1% of the defaulted mortgage cases. The model generated (yellow curve) shows that it was able to identify about 12% of the defaulted mortgage cases. 
+For this Gain Chart, if we look at the top 1% of the data, the at-chance model (the dotted diagonal line) tells us that we would have correctly identified 1% of the defaulted mortgage cases. The model generated (yellow curve) shows that it was able to identify about 12% of the defaulted mortgage cases.
 
-If we hover over to the top 10% of the data, the at-chance model (the dotted diagonal line) tells us that we would have correctly identified 10% of the defaulted mortgage cases. The model generated (yellow curve) says that it was able to identify about 53% of the defaulted mortgage cases. 
+If we hover over to the top 10% of the data, the at-chance model (the dotted diagonal line) tells us that we would have correctly identified 10% of the defaulted mortgage cases. The model generated (yellow curve) says that it was able to identify about 53% of the defaulted mortgage cases.
 
-3\. Based on the shape of the gain curve and the baseline (white diagonal dashed line) would you consider this a good model? 
+3\. Based on the shape of the gain curve and the baseline (white diagonal dashed line) would you consider this a good model?
 
 Remember that the perfect prediction model starts out pretty steep, and as a rule of thumb the steeper the curve, the higher the gain. The area between the baseline (white diagonal dashed line) and the gain curve (yellow curve) better known as the area under the curve visually shows us how much better our model is than that of the random model. There is always room for improvement. The gain curve can be steeper.
 
@@ -1193,7 +1193,7 @@ Remember that the perfect prediction model starts out pretty steep, and as a rul
 4\. Exit out of the Gains chart by clicking on the **x** located at the top-right corner of the plot, next to the **Download** option
 
 ### Deeper Dive and Resources
- 
+
 - [Towards Data Science - Understanding and Interpreting Gain and Lift Charts](https://www.datasciencecentral.com/profiles/blogs/understanding-and-interpreting-gain-and-lift-charts)
 
 ## Task 9: ER: LIFT
@@ -1222,7 +1222,7 @@ For this Lift Chart, all the predictions were sorted according to decreasing sco
 
 3\. Based on the area between the lift curve and the baseline (white horizontal dashed line) is this a good model?
 
-The area between the baseline (white horizontal dashed line) and the lift curve (yellow curve) better known as the area under the curve visually shows us how much better our model is than that of the random model. 
+The area between the baseline (white horizontal dashed line) and the lift curve (yellow curve) better known as the area under the curve visually shows us how much better our model is than that of the random model.
 
 4\. Exit out of the Lift chart by clicking on the **x** located at the top-right corner of the plot, next to the **Download** option
 
@@ -1318,8 +1318,12 @@ A **report** file is included in the **experiment** summary. This report provide
 
 
 ## Next Steps
+## Los Siguientes Pasos
 
 Check out the next tutorial : [Machine Learning Interpretability](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#0) where you will learn how to:
+
+Explora los siguientes tutoriales : [Interpretalidad de ML](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#0) donde aprenderas:
+
 - Launch an experiment
 - Create ML interpretability report
 - Explore explainability concepts such as:
@@ -1331,11 +1335,4 @@ Check out the next tutorial : [Machine Learning Interpretability](https://h2oai.
     - LOCO
     - Individual conditional Expectation
 
-
-
-
-
-
-
-
-
+- 
