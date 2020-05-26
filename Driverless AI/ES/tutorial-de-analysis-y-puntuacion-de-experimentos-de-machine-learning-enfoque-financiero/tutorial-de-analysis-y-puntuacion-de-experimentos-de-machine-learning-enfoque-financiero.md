@@ -1333,7 +1333,7 @@ Un documento de **reporte** esta incluido en resumen del **experimento**. Este R
 - Modelo Final
 - Modelos Alternativos
 - Despliegue
-- Apendice s
+- Apendice
 
 3\. Take a few minutes to explore the report
 3\. Toma unos minutos para explorar el reporte
