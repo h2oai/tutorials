@@ -3,9 +3,15 @@
 
 ## Contorno
 
+<<<<<<< HEAD
 - [Objetivo](#Objetivo)
-- [Requisitos Antes de Comenzar](#Requisitos Antes de Comenzar)
+- [Requisitos Antes de Comenzar](#Requisitos-Antes-de-Comenzar)
 - [Tarea 1: Tour del Producto](#task-1-product-tour)
+=======
+- [Objetivo](#objectivo)
+- [Requisitos Antes de Comenzar](#Prerrequisitos)
+- [Tarea 1: Tour del Producto](#Tarea-1:-Tour-del-Producto)
+>>>>>>> sp/automatic-ml-intro-w-test-drive-es-translation-review
 - [Tarea 2: Conceptos de Machine Learning(Aprendizaje de maquina)](#task-2-automatic-machine-learning-concepts)
 - [Task 3: Load Data](#task-3-load-data)
 - [Tarea 4: Explore los Detalles de Datos y AutoViz](#task-4-explore-data-details-and-autoviz)
