@@ -1268,14 +1268,21 @@ For this K-S chart, if we look at the top  20% of the data, the at-chance model 
 
 
 ## Task 11: Experiment AutoDocs
+## Tarea 11: Experimentar con AutoDocs
 
 Driverless AI makes it easy to download the results of your experiments, all at the click of a button.  
 
+Driverless AI es muy facil de descargar los resultados de tus experimentos, con tan solo un click.  
+
 1\. Let’s explore the auto generated documents for this experiment. On the **Experiment** page select **Download Experiment Summary**.
+1\. Exploremos la generacion automatica de documentos para este experimento. En la pagina de **Experimentos** selecione **Descargar Resumen del Experimento**.  
 
 ![download-experiment-summary](assets/download-experiment-summary.jpg)
+![download-experiment-summary](assets/download-experiment-summary.jpg)
+
 
 The **Experiment Summary** contains the following:
+El **Resumen del Experimento** contiene lo siguiente:
 
 - Summary of Experiment
 - Experiment Features along with relevant importance
@@ -1286,9 +1293,22 @@ The **Experiment Summary** contains the following:
 - Target transformations tuning leaderboard
 - Leaderboard
 
+- Resumen del Experimento
+- Caracteristicas del Experimento conjunto con la relevante importancia
+- Informacion conjunta
+- El preestreno del experimento
+- Un reporte auto-generado para el experimento en formato .docx
+- Un resumen del entrenamiento en formato csv
+- Transformaciones del objetivo en la pantalla
+- Pantala Principal
+
 A **report** file is included in the **experiment** summary. This report provides insight into the training data and any detected shifts in distribution, the validation schema selected, model parameter tuning, feature evolution and the final set of features chosen during the experiment.
 
+Un documento de **reporte** esta incluido en resumen del **experimento**. Este Resumen provee la percepcion para enterder los datos entrenados y detectar movimientos en la distribucion, la validacion del esquema, ajustamiento de los parametros del modelo, la evolucion de caracteristicas y el conjunto final de caracteristicas que fueron escojidos durante el experimento.
+
 2\. Open the report .docx file, this auto-generated report contains the following information:
+2\. Abre el documento con el archivo .docx, este es el reporte auto-generado que contiene la  siguiente informacion:   
+
 - Experiment Overview
 - Data Overview
 - Methodology
@@ -1302,20 +1322,42 @@ A **report** file is included in the **experiment** summary. This report provide
 - Deployment
 - Appendix
 
+- El Resumen del Experimento
+- Resumen de los Datos
+- Metodologia
+- Muestra de Datos
+- Estrategia de Validacion
+- Ajustamiento del Modelo
+- Evolucion de las Caracteristicas
+- Transformacion de Caracteristicas
+- Modelo Final
+- Modelos Alternativos
+- Despliegue
+- Apendice s
+
 3\. Take a few minutes to explore the report
+3\. Toma unos minutos para explorar el reporte
 
 4\. Explore Feature Evolution and Feature Transformation, how is this summary different from the summary provided in the **Experiments Page**?
+4\. Explora la Evolucion y Transformacion de caracteristicas, como este resumen se diferiencia del resumen que fue proveido en la **Pagina de Experimentos**?
 
 5\. Find the section titled **Final Model** on the report.docx and explore the following items:
+5\. Encuentra la selecion titulada **Modelo Final** en el reporte.docx y eplora los siguientes puntos:
+
 - Table titled **Performance of Final Model** and determine the **logloss** final test score
 - Validation Confusion Matrix
 - Test Confusion Matrix
 - Validation and Test ROC, Prec-Recall, lift, and gains plots
 
+- Mesa titulada **Performacion del Modelo Final** y determina el **logloss** del puntaje final del examen
+- Validacion del Matrix de Confucion
+- Validacion y examen ROC, Prec-Recall, lift, y gains plots  
+
 ### Deeper Dive and Resources
+### Bosquejo mas a fondo y Recursos
 
 - [H2O’s Summary Report](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-summary.html?highlight=experiment%20overview)
-
+- [El Reporte de Resumen H2O](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-summary.html?highlight=experiment%20overview)
 
 ## Next Steps
 ## Los Siguientes Pasos
