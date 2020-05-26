@@ -1322,11 +1322,16 @@ A **report** file is included in the **experiment** summary. This report provide
 
 Check out the next tutorial : [Machine Learning Interpretability](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#0) where you will learn how to:
 
-Explora los siguientes tutoriales : [Interpretalidad de ML](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#0) donde aprenderas:
+Explora los siguientes tutoriales : [Interpretabilidad de ML](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#0) donde aprenderas como:
 
 - Launch an experiment
+- Desplegar un experimento
+
 - Create ML interpretability report
+- Crear un reporte interpretario de ML
+
 - Explore explainability concepts such as:
+- Explorar conceptos de explainabilidad como:
     - Global Shapley
     - Partial Dependence plot
     - Decision tree surrogate
@@ -1334,5 +1339,3 @@ Explora los siguientes tutoriales : [Interpretalidad de ML](https://h2oai.github
     - Local Shapley
     - LOCO
     - Individual conditional Expectation
-
-- 
