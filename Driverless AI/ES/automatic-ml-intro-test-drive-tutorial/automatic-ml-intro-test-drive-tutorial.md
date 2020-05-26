@@ -3,8 +3,8 @@
 
 ## Contorno
 
-- [Objetivo](#objective)
-- [Requisitos Antes de Comenzar](#prerequisites)
+- [Objetivo](#Objetivo)
+- [Requisitos Antes de Comenzar](#Requisitos Antes de Comenzar)
 - [Tarea 1: Tour del Producto](#task-1-product-tour)
 - [Tarea 2: Conceptos de Machine Learning(Aprendizaje de maquina)](#task-2-automatic-machine-learning-concepts)
 - [Task 3: Load Data](#task-3-load-data)
