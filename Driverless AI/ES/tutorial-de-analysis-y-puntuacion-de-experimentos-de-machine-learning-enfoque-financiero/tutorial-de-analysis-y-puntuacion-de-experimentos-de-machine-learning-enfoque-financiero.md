@@ -17,140 +17,142 @@
 - [Next Steps](#next-steps)
 
 
-## Objective
+## Objetivo
 
-Many tools, such as ROC and Precision-Recall Curves, are available to evaluate how good or bad a classification model is predicting outcomes. In this tutorial, we will use a subset of the Freddie Mac Single-Family Loan-Level dataset to build a classification model and use it to predict if a loan will become delinquent. Through H2O’s Driverless AI Diagnostic tool, we will explore the financial impacts the false positive and false negative predictions have while exploring tools like ROC Curve, Prec-Recall, Gain and Lift Charts, K-S Chart. Finally, we will explore a few metrics such as AUC, F-Scores, GINI, MCC, and Log Loss to assist us in evaluating the performance of the generated model.
+Muchas herramientas, como ROC y curvas de recuperación de precisión, están disponibles para evaluar qué tan bueno o malo es un modelo de clasificación para predecir resultados. En este tutorial, usaremos un subconjunto del conjunto de datos de nivel de préstamo unifamiliar de Freddie Mac para construir un modelo de clasificación y lo usaremos para predecir si un préstamo quedará en mora. A través de la herramienta de diagnóstico de H2O’s Driverless AI , exploraremos los impactos financieros que tienen las predicciones de falsos positivos y falsos negativos mientras exploramos herramientas como ROC Curve, Prec-Recall, Gain and Lift Charts, K-S Chart. Finalmente, exploraremos algunas métricas como AUC, F-Scores, GINI, MCC y Log Loss para ayudarnos a evaluar el desempeño del modelo generado.
 
-**Note:** We recommend that you go over the entire tutorial first to review all the concepts, that way, once you start the experiment, you will be more familiar with the content.
+**Note:** Le recomendamos que primero revise todo el tutorial para revisar todos los conceptos, de esa manera, una vez que comience el experimento, estará más familiarizado con el contenido.
   
-## Prerequisites
-You will need the following to be able to do this tutorial:
+## Prerrequisitos
+Necesitará lo siguiente para poder hacer este tutorial:
 
-- Basic knowledge of Machine Learning and Statistics
-- A Driverless AI environment
-- Basic knowledge of Driverless AI or doing the [Automatic Machine Learning Introduction with Drivereless AI Test Drive](https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#0) 
+- Conocimientos básicos de aprendizaje automático y estadística.
+- Un entorno de Driverless AI
+- Conocimientos básicos de IA sin conductor o hacer el [Automatic Machine Learning Introduction with Drivereless AI Test Drive](https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#0) 
 
-- A **Two-Hour Test Drive session** : Test Drive is H2O.ai's Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.
+- Una **sesión de prueba de dos horas**: la prueba de manejo es Driverless AI de H2O.ai en la nube de AWS. No es necesario descargar software. Explore todas las características y beneficios de la plataforma de aprendizaje automático H2O.
 
-  - Need a **Two-Hour Test Drive** session?Follow the instructions on [this quick tutorial](https://h2oai.github.io/tutorials/getting-started-with-driverless-ai-test-drive/#1) to get a Test Drive session started. 
+  - ¿Necesita una **sesión de prueba de dos horas**? Siga las instrucciones en [este tutorial rápido](https://h2oai.github.io/tutorials/getting-started-with-driverless-ai-test-drive/#1) para iniciar una sesión de prueba de manejo.
 
-**Note:  Aquarium’s Driverless AI Test Drive lab has a license key built-in, so you don’t need to request one to use it. Each Driverless AI Test Drive instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore Driverless AI, you can always launch another Test Drive instance or reach out to our sales team via the [contact us form](https://www.h2o.ai/company/contact/).**
-## Task 1: Launch Experiment
+**Note:  El laboratorio Aquarium’s Driverless AI Test Drive tiene una clave de licencia incorporada, por lo que no necesita solicitar una para usarla. Cada Driverless AI Test Drive la instancia estará disponible para usted durante dos horas, después de lo cual terminará. No se guardará ningún trabajo. Si necesita más tiempo para explorar aún más Driverless AI, siempre puede iniciar otra instancia de Test Drive o comunicarse con nuestro equipo de ventas a través del [contáctenos formulario](https://www.h2o.ai/company/contact/).**
 
-### About the Dataset 
 
-This dataset contains information about “loan-level credit performance data on a portion of fully amortizing fixed-rate mortgages that Freddie Mac bought between 1999 to 2017. Features include demographic factors, monthly loan performance, credit performance including property disposition, voluntary prepayments, MI Recoveries, non-MI recoveries, expenses, current deferred UPB and due date of last paid installment.”[1]
+## Tarea 1: experimento de lanzamiento
 
-[1] Our dataset is a subset of the [Freddie Mac Single-Family Loan-Level Dataset. ](http://www.freddiemac.com/research/datasets/sf_loanlevel_dataset.html) It contains 500,000 rows and is about 80 MB.
+### Sobre el conjunto de datos
 
-The subset of the dataset this tutorial uses has a total of 27 features (columns) and 500,137 loans (rows).
+Este conjunto de datos contiene información sobre "datos de rendimiento crediticio a nivel de préstamo sobre una porción de hipotecas de tasa fija totalmente amortizadoras que Freddie Mac compró entre 1999 y 2017. Las características incluyen factores demográficos, rendimiento crediticio mensual, rendimiento crediticio incluyendo disposición de propiedades, pagos anticipados voluntarios, MI Recuperaciones, recuperaciones no MI, gastos, UPB diferido actual y fecha de vencimiento de la última cuota pagada."[1]
 
-### Download the Dataset
+[1] Nuestro conjunto de datos es un subconjunto de [Freddie Mac Single-Family Loan-Level Dataset. ](http://www.freddiemac.com/research/datasets/sf_loanlevel_dataset.html) Contiene 500,000 filas y tiene aproximadamente 80 MB.
 
-Download H2O’s subset of the Freddie Mac Single-Family Loan-Level dataset to your local drive and save it at as csv file.  
+El subconjunto del conjunto de datos que utiliza este tutorial tiene un total de 27 características (columnas) y 500,137 préstamos (filas).
+
+### Descargar el conjunto de datos
+
+Descargue el subconjunto H2O del conjunto de datos de nivel de préstamo unifamiliar Freddie Mac (Freddie Mac Single-Family Loan-Level dataset) en su unidad local y guárdelo como archivo csv.
 
 - [loan_level_500k.csv](https://s3.amazonaws.com/data.h2o.ai/DAI-Tutorials/loan_level_500k.csv)
 
-### Launch Experiment 
+### Lanzar experimento
 
-1\. Load the loan_level.csv to Driverless AI by clicking **Add Dataset (or Drag and Drop)** on the **Datasets overview** page. Click on **Upload File**, then select **loan_level.csv** file. Once the file is uploaded, select **Details**.
+1\. Carga el loan_level.csv a Driverless AI haciendo clic en **Add Dataset (agregar conjunto de datos) (or Drag and Drop (o arrastrar y soltar))** sobre el **Datasets overview (Resumen de conjuntos de datos)** página. Haga clic en **Upload File (Subir archivo)**, luego seleccione **loan_level.csv** archivo. Una vez que se carga el archivo, seleccione **Details (Detalles)**.
 
 ![loan-level-details-selection](assets/loan-level-details-selection.jpg)
 
-**Note:** You will see four more datasets, but you can ignore them, as we will be working with the `loan_level_500k.csv` file. 
+**Note:** Verá cuatro conjuntos de datos más, pero puede ignorarlos, ya que trabajaremos con el`loan_level_500k.csv` archivo. 
 
-2\. Let’s take a quick look at the columns:
+2\. Echemos un vistazo rápido a las columnas:
 
 ![loan-level-details-page](assets/loan-level-details-page.jpg)
-*Things to Note:*
-- C1 - CREDIT_SCORE
-- C2 - FIRST_PAYMENT_DATE
-- C3 - FIRST_TIME_HOMEBUYER_FLAG
-- C4 - MATURITY_DATE
-- C5 - METROPOLITAN_STATISTICAL_AREA
-- C6 - MORTGAGE_INSURANCE_PERCENTAGE
-- C7 - NUMBER_OF_UNITS
+*Cosas a tener en cuenta:*
+- C1 - CREDIT_SCORE (PUNTUACIÓN DE CRÉDITO)
+- C2 - FIRST_PAYMENT_DATE (PRIMERA FECHA DE PAGO)
+- C3 - FIRST_TIME_HOMEBUYER_FLAG (BANDERA DE COMPRADOR DE CASA POR PRIMERA VEZ)
+- C4 - MATURITY_DATE (FECHA DE VENCIMIENTO)
+- C5 - METROPOLITAN_STATISTICAL_AREA (ÁREA ESTADÍSTICA METROPOLITANA)
+- C6 - MORTGAGE_INSURANCE_PERCENTAGE (PORCENTAJE DE SEGURO HIPOTECARIO)
+- C7 - NUMBER_OF_UNITS (NÚMERO DE UNIDADES)
 
-3\. Continue scrolling through the current page to see more columns (image is not included)
-- C8 - OCCUPANCY_STATUS
-- C9 - ORIGINAL_COMBINED_LOAN_TO_VALUE
-- C10 - ORIGINAL_DEBT_TO_INCOME_RATIO
-- C11 - ORIGINAL_UPB
-- C12 - ORIGINAL_LOAN_TO_VALUE
-- C13 - ORIGINAL_INTEREST_RATE
-- C14 - CHANNEL
-- C15 - PREPAYMENT_PENALTY_MORTGAGE_FLAG 
-- C16 -PRODUCT_TYPE
-- C17- PROPERTY_STATE
-- C18 - PROPERTY_TYPE
-- C19 - POSTAL_CODE
-- C20 - LOAN_SEQUENCE_NUMBER
-- C21 - LOAN_PURPOSE**
-- C22 - ORIGINAL_LOAN_TERM
-- C23 - NUMBER_OF_BORROWERS
-- C24 - SELLER_NAME
-- C25 - SERVICER_NAME
-- C26 - PREPAID Drop 
-- C27 - DELINQUENT- This column is the label we are interested in predicting where False -> not defaulted and True->defaulted
+3\. Continúe desplazándose por la página actual para ver más columnas (la imagen no está incluida)
+- C8 - OCCUPANCY_STATUS (ESTADO DE OCUPACIÓN)
+- C9 - ORIGINAL_COMBINED_LOAN_TO_VALUE (PRÉSTAMO COMBINADO ORIGINAL AL VALOR)
+- C10 - ORIGINAL_DEBT_TO_INCOME_RATIO (DEUDA ORIGINAL A LA RELACIÓN DE INGRESOS)
+- C11 - ORIGINAL_UPB (ORIGINAL_UPB)
+- C12 - ORIGINAL_LOAN_TO_VALUE (PRÉSTAMO ORIGINAL AL VALOR)
+- C13 - ORIGINAL_INTEREST_RATE (TASA DE INTERÉS ORIGINAL)
+- C14 - CHANNEL (CANAL)
+- C15 - PREPAYMENT_PENALTY_MORTGAGE_FLAG (PAGO DE PREPAGO BANDERA HIPOTECARIA)
+- C16 - PRODUCT_TYPE (TIPO DE PRODUCTO)
+- C17- PROPERTY_STATE (Estado de la propiedad)
+- C18 - PROPERTY_TYPE (TIPO DE PROPIEDAD)
+- C19 - POSTAL_CODE (CÓDIGO POSTAL)
+- C20 - LOAN_SEQUENCE_NUMBER (NÚMERO DE SECUENCIA DE PRÉSTAMO)
+- C21 - LOAN_PURPOSE** (PROPÓSITO DEL PRESTAMO)
+- C22 - ORIGINAL_LOAN_TERM (PLAZO DE PRÉSTAMO ORIGINAL)
+- C23 - NUMBER_OF_BORROWERS (NÚMERO DE PRESTATARIOS)
+- C24 - SELLER_NAME (NOMBRE DEL VENDEDOR)
+- C25 - SERVICER_NAME (NOMBRE DEL SERVIDOR)
+- C26 - PREPAID Drop (PREPAGO Drop) 
+- C27 - DELINQUENT (DELINCUENTE)- Esta columna es la etiqueta que nos interesa predecir dónde Falso -> no predeterminado y Verdadero -> predeterminado
 
 
-4\. Return to the **Datasets** overview page
+4\. Regrese a la página de resumen **Datasets**
 
-5\. Click on the **loan_level_500k.csv** file then split 
+5\. Haga clic en el **loan_level_500k.csv** archivo luego dividir (split)
 
 ![loan-level-split-1](assets/loan-level-split-1.jpg)
 
-6\.  Split the data into two sets: **freddie_mac_500_train** and **freddie_mac_500_test**. Use the image below as a guide:
+6\.  Divide los datos en dos conjuntos:**freddie_mac_500_train** y **freddie_mac_500_test**. Use la imagen a continuación como guía:
 
 ![loan-level-split-2](assets/loan-level-split-2.jpg)
-*Things to Note:*
+*Cosas a tener en cuenta:*
 
-1. Type ```freddie_mac_500_train``` for OUTPUT NAME 1, this will serve as the training set
-2. Type ```freddie_mac_500_test``` for OUTPUT NAME 2, this will serve as the test set
-3. For Target Column select **Delinquent**
-4. You can set the Random Seed to any number you'd like, we chose 42, by choosing a random seed we will obtain a consistent split
-5. Change the split value to .75 by adjusting the slider to 75% or entering .75 in the section that says Train/Valid Split Ratio
-6. Save
+1. Tipo ```freddie_mac_500_train``` para OUTPUT NAME 1, esto servirá como conjunto de entrenamiento
+2. Tipo ```freddie_mac_500_test``` para OUTPUT NAME 2, esto servirá como conjunto de prueba
+3. Para la columna de destino, seleccione **Delinquent (Delincuente)**
+4. Puede establecer la semilla (Seed) aleatoria en cualquier número que desee, elegimos 42, al elegir una semilla (Seed) aleatoria obtendremos una división consistente
+5. Cambie el valor de división a .75 ajustando el control deslizante a 75% o ingresando .75 en la sección que diceTrain/Valid Split Ratio (Tren / Relación de división válida)
+6. Salvar
 
 
-The training set contains 375k rows, each row representing a loan, and 27 columns representing the attributes of each loan including the column that has the label we are trying to predict. 
+El conjunto de capacitación contiene 375k filas, cada fila representa un préstamo y 27 columnas que representan los atributos de cada préstamo, incluida la columna que tiene la etiqueta que estamos tratando de predecir.
 
- **Note:** the actual data in training and test split vary by user, as the data is split randomly. The Test set contains 125k rows, each row representing a loan, and 27 attribute columns representing attributes of each loan.
+ **Nota:** Los datos reales en la división de entrenamiento y prueba varían según el usuario, ya que los datos se dividen aleatoriamente. El conjunto de prueba contiene 125k filas, cada fila representa un préstamo y 27 columnas de atributos que representan los atributos de cada préstamo.
 
-7\. Verify that there are three datasets, **freddie_mac_500_test**, **freddie_mac_500_train** and **loan_level_500k.csv**:
+7\. Verifique que hay tres conjuntos de datos, **freddie_mac_500_test**, **freddie_mac_500_train** y **loan_level_500k.csv**:
 
 ![loan-level-three-datasets](assets/loan-level-three-datasets.jpg)
 
-8\. Click on the **freddie_mac_500_train** file then select **Predict**.
+8\. Haga clic en el **freddie_mac_500_train** luego seleccione **Predict (Predecir)**.
 
-9\. Select **Not Now** on the **First time Driverless AI, Click Yes to get a tour!**. A similar image should appear:
+9\. Seleccione **Not Now (Ahora no)** sobre el **First time Driverless AI, Haga clic en Sí para obtener un recorrido!**. Debería aparecer una imagen similar:
 
 ![loan-level-predict](assets/loan-level-predict.jpg)
 
-Name your experiment `Freddie Mac Classification Tutorial`
+Nombra tu experimento `Freddie Mac Classification Tutorial`
 
-10\. Select **Dropped Cols**, drop the following 2 columns: 
+10\. Seleccione **Dropped Cols**, suelte las siguientes 2 columnas: 
 
 - Prepayment_Penalty_Mortgage_Flag 
 - PREPAID
-- Select **Done**
+- Seleccione **Done (Hecho)**
 
-These two columns are dropped because they are both clear indicators that the loans will become delinquent and will cause data leakage. 
+Estas dos columnas se descartan porque ambas son indicadores claros de que los préstamos se volverán morosos y causarán fugas de datos.
 
 ![train-set-drop-columns](assets/train-set-drop-columns.jpg)
 
- 11\. Select **Target Column**, then select **Delinquent**
+ 11\. Seleccione **Target Column (Columna de destino)**, luego seleccione **Delinquent**
 ![train-set-select-delinquent](assets/train-set-select-delinquent.jpg)
 
-12\. Select **Test Dataset**, then **freddie_mac_500_test**
+12\. Seleccione **Test Dataset (Conjunto de datos de prueba)**, luego **freddie_mac_500_test**
 
 ![add-test-set](assets/add-test-set.jpg)
 
-13\. A similar Experiment page should appear:   
+13\. Debería aparecer una página de Experimento similar:   
 
 ![experiment-settings-1](assets/experiment-settings-1.jpg)    
 
-On task 2, we will explore and update the **Experiment Settings**.
+En la tarea 2, exploraremos y actualizaremos el **Experiment Settings (Configuraciones de experimento)**.
 
 ## Task 2: Explore Experiment Settings and Expert Settings
 
