@@ -17,43 +17,45 @@
 - [Next Steps](#next-steps)
 
 
-## Objective
+## Objetivo
 
-Many tools, such as ROC and Precision-Recall Curves, are available to evaluate how good or bad a classification model is predicting outcomes. In this tutorial, we will use a subset of the Freddie Mac Single-Family Loan-Level dataset to build a classification model and use it to predict if a loan will become delinquent. Through H2O’s Driverless AI Diagnostic tool, we will explore the financial impacts the false positive and false negative predictions have while exploring tools like ROC Curve, Prec-Recall, Gain and Lift Charts, K-S Chart. Finally, we will explore a few metrics such as AUC, F-Scores, GINI, MCC, and Log Loss to assist us in evaluating the performance of the generated model.
+Muchas herramientas, como ROC y curvas de recuperación de precisión, están disponibles para evaluar qué tan bueno o malo es un modelo de clasificación para predecir resultados. En este tutorial, usaremos un subconjunto del conjunto de datos de nivel de préstamo unifamiliar de Freddie Mac para construir un modelo de clasificación y lo usaremos para predecir si un préstamo quedará en mora. A través de la herramienta de diagnóstico de H2O’s Driverless AI , exploraremos los impactos financieros que tienen las predicciones de falsos positivos y falsos negativos mientras exploramos herramientas como ROC Curve, Prec-Recall, Gain and Lift Charts, K-S Chart. Finalmente, exploraremos algunas métricas como AUC, F-Scores, GINI, MCC y Log Loss para ayudarnos a evaluar el desempeño del modelo generado.
 
-**Note:** We recommend that you go over the entire tutorial first to review all the concepts, that way, once you start the experiment, you will be more familiar with the content.
+**Note:** Le recomendamos que primero revise todo el tutorial para revisar todos los conceptos, de esa manera, una vez que comience el experimento, estará más familiarizado con el contenido.
   
-## Prerequisites
-You will need the following to be able to do this tutorial:
+## Prerrequisitos
+Necesitará lo siguiente para poder hacer este tutorial:
 
-- Basic knowledge of Machine Learning and Statistics
-- A Driverless AI environment
-- Basic knowledge of Driverless AI or doing the [Automatic Machine Learning Introduction with Drivereless AI Test Drive](https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#0) 
+- Conocimientos básicos de aprendizaje automático y estadística.
+- Un entorno de Driverless AI
+- Conocimientos básicos de IA sin conductor o hacer el [Automatic Machine Learning Introduction with Drivereless AI Test Drive](https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#0) 
 
-- A **Two-Hour Test Drive session** : Test Drive is H2O.ai's Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.
+- Una **sesión de prueba de dos horas**: la prueba de manejo es Driverless AI de H2O.ai en la nube de AWS. No es necesario descargar software. Explore todas las características y beneficios de la plataforma de aprendizaje automático H2O.
 
-  - Need a **Two-Hour Test Drive** session?Follow the instructions on [this quick tutorial](https://h2oai.github.io/tutorials/getting-started-with-driverless-ai-test-drive/#1) to get a Test Drive session started. 
+  - ¿Necesita una **sesión de prueba de dos horas**? Siga las instrucciones en [este tutorial rápido](https://h2oai.github.io/tutorials/getting-started-with-driverless-ai-test-drive/#1) para iniciar una sesión de prueba de manejo.
 
-**Note:  Aquarium’s Driverless AI Test Drive lab has a license key built-in, so you don’t need to request one to use it. Each Driverless AI Test Drive instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore Driverless AI, you can always launch another Test Drive instance or reach out to our sales team via the [contact us form](https://www.h2o.ai/company/contact/).**
-## Task 1: Launch Experiment
+**Note:  El laboratorio Aquarium’s Driverless AI Test Drive tiene una clave de licencia incorporada, por lo que no necesita solicitar una para usarla. Cada Driverless AI Test Drive la instancia estará disponible para usted durante dos horas, después de lo cual terminará. No se guardará ningún trabajo. Si necesita más tiempo para explorar aún más Driverless AI, siempre puede iniciar otra instancia de Test Drive o comunicarse con nuestro equipo de ventas a través del [contáctenos formulario](https://www.h2o.ai/company/contact/).**
 
-### About the Dataset 
 
-This dataset contains information about “loan-level credit performance data on a portion of fully amortizing fixed-rate mortgages that Freddie Mac bought between 1999 to 2017. Features include demographic factors, monthly loan performance, credit performance including property disposition, voluntary prepayments, MI Recoveries, non-MI recoveries, expenses, current deferred UPB and due date of last paid installment.”[1]
+## Tarea 1: experimento de lanzamiento
 
-[1] Our dataset is a subset of the [Freddie Mac Single-Family Loan-Level Dataset. ](http://www.freddiemac.com/research/datasets/sf_loanlevel_dataset.html) It contains 500,000 rows and is about 80 MB.
+### Sobre el conjunto de datos
 
-The subset of the dataset this tutorial uses has a total of 27 features (columns) and 500,137 loans (rows).
+Este conjunto de datos contiene información sobre "datos de rendimiento crediticio a nivel de préstamo sobre una porción de hipotecas de tasa fija totalmente amortizadoras que Freddie Mac compró entre 1999 y 2017. Las características incluyen factores demográficos, rendimiento crediticio mensual, rendimiento crediticio incluyendo disposición de propiedades, pagos anticipados voluntarios, MI Recuperaciones, recuperaciones no MI, gastos, UPB diferido actual y fecha de vencimiento de la última cuota pagada."[1]
 
-### Download the Dataset
+[1] Nuestro conjunto de datos es un subconjunto de [Freddie Mac Single-Family Loan-Level Dataset. ](http://www.freddiemac.com/research/datasets/sf_loanlevel_dataset.html) Contiene 500,000 filas y tiene aproximadamente 80 MB.
 
-Download H2O’s subset of the Freddie Mac Single-Family Loan-Level dataset to your local drive and save it at as csv file.  
+El subconjunto del conjunto de datos que utiliza este tutorial tiene un total de 27 características (columnas) y 500,137 préstamos (filas).
+
+### Descargar el conjunto de datos
+
+Descargue el subconjunto H2O del conjunto de datos de nivel de préstamo unifamiliar Freddie Mac (Freddie Mac Single-Family Loan-Level dataset) en su unidad local y guárdelo como archivo csv.
 
 - [loan_level_500k.csv](https://s3.amazonaws.com/data.h2o.ai/DAI-Tutorials/loan_level_500k.csv)
 
-### Launch Experiment 
+### Lanzar experimento
 
-1\. Load the loan_level.csv to Driverless AI by clicking **Add Dataset (or Drag and Drop)** on the **Datasets overview** page. Click on **Upload File**, then select **loan_level.csv** file. Once the file is uploaded, select **Details**.
+1\. Carga el loan_level.csv a Driverless AI haciendo clic en **Add Dataset (agregar conjunto de datos) (or Drag and Drop (o arrastrar y soltar))** sobre el **Datasets overview (Resumen de conjuntos de datos)** página. Haga clic en **Upload File (Subir archivo)**, luego seleccione **loan_level.csv** archivo. Una vez que se carga el archivo, seleccione **Details (Detalles)**.
 
 ![loan-level-details-selection](assets/loan-level-details-selection.jpg)
 
