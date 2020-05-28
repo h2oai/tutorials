@@ -59,100 +59,100 @@ Descargue el subconjunto H2O del conjunto de datos de nivel de préstamo unifami
 
 ![loan-level-details-selection](assets/loan-level-details-selection.jpg)
 
-**Note:** You will see four more datasets, but you can ignore them, as we will be working with the `loan_level_500k.csv` file. 
+**Note:** Verá cuatro conjuntos de datos más, pero puede ignorarlos, ya que trabajaremos con el`loan_level_500k.csv` archivo. 
 
-2\. Let’s take a quick look at the columns:
+2\. Echemos un vistazo rápido a las columnas:
 
 ![loan-level-details-page](assets/loan-level-details-page.jpg)
-*Things to Note:*
-- C1 - CREDIT_SCORE
-- C2 - FIRST_PAYMENT_DATE
-- C3 - FIRST_TIME_HOMEBUYER_FLAG
-- C4 - MATURITY_DATE
-- C5 - METROPOLITAN_STATISTICAL_AREA
-- C6 - MORTGAGE_INSURANCE_PERCENTAGE
-- C7 - NUMBER_OF_UNITS
+*Cosas a tener en cuenta:*
+- C1 - CREDIT_SCORE (PUNTUACIÓN DE CRÉDITO)
+- C2 - FIRST_PAYMENT_DATE (PRIMERA FECHA DE PAGO)
+- C3 - FIRST_TIME_HOMEBUYER_FLAG (BANDERA DE COMPRADOR DE CASA POR PRIMERA VEZ)
+- C4 - MATURITY_DATE (FECHA DE VENCIMIENTO)
+- C5 - METROPOLITAN_STATISTICAL_AREA (ÁREA ESTADÍSTICA METROPOLITANA)
+- C6 - MORTGAGE_INSURANCE_PERCENTAGE (PORCENTAJE DE SEGURO HIPOTECARIO)
+- C7 - NUMBER_OF_UNITS (NÚMERO DE UNIDADES)
 
-3\. Continue scrolling through the current page to see more columns (image is not included)
-- C8 - OCCUPANCY_STATUS
-- C9 - ORIGINAL_COMBINED_LOAN_TO_VALUE
-- C10 - ORIGINAL_DEBT_TO_INCOME_RATIO
-- C11 - ORIGINAL_UPB
-- C12 - ORIGINAL_LOAN_TO_VALUE
-- C13 - ORIGINAL_INTEREST_RATE
-- C14 - CHANNEL
-- C15 - PREPAYMENT_PENALTY_MORTGAGE_FLAG 
-- C16 -PRODUCT_TYPE
-- C17- PROPERTY_STATE
-- C18 - PROPERTY_TYPE
-- C19 - POSTAL_CODE
-- C20 - LOAN_SEQUENCE_NUMBER
-- C21 - LOAN_PURPOSE**
-- C22 - ORIGINAL_LOAN_TERM
-- C23 - NUMBER_OF_BORROWERS
-- C24 - SELLER_NAME
-- C25 - SERVICER_NAME
-- C26 - PREPAID Drop 
-- C27 - DELINQUENT- This column is the label we are interested in predicting where False -> not defaulted and True->defaulted
+3\. Continúe desplazándose por la página actual para ver más columnas (la imagen no está incluida)
+- C8 - OCCUPANCY_STATUS (ESTADO DE OCUPACIÓN)
+- C9 - ORIGINAL_COMBINED_LOAN_TO_VALUE (PRÉSTAMO COMBINADO ORIGINAL AL VALOR)
+- C10 - ORIGINAL_DEBT_TO_INCOME_RATIO (DEUDA ORIGINAL A LA RELACIÓN DE INGRESOS)
+- C11 - ORIGINAL_UPB (ORIGINAL_UPB)
+- C12 - ORIGINAL_LOAN_TO_VALUE (PRÉSTAMO ORIGINAL AL VALOR)
+- C13 - ORIGINAL_INTEREST_RATE (TASA DE INTERÉS ORIGINAL)
+- C14 - CHANNEL (CANAL)
+- C15 - PREPAYMENT_PENALTY_MORTGAGE_FLAG (PAGO DE PREPAGO BANDERA HIPOTECARIA)
+- C16 - PRODUCT_TYPE (TIPO DE PRODUCTO)
+- C17- PROPERTY_STATE (Estado de la propiedad)
+- C18 - PROPERTY_TYPE (TIPO DE PROPIEDAD)
+- C19 - POSTAL_CODE (CÓDIGO POSTAL)
+- C20 - LOAN_SEQUENCE_NUMBER (NÚMERO DE SECUENCIA DE PRÉSTAMO)
+- C21 - LOAN_PURPOSE** (PROPÓSITO DEL PRESTAMO)
+- C22 - ORIGINAL_LOAN_TERM (PLAZO DE PRÉSTAMO ORIGINAL)
+- C23 - NUMBER_OF_BORROWERS (NÚMERO DE PRESTATARIOS)
+- C24 - SELLER_NAME (NOMBRE DEL VENDEDOR)
+- C25 - SERVICER_NAME (NOMBRE DEL SERVIDOR)
+- C26 - PREPAID Drop (PREPAGO Drop) 
+- C27 - DELINQUENT (DELINCUENTE)- Esta columna es la etiqueta que nos interesa predecir dónde Falso -> no predeterminado y Verdadero -> predeterminado
 
 
-4\. Return to the **Datasets** overview page
+4\. Regrese a la página de resumen **Datasets**
 
-5\. Click on the **loan_level_500k.csv** file then split 
+5\. Haga clic en el **loan_level_500k.csv** archivo luego dividir (split)
 
 ![loan-level-split-1](assets/loan-level-split-1.jpg)
 
-6\.  Split the data into two sets: **freddie_mac_500_train** and **freddie_mac_500_test**. Use the image below as a guide:
+6\.  Divide los datos en dos conjuntos:**freddie_mac_500_train** y **freddie_mac_500_test**. Use la imagen a continuación como guía:
 
 ![loan-level-split-2](assets/loan-level-split-2.jpg)
-*Things to Note:*
+*Cosas a tener en cuenta:*
 
-1. Type ```freddie_mac_500_train``` for OUTPUT NAME 1, this will serve as the training set
-2. Type ```freddie_mac_500_test``` for OUTPUT NAME 2, this will serve as the test set
-3. For Target Column select **Delinquent**
-4. You can set the Random Seed to any number you'd like, we chose 42, by choosing a random seed we will obtain a consistent split
-5. Change the split value to .75 by adjusting the slider to 75% or entering .75 in the section that says Train/Valid Split Ratio
-6. Save
+1. Tipo ```freddie_mac_500_train``` para OUTPUT NAME 1, esto servirá como conjunto de entrenamiento
+2. Tipo ```freddie_mac_500_test``` para OUTPUT NAME 2, esto servirá como conjunto de prueba
+3. Para la columna de destino, seleccione **Delinquent (Delincuente)**
+4. Puede establecer la semilla (Seed) aleatoria en cualquier número que desee, elegimos 42, al elegir una semilla (Seed) aleatoria obtendremos una división consistente
+5. Cambie el valor de división a .75 ajustando el control deslizante a 75% o ingresando .75 en la sección que diceTrain/Valid Split Ratio (Tren / Relación de división válida)
+6. Salvar
 
 
-The training set contains 375k rows, each row representing a loan, and 27 columns representing the attributes of each loan including the column that has the label we are trying to predict. 
+El conjunto de capacitación contiene 375k filas, cada fila representa un préstamo y 27 columnas que representan los atributos de cada préstamo, incluida la columna que tiene la etiqueta que estamos tratando de predecir.
 
- **Note:** the actual data in training and test split vary by user, as the data is split randomly. The Test set contains 125k rows, each row representing a loan, and 27 attribute columns representing attributes of each loan.
+ **Nota:** Los datos reales en la división de entrenamiento y prueba varían según el usuario, ya que los datos se dividen aleatoriamente. El conjunto de prueba contiene 125k filas, cada fila representa un préstamo y 27 columnas de atributos que representan los atributos de cada préstamo.
 
-7\. Verify that there are three datasets, **freddie_mac_500_test**, **freddie_mac_500_train** and **loan_level_500k.csv**:
+7\. Verifique que hay tres conjuntos de datos, **freddie_mac_500_test**, **freddie_mac_500_train** y **loan_level_500k.csv**:
 
 ![loan-level-three-datasets](assets/loan-level-three-datasets.jpg)
 
-8\. Click on the **freddie_mac_500_train** file then select **Predict**.
+8\. Haga clic en el **freddie_mac_500_train** luego seleccione **Predict (Predecir)**.
 
-9\. Select **Not Now** on the **First time Driverless AI, Click Yes to get a tour!**. A similar image should appear:
+9\. Seleccione **Not Now (Ahora no)** sobre el **First time Driverless AI, Haga clic en Sí para obtener un recorrido!**. Debería aparecer una imagen similar:
 
 ![loan-level-predict](assets/loan-level-predict.jpg)
 
-Name your experiment `Freddie Mac Classification Tutorial`
+Nombra tu experimento `Freddie Mac Classification Tutorial`
 
-10\. Select **Dropped Cols**, drop the following 2 columns: 
+10\. Seleccione **Dropped Cols**, suelte las siguientes 2 columnas: 
 
 - Prepayment_Penalty_Mortgage_Flag 
 - PREPAID
-- Select **Done**
+- Seleccione **Done (Hecho)**
 
-These two columns are dropped because they are both clear indicators that the loans will become delinquent and will cause data leakage. 
+Estas dos columnas se descartan porque ambas son indicadores claros de que los préstamos se volverán morosos y causarán fugas de datos.
 
 ![train-set-drop-columns](assets/train-set-drop-columns.jpg)
 
- 11\. Select **Target Column**, then select **Delinquent**
+ 11\. Seleccione **Target Column (Columna de destino)**, luego seleccione **Delinquent**
 ![train-set-select-delinquent](assets/train-set-select-delinquent.jpg)
 
-12\. Select **Test Dataset**, then **freddie_mac_500_test**
+12\. Seleccione **Test Dataset (Conjunto de datos de prueba)**, luego **freddie_mac_500_test**
 
 ![add-test-set](assets/add-test-set.jpg)
 
-13\. A similar Experiment page should appear:   
+13\. Debería aparecer una página de Experimento similar:   
 
 ![experiment-settings-1](assets/experiment-settings-1.jpg)    
 
-On task 2, we will explore and update the **Experiment Settings**.
+En la tarea 2, exploraremos y actualizaremos el **Experiment Settings (Configuraciones de experimento)**.
 
 ## Task 2: Explore Experiment Settings and Expert Settings
 
