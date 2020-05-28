@@ -99,19 +99,17 @@ Custom recipes are Python code snippets that can be uploaded into Driverless AI 
 
 ### Python API 
 
-Driverless AI custom recipes allow for full customization of the entire ML pipeline through the scikit learn Python API. The Python API allows for custom feature engineering, custom loss functions, and custom ML Algorithms. These API is based off on how scikit learn works.
+Driverless AI custom recipes allow for full customization of the entire ML pipeline through the scikit learn Python API. The Python API allows for custom feature engineering, custom loss functions, and custom ML Algorithms. This API is based off on how scikit learn works.
 
 When building our custom recipes:
 
 For custom feature engineering or a transformer, you will have two main parts:
 
-**Fit_transform** - takes the X and Y data and changes the X variables(pulls out the year from a date, does arithmetic in multiple columns, target encoding). It can also add new data such as the zip code with the zip code package and bring in population or cities.
-Custom statistical Transformation
-Embeddings for numbers, categories, text, date/time, time-series, image audio, zip, latitude/longitude, ICD
+**Fit_transform** - takes the X and Y data and changes the X variables(pulls out the year from a date, does arithmetic in multiple columns, target encoding). It can also add new data such as the zip code with the zip code package and bring in population or cities. Custom statistical Transformation Embeddings for numbers, categories, text, date/time, time-series, image audio, zip, latitude/longitude, ICD.
 
 **Transform** - the transform gets called when you run the model and get predictions. The transform will be inside the scoring pipeline. When used in production, the transform will be present and be used in the validation and test sets. The transform does not have access to Y, and it alters the data based on what happened on the fit_transform.
 
-For custom optimization functions or scorers, you can bring ing loss or gain functions. We can look further into precision and recall of a model through variations of the F metric. Driverless AI comes with F1, F2, and F0.5 scorers, where F1 is the harmonic mean of precision and recall, and the F2 score gives more weight to recall than precision. If you wanted to give precision higher weight, you could incorporate and F4 or F6 function as recipes for scorers.   
+For custom optimization functions or scorers, you can bringing loss or gain functions. We can look further into precision and recall of a model through variations of the F metric. Driverless AI comes with F1, F2, and F0.5 scorers, where F1 is the harmonic mean of precision and recall, and the F2 score gives more weight to recall than precision. If you wanted to give precision higher weight, you could incorporate and F4 or F6 function as recipes for scorers.   
 
 Other things that can be done using scorers:
 - f(id, actual, predicted, weight)
@@ -138,7 +136,7 @@ Recipes are meant to be built by people you trust, and each recipe should be cod
 - [Safety](https://github.com/h2oai/driverlessai-recipes?source=post_page---------------------------#safety) 
 - [Performance](https://github.com/h2oai/driverlessai-recipes?source=post_page---------------------------#performance)
 
-**The Writing Recipes Proces**
+**The Writing Recipes Process**
 
 1\. First, write and test your idea on sample data before wrapping as a recipe.
 
@@ -848,7 +846,7 @@ If you have questions on how to upload the transformer recipe to Driverless AI, 
 
 When uploading a new recipe to Driverless AI, there are multiple things that can happen:
 
-- The recipe did not make the cut (recipe did was not loaded into Driverless AI )
+- The recipe did not make the cut (recipe was not loaded into Driverless AI )
 - The recipe made the cut but Driverless did not end up using it for the experiment
 
 ###  Recipe did not Make the Cut 
