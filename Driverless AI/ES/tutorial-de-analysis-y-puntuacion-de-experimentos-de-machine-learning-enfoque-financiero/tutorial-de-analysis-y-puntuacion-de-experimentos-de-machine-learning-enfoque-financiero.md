@@ -17,10 +17,11 @@
 - [Next Steps](#next-steps)
 
 
-## Objective
+## Objetivo
 
-Many tools, such as ROC and Precision-Recall Curves, are available to evaluate how good or bad a classification model is predicting outcomes. In this tutorial, we will use a subset of the Freddie Mac Single-Family Loan-Level dataset to build a classification model and use it to predict if a loan will become delinquent. Through H2O’s Driverless AI Diagnostic tool, we will explore the financial impacts the false positive and false negative predictions have while exploring tools like ROC Curve, Prec-Recall, Gain and Lift Charts, K-S Chart. Finally, we will explore a few metrics such as AUC, F-Scores, GINI, MCC, and Log Loss to assist us in evaluating the performance of the generated model.
+Muchas herramientas, como ROC y curvas de recuperación de precisión, están disponibles para evaluar qué tan bueno o malo es un modelo de clasificación para predecir resultados. En este tutorial, usaremos un subconjunto del conjunto de datos de nivel de préstamo unifamiliar de Freddie Mac para construir un modelo de clasificación y lo usaremos para predecir si un préstamo quedará en mora. A través de la herramienta de diagnóstico de H2O’s Driverless AI , exploraremos los impactos financieros que tienen las predicciones de falsos positivos y falsos negativos mientras exploramos herramientas como ROC Curve, Prec-Recall, Gain and Lift Charts, K-S Chart. Finalmente, exploraremos algunas métricas como AUC, F-Scores, GINI, MCC y Log Loss para ayudarnos a evaluar el desempeño del modelo generado.
 
+<<<<<<< HEAD
 **Note:** We recommend that you go over the entire tutorial first to review all the concepts, that way, once you start the experiment, you will be more familiar with the content.
 
 ## Prerequisites
@@ -29,39 +30,68 @@ You will need the following to be able to do this tutorial:
 - Basic knowledge of Machine Learning and Statistics
 - A Driverless AI environment
 - Basic knowledge of Driverless AI or doing the [Automatic Machine Learning Introduction with Drivereless AI Test Drive](https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#0)
+=======
+**Note:** Le recomendamos que primero revise todo el tutorial para revisar todos los conceptos, de esa manera, una vez que comience el experimento, estará más familiarizado con el contenido.
+  
+## Prerrequisitos
+Necesitará lo siguiente para poder hacer este tutorial:
 
-- A **Two-Hour Test Drive session** : Test Drive is H2O.ai's Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.
+- Conocimientos básicos de aprendizaje automático y estadística.
+- Un entorno de Driverless AI
+- Conocimientos básicos de IA sin conductor o hacer el [Automatic Machine Learning Introduction with Drivereless AI Test Drive](https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#0) 
+>>>>>>> master
 
+- Una **sesión de prueba de dos horas**: la prueba de manejo es Driverless AI de H2O.ai en la nube de AWS. No es necesario descargar software. Explore todas las características y beneficios de la plataforma de aprendizaje automático H2O.
+
+<<<<<<< HEAD
   - Need a **Two-Hour Test Drive** session?Follow the instructions on [this quick tutorial](https://h2oai.github.io/tutorials/getting-started-with-driverless-ai-test-drive/#1) to get a Test Drive session started.
+=======
+  - ¿Necesita una **sesión de prueba de dos horas**? Siga las instrucciones en [este tutorial rápido](https://h2oai.github.io/tutorials/getting-started-with-driverless-ai-test-drive/#1) para iniciar una sesión de prueba de manejo.
+>>>>>>> master
 
-**Note:  Aquarium’s Driverless AI Test Drive lab has a license key built-in, so you don’t need to request one to use it. Each Driverless AI Test Drive instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore Driverless AI, you can always launch another Test Drive instance or reach out to our sales team via the [contact us form](https://www.h2o.ai/company/contact/).**
-## Task 1: Launch Experiment
+**Note:  El laboratorio Aquarium’s Driverless AI Test Drive tiene una clave de licencia incorporada, por lo que no necesita solicitar una para usarla. Cada Driverless AI Test Drive la instancia estará disponible para usted durante dos horas, después de lo cual terminará. No se guardará ningún trabajo. Si necesita más tiempo para explorar aún más Driverless AI, siempre puede iniciar otra instancia de Test Drive o comunicarse con nuestro equipo de ventas a través del [contáctenos formulario](https://www.h2o.ai/company/contact/).**
 
+<<<<<<< HEAD
 ### About the Dataset
+=======
+>>>>>>> master
 
-This dataset contains information about “loan-level credit performance data on a portion of fully amortizing fixed-rate mortgages that Freddie Mac bought between 1999 to 2017. Features include demographic factors, monthly loan performance, credit performance including property disposition, voluntary prepayments, MI Recoveries, non-MI recoveries, expenses, current deferred UPB and due date of last paid installment.”[1]
+## Tarea 1: experimento de lanzamiento
 
-[1] Our dataset is a subset of the [Freddie Mac Single-Family Loan-Level Dataset. ](http://www.freddiemac.com/research/datasets/sf_loanlevel_dataset.html) It contains 500,000 rows and is about 80 MB.
+### Sobre el conjunto de datos
 
-The subset of the dataset this tutorial uses has a total of 27 features (columns) and 500,137 loans (rows).
+Este conjunto de datos contiene información sobre "datos de rendimiento crediticio a nivel de préstamo sobre una porción de hipotecas de tasa fija totalmente amortizadoras que Freddie Mac compró entre 1999 y 2017. Las características incluyen factores demográficos, rendimiento crediticio mensual, rendimiento crediticio incluyendo disposición de propiedades, pagos anticipados voluntarios, MI Recuperaciones, recuperaciones no MI, gastos, UPB diferido actual y fecha de vencimiento de la última cuota pagada."[1]
 
-### Download the Dataset
+[1] Nuestro conjunto de datos es un subconjunto de [Freddie Mac Single-Family Loan-Level Dataset. ](http://www.freddiemac.com/research/datasets/sf_loanlevel_dataset.html) Contiene 500,000 filas y tiene aproximadamente 80 MB.
 
-Download H2O’s subset of the Freddie Mac Single-Family Loan-Level dataset to your local drive and save it at as csv file.  
+El subconjunto del conjunto de datos que utiliza este tutorial tiene un total de 27 características (columnas) y 500,137 préstamos (filas).
+
+### Descargar el conjunto de datos
+
+Descargue el subconjunto H2O del conjunto de datos de nivel de préstamo unifamiliar Freddie Mac (Freddie Mac Single-Family Loan-Level dataset) en su unidad local y guárdelo como archivo csv.
 
 - [loan_level_500k.csv](https://s3.amazonaws.com/data.h2o.ai/DAI-Tutorials/loan_level_500k.csv)
 
+<<<<<<< HEAD
 ### Launch Experiment
+=======
+### Lanzar experimento
+>>>>>>> master
 
-1\. Load the loan_level.csv to Driverless AI by clicking **Add Dataset (or Drag and Drop)** on the **Datasets overview** page. Click on **Upload File**, then select **loan_level.csv** file. Once the file is uploaded, select **Details**.
+1\. Carga el loan_level.csv a Driverless AI haciendo clic en **Add Dataset (agregar conjunto de datos) (or Drag and Drop (o arrastrar y soltar))** sobre el **Datasets overview (Resumen de conjuntos de datos)** página. Haga clic en **Upload File (Subir archivo)**, luego seleccione **loan_level.csv** archivo. Una vez que se carga el archivo, seleccione **Details (Detalles)**.
 
 ![loan-level-details-selection](assets/loan-level-details-selection.jpg)
 
+<<<<<<< HEAD
 **Note:** You will see four more datasets, but you can ignore them, as we will be working with the `loan_level_500k.csv` file.
+=======
+**Note:** Verá cuatro conjuntos de datos más, pero puede ignorarlos, ya que trabajaremos con el`loan_level_500k.csv` archivo. 
+>>>>>>> master
 
-2\. Let’s take a quick look at the columns:
+2\. Echemos un vistazo rápido a las columnas:
 
 ![loan-level-details-page](assets/loan-level-details-page.jpg)
+<<<<<<< HEAD
 *Things to Note:*
 - C1 - CREDIT_SCORE
 - C2 - FIRST_PAYMENT_DATE
@@ -97,101 +127,163 @@ Download H2O’s subset of the Freddie Mac Single-Family Loan-Level dataset to y
 4\. Return to the **Datasets** overview page
 
 5\. Click on the **loan_level_500k.csv** file then split
+=======
+*Cosas a tener en cuenta:*
+- C1 - CREDIT_SCORE (PUNTUACIÓN DE CRÉDITO)
+- C2 - FIRST_PAYMENT_DATE (PRIMERA FECHA DE PAGO)
+- C3 - FIRST_TIME_HOMEBUYER_FLAG (BANDERA DE COMPRADOR DE CASA POR PRIMERA VEZ)
+- C4 - MATURITY_DATE (FECHA DE VENCIMIENTO)
+- C5 - METROPOLITAN_STATISTICAL_AREA (ÁREA ESTADÍSTICA METROPOLITANA)
+- C6 - MORTGAGE_INSURANCE_PERCENTAGE (PORCENTAJE DE SEGURO HIPOTECARIO)
+- C7 - NUMBER_OF_UNITS (NÚMERO DE UNIDADES)
+
+3\. Continúe desplazándose por la página actual para ver más columnas (la imagen no está incluida)
+- C8 - OCCUPANCY_STATUS (ESTADO DE OCUPACIÓN)
+- C9 - ORIGINAL_COMBINED_LOAN_TO_VALUE (PRÉSTAMO COMBINADO ORIGINAL AL VALOR)
+- C10 - ORIGINAL_DEBT_TO_INCOME_RATIO (DEUDA ORIGINAL A LA RELACIÓN DE INGRESOS)
+- C11 - ORIGINAL_UPB (ORIGINAL_UPB)
+- C12 - ORIGINAL_LOAN_TO_VALUE (PRÉSTAMO ORIGINAL AL VALOR)
+- C13 - ORIGINAL_INTEREST_RATE (TASA DE INTERÉS ORIGINAL)
+- C14 - CHANNEL (CANAL)
+- C15 - PREPAYMENT_PENALTY_MORTGAGE_FLAG (PAGO DE PREPAGO BANDERA HIPOTECARIA)
+- C16 - PRODUCT_TYPE (TIPO DE PRODUCTO)
+- C17- PROPERTY_STATE (Estado de la propiedad)
+- C18 - PROPERTY_TYPE (TIPO DE PROPIEDAD)
+- C19 - POSTAL_CODE (CÓDIGO POSTAL)
+- C20 - LOAN_SEQUENCE_NUMBER (NÚMERO DE SECUENCIA DE PRÉSTAMO)
+- C21 - LOAN_PURPOSE** (PROPÓSITO DEL PRESTAMO)
+- C22 - ORIGINAL_LOAN_TERM (PLAZO DE PRÉSTAMO ORIGINAL)
+- C23 - NUMBER_OF_BORROWERS (NÚMERO DE PRESTATARIOS)
+- C24 - SELLER_NAME (NOMBRE DEL VENDEDOR)
+- C25 - SERVICER_NAME (NOMBRE DEL SERVIDOR)
+- C26 - PREPAID Drop (PREPAGO Drop) 
+- C27 - DELINQUENT (DELINCUENTE)- Esta columna es la etiqueta que nos interesa predecir dónde Falso -> no predeterminado y Verdadero -> predeterminado
+
+
+4\. Regrese a la página de resumen **Datasets**
+
+5\. Haga clic en el **loan_level_500k.csv** archivo luego dividir (split)
+>>>>>>> master
 
 ![loan-level-split-1](assets/loan-level-split-1.jpg)
 
-6\.  Split the data into two sets: **freddie_mac_500_train** and **freddie_mac_500_test**. Use the image below as a guide:
+6\.  Divide los datos en dos conjuntos:**freddie_mac_500_train** y **freddie_mac_500_test**. Use la imagen a continuación como guía:
 
 ![loan-level-split-2](assets/loan-level-split-2.jpg)
-*Things to Note:*
+*Cosas a tener en cuenta:*
 
-1. Type ```freddie_mac_500_train``` for OUTPUT NAME 1, this will serve as the training set
-2. Type ```freddie_mac_500_test``` for OUTPUT NAME 2, this will serve as the test set
-3. For Target Column select **Delinquent**
-4. You can set the Random Seed to any number you'd like, we chose 42, by choosing a random seed we will obtain a consistent split
-5. Change the split value to .75 by adjusting the slider to 75% or entering .75 in the section that says Train/Valid Split Ratio
-6. Save
+1. Tipo ```freddie_mac_500_train``` para OUTPUT NAME 1, esto servirá como conjunto de entrenamiento
+2. Tipo ```freddie_mac_500_test``` para OUTPUT NAME 2, esto servirá como conjunto de prueba
+3. Para la columna de destino, seleccione **Delinquent (Delincuente)**
+4. Puede establecer la semilla (Seed) aleatoria en cualquier número que desee, elegimos 42, al elegir una semilla (Seed) aleatoria obtendremos una división consistente
+5. Cambie el valor de división a .75 ajustando el control deslizante a 75% o ingresando .75 en la sección que diceTrain/Valid Split Ratio (Tren / Relación de división válida)
+6. Salvar
 
 
+<<<<<<< HEAD
 The training set contains 375k rows, each row representing a loan, and 27 columns representing the attributes of each loan including the column that has the label we are trying to predict.
+=======
+El conjunto de capacitación contiene 375k filas, cada fila representa un préstamo y 27 columnas que representan los atributos de cada préstamo, incluida la columna que tiene la etiqueta que estamos tratando de predecir.
+>>>>>>> master
 
- **Note:** the actual data in training and test split vary by user, as the data is split randomly. The Test set contains 125k rows, each row representing a loan, and 27 attribute columns representing attributes of each loan.
+ **Nota:** Los datos reales en la división de entrenamiento y prueba varían según el usuario, ya que los datos se dividen aleatoriamente. El conjunto de prueba contiene 125k filas, cada fila representa un préstamo y 27 columnas de atributos que representan los atributos de cada préstamo.
 
-7\. Verify that there are three datasets, **freddie_mac_500_test**, **freddie_mac_500_train** and **loan_level_500k.csv**:
+7\. Verifique que hay tres conjuntos de datos, **freddie_mac_500_test**, **freddie_mac_500_train** y **loan_level_500k.csv**:
 
 ![loan-level-three-datasets](assets/loan-level-three-datasets.jpg)
 
-8\. Click on the **freddie_mac_500_train** file then select **Predict**.
+8\. Haga clic en el **freddie_mac_500_train** luego seleccione **Predict (Predecir)**.
 
-9\. Select **Not Now** on the **First time Driverless AI, Click Yes to get a tour!**. A similar image should appear:
+9\. Seleccione **Not Now (Ahora no)** sobre el **First time Driverless AI, Haga clic en Sí para obtener un recorrido!**. Debería aparecer una imagen similar:
 
 ![loan-level-predict](assets/loan-level-predict.jpg)
 
-Name your experiment `Freddie Mac Classification Tutorial`
+Nombra tu experimento `Freddie Mac Classification Tutorial`
 
+<<<<<<< HEAD
 10\. Select **Dropped Cols**, drop the following 2 columns:
+=======
+10\. Seleccione **Dropped Cols**, suelte las siguientes 2 columnas: 
+>>>>>>> master
 
 - Prepayment_Penalty_Mortgage_Flag
 - PREPAID
-- Select **Done**
+- Seleccione **Done (Hecho)**
 
+<<<<<<< HEAD
 These two columns are dropped because they are both clear indicators that the loans will become delinquent and will cause data leakage.
+=======
+Estas dos columnas se descartan porque ambas son indicadores claros de que los préstamos se volverán morosos y causarán fugas de datos.
+>>>>>>> master
 
 ![train-set-drop-columns](assets/train-set-drop-columns.jpg)
 
- 11\. Select **Target Column**, then select **Delinquent**
+ 11\. Seleccione **Target Column (Columna de destino)**, luego seleccione **Delinquent**
 ![train-set-select-delinquent](assets/train-set-select-delinquent.jpg)
 
-12\. Select **Test Dataset**, then **freddie_mac_500_test**
+12\. Seleccione **Test Dataset (Conjunto de datos de prueba)**, luego **freddie_mac_500_test**
 
 ![add-test-set](assets/add-test-set.jpg)
 
-13\. A similar Experiment page should appear:   
+13\. Debería aparecer una página de Experimento similar:   
 
 ![experiment-settings-1](assets/experiment-settings-1.jpg)    
 
-On task 2, we will explore and update the **Experiment Settings**.
+En la tarea 2, exploraremos y actualizaremos el **Experiment Settings (Configuraciones de experimento)**.
 
-## Task 2: Explore Experiment Settings and Expert Settings
+## Tarea 2: Explorar la configuración del experimento y la configuración de expertos
 
-1\.  Hover over to **Experiment Settings** and note the three knobs, **Accuracy**, **Time** and **Interpretability**.
+1\.  Pase el mouse sobre **Experiment Settings (Configuraciones de experimento)** y tenga en cuenta las tres perillas, **Accuracy (Exactitud)**, **Time (Hora)** y **Interpretability (Interpretabilidad)**.
 
-The **Experiment Settings** describe the Accuracy, Time, and Interpretability of your specific experiment. The knobs on the experiment settings are adjustable, as the values change the meaning of the settings on the left-bottom page change.
+El **Experiment Settings** describe la precisión, el tiempo y la interpretabilidad de su experimento específico. Las perillas en la configuración del experimento son ajustables, ya que los valores cambian el significado de la configuración en la página inferior izquierda.
 
+<<<<<<< HEAD
 Here is an overview of the Experiments settings:
+=======
+Aquí hay una descripción general de la configuración de Experimentos: 
+>>>>>>> master
 
-- **Accuracy** - Relative accuracy – higher values, should lead to higher confidence in model performance (accuracy).
-- **Time** - Relative time for completing the experiment. Higher values will take longer for the experiment to complete.
-- **Interpretability**-  The ability to explain or to present in understandable terms to a human. The higher the interpretability the simpler the features that will be extracted.  
+- **Accuracy** - Precisión relativa: valores más altos deberían conducir a una mayor confianza en el rendimiento del modelo (precisión).
+- **Time** - Tiempo relativo para completar el experimento. Los valores más altos tardarán más en completarse.
+- **Interpretability**-  La capacidad de explicar o presentar en términos comprensibles a un humano. Cuanto mayor sea la interpretabilidad, más simples serán las características que se extraerán.  
 
 
 ### Accuracy
 
-By increasing the accuracy setting, Driverless AI gradually adjusts the method for performing the evolution and ensemble. A machine learning ensemble consists of multiple learning algorithms to obtain a better predictive performance that could be obtained from any one single learning algorithm[1]. With a  low accuracy setting, Driverless AI varies features(from feature engineering) and models, but they all compete evenly against each other. At higher accuracy, each independent main model will evolve independently and be part of the final ensemble as an ensemble over different main models. At higher accuracies, Driverless AI will evolve+ensemble feature types like Target Encoding on and off that evolve independently. Finally, at highest accuracies, Driverless AI performs both model and feature tracking and ensembles all those variations.
+Al aumentar la configuración de precisión, Driverless AI ajusta gradualmente el método para realizar la evolución y el conjunto. Un conjunto de aprendizaje automático consta de múltiples algoritmos de aprendizaje para obtener un mejor rendimiento predictivo que se podría obtener de cualquier algoritmo de aprendizaje [1]. Con una configuración de baja precisión, Driverless AI varía las características (desde la ingeniería de características) y los modelos, pero todos compiten de manera uniforme entre sí. Con mayor precisión, cada modelo principal independiente evolucionará de forma independiente y será parte del conjunto final como un conjunto sobre diferentes modelos principales. Con precisiones más altas, Driverless AI evolucionará + tipos de características de conjunto, como la codificación de destino, dentro y fuera, que evolucionan de forma independiente. Finalmente, con las precisiones más altas, lDriverless AI realiza el seguimiento tanto del modelo como de las características y combina todas esas variaciones.
 
 ### Time
 
-Time specifies the relative time for completing the experiment (i.e., higher settings take longer). Early stopping will take place if the experiment doesn’t improve the score for the specified amount of iterations. The higher the time value, the more time will be allotted for further iterations, which means that the recipe will have more time to investigate new transformations in feature engineering and model’s hyperparameter tuning.
+El tiempo especifica el tiempo relativo para completar el experimento (es decir, las configuraciones más altas tardan más). La detención temprana tendrá lugar si el experimento no mejora la puntuación para la cantidad especificada de iteraciones. Cuanto mayor sea el valor de tiempo, más tiempo se asignará para nuevas iteraciones, lo que significa que la receta tendrá más tiempo para investigar nuevas transformaciones en la ingeniería de características y el ajuste de hiperparámetros del modelo.
 
 ### Interpretability
 
-The interpretability knob is adjustable. The higher the interpretability, the simpler the features the main modeling routine will extract from the dataset. If the interpretability is high enough then a monotonically constrained model will be generated.
+El mando de interpretabilidad es ajustable. Cuanto mayor sea la capacidad de interpretación, más simples serán las características que la rutina de modelado principal extraerá del conjunto de datos. Si la capacidad de interpretación es lo suficientemente alta, se generará un modelo con restricciones monotónicas.
 
+<<<<<<< HEAD
 2\.  For this tutorial update the following experiment settings so that they match the image below:
 - Accuracy : 4
 - Time: 3
 - Interpretability: 4
 - Scorer: Logloss
+=======
+2\.  Para este tutorial, actualice la siguiente configuración del experimento para que coincida con la imagen a continuación:
+- Accuracy : 4
+- Time: 3
+- Interpretability: 4
+- Scorer (Goleador): Logloss 
+>>>>>>> master
 
-This configuration was selected to generate a model quickly with a sufficient level of accuracy in the H2O Driverless Test Drive environment.
+Esta configuración se seleccionó para generar un modelo rápidamente con un nivel de precisión suficiente en el entorno H2O Driverless Test Drive.
 
 ![experiment-settings-2](assets/experiment-settings-2.jpg)    
 
-### Expert Settings
+### Expert Settings (Configuraciones de expertos)
 
-3\. Hover over to **Expert Settings** and click on it. An image similar to the one below will appear:
+3\. Pase el mouse sobre **Expert Settings (Configuraciones de expertos)** y haga clic en él. Aparecerá una imagen similar a la siguiente:
 
 ![expert-settings-1](assets/expert-settings-1.jpg)
+<<<<<<< HEAD
 *Things to Note:*
 1. **Upload Custom Recipe**
 2. **Load Custom Recipe From URL**
@@ -200,154 +292,165 @@ This configuration was selected to generate a model quickly with a sufficient le
 5. **Model**
 6. **Features**
 7. **Timeseries**
+=======
+*Cosas a tener en cuenta:*
+1. **Upload Custom Recipe (Subir receta personalizada)**
+2. **Load Custom Recipe From URL (Cargar receta personalizada desde URL)** 
+3. **Official Recipes (External) (Recetas oficiales (externas))**
+4. **Experiment (Experimentar)**
+5. **Model (Modelo)**
+6. **Features (Caracteristicas)**
+7. **Timeseries (Series de tiempo)**
+>>>>>>> master
 8. **NLP**
-9. **Recipes**
-10. **System**
+9. **Recipes (Recetas)**
+10. **System (Sistema)**
 
-**Expert Settings** are options that are available for those who would like to set their settings manually.  Explore the available expert settings by clicking in the tabs on top of the page.
+**Expert Settings** son opciones que están disponibles para aquellos que desean establecer su configuración manualmente. Explore la configuración experta disponible haciendo clic en las pestañas en la parte superior de la página.
 
-**Expert settings include**:
+**La configuración experta incluye (La configuración experta incluye)**:
 
-**Experiment Settings**
-- Max Runtime in Minutes Before Triggering the Finish Button
-- Max Runtime in Minutes Before Triggering the 'Abort' Button
-- Pipeline Building Recipe
-- Make Python Scoring Pipeline
-- Make MOJO Scoring Pipeline
-- Measure MOJO Scoring Latency
-- Timeout in Seconds to Wait for MOJO Creation at End of Experiment
-- Number of Parallel Workers to Use during MOJO Creation
-- Make Pipeline Visualization
-- Make Autoreport
-- Min Number of Rows Needed to Run an Experiment
-- Reproducibility Level
-- Random Seed
-- Allow Different Sets of Classes Across All Train/Validation Fold Splits
-- Max Number of Classes for Classification Problems
-- Model/Feature Brain Level
-- Feature Brain Save Every Which Iteration
-- Feature Brain Restart from Which Iteration
-- Feature Brain Refit Uses Same Best Individual
-- Feature Brain Adds Features with New Columns Even During Retraining of Final Model
-- Min Driverless AI Iterations
-- Select Target Transformation of the Target for Regression Problems
-- Tournament Model for Genetic Algorithm
-- Number of Cross-Validation Folds For Feature Evolution
-- Number of Cross-Validation Folds For Final Model
-- Enable Extra Logging for Ensemble Meta Learner
-- Number of Cross-Validation Folds or Maximum Time-Based Splits for Feature Evolution
-- Number of Cross-Validation Folds or Maximum Time-Based Splits for Final Model
-- Maximum Number of Fold IDs to Show in Logs
-- Max Number of Rows Times Number of Columns for Feature Evolution Data Splits
-- Max Number of Rows Times Number of Columns for Reducing Training Dataset
-- Maximum Size of Validation Data Relative to Training Data
-- Perform Stratified Sampling for Binary Classification if The Target Is More Imbalanced Than This
-- Add to config.toml via toml String
+**Configuraciones de experimento (Configuraciones de experimento)**
+- Tiempo de ejecución máximo en minutos antes de activar el botón Finalizar
+- Tiempo de ejecución máximo en minutos antes de activar el botón 'Abort'
+- Receta de construcción de tuberías
+- Hacer una tubería de puntuación de Python
+- Hacer tubería de puntuación MOJO
+- Medir la latencia de puntuación MOJO
+- Tiempo de espera en segundos para esperar la creación de MOJO al final del experimento
+- Número de trabajadores paralelos a utilizar durante la creación de MOJO
+- Hacer visualización de canalización
+- Hacer informe automático
+- Número mínimo de filas necesarias para ejecutar un experimento
+- Nivel de reproducibilidad
+- Random Seed (Semilla aleatoria)
+- Permitir diferentes conjuntos de clases en todos los trenes / Validation Fold Splits
+- Número máximo de clases para problemas de clasificación
+- Modelo / Característica Nivel cerebral
+- Característica Brain Save Every, que iteración
+- Característica de reinicio cerebral desde el cual iteración
+- Característica Brain Reit utiliza el mismo mejor individuo
+- Feature Brain agrega características con nuevas columnas incluso durante la reentrenamiento del modelo final
+- Mínimas iteraciones de Driverless AI
+- Seleccione la transformación de destino del objetivo para problemas de regresión
+- Modelo de torneo para algoritmo genético
+- Número de pliegues de validación cruzada para la evolución de características
+- Número de pliegues de validación cruzada para el modelo final
+- Habilite el registro adicional para Ensemble Meta Learner
+- Número de pliegues de validación cruzada o divisiones máximas basadas en el tiempo para la evolución de características
+- Número de pliegues de validación cruzada o divisiones máximas basadas en el tiempo para el modelo final
+- Número máximo de ID de plegado para mostrar en los registros
+- Número máximo de filas veces Número de columnas para divisiones de datos de evolución de características
+- Número máximo de filas veces Número de columnas para reducir el conjunto de datos de entrenamiento
+- Tamaño máximo de los datos de validación relativos a los datos de entrenamiento
+- Realice un muestreo estratificado para la clasificación binaria si el objetivo está más desequilibrado que esto
+- Agregar a config.toml a través de la cadena toml
 
 
-**Model Settings**
-- XGBoost GBM Models
-- XGBoost Dart Models
-- GLM Models
-- Decision Tree Models
-- LightGBM Models
-- TensorFlow Models
-- FTRL Models
-- RuleFit Models
-- LightGBM Boosting Types
-- LightGBM Categorical Support
-- Constant Models
-- Whether To Show Constant Models in Iteration Panel
-- Parameters for TensorFlow
-- Max Number of Trees/Iterations
-- N_estimators List To Sample From For Models That Do Not Use Early Stopping
-- Minimum Learning Rate for Final Ensemble GBM Models
-- Maximum Learning Rate for Final Ensemble GBM Models
-- Reduction Factor For Max. Number of Trees/Iterations During Feature Evolution
-- Reduction Factor for Number of Trees/Iterations During Feature Evolution
-- Minimum Learning Rate for Feature Engineering GBM Models
-- Max Learning Rate for Tree Models
-- Max Number of Epochs for TensorFlow/FTRL
-- Max. Tree Depth
-- Max. max_bin for Tree Features
-- Max Number of Rules for RuleFit
-- Ensemble Level for Final Modeling Pipeline
-- Cross-validate Single Final Model
-- Number of Models During Tuning Phase
-- Sampling Method for Imbalanced Binary Classification Problems
-- Ratio of Majority to Minority Class for Imbalanced Binary Classification to Trigger Special Sampling Techniques (if Enabled)
-- Ratio of Majority to Minority Class for Heavily Imbalanced Binary Classification to Only Enable Special Sampling Techniques if Enabled
-- Number of Bags for Sampling Methods for Imbalanced Binary Classification (if Enabled)
-- Hard Limit on Number of Bags for Sampling Methods for Imbalanced Binary Classification
-- Hard Limit on Number of Bags for Sampling Methods for Imbalanced Binary Classification During Feature Evolution Phase
-- Max Size of Data Sampled During Imbalanced Sampling
-- Target Fraction of Minority Class After Applying Under/Over-Sampling Techniques
-- Max Number of Automatic FTRL Interactions Terms for 2nd, 3rd, 4th order interactions terms (Each)
-- Enable Detailed Scored Model Info
-- Whether to Enable Bootstrap Sampling for Validation and Test Scores
-- For Classification Problems with This Many Classes, Default to TensorFlow
+**Configuraciones de modelo**
+- Modelos XGBoost GBM
+- Modelos de dardos XGBoost
+- Modelos GLM
+- Modelos de árbol de decisión
+- Modelos LightGBM
+- Modelos TensorFlow
+- Modelos FTRL
+- Modelos RuleFit
+- Tipos de refuerzo LightGBM
+- Soporte categórico LightGBM
+- Modelos constantes
+- Si mostrar modelos constantes en el panel de iteración
+- Parámetros para TensorFlow
+- Número máximo de árboles / iteraciones
+- N_estimators List To Sample From para modelos que no utilizaron la detención temprana
+- Tasa de aprendizaje mínima para modelos GBM de conjunto final
+- Tasa máxima de aprendizaje para modelos GBM de conjunto final
+- Factor de reducción para máx. Número de árboles / iteraciones durante la evolución de la característica
+- Factor de reducción para el número de árboles / iteraciones durante la evolución de la característica
+- Tasa de aprendizaje mínima para modelos GBM de ingeniería de características
+- Tasa máxima de aprendizaje para modelos de árbol
+- Número máximo de épocas para TensorFlow / FTRL
+- Max. Profundidad del árbol
+- Max. max_bin para las características del árbol
+- Número máximo de reglas para RuleFit
+- Nivel de conjunto para la tubería de modelado final
+- Validación cruzada del modelo final único
+- Número de modelos durante la fase de ajuste
+- Método de muestreo para problemas de clasificación binaria desequilibrada
+- Relación de la mayoría a la clase minoritaria para la clasificación binaria desequilibrada a las técnicas de muestreo especiales de activación (si está habilitado)
+- Relación de la mayoría a la clase minoritaria para la clasificación binaria muy desequilibrada para habilitar solo técnicas de muestreo especiales si está habilitada
+- Número de bolsas para métodos de muestreo para clasificación binaria desequilibrada (si está habilitada)
+- Límite estricto en el número de bolsas para métodos de muestreo para clasificación binaria desequilibrada
+- Límite estricto en el número de bolsas para los métodos de muestreo para la clasificación binaria desequilibrada durante la fase de evolución de características
+- Tamaño máximo de datos muestreados durante el muestreo desequilibrado
+- Fracción objetivo de la clase minoritaria después de aplicar técnicas de submuestreo / sobremuestreo
+- Número máximo de términos de interacción automática FTRL para términos de interacción de segundo, tercer y cuarto orden (cada uno)
+- Habilitar información detallada del modelo puntuado
+- Si se debe habilitar el muestreo Bootstrap para la validación y los puntajes de prueba
+- Para problemas de clasificación con tantas clases, el valor predeterminado es TensorFlow
 
-**Features Settings**
-- Feature Engineering Effort
-- Data Distribution Shift Detection
-- Data Distribution Shift Detection Drop of Features
-- Max Allowed Feature Shift (AUC) Before Dropping Feature
-- Leakage Detection
-- Leakage Detection Dropping AUC/R2 Threshold
-- Max Rows Times Columns for Leakage
-- Report Permutation Importance on Original Features
-- Maximum Number of Rows to Perform Permutation-Based Feature Selection
-- Max Number of Original Features Used
-- Max Number of Original Non-Numeric Features
-- Max Number of Original Features Used for FS Individual
-- Number of Original Numeric Features to Trigger Feature Selection Model Type
-- Number of Original Non-Numeric Features to Trigger Feature Selection Model Type
-- Max Allowed Fraction of Uniques for Integer and Categorical Columns
-- Allow treating numerical as categorical
-- Max Number of Unique Values for Int/Float to be Categoricals
-- Max Number of Engineered Features
-- Max. Number of Genes
-- Limit Features by Interpretability
-- Correlation Beyond Which Triggers Monotonicity Constraints (if Enabled)
-- Max Feature Interaction Depth
-- Fixed Feature Interaction Depth
-- Enable Target Encoding
-- Enable Lexicographical Label Encoding
-- Enable Isolation Forest Anomaly Score Encoding
-- Enable One HotEncoding
-- Number of Estimators for Isolation Forest Encoding
-- Drop Constant Columns
-- Drop ID Columns
-- Don’t Drop Any Columns
-- Features to Drop
-- Features To Group By
-- Sample From Features To Group By
-- Aggregation Functions (Non-Time-Series) For Group By Operations
-- Number of Folds To Obtain Aggregation When Grouping
-- Type of Mutation Strategy
-- Enable Detailed Scored Features Info
-- Enable Detailed Logs for Timing and Types of Features Produced
-- Compute Correlation Matrix
+**Configuración de características**
+- Esfuerzo de ingeniería de características
+- Detección de cambio de distribución de datos
+- Distribución de datos Detección de cambio Caída de características
+- Cambio de característica máximo permitido (AUC) antes de descartar la función
+- Detección de fugas
+- Detección de fugas que reduce el umbral de AUC / R2
+- Columnas Max Rows Times para fugas
+- Informe la importancia de la permutación en las características originales
+- Número máximo de filas para realizar la selección de características basadas en permutación
+- Número máximo de características originales utilizadas
+- Número máximo de características no numéricas originales
+- Número máximo de características originales utilizadas para FS Individual
+- Número de características numéricas originales para activar el tipo de modelo de selección de características
+- Número de características no numéricas originales para activar el tipo de modelo de selección de características
+- Fracción máxima permitida de uniques para columnas enteras y categóricas
+- Permitir el tratamiento numérico como categórico
+- Número máximo de valores únicos para Int / Float para ser categóricos
+- Número máximo de características de ingeniería
+- Max. Numero de genes
+- Limitar características por interpretabilidad
+- Correlación más allá de la cual desencadena restricciones de monotonicidad (si está habilitada)
+- Profundidad máxima de interacción de características
+- Profundidad de interacción de característica fija
+- Habilitar la codificación de destino
+- Habilitar codificación de etiqueta lexicográfica
+- Habilitar codificación de puntuación de anomalía de bosque de aislamiento
+- Habilitar One HotEncoding
+- Número de estimadores para la codificación de bosque de aislamiento
+- Caída de columnas constantes
+- Columnas de ID de caída
+- No suelte ninguna columna
+- Características para soltar
+- Características para agrupar por
+- Muestra de características para agrupar por
+- Funciones de agregación (no series temporales) para agrupar por operaciones
+- Número de pliegues para obtener la agregación al agrupar
+- Tipo de estrategia de mutación
+- Habilitar información detallada de características puntuadas
+- Habilite registros detallados para el tiempo y los tipos de características producidas
+- Matriz de correlación computacional
 
-**Time Series Settings**
-- Time Series Lag-Based Recipe
-- Custom Validation Splits For Time-Series Experiments
-- Timeout In Seconds For Time-Series Properties Detection in UI
-- Generate Holiday Features
-- Time-Series Lags Override
-- Smallest Considered Lag Size
-- Enable Feature Engineering from Time Column
-- Allow Integer Time Column As Numeric Feature
-- Allowed Date and Date-Time Transformations
-- Enable Feature Engineering from Integer Time Column
-- Allow Date or Time Features to be Transformed Directly into a Numerical Representation
-- Consider Time Groups Columns as Standalone Features
-- Which TGC Feature Types to Consider as Standalone Features
-- Enable Time Unaware Transformers
-- Always Group by All Time Groups Columns for Creating Lag Features
-- Generate Time-Series Holdout Predictions
-- Number of Time-Based Splits for Internal Model Validation
+**Time Series Settings (Configuración de series de tiempo)**
+- Receta basada en el retraso de la serie temporal
+- Divisiones de validación personalizadas para experimentos de series temporales
+- Tiempo de espera en segundos para la detección de propiedades de series temporales en la interfaz de usuario
+- Generar características de vacaciones
+- Anulación de retrasos de series temporales
+- El tamaño de retraso más pequeño considerado
+- Habilitar ingeniería de características desde la columna de tiempo
+- Permitir columna de tiempo entero como función numérica
+- Transformaciones de fecha y hora permitidas
+- Activar ingeniería de características desde la columna de tiempo entero
+- Permitir que las características de fecha u hora se transformen directamente en una representación numérica
+- Considere las columnas de grupos de tiempo como características independientes
+- Qué tipos de características de TGC se deben considerar como características independientes
+- Habilitar transformadores de tiempo inconsciente
+- Agrupar siempre por columnas de grupos de todos los tiempos para crear características de retraso
+- Generar predicciones de resistencia de series temporales
+- Número de divisiones basadas en el tiempo para la validación interna del modelo
 - Maximum Overlap Between Two Time-Based Splits
+<<<<<<< HEAD
 - Max Number of Splits Used for Creating Final Time-Series Model’s Holdout Predictions
 - Whether to Speed Up Calculation Of Time-Series Holdout Predictions
 - Whether to Speed Up Calculation Of Shapley Values for Time-Series Holdout Predictions
@@ -410,26 +513,99 @@ This configuration was selected to generate a model quickly with a sufficient le
 4\. For this experiment turn ON **RuleFit models**, under **Model** tab the select **Save**.
 
 The RuleFit[2] algorithm creates an optimal set of decision rules by first fitting a tree model and then fitting a Lasso (L1-regularized) GLM model to create a linear model consisting of the most important tree leaves (rules). The RuleFit model helps with exceeding the accuracy of Random Forests while retaining explainability of decision trees.
+=======
+- Número máximo de divisiones utilizadas para crear predicciones de resistencia del modelo de serie temporal final
+- Si se debe acelerar el cálculo de las predicciones de resistencia de series temporales
+- Si se debe acelerar el cálculo de los valores de Shapley para las predicciones de retención de series temporales
+- Genere valores Shapley para predicciones de resistencia de series temporales en el momento del experimento
+- Límite inferior en la configuración de interpretabilidad para experimentos de series de tiempo, aplicados implícitamente
+- Modo de abandono para las características de retraso
+- Probabilidad de crear características de retraso no objetivo
+- Método para crear predicciones de conjuntos de pruebas continuas
+- Probabilidad de que los nuevos transformadores de series temporales utilicen retrasos predeterminados
+- Probabilidad de explorar transformadores de retardo basados en interacción
+- Probabilidad de explorar transformadores de retardo basados en agregación
+
+**Configuraciones de PNL**
+- Max TensorFlow Epochs para PNL
+- La precisión anterior habilita TensorFlow NLP de forma predeterminada para todos los modelos
+- Habilitar modelos de TensorFlow CNN basados en palabras para PNL
+- Habilitar modelos de TensorFlow BiGRU basados en palabras para PNL
+- Habilitar modelos CNN TensorFlow basados en caracteres para PNL
+- Camino a las incrustaciones preformadas para los modelos TensorFlow NLP
+- Permitir el entrenamiento de incrustaciones pre-entrenadas no congeladas
+- Si Python / MOJO Scoring Runtime tendrá GPU
+- La fracción de columnas de texto de todas las características se considera un problema dominado por texto
+- Fracción de texto por todos los transformadores para activar ese texto dominado
+- Umbral para columnas de cadena que se tratarán como texto
+
+**Configuraciones de recetas**
+- Incluir transformadores específicos
+- Incluir modelos específicos
+- Incluir anotadores específicos
+- Probabilidad de agregar transformadores
+- Probabilidad de agregar los mejores transformadores compartidos
+- Probabilidad de podar transformadores
+- Probabilidad de mutar los parámetros del modelo
+- Probabilidad de podar características débiles
+- Tiempo de espera en minutos para probar la aceptación de cada receta
+- Ya sea para omitir fallas de transformadores
+- Ya sea para omitir fallas de modelos
+- Nivel para iniciar sesión por fallas omitidas
+
+**Ajustes del sistema**
+- Número de núcleos a usar
+- Número máximo de núcleos a usar para el ajuste del modelo
+- Número máximo de núcleos a utilizar para predecir el modelo
+- Número máximo de núcleos a usar para la transformación y predicción del modelo al hacer MLI, informe automático, puntaje en otro conjunto de datos
+- Tuning Workers por lote para CPU
+- Num. Funciona para entrenamiento de CPU
+- #GPU/Experimento
+- Num. Núcleos / GPU
+- #GPU/Modelo
+- Num. De GPU para predicción / transformación aislada
+- Número máximo de subprocesos para usar para datatable y OpenBLAS para Munging y Model Training
+- Max. Num. De subprocesos para usar en la tabla de datos de lectura y escritura de archivos
+- Max. Num. De subprocesos para usar en estadísticas de tablas de datos y Openblas
+- ID de inicio de GPU
+- Habilitar rastros detallados
+- Habilitar el nivel de registro de depuración
+- Habilite el registro de la información del sistema para cada experimento
+
+
+4\. Para este experimento enciéndelo **RuleFit models (Modelos RuleFit)**, debajo **Model (Modelo)** pestaña la selección **Save (Guardar)**. 
+
+El RuleFit[2] algoritmo crea un conjunto óptimo de reglas de decisión ajustando primero un modelo de árbol y luego ajustando un modelo GLM Lasso (regularizado por L1) para crear un modelo lineal que consta de las hojas (reglas) de árbol más importantes. El modelo RuleFit ayuda a superar la precisión de los bosques aleatorios al tiempo que conserva la explicabilidad de los árboles de decisión.
+>>>>>>> master
 
 ![expert-settings-rulefit-on](assets/expert-settings-rulefit-on.jpg)
 
-Turning on the RuleFit model will be added to the list of algorithms that Driverless AI will consider for the experiment.  The selection of the algorithm depends on the data and the configuration selected.
+La activación del modelo RuleFit se agregará a la lista de algoritmos que la IA sin controlador considerará para el experimento. La selección del algoritmo depende de los datos y la configuración seleccionada.
 
+<<<<<<< HEAD
 5\. Before selecting **Launch**, make sure that your **Experiment** page looks similar to the one above, once ready, click on **Launch**.
+=======
+5\. Antes de seleccionar **Launch (Lanzamiento)**, asegúrese de que su **Experiment (Experimentar)** la página es similar a la de arriba, una vez que esté lista, haga clic en **Launch (Lanzamiento)**. 
+>>>>>>> master
 
-Learn more about what each setting means and how it can be updated from its default values by visiting H2O’s Documentation- [Expert Settings](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/expert-settings.html?highlight=expert%20settings)
+Obtenga más información sobre lo que significa cada configuración y cómo se puede actualizar a partir de sus valores predeterminados visitando la documentación de H2O- [Expert Settings](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/expert-settings.html?highlight=expert%20settings)
 
-### Resources
+### Recursos
 
 [1] [Ensemble Learning](https://en.wikipedia.org/wiki/Ensemble_learning)
 
 [2] [J. Friedman, B. Popescu. “Predictive Learning via Rule Ensembles”. 2005](http://statweb.stanford.edu/~jhf/ftp/RuleFit.pdf)
 
 
+<<<<<<< HEAD
 ### Deeper Dive
 - [To better understand the impact of setting the Accuracy, Time and Interpretability Knobs between 1 and 10 in H2O Driverless AI](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-settings.html?highlight=interpretability#accuracy-time-and-interpretability-knobs)
+=======
+### Inmersión más profunda 
+- Para comprender mejor el impacto de establecer las perillas de precisión, tiempo e interpretabilidad entre 1 y 10 en AI sin controlador H2O](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-settings.html?highlight=interpretability#accuracy-time-and-interpretability-knobs)
+>>>>>>> master
 
-- For more information about additional setting in[Expert Settings for H2O Driverless AI](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/expert-settings.html?highlight=expert%20settings)
+- Para obtener más información sobre la configuración adicional en [Expert Settings for H2O Driverless AI](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/expert-settings.html?highlight=expert%20settings)
 
 ## Task 3: Experiment Scoring and Analysis Concepts
 
