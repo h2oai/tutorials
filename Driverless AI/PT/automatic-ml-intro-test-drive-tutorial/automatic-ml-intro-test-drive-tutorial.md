@@ -1,12 +1,12 @@
 
-# Automatic Machine Learning Introduction with Driverless AI
+# Introdução ao Machine Learning Automático com o Test Drive do Driverless AI
 
 ## Outline
 
-- [Objective](#objective)
-- [Prerequisites](#prerequisites)
-- [Task 1: Product Tour](#task-1-product-tour)
-- [Task 2: Automatic Machine Learning Concepts](#task-2-automatic-machine-learning-concepts)
+- [Objectivo](#objectivo)
+- [Pré-requisitos](#pré-requisitos)
+- [Tarefa 1 - Tour do Produto ](#tarefa-1-tour-do-produto)
+- [Tarefa 2: Conceitos de Machine Learning Automático ](#tarefa-2-conceitos-de-machine-learning-uutomático )
 - [Task 3: Load Data](#task-3-load-data)
 - [Task 4: Explore Data Details and AutoViz](#task-4-explore-data-details-and-autoviz)
 - [Task 5: Launch First Experiment](#task-5-launch-first-experiment)
@@ -18,15 +18,15 @@
 - [Appendix: Project Workspace](#appendix-project-workspace)
 
 
-## Objective
+## Objectivo
 
-For this tutorial, we will explore the Titanic dataset from the perspective of a passenger life insurance company with [H2O.ai's](https://www.h2o.ai/) enterprise product, [Driverless AI](https://www.h2o.ai/products/h2o-driverless-ai/). We will explore possible riks factors derived from this dataset that could have been considered when selling passenger insurance during this time. More specifically, we will create a predictive model to determine what factors contributed to a passenger surviving.
+Para este tutorial, vamos utilizar a plataforma comercial da [H2O.ai](https://www.h2o.ai/), [Driverless AI](https://www.h2o.ai/products/h2o-driverless-ai/), para explorar o dataset (conjunto de dados) do Titanic, transatlântico britânico que naufragou após colidir com um iceberg no norte do Oceano Atlântico em 15 de abril de 1912, pela perspectiva da seguradora de vida de um passageiro. Vamos explorar possíveis riscos presentes nesse dataset que poderiam ter sido considerados ao vender o seguro para o passageiro. Mais especificamente, vamos criar um modelo de previsão para determinar quais fatores contribuíram para a sobrevivência de um passageiro durante o acidente.
 
-In this overview of Driverless AI, you will learn how to load data, explore data details, generate Auto visualizations, launch an experiment, explore feature engineering, view experiment results and get a quick tour of the Machine Learning Interpretability report. 
+Nesta visão geral do Driverless AI, você aprenderá a carregar dados, explorar detalhes gerados por esses dados, gerar visualizações automáticas, lançar um experimento, explorar a função de feature engineering, obter acesso aos resultados do seu experimento e fazer um rápido tour pelo nosso relatório de machine learning interpretability (interpretabilidade dos seus modelos de machine learning). 
 
-**Note**: This tutorial has been built on Aquarium, which is H2O's cloud environment that provides access to various tools for workshops, conferences, and training. The labs in Aquarium have datasets, experiments, projects, and other content preloaded. If you use your version of Driverless AI, you will not see the preloaded content.
+**Observação**: Este tutorial foi construído no Aquarium, o ambiente da H2O.ai na nuvem, que contém diversas ferramentas voltadas para workshops, conferências e treinamento da empresa. Os labs (ambientes de teste) no Aquarium possuem datasets (conjunto de dados), experimentos, projetos e outros conteúdos pré-carregados. Se você utilizar a sua versão do Driverless AI, você não terá acesso aos conteúdos pré-carregados.
 
-## Prerequisites
+## Pré-requisitos
 
 A **Two Hour Test Drive session**: Test Drive is H2O's Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform. 
 
@@ -39,44 +39,44 @@ A **Two Hour Test Drive session**: Test Drive is H2O's Driverless AI on the AWS 
 - Basic knowledge of Machine Learning and Statistics
 
 
-## Task 1: Product Tour
+## Tarefa 1 - Tour do Produto
 
-Welcome to the Driverless AI **Datasets** page! 
-
+Seja bem-vindo à página de **datasets** (conjunto de dados) do Driverless AI!
+ 
 ![dai-datasets-page](assets/dai-datasets-page.jpg)
 
-The Driverless UI is easy to navigate. The following features, as well as a few datasets, are found on the **Datasets** page. We will explore these features as we launch an experiment in the next tasks.
+A interface de usuário no Driverless AI é bem simples de navegar. Confira abaixo a lista de características e alguns conjuntos de dados, que podem ser encontrados na página **Datasets**. Vamos explorar os seguintes comandos ao executarmos o experimento nas próximas tarefas.
 
-1. **Projects**: Projects Workspace for managing datasets and experiments menu option.
+1. **Projects**: Espaço para gerenciar seu projeto com conjunto de dados e experimentos 
 
-2. **Datasets**: View of current datasets. Other features for datasets include the options to add a dataset, get dataset details, visualize, split, predict, rename, download, and delete. 
+2. **Datasets**: Visualize seus conjuntos de dados. Outros features para datasets inclui as opções de adicionar um conjunto de dados, pegar os detalhes do dataset, visualizar, separar, prever, renomear, fazer o download e deletar.  
 
-3. **Autoviz**: Visualize a dataset with all available graphs.
+3. **Autoviz**: Visualize um dataset com todos seus gráficos disponíveis
 
-4. **Experiments**: View of completed experiments. Experiments can be revised or deleted. 
+4. **Experiments**:  Visualize seus experimentos que foram completados 
 
-5. **Diagnostics**: Diagnose a model and view model performance for multiple scorers based on the existing model and dataset.
+5. **Diagnostics**: Faça o diagnóstico e visualize um modelo de performance para múltiplos scorers baseado no modelo existente e no dataset
 
-6. **MLI**: View a list of interpreted models or interpret a model.
+6. **MLI**: Veja a lista de modelos interpretados ou faça a interpretação um modelo.
 
 7. **Deployments**: Deploy the MOJO and Python scoring pipelines for you to test or to integrate into a final product. You can also deploy locally or in the cloud.
 
-8. **Resources**: The Resources dropdown menu provides you with links to view System Information, the Driverless AI User Guide and Help. From this dropdown menu, you can also download the Python Client, R Client, and the MOJO2 runtime, MOJO2 Py runtime, and MOJO2 R runtime.
+8. **Resources**: O menu dentro de “resources” oferece links para que você possa visualizar informações do sistema, link para o guia de usuario do Driverless AI e ajuda. A partir desse menu, você também pode fazer o download do Python Client, R Client, MOJO2 runtime, MOJO2 Py runtime, e MOJO2 R runtime.
 
-9. **Messages[ ]**: View news and upcoming Driverless AI events.
+9. **Messages[ ]**: Visualize novidades no Driverless AI
 
-10. **Logout H2OAI**: Logs you out of your current session.
+10. **Logout H2OAI**: Faca o logout da sua sessao.
 
-11. **<**: Go back to the previous page.
+11. **<**: Volte para a pagina anterior.
 
-12. **H2OAI**: Takes you back to the H2OAI **Datasets** Page.
+12. **H2OAI**: Volte para a pagina de **datasets** da H2O.ai.
 
-13. **Driverless AI 1.X.X**: Version of Driverless AI 
+13. **Driverless AI 1.X.X**: Versao do Driverless AI 
 
-14. **Add a Dataset(or Drag and Drop)**: Upload or add a dataset.
+14. **Add a Dataset(or Drag and Drop)**: Faça o upload ou adicione um conjunto de dados. 
 
 
-### Deeper Dive and Resources
+### Mais recursos e detalhes
 
 -  [Join the H2O community on Slack to Ask Questions](https://h2oai-community.slack.com/). Post your questions, discuss use cases, give feedback, stay informed about the latest H2O.ai updates, and more.
 
@@ -86,59 +86,69 @@ The Driverless UI is easy to navigate. The following features, as well as a few 
 
 - [Learn more H2O Driverless by reviewing the FAQs](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/faq.html) 
 
-## Task 2: Automatic Machine Learning Concepts
+## Tarefa 2: Conceitos de Machine Learning Automático 
 
-###  Artificial Intelligence and Machine Learning
+###  Inteligência Artificial e Machine Learning
 
-The concepts found in this section are meant to provide a high-level overview of Machine Learning. At the end of this section, you can find links to resources that offer a more in-depth explanation of the concepts covered here.
+Os conceitos apresentados nesta seção visam a fornecer um resumo de alto nível sobre machine learning, também conhecido em português como aprendizagem de máquina. Ao final desta seção, você encontrará uma lista de links com recursos que oferecem explicações mais detalhadas sobre os conceitos abordados aqui.
 
- Machine learning is a subset of Artificial intelligence where the focus is to create machines that can simulate human intelligence. One critical distinction between artificial intelligence and machine learning is that machine learning models "learn" from the data the models get exposed to. Arthur Samuel, a machine learning pioneer back in 1959, defined machine learning as a " field of study that gives computers the ability to learn without being explicitly programmed" [1]. A machine learning algorithm trains on a dataset to make predictions. These predictions are, at times, used to optimize a system or assist with decision making.
+Machine Learning é uma subcategoria da Inteligência Artificial, cujo foco é criar máquinas que possam aprimorar a inteligência humana. Uma diferença crítica entre inteligência artificial e machine learning é que os modelos de machine learning aprendem com os dados aos quais são expostos. Arthur Samuel, pioneiro do machine learning, definiu, em 1959, machine learning como “um campo de estudo que fornece aos computadores a habilidade de aprender sem que sejam programados. Algoritmos de machine learning treinam o dataset (conjunto de dados) para fazer previsões. Tais previsões são, muitas vezes, utilizadas para otimizar um sistema ou contribuir para a tomada de decisōes.
 
-### Machine Learning Training
+### Treinamento de Machine Learning
 
-Advances in technology have made it easier for data to be collected and made available.  The available type of data will determine the kind of training that the machine learning model can undergo. There are two types of machine learning training, supervised and unsupervised learning. Supervised learning is when the dataset contains the output that you are trying to predict. For those cases where the predicting variable is not present, it's called unsupervised learning. Both types of training define the relationship between input and output variables.
+Os avanços na tecnologia tornaram mais fácil a coleta e fornecimento de dados. O tipo de dado disponível irá determinar o tipo de treinamento ao qual o modelo de machine learning deverá ser submetido. Há dois tipos de treinamentos de machine learning: o supervisionado e o não-supervisionado. Treinamento supervisionado é quando um
+dataset contém o resultado que você deseja prever. Para os casos em que as variáveis de previsão não estão presentes, estes são chamados de aprendizado sem supervisão. Ambos os tipos de treinamento definem a relação entre a entrada (input) e saída (output) das variáveis.
+ 
+Em machine learning, as variáveis introduzidas (input) são chamadas de **features** e os resultados (output) são labels. Os **labels**, neste caso, é o que estamos tentando prever. O objetivo é utilizar as variáveis introduzidas, ou features e utilizá-las para criar previsões em dados nunca antes vistos. Em uma regressão linear, as features são as variáveis x e os labels são as variáveis y.
+Um modelo de machine learning define a relação entre features e labels. Quando modelos são treinados, você pode fazê-lo ao alimentá-lo com exemplos. Exemplos são dados específicos. Você tem dois tipos de exemplos: os rotulados e os não rotulados. Os rotulados são os casos em que sabemos o valor do x, mas não sabemos o valor do y. Seu conjunto de dados é como um exemplo; as colunas utilizadas para o treinamento são os features; as linhas são as instâncias desses features. A coluna que você deseja prever é o label.
+ 
+A aprendizagem supervisionada utiliza exemplos rotulados e permite que um modelo que esteja sendo treinado a aprender a relação entre features e labels. O modelo treinado então é testado com o dado não rotulado e recebe a oportunidade de prever o valor do y (“label”) para o dado não rotulado. Testar um modelo treinado com dado não rotulado é chamado de treinamento não supervisionado. Observe que o Driverless AI cria modelos com exemplos rotulados.
 
-In machine learning, the input variables are called **features** and the output variables **labels**. The labels, in this case, are what we are trying to predict. The goal is to take the inputs/features and use them to come up with predictions on never-before-seen data. In linear regression, the features are the x-variables, and the labels are the y-variables. 
+### Preparação dos dados
 
-A machine learning model defines the relationship between features and labels. When models are trained, you can train a model by feeding it examples. Examples are a particular instance of data.  You can have two types of examples: labeled and unlabeled. Labeled examples are those where the x and y values (features, labels) are known. Unlabeled examples are those where we know the x value, but we don't know what the y value is (feature,?)[1]. Your dataset is like an example; the columns that will be used for training are the features; the rows are the instances of those features. The column that you want to predict is the label.
+Um modelo de machine learning é tão importante quanto os dados utilizados para treiná-lo. Se você utilizar um conjunto de dados ruins para treinar seu modelo, isso refletirá em um modelo ruim e vice-versa. Por isso, antes de fazer o upload do seu dataset em ferramentas que irão assisti-lo com a construção do seu modelo, como o Driverless AI, tenha certeza que o seu dataset esteja limpo e pronto para ser treinado.
 
-Supervised learning takes labeled examples and allows a model that is being trained to learn the relationship between features and labels. The trained model is then tested with unlabeled data, and it's allowed to predict the y value (label) for the unlabeled data. Testing a trained model with unlabeled data is called unsupervised training [1]. Note that H2O Driverless AI creates models with labeled examples.
+O processo de transformar dados não tratados em outro formato mais apropriado e útil para a análise é chamado de data wrangling (organização de dados) . Data wrangling, que pode incluir extrações, análise, junção, padronização, aumento, limpeza, consolidação e filtragem dos seus dados, é altamente recomendado antes de carregar o dataset para o Driverless AI.
+ 
+A preparação dos dados garante que o seu dataset esteja no formato correto para o que você está tentando fazer. Duplicatas são removidas e dados que estavam faltando são adicionados, corrigidos e valores categóricos são transformados ou codificados. Por fim, transformações adequadas são realizadas no dataset, tais quais escalabilidade, decomposição e agregação de dados, também conhecido como feature engineering[2].
+ 
+Ferramentas como [Python datatable](https://datatable.readthedocs.io/en/latest/?badge=latest), [Pandas](https://pandas.pydata.org/) e [R](https://www.r-project.org/) são recursos excelentes para data wrangling.
 
-### Data Preparation 
-
-A machine learning model is as good as the data that is used to train it. If you use garbage data to train your model, you will get a garbage model. With this said, before uploading a dataset into tools that will assist you with building your machine learning model such as Driverless AI, ensure that the dataset has been cleaned and prepared for training. The process of transforming raw data into another format, which is more appropriate and valuable for analytics, is called data wrangling. 
-
-Data wrangling, which can include extractions, parsing, joining, standardizing, augmenting, cleansing, consolidating, and filtering, is highly recommended to be done before uploading the dataset to Driverless AI.  Data preparation includes the dataset being in the correct format for what you are trying to do. Duplicates have been removed.  Missing data is fixed or removed, and finally, categorial values have been transformed or encoded to a numerical type. Finally, proper transformations have been done on the dataset, such as scaling, decomposition, and aggregation, otherwise known as feature engineering [2]. Tools like [Python datatable](https://datatable.readthedocs.io/en/latest/?badge=latest), [Pandas](https://pandas.pydata.org/) and [R](https://www.r-project.org/) are great assets for data wrangling. 
-
-Driverless AI can do some data wrangling. Data wrangling can be done via a [data recipe](https://www.r-project.org/), the [JDBC connector](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/connectors-nd/jdbc.html?highlight=jdbc) or through [live code](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/datasets-describing.html?highlight=live%20code#modify-by-recipe) which will create a new dataset by modifying the existing one. 
+O Driverless AI também pode realizar data wrangling. Isso pode ser feito por meio de uma [recipe (receita)](https://www.r-project.org/), conector [JDBC](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/connectors-nd/jdbc.html?highlight=jdbc) ou [códigos](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/datasets-describing.html?highlight=live%20code#modify-by-recipe) que irão criar um novo conjunto de dados ao modificar o existente.
 
  
-### Data Transformation/Feature Engineering
+### Feature Engineering
 
-Data transformation or feature engineering is the process of creating new features from the existing ones. Some data transformations include looking at all the features and identifying which features can be combined to make new ones that will be more useful to the performance of the model. For categorical features, the recommendation is for classes that have few observations to be grouped to reduce the likelihood of the model overfitting. Additionally, dummy variables are introduced for categorical features to facilitate machine learning since many algorithms cannot handle categorical features directly.  Last but not least, remove features that are not used or are redundant [3]. These are only a few suggestions when approaching feature engineering. Feature engineering is very time-consuming due to its repetitive nature; it can also be costly. The next step in creating a model is selecting an algorithm.
+A transformação de dados ou feature engineering é o processo de criar novos features (características) com base naqueles já existentes.
+ 
+Algumas transformações de dados incluem olhar para todos os features e identificar quais podem ser combinados para criar novos, que por sua vez serão mais úteis para a performance do modelo.
+ 
+Para features categóricos, a recomendação é para agrupar classes que obtém poucas observações para reduzir a probabilidade de sobreajuste do modelo. Além disso, variáveis fictícias são introduzidas para features categóricos com o intuito de facilitar o machine learning, já que vários algoritmos não suportam features categóricos diretamente. Por fim, remove os features que não são utilizados ou são redundantes.
+ 
+Essas são apenas algumas sugestões quando se trata de feature engineering, algo que pode consumir muito tempo e, devido à sua natureza repetitiva, pode também se tornar algo caro. O próximo passo na construção de um modelo é a seleção do algoritmo.
+
 
 ### Algorithm Selection
 
-“Machine learning algorithms are described as learning a target function (f) that best maps input variables (x) to an output variable(y): Y= f(x)” [4]. In supervised learning, there are many algorithms to select from for training. The type of algorithm(s) will depend on the size of your data set, structure, and the type of problem you are trying to solve.  Through trial and error, the best performing algorithms can be found for your dataset. Some of those algorithms include linear regression, classification, regression trees, random forests, naive Bayes, and random forest, boosting, to name a few [5]. 
-
-### Model Training
+Algoritmos de Machine Learning são definidos através de uma função de aprendizagem (f) que associa o melhor valor de x (variável de entrada) para um y (variável de saída): Y=f(x) [4]."
+Na aprendizagem supervisionada, há múltiplos algoritmos a serem selecionados para o treinamento. O tipo de algoritmo irá depender no tamanho do seu dataset, estrutura do mesmo e o tipo de problema que está tentando solucionar. Por meio de tentativa e erro, os algoritmos que tiverem uma melhor performance podem ser encontrados para o seu “dataset”. Alguns desses algoritmos incluem regressão linear, classificação, árvores de regressão, naïve Bayes e random forest para citar alguns [5].
+ 
+### Treinamento de Modelos
 
 **Datasets** 
 
-One good practice when training a machine learning model is to split up your dataset into subsets: training, validation, and testing sets. A good ratio for the entire dataset is 70-15-15, 70% of the whole dataset for training, 15% for validation, and the remaining 15% for testing. The **training set** is the data that will be used to train the model, and it needs to be big enough to get significant results from it. The **validation set** is the data that has been held back from the training and will be used to evaluate and adjust the hyperparameters of the trained model and hence adjust the performance. Finally, the **test set** is data that has also been held back and will be used to confirm the results of the final model [1].
+Uma boa prática ao treinar um modelo de machine learning é separar o seu dataset em subgrupos: treinamento, validação e teste de conjuntos. Uma boa proporção para todo o seu dataset é 70-15-15, 70% para treinamento, 15% para validação e os 15% restantes para testes. O conjunto voltado para treinamento é composto pelos dados que serão utilizados para treinar o modelo e precisa ser extenso o suficiente para reunir resultados significativos. O conjunto de validação é composto pelos dados que foram separados para avaliar e ajustar os hiperparâmetros dos modelos treinados e, assim, ajustar a performance. Finalmente, o conjunto de teste é composto pelos dados que foram reservados para confirmar os resultados do modelo final. [1].
 
 ![datasets-split-ratio-diagram](assets/datasets-split-ratio-diagram.jpg)
 
-Another part of model training is fitting and tuning the models. For fitting and tuning, hyperparameters need to be tuned, and cross-validation needs to take place using only the training data. Various hyperparameters values will need to be tested. Additionally, a cross-validation loop will be set to calculate the cross-validation score for each set of hyperparameters for each algorithm. Based on the cross-validation score and hyperparameter values, you can select the model for each algorithm that has been tuned with training data and test is it using your test set.  The performance of your regression model can be evaluated by performance metrics such as the Mean Square Error (MSE), ROC Curve, Prec-Recall, LIFT, and Gain, to name a few.
+Uma outra parte que compōe o treinamento de modelos é a adaptação e ajuste dos modelos. Para isso, os hiperparâmetros precisam ser adaptados e a validação cruzada precisam acontecer somente com os dados de treinamento. Diversos valores de hiperparâmetros precisarão ser testados. Além disso, uma validação cruzada será utilizada para calcular a nota para cada conjunto de hiperparâmetro para cada algoritmo. Com base na validação cruzada e nos valores dos hiperparâmetros, você poderá selecionar o modelo para cada algoritmo que foi ajustado com o treinamento dos dados usando o seu conjunto de dados para teste. A performance do seu modelo de regressão poderá ser avaliado por métricas de performance, como “Mean Square Error (MSE)”, “ROC Curve”, “Prec-Recall”, “LIFT” and “Gain” para citar alguns exemplos.
 
-### What are the challenges in AI Model Development?
+### Quais são os desafios no desenvolvimento de um modelo de inteligência artificial?
+Um dos maiores desafios encontrados no desenvolvimento de um modelo pronto para produção é que isso pode levar semanas ou meses para ser desenvolvido. Desenvolver um modelo envolve feature engineering, construção de modelos e implantação de modelos. Todas as tarefas são bem repetitivas, demoradas e requerem um conhecimento avançado de geração de features, algoritmos, parâmetros e implantação de modelos. Por fim, existe a necessidade de um conhecimento profundo e confiança em como o modelo foi gerado para explicar e justificar como o modelo tomou determinadas decisões. 
 
-One of the significant challenges faced in developing a single production-ready model is that it can take weeks or months to build it. Developing a model involves feature engineering, model building, and model deployment. All tasks are very repetitive, time-consuming, require advanced knowledge of feature generation, algorithms, parameters, and model deployment. Finally, there needs to be in-depth knowledge and confidence in how the model was generated to explain and justify how the model made its decisions.
 
-
-### What is Automated Machine Learning, and why is it important?
-
-AutoML or Automated Machine Learning is the process of automating algorithm selection, feature generation, hyperparameter tuning, iterative modeling, and model assessment. AutoML tools such as H2O Driverless AI makes it easy to train and evaluate machine learning models. Automating the repetitive tasks of Machine Learning Development allows people in the industry to focus on the data and the business problems they are trying to solve. 
+### O que é machine learning automático e por que isso é importante?
+AutoML or Machine Learning Automático é o processo de automatizar a seleção de algoritmos, geração de features, adaptação de hiperparâmetros, is the process of automating algorithm selection, feature generation, hyperparameter tuning, criação de modelos iterativos e avaliação de modelos. Ferramentas de AutoML como o H2O Driverless AI torna mais fácil o processo de treinamento e avaliação de modelos de machine learning. Automatizar tarefas repetitivas de machine learning permite que os profissionais possam focar nos dados e nos desafios do negócio que eles estão tentando solucionar. 
 
 ### References
 [1] [Google’s Machine Learning Crash Course](https://developers.google.com/machine-learning/crash-course/training-and-test-sets/splitting-data)
@@ -153,7 +163,7 @@ AutoML or Automated Machine Learning is the process of automating algorithm sele
 
 [6] [Selecting the best Machine Learning Algorithm for your regression problem](https://towardsdatascience.com/selecting-the-best-machine-learning-algorithm-for-your-regression-problem-20c330bad4ef)
 
-### Deeper Dive and Resources
+### Mais recursos e detalhes
 
 - [Explore the replays from H2O World around the world](
 https://www.h2o.ai/h2oworldnewyork/) 
@@ -162,25 +172,21 @@ https://www.brighttalk.com/search/?q=driverless+ai)
 - [Explore the various H2O Driverless AI playlists on YouTube](https://www.youtube.com/user/0xdata/playlists) 
 
 
-## Task 3: Load Data
+## Tarefa 3: Carregar os Dados
 
-1\. Navigate back to the H2O Driverless AI  **Datasets** page.
+1\. Navegue de volta para a página de Datasets do Driverless AI.
 
-### About the Dataset
+### Sobre o dataset
 
-The dataset used for this experiment is a version of the Titanic Kaggle dataset. This dataset contains the list of estimated passengers aboard the RMS Titanic.
-
-The RMS Titanic was a British commercial passenger liner that sank after colliding with an iceberg in the North Atlantic Ocean on April 15, 1912. More than 1,500 people lost their lives from an estimated 2,224 passengers and crew members while on their way to New York City from Southampton. 
-
-This tragedy shocked the international community and led to better safety regulations for ships. The lack of lifeboats, amongst other things, was one of the factors that resulted in a significant loss of life. Although there was some element of luck involved in surviving the sinking, some groups of people were more likely to survive than others.
+TO dataset utilizado para esse experimento é o do Titanic. Nós vamos criar um modelo de previsão para determinar quais fatores contribuíram para a sobrevivência de um passageiro. Esse conjunto de dados possui uma lista estimada de passageiros a bordo do RMS Titanic.
 
 ![rms-titanic](assets/rms-titanic.jpeg)
 
 [RMS Titanic-Wikipedia](https://en.wikipedia.org/wiki/RMS_Titanic#/media/File:RMS_Titanic_3.jpg)
 
-**Titanic dataset**:
+**Dataset do Titanic**:
 
-1309 rows, one row per passenger, and 16 columns representing attributes of each passenger:
+1309 linhas, uma linha por passageiro e 16 colunas que representam os atributos de cada passageiro.Para manter os códigos originais do experimento, estes permanecerão em inglês:
 
 |Attribute|Definition|Key|
 |---|---|---|
@@ -202,35 +208,36 @@ This tragedy shocked the international community and led to better safety regula
 |home.des|Home Destination| - |
 
 
-### Add the Data 
+### Adicione os dados
 
-1\. Click on **Add a Dataset(or Drag and Drop)**  
+1\. Clique em **Add a Dataset (adicionar um conjunto de dados)**  
 
-2\. Select **FILE SYSTEM**
+2\. Selecione **FILE SYSTEM**
 
 ![add-dataset-file-system](assets/add-dataset-file-system.jpg)
 
-3\. Enter the following */data/TestDrive/titanic.csv* into the search bar. Select *titanic.csv* then **Click to Import Selection**. 
+3\. Digite /data/TestDrive/titanic.csv na barra de buscas. Selecione titanic.csv e então **Click to Import Selection** (clique para importar seleção)
+
 
 ![select-titanic-dataset](assets/select-titanic-dataset.jpg)
 
 
-4\. If the file loaded successfully, then you should see an  image similar to the one below:
+4\. Se o arquivo for carregado com êxito, você deverá ver uma imagem como a abaixo:
 
 ![titanic-set-overview](assets/titanic-set-overview.jpg)
 
-*Things to Note:*
+*Observações:*
 
-1. You can view:
+1. Você pode visualizar:
 
-  - Dataset filename
-  - File size
-  - Number of rows/columns 
-  - File status
+- O nome de arquivo do seu dataset
+- O tamanho do arquivo
+- Número de linhas/colunas
+- O status do arquivo
 
-2. Option to go back to the previous page  
-
-### Deeper Dive and Resources
+2. Opção de voltar para a página anterior
+ 
+### Recursos mais detalhados:
 
 - [Learn More About the Type of Dataset File formats that Can be Uploaded](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/datasets.html#adding-datasets) 
 
