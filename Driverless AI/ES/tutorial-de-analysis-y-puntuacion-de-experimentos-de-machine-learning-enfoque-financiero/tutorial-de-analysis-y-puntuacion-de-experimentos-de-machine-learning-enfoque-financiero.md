@@ -154,284 +154,284 @@ Estas dos columnas se descartan porque ambas son indicadores claros de que los p
 
 En la tarea 2, exploraremos y actualizaremos el **Experiment Settings (Configuraciones de experimento)**.
 
-## Task 2: Explore Experiment Settings and Expert Settings
+## Tarea 2: Explorar la configuración del experimento y la configuración de expertos
 
-1\.  Hover over to **Experiment Settings** and note the three knobs, **Accuracy**, **Time** and **Interpretability**.
+1\.  Pase el mouse sobre **Experiment Settings (Configuraciones de experimento)** y tenga en cuenta las tres perillas, **Accuracy (Exactitud)**, **Time (Hora)** y **Interpretability (Interpretabilidad)**.
 
-The **Experiment Settings** describe the Accuracy, Time, and Interpretability of your specific experiment. The knobs on the experiment settings are adjustable, as the values change the meaning of the settings on the left-bottom page change.
+El **Experiment Settings** describe la precisión, el tiempo y la interpretabilidad de su experimento específico. Las perillas en la configuración del experimento son ajustables, ya que los valores cambian el significado de la configuración en la página inferior izquierda.
 
-Here is an overview of the Experiments settings: 
+Aquí hay una descripción general de la configuración de Experimentos: 
 
-- **Accuracy** - Relative accuracy – higher values, should lead to higher confidence in model performance (accuracy).
-- **Time** - Relative time for completing the experiment. Higher values will take longer for the experiment to complete.
-- **Interpretability**-  The ability to explain or to present in understandable terms to a human. The higher the interpretability the simpler the features that will be extracted.  
+- **Accuracy** - Precisión relativa: valores más altos deberían conducir a una mayor confianza en el rendimiento del modelo (precisión).
+- **Time** - Tiempo relativo para completar el experimento. Los valores más altos tardarán más en completarse.
+- **Interpretability**-  La capacidad de explicar o presentar en términos comprensibles a un humano. Cuanto mayor sea la interpretabilidad, más simples serán las características que se extraerán.  
 
 
 ### Accuracy
 
-By increasing the accuracy setting, Driverless AI gradually adjusts the method for performing the evolution and ensemble. A machine learning ensemble consists of multiple learning algorithms to obtain a better predictive performance that could be obtained from any one single learning algorithm[1]. With a  low accuracy setting, Driverless AI varies features(from feature engineering) and models, but they all compete evenly against each other. At higher accuracy, each independent main model will evolve independently and be part of the final ensemble as an ensemble over different main models. At higher accuracies, Driverless AI will evolve+ensemble feature types like Target Encoding on and off that evolve independently. Finally, at highest accuracies, Driverless AI performs both model and feature tracking and ensembles all those variations.
+Al aumentar la configuración de precisión, Driverless AI ajusta gradualmente el método para realizar la evolución y el conjunto. Un conjunto de aprendizaje automático consta de múltiples algoritmos de aprendizaje para obtener un mejor rendimiento predictivo que se podría obtener de cualquier algoritmo de aprendizaje [1]. Con una configuración de baja precisión, Driverless AI varía las características (desde la ingeniería de características) y los modelos, pero todos compiten de manera uniforme entre sí. Con mayor precisión, cada modelo principal independiente evolucionará de forma independiente y será parte del conjunto final como un conjunto sobre diferentes modelos principales. Con precisiones más altas, Driverless AI evolucionará + tipos de características de conjunto, como la codificación de destino, dentro y fuera, que evolucionan de forma independiente. Finalmente, con las precisiones más altas, lDriverless AI realiza el seguimiento tanto del modelo como de las características y combina todas esas variaciones.
 
 ### Time
 
-Time specifies the relative time for completing the experiment (i.e., higher settings take longer). Early stopping will take place if the experiment doesn’t improve the score for the specified amount of iterations. The higher the time value, the more time will be allotted for further iterations, which means that the recipe will have more time to investigate new transformations in feature engineering and model’s hyperparameter tuning.
+El tiempo especifica el tiempo relativo para completar el experimento (es decir, las configuraciones más altas tardan más). La detención temprana tendrá lugar si el experimento no mejora la puntuación para la cantidad especificada de iteraciones. Cuanto mayor sea el valor de tiempo, más tiempo se asignará para nuevas iteraciones, lo que significa que la receta tendrá más tiempo para investigar nuevas transformaciones en la ingeniería de características y el ajuste de hiperparámetros del modelo.
 
 ### Interpretability 
 
-The interpretability knob is adjustable. The higher the interpretability, the simpler the features the main modeling routine will extract from the dataset. If the interpretability is high enough then a monotonically constrained model will be generated.
+El mando de interpretabilidad es ajustable. Cuanto mayor sea la capacidad de interpretación, más simples serán las características que la rutina de modelado principal extraerá del conjunto de datos. Si la capacidad de interpretación es lo suficientemente alta, se generará un modelo con restricciones monotónicas.
 
-2\.  For this tutorial update the following experiment settings so that they match the image below: 
+2\.  Para este tutorial, actualice la siguiente configuración del experimento para que coincida con la imagen a continuación:
 - Accuracy : 4
 - Time: 3
 - Interpretability: 4
-- Scorer: Logloss 
+- Scorer (Goleador): Logloss 
 
-This configuration was selected to generate a model quickly with a sufficient level of accuracy in the H2O Driverless Test Drive environment.
+Esta configuración se seleccionó para generar un modelo rápidamente con un nivel de precisión suficiente en el entorno H2O Driverless Test Drive.
 
 ![experiment-settings-2](assets/experiment-settings-2.jpg)    
 
-### Expert Settings
+### Expert Settings (Configuraciones de expertos)
 
-3\. Hover over to **Expert Settings** and click on it. An image similar to the one below will appear:
+3\. Pase el mouse sobre **Expert Settings (Configuraciones de expertos)** y haga clic en él. Aparecerá una imagen similar a la siguiente:
 
 ![expert-settings-1](assets/expert-settings-1.jpg)
-*Things to Note:*
-1. **Upload Custom Recipe**
-2. **Load Custom Recipe From URL** 
-3. **Official Recipes (External)**
-4. **Experiment**
-5. **Model**
-6. **Features**
-7. **Timeseries**
+*Cosas a tener en cuenta:*
+1. **Upload Custom Recipe (Subir receta personalizada)**
+2. **Load Custom Recipe From URL (Cargar receta personalizada desde URL)** 
+3. **Official Recipes (External) (Recetas oficiales (externas))**
+4. **Experiment (Experimentar)**
+5. **Model (Modelo)**
+6. **Features (Caracteristicas)**
+7. **Timeseries (Series de tiempo)**
 8. **NLP**
-9. **Recipes**
-10. **System**
+9. **Recipes (Recetas)**
+10. **System (Sistema)**
 
-**Expert Settings** are options that are available for those who would like to set their settings manually.  Explore the available expert settings by clicking in the tabs on top of the page.
+**Expert Settings** son opciones que están disponibles para aquellos que desean establecer su configuración manualmente. Explore la configuración experta disponible haciendo clic en las pestañas en la parte superior de la página.
 
-**Expert settings include**:
+**La configuración experta incluye (La configuración experta incluye)**:
 
-**Experiment Settings**
-- Max Runtime in Minutes Before Triggering the Finish Button
-- Max Runtime in Minutes Before Triggering the 'Abort' Button
-- Pipeline Building Recipe
-- Make Python Scoring Pipeline
-- Make MOJO Scoring Pipeline
-- Measure MOJO Scoring Latency
-- Timeout in Seconds to Wait for MOJO Creation at End of Experiment
-- Number of Parallel Workers to Use during MOJO Creation
-- Make Pipeline Visualization
-- Make Autoreport
-- Min Number of Rows Needed to Run an Experiment
-- Reproducibility Level
-- Random Seed
-- Allow Different Sets of Classes Across All Train/Validation Fold Splits
-- Max Number of Classes for Classification Problems
-- Model/Feature Brain Level
-- Feature Brain Save Every Which Iteration
-- Feature Brain Restart from Which Iteration
-- Feature Brain Refit Uses Same Best Individual
-- Feature Brain Adds Features with New Columns Even During Retraining of Final Model
-- Min Driverless AI Iterations
-- Select Target Transformation of the Target for Regression Problems
-- Tournament Model for Genetic Algorithm
-- Number of Cross-Validation Folds For Feature Evolution
-- Number of Cross-Validation Folds For Final Model
-- Enable Extra Logging for Ensemble Meta Learner
-- Number of Cross-Validation Folds or Maximum Time-Based Splits for Feature Evolution
-- Number of Cross-Validation Folds or Maximum Time-Based Splits for Final Model
-- Maximum Number of Fold IDs to Show in Logs
-- Max Number of Rows Times Number of Columns for Feature Evolution Data Splits
-- Max Number of Rows Times Number of Columns for Reducing Training Dataset
-- Maximum Size of Validation Data Relative to Training Data
-- Perform Stratified Sampling for Binary Classification if The Target Is More Imbalanced Than This
-- Add to config.toml via toml String
+**Configuraciones de experimento (Configuraciones de experimento)**
+- Tiempo de ejecución máximo en minutos antes de activar el botón Finalizar
+- Tiempo de ejecución máximo en minutos antes de activar el botón 'Abort'
+- Receta de construcción de tuberías
+- Hacer una tubería de puntuación de Python
+- Hacer tubería de puntuación MOJO
+- Medir la latencia de puntuación MOJO
+- Tiempo de espera en segundos para esperar la creación de MOJO al final del experimento
+- Número de trabajadores paralelos a utilizar durante la creación de MOJO
+- Hacer visualización de canalización
+- Hacer informe automático
+- Número mínimo de filas necesarias para ejecutar un experimento
+- Nivel de reproducibilidad
+- Random Seed (Semilla aleatoria)
+- Permitir diferentes conjuntos de clases en todos los trenes / Validation Fold Splits
+- Número máximo de clases para problemas de clasificación
+- Modelo / Característica Nivel cerebral
+- Característica Brain Save Every, que iteración
+- Característica de reinicio cerebral desde el cual iteración
+- Característica Brain Reit utiliza el mismo mejor individuo
+- Feature Brain agrega características con nuevas columnas incluso durante la reentrenamiento del modelo final
+- Mínimas iteraciones de Driverless AI
+- Seleccione la transformación de destino del objetivo para problemas de regresión
+- Modelo de torneo para algoritmo genético
+- Número de pliegues de validación cruzada para la evolución de características
+- Número de pliegues de validación cruzada para el modelo final
+- Habilite el registro adicional para Ensemble Meta Learner
+- Número de pliegues de validación cruzada o divisiones máximas basadas en el tiempo para la evolución de características
+- Número de pliegues de validación cruzada o divisiones máximas basadas en el tiempo para el modelo final
+- Número máximo de ID de plegado para mostrar en los registros
+- Número máximo de filas veces Número de columnas para divisiones de datos de evolución de características
+- Número máximo de filas veces Número de columnas para reducir el conjunto de datos de entrenamiento
+- Tamaño máximo de los datos de validación relativos a los datos de entrenamiento
+- Realice un muestreo estratificado para la clasificación binaria si el objetivo está más desequilibrado que esto
+- Agregar a config.toml a través de la cadena toml
 
 
-**Model Settings**
-- XGBoost GBM Models
-- XGBoost Dart Models
-- GLM Models
-- Decision Tree Models
-- LightGBM Models
-- TensorFlow Models
-- FTRL Models
-- RuleFit Models
-- LightGBM Boosting Types
-- LightGBM Categorical Support
-- Constant Models
-- Whether To Show Constant Models in Iteration Panel
-- Parameters for TensorFlow
-- Max Number of Trees/Iterations
-- N_estimators List To Sample From For Models That Do Not Use Early Stopping
-- Minimum Learning Rate for Final Ensemble GBM Models
-- Maximum Learning Rate for Final Ensemble GBM Models
-- Reduction Factor For Max. Number of Trees/Iterations During Feature Evolution
-- Reduction Factor for Number of Trees/Iterations During Feature Evolution
-- Minimum Learning Rate for Feature Engineering GBM Models
-- Max Learning Rate for Tree Models
-- Max Number of Epochs for TensorFlow/FTRL
-- Max. Tree Depth
-- Max. max_bin for Tree Features
-- Max Number of Rules for RuleFit
-- Ensemble Level for Final Modeling Pipeline
-- Cross-validate Single Final Model
-- Number of Models During Tuning Phase
-- Sampling Method for Imbalanced Binary Classification Problems
-- Ratio of Majority to Minority Class for Imbalanced Binary Classification to Trigger Special Sampling Techniques (if Enabled)
-- Ratio of Majority to Minority Class for Heavily Imbalanced Binary Classification to Only Enable Special Sampling Techniques if Enabled
-- Number of Bags for Sampling Methods for Imbalanced Binary Classification (if Enabled)
-- Hard Limit on Number of Bags for Sampling Methods for Imbalanced Binary Classification
-- Hard Limit on Number of Bags for Sampling Methods for Imbalanced Binary Classification During Feature Evolution Phase
-- Max Size of Data Sampled During Imbalanced Sampling
-- Target Fraction of Minority Class After Applying Under/Over-Sampling Techniques
-- Max Number of Automatic FTRL Interactions Terms for 2nd, 3rd, 4th order interactions terms (Each)
-- Enable Detailed Scored Model Info
-- Whether to Enable Bootstrap Sampling for Validation and Test Scores
-- For Classification Problems with This Many Classes, Default to TensorFlow
+**Configuraciones de modelo**
+- Modelos XGBoost GBM
+- Modelos de dardos XGBoost
+- Modelos GLM
+- Modelos de árbol de decisión
+- Modelos LightGBM
+- Modelos TensorFlow
+- Modelos FTRL
+- Modelos RuleFit
+- Tipos de refuerzo LightGBM
+- Soporte categórico LightGBM
+- Modelos constantes
+- Si mostrar modelos constantes en el panel de iteración
+- Parámetros para TensorFlow
+- Número máximo de árboles / iteraciones
+- N_estimators List To Sample From para modelos que no utilizaron la detención temprana
+- Tasa de aprendizaje mínima para modelos GBM de conjunto final
+- Tasa máxima de aprendizaje para modelos GBM de conjunto final
+- Factor de reducción para máx. Número de árboles / iteraciones durante la evolución de la característica
+- Factor de reducción para el número de árboles / iteraciones durante la evolución de la característica
+- Tasa de aprendizaje mínima para modelos GBM de ingeniería de características
+- Tasa máxima de aprendizaje para modelos de árbol
+- Número máximo de épocas para TensorFlow / FTRL
+- Max. Profundidad del árbol
+- Max. max_bin para las características del árbol
+- Número máximo de reglas para RuleFit
+- Nivel de conjunto para la tubería de modelado final
+- Validación cruzada del modelo final único
+- Número de modelos durante la fase de ajuste
+- Método de muestreo para problemas de clasificación binaria desequilibrada
+- Relación de la mayoría a la clase minoritaria para la clasificación binaria desequilibrada a las técnicas de muestreo especiales de activación (si está habilitado)
+- Relación de la mayoría a la clase minoritaria para la clasificación binaria muy desequilibrada para habilitar solo técnicas de muestreo especiales si está habilitada
+- Número de bolsas para métodos de muestreo para clasificación binaria desequilibrada (si está habilitada)
+- Límite estricto en el número de bolsas para métodos de muestreo para clasificación binaria desequilibrada
+- Límite estricto en el número de bolsas para los métodos de muestreo para la clasificación binaria desequilibrada durante la fase de evolución de características
+- Tamaño máximo de datos muestreados durante el muestreo desequilibrado
+- Fracción objetivo de la clase minoritaria después de aplicar técnicas de submuestreo / sobremuestreo
+- Número máximo de términos de interacción automática FTRL para términos de interacción de segundo, tercer y cuarto orden (cada uno)
+- Habilitar información detallada del modelo puntuado
+- Si se debe habilitar el muestreo Bootstrap para la validación y los puntajes de prueba
+- Para problemas de clasificación con tantas clases, el valor predeterminado es TensorFlow
 
-**Features Settings**
-- Feature Engineering Effort
-- Data Distribution Shift Detection
-- Data Distribution Shift Detection Drop of Features
-- Max Allowed Feature Shift (AUC) Before Dropping Feature
-- Leakage Detection
-- Leakage Detection Dropping AUC/R2 Threshold
-- Max Rows Times Columns for Leakage
-- Report Permutation Importance on Original Features
-- Maximum Number of Rows to Perform Permutation-Based Feature Selection
-- Max Number of Original Features Used
-- Max Number of Original Non-Numeric Features
-- Max Number of Original Features Used for FS Individual
-- Number of Original Numeric Features to Trigger Feature Selection Model Type
-- Number of Original Non-Numeric Features to Trigger Feature Selection Model Type
-- Max Allowed Fraction of Uniques for Integer and Categorical Columns
-- Allow treating numerical as categorical
-- Max Number of Unique Values for Int/Float to be Categoricals
-- Max Number of Engineered Features
-- Max. Number of Genes
-- Limit Features by Interpretability
-- Correlation Beyond Which Triggers Monotonicity Constraints (if Enabled)
-- Max Feature Interaction Depth
-- Fixed Feature Interaction Depth
-- Enable Target Encoding
-- Enable Lexicographical Label Encoding
-- Enable Isolation Forest Anomaly Score Encoding
-- Enable One HotEncoding
-- Number of Estimators for Isolation Forest Encoding
-- Drop Constant Columns
-- Drop ID Columns
-- Don’t Drop Any Columns
-- Features to Drop
-- Features To Group By
-- Sample From Features To Group By
-- Aggregation Functions (Non-Time-Series) For Group By Operations
-- Number of Folds To Obtain Aggregation When Grouping
-- Type of Mutation Strategy
-- Enable Detailed Scored Features Info
-- Enable Detailed Logs for Timing and Types of Features Produced
-- Compute Correlation Matrix
+**Configuración de características**
+- Esfuerzo de ingeniería de características
+- Detección de cambio de distribución de datos
+- Distribución de datos Detección de cambio Caída de características
+- Cambio de característica máximo permitido (AUC) antes de descartar la función
+- Detección de fugas
+- Detección de fugas que reduce el umbral de AUC / R2
+- Columnas Max Rows Times para fugas
+- Informe la importancia de la permutación en las características originales
+- Número máximo de filas para realizar la selección de características basadas en permutación
+- Número máximo de características originales utilizadas
+- Número máximo de características no numéricas originales
+- Número máximo de características originales utilizadas para FS Individual
+- Número de características numéricas originales para activar el tipo de modelo de selección de características
+- Número de características no numéricas originales para activar el tipo de modelo de selección de características
+- Fracción máxima permitida de uniques para columnas enteras y categóricas
+- Permitir el tratamiento numérico como categórico
+- Número máximo de valores únicos para Int / Float para ser categóricos
+- Número máximo de características de ingeniería
+- Max. Numero de genes
+- Limitar características por interpretabilidad
+- Correlación más allá de la cual desencadena restricciones de monotonicidad (si está habilitada)
+- Profundidad máxima de interacción de características
+- Profundidad de interacción de característica fija
+- Habilitar la codificación de destino
+- Habilitar codificación de etiqueta lexicográfica
+- Habilitar codificación de puntuación de anomalía de bosque de aislamiento
+- Habilitar One HotEncoding
+- Número de estimadores para la codificación de bosque de aislamiento
+- Caída de columnas constantes
+- Columnas de ID de caída
+- No suelte ninguna columna
+- Características para soltar
+- Características para agrupar por
+- Muestra de características para agrupar por
+- Funciones de agregación (no series temporales) para agrupar por operaciones
+- Número de pliegues para obtener la agregación al agrupar
+- Tipo de estrategia de mutación
+- Habilitar información detallada de características puntuadas
+- Habilite registros detallados para el tiempo y los tipos de características producidas
+- Matriz de correlación computacional
 
-**Time Series Settings**
-- Time Series Lag-Based Recipe
-- Custom Validation Splits For Time-Series Experiments
-- Timeout In Seconds For Time-Series Properties Detection in UI
-- Generate Holiday Features
-- Time-Series Lags Override
-- Smallest Considered Lag Size
-- Enable Feature Engineering from Time Column
-- Allow Integer Time Column As Numeric Feature
-- Allowed Date and Date-Time Transformations
-- Enable Feature Engineering from Integer Time Column
-- Allow Date or Time Features to be Transformed Directly into a Numerical Representation
-- Consider Time Groups Columns as Standalone Features
-- Which TGC Feature Types to Consider as Standalone Features
-- Enable Time Unaware Transformers
-- Always Group by All Time Groups Columns for Creating Lag Features
-- Generate Time-Series Holdout Predictions
-- Number of Time-Based Splits for Internal Model Validation
+**Time Series Settings (Configuración de series de tiempo)**
+- Receta basada en el retraso de la serie temporal
+- Divisiones de validación personalizadas para experimentos de series temporales
+- Tiempo de espera en segundos para la detección de propiedades de series temporales en la interfaz de usuario
+- Generar características de vacaciones
+- Anulación de retrasos de series temporales
+- El tamaño de retraso más pequeño considerado
+- Habilitar ingeniería de características desde la columna de tiempo
+- Permitir columna de tiempo entero como función numérica
+- Transformaciones de fecha y hora permitidas
+- Activar ingeniería de características desde la columna de tiempo entero
+- Permitir que las características de fecha u hora se transformen directamente en una representación numérica
+- Considere las columnas de grupos de tiempo como características independientes
+- Qué tipos de características de TGC se deben considerar como características independientes
+- Habilitar transformadores de tiempo inconsciente
+- Agrupar siempre por columnas de grupos de todos los tiempos para crear características de retraso
+- Generar predicciones de resistencia de series temporales
+- Número de divisiones basadas en el tiempo para la validación interna del modelo
 - Maximum Overlap Between Two Time-Based Splits
-- Max Number of Splits Used for Creating Final Time-Series Model’s Holdout Predictions
-- Whether to Speed Up Calculation Of Time-Series Holdout Predictions
-- Whether to Speed Up Calculation Of Shapley Values for Time-Series Holdout Predictions
-- Generate Shapley Values For Time-Series Holdout Predictions At the Time Of Experiment
-- Lower Limit On Interpretability Setting For Time-Series Experiments, Implicitly Enforced
-- Dropout Mode for Lag Features
-- Probability to Create Non-Target Lag Features
-- Method to Create Rolling Test Set Predictions
-- Probability for New Time-Series Transformers to Use Default Lags
-- Probability of Exploring Interaction-Based Lag Transformers
-- Probability of Exploring Aggregation-Based Lag Transformers
+- Número máximo de divisiones utilizadas para crear predicciones de resistencia del modelo de serie temporal final
+- Si se debe acelerar el cálculo de las predicciones de resistencia de series temporales
+- Si se debe acelerar el cálculo de los valores de Shapley para las predicciones de retención de series temporales
+- Genere valores Shapley para predicciones de resistencia de series temporales en el momento del experimento
+- Límite inferior en la configuración de interpretabilidad para experimentos de series de tiempo, aplicados implícitamente
+- Modo de abandono para las características de retraso
+- Probabilidad de crear características de retraso no objetivo
+- Método para crear predicciones de conjuntos de pruebas continuas
+- Probabilidad de que los nuevos transformadores de series temporales utilicen retrasos predeterminados
+- Probabilidad de explorar transformadores de retardo basados en interacción
+- Probabilidad de explorar transformadores de retardo basados en agregación
 
-**NLP Settings**
-- Max TensorFlow Epochs for NLP
-- Accuracy Above Enable TensorFlow NLP by Default for All Models
-- Enable Word-Based CNN TensorFlow Models for NLP
-- Enable Word-Based BiGRU TensorFlow Models for NLP
-- Enable Character-Based CNN TensorFlow Models for NLP
-- Path to Pretrained Embeddings for TensorFlow NLP Models
-- Allow Training of Unfrozen Pretrained Embeddings
-- Whether Python/MOJO Scoring Runtime Will Have GPUs
-- Fraction of Text Columns Out of All Features to be Considered a Text-Dominanted Problem
-- Fraction of Text per All Transformers to Trigger That Text Dominated
-- Threshold for String Columns to be Treated as Text
+**Configuraciones de PNL**
+- Max TensorFlow Epochs para PNL
+- La precisión anterior habilita TensorFlow NLP de forma predeterminada para todos los modelos
+- Habilitar modelos de TensorFlow CNN basados en palabras para PNL
+- Habilitar modelos de TensorFlow BiGRU basados en palabras para PNL
+- Habilitar modelos CNN TensorFlow basados en caracteres para PNL
+- Camino a las incrustaciones preformadas para los modelos TensorFlow NLP
+- Permitir el entrenamiento de incrustaciones pre-entrenadas no congeladas
+- Si Python / MOJO Scoring Runtime tendrá GPU
+- La fracción de columnas de texto de todas las características se considera un problema dominado por texto
+- Fracción de texto por todos los transformadores para activar ese texto dominado
+- Umbral para columnas de cadena que se tratarán como texto
 
-**Recipes Settings**
-- Include Specific Transformers
-- Include Specific Models
-- Include Specific Scorers
-- Probability to Add Transformers
-- Probability to Add Best Shared Transformers
-- Probability to Prune Transformers
-- Probability to Mutate Model Parameters
-- Probability to Prune Weak Features
-- Timeout in Minutes for Testing Acceptance of Each Recipe
-- Whether to Skip Failures of Transformers
-- Whether to Skip Failures of Models
-- Level to Log for Skipped Failures
+**Configuraciones de recetas**
+- Incluir transformadores específicos
+- Incluir modelos específicos
+- Incluir anotadores específicos
+- Probabilidad de agregar transformadores
+- Probabilidad de agregar los mejores transformadores compartidos
+- Probabilidad de podar transformadores
+- Probabilidad de mutar los parámetros del modelo
+- Probabilidad de podar características débiles
+- Tiempo de espera en minutos para probar la aceptación de cada receta
+- Ya sea para omitir fallas de transformadores
+- Ya sea para omitir fallas de modelos
+- Nivel para iniciar sesión por fallas omitidas
 
-**System Settings**
-- Number of Cores to Use
-- Maximum Number of Cores to Use for Model Fit
-- Maximum Number of Cores to Use for Model Predict
-- Maximum Number of Cores to Use for Model Transform and Predict When Doing MLI, Autoreport, Score on Another Dataset
-- Tuning Workers per Batch for CPU
-- Num. Works For CPU Training
-- #GPUs/Experiment
-- Num. Cores/GPU
-- #GPUs/Model
-- Num. Of GPUs For Isolated Prediction/Transform
-- Max Number of Threads to Use for datatable and OpenBLAS for Munging and Model Training
-- Max. Num. Of Threads to Use For Datatable Read and Write Of Files
-- Max. Num. Of Threads To Use For Datatable Stats and Openblas
-- GPU Starting ID
-- Enable Detailed Traces
-- Enable Debug Log Level
-- Enable Logging Of System Information For Each Experiment
+**Ajustes del sistema**
+- Número de núcleos a usar
+- Número máximo de núcleos a usar para el ajuste del modelo
+- Número máximo de núcleos a utilizar para predecir el modelo
+- Número máximo de núcleos a usar para la transformación y predicción del modelo al hacer MLI, informe automático, puntaje en otro conjunto de datos
+- Tuning Workers por lote para CPU
+- Num. Funciona para entrenamiento de CPU
+- #GPU/Experimento
+- Num. Núcleos / GPU
+- #GPU/Modelo
+- Num. De GPU para predicción / transformación aislada
+- Número máximo de subprocesos para usar para datatable y OpenBLAS para Munging y Model Training
+- Max. Num. De subprocesos para usar en la tabla de datos de lectura y escritura de archivos
+- Max. Num. De subprocesos para usar en estadísticas de tablas de datos y Openblas
+- ID de inicio de GPU
+- Habilitar rastros detallados
+- Habilitar el nivel de registro de depuración
+- Habilite el registro de la información del sistema para cada experimento
 
 
-4\. For this experiment turn ON **RuleFit models**, under **Model** tab the select **Save**. 
+4\. Para este experimento enciéndelo **RuleFit models (Modelos RuleFit)**, debajo **Model (Modelo)** pestaña la selección **Save (Guardar)**. 
 
-The RuleFit[2] algorithm creates an optimal set of decision rules by first fitting a tree model and then fitting a Lasso (L1-regularized) GLM model to create a linear model consisting of the most important tree leaves (rules). The RuleFit model helps with exceeding the accuracy of Random Forests while retaining explainability of decision trees.
+El RuleFit[2] algoritmo crea un conjunto óptimo de reglas de decisión ajustando primero un modelo de árbol y luego ajustando un modelo GLM Lasso (regularizado por L1) para crear un modelo lineal que consta de las hojas (reglas) de árbol más importantes. El modelo RuleFit ayuda a superar la precisión de los bosques aleatorios al tiempo que conserva la explicabilidad de los árboles de decisión.
 
 ![expert-settings-rulefit-on](assets/expert-settings-rulefit-on.jpg)
 
-Turning on the RuleFit model will be added to the list of algorithms that Driverless AI will consider for the experiment.  The selection of the algorithm depends on the data and the configuration selected.
+La activación del modelo RuleFit se agregará a la lista de algoritmos que la IA sin controlador considerará para el experimento. La selección del algoritmo depende de los datos y la configuración seleccionada.
 
-5\. Before selecting **Launch**, make sure that your **Experiment** page looks similar to the one above, once ready, click on **Launch**. 
+5\. Antes de seleccionar **Launch (Lanzamiento)**, asegúrese de que su **Experiment (Experimentar)** la página es similar a la de arriba, una vez que esté lista, haga clic en **Launch (Lanzamiento)**. 
 
-Learn more about what each setting means and how it can be updated from its default values by visiting H2O’s Documentation- [Expert Settings](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/expert-settings.html?highlight=expert%20settings)
+Obtenga más información sobre lo que significa cada configuración y cómo se puede actualizar a partir de sus valores predeterminados visitando la documentación de H2O- [Expert Settings](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/expert-settings.html?highlight=expert%20settings)
 
-### Resources
+### Recursos
 
 [1] [Ensemble Learning](https://en.wikipedia.org/wiki/Ensemble_learning)
 
 [2] [J. Friedman, B. Popescu. “Predictive Learning via Rule Ensembles”. 2005](http://statweb.stanford.edu/~jhf/ftp/RuleFit.pdf)
 
 
-### Deeper Dive 
-- [To better understand the impact of setting the Accuracy, Time and Interpretability Knobs between 1 and 10 in H2O Driverless AI](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-settings.html?highlight=interpretability#accuracy-time-and-interpretability-knobs)
+### Inmersión más profunda 
+- Para comprender mejor el impacto de establecer las perillas de precisión, tiempo e interpretabilidad entre 1 y 10 en AI sin controlador H2O](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-settings.html?highlight=interpretability#accuracy-time-and-interpretability-knobs)
 
-- For more information about additional setting in[Expert Settings for H2O Driverless AI](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/expert-settings.html?highlight=expert%20settings)
+- Para obtener más información sobre la configuración adicional en [Expert Settings for H2O Driverless AI](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/expert-settings.html?highlight=expert%20settings)
 
 ## Task 3: Experiment Scoring and Analysis Concepts
 
