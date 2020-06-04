@@ -483,9 +483,9 @@ Given our example of use case of predicting loans the following provides a descr
 
 What are sensitivity and specificity? The true positive rate is the ratio of the number of true positive predictions divided by all positive actuals. This ratio is also known as **recall** or **sensitivity**, and it is measured from 0.0 to 1.0 where 0 is the worst and 1.0 is the best sensitivity. Sensitive is a measure of how well the model is predicting for the positive case.
 
-The true negative rate is the ratio of the number of true negative predictions divided by all positive predictions. This ratio is also known as **specificity** and is measured from 0.0 to 1.0 where 0 is the worst and 1.0 is the best specificity. Specificity is a measure for how well the model is predicting for the negative case correctly.  How often is it predicting a negative case correctly.
+The true negative rate is the ratio of the number of true negative predictions divided by the sum of true negatives and false positives. This ratio is also known as **specificity** and is measured from 0.0 to 1.0 where 0 is the worst and 1.0 is the best specificity. Specificity is a measure for how well the model is predicting for the negative case correctly.  How often is it predicting a negative case correctly.
 
-The false negative rate is *1- Specificity*, or it is the ratio of false positives divided by all negative predictions[3]. 
+The false negative rate is *1- Sensitivity*, or the ratio of false negatives divided by the sum of the true positives and false negatives [3]. 
 
 The following image provides an illustration of the ratios for sensitivity, specificity and false negative rate. 
 
@@ -497,7 +497,7 @@ The following image provides an illustration of the ratios for sensitivity, spec
 
 ![false-positive-rate](assets/false-positive-rate.jpg)
 
-**1 -Specificity** =  False Positive Rate = 1- True Negative Rate = FP / (FP + TN )
+**1 - Specificity** =  False Positive Rate = 1 - True Negative Rate = FP / (FP + TN )
 
 A ROC Curve is also able to tell you how well your model did by quantifying its performance. The scoring is determined by the percent of the area that is under the ROC curve otherwise known as Area Under the Curve or AUC. 
 
