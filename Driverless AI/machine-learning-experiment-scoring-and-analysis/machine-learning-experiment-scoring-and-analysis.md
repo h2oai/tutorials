@@ -485,7 +485,7 @@ What are sensitivity and specificity? The true positive rate is the ratio of the
 
 The true negative rate is the ratio of the number of true negative predictions divided by the sum of true negatives and false positives. This ratio is also known as **specificity** and is measured from 0.0 to 1.0 where 0 is the worst and 1.0 is the best specificity. Specificity is a measure for how well the model is predicting for the negative case correctly.  How often is it predicting a negative case correctly.
 
-The false negative rate is *1- Sensitivity*, or the ratio of false negatives divided by the sum of the true positives and false negatives [3]. 
+The false negative rate is *1 - Sensitivity*, or the ratio of false negatives divided by the sum of the true positives and false negatives [3]. 
 
 The following image provides an illustration of the ratios for sensitivity, specificity and false negative rate. 
 
