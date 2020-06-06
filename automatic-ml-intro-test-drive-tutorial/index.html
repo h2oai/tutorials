@@ -42,7 +42,7 @@
 </ul>
 </li>
 </ul>
-<p><strong>Note: Aquarium&#39;s Driverless AI Test Drive lab has a license key built-in, so you don&#39;t need to request one to use it. Each Driverless AI Test Drive instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore Driverless AI, you can always launch another Test Drive instance or reach out to our sales team via the </strong><a href="https://www.h2o.ai/company/contact/" target="_blank"><strong>contact us form</strong></a><strong>.</strong></p>
+<p><strong>Note:  Aquarium&#39;s Driverless AI Test Drive lab has a license key built-in, so you don&#39;t need to request one to use it. Each Driverless AI Test Drive instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore Driverless AI, you can always launch another Test Drive instance or reach out to our sales team via the </strong><a href="https://www.h2o.ai/company/contact/" target="_blank"><strong>contact us form</strong></a><strong>.</strong></p>
 
 
       </google-codelab-step>
@@ -52,9 +52,9 @@
 <p><img alt="dai-datasets-page" src="img/42ff390df12d6d46.jpg"></p>
 <p>The Driverless UI is easy to navigate. The following features, as well as a few datasets, are found on the <strong>Datasets</strong> page. We will explore these features as we launch an experiment in the next tasks.</p>
 <ol type="1">
-<li><strong>Projects</strong>: Projects Workspace for managing datasets and experiments menu option.</li>
+<li><strong>Projects</strong>: Projects Workspace for managing datasets and experiments related to a specific business problem  or use case.</li>
 <li><strong>Datasets</strong>: View of current datasets. Other features for datasets include the options to add a dataset, get dataset details, visualize, split, predict, rename, download, and delete.</li>
-<li><strong>Autoviz</strong>: Visualize a dataset with all available graphs.</li>
+<li><strong>Autoviz</strong>: For datasets, Driverless AI automatically selects data plots based on the most relevant data statistics, generates visualizations, and creates data plots that are most relevant from a statistical perspective based on the most relevant data statistics.</li>
 <li><strong>Experiments</strong>: View of completed experiments. Experiments can be revised or deleted.</li>
 <li><strong>Diagnostics</strong>: Diagnose a model and view model performance for multiple scorers based on the existing model and dataset.</li>
 <li><strong>MLI</strong>: View a list of interpreted models or interpret a model.</li>
@@ -122,7 +122,18 @@
       </google-codelab-step>
     
       <google-codelab-step label="Task 3: Load Data" duration="0">
-        <p>1. Navigate back to the H2O Driverless AI  <strong>Datasets</strong> page.</p>
+        <h2>What is the Driverless AI Workflow?</h2>
+<p>The typical Driverless AI workflow is to:</p>
+<ol type="1">
+<li>Load data</li>
+<li>Visualize data</li>
+<li>Run an experiment</li>
+<li>Interpret the model</li>
+<li>Depploy the scoring pipeline</li>
+</ol>
+<p>In addition, you can diagnose a model, transform another dataset, score the model against antoher dataset and manage your data in Projects. The focus of this tutorial will be in steps 1 - 4. The other aspects of the Driverless AI will be covered in other tutorials found in the Driverless AI learning path. We will start with loading the data.</p>
+<p><img alt="typical-driverless-ai-workflow" src="img/59b8f308ec9fe2a.jpg"></p>
+<p>1. Navigate back to the H2O Driverless AI  <strong>Datasets</strong> page.</p>
 <h2>About the Dataset</h2>
 <p>The dataset used for this experiment is a version of the Titanic Kaggle dataset. This dataset contains the list of estimated passengers aboard the RMS Titanic.</p>
 <p>The RMS Titanic was a British commercial passenger liner that sank after colliding with an iceberg in the North Atlantic Ocean on April 15, 1912. More than 1,500 people lost their lives from an estimated 2,224 passengers and crew members while on their way to New York City from Southampton.</p>
@@ -133,10 +144,6 @@
 <p>1309 rows, one row per passenger, and 16 columns representing attributes of each passenger:</p>
 <table>
 <tr></tr>
-<tr><td colspan="1" rowspan="1"><p>Attribute</p>
-</td><td colspan="1" rowspan="1"><p>Definition</p>
-</td><td colspan="1" rowspan="1"><p>Key</p>
-</td></tr>
 <tr><td colspan="1" rowspan="1"><p>passenger Id</p>
 </td><td colspan="1" rowspan="1"><p>Id randomly generated</p>
 </td><td colspan="1" rowspan="1"><p>-</p>
