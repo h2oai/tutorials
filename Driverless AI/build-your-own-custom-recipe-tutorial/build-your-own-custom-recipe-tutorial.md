@@ -199,7 +199,7 @@ This transformer recipe will add three or more numeric columns and give the sum.
 
 | ID | X1| X2| X3| SUM|
 | --- | --- | --- | --- | --- |
-| 1 | 10 | 4 | 3 | 18 |
+| 1 | 10 | 5| 3 | 18 |
 | 2 | 1 | 2 | 3 | 6 |
 | 3 | 0 | 9 | 0 | 9 |
 | 4 | 1.3 | 7 | 2 |10.3 |
