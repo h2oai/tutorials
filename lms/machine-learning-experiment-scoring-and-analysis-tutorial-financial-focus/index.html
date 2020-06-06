@@ -38,18 +38,13 @@
 <ul>
 <li>Basic knowledge of Machine Learning and Statistics</li>
 <li>A Driverless AI environment</li>
-<li>Basic knowledge of Driverless AI or doing the <a href="https://h2oai.github.io/tutorials/automatic-ml-intro-tutorial/#0" target="_blank">Automatic Machine Learning Intro tutorial</a>.</li>
+<li>Basic knowledge of Driverless AI or doing the <a href="https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#0" target="_blank">Automatic Machine Learning Introduction with Drivereless AI Test Drive</a></li>
+<li>A <strong>Two-Hour Test Drive session</strong> : Test Drive is H2O.ai&#39;s Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.<ul>
+<li>Need a <strong>Two-Hour Test Drive</strong> session?Follow the instructions on <a href="https://h2oai.github.io/tutorials/getting-started-with-driverless-ai-test-drive/#1" target="_blank">this quick tutorial</a> to get a Test Drive session started.</li>
 </ul>
-<p>You can get more information about getting a Driverless AI env or trial from the following:</p>
-<ul>
-<li><a href="https://h2oai.github.io/tutorials/getting-started-with-driverless-ai-test-drive/#1" target="_blank">A Two Hour Test Drive Session</a></li>
-<li><a href="https://www.h2o.ai/try-driverless-ai/" target="_blank">H2O Driverless AI License Key</a></li>
-<li><a href="https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#2" target="_blank">H2O Driverless AI Environment and Product Tour</a></li>
+</li>
 </ul>
-<p>If you are not familiar with Driverless AI please review and do this tutorial:</p>
-<ul>
-<li><a href="https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#0" target="_blank">Automatic Machine Learning Intro Tutorial</a></li>
-</ul>
+<p><strong>Note:  Aquarium&#39;s Driverless AI Test Drive lab has a license key built-in, so you don&#39;t need to request one to use it. Each Driverless AI Test Drive instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore Driverless AI, you can always launch another Test Drive instance or reach out to our sales team via the </strong><a href="https://www.h2o.ai/company/contact/" target="_blank"><strong>contact us form</strong></a><strong>.</strong></p>
 
 
       </google-codelab-step>
@@ -405,7 +400,7 @@
       </google-codelab-step>
     
       <google-codelab-step label="Task 3: Experiment Scoring and Analysis Concepts" duration="0">
-        <p>As we learned in the <a href="https://github.com/h2oai/tutorials/blob/master/DriverlessAI/automatic-ml-intro-tutorial/automatic-ml-intro-tutorial.md#model-training" target="_blank">Automatic Machine Learning Introduction Tutorial Concepts</a> it is essential that once a model has been generated that its performance is evaluated. These metrics are used to evaluate the quality of the model that was built and what model score threshold should be used to make predictions  There are multiple metrics for assessing a binary classification machine learning models such as Receiver Operating Characteristics or ROC curve, Precision and Recall or Prec-Recall, Lift, Gain and K-S Charts to name a few. Each metric evaluates different aspects of the machine learning model. The concepts below are for metrics used in H2O&#39;s Driverless AI to assess the performance of classification models that it generated. The concepts are covered at a very high level, to learn more in-depth about each metric covered here we have included additional resources at the end of this task.</p>
+        <p>As we learned in the <a href="https://github.com/h2oai/tutorials/blob/master/DriverlessAI/automatic-ml-intro-tutorial/automatic-ml-intro-tutorial.md#model-training" target="_blank">Automatic Machine Learning Intro with Test Drive</a> it is essential that once a model has been generated that its performance is evaluated. These metrics are used to evaluate the quality of the model that was built and what model score threshold should be used to make predictions. There are multiple metrics for assessing a binary classification machine learning models such as Receiver Operating Characteristics or ROC curve, Precision and Recall or Prec-Recall, Lift, Gain and K-S Charts to name a few. Each metric evaluates different aspects of the machine learning model. The concepts below are for metrics used in H2O&#39;s Driverless AI to assess the performance of classification models that it generated. The concepts are covered at a very high level, to learn more in-depth about each metric covered here we have included additional resources at the end of this task.</p>
 <h2>Binary Classifier</h2>
 <p>Let&#39;s take a look at binary classification model. A binary classification model predicts in what two categories(classes) the elements of a given set belong to. In the case of our example, the two categories(classes) are <strong>defaulting</strong> on your home loan and <strong>not defaulting</strong>. The generated model should be able to predict in which category each customer falls under.</p>
 <p><img alt="binary-output" src="img/4dd78d21255ebc70.jpg"></p>
@@ -430,14 +425,14 @@
 <li>FN = 0 = Predicting that someone did not default on their bank loan but actually did.</li>
 </ul>
 <p>What are sensitivity and specificity? The true positive rate is the ratio of the number of true positive predictions divided by all positive actuals. This ratio is also known as <strong>recall</strong> or <strong>sensitivity</strong>, and it is measured from 0.0 to 1.0 where 0 is the worst and 1.0 is the best sensitivity. Sensitive is a measure of how well the model is predicting for the positive case.</p>
-<p>The true negative rate is the ratio of the number of true negative predictions divided by all positive predictions. This ratio is also known as <strong>specificity</strong> and is measured from 0.0 to 1.0 where 0 is the worst and 1.0 is the best specificity. Specificity is a measure for how well the model is predicting for the negative case correctly.  How often is it predicting a negative case correctly.</p>
-<p>The false negative rate is <em>1- Specificity</em>, or it is the ratio of false positives divided by all negative predictions[3].</p>
+<p>The true negative rate is the ratio of the number of true negative predictions divided by the sum of true negatives and false positives. This ratio is also known as <strong>specificity</strong> and is measured from 0.0 to 1.0 where 0 is the worst and 1.0 is the best specificity. Specificity is a measure for how well the model is predicting for the negative case correctly.  How often is it predicting a negative case correctly.</p>
+<p>The false negative rate is <em>1 - Sensitivity</em>, or the ratio of false negatives divided by the sum of the true positives and false negatives [3].</p>
 <p>The following image provides an illustration of the ratios for sensitivity, specificity and false negative rate.</p>
 <p><img alt="sensitivity-and-specificity" src="img/bf2ade4b5e1ce36a.jpg"></p>
 <p><strong>Recall</strong> = <strong>Sensitivity</strong> = True Positive Rate = TP / (TP + FN)</p>
 <p><strong>Specificity</strong> = True Negative Rate = TN / (FP + TN)</p>
-<p><img alt="false-positive-rate" src="img/3ee0d7da219da3fa.jpg"></p>
-<p><strong>1 -Specificity</strong> =  False Positive Rate = 1- True Negative Rate = FP / (FP + TN )</p>
+<p><img alt="false-positive-rate" src="img/bfd007f0e0370a9f.jpg"></p>
+<p><strong>1 - Specificity</strong> =  False Positive Rate = 1 - True Negative Rate = FP / (FP + TN )</p>
 <p>A ROC Curve is also able to tell you how well your model did by quantifying its performance. The scoring is determined by the percent of the area that is under the ROC curve otherwise known as Area Under the Curve or AUC.</p>
 <p>Below are four types of ROC Curves with its AUC:</p>
 <p><strong>Note:</strong> The closer the ROC Curve is to the left ( the bigger the AUC percentage), the better the model is at separating between classes.</p>
@@ -483,7 +478,7 @@
 <p>Prec-Recall is a good tool to consider for classifiers because it is a great alternative for large skews in the class distribution. Use precision and recall to focus on small positive class — When the positive class is smaller and the ability to detect correctly positive samples is our main focus (correct detection of negatives examples is less important to the problem) we should use precision and recall.</p>
 <p>If you are using a model metric of Accuracy and you see issues with Prec-Recall then you might consider using a model metric of logloss.</p>
 <h2>GINI, ACC, F1 F0.5, F2, MCC and Log Loss</h2>
-<p>ROC and Pre-Recall curves are extremely useful to test a binary classifier because they provide visualization for every possible classification threshold. From those plots we can derive single model metrics like ACC, F1, F0.5, F2 and MCC. There are also other single metrics that can be used concurrently to evaluate models such as GINI and Log Loss. The following will be a discussion about the model scores  ACC, F1, F0.5, F2, MCC, GINI and Log Loss. The model scores are what the ML model optimizes to.</p>
+<p>ROC and Prec-Recall curves are extremely useful to test a binary classifier because they provide visualization for every possible classification threshold. From those plots we can derive single model metrics like ACC, F1, F0.5, F2 and MCC. There are also other single metrics that can be used concurrently to evaluate models such as GINI and Log Loss. The following will be a discussion about the model scores  ACC, F1, F0.5, F2, MCC, GINI and Log Loss. The model scores are what the ML model optimizes to.</p>
 <h3>GINI</h3>
 <p>The Gini index is a well-established method to quantify the inequality among values of frequency distribution and can be used to measure the quality of a binary classifier. A Gini index of zero expresses perfect equality (or a totally useless classifier), while a Gini index of one expresses maximal inequality (or a perfect classifier).</p>
 <p>The Gini index is based on the Lorenz curve. The Lorenz curve plots the true positive rate (y-axis) as a function of percentiles of the population (x-axis).</p>

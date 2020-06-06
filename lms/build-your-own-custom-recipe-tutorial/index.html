@@ -43,7 +43,8 @@
 <li>Basic knowledge of Machine Learning and Statistics</li>
 <li>Ability to write Python Code</li>
 <li>A Driverless AI environment (release 1.8.4.1)</li>
-<li>Basic knowledge of Driverless AI or doing the Automatic Machine Learning Intro tutorial<ul>
+<li>Basic knowledge of Driverless AI or doing the following tutorials:<ul>
+<li><a href="https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#0" target="_blank">Automatic Machine Learning Introduction with Drivereless AI Test Drive</a></li>
 <li><a href="https://h2oai.github.io/tutorials/get-started-with-open-source-custom-recipes-tutorial/#0" target="_blank">Get Startedand with Open Source Custom Recipes Tutorial</a></li>
 </ul>
 </li>
@@ -52,17 +53,12 @@
 <p><strong>Note</strong>: For this tutorial, we will use Visual Studio Code Community for MacOS:</p>
 <ul>
 <li><a href="https://code.visualstudio.com/Download" target="_blank">Visual Studio Code Community</a></li>
+<li>A <strong>Two-Hour Test Drive session</strong> : Test Drive is H2O.ai&#39;s Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.<ul>
+<li>Need a <strong>Two-Hour Test Drive</strong> session? Follow the instructions on <a href="https://h2oai.github.io/tutorials/getting-started-with-driverless-ai-test-drive/#1" target="_blank">this quick tutorial</a> to get a Test Drive session started.<br></li>
 </ul>
-<p>You can get more information about getting a Driverless AI environment or trial from the following:</p>
-<ul>
-<li><a href="https://h2oai.github.io/tutorials/getting-started-with-driverless-ai-test-drive/#1" target="_blank">A Two Hour Test Drive Session</a></li>
-<li><a href="https://www.h2o.ai/try-driverless-ai/" target="_blank">H2O Driverless AI License Key</a></li>
-<li><a href="https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#2" target="_blank">H2O Driverless AI Environment and Product Tour</a></li>
+</li>
 </ul>
-<p>If you are not familiar with Driverless AI, please review and do this tutorial:</p>
-<ul>
-<li><a href="https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#0" target="_blank">Automatic Machine Learning Intro with Test Drive Tutorial</a></li>
-</ul>
+<p><strong>Note:  Aquarium&#39;s Driverless AI Test Drive lab has a license key built-in, so you don&#39;t need to request one to use it. Each Driverless AI Test Drive instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore Driverless AI, you can always launch another Test Drive instance or reach out to our sales team via the </strong><a href="https://www.h2o.ai/company/contact/" target="_blank"><strong>contact us form</strong></a><strong>.</strong></p>
 
 
       </google-codelab-step>
@@ -108,7 +104,7 @@
 <p>Driverless AI custom recipes allow for full customization of the entire ML pipeline through the scikit learn Python API. The Python API allows for custom feature engineering, custom loss functions, and custom ML Algorithms. These API is based off on how scikit learn works.</p>
 <p>When building our custom recipes:</p>
 <p>For custom feature engineering or a transformer, you will have two main parts:</p>
-<p><strong>Fit_transform</strong> - takes the X and Y data and changes the X variables(pulls out the year from a date, does arithmetic in multiple columns, target encoding). It can also add new data such as the zip code with the zip code package and bring in population or cities.<br>Custom statistical Transformation<br>Embeddings for numbers, categories, text, date/time, time-series, image audio, zip, latitude/longitude, ICD</p>
+<p><strong>Fit_transform</strong> - takes the X and Y data and changes the X variables(pulls out the year from a date, does arithmetic in multiple columns, target encoding). It can also add new data such as the zip code with the zip code package and bring in population or cities. Custom statistical Transformation Embeddings for numbers, categories, text, date/time, time-series, image audio, zip, latitude/longitude, ICD.</p>
 <p><strong>Transform</strong> - the transform gets called when you run the model and get predictions. The transform will be inside the scoring pipeline. When used in production, the transform will be present and be used in the validation and test sets. The transform does not have access to Y, and it alters the data based on what happened on the fit_transform.</p>
 <p>For custom optimization functions or scorers, you can bring ing loss or gain functions. We can look further into precision and recall of a model through variations of the F metric. Driverless AI comes with F1, F2, and F0.5 scorers, where F1 is the harmonic mean of precision and recall, and the F2 score gives more weight to recall than precision. If you wanted to give precision higher weight, you could incorporate and F4 or F6 function as recipes for scorers.</p>
 <p>Other things that can be done using scorers:</p>
@@ -190,7 +186,7 @@
 </td></tr>
 <tr><td colspan="1" rowspan="1"><p>1</p>
 </td><td colspan="1" rowspan="1"><p>10</p>
-</td><td colspan="1" rowspan="1"><p>4</p>
+</td><td colspan="1" rowspan="1"><p>5</p>
 </td><td colspan="1" rowspan="1"><p>3</p>
 </td><td colspan="1" rowspan="1"><p>18</p>
 </td></tr>
