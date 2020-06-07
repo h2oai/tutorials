@@ -1107,55 +1107,55 @@ En resumen, no hay manera de incrementar uno sin sacrificar los resultados del o
 - [Introduction to ROC](https://classeval.wordpress.com/introduction/introduction-to-the-roc-receiver-operating-characteristics-plot/)
 
 
-## Task 7: ER: Prec-Recall
+## Tarea 7: ER: Prec-Recall
 
-Continuing on the diagnostics page, select the **P-R** curve. The P-R curve should look similar to the one below:
+Continuando en la página de diagnósticos, selecciona la curve **P-R**. La curva P-R se debe de ver como la imagen debajo: 
 
 ![diagnostics-pr-curve](assets/diagnostics-prec-recall.jpg)
 
-Remember that for the **Prec-Recall**:
+Recuerda que para la curva **Prec-Recall:**
 
-- The precision-recall plot uses recall on the x-axis and precision on the y-axis. 
-- Recall is identical to sensitivity, and precision is identical to the positive predictive value.
-- ROC curves should be used when there are roughly equal numbers of observations for each class.
-- Precision-Recall curves should be used when there is a moderate to large class imbalance.
-- Similar to ROC, the AUCPR (Area under the curve of Precision-recall curve) is a measure of model accuracy and higher the better. 
-- In both the ROC and Prec-recall curve, Driverless AI will indicate points that are the best thresholds for Accuracy (ACC), F1 or MCC (Matthews correlation coefficient).
+- La curva de precisión-recall tiene recall en el eje x y precisión en el eje y
+- Recall es lo mismo que sensitividad y precisión es lo mismo que el valor de predecir la clase positiva
+- Curvas ROC deberían de ser utilizadas en casos donde el número de observaciones de cada clase son aproximadamente iguales
+- Curvas de Precisión-Recall se deben de usar cuando no hay un desequilibrio entre el número de observaciones en cada clase  
+- Similar a la curva ROC, el área debajo de la curva de precisión-recall is una medida de accuracy (precision) y lo más alto mejor 
+- En ambas curvas, Driverless AI indicara puntos en los cuales se dan los limitest para major Accuracy (ACC), F1, o MCC (coeficiente de correlación Matthews)
 
-Looking at the  P-R curve results, is this a good model to determine if a customer will default on their home loan? Let’s take a look at the values found on the P-R curve.
+En ver los resultados de la curva P-R, es este un buen modelo para determinar si en cliente terminará con un préstamo en mora? Vamos a ver los resultados en la curva P-R.
 
-1\. Based on the P-R curve that Driverless AI model generated for you experiment identify the AUC.
+1\. Basado en la curva P-R generada por el modelo de Driverless AI, identifica el valor de área debajo de la curva (AUC)
 
-2\. For each of the following points on the curve, determine the True Positive Rate, False Positive rate, and threshold by hovering over each point below as seen on the image below:
-- Best Accuracy 
-- Best F1
-- Best MCC
+2\. Para cada uno de los puntos en la curva, determina el valor de Predicciones Positivas Correctas, Predicciones Positivas Incorrectas, y el límite para cada punto debajo al flotar el cursor como en la imagen: 
+- Mejor Accuracy 
+- Mejor F1
+- Mejor MCC
 
 ![diagnostics-prec-recall-best-mccr](assets/diagnostics-prec-recall-best-mcc.jpg)
 
-3\.  From the observed AUC, Best MCC, F1 and Accuracy values for P-R, how would you qualify your model, is it a good or bad model? Use the key points below to help you asses the P-R curve.
+3\. Basado en el AUC, mejor MCC, F1, Accuracy (precision) de la curva P-R, como calificarías el modelo? ¿Es un buen modelo o no? Usa los puntos claves para ayudarte a evaluar la curva P-R.
 
-Remember that for the **P-R** curve :
+Recuerda que para la curva **P-R**:
 
-- The perfect classification model has an AUC of 1
-- MCC is measured in the range between -1 and +1 where +1 is the perfect prediction, 0 no better than a random prediction and -1 all incorrect predictions.
-- F1 is measured in the range of 0 to 1, where 0 means that there are no true positives, and 1 when there is neither false negatives nor false positives or perfect precision and recall.
-- Accuracy is measured in the range of 0 to 1, where 1 is perfect accuracy or perfect classification, and 0 is poor accuracy or poor classification.
+- Un modelo de clasificación perfecto tiene un AUC de 1 
+- MCC is medido entre -1 y 1, donde 1 es un modelo de predicción perfecto, 0 significa que el modelo no da mejor resultados que en modelo al azar, y -1 es que todas las predicciones fueron incorrectas.
+- F1 is medido entre 0 y 1 , donde 0 significa que no hay predicciones positivas correctas, y 1 que no hay ni negativos falsos ni positivos falsos o precision y recall perfecta
+- Accuracy (precisión) es medida entre 0 y 1, where 1 is accuracy perfecta o clasificación perfecta, y 0 es accuracy pobre o clasificación pobre
 
 
-**Note:** If you are not sure what AUC, MCC, F1, and Accuracy are or how they are calculated review the concepts section of this tutorial.
+**Nota:** Si no estas seguro(a) que es o cómo se calculan los valores de AUC, MCC, F1 y Accuracy, puedes revisar la sección de conceptos de este tutorial. 
 
-### New Model with Same Parameters
+### Nuevo Modelo con Mismos Parámetros
 
-Similarly to task 6, we can improve the area under the curve for precision-recall by creating a new model with the same parameters. Note that you need to change the Scorer from **Logloss** to **AUCPR**. You can try this on your own. 
+Al igual que la tarea 6, podemos mejorar el área debajo de la curva de precisión-recall al crear un modelo con los mismos parámetros. Nota que necesitarás cambiar el evaluador de **Logloss** a **AUCPR*. Lo puedes intentar tu mismo. 
 
-To review how to run a new experiment with the same parameters and a different scorer, follow the step on task 6, section **New Model with Same Parameters**.
+Para repasar cómo lanzar un experimento nuevo con los mismos parámetros y un evaluador diferente, sigue los pasos en la tarea 6, sección **Nuevo Modelo con Nuevos Parametros**
 
 ![new-model-w-same-params-aucpr](assets/new-model-w-same-params-aucpr.jpg)
 
-**Note:** If you ran the new experiment, go back to the diagnostic for the experiment we were working on.
+**Nota:** Si corriste un nuevo experimento, regresa a la página de diagnósticos para el experimento en que estábamos trabajando.
 
-### Deeper Dive and Resources
+### Inmersión Más Profunda y Recursos
 
 - [Towards Data Science Precision vs Recall](https://towardsdatascience.com/precision-vs-recall-386cf9f89488)
 
