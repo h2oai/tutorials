@@ -32,7 +32,7 @@ In this overview of Driverless AI, you will learn how to load data, explore data
 
 - A **Two-Hour Test Drive session**: Test Drive is H2O.ai's Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.
 
-  - Need a **Two-Hour Test Drive** session?Follow the instructions [on this quick tutorial](https://h2oai.github.io/tutorials/getting-started-with-driverless-ai-test-drive/#2) to get a Test Drive session started. After the Driverless AI Test Drive session starts, continue reading the remaining prerequisites of this tutorial then start [Task 1: Product Tour](https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#2).
+  - Need a **Two-Hour Test Drive** session? Follow the instructions [on this quick tutorial](https://h2oai.github.io/tutorials/getting-started-with-driverless-ai-test-drive/#2) to get a Test Drive session started. After the Driverless AI Test Drive session starts, continue reading the remaining prerequisites of this tutorial then start [Task 1: Product Tour](https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#2).
 
   - Already have a **Two-Hour Test Drive** session? Continue reading the remaining prerequisites of this tutorial then start [Task 1: Product Tour](https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#2). 
 
@@ -281,28 +281,29 @@ We are now going to explore the Titanic dataset that we just loaded.
 
 1. The **Dataset Details Page** provides a summary of the dataset. This summary lists each column that is included in the dataset along with:
 
-    **Logical type (can be changed)**
+**Logical type (can be changed)**
 
-    ![logical-type-options](assets/logical-type-options.jpg)
+![logical-type-options](assets/logical-type-options.jpg)
 
-    **Format for Date and Datetime columns(can be changed)**
 
-    ![dataset-details-format-option](assets/dataset-details-format-option.jpg)
+**Format for Date and Datetime columns(can be changed)**
 
-    - Storage type
-    - Count
-    - Number of missing values
-    - Mean
-    - Minimum
-    - Maximum
-    - Standard deviation
-    - Frequency
-    - Number of unique values
-    - View the first 20 rows of a column
+![dataset-details-format-option](assets/dataset-details-format-option.jpg)
 
-    ![datasets-details-first-20-rows](assets/datasets-details-first-20-rows.jpg)
+ - Storage type
+ - Count
+ - Number of missing values
+ - Mean
+ - Minimum
+ - Maximum
+ - Standard deviation
+ - Frequency
+ - Number of unique values
+ - View the first 20 rows of a column
 
-    **Note**: Driverless AI recognizes the following column types: integer, string, real, boolean, and time. Date columns are given a string "str" type.
+![datasets-details-first-20-rows](assets/datasets-details-first-20-rows.jpg)
+
+**Note**: Driverless AI recognizes the following column types: integer, string, real, boolean, and time. Date columns are given a string "str" type.
 
 2. You can view information for a specific column by entering the name of the column in the field above the graph.
 
