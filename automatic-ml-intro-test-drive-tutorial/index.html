@@ -37,8 +37,8 @@
         <ul>
 <li>Basic knowledge of Machine Learning and Statistics</li>
 <li>A <strong>Two-Hour Test Drive session</strong>: Test Drive is H2O.ai&#39;s Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.<ul>
-<li>Need a <strong>Two-Hour Test Drive</strong> session? Follow the instructions <a href="https://training.h2o.ai/products/tutorial-0-getting-started-with-driverless-ai-test-drive" target="_blank">on this quick tutorial</a> to get a Test Drive session started. After the Driverless AI Test Drive session starts, continue reading the remaining prerequisites of this tutorial then start <strong>Task 1: Product Tour.</strong></li>
-<li>Already have a <strong>Two-Hour Test Drive</strong> session? Continue reading the remaining prerequisites of this tutorial then start <strong>Task 1: Product Tour</strong>.</li>
+<li>Need a <strong>Two-Hour Test Drive</strong> session? Follow the instructions <a href="https://h2oai.github.io/tutorials/getting-started-with-driverless-ai-test-drive/#2" target="_blank">on this quick tutorial</a> to get a Test Drive session started. After the Driverless AI Test Drive session starts, continue reading the remaining prerequisites of this tutorial then start <a href="https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#2" target="_blank">Task 1: Product Tour</a>.</li>
+<li>Already have a <strong>Two-Hour Test Drive</strong> session? Continue reading the remaining prerequisites of this tutorial then start <a href="https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#2" target="_blank">Task 1: Product Tour</a>.</li>
 </ul>
 </li>
 </ul>
@@ -524,7 +524,7 @@
     
       <google-codelab-step label="Task 7: Explore Experiment Results" duration="0">
         <p>Let&#39;s explore the results of this classification experiment. You can find the results on the <strong>Experiment Summary</strong> at the left-bottom of <strong>Experiment</strong> page. The resulting plots are insights from the training and validation data resulting from the classification problem. Each plot will be given a brief overview.</p>
-<p>If you are interested in learning more about each plot and the metrics derived from those plots covered in this section, then check out our next tutorial <a href="https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus" target="_blank">Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus</a>.</p>
+<p>If you are interested in learning more about each plot and the metrics derived from those plots covered in this section, then check out our next tutorial <a href="https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#0" target="_blank">Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus</a>.</p>
 <p><img alt="experiment-summary-expanded" src="img/4b4625a9a0ecdb59.jpg"></p>
 <p>1. Summary</p>
 <p>Once the experiment is done, a summary is generated at the bottom-right corner of the <strong>Experiment</strong> page.</p>
@@ -572,18 +572,18 @@
 <p>The ROC curve below shows Receiver-Operator Characteristics curve stats on validation data along with the best Accuracy, FCC, and F1 values[2].</p>
 <p><img alt="experiment-results-roc-graph" src="img/9b13efecadddf7f5.jpg"></p>
 <p>This ROC gives an Area Under the Curve or AUC of .8530. The AUC tells us that the model is able to classify the survivors 85.30% of the time correctly.</p>
-<p>Learn more about the ROC Curve on <a href="https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus" target="_blank">Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus: ROC</a>.</p>
+<p>Learn more about the ROC Curve on <a href="https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#7" target="_blank">Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus: ROC</a>.</p>
 <p>3. Prec-Recall - Precision-Recall graph</p>
 <p>Prec-Recall is a complementary tool to ROC curves, especially when the dataset has a significant skew. The Prec-Recall curve plots the precision or positive predictive value (y-axis) versus sensitivity or true positive rate (x-axis) for every possible classification threshold. At a high level, we can think of precision as a measure of exactness or quality of the results while recall as a measure of completeness or quantity of the results obtained by the model. Prec-Recall measures the relevance of the results obtained by the model.</p>
 <p>The Prec-Recall plot below shows the Precision-Recall curve on validation data along with the best Accuracy, FCC, and F1 values. The area under this curve is called AUCPR.</p>
 <p><img alt="experiment-results-prec-recall-graph" src="img/88c3413a85342f7e.jpg"></p>
 <p>Similarly to the ROC curve, when we take a look at the area under the curve of the Prec-Recall Curve of AUCPR we get a value of .7960. This tells us that the model brings forth relevant results or those cases of the passengers that survived 79.60% of the time.</p>
-<p>Learn more about the Prec-Curve Curve on <a href="https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus" target="_blank">Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus: Prec-Recall</a>.</p>
+<p>Learn more about the Prec-Curve Curve on <a href="https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#8" target="_blank">Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus: Prec-Recall</a>.</p>
 <p>4. Cumulative Lift Chart</p>
 <p>Lift can help us answer the question of how much better one can expect to do with the predictive model compared to a random model(or no model). Lift is a measure of the effectiveness of a predictive model calculated as the ratio between the results obtained with a model and with a random model(or no model). In other words, the ratio of gain% to the random expectation % at a given quantile. The random expectation of the xth quantile is x%[4].</p>
 <p>The Cumulative Lift chart shows lift stats on validation data. For example, &#34;How many times more observations of the positive target class are in the top predicted 1%, 2%, 10%, etc. (cumulative) compared to selecting observations randomly?&#34; By definition, the Lift at 100% is 1.0.</p>
 <p><img alt="experiment-results-lift-graph" src="img/fb2a942fd79627f.jpg"></p>
-<p>Learn more about the Cumulative Lift Chart on <a href="https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus" target="_blank">Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus: Cumulative Lift</a>.</p>
+<p>Learn more about the Cumulative Lift Chart on <a href="https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#10" target="_blank">Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus: Cumulative Lift</a>.</p>
 <p>5. Cumulative Gains Chart</p>
 <p>Gain and Lift charts measure the effectiveness of a classification model by looking at the ratio between the results obtained with a trained model versus a random model(or no model)[3]. The Gain and Lift charts help us evaluate the performance of the classifier as well as answer questions such as what percentage of the dataset captured has a positive response as a function of the selected percentage of a sample. Additionally, we can explore how much better we can expect to do with a model compared to a random model(or no model)[4].</p>
 <p>For better visualization, the percentage of positive responses compared to a selected percentage sample, we use Cumulative Gains and Quantile.</p>
@@ -591,14 +591,14 @@
 <p>The Cumulative Gains Chart below shows Gains stats on validation data. For example, &#34;What fraction of all observations of the positive target class are in the top predicted 1%, 2%, 10%, etc. (cumulative)?&#34; By definition, the Gains at 100% are 1.0.</p>
 <p><img alt="experiment-results-gains-graph" src="img/8f89aa90564d6aa4.jpg"></p>
 <p>The Gains chart above tells us that when looking at the 20% quantile, the model can positively identify ~45% of the survivors compared to a random model(or no model) which would be able to positively identify about ~20% of the survivors at the 20% quantile.</p>
-<p>Learn more about the Cumulative Gains Chart on <a href="https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus" target="_blank">Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus: Cumulative Gains</a>.</p>
+<p>Learn more about the Cumulative Gains Chart on <a href="https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#9" target="_blank">Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus: Cumulative Gains</a>.</p>
 <p>6. K-S</p>
 <p>Kolmogorov-Smirnov or K-S measures the performance of classification models by measuring the degree of separation between positives and negatives for validation or test data[5]. &#34;The K-S is 100 if the scores partition the population into two separate groups in which one group contains all the positives and the other all the negatives. On the other hand, If the model cannot differentiate between positives and negatives, then it is as if the model selects cases randomly from the population. The K-S would be 0. In most classification models, the K-S will fall between 0 and 100, and that the higher the value, the better the model is at separating the positive from negative cases.&#34;[6].</p>
 <p>K-S or the Kolmogorov-Smirnov chart measures the degree of separation between positives and negatives for validation or test data.</p>
 <p>Hover over a point in the chart to view the quantile percentage and Kolmogorov-Smirnov value for that point.</p>
 <p><img alt="experiment-results-gains-k-s" src="img/724090eba649e039.jpg"></p>
 <p>For the K-S chart above, if we look at the top 60% of the data, the at-chance model (the dotted diagonal line) tells us that only 60% of the data was successfully separate between positives and negatives (survived and did not survived). However, with the model, it was able to do .499, or about 50% of the cases were successfully separated between positives and negatives.</p>
-<p>Learn more about the Kolmogorov-Smirnov chart on <a href="https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus" target="_blank">Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus: Kolmogorov-Smirnov chart</a>.</p>
+<p>Learn more about the Kolmogorov-Smirnov chart on <a href="https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#11" target="_blank">Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus: Kolmogorov-Smirnov chart</a>.</p>
 <h2>References</h2>
 <p>[1] <a href="https://www.youtube.com/watch?v=OAl6eAyP-yo" target="_blank">ROC Curves and Under the Curve (AUC) Explained</a></p>
 <p>[2] <a href="http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-graphs.html?highlight=roc%20curve" target="_blank">H2O Driverless AI - Experiment Graphs</a></p>
@@ -696,7 +696,7 @@ Sensitivity Analysis (or &#34;What if?&#34;) is a simple and powerful model debu
 <li>Select a point where <em>Actual value</em> is 1 and note the reason codes for that prediction value</li>
 </ol>
 <p><img alt="dashboard-klime" src="img/fb383caefdad8672.jpg"></p>
-<p>Learn more about K-Lime with our <a href="https://training.h2o.ai/products/tutorial-1c-machine-learning-interpretability-tutorial" target="_blank">Machine Learning Interpretability Tutorial</a>.</p>
+<p>Learn more about K-Lime with our <a href="https://h2oai.github.io/tutorials/machine-learning-interpretability-tutorial/#7" target="_blank">Machine Learning Interpretability Tutorial</a>.</p>
 <p>2. Feature Importance -<br>This graph shows the essential features that drive the model behavior.</p>
 <ol type="1">
 <li>Which attribute/feature had the most importance?</li>
@@ -704,21 +704,21 @@ Sensitivity Analysis (or &#34;What if?&#34;) is a simple and powerful model debu
 <li>View the explanation of the <strong>Variable Importance</strong> plot by selecting <strong>About this plot</strong></li>
 </ol>
 <p><img alt="dashboard-feature-importance" src="img/3b6953f552f7552.jpg"></p>
-<p>Learn more about Feature Importance with our <a href="https://training.h2o.ai/products/tutorial-1c-machine-learning-interpretability-tutorial" target="_blank">Machine Learning Interpretability TUtorial</a>.</p>
+<p>Learn more about Feature Importance with our <a href="https://h2oai.github.io/tutorials/machine-learning-interpretability-tutorial/#4" target="_blank">Machine Learning Interpretability TUtorial</a>.</p>
 <p>3. Decision Tree Surrogate model<br>The decision Tree Surrogate model displays the model&#39;s approximate flowchart of the complex Driverless AI model&#39;s decision making.<br><br>Higher and more frequent features are more important. Features above or below one-another can indicate an interaction. Finally, the thickest edges are the most common decision paths through the tree that lead to a predicted numerical outcome.</p>
 <ol type="1">
 <li>What is the most common decision path for the Titanic Training set?</li>
 </ol>
 <p>Solution:</p>
 <p><img alt="decision-tree-task-8-answer" src="img/5c3d7b651f7691ae.jpg"></p>
-<p>Learn more about Decision Trees with our <a href="https://training.h2o.ai/products/tutorial-1c-machine-learning-interpretability-tutorial" target="_blank">Machine Learning Interpretability Tutorial</a>.</p>
+<p>Learn more about Decision Trees with our <a href="https://h2oai.github.io/tutorials/machine-learning-interpretability-tutorial/#6" target="_blank">Machine Learning Interpretability Tutorial</a>.</p>
 <p>4. Partial Dependence and Individual Conditional Expectation (ICE) plot. This plot represents the model prediction for different values of the original variables. It shows the average model behavior for important original variables.</p>
 <p>The grey bar represents the standard deviation of predictions. The yellow dot represents the average predictions.</p>
 <p><img alt="dashboard-partial-dependence-plot" src="img/251da4a39d86f8ce.jpg"></p>
 <ol type="1">
 <li>Explore other average values for different variables and compare the results to your original observations. To change the variable, select <strong>PDP Variable:</strong> located at the top of the Partial Dependence plot.</li>
 </ol>
-<p>Learn more about Partial Dependence Plots with our <a href="https://training.h2o.ai/products/tutorial-1c-machine-learning-interpretability-tutorial" target="_blank">Machine Learning Interpretability Tutorial</a>.</p>
+<p>Learn more about Partial Dependence Plots with our <a href="https://h2oai.github.io/tutorials/machine-learning-interpretability-tutorial/#5" target="_blank">Machine Learning Interpretability Tutorial</a>.</p>
 <p>5. Explanations</p>
 <p>Explanations provide a detailed, easy-to-read <strong>Reason Codes</strong> for the top Global/Local Attributions.</p>
 <ol type="1">
@@ -806,7 +806,7 @@ Sensitivity Analysis (or &#34;What if?&#34;) is a simple and powerful model debu
       </google-codelab-step>
     
       <google-codelab-step label="Next Steps" duration="0">
-        <p>Check out Driverless AI next tutorial <a href="https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus" target="_blank">Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus</a></p>
+        <p>Check out Driverless AI next tutorial <a href="https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#0" target="_blank">Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus</a></p>
 <p>Where you will learn how to:</p>
 <ul>
 <li>Evaluate a Driverless AI model through tools like:<br><br><ul>
@@ -901,7 +901,7 @@ Sensitivity Analysis (or &#34;What if?&#34;) is a simple and powerful model debu
 </ol>
 <ul>
 <li>Learn more about projects in Driverless AI; check out the <a href="http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/projects.html?highlight=projects%20workspace" target="_blank">Project Workspace Documentation</a>.</li>
-<li>A more extensive application of <strong>Project Workspace</strong> can be explored in the <a href="https://training.h2o.ai/products/tutorial-2a-time-series-recipe-tutorial-retail-sales-forecasting" target="_blank">Time Series Tutorial - Retail Sales Forecasting</a>.</li>
+<li>A more extensive application of <strong>Project Workspace</strong> can be explored in the <a href="https://h2oai.github.io/tutorials/time-series-recipe-tutorial-retail-sales-forecasting/#0" target="_blank">Time Series Tutorial - Retail Sales Forecasting</a>.</li>
 </ul>
 
 
