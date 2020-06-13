@@ -1162,41 +1162,40 @@ Para repasar cómo lanzar un experimento nuevo con los mismos parámetros y un e
 
 - [Introduction to Precision-Recall](https://classeval.wordpress.com/introduction/introduction-to-the-precision-recall-plot/)
 
-## Task 8: ER: Gains
+## Tarea 8: ER: Gains (Ganancia)
 
- Continuing on the diagnostics page, select the **CUMULATIVE GAIN** curve. The Gains curve should look similar to the one below:
+Continuando en la página de diagnósticos, selecciona la curva de **CUMULATIVE GAIN** (Ganancia Cumulativa). La curva de ganancia cumulativa se debe de ver similar al gráfico debajo:  
 
 ![diagnostics-gains](assets/diagnostics-gains.jpg)
 
-Remember that for the **Gains** curve:
+Recuerda que para la curva de **Ganancia**:
 
-- A cumulative gains chart is a visual aid for measuring model performance. 
-- The y-axis shows the percentage of positive responses. This is a percentage of the total possible positive responses 
-- The x-axis shows the percentage of all customers from the Freddie Mac dataset who did not default, which is a fraction of the total cases
-- The dashed line is the baseline (overall response rate)
-- It helps answer the question of  “What fraction of all observations of the positive target class are in the top predicted 1%, 2%, 10%, etc. (cumulative)?” By definition, the Gains at 100% are 1.0.
+- Un grafico de ganancia cumulativa is un visual de soporte para evaluar nuestro modelo.
+- El eje y demuestra el porcentaje de respuestas positivas. Este es un porcentaje del número total de respuestas positivas posibles.  
+- El eje x demuestra el porcentaje de todos los clientes del conjunto de datos de Freddie Mac que no terminaron en mora, siendo una fracción del número total de casos
+- La línea rayada es la línea de base, o tasa de respuesta general
+- Ayuda a contestar la pregunta de “¿qué porcentaje de todas las observaciones de la clase positiva están en el primer 1%, 2%, 10%, etc (cumulativamente)?” Por definicion, la ganancia en 100% es 1.0.
 
-**Note:** The y-axis of the plot has been adjusted to represent quantiles, this allows for focus on the quantiles that have the most data and therefore the most impact.
+**Nota:** El eje y en el gráfico ha sido ajustado para representar cuantiles. Esto permite enfocarse en los cuantiles que tienen la mayoría de los puntos y por ello el mayor impacto.
 
-1\. Hover over the various quantile points on the Gains chart to view the quantile percentage and cumulative gain values
+1\. Flota el cursor sobre los varios puntos en los cuantiles de la curva de ganancia para ver el porcentaje del cuantil y los valores de ganancia cumulativa
 
-2\. What is the cumulative gain at  1%, 2%, 10% quantiles?
+2\. ¿Que es el valor de ganancia cumulativa en 1%, 2%, 10%?
 
 ![diagnostics-gains-10-percent](assets/diagnostics-gains-10-percent.jpg)
 
-For this Gain Chart, if we look at the top 1% of the data, the at-chance model (the dotted diagonal line) tells us that we would have correctly identified 1% of the defaulted mortgage cases. The model generated (yellow curve) shows that it was able to identify about 12% of the defaulted mortgage cases. 
+Para este gráfico de ganancia, si nos enfocamos en el primer 1% de los datos, el modelo creado al azar (la línea rayada) nos dice que podríamos haber identificado correctamente el 1% de los préstamos hipotecarios que terminarían en mora. El modelo generado (la curva amarilla) demuestra que fue capaz de identificar el 12% de los préstamos que terminaron en mora.
+Si flotamos el cursor sobre el 10% de los datos, el modelo creado al azar (la línea rayada) nos dice que podríamos haber identificado correctamente el 10% de los préstamos hipotecarios que terminarían en mora. El modelo generado (la curva amarilla) demuestra que fue capaz de identificar el 53% de los préstamos que terminaron en mora.
 
-If we hover over to the top 10% of the data, the at-chance model (the dotted diagonal line) tells us that we would have correctly identified 10% of the defaulted mortgage cases. The model generated (yellow curve) says that it was able to identify about 53% of the defaulted mortgage cases. 
+3\. Basado en la forma de la curva de ganancia y la línea de base (la línea diagonal rayado en blanco), considerarías este un buen modelo?
 
-3\. Based on the shape of the gain curve and the baseline (white diagonal dashed line) would you consider this a good model? 
+Recuerda que el modelo de predicción perfecto tiene un comienzo muy escarpado, y como regla en general, entre más escarpada la curva, mas ganancia. El área entre la línea de base (la línea diagonal rayado en blanco) y la curva de ganancia (curva amarilla), mejor conocida como el área debajo de la curva, demuestra cuanto mejor nuestro modelo es a comparación de un modelo al azar. Pero es bueno recordar que siempre hay oportunidad para mejorar, la curva de ganancia podría ser más escarpada.
 
-Remember that the perfect prediction model starts out pretty steep, and as a rule of thumb the steeper the curve, the higher the gain. The area between the baseline (white diagonal dashed line) and the gain curve (yellow curve) better known as the area under the curve visually shows us how much better our model is than that of the random model. There is always room for improvement. The gain curve can be steeper.
+**Nota:** Si nos estás seguro(a) de que es AUC o que es el gráfico de ganancia, haz favor de repasar la sección de conceptos de este tutorial.
 
-**Note:** If you are not sure what AUC or what the gain chart is, feel free to review the concepts section of this tutorial.
+4\. Sal del gráfico de ganancia con hacer clic en la **x** en la parte superior, derecha del grafico, junto a la opción de **Download** (descarga)
 
-4\. Exit out of the Gains chart by clicking on the **x** located at the top-right corner of the plot, next to the **Download** option
-
-### Deeper Dive and Resources
+### Inmersión Más Profunda y Recursos
  
 - [Towards Data Science - Understanding and Interpreting Gain and Lift Charts](https://www.datasciencecentral.com/profiles/blogs/understanding-and-interpreting-gain-and-lift-charts)
 
