@@ -18,30 +18,17 @@ Test Drive es una sesión de laboratorio de dos horas que existe en Aquarium de 
 
 Todos los laboratorios tienen un **Lab Duration*** (Duración de laboratorio) específica para completar el laboratorio. **Todas las sesiones de Laboratorio de Driverless AI Test Drive finalizarán después de dos horas. ¡No se guardará ningún trabajo!**. Sin embargo, puedes volver a iniciar el laboratorio varias veces.
 
-Despues de registrarte en la página de [Try Driverless AI](https://www.h2o.ai/try-driverless-ai/) (Prueba Driverless AI), tendras dos opciones:
+Si eres nuevo en Driverless AI, te recomendamos que comiences con **Test Drive!** (la prueba de manejo).
 
-- **21 Day Free Trial**: Si deseas continuar explorando Driverless AI de H2O.ai y ejecutar tus experimentos en un entorno controlado donde se guardarán tus datos, puedes aprovechar un entorno local o en la nube con una licencia de período de prueba de 21 días.
-
--  **2 Hour Test Drive**: Explora Driverless AI en intervalos de dos horas con tutoriales de Driverless AI.
+**Nota: El laboratorio Driverless AI Test Drive (de prueba de IA sin conductor del acuario) tiene una clave de licencia incorporada, por lo que no necesita solicitar una para usarla.**
 
 ## Como obtener una sesión de Test Drive de dos horas
 
-1\. Si estás en [H2O.ai](https://www.h2o.ai/), la página de inicio, selecciona **Free Trial** (Prueba gratis) en la esquina superior derecha o [Try Driveless AI aqui](https://www.h2o.ai/try-driverless-ai/).
+1\. Vaya al sitio del [Aquarium](http://aquarium.h2o.ai/login) copiando y pegando la URL a continuación en el navegador que elija o simplemente haga clic en Aquarium.
 
-2\. Aparecerá un formulario similar, completa el formulario **Request a 21 day free trial** (Solicita una prueba gratuita de 21 días) y luego selecciona **Send This Secure Message** (Enviar este mensaje seguro): 
+```http://aquarium.h2o.ai/login```
 
-![try-driverless-ai-form](assets/try-driverless-ai-form.jpg)
-
-3\. Después de enviar el formulario, aparecerán las siguientes opciones, selecciona **2-Hour Interval Test Drive** (Intervalo de dos horas de Test Drive):
-
-![2-hour-test-drive-1](assets/2-hour-test-drive-1.jpg)
- 
-Haz clic en **Test Drive**:
-
-![2-hour-test-drive-2](assets/2-hour-test-drive-2.jpg)
-
-4\. Esto te llevará a la página de inicio de sesión de Aquarium donde necesitas crear una cuenta.
-
+2\. Esto lo llevará a la página de inicio de sesión de Aquarium donde necesita crear una cuenta.
 
 ## Como crear una cuenta de Aquarium 
 
