@@ -24,6 +24,7 @@ Many tools, such as ROC and Precision-Recall Curves, are available to evaluate h
 **Note:** We recommend that you go over the entire tutorial first to review all the concepts, that way, once you start the experiment, you will be more familiar with the content.
   
 ## Prerequisites
+
 You will need the following to be able to do this tutorial:
 
 - Basic knowledge of Machine Learning and Statistics
@@ -433,7 +434,7 @@ Learn more about what each setting means and how it can be updated from its defa
 
 ## Task 3: Experiment Scoring and Analysis Concepts
 
-As we learned in the [Automatic Machine Learning Introduction with Test Drive Tutorial Concepts](https://github.com/h2oai/tutorials/blob/master/DriverlessAI/automatic-ml-intro-tutorial/automatic-ml-intro-tutorial.md#model-training) it is essential that once a model has been generated that its performance is evaluated. These metrics are used to evaluate the quality of the model that was built and what model score threshold should be used to make predictions  There are multiple metrics for assessing a binary classification machine learning models such as Receiver Operating Characteristics or ROC curve, Precision and Recall or Prec-Recall, Lift, Gain and K-S Charts to name a few. Each metric evaluates different aspects of the machine learning model. The concepts below are for metrics used in H2O’s Driverless AI to assess the performance of classification models that it generated. The concepts are covered at a very high level, to learn more in-depth about each metric covered here we have included additional resources at the end of this task. 
+As we learned in the [Automatic Machine Learning Intro with Test Drive](https://github.com/h2oai/tutorials/blob/master/DriverlessAI/automatic-ml-intro-tutorial/automatic-ml-intro-tutorial.md#model-training) it is essential that once a model has been generated that its performance is evaluated. These metrics are used to evaluate the quality of the model that was built and what model score threshold should be used to make predictions. There are multiple metrics for assessing a binary classification machine learning models such as Receiver Operating Characteristics or ROC curve, Precision and Recall or Prec-Recall, Lift, Gain and K-S Charts to name a few. Each metric evaluates different aspects of the machine learning model. The concepts below are for metrics used in H2O’s Driverless AI to assess the performance of classification models that it generated. The concepts are covered at a very high level, to learn more in-depth about each metric covered here we have included additional resources at the end of this task. 
 
 
 ### Binary Classifier
@@ -483,9 +484,9 @@ Given our example of use case of predicting loans the following provides a descr
 
 What are sensitivity and specificity? The true positive rate is the ratio of the number of true positive predictions divided by all positive actuals. This ratio is also known as **recall** or **sensitivity**, and it is measured from 0.0 to 1.0 where 0 is the worst and 1.0 is the best sensitivity. Sensitive is a measure of how well the model is predicting for the positive case.
 
-The true negative rate is the ratio of the number of true negative predictions divided by all positive predictions. This ratio is also known as **specificity** and is measured from 0.0 to 1.0 where 0 is the worst and 1.0 is the best specificity. Specificity is a measure for how well the model is predicting for the negative case correctly.  How often is it predicting a negative case correctly.
+The true negative rate is the ratio of the number of true negative predictions divided by the sum of true negatives and false positives. This ratio is also known as **specificity** and is measured from 0.0 to 1.0 where 0 is the worst and 1.0 is the best specificity. Specificity is a measure for how well the model is predicting for the negative case correctly.  How often is it predicting a negative case correctly.
 
-The false negative rate is *1- Specificity*, or it is the ratio of false positives divided by all negative predictions[3]. 
+The false negative rate is *1 - Sensitivity*, or the ratio of false negatives divided by the sum of the true positives and false negatives [3]. 
 
 The following image provides an illustration of the ratios for sensitivity, specificity and false negative rate. 
 
@@ -497,7 +498,7 @@ The following image provides an illustration of the ratios for sensitivity, spec
 
 ![false-positive-rate](assets/false-positive-rate.jpg)
 
-**1 -Specificity** =  False Positive Rate = 1- True Negative Rate = FP / (FP + TN )
+**1 - Specificity** =  False Positive Rate = 1 - True Negative Rate = FP / (FP + TN )
 
 A ROC Curve is also able to tell you how well your model did by quantifying its performance. The scoring is determined by the percent of the area that is under the ROC curve otherwise known as Area Under the Curve or AUC. 
 

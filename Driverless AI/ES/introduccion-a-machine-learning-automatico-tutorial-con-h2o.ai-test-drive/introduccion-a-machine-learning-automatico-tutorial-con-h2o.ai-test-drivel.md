@@ -1,73 +1,70 @@
 
-# Automatic Machine Learning Introduction with Driverless AI
+# Introduccion a Machine Learnig Automatico Tutorial con H2O.ai Test Drive
 
 ## Contorno
 
-
 - [Objetivo](#objectivo)
-- [Requisitos Antes de Comenzar](#Prerrequisitos)
+- [Prerrequisitos](#Prerrequisitos)
 - [Tarea 1: Tour del Producto](#Tarea-1-Tour-del-Producto)
-- [Tarea 2: Conceptos de aprendizaje automático de máquinas](#task-2-automatic-machine-learning-concepts)
-- [Tarea 3: Cargar datos](#task-3-load-data)
-- [Tarea 4: Explore los Detalles de Datos y AutoViz](#task-4-explore-data-details-and-autoviz)
-- [Tarea 5: Lanzar primer experimento](#task-5-launch-first-experiment)
-- [Tarea 6: Explora la Ingeniería de Características](#task-6-explore-feature-engineering)
-- [Tarea 7: Explora Resultados del Experimento](#task-7-explore-experiment-results)
-- [Tarea 8: Informe MLI para series no cronológicas](#task-8-mli-report-for-non-time-series)
-- [Tarea 9: Resumen del experimento y autoinforme](#task-9-experiment-summary-and-autoreport)
-- [Próximos pasos](#next-steps)
-- [Apéndice: Espacio de trabajo del proyecto](#appendix-project-workspace)
-
+- [Tarea 2: Conceptos de Machine Learning](#tarea-2-conceptos-de-machine-learning)
+- [Tarea 3: Cargar datos](#tarea-3-cargar-datos)
+- [Tarea 4: Explora los Detalles de Datos y AutoViz](#tarea-4-explora-los-detalles-de-datos-y-autoviz)
+- [Tarea 5: Lanza el Primer Experimento](#tarea-5-lanza-el-primer-experimento)
+- [Tarea 6: Explora Feature Engineering](#tarea-6-explora-feature-engineering)
+- [Tarea 7: Explora Resultados del Experimento](#tarea-7-explora-resultados-del-experimento)
+- [Tarea 8: Informe MLI Para Series no Cronológicas](#tarea-8-informe-mli-para-series-no-cronologicas)
+- [Tarea 9: Resumen del Experimento y Autoreport](#tarea-9-resumen-del-experimento-y-autoreport)
+- [Próximos Pasos](#proximos-pasos)
+- [Apéndice: Proyecto Workspace](#apendice-proyecto-workspace)
 
 ## Objectivo
 
-Para este tutorial, vamos a explorar el conjunto de datos sobre el Titanic desde la perspectiva de una compañía de aseguranza de vidas usando el producto empresarial [H2O.ai's](https://www.h2o.ai/), [Driverless AI (AI sin conductor)](https://www.h2o.ai/products/h2o-driverless-ai/). Vamos a explorar posibles factores de riesgos derivados desde este conjunto de datos que la compañía podría haber considerado al momento de vender aseguranza de vida a estos pasajeros. Específicamente, crearemos un modelo de predicción para determinar cuales factores contribuyeron a la supervivencia de los pasajeros.
+Para este tutorial, vamos a explorar el conjunto de datos sobre el accidente del Titanic desde la perspectiva de una compañía de aseguranza de vidas usando el producto empresarial [H2O.ai's](https://www.h2o.ai/), [Driverless AI](https://www.h2o.ai/products/h2o-driverless-ai/). Vamos a explorar posibles factores de riesgos derivados desde este conjunto de datos que la compañía podría haber considerado al momento de vender aseguranza de vida a estos pasajeros. Específicamente, crearemos un modelo de predicción para determinar cuales factores contribuyeron a la supervivencia de los pasajeros.
 
-In this overview of Driverless AI, you will learn how to load data, explore data details, generate Auto visualizations, launch an experiment, explore feature engineering, view experiment results and get a quick tour of the Machine Learning Interpretability report.
+En esta descripción general de Driverless AI, aprenderá cómo cargar datos, explorar detalles de datos, generar visualizaciones automáticas, iniciar un experimento, explorar ingeniería de características, ver resultados de experimentos y obtener un recorrido rápido por el informe de Interpretabilidad de aprendizaje automático.
 
 **Nota**: Este tutorial ha sido creado en Aquarium, lo cual es parte de H2O cloud y provee acceso a varias herramientas para talleres, conferencias, y entrenamientos de enseñanza. Los laboratorios en Aquarium tienen conjuntos de datos, experimentos, proyectos, y otros contenidos precargados. Si usted usa su propia versión de Driverless AI, no podrá ver el contenido precargado.
 
-## Prerequisitos
-
-**Sesión de Dos Horas de Test Drive**: Test Drive es igual a H2O Driverless AI, pero la única diferencia siendo que Test Drive corre sobre AWS Cloud (Amazon Web Service Cloud). No es necesario descargar ningún software para utilizar Test Drive y explorar todas las características y beneficios de la plataforma de H2O Automatic Learning.    
-
-- ¿Necesita una **Sesión de Dos Horas de Test Drive**? [Inténtelo ahora mismo](https://www.h2o.ai/test-drive/). Siga la instrucciones [en este tutorial](https://h2oai.github.io/tutorials/getting-started-with-driverless-ai-test-drive/#0) para comenzar su sesión. Después de comenzar la sesión de Driverless AI Test Drive, continue leyendo los requisitos restantes de este tutorial y proceda a comenzar [Tarea 1: Tour del Producto](https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#2) 
-
-- ¿Ya tiene una sesión de **Test Drive**? Continue leyendo los requisitos restantes de este tutorial y proceda a comenzar [Tarea 1: Tour del Producto](https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#2) 
-
-**Nota: Cada sesión de Test Drive será disponible por un máximo de dos horas. Después de las dos horas, la sesión terminará y su trabajo en la sesión no será guardado. Si necesita más tiempo para seguir explorando Driverless AI, puede lanzar una nueva sesión de Test Drive o puede contactar nuestro equipo de ventas por medio de nuestro [formulario de contacto](https://www.h2o.ai/company/contact/).** 
+## Prerrequisitos
 
 - Conocimiento básico de Machine Learning y Estadísticas 
+
+**Sesión de Dos Horas de Test Drive**: Test Drive es H2O.ai Driverless AI corriendo sobre la nuve de AWS (Amazon Web Service Cloud). No es necesario descargar ningún software para utilizar Test Drive. Explora todas las características y beneficios de la plataforma de H2O Automatic Learning.    
+
+- ¿Necesita una **Sesión de Dos Horas de Test Drive**? Siga la instrucciones [en este tutorial](https://github.com/h2oai/tutorials/blob/master/Driverless%20AI/ES/comenzando-con%20driverless-ai-test-drive/test-drive-es.md) para comenzar su sesión. Después de comenzar la sesión de Driverless AI Test Drive, continue leyendo los requisitos restantes de este tutorial y proceda a comenzar [Tarea 1: Tour del Producto](https://github.com/h2oai/tutorials/blob/master/Driverless%20AI/ES/introduccion-a-machine-learning-automatico-tutorial-con-h2o.ai-test-drive/introduccion-a-machine-learning-automatico-tutorial-con-h2o.ai-test-drivel.md#Tarea-1-Tour-del-Producto) 
+
+- ¿Ya tiene una sesión de **Test Drive**? Continue leyendo los requisitos restantes de este tutorial y proceda a comenzar [Tarea 1: Tour del Producto](https://github.com/h2oai/tutorials/blob/master/Driverless%20AI/ES/introduccion-a-machine-learning-automatico-tutorial-con-h2o.ai-test-drive/introduccion-a-machine-learning-automatico-tutorial-con-h2o.ai-test-drivel.md#Tarea-1-Tour-del-Producto) 
+
+**Nota: Test Drive de Driverless AI ya tiene la clave de licencia incorporada, así que no necesita solicitar una para usarlo. Cada sesión de Test Drive en Aquarium estará disponible por dos horas. Después que la sesión termine su trabajo no será guardado. Si necesita más tiempo para seguir explorando Driverless AI, puede lanzar una nueva sesión de Test Drive o puede contactar nuestro equipo de ventas por medio de nuestro [formulario de contacto](https://www.h2o.ai/company/contact/).** 
 
 
 ## Tarea 1: Tour del Producto
 
-¡Bienvenido a la página **Datasets (Conjunto de datos)** de Driverless AI!
+¡Bienvenido a la página **Datasets (Conjunto de Datos)** de Driverless AI!
 
 ![dai-datasets-page](assets/dai-datasets-page.jpg)
 
-
 La interfaz del usuario (UI) de Driverless AI es muy fácil de navegar. Las siguientes características, al igual que algunos conjuntos de datos se pueden encontrar en la página de **Datasets**. Vamos a explorar estas características al tiempo de lanzar nuestro experimento en los siguientes pasos. 
 
-1. **Projects (Proyectos)**: En el espacio de **Projects** su pueden encontrar y administrar conjuntos de datos y se encontrará la opción de menú de experimentos
+1. **Projects (Proyectos)**: El espacio de **Projects** es para administrar conjuntos de datos y experimentos relacionados a casos de usos particulares. 
 
 2. **Datasets (Conjuntos de datos)**: Muestra los conjuntos de datos disponibles. Algunas otras opciones incluyen la habilidad de agregar nuevos conjuntos de datos, obtener detalles sobre los datos, visualizar, dividir, predecir, renombrar, descargar, y eliminar.
 
-3. **Autoviz**: Visualizar un conjunto de datos con todos los gráficos disponibles
+3. **Autoviz**: Ayuda a visualizar un conjunto de datos con todos los gráficos disponibles.
 
 4. **Experiments (Experimentos)**: Muestra todos los experimentos que han sido completados. Experimentos pueden ser corregidos o borrados. 
 
-5. **Diagnostics (Diagnósticos)**: Muestra diagnósticos acerca del modelo creado y puede ver los resultados de ese modelo usando diferentes formas de evaluación 
+5. **Diagnostics (Diagnósticos)**: Muestra diagnósticos acerca del modelo creado y puede ver los resultados de ese modelo usando diferentes formas de evaluación. 
 
-6. **MLI**: Muestra una lista de interpretaciones de los modelos y permite realizar una interpretación de un modelo nuevo
+6. **MLI**: Muestra una lista de interpretaciones de los modelos y permite realizar una interpretación de un modelo nuevo.
 
-7. **Deployments (Implementaciones)**: Despliega los modos de evaluación de MOJO y Python para hacer pruebas e integrar a tu producto final, también se puede desplegar localmente o en cloud 
+7. **Deployments (Implementaciones)**: Despliega los modos de evaluación de MOJO y Python para hacer pruebas e integrar a tu producto final, también se puede desplegar localmente o en cloud. 
 
-8. **Resources (Recursos)**: El menu de **Resources** permite ver enlaces a Información del Sistema, Guia de Uso de Driverless AI, and Ayuda. Desde este menu, también se puede descargar Python Client, R Client, MOJO2 Runtime, MOJO2 Py Runtime, y MOJO2 R Runtime.
+8. **Resources (Recursos)**: El menu de **Resources** permite ver enlaces relacionados con Información del Sistema, Guia de Uso de Driverless AI,y Ayuda. Desde este menu, también se puede descargar el Python Client, R Client, MOJO2 Runtime, MOJO2 Py Runtime, y MOJO2 R Runtime.
 
-9. **Messages[] (Mensajes [])**: Muestra noticias y próximos eventos de Driverless AI
+9. **Messages[] (Mensajes [])**: Muestra noticias y próximos eventos de Driverless AI.
 
-10. **Logout H2OAI (Cerrar sesión H2OAI)**: Permite salir de la sesión actual 
+10. **Logout H2OAI (Cerrar sesión H2OAI)**: Permite salir de la sesión actual de Driverless AI.
 
 11. **<**: Regresa a la página anterior
 
@@ -77,61 +74,60 @@ La interfaz del usuario (UI) de Driverless AI es muy fácil de navegar. Las sigu
 
 14. **Add a Dataset(or Drag and Drop) (Agregar un conjunto de datos (o arrastrar y soltar))**: Carga o añade un nuevo conjunto de datos 
 
+### Exploración más Profunda y Recursos
 
-### Inmersión Más Profunda y Recursos
+- [Únete a la comunidad de H2Oa.i en Slack para hacer preguntas ](https://h2oai-community.slack.com/). Haz preguntas, discute posibles usos, da recomendaciones, mantente informado sobre lo mas nuevo de H2O.ai, y mucho más.
 
-- [Únete a la comunidad de H2O en Slack para hacer preguntas ](https://h2oai-community.slack.com/). Haz preguntas, discute posibles usos, da recomendaciones, mantente informado sobre lo mas nuevo de H2O.ai, y mucho más.
-
-- Aprende más sobre H2O Driverless por medio de nuestra [Documentacion de H2O](http://docs.h2o.ai/driverless-ai/latest-stable/docs/booklets/DriverlessAIBooklet.pdf). 
+- Aprende más sobre H2O.ai Driverless por medio de nuestra [Documentacion de H2O Driverless AI](http://docs.h2o.ai/driverless-ai/latest-stable/docs/booklets/DriverlessAIBooklet.pdf). 
 
 - [Explora la Documentación del Producto de H2O ](http://docs.h2o.ai/)
 
 - [Aprende más sobre H2O Driverless al revisar nuestra lista de preguntas frecuentes](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/faq.html)
 
-## Tarea 2: Conceptos de Machine Learning (Aprendizaje de Máquina)
+## Tarea 2: Conceptos de Machine Learning
 
-###  Inteligencia Artificial y Aprendizaje de Máquina
+###  Inteligencia Artificial y Machine Learning (Aprendizaje de Máquina)
 
-Los conceptos que se encuentran en esta sección están destinados a proporcionar una vista general de alto nivel de Aprendizaje de Máquina. Al final de esta sección, podrás encontrar ligas(links) a recursos que ofrecen una explicación más profunda de los conceptos cubiertos aquí.
+Los conceptos que se encuentran en esta sección están destinados a proporcionar una vista general de alto nivel de Machine Learning. Al final de esta sección, podrás encontrar ligas(links) a recursos que ofrecen una explicación más profunda de los conceptos cubiertos aquí.
 
- Aprendizaje de Máquina es un sub-conjunto de Inteligencia Artificial donde el enfoque esta en crear maquinas que puedan simular la inteligencia humana. Una distinción crítica entre Intelifencia Artificial y Aprendizaje de Máquina es que los modelos de Aprendizaje de Máquina "aprenden" de los datos a los que los modelos son expuestos. Arthur Samuel, un pionero de Aprendizaje de Máquina en 1959, definió Aprendizaje de Máquina como un "campo del estudio que le da a las computadoras la habilidad de aprender sin ser explicitamente programadas" [1]. Un algoritmo de Aprendizaje de Máquina se entrena con un conjunto de datos para hacer predicciones. Estas predicciones son, a veces, utilizadas para optimizar un sistema o asistir con la toma de decisiones.
+Machine Learning es un sub-conjunto de Inteligencia Artificial donde el enfoque esta en crear maquinas que puedan simular la inteligencia humana. Una distinción crítica entre Inteligencia Artificial y Machine learning es que los modelos de Aprendizaje de Máquina "aprenden" de los datos a los que los modelos son expuestos. Arthur Samuel, un pionero de Aprendizaje de Máquina en 1959, definió Aprendizaje de Máquina como un "campo del estudio que le da a las computadoras la habilidad de aprender sin ser explicitamente programadas". Un algoritmo de Aprendizaje de Máquina se entrena con un conjunto de datos para hacer predicciones. Estas predicciones son, a veces, utilizadas para optimizar un sistema o asistir con la toma de decisiones.
 
-### Entrenamiento del Aprendizaje de Máquina
+### Entrenamiento de Machine Learning
 
-Avances en la tecnología han facilitado la recopilación y disponibilidad de los datos. Los tipos de datos disponibles determinarán el tipo de entrenamiento al que el modelo Aprendizaje de Máquina puede someterse. Hay dos tipos de entrenamiento de Aprendizaje de Máquina, Aprendizaje supervisado y no-supervisado. Aprendizaje supervisado es cuando el conjunto de datos contiene la respuesta que estás tratando de predecir. Para esos casos donde la variable de predicción no esta presente, se le llama aprendizaje no-supervisado. Ambos tipos de entrenamiento definen la relación entre variables de entrada y de salida.
+Avances en la tecnología han facilitado la recopilación y disponibilidad de los datos. Los tipos de datos disponibles determinarán el tipo de entrenamiento al que el modelo de Machine Learning puede someterse. Hay dos tipos de entrenamiento de Machine Learning, Aprendizaje supervisado y no-supervisado. Aprendizaje supervisado es cuando el conjunto de datos contiene la respuesta que estás tratando de predecir. Para esos casos donde la variable de predicción no esta presente, se le llama aprendizaje no-supervisado. Ambos tipos de entrenamiento definen la relación entre variables de entrada y de salida.
 
-En Aprendizaje de Máquina, las variables de entrada son llamadas **características(features)** y las variables de salida **etiquetas(labels)**. Las etiquetas, en este caso, son las que intentamos predecir. El objetivo es tomar las entradas/características y usarlas para llegar a predicciones sobre datos nunca antes vistos. En regresión lineal, las características son las variables x, y las etiquetas son las variables y. 
+En Machine Learning, las variables de entrada son llamadas **características(features)** y las variables de salida **etiquetas(labels)**. Las etiquetas, en este caso, son las que intentamos predecir. El objetivo es tomar las entradas/características y usarlas para llegar a predicciones sobre datos nunca antes vistos. En regresión lineal, las características son las variables x, y las etiquetas son las variables y. 
 
-Un modelo de Aprendizaje de Maquina define la relación entre características y etiquetas. Cuando los modelos son entrenados, puedes entrenar el modelo alimentándolo con ejemplos. Los ejemplos son una instancia particular de datos. Puedes tener dos tipos de ejemplos: etiquetados y no-etiquetados. Los ejemplos etiquetados son esos donde se conoce el valor de las variables x, y (características, etiquetas). Los ejemplos no-etiquetados son esos donde conocemos el valor de la variable x, pero no sabemos que valor tiene la variable y(características,?)[1]. Tu conjunto de datos son como un ejemplo; las columnas que se usarán para el entrenamiento son las características; las filas son las instancias de esas características. Las columnas que quieres predecir son las etiquetas.
+Un modelo de Machine Learning define la relación entre características y etiquetas. Cuando los modelos son entrenados, puedes entrenar el modelo alimentándolo con ejemplos. Los ejemplos son una instancia particular de datos. Puedes tener dos tipos de ejemplos: etiquetados y no-etiquetados. Los ejemplos etiquetados son esos donde se conoce el valor de las variables x, y (características, etiquetas). Los ejemplos no-etiquetados son esos donde conocemos el valor de la variable x, pero no sabemos que valor tiene la variable y(características,?)[1]. Tu conjunto de datos son como un ejemplo; las columnas que se usarán para el entrenamiento son las características; las filas son las instancias de esas características. Las columnas que quieres predecir son las etiquetas.
 
 El aprendizaje supervisado toma los ejemplos etiquetados y permite a un modelo que esta siendo entrenado aprender la relación entre características y etiquetas. El modelo entrenado es entonces probado con datos no-etiquetados, y eso permite predecir el valor de y(etiqueta) para los datos no-etiquetados. Probar un modelo entrenado con datos no-etiquetados se le llama entrenamiento no supervisado [1]. Note que H20 Driverless AI crea modelos con ejemplos etiquetados.
 
 ### Preparación de datos 
 
-Un modelo de Aprendizaje de Máquina es tan bueno como los datos que se usen para entrenarlo. Si usas datos malos para entrenar tu modelo, obtendrás un modelo malo. Dicho esto, antes de cargar un conjunto de datos dentro de la herramienta que te ayudará con la construcción de tu modelo de Aprendizaje de Máquina como Driverless AI, asegúrate de que el conjunto de datos ha sido limpiado y preparado para el entrenamiento. Al proceso de transformación de datos en bruto en otro formato, el cual es más apropiado y valioso para el análisis, se le llama disputa de datos. 
+Un modelo de Machine Learning es tan bueno como los datos que se usen para entrenarlo. Si usas datos malos para entrenar tu modelo, obtendrás un modelo malo. Dicho esto, antes de cargar un conjunto de datos dentro de la herramienta que te ayudará con la construcción de tu modelo de Machine Learning como Driverless AI, asegúrate de que el conjunto de datos ha sido limpiado y preparado para el entrenamiento. Al proceso de transformación de datos en bruto en otro formato, el cual es más apropiado y valioso para el análisis, se le llama data wrangling o disputa de datos. 
 
-La disputa de datos, que puede incluir extracciones, análisis, unión, estandarización, aumento, limpieza, consolidación, filtrado es altamente recomendado terminarlo antes de cargar el conjunto de datos a Driverless AI. La preparación de datos incluye el cojunto de datos en un correcto formato para lo que se intenta hacer. Los duplicados se han eliminado. Los datos perdidos se arreglan o se eliminan, y finalmente, los valores categoriales se han transformado o codificado a un tipo númerico. Finalmente, las transformaciones apropiadas en el conjunto de datos se han realizado, como el escalamiento, la descomposición y agregación, también conocido como ingeniería de características[2]. Herramientas como [Python datatable](https://datatable.readthedocs.io/en/latest/?badge=latest), [Pandas](https://pandas.pydata.org/) y [R](https://www.r-project.org/) son buenas para la disputa de datos.
+La disputa de datos, que puede incluir extracciones, análisis, unión, estandarización, aumento, limpieza, consolidación, filtrado es altamente recomendado terminarlo antes de cargar el conjunto de datos a Driverless AI. La preparación de datos incluye el cojunto de datos en un correcto formato para lo que se intenta hacer. Los duplicados se han eliminado. Los datos perdidos se arreglan o se eliminan, y finalmente, los valores categoriales se han transformado o codificado a un tipo númerico. Finalmente, las transformaciones apropiadas en el conjunto de datos se han realizado, como el escalamiento, la descomposición y agregación, también conocido como ingeniería de características[3]. Herramientas como [Python datatable](https://datatable.readthedocs.io/en/latest/?badge=latest), [Pandas](https://pandas.pydata.org/) y [R](https://www.r-project.org/) son buenas para la disputa de datos.
 
-Driverless AI puede hacer algunas disputas de datos. La disputa de datos se puede hacer a través de [data recipe](https://www.r-project.org/), de [JDBC connector](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/connectors-nd/jdbc.html?highlight=jdbc) o a través de [live code](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/datasets-describing.html?highlight=live%20code#modify-by-recipe) el cual creará un nuevo conjunto de datos modificando el existente. 
+Driverless AI puede hacer algunas disputas de datos. La disputa de datos se puede hacer a través de  una [data recipe](https://www.r-project.org/), de el [JDBC connector](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/connectors-nd/jdbc.html?highlight=jdbc) o a través de [live code](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/datasets-describing.html?highlight=live%20code#modify-by-recipe) el cual creará un nuevo conjunto de datos modificando el existente. 
 
  
-### Transformación de datos/Ingeniería de características
+### Transformación de datos/Feature Engineering 
 
-La transformación de datos o ingeniería de características es el proceso de crear nuevas características a partir de las existentes. Algunas transformacines incluyen observar todas las características e identificar cuales características pueden ser combinadas para hacer nuevas que serán más útiles para el rendimiento del modelo. Para las características categóricas, la recomendación es que las clases que tengan pocas observaciones sean agrupadas para reducir la probabilidad de que el modelo se sobreajuste(*overfitting*). Adicionalmente, variables ficticias son introducidas a las características categóricas para facilitar el Aprendizaje de Máquina ya que muchos algoritmos no pueden manejar características categóricas directamente. Por último pero no menos importante, eliminar características que no son usadas o son redundantes [3]. Estas son solo algunas sugerencias al acercarse a la ingeniería de características. Ingeniería de características consume mucho tiempo debido a que su naturaleza es repetitiva; también puede ser costoso. El siguiente paso en la creación de un modelo es seleccionar un algoritmo.
+La transformación de datos o feature engineeering (ingeniería de características) es el proceso de crear nuevas características a partir de las existentes. Algunas transformacines incluyen observar todas las características e identificar cuales características pueden ser combinadas para hacer nuevas que serán más útiles para el rendimiento del modelo. Para las características categóricas, la recomendación es que las clases que tengan pocas observaciones sean agrupadas para reducir la probabilidad de que el modelo se sobreajuste (*overfitting*). Adicionalmente, variables ficticias son introducidas a las características categóricas para facilitar el Machine Learning ya que muchos algoritmos no pueden manejar características categóricas directamente. Por último pero no menos importante, eliminar características que no son usadas o son redundantes [4]. Estas son solo algunas sugerencias al acercarse de Feature Engineering. Feature engineering consume mucho tiempo debido a que su naturaleza es repetitiva; también puede ser costoso. El siguiente paso en la creación de un modelo es seleccionar un algoritmo.
 
 ### Selección de algoritmo
 
-“Los algoritmos del Aprendizaje de Máquina se describen como el aprendizaje de una función objetivo (f) que asigna mejor las variables de entrada (x) a una variable de salida (y): Y= f(x)”[4]. En aprendizaje supervisado, hay muchos algoritmos que seleccionar para el entrenamiento. El tipo de algoritmo(s) dependerá del tamaño de tu conjunto de datos, la estructura, y el tipo de problema que estas tratando de resolver. A través de prueba y error, se pueden encontrar los mejores algoritmos de rendimiento para tu conjunto de datos. Algunos de esos algoritmos incluyen regresión lineal, clasificación, árboles de regresión, bosques al azar, bayas ingenuas, aumentar, por nombrar algunos[5]. 
+“Los algoritmos del Aprendizaje de Máquina se describen como el aprendizaje de una función objetivo (f) que asigna mejor las variables de entrada (x) a una variable de salida (y): Y= f(x)”[5]. En aprendizaje supervisado, hay muchos algoritmos que seleccionar para el entrenamiento. El tipo de algoritmo(s) dependerá del tamaño de tu conjunto de datos, la estructura, y el tipo de problema que estas tratando de resolver. A través de prueba y error, se pueden encontrar los mejores algoritmos de rendimiento para tu conjunto de datos. Algunos de esos algoritmos incluyen regresión lineal, clasificación, árboles de regresión, bosques al azar, bayas ingenuas, aumentar, por nombrar algunos[6]. 
 
 ### Modelo de entrenamiento
 
 **Conjunto de datos(datasets)** 
 
-Una buena práctica cuando entrenamos un modelo de Machine Learning(Aprendizaje de Máquina) es dividir tu conjunto de datos en sub-conjuntos: Conjuntos de entrenamiento, validación, y prueba. Una buena proporción para todo el conjunto de datos es 70-15-15, 70% de todo el conjunto de datos para el entrenamiento, 15% para la validación, y el 15% restante para la prueba. El **conjunto de entrenamiento** son los datos que se usarán para entrenar el modelo, y necesita ser suficientemente grande para obtener resultados. El **conjunto de validación** son los datos que se retuvieron del entrenamiento y se usarán para evaluar y ajustar los hiperpárametros del modelo entrenado y, por lo tanto, ajustar el rendimiento. Finalmente, El **conjunto de prueba** son datos que también se retuvieron y se usarán para confirmar los resultados del modelo final[1].
+Una buena práctica cuando entrenamos un modelo de Machine Learning es dividir tu conjunto de datos en sub-conjuntos: Conjuntos de entrenamiento, validación, y prueba. Una buena proporción para todo el conjunto de datos es 70-15-15, 70% de todo el conjunto de datos para el entrenamiento, 15% para la validación, y el 15% restante para la prueba. El **conjunto de entrenamiento** son los datos que se usarán para entrenar el modelo, y necesita ser suficientemente grande para obtener resultados. El **conjunto de validación** son los datos que se retuvieron del entrenamiento y se usarán para evaluar y ajustar los hiperpárametros del modelo entrenado y, por lo tanto, ajustar el rendimiento. Finalmente, El **conjunto de prueba** son datos que también se retuvieron y se usarán para confirmar los resultados del modelo final[1].
 
 ![datasets-split-ratio-diagram](assets/datasets-split-ratio-diagram.jpg)
 
-Otra parte del entrenamiento de modelos es ajustar y adaptar los modelos. Para el ajuste y la adaptación, los hiperpárametros necesitan ser adaptados, la validación necesita llevarse a cabo usando solo los datos del entrenamiento. Varios hiperpárametros necesitarán ser probados. Adicionalmente, un ciclo de validación cruzada (validación) se establecerá para calcular los puntajes de validación para cada conjunto de hiperpárametros por cada algoritmo. Basados en los puntajes de validación cruzada y los valores de los hiperpárametros, puedes seleccionar el modelo para cada algoritmo que se adaptó con los datos del entrenamiento y probarlo usando el conjunto de prueba. El rendimiento de tu modelo de regresión puede ser evaluado por las métrica de rendimiento como son el Error Cuadrático Medio (MSE por sus siglas en inglés), la curva ROC, la Prec-Recall, LIFT, y ganancia, por mencionar algunos.
+Otra parte del entrenamiento de modelos es ajustar y adaptar los modelos. Para el ajuste y la adaptación, los hiperpárametros necesitan ser adaptados, la validación necesita llevarse a cabo usando solo los datos del entrenamiento. Varios hiperpárametros necesitarán ser probados. Adicionalmente, un ciclo de validación cruzada (validación) se establecerá para calcular los puntajes de validación para cada conjunto de hiperpárametros por cada algoritmo. Basados en los puntajes de validación cruzada y los valores de los hiperpárametros, puedes seleccionar el modelo para cada algoritmo que se adaptó con los datos del entrenamiento y probarlo usando el conjunto de prueba. El rendimiento de tu modelo de regresión puede ser evaluado por las métrica de rendimiento como son el Error Cuadrático Medio (MSE por sus siglas en inglés), la curva ROC, la Prec-Recall, LIFT, y GAIN (ganancia), por mencionar algunos.
 
 ### ¿Cuáles son los desafíos al desarrollar un modelo de IA?
 
@@ -140,9 +136,10 @@ Uno de los desafíos importantes de cara a desarrollar un solo modelo listo para
 
 ### ¿Qué es el Machine Learning automatizado (Aprendizaje de Máquina Automatizado), y por qué es tan importante?
 
-AutoML o Aprendizaje de Máquina Automatizado es el proceso de automatización para la selección de algoritmos, generación de características, ajuste de hiperpárametros, modelado iterativo, y la evaluación del modelo. Herramientas de AutoML como son H2O Driverless AI hace más fácil entrenar y evaluar los modelos del Aprendizaje de Máquina. La automatización de las tareas repetitivas del desarrollo del Aprendizaje de Máquina permite a las personas en la industria enfocarse en los datos y los problemas de negocios que están tratando resolver. 
+AutoML o Aprendizaje de Máquina Automatizado es el proceso de automatización para la selección de algoritmos, generación de características, ajuste de hiperpárametros, modelado iterativo, y la evaluación del modelo. Herramientas de AutoML como son H2O Driverless AI hace más fácil entrenar y evaluar los modelos de Machine Learning. La automatización de las tareas repetitivas del desarrollo de Machine Learning permite a las personas en la industria enfocarse en los datos y los problemas de negocios que están tratando resolver. 
 
 ### Referencias Electrónicas
+
 [1] [Google’s Machine Learning Crash Course](https://developers.google.com/machine-learning/crash-course/training-and-test-sets/splitting-data)
 
 [2] [About Train, Validation and Test Sets in Machine Learning](https://towardsdatascience.com/train-validation-and-test-sets-72cb40cba9e7)
@@ -155,11 +152,11 @@ AutoML o Aprendizaje de Máquina Automatizado es el proceso de automatización p
 
 [6] [Selecting the best Machine Learning Algorithm for your regression problem](https://towardsdatascience.com/selecting-the-best-machine-learning-algorithm-for-your-regression-problem-20c330bad4ef)
 
-### Exploración más profunda y recursos
+### Exploración más Profunda y Recursos
 
 - [Explore the replays from H2O World around the world](
 https://www.h2o.ai/h2oworldnewyork/) 
-- [Explore the webinar replays](
+- [Explore the Webinar Replays](
 https://www.brighttalk.com/search/?q=driverless+ai) 
 - [Explore the various H2O Driverless AI playlists on YouTube](https://www.youtube.com/user/0xdata/playlists) 
 
@@ -241,15 +238,13 @@ En el conjunto de datos encontrarás 1,309 filas, una fila por cada pasajero, y 
 
 - Para descubrir más conjunto de datos, revisa [Conjunto de datos Kaggle](https://www.kaggle.com/datasets)
 
-## Tarea 4: Explore los Detalles de Datos y AutoViz
+## Tarea 4: Explora los Detalles de Datos y AutoViz
 
 ### Detalles
 
 Ahora vamos a explorar el conjunto de datos Titanic que acabamos de cargar.
 
 1\. Continuando en **Dataset Overview page** (página de descripción general del conjunto de datos), haga clic en el conjunto de datos titanic.csv. Aparecerán las siguientes opciones:
-
-
 
 ![titanic-set-actions](assets/titanic-set-actions.jpg)
 
@@ -414,7 +409,7 @@ Driverless AI muestra los gráficos que son aspectos "relevant" (relevantes) de 
 
 - [Visualización automática SlideShare](https://www.slideshare.net/0xdata/automatic-visualization)
 
-## Tarea 5: Lanzar primer experimento
+## Tarea 5: Lanza el Primer Experimento
 
 Vamos a lanzar nuestro primer experimento. Un experimento significa que vamos a generar una predicción utilizando un conjunto de datos de nuestra elección.
 
@@ -575,8 +570,7 @@ Una vez que se complete el experimento, aparecerá un **Experiment Summary** (Re
 - [Revise el folleto Driverless AI para obtener más información sobre cómo ejecutar experimentos](http://docs.h2o.ai/driverless-ai/latest-stable/docs/booklets/DriverlessAIBooklet.pdf) 
 
 
-## Tarea 6: Explora la Ingeniería de Características
-
+## Tarea 6: Explora Feature Engineering
 Driverless AI realiza Ingeniería de características en el dataset(conjunto de datos) para de terminar la representación óptima de los datos. Varias etapas de las características aparecen a lo largo de la iteración de los datos. Estas se pueden observar al pasar el cursor sobre los puntos de la Gráfica de validación de los datos de iteración y viendo las actualizaciones en la sección de la **Variable Importance (importancia de variable)**.
 
 ![feature-engineering-1](assets/feature-engineering-1.jpg)
@@ -737,7 +731,7 @@ Aprende más sobre el gráfico de K-S en [Machine Learning Experiment Scoring an
 
 - [La mejor métrica para medir la precisión de los modelos de clasificación](https://clevertap.com/blog/the-best-metric-to-measure-accuracy-of-classification-models/)
 
-## Tarea 8: Informe MLI para series no cronológicas
+## Tarea 8: Informe MLI Para Series no Cronologicas
 
 Una vez finalizado el modelo predictivo, podemos explorar la interpretabilidad de nuestro modelo. En otras palabras, ¿cuáles son los resultados y cómo llegaron a ser esos resultados?
 
@@ -945,7 +939,7 @@ https://www.youtube.com/watch?v=5jSU3CUReXY) (Oct 18)
 
 - [Descargue la hoja de trucos de Driverless AI MLI](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/_downloads/5cb84bc81a49817d5f490dde39bf42ee/cheatsheet.png) 
 
-## Tarea 9: Resumen del experimento y autoinforme
+## Tarea 9: Resumen del Experimento y Autoreport
 
 Driverless AI permite descargar documentos generados automáticamente, como el Resumen del experimento de descarga y el Informe MLI, todo con solo hacer clic en un botón.
 
@@ -994,7 +988,7 @@ El archivo zip del **Autoreport** proporciona información sobre lo siguiente:
 
 - [Hacia AutoML para la industria regulada con Driverless AI H2O](https://www.h2o.ai/blog/toward-automl-for-regulated-industry-with-h2o-driverless-ai/)
 
-## Next Steps
+## Proximos Pasos
 
 Echa un vistazo al siguiente tutorial de AI sin controlador [Tutorial de análisis y puntuación de experimentos de aprendizaje automático: enfoque financiero](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#0)
 
@@ -1013,7 +1007,7 @@ Donde aprenderás a:
 	  - Log Loss
 - Solicite una [Prueba gratuita de 21 días: clave de licencia de AI sin controlador H2O](https://www.h2o.ai/products/h2o-driverless-ai/)
 
-## Appendix: Project Workspace
+## Apendice: Proyecto Workspace
 
 Driverless AI proporciona un espacio de trabajo del proyecto para administrar conjuntos de datos y experimentos relacionados con un problema comercial específico o un caso de uso. Ya sea que esté tratando de detectar el fraude o predecir la retención de usuarios, los conjuntos de datos y los experimentos se pueden almacenar y guardar en los proyectos individuales. Una tabla de clasificación en la página Proyectos le permite comparar fácilmente el rendimiento y los resultados e identificar la mejor solución para su problema.
 

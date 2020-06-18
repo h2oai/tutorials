@@ -32,13 +32,11 @@ In this overview of Driverless AI, you will learn how to load data, explore data
 
 - A **Two-Hour Test Drive session**: Test Drive is H2O.ai's Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.
 
-  - Need a **Two-Hour Test Drive** session?Follow the instructions [on this quick tutorial](https://h2oai.github.io/tutorials/getting-started-with-driverless-ai-test-drive/#2) to get a Test Drive session started. After the Driverless AI Test Drive session starts, continue reading the remaining prerequisites of this tutorial then start [Task 1: Product Tour](https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#2).
+  - Need a **Two-Hour Test Drive** session? Follow the instructions [on this quick tutorial](https://h2oai.github.io/tutorials/getting-started-with-driverless-ai-test-drive/#2) to get a Test Drive session started. After the Driverless AI Test Drive session starts, continue reading the remaining prerequisites of this tutorial then start [Task 1: Product Tour](https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#2).
 
   - Already have a **Two-Hour Test Drive** session? Continue reading the remaining prerequisites of this tutorial then start [Task 1: Product Tour](https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#2). 
 
 **Note:  Aquarium’s Driverless AI Test Drive lab has a license key built-in, so you don’t need to request one to use it. Each Driverless AI Test Drive instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore Driverless AI, you can always launch another Test Drive instance or reach out to our sales team via the [contact us form](https://www.h2o.ai/company/contact/).**
-
-
 
 
 ## Task 1: Product Tour
@@ -49,11 +47,11 @@ Welcome to the Driverless AI **Datasets** page!
 
 The Driverless UI is easy to navigate. The following features, as well as a few datasets, are found on the **Datasets** page. We will explore these features as we launch an experiment in the next tasks.
 
-1. **Projects**: Projects Workspace for managing datasets and experiments menu option.
+1. **Projects**: Projects Workspace for managing datasets and experiments related to a specific business problem  or use case.
 
 2. **Datasets**: View of current datasets. Other features for datasets include the options to add a dataset, get dataset details, visualize, split, predict, rename, download, and delete. 
 
-3. **Autoviz**: Visualize a dataset with all available graphs.
+3. **Autoviz**: For datasets, Driverless AI automatically selects data plots based on the most relevant data statistics, generates visualizations, and creates data plots that are most relevant from a statistical perspective based on the most relevant data statistics.
 
 4. **Experiments**: View of completed experiments. Experiments can be revised or deleted. 
 
@@ -142,6 +140,7 @@ One of the significant challenges faced in developing a single production-ready 
 
 AutoML or Automated Machine Learning is the process of automating algorithm selection, feature generation, hyperparameter tuning, iterative modeling, and model assessment. AutoML tools such as H2O Driverless AI makes it easy to train and evaluate machine learning models. Automating the repetitive tasks of Machine Learning Development allows people in the industry to focus on the data and the business problems they are trying to solve. 
 
+
 ### References
 [1] [Google’s Machine Learning Crash Course](https://developers.google.com/machine-learning/crash-course/training-and-test-sets/splitting-data)
 
@@ -165,6 +164,20 @@ https://www.brighttalk.com/search/?q=driverless+ai)
 
 
 ## Task 3: Load Data
+
+### What is the Driverless AI Workflow?
+
+The typical Driverless AI workflow is to:
+
+1. Load data
+2. Visualize data
+3. Run an experiment
+4. Interpret the model
+5. Depploy the scoring pipeline
+
+In addition, you can diagnose a model, transform another dataset, score the model against antoher dataset and manage your data in Projects. The focus of this tutorial will be in steps 1 - 4. The other aspects of the Driverless AI will be covered in other tutorials found in the Driverless AI learning path. We will start with loading the data. 
+
+![typical-driverless-ai-workflow](assets/typical-driverless-ai-workflow.jpg)
 
 1\. Navigate back to the H2O Driverless AI  **Datasets** page.
 
@@ -268,28 +281,29 @@ We are now going to explore the Titanic dataset that we just loaded.
 
 1. The **Dataset Details Page** provides a summary of the dataset. This summary lists each column that is included in the dataset along with:
 
-    **Logical type (can be changed)**
+**Logical type (can be changed)**
 
-    ![logical-type-options](assets/logical-type-options.jpg)
+![logical-type-options](assets/logical-type-options.jpg)
 
-    **Format for Date and Datetime columns(can be changed)**
 
-    ![dataset-details-format-option](assets/dataset-details-format-option.jpg)
+**Format for Date and Datetime columns(can be changed)**
 
-    - Storage type
-    - Count
-    - Number of missing values
-    - Mean
-    - Minimum
-    - Maximum
-    - Standard deviation
-    - Frequency
-    - Number of unique values
-    - View the first 20 rows of a column
+![dataset-details-format-option](assets/dataset-details-format-option.jpg)
 
-    ![datasets-details-first-20-rows](assets/datasets-details-first-20-rows.jpg)
+ - Storage type
+ - Count
+ - Number of missing values
+ - Mean
+ - Minimum
+ - Maximum
+ - Standard deviation
+ - Frequency
+ - Number of unique values
+ - View the first 20 rows of a column
 
-    **Note**: Driverless AI recognizes the following column types: integer, string, real, boolean, and time. Date columns are given a string "str" type.
+![datasets-details-first-20-rows](assets/datasets-details-first-20-rows.jpg)
+
+**Note**: Driverless AI recognizes the following column types: integer, string, real, boolean, and time. Date columns are given a string "str" type.
 
 2. You can view information for a specific column by entering the name of the column in the field above the graph.
 
