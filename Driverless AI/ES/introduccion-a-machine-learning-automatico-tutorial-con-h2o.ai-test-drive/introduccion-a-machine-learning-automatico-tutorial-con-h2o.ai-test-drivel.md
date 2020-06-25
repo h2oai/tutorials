@@ -163,6 +163,20 @@ https://www.brighttalk.com/search/?q=driverless+ai)
 
 ## Tarea 3: Cargar Datos
 
+### ¿Qué es el flujo de trabajo de Driverless AI?
+
+El flujo de trabajo típico de Driverless AI es:
+
+1. Cargar datos
+2. Visualizar datos
+3. Ejecute un experimento
+4. Interpreta el modelo
+5. Despliegue la tubería de puntuación
+
+Además, puede diagnosticar un modelo, transformar otro conjunto de datos, calificar el modelo con respecto a otro conjunto de datos y administrar sus datos en Proyectos. El enfoque de este tutorial estará en los pasos 1 a 4. Los otros aspectos de Driverless AI se cubrirán en otros tutoriales que se encuentran en la ruta de aprendizaje de Driverless AI. Comenzaremos cargando los datos.
+
+![typical-driverless-ai-workflow](assets/typical-driverless-ai-workflow.jpg)
+
 1\. Regresa a la pagina H2O Driverless AI **Datasets**.
 
 ### Información del conjunto de datos
