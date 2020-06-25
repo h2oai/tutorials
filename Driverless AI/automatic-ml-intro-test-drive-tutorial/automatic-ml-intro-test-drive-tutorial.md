@@ -51,7 +51,7 @@ The Driverless UI is easy to navigate. The following features, as well as a few 
 
 2. **Datasets**: View of current datasets. Other features for datasets include the options to add a dataset, get dataset details, visualize, split, predict, rename, download, and delete. 
 
-3. **Autoviz**: For datasets, Driverless AI automatically selects data plots based on the most relevant data statistics, generates visualizations, and creates data plots that are most relevant from a statistical perspective based on the most relevant data statistics.
+3. **Autoviz**: The Visualization page shows all available graphs for the selected dataset. Note that the graphs on the Visualization page can vary based on the information in your dataset. You can also view and download logs that were generated during the visualization.
 
 4. **Experiments**: View of completed experiments. Experiments can be revised or deleted. 
 
@@ -98,28 +98,29 @@ The concepts found in this section are meant to provide a high-level overview of
 
 Advances in technology have made it easier for data to be collected and made available.  The available type of data will determine the kind of training that the machine learning model can undergo. There are two types of machine learning training, supervised and unsupervised learning. Supervised learning is when the dataset contains the output that you are trying to predict. For those cases where the predicting variable is not present, it's called unsupervised learning. Both types of training define the relationship between input and output variables.
 
-In machine learning, the input variables are called **features** and the output variables **labels**. The labels, in this case, are what we are trying to predict. The goal is to take the inputs/features and use them to come up with predictions on never-before-seen data. In linear regression, the features are the x-variables, and the labels are the y-variables. 
+In machine learning, the input variables are called **features** and the output variables **labels**. The labels, in this case, are what we are trying to predict. The goal is to take the inputs/variables/features and use them to come up with predictions on never-before-seen data. In linear regression, the features are the x-variables, and the labels are the y-variables. An example of a label could be the price of future price of avocados. Some examples of features could be the features found in the dataset for this tutorial on Task 3 such as Passanger Class, Sex, Age, Passanger Fare, Cabin number etc.  
 
-A machine learning model defines the relationship between features and labels. When models are trained, you can train a model by feeding it examples. Examples are a particular instance of data.  You can have two types of examples: labeled and unlabeled. Labeled examples are those where the x and y values (features, labels) are known. Unlabeled examples are those where we know the x value, but we don't know what the y value is (feature,?)[1]. Your dataset is like an example; the columns that will be used for training are the features; the rows are the instances of those features. The column that you want to predict is the label.
+A machine learning model defines the relationship between features and labels. A model can be trained by feeding it examples. Examples are a particular instance of data.  You can have two types of examples: labeled and unlabeled. Labeled examples are those where the x and y values (features, labels) are known. Unlabeled examples are those where we know the x value, but we don't know what the y value is (feature,?)[1]. Your dataset is like an example; the columns that will be used for training are the features; the rows are the instances of those features. The column that you want to predict is the label.
 
-Supervised learning takes labeled examples and allows a model that is being trained to learn the relationship between features and labels. The trained model is then tested with unlabeled data, and it's allowed to predict the y value (label) for the unlabeled data. Testing a trained model with unlabeled data is called unsupervised training [1]. Note that H2O Driverless AI creates models with labeled examples.
+Supervised learning takes labeled examples and allows a model that is being trained to learn the relationship between features and labels. The trained model can then be used on unlabelled data to predict the missing y value. The model can be tested with either labeled or unlabeled data. Testing a trained model with unlabeled data is called unsupervised training [1]. Note that H2O Driverless AI creates models with labeled examples.
 
 ### Data Preparation 
 
 A machine learning model is as good as the data that is used to train it. If you use garbage data to train your model, you will get a garbage model. With this said, before uploading a dataset into tools that will assist you with building your machine learning model such as Driverless AI, ensure that the dataset has been cleaned and prepared for training. The process of transforming raw data into another format, which is more appropriate and valuable for analytics, is called data wrangling. 
 
-Data wrangling, which can include extractions, parsing, joining, standardizing, augmenting, cleansing, consolidating, and filtering, is highly recommended to be done before uploading the dataset to Driverless AI.  Data preparation includes the dataset being in the correct format for what you are trying to do. Duplicates have been removed.  Missing data is fixed or removed, and finally, categorial values have been transformed or encoded to a numerical type. Finally, proper transformations have been done on the dataset, such as scaling, decomposition, and aggregation, otherwise known as feature engineering [2]. Tools like [Python datatable](https://datatable.readthedocs.io/en/latest/?badge=latest), [Pandas](https://pandas.pydata.org/) and [R](https://www.r-project.org/) are great assets for data wrangling. 
+Data wrangling, which can include extractions, parsing, joining, standardizing, augmenting, cleansing, consolidating, missing data is fixed or removed. Data preparation includes the dataset being in the correct format for what you are trying to do. Duplicates have been removed.  Missing data is fixed or removed, and finally, categorial values have been transformed or encoded to a numerical type. Tools like [Python datatable](https://datatable.readthedocs.io/en/latest/?badge=latest), [Pandas](https://pandas.pydata.org/) and [R](https://www.r-project.org/) are great assets for data wrangling. 
 
 Driverless AI can do some data wrangling. Data wrangling can be done via a [data recipe](https://www.r-project.org/), the [JDBC connector](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/connectors-nd/jdbc.html?highlight=jdbc) or through [live code](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/datasets-describing.html?highlight=live%20code#modify-by-recipe) which will create a new dataset by modifying the existing one. 
 
  
 ### Data Transformation/Feature Engineering
 
-Data transformation or feature engineering is the process of creating new features from the existing ones. Some data transformations include looking at all the features and identifying which features can be combined to make new ones that will be more useful to the performance of the model. For categorical features, the recommendation is for classes that have few observations to be grouped to reduce the likelihood of the model overfitting. Additionally, dummy variables are introduced for categorical features to facilitate machine learning since many algorithms cannot handle categorical features directly.  Last but not least, remove features that are not used or are redundant [3]. These are only a few suggestions when approaching feature engineering. Feature engineering is very time-consuming due to its repetitive nature; it can also be costly. The next step in creating a model is selecting an algorithm.
+
+Data transformation or feature engineering is the process of creating new features from the existing ones. Proper data transformations on a dataset can include scaling, decomposition, and aggregation [2]. Some data transformations include looking at all the features and identifying which features can be combined to make new ones that will be more useful to the performance of the model. For categorical features, the recommendation is for classes that have few observations to be grouped to reduce the likelihood of the model overfitting. Categorical features may be converted to numerical represenations since many algorithms cannot handle categorical features directly. Last but not least, remove features that are not used or are redundant [3]. These are only a few suggestions when approaching feature engineering. Feature engineering is very time-consuming due to its repetitive nature; it can also be costly. The next step in creating a model is selecting an algorithm.
 
 ### Algorithm Selection
 
-“Machine learning algorithms are described as learning a target function (f) that best maps input variables (x) to an output variable(y): Y= f(x)” [4]. In supervised learning, there are many algorithms to select from for training. The type of algorithm(s) will depend on the size of your data set, structure, and the type of problem you are trying to solve.  Through trial and error, the best performing algorithms can be found for your dataset. Some of those algorithms include linear regression, classification, regression trees, random forests, naive Bayes, and random forest, boosting, to name a few [5]. 
+“Machine learning algorithms are described as learning a target function (f) that best maps input variables (x) to an output variable(y): Y= f(x)” [4]. In supervised learning, there are many algorithms to select from for training. The type of algorithm(s) will depend on the size of your data set, structure, and the type of problem you are trying to solve.  Through trial and error, the best performing algorithms can be found for your dataset. Some of those algorithms include linear regression, regression trees, random forests, naive Bayes, and random forest, boosting, to name a few [5]. 
 
 ### Model Training
 
@@ -127,9 +128,12 @@ Data transformation or feature engineering is the process of creating new featur
 
 One good practice when training a machine learning model is to split up your dataset into subsets: training, validation, and testing sets. A good ratio for the entire dataset is 70-15-15, 70% of the whole dataset for training, 15% for validation, and the remaining 15% for testing. The **training set** is the data that will be used to train the model, and it needs to be big enough to get significant results from it. The **validation set** is the data that has been held back from the training and will be used to evaluate and adjust the hyperparameters of the trained model and hence adjust the performance. Finally, the **test set** is data that has also been held back and will be used to confirm the results of the final model [1].
 
+Note: The validation dataset is used for tuning the modeling pipeline. If provided, the entire training data will be used for training, and validation of the modeling pipeline is performed with only this validation dataset. When you do not include a validation dataset, Driverless AI will do K-fold cross validation for I.I.D. experiments and multiple rolling window validation splits for time series experiments. For this reason it is not generally recommended to include a validation dataset as you are then validating on only a single dataset. Please note that time series experiments cannot be used with a validation dataset: including a validation dataset will disable the ability to select a time column and vice versa.
+
+
 ![datasets-split-ratio-diagram](assets/datasets-split-ratio-diagram.jpg)
 
-Another part of model training is fitting and tuning the models. For fitting and tuning, hyperparameters need to be tuned, and cross-validation needs to take place using only the training data. Various hyperparameters values will need to be tested. Additionally, a cross-validation loop will be set to calculate the cross-validation score for each set of hyperparameters for each algorithm. Based on the cross-validation score and hyperparameter values, you can select the model for each algorithm that has been tuned with training data and test is it using your test set.  The performance of your regression model can be evaluated by performance metrics such as the Mean Square Error (MSE), ROC Curve, Prec-Recall, LIFT, and Gain, to name a few.
+Another part of model training is fitting and tuning the models. For fitting and tuning, hyperparameters need to be tuned, and cross-validation needs to take place using only the training data. Various hyperparameters values will need to be tested. "A hyperparameter is a parameter that is set before the learning process begins. These parameters are tunable and can directly affect how well a model trains. An example of hyper parameter in machine learning is learning rate" [7]. With cross validation, the whole dataset is utilized, and each model is trained on a different subset of the training data [8]. Additionally, a cross-validation loop will be set to calculate the cross-validation score for each set of hyperparameters for each algorithm. Based on the cross-validation score and hyperparameter values, you can select the model(remember that "a model in ML is the output of a machine learning algorithm run on data. It represents waht was learned by a machine learning algorithm" [9]) for each algorithm that has been tuned with training data and test it using your test set. 
 
 ### What are the challenges in AI Model Development?
 
@@ -154,6 +158,11 @@ AutoML or Automated Machine Learning is the process of automating algorithm sele
 
 [6] [Selecting the best Machine Learning Algorithm for your regression problem](https://towardsdatascience.com/selecting-the-best-machine-learning-algorithm-for-your-regression-problem-20c330bad4ef)
 
+[7] [Deep AI - What is a hyperparameter?](https://deepai.org/machine-learning-glossary-and-terms/hyperparameter)
+
+[8] [H2O.ai's Driverless AI - Internal Validation Technique](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/internal-validation.html?highlight=cross%20validation)
+
+[9] [Difference between Algorithm and Model in Machine Learning](https://machinelearningmastery.com/difference-between-algorithm-and-model-in-machine-learning/)
 ### Deeper Dive and Resources
 
 - [Explore the replays from H2O World around the world](
@@ -307,7 +316,7 @@ We are now going to explore the Titanic dataset that we just loaded.
 
 2. You can view information for a specific column by entering the name of the column in the field above the graph.
 
-3. **Modify by Recipe** allows you to create a new dataset by modifying an existing dataset with custom recipes.
+3. **Modify by Recipe** allows you to create a new dataset by modifying an existing dataset with custom recipes. There is also the option to 
 
 4. **Dataset Rows** allows you to preview the dataset
 
@@ -320,7 +329,7 @@ We are now going to explore the Titanic dataset that we just loaded.
 *Things to Note:*
  1. Preview the dataset 
  2. View the remaining rows
- 3. **Modify by Recipe** - Modify the dataset through a custom recipe
+ 3. **Modify by Recipe** - Modify the dataset through a custom recipe or live code (manually enter custom recipe code to use to modify the dataset)
  3. Return to the **Dataset Overview** 
  4. Option to Exit and return to the H2O **Datasets** page
 
@@ -346,7 +355,7 @@ From the Titanic.csv dataset, we are going to create two datasets, training and 
 4. Change the split value to .75 by adjusting the slider to 75% or entering .75 in the section that says *Train/Valid Split Ratio*
 5. Save the changes you made 
 
-The ratio of .75 was selected for this particular dataset to not generalize the model given the total size of the set.
+The split ratio of .75 (75% for the training set and 25% fo the test set) was selected for this particular dataset to not generalize the model given the total size of the set.
 
 **The training set** contains 981 rows, each row representing a passenger, and 16 columns representing the attributes of each passenger.
 
@@ -470,8 +479,8 @@ Note: To disable **assistant**, click on assistant again.
 6. **Validation Dataset** - Select the dataset you want to validate. This set will be used to validate parameters like models, features, etc.
 7. **Test Dataset** - The dataset that will be used to test the model generated from the training dataset. It's not used during training of the model, and results are available at the end of the experiment.
 8. **Target column** -  What do you want to predict? 
-9. **Fold column** - The fold column is used to create the training and validation datasets so that all rows with the same Fold value will be in the same dataset
-10. **Weight column** - Column that indicates the observation weight (a.k.a. sample or row weight), if applicable.  
+9. **Fold column** - The fold column is used to create the training and validation datasets so that all rows with the same Fold value will be in the same dataset. This column will be used if no validation dataset is provided and the model is trained using cross validation. 
+10. **Weight column** - Column that indicates the observation/isntance weight (a.k.a. sample or row weight), if applicable.  
 11. **Time Column**(OFF by default) - Provides a time order(timestamps for observations). Used when data has a high dependency on time (such as seasonality or trend), and you want to treat this problem as a time series problem. 
 
 Continuing with our experiment:
@@ -501,12 +510,12 @@ The survived attribute was selected because, as an insurance company, we want to
 *Things to Note:*
 
 1. **Training Settings** - Describes the Accuracy, Time, and Interpretability of your specific experiment.  The knobs on the experiment settings are adjustable as values change the meaning of the settings on the left-bottom page change.
-    - **Accuracy** - (Relative accuracy) higher values, should lead to higher confidence in model performance (accuracy).
+    - **Accuracy** - (Relative accuracy) higher values, should lead to higher confidence in model performance (accuracy) (see Driverless AI documentation for more information on the [Accuracy setting](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-settings.html?highlight=accuracy%20setting#accuracy))
     - **Time** - Relative time for completing the experiment. Higher values will take longer for the experiment to complete.
     - **Interpretability** -  The degree to which a human can understand the cause of the decision.  
 2. **Expert Settings** - Available expert settings to customize your experiment. 
-3. **Scorer** - Driverless AI selects the best scorer based on your dataset. Other scorers can be manually selected.
-4. **Classification** - Classification or Regression button. Driverless AI automatically determines the problem type based on the response column. Though not recommended, you can override this setting by clicking this button. 
+3. **Scorer** - Driverless AI selects the best scorer based on your dataset. Other scorers can be manually selected. (Explore more about scores in the next tutorial [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus))
+4. **Classification** - Classification or Regression button. Driverless AI automatically determines the problem type based on the target column. Though not recommended, you can override this setting by clicking this button. 
 5. **Reproducible** - This button allows you to build an experiment with a random seed and get reproducible results. If this is disabled (default), the results will vary between runs.
 6. **GPUs Enabled** - Specify whether to enable GPUs. (Note that this option is ignored on CPU-only systems)
 7. **Launch Experiment** - Launches the experiment
@@ -531,9 +540,9 @@ The survived attribute was selected because, as an insurance company, we want to
 *Things to Note:*
 1. **Experiment Name** - Name of your experiment. If you do not assign a name to it, a random name will be generated. The name can be changed at any time.
 2. **Experiment Setup** - Summary of experiment setup and dataset details.
-3. **Running Status Display** - Status of parameter tuning followed by feature engineering and scoring pipeline. Experiments can be stopped by clicking the ```Finish``` button.
-4. Overview of training settings (unable to adjust the while experiment is running): **Training Settings**, **Experiment Settings**, **Scorer**, **Classification**, **Reproducible** and **GPU Enabled**. 
-5. **CPU/Memory** information including **Notifications**, **Logs**, and **Trace** info. (Note that Trace is used for development/debugging and to show what the system is doing at that moment.) **Scorers** or model scorers allow you to view the detailed information about model scores after an experiment is complete. **Scorers** includes model and feature tuning leaderboard, single final model cross-validation fold scores, and final ensemble scores.
+3. **Running Status Display** -Status of the model training process. Experiments can be stopped by clicking the ```Finish``` button.
+4. Overview of training settings (unable to adjust while experiment is running): **Training Settings**, **Experiment Settings**, **Scorer**, **Classification**, **Reproducible** and **GPU Enabled**. 
+5. **CPU/Memory** information including **Notifications**, **Logs**, **Trace**  and **Scores** info. (Note that Trace is used for development/debugging and to show what the system is doing at that moment.) **Scores** or model scores allow you to view the detailed information about model scores after an experiment is complete. **Scores** includes model and feature tuning leaderboard, single final model cross-validation fold scores, and final ensemble scores.
 6. **Iteration Data** and **Variable Importance** - Iteration Data is the internal validation for each cross-validation fold with the specified scorer value. You can hover over any of the iteration points in the Iteration Data graph, and the see the updated variable importance for that iteration on the **Variable Importance**
 7. **Classification Problem Graphs** - Toggle between a ROC curve, Precision-Recall graph, Lift chart, Gains chart, and GPU Usage information (if GPUs are available). For regression problems, the lower right section includes a toggle between a Residuals chart, an Actual vs. Predicted chart, and GPU Usage information (if GPUs are available). 
                                                             
@@ -550,11 +559,11 @@ Once the experiment is complete, an **Experiment Summary** will appear:
     - Transform Another Dataset
     - Download Predictions
         - Training Predictions
-        - Validation Set Predictions(available if a validation set was provided)
+        - Validation Set Predictions (available if a validation set was provided)
         - Test Set Predictions
     - Download Python Scoring Pipeline - A standalone Python Scoring pipeline that downloads a package containing an exported model and Python 3.6 source code examples for productionizing models built using H2O Driverless AI. 
-    - Download MOJO Scoring Pipeline - A standalone scoring pipeline that converts experiments to MOJO's, which can be scored in realtime. It is available as either Java runtime or a C++ runtime(with Python and R wrappers).
-    - Visualize Scoring Pipeline(Experimental): A visualization of the scoring pipeline is available for each completed experiment.
+    - Download MOJO Scoring Pipeline - A standalone scoring pipeline that converts experiments to MOJO's, which can be scored in realtime. It is available as either Java runtime or a C++ runtime (with Python and R wrappers).
+    - Visualize Scoring Pipeline (Experimental): A visualization of the scoring pipeline is available for each completed experiment.
 
     ![visualize-scoring-pipeline-experimental](assets/visualize-scoring-pipeline-experimental.jpg)
 
@@ -595,13 +604,13 @@ Driverless AI performs feature Engineering on the dataset to determine the optim
 
 Transformations in Driverless AI are applied to columns in the data. The transformers create engineered features in experiments. There are many types of transformers, below are just some of the transformers found in our dataset:
 
-1\. Look at some of the variables in **Variable of Importance**. Note that some of the variables start with ```CVTE``` followed by a column from the dataset. Some other variables might also begin with ```_NumToCatTE```, ```Freq``` or ```_WoE``` depending on the experiment you run. These are the new, high-value features for our training dataset.
+1\. Look at some of the variables in **Variable of Importance**. Note that some of the variables start with ```_CVTE``` followed by a column from the dataset. Some other variables might also begin with ```_NumToCatTE```, ```_Freq``` or ```_WoE``` depending on the experiment you run. These are the new, high-value features for our training dataset.
 
 These transformations are created with the following transformers:
 
 - Cross Validation Target Encoding Transformer: ```_CVTargetEncode```
-- Weight of Evidence : ```WoE```
-- Frequent Transformer: ```Freq```  
+- Weight of Evidence : ```_WoE```
+- Frequent Transformer: ```_Freq```  
 - Numeric to Categorical Target Encoding Transformer = ```_NumToCatTE```
 
 You can also hover over any of the variables under variable importance to get a simple explanation of the transformer used as seen in the image below:
@@ -620,7 +629,7 @@ The complete list of features used in the final model is available in the Experi
 
 ## Task 7: Explore Experiment Results
 
-Let’s explore the results of this classification experiment. You can find the results on the **Experiment Summary** at the left-bottom of **Experiment** page. The resulting plots are insights from the training and validation data resulting from the classification problem. Each plot will be given a brief overview. 
+Let’s explore the results of this classification experiment. You can find the results on the **Experiment Summary** at the left-bottom of the **Experiment** page. The resulting plots are insights from the training and validation data resulting from the classification problem. Each plot will be given a brief overview. 
 
 If you are interested in learning more about each plot and the metrics derived from those plots covered in this section, then check out our next tutorial [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#0).
 
@@ -634,7 +643,7 @@ The summary includes:
 
 - **Experiment**: experiment name,
   - Version: the version of Driverless AI and the date it was launched
-  - Settings: selected experiment settings, seed, and amount of GPU’s enabled
+  - Settings: selected experiment settings, seed, whether or not GPU’s are enabled
   - Train data: name of the training set, number of rows and columns
   - Validation data: name of  the validation set, number of rows and columns
   - Test data: name of the test set, number of rows and columns
@@ -668,13 +677,13 @@ Most of the information in the Experiment Summary tab, along with additional det
 
 This type of graph is called a Receiver Operating Characteristic curve (or ROC curve.) It is a plot of the true positive rate against the false-positive rate for the different possible cutpoints of a diagnostic test.
 
-An ROC curve is a useful tool because it only focuses on how well the model was able to distinguish between classes. “AUC’s can help represent the probability that the classifier will rank a randomly selected positive observation higher than a randomly selected negative observation”[1].  However, for models where the prediction happens rarely, a high AUC could provide a false sense that the model is correctly predicting the results.  This is where the notion of precision and recall become essential.
+An ROC curve is a useful tool because it only focuses on how well the model was able to distinguish between classes with the help of the Area Under the Cure or AUC. “AUC’s can help represent the probability that the classifier will rank a randomly selected positive observation higher than a randomly selected negative observation”[1].  However, for models where one of the classes occurs rarely, a high AUC could provide a false sense that the model is correctly predicting the results.  This is where the notion of precision and recall become essential.
 
-The ROC curve below shows Receiver-Operator Characteristics curve stats on validation data along with the best Accuracy, FCC, and F1 values[2].
+The ROC curve below shows Receiver-Operator Characteristics curve stats on validation data along with the best Accuracy, MCC, and F1 values[2].
 
 ![experiment-results-roc-graph](assets/experiment-results-roc-graph.jpg)
 
-This ROC gives an Area Under the Curve or AUC of .8530. The AUC tells us that the model is able to classify the survivors 85.30% of the time correctly.  
+This ROC gives an Area Under the Curve or AUC of .8530. The AUC tells us that the model is able to separate the survivor class with an accuracy of 85.30%.
 
 Learn more about the ROC Curve on [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus: ROC](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#7).
 
@@ -682,17 +691,17 @@ Learn more about the ROC Curve on [Machine Learning Experiment Scoring and Analy
 
 Prec-Recall is a complementary tool to ROC curves, especially when the dataset has a significant skew. The Prec-Recall curve plots the precision or positive predictive value (y-axis) versus sensitivity or true positive rate (x-axis) for every possible classification threshold. At a high level, we can think of precision as a measure of exactness or quality of the results while recall as a measure of completeness or quantity of the results obtained by the model. Prec-Recall measures the relevance of the results obtained by the model.
 
-The Prec-Recall plot below shows the Precision-Recall curve on validation data along with the best Accuracy, FCC, and F1 values. The area under this curve is called AUCPR.
+The Prec-Recall plot below shows the Precision-Recall curve on validation data along with the best Accuracy, MCC, and F1 values. The area under this curve is called AUCPR.
 
 ![experiment-results-prec-recall-graph](assets/experiment-results-prec-recall-graph.jpg)
 
-Similarly to the ROC curve, when we take a look at the area under the curve of the Prec-Recall Curve of AUCPR we get a value of .7960. This tells us that the model brings forth relevant results or those cases of the passengers that survived 79.60% of the time.
+Similarly to the ROC curve, when we take a look at the area under the curve of the Prec-Recall Curve of AUCPR we get a value of .7960. This tells us that the model brings forth relevant results or those cases of the passengers that survived with an accuracy of 79.60%.
 
 Learn more about the Prec-Curve Curve on [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus: Prec-Recall](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#8).
 
 4\. Cumulative Lift Chart 
 
-Lift can help us answer the question of how much better one can expect to do with the predictive model compared to a random model(or no model). Lift is a measure of the effectiveness of a predictive model calculated as the ratio between the results obtained with a model and with a random model(or no model). In other words, the ratio of gain% to the random expectation % at a given quantile. The random expectation of the xth quantile is x%[4].
+Lift can help us answer the question of how much better one can expect to do with the predictive model compared to a random model(or no model). Lift is a measure of the effectiveness of a predictive model calculated as the ratio between the results obtained with a model and with a random model (or no model). In other words, the ratio of gain% to the random expectation % at a given quantile. The random expectation of the xth quantile is x% [4].
 
 The Cumulative Lift chart shows lift stats on validation data. For example, “How many times more observations of the positive target class are in the top predicted 1%, 2%, 10%, etc. (cumulative) compared to selecting observations randomly?” By definition, the Lift at 100% is 1.0.
 
@@ -799,7 +808,7 @@ This section describes MLI functionality and features for regular experiments. F
 
     ![dai-model-partial-dependence-ice](assets/dai-model-partial-dependence-ice.jpg)
 
-    - **Disparate Impact Analysis(NEW)**: Disparate Impact Analysis is a technique that is used to evaluate fairness. Bias can be introduced to models during the process of collecting, processing, and labeling data—as a result, it is essential to determine whether a model is harming certain users by making a significant number of biased decisions. Learn more about [Disparate Impact Analysis](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/interpret-non-ts.html#disparate-impact-analysis).
+    - **Disparate Impact Analysis (NEW)**: Disparate Impact Analysis is a technique that is used to evaluate fairness. Bias can be introduced to models during the process of collecting, processing, and labeling data—as a result, it is essential to determine whether a model is harming certain users by making a significant number of biased decisions. Learn more about [Disparate Impact Analysis](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/interpret-non-ts.html#disparate-impact-analysis).
 
     ![dai-disparate-impact-analysis-1](assets/dai-disparate-impact-analysis-1.jpg)
 
@@ -807,7 +816,7 @@ This section describes MLI functionality and features for regular experiments. F
 
     ![dai-disparate-impact-analysis-3](assets/dai-disparate-impact-analysis-3.jpg)
 
-    - **Sensitivity Analysis(NEW)** : 
+    - **Sensitivity Analysis (NEW)** : 
     
     Sensitivity Analysis (or "What if?") is a simple and powerful model debugging, explanation, fairness, and security tool. The idea behind Sensitivity Analysis is both direct and straightforward: Score your trained model on a single row, on multiple rows, or an entire dataset of potentially interesting simulated values and compare the model's new outcome to the predicted outcome on the original data.
 
@@ -870,7 +879,7 @@ Select the MLI **Dashboard** and explore the different types of insights and exp
 ![mli-dashboard](assets/mli-dashboard.jpg)
 
 1\. K-Lime - Global Interpretability model explanation plot: 
-This plot shows Driverless AI model and LIME model predictions in sorted order by the Driverless AI model predictions. In white, is the global linear model of Driverless AI predictions (middle green).
+This plot shows Driverless AI model and LIME model predictions in sorted order by the Driverless AI model predictions. In white, is the global linear model of Driverless AI predictions.
 1. Hover over any of the points of the plot and view the LIME reason codes for that value.
 2. Select a point where *Actual value* is 1 and note the reason codes for that prediction value
 
@@ -973,13 +982,13 @@ Driverless AI allows you to download auto-generated documents such as the Downlo
 When you open the zip file, the following files should be included:
 
 - Experiment logs (regular and anonymized)
-- A Summary of the Experiment
-- Experiment Features along with relevant importance
+- A Summary of the experiment
+- Experiment features along with relevant importance
 - Ensemble information
 - Experiment preview 
 - Word version of an auto-generated report for the experiment
 - Target transformations tuning leaderboard
-- Tuning Leaderboard
+- Tuning leaderboard
 
 2\. Open the auto-generated .doc report and review the experiment results.
 

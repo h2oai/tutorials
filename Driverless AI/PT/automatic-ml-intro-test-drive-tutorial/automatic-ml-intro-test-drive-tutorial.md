@@ -7,8 +7,9 @@
 - [Pré-requisitos](#pré-requisitos)
 - [Tarefa 1 - Tour do Produto ](#tarefa-1-tour-do-produto)
 - [Tarefa 2: Conceitos de Machine Learning Automático ](#tarefa-2-conceitos-de-machine-learning-uutomático )
-- [Task 3: Load Data](#task-3-load-data)
-- [Task 4: Explore Data Details and AutoViz](#task-4-explore-data-details-and-autoviz)
+- [Tarefa 3: Carregar os Dados](#tarefa-3-carregar-os-dados)
+- [Tarefa 4: Explore Detalhes dos Dados e AutoViz
+](#tarefa-4-explore-detalhes-dos-dados-e-autoviz)
 - [Task 5: Launch First Experiment](#task-5-launch-first-experiment)
 - [Task 6: Explore Feature Engineering](#task-6-explore-feature-engineering)
 - [Task 7: Explore Experiment Results](#task-7-explore-experiment-results)
@@ -239,80 +240,58 @@ TO dataset utilizado para esse experimento é o do Titanic. Nós vamos criar um 
  
 ### Recursos mais detalhados:
 
-- [Learn More About the Type of Dataset File formats that Can be Uploaded](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/datasets.html#adding-datasets) 
+- [Learn More About the Type of Dataset File formats that Can be Uploaded (Aprenda mais detalhes sobre os tipos de conjuntos de dados que podem ser carregados na plataforma)](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/datasets.html#adding-datasets) 
 
-- For more datasets, check out [Kaggle Datasets](https://www.kaggle.com/datasets)
+- Para mais conjuntos de dados, confira os conjuntos de dados do [Kaggle Datasets](https://www.kaggle.com/datasets)
 
-## Task 4: Explore Detalhes dos Dados e AutoViz
+## Tarefa 4: Explore Detalhes dos Dados e AutoViz
 
 ### Detalhes
 
-
-We are now going to explore the Titanic dataset that we just loaded.
 Vamos agora explorar o dataset titanic, que acabamos de carregar.
 
-
-1\. Continuing on the **Dataset Overview page**, click on the titanic.csv dataset. The following options will appear:
-1\. Continuando na pagina **Dataset Overview**, clique em titanic.csv dataset. As seguintes opções vão aparecer:
+1\. Ainda na página **Dataset Overview**, clique em ```titanic.csv dataset```. As seguintes opções vão aparecer:
 
 ![titanic-set-actions](assets/titanic-set-actions.jpg)
 
- - Details - View a summary of the dataset or preview the dataset
- - Details - Veja um sumário do dataset ou pré-visualize o dataset
- - Visualize - Visualize the dataset with available graphs
- - Visualize - Visualize o dataset com gráficos disponíveis.
- - Split - Split the dataset
- - Split - Divida o dataset
- - Predict - Run an experiment using Driverless AI
- - Predict - Rode um experimento usando Driverless AI
- - Rename - Rename the dataset
+ - Details (detalhes) - Veja um resumo do dataset ou obtenha uma visualizacao previa do dataset
+ - Visualize - Visualize o dataset com os gráficos disponíveis.
+ - Split - Separe o dataset
+ - Predict - Rodar um experimento usando Driverless AI
  - Rename - Renomeie o dataset
- - Download - Download the dataset
- - Download - Download do dataset
- - Delete - Delete the dataset 
+ - Download - Baixe o dataset
  - Delete - Remova o dataset
 
-**Note**: A dataset can only be deleted if it's not being used in an experiment. Otherwise, you must delete the experiment first, and then the dataset can be deleted.
-**Nota**: O Dataset somente poderá ser deletado se não estiver sendo usado em um experimento. Caso contrário, você deve remover o experimento primeiro, depois disso o dataset poderá ser deletado.
+**Observacao**: O dataset só poderá ser deletado se não estiver sendo usado em um experimento. Caso contrário, você deverá primeiro remover o experimento para depois deletar o dataset.
 
-2\. Next, we are going to confirm that the dataset loaded correctly and that it has the correct number of rows and columns by clicking on **Details**.
-2\. Agora, nós vamos confirmar que o dataset foi carregado corretamente, e que contêm o número correto de linhas e colunas. Clique em **Details**
+2\. Agora, nós vamos confirmar que o dataset foi carregado corretamente, e que possui o número correto de linhas e colunas ao clicar em **Details** (detalhes)
 
-3\. Click on **Details**.  **Details** will take you to the **Dataset Details Page**
-3\. Clique em **Details**. **Details** te levará a página **Dataset Details**
+3\.Clique em **Details**. Isso te levará à página **Dataset Details**
  
  ![titanic-set-details-page](assets/titanic-set-details-page.jpg)
 
-*Things to Note:* 
-*Atenção nos seguintes:*
+*Atenção aos seguintes pontos:*
 
-1. The **Dataset Details Page** provides a summary of the dataset. This summary lists each column that is included in the dataset along with:
-1. A Página **Dataset Details* dará um sumário do dataset. Esse sumário lista cada coluna que é incluida no dataset juntamente com:
+1. A página **Dataset Details* dará um resumo do dataset. Esse resumolista cada coluna que é incluída no dataset juntamente com:
 
-
-    **Logical type (can be changed)**
+    **Logical type (pode ser modificado)**
     
-
     ![logical-type-options](assets/logical-type-options.jpg)
 
-    **Format for Date and Datetime columns(can be changed)**
-    **Formato para colunas Date e Datetime(poderá ser modificado)**
+   **Formato para colunas Date e Datetime (pode ser modificado)**
 
     ![dataset-details-format-option](assets/dataset-details-format-option.jpg)
 
-    - Storage type
-    - Count
-    - Number of missing values
-    - Mean
-    - Minimum
-    - Maximum
-    - Standard deviation
-    - Frequency
-    - Number of unique values
-    - Numero de valores únicos
-    - View the first 20 rows of a column
-    - Veja as primeiras 20 linhas de uma coluna.
-    [comment]: <> (The last visualization on the h20 page as shown in the picture above contains only the field Unique. When describing the Unique field the tutorial is refering to "number of unique values"+"View first 20 rows of a colum". Either the page picture above is not showing all options or the information on the tutorial could be confusing.)
+    - Storage type (Tipo de armazenagem)
+    - Count (Contagem)
+    - Number of missing values (Número de valores perdidos )
+    - Mean (Media)
+    - Minimum (Minimo)
+    - Maximum (Maximo)
+    - Standard deviation (Desvio-padrao)
+    - Frequency (Frequencia)
+    - Number of unique values (Número de valores únicos)
+    - View the first 20 rows of a column (Veja as primeiras 20 linhas de uma coluna passando o mouse sobre o topo da coluna)
 
     ![datasets-details-first-20-rows](assets/datasets-details-first-20-rows.jpg)
 
