@@ -1,4 +1,4 @@
-# Introduction to Machine Learning Part 3
+# Introduction to Machine Learning with H2O-3 - Part 3
 
 ## Outline
 
@@ -15,21 +15,18 @@
 - [Next Steps](#next-steps)
 
 ## Objective
-In this tutorial, we will use the subset of the loan-level dataset from Fannie Mae and Freddie Mac. Firstly, we will solve a binary classification problem (predicting if a loan is delinquent or not). Then, we will explore a regression use-case (predicting interest rates on the same dataset). We will try to do both use-cases using Automatic Machine Learning (AutoML), and we will do so using the H2O Python module in a Jupyter Notebook and also in Flow. 
+In this tutorial, we will use the subset of the loan-level dataset from Fannie Mae and Freddie Mac. Firstly, we will solve a binary classification problem (predicting if a loan is delinquent or not). Then, we will explore a regression use-case (predicting interest rates on the same dataset). We will try to do both use-cases using Automatic Machine Learning (AutoML), and we will do so using the H2O-3 Python module in a Jupyter Notebook and also in Flow. 
 
 ## Prerequisites 
-- Completion of tutorials [Introduction to Machine Learning with H2O - Part 1](https://h2oai.github.io/tutorials/introduction-to-machine-learning-with-h2o-part-1/#0) and [Introduction to Machine Learning with H2O - Part 2.](https://h2oai.github.io/tutorials/introduction-to-machine-learning-with-h2o-part-2/#0)
+- Completion of tutorials [Introduction to Machine Learning with H2O-3 - Part 1](https://training.h2o.ai/products/introduction-to-machine-learning-with-h2o-part-1) and [Introduction to Machine Learning with H2O-3 - Part 2.](https://training.h2o.ai/products/introduction-to-machine-learning-with-h2o-part-2)
 - Some basic knowledge of machine learning. 
 - Familiarity with Python. 
-- An Aquarium account. If you do not have an Aquarium account, please refer to [Appendix A of Introduction to Machine Learning with H2O - Part 1](https://h2oai.github.io/tutorials/introduction-to-machine-learning-with-h2o-part-1/#13)
-- Or Jupyter Notebook installed on your local machine with H2O-3 installed.
-    - If you do not have H2O-3, you can follow the installation guide on the [H2O Documentation page](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/downloading.html)
-    - Creating an Anaconda Cloud environment, as shown in the installation guide, [Install on Anaconda Cloud,](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/downloading.html#install-on-anaconda-cloud) usually is the easiest way to install H2O. This would guarantee that you will have everything that you need to use H2O.
+- An Aquarium account. If you do not have an Aquarium account, please refer to [Appendix A of Introduction to Machine Learning with H2O-3 - Part 1](https://training.h2o.ai/products/introduction-to-machine-learning-with-h2o-part-1)
 
-**Note:** This tutorial was completed in a cloud environment. If you want to get the same results in a similar time manner, please follow this tutorial in Aquarium. Otherwise, you will get different results, for example, you might get less trained models for the classification part, or the regression part might take longer. 
+**Note:** This tutorial was completed in a cloud environment. If you want to get the same results in a similar time manner, please follow this tutorial in Aquarium. Otherwise, you can use your own machine but you will get different results, for example, it might take you longer to train the models for the classification part, or for the regression part, you might not get the same nunmber of models. 
 
 ## Task 1: Initial Setup
-In this tutorial, we are using a smaller subset of the Freddie Mac Single-Family dataset that we used for the past two tutorials. If you have not done so, complete [Introduction to Machine Learning with H2O - Part 1](https://h2oai.github.io/tutorials/introduction-to-machine-learning-with-h2o-part-1/#0) and [Introduction to Machine Learning with H2O - Part 2](https://h2oai.github.io/tutorials/introduction-to-machine-learning-with-h2o-part-2/#0) as this tutorial is a continuation of both of them. 
+In this tutorial, we are using a smaller subset of the Freddie Mac Single-Family dataset that we used for the past two tutorials. If you have not done so, complete [Introduction to Machine Learning with H2O-3 - Part 1](https://training.h2o.ai/products/introduction-to-machine-learning-with-h2o-part-1) and [Introduction to Machine Learning with H2O-3 - Part 2](https://training.h2o.ai/products/introduction-to-machine-learning-with-h2o-part-2) as this tutorial is a continuation of both of them. 
 
 We will use H2O AutoML to make the same predictions as in the previous two tutorials:
 - Predict whether a mortgage loan will be delinquent or not 
@@ -158,17 +155,17 @@ Now we are ready to run AutoML. Below you can see some of the default parameters
 ```markdown
 H2OAutoML(nfolds=5, max_runtime_secs=3600, max_models=None, stopping_metric='AUTO', stopping_tolerance=None, stopping_rounds=3, seed=None, project_name=None)
 ```
-As you can see, H2O AutoML is designed to have as few parameters as possible, which makes it very easy to use. For this experiment, we could’ve just changed the maximum runtime, the seed, and the project name; however, from our first tutorial, we learned that our dataset is highly imbalanced and that models have a hard time classifying the minority class. For that reason, we are setting `balance_classes=True`, and we are setting the sampling factors to [0.5,1.25], which means that we will undersample the majority class, and oversample the minority class.
+As you can see, H2O AutoML is designed to have as few parameters as possible, which makes it very easy to use. For this experiment, we could’ve just changed the maximum runtime, the seed, and the project name; however, from our first tutorial, we learned that our dataset is highly imbalanced and that models have a hard time classifying the minority class. For that reason, we are setting `balance_classes=True`, and we are setting the sampling factors to [0.5,1.25], which means that we will undersample the majority class, and oversample the minority class. Also, we will set `max_models = 25` and to make sure that AutoML trains all 25 models in less than 20 min, we will also set `max_runtime_secs_per_model=30` which will make sure no model takes more than 30 seconds to be trained. 
 
 ```python
-aml = H2OAutoML(max_runtime_secs=900, seed=42, project_name='classification', 
+aml = H2OAutoML(max_models=25, max_runtime_secs_per_model=30, seed=42, project_name='classification', 
                 balance_classes=True, class_sampling_factors=[0.5,1.25])
 %time aml.train(x=x, y=y, training_frame=train)
 ```
 
-The only required parameters for H2O's AutoML are, `y` `training_frame,` and `max_runtime_secs,` which let us train AutoML for ‘x’ amount of seconds and/or `max_models,` which would train a maximum number of models. Please note that  `max_runtime_secs` has a default value, while `max_models` does not.  For this task, we will set a time constraint and set `max_runtime_secs` equal to 900 seconds, or 15 minutes. The seed is the usual parameter that we set for reproducibility purposes. We also need a project name because we will do both classification and regression with AutoML. Lastly, we are setting `balance_classes=True` because we have a very imbalanced dataset, and we are using the default number of folds for cross-validation.
+The only required parameters for H2O's AutoML are, `y` `training_frame,` and `max_runtime_secs,` which let us train AutoML for ‘x’ amount of seconds and/or `max_models,` which would train a maximum number of models. Please note that  `max_runtime_secs` has a default value, while `max_models` does not. For this task, we will set a number of models constraint. The seed is the usual parameter that we set for reproducibility purposes. We also need a project name because we will do both classification and regression with AutoML. Lastly, we are setting `balance_classes=True` because we have a very imbalanced dataset, and we are using the default number of folds for cross-validation.
 
-The second line of code has the parameters that we need to train our model. For now, we will just pass the x, y, and training frame. Please note that the parameter `x` is optional because if you were using all the columns in your dataset, you would not need to declare this parameter. The `leaderboard frame` can be used to score and rank models on the leaderboard, but we will use the validation scores to do so because we will check the performance of our models with the test set. 
+The second line of code has the parameters that we need in order to train our model. For now, we will just pass x, y, and the training frame. Please note that the parameter `x` is optional because if you were using all the columns in your dataset, you would not need to declare this parameter. The `leaderboard frame` can be used to score and rank models on the leaderboard, but we will use the validation scores to do so because we will check the performance of our models with the test set. 
 
 Below is a list of optional parameters that the user could set for H2O’s AutoML
 - validation_frame
@@ -199,11 +196,21 @@ lb.head(rows=lb.nrows)
 ```
 
 ![aml-cl-leaderboard-1](assets/aml-cl-leaderboard-1.jpg)
-![aml-cl-leaderboard-2](assets/aml-cl-leaderboard-2.jpg)
 
 **Note:** We could’ve just printed the leaderboard with `aml.leaderboard`, but we have added an extra line of code just so that we make sure that we print all the models that were scored. 
 
-By looking at the leaderboard, we can see that the best model is the Stacked Ensemble with the best model from each family, meaning that this model was built using the best model of each of the different algorithms that were trained. This Ensemble will normally have a GLM, a Distributed Random Forest, Extremely-Randomized Forest, a GBM, and XGBoost, and Deep Learning model if you give it enough time to train all those models. Let’s explore the coefficients of the metalearner to see how this reflects the models in the Stacked Ensemble.
+We can also print a leaderboard with the training time, in milliseconds, of each model and the time it takes each model to predict each row, in milliseconds:
+
+```python
+from h2o.automl import get_leaderboard
+lb2 = get_leaderboard(aml, extra_columns='ALL')
+lb2.head(rows=lb2.nrows)
+```
+
+![aml-cl-leaderboard-2](assets/aml-cl-leaderboard-2.jpg)
+
+
+By looking at the leaderboard, we can see that the best model is the Stacked Ensemble with the best model from each family, meaning that this model was built using the best model of each of the trained algorithms. This Ensemble will usually have a GLM, a Distributed Random Forest, Extremely-Randomized Forest, a GBM, and XGBoost, and Deep Learning model if you give it enough time to train all those models. Let’s explore the coefficients of the metalearner to see the models in the Stacked Ensemble with their relative importance.
 
 First, let's retrieve the metalearner, and we can do it as follow:
 
@@ -220,17 +227,25 @@ metalearner.coef()
 ```
 **Output:**
 ``` python
-{'Intercept': -4.190199005479802,
- 'GBM_grid__1_AutoML_20200206_212139_model_7': 0.9619250664145489,
- 'GLM_1_AutoML_20200206_212139': 1.245112678658418,
- 'XGBoost_grid__1_AutoML_20200206_212139_model_2': 1.2487166719943446,
- 'DeepLearning_grid__1_AutoML_20200206_212139_model_2': 3.5849834741938365,
- 'DRF_1_AutoML_20200206_212139': 3.992098568336371,
- 'XRT_1_AutoML_20200206_212139': 4.3145826653621375}
+{'Intercept': -4.163158893916475,
+ 'GLM_1_AutoML_20200624_224336': 1.7792606607674282,
+ 'GBM_grid__1_AutoML_20200624_224336_model_3': 0.27345402509523253,
+ 'XGBoost_3_AutoML_20200624_224336': 1.7331622245284657,
+ 'DeepLearning_1_AutoML_20200624_224336': 2.129448067858176,
+ 'DRF_1_AutoML_20200624_224336': 3.9428536283073945,
+ 'XRT_1_AutoML_20200624_224336': 4.968106163200721}
 ```
 If you wanted to check this for the Ensemble with all the models, you will just simply change the name `StackedEnsemble_BestOfFamily` to `StackedEnsemble_AllModels` when saving the `se` variable in the code above. 
 
-From the list above, we can see that the most important model used in our AutoML is a GBM, which agrees with our results from the first tutorial, where we saw that the GBM yielded the best results.
+From the list above, we can see that the most important model used in our Stacked Ensemble is an XRT(Extremely Randomized Tree model, which is a variation of random forest). We can also plot the standardized coefficients with the following code (assuming you retrieved the metalearner from the step above):
+
+```python
+metalearner.std_coef_plot()
+```
+
+![std_coef_plot](assets/std_coef_plot.jpg)
+
+
 
 Now, let’s see how the best model performs on our test set.
 
@@ -239,11 +254,9 @@ aml.leader.model_performance(test_data=test)
 ```
 
 ![automl-cl-perf-1](assets/automl-cl-perf-1.jpg)
-
-
 ![automl-cl-perf-2](assets/automl-cl-perf-2.jpg)
 
-By looking at the results, we can see that in fifteen minutes, and with less data, AutoML obtained scores somewhat close to what we obtained in the first tutorial. The AUC that we obtained was **0.826.** Although this is a good AUC, because we have a very imbalanced dataset, we must also look at the misclassification errors for both classes. As you can see, our model is having a hard time classifying bad loans; this is mainly due because only about 3.6% of loans are labeled as bad loans. However, the model is doing very well when classifying good loans; although it is still far from being the best model, this gives us a solid starting point. Even though we set `balance _lasses=True`, we just tried a quick under-over sampling ratio. If we were to find the right value and gave AutoML more time, we could potentially improve the misclassification error for the **bad_loan** or TRUE class. 
+By looking at the results, we can see that in fifteen minutes, and with less data, AutoML obtained scores somewhat close to what we obtained in the first tutorial. The AUC that we obtained was **0.828.** Although this is a good AUC, because we have a very imbalanced dataset, we must also look at the misclassification errors for both classes. As you can see, our model is having a hard time classifying bad loans; this is mainly due because only about 3.6% of loans are labeled as bad loans. However, the model is doing very well when classifying good loans; although it is still far from being the best model, this gives us a solid starting point. Even though we set `balance _lasses=True`, we just tried a quick under-over sampling ratio. If we were to find the right value and gave AutoML more time, we could potentially improve the misclassification error for the **bad_loan** or predicted TRUE class. 
 
 We can also take a quick look at the ROC curve:
 
@@ -263,7 +276,7 @@ aml.predict(test)
 
 ![automl-cl-preds](assets/automl-cl-preds.jpg)
 
-As we mentioned in the first tutorial, the predictions we get are based on a probability. In the frame above, we have a probability for **FALSE,**, and another one for **TRUE**. The prediction, **predict**, is based on the threshold that maximizes the F1 score. For example, the threshold that maximizes the F1 is about `0.1097`, meaning that if the probability of **TRUE** is greater than the threshold, the predicted label would be **TRUE.**
+As we mentioned in the first tutorial, the predictions we get are based on a probability. In the frame above, we have a probability for **FALSE,**, and another one for **TRUE**. The prediction, **predict**, is based on the threshold that maximizes the F1 score. For example, the threshold that maximizes the F1 is about `0.1061`, meaning that if the probability of **TRUE** is greater than the threshold, the predicted label would be **TRUE.**
 
 After exploring the results for our classification problem, let’s use AutoML to explore a regression use-case.
 
@@ -282,10 +295,10 @@ x_reg = list(set(train.names) - set(ignore_reg))
 ``` python
 print("y:", y_reg, "\nx:", x_reg)
 ```
-Now we are ready to instantiate our AutoML and train it. You will notice that we are specifying the stopping metric and also the sort metric. In the second tutorial, we focused on RMSE and MAE to check the performance of our model, and we noticed that the two values seemed very correlated. For that reason, we could use any of those metrics. We will use the RMSE for early stopping because it penalizes the error more than the MAE, and we will also use it to sort the leaderboard based on the best value.
+Now we are ready to start our second AutoML model and train it. This time we will use a time constrain, and set `max_runtime_secs` to 900 seconds, or 15 minutes. Again, we set `max_runtime_secs_per_model` to 30 seconds. You will notice that we are specifying the stopping metric and also the sort metric. In the second tutorial, we focused on RMSE and MAE to check the performance of our model, and we noticed that the two values seemed very correlated. For that reason, we could use any of those metrics. We will use the RMSE for early stopping because it penalizes the error more than the MAE, and we will also use it to sort the leaderboard based on the best value.
 
 ``` python
-aml = H2OAutoML(max_runtime_secs=900, seed=42, project_name='regression3', 
+aml = H2OAutoML(max_runtime_secs=900, max_runtime_secs_per_model=30, seed=42, project_name='regression', 
                 stopping_metric="RMSE", sort_metric="RMSE")
 
 %time aml.train(x=x_reg, y=y_reg, training_frame=train)
@@ -297,11 +310,11 @@ lb = aml.leaderboard
 lb.head(rows=lb.nrows)
 ```
 
-![automl-reg-leaderboard](assets/automl-reg-leaderboard.jpg)
+![automl-reg-leaderboard_1](assets/automl-reg-leaderboard_1.jpg)
+![automl-reg-leaderboard_2](assets/automl-reg-leaderboard_2.jpg)
 
-The leaderboard shows that the GBM models clearly dominate this task. Oddly enough, having other models with the GBM in the Stacked Ensemble does not improve the model performance, but actually makes it slightly worse. 
- 
-We can retrieve the best model with the `model.leader` command; but, what if we wanted to get another model from our leaderboard? One way to do so is shown below:
+
+The leaderboard shows that the GBM models clearly dominated this task. We can retrieve the best model with the `model.leader` command; but, what if we wanted to get another model from our leaderboard? One way to do so is shown below:
 
 ``` python
 # Get model ids for all models in the AutoML Leaderboard
@@ -310,7 +323,7 @@ model_ids = list(aml.leaderboard['model_id'].as_data_frame().iloc[:,0])
 # Get the top GBM model
 gbm = h2o.get_model([mid for mid in model_ids if "GBM_3" in mid][0])
 ```
-Note that you would only need to change the name `GBM_3`, in the code above, to the name of the model that you want, and that should retrieve the desired model. For example, if you wanted to get the best XGBoost in the leaderboard, you would need to make the following change (you do not need to run the following line of code, this is just an example)
+Note that you would need to change the name `GBM_3`, in the code above, to the name of the model that you want, and that should retrieve the desired model. For example, if you wanted to get the best XGBoost in the leaderboard, you would need to make the following change (you do not need to run the following line of code, this is just an example)
 
 ```python
 xgb = h2o.get_model([mid for mid in model_ids if "XGBoost_2" in mid][0])
@@ -378,7 +391,7 @@ pred.head()
 
 Please note that we just combined the response column from our test frame to our predictions to see how the predictions compare to the actual value. 
 
-Out of the first ten predictions, most of them are very close to the actual values, with the exception of some predictions, such as the seventh prediction, which is **6.89,** compared to the actual value which is **8.75.** Because the RMSE is higher than the MAE, we can deduce that we have a couple of scores like this one, because those larger errors are penalized more. 
+Out of the first ten predictions, most of them are very close to the actual values, with the exception of some predictions, such as the seventh prediction, which is **6.89,** compared to the actual value which is **8.75.** Because the RMSE is higher than the MAE, we can deduce that we have a couple of instances similar to the one mentioned above, because the larger errors are penalized more. 
 
 Now, let’s try to do what we just did one more time, but this time in Flow.
 
@@ -402,7 +415,7 @@ To import a file into Flow, you would just need to run the following command in 
 importFiles ["https://s3.amazonaws.com/data.h2o.ai/DAI-Tutorials/loan_level_50k.csv"]
 ```
 
-**Note:** For a more detailed guide on how to import a file into Flow, check out [Task 3 of Introduction to Machine Learning with H2O Part 1](https://h2oai.github.io/tutorials/introduction-to-machine-learning-with-h2o-part-1/#4)
+**Note:** For a more detailed guide on how to import a file into Flow, check out [Task 3 of Introduction to Machine Learning with H2O-3 - Part 1](https://training.h2o.ai/products/introduction-to-machine-learning-with-h2o-part-1)
 
 Even though we already have the train and test set, let’s split the loan_level_50k.hex file, that way we can give a specific name to the train and test sets. Use the ratio 0.8 for train and 0.2 for test.
 
@@ -560,4 +573,4 @@ h2o.cluster().shutdown()
 AutoML can help us find the best models faster, and narrow down our search for the parameters for those models. Since you learned to tune some of the most common models in H2O, try to further tune the GBM that we found when we did the regression use-case in our Jupyter Notebook and see how much you can improve the scores. Can you tune the GBM so that it performs better than the XGBoost that we tuned in the previous tutorial, using a smaller dataset? Give it a try and put your knowledge to practice. 
 
 ## Next Steps
-Introduction to machine learning with H2O - Part 4 (Unsupervised Learning) coming soon.  
+Introduction to machine learning with H2O-3 - Part 4 (Unsupervised Learning) coming soon.  

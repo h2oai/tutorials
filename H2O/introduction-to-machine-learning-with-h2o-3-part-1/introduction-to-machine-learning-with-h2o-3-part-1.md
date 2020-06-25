@@ -1,4 +1,4 @@
- # Introduction to Machine Learning with H2O - Part 1
+ # Introduction to Machine Learning with H2O-3 - Part 1
 
 ## Outline
 
@@ -20,20 +20,19 @@
 
 ## Objective
 
-We will be using a subset of the Freddie Mac Single-Family dataset to try to predict whether or not a mortgage loan will be delinquent using H2O’s GLM, Random Forest, and GBM models. We will go over how to use these models for classification problems, and we will demonstrate how to use H2O’s grid search to tune the hyper-parameters of each model.
+We will be using a subset of the Freddie Mac Single-Family dataset to try to predict whether or not a mortgage loan will be delinquent using H2O’s GLM, Random Forest, and GBM models. We will go over how to use these models for classification problems, and we will demonstrate how to use H2O’s grid search to tune the hyper-parameters of each model. This tutorial, as well as the next tutorials, will be done in Python; however, an R version of these tutorials will be avialable soon. 
 
 ## Prerequisites 
 
 - Some basic knowledge of machine learning. 
 - Familiarity with Python. 
-- An Aquarium account to follow along. To help you get started with Aquarium, please see [Appendix A](#appendix-a-getting-started-with-aquarium)
-- Or Jupyter Notebook on your local machine with H2O-3 installed.
-
-    - If you do not have H2O-3, you can follow the installation guide on the [H2O Documentation page](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/downloading.html)
+- An Aquarium account to follow along. To help you get started with Aquarium, please see **Appendix A** in this tutorial.
 
 **Note:** We have completed this tutorial in our cloud environment and is intended to take about two hours, or less, to be completed. Therefore, if you decide to do this tutorial on your machine, you might not get the same results, or it might take you longer to complete the tutorial than the intended time.
 
 If you decide to install H2O-3 on your machine, we recommend creating an Anaconda Cloud environment, as shown in the installation guide, [Install on Anaconda Cloud,](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/downloading.html#install-on-anaconda-cloud) this would help you make sure that you have everything that you need to do this tutorial.
+
+
 
 ## Task 1: Initial Setup
 
@@ -98,6 +97,8 @@ loan_level = h2o.import_file("https://s3.amazonaws.com/data.h2o.ai/DAI-Tutorials
 ```
 
 Now that we have our dataset, we will explore some concepts and then do some exploration of the data and prepare it for modeling.
+
+Please note that we use the name H2O-3 to refer to our software, but when we usually use the simplified name, H2O, when we refer to specific functions or algorithms. 
 
 ### References
 
@@ -1130,20 +1131,15 @@ Remember to shut down the cluster if you have not done so, or end the lab if you
 ## Appendix A: Getting Started with Aquarium
 
 ### How to Obtain a Two Hour Test Drive Session
+Driverless AI Test Drive is a two-hour lab session that exists in H2O's Aquarium. Aquarium is the H2O cloud environment providing software access for workshops, conferences, and training. All Aquarium labs have a specific Lab Duration* to complete the lab.
 
-Please note that Aquarium is our Cloud environment where we do our training, and for that reason, we have different labs. You will need to fill out a Driverless AI trial request form to access Aquarium.
+1\. Go to the Aquarium site by copying and pasting the URL below to a browser of your choice or simply click on [Aquarium](http://aquarium.h2o.ai/login).
 
-1\. Select **Free Trial** at the top-right corner of the [H2O.ai](https://www.h2o.ai/) home page or simply click [here](https://www.h2o.ai/try-driverless-ai/).
+```html
+http://aquarium.h2o.ai/login
+```
 
-2\. A similar form will appear, fill out the **Request a 21-day free trial** form then select **Send This Secure Message**:
-
-![try-driverless-ai-form](assets/try-driverless-ai-form.jpg)
-
-3\. After submitting the form the following options will appear, select **2 Hour Test Drive**:
-
-![2-hour-test-drive](assets/2-hour-test-drive.jpg)
-
-4\. This will take you to the Aquarium login page, where you need to create an account.
+2\. This will take you to the Aquarium login page where you need to create an account.
 
 
 ### How to Create an Aquarium Account
@@ -1166,7 +1162,7 @@ Please note that Aquarium is our Cloud environment where we do our training, and
 
 4\. Click on **Create account and email temporary password** at the bottom of the page.
 
-A password will be sent to your email within minutes.
+**Note:** A password will be sent to your email within minutes.
 
 5\. Check your email for the password.
 
@@ -1192,7 +1188,7 @@ A password will be sent to your email within minutes.
 
 ### How to Start and End your Lab Session
 
-1\. After a successful login, click on **Browse Labs,** and you should see a list like the one shown below. Look for the lab `H2O.ai Open Source Tutorials,` **Lab ID:8.** 
+1\. After a successful login, click on **Browse Labs,** and you should see a list like the one shown below. Look for the lab `H2O.ai Open Source Tutorials,` **`Lab ID:8.`** 
 
 ![click-lab-8](assets/click-lab-8.jpg)
 
@@ -1215,11 +1211,11 @@ A password will be sent to your email within minutes.
 
 Next, click on the tutorials folder. In this folder, you will find all the tutorials from our learning path. For this tutorial, click on `Introduction to Machine Learning with H2O - Part 1` and follow along. If you are working on a different tutorial, just find the specific tutorial and click on it. The Jupyter Notebooks have the same name as the tutorials; that way, it can be easier to find them.  
 
-If you want to access your Flow instance, go back to your Aquarium Lab, and click on the **Flow URL.** Please keep in mind that you need to start your experiment and initialize your instance [Task 1](#task-1-initial-setup). If you try to launch Flow before initializing your instance, you will get an error. 
+If you want to access your Flow instance, go back to your Aquarium Lab, and click on the **Flow URL.** Please keep in mind that you need to start your experiment and initialize your instance in **Task 1.** If you try to launch Flow before initializing your instance, you will get an error. 
 
 Once you are done, you can download your Notebook with your results. Remember that after the two hours, all your progress will be lost.
 
-5\. If you need to pause or end your lab, just click on **End Lab.** Please keep in mind that this will terminate your instance, and any work that you have previously done, will be deleted.
+5\. If you need end your lab, just click on **End Lab.** Please keep in mind that this will terminate your instance, and any work that you have previously done, will be deleted.
 
 ### Logout
 
@@ -1231,8 +1227,10 @@ Once you are done, you can download your Notebook with your results. Remember th
 
 Have any questions about Aquarium? Sign up for H2O's Slack Community and post your questions under the #cloud channel. Members of the H2O community will respond as soon as they are available.
 
-- [Join the H2O community on Slack to Ask Questions #cloud](https://www.h2o.ai/slack-community/)
+Feel free to post any questions you may have in the Discussion tab.
+
+If you do not have H2O-3, you can follow the installation guide on the [H2O Documentation page](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/downloading.html)
 
 ## Next Steps
 
-Please make sure you check our Regression tutorial - [Introduction to Machine Learning with H2O - Part 2](https://h2oai.github.io/tutorials/introduction-to-machine-learning-with-h2o-part-2/#0). 
+Please make sure you check our Regression tutorial - [Introduction to Machine Learning with H2O-3 - Part 2](https://training.h2o.ai/products/introduction-to-machine-learning-with-h2o-part-2). 
