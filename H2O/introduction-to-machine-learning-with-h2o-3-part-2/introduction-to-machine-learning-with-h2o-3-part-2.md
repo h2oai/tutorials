@@ -1,4 +1,4 @@
-# Introduction to Machine Learning Part 2
+# Introduction to Machine Learning with H2O-3 - Part 2
 
 ## Outline
 
@@ -19,20 +19,17 @@
 In this tutorial, we will continue using the subset of the Freddie Mac Single-Family dataset to try to predict the interest rate for a loan using H2O’s XGBoost and Deep Learning models. We will explore how to use these models for a regression problem, and we will also demonstrate how to use H2O’s grid search to tune the hyper-parameters of both models. 
 
 ## Prerequisites 
-- Completion of [Introduction to Machine Learning Part 1](https://h2oai.github.io/tutorials/introduction-to-machine-learning-with-h2o-part-1/#0) tutorial. 
+- Completion of [Introduction to Machine Learning with H2O-3 - Part 1](https://training.h2o.ai/products/introduction-to-machine-learning-with-h2o-part-1) tutorial. 
 - Some basic knowledge of machine learning. 
 - Familiarity with Python. 
-- An Aquarium account. If you do not have an Aquarium account, please refer to [Appendix A of Introduction to Machine Learning with H2O - Part 1](https://h2oai.github.io/tutorials/introduction-to-machine-learning-with-h2o-part-1/#13)
-- Or Jupyter Notebook installed on your local machine with H2O-3 installed.
-    - If you do not have H2O-3, you can follow the installation guide on the [H2O Documentation page](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/downloading.html)
-    - Creating an Anaconda Cloud environment, as shown in the installation guide, [Install on Anaconda Cloud](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/downloading.html#install-on-anaconda-cloud) usually is the easiest way to install H2O. This would guarantee that you will have everything that you need to use H2O.
+- An Aquarium account. If you do not have an Aquarium account, please refer to [Appendix A of Introduction to Machine Learning with H2O-3 - Part 1](https://training.h2o.ai/products/introduction-to-machine-learning-with-h2o-part-1)
 
-**Note:** We recommend that you follow along on Aquarium, our cloud instance, to get similar results to the ones shown in this tutorial. We also recommend that you go over the concepts section in Task 2 before starting your lab; that way, your instance is not running while you are going over the concepts. 
+**Note:** We recommend that you follow along on Aquarium, our cloud instance, to get similar results to the ones shown in this tutorial. We also recommend that you go over the concepts section in Task 2 before starting your lab; that way, your instance is not running while you are going over the concepts. You can also use your personal machine with H2O-3, but keep in mind that you will see different results.
 
 ## Task 1: Initial Setup
 The data set we’re using comes from Freddie Mac and contains 20 years of mortgage history for each loan and contains information about "loan-level credit performance data on a portion of fully amortizing fixed-rate mortgages that Freddie Mac bought between 1999 to 2017. Features include demographic factors, monthly loan performance, credit performance including property disposition, voluntary prepayments, MI Recoveries, non-MI recoveries, expenses, current deferred UPB and due date of last paid installment."[1] 
 
-We’re going to use machine learning with H2O to predict the interest rate for each loan. To do this, we will build two regression models: an XGBoost model and a Deep Learning model that will help us find the interest rate that a loan should be assigned. Complete this tutorial to see how we achieved those results.
+We’re going to use machine learning with H2O-3 to predict the interest rate for each loan. To do this, we will build two regression models: an XGBoost model and a Deep Learning model that will help us find the interest rate that a loan should be assigned. Complete this tutorial to see how we achieved those results.
 
 We will start by importing H2O, the estimators for the algorithms that we will use, and also the function to perform grid search on those algorithms. 
 
@@ -390,7 +387,7 @@ Once you’re done exploring your model, you can go back to your Jupyter Noteboo
 ## Task 6: Tune the XGBoost Model with H2O GridSearch
 We will use H2O GridSearch to find the best parameters for our XGBoost.
 
-**Note:** If you are not sure what H2O GridSearch is, or how it works, please refer to [Task 7 of H2O-3 Classification Tutorial](https://h2oai.github.io/tutorials/introduction-to-machine-learning-with-h2o-part-1/#8), or go to [Grid Search Section](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/grid-search.html#grid-hyperparameter-search) of the H2O documentation.
+**Note:** If you are not sure what H2O GridSearch is, or how it works, please refer to Task 7 of [Introduction to Machine Learning with H2O-3 - Part 1](https://training.h2o.ai/products/introduction-to-machine-learning-with-h2o-part-1), or go to [Grid Search Section](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/grid-search.html#grid-hyperparameter-search) of the H2O documentation.
 
 We will first try to find the `max_depth` for our XGBoost, as this is one of the most important parameters for an XGBoost model. 
 
@@ -950,4 +947,4 @@ h2o.cluster().shutdown()
 We tuned the Deep Learning model with only one layer with 165 neurons. Try to tune a Deep Learning model on your own with two layers, or more, and with the number of neurons that you want. You can follow the same procedures as before, but instead of using `[165]` for hidden units, you will have to use something like `[165,165],` and for some parameters such as the dropout ratios, you will need to also have two values, such as `[0.01, 0.01]`, and so on. If you attempt the challenge, you can download your Jupyter Notebook and restart the lab; that way, you have at least 2 hours to tune the new model. You can find our grid search for a neural network with two layers and 165 neurons in each layer on Aquarium. Once you’re done with the tutorial, shut down your cluster, or end the lab.
 
 ## Next steps
-Please make sure you check our AutoML tutorial - [Introduction to Machine Learning with H2O - Part 3](https://github.com/h2oai/tutorials/blob/master/H2O/introduction-to-machine-learning-with-h2o-part-3/introduction-to-machine-learning-with-h2o-part-3.md#introduction-to-machine-learning-with-h2o---part-3)
+Please make sure you check out our H2O AutoML Tutorial - [Introduction to Machine Learning with H2O-3 - Part 3](https://training.h2o.ai/products/introduction-to-machine-learning-with-h2o-part-3)
