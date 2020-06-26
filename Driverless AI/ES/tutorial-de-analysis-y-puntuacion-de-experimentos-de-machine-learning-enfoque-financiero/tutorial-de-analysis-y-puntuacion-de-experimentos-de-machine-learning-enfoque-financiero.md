@@ -987,17 +987,17 @@ En las próximas tareas exploraremos el anotador más a fondo y los valores de *
 
 ## Tarea 6: ER: ROC
 
-Desde la pagina de Diagnósticos, haz clic en el enlace de **ROC Curve** (Curve ROC). Una imagen similar a la debajo aparecerá.
+Desde la página de Diagnóstico, haga clic en la **ROC Curve**. Una imagen similar a la debajo aparecerá.
 
 ![diagnostics-roc-curve](assets/diagnostics-roc-curve.jpg)
 
 En repaso, una curva ROC demuestra lo siguiente:
 
-- Demuestra la interacción entre sensitividad (Porcentaje de Predicciones Positivas Correctas o TPR) y especificidad (1-FPR o 1-Porcentaje de Predicciones Positivas Incorrectas). Cualquier incremento en sensibilidad se acompaña con un decremento in especificidad.   
-- Cuanto más cercano la curva ROC siga el borde del lado superior izquierdo, el modelo tendrá mejor accuracy (precisión).
--  Cuanto más cercano la curva ROC este a la diagonal de 45-grados, el modelo tendrá menos accuracy (precisión)
+- Demuestra la interacción entre sensitividad (Porcentaje de Predicciones Positivas Correctas o TPR) y especificidad (1-FPR o 1-Porcentaje de Predicciones Positivas Incorrectas). Cualquier incremento en sensibilidad se acompaña con un decremento en especificidad.   
+- Cuanto más cercano la curva ROC siga el borde del lado superior izquierdo, el modelo tendrá mejor precisión(accuracy).
+-  Cuanto más cercano la curva ROC este a la diagonal de 45-grados, el modelo tendrá menos precisión.
 - La pendiente de la línea tangente en cualquier punto cortante da la probabilidad (LR) para ese valor de prueba. Este se puede ver en al gráfico anterior  
-- El área debajo de la curva da la accuracy (precision) del modelo
+- El área debajo de la curva es una medida de la precisión del modelo.
 
 Regresando al conjunto de datos de Freddie Mac, aunque el modelo haya sido evaluado usando la pérdida logarítmica para penalizar el error, aun podemos ver los resultados de la curva ROC. Podremos ver si la curva ROC soporta nuestras conclusiones del análisis de la matriz de confusión y la puntuación en la página de diagnósticos.
 
@@ -1010,43 +1010,43 @@ Regresando al conjunto de datos de Freddie Mac, aunque el modelo haya sido evalu
 
 ![diagnostics-roc-best-acc](assets/diagnostics-roc-best-acc.jpg)
 
-Recuerda que para un problema de clasificación binaria, accuracy (precisión) es el número de predicciones correctas dividido por el número total de predicciones. Probabilidades son convertidas en clases de predicciones para definir un límite. Para este modelo, fue determinado que la mejor accuracy (precisión) se encuentra en el límite .5375. 
+Recuerda que para un problema de clasificación binaria, precisión es el número de predicciones correctas dividido por el número total de predicciones. Probabilidades son convertidas en clases de predicciones para definir un límite. Para este modelo, fue determinado que la mejor precisión se encuentra en el límite .5375. 
  
 En este limite, el modelo predijo:
 - Predicciones Positivas Correctas = 1 = 175 casos fueron predichos que terminarían en mora y terminaron en mora
 - Predicciones Negativas Correctas = 0 = 120,441 casos fueron predichos que no terminarían en mora y no terminaron en mora
 - Predicciones Positivas Incorrectas = 1 = 96 casos fueron predichos que terminarían en mora y no terminaron en mora
-- Predicciones Negativas Incorrecta = 0 = 4,323 casos fueron predichos que no terminarían en mora y si terminaron en mora
+- Predicciones Negativas Incorrectas = 0 = 4,323 casos fueron predichos que no terminarían en mora y si terminaron en mora
 
-3\. Observando los valores de área debajo de la curva (AUC), el mejor MCC, F1, y accuracy (precisión), cómo calificarías el modelo? ¿Es un buen modelo? Usa los puntos debajo para ayudarte a tomar una decisión sobre la curva ROC.
+3\. Observando los valores de área debajo de la curva (AUC), el mejor MCC, F1, y precisión, cómo calificarías el modelo? ¿Es un buen modelo? Usa los puntos debajo para ayudarte a tomar una decisión sobre la curva ROC.
 
 Recuerda que para la curva **ROC**:
 - Un modelo de clasificación perfecto tiene un AUC de 1
 - MCC es medido entre -1 y 1, donde 1 es predicciones perfectas y 0 significa que el modelo no es mejor que un modelo de predicciones al azar y -1 es todas las predicciones incorrectas
 - F1 es medido entre 0 y 1, donde 0 significa que no hay predicciones positivas correctas y 1 cuando no hay ni negativos falsos ni falsos positivos, o precisión perfecta y recall. 
-- Accuracy (precision) es medida entre 0 y 1, donde 1 es una medida de accuracy perfecta o clasificación perfecta, y 0 es clasificacion pobre con accuracy baja.
+- Precision es medida entre 0 y 1, donde 1 es una medida de accuracy perfecta o clasificación perfecta, y 0 es clasificacion pobre con precision baja.
 
-**Nota:** Si no estas seguro(a) que es o cómo se calculan los valores de AUC, MCC, F1 y Accuracy, puedes revisar la sección de conceptos de este tutorial. 
+**Nota:** Si no estas seguro(a) que es o cómo se calculan los valores de AUC, MCC, F1 y Precision, puedes revisar la sección de conceptos de este tutorial. 
 
 
 ### Nuevo Modelo con Mismos Parámetros
 
-En caso de curiosidad y si quieres saber si se puede mejorar la accuracy (precisión) del modelo, esto se puede hacer por medio de cambiar el modo de evaluación de Logloss a Accuracy.
+En caso de curiosidad y si quieres saber si se puede mejorar la precisión del modelo, esto se puede hacer por medio de cambiar el modo de evaluación de Logloss a precisión.
 
-1\. Para hacer esto, haz clic en la página de **Experiments (Experimentos)**
+1\. Para hacer esto, haz clic en la página de **Experiments** (Experimentos)
 
 2\. Haz clic en el experimento que hiciste para la tarea #1 y selecciona **New Model with Same Parameters** (Nuevo Modelo con Mismos Parámetros)
 
 ![new-model-w-same-params](assets/new-model-w-same-params.jpg)
 
-Una imagen similar a la debajo aparecerá. Nota que esta página tiene los mismos ajustes que los de tarea #1. La unica diferencia es en la sección de **Scorer** (Evaluador), se cambio de **Logloss** a **Accuracy**. Lo demás se debería de quedar igual.
+Una imagen similar a la debajo aparecerá. Nota que esta página tiene los mismos ajustes que los de tarea #1. La unica diferencia es en la sección de **Scorer** (Evaluador), se cambio de **Logloss** a **Accuracy** (precision) . Lo demás se debería de quedar igual.
 
-3\. Si no lo has hecho aun, selecciona **Accuracy** (precision) en la sección de scorer (evaluador) y selecciona **Launch Experiment** (Lanzar Experimento)
+3\. Si no lo has hecho aun, selecciona **Accuracy** en la sección de scorer (evaluador) y selecciona **Launch Experiment** (Lanzar Experimento)
 
 
 ![new-model-accuracy](assets/new-model-accuracy.jpg)
 
-Al igual que en el experimento en la Tarea #1, espera a que el experimento termine de correr. Después que el experimento termine de correr, una página similar aparecerá. Nota que en el resumen localizado en la parte baja del lado derecho, los valores de validación y prueba ya no están siendo evaluados por **Logloss*, si no por **Accuracy** (precisión).
+Al igual que en el experimento en la Tarea #1, espera a que el experimento termine de correr. Después que el experimento termine de correr, una página similar aparecerá. Nota que en el resumen localizado en la parte baja del lado derecho, los valores de validación y prueba ya no están siendo evaluados por **Logloss**, si no por **Accuracy** (precisión).
 
 
 ![new-experiment-accuracy-summary](assets/new-experiment-accuracy-summary.jpg)
@@ -1058,7 +1058,7 @@ Vamos a usar este nuevo experimento para correr un diagnóstico nuevo. Vas a nec
 5\. Cuando estés en la página de diagnósticos, selecciona **+Diagnose Model** (Diagnostica Modelo)
 
 6\. En la página de **Create new model diagnostics** (crear nuevo diagnóstico de modelo)
-1. Haz clic en **Diagnosed Experiment** (Experimento Diagnosticado), y selecciona el experimento que completaste en la Tarea #1. En este caso, el experimento se llam **1. Freddie Mac Classification Tutorial** (Tutorial de Clasificación Freddie Mac).
+1. Haz clic en **Diagnosed Experiment** (Experimento Diagnosticado), y selecciona el experimento que completaste en la Tarea #1. En este caso, el experimento se llama **1. Freddie Mac Classification Tutorial** (Tutorial de Clasificación Freddie Mac).
 2. Haz clic en **Dataset** (conjunto de datos), y selecciona freddie_mac_500_test
 3. Inicia los diagnósticos del modelo con hacer clic en **Launch Diagnostics** (Lanzar Diagnosticos)
 
@@ -1078,42 +1078,42 @@ Vamos a usar este nuevo experimento para correr un diagnóstico nuevo. Vas a nec
 
 ![diagnostics-roc-curve-accuracy-model](assets/diagnostics-roc-curve-accuracy-model.jpg)
 
-¿Cuánto mejoró el modelo al optimizar la accuracy (precisión) por medio del evaluador? 
+¿Cuánto mejoró el modelo al optimizar accuracy (precisión) por medio del evaluador? 
 
 El nuevo modelo predijo: 
 - Limite = .5532
 - Predicciones Positivas Correctas = 1 = 152 casos fueron predichos que terminarían en mora y terminaron en mora
 - Predicciones Negativas Correctas = 0 = 120,463 casos fueron predichos que no terminarían en mora y no terminaron en mora
 - Predicciones Positivas Incorrectas = 1 = 74 casos fueron predichos que terminarían en mora y no terminaron en mora
-- Predicciones Negativas Incorrecta = 0 = 4,346 casos fueron predichos que no terminarían en mora y si terminaron en mora
+- Predicciones Negativas Incorrectas = 0 = 4,346 casos fueron predichos que no terminarían en mora y si terminaron en mora
 
 El primer modelo predijo:
 - Limite = .5375
 - Predicciones Positivas Correctas = 1 = 175 casos fueron predichos que terminarían en mora y terminaron en mora
 - Predicciones Negativas Correctas = 0 = 120,441 casos fueron predichos que no terminarían en mora y no terminaron en mora
 - Predicciones Positivas Incorrectas = 1 = 96 casos fueron predichos que terminarían en mora y no terminaron en mora
-- Predicciones Negativas Incorrecta = 0 = 4,323 casos fueron predichos que no terminarían en mora y si terminaron en mora
+- Predicciones Negativas Incorrectas = 0 = 4,323 casos fueron predichos que no terminarían en mora y si terminaron en mora
 
-El límite para mejor accuracy (precisión) cambio de .5375 del primer modelo a .5532 para el modelo nuevo. Este incremento en límite mejoró la accuracy (precisión), en otras palabras mejoró la proporción de predicciones correctas en base al número total de predicciones. Nota, de hecho, que mientras el número de predicciones positivas incorrectas se redujo, el número de predicciones negativas incorrectas incremento. Pudimos reducir el número de casos predichos incorrectamente que terminarían en mora, pero incrementó el número de predicciones incorrectas que no terminarían en mora. 
+El límite para mejor accuracy (precisión) cambio de .5375 del primer modelo a .5532 para el modelo nuevo. Este incremento en límite mejoró la precisión, en otras palabras mejoró la proporción de predicciones correctas en base al número total de predicciones. Nota, de hecho, que mientras el número de predicciones positivas incorrectas se redujo, el número de predicciones negativas incorrectas incremento. Pudimos reducir el número de casos predichos incorrectamente que terminarían en mora, pero incrementó el número de predicciones incorrectas que no terminarían en mora. 
 
-En resumen, no hay manera de incrementar uno sin sacrificar los resultados del otro. En el caso de accuracy (precisión), incrementamos el número de préstamos hipotecarios, especialmente para personas que fueron negadas préstamos porque la predicción era que terminarían en mora cuando en realidad no sería el caso. Pero, también incrementó el número de casos para personas que no deberían de haber recibido un préstamo porque terminarían en mora. Como prestamista hipotecario, cuál de los dos es preferible? ¿Positivos falsos o negativos falsos?
+En resumen, no hay manera de incrementar uno sin sacrificar los resultados del otro. En el caso precisión, incrementamos el número de préstamos hipotecarios, especialmente para personas que fueron negadas préstamos porque la predicción era que terminarían en mora cuando en realidad no sería el caso. Pero, también incrementó el número de casos para personas que no deberían de haber recibido un préstamo porque terminarían en mora. Como prestamista hipotecario, cuál de los dos es preferible? ¿Positivos falsos o negativos falsos?
 
 10\. Sal de la página de la curva ROC con hacer clic en la **x** en la parte superior del lado derecho del gráfico, al lado de la opción de **Download** (descargar)
 
 ### Inmersión Más Profunda
 
-- [How and when to use ROC Curves and Precision-Recall Curves for Classification in Python](https://machinelearningmastery.com/roc-curves-and-precision-recall-curves-for-classification-in-python/)
+- [Cómo y cuándo usar las curvas ROC y las curvas de recuperación de precisión para la clasificación en Python](https://machinelearningmastery.com/roc-curves-and-precision-recall-curves-for-classification-in-python/)
 
-- [ROC Curves and AUC Explained](https://www.youtube.com/watch?time_continue=1&v=OAl6eAyP-yo)
-- [Towards Data Science - Understanding AUC- ROC Curve](https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5)
+- [Curvas ROC y AUC explicadas](https://www.youtube.com/watch?time_continue=1&v=OAl6eAyP-yo)
+- [Hacia la ciencia de datos: comprensión de la curva AUC-ROC](https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5)
 
-- [ROC Curves and Under the Curve (AUC) Explained](https://www.youtube.com/watch?v=OAl6eAyP-yo)
+- [Curvas ROC y bajo la curva (AUC) explicadas](https://www.youtube.com/watch?v=OAl6eAyP-yo)
 
-- [Introduction to ROC](https://classeval.wordpress.com/introduction/introduction-to-the-roc-receiver-operating-characteristics-plot/)
+- [Introducción a ROC](https://classeval.wordpress.com/introduction/introduction-to-the-roc-receiver-operating-characteristics-plot/)
 
 ## Tarea 7: ER: Prec-Recall
 
-Continuando en la página de diagnósticos, selecciona la curve **P-R**. La curva P-R se debe de ver como la imagen debajo: 
+Continuando en la página de diagnósticos, selecciona la curve **P-R** (Curva P-R). La curva P-R se debe de ver como la imagen debajo: 
 
 ![diagnostics-pr-curve](assets/diagnostics-prec-recall.jpg)
 
@@ -1123,12 +1123,12 @@ Recuerda que para la curva **Prec-Recall:**
 - Recall es lo mismo que sensitividad y precisión es lo mismo que el valor de predecir la clase positiva
 - Curvas ROC deberían de ser utilizadas en casos donde el número de observaciones de cada clase son aproximadamente iguales
 - Curvas de Precisión-Recall se deben de usar cuando no hay un desequilibrio entre el número de observaciones en cada clase  
-- Similar a la curva ROC, el área debajo de la curva de precisión-recall is una medida de accuracy (precision) y lo más alto mejor 
-- En ambas curvas, Driverless AI indicara puntos en los cuales se dan los limitest para major Accuracy (ACC), F1, o MCC (coeficiente de correlación Matthews)
+- Similar a la curva ROC, el área debajo de la curva de precisión-recall es una medida de precision y lo más alto mejor 
+- En ambas curvas, Driverless AI indicara puntos en los cuales se dan los limitest para mejorar Precisison (Accuracy (ACC)), F1, o MCC (coeficiente de correlación Matthews)
 
 En ver los resultados de la curva P-R, es este un buen modelo para determinar si en cliente terminará con un préstamo en mora? Vamos a ver los resultados en la curva P-R.
 
-1\. Basado en la curva P-R generada por el modelo de Driverless AI, identifica el valor de área debajo de la curva (AUC)
+1\. Basado en la curva P-R generada por el modelo de Driverless AI, identifica el valor de la área debajo de la curva (AUC)
 
 2\. Para cada uno de los puntos en la curva, determina el valor de Predicciones Positivas Correctas, Predicciones Positivas Incorrectas, y el límite para cada punto debajo al flotar el cursor como en la imagen: 
 - Mejor Accuracy 
@@ -1137,21 +1137,21 @@ En ver los resultados de la curva P-R, es este un buen modelo para determinar si
 
 ![diagnostics-prec-recall-best-mccr](assets/diagnostics-prec-recall-best-mcc.jpg)
 
-3\. Basado en el AUC, mejor MCC, F1, Accuracy (precision) de la curva P-R, como calificarías el modelo? ¿Es un buen modelo o no? Usa los puntos claves para ayudarte a evaluar la curva P-R.
+3\. Basado en el AUC, mejor MCC, F1, Precision de la curva P-R, como calificarías el modelo? ¿Es un buen modelo o no? Usa los puntos claves para ayudarte a evaluar la curva P-R.
 
 Recuerda que para la curva **P-R**:
 
 - Un modelo de clasificación perfecto tiene un AUC de 1 
-- MCC is medido entre -1 y 1, donde 1 es un modelo de predicción perfecto, 0 significa que el modelo no da mejor resultados que en modelo al azar, y -1 es que todas las predicciones fueron incorrectas.
-- F1 is medido entre 0 y 1 , donde 0 significa que no hay predicciones positivas correctas, y 1 que no hay ni negativos falsos ni positivos falsos o precision y recall perfecta
-- Accuracy (precisión) es medida entre 0 y 1, where 1 is accuracy perfecta o clasificación perfecta, y 0 es accuracy pobre o clasificación pobre
+- MCC is medido entre -1 y 1, donde 1 es un modelo de predicción perfecto, 0 significa que el modelo no da mejor resultados que un modelo al azar, y -1 es que todas las predicciones fueron incorrectas.
+- F1 es medido entre 0 y 1 , donde 0 significa que no hay predicciones positivas correctas, y 1 que no hay ni negativos falsos ni positivos falsos o precision y recall perfecta
+- Precisión es medido entre 0 y 1, donde 1 es precisión perfecta o clasificación perfecta, y 0 es precisión pobre o clasificación pobre
 
 
-**Nota:** Si no estas seguro(a) que es o cómo se calculan los valores de AUC, MCC, F1 y Accuracy, puedes revisar la sección de conceptos de este tutorial. 
+**Nota:** Si no estas seguro(a) que es o cómo se calculan los valores de AUC, MCC, F1 y pPrecisión, puedes revisar la sección de conceptos de este tutorial. 
 
 ### Nuevo Modelo con Mismos Parámetros
 
-Al igual que la tarea 6, podemos mejorar el área debajo de la curva de precisión-recall al crear un modelo con los mismos parámetros. Nota que necesitarás cambiar el evaluador de **Logloss** a **AUCPR*. Lo puedes intentar tu mismo. 
+Al igual como la tarea 6, podemos mejorar el área debajo de la curva de precisión-recall al crear un modelo con los mismos parámetros. Nota que necesitarás cambiar el evaluador de **Logloss** a **AUCPR**. Lo puedes intentar tu mismo. 
 
 Para repasar cómo lanzar un experimento nuevo con los mismos parámetros y un evaluador diferente, sigue los pasos en la tarea 6, sección **Nuevo Modelo con Nuevos Parametros**
 
@@ -1161,11 +1161,11 @@ Para repasar cómo lanzar un experimento nuevo con los mismos parámetros y un e
 
 ### Inmersión Más Profunda y Recursos
 
-- [Towards Data Science Precision vs Recall](https://towardsdatascience.com/precision-vs-recall-386cf9f89488)
+- [Hacia la ciencia de datos Precisión vs Recuperación](https://towardsdatascience.com/precision-vs-recall-386cf9f89488)
 
-- [ML Classification - Precision-Recall Curve](https://www.coursera.org/lecture/ml-classification/precision-recall-curve-rENu8)
+- [Clasificación ML: curva de recuperación de precisión](https://www.coursera.org/lecture/ml-classification/precision-recall-curve-rENu8)
 
-- [Introduction to Precision-Recall](https://classeval.wordpress.com/introduction/introduction-to-the-precision-recall-plot/)
+- [Introducción a la recuperación de precisión](https://classeval.wordpress.com/introduction/introduction-to-the-precision-recall-plot/)
 
 ## Tarea 8: ER: Gains (Ganancia)
 
@@ -1173,9 +1173,8 @@ Continuando en la página de diagnósticos, selecciona la curva de **CUMULATIVE 
 
 ![diagnostics-gains](assets/diagnostics-gains.jpg)
 
-Recuerda que para la curva de **Ganancia**:
-
-- Un grafico de ganancia cumulativa is un visual de soporte para evaluar nuestro modelo.
+Recuerda que para la curva de **Gains** (Curva de Ganancia):
+- Un gráfico de ganancias acumuladas es una ayuda visual para medir el rendimiento del modelo.
 - El eje y demuestra el porcentaje de respuestas positivas. Este es un porcentaje del número total de respuestas positivas posibles.  
 - El eje x demuestra el porcentaje de todos los clientes del conjunto de datos de Freddie Mac que no terminaron en mora, siendo una fracción del número total de casos
 - La línea rayada es la línea de base, o tasa de respuesta general
@@ -1202,7 +1201,7 @@ Recuerda que el modelo de predicción perfecto tiene un comienzo muy escarpado, 
 
 ### Inmersión Más Profunda y Recursos
  
-- [Towards Data Science - Understanding and Interpreting Gain and Lift Charts](https://www.datasciencecentral.com/profiles/blogs/understanding-and-interpreting-gain-and-lift-charts)
+- [Hacia la ciencia de datos: comprender e interpretar gráficos de ganancia y elevación](https://www.datasciencecentral.com/profiles/blogs/understanding-and-interpreting-gain-and-lift-charts)
 
 
 ## Task 9: ER: LIFT
