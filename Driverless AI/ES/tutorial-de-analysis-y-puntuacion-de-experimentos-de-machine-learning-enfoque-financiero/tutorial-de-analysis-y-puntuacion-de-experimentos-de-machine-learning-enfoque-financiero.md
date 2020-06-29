@@ -1,20 +1,20 @@
-# Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus
+# Tutorial de análisis y puntuación de experimentos de aprendizaje automático: enfoque financiero
 
-## Outline
-- [Objective](#objective)
-- [Prerequisites](#prerequisites)
-- [Task 1:  Launch Experiment](#task-1-launch-experiment)
-- [Task 2: Explore Experiment Settings and Expert Settings](#task-2-explore-experiment-settings-and-expert-settings)
-- [Task 3: Experiment Scoring and Analysis Concepts](#task-3-experiment-scoring-and-analysis-concepts)
-- [Task 4: Experiment Results Summary and Diagnostics](#task-4-experiment-results-summary)
-- [Task 5: Diagnostics Scores and Confusion Matrix](#task-5-diagnostics-scores-and-confusion-matrix)
-- [Task 6: ER: ROC](#task-6-er-roc)
-- [Task 7: ER: Prec-Recall](#task-7-er-prec-recall)
-- [Task 8: ER: Gains](#task-8-er-gains)
-- [Task 9: ER: LIFT](#task-9-er-lift)
-- [Task 10: Kolmogorov-Smirnov Chart](#task-10-kolmogorov-smirnov-chart)
-- [Task 11: Experiment AutoDocs](#task-11-experiment-autodocs)
-- [Next Steps](#next-steps)
+## Bosquejo
+- [Objetivo](#objective)
+- [Prerrequisitos](#prerequisites)
+- [Tarea 1: Experimento de Lanzamiento](#task-1-launch-experiment)
+- [Tarea 2: Explorar la configuración del experimento y la configuración de expertos](#task-2-explore-experiment-settings-and-expert-settings)
+- [Tarea 3: Conceptos de puntuación y análisis de experimentos](#task-3-experiment-scoring-and-analysis-concepts)
+- [Tarea 4: Resumen de resultados del experimento](#task-4-experiment-results-summary)
+- [Tarea 5: Puntuación de diagnóstico y matriz de confusión](#task-5-diagnostics-scores-and-confusion-matrix)
+- [Tarea 6: ER: ROC](#task-6-er-roc)
+- [Tarea 7: ER: Prec-Recall](#task-7-er-prec-recall)
+- [Tarea 8: ER: Gains (Ganancia)](#task-8-er-gains)
+- [Tarea 9: ER: LIFT](#task-9-er-lift)
+- [Tarea 10: Tabla Kolmogorov-Smirnov](#task-10-kolmogorov-smirnov-chart)
+- [Tarea 11: Experimentar con AutoDocs](#task-11-experiment-autodocs)
+- [Los Siguientes Pasos](#next-steps)
 
 
 ## Objetivo
