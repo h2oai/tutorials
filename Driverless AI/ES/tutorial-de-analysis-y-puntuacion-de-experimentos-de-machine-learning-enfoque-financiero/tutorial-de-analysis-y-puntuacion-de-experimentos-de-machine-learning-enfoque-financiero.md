@@ -987,7 +987,7 @@ En las próximas tareas exploraremos el anotador más a fondo y los valores de *
 
 ## Tarea 6: ER: ROC
 
-Desde la página de Diagnóstico, haga clic en la **ROC Curve**. Una imagen similar a la debajo aparecerá.
+Desde la página de Diagnóstico, haz clic en el enlace **ROC Curve**. Una imagen similar a la debajo aparecerá.
 
 ![diagnostics-roc-curve](assets/diagnostics-roc-curve.jpg)
 
