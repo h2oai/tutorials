@@ -3,18 +3,18 @@
 ## Bosquejo
 - [Objetivo](#objective)
 - [Prerrequisitos](#prerequisites)
-- [Tarea 1: Experimento de Lanzamiento](#task-1-launch-experiment)
-- [Tarea 2: Explorar la configuración del experimento y la configuración de expertos](#task-2-explore-experiment-settings-and-expert-settings)
-- [Tarea 3: Conceptos de puntuación y análisis de experimentos](#task-3-experiment-scoring-and-analysis-concepts)
-- [Tarea 4: Resumen de resultados del experimento](#task-4-experiment-results-summary)
-- [Tarea 5: Puntuación de diagnóstico y matriz de confusión](#task-5-diagnostics-scores-and-confusion-matrix)
+- [Tarea 1: experimento de lanzamiento](#task-1-launch-experiment)
+- [Tarea 2: explorar la configuración del experimento y la configuración de expertos](#task-2-explore-experiment-settings-and-expert-settings)
+- [Tarea 3: conceptos de puntuación y análisis de experimentos](#task-3-experiment-scoring-and-analysis-concepts)
+- [Tarea 4: resumen de resultados del experimento](#task-4-experiment-results-summary)
+- [Tarea 5: puntuación de diagnóstico y matriz de confusión](#task-5-diagnostics-scores-and-confusion-matrix)
 - [Tarea 6: ER: ROC](#task-6-er-roc)
 - [Tarea 7: ER: Prec-Recall](#task-7-er-prec-recall)
 - [Tarea 8: ER: Gains (Ganancia)](#task-8-er-gains)
 - [Tarea 9: ER: LIFT](#task-9-er-lift)
 - [Tarea 10: Tabla Kolmogorov-Smirnov](#task-10-kolmogorov-smirnov-chart)
 - [Tarea 11: Experimentar con AutoDocs](#task-11-experiment-autodocs)
-- [Los Siguientes Pasos](#next-steps)
+- [Los siguientes pasos](#next-steps)
 
 
 ## Objetivo
@@ -154,7 +154,7 @@ Estas dos columnas se descartan porque ambas son indicadores claros de que los p
 
 En la tarea 2, exploraremos y actualizaremos el **Experiment Settings (Configuraciones de experimento)**.
 
-## Tarea 2: Explorar la configuración del experimento y la configuración de expertos
+## Tarea 2: explorar la configuración del experimento y la configuración de expertos
 
 1\.  Pase el mouse sobre **Experiment Settings (Configuraciones de experimento)** y tenga en cuenta las tres perillas, **Accuracy (Precision)**, **Time (Hora)** y **Interpretability (Interpretabilidad)**.
 
@@ -433,7 +433,7 @@ Obtenga más información sobre lo que significa cada configuración y cómo se 
 
 - Para obtener más información sobre la configuración adicional en [Expert Settings for H2O Driverless AI](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/expert-settings.html?highlight=expert%20settings)
 
-## Tarea 3: Conceptos de puntuación y análisis de experimentos
+## Tarea 3: conceptos de puntuación y análisis de experimentos
 
 Como aprendimos en el [Conceptos del tutorial de introducción automática al aprendizaje automático](https://github.com/h2oai/tutorials/blob/master/DriverlessAI/automatic-ml-intro-tutorial/automatic-ml-intro-tutorial.md#model-training) Es esencial que una vez que se haya generado un modelo, se evalúe su desempeño. Estas métricas se usan para evaluar la calidad del modelo que se construyó y qué umbral de puntaje del modelo se debe usar para hacer predicciones. Existen múltiples métricas para evaluar los modelos de aprendizaje automático de clasificación binaria, como las características operativas del receptor o la curva ROC, precisión y recuperación o Cartas de Prec-Recall, Lift, Gain y KS por nombrar algunas. Cada métrica evalúa diferentes aspectos del modelo de aprendizaje automático. Los siguientes conceptos son para las métricas utilizadas en H2O’s Driverless AI para evaluar el rendimiento de los modelos de clasificación que generó. Los conceptos están cubiertos en un nivel muy alto, para aprender más en profundidad sobre cada métrica cubierta aquí, hemos incluido recursos adicionales al final de esta tarea.
 
@@ -764,7 +764,7 @@ El estadístico KS es la diferencia máxima entre el porcentaje acumulado de res
 - [¿Qué es la ganancia de información en el aprendizaje automático?](https://www.quora.com/What-is-Information-gain-in-Machine-Learning)
 
 
-## Tarea 4: Resumen de resultados del experimento
+## Tarea 4: resumen de resultados del experimento
 
 Al final del experimento, aparecerá un resumen del proyecto en la esquina inferior derecha. Además, tenga en cuenta que el nombre del experimento está en la esquina superior izquierda.
 
@@ -821,7 +821,7 @@ En las próximas tareas exploraremos las implicaciones financieras de la clasifi
 - [Validación interna de H2O](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/internal-validation.html) 
 
 
-## Tarea 5: Puntuación de diagnóstico y matriz de confusión
+## Tarea 5: puntuación de diagnóstico y matriz de confusión
 
 Ahora vamos a ejecutar un diagnóstico de modelo en el conjunto freddie_mac_500_test. El modelo de diagnóstico le permite ver el rendimiento del modelo para múltiples anotadores en función de un modelo y conjunto de datos existente a través de la API de Python.
 
@@ -1327,7 +1327,7 @@ Un documento de **report** (reporte) esta incluido en resumen del **experiment**
 - [Informe resumido de H2O](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-summary.html?highlight=experiment%20overview)
 
 
-## Los Siguientes Pasos
+## Los siguientes pasos
 
 Explora el siguiente tutorial: [Interpretabilidad de Machine Learning](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#0) donde aprenderas como:
 
