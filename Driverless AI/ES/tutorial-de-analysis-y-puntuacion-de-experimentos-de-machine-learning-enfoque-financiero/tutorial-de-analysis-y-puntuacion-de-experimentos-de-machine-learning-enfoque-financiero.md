@@ -4,7 +4,7 @@
 - [Objetivo](#objetivo)
 - [Prerrequisitos](#prerrequisitos)
 - [Tarea 1: experimento de lanzamiento](#tarea-1-experimento-de-lanzamiento)
-- [Tarea 2: explorar la configuración del experimento y la configuración de expertos](#Tarea-2:-explorar-la-configuración-del-experimento-y-la-configuración-de-expertos)
+- [Tarea 2: explorar la configuración del experimento y la configuración de expertos](#tarea-2:-explorar-la-configuración-del-experimento-y-la-configuración-de-expertos)
 - [Tarea 3: conceptos de puntuación y análisis de experimentos](#Tarea-3:-conceptos-de-puntuación-y-análisis-de-experimentos)
 - [Tarea 4: resumen de resultados del experimento](#Tarea-4:-resumen-de-resultados-del-experimento)
 - [Tarea 5: puntuación de diagnóstico y matriz de confusión](#Tarea-5:-puntuación-de-diagnóstico-y-matriz-de-confusión)
