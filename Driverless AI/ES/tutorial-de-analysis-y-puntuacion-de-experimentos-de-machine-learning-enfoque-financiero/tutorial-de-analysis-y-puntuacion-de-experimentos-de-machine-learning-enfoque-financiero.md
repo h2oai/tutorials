@@ -13,7 +13,7 @@
 - [Tarea 8: ER: Gains (Ganancia)](#Tarea-8:-ER:-Gains-(Ganancia))
 - [Tarea 9: ER: LIFT](#Tarea-9:-ER:-LIFT)
 - [Tarea 10: Tabla Kolmogorov-Smirnov](#Tarea-10:-Tabla-Kolmogorov-Smirnov)
-- [Tarea 11: Experimentar con AutoDocs](#Tarea-11:-Experimentar-con-AutoDocs)
+- [Tarea 11: Experimentar con AutoDocs](#Tarea-11:-experimentar-con-autodocs)
 - [Los siguientes pasos](#Los-siguientes-pasos)
 
 
