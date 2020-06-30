@@ -1,9 +1,9 @@
 # Tutorial de análisis y puntuación de experimentos de aprendizaje automático: enfoque financiero
 
 ## Bosquejo
-- [Objetivo](#Objetivo)
-- [Prerrequisitos](#Prerrequisitos)
-- [Tarea 1: experimento de lanzamiento](#Tarea-1:-experimento-de-lanzamiento)
+- [Objetivo](#objetivo)
+- [Prerrequisitos](#prerrequisitos)
+- [Tarea 1: experimento de lanzamiento](#tarea-1:-experimento-de-lanzamiento)
 - [Tarea 2: explorar la configuración del experimento y la configuración de expertos](#Tarea-2:-explorar-la-configuración-del-experimento-y-la-configuración-de-expertos)
 - [Tarea 3: conceptos de puntuación y análisis de experimentos](#Tarea-3:-conceptos-de-puntuación-y-análisis-de-experimentos)
 - [Tarea 4: resumen de resultados del experimento](#Tarea-4:-resumen-de-resultados-del-experimento)
