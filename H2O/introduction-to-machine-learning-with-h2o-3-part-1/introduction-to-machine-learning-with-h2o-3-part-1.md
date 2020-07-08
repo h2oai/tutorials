@@ -1188,9 +1188,9 @@ http://aquarium.h2o.ai/login
 
 ### How to Start and End your Lab Session
 
-1\. After a successful login, click on **Browse Labs,** and you should see a list like the one shown below. Look for the lab `H2O.ai Open Source Tutorials,` **`Lab ID:8.`** 
+1\. After a successful login, click on **Browse Labs,** and you should see a list like the one shown below. Look for the lab `H2O-3 and Sparkling Water Test Drive,` **`Lab ID:2`** 
 
-![click-lab-8](assets/click-lab-8.jpg)
+![click-lab-2](assets/click-lab-2.jpg)
 
 2\. Click on **Start Lab** and wait for your instance to be ready. 
 
@@ -1211,7 +1211,7 @@ http://aquarium.h2o.ai/login
 
 Next, click on the tutorials folder. In this folder, you will find all the tutorials from our learning path. For this tutorial, click on `Introduction to Machine Learning with H2O - Part 1` and follow along. If you are working on a different tutorial, just find the specific tutorial and click on it. The Jupyter Notebooks have the same name as the tutorials; that way, it can be easier to find them.  
 
-If you want to access your Flow instance, go back to your Aquarium Lab, and click on the **Flow URL.** Please keep in mind that you need to start your experiment and initialize your instance in **Task 1.** If you try to launch Flow before initializing your instance, you will get an error. 
+If you want to access your Flow instance, go back to your Aquarium Lab, and click on the **Flow URL.** 
 
 Once you are done, you can download your Notebook with your results. Remember that after the two hours, all your progress will be lost.
 
