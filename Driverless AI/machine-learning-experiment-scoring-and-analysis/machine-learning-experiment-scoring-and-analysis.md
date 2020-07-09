@@ -48,7 +48,7 @@ The subset of the dataset this tutorial uses has a total of 27 features (columns
 
 ### Download the Dataset
 
-Download H2O’s subset of the Freddie Mac Single-Family Loan-Level dataset to your local drive and save it at as csv file.  
+Download H2O’s subset of the Freddie Mac Single-Family Loan-Level dataset to your local drive and save it at as csv a file.  
 
 - [loan_level_500k.csv](https://s3.amazonaws.com/data.h2o.ai/DAI-Tutorials/loan_level_500k.csv)
 
@@ -161,7 +161,7 @@ The **Experiment Settings** describe the Accuracy, Time, and Interpretability of
 
 Here is an overview of the Experiments settings: 
 
-- **Accuracy** - Relative accuracy – higher values, should lead to higher confidence in model performance (accuracy).
+- **Accuracy** - Relative accuracy – higher values, should lead to higher confidence in model performance (e.g. accuracy).
 - **Time** - Relative time for completing the experiment. Higher values will take longer for the experiment to complete.
 - **Interpretability**-  The ability to explain or to present in understandable terms to a human. The higher the interpretability the simpler the features that will be extracted.  
 
@@ -210,7 +210,7 @@ This configuration was selected to generate a model quickly with a sufficient le
 **Expert settings include**:
 
 **Experiment Settings**
-- Max Runtime in Minutes Before Triggering the Finish Button
+- Max Runtime in Minutes Before Triggering the 'Finish' Button
 - Max Runtime in Minutes Before Triggering the 'Abort' Button
 - Pipeline Building Recipe
 - Make Python Scoring Pipeline
@@ -410,7 +410,7 @@ This configuration was selected to generate a model quickly with a sufficient le
 
 4\. For this experiment turn ON **RuleFit models**, under **Model** tab the select **Save**. 
 
-The RuleFit[2] algorithm creates an optimal set of decision rules by first fitting a tree model and then fitting a Lasso (L1-regularized) GLM model to create a linear model consisting of the most important tree leaves (rules). The RuleFit model helps with exceeding the accuracy of Random Forests while retaining explainability of decision trees.
+The RuleFit[2] algorithm creates an optimal set of decision rules by first fitting a tree model and then fitting a Lasso (L1-regularized) GLM model to create a linear model consisting of the most important tree leaves (rules). The RuleFit model helps with exceeding the accuracy of Random Forests while retaining explainability of decision trees. (**REFERENCE?**)
 
 ![expert-settings-rulefit-on](assets/expert-settings-rulefit-on.jpg)
 
@@ -430,29 +430,29 @@ Learn more about what each setting means and how it can be updated from its defa
 ### Deeper Dive 
 - [To better understand the impact of setting the Accuracy, Time and Interpretability Knobs between 1 and 10 in H2O Driverless AI](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-settings.html?highlight=interpretability#accuracy-time-and-interpretability-knobs)
 
-- For more information about additional setting in[Expert Settings for H2O Driverless AI](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/expert-settings.html?highlight=expert%20settings)
+- For more information about additional setting in [Expert Settings for H2O Driverless AI](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/expert-settings.html?highlight=expert%20settings)
 
 ## Task 3: Experiment Scoring and Analysis Concepts
 
-As we learned in the [Automatic Machine Learning Intro with Test Drive](https://github.com/h2oai/tutorials/blob/master/DriverlessAI/automatic-ml-intro-tutorial/automatic-ml-intro-tutorial.md#model-training) it is essential that once a model has been generated that its performance is evaluated. These metrics are used to evaluate the quality of the model that was built and what model score threshold should be used to make predictions. There are multiple metrics for assessing a binary classification machine learning models such as Receiver Operating Characteristics or ROC curve, Precision and Recall or Prec-Recall, Lift, Gain and K-S Charts to name a few. Each metric evaluates different aspects of the machine learning model. The concepts below are for metrics used in H2O’s Driverless AI to assess the performance of classification models that it generated. The concepts are covered at a very high level, to learn more in-depth about each metric covered here we have included additional resources at the end of this task. 
+As we learned in the [Automatic Machine Learning Intro with Test Drive](https://github.com/h2oai/tutorials/blob/master/DriverlessAI/automatic-ml-intro-tutorial/automatic-ml-intro-tutorial.md#model-training) it is essential that once a model has been generated that its performance is evaluated. These metrics are used to evaluate the quality of the model that was built and what model score threshold should be used to make predictions. There are multiple metrics for assessing binary classification machine learning models such as Area under the curve for Receiver Operating Characteristics (AUC-ROC) curve and Precision-Recall curve (AUC-PR), Lift, Gain and K-S Charts, to name a few. Each metric evaluates different aspects of the machine learning model. The concepts below are for metrics used in H2O’s Driverless AI to assess the performance of classification models that it generated. The concepts are covered at a high level, to learn more in-depth about each metric covered here we have included additional resources at the end of this task. 
 
 
 ### Binary Classifier
 
-Let’s take a look at binary classification model. A binary classification model predicts in what two categories(classes) the elements of a given set belong to. In the case of our example, the two categories(classes) are **defaulting** on your home loan and **not defaulting**. The generated model should be able to predict in which category each customer falls under.
+Let’s take a look at binary classification model. A binary classification model predicts in what two categories (classes) the elements of a given set belong to. In the case of our example, the two categories (classes) are **defaulting** on your home loan and **not defaulting**. The generated model should be able to predict in which category each customer falls under.
 
 ![binary-output](assets/binary-output.jpg)
 
-However, two other possible outcomes need to be considered, the false negative and false positives. These are the cases that the model predicted that someone did not default on their bank loan and did. The other case is when the model predicted that someone defaulted on their mortgage, but in reality, they did not. The total outcomes are visualized through a confusion matrix, which is the  two by two table seen below:
+However, two other possible outcomes need to be considered, the false negative and false positives. These are the cases that the model predicted that someone did not default on their bank loan and did. The other case is when the model predicted that someone defaulted on their mortgage, but in reality, they did not. The total outcomes are visualized through a confusion matrix, which is the  two-by-two table seen below:
 
 Binary classifications produce four outcomes: 
 
-**Predicticted as Positive**:
-True Positive = TP
+**Predicticted as Positive**: 
+True Positive = TP, 
 False Positive = FP
 
 **Predicted as Negative**:
-True Negative = TN 
+True Negative = TN, 
 False Negative = FN 
 
 ![binary-classifier-four-outcomes](assets/binary-classifier-four-outcomes.jpg)
@@ -461,17 +461,17 @@ False Negative = FN
 
 ![confusion-matrix](assets/confusion-matrix.jpg)
 
-From this confusion table, we can measure error-rate, accuracy, specificity, sensitivity, and precision, all useful metrics to test how good our model is at classifying or predicting. These metrics will be defined and explained in the next sections.
+From this confusion table, we can measure error-rate, accuracy, specificity, sensitivity, and precision, which are all useful metrics to test how good our model is at classifying or predicting. These metrics will be defined and explained in the next sections.
 
 On a fun side note, you might be wondering why the name "Confusion Matrix"? Some might say that it's because a confusion matrix can be very confusing. Jokes aside, the confusion matrix is also known as the **error matrix** since it makes it easy to visualize the classification rate of the model including the error rate. The term "confusion matrix" is also used in psychology and the Oxford dictionary defines it as "A matrix representing the relative frequencies with which **each of a number of stimuli is mistaken for each of the others** by a person in a task requiring recognition or identification of stimuli. Analysis of these data allows a researcher to extract factors (2) indicating the underlying dimensions of similarity in the perception of the respondent. For example, in colour-identification tasks, relatively frequent **confusion** of reds with greens would tend to suggest daltonism." [1] In other words, how frequently does a person performing a classification task confuse one item for another. In the case of ML, a machine learning model is implementing the classification and evaluating the frequency in which the model confuses one label from another rather than a human. 
 
 ### ROC
 
-An essential tool for classification problems is the ROC Curve or Receiver Operating Characteristics Curve. The ROC Curve visually shows the performance of a binary classifier; in other words, it  “tells how much a model is capable of distinguishing between classes” [2] and the corresponding threshold. Continuing with the Freddie Mac example the output variable or the label is whether or not the customer will default on their loan and at what threshold. 
+An essential tool for classification problems is the ROC Curve or Receiver Operating Characteristics Curve. The ROC Curve visually shows the performance of a binary classifier; in other words, it  “tells how much a model is capable of distinguishing between classes” [2] and the corresponding threshold. Continuing with the Freddie Mac example, the output variable (or label) is whether or not the customer will default on their loan and at a given threshold. 
 
-Once the model has been built and trained using the training dataset, it gets passed through a classification method (Logistic Regression, Naive Bayes Classifier, support vector machines, decision trees, random forest, etc…), this will give the probability of each customer defaulting. 
+Once the model has been built and trained, it gets passed through a classification method (Logistic Regression, Naive Bayes Classifier, Support Vector Machines, Decision Trees, Random Forest, etc…), this will give the probability of each customer defaulting. 
 
-The ROC curve plots the Sensitivity or true positive rate (y-axis) versus 1-Specificity or false positive rate (x-axis) for every possible classification threshold. A classification threshold or decision threshold is the probability value that the model will use to determine where a class belongs to. The threshold acts as a boundary between classes to determine one class from another. Since we are dealing with probabilities of values between 0 and 1 an example of a threshold can be 0.5. This tells the model that anything below 0.5 is part of one class and anything above 0.5 belongs to a different class. The threshold can be selected to maximize the true positives while minimizing false positives. A threshold is dependent on the scenario that the ROC curve is being applied to and the type of output we look to maximize. Learn more about the application of  threshold and its implications on [Task 6: ER: ROC](#task-6-er-roc).
+The ROC curve plots the Sensitivity or true positive rate (y-axis) versus 1-Specificity or false positive rate (x-axis) for various thresholds. A classification threshold or decision threshold is the probability value that the model will use to determine which class a record belongs to. The threshold acts as a boundary between classes to determine one class from another. Since we are dealing with probabilities of values between 0 and 1 an example of a threshold can be 0.5. This tells the model that any prediction below 0.5 is part of one class and anything above 0.5 belongs to a different class. The threshold can be selected to maximize the true positives while minimizing false positives. A threshold is dependent on the scenario that the ROC curve is being applied to and the type of output we look to maximize. Learn more about the application of threshold and its implications on [Task 6: ER: ROC](#task-6-er-roc).
 
 
 Given our example of use case of predicting loans the following provides a description for the values in the confusion matrix:
@@ -482,9 +482,9 @@ Given our example of use case of predicting loans the following provides a descr
  - FN = 0 = Predicting that someone did not default on their bank loan but actually did.
 
 
-What are sensitivity and specificity? The true positive rate is the ratio of the number of true positive predictions divided by all positive actuals. This ratio is also known as **recall** or **sensitivity**, and it is measured from 0.0 to 1.0 where 0 is the worst and 1.0 is the best sensitivity. Sensitive is a measure of how well the model is predicting for the positive case.
+What are sensitivity and specificity? The true positive rate is the ratio of the number of true positive predictions divided by all actual positives. This ratio is also known as **recall** or **sensitivity**, and it is measured from 0.0 to 1.0 where 0 is the worst and 1.0 is the best sensitivity. Sensitivity is a measure of how well the model is predicting for the positive case.
 
-The true negative rate is the ratio of the number of true negative predictions divided by the sum of true negatives and false positives. This ratio is also known as **specificity** and is measured from 0.0 to 1.0 where 0 is the worst and 1.0 is the best specificity. Specificity is a measure for how well the model is predicting for the negative case correctly.  How often is it predicting a negative case correctly.
+The true negative rate is the ratio of the number of true negative predictions divided by the sum of true negatives and false positives. This ratio is also known as **specificity** and is measured from 0.0 to 1.0 where 0 is the worst and 1.0 is the best specificity. Specificity is a measure for how well the model is predicting for the negative case correctly.
 
 The false negative rate is *1 - Sensitivity*, or the ratio of false negatives divided by the sum of the true positives and false negatives [3]. 
 
@@ -500,29 +500,29 @@ The following image provides an illustration of the ratios for sensitivity, spec
 
 **1 - Specificity** =  False Positive Rate = 1 - True Negative Rate = FP / (FP + TN )
 
-A ROC Curve is also able to tell you how well your model did by quantifying its performance. The scoring is determined by the percent of the area that is under the ROC curve otherwise known as Area Under the Curve or AUC. 
+A ROC Curve is also able to tell you how well your model did by quantifying its performance. The scoring is determined by the percent of the area that is under the ROC curve otherwise known as Area Under the Curve or AUC. The AUC value tells you how well two classes are separated. 
 
 Below are four types of ROC Curves with its AUC:
 
 **Note:** The closer the ROC Curve is to the left ( the bigger the AUC percentage), the better the model is at separating between classes. 
 
-The Perfect ROC Curve (in red) below can separate classes with 100% accuracy and has an AUC of 1.0  (in blue):
+The Perfect ROC Curve (in red) below can separate classes (without misclassification) and has an AUC of 1.0  (in blue):
 
 ![roc-auc-1](assets/roc-auc-1.jpg)  			
 
-The ROC Curve below is very close to the left corner, and therefore it does a good job in separating classes with an AUC of 0.7 or 70%:
+The ROC Curve below bends to the upper-left corner, and therefore it does reasonably well in separating classes with an AUC of 0.7 or 70%:
 
 ![roc-auc-07](assets/roc-auc-07.jpg)
 
-In the case above 70% of the cases the model correctly predicted the positive and negative outcome and 30% of the cases it did some mix of FP or FN.
+In the case above, if you randomly sampled a negative record and a positive record, the model would predict a higher probability for the positive over the negative record 70% of the time.
 
-This ROC Curve lies on the diagonal line that splits the graph in half. Since it is further away from the left corner, it does a very poor job at distinguishing between classes, this is the worst case scenario, and it has an AUC of .05 or 50%:
+This ROC Curve lies on the diagonal line that splits the graph in half. Since it is further away from the upper-left corner, it does a very poor job at distinguishing between classes, this is the worst case scenario, and it has an AUC of 0.5 or 50%: 
 
 ![roc-auc-05](assets/roc-auc-05.jpg)
 
-An AUC of 0.5, tells us that our model is as good as a random model that has a 50% chance of predicting the outcome. Our model is not better than flipping a coin, 50% of the time the model can correctly predict the outcome. 
+An AUC of 0.5, tells us that our model is as good as a random model that has a 50% chance of predicting the outcome. Our model is not any better than flipping a coin. 50% of the time the model would predict that the predicted probability of a randomly selective negative record would be higher than a randomly select positive record. 
 
-Finally, the ROC Curve below represents another perfect scenario! When the ROC curve lies below the 50% model or the random chance model, then the model needs to be reviewed carefully. The reason for this is that there could have been potential mislabeling of the negatives and positives which caused the values to be reversed and hence the ROC curve is below the random chance model. Although this ROC Curve looks like it has an AUC of 0.0 or 0% when we flip it we get an AUC of 1 or 100%.
+Finally, the ROC Curve below represents another perfect scenario! When the ROC curve lies below the 50% model or the random chance model, then the model needs to be reviewed carefully. The reason for this is that there could have been potential mislabeling of the negatives and positives which caused the values to be reversed and hence the ROC curve is below the random chance model. Although this ROC Curve looks like it has an AUC of 0.0 or 0% when we flip it, we get an AUC of 1 or 100%.
 
 ![roc-auc-0](assets/roc-auc-0.jpg)
 
@@ -530,7 +530,7 @@ A ROC curve is a useful tool because it only focuses on how well the model was a
 
 ### Prec-Recall
 
-The Precision-Recall Curve or Prec-Recall or **P-R** is another tool for evaluating classification models that is derived from the confusion matrix. Prec-Recall is a complementary tool to ROC curves, especially when the dataset has a significant skew. The Prec-Recall curve plots the precision or positive predictive value (y-axis) versus sensitivity or true positive rate (x-axis) for every possible classification threshold. At a high level, we can think of precision as a measure of exactness or quality of the results while recall as a measure of completeness or quantity of the results obtained by the model. Prec-Recall measures the relevance of the results obtained by the model.
+The Precision-Recall Curve or Prec-Recall (**P-R**) is another tool for evaluating classification models that is derived from the confusion matrix. Prec-Recall is a complementary tool to ROC curves, especially when the dataset has a significant skew. The Prec-Recall curve plots the precision or positive predictive value (y-axis) versus sensitivity or true positive rate (x-axis) for every possible classification threshold. At a high level, we can think of precision as a measure of exactness or quality of the results and recall as a measure of completeness or quantity of the results obtained by the model. Prec-Recall measures the relevance of the results obtained by the model.
 
 **Precision** is the ratio of correct positive predictions divided by the total number of positive predictions. This ratio is also known as **positive predictive value** and is measured from 0.0 to 1.0, where 0.0 is the worst and 1.0 is the best precision. Precision is more focused on the positive class than in the negative class, it actually measures the probability of correct detection of positive values (TP and FP). 
  
@@ -546,7 +546,7 @@ Below is another way of visualizing Precision and Recall, this image was borrowe
 
 ![prec-recall-visual](assets/prec-recall-visual.jpg)
 
-A Prec-Recall Curve is created by connecting all precision-recall points through non-linear interpolation [5]. The Pre-Recall plot is broken down into two sections, “Good” and “Poor” performance. “Good” performance can be found on the upper right corner of the plot and “Poor” performance on the lower left corner, see the image below to view the perfect Pre-Recall plot. This division is generated by the baseline. The baseline for Prec-Recall is determined by the ratio of Positives(P) and Negatives(N), where y = P/(P+N), this function represents a classifier with a random performance level[6]. When the dataset is balanced, the value of the baseline is y = 0.5. If the dataset is imbalanced where the number of P’s is higher than N’s then the baseline will be adjusted accordingly and vice versa.
+A Prec-Recall Curve is created by connecting all precision-recall points through non-linear interpolation [5]. The Prec-Recall plot is broken down into two sections, “Good” and “Poor” performance. “Good” performance can be found if the curve is hugging the upper right corner of the plot, and “Poor” performance is when the curve bends near the lower left corner, see the image below to view the perfect Pre-Recall plot. This division is generated by the baseline. The baseline for Prec-Recall is determined by the ratio of Positives (P) and Negatives (N), where y = P/(P+N), this function represents a classifier with a random performance level [6]. When the dataset is balanced, the value of the baseline is y = 0.5. If the dataset is imbalanced where the number of P’s is higher than N’s then the baseline will be adjusted accordingly and vice versa.
 
 The Perfect Prec-Recall Curve is a combination of two straight lines (in red). The plot tells us that the model made no prediction errors! In other words, no false positives (perfect precision) and no false negatives (perfect recall) assuming a baseline of 0.5. 
 
@@ -566,7 +566,7 @@ Finally, this Prec-Recall Curve represents the worst case scenario where the mod
 
 From the Prec-Recall plot some metrics are derived that can be helpful in assessing the model’s performance, such as accuracy and Fᵦ scores.These metrics will be explained in more depth in the next section of the concepts. Just note that accuracy or ACC is the ratio number of correct predictions divided by the total number of predictions and Fᵦ is the harmonic mean of recall and precision.
 
-When looking at ACC in Prec-Recall precision is the positive observations imperative to note that ACC does not perform well-imbalanced datasets. This is why the **F-scores** can be used to account for the skewed dataset in Prec-Recall. 
+When looking at ACC in Prec-Recall precision is the positive observations imperative to note that ACC does not perform well on imbalanced datasets. This is why the **F-scores** can be used to account for the skewed dataset in Prec-Recall. 
 
 As you consider the accuracy of a model for the positive cases you want to know a couple of things:
 
@@ -577,7 +577,9 @@ As you consider the accuracy of a model for the positive cases you want to know 
 
 There are also various  Fᵦ scores that can be considered, F1, F2 and F0.5.  The 1, 2 and 0.5 are the weights given to recall and precision. F1 for instance  means that both precision and recall have equal weight, while F2 gives recall higher weight than precision and F0.5 gives precision higher weight than recall.
 
-Prec-Recall is a good tool to consider for classifiers because it is a great alternative for large skews in the class distribution. Use precision and recall to focus on small positive class — When the positive class is smaller and the ability to detect correctly positive samples is our main focus (correct detection of negatives examples is less important to the problem) we should use precision and recall.
+**ADD Fᵦ EQUATION?**
+
+Prec-Recall is a good tool to consider for classifiers because it is a great alternative for large skews in the class distribution. Use precision and recall to focus on small positive class — When the positive class is the minority and the ability to detect correctly positive samples is our main focus (correct detection of negatives examples is less important to the problem) we should use precision and recall.
 
 If you are using a model metric of Accuracy and you see issues with Prec-Recall then you might consider using a model metric of logloss.
 
