@@ -230,29 +230,25 @@ This configuration was selected to generate a model quickly with a sufficient le
 - Allow Different Sets of Classes Across All Train/Validation Fold Splits
 - Max Number of Classes for Classification Problems
 - Max Number of Classes to Computer ROC and Confusion Matrix for Classification Problems
-
-
-
-- Model/Feature Brain Level
-- Feature Brain Save Every Which Iteration
-- Feature Brain Restart from Which Iteration
-- Feature Brain Refit Uses Same Best Individual
-- Feature Brain Adds Features with New Columns Even During Retraining of Final Model
-- Min Driverless AI Iterations
-- Select Target Transformation of the Target for Regression Problems
-- Tournament Model for Genetic Algorithm
-- Number of Cross-Validation Folds For Feature Evolution
-- Number of Cross-Validation Folds For Final Model
-- Enable Extra Logging for Ensemble Meta Learner
-- Number of Cross-Validation Folds or Maximum Time-Based Splits for Feature Evolution
-- Number of Cross-Validation Folds or Maximum Time-Based Splits for Final Model
-- Maximum Number of Fold IDs to Show in Logs
-- Max Number of Rows Times Number of Columns for Feature Evolution Data Splits
-- Max Number of Rows Times Number of Columns for Reducing Training Dataset
-- Maximum Size of Validation Data Relative to Training Data
-- Perform Stratified Sampling for Binary Classification if The Target Is More Imbalanced Than This
-- Add to config.toml via toml String
-
+- Max number of classes to show in GUI for confusion matrix
+- ROC/CM reduction technique for large class counts 
+- Model/Feature Brain Level(0..10)
+- Feature Brain Save every which iteration (0 = disable)
+- Feature Brain Restart from which iteration (-1 = auto)
+- Feature Brain refit uses same best individual
+- Feature Brain adds features with new columns even during retraining final model
+- Restart-refit default model settings if model switches 
+- Min, DAI iterations 
+- Select target transformation of the target for regression problems
+- Tournament model for generit algorithm
+- Number of cross-validation folds for feature evolution (-1 = auto)
+- Number of cross-validation folds for final model (-1 = auto)
+- fixed_only_first_fold_model
+- Max,num, of rows x num,of columns for feature evolution data splits (not for final pipeline)
+Max, num, of rows x num, of columns for reducing training data set (for final pipeline)
+- Max, size of validation data relative to training data (for final pipeline), otherwise will sample
+- Perform stratified sampling for binary classification if the target is more imbalanced than this,
+- Add to config.toml via toml string 
 
 **Model Settings**
 - XGBoost GBM Models
@@ -317,7 +313,9 @@ This configuration was selected to generate a model quickly with a sufficient le
 - Max Number of Engineered Features
 - Max. Number of Genes
 - Limit Features by Interpretability
+- Threshold for interpretability which to enable automatic monotonicity constraints for tree models
 - Correlation Beyond Which Triggers Monotonicity Constraints (if Enabled)
+- Manual override for monotonicity constraints 
 - Max Feature Interaction Depth
 - Fixed Feature Interaction Depth
 - Enable Target Encoding
@@ -337,6 +335,8 @@ This configuration was selected to generate a model quickly with a sufficient le
 - Enable Detailed Scored Features Info
 - Enable Detailed Logs for Timing and Types of Features Produced
 - Compute Correlation Matrix
+- Required GINI relative improvement for Interactions
+- Number of transformed Interactions to make 
 
 **Time Series Settings**
 - Time Series Lag-Based Recipe
@@ -357,7 +357,7 @@ This configuration was selected to generate a model quickly with a sufficient le
 - Generate Time-Series Holdout Predictions
 - Number of Time-Based Splits for Internal Model Validation
 - Maximum Overlap Between Two Time-Based Splits
-- Max Number of Splits Used for Creating Final Time-Series Model’s Holdout Predictions
+- Maximum Number of Splits Used for Creating Final Time-Series Model’s Holdout Predictions
 - Whether to Speed Up Calculation Of Time-Series Holdout Predictions
 - Whether to Speed Up Calculation Of Shapley Values for Time-Series Holdout Predictions
 - Generate Shapley Values For Time-Series Holdout Predictions At the Time Of Experiment
