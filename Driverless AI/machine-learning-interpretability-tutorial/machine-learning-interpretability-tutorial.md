@@ -5,18 +5,13 @@
 - [Prerequisites](#prerequisites)
 - [Task 1: Launch Experiment and MLI](#task-1-launch-experiment-and-mli) 
 - [Task 2: Industry Context and ML Explainability Concepts](#task-2-industry-context-and-ml-explainability-concepts)
-- [Task 3: Global Shapley Values/Feature Importance](#task-3-global-shapley-values-and-feature-importance)
+- [Task 3: Global Shapley Values and Feature Importance](#task-3-global-shapley-values-and-feature-importance)
 - [Task 4: Partial Dependence Plot](#task-4-partial-dependence-plot)
 - [Task 5: Decision Tree Surrogate](#task-5-decision-tree-surrogate)
 - [Task 6: K-LIME](#task-6-k-lime)
 - [Task 7: Local Shapley and LOCO](#task-7-local-shapley-and-loco)
-- [Task 8: Individual Conditional Expectation](#task-8-individual-conditional-expectation) 
-- [Task 9: Putting It All Together: Dashboard View](#task-9-putting-it-all-together-dashboard-view)
-- [Task 10: How to detect bias in a model?](#task-10-how-to-detect-bias-in-a-model)
-- [Task 11: MLI for Time Series](#task11-mli-for-time-series)
-- [Task 12: Challenge](#task12-challenge)
-- [Task 13: Test](#task13-test)
-- [Next Steps](#next-steps)
+- [Task 8: Putting it All Together and ICE](#task-8-putting-it-all-together-and-ice) 
+- [Learning Outcome](#learning-outcome)
 
 
 ## Objective 
@@ -264,7 +259,7 @@ It is well understood that for the same set of input features and prediction tar
 [Concept References](https://www.h2o.ai/wp-content/uploads/2017/09/driverlessai/references.html)  
 
 
-## Task 3: Global Shapley Values/Feature Importance
+## Task 3: Global Shapley Values and Feature Importance
 
 ### Global Shapley Values and Feature Importance Concepts
 
@@ -313,7 +308,7 @@ This single **Random Forest** model of a complex Driverless AI model is very hel
 [Global and Local Variable Importance](https://www.h2o.ai/wp-content/uploads/2017/09/driverlessai/interpreting.html#global-and-local-variable-importance)
 
 
-## Task 4: Partial Dependency Plot
+## Task 4: Partial Dependence Plot
 
 ### Partial Dependence Concepts
 
