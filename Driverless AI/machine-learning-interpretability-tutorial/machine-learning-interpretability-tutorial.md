@@ -448,7 +448,7 @@ The recent tasks have focused on the model’s global behavior for the entire da
 
 3\. Click on **Model Prediction** again, this time the plot will look similar to the one below:
 
-![task-6-klime-predict](assets/task-6-klime-predict.jpg)
+![task6-klime-predict](assets/task6-klime-predict.jpg)
 
 *Things to note*:
 
