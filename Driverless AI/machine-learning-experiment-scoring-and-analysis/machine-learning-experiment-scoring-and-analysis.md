@@ -54,11 +54,11 @@ Download H2O’s subset of the Freddie Mac Single-Family Loan-Level dataset to y
 
 ### Launch Experiment 
 
-1\. Load the loan_level.csv to Driverless AI by clicking **Add Dataset (or Drag and Drop)** on the **Datasets overview** page. Click on **Upload File**, then select **loan_level.csv** file. Once the file is uploaded, select **Details**.
+1\. Load the loan_level.csv to Driverless AI by clicking **Add Dataset (or Drag and Drop)** on the **Datasets overview** page. Click on **Upload File**, then select **loan_level_500K.csv** file. Once the file is uploaded, select **Details**.
 
 ![loan-level-details-selection](assets/loan-level-details-selection.jpg)
 
-**Note:** You will see four more datasets, but you can ignore them, as we will be working with the `loan_level_500k.csv` file. 
+**Note:** You will see 6 more datasets, but you can ignore them, as we will be working with the `loan_level_500k.csv` file. 
 
 2\. Let’s take a quick look at the columns:
 
@@ -194,8 +194,8 @@ This configuration was selected to generate a model quickly with a sufficient le
 
 ![expert-settings-1](assets/expert-settings-1.jpg)
 *Things to Note:*
-1. **Upload Custom Recipe**
-2. **Load Custom Recipe From URL** 
+1. **+ Upload Custom Recipe**
+2. **+ Load Custom Recipe From URL** 
 3. **Official Recipes (External)**
 4. **Experiment**
 5. **Model**
@@ -213,8 +213,12 @@ This configuration was selected to generate a model quickly with a sufficient le
 - Max Runtime in Minutes Before Triggering the Finish Button
 - Max Runtime in Minutes Before Triggering the 'Abort' Button
 - Pipeline Building Recipe
+- Kaggle username
+- Kaggle Key
+- Kaggle submission timeout in seconds
 - Make Python Scoring Pipeline
 - Make MOJO Scoring Pipeline
+- Attempt to reduce the size of the Mojo
 - Measure MOJO Scoring Latency
 - Timeout in Seconds to Wait for MOJO Creation at End of Experiment
 - Number of Parallel Workers to Use during MOJO Creation
@@ -225,6 +229,10 @@ This configuration was selected to generate a model quickly with a sufficient le
 - Random Seed
 - Allow Different Sets of Classes Across All Train/Validation Fold Splits
 - Max Number of Classes for Classification Problems
+- Max Number of Classes to Computer ROC and Confusion Matrix for Classification Problems
+
+
+
 - Model/Feature Brain Level
 - Feature Brain Save Every Which Iteration
 - Feature Brain Restart from Which Iteration
@@ -528,6 +536,65 @@ Finally, the ROC Curve below represents another perfect scenario! When the ROC c
 
 A ROC curve is a useful tool because it only focuses on how well the model was able to distinguish between classes. “AUC’s can help represent the probability that the classifier will rank a randomly selected positive observation higher than a randomly selected negative observation” [4]. However, for models where the prediction happens rarely a high AUC could provide a false sense that the model is correctly predicting the results.  This is where the notion of precision and recall become important.
 
+### Applicability of ROC Curves in the Real World
+
+ROC and AUC curves are important evaluation metrics for calculating the performance of any classification model. In hopes of understanding the applicability of ROC curves, consider the next ROC curves with its AUC and histograms from a binary classifier model trying to make the following point: 
+
+**Task**: Identify the most effective ROC Curve that will distinguish between green and red apples. 
+
+Below are three types of ROC Curves in correlation to finding the perfect ROC that will distinguish between red and green apples. 
+
+As noted above, the closer the ROC curve is to the left (the more significant the AUC percentage), the better the model is separating classes. 
+
+*Note*: Before moving forward, it's essential to clarify that the histograms plotted are the result of previous data. Such data has determined that apples with more than 50% (threshold) of its body being red will be considered a red apple. Therefore, anything below 50% will be a green apple.
+
+
+#### ROC One: 
+
+![ROC-1](assets/ROC-1.jpg)
+
+In this case, the above Histogram (1A) is telling us that the distribution will be as follows: 
+
+The green bell curve represents green apples while the red bell curve represents the red apples and the threshold will be at 50%. The x-axis represents the predicted probabilities, while the y-axis represents the count of observations.
+
+ From general observations, we can see that the Histogram shows that the current classifier can distinguish between red and green apples only 50% of the time, and such distinction is at the 0.5 thresholds. 
+
+When we draw the ROC Curve (1B) for the Histogram above, we will get the following results: 
+
+The ROC Curve is telling us how good the model is at distinguishing between two classes: in this case, we refer to red and green apples as the two classes. When looking at the ROC Curve, it will have an AUC of 1 (in blue). Hence, as discussed earlier, an AUC of one will tell us that the model is performing at 100% (perfect performance). Although, not always the case. We can have a ROC Curve of zero, and if we flip the curve, it can give us a ROC of one; that is why we always need to review the model carefully. 
+
+Accordingly, this ROC Curve is telling us that the classifier model can distinguish between red and green apples 100% of all cases when it has to identify. Consequently, the random model becomes absolute. For reference, the random model (dash line) essentially represents a classifier that does not do better than random guessing. 
+
+Therefore, the ROC Curve for this Histogram will be perfect because it can separate red and green apples. 
+
+#### ROC Two: 
+
+![ROC-2](assets/ROC-2.jpg)
+
+When we draw the ROC curve (2B) for the Histogram (2A) above, we will get the following results: 
+
+When looking at the ROC Curve, it will have an AUC of .7 (in blue). 
+
+Accordingly, this ROC curve tells us that the classifier model can't adequately distinguish between red and green apples 100% of all cases. And in a way, this classifier gets closer to the random model that does not do better than random guessing. 
+
+Therefore, this ROC curve is not perfect at classifying red and green apples. That is not to say that the ROC curve is entirely wrong; it just has a 30% margin of error. 
+
+#### ROC Three: 
+
+![ROC-3](assets/ROC-3.jpg)
+
+When we draw the ROC curve (3B) for the Histogram (3A) above, we will get the following results: 
+
+When looking at the ROC Curve, it will have an AUC of .5 (in blue). 
+
+Accordingly, this ROC curve tells us that the classifier model can't adequately distinguish between red and green apples 100% of all cases. In a way, this classifier becomes similar to the random model that does not do better than random guessing. 
+
+Therefore, this ROC curve is not perfect at classifying red and green apples. That is not to say that the ROC curve is entirely wrong; it has a 50% margin of error. 
+
+#### Conclusion
+
+In this case, we will choose the first ROC Curve (with a great classifier) because it leads to an AUC of 1.0 (can separate the green apple class and red apple class (the two classes) with 100% accuracy). 
+
 ### Prec-Recall
 
 The Precision-Recall Curve or Prec-Recall or **P-R** is another tool for evaluating classification models that is derived from the confusion matrix. Prec-Recall is a complementary tool to ROC curves, especially when the dataset has a significant skew. The Prec-Recall curve plots the precision or positive predictive value (y-axis) versus sensitivity or true positive rate (x-axis) for every possible classification threshold. At a high level, we can think of precision as a measure of exactness or quality of the results while recall as a measure of completeness or quantity of the results obtained by the model. Prec-Recall measures the relevance of the results obtained by the model.
@@ -580,6 +647,55 @@ There are also various  Fᵦ scores that can be considered, F1, F2 and F0.5.  Th
 Prec-Recall is a good tool to consider for classifiers because it is a great alternative for large skews in the class distribution. Use precision and recall to focus on small positive class — When the positive class is smaller and the ability to detect correctly positive samples is our main focus (correct detection of negatives examples is less important to the problem) we should use precision and recall.
 
 If you are using a model metric of Accuracy and you see issues with Prec-Recall then you might consider using a model metric of logloss.
+
+#### Applicability of Precision-Recall Curves in the Real World 
+
+In hopes of understanding the applicability of Precision-Recall Curves in the real world, let us see how we can make use of Precision-Recall curves as a metric to check the performance of the binary classification model used above to distinguish between green and red apples.
+
+As mentioned above, Positive Predictive Value refers to Precision. Let us reimagine again that we are in an apple factory trying to build a model that will be able to distinguish between red and green apples. Therefore, the purpose of this model will be not to have red apple boxes contain green apples and vice versa. Accordingly, this will be a binary classification problem in which the dependent variable is 0 or 1—either a green apple, 0, or 1, a red apple. In this circumstance, Precision will be the proportion of our predictive model noted as red apples. 
+
+With that in mind, we will follow to calculate precision as follows: 
+
+Precision = True Positive / (True Positive + False Positive) 
+
+* True Positive = Number of apples which were red that we correctly predicted as red. 
+* False Positive = Number of apples that were green that we incorrectly predicted as red. 
+
+Recall (sensitivity) will specify the proportion of red apples that were predicted by us as red apples. 
+
+The recall will be calculated as follows: 
+
+Recall = True Positive / (True Positive + False Negative) 
+
+* True Positive: Number of apples that were red that we correctly predicted as red.
+
+* False Negative: Number of apples that were red that we incorrectly predicted as green apples. 
+
+Hence, the main difference between Precision and Recall is the denominator in the Precision and Recall fraction. In Re-call, false negatives are included, whereas, in Precision, false positives are considered.
+
+#### Difference between Precision and Recall
+
+Let's assume there is a total of 1000 apples. Out of 1000, 500 apples are actually red. Out of 500, we correctly predicted 400 of them as red. 
+
+* Recall would be 80% 
+* 400/500 = 0.8
+
+For Precision, the following will be true: out of 1000 apples, we predicted 800 as red apples. Out of 800, we correctly predicted 400 of them as red apples. 
+
+* Precision would be 50%. 
+* 400/800 = 0.5 
+
+To further understand these two ideas of Recall and Precision, imagine for a moment one of your high school teachers asking you about the dates of four main holidays - Halloween, Christmas, New Year, and Memorial Day. You manage to recall all these four dates but with twenty attempts in total. Your Recall score will be 100%, but your Precision score will be 20%, which is four divided by twenty. 
+
+It is important to note that after you calculate Recall and Precision values from various confusion matrices for different thresholds, and you plot the results on a Precision-Recall curve take into consideration the following: 
+
+- As mentioned above, the closer the Precision-Recall curve is to the upper right corner (the bigger the AUC percentage), the better the model is at correctly predicting the true positives. 
+- The x-axis will show Recall while the y-axis will represent the Precision.
+- Therefore, Precision_Recall curves can clearly show the relationship and tradeoff of having a higher or lower threshold. 
+
+
+In conclusion, Precision-Recall curves allow for a more in-depth analysis of binary classification models. And when trying to distinguish between red and green apples. 
+
 
 ### GINI, ACC, F1 F0.5, F2, MCC and Log Loss
 
@@ -1306,6 +1422,15 @@ A **report** file is included in the **experiment** summary. This report provide
 3\. Take a few minutes to explore the report
 
 4\. Explore Feature Evolution and Feature Transformation, how is this summary different from the summary provided in the **Experiments Page**?
+  
+    Answer: In the experiment page, you can set the name of your experiment, set up the dataset being used to create an experiment, view the total number of rows and columns of your dataset, drop columns, select a dataset to validate, etc. 
+
+    Different, the experiment summary report contains insight into the training data and any detected shifts in distribution, the validation schema, etc. In particular, when exploring the feature evolution and feature transformation in the summary report, we will encounter the following information: 
+
+    Feature evolution: This summary will detail the algorithms used to create the experiment. 
+
+    Feature transformation: The summary will provide information about automatically engineer new features with high-value features for a given dataset. 
+
 
 5\. Find the section titled **Final Model** on the report.docx and explore the following items:
 - Table titled **Performance of Final Model** and determine the **logloss** final test score
