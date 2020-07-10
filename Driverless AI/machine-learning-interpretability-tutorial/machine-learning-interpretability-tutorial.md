@@ -483,7 +483,7 @@ This single linear model trained on the original inputs of the system to predict
 
 8\. Select another high probability default person from this K-LIME cluster by clicking on one of the white points on the top-right section of the plot
 
-![task-6-klime-advanced](assets/task-6-klime-advanced.jpg)
+![task-7-klime-advanced](assets/task-7-klime-advanced.jpg)
 
 1. Change cluster to cluster 13 and note the R2 value is still very high
 2. Pick a point on the top-right section of the plot and Examine Reason Codes
