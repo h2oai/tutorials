@@ -41,20 +41,19 @@ Finale Doshi-Velez and Been Kim. [“Towards a rigorous science of interpretable
 [FAT/ML](http://www.fatml.org/resources/principles-for-accountable-algorithms)
 [XAI](https://www.darpa.mil/program/explainable-artificial-intelligence)
 
-
 ## Prerequisites
 
-- [21-Day Free Trial: H2O Driverless AI license Key](https://www.h2o.ai/products/h2o-driverless-ai/)
-- [Driverless AI Environment]
-  - [Aquarium](http://aquarium.h2o.ai/login)
-  - [H2O Prerelease](http://prerelease.h2o.ai/)
-  - [Cloud Installation]()
-  - [Local Installation](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/installing.html) 
-  - [Server Installation](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/install/ibm-power.html) 
-- [Automatic Machine Learning Introduction with Driverless AI](https://h2oai.github.io/tutorials/getting-started-with-driverless-ai-test-drive/#0)
-- Basic knowledge of Machine Learning and Statistics
+You will need the following to be able to do this tutorial:
 
-> Note: if this is your first time signing up for the H2O Driverless AI environment follow [Task 1- Get  Environment]() of the Automatic Machine Learning Introduction with Driverless AI tutorial. 
+- Basic knowledge of Machine Learning and Statistics
+- A Driverless AI environment
+- Basic knowledge of Driverless AI or doing the [Automatic Machine Learning Introduction with Drivereless AI Test Drive](https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#0) 
+
+- A **Two-Hour Test Drive session** : Test Drive is H2O.ai's Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.
+
+  - Need a **Two-Hour Test Drive** session?Follow the instructions on [this quick tutorial](https://h2oai.github.io/tutorials/getting-started-with-driverless-ai-test-drive/#1) to get a Test Drive session started. 
+
+**Note:  Aquarium’s Driverless AI Test Drive lab has a license key built-in, so you don’t need to request one to use it. Each Driverless AI Test Drive instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore Driverless AI, you can always launch another Test Drive instance or reach out to our sales team via the [contact us form](https://www.h2o.ai/company/contact/).**
 
 
 
@@ -254,6 +253,7 @@ It is well understood that for the same set of input features and prediction tar
 [An Introduction to Machine Learning Interpretability](https://www.oreilly.com/library/view/an-introduction-to/9781492033158/)
 
 [Testing machine learning explanation techniques](https://www.oreilly.com/ideas/testing-machine-learning-interpretability-techniques) 
+
 [Awesome Machine Learning Interpretability](https://github.com/jphall663/awesome-machine-learning-interpretability)
 
 [Concept References](https://www.h2o.ai/wp-content/uploads/2017/09/driverlessai/references.html)  
@@ -279,7 +279,9 @@ Global feature importance values give an indication of the magnitude of a featur
 
 ### Shapley and Feature Importance Plots
 
-1\.In the center of the MLI landing page, select **Original Shapley**.
+1. In the center of the MLI landing page, select **Original Shapley**.
+
+![task-3-shapley](assets/task-3-shapley.jpg)
 
 The plot above is a sample of a Shapley plot. Shapley is an “old”, very advanced tool, now being applied to machine learning. This plot shows the global  importance value of the derived features. Notice the feature importance values are signed (scroll down to see the rest of the Shapley plot). The sign determines in which direction the values impact the model predictions on average. Shapley plots help by providing accurate and consistent variable importance even if data changes slightly.
  
