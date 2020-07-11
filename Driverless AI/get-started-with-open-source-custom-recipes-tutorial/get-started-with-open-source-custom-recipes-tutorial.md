@@ -511,7 +511,7 @@ We are going to get the URL for **Brier Loss** Scorer we used in Task 4 and uplo
 
 ![dai-classification-folder](assets/dai-classification-folder.jpg)
 
-3\. Click on the **brier_loss.py** file
+3\. Click on the binary folder and then click the **brier_loss.py** file
 
 ![dai-brier-loss-file](assets/dai-brier-loss-file.jpg)
 
