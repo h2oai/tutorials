@@ -109,7 +109,7 @@ For custom feature engineering or a transformer, you will have two main parts:
 
 **Transform** - the transform gets called when you run the model and get predictions. The transform will be inside the scoring pipeline. When used in production, the transform will be present and be used in the validation and test sets. The transform does not have access to Y, and it alters the data based on what happened on the fit_transform.
 
-For custom optimization functions or scorers, you can bringing loss or gain functions. We can look further into precision and recall of a model through variations of the F metric. Driverless AI comes with F1, F2, and F0.5 scorers, where F1 is the harmonic mean of precision and recall, and the F2 score gives more weight to recall than precision. If you wanted to give precision higher weight, you could incorporate and F4 or F6 function as recipes for scorers.   
+For custom optimization functions or scorers, you can bring loss or gain functions. We can look further into precision and recall of a model through variations of the F metric. Driverless AI comes with F1, F2, and F0.5 scorers, where F1 is the harmonic mean of precision and recall, and the F2 score gives more weight to recall than precision. If you wanted to give precision higher weight, you could incorporate and F4 or F6 function as recipes for scorers.   
 
 Other things that can be done using scorers:
 - f(id, actual, predicted, weight)
