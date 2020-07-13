@@ -26,7 +26,7 @@ Recipes:
 
 - Basic knowledge of Machine Learning and Statistics
 - Ability to write Python Code
-- A Driverless AI environment (release 1.8.4.1)
+- A Driverless AI environment (release 1.8.7.1)
 - Basic knowledge of Driverless AI or doing the following tutorials:
 
     - [Automatic Machine Learning Introduction with Drivereless AI Test Drive](https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#0)
@@ -48,7 +48,7 @@ Recipes:
 
 In the **Get Started and Consume Existing Recipes** Tutorial we covered the following:
 
-- Bring Your Own Recipe (BYOR) for Driverless AI 1.8.4.1
+- Bring Your Own Recipe (BYOR) for Driverless AI 1.8.7.1
 - What is a recipe?
 - Types of Driverless AI open-source recipes available (Transformers, Scorers, and Models)
 - How to upload the recipes into Driverless AI using URL’s and .py files
@@ -144,7 +144,7 @@ Recipes are meant to be built by people you trust, and each recipe should be cod
 
 3\. Use the Recipe Templates to ensure you have all the required components. 
 
-**Note that the Driverless AI 1.8.4.1 Recipes branch is the same as the Driverless AI 1.8.4 Recipes branch.**
+**Note that the Driverless AI 1.8.7.1 Recipes branch is the same as the Driverless AI 1.8.4 Recipes branch.**
 
 In the next three tasks, we will be building three simple recipes, a transformer, a scorer, and a model. It is assumed that you have downloaded the [Driverless AI Recipes Repository rel 1.8.4](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.8.4) and that you have access to the examples and recipe templates.
 
