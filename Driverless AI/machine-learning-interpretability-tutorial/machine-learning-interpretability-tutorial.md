@@ -12,6 +12,7 @@
 - [Task 7: Local Shapley and LOCO](#task-7-local-shapley-and-loco)
 - [Task 8: Putting it All Together and ICE](#task-8-putting-it-all-together-and-ice) 
 - [Learning Outcome](#learning-outcome)
+- [Next Steps](#next-steps)
 
 
 ## Objective 
@@ -36,9 +37,12 @@ In this tutorial, we will build a machine learning model using an example financ
 
 **Learn more about Interpretability**:
  
-Responsible AI [https://www.h2o.ai/blog/brief-perspective-on-key-terms-and-ideas-in-responsible-ai-2/]
-Finale Doshi-Velez and Been Kim. [“Towards a rigorous science of interpretable machine learning”)(https://arxiv.org/pdf/1702.08608.pdf)
+[Responsible ](https://www.h2o.ai/blog/brief-perspective-on-key-terms-and-ideas-in-responsible-ai-2/)
+
+[Finale Doshi-Velez and Been Kim.“Towards a rigorous science of interpretable machine learning”](https://arxiv.org/pdf/1702.08608.pdf)
+
 [FAT/ML](http://www.fatml.org/resources/principles-for-accountable-algorithms)
+
 [XAI](https://www.darpa.mil/program/explainable-artificial-intelligence)
 
 ## Prerequisites
