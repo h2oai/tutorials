@@ -509,7 +509,7 @@ Both models, GLM and RF, made the same predictions in the first ten predictions.
 
 Again, save the model performance on the validation data
 ```python
-rf_default_per = rf.model_performance(valid)
+default_rf_per = rf.model_performance(valid)
 ```
 ## Task 6: Build a GBM
 
