@@ -448,11 +448,15 @@ However, two other possible outcomes need to be considered, the false negative a
 Binary classifications produce four outcomes: 
 
 **Predicticted as Positive**:
+
 True Positive = TP
+
 False Positive = FP
 
 **Predicted as Negative**:
+
 True Negative = TN 
+
 False Negative = FN 
 
 ![binary-classifier-four-outcomes](assets/binary-classifier-four-outcomes.jpg)
@@ -587,15 +591,19 @@ ROC and Prec-Recall curves are extremely useful to test a binary classifier beca
 
 #### GINI
 
-The Gini index is a well-established method to quantify the inequality among values of frequency distribution and can be used to measure the quality of a binary classifier. A Gini index of zero expresses perfect equality (or a totally useless classifier), while a Gini index of one expresses maximal inequality (or a perfect classifier). **<- I THINK lower Gini index is better (not a useless classifier), might want to double check this**
+The Gini index is a well-established method to quantify the inequality among values of frequency distribution and can be used to measure the quality of a binary classifier. A Gini index of zero expresses perfect equality (or a totally useless classifier), while a Gini index of one expresses maximal inequality (or a perfect classifier).
 
-**ADD GINI index formula https://www.bogotobogo.com/python/scikit-learn/scikt_machine_learning_Decision_Tree_Learning_Informatioin_Gain_IG_Impurity_Entropy_Gini_Classification_Error.php**
+**GINI index formula**
+
+![gini-index-formula](assets/gini-index-formula.jpg)
+
+where p<sub>j</sub> is the probability of class j [18]. 
 
 The Gini index is based on the Lorenz curve. The Lorenz curve plots the true positive rate (y-axis) as a function of percentiles of the population (x-axis).
 
 The Lorenz curve represents a collective of models represented by the classifier. The location on the curve is given by the probability threshold of a particular model. (i.e., Lower probability thresholds for classification typically lead to more true positives, but also to more false positives.)[12]
 
-The Gini index itself is independent of the model and only depends on the Lorenz curve determined by the distribution of the scores (or probabilities) obtained from the classifier. **<- NOT SURE what is meant by independent of model, may need to clarify**
+The Gini index itself is independent of the model and only depends on the Lorenz curve determined by the distribution of the scores (or probabilities) obtained from the classifier. 
 
 #### Accuracy
 
@@ -603,36 +611,46 @@ Accuracy or  ACC (not to be confused with AUC or area under the curve) is a sing
 
 Using the confusion matrix table, ACC can be calculated in the following manner:
 
-**Accuracy** = (TP + TN) / (TP + TN + FP + FN)
+**Accuracy** equation = (TP + TN) / (TP + TN + FP + FN)
+
+![accuracy-equation](assets/accuracy-equation.jpg)
 
 #### F-Score: F1, F0.5 and F2
 
-The F1 Score is another measurement of classification accuracy. It represents the harmonic average of the precision and recall. F1 is measured in the range of 0 to 1, where 0 means that there are no true positives, and 1 when there is neither false negatives nor false positives or perfect precision and recall[9].
+The F1 Score is another measurement of classification accuracy. It represents the harmonic average of the precision and recall. F1 is measured in the range of 0 to 1, where 0 means that there are no true positives, and 1 when there is neither false negatives nor false positives or perfect precision and recall [9].
 
 Using the confusion matrix table, the F1 score can be calculated in the following manner:
 
 **F1** = 2TP /( 2TP + FN + FP)
 
-**F05** equation:
-F0.5 = 1.25((precision)(recall)/ 0.25precision + recall)
-**^ HARD TO READ,MAKE ALL EQUATIONS AS IMAGES or use related tools https://stackoverflow.com/questions/11256433/how-to-show-math-equations-in-general-githubs-markdownnot-githubs-blog **
+**F1** equation: 
 
+![f1-score-equation](assets/f1-score-equation.jpg)
+
+**F0.5** equation:
+
+![f05-score-equation](assets/f05-score-equation.jpg)
 
 Where:
 Precision is the positive observations (true positives) the model correctly identified from all the observations it labeled as positive (the true positives + the false positives). Recall is the positive observations (true positives) the model correctly identified from all the actual positive cases (true positives + false negatives)[15].
 
 **DISPLAY F2 score equation**
 
-The **F2 score** is the weighted harmonic mean of the precision and recall (given a threshold value). Unlike the F1 score, which gives equal weight to precision and recall, the F2 score gives more weight to recall than to precision. More weight should be given to recall for cases where False Negatives are considered to have a stronger negative business impact than False Positives. For example, if your use case is to predict which customers will churn, you may consider False Negatives worse than False Positives. In this case, you want your predictions to capture all of the customers that will churn. Some of these customers may not be at risk for churning, but the extra attention they receive is not harmful. More importantly, no customers actually at risk of churning have been missed[15].
+The **F2 score** is the weighted harmonic mean of the precision and recall (given a threshold value). Unlike the F1 score, which gives equal weight to precision and recall, the F2 score gives more weight to recall than to precision. More weight should be given to recall for cases where False Negatives are considered to have a stronger negative business impact than False Positives. For example, if your use case is to predict which customers will churn, you may consider False Negatives worse than False Positives. In this case, you want your predictions to capture all of the customers that will churn. Some of these customers may not be at risk for churning, but the extra attention they receive is not harmful. More importantly, no customers actually at risk of churning have been missed [15].
 
+![f2-score-equation](assets/f2-score-equation.jpg)
+
+Where: Precision is the positive observations (true positives) the model correctly identified from all the observations it labeled as positive (the true positives + the false positives). Recall is the positive observations (true positives) the model correctly identified from all the actual positive cases (the true positives + the false negatives).
 
 #### MCC
 
-MCC or Matthews Correlation Coefficient which is used as a measure of the quality of binary classifications [1]. The MCC is the correlation coefficient between the observed and predicted binary classifications. MCC is measured in the range between -1 and +1 where +1 is the perfect prediction, 0 no better than a random prediction and -1 all incorrect predictions[9].
+MCC or Matthews Correlation Coefficient which is used as a measure of the quality of binary classifications [1]. The MCC is the correlation coefficient between the observed and predicted binary classifications. MCC is measured in the range between -1 and +1 where +1 is the perfect prediction, 0 no better than a random prediction and -1 all incorrect predictions [9].
 
 Using the confusion matrix table MCC can be calculated in the following manner:
 
-**MCC** =  (TP * TN - FP* FN) / [(TP + FP) * (FN + TN) * (FP + TN) * (TP + FN)] ^ ½
+**MCC** equation:
+
+![mcc-equation](assets/mcc-equation.jpg)
 
 #### Log Loss (Logloss)
  
@@ -653,7 +671,6 @@ Where:
 - C is the total number of classes (C=2 for binary classification).
 - p is the predicted value (uncalibrated probability) assigned to a given row (observation).
 - y is the actual target value.
-**^need to indent the variables (N, w, C....) **
 
 The Diagnostics section in Driverless AI calculates the ACC, F1, MCC values and plots those values in each ROC and Pre-Recall curves making it easier to identify the best threshold for the model generated. Additionally, it also calculates the log loss score for your model allowing you to quickly assess whether the model you generated is a good model or not. 
 
@@ -662,8 +679,7 @@ Let’s get back to evaluating metrics results for models.
 
 ### Gain and Lift Charts
 
-Gain and Lift charts measure the effectiveness of a classification model by looking at the ratio between the results obtained with a trained model versus a random model(or no model)[7]. The Gain and Lift charts help us evaluate the performance of the classifier as well as answer questions such as what percentage of the dataset captured has a positive response as a function of selected percentage of a sample. Additionally, we can explore how much better we can expect to do with a model compared to a random model (or no model) [7].
-
+Gain and Lift charts measure the effectiveness of a classification model by looking at the ratio between the results obtained with a trained model versus a random model (or no model) [7]. The Gain and Lift charts help us evaluate the performance of the classifier as well as answer questions such as what percentage of the dataset captured has a positive response as a function of selected percentage of a sample. Additionally, we can explore how much better we can expect to do with a model compared to a random model (or no model) [7].
 
 One way we can think of gain is “for every step that is taken to predict an outcome, the level of uncertainty decreases. A drop of uncertainty is the loss of entropy which leads to knowledge gain” [15]. The Gain Chart plots the true positive rate (sensitivity) versus the predictive positive rate(**support**) where: 
 
@@ -708,9 +724,9 @@ When looking at the cumulative lift for the top quantiles, X, what it means is t
 
 ![lift-chart](assets/lift-chart.jpg)
 
-### K-S Chart 
+### Kolmogorov-Smirnov Chart 
 
-Kolmogorov- Smirnov or K-S measures the performance of classification models by measuring the degree of separation between positives and negatives for validation or test data [13]. “The K-S is 100 if the scores partition the population into two separate groups in which one group contains all the positives and the other all the negatives. On the other hand, If the model cannot differentiate between positives and negatives, then it is as if the model selects cases randomly from the population. The K-S would be 0. In most classification models the K-S will fall between 0 and 100, and that the higher the value, the better the model is at separating the positive from negative cases.” [14].
+Kolmogorov-Smirnov or K-S measures the performance of classification models by measuring the degree of separation between positives and negatives for validation or test data [13]. 
 
 The KS statistic is the maximum difference between the cumulative percentage of responders or 1's (cumulative true positive rate) and cumulative percentage of non-responders or 0's (cumulative false positive rate). The significance of KS statistic is, it helps to understand what portion of the population should be targeted to get the highest response rate (1's) [17].
 
@@ -751,6 +767,8 @@ The KS statistic is the maximum difference between the cumulative percentage of 
 [16] [Lift Analysis Data Scientist Secret Weapon](https://www.kdnuggets.com/2016/03/lift-analysis-data-scientist-secret-weapon.html)
 
 [17] [Machine Learning Evaluation Metrics Classification Models](https://www.machinelearningplus.com/machine-learning/evaluation-metrics-classification-models-r/) 
+
+[18] [Scikit-Learn: Decision Tree Learning I - Entropy, GINI, and Information Gain](https://www.bogotobogo.com/python/scikit-learn/scikt_machine_learning_Decision_Tree_Learning_Informatioin_Gain_IG_Impurity_Entropy_Gini_Classification_Error.php)
 
 ### Deeper Dive and Resources
 
