@@ -1266,8 +1266,8 @@ Continuing on the diagnostics page, select the **KS** chart. The K-S chart shoul
 Remember that for the K-S chart:
 
 - K-S measures the performance of classification models by measuring the degree of separation between positives and negatives for validation or test data.
-- The K-S is 100%**???** if the scores partition the population into two separate groups in which one group contains all the positives and the other all the negatives
-- If the model cannot differentiate between positives and negatives, then it is as if the model selects cases randomly from the population and the K-S would be 0
+- The K-S is 100 degrees of separation if the scores partition the population into two separate groups in which one group contains all the positives and the other all the negatives
+- If the model cannot differentiate between positives and negatives, then it is as if the model selects cases randomly from the population and the K-S would be 0 degrees of separation.
 - The K-S range is between 0 and 1
 - The higher the K-S value, the better the model is at separating the positive from negative cases
 
