@@ -1,20 +1,20 @@
-# Tutorial de Analysis y Puntuacion de Experimentos de Machine Learning - Enfoque Financiero
+# Tutorial de análisis y puntuación de experimentos de aprendizaje automático: enfoque financiero
 
-## Outline
-- [Objectivo](#objectivo)
-- [Prerrequisitos](#prerequisitos)
-- [Task 1:  Launch Experiment](#task-1-launch-experiment)
-- [Task 2: Explore Experiment Settings and Expert Settings](#task-2-explore-experiment-settings-and-expert-settings)
-- [Task 3: Experiment Scoring and Analysis Concepts](#task-3-experiment-scoring-and-analysis-concepts)
-- [Task 4: Experiment Results Summary and Diagnostics](#task-4-experiment-results-summary)
-- [Task 5: Diagnostics Scores and Confusion Matrix](#task-5-diagnostics-scores-and-confusion-matrix)
-- [Task 6: ER: ROC](#task-6-er-roc)
-- [Task 7: ER: Prec-Recall](#task-7-er-prec-recall)
-- [Task 8: ER: Gains](#task-8-er-gains)
-- [Task 9: ER: LIFT](#task-9-er-lift)
-- [Task 10: Kolmogorov-Smirnov Chart](#task-10-kolmogorov-smirnov-chart)
-- [Task 11: Experiment AutoDocs](#task-11-experiment-autodocs)
-- [Next Steps](#next-steps)
+## Bosquejo
+- [Objetivo](#objetivo)
+- [Prerrequisitos](#prerrequisitos)
+- [Tarea 1: experimento de lanzamiento](#tarea-1-experimento-de-lanzamiento)
+- [Tarea 2: explorar la configuración del experimento y la configuración de expertos](#tarea-2-explorar-la-configuración-del-experimento-y-la-configuración-de-expertos)
+- [Tarea 3: conceptos de puntuación y análisis de experimentos](#Tarea-3-conceptos-de-puntuación-y-análisis-de-experimentos)
+- [Tarea 4: resumen de resultados del experimento](#Tarea-4-resumen-de-resultados-del-experimento)
+- [Tarea 5: puntuación de diagnóstico y matriz de confusión](#Tarea-5-puntuación-de-diagnóstico-y-matriz-de-confusión)
+- [Tarea 6: ER: ROC](#Tarea-6-ER-ROC)
+- [Tarea 7: ER: Prec-Recall](#Tarea-7-ER-Prec-Recall)
+- [Tarea 8: ER: Gains (Ganancia)](#Tarea-8-ER-Gains-(Ganancia))
+- [Tarea 9: ER: LIFT](#Tarea-9-ER-LIFT)
+- [Tarea 10: Tabla Kolmogorov-Smirnov](#Tarea-10-Tabla-Kolmogorov-Smirnov)
+- [Tarea 11: Experimentar con AutoDocs](#Tarea-11-experimentar-con-autodocs)
+- [Los siguientes pasos](#Los-siguientes-pasos)
 
 
 ## Objetivo
@@ -154,20 +154,20 @@ Estas dos columnas se descartan porque ambas son indicadores claros de que los p
 
 En la tarea 2, exploraremos y actualizaremos el **Experiment Settings (Configuraciones de experimento)**.
 
-## Tarea 2: Explorar la configuración del experimento y la configuración de expertos
+## Tarea 2: explorar la configuración del experimento y la configuración de expertos
 
-1\.  Pase el mouse sobre **Experiment Settings (Configuraciones de experimento)** y tenga en cuenta las tres perillas, **Accuracy (Exactitud)**, **Time (Hora)** y **Interpretability (Interpretabilidad)**.
+1\.  Pase el mouse sobre **Experiment Settings (Configuraciones de experimento)** y tenga en cuenta las tres perillas, **Accuracy (Precision)**, **Time (Hora)** y **Interpretability (Interpretabilidad)**.
 
 El **Experiment Settings** describe la precisión, el tiempo y la interpretabilidad de su experimento específico. Las perillas en la configuración del experimento son ajustables, ya que los valores cambian el significado de la configuración en la página inferior izquierda.
 
 Aquí hay una descripción general de la configuración de Experimentos: 
 
-- **Accuracy** - Precisión relativa: valores más altos deberían conducir a una mayor confianza en el rendimiento del modelo (precisión).
+- **Accuracy** (Precision) - Precisión relativa: valores más altos deberían conducir a una mayor confianza en el rendimiento del modelo (precisión).
 - **Time** - Tiempo relativo para completar el experimento. Los valores más altos tardarán más en completarse.
 - **Interpretability**-  La capacidad de explicar o presentar en términos comprensibles a un humano. Cuanto mayor sea la interpretabilidad, más simples serán las características que se extraerán.  
 
 
-### Accuracy
+### Accuracy (Precision)
 
 Al aumentar la configuración de precisión, Driverless AI ajusta gradualmente el método para realizar la evolución y el conjunto. Un conjunto de aprendizaje automático consta de múltiples algoritmos de aprendizaje para obtener un mejor rendimiento predictivo que se podría obtener de cualquier algoritmo de aprendizaje [1]. Con una configuración de baja precisión, Driverless AI varía las características (desde la ingeniería de características) y los modelos, pero todos compiten de manera uniforme entre sí. Con mayor precisión, cada modelo principal independiente evolucionará de forma independiente y será parte del conjunto final como un conjunto sobre diferentes modelos principales. Con precisiones más altas, Driverless AI evolucionará + tipos de características de conjunto, como la codificación de destino, dentro y fuera, que evolucionan de forma independiente. Finalmente, con las precisiones más altas, lDriverless AI realiza el seguimiento tanto del modelo como de las características y combina todas esas variaciones.
 
@@ -180,7 +180,7 @@ El tiempo especifica el tiempo relativo para completar el experimento (es decir,
 El mando de interpretabilidad es ajustable. Cuanto mayor sea la capacidad de interpretación, más simples serán las características que la rutina de modelado principal extraerá del conjunto de datos. Si la capacidad de interpretación es lo suficientemente alta, se generará un modelo con restricciones monotónicas.
 
 2\.  Para este tutorial, actualice la siguiente configuración del experimento para que coincida con la imagen a continuación:
-- Accuracy : 4
+- Accuracy (Precision) : 4
 - Time: 3
 - Interpretability: 4
 - Scorer (Goleador): Logloss 
@@ -433,7 +433,7 @@ Obtenga más información sobre lo que significa cada configuración y cómo se 
 
 - Para obtener más información sobre la configuración adicional en [Expert Settings for H2O Driverless AI](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/expert-settings.html?highlight=expert%20settings)
 
-## Tarea 3: Conceptos de puntuación y análisis de experimentos
+## Tarea 3: conceptos de puntuación y análisis de experimentos
 
 Como aprendimos en el [Conceptos del tutorial de introducción automática al aprendizaje automático](https://github.com/h2oai/tutorials/blob/master/DriverlessAI/automatic-ml-intro-tutorial/automatic-ml-intro-tutorial.md#model-training) Es esencial que una vez que se haya generado un modelo, se evalúe su desempeño. Estas métricas se usan para evaluar la calidad del modelo que se construyó y qué umbral de puntaje del modelo se debe usar para hacer predicciones. Existen múltiples métricas para evaluar los modelos de aprendizaje automático de clasificación binaria, como las características operativas del receptor o la curva ROC, precisión y recuperación o Cartas de Prec-Recall, Lift, Gain y KS por nombrar algunas. Cada métrica evalúa diferentes aspectos del modelo de aprendizaje automático. Los siguientes conceptos son para las métricas utilizadas en H2O’s Driverless AI para evaluar el rendimiento de los modelos de clasificación que generó. Los conceptos están cubiertos en un nivel muy alto, para aprender más en profundidad sobre cada métrica cubierta aquí, hemos incluido recursos adicionales al final de esta tarea.
 
@@ -764,7 +764,7 @@ El estadístico KS es la diferencia máxima entre el porcentaje acumulado de res
 - [¿Qué es la ganancia de información en el aprendizaje automático?](https://www.quora.com/What-is-Information-gain-in-Machine-Learning)
 
 
-## Tarea 4: Resumen de resultados del experimento
+## Tarea 4: resumen de resultados del experimento
 
 Al final del experimento, aparecerá un resumen del proyecto en la esquina inferior derecha. Además, tenga en cuenta que el nombre del experimento está en la esquina superior izquierda.
 
@@ -821,7 +821,7 @@ En las próximas tareas exploraremos las implicaciones financieras de la clasifi
 - [Validación interna de H2O](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/internal-validation.html) 
 
 
-## Tarea 5: Puntuación de diagnóstico y matriz de confusión
+## Tarea 5: puntuación de diagnóstico y matriz de confusión
 
 Ahora vamos a ejecutar un diagnóstico de modelo en el conjunto freddie_mac_500_test. El modelo de diagnóstico le permite ver el rendimiento del modelo para múltiples anotadores en función de un modelo y conjunto de datos existente a través de la API de Python.
 
@@ -987,66 +987,66 @@ En las próximas tareas exploraremos el anotador más a fondo y los valores de *
 
 ## Tarea 6: ER: ROC
 
-Desde la pagina de Diagnósticos, haz clic en el enlace de **ROC Curve** (Curve ROC). Una imagen similar a la debajo aparecerá.
+Desde la página de Diagnóstico, haz clic en el enlace **ROC Curve** (Curva ROC). Una imagen similar a la debajo aparecerá.
 
 ![diagnostics-roc-curve](assets/diagnostics-roc-curve.jpg)
 
 En repaso, una curva ROC demuestra lo siguiente:
 
-- Demuestra la interacción entre sensitividad (Porcentaje de Predicciones Positivas Correctas o TPR) y especificidad (1-FPR o 1-Porcentaje de Predicciones Positivas Incorrectas). Cualquier incremento en sensibilidad se acompaña con un decremento in especificidad.   
-- Cuanto más cercano la curva ROC siga el borde del lado superior izquierdo, el modelo tendrá mejor accuracy (precisión).
--  Cuanto más cercano la curva ROC este a la diagonal de 45-grados, el modelo tendrá menos accuracy (precisión)
+- Demuestra la interacción entre sensitividad (Porcentaje de Predicciones Positivas Correctas o TPR) y especificidad (1-FPR o 1-Porcentaje de Predicciones Positivas Incorrectas). Cualquier incremento en sensibilidad se acompaña con un decremento en especificidad.   
+- Cuanto más cercano la curva ROC siga el borde del lado superior izquierdo, el modelo tendrá mejor precisión(accuracy).
+-  Cuanto más cercano la curva ROC este a la diagonal de 45-grados, el modelo tendrá menos precisión.
 - La pendiente de la línea tangente en cualquier punto cortante da la probabilidad (LR) para ese valor de prueba. Este se puede ver en al gráfico anterior  
-- El área debajo de la curva da la accuracy (precision) del modelo
+- El área debajo de la curva es una medida de la precisión del modelo.
 
 Regresando al conjunto de datos de Freddie Mac, aunque el modelo haya sido evaluado usando la pérdida logarítmica para penalizar el error, aun podemos ver los resultados de la curva ROC. Podremos ver si la curva ROC soporta nuestras conclusiones del análisis de la matriz de confusión y la puntuación en la página de diagnósticos.
 
 1\. Basado en la curva ROC generada por el modelo de Driverless AI para tu experimento, identifica el área debajo de la curva (AUC). Recuerda que un modelo con clasificaciones perfectas tendrá un AUC de 1.
 
 2\. Para cada uno de los siguientes puntos en la curva, determina el porcentaje de predicciones positivas correctas, el porcentaje de predicciones positivas incorrectas, y el límite por medio de flotar el cursor sobre cada punto como se ve en el gráfico debajo: 
-- Mejor Accuracy (precisión)
+- Mejor Precisión
 - Mejor F1
 - Mejor MCC
 
 ![diagnostics-roc-best-acc](assets/diagnostics-roc-best-acc.jpg)
 
-Recuerda que para un problema de clasificación binaria, accuracy (precisión) es el número de predicciones correctas dividido por el número total de predicciones. Probabilidades son convertidas en clases de predicciones para definir un límite. Para este modelo, fue determinado que la mejor accuracy (precisión) se encuentra en el límite .5375. 
+Recuerda que para un problema de clasificación binaria, precisión es el número de predicciones correctas dividido por el número total de predicciones. Probabilidades son convertidas en clases de predicciones para definir un límite. Para este modelo, fue determinado que la mejor precisión se encuentra en el límite .5375. 
  
 En este limite, el modelo predijo:
 - Predicciones Positivas Correctas = 1 = 175 casos fueron predichos que terminarían en mora y terminaron en mora
 - Predicciones Negativas Correctas = 0 = 120,441 casos fueron predichos que no terminarían en mora y no terminaron en mora
 - Predicciones Positivas Incorrectas = 1 = 96 casos fueron predichos que terminarían en mora y no terminaron en mora
-- Predicciones Negativas Incorrecta = 0 = 4,323 casos fueron predichos que no terminarían en mora y si terminaron en mora
+- Predicciones Negativas Incorrectas = 0 = 4,323 casos fueron predichos que no terminarían en mora y si terminaron en mora
 
-3\. Observando los valores de área debajo de la curva (AUC), el mejor MCC, F1, y accuracy (precisión), cómo calificarías el modelo? ¿Es un buen modelo? Usa los puntos debajo para ayudarte a tomar una decisión sobre la curva ROC.
+3\. Observando los valores de área debajo de la curva (AUC), el mejor MCC, F1, y precisión, cómo calificarías el modelo? ¿Es un buen modelo? Usa los puntos debajo para ayudarte a tomar una decisión sobre la curva ROC.
 
-Recuerda que para la curva **ROC**:
+Recuerda que para la curva **ROC** (Curva ROC):
 - Un modelo de clasificación perfecto tiene un AUC de 1
 - MCC es medido entre -1 y 1, donde 1 es predicciones perfectas y 0 significa que el modelo no es mejor que un modelo de predicciones al azar y -1 es todas las predicciones incorrectas
 - F1 es medido entre 0 y 1, donde 0 significa que no hay predicciones positivas correctas y 1 cuando no hay ni negativos falsos ni falsos positivos, o precisión perfecta y recall. 
-- Accuracy (precision) es medida entre 0 y 1, donde 1 es una medida de accuracy perfecta o clasificación perfecta, y 0 es clasificacion pobre con accuracy baja.
+- Precision es medida entre 0 y 1, donde 1 es una medida de accuracy perfecta o clasificación perfecta, y 0 es clasificacion pobre con precision baja.
 
-**Nota:** Si no estas seguro(a) que es o cómo se calculan los valores de AUC, MCC, F1 y Accuracy, puedes revisar la sección de conceptos de este tutorial. 
+**Nota:** Si no estas seguro(a) que es o cómo se calculan los valores de AUC, MCC, F1 y Precision, puedes revisar la sección de conceptos de este tutorial. 
 
 
 ### Nuevo Modelo con Mismos Parámetros
 
-En caso de curiosidad y si quieres saber si se puede mejorar la accuracy (precisión) del modelo, esto se puede hacer por medio de cambiar el modo de evaluación de Logloss a Accuracy.
+En caso de curiosidad y si quieres saber si se puede mejorar la precisión del modelo, esto se puede hacer por medio de cambiar el modo de evaluación de Logloss a precisión.
 
-1\. Para hacer esto, haz clic en la página de **Experiments (Experimentos)**
+1\. Para hacer esto, haz clic en la página de **Experiments** (Experimentos)
 
 2\. Haz clic en el experimento que hiciste para la tarea #1 y selecciona **New Model with Same Parameters** (Nuevo Modelo con Mismos Parámetros)
 
 ![new-model-w-same-params](assets/new-model-w-same-params.jpg)
 
-Una imagen similar a la debajo aparecerá. Nota que esta página tiene los mismos ajustes que los de tarea #1. La unica diferencia es en la sección de **Scorer** (Evaluador), se cambio de **Logloss** a **Accuracy**. Lo demás se debería de quedar igual.
+Una imagen similar a la debajo aparecerá. Nota que esta página tiene los mismos ajustes que los de tarea #1. La unica diferencia es en la sección de **Scorer** (Evaluador), se cambio de **Logloss** a **Accuracy** (Precision) . Lo demás se debería de quedar igual.
 
-3\. Si no lo has hecho aun, selecciona **Accuracy** (precision) en la sección de scorer (evaluador) y selecciona **Launch Experiment** (Lanzar Experimento)
+3\. Si no lo has hecho aun, selecciona **Accuracy** en la sección de scorer (evaluador) y selecciona **Launch Experiment** (Lanzar Experimento)
 
 
 ![new-model-accuracy](assets/new-model-accuracy.jpg)
 
-Al igual que en el experimento en la Tarea #1, espera a que el experimento termine de correr. Después que el experimento termine de correr, una página similar aparecerá. Nota que en el resumen localizado en la parte baja del lado derecho, los valores de validación y prueba ya no están siendo evaluados por **Logloss*, si no por **Accuracy** (precisión).
+Al igual que en el experimento en la Tarea #1, espera a que el experimento termine de correr. Después que el experimento termine de correr, una página similar aparecerá. Nota que en el resumen localizado en la parte baja del lado derecho, los valores de validación y prueba ya no están siendo evaluados por **Logloss**, si no por **Accuracy**.
 
 
 ![new-experiment-accuracy-summary](assets/new-experiment-accuracy-summary.jpg)
@@ -1058,7 +1058,7 @@ Vamos a usar este nuevo experimento para correr un diagnóstico nuevo. Vas a nec
 5\. Cuando estés en la página de diagnósticos, selecciona **+Diagnose Model** (Diagnostica Modelo)
 
 6\. En la página de **Create new model diagnostics** (crear nuevo diagnóstico de modelo)
-1. Haz clic en **Diagnosed Experiment** (Experimento Diagnosticado), y selecciona el experimento que completaste en la Tarea #1. En este caso, el experimento se llam **1. Freddie Mac Classification Tutorial** (Tutorial de Clasificación Freddie Mac).
+1. Haz clic en **Diagnosed Experiment** (Experimento Diagnosticado), y selecciona el experimento que completaste en la Tarea #1. En este caso, el experimento se llama **1. Freddie Mac Classification Tutorial** (Tutorial de Clasificación Freddie Mac).
 2. Haz clic en **Dataset** (conjunto de datos), y selecciona freddie_mac_500_test
 3. Inicia los diagnósticos del modelo con hacer clic en **Launch Diagnostics** (Lanzar Diagnosticos)
 
@@ -1073,85 +1073,85 @@ Vamos a usar este nuevo experimento para correr un diagnóstico nuevo. Vas a nec
 ![diagnostics-scores-accuracy-model](assets/diagnostics-scores-accuracy-model.jpg)
 
 
-9\. Ubica la nueva curva ROC y haz clic. Flota sobre el valor de **Best ACC** en la curva. Una imagen similar a la debajo aparecerá.
+9\. Ubica la nueva curva ROC y haz clic. Flota sobre el valor de **Best ACC** (La mejor precisión) en la curva. Una imagen similar a la debajo aparecerá.
 
 
 ![diagnostics-roc-curve-accuracy-model](assets/diagnostics-roc-curve-accuracy-model.jpg)
 
-¿Cuánto mejoró el modelo al optimizar la accuracy (precisión) por medio del evaluador? 
+¿Cuánto mejoró el modelo al optimizar accuracy (precisión) por medio del evaluador? 
 
 El nuevo modelo predijo: 
 - Limite = .5532
 - Predicciones Positivas Correctas = 1 = 152 casos fueron predichos que terminarían en mora y terminaron en mora
 - Predicciones Negativas Correctas = 0 = 120,463 casos fueron predichos que no terminarían en mora y no terminaron en mora
 - Predicciones Positivas Incorrectas = 1 = 74 casos fueron predichos que terminarían en mora y no terminaron en mora
-- Predicciones Negativas Incorrecta = 0 = 4,346 casos fueron predichos que no terminarían en mora y si terminaron en mora
+- Predicciones Negativas Incorrectas = 0 = 4,346 casos fueron predichos que no terminarían en mora y si terminaron en mora
 
 El primer modelo predijo:
 - Limite = .5375
 - Predicciones Positivas Correctas = 1 = 175 casos fueron predichos que terminarían en mora y terminaron en mora
 - Predicciones Negativas Correctas = 0 = 120,441 casos fueron predichos que no terminarían en mora y no terminaron en mora
 - Predicciones Positivas Incorrectas = 1 = 96 casos fueron predichos que terminarían en mora y no terminaron en mora
-- Predicciones Negativas Incorrecta = 0 = 4,323 casos fueron predichos que no terminarían en mora y si terminaron en mora
+- Predicciones Negativas Incorrectas = 0 = 4,323 casos fueron predichos que no terminarían en mora y si terminaron en mora
 
-El límite para mejor accuracy (precisión) cambio de .5375 del primer modelo a .5532 para el modelo nuevo. Este incremento en límite mejoró la accuracy (precisión), en otras palabras mejoró la proporción de predicciones correctas en base al número total de predicciones. Nota, de hecho, que mientras el número de predicciones positivas incorrectas se redujo, el número de predicciones negativas incorrectas incremento. Pudimos reducir el número de casos predichos incorrectamente que terminarían en mora, pero incrementó el número de predicciones incorrectas que no terminarían en mora. 
+El límite para mejor accuracy (precisión) cambio de .5375 del primer modelo a .5532 para el modelo nuevo. Este incremento en límite mejoró la precisión, en otras palabras mejoró la proporción de predicciones correctas en base al número total de predicciones. Nota, de hecho, que mientras el número de predicciones positivas incorrectas se redujo, el número de predicciones negativas incorrectas incremento. Pudimos reducir el número de casos predichos incorrectamente que terminarían en mora, pero incrementó el número de predicciones incorrectas que no terminarían en mora. 
 
-En resumen, no hay manera de incrementar uno sin sacrificar los resultados del otro. En el caso de accuracy (precisión), incrementamos el número de préstamos hipotecarios, especialmente para personas que fueron negadas préstamos porque la predicción era que terminarían en mora cuando en realidad no sería el caso. Pero, también incrementó el número de casos para personas que no deberían de haber recibido un préstamo porque terminarían en mora. Como prestamista hipotecario, cuál de los dos es preferible? ¿Positivos falsos o negativos falsos?
+En resumen, no hay manera de incrementar uno sin sacrificar los resultados del otro. En el caso de precisión, incrementamos el número de préstamos hipotecarios, especialmente para personas que fueron negadas préstamos porque la predicción era que terminarían en mora cuando en realidad no sería el caso. Pero, también incrementó el número de casos para personas que no deberían de haber recibido un préstamo porque terminarían en mora. Como prestamista hipotecario, cuál de los dos es preferible? ¿Positivos falsos o negativos falsos?
 
 10\. Sal de la página de la curva ROC con hacer clic en la **x** en la parte superior del lado derecho del gráfico, al lado de la opción de **Download** (descargar)
 
 ### Inmersión Más Profunda
 
-- [How and when to use ROC Curves and Precision-Recall Curves for Classification in Python](https://machinelearningmastery.com/roc-curves-and-precision-recall-curves-for-classification-in-python/)
+- [Cómo y cuándo usar las curvas ROC y las curvas de recuperación de precisión para la clasificación en Python](https://machinelearningmastery.com/roc-curves-and-precision-recall-curves-for-classification-in-python/)
 
-- [ROC Curves and AUC Explained](https://www.youtube.com/watch?time_continue=1&v=OAl6eAyP-yo)
-- [Towards Data Science - Understanding AUC- ROC Curve](https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5)
+- [Curvas ROC y AUC explicadas](https://www.youtube.com/watch?time_continue=1&v=OAl6eAyP-yo)
+- [Hacia la ciencia de datos: comprensión de la curva AUC-ROC](https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5)
 
-- [ROC Curves and Under the Curve (AUC) Explained](https://www.youtube.com/watch?v=OAl6eAyP-yo)
+- [Curvas ROC y bajo la curva (AUC) explicadas](https://www.youtube.com/watch?v=OAl6eAyP-yo)
 
-- [Introduction to ROC](https://classeval.wordpress.com/introduction/introduction-to-the-roc-receiver-operating-characteristics-plot/)
+- [Introducción a ROC](https://classeval.wordpress.com/introduction/introduction-to-the-roc-receiver-operating-characteristics-plot/)
 
 ## Tarea 7: ER: Prec-Recall
 
-Continuando en la página de diagnósticos, selecciona la curve **P-R**. La curva P-R se debe de ver como la imagen debajo: 
+Continuando en la página de diagnósticos, selecciona la curva **P-R** (Curva P-R). La curva P-R se debe de ver como la imagen debajo: 
 
 ![diagnostics-pr-curve](assets/diagnostics-prec-recall.jpg)
 
-Recuerda que para la curva **Prec-Recall:**
+Recuerda que para la curva **Prec-Recall**(Curva P-R):
 
-- La curva de precisión-recall tiene recall en el eje x y precisión en el eje y
+- La curva Prec-Recall tiene recall en el eje x y precisión en el eje y
 - Recall es lo mismo que sensitividad y precisión es lo mismo que el valor de predecir la clase positiva
 - Curvas ROC deberían de ser utilizadas en casos donde el número de observaciones de cada clase son aproximadamente iguales
 - Curvas de Precisión-Recall se deben de usar cuando no hay un desequilibrio entre el número de observaciones en cada clase  
-- Similar a la curva ROC, el área debajo de la curva de precisión-recall is una medida de accuracy (precision) y lo más alto mejor 
-- En ambas curvas, Driverless AI indicara puntos en los cuales se dan los limitest para major Accuracy (ACC), F1, o MCC (coeficiente de correlación Matthews)
+- Similar a la curva ROC, el área debajo de la curva de precisión-recall es una medida de precision y lo más alto mejor 
+- En ambas curvas, Driverless AI indicara puntos en los cuales se dan los limitest para mejorar precision (Accuracy (ACC)), F1, o MCC (coeficiente de correlación Matthews)
 
-En ver los resultados de la curva P-R, es este un buen modelo para determinar si en cliente terminará con un préstamo en mora? Vamos a ver los resultados en la curva P-R.
+Al ver los resultados de la curva P-R, es este un buen modelo para determinar si un cliente terminará con un préstamo en mora? Vamos a ver los resultados en la curva P-R.
 
-1\. Basado en la curva P-R generada por el modelo de Driverless AI, identifica el valor de área debajo de la curva (AUC)
+1\. Basado en la curva P-R generada por el modelo de Driverless AI, identifica el valor de la área debajo de la curva (AUC)
 
 2\. Para cada uno de los puntos en la curva, determina el valor de Predicciones Positivas Correctas, Predicciones Positivas Incorrectas, y el límite para cada punto debajo al flotar el cursor como en la imagen: 
-- Mejor Accuracy 
+- Mejor Accuracy (Precision) 
 - Mejor F1
 - Mejor MCC
 
 ![diagnostics-prec-recall-best-mccr](assets/diagnostics-prec-recall-best-mcc.jpg)
 
-3\. Basado en el AUC, mejor MCC, F1, Accuracy (precision) de la curva P-R, como calificarías el modelo? ¿Es un buen modelo o no? Usa los puntos claves para ayudarte a evaluar la curva P-R.
+3\. Basado en el AUC, mejor MCC, F1, Precision de la curva P-R, como calificarías el modelo? ¿Es un buen modelo o no? Usa los puntos claves para ayudarte a evaluar la curva P-R.
 
 Recuerda que para la curva **P-R**:
 
 - Un modelo de clasificación perfecto tiene un AUC de 1 
-- MCC is medido entre -1 y 1, donde 1 es un modelo de predicción perfecto, 0 significa que el modelo no da mejor resultados que en modelo al azar, y -1 es que todas las predicciones fueron incorrectas.
-- F1 is medido entre 0 y 1 , donde 0 significa que no hay predicciones positivas correctas, y 1 que no hay ni negativos falsos ni positivos falsos o precision y recall perfecta
-- Accuracy (precisión) es medida entre 0 y 1, where 1 is accuracy perfecta o clasificación perfecta, y 0 es accuracy pobre o clasificación pobre
+- MCC es medido entre -1 y 1, donde 1 es un modelo de predicción perfecto, 0 significa que el modelo no da mejor resultados que un modelo al azar, y -1 es que todas las predicciones fueron incorrectas.
+- F1 es medido entre 0 y 1 , donde 0 significa que no hay predicciones positivas correctas, y 1 que no hay ni negativos falsos ni positivos falsos o precision y recall perfecta
+- Precisión es medido entre 0 y 1, donde 1 es precisión perfecta o clasificación perfecta, y 0 es precisión pobre o clasificación pobre
 
 
-**Nota:** Si no estas seguro(a) que es o cómo se calculan los valores de AUC, MCC, F1 y Accuracy, puedes revisar la sección de conceptos de este tutorial. 
+**Nota:** Si no estas seguro(a) que es o cómo se calculan los valores de AUC, MCC, F1 y precisión, puedes revisar la sección de conceptos de este tutorial. 
 
 ### Nuevo Modelo con Mismos Parámetros
 
-Al igual que la tarea 6, podemos mejorar el área debajo de la curva de precisión-recall al crear un modelo con los mismos parámetros. Nota que necesitarás cambiar el evaluador de **Logloss** a **AUCPR*. Lo puedes intentar tu mismo. 
+Al igual como la tarea 6, podemos mejorar el área debajo de la curva de precisión-recall al crear un modelo con los mismos parámetros. Nota que necesitarás cambiar el evaluador de **Logloss** a **AUCPR**. Lo puedes intentar tu mismo. 
 
 Para repasar cómo lanzar un experimento nuevo con los mismos parámetros y un evaluador diferente, sigue los pasos en la tarea 6, sección **Nuevo Modelo con Nuevos Parametros**
 
@@ -1161,11 +1161,11 @@ Para repasar cómo lanzar un experimento nuevo con los mismos parámetros y un e
 
 ### Inmersión Más Profunda y Recursos
 
-- [Towards Data Science Precision vs Recall](https://towardsdatascience.com/precision-vs-recall-386cf9f89488)
+- [Hacia la ciencia de datos Precisión vs Recuperación](https://towardsdatascience.com/precision-vs-recall-386cf9f89488)
 
-- [ML Classification - Precision-Recall Curve](https://www.coursera.org/lecture/ml-classification/precision-recall-curve-rENu8)
+- [Clasificación ML: curva de recuperación de precisión](https://www.coursera.org/lecture/ml-classification/precision-recall-curve-rENu8)
 
-- [Introduction to Precision-Recall](https://classeval.wordpress.com/introduction/introduction-to-the-precision-recall-plot/)
+- [Introducción a la recuperación de precisión](https://classeval.wordpress.com/introduction/introduction-to-the-precision-recall-plot/)
 
 ## Tarea 8: ER: Gains (Ganancia)
 
@@ -1173,9 +1173,8 @@ Continuando en la página de diagnósticos, selecciona la curva de **CUMULATIVE 
 
 ![diagnostics-gains](assets/diagnostics-gains.jpg)
 
-Recuerda que para la curva de **Ganancia**:
-
-- Un grafico de ganancia cumulativa is un visual de soporte para evaluar nuestro modelo.
+Recuerda que para la curva de **Gains** (Curva de Ganancia):
+- Un gráfico de ganancias acumuladas es una ayuda visual para medir el rendimiento del modelo.
 - El eje y demuestra el porcentaje de respuestas positivas. Este es un porcentaje del número total de respuestas positivas posibles.  
 - El eje x demuestra el porcentaje de todos los clientes del conjunto de datos de Freddie Mac que no terminaron en mora, siendo una fracción del número total de casos
 - La línea rayada es la línea de base, o tasa de respuesta general
@@ -1196,22 +1195,22 @@ Si flotamos el cursor sobre el 10% de los datos, el modelo creado al azar (la l�
 
 Recuerda que el modelo de predicción perfecto tiene un comienzo muy escarpado, y como regla en general, entre más escarpada la curva, mas ganancia. El área entre la línea de base (la línea diagonal rayado en blanco) y la curva de ganancia (curva amarilla), mejor conocida como el área debajo de la curva, demuestra cuanto mejor nuestro modelo es a comparación de un modelo al azar. Pero es bueno recordar que siempre hay oportunidad para mejorar, la curva de ganancia podría ser más escarpada.
 
-**Nota:** Si nos estás seguro(a) de que es AUC o que es el gráfico de ganancia, haz favor de repasar la sección de conceptos de este tutorial.
+**Nota:** Si no estás seguro(a) de que es AUC o que es el gráfico de ganancia, haz favor de repasar la sección de conceptos de este tutorial.
 
 4\. Sal del gráfico de ganancia con hacer clic en la **x** en la parte superior, derecha del grafico, junto a la opción de **Download** (descarga)
 
 ### Inmersión Más Profunda y Recursos
  
-- [Towards Data Science - Understanding and Interpreting Gain and Lift Charts](https://www.datasciencecentral.com/profiles/blogs/understanding-and-interpreting-gain-and-lift-charts)
+- [Hacia la ciencia de datos: comprender e interpretar gráficos de ganancia y elevación](https://www.datasciencecentral.com/profiles/blogs/understanding-and-interpreting-gain-and-lift-charts)
 
 
-## Tarea: ER: LIFT
+## Tarea 9: ER: LIFT
 
-Siguiendo en la pagina de diagnosticos, selecione **LIFT** de curva. EL levantamiento de curva deveria mirarse igual al de abajo:
+Siguiendo en la pagina de diagnosticos, selecione **LIFT** (Ascensor) de curva. EL levantamiento de curva deveria mirarse igual al de abajo:
 
 ![diagnostics-lift](assets/diagnostics-lift.jpg)
 
-Recuerde que para la curva de **LIFT**:
+Recuerde que para la curva de **LIFT** (Ascensor):
 
 Una tabla de lift es una ayuda visual para medir el redimiento del modelo.
 
@@ -1235,11 +1234,11 @@ Para esta tabla de levantamiento, todas las predicciones fueron organisadas a co
 
 El area entre la linea base (las lineas blancas punteadas horizontales) y el levantamiento de la curva (la curva amarilla) mejor conocido como el area debajo de la curva visualmente nos enseña que tan mejor nuestro modelo es a comparacion del modelo al azar.
 
-4\. Sal de la tabla del levantamiento con tan solo precionar **x** localizado en la parte alta de la esquina derecha de la tabla, a lado de opcion de **Download**/Descargar. 
+4\. Sal de la tabla del levantamiento con tan solo precionar **x** localizado en la parte alta de la esquina derecha de la tabla, a lado de opcion de **Download**(Descargar). 
 
 ### Exploración más Profunda y Recursos
 
-- [Towards Data Science - Understanding and Interpreting Gain and Lift Charts](https://www.datasciencecentral.com/profiles/blogs/understanding-and-interpreting-gain-and-lift-charts)
+- [Hacia la ciencia de datos: comprender e interpretar gráficos de ganancia y elevación](https://www.datasciencecentral.com/profiles/blogs/understanding-and-interpreting-gain-and-lift-charts)
 
 
 ## Tarea 10: Tabla Kolmogorov-Smirnov
@@ -1265,23 +1264,23 @@ Recuerda que la tabla K-S:
 
 ![diagnostics-ks-20-percent](assets/diagnostics-ks-20-percent.jpg)
 
-Para las tablas K-S, si miramos al alto porcentage de 20% de los datos, el modelo at-chance (las lineas punteadas diagonales) nos dice que el 20% de los datos fueron separados exitosamente entre positivos y negativos (determinadamente y no determinadamente). Sin embargo, con el modelo fue capaz de hacer .5508 o aproximadamente 55% de los casos fueros exitosos separados entre positivos y negativos.  
+Para las tablas K-S, si miramos al alto porcentage de 20% de los datos, el modelo at-chance (al azar) (las lineas punteadas diagonales) nos dice que el 20% de los datos fueron separados exitosamente entre positivos y negativos (determinadamente y no determinadamente). Sin embargo, con el modelo fue capaz de hacer .5508 o aproximadamente 55% de los casos fueros exitosos separados entre positivos y negativos.  
 
 3\. Basado en la curva(amarilla) K-S y la base linea (con una linea blanca diagonal) sera este un buen modelo? 
 
-4\. Salga de la tabla K-S y haga click sobre la **x** localizado en la parte alta de la esquina derecha de la tabla, a lado de opcion de **Descargar**
+4\. Salga de la tabla K-S y haga click sobre la **x** localizado en la parte alta de la esquina derecha de la tabla, a lado de opcion de **Download** (Descargar).
 
 ### Exploración más Profunda y Recursos
 
-- [Kolmogorov-Smirnov Test](https://towardsdatascience.com/kolmogorov-smirnov-test-84c92fb4158d)
-- [Kolmogorov-Smirnov Goodness of Fit Test](https://www.statisticshowto.datasciencecentral.com/kolmogorov-smirnov-test/)
+- [Prueba de Kolmogorov-Smirnov](https://towardsdatascience.com/kolmogorov-smirnov-test-84c92fb4158d)
+- [Prueba de bondad de ajuste de Kolmogorov-Smirnov](https://www.statisticshowto.datasciencecentral.com/kolmogorov-smirnov-test/)
 
 
 ## Tarea 11: Experimentar con AutoDocs
 
-Driverless AI es muy facil de descargar los resultados de tus experimentos, con tan solo un click. 
+En Driverless AI es muy facil de descargar los resultados de tus experimentos, con tan solo hacer un clic. 
 
-1\. Exploremos la generacion automatica de documentos para este experimento. En la pagina de **Experimentos** selecione **Descargar Resumen del Experimento**. 
+1\. Exploremos la generacion automatica de documentos para este experimento. En la pagina de **Experiment** (Experimento) selecione **Download Experiment Summary** (Descargar Resumen del Experimento). 
 
 ![download-experiment-summary](assets/download-experiment-summary.jpg)
 
@@ -1291,7 +1290,7 @@ El **Experiment Summary** (Resumen del Experimento) contiene lo siguiente:
 - Caracteristicas del Experimento conjunto con la relevante importancia
 - Informacion conjunta
 - El preestreno del experimento
-- Un reporte auto-generado para el experimento en formato .docx
+- Un reporte auto-generado para el experimento en formato.docx
 - Un resumen del entrenamiento en formato csv
 - Transformaciones del objetivo en la tabla de clasificación
 - Tabla de clasificación
@@ -1317,31 +1316,31 @@ Un documento de **report** (reporte) esta incluido en resumen del **experiment**
 
 4\. Explora la Evolucion y Transformacion de caracteristicas, como este resumen se diferiencia del resumen que fue proveido en la **Experiments Page** (Pagina de Experimentos)?
 
-5\. Encuentra la selecion titulada **Final Model** (Modelo Final) en el reporte.docx y eplora los siguientes puntos:explore the following items:
+5\. Encuentra la selecion titulada **Final Model** (Modelo Final) en el reporte.docx y eplora los siguientes puntos:
 
 - Mesa titulada **Performance of Final Model** (Performacion del Modelo Final) y determina el **logloss** del puntaje final del examen
-- Validacion del Matrix de Confucion
+- Validacion del Matriz de Confucion
 - Validacion y examen ROC, Prec-Recall, lift, y gains plots  
 
 ### Exploración más Profunda y Recursos
 
-- [H2O’s Summary Report](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-summary.html?highlight=experiment%20overview)
+- [Informe resumido de H2O](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-summary.html?highlight=experiment%20overview)
 
 
-## Los Siguientes Pasos
+## Los siguientes pasos
 
 Explora el siguiente tutorial: [Interpretabilidad de Machine Learning](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#0) donde aprenderas como:
 
 - Desplegar un experimento
 - Crear un reporte interpretario de ML
 - Explorar conceptos de explainabilidad como:
-    - Global Shapley
-    - Partial Dependence plot
-    - Decision tree surrogate
+    - Shapley global
+    - Parcela de dependencia parcial
+    - Árbol de decisión sustituto
     - K-Lime
-    - Local Shapley
+    - Shapley local
     - LOCO
-    - Individual conditional Expectation
+    - Expectativa condicional individual
 
 
 
