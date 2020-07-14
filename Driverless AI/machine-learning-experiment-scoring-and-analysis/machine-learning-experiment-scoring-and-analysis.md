@@ -448,11 +448,15 @@ However, two other possible outcomes need to be considered, the false negative a
 Binary classifications produce four outcomes: 
 
 **Predicticted as Positive**:
+
 True Positive = TP
+
 False Positive = FP
 
 **Predicted as Negative**:
+
 True Negative = TN 
+
 False Negative = FN 
 
 ![binary-classifier-four-outcomes](assets/binary-classifier-four-outcomes.jpg)
@@ -583,17 +587,23 @@ If you are using a model metric of Accuracy and you see issues with Prec-Recall 
 
 ### GINI, ACC, F1 F0.5, F2, MCC and Log Loss
 
-ROC and Prec-Recall curves are extremely useful to test a binary classifier because they provide visualization for every possible classification threshold. From those plots we can derive single model metrics like ACC, F1, F0.5, F2 and MCC. There are also other single metrics that can be used concurrently to evaluate models such as GINI and Log Loss. The following will be a discussion about the model scores  ACC, F1, F0.5, F2, MCC, GINI and Log Loss. The model scores are what the ML model optimizes to.
+ROC and Prec-Recall curves are extremely useful to test a binary classifier because they provide visualization for every possible classification threshold. From those plots we can derive single model metrics (e.g. ACC, F1, F0.5, F2 and MCC). There are also other single metrics that can be used concurrently to evaluate models such as GINI and Log Loss. The following will be a discussion about the model scores,  ACC, F1, F0.5, F2, MCC, GINI and Log Loss. The model scores are what the ML model optimizes on.
 
 #### GINI
 
 The Gini index is a well-established method to quantify the inequality among values of frequency distribution and can be used to measure the quality of a binary classifier. A Gini index of zero expresses perfect equality (or a totally useless classifier), while a Gini index of one expresses maximal inequality (or a perfect classifier).
 
+**GINI index formula**
+
+![gini-index-formula](assets/gini-index-formula.jpg)
+
+where p<sub>j</sub> is the probability of class j [18]. 
+
 The Gini index is based on the Lorenz curve. The Lorenz curve plots the true positive rate (y-axis) as a function of percentiles of the population (x-axis).
 
 The Lorenz curve represents a collective of models represented by the classifier. The location on the curve is given by the probability threshold of a particular model. (i.e., Lower probability thresholds for classification typically lead to more true positives, but also to more false positives.)[12]
 
-The Gini index itself is independent of the model and only depends on the Lorenz curve determined by the distribution of the scores (or probabilities) obtained from the classifier.
+The Gini index itself is independent of the model and only depends on the Lorenz curve determined by the distribution of the scores (or probabilities) obtained from the classifier. 
 
 #### Accuracy
 
@@ -601,36 +611,50 @@ Accuracy or  ACC (not to be confused with AUC or area under the curve) is a sing
 
 Using the confusion matrix table, ACC can be calculated in the following manner:
 
-**Accuracy** = (TP + TN) / (TP + TN + FP + FN)
+**Accuracy** equation = (TP + TN) / (TP + TN + FP + FN)
+
+![accuracy-equation](assets/accuracy-equation.jpg)
 
 #### F-Score: F1, F0.5 and F2
 
-The F1 Score is another measurement of classification accuracy. It represents the harmonic average of the precision and recall. F1 is measured in the range of 0 to 1, where 0 means that there are no true positives, and 1 when there is neither false negatives nor false positives or perfect precision and recall[9].
+The F1 Score is another measurement of classification accuracy. It represents the harmonic average of the precision and recall. F1 is measured in the range of 0 to 1, where 0 means that there are no true positives, and 1 when there is neither false negatives nor false positives or perfect precision and recall [9].
 
 Using the confusion matrix table, the F1 score can be calculated in the following manner:
 
 **F1** = 2TP /( 2TP + FN + FP)
 
-**F05** equation:
-F0.5 = 1.25((precision)(recall)/ 0.25precision + recall)
+**F1** equation: 
+
+![f1-score-equation](assets/f1-score-equation.jpg)
+
+**F0.5** equation:
+
+![f05-score-equation](assets/f05-score-equation.jpg)
 
 Where:
-Precision is the positive observations (true positives) the model correctly identified from all the observations it labeled as positive (the true positives + the false positives). Recall is the positive observations (true positives) the model correctly identified from all the actual positive cases (the true positives + the false negatives)[15].
+Precision is the positive observations (true positives) the model correctly identified from all the observations it labeled as positive (the true positives + the false positives). Recall is the positive observations (true positives) the model correctly identified from all the actual positive cases (true positives + false negatives)[15].
 
-The **F2 score** is the weighted harmonic mean of the precision and recall (given a threshold value). Unlike the F1 score, which gives equal weight to precision and recall, the F2 score gives more weight to recall than to precision. More weight should be given to recall for cases where False Negatives are considered worse than False Positives. For example, if your use case is to predict which customers will churn, you may consider False Negatives worse than False Positives. In this case, you want your predictions to capture all of the customers that will churn. Some of these customers may not be at risk for churning, but the extra attention they receive is not harmful. More importantly, no customers actually at risk of churning have been missed[15].
+**DISPLAY F2 score equation**
 
+The **F2 score** is the weighted harmonic mean of the precision and recall (given a threshold value). Unlike the F1 score, which gives equal weight to precision and recall, the F2 score gives more weight to recall than to precision. More weight should be given to recall for cases where False Negatives are considered to have a stronger negative business impact than False Positives. For example, if your use case is to predict which customers will churn, you may consider False Negatives worse than False Positives. In this case, you want your predictions to capture all of the customers that will churn. Some of these customers may not be at risk for churning, but the extra attention they receive is not harmful. More importantly, no customers actually at risk of churning have been missed [15].
+
+![f2-score-equation](assets/f2-score-equation.jpg)
+
+Where: Precision is the positive observations (true positives) the model correctly identified from all the observations it labeled as positive (the true positives + the false positives). Recall is the positive observations (true positives) the model correctly identified from all the actual positive cases (the true positives + the false negatives).
 
 #### MCC
 
-MCC or Matthews Correlation Coefficient which is used as a measure of the quality of binary classifications [1]. The MCC is the correlation coefficient between the observed and predicted binary classifications. MCC is measured in the range between -1 and +1 where +1 is the perfect prediction, 0 no better than a random prediction and -1 all incorrect predictions[9].
+MCC or Matthews Correlation Coefficient which is used as a measure of the quality of binary classifications [1]. The MCC is the correlation coefficient between the observed and predicted binary classifications. MCC is measured in the range between -1 and +1 where +1 is the perfect prediction, 0 no better than a random prediction and -1 all incorrect predictions [9].
 
 Using the confusion matrix table MCC can be calculated in the following manner:
 
-**MCC** =  (TP * TN- FP* FN) / [(TP + FP) * (FN + TN) * (FP + TN) * (TP + FN)] ^ ½
+**MCC** equation:
+
+![mcc-equation](assets/mcc-equation.jpg)
 
 #### Log Loss (Logloss)
  
-The logarithmic loss metric can be used to evaluate the performance of a binomial or multinomial classifier. Unlike AUC which looks at how well a model can classify a binary target, logloss evaluates how close a model’s predicted values (uncalibrated probability estimates) are to the actual target value. For example, does a model tend to assign a high predicted value like .80 for the positive class, or does it show a poor ability to recognize the positive class and assign a lower predicted value like .50? A model with a log loss of 0 would be the perfect classifier. When the model is unable to make correct predictions, the log loss increases making the model a poor model[11].
+The logarithmic loss metric can be used to evaluate the performance of a binomial or multinomial classifier. Unlike AUC which looks at how well a model can classify a binary target, logloss evaluates how close a model’s predicted values (uncalibrated probability estimates) are to the actual target value. For example, does a model tend to assign a high predicted value like 0.80 for the positive class, or does it show poor ability to recognize the positive class and assign a lower predicted value like 0.50? A model with a log loss of 0 would be the perfect classifier. When the model is unable to make correct predictions, the log loss increases making the model a poor model[11].
 
 **Binary classification equation:**
 
@@ -643,22 +667,21 @@ The logarithmic loss metric can be used to evaluate the performance of a binomia
 Where:
 
 - N is the total number of rows (observations) of your corresponding dataframe.
-- w is the per row user-defined weight (defaults is 1).
+- w is the per row user-defined weight (default is 1).
 - C is the total number of classes (C=2 for binary classification).
 - p is the predicted value (uncalibrated probability) assigned to a given row (observation).
 - y is the actual target value.
 
-Driverless AI Diagnostics calculates the ACC, F1, MCC values and plots those values in each ROC and Pre-Recall curves making it easier to identify the best threshold for the model generated. Additionally, it also calculates the log loss score for your model allowing you to quickly assess whether the model you generated is a good model or not. 
+The Diagnostics section in Driverless AI calculates the ACC, F1, MCC values and plots those values in each ROC and Pre-Recall curves making it easier to identify the best threshold for the model generated. Additionally, it also calculates the log loss score for your model allowing you to quickly assess whether the model you generated is a good model or not. 
 
 Let’s get back to evaluating metrics results for models.
 
 
 ### Gain and Lift Charts
 
-Gain and Lift charts measure the effectiveness of a classification model by looking at the ratio between the results obtained with a trained model versus a random model(or no model)[7]. The Gain and Lift charts help us evaluate the performance of the classifier as well as answer questions such as what percentage of the dataset captured has a positive response as a function of selected percentage of a sample. Additionally, we can explore how much better we can expect do with a model compared to a random model(or no model)[7].
+Gain and Lift charts measure the effectiveness of a classification model by looking at the ratio between the results obtained with a trained model versus a random model (or no model) [7]. The Gain and Lift charts help us evaluate the performance of the classifier as well as answer questions such as what percentage of the dataset captured has a positive response as a function of selected percentage of a sample. Additionally, we can explore how much better we can expect to do with a model compared to a random model (or no model) [7].
 
-
-One way we can think of gain is “ for every step that is taken to predict an outcome the level of uncertainty decreases. A drop of uncertainty is the loss of entropy which leads to knowledge gain”[15]. The Gain Chart plots the true positive rate (sensitivity) versus the predictive positive rate(**support**) where: 
+One way we can think of gain is “for every step that is taken to predict an outcome, the level of uncertainty decreases. A drop of uncertainty is the loss of entropy which leads to knowledge gain” [15]. The Gain Chart plots the true positive rate (sensitivity) versus the predictive positive rate(**support**) where: 
 
 **Sensitivity** = **Recall** = True Positive Rate = TP / (TP + FN)
 
@@ -682,15 +705,15 @@ How can we identify the best case scenario in relation to the random model? To d
 
 The above chart represents the best case scenario of a cumulative gains chart assuming a base rate of 20%. In this scenario all the positive cases were identified before reaching the base rate.
 
-The chart below represents an example of a predictive model (solid green curve). We can see how well the predictive model did in comparison to the random model(dotted red line). Now, we can pick a quantile and determine the percentage of positive cases up that quartile in relation to the entire test dataset. 
+The chart below represents an example of a predictive model (solid green curve). We can see how well the predictive model did in comparison to the random model (dotted red line). Now, we can pick a quantile and determine the percentage of positive cases up that quartile in relation to the entire test dataset. 
 
 ![cumulative-gains-chart-predictive-model](assets/cumulative-gains-chart-predictive-model.jpg)
 
-Lift can help us answer the question of how much better one can expect to do with the predictive model compared to a random model(or no model). Lift is a measure of the effectiveness of a predictive model calculated as the ratio between the results obtained with a model and with a random model(or no model). In other words, the ratio of gain% to the random expectation % at a given quantile. The random expectation of the xth quantile is x%[16].
+Lift can help us answer the question of how much better one can expect to do with the predictive model compared to a random model (or no model). Lift is a measure of the effectiveness of a predictive model calculated as the ratio between the results obtained with a model and with a random model (or no model). In other words, the ratio of gain % to the random expectation % at a given quantile. The random expectation of the xth quantile is x %[16].
 
 **Lift** = Predictive rate/ Actual rate
 
-When plotting lift, we also plot it against quantiles in order to help us visualize how likely it is that a positive case will take place since the Lift chart is derived from the cumulative gains chart. The points of the lift curve are calculated by determining the ratio between the result predicted by our model and the result using a random model(or no model). For instance, assuming a base rate (or hypothetical threshold) of 20% from a random model, we would take the cumulative gain percent at the 20% quantile, X and divide by it by 20. We do this for all the quantiles until we get the full lift curve. 
+When plotting lift, we also plot it against quantiles in order to help us visualize how likely it is that a positive case will take place since the Lift chart is derived from the cumulative gains chart. The points of the lift curve are calculated by determining the ratio between the result predicted by our model and the result using a random model (or no model). For instance, assuming a base rate (or hypothetical threshold) of 20% from a random model, we would take the cumulative gain percent at the 20% quantile, X and divide by it by 20. We do this for all the quantiles until we get the full lift curve. 
 
 We can start the lift chart with the base rate as seen below, recall that the base rate is the target threshold.
 
@@ -701,11 +724,11 @@ When looking at the cumulative lift for the top quantiles, X, what it means is t
 
 ![lift-chart](assets/lift-chart.jpg)
 
-### K-S Chart 
+### Kolmogorov-Smirnov Chart 
 
-Kolmogorov- Smirnov or K-S measures the performance of classification models by measuring the degree of separation between positives and negatives for validation or test data[13]. “The K-S is 100 if the scores partition the population into two separate groups in which one group contains all the positives and the other all the negatives. On the other hand, If the model cannot differentiate between positives and negatives, then it is as if the model selects cases randomly from the population. The K-S would be 0. In most classification models the K-S will fall between 0 and 100, and that the higher the value, the better the model is at separating the positive from negative cases.”[14].
+Kolmogorov-Smirnov or K-S measures the performance of classification models by measuring the degree of separation between positives and negatives for validation or test data [13]. 
 
-The KS statistic is the maximum difference between the cumulative percentage of responders or 1's (cumulative true positive rate) and cumulative percentage of non-responders or 0's (cumulative false positive rate). The significance of KS statistic is, it helps to understand, what portion of the population should be targeted to get the highest response rate (1's)[17].
+The KS statistic is the maximum difference between the cumulative percentage of responders or 1's (cumulative true positive rate) and cumulative percentage of non-responders or 0's (cumulative false positive rate). The significance of KS statistic is, it helps to understand what portion of the population should be targeted to get the highest response rate (1's) [17].
 
 ![k-s-chart](assets/k-s-chart.jpg)
 
@@ -744,6 +767,8 @@ The KS statistic is the maximum difference between the cumulative percentage of 
 [16] [Lift Analysis Data Scientist Secret Weapon](https://www.kdnuggets.com/2016/03/lift-analysis-data-scientist-secret-weapon.html)
 
 [17] [Machine Learning Evaluation Metrics Classification Models](https://www.machinelearningplus.com/machine-learning/evaluation-metrics-classification-models-r/) 
+
+[18] [Scikit-Learn: Decision Tree Learning I - Entropy, GINI, and Information Gain](https://www.bogotobogo.com/python/scikit-learn/scikt_machine_learning_Decision_Tree_Learning_Informatioin_Gain_IG_Impurity_Entropy_Gini_Classification_Error.php)
 
 ### Deeper Dive and Resources
 
@@ -807,7 +832,7 @@ Below are three questions to test your understanding of the experiment summary a
 **Note:** If you are not sure what Log loss is, feel free to review the concepts section of this tutorial.
 
 
-3\. So what do the Log Loss values tell us?  The essential Log Loss value is the test score value. This value tells us how well the model generated did against the freddie_mac_500_test set based on the error rate. In case of experiment **Freddie Mac Classification Tutorial**, the test score LogLoss = .1180 which is the log of the misclassification rate. The greater the Log loss value the more significant the misclassification. For this experiment, the Log Loss was relatively small meaning the error rate for misclassification was not as substantial. But what would a score like this mean for an institution like Freddie Mac?
+3\. So what do the Log Loss values tell us?  The essential Log Loss value is the test score value. This value tells us how well the model generated did against the freddie_mac_500_test set based on the error rate. In case of experiment **Freddie Mac Classification Tutorial**, the test score LogLoss = 0.1180 which is the log of the misclassification rate. The greater the Log loss value the more significant the misclassification. For this experiment, the Log Loss was relatively small meaning the error rate for misclassification was not as substantial. But what would a score like this mean for an institution like Freddie Mac?
 
 In the next few tasks we will explore the financial implications of misclassification by exploring the confusion matrix and plots derived from it. 
 
@@ -887,12 +912,12 @@ Using this layout, we will be able to determine how well the model predicted the
 
 ![diagnostics-confusion-matrix-1](assets/diagnostics-confusion-matrix-1.jpg)
 
-Moving into the inner part of the matrix, we find the number of cases for True Negatives, False Positives, False Negatives and True Positive. The confusion matrix for this model generated tells us that :
+Moving into the inner part of the matrix, we find the number of cases for True Negatives, False Positives, False Negatives and True Positive. The confusion matrix for this model generated tells us that:
 
-- TP = 1 = 213 cases were predicted as **defaulting** and **defaulted** in actuality 
-- TN = 0 = 120,382 cases were predicted as **not defaulting** and **did not default** 
-- FP = 1 = 155 cases were predicted as **defaulting** when in actuality they **did not default**
-- FN = 0 = 4,285 cases were predicted as **not defaulting** when in actuality they **defaulted**
+- TP = 213 cases were predicted as **defaulting** and **defaulted** in actuality 
+- TN = 120,382 cases were predicted as **not defaulting** and **did not default** 
+- FP = 155 cases were predicted as **defaulting** when in actuality they **did not default**
+- FN = 4,285 cases were predicted as **not defaulting** when in actuality they **defaulted**
 
 ![diagnostics-confusion-matrix-2](assets/diagnostics-confusion-matrix-2.jpg)
 
@@ -916,7 +941,7 @@ For this particular model these are the errors:
 - 155/120537 = 0.0012 or 0.12%  times the model classified actual cases that did not default as defaulting out of the actual non-defaulting group
 - 4285/4498 = 0.952 or 95.2% times the model classified actual cases that did default as not defaulting out of the actual defaulting group
 - 4285/124667 = 0.0343 or 3.43% times the model classified predicted cases that did default as not defaulting out of the total predicted not defaulting group
-- 210/368 = 0.5706 or 57.1% times the model classified predicted cases that defaulted as defaulting out of the total predicted defaulting group
+- 213/368 = 0.5706 or 57.1% times the model classified predicted cases that defaulted as defaulting out of the total predicted defaulting group
 - (4285 + 155) / 125035 = **0.0355**  This means that this model incorrectly classifies  .0355 or 3.55% of the time.
  
 What does the misclassification error of .0355 mean?
@@ -928,7 +953,7 @@ One way to look at the financial implications for Freddie Mac is to look at the 
 - Fixed interest rate
 - Loan term and monthly payments are both fixed
 
-For this tutorial, we will assume a 6% Annual Percent Rate(APR) over 30 years. APR is the amount one pays to borrow the funds. Additionally, we are going to assume an average home loan of $167,473(this average was calculated by taking the sum of all the loans on the freddie_mac_500.csv dataset and dividing it by 30,001 which is the total number of mortgages on this dataset). For a mortgage of $167,473 the total interest paid after 30 years would be $143,739.01[1]. 
+For this tutorial, we will assume a 6% Annual Percent Rate (APR) over 30 years. APR is the amount one pays to borrow the funds. Additionally, we are going to assume an average home loan of $167,473 (this average was calculated by taking the sum of all the loans on the freddie_mac_500.csv dataset and dividing it by 30,001 which is the total number of mortgages on this dataset). For a mortgage of $167,473 the total interest paid after 30 years would be $143,739.01 [1]. 
 
 When looking at the False Positives, we can think about 155 cases of people which the model predicted should be not be granted a home loan because they were predicted to default on their mortgage. These 155 loans translate to over 18 million dollars in loss of potential income (155 * $143,739.01) in interest.
 
@@ -960,9 +985,9 @@ The image below represents the scores for the **Freddie Mac Classification Tutor
 
 When the experiment was run for this classification model, Driverless AI determined that the best scorer for it was the Logarithmic Loss or **LOGLOSS** due to the imbalanced nature of the dataset. **LOGLOSS** focuses on getting the probabilities right (strongly penalizes wrong probabilities). The selection of Logarithmic Loss makes sense since we want a model that can correctly classify those who are most likely to default while ensuring that those that qualify for a loan get can get one.
 
-Recall that Log loss is the logarithmic loss metric that can be used to evaluate the performance of a binomial or multinomial classifier, where a model with a Log loss of 0 would be the perfect classifier. Our model  scored  a LOGLOSS value = .1193+/- .0017 after testing it with test dataset. From the confusion matrix, we saw that the model had issues classifying perfectly; however, it was able to classify with an ACCURACY of .9647 +/- .0006. The financial implications of the misclassifications have been covered in the confusion matrix section above.
+Recall that Log loss is the logarithmic loss metric that can be used to evaluate the performance of a binomial or multinomial classifier, where a model with a Log loss of 0 would be the perfect classifier. Our model  scored  a LOGLOSS value = 0.1193+/- .0017 after testing it with test dataset. From the confusion matrix, we saw that the model had issues classifying perfectly; however, it was able to classify with an ACCURACY of 0.9647 +/- .0006. The financial implications of the misclassifications have been covered in the confusion matrix section above.
 
-Driverless AI has the option to change the type of scorer used for the experiment. Recall that for this dataset the scorer was selected to be **logloss**. An experiment can be re-run with another scorer. For general imbalanced classification problems, AUCPR and MCC scorers are good choices, while F05, F1, and F2 are designed to balance recall against precision.
+Driverless AI has the option to change the type of scorer used for the experiment. Recall that for this dataset the scorer was selected to be **logloss**. An experiment can be re-run with another scorer. For general imbalanced classification problems, AUCPR and MCC scorers are good choices, while F05, F1, and F2 are designed to balance between recall and precision.
 The AUC is designed for ranking problems. Gini is similar to the AUC but measures the quality of ranking (inequality) for regression problems. 
 
 In the next few tasks we will explore the scorer further and the **Scores** values in relation to the residual plots.
@@ -988,7 +1013,7 @@ From the Diagnostics page click on the **ROC Curve**. An image similar to the on
 To review, an ROC curve demonstrates the following:
 
 - It shows the tradeoff between sensitivity (True Positive Rate or TPR) and specificity (1-FPR or False Positive Rate). Any increase in sensitivity will be accompanied by a decrease in specificity.
-- The closer the curve follows the left-hand border and then the top border of the ROC space, the more accurate the model.
+- The closer the curve follows the upper-left-hand border of the ROC space, the more accurate the model.
 - The closer the curve comes to the 45-degree diagonal of the ROC space, the less accurate the model.
 - The slope of the tangent line at a cutpoint gives the likelihood ratio (LR) for that value of the test. You can check this out on the graph above.
 - The area under the curve is a measure of model accuracy. 
@@ -1004,13 +1029,13 @@ Going back to the Freddie Mac dataset, even though the model was scored with the
 
 ![diagnostics-roc-best-acc](assets/diagnostics-roc-best-acc.jpg)
 
-Recall that for a binary classification problem, accuracy is the number of correct predictions made as a ratio of all predictions made.  Probabilities are converted to predicted classes in order to define a threshold. For this model, it was determined that the best accuracy is found at threshold .5375.
+Recall that for a binary classification problem, accuracy is the number of correct predictions made as a ratio of all predictions made.  Probabilities are converted to predicted classes in order to define a threshold. For this model, it was determined that the best accuracy is found at threshold 0.5375.
 
 At this threshold, the model predicted:
-- TP = 1 = 175 cases predicted as defaulting and defaulted
-- TN = 0 = 120,441 cases predicted as not defaulting and did not default
-- FP = 1 = 96 cases predicted as defaulting and did not default
-- FN = 0 = 4,323 cases predicted to not default and defaulted
+- TP = 175 cases predicted as defaulting and defaulted
+- TN = 120,441 cases predicted as not defaulting and did not default
+- FP = 96 cases predicted as defaulting and did not default
+- FN = 4,323 cases predicted to not default and defaulted
 
 
 3\.  From the AUC, Best MCC, F1, and Accuracy values from the ROC curve, how would you qualify your model, is it a good or bad model? Use the key points below to help you asses the ROC Curve.
@@ -1073,19 +1098,19 @@ How much improvement did we get from optimizing the accuracy via the scorer?
 
 The new model predicted:
 - Threshold = .5532
-- TP =  1 =  152 cases predicted as defaulting and defaulted
-- TN = 0 = 120,463  cases predicted as not defaulting and did not default
-- FP = 1 = 74 cases predicted as defaulting and did not default
-- FN = 0 = 4,346 cases predicted not to default and defaulted
+- TP =  152 cases predicted as defaulting and defaulted
+- TN = 120,463  cases predicted as not defaulting and did not default
+- FP = 74 cases predicted as defaulting and did not default
+- FN = 4,346 cases predicted not to default and defaulted
 
 The first model predicted:
 - Threshold = .5375
-- TP = 1 = 175 cases predicted as defaulting and defaulted
-- TN = 0 = 120,441 cases predicted as not defaulting and did not default
-- FP = 1 = 96 cases predicted as defaulting and did not default
-- FN = 0 = 4,323 cases predicted to not default and defaulted
+- TP = 175 cases predicted as defaulting and defaulted
+- TN = 120,441 cases predicted as not defaulting and did not default
+- FP = 96 cases predicted as defaulting and did not default
+- FN = 4,323 cases predicted to not default and defaulted
 
-The threshold for best accuracy changed from .5375 for the first diagnostics model to .5532 for the new model. This increase in threshold improved accuracy or the number of correct predictions made as a ratio of all predictions made. Note, however, that while the number of FP decreased the number of FN increased.  We were able to reduce the number of cases that were predicted to falsy default, but in doing so, we increased the number of FN or cases that were predicted not to default and did.
+The threshold for best accuracy changed from 0.5375 for the first diagnostics model to 0.5532 for the new model. This increase in threshold improved accuracy or the number of correct predictions made as a ratio of all predictions made. Note, however, that while the number of FP decreased the number of FN increased.  We were able to reduce the number of cases that were predicted to falsy default, but in doing so, we increased the number of FN or cases that were predicted not to default and did.
 
 The takeaway is that there is no win-win; sacrifices need to be made. In the case of accuracy, we increased the number of mortgage loans, especially for those who were denied a mortgage because they were predicted to default when, in reality, they did not. However, we also increased the number of cases that should not have been granted a loan and did.  As a mortgage lender, would you prefer to reduce the number of False Positives or False Negatives?
 
@@ -1241,8 +1266,8 @@ Continuing on the diagnostics page, select the **KS** chart. The K-S chart shoul
 Remember that for the K-S chart:
 
 - K-S measures the performance of classification models by measuring the degree of separation between positives and negatives for validation or test data.
-- The K-S is 100 if the scores partition the population into two separate groups in which one group contains all the positives and the other all the negatives
-- If the model cannot differentiate between positives and negatives, then it is as if the model selects cases randomly from the population and the K-S would be 0
+- The K-S is 100 degrees of separation if the scores partition the population into two separate groups in which one group contains all the positives and the other all the negatives
+- If the model cannot differentiate between positives and negatives, then it is as if the model selects cases randomly from the population and the K-S would be 0 degrees of separation.
 - The K-S range is between 0 and 1
 - The higher the K-S value, the better the model is at separating the positive from negative cases
 
@@ -1255,7 +1280,7 @@ Remember that for the K-S chart:
 
 ![diagnostics-ks-20-percent](assets/diagnostics-ks-20-percent.jpg)
 
-For this K-S chart, if we look at the top  20% of the data, the at-chance model (the dotted diagonal line) tells us that only 20% of the data was successfully separate between positives and negatives (defaulted and not defaulted). However, with the model it was able to do .5508 or about 55% of the cases were successfully separated between positives and negatives.
+For this K-S chart, if we look at the top  20% of the data, the at-chance model (the dotted diagonal line) tells us that only 20% of the data was successfully separate between positives and negatives (defaulted and not defaulted). However, with the model it was able to do 0.5508 or about 55% of the cases were successfully separated between positives and negatives.
 
 3\. Based on the K-S curve(yellow) and the baseline (white diagonal dashed line) is this a good model?
 
