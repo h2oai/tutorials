@@ -1,6 +1,6 @@
 # Machine Learning Interpretability Tutorial
 
-## Outline
+## Outline {}
 - [Objective](#objective)
 - [Prerequisites](#prerequisites)
 - [Task 1: Launch Experiment and MLI](#task-1-launch-experiment-and-mli) 
