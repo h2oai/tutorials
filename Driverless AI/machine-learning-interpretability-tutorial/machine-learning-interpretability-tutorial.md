@@ -12,6 +12,7 @@
 - [Task 7: Local Shapley and LOCO](#task-7-local-shapley-and-loco)
 - [Task 8: Putting it All Together and ICE](#task-8-putting-it-all-together-and-ice) 
 - [Learning Outcome](#learning-outcome)
+- [Next Steps](#next-steps)
 
 
 ## Objective 
@@ -642,12 +643,15 @@ Be able to generate an MLI report, become familiar with the major features and w
 
 [MLI Meetup before Strata NYC 2018](https://www.youtube.com/watch?v=RcUdUZf8_SU)
 
+
 [An Introduction to Machine Learning Interpretability](https://www.oreilly.com/library/view/an-introduction-to/9781492033158/) 
 
 [Testing machine learning explanation techniques](https://www.oreilly.com/ideas/testing-machine-learning-interpretability-technique)
 
 
 [Practical techniques for interpretable machine learning](https://conferences.oreilly.com/strata/strata-ca/public/schedule/detail/72421) 
+
+### Patrick Hall and H2O Github
 
 [Patrick Hall and H2O Github](https://github.com/jphall663/interpretable_machine_learning_with_python)
 
