@@ -6,7 +6,7 @@
 - [Task 1: Tour of Prebuilt Experiment](#task-1-tour-of-prebuilt-experiment)
 - [Task 2: Scoring Pipeline Deployment Concepts](#task-2-scoring-pipeline-deployment-concepts)
 - [Task 3: Batch Scoring via Score Another Dataset](#task-3-batch-scoring-via-score-another-dataset)
-- [Task 4: Interactive Scoring(REST and AWS Lambda) via Deployment Templates](#task-4-interactive-scoring(rest-and-aws-lambda)-via-deployment-templates)
+- [Task 4: Interactive Scoring(REST and AWS Lambda) via Deployment Templates](#task-4-interactive-scoringrest-and-aws-lambda-via-deployment-templates)
 - [Task 5: Challenge](#task-5-challenge)
 - [Next Steps](#next-steps)
 - [Appendix A: Build Driverless AI Experiment](#appendix-a-build-driverless-ai-experiment)
@@ -54,16 +54,20 @@ You will need the following to be able to do this tutorial:
         - Amazon AWS with Amazon API Gateway Administrator
         - Amazon AWS with Usage Plans Enabled
     - Create an Amazon AWS IAM Access Key and Secret Key
-- Basic knowledge of Driverless AI or doing the Automatic Machine Learning Intro tutorial.
+- Basic knowledge of Driverless AI or doing the [Automatic Machine Learning Introduction with Drivereless AI Test Drive Tutorial](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai).
+- A **Two-Hour Test Drive session**: Test Drive is H2O.ai's Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.
+    - Need a **Two-Hour Test Drive** session? Follow the instructions on [this quick tutorial](https://training.h2o.ai/products/tutorial-0-getting-started-with-driverless-ai-test-drive) to get a Test Drive session started.
 
-You can get more information about getting a Driverless AI environment or trial from the following:
-- [A Two Hour Test Drive Session](https://github.com/h2oai/tutorials/blob/master/DriverlessAI/Test-Drive/test-drive.md)  
-- [H2O Driverless AI License Key](https://github.com/h2oai/tutorials/blob/master/DriverlessAI/automatic-ml-intro-tutorial/automatic-ml-intro-tutorial.md#prerequisites) 
-- [H2O Driverless AI Environment and Product Tour](https://github.com/h2oai/tutorials/blob/master/DriverlessAI/automatic-ml-intro-tutorial/automatic-ml-intro-tutorial.md#task-1-get-environment-and-product-tour) 
+**Note: Aquarium’s Driverless AI Test Drive lab has a license key built-in, so you don’t need to request one to use it. Each Driverless AI Test Drive instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore Driverless AI, you can always launch another Test Drive instance or reach out to our sales team via the [contact us form](https://www.h2o.ai/company/contact/).**
 
-If you are not familiar with Driverless AI please review and do this tutorial:
+Other installations:
 
-- [Automatic Machine Learning Intro Tutorial](https://github.com/h2oai/tutorials/blob/master/DriverlessAI/automatic-ml-intro-tutorial/automatic-ml-intro-tutorial.md) 
+- Cloud Installation
+    - [H2O Driverless AI on AWS Marketplace](https://aws.amazon.com/marketplace/pp/B07JN71K8N?qid=1547700275918&sr=0-6&ref_=srh_res_product_title)
+    - [H2O Driverless AI on Azure HDInsight](https://azuremarketplace.microsoft.com/en-gb/marketplace/apps/h2o-ai.h2o-driverles-ai?tab=Overview)
+    - [H2O.ai Driverless AI (BYOL) on Google Cloud Platform](https://console.cloud.google.com/marketplace/details/h2o-public/h2oai-driverless-ai-byol?pli=1)
+- [Local Installation](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/installing.html)
+- [Server Installation](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/install/ibm-power.html)
 
 ## Task 1: Tour of Prebuilt Experiment
 
