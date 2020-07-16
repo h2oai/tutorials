@@ -11,7 +11,7 @@
 - [Task 6: Custom Recipe to Improve Predictions](#task-6-custom-recipe-to-improve-predictions) 
 - [Task 7: Challenge](#task-7-challenge)
 - [Task 8: Appendix A: Add the Datasets](#task-8-appendix-a-add-the-datasets)
-- [Next Steps](#tnext-steps)
+- [Next Steps](#next-steps)
 
 
 ## Objective
@@ -29,7 +29,7 @@ Here are some of the uses of Sentiment analysis from a business perspective:
 ![sentiment-analysis-business-uses](assets/sentiment-analysis-business-uses.png)
 
 
-In this tutorial, you will learn how to apply automatic machine learning to build a model to classify customer reviews. You will learn some core NLP concepts and then load a dataset, explore it, run an experiment to build a model and explore the results.
+In this tutorial, you will learn how to apply automatic machine learning to build a model to classify customer reviews. You will learn some core NLP concepts and then load a dataset, explore it, run an experiment to build a model, and explore the results.
 
 **Note**: It is highly recommended that you go over the entire tutorial before starting the experiment. This would help you to become more familiar with the content and aid you while you are performing the experiment.
  
@@ -39,11 +39,11 @@ You will need the following to be able to do this tutorial:
 
 - Basic knowledge of Machine Learning and Statistics  
 - A hands on knowledge of Driverless AI environment
-- Basic knowledge of Driverless AI or doing the [Automatic Machine Learning Introduction with Drivereless AI Test Drive](https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#0) 
+- Basic knowledge of Driverless AI or doing the [Automatic Machine Learning Introduction with Drivereless AI Test Drive](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai) 
     
 - A **Two-Hour Test Drive session** : Test Drive is H2O.ai's Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.
 
-  - Need a **Two-Hour Test Drive** session? Follow the instructions on [this quick tutorial](https://h2oai.github.io/tutorials/getting-started-with-driverless-ai-test-drive/#1) to get a Test Drive session started.  
+  - Need a **Two-Hour Test Drive** session? Follow the instructions on [this quick tutorial](https://training.h2o.ai/products/tutorial-0-getting-started-with-driverless-ai-test-drive) to get a Test Drive session started.  
 
 **Note:  Aquarium’s Driverless AI Test Drive lab has a license key built-in, so you don’t need to request one to use it. Each Driverless AI Test Drive instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore Driverless AI, you can always launch another Test Drive instance or reach out to our sales team via the [contact us form](https://www.h2o.ai/company/contact/).**
 
@@ -156,7 +156,7 @@ In **Task 2**, we shall explore and update the Experiment Settings.
 
 Once the data has been imported into Driverless AI, there are certain experiment settings that need to be updated. This section deals with experiment settings with respect to NLP tasks. However, if you wish to learn more about the meaning and various experimental settings in general , It is recommender to go through the following tutorial:
 
--   [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#3)
+-   [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus)
     
 Experiment Settings describe the Accuracy, Time and Interpretability of a specific experiment. The knobs on the experiment settings are adjustable. As values change, the meaning of the settings on the left-bottom page change.
 
@@ -449,7 +449,7 @@ After an experiment status changes from `RUNNING` to `COMPLETE`, the UI provides
 
 ![Experiment-results-UI](assets/Experiment-results-UI.png)
 
-The Experiment Summary contains a lot of useful information which helps to understand what goes under the hood during the Sentiment Analysis Experiment. If you are interested in learning more about each plot and the metrics derived from those plots covered in this section, then check out our tutorial  [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#0).
+The Experiment Summary contains a lot of useful information which helps to understand what goes under the hood during the Sentiment Analysis Experiment. If you are interested in learning more about each plot and the metrics derived from those plots covered in this section, then check out our tutorial  [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus).
 
 Please note that the lab also provides a pre-ran experiment. You can either wait for your experiments to finish or use the results of the pre-ran experiment. Click on the **Experiments** tab and select the Amazon Fine Food reviews experiment as follows:
 
