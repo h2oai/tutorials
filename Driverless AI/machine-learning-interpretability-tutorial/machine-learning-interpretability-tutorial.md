@@ -4,7 +4,7 @@
 - [Objective](#objective)
 - [Prerequisites](#prerequisites)
 - [Task 1: Launch Experiment and MLI](#task-1-launch-experiment-and-mli) 
-- [Task 2: ML Explainability Concepts](#task-2-ml-explainability-concepts)
+- [Task 2: ML Explainability Concepts](#task-2-industry-context-and-ml-explainability-concepts)
 - [Task 3: Global Shapley Values and Feature Importance](#task-3-global-shapley-values-and-feature-importance)
 - [Task 4: Partial Dependence Plot](#task-4-partial-dependence-plot)
 - [Task 5: Decision Tree Surrogate](#task-5-decision-tree-surrogate)
