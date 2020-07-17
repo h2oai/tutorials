@@ -20,7 +20,7 @@ Sentiment analysis, also known as opinion mining is a subfield of Natural Langua
 
 ![sentiment-analysis](assets/sentiment-analysis.jpg)
 
-[Image source](https://dsla1.com/sentiment-analysis-using-python/)
+[Image source](https://medium.com/analytics-vidhya/sentiment-analysis-with-vader-label-the-unlabeled-data-8dd785225166)
 
 Sentiment Analysis is an important sub-field of NLP. It can help to create targeted brand messages and assist a company in understanding consumer’s preferences. These insights could be critical for a company to increase its reach and influence across a range of sectors.
 
@@ -311,7 +311,7 @@ It is also possible to create BoW models with combination of consecutive words, 
 
 - **TF-IDF Model:** A problem with the Bag of Words approach is that highly frequent words start to dominate in the document (e.g. larger score), but may not contain as much "informational content". Also, it will give more weight to longer documents than the shorter ones. One approach is to rescale the frequency of words by how often they appear in all documents so that the scores for frequent words across all documents are penalized. This approach of scoring is called  **Term Frequency-Inverse Document Frequency**, or TF-IDF [2] for short, where:
 
-     - **Term Frequency**  is a scoring of the frequency of the word in the current document.TF = (Number of times term t appears in a document)/(Number of terms in the document)
+     - **Term Frequency**  is a scoring of the frequency of the word in the current document. TF = (Number of times term t appears in a document)/(Number of terms in the document)
 
     - **Inverse Document Frequency**: is a scoring of how rare the word is across documents.IDF = 1+log(N/n), where N is the number of documents and n is the number of documents a term t has appeared in.TF-IDF weight is often used in information retrieval and text mining. This weight is a statistical measure used to evaluate how important a word is to a document in a collection or corpus
 
@@ -602,7 +602,7 @@ https://raw.githubusercontent.com/h2oai/driverlessai-recipes/master/transformers
 
 ### Deeper Dive and Resources
 
-- [Get Started and Consume Existing Recipes](https://h2oai.github.io/tutorials/get-started-and-consume-existing-recipes)
+- [Get Started with Open Source Custom Recipes Tutorial](https://training.h2o.ai/products/tutorial-3a-get-started-with-open-source-custom-recipes-tutorial)
 
 ##  Task 7: Challenge
 
@@ -616,7 +616,7 @@ This data comes from  [Crowdflower's Data for Everyone library](http://www.crowd
 
 1\. Import the dataset from here:
 
--   [Airline-Sentiment-2-w-AA](http://airline-sentiment-2-w-aa/)
+-   [Airline-Sentiment-2-w-AA](https://data.world/crowdflower/airline-twitter-sentiment)
 
 Here are some samples from the dataset:
 
@@ -658,13 +658,13 @@ Import Amazon Fine Food Reviews training and test datasets to the Datasets Overv
 4\. Click to Import Selection
 
 5\. If the file loaded successfully then the following image should appear on the screen
-![Appendix_upload-dataset](assets/Appendix_upload-dataset.png)
+![Appendix_upload-dataset-1](assets/Appendix_upload-dataset-1.png)
 
 You can see that a new set of datasets now appear on the screen.
 
 ## Next Steps
 
-Check out the [Get Started and Consume Existing Recipes](https://training.h2o.ai/products/tutorial-3a-get-started-with-open-source-custom-recipes-tutorial#tab-product_tab_overview) tutorial
+Check out the [Get Started with Open Source Custom Recipes](https://training.h2o.ai/products/tutorial-3a-get-started-with-open-source-custom-recipes-tutorial#tab-product_tab_overview) tutorial
 
 Where you will learn:
 
