@@ -477,7 +477,7 @@ _Things to Note:_
 2. Iteration Data - Validation
 
      - The winning model's validation score and the algorithm used are as follows:
-          - Validation Score - .2353
+          - Validation Score - .2224
           - Model Type: XGBoostGBM
 
 
@@ -491,7 +491,7 @@ _Things to Note:_
 
      Look at some of the variables in Variable of Importance list. These are the new, high-value features for our training dataset.
 
-     These transformations created with the following transformers:
+     These transformations were created with the following transformers:
 
      - **TextBiGRUTransformer** : Trains a bi-directional GRU TensorFlow model on word embeddings created from a text feature to predict the response column
 
@@ -512,7 +512,7 @@ _Things to Note:_
      -   How many features were tested and selected?
      -   How many models were trained for feature evolution?
 
-There are also several plots adjacent to the summary tab that give insight into the experiment. If you are interested in learning more about each plot and the metrics derived from those plots covered in this section, then check out our next tutorial [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#0).
+There are also several plots adjacent to the summary tab that give insight into the experiment. If you are interested in learning more about each plot and the metrics derived from those plots covered in this section, then check out our next tutorial [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus).
 
 ### Deeper Dive and Resources
 
@@ -562,7 +562,7 @@ https://raw.githubusercontent.com/h2oai/driverlessai-recipes/master/transformers
   
 ![Uploading-Recipe-from-url](assets/Uploading-Recipe-from-url.png)
 
-5\. You’re welcome to create your own recipes, or you can select from a number of recipes available in the https://github.com/h2oai/driverlessai-recipes/tree/rel-1.8.4 repository. The `OFFICIAL RECIPES(EXTERNAL)` tab will directly take you to the recipes compatible with the Driverless AI version that you are using.
+5\. You’re welcome to create your own recipes, or you can select from a number of recipes available in the https://github.com/h2oai/driverlessai-recipes/tree/rel-1.8.7 repository. The `OFFICIAL RECIPES(EXTERNAL)` tab will directly take you to the recipes compatible with the Driverless AI version that you are using.
 
 ![Github-Repo-Recipes](assets/Github-Repo-Recipes.png)
 
@@ -658,13 +658,13 @@ Import Amazon Fine Food Reviews training and test datasets to the Datasets Overv
 4\. Click to Import Selection
 
 5\. If the file loaded successfully then the following image should appear on the screen
-![Appendix_upload-dataset](assets/Appendix_datasets_preview.png)
+![Appendix_upload-dataset](assets/Appendix_upload-dataset.png)
 
 You can see that a new set of datasets now appear on the screen.
 
 ## Next Steps
 
-Check out the [Get Started and Consume Existing Recipes](https://h2oai.github.io/tutorials/get-started-and-consume-existing-recipes/#0) tutorial
+Check out the [Get Started and Consume Existing Recipes](https://training.h2o.ai/products/tutorial-3a-get-started-with-open-source-custom-recipes-tutorial#tab-product_tab_overview) tutorial
 
 Where you will learn:
 
