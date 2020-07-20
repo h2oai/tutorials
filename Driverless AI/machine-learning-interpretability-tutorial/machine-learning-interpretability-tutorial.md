@@ -16,7 +16,7 @@
 
 ## Objective 
 
-As the field of machine learning continues to grow, more industries from healthcare to banking are adopting machine learning models to generate predictions. These predictions are being used to justify the cost of healthcare e and for loan approvals or denials. For Regulated industries that are adopting machine learning, **interpretability** is a requirement. In [“Towards a rigorous science of interpretable machine learning”](https://arxiv.org/pdf/1702.08608.pdf) by Finale Doshi-Velez and Been Kim“ interpretability, is the “The ability to explain or to present in understandable terms to a human”. This is a straightforward definition of interpretability. See the Deeper Dive and Resource section of the Goal section to read more about other takes on  interpretability. 
+As the field of machine learning continues to grow, more industries from healthcare to banking are adopting machine learning models to generate predictions. These predictions are being used to justify the cost of healthcare and for loan approvals or denials. For Regulated industries that are adopting machine learning, **interpretability** is a requirement. In [“Towards a rigorous science of interpretable machine learning”](https://arxiv.org/pdf/1702.08608.pdf) by Finale Doshi-Velez and Been Kim“ interpretability, they define interpretability in the context of ML systems as “the ability to explain or to present in understandable terms to a human”. This is a straightforward definition of interpretability. See the Deeper Dive and Resource section of the Goal section to read more about other takes on  interpretability. 
 
 The motivations for interpretability are:
 
@@ -411,7 +411,7 @@ It is important to note that what we are confirming is not whether the model's r
 1. **Decision Tree** path for low default probability 
 2. **Decision Tree** path for high default probability. 
 
-Based on the **Decision Tree**, to end up at the high probability of default bucket, a person would need to miss the first payment (PAY_0), be late on PAY_5 and be late on PAY_2. A history of poor repayment behavior from 6 months ago would more than likely place a person down the path of defaulting on their total bill payment. Just like the path with low default probability, the behavior of the variables for the high default probability need to be analyzed and ensure that their interactions and conclusions make sense.
+Based on the **Decision Tree**, to end up at the high probability of default bucket, a person would need to miss the first payment (PAY_0), be late on PAY_2 and be late on PAY_6. A history of poor repayment behavior from 6 months ago would more than likely place a person down the path of defaulting on their total bill payment. Just like the path with low default probability, the behavior of the variables for the high default probability need to be analyzed and ensure that their interactions and conclusions make sense.
 
 ### Deeper Dive and Resources
 
