@@ -411,7 +411,8 @@ It is important to note that what we are confirming is not whether the model's r
 1. **Decision Tree** path for low default probability 
 2. **Decision Tree** path for high default probability. 
 
-Based on the **Decision Tree**, to end up at the high probability of default bucket, a person would need to miss the first payment (PAY_0), be late on PAY_2 and be late on PAY_6. A history of poor repayment behavior from 6 months ago would more than likely place a person down the path of defaulting on their total bill payment. Just like the path with low default probability, the behavior of the variables for the high default probability need to be analyzed and ensure that their interactions and conclusions make sense.
+Based on the **Decision Tree**, to end up at the high probability of default bucket, a person would need to miss the first payment (PAY_0), be late on PAY_6, and be late on PAY_2. A history of poor repayment behavior from 6 months ago would more than likely place a person down the path of defaulting on their total bill payment. Just like the path with low default probability, the behavior of the variables for the high default probability need to be analyzed and ensure that their interactions and conclusions make sense.
+
 
 ### Deeper Dive and Resources
 
@@ -541,7 +542,7 @@ The grey bars or local numeric contributions can be used to generated reason cod
 **Note:** The Shapley plot will depend on K-LIME point you selected.
 
 *Things to Note:*
-1. Row number being observed
+1. Row number being observed: type "11427" and then click "Search"
 2. Global Shapley value 
 3. A sample of a Shapley Local  numeric contribution of a variable for the high probability person in row 11427
  
