@@ -14,9 +14,9 @@
 
 ## Objective
 
-**Machine Learning Model Deployment** is the process of making your model available in production environments, so they can be used to make predictions for other software systems [1]. Prior to model deployment, **feature engineering** takes place to prepare the data for being used to train the model [2]. Driverless AI **Automatic Machine Learning (AutoML)** combines the best feature engineering and one or more **machine learning models** into a scoring pipeline [3][4]. The **scoring pipeline** is used to score or predict data when given new test data [5]. The scoring pipeline comes in two flavors: a **Model Object, Optimized (MOJO) Scoring Pipeline** and a Python Scoring Pipeline [6]. 
+**Machine Learning Model Deployment** is the process of making your model available in production environments, so they can be used to make predictions for other software systems [1]. Before model deployment, **feature engineering** occurs in the form of preparing data that later on will be used to train a model [2]. Driverless AI **Automatic Machine Learning (AutoML)** combines the best feature engineering and one or more **machine learning models** into a scoring pipeline [3][4]. The **scoring pipeline** is used to score or predict data when given new test data [5]. The scoring pipeline comes in two flavors: a **Model Object, Optimized (MOJO) Scoring Pipeline** and a Python Scoring Pipeline [6]. 
 
-By the end of this tutorial, you will predict the **cooling condition** for a **Hydraulic System Test Rig** by deploying a **MOJO Scoring Pipeline** into production using **Driverless AI**. Hydraulic System Test Rigs are used to test components in Aircraft Equipment, Ministry of Defense, Automotive Applications, and more [7]. This Hydraulic Test Rig is capable of testing a range of flow rates that can achieve different pressures with the ability to heat and cool to simulate testing under different conditions [8]. Testing the pressure, volume flow and temperature is possible by Hydraulic Test Rig sensors and digital displays. The display panel alerts the user when certain testing criteria is met displaying either a green/red light [8]. A filter blockage panel indicator is integrated into the panel to ensure the Hydraulic Test Rig’s oil is maintained [8]. The cooling filtration solution is designed to minimize power consumption and expand the life of the Hydraulic Test Rig. We are predicting cooling conditions for Hydraulic System Predictive Maintenance. When the cooling condition is low, our prediction tells us that the cooling of the Hydraulic System is close to total failure and we may need to look into replacing the cooling filtration solution soon.
+By the end of this tutorial, you will predict the **cooling condition** for a **Hydraulic System Test Rig** by deploying a **MOJO Scoring Pipeline** into production using **Driverless AI**. The Hydraulic System Test Rig data comes from **[UCI Machine Learning Repository: Condition Monitoring of Hydraulic Systems Data Set](https://archive.ics.uci.edu/ml/datasets/Condition+monitoring+of+hydraulic+systems#)**. Hydraulic System Test Rigs are used to test components in Aircraft Equipment, Ministry of Defense, Automotive Applications, and more [7]. This Hydraulic Test Rig is capable of testing a range of flow rates that can achieve different pressures with the ability to heat and cool to simulate testing under different conditions [8]. Testing the pressure, volume flow and temperature is possible by Hydraulic Test Rig sensors and digital displays. The display panel alerts the user when certain testing criteria is met displaying either a green/red light [8]. A filter blockage panel indicator is integrated into the panel to ensure the Hydraulic Test Rig’s oil is maintained [8]. The cooling filtration solution is designed to minimize power consumption and expand the life of the Hydraulic Test Rig. We are predicting cooling conditions for Hydraulic System Predictive Maintenance. When the cooling condition is low, our prediction tells us that the cooling of the Hydraulic System is close to total failure and we may need to look into replacing the cooling filtration solution soon.
 
 ![Hydraulic System Cylinder Diagram](./assets/Cylinder-Diagram-1.jpg)
 
@@ -46,7 +46,11 @@ The Hydraulic System consists of a primary and secondary cooling filtration circ
 
 You will need the following to be able to do this tutorial:
 
-- Driverless AI environment
+- A **Two-Hour Test Drive session**: Test Drive is H2O.ai's Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.
+    - Need a **Two-Hour Test Drive** session? Follow the instructions on [this quick tutorial](https://training.h2o.ai/products/tutorial-0-getting-started-with-driverless-ai-test-drive) to get a Test Drive session started.
+
+- Basic knowledge of Driverless AI or doing the [Automatic Machine Learning Introduction with Drivereless AI Test Drive Tutorial](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai).
+
 - Needed for AWS Lambda Section
     - If you have an Amazon Admin, request access permissions for
         - Amazon AWS with IAM Full Access
@@ -54,9 +58,6 @@ You will need the following to be able to do this tutorial:
         - Amazon AWS with Amazon API Gateway Administrator
         - Amazon AWS with Usage Plans Enabled
     - Create an Amazon AWS IAM Access Key and Secret Key
-- Basic knowledge of Driverless AI or doing the [Automatic Machine Learning Introduction with Drivereless AI Test Drive Tutorial](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai).
-- A **Two-Hour Test Drive session**: Test Drive is H2O.ai's Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.
-    - Need a **Two-Hour Test Drive** session? Follow the instructions on [this quick tutorial](https://training.h2o.ai/products/tutorial-0-getting-started-with-driverless-ai-test-drive) to get a Test Drive session started.
 
 **Note: Aquarium’s Driverless AI Test Drive lab has a license key built-in, so you don’t need to request one to use it. Each Driverless AI Test Drive instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore Driverless AI, you can always launch another Test Drive instance or reach out to our sales team via the [contact us form](https://www.h2o.ai/company/contact/).**
 
@@ -95,13 +96,18 @@ The final experiment we could build is with the Hydraulic System data and the st
 
 1\. View the **Experiment Dashboard** for Hydraulic Cooling Condition Classification
 
-In [Appendix A: Build Driverless AI Experiment](#appendix-a-build-driverless-ai-experiment), there are steps that walk through how to build the experiment using the Hydraulic System data and the cooler condition label. What you will see is the dataset was split 75% for training and 25% for testing data. The scorer was trained using the training data with the cooling condition as the label. The testing data was used to evaluate the scorer. Once the experiment was built, the following Driverless AI experiment dashboard is available:
+In [Appendix A: Build Driverless AI Experiment](#appendix-a-build-driverless-ai-experiment), there are steps that walk through how to build the experiment using the Hydraulic System data and the cooler condition label. What you will see is the dataset was split as follows:
 
-![Experiment Dashboard](./assets/launched-experiment.jpg)
+- 75% for training
+- 25% for testing data
+
+The scorer was trained using the training data with the cooling condition as the label. The testing data was used to evaluate the scorer. Once the experiment was built, the following Driverless AI experiment dashboard is available:
+
+2\. For Machine Learning Model Deployment, let’s examine the **status menu** options, **summary**, **loss function result**, and **variable importance**.
+
+![Experiment Dashboard](./assets/launched-experiment-dashboard.jpg)
 
 **Figure 2:** Experiment Dashboard for Hydraulic System Cooling Condition
-
-2\. For Machine Learning Model Deployment, let’s examine the status menu options, summary, loss function result, and variable importance.
 
 To deploy the model, we can use Driverless AI’s **Deploy (Local & Cloud)**, **Download Python Scoring Pipeline**, or **Download MOJO Scoring Pipeline** features. The Deploy (Local & Cloud) allows the user to auto-deploy their model to a REST server or an Amazon Lambda. The Download Python Scoring Pipeline or Download MOJO Scoring Pipeline is more hands-on and the user can choose to go with the embedded deployment approach or server deployment approach for the model. Since the Driverless AI MOJO Scoring Pipelines are small in size, they can be easily embedded on edge devices with a low memory footprint. However, for the Driverless AI Python Scoring Pipeline, they are bulkier in size, so they should be embedded on devices with a high memory footprint.
 
@@ -113,13 +119,18 @@ After the experiment is built, the dashboard shows your model’s loss function 
 
 The variable importance tells us which features were considered important when the model was being trained. We can see the list is ordered from most to least important. At the top is cool_pwr_pct and this feature is expected to be high in importance because the Hydraulic cooling condition needs power in order to function at full efficiency. It looks like tsc_temp and tsb_temp are also important for the Hydraulic cooling condition and that makes sense because the temperature can have a major impact on the Hydraulic cooler’s efficiency. If the temperature is high, that could be a sign there is a problem with the Hydraulic cooler. The variable importance shows what variables are most crucial when the model is making the prediction for Hydraulic cooling conditions.
 
+3\. In the Driverless AI dashboard, let’s change from the summary view to the **P-R metrics view**. 
+
 ![DAI Exp PR Metrics Best](./assets/dai-exp-pr-metrics-best.jpg)
 
 **Figure 3:** Experiment PR Metrics for Hydraulic System Cooling Condition
 
-3\. In the Driverless AI dashboard, let’s change from the summary view to the P-R metrics view. 
+These metrics are used to evaluate the quality of the multinomial classification model that was built. By clicking on the dot in the top right corner of the graph, we can see the following best values for our scorer:
 
-These metrics are used to evaluate the quality of the multinomial classification model that was built. By clicking on the dot in the top right corner of the graph, we can see the best **F1**, **ACC** and **MCC** values for our scorer. We see the **recall** is 0.9982, **precision** is 0.9982, F1 is 0.9982 and MCC is 0.9973.
+- **Recall** is 0.9982
+- **Precision** is 0.9982
+- **F1** is 0.9982
+- **MCC** is 0.9973
 
 **Recall** is a measure of completeness or quantity of the results obtained by the model [2]. It is the ratio of the number of predictions divided by all the actual labels [2]. For example, let’s say the number of predictions for the hydraulic cooling condition operating at reduced efficiency occurs 30% of the time, but there are 40% actual labels, then the recall is ¾. In the Driverless AI dashboard, we see the recall is 99.82%, which means the quantity of the results obtained by the model is nearly complete.
 
@@ -133,7 +144,7 @@ These metrics are used to evaluate the quality of the multinomial classification
 
 [1] [Condition monitoring of hydraulic systems Data Set](https://archive.ics.uci.edu/ml/datasets/Condition+monitoring+of+hydraulic+systems#)
 
-[2] [Machine Learning Experiment Scoring and Analysis Tutorial: Task 3 Concepts](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#4)
+[2] [Machine Learning Experiment Scoring and Analysis Tutorial: Task 3 Concepts](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus)
 
 ## Task 2: Scoring Pipeline Deployment Concepts
 
@@ -249,7 +260,7 @@ For external limitations and restrictions, we will look at how privileged access
 
 The purpose of the model scorer’s loss function is to calculate how good or bad the predicted probabilities are [15]. For bad predictions, the loss function returns high values [15]. For good predictions, the loss function returns low values [15]. In the tutorial, when you build the experiment using the Hydraulic System data with the cooling condition label, Driverless AI will most likely choose the log loss function for our scorer. The purpose of **log loss** is to measure the performance of a binomial or multinomial classification model [16] [17]. Log loss in H2O evaluates how close a model’s predicted values are to the actual target value [17]. The goal of our model is to minimize the log loss value, so our predicted probability stays as close to the actual label as possible. With H2O algorithms, they don’t just predict a category, they give a probability for the answer being each category [18]. In Driverless AI, after the experiment has launched, it displays the log loss value:
 
-![Experiment Dashboard](./assets/launched-experiment.jpg)
+![Experiment Dashboard](./assets/launched-experiment-log-loss.jpg)
 
 **Figure 12:** Log Loss for Hydraulic System Cooling Condition
 
@@ -348,7 +359,7 @@ Now you have some background in scoring pipeline deployment. Let’s deploy our 
 
 2\. Select the **REST server**.
 
-![Select Deploy Option](./assets/select-deploy-option.jpg)
+![Select Deploy Option REST Server](./assets/select-deploy-option-rest-server.jpg)
 
 **Figure 18:** Select Deploy Option
 
@@ -477,7 +488,7 @@ We delete our MOJO deployment to Amazon Lambda in Driverless AI Deployments and 
 
 1\. Click on the **Delete** button.
 
-![Delete AWS Lambda Model Deployment](./assets/delete-lambda-deployment.jpg)
+![Delete AWS Lambda Model Deployment](./assets/delete-lambda-deployment-1.jpg)
 
 **Figure 28:** Open Menu to Delete AWS Lambda Model Deployment
 
@@ -573,13 +584,13 @@ The data set finished splitting into train and test data.
 
 9\. Choose the test data **hydraulicTestData_coolCondY**
 
+10\. Click **Launch Experiment**. It may take about **8 minutes** or longer to complete.
+
 ![Configure Experiment Before Launch](./assets/configure-experiment.jpg)
 
 **Figure 34:** Configure Experiment Before Launching
 
 You’ll notice Driverless AI chose **Log Loss** to be the winning **scorer** based on our training data. This is because we are dealing with a classification of what the hydraulic cooling condition could be 3, 20 or 100. If our scorer classifies our hydraulic system test data as a cooling condition 3, then that means our cooler is close to total failure. If the scorer classification is 20, then our cooler is operating at reduced efficiency. If the scorer classification is 100, then our cooler is operating at full efficiency.
-
-10\. Click **Launch Experiment**. It may take about **8 minutes** or longer to complete.
 
 ![Launched Experiment](./assets/launched-experiment.jpg)
 
