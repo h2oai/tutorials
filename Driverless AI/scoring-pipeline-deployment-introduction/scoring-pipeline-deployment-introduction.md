@@ -14,7 +14,7 @@
 
 ## Objective
 
-**Machine Learning Model Deployment** is the process of making your model available in production environments, so they can be used to make predictions for other software systems [1]. Before model deployment, **feature engineering** occurs in the form of preparing data that later on will be used to train a model [2]. Driverless AI **Automatic Machine Learning (AutoML)** combines the best feature engineering and one or more **machine learning models** into a scoring pipeline [3][4]. The **scoring pipeline** is used to score or predict data when given new test data [5]. The scoring pipeline comes in two flavors: a **Model Object, Optimized (MOJO) Scoring Pipeline** and a Python Scoring Pipeline [6]. 
+**Machine Learning Model Deployment** is the process of making your model available in production environments, so they can be used to make predictions for other software systems [1]. Before model deployment, **feature engineering** occurs in the form of preparing data that later on will be used to train a model [2]. Driverless AI **Automatic Machine Learning (AutoML)** combines the best feature engineering and one or more **machine learning models** into a scoring pipeline [3][4]. The **scoring pipeline** is used to score or predict data when given new test data [5]. The scoring pipeline comes in two flavors. The first scoring pipeline is a **Model Object, Optimized(MOJO) Scoring Pipeline**, which is a standalone, low-latency model object designed to be easily embeddable in production environments. The second scoring pipeline is a Python Scoring Pipeline, which has a heavy footprint that is all Python and uses the latest libraries of Driverless AI to allow for executing custom scoring recipes[6].
 
 By the end of this tutorial, you will predict the **cooling condition** for a **Hydraulic System Test Rig** by deploying a **MOJO Scoring Pipeline** into production using **Driverless AI**. The Hydraulic System Test Rig data comes from **[UCI Machine Learning Repository: Condition Monitoring of Hydraulic Systems Data Set](https://archive.ics.uci.edu/ml/datasets/Condition+monitoring+of+hydraulic+systems#)**. Hydraulic System Test Rigs are used to test components in Aircraft Equipment, Ministry of Defense, Automotive Applications, and more [7]. This Hydraulic Test Rig is capable of testing a range of flow rates that can achieve different pressures with the ability to heat and cool to simulate testing under different conditions [8]. Testing the pressure, volume flow and temperature is possible by Hydraulic Test Rig sensors and digital displays. The display panel alerts the user when certain testing criteria is met displaying either a green/red light [8]. A filter blockage panel indicator is integrated into the panel to ensure the Hydraulic Test Rig’s oil is maintained [8]. The cooling filtration solution is designed to minimize power consumption and expand the life of the Hydraulic Test Rig. We are predicting cooling conditions for Hydraulic System Predictive Maintenance. When the cooling condition is low, our prediction tells us that the cooling of the Hydraulic System is close to total failure and we may need to look into replacing the cooling filtration solution soon.
 
@@ -51,7 +51,9 @@ You will need the following to be able to do this tutorial:
 
 - Basic knowledge of Driverless AI or doing the [Automatic Machine Learning Introduction with Drivereless AI Test Drive Tutorial](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai).
 
-- Needed for AWS Lambda Section
+- For Non-AWS Lambda Deployment, we will use a REST Server built into Driverless AI to show how a REST API / Micro service deployment works
+
+- Needed for AWS Lambda Deployment
     - If you have an Amazon Admin, request access permissions for
         - Amazon AWS with IAM Full Access
         - Amazon AWS with AWS Lambda Full Access
@@ -111,7 +113,7 @@ The scorer was trained using the training data with the cooling condition as the
 
 To deploy the model, we can use Driverless AI’s **Deploy (Local & Cloud)**, **Download Python Scoring Pipeline**, or **Download MOJO Scoring Pipeline** features. The Deploy (Local & Cloud) allows the user to auto-deploy their model to a REST server or an Amazon Lambda. The Download Python Scoring Pipeline or Download MOJO Scoring Pipeline is more hands-on and the user can choose to go with the embedded deployment approach or server deployment approach for the model. Since the Driverless AI MOJO Scoring Pipelines are small in size, they can be easily embedded on edge devices with a low memory footprint. However, for the Driverless AI Python Scoring Pipeline, they are bulkier in size, so they should be embedded on devices with a high memory footprint.
 
-If you want to practice batch scoring data right away with Driverless AI, you should use the built-in **Score On Another Dataset** feature. When you click on this button, you choose your test data and the label you are predicting, then Driverless AI will execute the Python Scoring Pipeline behind the scenes to do batch scoring.
+If you want to practice batch scoring data right away with Driverless AI, you should use the built-in **Score On Another Dataset** feature. When you click on this button, you choose your test data and the label you are predicting, then Driverless AI will execute the Python Scoring Pipeline behind the scenes to do batch scoring. This is a great way to use the UI to test the model with different datasets interactively while the model is being built and results inspected by a data scientist, but in production a standalone scorer might be used, see our follow up tutorials on other scorers for example the database scorer.
 
 In the summary section, we can see our scorer’s max memory usage, feature engineering, MOJO latency, etc. These metrics are areas we should consider when deploying our scorers to certain environments. For instance, does the environment support the scorer’s memory usage? Does MOJO latency change much when we embed it on a low memory footprint device? 
 
@@ -186,18 +188,21 @@ The **MOJO Scoring Pipeline** is a lightweight and low-latency scoring engine th
 
 The **Python Scoring Pipeline** is a heavy footprint that is all Python and uses the latest libraries of Driverless AI including the Python H2O4GPU module [12]. It is a scoring engine that is available for experiments and/or interpreted models to score data [7]. It is good for batch applications. It is used as a reference application for testing that the MOJOs are giving the right answers [12]. Usually the Python Scoring Pipeline will have new features of Driverless AI before the MOJO since the majority of the packages pulled into the feature engineering product part of Driverless AI are implemented in Python [12]. Then the MOJO will work to implement those same features into the MOJO for their real time scoring applications [12].
 
-### How To Choose a Scoring Pipeline
+### How To Choose a Scoring Pipeline Deployment
 
-| Questions for Organization | Java MOJO Scoring Pipeline | C++ MOJO Scoring Pipeline | Python Scoring Pipeline |
-|:------------:|:------------:|:------------:|:------------:|
-| Which Programming Language? | Java, Scala, Python | C++, Python, R | Python |
-| Does your model require real-time scoring? | low latency real-time scoring | fast real-time scoring | slow real-time scoring |
-| Does your model require batch scoring? | low latency batch scoring | fast batch scoring | slow batch scoring |
-| Do you require embedded scoring? | Small embedded scoring pipeline | Small embedded scoring pipeline | Bulky embedded scoring pipeline |
-| Do you require client/server scoring via HTTP or TCP? | Supports client/server scoring via HTTP or TCP protocols | Supports client/server scoring via HTTP or TCP protocols | Supports client/server scoring via HTTP or TCP protocols |
-| Does your model have TensorFlow or NLP feature engineering? | | TensorFlow, NLP feature engineering | TensorFlow, NLP feature engineering |
-| Does your model require GPUs? | | | support for GPUs |
-| Does your model use RuleFit, FTRL or any custom recipes? | | | RuleFit, FTRL, custom recipes |
+| Questions for Organization | Embedded Java MOJO Scoring Pipeline Deployment | Embedded C++ MOJO Scoring Pipeline Deployment | Embedded Python Scoring Pipeline Deployment | Scoring Pipeline Server Deployment |
+|:------------:|:------------:|:------------:|:------------:|:------------:|
+| Supported Environments | x86-64 Linux, IBM PowerPC, Mac OS X | x86-64 Linux, IBM PowerPC, Mac OS X | x86-64 Linux | x86-64 Linux, IBM PowerPC, Mac OS X, Windows |
+| Which Programming Language? | Java, Scala, Python | C++, Python, R | Python | Ruby, Python, Perl, C, C++, C#, Cocoa, D, Dart, Delphi, Go, Haxe, Java, PHP, JavaScript, Node.js, Lua, Smalltalk |
+| Does your model require real-time scoring? | low latency real-time scoring | low latency real-time scoring | slow real-time scoring | real-time scoring |
+| Does your model require batch scoring? | low latency batch scoring | low latency batch scoring | slow batch scoring | batch scoring |
+| Do you require embedded scoring? | MOJO2 Java Runtime API | MOJO2 C++ Runtime Python Wrapper or R Wrapper API | Python Runtime API | |
+| Do you require client/server scoring via HTTP or TCP? | Need to create client/server scoring service via HTTP, TCP or REST API | Need to create client/server scoring service via HTTP, TCP or REST API | Need to create client/server scoring service via HTTP, TCP or REST API | Supports client/server scoring via HTTP,TCP or REST protocols |
+| Does your model have TensorFlow or NLP feature engineering? | | TensorFlow, NLP feature engineering | TensorFlow, NLP feature engineering | It depends on the Server’s Scoring Pipeline |
+| Does your model require GPUs? | | | support for GPUs | It depends on the Server’s Scoring Pipeline |
+| Does your model use RuleFit, FTRL or any custom recipes? | | | RuleFit, FTRL, custom recipes | It depends on the Server’s Scoring Pipeline |
+| Does the model change frequently? Let’s say it changes each month. | API code change and testing might be required | API code change and testing might be required | API code change and testing might be required | Web Service Call |
+
 
 ### Productionizing Scoring Pipelines
 
@@ -307,6 +312,8 @@ If we look at the Hydraulic System data and the labels for Hydraulic System Pred
 [18] [Chapter 4. Common Model Parameters: Practical Machine Learning with H2O by Cook](https://learning.oreilly.com/library/view/practical-machine-learning/9781491964590/)
 
 ## Task 3: Batch Scoring via Score Another Dataset
+
+Let’s go through an example of using Driverless AI’s Score on Another Dataset in which we will do batch scoring on the data. If you are in production, we don’t recommend using Driverless AI’s Score on Another Dataset, instead use a Driverless AI Deployment Template to do batch scoring.
 
 1\. Click **Score On Another Dataset**.
 
