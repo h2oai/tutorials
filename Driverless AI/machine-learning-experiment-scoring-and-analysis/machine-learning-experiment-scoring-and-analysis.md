@@ -548,7 +548,7 @@ ROC and AUC curves are important evaluation metrics for calculating the performa
 
 Below are three types of ROC Curves in correlation to finding the perfect ROC that will distinguish between red and green apples. 
 
-As noted above, the closer the ROC curve is to the left (the more significant the AUC percentage), the better the model is separating classes. 
+As noted above, the closer the ROC curve is to the left (the more significant the AUC percentage), the better the model is at separating classes. 
 
 *Note*: Before moving forward, it's essential to clarify that the histograms plotted are the result of previous data. Such data has determined that apples with more than 50% (threshold) of its body being red will be considered a red apple. Therefore, anything below 50% will be a green apple.
 
