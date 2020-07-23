@@ -32,9 +32,9 @@ In this overview of Driverless AI, you will learn how to load data, explore data
 
 - A **Two-Hour Test Drive session**: Test Drive is H2O.ai's Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.
 
-  - Need a **Two-Hour Test Drive** session? Follow the instructions [on this quick tutorial](https://h2oai.github.io/tutorials/getting-started-with-driverless-ai-test-drive/#2) to get a Test Drive session started. After the Driverless AI Test Drive session starts, continue reading the remaining prerequisites of this tutorial then start [Task 1: Product Tour](https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#2).
+  - Need a **Two-Hour Test Drive** session? Follow the instructions [on this quick tutorial](https://training.h2o.ai/products/tutorial-0-getting-started-with-driverless-ai-test-drive) to get a Test Drive session started. After the Driverless AI Test Drive session starts, continue reading the remaining prerequisites of this tutorial then start [Task 1: Product Tour](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai).
 
-  - Already have a **Two-Hour Test Drive** session? Continue reading the remaining prerequisites of this tutorial then start [Task 1: Product Tour](https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#2). 
+  - Already have a **Two-Hour Test Drive** session? Continue reading the remaining prerequisites of this tutorial then start [Task 1: Product Tour](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai). 
 
 **Note:  Aquarium’s Driverless AI Test Drive lab has a license key built-in, so you don’t need to request one to use it. Each Driverless AI Test Drive instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore Driverless AI, you can always launch another Test Drive instance or reach out to our sales team via the [contact us form](https://www.h2o.ai/company/contact/).**
 
@@ -61,9 +61,9 @@ The Driverless UI is easy to navigate. The following features, as well as a few 
 
 7. **Deployments**: Deploy the MOJO and Python scoring pipelines for you to test or to integrate into a final product. You can also deploy locally or in the cloud.
 
-8. **Resources**: The Resources dropdown menu provides you with links to view System Information, the Driverless AI User Guide and Help. From this dropdown menu, you can also download the Python Client, R Client, and the MOJO2 runtime, MOJO2 Py runtime, and MOJO2 R runtime.
+8. **Resources**: The Resources dropdown menu provides you with links to view System Information, the Driverless AI User Guide and Help. From this dropdown menu, you can also download the Python Client, R Client, the MOJO2 JAVA runtime, MOJO2 Py runtime, and MOJO2 R runtime.
 
-9. **Messages[ ]**: View news and upcoming Driverless AI events.
+9. **Messages[ ]**: View upcoming events regardinging Driverless AI .
 
 10. **Logout H2OAI**: Logs you out of your current session.
 
@@ -73,12 +73,12 @@ The Driverless UI is easy to navigate. The following features, as well as a few 
 
 13. **Driverless AI 1.X.X**: Version of Driverless AI 
 
-14. **Add a Dataset(or Drag and Drop)**: Upload or add a dataset.
+14. **Add a Dataset(or Drag and Drop)**: Upload or add a dataset, add a data recipe via URL, upload a data recipe from your local machine.
 
 
 ### Deeper Dive and Resources
 
--  [Join the H2O community on Slack to Ask Questions](https://h2oai-community.slack.com/). Post your questions, discuss use cases, give feedback, stay informed about the latest H2O.ai updates, and more.
+-  [Join the H2O community](https://www.h2o.ai/community/home). Post your questions, discuss use cases, give feedback, stay informed about the latest H2O.ai updates, and more.
 
 - Learn more are about H2O Driverless through the [H2O documentation](http://docs.h2o.ai/driverless-ai/latest-stable/docs/booklets/DriverlessAIBooklet.pdf).
 
@@ -110,7 +110,7 @@ A machine learning model is as good as the data that is used to train it. If you
 
 Data wrangling, which can include extractions, parsing, joining, standardizing, augmenting, cleansing, consolidating, missing data is fixed or removed. Data preparation includes the dataset being in the correct format for what you are trying to do. Duplicates have been removed.  Missing data is fixed or removed, and finally, categorial values have been transformed or encoded to a numerical type. Tools like [Python datatable](https://datatable.readthedocs.io/en/latest/?badge=latest), [Pandas](https://pandas.pydata.org/) and [R](https://www.r-project.org/) are great assets for data wrangling. 
 
-Driverless AI can do some data wrangling. Data wrangling can be done via a [data recipe](https://www.r-project.org/), the [JDBC connector](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/connectors-nd/jdbc.html?highlight=jdbc) or through [live code](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/datasets-describing.html?highlight=live%20code#modify-by-recipe) which will create a new dataset by modifying the existing one. 
+ Data wrangling can be done in Driverless AI via a [data recipe](https://www.r-project.org/), the [JDBC connector](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/connectors-nd/jdbc.html?highlight=jdbc) or through [live code](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/datasets-describing.html?highlight=live%20code#modify-by-recipe) which will create a new dataset by modifying the existing one. 
 
  
 ### Data Transformation/Feature Engineering
@@ -165,9 +165,9 @@ AutoML or Automated Machine Learning is the process of automating algorithm sele
 [9] [Difference between Algorithm and Model in Machine Learning](https://machinelearningmastery.com/difference-between-algorithm-and-model-in-machine-learning/)
 ### Deeper Dive and Resources
 
-- [Explore the replays from H2O World around the world](
+- [Explore the replays from H2O World Around the World](
 https://www.h2o.ai/h2oworldnewyork/) 
-- [Explore the webinar replays](
+- [Explore the Webinar Replays](
 https://www.brighttalk.com/search/?q=driverless+ai) 
 - [Explore the various H2O Driverless AI playlists on YouTube](https://www.youtube.com/user/0xdata/playlists) 
 
@@ -182,13 +182,13 @@ The typical Driverless AI workflow is to:
 2. Visualize data
 3. Run an experiment
 4. Interpret the model
-5. Depploy the scoring pipeline
+5. Deploy the scoring pipeline
 
 In addition, you can diagnose a model, transform another dataset, score the model against antoher dataset and manage your data in Projects. The focus of this tutorial will be in steps 1 - 4. The other aspects of the Driverless AI will be covered in other tutorials found in the Driverless AI learning path. We will start with loading the data. 
 
 ![typical-driverless-ai-workflow](assets/typical-driverless-ai-workflow.jpg)
 
-1\. Navigate back to the H2O Driverless AI  **Datasets** page.
+1\. Navigate back to the H2O Driverless AI **Datasets** page.
 
 ### About the Dataset
 
@@ -234,7 +234,10 @@ This tragedy shocked the international community and led to better safety regula
 
 ![add-dataset-file-system](assets/add-dataset-file-system.jpg)
 
-3\. Enter the following */data/TestDrive/titanic.csv* into the search bar. Select *titanic.csv* then **Click to Import Selection**. 
+3\. Enter the following:
+1. ```/data/TestDrive/titanic.csv``` into the search bar
+2. Select ```titanic.csv``` 
+3. **Click to Import Selection**. 
 
 ![select-titanic-dataset](assets/select-titanic-dataset.jpg)
 
@@ -247,7 +250,8 @@ This tragedy shocked the international community and led to better safety regula
 
 1. You can view:
 
-  - Dataset filename
+  - File name
+  - File path
   - File size
   - Number of rows/columns 
   - File status
@@ -256,7 +260,7 @@ This tragedy shocked the international community and led to better safety regula
 
 ### Deeper Dive and Resources
 
-- [Learn More About the Type of Dataset File formats that Can be Uploaded](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/datasets.html#adding-datasets) 
+- [Learn More About the Type of Dataset File Formats that can be Uploaded](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/datasets.html#adding-datasets) 
 
 - For more datasets, check out [Kaggle Datasets](https://www.kaggle.com/datasets)
 
@@ -288,7 +292,7 @@ We are now going to explore the Titanic dataset that we just loaded.
 
 *Things to Note:*
 
-1. The **Dataset Details Page** provides a summary of the dataset. This summary lists each column that is included in the dataset along with:
+1. The **Dataset Details Page** provides a summary of the dataset. This summary lists each column (column name) that is included in the dataset along with:
 
 **Logical type (can be changed)**
 
@@ -308,7 +312,7 @@ We are now going to explore the Titanic dataset that we just loaded.
  - Standard deviation
  - Frequency
  - Number of unique values
- - View the first 20 rows of a column
+ - View the first 20 rows of a column by hovering over the column name (see image below)
 
 ![datasets-details-first-20-rows](assets/datasets-details-first-20-rows.jpg)
 
@@ -343,7 +347,7 @@ From the Titanic.csv dataset, we are going to create two datasets, training and 
 
 ![titanic-set-split-1](assets/titanic-set-split-1.jpg)
 
-2\. Split the data into two sets: titanic_train and titanic_test, then save the changes. Use the image below as a guide: 
+2\. Split the data into two sets: ```titanic_train``` and ```titanic_test```, then save the changes. Use the image below as a guide: 
 
 ![titanic-set-split-2](assets/titanic-set-split-2.jpg)
 
@@ -374,8 +378,6 @@ There are two ways to visualize the training set:
 ![titanic-train-visualize](assets/titanic-train-visualize.jpg)
 
 **Method 1** : Clicking on the **titanic_train** file, select **Visualize**, then click on the visualization file generated.
-
-
 
 **Method 2**: Clicking on  **Autoviz** located at the top of the UI page, where you will be asked for the dataset you want to visualize.
 
@@ -429,11 +431,11 @@ Driverless AI  shows the graphs that are "relevant" aspects of the data. The fol
 
 ### Deeper Dive and Resources
 
-- [Learn more about Automatic Visualization from the Driverless docs](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/datasets.html#visualizing-datasets)
+- [Learn more about Automatic Visualization from the H2O Driverless AIdocs](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/datasets.html#visualizing-datasets)
 
 - [Learn more about Automatic Visualization from the architect Leland Wilkinson, Chief Scientist, H2O.ai from session at H2O World 2017 Youtube Video](https://www.youtube.com/watch?v=bas3-Ue2qxc)
 
-- [Automatic Visualization SlideShare](https://www.slideshare.net/0xdata/automatic-visualization)
+- [H2O.ai Automatic Visualization by Leland Wikinson (SlideShare)](https://www.slideshare.net/0xdata/automatic-visualization)
 
 ## Task 5: Launch First Experiment
 
@@ -470,20 +472,21 @@ Note: To disable **assistant**, click on assistant again.
 
 ![titanic-train-assist-sample](assets/titanic-train-assist-sample.jpg)
  
- 
-1. **Display Name** - Type the name for your experiment `Titanic Classification Tutorial.`
-2. **Dataset** - the name of the dataset being used to create an experiment
-3. **Rows** - total number of rows 
-4. **Columns** - total number of columns 
-5. **Dropped Columns** - Drop column(s) from your dataset that you don't want to use in the experiment
-6. **Validation Dataset** - Select the dataset you want to validate. This set will be used to validate parameters like models, features, etc.
-7. **Test Dataset** - The dataset that will be used to test the model generated from the training dataset. It's not used during training of the model, and results are available at the end of the experiment.
+1. **Display Name** - Optional: Specify a display name for the new experiment. There are no character or length restrictions for naming. If this field is left blank, Driverless AI will automatically generate a name for the experiment.
+2. **Dataset** - The name of the dataset being used to create an experiment
+3. **Rows** - Total number of rows 
+4. **Columns** - Total number of columns 
+5. [**Dropped Columns**](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#dropped-columns) - Drop column(s) from your dataset that you don't want to use in the experiment
+6. [**Validation Dataset**](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#validation-dataset) - Select the dataset you want to validate. This set will be used to validate parameters like models, features, etc.
+7. [**Test Dataset**](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#test-dataset) - The dataset that will be used to test the model generated from the training dataset. It's not used during training of the model, and results are available at the end of the experiment.
 8. **Target column** -  What do you want to predict? 
-9. **Fold column** - The fold column is used to create the training and validation datasets so that all rows with the same Fold value will be in the same dataset. This column will be used if no validation dataset is provided and the model is trained using cross validation. 
-10. **Weight column** - Column that indicates the observation/isntance weight (a.k.a. sample or row weight), if applicable.  
-11. **Time Column**(OFF by default) - Provides a time order(timestamps for observations). Used when data has a high dependency on time (such as seasonality or trend), and you want to treat this problem as a time series problem. 
+9. [**Fold column**](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#fold-column) - The fold column is used to create the training and validation datasets so that all rows with the same Fold value will be in the same dataset. This column will be used if no validation dataset is provided and the model is trained using cross validation. 
+10. [**Weight column**](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#weight-column) - Column that indicates the observation/isntance weight (a.k.a. sample or row weight), if applicable.  
+11. [**Time Column**](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#time-column)(OFF by default) - Provides a time order(timestamps for observations). Used when data has a high dependency on time (such as seasonality or trend), and you want to treat this problem as a time series problem. 
 
 Continuing with our experiment:
+
+Type the name for your experiment `Titanic Classification Tutorial`
 
 5\. Click **Dropped Columns**, drop the the following columns: Passenger_Id, name_with_salutations, name_without_salutations, boat, body and home.dest. Then select **Done**. 
 
@@ -493,7 +496,7 @@ These attributes (columns) were removed to create a cleaner dataset. Attributes 
 
 A clean dataset is essential for the creation of a good predictive model. The process of data cleansing needs to be done with all datasets to rid the set of any unwanted observations, structural errors, unwanted outliers, or missing data. 
 
-6\. Select **Test Dataset** and then click on **titanic_test**
+6\. Select **Test Dataset** and then click on ```titanic_test```
 
 ![add-test-set](assets/add-test-set.jpg)
 
@@ -510,14 +513,17 @@ The survived attribute was selected because, as an insurance company, we want to
 *Things to Note:*
 
 1. **Training Settings** - Describes the Accuracy, Time, and Interpretability of your specific experiment.  The knobs on the experiment settings are adjustable as values change the meaning of the settings on the left-bottom page change.
-    - **Accuracy** - (Relative accuracy) higher values, should lead to higher confidence in model performance (accuracy) (see Driverless AI documentation for more information on the [Accuracy setting](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-settings.html?highlight=accuracy%20setting#accuracy))
-    - **Time** - Relative time for completing the experiment. Higher values will take longer for the experiment to complete.
-    - **Interpretability** -  The degree to which a human can understand the cause of the decision.  
-2. **Expert Settings** - Available expert settings to customize your experiment. 
-3. **Scorer** - Driverless AI selects the best scorer based on your dataset. Other scorers can be manually selected. (Explore more about scores in the next tutorial [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus))
-4. **Classification** - Classification or Regression button. Driverless AI automatically determines the problem type based on the target column. Though not recommended, you can override this setting by clicking this button. 
-5. **Reproducible** - This button allows you to build an experiment with a random seed and get reproducible results. If this is disabled (default), the results will vary between runs.
-6. **GPUs Enabled** - Specify whether to enable GPUs. (Note that this option is ignored on CPU-only systems)
+    - [**Accuracy**](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-settings.html?highlight=accuracy%20setting#accuracy) - As accuracy increases, Driverless AI gradually adjusts the method for performing the evolution and ensemble. At low accuracy, Driverless AI varies features and models, but they all compete evenly against each other. At higher accuracy, each independent main model will evolve independently and be part of the final ensemble as an ensemble over different main models. At higher accuracies, Driverless AI will evolve+ensemble feature types like Target Encoding on and off that evolve independently. Finally, at highest accuracies, Driverless AI performs both model and feature tracking and ensembles all those variations. Changing this value affects the feature evolution and final pipeline. 
+
+    - [**Time**](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#time) - This specifies the relative time for completing the experiment (i.e., higher settings take longer). Early stopping will take place if the experiment doesn’t improve the score for the specified amount of iterations.
+
+    - [**Interpretability**](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#interpretability) -  TSpecify the relative interpretability for this experiment. Higher values favor more interpretable models. Changing the interpretability level affects the feature pre-pruning strategy, monotonicity constraints, and the feature engineering search space.
+
+2. [**Expert Settings**](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/expert-settings.html#expert-settings) - Available expert settings to customize your experiment. 
+3. [**Scorer**](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/scorers.html) - Driverless AI selects the best scorer based on your dataset. Other scorers can be manually selected. (Explore more about scores in the next tutorial [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus))
+4. [**Classification/Regression**](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#classification-regression-button) - Classification or Regression button. Driverless AI automatically determines the problem type based on the target column. Though not recommended, you can override this setting by clicking this button. 
+5. [**Reproducible**](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#reproducible) - This button allows you to build an experiment with a random seed and get reproducible results. If this is disabled (default), the results will vary between runs.
+6. [**GPUs Enabled**](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#enable-gpus) - Specify whether to enable GPUs. (Note that this option is ignored on CPU-only systems)
 7. **Launch Experiment** - Launches the experiment
 
 
@@ -527,7 +533,6 @@ The survived attribute was selected because, as an insurance company, we want to
 - Time: 2
 - Interpretability: 6
 - Scorer: AUC
-- Reproducible:  Enabled (Click on Reproducible)
 
 ![update-experiment-settings](assets/update-experiment-settings.jpg)
 
@@ -535,7 +540,7 @@ The survived attribute was selected because, as an insurance company, we want to
 
 10\. The **Experiment** page will look similar to the one below after 45% complete:
 
-![experiment-running-45](assets/experiment-running-45.jpg)
+![experiment-running-46](assets/experiment-running-46.jpg)
 
 *Things to Note:*
 1. **Experiment Name** - Name of your experiment. If you do not assign a name to it, a random name will be generated. The name can be changed at any time.
@@ -587,11 +592,11 @@ Once the experiment is complete, an **Experiment Summary** will appear:
 
 - [Learn more about running Experiments from H2O Driverless AI docs](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/running-experiment.html#)
 
-- [Explore Documentation on Completed Experiments](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-completed.html)
+- [H2O Driverless AI - Explore Documentation on Completed Experiments](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-completed.html)
 
-- [Explore Documentation on Visualizing the Scoring Pipeline](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/scoring_pipeline_visualize.html?highlight=visualize%20scoring%20pipeline)
+- [H2O Driverless AI - Explore Documentation on Visualizing the Scoring Pipeline](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/scoring_pipeline_visualize.html?highlight=visualize%20scoring%20pipeline)
 
-- [Explore Documentation on Experiment Summary](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-summary.html) 
+- [H2O Driverless AI - Explore Documentation on Experiment Summary](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-summary.html) 
 
 - [Review the Driverless AI Booklet to learn more about running experiments](http://docs.h2o.ai/driverless-ai/latest-stable/docs/booklets/DriverlessAIBooklet.pdf) 
 
@@ -621,9 +626,9 @@ The complete list of features used in the final model is available in the Experi
 
 ### Deeper Dive and Resources
 
-- [Learn more about Driverless AI Transformations](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/transformations.html) 
+- [Learn more about H2O Driverless AI Transformations](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/transformations.html) 
 
-- [Feature Engineering for Machine Learning by Dmitry Larko](https://www.youtube.com/playlist?list=PLrsf4weWJKynQBvh0i-YxDDVqCcIrF28o) 
+- [Feature Engineering for Machine Learning by H2O.ai's Dmitry Larko](https://www.youtube.com/playlist?list=PLrsf4weWJKynQBvh0i-YxDDVqCcIrF28o) 
 
 - [H2O World London 2018 Feature Engineering session replay](https://www.youtube.com/watch?v=d6UMEmeXB6o ) and [slides  by Dmitry](https://www.slideshare.net/0xdata/feature-engineering-in-h2o-driverless-ai-dmitry-larko-h2o-ai-world-london-2018 ) 
 
@@ -631,7 +636,7 @@ The complete list of features used in the final model is available in the Experi
 
 Let’s explore the results of this classification experiment. You can find the results on the **Experiment Summary** at the left-bottom of the **Experiment** page. The resulting plots are insights from the training and validation data resulting from the classification problem. Each plot will be given a brief overview. 
 
-If you are interested in learning more about each plot and the metrics derived from those plots covered in this section, then check out our next tutorial [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#0).
+If you are interested in learning more about each plot and the metrics derived from those plots covered in this section, then check out our next tutorial [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus).
 
 ![experiment-summary-expanded](assets/experiment-summary-expanded.jpg)
 
@@ -683,11 +688,11 @@ The ROC curve below shows Receiver-Operator Characteristics curve stats on valid
 
 ![experiment-results-roc-graph](assets/experiment-results-roc-graph.jpg)
 
-This ROC gives an Area Under the Curve or AUC of .8530. The AUC tells us that the model is able to separate the survivor class with an accuracy of 85.30%.
+This ROC gives an Area Under the Curve or AUC of .8472. The AUC tells us that the model is able to separate the survivor class with an accuracy of 84.72%.
 
-Learn more about the ROC Curve on [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus: ROC](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#7).
+Learn more about the ROC Curve on [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus: ROC](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus).
 
-3\. Prec-Recall - Precision-Recall graph
+3\. Prec-Recall: Precision-Recall graph
 
 Prec-Recall is a complementary tool to ROC curves, especially when the dataset has a significant skew. The Prec-Recall curve plots the precision or positive predictive value (y-axis) versus sensitivity or true positive rate (x-axis) for every possible classification threshold. At a high level, we can think of precision as a measure of exactness or quality of the results while recall as a measure of completeness or quantity of the results obtained by the model. Prec-Recall measures the relevance of the results obtained by the model.
 
@@ -695,9 +700,9 @@ The Prec-Recall plot below shows the Precision-Recall curve on validation data a
 
 ![experiment-results-prec-recall-graph](assets/experiment-results-prec-recall-graph.jpg)
 
-Similarly to the ROC curve, when we take a look at the area under the curve of the Prec-Recall Curve of AUCPR we get a value of .7960. This tells us that the model brings forth relevant results or those cases of the passengers that survived with an accuracy of 79.60%.
+Similarly to the ROC curve, when we take a look at the area under the curve of the Prec-Recall Curve of AUCPR we get a value of .8146. This tells us that the model brings forth relevant results or those cases of the passengers that survived with an accuracy of 81.46%.
 
-Learn more about the Prec-Curve Curve on [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus: Prec-Recall](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#8).
+Learn more about the Prec-Curve Curve on [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus: Prec-Recall](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus).
 
 4\. Cumulative Lift Chart 
 
@@ -707,7 +712,7 @@ The Cumulative Lift chart shows lift stats on validation data. For example, “H
 
 ![experiment-results-lift-graph](assets/experiment-results-lift-graph.jpg)
 
-Learn more about the Cumulative Lift Chart on [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus: Cumulative Lift](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#10).
+Learn more about the Cumulative Lift Chart on [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus: Cumulative Lift](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus).
 
 5\. Cumulative Gains Chart
 
@@ -723,9 +728,9 @@ The Cumulative Gains Chart below shows Gains stats on validation data. For examp
 
 The Gains chart above tells us that when looking at the 20% quantile, the model can positively identify ~45% of the survivors compared to a random model(or no model) which would be able to positively identify about ~20% of the survivors at the 20% quantile.
 
-Learn more about the Cumulative Gains Chart on [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus: Cumulative Gains](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#9).
+Learn more about the Cumulative Gains Chart on [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus: Cumulative Gains](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus).
 
-6\. K-S
+6\. Kolmogorov-Smirnov
 
 Kolmogorov-Smirnov or K-S measures the performance of classification models by measuring the degree of separation between positives and negatives for validation or test data[5]. “The K-S is 100 if the scores partition the population into two separate groups in which one group contains all the positives and the other all the negatives. On the other hand, If the model cannot differentiate between positives and negatives, then it is as if the model selects cases randomly from the population. The K-S would be 0. In most classification models, the K-S will fall between 0 and 100, and that the higher the value, the better the model is at separating the positive from negative cases.”[6].
 
@@ -737,7 +742,7 @@ Hover over a point in the chart to view the quantile percentage and Kolmogorov-S
 
 For the K-S chart above, if we look at the top 60% of the data, the at-chance model (the dotted diagonal line) tells us that only 60% of the data was successfully separate between positives and negatives (survived and did not survived). However, with the model, it was able to do .499, or about 50% of the cases were successfully separated between positives and negatives.
 
-Learn more about the Kolmogorov-Smirnov chart on [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus: Kolmogorov-Smirnov chart](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#11).
+Learn more about the Kolmogorov-Smirnov chart on [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus: Kolmogorov-Smirnov chart](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus).
 
 ### References
  
@@ -749,7 +754,7 @@ Learn more about the Kolmogorov-Smirnov chart on [Machine Learning Experiment Sc
 
 [4] [Lift Analysis Data Scientist Secret Weapon](https://www.kdnuggets.com/2016/03/lift-analysis-data-scientist-secret-weapon.html)
 
-[5] [H2O’s Kolmogorov-Smirnov](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-graphs.html?highlight=mcc)
+[5] [H2O Driverless AI - Kolmogorov-Smirnov](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-graphs.html?highlight=mcc)
 
 [6] [Model Evaluation- Classification](https://www.saedsayad.com/model_evaluation_c.htm)
 
@@ -814,7 +819,6 @@ This section describes MLI functionality and features for regular experiments. F
 
     ![dai-disparate-impact-analysis-2](assets/dai-disparate-impact-analysis-2.jpg)
 
-    ![dai-disparate-impact-analysis-3](assets/dai-disparate-impact-analysis-3.jpg)
 
     - **Sensitivity Analysis (NEW)** : 
     
@@ -834,7 +838,7 @@ This section describes MLI functionality and features for regular experiments. F
 
 3. Surrogate Models - For classification and regression experiments
 
-    - **KLIME**
+    - **K-LIME**
 
     ![surrogate-models-klime](assets/surrogate-models-klime.jpg)
 
@@ -885,7 +889,7 @@ This plot shows Driverless AI model and LIME model predictions in sorted order b
 
 ![dashboard-klime](assets/dashboard-klime.jpg)
 
-Learn more about K-Lime with our [Machine Learning Interpretability Tutorial](https://h2oai.github.io/tutorials/machine-learning-interpretability-tutorial/#7).
+Learn more about K-Lime with our [Machine Learning Interpretability Tutorial](https://training.h2o.ai/products/tutorial-1c-machine-learning-interpretability-tutorial).
 
 2\. Feature Importance - 
 This graph shows the essential features that drive the model behavior.
@@ -895,7 +899,7 @@ This graph shows the essential features that drive the model behavior.
 
 ![dashboard-feature-importance](assets/dashboard-feature-importance.jpg)
 
-Learn more about Feature Importance with our [Machine Learning Interpretability TUtorial](https://h2oai.github.io/tutorials/machine-learning-interpretability-tutorial/#4).
+Learn more about Feature Importance with our [Machine Learning Interpretability TUtorial](https://training.h2o.ai/products/tutorial-1c-machine-learning-interpretability-tutorial).
 
 3\. Decision Tree Surrogate model
 The decision Tree Surrogate model displays the model's approximate flowchart of the complex Driverless AI model's decision making.                  
@@ -907,7 +911,7 @@ Solution:
 
 ![decision-tree-task-8-answer](assets/decision-tree-task-8-answer.jpg)
 
-Learn more about Decision Trees with our [Machine Learning Interpretability Tutorial](https://h2oai.github.io/tutorials/machine-learning-interpretability-tutorial/#6).
+Learn more about Decision Trees with our [Machine Learning Interpretability Tutorial](https://training.h2o.ai/products/tutorial-1c-machine-learning-interpretability-tutorial).
 
 4\. Partial Dependence and Individual Conditional Expectation (ICE) plot. This plot represents the model prediction for different values of the original variables. It shows the average model behavior for important original variables.
 
@@ -917,7 +921,7 @@ The grey bar represents the standard deviation of predictions. The yellow dot re
 
 1. Explore other average values for different variables and compare the results to your original observations. To change the variable, select **PDP Variable:** located at the top of the Partial Dependence plot.
  
-Learn more about Partial Dependence Plots with our [Machine Learning Interpretability Tutorial](https://h2oai.github.io/tutorials/machine-learning-interpretability-tutorial/#5).
+Learn more about Partial Dependence Plots with our [Machine Learning Interpretability Tutorial](https://training.h2o.ai/products/tutorial-1c-machine-learning-interpretability-tutorial).
 
 5\. Explanations 
 
@@ -959,15 +963,14 @@ https://www.youtube.com/watch?v=5jSU3CUReXY) (Oct 18)
 
 - [Building Explainable Machine Learning Systems: The Good, the Bad, and the Ugly](https://www.youtube.com/watch?v=Q8rTrmqUQsU) (May 18)
  
-- [An Introduction to Machine Learning Interpretability](https://www.oreilly.com/library/view/an-introduction-to/9781492033158/) 
+- [An Introduction to Machine Learning Interpretability Second Edition by Patrick Hall & Navdeep Gill](https://www.h2o.ai/wp-content/uploads/2019/08/An-Introduction-to-Machine-Learning-Interpretability-Second-Edition.pdf) 
 
-- [Testing Machine Learning Explanation Techniques](https://www.oreilly.com/ideas/testing-machine-learning-interpretability-techniques)
+- [Testing Machine Learning Explanation Techniques by Patrick Hall, Navdeep Gill and Lingyao Meng](https://www.oreilly.com/ideas/testing-machine-learning-interpretability-techniques)
 
 - [Patrick Hall and H2O Github - Machine Learning with Python](https://github.com/jphall663/interpretable_machine_learning_with_python)
 
 - [Patrick Hall and H2O Github - Machine Learning Interpretability](https://github.com/jphall663/awesome-machine-learning-interpretability) 
 
-- [Download the Driverless AI MLI Cheat Sheet](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/_downloads/5cb84bc81a49817d5f490dde39bf42ee/cheatsheet.png) 
 
 ## Task 9: Experiment Summary and Autoreport
 
@@ -1010,17 +1013,15 @@ The zip file for the **Autoreport** provides insight into the following:
 
 ### Deeper Dive and Resources
 
-- [H2O.ai, Driverless AI Experiment Summary and Autoreport](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-summary.html#autoreport)
+- [H2O Driverless AI - Experiment Summary and Autoreport](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-summary.html#autoreport)
 
 - [Review this Webinar “Peek Under the Hood of H2O Driverless AI with Auto Doc”](https://www.brighttalk.com/webcast/16463/332693/peek-under-the-hood-of-h2o-driverless-ai-with-auto-doc) 
-
-- [Try running an experiment without the Driverless AI UI using the Python Client](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/examples/h2oai_client_demo.html?highlight=experiment%20summary)
 
 - [Toward AutoML for Regulated Industry with H2O Driverless AI](https://www.h2o.ai/blog/toward-automl-for-regulated-industry-with-h2o-driverless-ai/)
 
 ## Next Steps
 
-Check out Driverless AI next tutorial [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#0)
+Check out Driverless AI next tutorial [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus)
 
 Where you will learn how to:
 
@@ -1080,25 +1081,28 @@ From the Projects page, you can link datasets and/or experiments, and you can ru
     - **+ Link dataset** : Link an additional dataset (Training, Testing or Validation) to the existing project
 
 2. **Experiments** 
-    - **Select Scoring Dataset**: Select a test dataset to score using selected experiment
-    - **Select Experiments**: Select any experiment for this project
-    - **Select Scorer for Test Score**: Select a valid scorer for this experiment
-    - **Score Dataset on Experiments**: Once you have selected the data for scoring, the scorer, and the model or models, you can begin the scoring process by clicking **Score Items**.
-    - **Compare**: You can compare two or three experiments and view side-by-side detailed information about each.
-    - **Unlink Items**: Unlink datasets and/or experiments
-    - **+ Link Dataset**: Link an additional dataset to the experiment
-    - **New Experiment**: Create a new experiment
-    - Current linked experiment(s) info :
-        - **Name**
-        - **A**: Accuracy
-        - **T** : Time
-        - **I**: Interpretability
-        - **Scorer**: Scorer used 
-        - **Status**: In progress, completed
-        - **Train Time**: Total time to train experiment
-        - **Val. Score** : Validation score for the experiment
-        - **Test Score**: Test score for the experiment
-        - **Test Time**: Total time to test experiment 
+
+![projects-page-time-series-experiments](assets/projects-page-time-series-experiments.jpg)
+
+- **Select Scoring Dataset**: Select a test dataset to score using selected experiment
+- **Select Experiments**: Select any experiment for this project
+- **Select Scorer for Test Score**: Select a valid scorer for this experiment
+- **Score Dataset on Experiments**: Once you have selected the data for scoring, the scorer, and the model or models, you can begin the scoring process by clicking **Score Items**.
+- **Compare**: You can compare two or three experiments and view side-by-side detailed information about each.
+- **Unlink Items**: Unlink datasets and/or experiments
+- **+ Link Dataset**: Link an additional dataset to the experiment
+- **New Experiment**: Create a new experiment
+- Current linked experiment(s) info :
+    - **Name**
+    - **A**: Accuracy
+    - **T** : Time
+     - **I**: Interpretability
+    - **Scorer**: Scorer used 
+    - **Status**: In progress, completed
+    - **Train Time**: Total time to train experiment
+    - **Val. Score** : Validation score for the experiment
+    - **Test Score**: Test score for the experiment
+    - **Test Time**: Total time to test experiment 
  
  ### Create a Project Workspace
 
@@ -1111,7 +1115,7 @@ To create a Project Workspace:
 
 - Learn more about projects in Driverless AI; check out the [Project Workspace Documentation](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/projects.html?highlight=projects%20workspace).
 
-- A more extensive application of **Project Workspace** can be explored in the [Time Series Tutorial - Retail Sales Forecasting](https://h2oai.github.io/tutorials/time-series-recipe-tutorial-retail-sales-forecasting/#0). 
+- A more extensive application of **Project Workspace** can be explored in the [Time Series Tutorial - Retail Sales Forecasting](https://training.h2o.ai/products/tutorial-2a-time-series-recipe-tutorial-retail-sales-forecasting). 
  
 
  
