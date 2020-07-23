@@ -542,7 +542,7 @@ A ROC curve is a useful tool because it only focuses on how well the model was a
 
 ### Applicability of ROC Curves in the Real World
 
-ROC and AUC curves are important evaluation metrics for calculating the performance of any classification model. In hopes of understanding the applicability of ROC curves, consider the next ROC curves with its AUC and histograms from a binary classifier model trying to make the following point: 
+ROC and AUC curves are important evaluation metrics for calculating the performance of any classification model. In hopes of understanding the applicability of ROC curves, consider the next ROC curves with its AUC and smooth histograms from a binary classifier model trying to make the following point: 
 
 **Task**: Identify the most effective ROC Curve that will distinguish between green and red apples. 
 
@@ -550,32 +550,32 @@ Below are three types of ROC Curves in correlation to finding the perfect ROC th
 
 As noted above, the closer the ROC curve is to the left (the more significant the AUC percentage), the better the model is at separating classes. 
 
-*Note*: Before moving forward, it's essential to clarify that the histograms plotted are the result of previous data. Such data has determined that apples with more than 50% (threshold) of its body being red will be considered a red apple. Therefore, anything below 50% will be a green apple.
+*Note*: Before moving forward, it's essential to clarify that the smooth histograms plotted are the result of previous data. Such data has determined that apples with more than 50% (threshold) of its body being red will be considered a red apple. Therefore, anything below 50% will be a green apple.
 
 
 #### ROC One: 
 
 ![ROC-1](assets/ROC-1.jpg)
 
-In this case, the above Histogram (1A) is telling us that the distribution will be as follows: 
+In this case, the above smooth Histogram (1A) is telling us that the distribution will be as follows: 
 
 The green bell curve represents green apples while the red bell curve represents the red apples and the threshold will be at 50%. The x-axis represents the predicted probabilities, while the y-axis represents the count of observations.
 
- From general observations, we can see that the Histogram shows that the current classifier can distinguish between red and green apples only 50% of the time, and such distinction is at the 0.5 thresholds. 
+ From general observations, we can see that the smooth Histogram shows that the current classifier can distinguish between red and green apples only 50% of the time, and such distinction is at the 0.5 thresholds. 
 
-When we draw the ROC Curve (1B) for the Histogram above, we will get the following results: 
+When we draw the ROC Curve (1B) for the smooth Histogram above, we will get the following results: 
 
 The ROC Curve is telling us how good the model is at distinguishing between two classes: in this case, we refer to red and green apples as the two classes. When looking at the ROC Curve, it will have an AUC of 1 (in blue). Hence, as discussed earlier, an AUC of one will tell us that the model is performing at 100% (perfect performance). Although, not always the case. We can have a ROC Curve of zero, and if we flip the curve, it can give us a ROC of one; that is why we always need to review the model carefully. 
 
 Accordingly, this ROC Curve is telling us that the classifier model can distinguish between red and green apples 100% of all cases when it has to identify. Consequently, the random model becomes absolute. For reference, the random model (dash line) essentially represents a classifier that does not do better than random guessing. 
 
-Therefore, the ROC Curve for this Histogram will be perfect because it can separate red and green apples. 
+Therefore, the ROC Curve for this smooth Histogram will be perfect because it can separate red and green apples. 
 
 #### ROC Two: 
 
 ![ROC-2](assets/ROC-2.jpg)
 
-When we draw the ROC curve (2B) for the Histogram (2A) above, we will get the following results: 
+When we draw the ROC curve (2B) for the smooth Histogram (2A) above, we will get the following results: 
 
 When looking at the ROC Curve, it will have an AUC of .7 (in blue). 
 
@@ -587,7 +587,7 @@ Therefore, this ROC curve is not perfect at classifying red and green apples. Th
 
 ![ROC-3](assets/ROC-3.jpg)
 
-When we draw the ROC curve (3B) for the Histogram (3A) above, we will get the following results: 
+When we draw the ROC curve (3B) for the smooth Histogram (3A) above, we will get the following results: 
 
 When looking at the ROC Curve, it will have an AUC of .5 (in blue). 
 
