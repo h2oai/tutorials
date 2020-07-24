@@ -11,7 +11,7 @@
 - [Task 6: Custom Recipe to Improve Predictions](#task-6-custom-recipe-to-improve-predictions) 
 - [Task 7: Challenge](#task-7-challenge)
 - [Task 8: Appendix A: Add the Datasets](#task-8-appendix-a-add-the-datasets)
-- [Next Steps](#tnext-steps)
+- [Next Steps](#next-steps)
 
 
 ## Objective
@@ -20,7 +20,7 @@ Sentiment analysis, also known as opinion mining is a subfield of Natural Langua
 
 ![sentiment-analysis](assets/sentiment-analysis.jpg)
 
-[Image source](https://dsla1.com/sentiment-analysis-using-python/)
+[Image source](https://medium.com/analytics-vidhya/sentiment-analysis-with-vader-label-the-unlabeled-data-8dd785225166)
 
 Sentiment Analysis is an important sub-field of NLP. It can help to create targeted brand messages and assist a company in understanding consumer’s preferences. These insights could be critical for a company to increase its reach and influence across a range of sectors.
 
@@ -29,7 +29,7 @@ Here are some of the uses of Sentiment analysis from a business perspective:
 ![sentiment-analysis-business-uses](assets/sentiment-analysis-business-uses.png)
 
 
-In this tutorial, you will learn how to apply automatic machine learning to build a model to classify customer reviews. You will learn some core NLP concepts and then load a dataset, explore it, run an experiment to build a model and explore the results.
+In this tutorial, you will learn how to apply automatic machine learning to build a model to classify customer reviews. You will learn some core NLP concepts and then load a dataset, explore it, run an experiment to build a model, and explore the results.
 
 **Note**: It is highly recommended that you go over the entire tutorial before starting the experiment. This would help you to become more familiar with the content and aid you while you are performing the experiment.
  
@@ -39,11 +39,11 @@ You will need the following to be able to do this tutorial:
 
 - Basic knowledge of Machine Learning and Statistics  
 - A hands on knowledge of Driverless AI environment
-- Basic knowledge of Driverless AI or doing the [Automatic Machine Learning Introduction with Drivereless AI Test Drive](https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#0) 
+- Basic knowledge of Driverless AI or doing the [Automatic Machine Learning Introduction with Drivereless AI Test Drive](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai) 
     
 - A **Two-Hour Test Drive session** : Test Drive is H2O.ai's Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.
 
-  - Need a **Two-Hour Test Drive** session? Follow the instructions on [this quick tutorial](https://h2oai.github.io/tutorials/getting-started-with-driverless-ai-test-drive/#1) to get a Test Drive session started.  
+  - Need a **Two-Hour Test Drive** session? Follow the instructions on [this quick tutorial](https://training.h2o.ai/products/tutorial-0-getting-started-with-driverless-ai-test-drive) to get a Test Drive session started.  
 
 **Note:  Aquarium’s Driverless AI Test Drive lab has a license key built-in, so you don’t need to request one to use it. Each Driverless AI Test Drive instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore Driverless AI, you can always launch another Test Drive instance or reach out to our sales team via the [contact us form](https://www.h2o.ai/company/contact/).**
 
@@ -156,7 +156,7 @@ In **Task 2**, we shall explore and update the Experiment Settings.
 
 Once the data has been imported into Driverless AI, there are certain experiment settings that need to be updated. This section deals with experiment settings with respect to NLP tasks. However, if you wish to learn more about the meaning and various experimental settings in general , It is recommender to go through the following tutorial:
 
--   [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#3)
+-   [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus)
     
 Experiment Settings describe the Accuracy, Time and Interpretability of a specific experiment. The knobs on the experiment settings are adjustable. As values change, the meaning of the settings on the left-bottom page change.
 
@@ -311,7 +311,7 @@ It is also possible to create BoW models with combination of consecutive words, 
 
 - **TF-IDF Model:** A problem with the Bag of Words approach is that highly frequent words start to dominate in the document (e.g. larger score), but may not contain as much "informational content". Also, it will give more weight to longer documents than the shorter ones. One approach is to rescale the frequency of words by how often they appear in all documents so that the scores for frequent words across all documents are penalized. This approach of scoring is called  **Term Frequency-Inverse Document Frequency**, or TF-IDF [2] for short, where:
 
-     - **Term Frequency**  is a scoring of the frequency of the word in the current document.TF = (Number of times term t appears in a document)/(Number of terms in the document)
+     - **Term Frequency**  is a scoring of the frequency of the word in the current document. TF = (Number of times term t appears in a document)/(Number of terms in the document)
 
     - **Inverse Document Frequency**: is a scoring of how rare the word is across documents.IDF = 1+log(N/n), where N is the number of documents and n is the number of documents a term t has appeared in.TF-IDF weight is often used in information retrieval and text mining. This weight is a statistical measure used to evaluate how important a word is to a document in a collection or corpus
 
@@ -449,7 +449,7 @@ After an experiment status changes from `RUNNING` to `COMPLETE`, the UI provides
 
 ![Experiment-results-UI](assets/Experiment-results-UI.png)
 
-The Experiment Summary contains a lot of useful information which helps to understand what goes under the hood during the Sentiment Analysis Experiment. If you are interested in learning more about each plot and the metrics derived from those plots covered in this section, then check out our tutorial  [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#0).
+The Experiment Summary contains a lot of useful information which helps to understand what goes under the hood during the Sentiment Analysis Experiment. If you are interested in learning more about each plot and the metrics derived from those plots covered in this section, then check out our tutorial  [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus).
 
 Please note that the lab also provides a pre-ran experiment. You can either wait for your experiments to finish or use the results of the pre-ran experiment. Click on the **Experiments** tab and select the Amazon Fine Food reviews experiment as follows:
 
@@ -477,7 +477,7 @@ _Things to Note:_
 2. Iteration Data - Validation
 
      - The winning model's validation score and the algorithm used are as follows:
-          - Validation Score - .2353
+          - Validation Score - .2224
           - Model Type: XGBoostGBM
 
 
@@ -491,7 +491,7 @@ _Things to Note:_
 
      Look at some of the variables in Variable of Importance list. These are the new, high-value features for our training dataset.
 
-     These transformations created with the following transformers:
+     These transformations were created with the following transformers:
 
      - **TextBiGRUTransformer** : Trains a bi-directional GRU TensorFlow model on word embeddings created from a text feature to predict the response column
 
@@ -512,7 +512,7 @@ _Things to Note:_
      -   How many features were tested and selected?
      -   How many models were trained for feature evolution?
 
-There are also several plots adjacent to the summary tab that give insight into the experiment. If you are interested in learning more about each plot and the metrics derived from those plots covered in this section, then check out our next tutorial [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#0).
+There are also several plots adjacent to the summary tab that give insight into the experiment. If you are interested in learning more about each plot and the metrics derived from those plots covered in this section, then check out our next tutorial [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus).
 
 ### Deeper Dive and Resources
 
@@ -562,7 +562,7 @@ https://raw.githubusercontent.com/h2oai/driverlessai-recipes/master/transformers
   
 ![Uploading-Recipe-from-url](assets/Uploading-Recipe-from-url.png)
 
-5\. You’re welcome to create your own recipes, or you can select from a number of recipes available in the https://github.com/h2oai/driverlessai-recipes/tree/rel-1.8.4 repository. The `OFFICIAL RECIPES(EXTERNAL)` tab will directly take you to the recipes compatible with the Driverless AI version that you are using.
+5\. You’re welcome to create your own recipes, or you can select from a number of recipes available in the https://github.com/h2oai/driverlessai-recipes/tree/rel-1.8.7 repository. The `OFFICIAL RECIPES(EXTERNAL)` tab will directly take you to the recipes compatible with the Driverless AI version that you are using.
 
 ![Github-Repo-Recipes](assets/Github-Repo-Recipes.png)
 
@@ -602,7 +602,7 @@ https://raw.githubusercontent.com/h2oai/driverlessai-recipes/master/transformers
 
 ### Deeper Dive and Resources
 
-- [Get Started and Consume Existing Recipes](https://h2oai.github.io/tutorials/get-started-and-consume-existing-recipes)
+- [Get Started with Open Source Custom Recipes Tutorial](https://training.h2o.ai/products/tutorial-3a-get-started-with-open-source-custom-recipes-tutorial)
 
 ##  Task 7: Challenge
 
@@ -616,7 +616,7 @@ This data comes from  [Crowdflower's Data for Everyone library](http://www.crowd
 
 1\. Import the dataset from here:
 
--   [Airline-Sentiment-2-w-AA](http://airline-sentiment-2-w-aa/)
+-   [Airline-Sentiment-2-w-AA](https://data.world/crowdflower/airline-twitter-sentiment)
 
 Here are some samples from the dataset:
 
@@ -658,13 +658,13 @@ Import Amazon Fine Food Reviews training and test datasets to the Datasets Overv
 4\. Click to Import Selection
 
 5\. If the file loaded successfully then the following image should appear on the screen
-![Appendix_upload-dataset](assets/Appendix_datasets_preview.png)
+![Appendix_upload-dataset-1](assets/Appendix_upload-dataset-1.png)
 
 You can see that a new set of datasets now appear on the screen.
 
 ## Next Steps
 
-Check out the [Get Started and Consume Existing Recipes](https://h2oai.github.io/tutorials/get-started-and-consume-existing-recipes/#0) tutorial
+Check out the [Get Started with Open Source Custom Recipes](https://training.h2o.ai/products/tutorial-3a-get-started-with-open-source-custom-recipes-tutorial#tab-product_tab_overview) tutorial
 
 Where you will learn:
 
