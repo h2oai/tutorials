@@ -77,9 +77,11 @@ If you are new to Driverless AI we highly recommend you start with the **Test Dr
 
 ## How to Start and End the Test Drive Lab Session
 
-After a successful login, select the "View Details" button on lab one, as shown in the image below. Ignore other labs as we will only be working on lab one. 
+After a successful login, select "Browse Labs" located on the top-left corner of the page, then select Lab 1- Driverless AI Test Drive (x.x.x.x LTS) (1GPU).
 
-![lab 1](assets/lab1.jpg)
+Click on the "View Details" button on lab one, as shown in the image below.
+
+![lab 1](assets/selecting-lab1.jpg)
 
 
 After the Driverless AI Test Drive Lab will appear:
