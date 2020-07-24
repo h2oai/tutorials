@@ -4,7 +4,7 @@
 
 # Driverless AI
 
-This repository has tutorials that focus on **Driverless AI version 1.8.4.1**.
+This repository has tutorials that focus on **Driverless AI version 1.8.7.1**.
 
 Check out the [**New H2O.ai Learning Center**](https://training.h2o.ai/) where you can earn **badges** for completing the Self-Paced Tutorials or Instructor-Led Courses. 
 
@@ -26,8 +26,11 @@ Check out the [**New H2O.ai Learning Center**](https://training.h2o.ai/) where y
 
 - [Build Your Own Recipe Tutorial](https://training.h2o.ai/products/tutorial-3b-build-your-own-custom-recipe-tutorial)
 
+- [NEW - Scoring Pipeline Deployment Introduction](https://training.h2o.ai/products/tutorial-4a-scoring-pipeline-deployment-introduction)
 
 For other versions of the **Driverless AI tutorials**, check out the following repo's:
+
+- [Driverless AI Tutorials 1.8.4.1 Repo](https://github.com/h2oai/tutorials/tree/1.8.4.1/DriverlessAI)
 
 - [Driverless AI Tutorials 1.8.0 Repo](https://github.com/h2oai/tutorials/tree/1.8.0/DriverlessAI)
 
