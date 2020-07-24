@@ -77,16 +77,28 @@ If you are new to Driverless AI we highly recommend you start with the **Test Dr
 
 ## How to Start and End the Test Drive Lab Session
 
-After a successful login the Driverless AI Test Drive Lab will appear:
+After a successful login, select "Browse Labs" located on the top-left corner of the page, then select Lab 1- Driverless AI Test Drive (x.x.x.x LTS) (1GPU).
+
+Click on the "View Details" button on lab one, as shown in the image below.
+
+![selecting Lab-1 Driverless AI Test Drive](assets/selecting-Lab-1-Driverless-AI-Test-Drive.jpg)
+
+
+After the Driverless AI Test Drive Lab will appear:
 
 ![driverless-ai-test-drive-page](assets/driverless-ai-test-drive-page.jpg)
 
 **Note**: 
 
-- Lab duration is 120 minutes, after that the session will terminate
-- Check out the complete set of [Driverless AI Tutorials](https://h2oai.github.io/tutorials/)
-- Post questions on the [Driverless AI Community](https://www.h2o.ai/community/home)
-- **Start** button starts the lab session
+ 1. Lab duration is 120 minutes, after that the session will terminate
+
+ 2. Note that the lab automatically ends after two hours and can be taken multiple times
+
+3. [H2O.ai Learning Center](https://training.h2o.ai/): Build your Knowledge Base and Skills at your pace. Enter a place for knowledge-sharing, skills-enhancements, idea-sharing and more!
+
+ 4. [H2O.ai Community(HaC)](https://www.h2o.ai/community/home)  HaC is a community to share, learn, network, ask questions, provide answers, take the next step, and explore Artificial Intelligence, Machine Learning, and Data Science.  We are here to democratize AI. It will take a village to democratize AI.
+
+5. **Start** button starts the lab session
 
 1\. To start a Lab click on **Start Lab**. You will see an image similar to the one below:
 
@@ -117,7 +129,7 @@ After a successful login the Driverless AI Test Drive Lab will appear:
 
 Have any questions about Aquarium? Sign up for H2O.ai's Slack Community and post your questions under the **#cloud** channel. Members of the H2O.ai community will respond as soon as they are available.
 
-- [Join the H2O.ai community on Slack to Ask Questions #cloud](https://h2oai-community.slack.com/)
+- [Chat and ask questions with H2O.ai makers and data scientist users in the H2O.ai Slack workspace](https://www.h2o.ai/community/home)
 
 
 
