@@ -4,7 +4,7 @@
 - [Objective](#objective)
 - [Prerequisites](#prerequisites)
 - [Task 1: Launch Experiment and MLI](#task-1-launch-experiment-and-mli) 
-- [Task 2: ML Explainability Concepts](#task-2-industry-context-and-ml-explainability-concepts)
+- [Task 2: Industry Context and ML Explainability Concepts](#task-2-industry-context-and-ml-explainability-concepts)
 - [Task 3: Global Shapley Values and Feature Importance](#task-3-global-shapley-values-and-feature-importance)
 - [Task 4: Partial Dependence Plot](#task-4-partial-dependence-plot)
 - [Task 5: Decision Tree Surrogate](#task-5-decision-tree-surrogate)
@@ -52,17 +52,6 @@ In this tutorial, we will generate a machine learning model using an example fin
   - Need a **Two-Hour Test Drive** session? Follow the instructions on [this quick tutorial](https://training.h2o.ai/products/tutorial-0-getting-started-with-driverless-ai-test-drive) to get a Test Drive session started.  
 
 **Note:  Aquarium’s Driverless AI Test Drive lab has a license key built-in, so you don’t need to request one to use it. Each Driverless AI Test Drive instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore Driverless AI, you can always launch another Test Drive instance or reach out to our sales team via the [contact us form](https://www.h2o.ai/company/contact/).**
-
-Other installations: 
-
-- Cloud Installation
-  - [H2O Driverless AI on AWS Marketplace](https://aws.amazon.com/marketplace/pp/B07JN71K8N?qid=1547700275918&sr=0-6&ref_=srh_res_product_title)
-  - [H2O Driverless AI on Azure HDInsight](https://azuremarketplace.microsoft.com/en-gb/marketplace/apps/h2o-ai.h2o-driverles-ai?tab=Overview) 
-  - [H2O.ai Driverless AI (BYOL) on Google Cloud Platform](https://console.cloud.google.com/marketplace/details/h2o-public/h2oai-driverless-ai-byol?pli=1) 
-- [Local Installation](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/installing.html) 
-- [Server Installation](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/install/ibm-power.html)
-
-
 
 ##  Task 1: Launch Experiment and MLI
 
