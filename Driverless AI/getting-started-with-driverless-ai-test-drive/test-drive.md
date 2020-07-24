@@ -81,7 +81,7 @@ After a successful login, select "Browse Labs" located on the top-left corner of
 
 Click on the "View Details" button on lab one, as shown in the image below.
 
-![lab 1](assets/selecting-lab1.jpg)
+![selecting Lab-1 Driverless AI Test Drive](assets/selecting-Lab-1-Driverless-AI-Test-Drive.jpg)
 
 
 After the Driverless AI Test Drive Lab will appear:
