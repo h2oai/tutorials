@@ -29,11 +29,11 @@ You will need the following to be able to do this tutorial:
 
 - A Driverless AI environment that is version 1.7.0 or newer
 
-- Basic knowledge of Driverless AI or doing the [Automatic Machine Learning Introduction with Drivereless AI Test Drive](https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#0) 
+- Basic knowledge of Driverless AI or doing the [Automatic Machine Learning Introduction with Drivereless AI Test Drive](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai) 
 
 - A **Two-Hour Test Drive session** : Test Drive is H2O.ai's Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.
 
-  - Need a **Two-Hour Test Drive** session? Follow the instructions on [this quick tutorial](https://h2oai.github.io/tutorials/getting-started-with-driverless-ai-test-drive/#1) to get a Test Drive session started.  
+  - Need a **Two-Hour Test Drive** session? Follow the instructions on [this quick tutorial](https://training.h2o.ai/products/tutorial-0-getting-started-with-driverless-ai-test-drive) to get a Test Drive session started.  
 
 **Note:  Aquarium’s Driverless AI Test Drive lab has a license key built-in, so you don’t need to request one to use it. Each Driverless AI Test Drive instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore Driverless AI, you can always launch another Test Drive instance or reach out to our sales team via the [contact us form](https://www.h2o.ai/company/contact/).**  
 
@@ -77,7 +77,7 @@ The diagram above focuses on the parts of Driverless AI that are relevant to the
 
 The curated open-source recipes currently reside in the following GitHub repository:
 
-[H2O Curated Recipes GitHub Repo](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.8.4#sample-recipes)
+[H2O Curated Recipes GitHub Repo](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.8.7#sample-recipes)
 
 ### Deeper Dive and Resources
 
@@ -85,10 +85,10 @@ Explore the recipe Library and recipe recommendations
 
 Best Practices for Recipes:
 
-- [Security](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.8.4#security) 
-- [Safety](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.8.4#safety) 
-- [Performance](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.8.4#performance)
-- [Frequently Asked Questions](https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.4/FAQ.md) 
+- [Security](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.8.7#security) 
+- [Safety](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.8.7#safety) 
+- [Performance](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.8.7#performance)
+- [Frequently Asked Questions](https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.7/FAQ.md) 
 
 
 ## Task 2: Launch an Experiment and Consume a Recipe
@@ -187,7 +187,7 @@ This dataset set has 3333 customers(rows) and 21 columns representing attributes
 
 *Things to Note:*
 
-- **Under summary**: The validation score is 0.8992 with a best accuracy of 0.9472 (click on ROC then hover over Best ACC)
+- **Under summary**: The validation score is 0.9071 with a best accuracy of 0.9304 (click on ROC then hover over Best ACC)
 
 - **Variable Importance**: The top variable that led to a customer churning according to this model was the total amount a customer was being charged for their "Day Charge." The other variable of most importance is the total amount the customer is being charged for their evening calls,  "Eve calls." Intuitively this makes sense because if a customer is overpaying for calls in the morning when they might be the most active and also overpaying for their evening calls, it could have led a dissatisfied customer.
 
@@ -207,8 +207,8 @@ In Task 2, we ran an experiment to build a model that would predict customer chu
 | Scorer | AUC |
 | Model | XGBoostGBM |
 | Feature Importance | Day Charge, and Eve Charge|
-| AUC Score | 0.8992|
-| Accuracy | 0.9472 |
+| AUC Score | 0.9071|
+| Accuracy | 0.9304 |
 
 When a dataset is selected for an experiment, Driverless AI optimizes its settings by selecting the best Scorer, Model(s), and Transformers for the dataset. However, this does not mean we cannot import other scorers, models, or transformers to see if we can further optimize our model. In this task, we will be importing a transformer recipe, to see how the features in the feature engineering change.
 
@@ -216,7 +216,7 @@ Now we are going to import a recipe to add together related numeric features suc
 
 ### Import a Transformer Recipe
 
-The goal of importing the new transformer recipe is to see if we can further optimize our baseline model. To do this, we are going to take our baseline experiment and import the [sum.py transformer](https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.4/transformers/numeric/sum.py) 
+The goal of importing the new transformer recipe is to see if we can further optimize our baseline model. To do this, we are going to take our baseline experiment and import the [sum.py transformer](https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.7/transformers/numeric/sum.py) 
 
 1\. Select **Experiments** located at the top of the **Experiment** page:
 
@@ -238,10 +238,10 @@ The goal of importing the new transformer recipe is to see if we can further opt
 
 6\. Copy and paste  the following URL for the SumTransformer into the **Load Custom Recipe** box then click on **Save.**  
 
-**Note:** The Driverless AI Recipes branches rel-1.8.4 and rel-1.8.4.1 are the same, and have been merged into rel-1.8.4; that is why we are using the links for the 1.8.4 branch.
+**Note:** The Driverless AI Recipes branches rel-1.8.7 and rel-1.8.7.1 are the same, and have been merged into rel-1.8.7; that is why we are using the links for the 1.8.7 branch.
 
 ```html
-https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.4/transformers/numeric/sum.py
+https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.7/transformers/numeric/sum.py
 ```
 
 ![exp2-load-custom-recipe-transformer-raw-url](assets/exp2-load-custom-recipe-transformer-raw-url.jpg)
@@ -274,7 +274,7 @@ As you can see in the variable importance section, some features start with "SUM
 
 ### Deeper Dive and Resources
 
-- [H2O’s Driverless AI Recipes - Sum Transformer](https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.4/transformers/numeric/sum.py)
+- [H2O’s Driverless AI Recipes - Sum Transformer](https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.7/transformers/numeric/sum.py)
 
 ## Task 4: Recipe: Scorer
 
@@ -301,7 +301,7 @@ The model recipe that will be used for this experiment is the Brier Loss Scorer;
 5\. Copy and paste  the following URL for the Custom Brier Loss recipe into the **Load Custom Recipe** box then click on **Save**
 
 ~~~html
-https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.4/scorers/classification/binary/brier_loss.py
+https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.7/scorers/classification/binary/brier_loss.py
 ~~~
 
 ![exp3-load-custom-recipe-scorer-raw-url](assets/exp3-load-custom-recipe-scorer-raw-url.jpg)
@@ -342,12 +342,12 @@ https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.4/scorers/classificat
 
 ![exp3-accuracy](assets/exp3-accuracy.jpg)
 
-The ROC for this experiment was 0.9211, and the best accuracy was 0.9553. 
+The ROC for this experiment was 0.9089, and the best accuracy was 0.9322. 
 
 ### Deeper Dive and Resources
 
 - [Wikipedia Brier Score](https://en.wikipedia.org/wiki/Brier_score)
-- [H2O’s Driverless AI Recipes - Brier Loss](https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.4/scorers/classification/binary/brier_loss.py) 
+- [H2O’s Driverless AI Recipes - Brier Loss](https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.7/scorers/classification/binary/brier_loss.py) 
 
 ## Task 5: Recipe: Model
 
@@ -370,7 +370,7 @@ The model recipe that will be used for this experiment is **ExtraTrees**, which 
 5\. Copy and paste  the following URL into the **Load Custom Recipe** box then click on **Save**
 
 ~~~html
-https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.4/models/algorithms/extra_trees.py
+https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.7/models/algorithms/extra_trees.py
 ~~~
 
 ![exp4-load-custom-recipe-model-raw-url](assets/exp4-load-custom-recipe-model-raw-url.jpg)
@@ -401,11 +401,11 @@ https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.4/models/algorithms/e
 
 ![exp4-accuracy](assets/exp4-accuracy.jpg)
 
-The AUC for this experiment was 0.9082, and the best accuracy was 0.9439
+The AUC for this experiment was 0.9225, and the best accuracy was 0.9457
 
 ### Deeper Dive and Resources
 
-- [H2O’s Driverless AI Recipes - ExtraTrees Model ](https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.4/models/algorithms/extra_trees.py) 
+- [H2O’s Driverless AI Recipes - ExtraTrees Model ](https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.7/models/algorithms/extra_trees.py) 
 
 ## Task 6: Comparing Final Model Results 
 
@@ -470,7 +470,7 @@ ROC Curves for each model selected:
 
 ![project-model-comparison2](assets/project-model-comparison2.jpg)
 
-We can see that when we used the Scorer recipe, the model had better AUC with an accuracy of 0.9553 compared to Exp 1 - Baseline, which had an accuracy of 0.9472. Even with Exp 2 - Transformer, the AUC also improved, and there was a small improvement in the accuracy. Also, when looking at the variable importance, we see a slight variation on the variables that have the largest contribution to customers churning. In Exp 1 - Baseline, the variables with most importance when it came to customers churning were "Day Charge," and "Eve Charge." Exp 2, where we used the Transformer to sum columns with similar numerical data, we have the most important variable "CustServ Calls" and the "sum of CustServ Calls, Day Mins, Eve Charge, Eve Mins, Intl Calls, Intl Charge, Intl Mins, Night Mins, and Vmail Message." 
+We can see that when we used the Scorer recipe, the model had better AUC with an accuracy of 0.9322 compared to Exp 1 - Baseline, which had an accuracy of 0.9304. Even with Exp 2 - Transformer, the AUC also improved, and there was a small improvement in the accuracy. Also, when looking at the variable importance, we see a slight variation on the variables that have the largest contribution to customers churning. In Exp 1 - Baseline, the variables with most importance when it came to customers churning were "Day Charge," and "Eve Charge." Exp 2, where we used the Transformer to sum columns with similar numerical data, we have the most important variable "CustServ Calls" and the "sum of CustServ Calls, Day Mins, Eve Charge, Eve Mins, Intl Calls, Intl Charge, Intl Mins, Night Mins, and Vmail Message." 
 
 ### Deeper Dive and Resources
 
@@ -481,13 +481,13 @@ We can see that when we used the Scorer recipe, the model had better AUC with an
 
 H2O custom recipes reside in the H2O Driverless AI Recipes GitHub repo. **There are multiple branches of Driverless AI recipes so make sure that you are using the same branch as the Driverless AI version you have.**
 
-For this tutorial, we are using **Driverless AI 1.8.4.1,** but we will be working off the Driverless AI 1.8.4 branch, as both 1.8.4 and 1.8.4.1 branches have been merged.
+For this tutorial, we are using **Driverless AI 1.8.7.1,** but we will be working off the Driverless AI 1.8.7 branch, as both 1.8.7 and 1.8.7.1 branches have been merged.
 
-1\. Open the link below on a separate tab. Make sure the branch is **rel-1.8.4**
+1\. Open the link below on a separate tab. Make sure the branch is **rel-1.8.7**
 
-- [H2O Driverless AI Recipes GitHub Repo](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.8.4)
+- [H2O Driverless AI Recipes GitHub Repo](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.8.7)
 
-The rel-1.8.4 branch will similar to the page below:
+The rel-1.8.7 branch will similar to the page below:
 
 ![dai-recipes-github-page](assets/dai-recipes-github-page.jpg)
 
@@ -511,7 +511,7 @@ We are going to get the URL for **Brier Loss** Scorer we used in Task 4 and uplo
 
 ![dai-classification-folder](assets/dai-classification-folder.jpg)
 
-3\. Click on the **brier_loss.py** file
+3\. Click on the binary folder and then click the **brier_loss.py** file
 
 ![dai-brier-loss-file](assets/dai-brier-loss-file.jpg)
 
@@ -522,30 +522,30 @@ We are going to get the URL for **Brier Loss** Scorer we used in Task 4 and uplo
 5\. The URL for this version of the recipe should be the one below. This URL is then pasted into Driverless AI.
 
 ~~~html
-https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.4/scorers/classification/binary/brier_loss.py
+https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.7/scorers/classification/binary/brier_loss.py
 ~~~
 
 6\. See task 4 of this tutorial to follow the process of uploading a recipe via the raw URL
 
 ### Uploading Recipes from Local Machine 
 
-For this tutorial, we are using **Driverless AI 1.8.4.1,** but we will be working off the Driverless AI 1.8.4 branch, as both, 1.8.4 and 1.8.4.1 branches have been merged.
+For this tutorial, we are using **Driverless AI 1.8.7.1,** but we will be working off the Driverless AI 1.8.7 branch, as both, 1.8.7 and 1.8.7.1 branches have been merged.
 
-1\. Open the link below on a separate tab. Make sure the branch is **rel-1.8.4**
+1\. Open the link below on a separate tab. Make sure the branch is **rel-1.8.7**
 
-- [H2O Driverless AI Recipes GitHub Repo](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.8.4)
+- [H2O Driverless AI Recipes GitHub Repo](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.8.7)
 
-2\. Make sure it is Branch rel-1.8.4, then click on **Clone or Download**, then on **Download ZIP**. This will download the entire rel-1.8.4 repo to your desktop. If you prefer not to download the entire repo, then use the URL method. 
+2\. Make sure it is Branch rel-1.8.7, then click on **Clone or Download**, then on **Download ZIP**. This will download the entire rel-1.8.7 repo to your desktop. If you prefer not to download the entire repo, then use the URL method. 
 
 ![dai-recipes-repo-download](assets/dai-recipes-repo-download.jpg)
 
-3\. Unzip the driverless-recipes-rel-1.8.4 file and save it on your local machine, your directory of choice.
+3\. Unzip the driverless-recipes-rel-1.8.7 file and save it on your local machine, your directory of choice.
 
 4\. On Driverless AI, start an Experiment, then select Expert Settings. Now instead of selecting **+Load Custom Recipe From URL**, you will select **+Upload Custom Recipe**
 
 ![dai-upload-custom-recipe](assets/dai-upload-custom-recipe.jpg)
 
-5\. After you click on **Upload Custom Recipe**, go to the directory where you saved the **driverlessai-recipes-rel-1.8.4** folder
+5\. After you click on **Upload Custom Recipe**, go to the directory where you saved the **driverlessai-recipes-rel-1.8.7** folder
 
 6\. Select the **scorer** folder
 
@@ -563,7 +563,7 @@ For this tutorial, we are using **Driverless AI 1.8.4.1,** but we will be workin
 
 ## Next Steps
 
-Check out Driverless AI next tutorial [Develop Your Own Custom Recipe Tutorial](https://h2oai.github.io/tutorials/build-your-own-custom-recipe-tutorial/#0)
+Check out Driverless AI next tutorial [Develop Your Own Custom Recipe Tutorial](https://training.h2o.ai/products/tutorial-3b-build-your-own-custom-recipe-tutorial)
 
 Where you will learn to build a:
   - Custom Transformer Recipe
