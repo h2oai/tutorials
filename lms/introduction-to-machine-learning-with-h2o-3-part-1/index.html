@@ -6,11 +6,11 @@
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
   <meta name="theme-color" content="#4F7DC9">
   <meta charset="UTF-8">
-  <title></title>
+  <title>Introduction to Machine Learning with H2O-3 - Part 1</title>
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
   <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="../assets/codelab-elements/codelab-elements.css">
-  <link rel="stylesheet" href="custom.css">
+  <link rel=“stylesheet” href=“custom.css”>
   <style>
     .success {
       color: #1e8e3e;
@@ -22,7 +22,7 @@
 </head>
 <body>
   <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
-  <google-codelab title=""
+  <google-codelab title="Introduction to Machine Learning with H2O-3 - Part 1"
                   environment="web"
                   feedback-link="">
     
@@ -310,7 +310,7 @@ x = list(set(train.names) - set(ignore))
 <p><img alt="default-rf-pred" src="img/9bb887f5a3d6e924.jpg"></p>
 <p>Both models, GLM and RF, made the same predictions in the first ten predictions. For e.g., the TRUE prediction for the sixth row is the same; there is a different probability, but the prediction is the same.</p>
 <p>Again, save the model performance on the validation data</p>
-<pre><code>rf_default_per = rf.model_performance(valid)
+<pre><code>default_rf_per = rf.model_performance(valid)
 </code></pre>
 
 
@@ -799,7 +799,7 @@ print (&#34;GBM Confusion Matrix &#34;,  gbm_test_per.confusion_matrix())
 </ul>
 <p>4. Once the lab has started, you will see a link to a Jupyter Notebook. Click on the <strong>Jupyter URL,</strong> and that will take you to the following screen.</p>
 <p><img alt="jupyter-notebook" src="img/781d4e347a43dad3.jpg"></p>
-<p>Next, click on the tutorials folder. In this folder, you will find all the tutorials from our learning path. For this tutorial, click on <code>Introduction to Machine Learning with H2O-3 - Part 1</code> and follow along. If you are working on a different tutorial, just find the specific tutorial and click on it. The Jupyter Notebooks have the same name as the tutorials; that way, it can be easier to find them.</p>
+<p>Next, click on the tutorials folder. In this folder, you will find all the tutorials from our learning path. For this tutorial, click on <code>Introduction to Machine Learning with H2O - Part 1</code> and follow along. If you are working on a different tutorial, just find the specific tutorial and click on it. The Jupyter Notebooks have the same name as the tutorials; that way, it can be easier to find them.</p>
 <p>If you want to access your Flow instance, go back to your Aquarium Lab, and click on the <strong>Flow URL.</strong></p>
 <p>Once you are done, you can download your Notebook with your results. Remember that after the two hours, all your progress will be lost.</p>
 <p>5. If you need end your lab, just click on <strong>End Lab.</strong> Please keep in mind that this will terminate your instance, and any work that you have previously done, will be deleted.</p>
