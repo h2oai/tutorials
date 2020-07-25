@@ -1,4 +1,4 @@
- # Introduction to Machine Learning with H2O-3 - Part 1
+# Introduction to Machine Learning with H2O-3 - Part 1
 
 ## Outline
 
