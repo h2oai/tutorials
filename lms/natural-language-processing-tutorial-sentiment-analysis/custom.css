@@ -1,8 +1,15 @@
-/*
-Placeholder for custom user CSS
+#controls {
+    display: none !important;
+}
 
-mainly to be overridden in profile/static/custom/custom.css
+#drawer {
+    display: none !important;
+}
 
-This will always be an empty file
-*/
+#codela-nav-buttons {
+    display: none !important;
+}
 
+#codela-time-container {
+    display: none !important;
+}
