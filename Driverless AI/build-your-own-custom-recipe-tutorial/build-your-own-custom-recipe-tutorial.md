@@ -147,6 +147,7 @@ Recipes are meant to be built by people you trust, and each recipe should be cod
 
 In the next three tasks, we will be building three simple recipes, a transformer, a scorer, and a model. It is assumed that you have downloaded the [Driverless AI Recipes Repository rel 1.8.7](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.8.7) and that you have access to the examples and recipe templates.
 
+**Note**: The recipes that you will find in the "Driverless AI Recipes Repository rel 1.8.7," will  be slightly different to the ones being reference in this tutorial. If you decide to build the recipes using the code from this tutorial or the code found on the repository you should be able to still run the various experiments.
 
 ### Deeper Dive and Resources
 
