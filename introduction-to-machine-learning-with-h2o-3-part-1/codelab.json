@@ -1,0 +1,27 @@
+{
+  "environment": "web",
+  "source": "/Users/acastro/Desktop/introduction-to-machine-learning-with-h2o-3-part-1/introduction-to-machine-learning-with-h2o-3-part-1.md",
+  "format": "html",
+  "prefix": "../assets",
+  "mainga": "UA-49880327-14",
+  "updated": "2020-07-24T17:26:40-07:00",
+  "id": "introduction-to-machine-learning-with-h2o-3-part-1",
+  "duration": 0,
+  "title": "Introduction to Machine Learning with H2O-3 - Part 1",
+  "summary": "Check the list",
+  "theme": "",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "h2o-3"
+  ],
+  "tags": [
+    "glm",
+    "gmb",
+    "h2o-3",
+    "machine-learning",
+    "random-forest"
+  ],
+  "url": "introduction-to-machine-learning-with-h2o-3-part-1"
+}

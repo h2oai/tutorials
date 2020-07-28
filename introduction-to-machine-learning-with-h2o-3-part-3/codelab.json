@@ -1,0 +1,30 @@
+{
+  "environment": "web",
+  "source": "/Users/acastro/Desktop/introduction-to-machine-learning-with-h2o-3-part-3/introduction-to-machine-learning-with-h2o-3-part-3.md",
+  "format": "html",
+  "prefix": "../assets",
+  "mainga": "UA-49880327-14",
+  "updated": "2020-07-24T17:32:04-07:00",
+  "id": "introduction-to-machine-learning-with-h2o-3-part-3",
+  "duration": 0,
+  "title": "Introduction to Machine Learning with H2O-3 - Part 3",
+  "summary": "Check the list",
+  "theme": "",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "h2o-3"
+  ],
+  "tags": [
+    "auto-ml",
+    "binary-classification",
+    "flow",
+    "h2o-3",
+    "jupyter-notebook",
+    "machine-learning",
+    "python-module",
+    "regression"
+  ],
+  "url": "introduction-to-machine-learning-with-h2o-3-part-3"
+}
