@@ -32,6 +32,7 @@ We will be using a subset of the Freddie Mac Single-Family dataset to try to pre
 
 If you decide to install H2O-3 on your machine, we recommend creating an Anaconda Cloud environment, as shown in the installation guide, [Install on Anaconda Cloud,](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/downloading.html#install-on-anaconda-cloud) this would help you make sure that you have everything that you need to do this tutorial.
 
+**Please Note:** the H2O-3 Lab ID #2, ***H2O-3 and Sparkling Water Test Drive*** in Aquarium, is currently under maintenance and will be available soon. Thank you for your patience. 
 
 
 ## Task 1: Initial Setup
