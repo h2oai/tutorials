@@ -4,7 +4,7 @@
 - [Objective](#objective)
 - [Prerequisites](#prerequisites)
 - [Task 1: Launch Experiment and MLI](#task-1-launch-experiment-and-mli) 
-- [Task 2: ML Explainability Concepts](#task-2-ml-explainability-concepts)
+- [Task 2: Industry Context and ML Explainability Concepts](#task-2-industry-context-and-ml-explainability-concepts)
 - [Task 3: Global Shapley Values and Feature Importance](#task-3-global-shapley-values-and-feature-importance)
 - [Task 4: Partial Dependence Plot](#task-4-partial-dependence-plot)
 - [Task 5: Decision Tree Surrogate](#task-5-decision-tree-surrogate)
@@ -16,7 +16,7 @@
 
 ## Objective 
 
-As the field of machine learning continues to grow, more industries from healthcare to banking are adopting machine learning models to generate predictions. These predictions are being used to justify the cost of healthcare e and for loan approvals or denials. For Regulated industries that are adopting machine learning, **interpretability** is a requirement. In [“Towards a rigorous science of interpretable machine learning”](https://arxiv.org/pdf/1702.08608.pdf) by Finale Doshi-Velez and Been Kim“ interpretability, is the “The ability to explain or to present in understandable terms to a human”. This is a straightforward definition of interpretability. See the Deeper Dive and Resource section of the Goal section to read more about other takes on  interpretability. 
+As the field of machine learning continues to grow, more industries from healthcare to banking are adopting machine learning models to generate predictions. These predictions are being used to justify the cost of healthcare and for loan approvals or denials. For Regulated industries that are adopting machine learning, **interpretability** is a requirement. In [“Towards a rigorous science of interpretable machine learning”](https://arxiv.org/pdf/1702.08608.pdf) by Finale Doshi-Velez and Been Kim“ interpretability, they define interpretability in the context of ML systems as “the ability to explain or to present in understandable terms to a human”. This is a straightforward definition of interpretability. See the Deeper Dive and Resource section of the Goal section to read more about other takes on  interpretability. 
 
 The motivations for interpretability are:
 
@@ -24,6 +24,10 @@ The motivations for interpretability are:
 * Regulation compliance and GDPR “Right to explanation” 
 * Check and balance against accidental or intentional discrimination
 * Hacking and adversarial attacks
+* Alignment with US FTC and OMB guidance on transparency and explainability
+* Prevent building excessive machine learning technical debt
+* Drive deeper insight to understanding your data through better understanding of your models
+
   
 In this tutorial, we will generate a machine learning model using an example financial dataset and explore some of the most popular ways to interpret a generated machine learning model. Furthermore, we will learn to interpret the results, graphs, scores and reason code values of H2O Driverless AI generated models.
 
@@ -41,24 +45,13 @@ In this tutorial, we will generate a machine learning model using an example fin
 
 - Basic knowledge of Machine Learning and Statistics
 
-- Basic knowledge of Driverless AI or doing the [Automatic Machine Learning Introduction with Drivereless AI Test Drive](https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#0) 
+- Basic knowledge of Driverless AI or doing the [Automatic Machine Learning Introduction with Drivereless AI Test Drive](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai) 
 
 - A **Two-Hour Test Drive session** : Test Drive is H2O.ai's Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.
 
-  - Need a **Two-Hour Test Drive** session? Follow the instructions on [this quick tutorial](https://h2oai.github.io/tutorials/getting-started-with-driverless-ai-test-drive/#1) to get a Test Drive session started.  
+  - Need a **Two-Hour Test Drive** session? Follow the instructions on [this quick tutorial](https://training.h2o.ai/products/tutorial-0-getting-started-with-driverless-ai-test-drive) to get a Test Drive session started.  
 
 **Note:  Aquarium’s Driverless AI Test Drive lab has a license key built-in, so you don’t need to request one to use it. Each Driverless AI Test Drive instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore Driverless AI, you can always launch another Test Drive instance or reach out to our sales team via the [contact us form](https://www.h2o.ai/company/contact/).**
-
-Other installations: 
-
-- Cloud Installation
-  - [H2O Driverless AI on AWS Marketplace](https://aws.amazon.com/marketplace/pp/B07JN71K8N?qid=1547700275918&sr=0-6&ref_=srh_res_product_title)
-  - [H2O Driverless AI on Azure HDInsight](https://azuremarketplace.microsoft.com/en-gb/marketplace/apps/h2o-ai.h2o-driverles-ai?tab=Overview) 
-  - [H2O.ai Driverless AI (BYOL) on Google Cloud Platform](https://console.cloud.google.com/marketplace/details/h2o-public/h2oai-driverless-ai-byol?pli=1) 
-- [Local Installation](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/installing.html) 
-- [Server Installation](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/install/ibm-power.html)
-
-
 
 ##  Task 1: Launch Experiment and MLI
 
@@ -160,7 +153,26 @@ While the model is being interpreted an image similar to the one below will appe
 
 Notice that some of the highly ranked variables of the original features (4) show up also as highly ranked variables of the derived features (2). The ranked original variable importance (4) can be used to reason through the more complex features in (2).
 
-## Task 2: ML Explainability Concepts
+## Task 2: Industry Context and ML Explainability Concepts
+
+### Responsibility in AI and Machine Learning
+
+The explainability and interpretability in the machine learning space has grown a tremendous amount since we first developed DriverlessAI, with that in mind it is important to frame the larger context in which our interpretability toolkit falls within. It is also worth noting that since this first training was developed, the push toward regulation, oversight, and auditing of ML models and the companies who deploy them has moved rapidly, making these techniques critical requirements for firms looking to make artificial intelligence a part of their companies operations going forward. There have been many recent developments globally, which we have linked below, but the consistent themes seen are fairness, transparency, explainability, interpretability, privacy, and security. We have defined a handful of these terms below.
+
+![task-2-venn-diagram](assets/task-2-venn-diagram.jpg)
+
+* Explainable AI (XAI):  The ability to explain a model after it has been developed.
+
+* Interpretable Machine Learning:  Transparent model architectures and increasing how intuitive and understandable ML models can be.
+
+* Ethical AI:  Sociological fairness in machine learning predictions (i.e., whether one category of person is being weighted unequally).
+
+* Secure AI:  Debugging and deploying ML models with similar counter-measures against insider and cyber threats as would be seen in traditional software.
+
+* Human-Centered AI:  User interactions with AI and ML systems.
+
+* Compliance:Whether that’s with GDPR, CCPA, FCRA, ECOA or other regulations, as an additional and crucial aspect of responsible AI.
+
 
 ### Machine Learning Interpretability Taxonomy
 
@@ -220,6 +232,16 @@ It is well understood that for the same set of input features and prediction tar
 - [Awesome Machine Learning Interpretability](https://github.com/jphall663/awesome-machine-learning-interpretability)
 - [Concept References](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/references.html)  
 
+- [Using Artificial Intelligence and Algorithms](https://www.ftc.gov/news-events/blogs/business-blog/2020/04/using-artificial-intelligence-algorithms)
+
+- [A REPORT FROM THE FINANCIAL INDUSTRY REGULATORY AUTHORITY](https://www.finra.org/sites/default/files/2020-06/ai-report-061020.pdf)
+
+- [MEMORANDUM FOR THE HEADS OF EXECUTIVE DEPARTMENTS AND AGENCIES](https://www.whitehouse.gov/wp-content/uploads/2020/01/Draft-OMB-Memo-on-Regulation-of-AI-1-7-19.pdf)
+
+- [MODEL ARTIFICIAL INTELLIGENCE GOVERNANCE FRAMEWORK SECOND EDITION](https://www.pdpc.gov.sg/-/media/files/pdpc/pdf-files/resource-for-organisation/ai/sgmodelaigovframework2.pdf)
+
+- [General Data Protection Regulation: GDPR](https://gdpr-info.eu/)
+
 ## Task 3: Global Shapley Values and Feature Importance
 
 ### Global Shapley Values and Feature Importance Concepts
@@ -262,7 +284,7 @@ The **Feature Importance** plot ranks the original features. These features are 
 
 ![summary-random-forest](assets/summary-random-forest.jpg)
 
-This single **Random Forest** model of a complex Driverless AI model is very helpful because we can see that this is a trustworthy model between the original inputs to the system and the predictions of the system. Note the low mean squared error(0.0459), high R2 (95%). 
+This single **Random Forest** model of a complex Driverless AI model is very helpful because we can see that this is a trustworthy model between the original inputs to the system and the predictions of the system. Note the low mean squared error(0.0407), high R2 (96%). 
 
 4\. Go back to the Shapley plot and find the feature importance of LIMIT_BAL. How important was LIMIT_BAL in the global feature importance space? Was LIMIT_BAL a main driver in this space?
 
@@ -292,7 +314,7 @@ Through the **Shapley Values** and **Feature Importance**, we got a global persp
 *Things to Note:*
 1.  These values of PAY_0  represent the average predictions of all persons that paid on time or did not use their credit card
 2. This value represents the average prediction of persons who were late one month for PAY_0
-3.  PAY_0 =2 has an average default probability of 0.573, then the default probability slowly and slightly decreases all the way to month 8.
+3.  PAY_0 =2 has an average default probability of 0.602, then the default probability slowly and slightly decreases all the way to month 8.
 
 The results indicate that overall, in the entire dataset, the worst thing for a person to be in regarding defaulting with respect to PAY_0 is to be two months late. This behavior insight needs to be judged by the user who can determine whether this model should be trusted.
 
@@ -378,7 +400,8 @@ It is important to note that what we are confirming is not whether the model's r
 1. **Decision Tree** path for low default probability 
 2. **Decision Tree** path for high default probability. 
 
-Based on the **Decision Tree**, to end up at the high probability of default bucket, a person would need to miss the first payment (PAY_0), be late on PAY_5 and be late on PAY_2. A history of poor repayment behavior from 6 months ago would more than likely place a person down the path of defaulting on their total bill payment. Just like the path with low default probability, the behavior of the variables for the high default probability need to be analyzed and ensure that their interactions and conclusions make sense.
+Based on the **Decision Tree**, to end up at the high probability of default bucket, a person would need to miss the first payment (PAY_0), be late on PAY_6, and be late on PAY_2. A history of poor repayment behavior from 6 months ago would more than likely place a person down the path of defaulting on their total bill payment. Just like the path with low default probability, the behavior of the variables for the high default probability need to be analyzed and ensure that their interactions and conclusions make sense.
+
 
 ### Deeper Dive and Resources
 
@@ -437,7 +460,7 @@ Adding the **Actual Target** to the plot allows us to check if the model is not 
 ![k-lime-lime-model-prediction](assets/k-lime-lime-model-prediction.jpg)
 
 *Things to Note:*
-1. The high value of R2=87% and low RMSE=0.0711 value show that this is a highly accurate linear model. In other words this surrogate model is good enough to proceed, and explains about 90% of the variance in the Driverless AI model predictions. 
+1. The high value of R2=88% and low RMSE=0.0662 value show that this is a highly accurate linear model. In other words this surrogate model is good enough to proceed, and explains about 90% of the variance in the Driverless AI model predictions. 
 
 This single linear model trained on the original inputs of the system to predict the predictions of the Driverless AI model shows that the Driverless AI model predictions are highly linear. The plot above is an implementation of LIME or Local Interpretable Model Agnostic Explanations which often uses linear surrogate models to help reason about the predictions of a complex model.
 
@@ -465,7 +488,7 @@ The local model predictions (white points) can be used to reason through the Dri
 
 *Things to Note:*
 
-1. The reason codes shows that the Driverless model prediction value gave this person .82 percent probability of defaulting. LIME prediction value gave them a .77 percent probability of defaulting and in this case we can say that LIME prediction accuracy is 93.9% accurate. Based on this observation, it can concluded that the local reason codes are fairly trustworthy. If **Lime Prediction Accuracy** drops below 75%, then we can say that the numbers are probably untrustworthy, and the Shapley plot or LOCO plot should be revisited because the Shapley values are always accurate, and LOCO accounts for nonlinearity and interactions.
+1. The reason codes shows that the Driverless model prediction value gave this person .76 percent probability of defaulting. LIME prediction value gave them a .73 percent probability of defaulting and in this case we can say that LIME prediction accuracy is 96.1% accurate. Based on this observation, it can concluded that the local reason codes are fairly trustworthy. If **Lime Prediction Accuracy** drops below 75%, then we can say that the numbers are probably untrustworthy, and the Shapley plot or LOCO plot should be revisited because the Shapley values are always accurate, and LOCO accounts for nonlinearity and interactions.
 
 2. PAY_0 = 2 months late is the top positive local attribute for this person and contributes .35 probability points to their prediction according to this linear model. 0.35 is the local linear model coefficient for level 3 of the categorical variable PAY_0.
 
@@ -508,7 +531,7 @@ The grey bars or local numeric contributions can be used to generated reason cod
 **Note:** The Shapley plot will depend on K-LIME point you selected.
 
 *Things to Note:*
-1. Row number being observed
+1. Row number being observed: type "11427" and then click "Search"
 2. Global Shapley value 
 3. A sample of a Shapley Local  numeric contribution of a variable for the high probability person in row 11427
  
@@ -549,7 +572,7 @@ ICE is simply the prediction of the model for the person in question, in our cas
 3. LOCO feature Importance for the person in row 11427 (grey bars) in relation to global feature importance 
 4. Decision Tree Path for the person in row 11427
 
-We can observe divergence on the ICE plot and confirm possible interactions with the surrogate decision tree (the grey path). There seems to be interactions between PAY_0, PAY_3 and PAY_5 when PAY_0 = 3 - 4.
+We can observe divergence on the ICE plot and confirm possible interactions with the surrogate decision tree (the grey path). There seems to be interactions between PAY_0, PAY_6 and PAY_2 when PAY_0 = 3 - 4.
 
 2\. **Return to Task 6 question 7** to conclude K-LIME.
 
@@ -597,7 +620,7 @@ Using the techniques together to find interactions and other interesting model b
 
 ## Next Steps
 
-Check out the next tutorial: [Time Series Tutorial - Retail Sales Forecasting](https://h2oai.github.io/tutorials/time-series-recipe-tutorial-retail-sales-forecasting/#0) where you will learn more about:
+Check out the next tutorial: [Time Series Tutorial - Retail Sales Forecasting](https://training.h2o.ai/products/tutorial-2a-time-series-recipe-tutorial-retail-sales-forecasting) where you will learn more about:
 
 - Time-series:
     - Time-series concepts

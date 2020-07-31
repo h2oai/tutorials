@@ -2,6 +2,6 @@
 
 # Driverless AI
 
-Este repositório tem tutoriais voltados para a versão 1.8.4.1
+Este repositório tem tutoriais voltados para a versão 1.8.7.1
 
 Em breve.

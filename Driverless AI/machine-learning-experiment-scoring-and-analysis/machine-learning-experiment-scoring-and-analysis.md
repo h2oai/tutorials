@@ -29,11 +29,11 @@ You will need the following to be able to do this tutorial:
 
 - Basic knowledge of Machine Learning and Statistics
 - A Driverless AI environment
-- Basic knowledge of Driverless AI or doing the [Automatic Machine Learning Introduction with Drivereless AI Test Drive](https://h2oai.github.io/tutorials/automatic-ml-intro-test-drive-tutorial/#0) 
+- Basic knowledge of Driverless AI or doing the [Automatic Machine Learning Introduction with Drivereless AI Test Drive](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai) 
 
 - A **Two-Hour Test Drive session** : Test Drive is H2O.ai's Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.
 
-  - Need a **Two-Hour Test Drive** session?Follow the instructions on [this quick tutorial](https://h2oai.github.io/tutorials/getting-started-with-driverless-ai-test-drive/#1) to get a Test Drive session started. 
+  - Need a **Two-Hour Test Drive** session?Follow the instructions on [this quick tutorial](https://training.h2o.ai/products/tutorial-0-getting-started-with-driverless-ai-test-drive) to get a Test Drive session started. 
 
 **Note:  Aquarium’s Driverless AI Test Drive lab has a license key built-in, so you don’t need to request one to use it. Each Driverless AI Test Drive instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore Driverless AI, you can always launch another Test Drive instance or reach out to our sales team via the [contact us form](https://www.h2o.ai/company/contact/).**
 ## Task 1: Launch Experiment
@@ -54,11 +54,11 @@ Download H2O’s subset of the Freddie Mac Single-Family Loan-Level dataset to y
 
 ### Launch Experiment 
 
-1\. Load the loan_level.csv to Driverless AI by clicking **Add Dataset (or Drag and Drop)** on the **Datasets overview** page. Click on **Upload File**, then select **loan_level.csv** file. Once the file is uploaded, select **Details**.
+1\. Load the loan_level.csv to Driverless AI by clicking **Add Dataset (or Drag and Drop)** on the **Datasets overview** page. Click on **Upload File**, then select **loan_level_500K.csv** file. Once the file is uploaded, select **Details**.
 
 ![loan-level-details-selection](assets/loan-level-details-selection.jpg)
 
-**Note:** You will see four more datasets, but you can ignore them, as we will be working with the `loan_level_500k.csv` file. 
+**Note:** You will see 6 more datasets, but you can ignore them, as we will be working with the `loan_level_500k.csv` file. 
 
 2\. Let’s take a quick look at the columns:
 
@@ -194,8 +194,8 @@ This configuration was selected to generate a model quickly with a sufficient le
 
 ![expert-settings-1](assets/expert-settings-1.jpg)
 *Things to Note:*
-1. **Upload Custom Recipe**
-2. **Load Custom Recipe From URL** 
+1. **+ Upload Custom Recipe**
+2. **+ Load Custom Recipe From URL** 
 3. **Official Recipes (External)**
 4. **Experiment**
 5. **Model**
@@ -213,8 +213,12 @@ This configuration was selected to generate a model quickly with a sufficient le
 - Max Runtime in Minutes Before Triggering the Finish Button
 - Max Runtime in Minutes Before Triggering the 'Abort' Button
 - Pipeline Building Recipe
+- Kaggle username
+- Kaggle Key
+- Kaggle submission timeout in seconds
 - Make Python Scoring Pipeline
 - Make MOJO Scoring Pipeline
+- Attempt to reduce the size of the Mojo
 - Measure MOJO Scoring Latency
 - Timeout in Seconds to Wait for MOJO Creation at End of Experiment
 - Number of Parallel Workers to Use during MOJO Creation
@@ -225,26 +229,26 @@ This configuration was selected to generate a model quickly with a sufficient le
 - Random Seed
 - Allow Different Sets of Classes Across All Train/Validation Fold Splits
 - Max Number of Classes for Classification Problems
-- Model/Feature Brain Level
-- Feature Brain Save Every Which Iteration
-- Feature Brain Restart from Which Iteration
-- Feature Brain Refit Uses Same Best Individual
-- Feature Brain Adds Features with New Columns Even During Retraining of Final Model
-- Min Driverless AI Iterations
-- Select Target Transformation of the Target for Regression Problems
-- Tournament Model for Genetic Algorithm
-- Number of Cross-Validation Folds For Feature Evolution
-- Number of Cross-Validation Folds For Final Model
-- Enable Extra Logging for Ensemble Meta Learner
-- Number of Cross-Validation Folds or Maximum Time-Based Splits for Feature Evolution
-- Number of Cross-Validation Folds or Maximum Time-Based Splits for Final Model
-- Maximum Number of Fold IDs to Show in Logs
-- Max Number of Rows Times Number of Columns for Feature Evolution Data Splits
-- Max Number of Rows Times Number of Columns for Reducing Training Dataset
-- Maximum Size of Validation Data Relative to Training Data
-- Perform Stratified Sampling for Binary Classification if The Target Is More Imbalanced Than This
-- Add to config.toml via toml String
-
+- Max Number of Classes to Computer ROC and Confusion Matrix for Classification Problems
+- Max number of classes to show in GUI for confusion matrix
+- ROC/CM reduction technique for large class counts 
+- Model/Feature Brain Level(0..10)
+- Feature Brain Save every which iteration (0 = disable)
+- Feature Brain Restart from which iteration (-1 = auto)
+- Feature Brain refit uses same best individual
+- Feature Brain adds features with new columns even during retraining final model
+- Restart-refit default model settings if model switches 
+- Min, DAI iterations 
+- Select target transformation of the target for regression problems
+- Tournament model for generit algorithm
+- Number of cross-validation folds for feature evolution (-1 = auto)
+- Number of cross-validation folds for final model (-1 = auto)
+- fixed_only_first_fold_model
+- Max,num, of rows x num,of columns for feature evolution data splits (not for final pipeline)
+Max, num, of rows x num, of columns for reducing training data set (for final pipeline)
+- Max, size of validation data relative to training data (for final pipeline), otherwise will sample
+- Perform stratified sampling for binary classification if the target is more imbalanced than this,
+- Add to config.toml via toml string 
 
 **Model Settings**
 - XGBoost GBM Models
@@ -309,7 +313,9 @@ This configuration was selected to generate a model quickly with a sufficient le
 - Max Number of Engineered Features
 - Max. Number of Genes
 - Limit Features by Interpretability
+- Threshold for interpretability which to enable automatic monotonicity constraints for tree models
 - Correlation Beyond Which Triggers Monotonicity Constraints (if Enabled)
+- Manual override for monotonicity constraints 
 - Max Feature Interaction Depth
 - Fixed Feature Interaction Depth
 - Enable Target Encoding
@@ -329,6 +335,8 @@ This configuration was selected to generate a model quickly with a sufficient le
 - Enable Detailed Scored Features Info
 - Enable Detailed Logs for Timing and Types of Features Produced
 - Compute Correlation Matrix
+- Required GINI relative improvement for Interactions
+- Number of transformed Interactions to make 
 
 **Time Series Settings**
 - Time Series Lag-Based Recipe
@@ -349,7 +357,7 @@ This configuration was selected to generate a model quickly with a sufficient le
 - Generate Time-Series Holdout Predictions
 - Number of Time-Based Splits for Internal Model Validation
 - Maximum Overlap Between Two Time-Based Splits
-- Max Number of Splits Used for Creating Final Time-Series Model’s Holdout Predictions
+- Maximum Number of Splits Used for Creating Final Time-Series Model’s Holdout Predictions
 - Whether to Speed Up Calculation Of Time-Series Holdout Predictions
 - Whether to Speed Up Calculation Of Shapley Values for Time-Series Holdout Predictions
 - Generate Shapley Values For Time-Series Holdout Predictions At the Time Of Experiment
@@ -430,11 +438,11 @@ Learn more about what each setting means and how it can be updated from its defa
 ### Deeper Dive 
 - [To better understand the impact of setting the Accuracy, Time and Interpretability Knobs between 1 and 10 in H2O Driverless AI](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-settings.html?highlight=interpretability#accuracy-time-and-interpretability-knobs)
 
-- For more information about additional setting in[Expert Settings for H2O Driverless AI](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/expert-settings.html?highlight=expert%20settings)
+- For more information about additional setting in [Expert Settings for H2O Driverless AI](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/expert-settings.html?highlight=expert%20settings)
 
 ## Task 3: Experiment Scoring and Analysis Concepts
 
-As we learned in the [Automatic Machine Learning Intro with Test Drive](https://github.com/h2oai/tutorials/blob/master/DriverlessAI/automatic-ml-intro-tutorial/automatic-ml-intro-tutorial.md#model-training) it is essential that once a model has been generated that its performance is evaluated. These metrics are used to evaluate the quality of the model that was built and what model score threshold should be used to make predictions. There are multiple metrics for assessing a binary classification machine learning models such as Receiver Operating Characteristics or ROC curve, Precision and Recall or Prec-Recall, Lift, Gain and K-S Charts to name a few. Each metric evaluates different aspects of the machine learning model. The concepts below are for metrics used in H2O’s Driverless AI to assess the performance of classification models that it generated. The concepts are covered at a very high level, to learn more in-depth about each metric covered here we have included additional resources at the end of this task. 
+As we learned in the [Automatic Machine Learning Introduction with Driverless AI](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai) it is essential that once a model has been generated that its performance is evaluated. These metrics are used to evaluate the quality of the model that was built and what model score threshold should be used to make predictions. There are multiple metrics for assessing a binary classification machine learning models such as Receiver Operating Characteristics or ROC curve, Precision and Recall or Prec-Recall, Lift, Gain and K-S Charts to name a few. Each metric evaluates different aspects of the machine learning model. The concepts below are for metrics used in H2O’s Driverless AI to assess the performance of classification models that it generated. The concepts are covered at a very high level, to learn more in-depth about each metric covered here we have included additional resources at the end of this task. 
 
 
 ### Binary Classifier
@@ -532,6 +540,65 @@ Finally, the ROC Curve below represents another perfect scenario! When the ROC c
 
 A ROC curve is a useful tool because it only focuses on how well the model was able to distinguish between classes. “AUC’s can help represent the probability that the classifier will rank a randomly selected positive observation higher than a randomly selected negative observation” [4]. However, for models where the prediction happens rarely a high AUC could provide a false sense that the model is correctly predicting the results.  This is where the notion of precision and recall become important.
 
+### Applicability of ROC Curves in the Real World
+
+ROC and AUC curves are important evaluation metrics for calculating the performance of any classification model. In hopes of understanding the applicability of ROC curves, consider the next ROC curves with its AUC and smooth histograms from a binary classifier model trying to make the following point: 
+
+**Task**: Identify the most effective ROC Curve that will distinguish between green and red apples. 
+
+Below are three types of ROC Curves in correlation to finding the perfect ROC that will distinguish between red and green apples. 
+
+As noted above, the closer the ROC curve is to the left (the more significant the AUC percentage), the better the model is at separating classes. 
+
+*Note*: Before moving forward, it's essential to clarify that the smooth histograms plotted are the result of previous data. Such data has determined that apples with more than 50% (threshold) of its body being red will be considered a red apple. Therefore, anything below 50% will be a green apple.
+
+
+#### ROC One: 
+
+![ROC-1](assets/ROC-1.jpg)
+
+In this case, the above smooth Histogram (1A) is telling us that the distribution will be as follows: 
+
+The green bell curve represents green apples while the red bell curve represents the red apples and the threshold will be at 50%. The x-axis represents the predicted probabilities, while the y-axis represents the count of observations.
+
+ From general observations, we can see that the smooth Histogram shows that the current classifier can distinguish between red and green apples only 50% of the time, and such distinction is at the 0.5 thresholds. 
+
+When we draw the ROC Curve (1B) for the smooth Histogram above, we will get the following results: 
+
+The ROC Curve is telling us how good the model is at distinguishing between two classes: in this case, we refer to red and green apples as the two classes. When looking at the ROC Curve, it will have an AUC of 1 (in blue). Hence, as discussed earlier, an AUC of one will tell us that the model is performing at 100% (perfect performance). Although, not always the case. We can have a ROC Curve of zero, and if we flip the curve, it can give us a ROC of one; that is why we always need to review the model carefully. 
+
+Accordingly, this ROC Curve is telling us that the classifier model can distinguish between red and green apples 100% of all cases when it has to identify. Consequently, the random model becomes absolute. For reference, the random model (dash line) essentially represents a classifier that does not do better than random guessing. 
+
+Therefore, the ROC Curve for this smooth Histogram will be perfect because it can separate red and green apples. 
+
+#### ROC Two: 
+
+![ROC-2](assets/ROC-2.jpg)
+
+When we draw the ROC curve (2B) for the smooth Histogram (2A) above, we will get the following results: 
+
+When looking at the ROC Curve, it will have an AUC of .7 (in blue). 
+
+Accordingly, this ROC curve tells us that the classifier model can't adequately distinguish between red and green apples 100% of all cases. And in a way, this classifier gets closer to the random model that does not do better than random guessing. 
+
+Therefore, this ROC curve is not perfect at classifying red and green apples. That is not to say that the ROC curve is entirely wrong; it just has a 30% margin of error. 
+
+#### ROC Three: 
+
+![ROC-3](assets/ROC-3.jpg)
+
+When we draw the ROC curve (3B) for the smooth Histogram (3A) above, we will get the following results: 
+
+When looking at the ROC Curve, it will have an AUC of .5 (in blue). 
+
+Accordingly, this ROC curve tells us that the classifier model can't adequately distinguish between red and green apples 100% of all cases. In a way, this classifier becomes similar to the random model that does not do better than random guessing. 
+
+Therefore, this ROC curve is not perfect at classifying red and green apples. That is not to say that the ROC curve is entirely wrong; it has a 50% margin of error. 
+
+#### Conclusion
+
+In this case, we will choose the first ROC Curve (with a great classifier) because it leads to an AUC of 1.0 (can separate the green apple class and red apple class (the two classes) with 100% accuracy). 
+
 ### Prec-Recall
 
 The Precision-Recall Curve or Prec-Recall or **P-R** is another tool for evaluating classification models that is derived from the confusion matrix. Prec-Recall is a complementary tool to ROC curves, especially when the dataset has a significant skew. The Prec-Recall curve plots the precision or positive predictive value (y-axis) versus sensitivity or true positive rate (x-axis) for every possible classification threshold. At a high level, we can think of precision as a measure of exactness or quality of the results while recall as a measure of completeness or quantity of the results obtained by the model. Prec-Recall measures the relevance of the results obtained by the model.
@@ -584,6 +651,55 @@ There are also various  Fᵦ scores that can be considered, F1, F2 and F0.5.  Th
 Prec-Recall is a good tool to consider for classifiers because it is a great alternative for large skews in the class distribution. Use precision and recall to focus on small positive class — When the positive class is smaller and the ability to detect correctly positive samples is our main focus (correct detection of negatives examples is less important to the problem) we should use precision and recall.
 
 If you are using a model metric of Accuracy and you see issues with Prec-Recall then you might consider using a model metric of logloss.
+
+#### Applicability of Precision-Recall Curves in the Real World 
+
+In hopes of understanding the applicability of Precision-Recall Curves in the real world, let us see how we can make use of Precision-Recall curves as a metric to check the performance of the binary classification model used above to distinguish between green and red apples.
+
+As mentioned above, Positive Predictive Value refers to Precision. Let us reimagine again that we are in an apple factory trying to build a model that will be able to distinguish between red and green apples. Therefore, the purpose of this model will be not to have red apple boxes contain green apples and vice versa. Accordingly, this will be a binary classification problem in which the dependent variable is 0 or 1—either a green apple, 0, or 1, a red apple. In this circumstance, Precision will be the proportion of our predictive model noted as red apples. 
+
+With that in mind, we will follow to calculate precision as follows: 
+
+Precision = True Positive / (True Positive + False Positive) 
+
+* True Positive = Number of apples which were red that we correctly predicted as red. 
+* False Positive = Number of apples that were green that we incorrectly predicted as red. 
+
+Recall (sensitivity) will specify the proportion of red apples that were predicted by us as red apples. 
+
+The recall will be calculated as follows: 
+
+Recall = True Positive / (True Positive + False Negative) 
+
+* True Positive: Number of apples that were red that we correctly predicted as red.
+
+* False Negative: Number of apples that were red that we incorrectly predicted as green apples. 
+
+Hence, the main difference between Precision and Recall is the denominator in the Precision and Recall fraction. In Re-call, false negatives are included, whereas, in Precision, false positives are considered.
+
+#### Difference between Precision and Recall
+
+Let's assume there is a total of 1000 apples. Out of 1000, 500 apples are actually red. Out of 500, we correctly predicted 400 of them as red. 
+
+* Recall would be 80% 
+* 400/500 = 0.8
+
+For Precision, the following will be true: out of 1000 apples, we predicted 800 as red apples. Out of 800, we correctly predicted 400 of them as red apples. 
+
+* Precision would be 50%. 
+* 400/800 = 0.5 
+
+To further understand these two ideas of Recall and Precision, imagine for a moment one of your high school teachers asking you about the dates of four main holidays - Halloween, Christmas, New Year, and Memorial Day. You manage to recall all these four dates but with twenty attempts in total. Your Recall score will be 100%, but your Precision score will be 20%, which is four divided by twenty. 
+
+It is important to note that after you calculate Recall and Precision values from various confusion matrices for different thresholds, and you plot the results on a Precision-Recall curve take into consideration the following: 
+
+- As mentioned above, the closer the Precision-Recall curve is to the upper right corner (the bigger the AUC percentage), the better the model is at correctly predicting the true positives. 
+- The x-axis will show Recall while the y-axis will represent the Precision.
+- Therefore, Precision_Recall curves can clearly show the relationship and tradeoff of having a higher or lower threshold. 
+
+
+In conclusion, Precision-Recall curves allow for a more in-depth analysis of binary classification models. And when trying to distinguish between red and green apples. 
+
 
 ### GINI, ACC, F1 F0.5, F2, MCC and Log Loss
 
@@ -832,7 +948,7 @@ Below are three questions to test your understanding of the experiment summary a
 **Note:** If you are not sure what Log loss is, feel free to review the concepts section of this tutorial.
 
 
-3\. So what do the Log Loss values tell us?  The essential Log Loss value is the test score value. This value tells us how well the model generated did against the freddie_mac_500_test set based on the error rate. In case of experiment **Freddie Mac Classification Tutorial**, the test score LogLoss = 0.1180 which is the log of the misclassification rate. The greater the Log loss value the more significant the misclassification. For this experiment, the Log Loss was relatively small meaning the error rate for misclassification was not as substantial. But what would a score like this mean for an institution like Freddie Mac?
+3\. So what do the Log Loss values tell us?  The essential Log Loss value is the test score value. This value tells us how well the model generated did against the freddie_mac_500_test set based on the error rate. In case of experiment **Freddie Mac Classification Tutorial**, the test score LogLoss = 0.1194556 +/- 0.001470279 which is the log of the misclassification rate. The greater the Log loss value the more significant the misclassification. For this experiment, the Log Loss was relatively small meaning the error rate for misclassification was not as substantial. But what would a score like this mean for an institution like Freddie Mac?
 
 In the next few tasks we will explore the financial implications of misclassification by exploring the confusion matrix and plots derived from it. 
 
@@ -914,10 +1030,10 @@ Using this layout, we will be able to determine how well the model predicted the
 
 Moving into the inner part of the matrix, we find the number of cases for True Negatives, False Positives, False Negatives and True Positive. The confusion matrix for this model generated tells us that:
 
-- TP = 213 cases were predicted as **defaulting** and **defaulted** in actuality 
-- TN = 120,382 cases were predicted as **not defaulting** and **did not default** 
-- FP = 155 cases were predicted as **defaulting** when in actuality they **did not default**
-- FN = 4,285 cases were predicted as **not defaulting** when in actuality they **defaulted**
+- TP = 216 cases were predicted as **defaulting** and **defaulted** in actuality 
+- TN = 120,385 cases were predicted as **not defaulting** and **did not default** 
+- FP = 152 cases were predicted as **defaulting** when in actuality they **did not default**
+- FN = 4,282 cases were predicted as **not defaulting** when in actuality they **defaulted**
 
 ![diagnostics-confusion-matrix-2](assets/diagnostics-confusion-matrix-2.jpg)
 
@@ -938,13 +1054,13 @@ On the right side of the confusion matrix are the totals for the **Actual label*
 The final layer of the confusion matrix we will explore are the errors. The errors section is one of the first places where we can check how well the model performed. The better the model does at classifying labels on the test dataset the lower the error rate will be. The **error rate** is also known as the **misclassification rate** which answers the question of how often is the model wrong?
 
 For this particular model these are the errors:
-- 155/120537 = 0.0012 or 0.12%  times the model classified actual cases that did not default as defaulting out of the actual non-defaulting group
-- 4285/4498 = 0.952 or 95.2% times the model classified actual cases that did default as not defaulting out of the actual defaulting group
-- 4285/124667 = 0.0343 or 3.43% times the model classified predicted cases that did default as not defaulting out of the total predicted not defaulting group
-- 213/368 = 0.5706 or 57.1% times the model classified predicted cases that defaulted as defaulting out of the total predicted defaulting group
-- (4285 + 155) / 125035 = **0.0355**  This means that this model incorrectly classifies  .0355 or 3.55% of the time.
+- 152/120537 = 0.0012 or 0.12%  times the model classified actual cases that did not default as defaulting out of the actual non-defaulting group
+- 4282/4498 = 0.951 or 95.1% times the model classified actual cases that did default as not defaulting out of the actual defaulting group
+- 4282/124667 = 0.0343 or 3.43% times the model classified predicted cases that did default as not defaulting out of the total predicted not defaulting group
+- 216/368 = 0.5869 or 58.69% times the model classified predicted cases that defaulted as defaulting out of the total predicted defaulting group
+- (4282 + 152) / 125035 = **0.03546**  This means that this model incorrectly classifies  .03546 or 3.546% of the time.
  
-What does the misclassification error of .0355 mean?
+What does the misclassification error of .03546 mean?
 One of the best ways to understand the impact of this misclassification error is to look at the financial implications of the False Positives and False Negatives. As mentioned previously, the False Positives represent the loans predicted not to default and in reality did default. 
 Additionally, we can look at the mortgages that Freddie Mac missed out on by not granting loans because the model predicted that they would default when in reality they did not default. 
 
@@ -955,11 +1071,11 @@ One way to look at the financial implications for Freddie Mac is to look at the 
 
 For this tutorial, we will assume a 6% Annual Percent Rate (APR) over 30 years. APR is the amount one pays to borrow the funds. Additionally, we are going to assume an average home loan of $167,473 (this average was calculated by taking the sum of all the loans on the freddie_mac_500.csv dataset and dividing it by 30,001 which is the total number of mortgages on this dataset). For a mortgage of $167,473 the total interest paid after 30 years would be $143,739.01 [1]. 
 
-When looking at the False Positives, we can think about 155 cases of people which the model predicted should be not be granted a home loan because they were predicted to default on their mortgage. These 155 loans translate to over 18 million dollars in loss of potential income (155 * $143,739.01) in interest.
+When looking at the False Positives, we can think about 152 cases of people which the model predicted should be not be granted a home loan because they were predicted to default on their mortgage. These 155 loans translate to over 18 million dollars in loss of potential income (152 * $143,739.01) in interest.
 
-Now, looking at the True Positives, we do the same and take the 4,285 cases that were granted a loan because the model predicted that they would not default on their home loan. These 4,285 cases translate to about over 618 million dollars in interest losses since the 4,285 cases defaulted.
+Now, looking at the True Positives, we do the same and take the 4,282 cases that were granted a loan because the model predicted that they would not default on their home loan. These 4,282 cases translate to about over 618 million dollars in interest losses since the 4,282 cases defaulted.
 
-The misclassification rate provides a summary of the sum of the False Positives and False Negatives divided by the total cases in the test dataset. The misclassification rate for this model was .0355.  If this model were used to determine home loan approvals, the mortgage institutions would need to consider approximately 618 million dollars in losses for misclassified loans that got approved and shouldn’t have and 18 million dollars on loans that were not approved since they were classified as defaulting.
+The misclassification rate provides a summary of the sum of the False Positives and False Negatives divided by the total cases in the test dataset. The misclassification rate for this model was .03546.  If this model were used to determine home loan approvals, the mortgage institutions would need to consider approximately 618 million dollars in losses for misclassified loans that got approved and shouldn’t have and 18 million dollars on loans that were not approved since they were classified as defaulting.
 
 One way to look at these results is to ask the question: is missing out on approximately 18 million dollars from loans that were not approved better than losing about 618 million dollars from loans that were approved and then defaulted? There is no definite answer to this question, and the answer depends on the mortgage institution. 
 
@@ -985,7 +1101,7 @@ The image below represents the scores for the **Freddie Mac Classification Tutor
 
 When the experiment was run for this classification model, Driverless AI determined that the best scorer for it was the Logarithmic Loss or **LOGLOSS** due to the imbalanced nature of the dataset. **LOGLOSS** focuses on getting the probabilities right (strongly penalizes wrong probabilities). The selection of Logarithmic Loss makes sense since we want a model that can correctly classify those who are most likely to default while ensuring that those that qualify for a loan get can get one.
 
-Recall that Log loss is the logarithmic loss metric that can be used to evaluate the performance of a binomial or multinomial classifier, where a model with a Log loss of 0 would be the perfect classifier. Our model  scored  a LOGLOSS value = 0.1193+/- .0017 after testing it with test dataset. From the confusion matrix, we saw that the model had issues classifying perfectly; however, it was able to classify with an ACCURACY of 0.9647 +/- .0006. The financial implications of the misclassifications have been covered in the confusion matrix section above.
+Recall that Log loss is the logarithmic loss metric that can be used to evaluate the performance of a binomial or multinomial classifier, where a model with a Log loss of 0 would be the perfect classifier. Our model  scored  a LOGLOSS value = 0.1195+/- .0015 after testing it with test dataset. From the confusion matrix, we saw that the model had issues classifying perfectly; however, it was able to classify with an ACCURACY of 0.9646 +/- .0006. The financial implications of the misclassifications have been covered in the confusion matrix section above.
 
 Driverless AI has the option to change the type of scorer used for the experiment. Recall that for this dataset the scorer was selected to be **logloss**. An experiment can be re-run with another scorer. For general imbalanced classification problems, AUCPR and MCC scorers are good choices, while F05, F1, and F2 are designed to balance between recall and precision.
 The AUC is designed for ranking problems. Gini is similar to the AUC but measures the quality of ranking (inequality) for regression problems. 
@@ -1029,13 +1145,13 @@ Going back to the Freddie Mac dataset, even though the model was scored with the
 
 ![diagnostics-roc-best-acc](assets/diagnostics-roc-best-acc.jpg)
 
-Recall that for a binary classification problem, accuracy is the number of correct predictions made as a ratio of all predictions made.  Probabilities are converted to predicted classes in order to define a threshold. For this model, it was determined that the best accuracy is found at threshold 0.5375.
+Recall that for a binary classification problem, accuracy is the number of correct predictions made as a ratio of all predictions made.  Probabilities are converted to predicted classes in order to define a threshold. For this model, it was determined that the best accuracy is found at threshold .5102.
 
 At this threshold, the model predicted:
-- TP = 175 cases predicted as defaulting and defaulted
+- TP = 206 cases predicted as defaulting and defaulted
 - TN = 120,441 cases predicted as not defaulting and did not default
-- FP = 96 cases predicted as defaulting and did not default
-- FN = 4,323 cases predicted to not default and defaulted
+- FP = 130 cases predicted as defaulting and did not default
+- FN = 4,292 cases predicted to not default and defaulted
 
 
 3\.  From the AUC, Best MCC, F1, and Accuracy values from the ROC curve, how would you qualify your model, is it a good or bad model? Use the key points below to help you asses the ROC Curve.
@@ -1097,20 +1213,21 @@ We are going to use this new experiment to run a new diagnostics test. You will 
 How much improvement did we get from optimizing the accuracy via the scorer? 
 
 The new model predicted:
-- Threshold = .5532
-- TP =  152 cases predicted as defaulting and defaulted
-- TN = 120,463  cases predicted as not defaulting and did not default
-- FP = 74 cases predicted as defaulting and did not default
-- FN = 4,346 cases predicted not to default and defaulted
+- Threshold = .5134
+- TP =  213 cases predicted as defaulting and defaulted
+- TN = 120,407 cases predicted as not defaulting and did not default
+- FP = 130 cases predicted as defaulting and did not default
+- FN = 4,285 cases predicted not to default and defaulted
 
 The first model predicted:
-- Threshold = .5375
-- TP = 175 cases predicted as defaulting and defaulted
+- Threshold = .5102
+- TP = 206 cases predicted as defaulting and defaulted
 - TN = 120,441 cases predicted as not defaulting and did not default
-- FP = 96 cases predicted as defaulting and did not default
-- FN = 4,323 cases predicted to not default and defaulted
+- FP = 130 cases predicted as defaulting and did not default
+- FN = 4,292 cases predicted to not default and defaulted
 
-The threshold for best accuracy changed from 0.5375 for the first diagnostics model to 0.5532 for the new model. This increase in threshold improved accuracy or the number of correct predictions made as a ratio of all predictions made. Note, however, that while the number of FP decreased the number of FN increased.  We were able to reduce the number of cases that were predicted to falsy default, but in doing so, we increased the number of FN or cases that were predicted not to default and did.
+
+The threshold for best accuracy changed from .5102 for the first diagnostics model to .5134 for the new model. This increase in threshold improved accuracy or the number of correct predictions made as a ratio of all predictions made. Note, however, that while the number of FP decreased the number of FN increased.  We were able to reduce the number of cases that were predicted to falsy default, but in doing so, we increased the number of FN or cases that were predicted not to default and did.
 
 The takeaway is that there is no win-win; sacrifices need to be made. In the case of accuracy, we increased the number of mortgage loans, especially for those who were denied a mortgage because they were predicted to default when, in reality, they did not. However, we also increased the number of cases that should not have been granted a loan and did.  As a mortgage lender, would you prefer to reduce the number of False Positives or False Negatives?
 
@@ -1280,7 +1397,7 @@ Remember that for the K-S chart:
 
 ![diagnostics-ks-20-percent](assets/diagnostics-ks-20-percent.jpg)
 
-For this K-S chart, if we look at the top  20% of the data, the at-chance model (the dotted diagonal line) tells us that only 20% of the data was successfully separate between positives and negatives (defaulted and not defaulted). However, with the model it was able to do 0.5508 or about 55% of the cases were successfully separated between positives and negatives.
+For this K-S chart, if we look at the top  20% of the data, the at-chance model (the dotted diagonal line) tells us that only 20% of the data was successfully separate between positives and negatives (defaulted and not defaulted). However, with the model it was able to do 0.548 or about 54.8% of the cases were successfully separated between positives and negatives.
 
 3\. Based on the K-S curve(yellow) and the baseline (white diagonal dashed line) is this a good model?
 
@@ -1331,6 +1448,15 @@ A **report** file is included in the **experiment** summary. This report provide
 3\. Take a few minutes to explore the report
 
 4\. Explore Feature Evolution and Feature Transformation, how is this summary different from the summary provided in the **Experiments Page**?
+  
+    Answer:In the experiment page, you can set the name of your experiment, set up the dataset being used to create an experiment, view the total number of rows and columns of your dataset, drop columns, select a dataset to validate, etc. 
+
+    Different, the experiment summary report contains insight into the training data and any detected shifts in distribution, the validation schema, etc. In particular, when exploring the feature evolution and feature transformation in the summary report, we will encounter the following information: 
+
+    Feature evolution: This summary will detail the algorithms used to create the experiment. 
+
+    Feature transformation: The summary will provide information about automatically engineer new features with high-value features for a given dataset. 
+
 
 5\. Find the section titled **Final Model** on the report.docx and explore the following items:
 - Table titled **Performance of Final Model** and determine the **logloss** final test score
@@ -1345,7 +1471,7 @@ A **report** file is included in the **experiment** summary. This report provide
 
 ## Next Steps
 
-Check out the next tutorial : [Machine Learning Interpretability](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#0) where you will learn how to:
+Check out the next tutorial : [Machine Learning Interpretability](https://training.h2o.ai/products/tutorial-1c-machine-learning-interpretability-tutorial) where you will learn how to:
 - Launch an experiment
 - Create ML interpretability report
 - Explore explainability concepts such as:
