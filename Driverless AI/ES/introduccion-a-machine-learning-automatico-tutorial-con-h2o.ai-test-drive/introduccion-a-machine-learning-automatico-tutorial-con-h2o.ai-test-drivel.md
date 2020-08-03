@@ -739,7 +739,7 @@ Hay dos formas de generar el Informe MLI, seleccionando el enlace **MLI** en la 
 
 **Genere el informe MLI:**
 
-1\. **On the Status: Complete** (En el estado: Completo) Opciones, seleccione **Interpret this Model** (Interpretar este modelo)
+1\. **On the Status: Complete** (En el estado: Completo) Opciones, seleccione **Interpret this Model** (Interpretar este modelo):
 
 ![interpret-this-model](assets/interpret-this-model.jpg)
 
@@ -749,7 +749,7 @@ Hay dos formas de generar el Informe MLI, seleccionando el enlace **MLI** en la 
 
 3\. Una vez que el **Experimento de MLI** haya terminado, aparecerá una ventana emergente, vaya a la página de MLI haciendo clic en **YES**.
 
-4\. La página de interpretabilidad de MLI tiene las explicaciones de los resultados del modelo en un formato legible para humanos.
+4\. La página de interpretabilidad de MLI tiene las explicaciones de los resultados del modelo en un formato legible para humanos:
 
 Esta sección describe la funcionalidad y características de MLI para experimentos regulares. Para experimentos que no son series de tiempo, esta página proporciona varias explicaciones visuales y códigos de razón para el modelo de Driverless AI entrenado, y sus resultados.
 
@@ -804,7 +804,7 @@ Aprender más sobre la [Sensitivity Analysis.](http://docs.h2o.ai/driverless-ai/
 
     - [Ver documentación para clasificación multiclase y experimentos de series temporales](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/interpret-non-ts.html#summary-page)
 
-3. Surrogate Models (Modelos Sustitutos): para experimentos de clasificación y regresión
+3. Surrogate Models (Modelos Sustitutos): para experimentos de clasificación y regresión:
 
 - **KLIME**
 
@@ -858,7 +858,7 @@ Seleccione el MLI **Dashboard** (Tablero) y explore los diferentes tipos de idea
 
 Aprenda más sobre K-Lime con nuestro [Tutorial de interpretación de aprendizaje automático.](https://training.h2o.ai/products/tutorial-1c-machine-learning-interpretability-tutorial)
 
-2\. Importancia de la característica - Este gráfico muestra las características esenciales que impulsan el comportamiento del modelo.
+2\. Importancia de la característica - Este gráfico muestra las características esenciales que impulsan el comportamiento del modelo:
 
 1. ¿Qué atributo o característica tuvo más importancia?
 2. ¿Era este el mismo atributo que hipotetizó?
@@ -902,7 +902,7 @@ Las explicaciones proporcionan **Reason Codes** (códigos de motivo) detallados 
 
 6\. Driverless AI ofrece otras parcelas ubicadas bajo el Modelo de Driverless AI y los Modelos sustitutos (Surrogate Models), tómese unos minutos para explorar estas tramas - todos son interactivos. **About this Plot** (Acerca de esta trama) proporcionará una explicación de cada trama.
 
-Modelo de Driverless AI
+Modelo de Driverless AI:
 
 - Feature Importance (Importancia de la característica)
 - Shapley (Shapley)
@@ -910,7 +910,7 @@ Modelo de Driverless AI
 - Disparate Impact Analysis (Análisis de Impacto Disparado)
 - Sensitivity Analysis (Análisis de sensibilidad)
 
-Surrogate Models (Modelos sustitutos)
+Surrogate Models (Modelos sustitutos):
 - KLime
 - Random Forest (Bosque al Azar)
 - Importancia de la característica
@@ -945,7 +945,7 @@ Driverless AI permite descargar documentos generados automáticamente, como el r
 
 ### Resumen del experimento
 
-1\. Haga clic en Download Experiment Summary (Descargar resumen del experimento)
+1\. Haga clic en Download Experiment Summary (Descargar resumen del experimento):
 
 ![download-experiment-summary](assets/download-experiment-summary.jpg)
 
@@ -960,9 +960,9 @@ Cuando abre el archivo zip, se deben incluir los siguientes archivos:
 - Tabla de clasificación de ajuste de transformaciones de destino
 - Tuning Leaderboard (Tabla de posiciones de ajuste)
 
-2\. Abra el auto-generated.doc (informe.doc generado automáticamente) y revise los resultados del experimento.
+2\. Abra el auto-generated.doc (informe.doc generado automáticamente) y revise los resultados del experimento:
 
-3\. Haga clic en **Download Autoreport** (Descargar Autoreport)
+3\. Haga clic en **Download Autoreport** (Descargar Autoreport):
 
 ![download-autoreport](assets/download-autoreport.jpg)
 
