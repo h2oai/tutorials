@@ -146,7 +146,7 @@ AutoML o Aprendizaje de Máquina Automatizado es el proceso de automatización p
 
 - [Explore las repeticiones del seminario web](https://www.brighttalk.com/search/?q=driverless+ai)
 
-- [Explore las diversas listas de reproducción de IA sin controlador H2O en YouTube](https://www.youtube.com/user/0xdata/playlists)
+- [Explore las diversas listas de reproducción de Driverless AI H2O en YouTube](https://www.youtube.com/user/0xdata/playlists)
 
 ## Tarea 3: Cargar Datos
 
@@ -190,8 +190,8 @@ En el conjunto de datos encontrarás 1,309 filas, una fila por cada pasajero, y 
 |name_without_salutations|Nombre del pasajero sin título personal| - |
 |sex|Sexo|Female=Mujer, Male=Hombre|
 |age|Edad en años| - |
-|sibsp|Number of siblings= Numero de parentesco/Spouse aboard| - |
-|parch|Number of Parents/Children aboard=Número de padres/hijos abordo| - |
+|sibsp|Numero de parentesco/Cónyuge abordo| - |
+|parch|Número de padres/hijos abordo| - |
 |ticket|Número de boleto| - |
 |fare|Tarifa de pasajero| - |
 |cabin|Número de cabina| - |
@@ -596,7 +596,7 @@ La lista completa de características usadas en el modelo final está disponible
 
 ### Exploración más profunda y recursos
 
-- [Obtenga más información sobre las transformaciones de IA sin controlador](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/transformations.html)
+- [Obtenga más información sobre las transformaciones de Driverless AI](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/transformations.html)
 
 - [Ingeniería de características para el aprendizaje automático de Dmitry Larko](https://www.youtube.com/playlist?list=PLrsf4weWJKynQBvh0i-YxDDVqCcIrF28o)
 
@@ -768,7 +768,7 @@ Esta sección describe la funcionalidad y características de MLI para experimen
 
   ![dai-model-feature-importance](assets/dai-model-feature-importance.jpg)
 
-- **Shapley plots for transformed features:**(Gráficos de Shapley para características transformadas:) para características transformadas: Las explicaciones de Shapley son una técnica con apoyo teórico creíble que presenta contribuciones variables globales y locales consistentes. Los valores numéricos locales de Shapley se calculan rastreando filas individuales de datos a través de un conjunto de árbol entrenado y agregando la contribución de cada variable de entrada a medida que la fila de datos se mueve a través del conjunto entrenado. Para las tareas de regresión, los valores de Shapley suman la predicción del modelo de IA sin conductor. Para problemas de clasificación, los valores de Shapley suman la predicción del modelo de IA sin controlador antes de aplicar la función de enlace. Los valores globales de Shapley son el promedio de los valores absolutos de Shapley en cada fila de un conjunto de datos.
+- **Shapley plots for transformed features:**(Gráficos de Shapley para características transformadas:) para características transformadas: Las explicaciones de Shapley son una técnica con apoyo teórico creíble que presenta contribuciones variables globales y locales consistentes. Los valores numéricos locales de Shapley se calculan rastreando filas individuales de datos a través de un conjunto de árbol entrenado y agregando la contribución de cada variable de entrada a medida que la fila de datos se mueve a través del conjunto entrenado. Para las tareas de regresión, los valores de Shapley suman la predicción del modelo de IA sin conductor. Para problemas de clasificación, los valores de Shapley suman la predicción del modelo de Driverless AI antes de aplicar la función de enlace. Los valores globales de Shapley son el promedio de los valores absolutos de Shapley en cada fila de un conjunto de datos.
 
 
    ![dai-model-shapley](assets/dai-model-shapley.jpg)
@@ -981,7 +981,7 @@ El archivo zip del **Autoreport** proporciona información sobre lo siguiente:
 
 - [H2O.ai, Resumen del experimento de Driverless AI y Autoinforme](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-summary.html#autoreport)
 
-- [Revise este seminario web "Mire bajo el capó de la IA sin controlador H2O con Auto Doc"](https://www.brighttalk.com/webcast/16463/332693/peek-under-the-hood-of-h2o-driverless-ai-with-auto-doc)
+- [Revise este seminario web "Mire bajo el capó de Driverless AI H2O con Auto Doc"](https://www.brighttalk.com/webcast/16463/332693/peek-under-the-hood-of-h2o-driverless-ai-with-auto-doc)
 
 - [Hacia AutoML para la industria regulada con Driverless AI H2](https://www.h2o.ai/blog/toward-automl-for-regulated-industry-with-h2o-driverless-ai/)
 
@@ -1083,7 +1083,7 @@ Para crear un espacio de trabajo del proyecto:
 3. Especifique un nombre para el proyecto y proporcione una descripción
 4. Haga clic en **Create Project** (Crear Proyecto Nuevo). Esto crea una página de proyecto vacía
 
-- Obtenga más información sobre proyectos en IA sin controlador; revisar la [Documentación del espacio de trabajo del proyecto.](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/projects.html?highlight=projects%20workspace)
+- Obtenga más información sobre proyectos en Driverless AI; revisar la [Documentación del espacio de trabajo del proyecto.](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/projects.html?highlight=projects%20workspace)
 
 - Se puede explorar una aplicación más amplia de **Project Workspace** en el [Tutorial de series temporales: pronóstico de ventas minoristas.](https://training.h2o.ai/products/tutorial-2a-time-series-recipe-tutorial-retail-sales-forecasting)
 
