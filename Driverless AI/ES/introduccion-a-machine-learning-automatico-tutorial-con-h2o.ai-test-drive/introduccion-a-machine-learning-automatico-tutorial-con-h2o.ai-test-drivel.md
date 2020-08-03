@@ -208,7 +208,10 @@ En el conjunto de datos encontrarás 1,309 filas, una fila por cada pasajero, y 
 
 ![add-dataset-file-system](assets/add-dataset-file-system.jpg)
 
-3\. Ingresa los siguiente /data/TestDrive/titanic.csv en la barra de búsqueda.Selecciona titanic.csv y después titanic.csv luego **Click to Import Selection.**
+3\. Ingresa los siguiente 
+1. /data/TestDrive/titanic.csv en la barra de búsqueda.
+2. Selecciona titanic.csv y después titanic.csv 
+3. Luego haga clic aquí: **Click to Import Selection.**
 
 ![select-titanic-dataset](assets/select-titanic-dataset.jpg)
 
@@ -220,12 +223,12 @@ En el conjunto de datos encontrarás 1,309 filas, una fila por cada pasajero, y 
 
 1. Podrás ver en cada columna:
 
-- **File name:** Nombre del archivo del conjunto de datos 
-- **File Path:** Ruta del archivo 
-- **File Size:** Tamaño del archivo 
-- **Rows:** Número de filas Rows
-- **Columns:** Número de columnas 
-- **Status:** Estado del archivo Status
+    - **File name:** Nombre del archivo del conjunto de datos 
+    - **File Path:** Ruta del archivo 
+    - **File Size:** Tamaño del archivo 
+    - **Rows:** Número de filas Rows
+    - **Columns:** Número de columnas 
+    - **Status:** Estado del archivo Status
 
 2. Opción para regresar a la página anterior
 
@@ -374,9 +377,9 @@ Exploremos la correlación entre la variable 'survived' (sobrevivido) y otras va
 
 *Cosas a tener en cuenta:*
 
-El botón **Help** explica el **Correlation Graph**. Esta característica está disponible para todos los gráficos.
+- El botón **Help** explica el **Correlation Graph**. Esta característica está disponible para todos los gráficos.
 
-**Download** (Descargar) permite descargar una imagen a escala completa del gráfico.
+- **Download** (Descargar) permite descargar una imagen a escala completa del gráfico.
 
 5\. Salga de la vista  **Correlation Graph** haciendo clic en X en la esquina superior derecha del gráfico.
 
@@ -761,7 +764,7 @@ Esta sección describe la funcionalidad y características de MLI para experimen
 
 2. Modelo de Driverless AI: Para los experimentos de regresión y clasificación binaria, el menú Modelo de Driverless AI proporciona los siguientes gráficos para los modelos de Driverless AI:
 
-- **Feature Importance for transformed features:**(Importancia de funciones para funciones transformadas:): Este gráfico muestra la importancia de la función Driverless AI. La importancia de la característica de Driverless AI es una medida de la contribución de una variable de entrada a las predicciones generales del modelo de Driverless AI. La importancia de la característica global se calcula agregando la mejora en el criterio de división causada por una sola variable en todos los árboles de decisión en el modelo de Driverless AI.
+    - **Feature Importance for transformed features:**(Importancia de funciones para funciones transformadas:): Este gráfico muestra la importancia de la función Driverless AI. La importancia de la característica de Driverless AI es una medida de la contribución de una variable de entrada a las predicciones generales del modelo de Driverless AI. La importancia de la característica global se calcula agregando la mejora en el criterio de división causada por una sola variable en todos los árboles de decisión en el modelo de Driverless AI.
 
   ![dai-model-feature-importance](assets/dai-model-feature-importance.jpg)
 
@@ -770,9 +773,9 @@ Esta sección describe la funcionalidad y características de MLI para experimen
 
    ![dai-model-shapley](assets/dai-model-shapley.jpg)
 
-- **Partial Dependence/ICE Plot:**(Parcela de dependencia parcial/ICE)La dependencia parcial es una medida de la predicción promedio del modelo con respecto a una variable de entrada. Las gráficas de dependencia parcial muestran cómo cambian las funciones de respuesta aprendidas por la máquina en función de los valores de una variable de entrada de interés mientras se considera la no linealidad y se promedian los efectos de todas las demás variables de entrada. Los gráficos de dependencia parcial son bien conocidos y se describen en los Elementos del Aprendizaje Estadístico (Hastie et al. 2001). Las gráficas de dependencia parcial permiten una mayor transparencia en los modelos de Driverless AI y la capacidad de validar y depurar modelos de Driverless AI al comparar las predicciones promedio de una variable en su dominio con los estándares conocidos, el conocimiento del dominio y las expectativas razonables.
+    - **Partial Dependence/ICE Plot:**(Parcela de dependencia parcial/ICE)La dependencia parcial es una medida de la predicción promedio del modelo con respecto a una variable de entrada. Las gráficas de dependencia parcial muestran cómo cambian las funciones de respuesta aprendidas por la máquina en función de los valores de una variable de entrada de interés mientras se considera la no linealidad y se promedian los efectos de todas las demás variables de entrada. Los gráficos de dependencia parcial son bien conocidos y se describen en los Elementos del Aprendizaje Estadístico (Hastie et al. 2001). Las gráficas de dependencia parcial permiten una mayor transparencia en los modelos de Driverless AI y la capacidad de validar y depurar modelos de Driverless AI al comparar las predicciones promedio de una variable en su dominio con los estándares conocidos, el conocimiento del dominio y las expectativas razonables.
 
-Individual Conditional Expectation (ICE) (Las gráficas de expectativa condicional individual (ICE)), una adaptación más nueva y menos conocida de las gráficas de dependencia parcial, se pueden usar para crear explicaciones más localizadas para un solo individuo usando las mismas ideas básicas que las gráficas de dependencia parcial. Las parcelas ICE fueron descritas por Goldstein et al. (2015) Los valores de ICE son simplemente dependencia parcial desagregada, pero ICE también es un tipo de análisis de sensibilidad no lineal en el que se miden las predicciones del modelo para una sola fila. Al mismo tiempo, una variable de interés varía según su dominio. Las gráficas ICE permiten a un usuario determinar si el tratamiento del modelo de una fila individual de datos está fuera de una desviación estándar del comportamiento promedio del modelo, si el tratamiento de una fila específica es válido en comparación con el comportamiento promedio del modelo, estándares conocidos, conocimiento del dominio, y expectativas razonables, y cómo se comportará un modelo en situaciones hipotéticas donde una variable en una fila seleccionada varía en su dominio.
+        Individual Conditional Expectation (ICE) (Las gráficas de expectativa condicional individual (ICE)), una adaptación más nueva y menos conocida de las gráficas de dependencia parcial, se pueden usar para crear explicaciones más localizadas para un solo individuo usando las mismas ideas básicas que las gráficas de dependencia parcial. Las parcelas ICE fueron descritas por Goldstein et al. (2015) Los valores de ICE son simplemente dependencia parcial desagregada, pero ICE también es un tipo de análisis de sensibilidad no lineal en el que se miden las predicciones del modelo para una sola fila. Al mismo tiempo, una variable de interés varía según su dominio. Las gráficas ICE permiten a un usuario determinar si el tratamiento del modelo de una fila individual de datos está fuera de una desviación estándar del comportamiento promedio del modelo, si el tratamiento de una fila específica es válido en comparación con el comportamiento promedio del modelo, estándares conocidos, conocimiento del dominio, y expectativas razonables, y cómo se comportará un modelo en situaciones hipotéticas donde una variable en una fila seleccionada varía en su dominio.
 
 
 ![dai-model-partial-dependence-ice](assets/dai-model-partial-dependence-ice.jpg)
@@ -788,7 +791,7 @@ Individual Conditional Expectation (ICE) (Las gráficas de expectativa condicion
 
 - **Sensitivity Analysis(NEW):**(Análisis de sensibilidad (NUEVO)): El Análisis de Sensibilidad (o "¿Qué pasaría si?") es una herramienta de depuración, explicación, equidad y seguridad de modelo simple y potente. La idea detrás del análisis de sensibilidad es directa: califique su modelo entrenado en una sola fila, en varias filas o en un conjunto de datos de valores simulados potencialmente interesantes y compare el nuevo resultado del modelo con el resultado predicho en los datos originales.
 
-El análisis de sensibilidad investiga si el comportamiento y los resultados del modelo permanecen estables cuando los datos se alteran intencionalmente o si se simulan otros cambios en los datos. Los modelos de aprendizaje automático pueden hacer predicciones drásticamente diferentes con sólo cambios menores en los valores de las variables de entrada. Por ejemplo, al observar las predicciones que determinan las decisiones financieras, el análisis de sensibilidad puede usarse para ayudar a comprender el impacto de cambiar las variables de entrada más importantes y el impacto de cambiar las variables socialmente sensibles (como Sex (Sexo),Age (Edad), Race (Raza), etc.) en el modelo. Si el modelo cambia de manera razonable y esperada cuando se cambian los valores de las variables importantes, esto puede mejorar la confianza en el modelo. Del mismo modo, si los cambios del modelo a variables sensibles tienen un impacto mínimo en el modelo, esto es una indicación de equidad en las predicciones del modelo.
+    El análisis de sensibilidad investiga si el comportamiento y los resultados del modelo permanecen estables cuando los datos se alteran intencionalmente o si se simulan otros cambios en los datos. Los modelos de aprendizaje automático pueden hacer predicciones drásticamente diferentes con sólo cambios menores en los valores de las variables de entrada. Por ejemplo, al observar las predicciones que determinan las decisiones financieras, el análisis de sensibilidad puede usarse para ayudar a comprender el impacto de cambiar las variables de entrada más importantes y el impacto de cambiar las variables socialmente sensibles (como Sex (Sexo),Age (Edad), Race (Raza), etc.) en el modelo. Si el modelo cambia de manera razonable y esperada cuando se cambian los valores de las variables importantes, esto puede mejorar la confianza en el modelo. Del mismo modo, si los cambios del modelo a variables sensibles tienen un impacto mínimo en el modelo, esto es una indicación de equidad en las predicciones del modelo.
 
 Aprender más sobre la [Sensitivity Analysis.](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/interpret-non-ts.html#sensitivity-analysis)
 
