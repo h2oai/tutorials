@@ -345,7 +345,8 @@ Hay dos formas de visualizar el conjunto de entrenamiento:
 
 ![titanic-train-visualize](assets/titanic-train-visualize.jpg)
 
-**Método 1:** haciendo clic en el archivo** titanic_train**, seleccione **Visualize**, luego haga clic en el archivo de visualización generado.
+**Método 1:** haciendo clic en el archivo 
+**titanic_train**, seleccione **Visualize**, luego haga clic en el archivo de visualización generado.
 
 **Método 2:** haciendo clic en **Autoviz** ubicado en la parte superior de la página de la interfaz de usuario, donde se le pedirá el conjunto de datos que desea visualizar.
 
@@ -426,6 +427,7 @@ Si desea realizar un recorrido rápido por la página **Experiments** (Experimen
 - Seleccione si es un problema de serie temporal o no [Time Series ON or OFF] ([Serie temporal activada o desactivada])
 
 3\. Seleccione **Not Now** (ahora no) para regresar y hacer el recorrido en otro momento.
+
 4\. Aparecerá la siguiente página **Experiment** (Experimento):
 
 ![train-set-experiment-page](assets/train-set-experiment-page.jpg)
@@ -438,10 +440,10 @@ Si desea realizar un recorrido rápido por la página **Experiments** (Experimen
 
 ![titanic-train-assist-sample](assets/titanic-train-assist-sample.jpg)
 
-1. **Display Name* (Nombre para mostrar) - De un nombre a su experimento `Titanic Classification Tutorial`.
-2. *Dataset* (Conjunto de datos) - El nombre del conjunto de datos que se utilizara para crear un experimento
-3. *Rows* (Filas) - Número total de filas
-4. *Columns* (Columnas) - Número total de columnas
+1. **Display Name** (Nombre para mostrar) - De un nombre a su experimento `Titanic Classification Tutorial`.
+2. **Dataset** (Conjunto de datos) - El nombre del conjunto de datos que se utilizara para crear un experimento
+3. **Rows** (Filas) - Número total de filas
+4. **Columns** (Columnas) - Número total de columnas
 5. [Dropped Columns](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#dropped-columns) (Columnas eliminadas) - Elimine las columnas de su conjunto de datos que no desea usar en el experimento
 6. [Validation Dataset](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#validation-dataset) (Conjunto de datos de validación) - Seleccione el conjunto de datos que desea usar para validar. Este conjunto se usará para validar parámetros como modelos, características, etc.
 7. [Test Dataset](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#test-dataset) (Conjunto de datos de prueba) - El conjunto de datos que se utilizará para probar el modelo generado usando el conjunto de datos de entrenamiento. No se usa durante el entrenamiento del modelo, y los resultados están disponibles al final del experimento.
@@ -500,6 +502,7 @@ El atributo "sobrevivió" fue seleccionado porque, como compañía de seguros, q
 ![update-experiment-settings](assets/update-experiment-settings.jpg)
 
 **Nota:** Para iniciar un experimento: el conjunto de datos y la columna de destino son los elementos mínimos necesarios para iniciar un experimento.
+
 10\. La página **Experiment** (Experimento) se verá similar a la siguiente después de completar el 46%:
 
 ![experiment-running-46](assets/experiment-running-46.jpg)
@@ -520,19 +523,20 @@ Una vez que se complete el experimento, aparecerá un **Experiment Summary** (Re
 
 *Cosas a tener en cuenta:*
 
-- Opciones de estado completo
-- Deploy (Local and Cloud) (Implementación (local y en la nube))
+1. Opciones de estado completo
+
+    - Deploy (Local and Cloud) (Implementación (local y en la nube))
 Interpret This Model (Interpreta este modelo)
-- Diagnose Model On New Dataset (Diagnosticar modelo en un nuevo conjunto de datos)
-- Score on Another Dataset (Puntuación en otro conjunto de datos)
-- Transform Another Dataset (Transformar otro conjunto de datos)
-- Download Predictions (Descargar predicciones)
-    - Training Predictions (Predicciones de entrenamiento)
-    - Validation Set Predictions(available if a validation set was provided) (Predicciones del conjunto de validación (disponible si se proporcionó un conjunto de validación))
-    - Test Set Predictions (Predicciones de conjuntos de pruebas)
-- Descargar Python Scoring Pipeline: una tubería de puntuación de Python independiente que descarga un paquete que contiene un modelo exportado y ejemplos de código fuente de Python 3.6 para la producción de modelos creados con Driverless AI H2O.
-- Descargar MOJO Scoring Pipeline: un canal de puntuación independiente que convierte los experimentos en MOJO, que se pueden puntuar en tiempo real. Está disponible como tiempo de ejecución Java o tiempo de ejecución C ++ (con envoltorios Python y R).
-- Visualize Scoring Pipeline (Visualizar la tubería de puntuación) (experimental): hay disponible una visualización de la tubería de puntuación para cada experimento completado.
+    - Diagnose Model On New Dataset (Diagnosticar modelo en un nuevo conjunto de datos)
+    - Score on Another Dataset (Puntuación en otro conjunto de datos)
+    - Transform Another Dataset (Transformar otro conjunto de datos)
+    - Download Predictions (Descargar predicciones)
+        - Training Predictions (Predicciones de entrenamiento)
+        - Validation Set Predictions(available if a validation set was provided) (Predicciones del conjunto de validación (disponible si se proporcionó un conjunto de validación))
+        - Test Set Predictions (Predicciones de conjuntos de pruebas)
+    - Descargar Python Scoring Pipeline: una tubería de puntuación de Python independiente que descarga un paquete que contiene un modelo exportado y ejemplos de código fuente de Python 3.6 para la producción de modelos creados con Driverless AI H2O.
+    - Descargar MOJO Scoring Pipeline: un canal de puntuación independiente que convierte los experimentos en MOJO, que se pueden puntuar en tiempo real. Está disponible como tiempo de ejecución Java o tiempo de ejecución C ++ (con envoltorios Python y R).
+    - Visualize Scoring Pipeline (Visualizar la tubería de puntuación) (experimental): hay disponible una visualización de la tubería de puntuación para cada experimento completado.
 
  ![visualize-scoring-pipeline-experimental](assets/visualize-scoring-pipeline-experimental.jpg)
 
@@ -597,7 +601,7 @@ La lista completa de características usadas en el modelo final está disponible
 
 ## Tarea 7: Explora Resultados del Experimento
 
-Vamos a explorar los resultados de este experimento de clasificación. Se pueden encontrar los resultados en la página **Experiment Summary** (Resumen del experimento) al final de la página de** Experiment** (Experimentar) de lado izquierdo. Los gráficos de los resultados nos dan más información sobre los datos de entrenamiento y validación que resultan del problema de clasificación. Para cada gráfico, daremos una breve explicación.
+Vamos a explorar los resultados de este experimento de clasificación. Se pueden encontrar los resultados en la página **Experiment Summary** (Resumen del experimento) al final de la página de **Experiment** (Experimentar) de lado izquierdo. Los gráficos de los resultados nos dan más información sobre los datos de entrenamiento y validación que resultan del problema de clasificación. Para cada gráfico, daremos una breve explicación.
 
 Si está interesado/a en aprender más sobre cada gráfico y las métricas derivadas en esta sección, haga favor de leer nuestro próximo tutorial [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus.](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus)
 
@@ -740,7 +744,7 @@ Hay dos formas de generar el Informe MLI, seleccionando el enlace **MLI** en la 
 
 ![finishing-up-mli](assets/finishing-up-mli.jpg)
 
-3/. Una vez que el **Experimento de MLI** haya terminado, aparecerá una ventana emergente, vaya a la página de MLI haciendo clic en **YES**.
+3\. Una vez que el **Experimento de MLI** haya terminado, aparecerá una ventana emergente, vaya a la página de MLI haciendo clic en **YES**.
 
 4\. La página de interpretabilidad de MLI tiene las explicaciones de los resultados del modelo en un formato legible para humanos.
 
@@ -961,7 +965,7 @@ Cuando abre el archivo zip, se deben incluir los siguientes archivos:
 
 **Autoreport:** Es una versión de Word de un informe generado automáticamente para el experimento. Se incluye un archivo de informe (AutoDoc) en el resumen del experimento.
 
-El archivo zip del **Autoreport proporciona información sobre lo siguiente:
+El archivo zip del **Autoreport** proporciona información sobre lo siguiente:
 
 - Datos de entrenamiento
 - Cualquier cambio detectado en la distribución
@@ -1026,7 +1030,7 @@ Desde la página de Projects, puede vincular conjuntos de datos y / o experiment
     - **Delete** (Eliminar)
 4.  **+New Project** (Proyecto Nuevo): Opción para crear un nuevo proyecto
 
-3\. Abra el **Time Series Tutorial** (Tutorial de series temporales), aparecerá una imagen similar a la siguiente: 
+2\. Abra el **Time Series Tutorial** (Tutorial de series temporales), aparecerá una imagen similar a la siguiente: 
 
 ![projects-page-time-series](assets/projects-page-time-series.jpg)
 
