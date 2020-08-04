@@ -49,11 +49,13 @@ If you are new to Driverless AI we highly recommend you start with the **Test Dr
  - Country
  - Email
 
-4\. Click on **Create account and email temporary password** at the bottom of the page.
+4\. Verify that you are not a robot by checking the "I'm not a robot" box.
+
+5\. Click on **Create account and email temporary password** at the bottom of the page.
 
 **Note**: A password will be sent to your email within minutes.
 
-5\. Check your email for the password.
+6\. Check your email for the password.
 
 ## How to Login
 
@@ -61,17 +63,22 @@ If you are new to Driverless AI we highly recommend you start with the **Test Dr
 
 2\. Enter the password you received over email from Aquarium.
 
-3\. Click on **Login**.
+3\. Verify that you are not a robot by checking the "I'm not a robot" box.
+
+4\. Click on **Login**.
+
+Note: If you are having issues loggin in, click on **send us an email**
+
 
 ![test-drive-login](assets/test-drive-login.jpg)
 
 ## Reset Password 
 
-1\. If you forgot your password, select **I forgot my password**.
+1\. If you forgot your password, then select **I forgot my password**.
 
 ![resetting-password](assets/resetting-password.jpg)
 
-2\. Enter your email, and another password will be emailed to you.
+2\. Enter your email, verify that you are not a robot by checking the "I'm not a robot" box, then click on **Email temporary password**, another password will be emailed to you.
 
 ![reset-password](assets/reset-password.jpg)
 
@@ -81,7 +88,7 @@ After a successful login, select "Browse Labs" located on the top-left corner of
 
 Click on the "View Details" button on lab one, as shown in the image below.
 
-![selecting Lab-1 Driverless AI Test Drive](assets/selecting-Lab-1-Driverless-AI-Test-Drive.jpg)
+![selecting-lab-1-driverless-ai-test-drive](assets/selecting-lab-1-driverless-ai-test-drive.jpg)
 
 
 After the Driverless AI Test Drive Lab will appear:
@@ -96,7 +103,7 @@ After the Driverless AI Test Drive Lab will appear:
 
 3. [H2O.ai Learning Center](https://training.h2o.ai/): Build your Knowledge Base and Skills at your pace. Enter a place for knowledge-sharing, skills-enhancements, idea-sharing and more!
 
- 4. [H2O.ai Community(HaC)](https://www.h2o.ai/community/home)  HaC is a community to share, learn, network, ask questions, provide answers, take the next step, and explore Artificial Intelligence, Machine Learning, and Data Science.  We are here to democratize AI. It will take a village to democratize AI.
+4. [H2O.ai Community(HaC)](https://www.h2o.ai/community/home)  HaC is a community to share, learn, network, ask questions, provide answers, take the next step, and explore Artificial Intelligence, Machine Learning, and Data Science.  We are here to democratize AI. It will take a village to democratize AI.
 
 5. **Start** button starts the lab session
 
