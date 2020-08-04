@@ -13,8 +13,8 @@
 - [Tarea 7: Explora Resultados del Experimento](#tarea-7-explora-resultados-del-experimento)
 - [Tarea 8: Informe MLI Para Series no Cronológicas](#tarea-8-informe-mli-para-series-no-cronológicas)
 - [Tarea 9: Resumen del Experimento y Autoreport](#tarea-9-resumen-del-experimento-y-autoreport)
-- [Próximos Pasos](#proximos-pasos)
-- [Apéndice: Proyecto Workspace](#apendice-proyecto-workspace)
+- [Próximos Pasos](#Próximos-pasos)
+- [Apéndice: Proyecto Workspace](#Apéndice-proyecto-workspace)
 
 ## Objetivo
 
