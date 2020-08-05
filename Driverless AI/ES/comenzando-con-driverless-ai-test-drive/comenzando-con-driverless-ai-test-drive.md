@@ -46,13 +46,15 @@ Si eres nuevo en Driverless AI, te recomendamos que comiences con **Test Drive!*
  - Last Name  (Apellido)
  - Organization (Nombre de su orgarnizacion)
  - Country (País)
- - Email
+ - Email (correo electrónico)
 
-4\. Haz clic en **Create account and email temporary password** (Crear cuenta y enviar contraseña temporal por correo electrónico) al final de la página.
+4\. Verifica que no eres un robot marcando la casilla "No soy un robot".
+
+5\. Haz clic en **Create account and email temporary password** (Crear cuenta y enviar contraseña temporal por correo electrónico) al final de la página.
 
 **Nota**: La contraseña será enviada a tu correo electrónico en cuestion de minutos.
 
-5\. Revisa tu correo electrónico para obtener la contraseña
+6\. Revisa tu correo electrónico para obtener la contraseña
 
 ## Cómo iniciar sesión
 
@@ -60,7 +62,11 @@ Si eres nuevo en Driverless AI, te recomendamos que comiences con **Test Drive!*
 
 2\. Ingresa la contraseña que recibiste por correo electrónico de Aquarium.
 
-3\. Haz clic en **Login** (Iniciar Sesión).
+3\. Verifica que no eres un robot marcando la casilla "No soy un robot".
+
+4\. Haz clic en **Login** (Iniciar Sesión).
+
+**Nota:** Si tiene problemas para iniciar sesión, haga clic en enviarnos un correo electrónico
 
 ![test-drive-login](assets/test-drive-login.jpg)
 
@@ -70,22 +76,33 @@ Si eres nuevo en Driverless AI, te recomendamos que comiences con **Test Drive!*
 
 ![resetting-password](assets/resetting-password.jpg)
 
-2\. Ingresa tu correo electrónico y se te enviará otra contraseña por correo electrónico.
+2\. Ingrese su correo electrónico, verifique que no es un robot marcando la casilla "No soy un robot", luego haga clic en Correo electrónico contraseña temporal, se le enviará otra contraseña por correo electrónico.
 
 ![reset-password](assets/reset-password.jpg)
 
 ## Cómo iniciar y finalizar la sesión de laboratorio de Test Drive
  
-Después de un inicio de sesión exitoso, aparecerá el Laboratorio de Test Drive de Driverless AI:
+Después de un inicio de sesión exitoso, seleccione "Examinar laboratorios" ubicado en la esquina superior izquierda de la página, luego seleccione "Lab 1- Driverless AI Test Drive (x.x.x.x LTS) (1GPU)".
+
+Haga clic en el botón "Ver detalles" en el laboratorio uno, como se muestra en la imagen a continuación.
+
+![select-lab-1-dai-test-drive](assets/select-lab-1-dai-test-drive.jpg)
+
+Después el Laboratorio de prueba de Driverless AI aparecerá: 
 
 ![driverless-ai-test-drive-page](assets/driverless-ai-test-drive-page.jpg)
 
 **Nota**: 
 
-- La duración del laboratorio es de 120 minutos, luego de eso la sesión terminará.
-- Consulta el conjunto completo de [Tutoriales de Driverless AI](https://h2oai.github.io/tutorials/)
-- Publica preguntas en la [Comunidad de Driverless AI](https://www.h2o.ai/community/home)
-- El botón **Start Lab** inicia la sesión de laboratorio.
+1. La duración del laboratorio es de 120 minutos, luego de eso la sesión terminará
+
+2. Tenga en cuenta que el laboratorio finaliza automáticamente después de dos horas y puede tomarse varias veces
+
+3. [Centro de aprendizaje H2O.ai](https://training.h2o.ai): construya su base de conocimientos y habilidades a su ritmo. ¡Ingrese a un lugar para compartir conocimientos, mejorar habilidades, compartir ideas y más!
+
+4. [Comunidad H2O.ai (HaC) (https://www.h2o.ai/community/home): HaC es una comunidad para compartir, aprender, establecer redes, hacer preguntas, proporcionar respuestas, dar el siguiente paso y explorar la Inteligencia Artificial , Aprendizaje automático y ciencia de datos. Estamos aquí para democratizar la IA. Se necesitará una aldea para democratizar la IA.
+
+5. El botón de **Start (comienza)** inicia la sesión de laboratorio
 
 1\. Para iniciar un laboratorio, haz clic en **Start Lab** (Iniciar laboratorio). Verás una imagen similar a la siguiente:
 
@@ -113,9 +130,11 @@ Después de un inicio de sesión exitoso, aparecerá el Laboratorio de Test Driv
 
 ## Preguntas
 
-¿Tiene alguna pregunta sobre Aquarium? Regístrate en la Comunidad Slack de H2O.ai y publica tus preguntas en el canal **#cloud**. Los miembros de la comunidad H2O.ai responderán tan pronto como estén disponibles.
+¿Tiene alguna pregunta sobre el acuario? Regístrese en la Comunidad Slack de H2O.ai y publique sus preguntas en el canal **#cloud**. Los miembros de la comunidad H2O.ai responderán tan pronto como estén disponibles.
 
-- [Únase a la comunidad H2Oa.i en Slack para hacer preguntas en #cloud](https://h2oai-community.slack.com/)
+Chatee y haga preguntas con los fabricantes de H2O.ai y los usuarios científicos de datos en el espacio de trabajo de H2O.ai Slack
+
+- [Chatee y haga preguntas con los fabricantes de H2O.ai y los usuarios científicos de datos en el espacio de trabajo de H2O.ai Slack](https://www.h2o.ai/community/home)
 
 
 
