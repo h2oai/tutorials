@@ -1,0 +1,26 @@
+{
+  "environment": "web",
+  "source": "/Users/acastro/Desktop/comenzando-con-driverless-ai-test-drive/comenzando-con-driverless-ai-test-drive.md",
+  "format": "html",
+  "prefix": "../assets",
+  "mainga": "UA-49880327-14",
+  "updated": "2020-08-04T21:09:56-07:00",
+  "id": "comenzando-con-driverless-ai-test-drive",
+  "duration": 0,
+  "title": "Comenzando con Driverless AI Test Drive",
+  "summary": "Check the list",
+  "theme": "",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "driverless"
+  ],
+  "tags": [
+    "aquarium",
+    "driverless",
+    "machine-learning",
+    "test-drive"
+  ],
+  "url": "comenzando-con-driverless-ai-test-drive"
+}

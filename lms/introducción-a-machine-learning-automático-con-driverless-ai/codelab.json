@@ -1,0 +1,26 @@
+{
+  "environment": "web",
+  "source": "/Users/acastro/Desktop/introducción-a-machine-learning-automático-con-driverless-ai/introducción-a-machine-learning-automático-con-driverless-ai.md",
+  "format": "html",
+  "prefix": "../assets",
+  "mainga": "UA-49880327-14",
+  "updated": "2020-08-04T21:13:49-07:00",
+  "id": "introducción-a-machine-learning-automático-con-driverless-ai",
+  "duration": 0,
+  "title": "Introducción a Machine Learning Automático con Driverless AI",
+  "summary": "Check the list",
+  "theme": "",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "driverless"
+  ],
+  "tags": [
+    "aquarium",
+    "driverless",
+    "security",
+    "test-drive"
+  ],
+  "url": "introducción-a-machine-learning-automático-con-driverless-ai"
+}
