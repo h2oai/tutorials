@@ -6,7 +6,7 @@
 - [Prerrequisitos](#Prerrequisitos)
 - [Tarea 1: Tour del Producto](#Tarea-1-Tour-del-Producto)
 - [Tarea 2: Conceptos de Machine Learning](#tarea-2-conceptos-de-machine-learning)
-- [Tarea 3: Cargar Datos](#tarea-3-cargar-datos)
+- [Tarea 3: Cargar datos](#tarea-3-cargar-datos)
 - [Tarea 4: Explora los Detalles de Datos y AutoViz](#tarea-4-explora-los-detalles-de-datos-y-autoviz)
 - [Tarea 5: Lanza el Primer Experimento](#tarea-5-lanza-el-primer-experimento)
 - [Tarea 6: Explora Feature Engineering](#tarea-6-explora-feature-engineering)
@@ -18,7 +18,7 @@
 
 ## Objetivo
 
-Para este tutorial, vamos a explorar el conjunto de datos sobre el accidente del Titanic desde la perspectiva de una companía de aseguranza de vidas usando el producto empresarial [H2O.ai's](https://www.h2o.ai/), [Driverless AI](https://www.h2o.ai/products/h2o-driverless-ai/). Vamos a explorar posibles factores de riesgos derivados de este conjunto de datos que la compañía podría haber considerado al momento de vender aseguranza de vida a estos pasajeros. Específicamente, crearemos un modelo de predicción para determinar cuáles factores contribuyeron a la supervivencia de los pasajeros.
+Para este tutorial, vamos a explorar el conjunto de datos sobre el accidente del Titanic desde la perspectiva de una compañía de aseguranza de vidas usando el producto empresarial [H2O.ai's](https://www.h2o.ai/), [Driverless AI](https://www.h2o.ai/products/h2o-driverless-ai/). Vamos a explorar posibles factores de riesgos derivados de este conjunto de datos que la compañía podría haber considerado al momento de vender aseguranza de vida a estos pasajeros. Específicamente, crearemos un modelo de predicción para determinar cuáles factores contribuyeron a la supervivencia de los pasajeros.
 
 En esta descripción general de Driverless AI, aprenderá cómo cargar datos, explorar detalles de datos, generar visualizaciones automáticas, iniciar un experimento, explorar ingeniería de características, ver resultados de experimentos y obtener un recorrido rápido por el informe de Interpretabilidad de aprendizaje automático.
 
@@ -47,7 +47,7 @@ En esta descripción general de Driverless AI, aprenderá cómo cargar datos, ex
 
 La interfaz del usuario (UI) de Driverless AI es muy fácil de navegar. Las siguientes características, al igual que algunos conjuntos de datos se pueden encontrar en la página de **Datasets**. Vamos a explorar estas características al tiempo de lanzar nuestro experimento en los siguientes pasos.
 
-1. **Projects** (Proyectos): El espacio de proyectos es para administrar conjuntos de datos y experimentos relacionados a casos de usos particulares.
+1. **Projects** (Proyectos): El espacio de Projects es para administrar conjuntos de datos y experimentos relacionados a casos de usos particulares.
 2. **Datasets** (Conjuntos de datos): Muestra los conjuntos de datos disponibles. Algunas otras opciones incluyen la habilidad de agregar nuevos conjuntos de datos, obtener detalles sobre los datos, visualizar, dividir, predecir, renombrar, descargar, y eliminar.
 3. **Autoviz:** Ayuda a visualizar un conjunto de datos con todos los gráficos disponibles.
 4. **Experiments** (Experimentos): Muestra todos los experimentos que han sido completados. Los experimentos pueden ser corregidos o borrados.
@@ -60,7 +60,7 @@ La interfaz del usuario (UI) de Driverless AI es muy fácil de navegar. Las sigu
 11. <: Regresa a la página anterior
 12. **H2OAI:** Regresa a las página de Datasets
 13. **Driverless AI 1.X.X:** Versión de Driverless AI
-14. **Add a Dataset(or Drag and Drop)** (Agregar un conjunto de datos (o arrastrar y soltar)): Carga o añade un nuevo conjunto de datos.
+14. **Add a Dataset(or Drag and Drop)** (Agregar un conjunto de datos (o arrastrar y soltar)): Carga o añade un nuevo conjunto de datos
 
 ### Exploración más Profunda y Recursos
 
@@ -79,15 +79,14 @@ Machine Learning es un subconjunto de Inteligencia Artificial donde el enfoque e
 ### Entrenamiento de Machine Learning
 
 Avances en la tecnología han facilitado la recopilación y disponibilidad de los datos. Los tipos de datos disponibles determinarán el tipo de entrenamiento al que el modelo de Machine Learning puede someterse. Hay dos tipos de entrenamiento de Machine Learning, Aprendizaje supervisado y no-supervisado. Aprendizaje supervisado es cuando el conjunto de datos contiene la respuesta que estás tratando de predecir. Para esos casos donde la variable de predicción no está presente, se le llama aprendizaje no-supervisado. Ambos tipos de entrenamiento definen la relación entre variables de entrada y de salida.
-En Machine Learning, las variables de entrada son llamadas **características(features)** y las variables de salida **etiquetas(labels).** Las etiquetas, en este caso, son las que intentamos predecir. El objetivo es tomar las entradas/características y usarlas para llegar a predicciones sobre datos nunca antes vistos. En regresión lineal, las características son las variables X, y las etiquetas son las variables Y.
+En Machine Learning, las variables de entrada son llamadas **características(features)** y las variables de salida **etiquetas(labels).** Las etiquetas, en este caso, son las que intentamos predecir. El objetivo es tomar las entradas/características y usarlas para llegar a predicciones sobre datos nunca antes vistos. En regresión lineal, las características son las variables x, y las etiquetas son las variables y.
 
-Un modelo de Machine Learning define la relación entre características y etiquetas. Cuando los modelos son entrenados, puedes entrenar el modelo alimentándose con ejemplos. Los ejemplos son una instancia particular de datos. Puedes tener dos tipos de ejemplos: etiquetados y no-etiquetados. Los ejemplos etiquetados son aquellos donde se conoce el valor de las variables x, y (características, etiquetas). Los ejemplos no-etiquetados son aquellos donde conocemos el valor de la variable x, pero no sabemos qué valor tiene la variable y(características)[1]. Tu conjunto de datos son como un ejemplo; las columnas que se usarán para el entrenamiento son las características; las filas son las instancias de esas características. Las columnas que quieres predecir son las etiquetas.
+Un modelo de Machine Learning define la relación entre características y etiquetas. Cuando los modelos son entrenados, puedes entrenar el modelo alimentándose con ejemplos. Los ejemplos son una instancia particular de datos. Puedes tener dos tipos de ejemplos: etiquetados y no-etiquetados. Los ejemplos etiquetados son aquellos donde se conoce el valor de las variables x, y (características, etiquetas). Los ejemplos no-etiquetados son aquellos donde conocemos el valor de la variable x, pero no sabemos qué valor tiene la variable y(características,?)[1]. Tu conjunto de datos son como un ejemplo; las columnas que se usarán para el entrenamiento son las características; las filas son las instancias de esas características. Las columnas que quieres predecir son las etiquetas.
 
 El aprendizaje supervisado toma los ejemplos etiquetados y permite a un modelo que está siendo entrenado aprender la relación entre características y etiquetas. El modelo entrenado es entonces probado con datos no-etiquetados, y eso permite predecir el valor de y(etiqueta) para los datos no-etiquetados. Probar un modelo entrenado con datos no-etiquetados se le llama entrenamiento no supervisado [1]. Note que H20 Driverless AI crea modelos con ejemplos etiquetados.
 
 ### Preparación de datos
-Un modelo de Machine Learning es tan bueno como los datos que se usan para entrenarlo. Si usas datos malos para entrenar tu modelo, obtendrás un modelo malo. Dicho esto, antes de cargar un conjunto de datos dentro de la herramienta que te ayudará con la construcción de tu modelo de Machine Learning como Driverless AI, asegúrate de que el conjunto de datos ha sido limpiado y preparado para el entrenamiento. Al proceso de transformación de datos en bruto en otro formato, el cual es más apropiado y valioso para el análisis, se le llama 
-"data wrangling" o disputa de datos.
+Un modelo de Machine Learning es tan bueno como los datos que se usan para entrenarlo. Si usas datos malos para entrenar tu modelo, obtendrás un modelo malo. Dicho esto, antes de cargar un conjunto de datos dentro de la herramienta que te ayudará con la construcción de tu modelo de Machine Learning como Driverless AI, asegúrate de que el conjunto de datos ha sido limpiado y preparado para el entrenamiento. Al proceso de transformación de datos en bruto en otro formato, el cual es más apropiado y valioso para el análisis, se le llama data wrangling o disputa de datos.
 
 La disputa de datos, que puede incluir extracciones, análisis, unión, estandarización, aumento, limpieza, consolidación, filtrado es altamente recomendado terminarlo antes de cargar el conjunto de datos a Driverless AI. La preparación de datos incluye el conjunto de datos en un correcto formato para lo que se intenta hacer. Los duplicados se han eliminado. Los datos perdidos se arreglan o se eliminan, y finalmente, los valores categoriales se han transformado o codificado a un tipo numérico. Finalmente, las transformaciones apropiadas en el conjunto de datos se han realizado, como el escalamiento, la descomposición y agregación, también conocido como ingeniería de características[3]. Herramientas como [Python datatable](https://datatable.readthedocs.io/en/latest/?badge=latest), [Pandas](https://pandas.pydata.org/) y [R](https://www.r-project.org/) son buenas para la disputa de datos.
 
@@ -111,11 +110,11 @@ Una buena práctica cuando entrenamos un modelo de Machine Learning es dividir t
 ![datasets-split-ratio-diagram](assets/datasets-split-ratio-diagram.jpg)
 
 
-Otra parte del entrenamiento de modelos es ajustar y afinación los modelos. Para el ajuste y afinación, los hiper parámetros deben ajustarse y la validación cruzada debe llevarse a cabo utilizando solo los datos del entrenamiento. Se deberán probar varios valores de hiper parámetros. "Un hiper parámetro es un parámetro que se establece antes de que comience el proceso de aprendizaje. Estos parámetros son ajustables y pueden afectar directamente qué tan bien entrena un modelo. Un ejemplo de hiper parámetro en el aprendizaje automático es la tasa de aprendizaje" [7]. Con la validación cruzada, se utiliza todo el conjunto de datos, y cada modelo se entrena en un subconjunto diferente de los datos de entrenamiento [8]. Además, se establecerá un bucle de validación cruzada para calcular la puntuación de validación cruzada para cada conjunto de hiper parámetros para cada algoritmo. Basado en la puntuación de validación cruzada y los valores de hiper parámetro, puede seleccionar el modelo (recuerde que "un modelo en ML es la salida de un algoritmo de aprendizaje automático ejecutado en datos. Representa lo que aprendió un algoritmo de aprendizaje automático" [9] ) para cada algoritmo que se haya ajustado con datos de entrenamiento y pruébelo usando su conjunto de prueba.
+Otra parte del entrenamiento de modelos es ajustar y ajustar los modelos. Para el ajuste y el ajuste, los hiper parámetros deben ajustarse y la validación cruzada debe llevarse a cabo utilizando solo los datos de entrenamiento. Se deberán probar varios valores de hiper parámetros. "Un hiper parámetro es un parámetro que se establece antes de que comience el proceso de aprendizaje. Estos parámetros son ajustables y pueden afectar directamente qué tan bien entrena un modelo. Un ejemplo de hiper parámetro en el aprendizaje automático es la tasa de aprendizaje" [7]. Con la validación cruzada, se utiliza todo el conjunto de datos, y cada modelo se entrena en un subconjunto diferente de los datos de entrenamiento [8]. Además, se establecerá un bucle de validación cruzada para calcular la puntuación de validación cruzada para cada conjunto de hiper parámetros para cada algoritmo. Basado en la puntuación de validación cruzada y los valores de hiper parámetro, puede seleccionar el modelo (recuerde que "un modelo en ML es la salida de un algoritmo de aprendizaje automático ejecutado en datos. Representa lo que aprendió un algoritmo de aprendizaje automático" [9] ) para cada algoritmo que se haya ajustado con datos de entrenamiento y pruébelo usando su conjunto de prueba.
 
 ### ¿Cuáles son los desafíos al desarrollar un modelo de IA?
 
-Uno de los desafíos importantes es desarrollar un solo modelo listo para la producción es que puede llevar semanas o incluso meses construirlo. Desarrollar un modelo implica la Ingeniería de características, construcción del modelo, y la implementación del modelo. Todas las tareas son muy repetitivas, que consume tiempo, requieren un conocimiento avanzado de generación de características, algoritmos, parámetros, y la implementación del modelo. Finalmente, necesita haber un profundo conocimiento y confianza en cómo el modelo se generó para explicar y justificar cómo el modelo tomó sus decisiones.
+Uno de los desafíos importantes de cara a desarrollar un solo modelo listo para la producción es que puede llevar semanas o incluso meses construirlo. Desarrollar un modelo implica la Ingeniería de características, construcción del modelo, y la implementación del modelo. Todas las tareas son muy repetitivas, consume tiempo, requiere un conocimiento avanzado de generación de características, algoritmos, parámetros, y la implementación del modelo. Finalmente, necesita haber un profundo conocimiento y confianza en cómo el modelo se generó para explicar y justificar cómo el modelo tomó sus decisiones.
 
 ### ¿Qué es el Machine Learning automatizado (Aprendizaje de Máquina Automatizado), y por qué es tan importante?
 
@@ -157,11 +156,11 @@ El flujo de trabajo típico de Driverless AI es:
 
 1. Cargar datos
 2. Visualizar datos
-3. Ejecutar un experimento
+3. Ejecute un experimento
 4. Interpreta el modelo
 5. Despliegue la tubería de puntuación
 
-Además, puedes diagnosticar un modelo, transformar otro conjunto de datos, calificar el modelo con respecto a otro conjunto de datos y administrar sus datos en Proyectos. El enfoque de este tutorial estará en los pasos 1 a 4. Los otros aspectos de Driverless AI se cubrirán en otros tutoriales que se encuentran en la ruta de aprendizaje de Driverless AI. Comenzaremos cargando los datos.
+Además, puede diagnosticar un modelo, transformar otro conjunto de datos, calificar el modelo con respecto a otro conjunto de datos y administrar sus datos en Proyectos. El enfoque de este tutorial estará en los pasos 1 a 4. Los otros aspectos de Driverless AI se cubrirán en otros tutoriales que se encuentran en la ruta de aprendizaje de Driverless AI. Comenzaremos cargando los datos.
 
 
 ![typical-driverless-ai-workflow](assets/typical-driverless-ai-workflow.jpg)
