@@ -67,7 +67,7 @@ If you are new to Driverless AI we highly recommend you start with the **Test Dr
 
 4\. Click on **Login**.
 
-Note: If you are having issues loggin in, click on **send us an email**
+Note: If you are having issues logging in, click on **send us an email**
 
 
 ![test-drive-login](assets/test-drive-login.jpg)
