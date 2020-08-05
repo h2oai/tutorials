@@ -1,5 +1,4 @@
-# Introducción automática al aprendizaje automático con Driverless AI
-#Introducción a Machine Learning Automático con Driverless AI
+# Introducción a Machine Learning Automático con Driverless AI
 
 ## Contorno
 
