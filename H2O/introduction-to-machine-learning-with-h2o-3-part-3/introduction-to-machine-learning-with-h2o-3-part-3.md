@@ -25,8 +25,6 @@ In this tutorial, we will use the subset of the loan-level dataset from Fannie M
 
 **Note:** This tutorial was completed in a cloud environment. If you want to get the same results in a similar time manner, please follow this tutorial in Aquarium. Otherwise, you can use your own machine but you will get different results, for example, it might take you longer to train the models for the classification part, or for the regression part, you might not get the same nunmber of models. 
 
-**Please Note:** the H2O-3 Lab ID #2, ***H2O-3 and Sparkling Water Test Drive*** in Aquarium, is currently under maintenance and will be available soon. Thank you for your patience. 
-
 ## Task 1: Initial Setup
 In this tutorial, we are using a smaller subset of the Freddie Mac Single-Family dataset that we used for the past two tutorials. If you have not done so, complete [Introduction to Machine Learning with H2O-3 - Part 1](https://training.h2o.ai/products/introduction-to-machine-learning-with-h2o-part-1) and [Introduction to Machine Learning with H2O-3 - Part 2](https://training.h2o.ai/products/introduction-to-machine-learning-with-h2o-part-2) as this tutorial is a continuation of both of them. 
 
