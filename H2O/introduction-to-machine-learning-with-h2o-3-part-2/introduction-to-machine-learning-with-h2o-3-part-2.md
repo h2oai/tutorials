@@ -26,7 +26,6 @@ In this tutorial, we will continue using the subset of the Freddie Mac Single-Fa
 
 **Note:** We recommend that you follow along on Aquarium, our cloud instance, to get similar results to the ones shown in this tutorial. We also recommend that you go over the concepts section in Task 2 before starting your lab; that way, your instance is not running while you are going over the concepts. You can also use your personal machine with H2O-3, but keep in mind that you will see different results.
 
-**Please Note:** the H2O-3 Lab ID #2, ***H2O-3 and Sparkling Water Test Drive*** in Aquarium, is currently under maintenance and will be available soon. Thank you for your patience. 
 
 ## Task 1: Initial Setup
 The data set we’re using comes from Freddie Mac and contains 20 years of mortgage history for each loan and contains information about "loan-level credit performance data on a portion of fully amortizing fixed-rate mortgages that Freddie Mac bought between 1999 to 2017. Features include demographic factors, monthly loan performance, credit performance including property disposition, voluntary prepayments, MI Recoveries, non-MI recoveries, expenses, current deferred UPB and due date of last paid installment."[1] 
