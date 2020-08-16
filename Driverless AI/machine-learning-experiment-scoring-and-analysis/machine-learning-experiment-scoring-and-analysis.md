@@ -54,13 +54,17 @@ Download H2O’s subset of the Freddie Mac Single-Family Loan-Level dataset to y
 
 ### Launch Experiment 
 
-1\. Load the loan_level.csv to Driverless AI by clicking **Add Dataset (or Drag and Drop)** on the **Datasets overview** page. Click on **Upload File**, then select **loan_level_500K.csv** file. Once the file is uploaded, select **Details**.
+Load the **loan_level_500K.csv** to Driverless AI.
+
+1\. Click **Add Dataset (or Drag and Drop)** on the **Datasets overview** page. 
+
+2\. Click on **Upload File**, then select **loan_level_500K.csv** file. 
+
+3\. Once the file is uploaded, select **Details**.
 
 ![loan-level-details-selection](assets/loan-level-details-selection.jpg)
 
-**Note:** You will see 6 more datasets, but you can ignore them, as we will be working with the `loan_level_500k.csv` file. 
-
-2\. Let’s take a quick look at the columns:
+4\. Let’s take a quick look at the columns:
 
 ![loan-level-details-page](assets/loan-level-details-page.jpg)
 *Things to Note:*
@@ -72,7 +76,7 @@ Download H2O’s subset of the Freddie Mac Single-Family Loan-Level dataset to y
 - C6 - MORTGAGE_INSURANCE_PERCENTAGE
 - C7 - NUMBER_OF_UNITS
 
-3\. Continue scrolling through the current page to see more columns (image is not included)
+5\. Continue scrolling through the current page to see more columns (image is not included)
 - C8 - OCCUPANCY_STATUS
 - C9 - ORIGINAL_COMBINED_LOAN_TO_VALUE
 - C10 - ORIGINAL_DEBT_TO_INCOME_RATIO
@@ -95,13 +99,13 @@ Download H2O’s subset of the Freddie Mac Single-Family Loan-Level dataset to y
 - C27 - DELINQUENT- This column is the label we are interested in predicting where False -> not defaulted and True->defaulted
 
 
-4\. Return to the **Datasets** overview page
+6\. Return to the **Datasets** overview page
 
-5\. Click on the **loan_level_500k.csv** file then split 
+7\. Click on the **loan_level_500k.csv** file then split 
 
 ![loan-level-split-1](assets/loan-level-split-1.jpg)
 
-6\.  Split the data into two sets: **freddie_mac_500_train** and **freddie_mac_500_test**. Use the image below as a guide:
+8\.  Split the data into two sets: **freddie_mac_500_train** and **freddie_mac_500_test**. Use the image below as a guide:
 
 ![loan-level-split-2](assets/loan-level-split-2.jpg)
 *Things to Note:*
@@ -118,19 +122,19 @@ The training set contains 375k rows, each row representing a loan, and 27 column
 
  **Note:** the actual data in training and test split vary by user, as the data is split randomly. The Test set contains 125k rows, each row representing a loan, and 27 attribute columns representing attributes of each loan.
 
-7\. Verify that there are three datasets, **freddie_mac_500_test**, **freddie_mac_500_train** and **loan_level_500k.csv**:
+9\. Verify that there are three datasets, **freddie_mac_500_test**, **freddie_mac_500_train** and **loan_level_500k.csv**:
 
 ![loan-level-three-datasets](assets/loan-level-three-datasets.jpg)
 
-8\. Click on the **freddie_mac_500_train** file then select **Predict**.
+10\. Click on the **freddie_mac_500_train** file then select **Predict**.
 
-9\. Select **Not Now** on the **First time Driverless AI, Click Yes to get a tour!**. A similar image should appear:
+11\. Select **Not Now** on the **First time Driverless AI, Click Yes to get a tour!**. A similar image should appear:
 
 ![loan-level-predict](assets/loan-level-predict.jpg)
 
 Name your experiment `Freddie Mac Classification Tutorial`
 
-10\. Select **Dropped Cols**, drop the following 2 columns: 
+12\. Select **Dropped Cols**, drop the following 2 columns: 
 
 - Prepayment_Penalty_Mortgage_Flag 
 - PREPAID
@@ -140,14 +144,15 @@ These two columns are dropped because they are both clear indicators that the lo
 
 ![train-set-drop-columns](assets/train-set-drop-columns.jpg)
 
- 11\. Select **Target Column**, then select **Delinquent**
+13\. Select **Target Column**, then select **Delinquent**
+
 ![train-set-select-delinquent](assets/train-set-select-delinquent.jpg)
 
-12\. Select **Test Dataset**, then **freddie_mac_500_test**
+14\. Select **Test Dataset**, then **freddie_mac_500_test**
 
 ![add-test-set](assets/add-test-set.jpg)
 
-13\. A similar Experiment page should appear:   
+15\. A similar Experiment page should appear:   
 
 ![experiment-settings-1](assets/experiment-settings-1.jpg)    
 
@@ -179,10 +184,10 @@ Time specifies the relative time for completing the experiment (i.e., higher set
 The interpretability knob is adjustable. The higher the interpretability, the simpler the features the main modeling routine will extract from the dataset. If the interpretability is high enough then a monotonically constrained model will be generated.
 
 2\.  For this tutorial update the following experiment settings so that they match the image below: 
-- Accuracy : 4
-- Time: 3
-- Interpretability: 4
-- Scorer: Logloss 
+- **Accuracy : 4**
+- **Time: 3**
+- **Interpretability: 4**
+- **Scorer: Logloss** 
 
 This configuration was selected to generate a model quickly with a sufficient level of accuracy in the H2O Driverless Test Drive environment.
 
@@ -202,6 +207,7 @@ This configuration was selected to generate a model quickly with a sufficient le
 6. **Features**
 7. **Timeseries**
 8. **NLP**
+9. **Image**
 9. **Recipes**
 10. **System**
 
@@ -213,17 +219,18 @@ This configuration was selected to generate a model quickly with a sufficient le
 - Max Runtime in Minutes Before Triggering the Finish Button
 - Max Runtime in Minutes Before Triggering the 'Abort' Button
 - Pipeline Building Recipe
-- Kaggle username
-- Kaggle Key
-- Kaggle submission timeout in seconds
+- Enable genetic algorithm for selection and tuning of features and models
 - Make Python Scoring Pipeline
 - Make MOJO Scoring Pipeline
 - Attempt to reduce the size of the Mojo
+- Make Pipeline Visualization
+- Make Autoreport
 - Measure MOJO Scoring Latency
 - Timeout in Seconds to Wait for MOJO Creation at End of Experiment
 - Number of Parallel Workers to Use during MOJO Creation
-- Make Pipeline Visualization
-- Make Autoreport
+- Kaggle username
+- Kaggle Key
+- Kaggle submission timeout in seconds
 - Min Number of Rows Needed to Run an Experiment
 - Reproducibility Level
 - Random Seed
@@ -243,25 +250,28 @@ This configuration was selected to generate a model quickly with a sufficient le
 - Tournament model for generit algorithm
 - Number of cross-validation folds for feature evolution (-1 = auto)
 - Number of cross-validation folds for final model (-1 = auto)
-- fixed_only_first_fold_model
+- Force only first fold for models
 - Max,num, of rows x num,of columns for feature evolution data splits (not for final pipeline)
-Max, num, of rows x num, of columns for reducing training data set (for final pipeline)
+- Max, num, of rows x num, of columns for reducing training data set (for final pipeline)
 - Max, size of validation data relative to training data (for final pipeline), otherwise will sample
 - Perform stratified sampling for binary classification if the target is more imbalanced than this,
 - Add to config.toml via toml string 
 
 **Model Settings**
+
+- Constant Models
+- Decision Tree Models
+- GLM Models
 - XGBoost GBM Models
 - XGBoost Dart Models
-- GLM Models
-- Decision Tree Models
 - LightGBM Models
 - TensorFlow Models
+- PyTorch Models
 - FTRL Models
 - RuleFit Models
+- Zero-Inflated models
 - LightGBM Boosting Types
 - LightGBM Categorical Support
-- Constant Models
 - Whether To Show Constant Models in Iteration Panel
 - Parameters for TensorFlow
 - Max Number of Trees/Iterations
@@ -280,6 +290,7 @@ Max, num, of rows x num, of columns for reducing training data set (for final pi
 - Cross-validate Single Final Model
 - Number of Models During Tuning Phase
 - Sampling Method for Imbalanced Binary Classification Problems
+- Threshold for minimum number of rows in original training data to allow imbalanced sampling techniques. For smaller data, will disable imbalanced sampling, no matter what imbalance_sampling_method is set to.
 - Ratio of Majority to Minority Class for Imbalanced Binary Classification to Trigger Special Sampling Techniques (if Enabled)
 - Ratio of Majority to Minority Class for Heavily Imbalanced Binary Classification to Only Enable Special Sampling Techniques if Enabled
 - Number of Bags for Sampling Methods for Imbalanced Binary Classification (if Enabled)
@@ -291,6 +302,8 @@ Max, num, of rows x num, of columns for reducing training data set (for final pi
 - Enable Detailed Scored Model Info
 - Whether to Enable Bootstrap Sampling for Validation and Test Scores
 - For Classification Problems with This Many Classes, Default to TensorFlow
+- Compute prediction intervals
+- Confidence level for prediction intervals
 
 **Features Settings**
 - Feature Engineering Effort
@@ -299,7 +312,7 @@ Max, num, of rows x num, of columns for reducing training data set (for final pi
 - Max Allowed Feature Shift (AUC) Before Dropping Feature
 - Leakage Detection
 - Leakage Detection Dropping AUC/R2 Threshold
-- Max Rows Times Columns for Leakage
+- (Max Rows) * (Columns for Leakage)
 - Report Permutation Importance on Original Features
 - Maximum Number of Rows to Perform Permutation-Based Feature Selection
 - Max Number of Original Features Used
@@ -313,21 +326,22 @@ Max, num, of rows x num, of columns for reducing training data set (for final pi
 - Max Number of Engineered Features
 - Max. Number of Genes
 - Limit Features by Interpretability
-- Threshold for interpretability which to enable automatic monotonicity constraints for tree models
+- Threshold for interpretability above which to enable automatic monotonicity constraints for tree models
 - Correlation Beyond Which Triggers Monotonicity Constraints (if Enabled)
-- Manual override for monotonicity constraints 
+- Manual override for monotonicity constraints
 - Max Feature Interaction Depth
 - Fixed Feature Interaction Depth
-- Enable Target Encoding
+- Enable Target Encoding (auto disbables for time series)
+- Enable outer CV for Target Encoding
 - Enable Lexicographical Label Encoding
 - Enable Isolation Forest Anomaly Score Encoding
-- Enable One HotEncoding
+- Enable One HotEncoding (auto enables only for GLM)
 - Number of Estimators for Isolation Forest Encoding
 - Drop Constant Columns
 - Drop ID Columns
 - Don’t Drop Any Columns
-- Features to Drop
-- Features To Group By
+- Features to Drop, e.g. "V1","V2","V3",
+- Features To Group By, e.g. "G1","G2","G3",
 - Sample From Features To Group By
 - Aggregation Functions (Non-Time-Series) For Group By Operations
 - Number of Folds To Obtain Aggregation When Grouping
@@ -343,13 +357,12 @@ Max, num, of rows x num, of columns for reducing training data set (for final pi
 - Custom Validation Splits For Time-Series Experiments
 - Timeout In Seconds For Time-Series Properties Detection in UI
 - Generate Holiday Features
-- Time-Series Lags Override
+- List of countries for which to look up holiday calendar and to generate is-Holiday features for
+- Time-Series Lags Override (-1 = auto)
 - Smallest Considered Lag Size
 - Enable Feature Engineering from Time Column
 - Allow Integer Time Column As Numeric Feature
 - Allowed Date and Date-Time Transformations
-- Enable Feature Engineering from Integer Time Column
-- Allow Date or Time Features to be Transformed Directly into a Numerical Representation
 - Consider Time Groups Columns as Standalone Features
 - Which TGC Feature Types to Consider as Standalone Features
 - Enable Time Unaware Transformers
@@ -365,27 +378,57 @@ Max, num, of rows x num, of columns for reducing training data set (for final pi
 - Dropout Mode for Lag Features
 - Probability to Create Non-Target Lag Features
 - Method to Create Rolling Test Set Predictions
+- Rolling method used for GA validation
 - Probability for New Time-Series Transformers to Use Default Lags
 - Probability of Exploring Interaction-Based Lag Transformers
 - Probability of Exploring Aggregation-Based Lag Transformers
+- Time series centering or detrending transformation
+- Custom bounds for SEIRD epidemic model parameters
+- Which SEIRD model component the target column corresponds to: I: Infected, R: Recovered, D: Deceased.
+- Time series log-based target transformation
+- Log size used for time series target transformation
 
 **NLP Settings**
-- Max TensorFlow Epochs for NLP
-- Accuracy Above Enable TensorFlow NLP by Default for All Models
+
 - Enable Word-Based CNN TensorFlow Models for NLP
 - Enable Word-Based BiGRU TensorFlow Models for NLP
 - Enable Character-Based CNN TensorFlow Models for NLP
-- Path to Pretrained Embeddings for TensorFlow NLP Models
-- Allow Training of Unfrozen Pretrained Embeddings
-- Whether Python/MOJO Scoring Runtime Will Have GPUs
+- Enable PyTorch models for NLP (Experimental)
+- Select which pretrained PyTorch NLP model(s) to use
+- Max TensorFlow Epochs for NLP
+- Accuracy Above Enable TensorFlow NLP by Default for All Models
+- Path to Pretrained Embeddings for TensorFlow NLP Models. If empty, will train from scratch.
+- For TensorFlow NLP, allow training of unfrozen pretrained embeddings (in addition to fine-tuning of the rest of the graph)
+- Number of epochs for fine-tuning of PyTorch NLP models
+- Batch size for PyTorch NLP models
+- Maximum sequence length (padding length) for PyTorch NLP models
+- Path to pretrained PyTorch NLP models, If empty, will get models from S3
 - Fraction of Text Columns Out of All Features to be Considered a Text-Dominanted Problem
 - Fraction of Text per All Transformers to Trigger That Text Dominated
-- Threshold for String Columns to be Treated as Text
+- Threshold for String Columns to be Treated as Text (0.0 - text, 1.0 - string)
+
+**Image Settings**
+
+- Enable TensorFlow models for processing of image data
+- Supported pretrained image recognition models
+- Dimensionality of feature space created by pretrained (and fine-tuned) TensorFlow image models
+- Enable fine-tuning of the pretrained image models used for the Image Vectorizer transformers
+- Number of epochs for fine-tuning of TensorFlow image models
+- Batch size for TensorFlow image models. Automatic: -1
+- Image download timeout in seconds
+- Max allowed fraction of missing values for image column
+- Min. fraction of images that need to be of valid types for image column to be used
+- Enable GPU(s) for faster predictions witth pretrained TensorFlow models.
 
 **Recipes Settings**
+
 - Include Specific Transformers
 - Include Specific Models
 - Include Specific Scorers
+- Include specific preprocessing transformers
+- Number of pipeline layers
+- Include specific data recipes during experiment
+- Scorer to optimize threshold to be sued in other confusion-matrix based scorers (for binary classification)
 - Probability to Add Transformers
 - Probability to Add Best Shared Transformers
 - Probability to Prune Transformers
@@ -394,27 +437,27 @@ Max, num, of rows x num, of columns for reducing training data set (for final pi
 - Timeout in Minutes for Testing Acceptance of Each Recipe
 - Whether to Skip Failures of Transformers
 - Whether to Skip Failures of Models
-- Level to Log for Skipped Failures
+- Level to Log (0 = simple message, 1 = code line plus message, 2 = detailed stack traces) for Skipped Failures
 
 **System Settings**
-- Number of Cores to Use
+
+- Number of Cores to Use (0 = all)
 - Maximum Number of Cores to Use for Model Fit
 - Maximum Number of Cores to Use for Model Predict
-- Maximum Number of Cores to Use for Model Transform and Predict When Doing MLI, Autoreport, Score on Another Dataset
+- Maximum Number of Cores to Use for Model Transform and Predict When Doing MLI and Autoreport
 - Tuning Workers per Batch for CPU
 - Num. Works For CPU Training
-- #GPUs/Experiment
+- #GPUs/Experiment (-1 = all)
 - Num. Cores/GPU
-- #GPUs/Model
+- #GPUs/Model (-1 = all)
 - Num. Of GPUs For Isolated Prediction/Transform
-- Max Number of Threads to Use for datatable and OpenBLAS for Munging and Model Training
-- Max. Num. Of Threads to Use For Datatable Read and Write Of Files
-- Max. Num. Of Threads To Use For Datatable Stats and Openblas
-- GPU Starting ID
+- Max Number of Threads to Use for datatable and OpenBLAS for Munging and Model Training (0 = all, -1 = auto)
+- Max. Num. Of Threads to Use For Datatable Read and Write Of Files (0 = all, -1 = auto)
+- Max. Num. Of Threads To Use For Datatable Stats and Openblas (0 = all, -1 = auto)
+- GPU Starting ID (0..visible #GPUs - 1)
 - Enable Detailed Traces
 - Enable Debug Log Level
 - Enable Logging Of System Information For Each Experiment
-
 
 4\. For this experiment turn ON **RuleFit models**, under **Model** tab the select **Save**. 
 
@@ -948,7 +991,7 @@ Below are three questions to test your understanding of the experiment summary a
 **Note:** If you are not sure what Log loss is, feel free to review the concepts section of this tutorial.
 
 
-3\. So what do the Log Loss values tell us?  The essential Log Loss value is the test score value. This value tells us how well the model generated did against the freddie_mac_500_test set based on the error rate. In case of experiment **Freddie Mac Classification Tutorial**, the test score LogLoss = 0.1194556 +/- 0.001470279 which is the log of the misclassification rate. The greater the Log loss value the more significant the misclassification. For this experiment, the Log Loss was relatively small meaning the error rate for misclassification was not as substantial. But what would a score like this mean for an institution like Freddie Mac?
+3\. So what do the Log Loss values tell us?  The essential Log Loss value is the test score value. This value tells us how well the model generated did against the freddie_mac_500_test set based on the error rate. In case of experiment **Freddie Mac Classification Tutorial**, the **test score LogLoss = 0.1191906 +/- 0.00122753** which is the log of the misclassification rate. The greater the Log loss value the more significant the misclassification. For this experiment, the Log Loss was relatively small meaning the error rate for misclassification was not as substantial. But what would a score like this mean for an institution like Freddie Mac?
 
 In the next few tasks we will explore the financial implications of misclassification by exploring the confusion matrix and plots derived from it. 
 
@@ -1020,7 +1063,7 @@ Click on the confusion matrix located on the **Metrics Plot** section of the Dia
 
 ![diagnostics-confusion-matrix-0](assets/diagnostics-confusion-matrix-0.jpg)
 
-The confusion matrix lets you choose a desired threshold for your predictions. In this case, we will take a closer look at the confusion matrix generated by the Driverless AI model with the default threshold, which is 0.5.
+The confusion matrix lets you choose a desired threshold for your predictions. In this case, we will take a closer look at the confusion matrix generated by the Driverless AI model with the default threshold, which is **0.1463**.
 
 The first part of the confusion matrix we are going to look at is the **Predicted labels** and **Actual labels**.  As shown on the image below the **Predicted label** values for **Predicted Condition Negative** or  **0** and **Predicted Condition Positive** or **1**  run vertically while the **Actual label** values for **Actual Condition Negative** or **0** and **Actual Condition Positive** or **1** run horizontally on the matrix.
 
@@ -1030,10 +1073,10 @@ Using this layout, we will be able to determine how well the model predicted the
 
 Moving into the inner part of the matrix, we find the number of cases for True Negatives, False Positives, False Negatives and True Positive. The confusion matrix for this model generated tells us that:
 
-- TP = 216 cases were predicted as **defaulting** and **defaulted** in actuality 
-- TN = 120,385 cases were predicted as **not defaulting** and **did not default** 
-- FP = 152 cases were predicted as **defaulting** when in actuality they **did not default**
-- FN = 4,282 cases were predicted as **not defaulting** when in actuality they **defaulted**
+- TP = 1,744 cases were predicted as **defaulting** and **defaulted** in actuality 
+- TN = 115,296 cases were predicted as **not defaulting** and **did not default** 
+- FP = 5,241 cases were predicted as **defaulting** when in actuality they **did not default**
+- FN = 2,754 cases were predicted as **not defaulting** when in actuality they **defaulted**
 
 ![diagnostics-confusion-matrix-2](assets/diagnostics-confusion-matrix-2.jpg)
 
@@ -1046,38 +1089,40 @@ On the right side of the confusion matrix are the totals for the **Actual label*
 - 4,498 : the number of actual cases that defaulted on the test
 
 **Predicted label**
-- 124,667 : the number of cases that were predicted to not default on the test dataset
-- 368 :  the number of cases that were predicted to default on the test dataset 
+- 118,050 : the number of cases that were predicted to not default on the test dataset
+- 6,985 :  the number of cases that were predicted to default on the test dataset 
 
 ![diagnostics-confusion-matrix-3](assets/diagnostics-confusion-matrix-3.jpg)
 
 The final layer of the confusion matrix we will explore are the errors. The errors section is one of the first places where we can check how well the model performed. The better the model does at classifying labels on the test dataset the lower the error rate will be. The **error rate** is also known as the **misclassification rate** which answers the question of how often is the model wrong?
 
 For this particular model these are the errors:
-- 152/120537 = 0.0012 or 0.12%  times the model classified actual cases that did not default as defaulting out of the actual non-defaulting group
-- 4282/4498 = 0.951 or 95.1% times the model classified actual cases that did default as not defaulting out of the actual defaulting group
-- 4282/124667 = 0.0343 or 3.43% times the model classified predicted cases that did default as not defaulting out of the total predicted not defaulting group
-- 216/368 = 0.5869 or 58.69% times the model classified predicted cases that defaulted as defaulting out of the total predicted defaulting group
-- (4282 + 152) / 125035 = **0.03546**  This means that this model incorrectly classifies  .03546 or 3.546% of the time.
+- 5241/120537 = **0.0434** or 4.3%  times the model classified actual cases that did not default as defaulting out of the actual non-defaulting group
+- 2754/4498 = **0.6123** or 61.2% times the model classified actual cases that did default as not defaulting out of the actual defaulting group
+- 2754/118050 = **0.0233**  or 2.33% times the model classified predicted cases that did default as not defaulting out of the total predicted not defaulting group
+- 1744/6985 = **0.2496** or 24.96% times the model classified predicted cases that defaulted as defaulting out of the total predicted defaulting group
+- (2754 + 5241) / 125035 = **0.0639**  This means that this model incorrectly classifies  0.0639 or 6.39% of the time.
  
-What does the misclassification error of .03546 mean?
+What does the misclassification error of **0.0639** mean?
+
 One of the best ways to understand the impact of this misclassification error is to look at the financial implications of the False Positives and False Negatives. As mentioned previously, the False Positives represent the loans predicted not to default and in reality did default. 
 Additionally, we can look at the mortgages that Freddie Mac missed out on by not granting loans because the model predicted that they would default when in reality they did not default. 
 
 One way to look at the financial implications for Freddie Mac is to look at the total paid interest rate per loan. The mortgages on this dataset are traditional home equity loans which means that the loans are:
+
 - A fixed borrowed amount
 - Fixed interest rate
 - Loan term and monthly payments are both fixed
 
 For this tutorial, we will assume a 6% Annual Percent Rate (APR) over 30 years. APR is the amount one pays to borrow the funds. Additionally, we are going to assume an average home loan of $167,473 (this average was calculated by taking the sum of all the loans on the freddie_mac_500.csv dataset and dividing it by 30,001 which is the total number of mortgages on this dataset). For a mortgage of $167,473 the total interest paid after 30 years would be $143,739.01 [1]. 
 
-When looking at the False Positives, we can think about 152 cases of people which the model predicted should be not be granted a home loan because they were predicted to default on their mortgage. These 155 loans translate to over 18 million dollars in loss of potential income (152 * $143,739.01) in interest.
+When looking at the **False Positives**, we can think about **5241** cases of people which the model predicted should be not be granted a home loan because they were predicted to default on their mortgage. These **5241** loans translate to over **753 million dollars** in loss of potential income (**5241** * $143,739.01) in interest.
 
-Now, looking at the True Positives, we do the same and take the 4,282 cases that were granted a loan because the model predicted that they would not default on their home loan. These 4,282 cases translate to about over 618 million dollars in interest losses since the 4,282 cases defaulted.
+Now, looking at the **False Negatives**, we do the same and take the **2754** cases that were granted a loan because the model predicted that they would not default on their home loan. These **2754** cases translate to about over **395 million dollars** in interest losses since **2754** in actuality cases defaulted.
 
-The misclassification rate provides a summary of the sum of the False Positives and False Negatives divided by the total cases in the test dataset. The misclassification rate for this model was .03546.  If this model were used to determine home loan approvals, the mortgage institutions would need to consider approximately 618 million dollars in losses for misclassified loans that got approved and shouldn’t have and 18 million dollars on loans that were not approved since they were classified as defaulting.
+The **misclassification rate** provides a summary of the **sum of** the **False Positives** and **False Negatives** **divided by** the **total cases in the test dataset**. The misclassification rate for this model was **0.0639**.  If this model were used to determine home loan approvals, the mortgage institutions would need to consider approximately **395 million dollars** in losses for misclassified loans that got approved and shouldn’t have and **753 million dollars** on loans that were not approved since they were classified as defaulting.
 
-One way to look at these results is to ask the question: is missing out on approximately 18 million dollars from loans that were not approved better than losing about 618 million dollars from loans that were approved and then defaulted? There is no definite answer to this question, and the answer depends on the mortgage institution. 
+One way to look at these results is to ask the question: is missing out on approximately **753 million dollars** from loans that were not approved better than losing about **395 million dollars** from loans that were approved and then defaulted? There is no definite answer to this question, and the answer depends on the mortgage institution. 
 
 ![diagnostics-confusion-matrix-4](assets/diagnostics-confusion-matrix-4.jpg)
 
@@ -1085,14 +1130,24 @@ One way to look at these results is to ask the question: is missing out on appro
 Driverless AI conveniently provides a summary of the scores for the performance of the model given the test dataset.
 
 The scores section provides a summary of the Best Scores found in the metrics plots:
-- **GINI**
-- **MCC**
-- **F1**
-- **F2**
-- **Accuracy**
-- **Logloss**
+- **ACCURACY**
 - **AUC**
 - **AUCPR**
+- **F05**
+- **F1**
+- **F2**
+- **FDR**
+- **FNR**
+- **FOR**
+- **FPR**
+- **GINI**
+- **LOGLOSS**
+- **MACROAUC**
+- **MCC**
+- **NPV**
+- **PRECISION**
+- **RECALL**
+- **TNR**
 
 The image below represents the scores for the **Freddie Mac Classification Tutorial** model using the freddie_mac_500_test dataset:
 
@@ -1101,9 +1156,9 @@ The image below represents the scores for the **Freddie Mac Classification Tutor
 
 When the experiment was run for this classification model, Driverless AI determined that the best scorer for it was the Logarithmic Loss or **LOGLOSS** due to the imbalanced nature of the dataset. **LOGLOSS** focuses on getting the probabilities right (strongly penalizes wrong probabilities). The selection of Logarithmic Loss makes sense since we want a model that can correctly classify those who are most likely to default while ensuring that those that qualify for a loan get can get one.
 
-Recall that Log loss is the logarithmic loss metric that can be used to evaluate the performance of a binomial or multinomial classifier, where a model with a Log loss of 0 would be the perfect classifier. Our model  scored  a LOGLOSS value = 0.1195+/- .0015 after testing it with test dataset. From the confusion matrix, we saw that the model had issues classifying perfectly; however, it was able to classify with an ACCURACY of 0.9646 +/- .0006. The financial implications of the misclassifications have been covered in the confusion matrix section above.
+Recall that Log loss is the logarithmic loss metric that can be used to evaluate the performance of a binomial or multinomial classifier, where a model with a Log loss of 0 would be the perfect classifier. Our model  scored  a **LOGLOSS value = 0.1192+/- .0013** after testing it with test dataset. From the confusion matrix, we saw that the model had issues classifying perfectly; however, it was able to classify with an **ACCURACY of 0.9647 +/- .0005**. The financial implications of the misclassifications have been covered in the confusion matrix section above.
 
-Driverless AI has the option to change the type of scorer used for the experiment. Recall that for this dataset the scorer was selected to be **logloss**. An experiment can be re-run with another scorer. For general imbalanced classification problems, AUCPR and MCC scorers are good choices, while F05, F1, and F2 are designed to balance between recall and precision.
+Driverless AI has the option to change the type of scorer used for the experiment. Recall that for this dataset the scorer was selected to be **LOGLOSS**. An experiment can be re-run with another scorer. For general imbalanced classification problems, AUCPR and MCC scorers are good choices, while F05, F1, and F2 are designed to balance between recall and precision.
 The AUC is designed for ranking problems. Gini is similar to the AUC but measures the quality of ranking (inequality) for regression problems. 
 
 In the next few tasks we will explore the scorer further and the **Scores** values in relation to the residual plots.
@@ -1148,10 +1203,10 @@ Going back to the Freddie Mac dataset, even though the model was scored with the
 Recall that for a binary classification problem, accuracy is the number of correct predictions made as a ratio of all predictions made.  Probabilities are converted to predicted classes in order to define a threshold. For this model, it was determined that the best accuracy is found at threshold .5102.
 
 At this threshold, the model predicted:
-- TP = 206 cases predicted as defaulting and defaulted
-- TN = 120,441 cases predicted as not defaulting and did not default
-- FP = 130 cases predicted as defaulting and did not default
-- FN = 4,292 cases predicted to not default and defaulted
+- TP = 157 cases predicted as defaulting and defaulted
+- TN = 120,462 cases predicted as not defaulting and did not default
+- FP = 75 cases predicted as defaulting and did not default
+- FN = 4,341 cases predicted to not default and defaulted
 
 
 3\.  From the AUC, Best MCC, F1, and Accuracy values from the ROC curve, how would you qualify your model, is it a good or bad model? Use the key points below to help you asses the ROC Curve.
@@ -1213,21 +1268,20 @@ We are going to use this new experiment to run a new diagnostics test. You will 
 How much improvement did we get from optimizing the accuracy via the scorer? 
 
 The new model predicted:
-- Threshold = .5134
-- TP =  213 cases predicted as defaulting and defaulted
-- TN = 120,407 cases predicted as not defaulting and did not default
-- FP = 130 cases predicted as defaulting and did not default
-- FN = 4,285 cases predicted not to default and defaulted
+- Threshold = 0.5220
+- TP =  173 cases predicted as defaulting and defaulted
+- TN = 120,446 cases predicted as not defaulting and did not default
+- FP = 91 cases predicted as defaulting and did not default
+- FN = 4,325 cases predicted not to default and defaulted
 
 The first model predicted:
-- Threshold = .5102
-- TP = 206 cases predicted as defaulting and defaulted
-- TN = 120,441 cases predicted as not defaulting and did not default
-- FP = 130 cases predicted as defaulting and did not default
-- FN = 4,292 cases predicted to not default and defaulted
+- Threshold = 0.5647
+- TP = 157 cases predicted as defaulting and defaulted
+- TN = 120,462 cases predicted as not defaulting and did not default
+- FP = 75 cases predicted as defaulting and did not default
+- FN = 4,341 cases predicted to not default and defaulted
 
-
-The threshold for best accuracy changed from .5102 for the first diagnostics model to .5134 for the new model. This increase in threshold improved accuracy or the number of correct predictions made as a ratio of all predictions made. Note, however, that while the number of FP decreased the number of FN increased.  We were able to reduce the number of cases that were predicted to falsy default, but in doing so, we increased the number of FN or cases that were predicted not to default and did.
+The **threshold for best accuracy** changed from **0.5647 for the first diagnostics model** to **0.5220 for the new model**. This increase in threshold improved accuracy or the number of correct predictions made as a ratio of all predictions made. Note, however, that while the number of FP decreased the number of FN increased.  We were able to reduce the number of cases that were predicted to falsy default, but in doing so, we increased the number of FN or cases that were predicted not to default and did.
 
 The takeaway is that there is no win-win; sacrifices need to be made. In the case of accuracy, we increased the number of mortgage loans, especially for those who were denied a mortgage because they were predicted to default when, in reality, they did not. However, we also increased the number of cases that should not have been granted a loan and did.  As a mortgage lender, would you prefer to reduce the number of False Positives or False Negatives?
 
@@ -1397,7 +1451,7 @@ Remember that for the K-S chart:
 
 ![diagnostics-ks-20-percent](assets/diagnostics-ks-20-percent.jpg)
 
-For this K-S chart, if we look at the top  20% of the data, the at-chance model (the dotted diagonal line) tells us that only 20% of the data was successfully separate between positives and negatives (defaulted and not defaulted). However, with the model it was able to do 0.548 or about 54.8% of the cases were successfully separated between positives and negatives.
+For this K-S chart, if we look at the top  20% of the data, the at-chance model (the dotted diagonal line) tells us that only 20% of the data was successfully separate between positives and negatives (defaulted and not defaulted). However, with the model it was able to do 0.545 or about 54.5% of the cases were successfully separated between positives and negatives.
 
 3\. Based on the K-S curve(yellow) and the baseline (white diagonal dashed line) is this a good model?
 
@@ -1414,22 +1468,11 @@ For this K-S chart, if we look at the top  20% of the data, the at-chance model 
 
 Driverless AI makes it easy to download the results of your experiments, all at the click of a button.  
 
-1\. Let’s explore the auto generated documents for this experiment. On the **Experiment** page select **Download Experiment Summary**.
+1\. Let’s explore the auto generated documents for this experiment. On the **Experiment** page select **Download Autoreport**.
 
-![download-experiment-summary](assets/download-experiment-summary.jpg)
+![download-autoreport](assets/download-autoreport.jpg)
 
-The **Experiment Summary** contains the following:
-
-- Summary of Experiment
-- Experiment Features along with relevant importance
-- Ensemble information
-- Experiment preview
-- The auto-generated report for the experiment in .docx format
-- Train data summary in a csv format
-- Target transformations tuning leaderboard
-- Leaderboard
-
-A **report** file is included in the **experiment** summary. This report provides insight into the training data and any detected shifts in distribution, the validation schema selected, model parameter tuning, feature evolution and the final set of features chosen during the experiment.
+This report provides insight into the training data and any detected shifts in distribution, the validation schema selected, model parameter tuning, feature evolution and the final set of features chosen during the experiment.
 
 2\. Open the report .docx file, this auto-generated report contains the following information:
 - Experiment Overview
@@ -1443,6 +1486,7 @@ A **report** file is included in the **experiment** summary. This report provide
 - Final Model
 - Alternative Models
 - Deployment
+- Partial Dependence Plots
 - Appendix
 
 3\. Take a few minutes to explore the report
