@@ -1019,7 +1019,7 @@ Select the MLI **Dashboard** and explore the different types of insights and exp
 
 ![mli-dashboard](assets/mli-dashboard.jpg)
 
-*NOTE:* On the top right corner where it says "Row Number or Feature Value" allows for the following: The row selection feature allows a user to search for a particular observation by row number or by an identifier column. Identifier columns cannot be specified by the user - MLI makes this choice automatically by choosing columns whose values are unique (dataset row count equals the number of unique values in a column).
+*NOTE:* On the top right corner where it says "Row Number or Feature Value," you are allow the following actions: The row selection feature allows a user to search for a particular observation by row number or by an identifier column. Identifier columns cannot be specified by the user - MLI makes this choice automatically by choosing columns whose values are unique (dataset row count equals the number of unique values in a column).
 
 1\. K-Lime - Global Interpretability model explanation plot: 
 This plot shows Driverless AI model and LIME model predictions in sorted order by the Driverless AI model predictions. In white, is the global linear model of Driverless AI predictions.
