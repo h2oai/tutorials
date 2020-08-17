@@ -705,7 +705,8 @@ An ROC curve is a useful tool because it only focuses on how well the model was 
 
 The ROC curve below shows Receiver-Operator Characteristics curve stats on validation data along with the best Accuracy, MCC, and F1 values[2].
 
-![experiment-results-roc-graph](assets/experiment-results-roc-graph.jpg)
+
+[<img src="assets/experiment-results-roc-graph.jpg" width="550"/>](assets/experiment-results-roc-graph.jpg)
 
 This ROC gives an Area Under the Curve or AUC of .7980. The AUC tells us that the model is able to separate the survivor class with an accuracy of 79.80%.
 
@@ -717,7 +718,8 @@ Prec-Recall is a complementary tool to ROC curves, especially when the dataset h
 
 The Prec-Recall plot below shows the Precision-Recall curve on validation data along with the best Accuracy, MCC, and F1 values. The area under this curve is called AUCPR.
 
-![experiment-results-prec-recall-graph](assets/experiment-results-prec-recall-graph.jpg)
+
+[<img src="assets/experiment-results-prec-recall-graph.jpg" width="550"/>](assets/experiment-results-prec-recall-graph.jpg)
 
 Similarly to the ROC curve, when we take a look at the area under the curve of the Prec-Recall Curve of AUCPR we get a value of .7614. This tells us that the model brings forth relevant results or those cases of the passengers that survived with an accuracy of 76.14%.
 
@@ -729,7 +731,8 @@ Lift can help us answer the question of how much better one can expect to do wit
 
 The Cumulative Lift chart shows lift stats on validation data. For example, “How many times more observations of the positive target class are in the top predicted 1%, 2%, 10%, etc. (cumulative) compared to selecting observations randomly?” By definition, the Lift at 100% is 1.0.
 
-![experiment-results-lift-graph](assets/experiment-results-lift-graph.jpg)
+[<img src="assets/experiment-results-lift-graph.jpg" width="550"/>](assets/experiment-results-lift-graph.jpg)
+
 
 Learn more about the Cumulative Lift Chart on [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus: Cumulative Lift](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus).
 
@@ -743,7 +746,8 @@ In the Gains Chart below, the x-axis shows the percentage of cases from the tota
 
 The Cumulative Gains Chart below shows Gains stats on validation data. For example, “What fraction of all observations of the positive target class are in the top predicted 1%, 2%, 10%, etc. (cumulative)?” By definition, the Gains at 100% are 1.0.
 
-![experiment-results-gains-graph](assets/experiment-results-gains-graph.jpg)
+
+[<img src="assets/experiment-results-gains-graph.jpg" width="550"/>](assets/experiment-results-gains-graph.jpg)
 
 The Gains chart above tells us that when looking at the 20% quantile, the model can positively identify ~45% of the survivors compared to a random model(or no model) which would be able to positively identify about ~20% of the survivors at the 20% quantile.
 
@@ -757,7 +761,9 @@ K-S or the Kolmogorov-Smirnov chart measures the degree of separation between po
 
 Hover over a point in the chart to view the quantile percentage and Kolmogorov-Smirnov value for that point.
 
-![experiment-results-gains-k-s](assets/experiment-results-gains-k-s.jpg)
+
+[<img src="assets/experiment-results-gains-k-s.jpg" width="550"/>](assets/experiment-results-gains-k-s.jpg)
+
 
 For the K-S chart above, if we look at the top 60% of the data, the at-chance model (the dotted diagonal line) tells us that only 60% of the data was successfully separate between positives and negatives (survived and did not survived). However, with the model, it was able to do .4005, or about ~40% of the cases were successfully separated between positives and negatives.
 
