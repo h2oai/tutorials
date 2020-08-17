@@ -132,7 +132,6 @@ One good practice when training a machine learning model is to split up your dat
 
 Note: The validation dataset is used for tuning the modeling pipeline. If provided, the entire training data will be used for training, and validation of the modeling pipeline is performed with only this validation dataset. When you do not include a validation dataset, Driverless AI will do K-fold cross validation for I.I.D. experiments and multiple rolling window validation splits for time series experiments. For this reason it is not generally recommended to include a validation dataset as you are then validating on only a single dataset. Please note that time series experiments cannot be used with a validation dataset: including a validation dataset will disable the ability to select a time column and vice versa.
 
-
 ![datasets-split-ratio-diagram](assets/datasets-split-ratio-diagram.jpg)
 
 Another part of model training is fitting and tuning the models. For fitting and tuning, hyperparameters need to be tuned, and cross-validation needs to take place using only the training data. Various hyperparameters values will need to be tested. "A hyperparameter is a parameter that is set before the learning process begins. These parameters are tunable and can directly affect how well a model trains. An example of hyper parameter in machine learning is learning rate" [7]. With cross validation, the whole dataset is utilized, and each model is trained on a different subset of the training data [8]. Additionally, a cross-validation loop will be set to calculate the cross-validation score for each set of hyperparameters for each algorithm. Based on the cross-validation score and hyperparameter values, you can select the model(remember that "a model in ML is the output of a machine learning algorithm run on data. It represents whatt was learned by a machine learning algorithm" [9]) for each algorithm that has been tuned with training data and test it using your test set. 
@@ -236,7 +235,8 @@ This tragedy shooked the international community and led to better safety regula
 
 2\. Select **FILE SYSTEM**
 
-![add-dataset-file-system](assets/add-dataset-file-system.jpg)
+
+[<img src="assets/add-dataset-file-system.jpg" width="350"/>](add-dataset-file-system.jpg)
 
 3\. Enter the following:
 1. ```/data/TestDrive/titanic.csv``` into the search bar
@@ -303,13 +303,15 @@ We are now going to explore the Titanic dataset that we just loaded.
 
     - View the first 20 rows of a column by hovering over the column name (see image below)
 
-![datasets-details-first-20-rows](assets/datasets-details-first-20-rows.jpg)
+
+
+[<img src="assets/datasets-details-first-20-rows.jpg" width="350"/>](assets/datasets-details-first-20-rows.jpg)
 
 **Note**: Driverless AI recognizes the following column types: integer, string, real, boolean, and time. Date columns are given a string "str" type.
 
 2. You can view information for a specific column by entering the name of the column in the field above the graph.
 
-3. **Modify by Recipe** allows you to create a new dataset by modifying an existing dataset with custom recipes. There is also the option to 
+3. **Modify by Recipe** allows you to create a new dataset by modifying an existing dataset with custom recipes. 
 
 4. **Dataset Rows** allows you to preview the dataset
 
@@ -635,7 +637,9 @@ These transformations are created with the following transformers:
 
 You can also hover over any of the variables under variable importance to get a simple explanation of the transformer used as seen in the image below:
 
-![variable-importance-hover-for-transformer](assets/variable-importance-hover-for-transformer.jpg)
+
+
+[<img src="assets/variable-importance-hover-for-transformer.jpg" width="550"/>](assets/variable-importance-hover-for-transformer.jp)
 
 The complete list of features used in the final model is available in the Experiment Summary artifacts. The Experiment Summary also provides a list of the original features and their estimated feature importance. 
 
@@ -987,7 +991,7 @@ This section describes MLI functionality and features for regular experiments. F
 
 5. **Actions:** 
 
-    ![regression-and-classification-explanations-actions](assets/regression-and-classification-explanations-actions.jpg)
+    [<img src="assets/regression-and-classification-explanations-actions.jpg" width="350"/>](assets/regression-and-classification-explanations-actions.jpg)
 
     *Note:*
 
@@ -1004,14 +1008,6 @@ Driverless AI" booklet
 7. Experiments - Takes you back to the Experiments page
 
 8. MLI - Takes you back to the MLI page 
- 
-
-
-
-
-
-
-
 
 ### MLI Dashboard
 
@@ -1129,7 +1125,7 @@ Driverless AI allows you to download auto-generated documents such as the Downlo
 
 1\. Click on **Download Summary & Logs**
 
-![download-experiment-summary](assets/download-experiment-summary.jpg)
+ [<img src="assets/download-experiment-summary.jpg" width="350"/>](assets/download-experiment-summary.jpg)
 
 When you open the zip file, the following files should be included:
 
@@ -1146,7 +1142,8 @@ When you open the zip file, the following files should be included:
 
 3\. Click on **Download Autoreport**
 
-![download-autoreport](assets/download-autoreport.jpg)
+
+ [<img src="assets/download-autoreport.jpg" width="350"/>](assets/download-autoreport.jpg)
 
 **Autoreport** is a Word version of an auto-generated report for the experiment. A report file (AutoDoc) is included in the experiment summary.
 
@@ -1229,8 +1226,8 @@ From the Projects page, you can link datasets and/or experiments, and you can ru
     - **Selected Datasets Type**: Training, Testing or Validation
     - Additional information on the dataset that was selected: Name, Rows, Columns
 
-        ![projects-page-time-series-datasets](assets/projects-page-time-series-datasets.jpg)
-    
+    [<img src="assets/projects-page-time-series-datasets.jpg" width="350" height="550"/>](assets/projects-page-time-series-datasets.jpg)
+        
     - **+ Link dataset** : Link an additional dataset (Training, Testing or Validation) to the existing project
 
 2. **Experiments** 
