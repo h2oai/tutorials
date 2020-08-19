@@ -85,7 +85,7 @@ This dataset has a total 25 Features(columns) and 30,000 Clients(rows).
   
 2. Let’s have a look at the columns:
 
-![task-1-data-columns](assets/task-1-data-columns.jpg)
+![data-columns](assets/data-columns.jpg)
 
 *Things to Note:*
 
@@ -116,11 +116,11 @@ This dataset has a total 25 Features(columns) and 30,000 Clients(rows).
 
 6\. Select **Not Now** on the **First time Driverless AI, Click Yes to get a tour!**. A similar image should appear:
 
-![task-1-experiment-page](assets/task-1-experiment-page.jpg)
+![experiment-page](assets/experiment-page.jpg)
 
 7\. Select **Target Column**, then Select **default.payment.next.month** as the target.
 
-![task-1-target-column](assets/task-1-target-column.jpg)
+![target-column](assets/target-column.jpg)
 
 
 8\. Adjust the settings to:
