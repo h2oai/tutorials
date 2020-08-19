@@ -104,7 +104,7 @@ In machine learning, the input variables are called **features** and the output 
 
 A machine learning model defines the relationship between features and labels. A model can be trained by feeding it examples. Examples are a particular instance of data.  You can have two types of examples: labeled and unlabeled. Labeled examples are those where the x and y values (features, labels) are known. Unlabeled examples are those where we know the x value, but we don't know what the y value is (feature,?)[1]. Your dataset is like an example; the columns that will be used for training are the features; the rows are the instances of those features. The column that you want to predict is the label.
 
-Supervised learning takes labeled examples and allows a model that is being trained to learn the relationship between features and labels. The trained model can then be used on unlabelled data to predict the missing y value. The model can be tested with either labeled or unlabeled data. Testing a trained model with unlabeled data is called unsupervised training [1]. Note that H2O Driverless AI creates models with labeled examples.
+Supervised learning takes labeled examples and allows a model that is being trained to learn the relationship between features and labels. The trained model can then be used on unlabelled data to predict the missing y value. The model can be tested with either labeled or unlabeled data. Note that H2O Driverless AI creates models with labeled examples.
 
 ### Data Preparation 
 
