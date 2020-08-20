@@ -95,7 +95,7 @@ This dataset has a total 25 Features(columns) and 30,000 Clients(rows).
 4. **EDUCATION**- Education Level
 5. **MARRIAGE** - Marital Status
 6. **Age**
-7. **PAY0-PAY6**: Payment Information including most recent repayment status status values:
+7. **PAY0-PAY6**: Payment Information including most recent repayment status values:
 
     - -2: Paid in full
     - -1: Paid with another line of credit
@@ -114,7 +114,7 @@ This dataset has a total 25 Features(columns) and 30,000 Clients(rows).
 
 5\. Click on the **UCI_Credit_Card.csv** file then select **Predict**.
 
-6\. Select **Not Now** on the **First time Driverless AI, Click Yes to get a tour!**. A similar image should appear:
+6\. Select **Not Now** on the **First time Driverless AI box, a similar image should appear:
 
 ![experiment-page](assets/experiment-page.jpg)
 
@@ -153,11 +153,11 @@ If the interpretability is high enough then a monotonically constrained model wi
 
 ![interpret](assets/interpret.jpg)
 
-11\. Once the **MLI Experiment is Finished** something similar to the below image should appear.
+11\. Once the **MLI Experiment is Finished** something similar to the below image should appear
 
 ![landing-page](assets/landing-page.jpg)
 
-12. If we click into the summary section we can scroll through and learn the following.
+12. If we click into the summary section we can scroll through and learn the following
 
 ![summary-1](assets/summary-1.jpg)
 
