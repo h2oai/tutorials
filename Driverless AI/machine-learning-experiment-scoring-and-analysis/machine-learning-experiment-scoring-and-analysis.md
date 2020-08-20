@@ -1200,7 +1200,7 @@ Going back to the Freddie Mac dataset, even though the model was scored with the
 
 ![diagnostics-roc-best-acc](assets/diagnostics-roc-best-acc.jpg)
 
-Recall that for a binary classification problem, accuracy is the number of correct predictions made as a ratio of all predictions made.  Probabilities are converted to predicted classes in order to define a threshold. For this model, it was determined that the best accuracy is found at threshold .5102.
+Recall that for a binary classification problem, accuracy is the number of correct predictions made as a ratio of all predictions made.  Probabilities are converted to predicted classes in order to define a threshold. For this model, it was determined that the **best accuracy** is found at **threshold 0.5647**.
 
 At this threshold, the model predicted:
 - TP = 157 cases predicted as defaulting and defaulted
@@ -1222,7 +1222,7 @@ Remember that for the **ROC** curve:
 
 ### New Model with Same Parameters
 
-In case you were curious and wanted to know if you could improve the accuracy of the model, this can be done by changing the scorer from Logloss to Accuracy.  
+In case you were curious and wanted to know if you could improve the accuracy of the model, you could try changing the scorer from Logloss to Accuracy. A question to keep in mind after making this change, **Does changing the scorer from Logloss to Accuracy improve the model's accuracy?**  
 
 1\. To do this, click on the **Experiments**  page.
 
@@ -1247,9 +1247,10 @@ We are going to use this new experiment to run a new diagnostics test. You will 
 5\. Once in the **Diagnostics** page, select **+Diagnose Model**
 
 6\. In the **Create new model diagnostics** : 
-1. Click on Diagnosed Experiment then select the experiment that you completed in Task in this case the experiment name is **1.Freddie Mac Classification Tutorial** 
-2. Click on Dataset then select the freddie_mac_500_test dataset
-3. Initiate the diagnostics model by clicking on **Launch Diagnostics** 
+
+  1. Click on **Diagnosed Experiment**, then select the experiment that you completed in this Task. In this case, the experiment name is **1.Freddie Mac Classification Tutorial** 
+  2. Click on **Test Dataset** then select the **freddie_mac_500_test** dataset
+  3. Initiate the diagnostics model by clicking on **Launch Diagnostics** 
 
 ![diagnostics-create-new-model-for-accuracy](assets/diagnostics-create-new-model-for-accuracy.jpg)
 
@@ -1281,7 +1282,7 @@ The first model predicted:
 - FP = 75 cases predicted as defaulting and did not default
 - FN = 4,341 cases predicted to not default and defaulted
 
-The **threshold for best accuracy** changed from **0.5647 for the first diagnostics model** to **0.5220 for the new model**. This increase in threshold improved accuracy or the number of correct predictions made as a ratio of all predictions made. Note, however, that while the number of FP decreased the number of FN increased.  We were able to reduce the number of cases that were predicted to falsy default, but in doing so, we increased the number of FN or cases that were predicted not to default and did.
+The **threshold for best accuracy** changed from **0.5647 for the first diagnostics model** to **0.5220 for the new model**. This decrease in threshold impaired accuracy or the number of correct predictions made as a ratio of all predictions made. Note, however, that while the number of FP's increased, the number of FN's decreased.  We were not able to reduce the number of cases that were predicted to falsy default, but in doing so, we increased the number of FN or cases that were predicted not to default and did.
 
 The takeaway is that there is no win-win; sacrifices need to be made. In the case of accuracy, we increased the number of mortgage loans, especially for those who were denied a mortgage because they were predicted to default when, in reality, they did not. However, we also increased the number of cases that should not have been granted a loan and did.  As a mortgage lender, would you prefer to reduce the number of False Positives or False Negatives?
 
