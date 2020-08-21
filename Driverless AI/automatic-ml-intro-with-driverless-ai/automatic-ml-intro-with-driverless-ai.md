@@ -1001,9 +1001,13 @@ This section describes MLI functionality and features for regular experiments. F
 
     1: Go to ML documentation
         - MLI Docs - Link to the "Machine Learning Interpretability with Driverless AI" booklet
+
     2: Display MLI Java Logs
+
     3: Display MLI Python Logs
+
     4: Go to Experiment
+    
     5: Download Decision Tree Surrogate Rules
     
 6. Datasets - Takes you back to the Datasets page 
