@@ -19,18 +19,18 @@
 
 ## Objetivo
  
-Para este tutorial, vamos a explorar el conjunto de datos sobre el accidente del Titanic desde la perspectiva de una empresa de aseguranza de vidas usando el producto empresarial [H2O.ai Driverless AI](https://www.h2o.ai/products/h2o-driverless-ai/). Vamos a explorar posibles factores de riesgos derivados de este conjunto de datos que la empresa podría haber considerado al momento de vender aseguranzas de vida a estos pasajeros. Específicamente, crearemos un modelo de predicción para determinar cuáles factores contribuyeron a la supervivencia de los pasajeros.
+Para este tutorial, vamos a explorar el conjunto de datos sobre el accidente del Titanic desde la perspectiva de una empresa de aseguranza de vidas usando el producto empresarial [H2O Driverless AI](https://www.h2o.ai/products/h2o-driverless-ai/). Vamos a explorar posibles factores de riesgos derivados de este conjunto de datos que la empresa podría haber considerado al momento de vender aseguranzas de vida a estos pasajeros. Específicamente, crearemos un modelo de predicción para determinar cuáles factores contribuyeron a la supervivencia de los pasajeros.
  
 En esta descripción general de Driverless AI, aprenderá cómo cargar datos, explorar detalles de datos, generar visualizaciones automáticas, iniciar un experimento, explorar ingeniería de características, ver resultados de experimentos y obtener un recorrido rápido por el informe de Interpretabilidad de aprendizaje automático.
  
-**Nota**: Este tutorial ha sido creado en Aquarium, lo cual es parte de la nube H2O y provee acceso a varias herramientas para talleres, conferencias, y entrenamientos de enseñanza. Los laboratorios en Aquarium tienen conjuntos de datos, experimentos, proyectos, y otros contenidos precargados. Si usted usa su propia versión de Driverless AI, no podrá ver el contenido precargado.
+**Nota**: Este tutorial ha sido creado en Aquarium, lo cual es parte de la nube de H2O y provee acceso a varias herramientas para talleres, conferencias, y entrenamientos de enseñanza. Los laboratorios en Aquarium tienen conjuntos de datos, experimentos, proyectos, y otros contenidos precargados. Si usted usa su propia versión de Driverless AI, no podrá ver el contenido precargado.
 
 
 ## Prerrequisitos
  
 - Conocimiento básico de Aprendizaje de Máquina y Estadísticas
  
-- **Sesión de Dos Horas de Test Drive:** Test Drive es "H2O.ai Driverless AI" y esta sobre la nube de AWS (Amazon Web Service Cloud). No es necesario descargar ningún software para utilizar Test Drive. Explora todas las características y beneficios de la plataforma de H2O aprendizaje automático.
+- **Sesión de Dos Horas de Test Drive:** Test Drive es "H2O Driverless AI" y esta sobre la nube de AWS (Amazon Web Service Cloud). No es necesario descargar ningún software para utilizar Test Drive. Explora todas las características y beneficios de la plataforma de H2O aprendizaje automático.
 
     - ¿Necesita una **Sesión de Dos Horas de Test Drive?** Siga las instrucciones [en este tutorial](https://training.h2o.ai/products/tutorial-0-getting-started-with-driverless-ai-test-drive) para comenzar su sesión. Después de comenzar la sesión de Driverless AI Test Drive, continúa leyendo los requisitos restantes de este tutorial y proceda a comenzar Tarea 1: Tour del Producto
  
@@ -81,7 +81,7 @@ Aprendizaje de Máquina es un subconjunto de Inteligencia Artificial donde el en
  
 Avances en la tecnología han facilitado la recopilación y disponibilidad de los datos. Los tipos de datos disponibles determinarán el tipo de entrenamiento al que el modelo de Aprendizaje de Máquina puede someterse. Hay dos tipos de entrenamiento de Aprendizaje de Máquina, Aprendizaje supervisado y no-supervisado. Aprendizaje supervisado es cuando el conjunto de datos contiene la respuesta que estás tratando de predecir. Para esos casos donde la variable de predicción no está presente, se le llama aprendizaje no-supervisado. Ambos tipos de entrenamiento definen la relación entre variables de entrada y de salida.
  
-En el Aprendizaje de Máquina, las variables de entrada son llamadas **características(features** y las variables de salida **etiquetas(labels).** Las etiquetas, en este caso, son las que intentamos predecir. El objetivo es tomar las entradas/características y usarlas para llegar a predicciones sobre datos nunca vistos. En regresión lineal, las características son las variables *X*, y las etiquetas son las variables *Y*.
+En el Aprendizaje de Máquina, las variables de entrada son llamadas **características(features** y las variables de salida **etiquetas(labels).** Las etiquetas, en este caso, son las que intentamos predecir. El objetivo es tomar las entradas/características y usarlas para llegar a predicciones sobre datos nunca vistos. En aprendizaje supervisado, las características son las variables *X*, y las etiquetas son las variables *Y*.
  
 Un modelo de Aprendizaje de Máquina define la relación entre características y etiquetas. Cuando los modelos son entrenados, puedes entrenar el modelo alimentándose con ejemplos. Los ejemplos son una instancia particular de datos. Puedes tener dos tipos de ejemplos: etiquetados y no-etiquetados. Los ejemplos etiquetados son aquellos donde se conoce el valor de las variables *X*, *Y* (características, etiquetas). Los ejemplos no-etiquetados son aquellos donde conocemos el valor de la variable *X*, pero no sabemos qué valor tiene la variable y(características) [1]. Tu conjunto de datos es como un ejemplo; las columnas que se usarán para el entrenamiento son las características; las filas son las instancias de esas características. Las columnas que quieres predecir son las etiquetas.
  
@@ -172,7 +172,7 @@ Además, puedes diagnosticar un modelo, transformar otro conjunto de datos, cali
 ### Información del conjunto de datos
  
 El conjunto de datos usados en este experimento es una versión del conjunto del Titanic elaborado por Kaggle. Este conjunto de datos contiene una lista de los pasajeros a bordo del RMS Titanic.
-El RMS Titanic fue un transatlántico britanico que se hundió tras colisionar con un iceberg al norte del océano Atlántico el 15 de abril de 1912. De 2,224 pasajeros y miembros de la tripulación, perdieron la vida más de 1,500 personas en la ruta marítima de Southampton a la Ciudad de Nueva York.
+El RMS Titanic fue un transatlántico británico que se hundió tras colisionar con un iceberg al norte del océano Atlántico el 15 de abril de 1912. De 2,224 pasajeros y miembros de la tripulación, perdieron la vida más de 1,500 personas en la ruta marítima de Southampton a la Ciudad de Nueva York.
 Esta tragedia impactó a la comunidad internacional, lo que impulsó mejores medidas de seguridad para barcos. La falta de botes salvavidas entre otras cosas, fue uno de los factores determinantes en la pérdida de vidas. Sin embargo, hubo algunos elementos que influyeron para que hubiera sobrevivientes.
  
 ![rms-titanic](assets/rms-titanic.jpeg)
@@ -251,10 +251,10 @@ Ahora vamos a explorar el conjunto de datos Titanic que acabamos de cargar.
  
 ![titanic-set-actions](assets/titanic-set-actions.jpg)
  
-- Details (Detalles) - Vea un resumen del conjunto de datos o obtenga una vista previa del conjunto de datos
-- Visualize (Visualizar) - Visualice el conjunto de datos con gráficos disponibles
+- Details (Detalles) - Vea un resumen del conjunto de datos y obtenga una vista previa del conjunto de datos
+- Visualize (Visualizar) - Visualize el conjunto de datos con gráficos disponibles
 - Split (Dividir) - Dividir el conjunto de datos
-- Predict (Predecir) - Ejecuta un experimento usando Driverless AI (IA sin conductor)
+- Predict (Predecir) - Ejecute un experimento usando Driverless AI 
 - Rename (Cambiar Nombre) - Cambiar el nombre del conjunto de datos
 - Download (Descargar) - Descargar el conjunto de datos
 - Delete (Eliminar) - Eliminar el conjunto de datos
@@ -304,7 +304,7 @@ Ahora vamos a explorar el conjunto de datos Titanic que acabamos de cargar.
  
 ![titanic-set-rows-page](assets/titanic-set-rows-page.jpg)
  
-*Cosas a tener en cuenta:*
+*Cosas para tener en cuenta:*
  
 1. Vista previa del conjunto de datos
 2. Ver las filas restantes
@@ -366,7 +366,7 @@ Haga clic en la visualización **titanic_train** y aparecerá la siguiente panta
  
 ¿Es posible visualizar cómo se correlacionan las variables en el conjunto de entrenamiento? ¿Podemos determinar qué otras variables están fuertemente correlacionadas con la supervivencia de un pasajero? ¡La respuesta a esas preguntas es sí! Uno de los gráficos que nos permite visualizar las correlaciones entre variables es el **Correlation Graph** (Gráfico de correlación).
  
-Exploremos la correlación entre la variable 'survived' (sobrevivido) y otras variables en el conjunto de datos.
+Exploremos la correlación entre la variable 'survived' (sobrevividó) y otras variables en el conjunto de datos.
  
 2\. Seleccione **Correlation Graph** y luego haga clic en **Help** (ayuda) ubicado en la esquina inferior izquierda del gráfico.
  
@@ -378,7 +378,7 @@ Exploremos la correlación entre la variable 'survived' (sobrevivido) y otras va
  
 ![train-set-correlation-graph](assets/train-set-correlation-graph.jpg)
  
-*Cosas a tener en cuenta:*
+*Cosas para tener en cuenta:*
  
 - El botón **Help** explica el **Correlation Graph**. Esta característica está disponible para todos los gráficos.
  
@@ -438,7 +438,7 @@ Si desea realizar un recorrido rápido por la página **Experiments** (Experimen
  
 ![train-set-experiment-page](assets/train-set-experiment-page.jpg)
  
-*Cosas a tener en cuenta:*
+*Cosas para tener en cuenta:*
  
 1. Assistant (Asistente): recorrido interactivo para usuarios nuevos. Haga clic en **assistant** (asistente) para habilitarlo. Apareceran círculos amarillos alrededor de las secciones seleccionadas de la página de configuración del experimento. Puede seleccionar cualquiera de ellos para obtener más información sobre cada sección.
  
@@ -484,16 +484,16 @@ El atributo "sobrevivió" fue seleccionado porque, como empresa de seguros, quer
  
 ![experiment-settings](assets/experiment-settings.jpg)
  
-*Cosas a tener en cuenta:*
+*Cosas para tener en cuenta:*
  
 1. **Training Settings** (Configuración de entrenamiento) - Describe la precisión, el tiempo y la interpretabilidad de su experimento específico. Las perillas en la configuración del experimento son ajustables a medida que los valores cambian el significado de la configuración en el cambio de página inferior izquierdo.
  
-    - [Accuracy](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-settings.html?highlight=accuracy%20setting#accuracy) (Precisión) - A medida que aumenta la precisión, la IA sin conductor ajusta gradualmente el método para realizar la evolución y el conjunto. Con baja precisión, la IA sin conductor varía características y modelos, pero todos compiten de manera uniforme entre sí. Con mayor precisión, cada modelo principal independiente evolucionará de forma independiente y será parte del conjunto final como un conjunto sobre diferentes modelos principales. Con precisiones más altas, la IA sin conductor evolucionará + tipos de funciones de conjunto, como la codificación de destino, dentro y fuera, que evolucionan independientemente. Finalmente, con las precisiones más altas, la IA sin conductor realiza el seguimiento de modelos y características y combina todas esas variaciones. Cambiar este valor afecta la evolución de la característica y la canalización final.
+    - [Accuracy](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-settings.html?highlight=accuracy%20setting#accuracy) (Precisión) - A medida que aumenta la precisión, Driverless AI ajusta gradualmente el método para realizar la evolución y el conjunto. Con baja precisión,Driverless AI varía en características y modelos, pero todos compiten de manera uniforme entre sí. Con mayor precisión, cada modelo principal independiente evolucionará de forma independiente y será parte del conjunto final como un conjunto sobre diferentes modelos principales. Con precisiones más altas, Driverless AI evolucionará más tipos de funciones de conjunto, como la codificación de destino, dentro y fuera, que evolucionan independientemente. Finalmente, con las precisiones más altas, Driverless AI realiza el seguimiento de modelos y características y combina todas esas variaciones. Cambiar este valor afecta la evolución de la característica y la canalización final.
     - [Time](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#time) (Tiempo) - Esto especifica el tiempo relativo para completar el experimento (es decir, las configuraciones más altas tardan más). La detección temprana tendrá lugar si el experimento no mejora la puntuación para la cantidad especificada de iteraciones.
     - [Interpretability](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#time) (Interpretabilidad) - Especifique la interpretabilidad relativa de este experimento. Los valores más altos favorecen modelos más interpretables. Cambiar el nivel de interpretabilidad afecta la estrategia de poda previa de la función, las restricciones de monotonicidad y el espacio de búsqueda de ingeniería de características.
 2. [Expert Settings](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/expert-settings.html#expert-settings) (Configuración experta)- Configuración experta disponible para personalizar su experimento.
-3. [Scorer](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/scorers.html) (Anotador) - La IA sin conductor selecciona al mejor anotador en función de su conjunto de datos. Se pueden seleccionar otros anotadores manualmente. (Explore más sobre los puntajes en el próximo tutorial [Tutorial de puntaje y análisis de experimentos de aprendizaje automático - Enfoque financiero)](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus)
-4. [Clasificación / Regresión](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#classification-regression-button) - Botón de clasificación o regresión. La IA sin conductor determina automáticamente el tipo de problema en función de la columna de destino. Aunque no se recomienda, puede anular esta configuración haciendo clic en este botón.
+3. [Scorer](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/scorers.html) (Anotador) - Driverless AI selecciona al mejor anotador en función de su conjunto de datos. Se pueden seleccionar otros anotadores manualmente. (Explore más sobre los puntajes en el próximo tutorial [Tutorial de puntaje y análisis de experimentos de aprendizaje automático - Enfoque financiero)](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus)
+4. [Clasificación / Regresión](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#classification-regression-button) - Botón de clasificación o regresión. Driverless AI determina automáticamente el tipo de problema en función de la columna de destino. Aunque no se recomienda, puede anular esta configuración haciendo clic en este botón.
 5. [Reproducible:](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#reproducible) este botón le permite construir un experimento con una semilla aleatoria y obtener resultados reproducibles. Si esto está deshabilitado (predeterminado), los resultados variarán entre ejecuciones.
 6. [GPU habilitadas:](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#enable-gpus) especifique si desea habilitar las GPU. (Tenga en cuenta que esta opción se ignora en los sistemas solo con CPU)
 7. **Launch Experiment** (Lanzar experimento) - Inicia el experimento
@@ -513,7 +513,7 @@ El atributo "sobrevivió" fue seleccionado porque, como empresa de seguros, quer
  
 ![experiment-running-46](assets/experiment-running-46.jpg)
  
-*Cosas a tener en cuenta:*
+*Cosas para tener en cuenta:*
  
 1. **Experiment Name** (Nombre del experimento) - Nombre de tu experimento. Si no le asigna un nombre, se generará un nombre aleatorio. El nombre se puede cambiar en cualquier momento.
 2. **Experiment Setup** (Configuración del experimento) - Resumen de la configuración del experimento y detalles del conjunto de datos.
@@ -527,7 +527,7 @@ Una vez que se complete el experimento, aparecerá un **Experiment Summary** (Re
  
 ![experiment-summary](assets/experiment-summary.jpg)
  
-*Cosas a tener en cuenta:*
+* para tener en cuenta:*
  
 1. Opciones de estado completo
  
@@ -637,7 +637,7 @@ El resumen incluye:
     - Feature evolution (Evolución de características): tiempo total para la evolución de las características y el número de modelos entrenados
     - Final pipeline training (Entrenamiento final de tubería): tiempo total para el entrenamiento total y el número de modelos entrenados
     - Python / MOJO constructor de evaluación
-- **Validation Score** (Puntuación de validación): valor de Pérdida Logarítmica +/- épsilon de la base de la máquina
+- **Validation Score** (Puntaje de validación): valor de Pérdida Logarítmica +/- épsilon de la base de la máquina
 - **Validation Score** (Puntaje de validación:) puntaje de pérdida de registro +/- maquina épsilon para la tubería final
 - **Test Score** (Resultado de la prueba): puntaje de pérdida de registro +/- puntaje de máquina épsilon para la tubería final
  
@@ -752,13 +752,13 @@ Hay dos formas de generar el Informe MLI, seleccionando el enlace **MLI** en la 
  
 4\. La página de interpretabilidad de MLI tiene las explicaciones de los resultados del modelo en un formato legible para humanos:
  
-Esta sección describe la funcionalidad y características de MLI para experimentos regulares. Para experimentos que no son series de tiempo, esta página proporciona varias explicaciones visuales y códigos de razón para el modelo de Driverless AI entrenado, y sus resultados.
+Ésta sección describe la funcionalidad y características de MLI para experimentos regulares. Para experimentos que no son series de tiempo, esta página proporciona varias explicaciones visuales y códigos de razón para el modelo de Driverless AI entrenado, y sus resultados.
  
 ![mli-report-page-1](assets/mli-report-page-1.jpg)
  
 ![mli-report-page-2](assets/mli-report-page-2.jpg)
  
-*Cosas a tener en cuenta:*
+*Cosas para tener en cuenta:*
  
 1. Resumen: resumen del experimento MLI. Esta página proporciona una visión general de la interpretación, además del conjunto de datos y el experimento de Driverless AI (si está disponible) que se utilizaron para la interpretación junto con el espacio de características (original o transformado), columna objetivo, tipo de problema e información de k-Lime.
  
@@ -768,7 +768,7 @@ Esta sección describe la funcionalidad y características de MLI para experimen
  
   ![dai-model-feature-importance](assets/dai-model-feature-importance.jpg)
  
-- **Shapley plots for transformed features:**(Gráficos de Shapley para características transformadas:) para características transformadas: Las explicaciones de Shapley son una técnica con apoyo teórico creíble que presenta contribuciones variables globales y locales consistentes. Los valores numéricos locales de Shapley se calculan rastreando filas individuales de datos a través de un conjunto de árbol entrenado y agregando la contribución de cada variable de entrada a medida que la fila de datos se mueve a través del conjunto entrenado. Para las tareas de regresión, los valores de Shapley suman la predicción del modelo de IA sin conductor. Para problemas de clasificación, los valores de Shapley suman la predicción del modelo de Driverless AI antes de aplicar la función de enlace. Los valores globales de Shapley son el promedio de los valores absolutos de Shapley en cada fila de un conjunto de datos.
+- **Shapley plots for transformed features**(Gráficos de Shapley para características transformadas) son para características transformadas: Las explicaciones de Shapley son una técnica con apoyo teórico creíble que presenta contribuciones variables globales y locales consistentes. Los valores numéricos locales de Shapley se calculan rastreando filas individuales de datos a través de un conjunto de árbol entrenado y agregando la contribución de cada variable de entrada a medida que la fila de datos se mueve a través del conjunto entrenado. Para las tareas de regresión, los valores de Shapley suman la predicción del modelo de IA sin conductor. Para problemas de clasificación, los valores de Shapley suman la predicción del modelo de Driverless AI antes de aplicar la función de enlace. Los valores globales de Shapley son el promedio de los valores absolutos de Shapley en cada fila de un conjunto de datos.
  
    ![dai-model-shapley](assets/dai-model-shapley.jpg)
  
@@ -778,7 +778,7 @@ Esta sección describe la funcionalidad y características de MLI para experimen
  
 ![dai-model-partial-dependence-ice](assets/dai-model-partial-dependence-ice.jpg)
  
-- **Disparate Impact Analysis(NEW):**(Análisis de Impacto Disparado (NUEVO)): El Análisis de Impacto Disparado es una técnica que se utiliza para evaluar la equidad. El sesgo se puede introducir a los modelos durante el proceso de recopilación, procesamiento y etiquetado de datos; como resultado, es esencial determinar si un modelo está dañando a ciertos usuarios al tomar un número significativo de decisiones sesgadas. Aprender más sobre [Disparate Impact Analysis (Análisis de Impacto Disparado).](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/interpret-non-ts.html#disparate-impact-analysis)
+- **Disparate Impact Analysis(NEW)**(Análisis de Impacto Disparado (NUEVO)): El Análisis de Impacto Disparado es una técnica que se utiliza para evaluar la equidad. El sesgo se puede introducir a los modelos durante el proceso de recopilación, procesamiento y etiquetado de datos; como resultado, es esencial determinar si un modelo está dañando a ciertos usuarios al tomar un número significativo de decisiones sesgadas. Aprender más sobre [Disparate Impact Analysis (Análisis de Impacto Disparado).](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/interpret-non-ts.html#disparate-impact-analysis)
  
 ![dai-disparate-impact-analysis-1](assets/dai-disparate-impact-analysis-1.jpg)
  
@@ -1005,7 +1005,7 @@ Desde la página de Projects, puede vincular conjuntos de datos y / o experiment
  
 ![projects-page](assets/projects-page.jpg)
  
-*Cosas a tener en cuenta:*
+*Cosas para tener en cuenta:*
  
 1. **Projects** (Proyectos): Opción de menú Proyectos Workspace para gestionar conjuntos de datos y vencimientos
 2. **Project** (Proyecto) **creado previamente** que incluye:
@@ -1025,7 +1025,7 @@ Desde la página de Projects, puede vincular conjuntos de datos y / o experiment
  
 ![projects-page-time-series](assets/projects-page-time-series.jpg)
  
-*Cosas a tener en cuenta:*
+*Cosas para tener en cuenta:*
  
 1. **Datasets** (Conjuntos de Datos)
     - **Selected Datasets Type** (Tipo de conjuntos de datos seleccionados): Entrenamiento, Pruebas o Validación
@@ -1053,11 +1053,11 @@ Desde la página de Projects, puede vincular conjuntos de datos y / o experiment
     - **T** : Tiempo
     - **I**: Interpretabilidad
     - **Scorer:** Anotador utilizado
-    - **Status:** En progreso, completado
-    - **Train Time:** Tiempo total para entrenar experimento
-    - **Val. Score:** Validation score for the experiment
-    - **Test Score** (Resultado de la prueba): Puntaje de prueba para el experimento
-    - **Test Time** (Tiempo de prueba): Tiempo total para probar el experimento.
+    - **Status(estado):** En progreso, completado
+    - **Train Time(tiempo de entreno):** Tiempo total para entrenar experimento
+    - **Val. Score(puntuación válida):** Puntuación de validación del experimento
+    - **Test Score(resultado de la prueba)** (Resultado de la prueba): Puntaje de prueba para el experimento
+    - **Test Time(tiempo de prueba)** (Tiempo de prueba): Tiempo total para probar el experimento.
  
 ### Crear un espacio de trabajo para un proyecto
  
