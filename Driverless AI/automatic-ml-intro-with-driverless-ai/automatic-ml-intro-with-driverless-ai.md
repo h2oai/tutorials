@@ -834,9 +834,10 @@ This section describes MLI functionality and features for regular experiments. F
 
     ![dai-model-original-feature-importance.jpg](assets/dai-model-original-feature-importance.jpg)
 
-    1. Click on the **DAI MODEL** text
+    
+    1: Click on the **DAI MODEL** text
 
-    2. Click on the **Original Feature Importance** visual
+    2: Click on the **Original Feature Importance** visual
 
     ![original-feature-importance](assets/original-feature-importance.jpg)
 
@@ -845,7 +846,7 @@ This section describes MLI functionality and features for regular experiments. F
 
     ![dai-model-transformed-feature-importance](assets/dai-model-transformed-feature-importance.jpg)
 
-    1. Click on the **Transformed Feature Importance** visual
+    1: Click on the **Transformed Feature Importance** visual
 
     ![transformed-feature-importance](assets/transformed-feature-importance.jpg)
 
@@ -861,7 +862,7 @@ This section describes MLI functionality and features for regular experiments. F
 
     ![dai-model-original-shapley-(naive-shapley)](assets/dai-model-original-shapley-(naive-shapley).jpg)
 
-    1. Click on the **Original Shapley (Naive Shapley)** visual
+    1: Click on the **Original Shapley (Naive Shapley)** visual
 
     ![original-shapley-(naive-shapley))](assets/original-shapley-(naive-shapley).jpg)
 
@@ -869,7 +870,7 @@ This section describes MLI functionality and features for regular experiments. F
 
     ![dai-model-transformed-shapley](assets/dai-model-transformed-shapley.jpg)
 
-    1. Click on the **Transformed Shapley** visual
+    1: Click on the **Transformed Shapley** visual
 
     ![transformed-shapley](assets/transformed-shapley.jpg)
 
@@ -885,7 +886,7 @@ This section describes MLI functionality and features for regular experiments. F
 
     ![dai-model-partial-dependence-plot](assets/dai-model-partial-dependence-plot.jpg)
 
-    1. Click on the **Partial Dependence Plot** visual
+    1: Click on the **Partial Dependence Plot** visual
 
     ![partial-dependence-plot](assets/partial-dependence-plot.jpg)
 
@@ -901,7 +902,7 @@ This section describes MLI functionality and features for regular experiments. F
 
     ![dai-model-disparate-impact-analysis](assets/dai-model-disparate-impact-analysis.jpg)
 
-    1. Click on the **Disparate Impact Analysis** visual
+    1: Click on the **Disparate Impact Analysis** visual
 
     ![disparate-impact-analysis-1](assets/disparate-impact-analysis-1.jpg)
     ![disparate-impact-analysis-1](assets/disparate-impact-analysis-2.jpg)
@@ -916,7 +917,7 @@ This section describes MLI functionality and features for regular experiments. F
 
     ![dai-model-sensitivity-analysis](assets/dai-model-sensitivity-analysis.jpg)
 
-    1. Click on the **Sensitivity Analysis** visual
+    1: Click on the **Sensitivity Analysis** visual
 
     ![sensitivity-analysis](assets/sensitivity-analysis.jpg)
 
@@ -930,7 +931,7 @@ This section describes MLI functionality and features for regular experiments. F
 
 3. Surrogate Models - For classification and regression experiments
 
-    1. Click on the **Surrogate Models** text 
+    1: Click on the **Surrogate Models** text 
 
     ![surrogate-models](assets/surrogate-models.jpg)
 
@@ -940,7 +941,7 @@ This section describes MLI functionality and features for regular experiments. F
 
     ![surrogate-models-klime](assets/surrogate-models-klime.jpg)
 
-    1. Click on the **K-LIME** visual
+    1: Click on the **K-LIME** visual
 
     ![k-lime](assets/k-lime.jpg)
   
@@ -951,7 +952,7 @@ This section describes MLI functionality and features for regular experiments. F
 
     ![surrogate-models-decision-tree](assets/surrogate-models-decision-tree.jpg)
 
-    1. Click on the **Decision Tree** visual
+    1: Click on the **Decision Tree** visual
 
     ![decision-tree](assets/decision-tree.jpg)
 
@@ -961,7 +962,7 @@ This section describes MLI functionality and features for regular experiments. F
 
     ![surrogate-models-rf-feature-importance](assets/surrogate-models-rf-feature-importance.jpg)
 
-    1. Click on the **RF Feature Importance** visual
+    1: Click on the **RF Feature Importance** visual
 
     ![rf-feature-importance](assets/rf-feature-importance.jpg)
   
@@ -972,7 +973,7 @@ This section describes MLI functionality and features for regular experiments. F
 
    ![surrogate-models-rf-partial-dependence-plot](assets/surrogate-models-rf-partial-dependence-plot.jpg)
 
-     1. Click on the **RF Partial Dependence Plot** visual
+     1: Click on the **RF Partial Dependence Plot** visual
 
     ![rf-partial-dependence-plot](assets/rf-partial-dependence-plot.jpg)
 
@@ -982,12 +983,9 @@ This section describes MLI functionality and features for regular experiments. F
 
     ![surrogate-models-rf-loco](assets/surrogate-models-rf-loco.jpg)
 
-     1. Click on the **RF LOCO** visual
+     1: Click on the **RF LOCO** visual
 
      ![rf-loco](assets/rf-loco.jpg)
-    
-
-
 
 4. **Dashboard** - The Model Interpretation Page includes the following:
     - K-Lime: Global Interpretability Model Explanation Plot
