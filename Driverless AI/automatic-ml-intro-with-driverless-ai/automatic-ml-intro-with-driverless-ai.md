@@ -551,11 +551,11 @@ The survived attribute was selected because, as an insurance company, we want to
 
 1. Here you can update the experiment settings
 
-2. Click on Launch Experiment we will be using "Create Leaderboard in other tutorials"
+2. Click on Launch Experiment; We will be using "Create Leaderboard in other tutorials."
 
 **Note**: To Launch an Experiment: The dataset and the target column are the minimum elements required to launch an experiment.
 
-10\. The **Experiment** page will look similar to the one below after 45% complete:
+10\. The **Experiment** page will look similar to the one below after 46% complete:
 
 ![experiment-running-46](assets/experiment-running-46.jpg)
 
