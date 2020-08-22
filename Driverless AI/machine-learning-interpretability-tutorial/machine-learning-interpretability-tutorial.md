@@ -114,7 +114,7 @@ This dataset has a total 25 Features(columns) and 30,000 Clients(rows).
 
 5\. Click on the **UCI_Credit_Card.csv** file then select **Predict**.
 
-6\. Select **Not Now** on the **First time Driverless AI box, a similar image should appear:
+6\. Select **Not Now** on the "First time Driverless AI" box, a similar image should appear:
 
 ![experiment-page](assets/experiment-page.jpg)
 
@@ -133,7 +133,7 @@ After click on **Launch Experiment**
 
 ![settings](assets/settings.jpg)
 
-9\.
+9\. When your experiment finishes building, you should see the following dashboard
 
 ![experiment-results](assets/experiment-results.jpg)
 
@@ -180,7 +180,7 @@ Notice that some of the highly ranked variables of the original features (4) sho
 
 ### Responsibility in AI and Machine Learning
 
-The explainability and interpretability in the machine learning space has grown a tremendous amount since we first developed DriverlessAI, with that in mind it is important to frame the larger context in which our interpretability toolkit falls within. It is also worth noting that since this first training was developed, the push toward regulation, oversight, and auditing of ML models and the companies who deploy them has moved rapidly, making these techniques critical requirements for firms looking to make artificial intelligence a part of their companies operations going forward. There have been many recent developments globally, which we have linked below, but the consistent themes seen are fairness, transparency, explainability, interpretability, privacy and security. We have defined a handful of these terms below.
+The explainability and interpretability in the machine learning space has grown a tremendous amount since we first developed Driverless AI, with that in mind it is important to frame the larger context in which our interpretability toolkit falls within. It is also worth noting that since this first training was developed, the push toward regulation, oversight, and auditing of ML models and the companies who deploy them has moved rapidly, making these techniques critical requirements for firms looking to make artificial intelligence a part of their companies operations going forward. There have been many recent developments globally, which we have linked below, but the consistent themes seen are fairness, transparency, explainability, interpretability, privacy and security. We have defined a handful of these terms below.
 
 ![task-2-venn-diagram](assets/task-2-venn-diagram.jpg)
 
@@ -283,7 +283,7 @@ Global feature importance values give an indication of the magnitude of a featur
 
  - Understanding and Trust. (1) Random forest feature importance and global Shapley feature importance increases transparency by reporting and ranking influential input features (2) Local Shapley and LOCO feature importance enhances accountability by creating explanations for each model prediction. (3) Both global and local feature importance enhance trust and fairness when reported values conform to human domain knowledge and reasonable expectations.
 
- -Application Domain. (1) Tree SHAP and Random forest feature importance is a model specific explanatory technique. (2) LOCO is a model-agnostic concept, but its implementation in Driverless AI is model specific.
+ - Application Domain. (1) Tree SHAP and Random forest feature importance is a model specific explanatory technique. (2) LOCO is a model-agnostic concept, but its implementation in Driverless AI is model specific.
 
 ### Shapley and Feature Importance Plots
 
@@ -297,13 +297,13 @@ Viewing the Global Shapley values plot is a good place to start  because it prov
 
 Derived features can be difficult to understand. For that reason, it helps also to look at this complex system from the space of the original inputs, surrogate models allow us to to do this.
 
-2. Click on **Surrogate Models**,**Random Forest**, then **Feature Importance**
+2. Click on **Surrogate Models:**, then click **Random Forest Feature Importance:**
 
 ![rd-feature-importance](assets/rd-feature-importance.jpg)
 
 The **Feature Importance** plot, ranks the original features. These features are the original drivers of the model in the original feature space. These values were calculated by building  a **Random Forest** between the original features and the predictions of the complex driverless AI model that was just trained. 
 
-3. View the **Surrogate Model Summary**, **Random Forest** summary:
+3. View the **Surrogate Model**, **Random Forest**:
 
 ![rf-feature-importance-summary](assets/rd-feature-importance-summary.jpg)
 
@@ -554,7 +554,7 @@ The grey bars or local numeric contributions can be used to generate reason code
 
 1\. Select a high probability default person on the K-LIME plot by clicking on one of the white points in the top-right corner of the plot
 
-2\. Then under the **DAI Model** select **Shapley**
+2\. Then under the **Driverless AI Model** select **Shapley**
 
 ![transformed-shapley-row-11427.jpg](assets/transformed-shapley-row-11427.jpg)
 
@@ -600,7 +600,7 @@ ICE is simply the prediction of the model for the person in question, in our cas
 
 3. Decision Tree Path for the person in row 11427
 
-We can observe divergence on the ICE plot and confirm possible interactions with the surrogate decision tree (the grey path). There seems to be interactions between PAY_0, PAY_6, and PAY_2 when PAY_0 = 3 - 4.
+We can observe divergence on the ICE plot and confirm possible interactions with the surrogate decision tree (the grey path). Note there seems to be interactions between PAY_0, PAY_6, and PAY_2.
 
 2\. **Return to Task 6 question 7** to conclude K-LIME.
 
@@ -614,7 +614,7 @@ We can observe divergence on the ICE plot and confirm possible interactions with
 
 Now you should be able to generate an MLI report, explain major features and key MLI techniques. 
 
-Now, that you can use the techniques learn here, what can you find using the Dashboard view? 
+Now, that you can use the techniques learned here, what can you find using the Dashboard view? 
 
 ### External URL to the data:
 
