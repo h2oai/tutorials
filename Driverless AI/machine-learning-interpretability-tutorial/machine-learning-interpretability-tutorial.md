@@ -106,9 +106,9 @@ This dataset has a total 25 Features(columns) and 30,000 Clients(rows).
 
 3\. Continue scrolling the current page to see more columns.
 
-8. **BILL_AMT0-BILL_AMT6** - Recent credit card bills up to 6 months ago
-9. **PAYAMT0-_PAY_AMT6** - Recent payment towards their bill up to 6 months ago
-10. **default.payment.next.month**- Prediction of whether someone will default on the next month’s payment using given information.
+-  **BILL_AMT0-BILL_AMT6** - Recent credit card bills up to 6 months ago
+-  **PAYAMT0-_PAY_AMT6** - Recent payment towards their bill up to 6 months ago
+-  **default.payment.next.month**- Prediction of whether someone will default on the next month’s payment using given information.
 
 4\. Return to the **Datasets** page.
 
