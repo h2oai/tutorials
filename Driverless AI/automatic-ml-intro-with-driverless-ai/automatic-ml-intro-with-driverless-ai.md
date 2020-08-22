@@ -287,6 +287,7 @@ We are now going to explore the Titanic dataset that we just loaded.
     - Predict - Run an experiment using Driverless AI
     - Rename - Rename the dataset
     - Download - Download the dataset
+    - Display Logs
     - Delete - Delete the dataset 
 
 **Note**: A dataset can only be deleted if it's not being used in an experiment. Otherwise, you must delete the experiment first, and then the dataset.
