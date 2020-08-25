@@ -24,9 +24,10 @@ We will be using a subset of the Freddie Mac Single-Family dataset to try to pre
 
 ## Prerequisites 
 
-- Some basic knowledge of machine learning. 
-- Familiarity with Python. 
-- An Aquarium account to follow along. To help you get started with Aquarium, please see **Appendix A** in this tutorial.
+- Some basic knowledge of machine learning
+- Familiarity with Python
+- An Aquarium account to follow along. 
+    - To help you get started with Aquarium, please see **Appendix A** in this tutorial.
 
 **Note:** We have completed this tutorial in our cloud environment and is intended to take about two hours, or less, to be completed. Therefore, if you decide to do this tutorial on your machine, you might not get the same results, or it might take you longer to complete the tutorial than the intended time.
 
@@ -38,7 +39,7 @@ If you decide to install H2O-3 on your machine, we recommend creating an Anacond
 ### Overview
 The data set we’re using comes from Freddie Mac and contains 20 years of mortgage history for each loan and contains information about "loan-level credit performance data on a portion of fully amortizing fixed-rate mortgages that Freddie Mac bought between 1999 to 2017. Features include demographic factors, monthly loan performance, credit performance including property disposition, voluntary prepayments, MI Recoveries, non-MI recoveries, expenses, current deferred UPB and due date of last paid installment."[1] 
 
-We’re going to use machine learning with H2O to predict whether or not a loan holder will default. To do this, we are going to build three classification models: a Linear model, Random Forest, and a Gradient Boosting Machine model, to predict whether or not a loan will be delinquent. Complete this tutorial to see how we achieved those results.
+We’re going to use machine learning with H2O to predict whether or not a loan holder will default. To do this, we are going to build three classification models: a Linear model, Random Forest, and a Gradient Boosting Machine model; these models will help us predict whether or not a loan will be delinquent. Complete this tutorial to see how we achieved those results.
 
 We will start by importing H2O, the estimators for the algorithms that we will use, and also the function to perform Grid Search on those algorithms. 
 
@@ -97,7 +98,7 @@ loan_level = h2o.import_file("https://s3.amazonaws.com/data.h2o.ai/DAI-Tutorials
 
 Now that we have our dataset, we will explore some concepts and then do some exploration of the data and prepare it for modeling.
 
-Please note that we use the name H2O-3 to refer to our software, but when we usually use the simplified name, H2O, when we refer to specific functions or algorithms. 
+Please note that we use the name H2O-3 to refer to our software and when referring to specific functions or algorithms we use the simplified name, H2O.
 
 ### References
 
@@ -126,18 +127,22 @@ H2O Flow sends commands to H2O as a sequence of executable cells. The cells can 
 [Supervised learning](https://www.h2o.ai/community/glossary/supervised-learning) is when the dataset contains the output that you are trying to predict. Then, you use an algorithm to try to predict a function between your input and output, such as y=f(X). With supervised learning, you train your algorithms to try to approximate a function that will allow you to predict the variable y.
 
 ### Binary Classifier
-A binary [classification](https://www.h2o.ai/community/glossary/classification) model predicts in what two categories(classes) the elements of a given set belong to. In the case of our example, the two categories(classes) are defaulting on your home loan and not defaulting. 
+A binary [classification](https://www.h2o.ai/community/glossary/classification) model predicts the categories(classes) an elements of a given set belongs to. In the case of our example, the two categories(classes) are defaulting on your home loan and not defaulting. 
 
 Binary classifications produce four outcomes:
 
 **Predicticted as Positive:**
-True Positive = TP = Actual Positive labels predicted as positives
-False Positive = FP = Actual Negative labels predicted as positives
- 
-**Predicted as Negative:**
-True Negative = TN = Actual Negative labels predicted as negatives
-False Negative = FN = Actual Positive labels predicted as negatives
 
+True Positive = TP = Actual Positive labels predicted as positives
+
+False Positive = FP = Actual Negative labels predicted as positives
+
+
+**Predicted as Negative:**
+
+True Negative = TN = Actual Negative labels predicted as negatives
+
+False Negative = FN = Actual Positive labels predicted as negatives
 
 ### Confusion Matrix
 The confusion matrix is also known as the error matrix since it makes it easy to visualize the classification rate of the model, including the error rate. With the confusion matrix, you can see the frequency with which a machine learning model confuses one label with another, and thus the name “confusion matrix.”
@@ -474,7 +479,7 @@ Let’s build an RF model in Flow. Scroll up again to the **Assist** cell, and c
 
 ![flow-build-model](assets/flow-build-model.jpg)
 
-In the *select algorithm* option, choose **Distributed Random Forest,** then change the model id to `flow_default_rf.` Click on the *training_frame* option and select **train.** Change *nfolds* so that it is 5. Choose "DELINQUENT" for your *response_column,* and for the *ignored columns*, choose "PREPAYMENT_PENALTY_MORTGAGE_FLAG," "PRODUCT_TYPE," "PREPAID."
+In the *select algorithm* option, choose **Distributed Random Forest,** then change the model id to `flow_default_rf.` Click on the *training_frame* option and select **train.** Change *nfolds* so that it is 5. Choose "DELINQUENT" for your *response_column,* and for the *ignored columns*, choose "PREPAYMENT_PENALTY_MORTGAGE_FLAG," "PRODUCT_TYPE," and "PREPAID."
 
 ![flow-default-rf](assets/flow-default-rf.gif)
 
@@ -508,7 +513,7 @@ Keep in mind that for some of them, you will need to open and close parentheses 
 
 The first parameter shown in the list above is the threshold, and the second value is the accuracy. 
 
-To print the F1 Score, you simply need to type the following line of code,
+To print the F1 Score, you simply need to type the following line of code:
 
 ```python
 rf.F1()
@@ -521,7 +526,14 @@ Let’s take a look at the first ten predictions in our validation set, and comp
 rf.predict(valid)
 ```
 
+RF predictios:
+
 ![default-rf-pred](assets/default-rf-pred.jpg)
+
+GLM predictions:
+
+![default-glm-predictions](assets/default-glm-predictions.jpg)
+
 
 Both models, GLM and RF, made the same predictions in the first ten predictions. For e.g., the TRUE prediction for the sixth row is the same; there is a different probability, but the prediction is the same. 
 
@@ -529,6 +541,7 @@ Again, save the model performance on the validation data
 ```python
 default_rf_per = rf.model_performance(valid)
 ```
+
 ## Task 6: Build a GBM
 
 Gradient Boosting Machine (for Regression and Classification) is a forward learning ensemble method. H2O’s GBM sequentially builds classification trees on all the features of the dataset in a fully distributed way - each tree is built in parallel. H2O’s GBM fits consecutive trees where each solves for the net loss of the prior trees. 
@@ -576,8 +589,9 @@ gbm.predict(valid)
 ``` 
 ![default-gbm-preds](assets/default-gbm-preds.jpg)
 
-All three models made the same ten predictions, and this gives us an indication of why all three scores are close to each other. Although the sixth prediction is TRUE for all three models, the probability is not exactly the same, but since the thresholds for all three models were low, the predictions were still TRUE. 
-As we did with the other two models, save the model performance.
+All three models made the same ten predictions, and this gives us an indication of why all three scores are close to each other. Although the sixth prediction is TRUE for all three models, the probability is not exactly the same; the probability of being TRUE for the GLM was **0.3474,** for the RF it was **0.2740**  and for the GBM it was **0.4087** but since the thresholds for all three models were low, the predictions were still TRUE. 
+
+Once again, save the model performance.
 
 ``` python
 default_gbm_per = gbm.model_performance(valid)
@@ -596,12 +610,12 @@ We will explore two ways of defining your grid search, and you can use the way y
 
 For our GLM, we will tune `alpha,` and `missing_values_handling.` We could try to tune `lambda` but we will just use `lambda_search = True` so that this value is tuned automatically. The other parameters that you could change, such as `solver,` `max_active_predictors,` and `nlambdas,` to mention a few, are not supported by H2OGridSearch. 
 
-1\. **`alpha`** is the distribution of regularization between the L1 (Lasso) and L2 (Ridge) penalties. A value of 1 for alpha represents Lasso regression, a value of 0 produces Ridge regression, and anything in between specifies the amount of mixing between the two. For alpha, we can explore the range from 0 to 1 in steps of 0.01
+1\. **`alpha`:** is the distribution of regularization between the L1 (Lasso) and L2 (Ridge) penalties. A value of 1 for alpha represents Lasso regression, a value of 0 produces Ridge regression, and anything in between specifies the amount of mixing between the two. For alpha, we can explore the range from 0 to 1 in steps of 0.01
 
-2\. **`lambda`,** is the regularization strength. 
+2\. **`lambda`:** is the regularization strength. 
 
 
-3\. **`missing_values_handling`** This parameter allows us to specify how we want to handle any missing data (Options are skip and MeanImputation)
+3\. **`missing_values_handling`:** This parameter allows us to specify how we want to handle any missing data (Options are skip and MeanImputation)
 
 The grid search is shown below:
 
@@ -722,7 +736,7 @@ We will do the grid search a bit differently this time. We are going to define e
 
 We will first find one of the most important parameters for an RF, which is the maximum depth.
 
-**`max_depth`** defines the number of nodes along the longest path from the start of the tree to the farthest leaf node. Higher values will make the model more complex and can lead to overfitting. Setting this value to 0 specifies no limit. This value defaults to 20. We will first look for the best value for the **max_depth;** this would save us some computational time when we tune the other parameters. As we mentioned before, we will use a slightly different approach for the grid search. We are going to instantiate each parameter for the grid search, and then pass each one into it.
+**`max_depth`:** defines the number of nodes along the longest path from the start of the tree to the farthest leaf node. Higher values will make the model more complex and can lead to overfitting. Setting this value to 0 specifies no limit. This value defaults to 20. We will first look for the best value for the **max_depth;** this would save us some computational time when we tune the other parameters. As we mentioned before, we will use a slightly different approach for the grid search. We are going to instantiate each parameter for the grid search, and then pass each one into it.
 
 ``` python
 #Grid Search Parameters
