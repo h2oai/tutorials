@@ -91,7 +91,7 @@ Now that we have our dataset, we will explore some concepts and then do some exp
 
 ### [Regression Analysis/Regressor Model](https://www.h2o.ai/community/glossary/regression-analysis-regressor-model)
 
-Regression tries to predict a continuous number (as different from classification, which only categorizes). With a regressor model, you try to predict the exact number from your response column. In our case, we will try to predict the interest rate. You will see later on that some samples might have a 7.5% interest rate, and our regression model will try to predict that number.
+Regression tries to predict a continuous number (as opposed to classification, which only categorizes). With a regressor model, you try to predict the exact number from your response column. In our case, we will try to predict the interest rate (a continuous value). You will see later on that some samples might have a 7.5% interest rate, and our regression model will try to predict that number.
 
 There are different types of regression analysis; for example, there is a linear regression, where you fit a straight line to your response based on your predictors, and you try to predict your output with it. Linear regressions are only advised for datasets with a linear distribution. There are also non-linear regressions, which are more useful when you do not have a linear distribution of your response variable.
 
@@ -152,7 +152,7 @@ In the figure above, we see a perceptron with three inputs; these inputs are fed
 ![deep-neural-network](assets/deep-neural-network.jpg)
 
 In the image above, you can see a neural network with two hidden layers, and with an input and output layer. We can say that the input layer has six neurons, the first hidden layer has four neurons, while the second hidden layer has 3, and lastly, the output layer has one neuron. A neural network can have as many hidden layers as the user may find suitable. 
-Although deep learning models can solve almost any problem, they tend to be slow and can be hard to use and tune. Nowadays, none of the most popular deep learning frameworks is TensorFlow, as it is an open-source AI library that allows users to create different types of neural networks with many layers. Tensorflow allows you to build Deep Neural Networks(DNNs), which are feedforward multilayer neural networks, among other types of models. TensorFlow also provides DNNs models for classification and for regression use cases as different models. 
+Although deep learning models can solve almost any problem, they tend to be slow and can be hard to use and tune. Nowadays, one of the most popular deep learning frameworks is TensorFlow, as it is an open-source AI library that allows users to create different types of neural networks with many layers. Tensorflow allows you to build Deep Neural Networks(DNNs), which are feedforward multilayer neural networks, among other types of models. TensorFlow also provides DNNs models for classification and for regression use cases as different models. 
 
 #### So why H2O’s Deep Learning?
 
