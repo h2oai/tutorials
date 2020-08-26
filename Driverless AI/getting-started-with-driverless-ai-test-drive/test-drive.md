@@ -103,7 +103,7 @@ After the Driverless AI Test Drive Lab will appear:
 
 3. [H2O.ai Learning Center](https://training.h2o.ai/): Build your Knowledge Base and Skills at your pace. Enter a place for knowledge-sharing, skills-enhancements, idea-sharing and more!
 
-4. [H2O.ai Community(HaC)(https://www.h2o.ai/community/home): HaC is a community to share, learn, network, ask questions, provide answers, take the next step, and explore Artificial Intelligence, Machine Learning, and Data Science.  We are here to democratize AI. It will take a village to democratize AI.
+4. [H2O.ai Community(HaC)](https://www.h2o.ai/community/home): HaC is a community to share, learn, network, ask questions, provide answers, take the next step, and explore Artificial Intelligence, Machine Learning, and Data Science.  We are here to democratize AI. It will take a village to democratize AI.
 
 5. **Start** button starts the lab session
 
