@@ -1,4 +1,3 @@
-x
 ![h2o-ai-logo-plain](https://github.com/h2oai/tutorials/blob/master/.github/h2o-ai-logo-plain.png)
 
 
