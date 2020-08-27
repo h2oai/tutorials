@@ -86,11 +86,11 @@ Después de un inicio de sesión exitoso, seleccione "Examinar laboratorios" ubi
 
 Haga clic en el botón "Ver detalles" en el laboratorio uno, como se muestra en la imagen a continuación.
 
-![select-lab-1-dai-test-drive](assets/select-lab-1-dai-test-drive.jpg)
+![select-lab-3-dai-test-drive](assets/select-lab-3-dai-test-drive.jpg)
 
 Después el Laboratorio de prueba de Driverless AI aparecerá: 
 
-![driverless-ai-test-drive-page](assets/driverless-ai-test-drive-page.jpg)
+![driverless-ai-test-drive-page-lab3](assets/driverless-ai-test-drive-page-lab3.jpg)
 
 **Nota**: 
 
@@ -100,7 +100,7 @@ Después el Laboratorio de prueba de Driverless AI aparecerá:
 
 3. [Centro de aprendizaje H2O.ai](https://training.h2o.ai): construya su base de conocimientos y habilidades a su ritmo. ¡Ingrese a un lugar para compartir conocimientos, mejorar habilidades, compartir ideas y más!
 
-4. [Comunidad H2O.ai (HaC) (https://www.h2o.ai/community/home): HaC es una comunidad para compartir, aprender, establecer redes, hacer preguntas, proporcionar respuestas, dar el siguiente paso y explorar la Inteligencia Artificial , Aprendizaje automático y ciencia de datos. Estamos aquí para democratizar la IA. Se necesitará una aldea para democratizar la IA.
+4. [Comunidad H2O.ai (HaC)](https://www.h2o.ai/community/home): HaC es una comunidad para compartir, aprender, establecer redes, hacer preguntas, proporcionar respuestas, dar el siguiente paso y explorar la Inteligencia Artificial , Aprendizaje automático y ciencia de datos. Estamos aquí para democratizar la IA. Se necesitará una aldea para democratizar la IA.
 
 5. El botón de **Start (comienza)** inicia la sesión de laboratorio
 
@@ -135,7 +135,3 @@ Después el Laboratorio de prueba de Driverless AI aparecerá:
 Chatee y haga preguntas con los fabricantes de H2O.ai y los usuarios científicos de datos en el espacio de trabajo de H2O.ai Slack
 
 - [Chatee y haga preguntas con los fabricantes de H2O.ai y los usuarios científicos de datos en el espacio de trabajo de H2O.ai Slack](https://www.h2o.ai/community/home)
-
-
-
-

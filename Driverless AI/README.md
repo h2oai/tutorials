@@ -1,10 +1,9 @@
-
 ![h2o-ai-logo-plain](https://github.com/h2oai/tutorials/blob/master/.github/h2o-ai-logo-plain.png)
 
 
 # Driverless AI
 
-This repository has tutorials that focus on **Driverless AI version 1.8.7.1**.
+This repository has tutorials that focus on **Driverless AI version 1.9.0**.
 
 Check out the [**New H2O.ai Learning Center**](https://training.h2o.ai/) where you can earn **badges** for completing the Self-Paced Tutorials or Instructor-Led Courses. 
 
@@ -30,7 +29,9 @@ Check out the [**New H2O.ai Learning Center**](https://training.h2o.ai/) where y
 
 For other versions of the **Driverless AI tutorials**, check out the following repo's:
 
-- [Driverless AI Tutorials 1.8.4.1 Repo](https://github.com/h2oai/tutorials/tree/1.8.4.1/DriverlessAI)
+- [Driverless AI Tutorials 1.8.7.1 Repo](https://github.com/h2oai/tutorials/tree/1.8.7.1/Driverless%20AI)
+
+- [Driverless AI Tutorials 1.8.4.1 Repo](https://github.com/h2oai/tutorials/tree/1.8.4.1/Driverless%20AI)
 
 - [Driverless AI Tutorials 1.8.0 Repo](https://github.com/h2oai/tutorials/tree/1.8.0/DriverlessAI)
 
