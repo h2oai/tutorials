@@ -77,7 +77,7 @@ The diagram above focuses on the parts of Driverless AI that are relevant to the
 
 The curated open-source recipes currently reside in the following GitHub repository:
 
-[H2O Curated Recipes GitHub Repo](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.8.7#sample-recipes)
+[H2O Curated Recipes GitHub Repo](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.9.0#sample-recipes)
 
 ### Deeper Dive and Resources
 
@@ -85,10 +85,10 @@ Explore the recipe Library and recipe recommendations
 
 Best Practices for Recipes:
 
-- [Security](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.8.7#security) 
-- [Safety](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.8.7#safety) 
-- [Performance](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.8.7#performance)
-- [Frequently Asked Questions](https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.7/FAQ.md) 
+- [Security](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.9.0#security) 
+- [Safety](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.9.0#safety) 
+- [Performance](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.9.0#performance)
+- [Frequently Asked Questions](https://github.com/h2oai/driverlessai-recipes/blob/rel-1.9.0/FAQ.md) 
 
 
 ## Task 2: Launch an Experiment and Consume a Recipe
@@ -161,7 +161,7 @@ This dataset set has 3333 customers(rows) and 21 columns representing attributes
 
 ![churn-predict](assets/churn-predict.jpg)
 
-2\.  Select **Not Now** on the **First time Driverless AI, Click Yes to get a tour!**. A similar image should appear:
+2\.  Select **Not Now** on the **First time Driverless AI** box message. A similar image should appear:
 
 ![churn-experiment](assets/churn-experiment.jpg)
 
@@ -226,7 +226,7 @@ The goal of importing the new transformer recipe is to see if we can further opt
 
 ![exp2-new-model-w-same-params](assets/exp2-new-model-w-same-params.jpg)
 
-3\. Select **No** on the **First Time Using Driverless AI Tour**
+3\. Select **Not Now** on the **First Time Using Driverless AI Tour**
 
 4\. Select **Expert Settings**
 
