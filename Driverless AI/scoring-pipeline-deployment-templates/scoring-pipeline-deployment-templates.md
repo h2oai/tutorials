@@ -521,7 +521,7 @@ If you no longer need your Amazon Lambda Driverless AI MOJO Scoring Pipeline dep
 
 In our Amazon AWS IAM account, we just deleted the components related to the Amazon Lambda MOJO deployment. The components that we deleted include the Amazon Lambda function, IAM Policy, IAM Role, API Gateway and s3 bucket. The components that should remain are the IAM access key and IAM secret access key.
 
-## Deep Dive and Resources
+### Deep Dive and Resources
 
 - [Driverless AI: Deploying the MOJO Pipeline](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/deployment.html)
 - [Driverless AI Deployment Template for Local SpringBoot Scorer](https://github.com/h2oai/dai-deployment-templates/tree/master/local-rest-scorer)
@@ -549,7 +549,7 @@ Alternatively, you could create a new Driverless AI Deployment Template to deplo
     - Tutorial: Scoring Pipeline Deployment in Java Runtime (coming soon...)
     - Tutorial: Scoring Pipeline Deployment in C++ Runtime (coming soon...)
 
-- Check out Driverless AI's next tutorial on embedable Scoring Pipeline Deployment where you will learn to deploy **Python Scoring Pipelines** and **MLI Python Scoring Pipelines** into production in **Python Runtime** using **h2oai_scoring API**:
+- Check out Driverless AI's next tutorial on embeddable Scoring Pipeline Deployment where you will learn to deploy **Python Scoring Pipelines** and **MLI Python Scoring Pipelines** into production in **Python Runtime** using **h2oai_scoring API**:
     - Tutorial: Scoring Pipeline Deployment in Python Runtime (coming soon...)
     - Tutorial: MLI Scoring Pipeline Deployment in Python Runtime (coming soon...)
 
@@ -566,7 +566,7 @@ Alternatively, you could create a new Driverless AI Deployment Template to deplo
 
 ## Appendix A: Troubleshooting Deployment
 
-### Amazon Labmda
+### Amazon Lambda
 
 If you receive the following error related to the function call:
 
