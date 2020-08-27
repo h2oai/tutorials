@@ -235,8 +235,7 @@ This tragedy shooked the international community and led to better safety regula
 
 2\. Select **FILE SYSTEM**
 
-
-[<img src="assets/add-dataset-file-system.jpg" width="350"/>](add-dataset-file-system.jpg)
+![add-dataset-file-system](assets/add-dataset-file-system.jpg)
 
 3\. Enter the following:
 1. ```/data/TestDrive/titanic.csv``` into the search bar
@@ -304,9 +303,7 @@ We are now going to explore the Titanic dataset that we just loaded.
 
     - View the first 20 rows of a column by hovering over the column name (see image below)
 
-
-
-[<img src="assets/datasets-details-first-20-rows.jpg" width="350"/>](assets/datasets-details-first-20-rows.jpg)
+![datasets-details-first-20-rows.jpg](assets/datasets-details-first-20-rows.jpg)
 
 **Note**: Driverless AI recognizes the following column types: integer, string, real, boolean, and time. Date columns are given a string "str" type.
 
@@ -638,9 +635,7 @@ These transformations are created with the following transformers:
 
 You can also hover over any of the variables under variable importance to get a simple explanation of the transformer used as seen in the image below:
 
-
-
-[<img src="assets/variable-importance-hover-for-transformer.jpg" width="550"/>](assets/variable-importance-hover-for-transformer.jp)
+![variable-importance-hover-for-transformer](assets/variable-importance-hover-for-transformer.jpg)
 
 The complete list of features used in the final model is available in the Experiment Summary artifacts. The Experiment Summary also provides a list of the original features and their estimated feature importance. 
 
@@ -706,8 +701,7 @@ An ROC curve is a useful tool because it only focuses on how well the model was 
 
 The ROC curve below shows Receiver-Operator Characteristics curve stats on validation data along with the best Accuracy, MCC, and F1 values[2].
 
-
-[<img src="assets/experiment-results-roc-graph.jpg" width="550"/>](assets/experiment-results-roc-graph.jpg)
+![assets/experiment-results-roc-graph](assets/experiment-results-roc-graph.jpg)
 
 This ROC gives an Area Under the Curve or AUC of .7980. The AUC tells us that the model is able to separate the survivor class with an accuracy of 79.80%.
 
@@ -719,8 +713,7 @@ Prec-Recall is a complementary tool to ROC curves, especially when the dataset h
 
 The Prec-Recall plot below shows the Precision-Recall curve on validation data along with the best Accuracy, MCC, and F1 values. The area under this curve is called AUCPR.
 
-
-[<img src="assets/experiment-results-prec-recall-graph.jpg" width="550"/>](assets/experiment-results-prec-recall-graph.jpg)
+![experiment-results-prec-recall-graph](assets/experiment-results-prec-recall-graph.jpg)
 
 Similarly to the ROC curve, when we take a look at the area under the curve of the Prec-Recall Curve of AUCPR we get a value of .7614. This tells us that the model brings forth relevant results or those cases of the passengers that survived with an accuracy of 76.14%.
 
@@ -732,7 +725,7 @@ Lift can help us answer the question of how much better one can expect to do wit
 
 The Cumulative Lift chart shows lift stats on validation data. For example, “How many times more observations of the positive target class are in the top predicted 1%, 2%, 10%, etc. (cumulative) compared to selecting observations randomly?” By definition, the Lift at 100% is 1.0.
 
-[<img src="assets/experiment-results-lift-graph.jpg" width="550"/>](assets/experiment-results-lift-graph.jpg)
+![experiment-results-lift-graph](assets/experiment-results-lift-graph.jpg)
 
 
 Learn more about the Cumulative Lift Chart on [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus: Cumulative Lift](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus).
@@ -747,8 +740,7 @@ In the Gains Chart below, the x-axis shows the percentage of cases from the tota
 
 The Cumulative Gains Chart below shows Gains stats on validation data. For example, “What fraction of all observations of the positive target class are in the top predicted 1%, 2%, 10%, etc. (cumulative)?” By definition, the Gains at 100% are 1.0.
 
-
-[<img src="assets/experiment-results-gains-graph.jpg" width="550"/>](assets/experiment-results-gains-graph.jpg)
+![experiment-results-gains-graph](assets/experiment-results-gains-graph.jpg)
 
 The Gains chart above tells us that when looking at the 20% quantile, the model can positively identify ~45% of the survivors compared to a random model(or no model) which would be able to positively identify about ~20% of the survivors at the 20% quantile.
 
@@ -762,8 +754,7 @@ K-S or the Kolmogorov-Smirnov chart measures the degree of separation between po
 
 Hover over a point in the chart to view the quantile percentage and Kolmogorov-Smirnov value for that point.
 
-
-[<img src="assets/experiment-results-gains-k-s.jpg" width="550"/>](assets/experiment-results-gains-k-s.jpg)
+![experiment-results-gains-k-s](assets/experiment-results-gains-k-s.jpg)
 
 
 For the K-S chart above, if we look at the top 60% of the data, the at-chance model (the dotted diagonal line) tells us that only 60% of the data was successfully separate between positives and negatives (survived and did not survived). However, with the model, it was able to do .4005, or about ~40% of the cases were successfully separated between positives and negatives.
@@ -970,17 +961,17 @@ This section describes MLI functionality and features for regular experiments. F
 
      1: Click on the **RF Partial Dependence Plot** visual
 
-    ![rf-partial-dependence-plot](assets/rf-partial-dependence-plot.jpg)
+     ![rf-partial-dependence-plot](assets/rf-partial-dependence-plot.jpg)
 
-    - **RF(Random Forest) LOCO**
+     - **RF(Random Forest) LOCO**
 
-    To access the Surrogate RF(Random Forest) LOCO Model consider the following steps:
+     To access the Surrogate RF(Random Forest) LOCO Model consider the following steps:
 
-    ![surrogate-models-rf-loco](assets/surrogate-models-rf-loco.jpg)
+     ![surrogate-models-rf-loco](assets/surrogate-models-rf-loco.jpg)
 
-     1: Click on the **RF LOCO** visual
+      1: Click on the **RF LOCO** visual
 
-     ![rf-loco](assets/rf-loco.jpg)
+      ![rf-loco](assets/rf-loco.jpg)
 
 4. **Dashboard** - The Model Interpretation Page includes the following:
     - K-Lime: Global Interpretability Model Explanation Plot
@@ -990,7 +981,7 @@ This section describes MLI functionality and features for regular experiments. F
 
 5. **Actions:** 
 
-    [<img src="assets/regression-and-classification-explanations-actions.jpg" width="350"/>](assets/regression-and-classification-explanations-actions.jpg)
+    ![regression-and-classification-explanations-actions](assets/regression-and-classification-explanations-actions.jpg)
 
     *Note:*
 
@@ -1127,7 +1118,7 @@ Driverless AI allows you to download auto-generated documents such as the Downlo
 
 1\. Click on **Download Summary & Logs**
 
- [<img src="assets/download-experiment-summary.jpg" width="350"/>](assets/download-experiment-summary.jpg)
+ ![download-experiment-summary](assets/download-experiment-summary.jpg)
 
 When you open the zip file, the following files should be included:
 
@@ -1144,8 +1135,7 @@ When you open the zip file, the following files should be included:
 
 3\. Click on **Download Autoreport**
 
-
- [<img src="assets/download-autoreport.jpg" width="350"/>](assets/download-autoreport.jpg)
+ ![download-autoreport](assets/download-autoreport.jpg)
 
 **Autoreport** is a Word version of an auto-generated report for the experiment. A report file (AutoDoc) is included in the experiment summary.
 
@@ -1228,7 +1218,7 @@ From the Projects page, you can link datasets and/or experiments, and you can ru
     - **Selected Datasets Type**: Training, Testing or Validation
     - Additional information on the dataset that was selected: Name, Rows, Columns
 
-    [<img src="assets/projects-page-time-series-datasets.jpg" width="350" height="550"/>](assets/projects-page-time-series-datasets.jpg)
+    ![projects-page-time-series-datasets](assets/projects-page-time-series-datasets.jpg)
         
     - **+ Link dataset** : Link an additional dataset (Training, Testing or Validation) to the existing project
 
