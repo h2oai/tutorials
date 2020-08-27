@@ -805,13 +805,7 @@ There are two ways to generate the MLI Report, selecting the **MLI** link on the
 
 ![interpret-this-model](assets/interpret-this-model.jpg)
 
-2\. Once the MLI model is complete, you should see an image similar to the one below:
-
-![finishing-up-mli](assets/finishing-up-mli.jpg)
-
-3\. Once the **MLI Experiment is finished** the following should appear:
-
-4\. The MLI Interpretability Page has the explanations to the model results in a human-readable format.  
+2\. The MLI Interpretability Page has the explanations to the model results in a human-readable format. Once the **MLI Experiment is finished** the following should appear:
 
 This section describes MLI functionality and features for regular experiments. For non-time-series experiments, this page provides several visual explanations and reason codes for the trained Driverless AI  model, and it's results.  
 
