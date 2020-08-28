@@ -247,7 +247,7 @@ x = list(set(train.names) - set(ignore))
 <pre><code>[[0.9757992545882868, 0.9638505373028652]]
 </code></pre>
 <p>Note that if you wanted to output the metric for a specific threshold, you just need to define the threshold inside the parenthesis as shown below:</p>
-<pre><code>glm.accuracy(thresholds=0.9638505373028652)
+<pre><code>glm.accuracy(thresholds=0.9757992545882868)
 </code></pre>
 <p>This should give you the same output as before.</p>
 <p>We will now take a look at the first ten predictions of our model with the following command:</p>
@@ -417,8 +417,8 @@ sorted_glm_grid.sorted_metric_table()
 <p><img alt="flow-glm-grid-settings" src="img/5b6428afab3d84a9.jpg"></p>
 <p>Once you have updated the settings, click on <strong>Build Model.</strong> When the model is done, click on <strong>View,</strong> and you will see the list of your models. The top model will be the model with the best AUC score. Click on it and explore the results. Our best model yielded to a validation AUC score of <strong>0.8548</strong>, and our ROC curve is shown below.</p>
 <p><img alt="flow-glm-grid-AUC" src="img/f3b48bab3604b891.jpg"></p>
-<p>After looking at the grid search from Flow, let&#39;s explore the best model obtained from our grid search in our Jupyter Notebook. Save the best model and print the model summary with the following code:</p>
-<pre><code>tuned_glm = glm_grid.models[0] 
+<p>After looking at the grid search from Flow, let&#39;s explore the best model obtained from our grid search in our Jupyter Notebook. Retrieve the best model and print the model summary with the following code:</p>
+<pre><code>tuned_glm = sorted_glm_grid.models[0]
 tuned_glm.summary()
 </code></pre>
 <p><img alt="glm-summary" src="img/4cbe475e01a83e6d.jpg"></p>
@@ -440,9 +440,9 @@ print (&#34;Tuned GLM F1 Score&#34;, tuned_glm_perf.F1())
 </code></pre>
 <p><strong>Output:</strong></p>
 <pre><code>Default GLM F1 Score: [[0.1223956407234934, 0.28271823505379273]]
-Tuned GLM F1 Score [[0.12656110892470535, 0.2827977315689981]]
+Tuned GLM F1 Score [[0.1260471303106269, 0.28253908457336596]]
 </code></pre>
-<p>The max F1 Score did not have a significant improvement. Although the threshold slightly increased, it did not improve the overall F1 Score by much. Let&#39;s take a look at the confusion matrix to see if the values changed.</p>
+<p>The max F1 Score did not really improvement. Although the threshold slightly increased, it did not improve the overall F1 Score. Let&#39;s take a look at the confusion matrix to see if the values changed.</p>
 <pre><code>print (&#34;Default GLM: &#34;, default_glm_perf.confusion_matrix())
 print (&#34;Tuned GLM: &#34;,  tuned_glm_perf.confusion_matrix())
 </code></pre>
@@ -531,40 +531,43 @@ sorted_rf.sorted_metric_table()
 <p>The reason we do a two-step approach to tune the RF model is that when you have large values for <code>max_depth</code> and <code>ntrees</code> your model will take a long time to train and we could be wasting computational time. For example, say we decided to do just one grid search, and we have <code>max_depth=35</code> and <code>ntrees=500,</code> and our grid search actually chooses to train that model, it would take a long time to train, and based on our results, the score wouldn&#39;t be good. That&#39;s why we narrow down the range for <code>max_depth</code> and then do a local search with the top values. And as you can see from our results, even though in our first grid search <code>max_depth=12</code> was the second best value, when we combined that with another parameter, we see that <code>max_depth=12</code> yields better results that <code>max_depth=10.</code></p>
 <p>To do the grid search for the RF model in Flow, start by building another default RF model the same way we did in Task 5. But this time, check the <em>Grid</em> checkbox next to <code>max_depth</code> and add the list of the hyper-parameters that you want.<br>For example, for <strong>max_depth</strong> you can do <code>1;5;10;12;15;20;50;</code> You can do the same with other parameters that you would like to tune. After you click on <strong>build</strong>, your grid search for your RF will start. You can even use values closest to the one we obtained in the Jupyter Notebook to see if you can get an even better score! Explore the results on your own, and see if the results make sense.</p>
 <p>Return to the Jupyter Notebook and check some of the outputs that we obtained from our tuned model.</p>
-<p>Print the validation AUC</p>
+<p>Let&#39;s first retrieve the best model from our grid search:</p>
+<pre><code>tuned_rf = sorted_rf.models[0]
+</code></pre>
+<p>Now, print the validation AUC</p>
 <pre><code>tuned_rf_per = tuned_rf.model_performance(valid)
 tuned_rf_per.auc()
 </code></pre>
 <p><strong>Output:</strong></p>
-<pre><code>0.8532106454866067
+<pre><code>0.8535548143860894
 </code></pre>
 <p>And the F1 Score</p>
 <pre><code>tuned_rf_per.F1()
 </code></pre>
 <p><strong>Output:</strong></p>
-<pre><code>[[0.15319305390071997, 0.31049913941480206]]
+<pre><code>[[0.14123073491506105, 0.30839078526988395]]
 </code></pre>
-<p>The AUC from the validation data was <strong>0.8532,</strong> and the F1 Score was <strong>0.3105</strong></p>
+<p>The AUC from the validation data was <strong>0.8536,</strong> and the F1 Score was <strong>0.3084</strong></p>
 <p>Let&#39;s compare the tuned model with the default model.</p>
 <pre><code>print(&#34;Default RF AUC: %.4f \nTuned RF AUC:%.4f&#34; % (default_rf_per.auc(), tuned_rf_per.auc()))
 </code></pre>
 <p><strong>Output:</strong></p>
 <pre><code>Default RF AUC: 0.8265 
-Tuned RF AUC:0.8532
+Tuned RF AUC:0.8536
 </code></pre>
 <p>The AUC value for our RF model had a decent improvement by tuning <code>max_depth</code> and the <code>sample_rate</code> while using <code>ntrees=500</code> with early stopping. We will check the F1 score to see how it compares to the F1 of our default model.</p>
 <pre><code>print(&#34;Default RF F1 Score:&#34;, default_rf_per.F1())
 print(&#34;Tuned RF F1 Score:&#34;, tuned_rf_per.F1())
 </code></pre>
 <pre><code>Default RF F1 Score: [[0.18697332295716976, 0.2830355563417654]]
-Tuned RF F1 Score: [[0.15319305390071997, 0.31049913941480206]]
+Tuned RF F1 Score: [[0.14123073491506105, 0.30839078526988395]]
 </code></pre>
 <p>The F1 score also improved. Although the F1 score is still considered low, we will look at the confusion matrix, and we will see how this improvement reflects on the confusion matrix</p>
 <pre><code>print (&#34;Default RF: &#34;, default_rf_per.confusion_matrix())
 print (&#34;Tuned RF: &#34;,  tuned_rf_per.confusion_matrix())
 </code></pre>
 <p><img alt="rf-default-vs-tuned-cf-mx" src="img/f549cd94a5ed7870.jpg"></p>
-<p>The AUC for our tuned model actually improved, as well as the F1 Score and also the misclassification error. From the confusion matrix, we can see that the new model is predicting fewer FALSE labels that are actually FALSE; this means the model is classifying more FALSE labels incorrectly. However, the error is very small and this can still be accepted. On the other side, we can see that our model started to correclty classify more TRUE labels. Remember that we have a highly imbalanced dataset, and with the quick grid search we were able to improve the missclassification error for the minority class, and we can see this also helping improve the overall missclasification error.</p>
+<p>The AUC for our tuned model actually improved, as well as the F1 Score but not the misclassification error. From the confusion matrix, we can see that the new model is predicting fewer FALSE labels that are actually FALSE; this means the model is classifying more FALSE labels incorrectly. However, the error is very small and this can still be accepted. On the other side, we can see that our model started to correclty classify more TRUE labels. Remember that we have a highly imbalanced dataset, and with the quick grid search we were able to improve the missclassification error for the minority class.</p>
 <p>Now, we will see if we can improve our GBM model.</p>
 
 
@@ -682,7 +685,7 @@ print (&#34;RF Test F1 Score: &#34;,  rf_test_per.F1())
 print (&#34;GBM Test F1 Score: &#34;,  gbm_test_per.F1())
 </code></pre>
 <p><strong>Output:</strong></p>
-<pre><code>GLM Test F1 Score:  [[0.14326439932085025, 0.2872583662440241]]
+<pre><code>GLM Test F1 Score:  [[0.14371321518995825, 0.2863113897596656]]
 RF Test F1 Score:  [[0.12904492420714128, 0.29632958801498127]]
 GBM Test F1 Score:  [[0.15359908262968297, 0.30752071383046525]]
 </code></pre>
