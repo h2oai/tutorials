@@ -521,7 +521,7 @@ If you no longer need your Amazon Lambda Driverless AI MOJO Scoring Pipeline dep
 
 In our Amazon AWS IAM account, we just deleted the components related to the Amazon Lambda MOJO deployment. The components that we deleted include the Amazon Lambda function, IAM Policy, IAM Role, API Gateway and s3 bucket. The components that should remain are the IAM access key and IAM secret access key.
 
-## Deep Dive and Resources
+### Deep Dive and Resources
 
 - [Driverless AI: Deploying the MOJO Pipeline](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/deployment.html)
 - [Driverless AI Deployment Template for Local SpringBoot Scorer](https://github.com/h2oai/dai-deployment-templates/tree/master/local-rest-scorer)
