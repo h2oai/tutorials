@@ -383,7 +383,7 @@ https://github.com/h2oai/driverlessai-recipes/blob/rel-1.8.7/models/algorithms/e
 
 ![exp4-expert-settings-model-select-values](assets/exp4-expert-settings-model-select-values.jpg)
 
-9\. Click on **Unselect all**, then select the **ExtraTreess** model and click **Done**
+9\. Click on **Uncheck all**, then select the **ExtraTreess** model and click **Done**
 
 ![exp4-custom-extratrees-model](assets/exp4-custom-extratrees-model.jpg)
 
