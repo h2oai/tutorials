@@ -197,7 +197,7 @@ This dataset set has 3333 customers(rows) and 21 columns representing attributes
 
 ## Task 3: Recipe: Transformer
 
-In Task 2, we ran an experiment to build a model that would predict customer churn. The Driverless AI model that was generated with the settings shown below and gave us the results below:
+In Task 2, we ran an experiment to build a model that would predict customer churn. The Driverless AI model that was generated with the settings shown above gave us the results below:
 
 **Summary of results**:
 
@@ -238,7 +238,7 @@ The goal of importing the new transformer recipe is to see if we can further opt
 
 6\. Copy and paste  the following URL for the SumTransformer into the **Load Custom Recipe** box then click on **Save.**  
 
-**Note:** The Driverless AI Recipes branches rel-1.9.0 and rel-1.9.0 are the same, and have been merged into rel-1.9.0; that is why we are using the links for the 1.9.0 branch.
+**Note:** The Driverless AI Recipe branches rel-1.9.0 and rel-1.9.0 are the same, and have been merged into rel-1.9.0; that is why we are using the links for the 1.9.0 branch.
 
 ```html
 https://github.com/h2oai/driverlessai-recipes/blob/rel-1.9.0/transformers/numeric/sum.py
@@ -246,7 +246,7 @@ https://github.com/h2oai/driverlessai-recipes/blob/rel-1.9.0/transformers/numeri
 
 ![exp2-load-custom-recipe-transformer-raw-url](assets/exp2-load-custom-recipe-transformer-raw-url.jpg)
 
-7\. There will be a message updating you on the status of loading of the recipe; then the Expert Experiment Settings page will re-appear
+7\. There will be a message updating you on the status of loading the recipe; then the Expert Experiment Settings page will re-appear
 
 8\. On the **Expert Experiment Settings** find **Recipes** and click on it
 
@@ -272,8 +272,7 @@ https://github.com/h2oai/driverlessai-recipes/blob/rel-1.9.0/transformers/numeri
 
 Note: In Variable Importance: It might be the case that in your experiment  certain features will start with "SUM;" those are the features from the custom transformer. If so, that will mean that they are playing an important role in the new model. 
 
-In this case, the AUC didn't improve, and that is because DAI didn't use the recipe we uploaded. Though sometimes, DAI makes use of the transformer, and that depends on the Data sampling it uses when running the experiment.  If you want to see how the recipe will improve the AUC, you can go back to recipes and only select the transformer.  
-We will further discuss the results at the end of task 6.
+In this case, the AUC didn't improve, and that is because DAI didn't use the recipe we uploaded. Though sometimes, DAI makes use of the transformer, and that depends on the Data sampling it uses when running the experiment.  If you want to see how the recipe will improve the AUC, you can go back to recipes and only select the transformer. We will further discuss the results at the end of task 6.
 
 ### Deeper Dive and Resources
 
@@ -309,9 +308,9 @@ https://github.com/h2oai/driverlessai-recipes/blob/rel-1.9.0/scorers/classificat
 
 ![exp3-load-custom-recipe-scorer-raw-url](assets/exp3-load-custom-recipe-scorer-raw-url.jpg)
 
-6\. There will be a message updating you on the status of loading of the recipe; then the Expert Experiment Settings page will re-appear
+6\. There will be a message updating you on the status of loading the recipe; then the Expert Experiment Settings page will re-appear
 
-7\. On the **Expert Experiment Settings** find **Recipes** and click on it
+7\. On the **Expert Experiment Settings** find **Recipes**, and click on it
 
 ![exp2-expert-settings-recipes](assets/exp2-expert-settings-recipes.jpg)
 
@@ -325,7 +324,7 @@ https://github.com/h2oai/driverlessai-recipes/blob/rel-1.9.0/scorers/classificat
 
 10\. Select **Save** on the **Expert Experiment Settings** page
 
-11\. Once back on the **Experiment** page, click on the Scorer setting which has **AUC** as seen on the image below:
+11\. Once back on the **Experiment** page, click on the Scorer setting which has an **AUC** as seen on the image below:
 
 ![exp3-scorer-update](assets/exp3-scorer-update.jpg)
 
@@ -469,28 +468,28 @@ Confusion Matrices for each of the selected models
 
 From the confusion matrices shown above, we can get an idea of how the models with the custom recipes improved. We can see that the Scorer recipe, yielded a lower misclassification error compare to the baseline misclassification error of 7.56% .
 
-Misclassification (all **incorrect** / all) = FP + FN / TP + TN + FP + FN
+- Formula: Misclassification (all **incorrect** / all) = FP + FN / TP + TN + FP + FN
 
 - The misclassification percentage for the Scorer recipe is:
 
    Misclassification = 133 + 103 / 2717 + 380 + 133 + 103
 
-   Misclassification = 236 / 3,333 = 0.0708 = 7.08%
+   Misclassification = 236 / 3,333 = 0.0708 = **7.08%**
 
 - The misclassification percentage for the Baseline is:
 
    Misclassification = 146 + 106 / 377 + 2704 + 106 + 146
 
-  Misclassification = 252 / 3,333 = 0.0756 = 7.56%
+  Misclassification = 252 / 3,333 = 0.0756 = **7.56%**
 
 
- However, since we were working with a slightly imbalanced dataset, we need to take a closer look at the confusion matrices. We see that by using the custom recipes, the models started predicting more **False** labels correctly, in other words, we see more **True Negatives;** thus, we have a smaller misclassification error for the **False** class. On the other hand, only the Scorer recipe helped our model to predict more **True** labels correctly because, for the Transformer recipe, it was the opposite. The Scorer recipe helped the model get more **True Positives** than the baseline model, while the Transformer recipe got less **True Positives** than the baseline model.  For that reason, we see that the misclassification error for the True label only improved for the model with the Scorer recipe.
+ However, since we were working with a slightly imbalanced dataset, we need to take a closer look at the confusion matrices. We see that by using the custom recipes, the models started predicting more **False** labels correctly, in other words, we see more **True Negatives;** thus, we have a smaller misclassification error for the **False** class. On the other hand, only the Scorer recipe helped our model to predict more **True** labels correctly because, for the Transformer recipe, it was the opposite. The Scorer recipe helped the model get more **True Positives** than the baseline model, while the Transformer recipe got less **True Positives** than the baseline model.  For that reason, we see that the misclassification error for the True label only improved for the model with the Scorer recipe. Though this can change if we inpartiuclar make DAI only use the transformer recipe on experiemnt 2. 
 
 ROC Curves for each model selected:
 
 ![project-model-comparison2](assets/project-model-comparison2.jpg)
 
-We can see that when we used the Scorer recipe, the model had better AUC with an accuracy of 0.9125 compared to Exp 1 - Baseline, which had an accuracy of 0.9080. Though in Exp 2 - Transformer, the AUC didn't improved, and therefore, there was a small decrease in the AUC. Also, when looking at the variable importance, we see a slight variation on the variables that have the largest contribution to customers churning. In Exp 1 - Baseline, the variables with most importance when it came to customers churning were "CustServ Calls," and "Day Charge." Exp 2, where we used the Transformer to sum columns with similar numerical data, we have the most important variable "CustServ Calls" and "sum of CustServ Calls, Day Charge, FreqL:Int'L Plan, Day Mins, Intl Charge, and Eve Charge." 
+We can see that when we used the Scorer recipe, the model had better AUC with an accuracy of 0.9125 compared to Exp 1 - Baseline, which had an accuracy of 0.9080. Though in Exp 2 - Transformer, the AUC didn't improved, and therefore, there was a small decrease in the AUC. Also, when looking at the variable importance, we see a slight variation on the variables that have the largest contribution to customers churning. In Exp 1 - Baseline, the variables with most importance when it came to customers churning were "CustServ Calls," and "Day Charge." Exp 2, where we used the Transformer to sum columns with similar numerical data, we have the most important variable "CustServ Calls" and "sum of CustServ Calls."
 
 ### Deeper Dive and Resources
 
@@ -501,20 +500,20 @@ We can see that when we used the Scorer recipe, the model had better AUC with an
 
 H2O custom recipes reside in the H2O Driverless AI Recipes GitHub repo. **There are multiple branches of Driverless AI recipes so make sure that you are using the same branch as the Driverless AI version you have.**
 
-For this tutorial, we are using **Driverless AI 1.9.0,** but we will be working off the Driverless AI 1.9.0 branch, as both 1.9.0 and 1.9.0 branches have been merged.
+For this tutorial, we are using **Driverless AI 1.9.0,** but we will be working off the Driverless AI 1.9.0 branch.
 
 1\. Open the link below on a separate tab. Make sure the branch is **rel-1.9.0**
 
 - [H2O Driverless AI Recipes GitHub Repo](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.9.0)
 
-The rel-1.9.0 branch will similar to the page below:
+The rel-1.9.0 branch will be similar to the page below:
 
 ![dai-recipes-github-page](assets/dai-recipes-github-page.jpg)
 
 2\. Recipes can be uploaded to Driverless AI by:
 - Uploading custom recipes from your local machine
-- Loading custom recipes from URL by copying and pasting the URL, as shown in this tutorial. 
-- Going to the official recipes (external) repo and search for the recipe that you need and then copying the link to use in `+ Load Custom Recipe from URL`
+- Loading custom recipes from "URL" by copying and pasting the "URL", as shown in this tutorial. 
+- Go to the official recipes (external) repo and search for the recipe that you need and then copy the link to use in `+ Load Custom Recipe from URL`
 
 ![upload-recipes](assets/upload-recipes.jpg)
 
@@ -549,7 +548,7 @@ https://github.com/h2oai/driverlessai-recipes/blob/rel-1.9.0/scorers/classificat
 
 ### Uploading Recipes from Local Machine 
 
-For this tutorial, we are using **Driverless AI 1.9.0,** but we will be working off the Driverless AI 1.9.0 branch, as both, 1.9.0 and 1.9.0 branches have been merged.
+For this tutorial, we are using **Driverless AI 1.9.0,** but we will be working off the Driverless AI 1.9.0 branch.
 
 1\. Open the link below on a separate tab. Make sure the branch is **rel-1.9.0**
 
@@ -559,7 +558,7 @@ For this tutorial, we are using **Driverless AI 1.9.0,** but we will be working 
 
 ![dai-recipes-repo-download](assets/dai-recipes-repo-download.jpg)
 
-3\. Unzip the driverless-recipes-rel-1.9.0 file and save it on your local machine, your directory of choice.
+3\. Unzip the driverless-recipes-rel-1.9.0 file and save it on your local machine.
 
 4\. On Driverless AI, start an Experiment, then select Expert Settings. Now instead of selecting **+Load Custom Recipe From URL**, you will select **+Upload Custom Recipe**
 
@@ -583,7 +582,7 @@ For this tutorial, we are using **Driverless AI 1.9.0,** but we will be working 
 
 ## Next Steps
 
-Check out Driverless AI next tutorial [Develop Your Own Custom Recipe Tutorial](https://training.h2o.ai/products/tutorial-3b-build-your-own-custom-recipe-tutorial)
+Check out Driverless AI's next tutorial: [Develop Your Own Custom Recipe Tutorial](https://training.h2o.ai/products/tutorial-3b-build-your-own-custom-recipe-tutorial)
 
 Where you will learn to build a:
   - Custom Transformer Recipe
