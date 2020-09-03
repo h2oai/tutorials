@@ -372,7 +372,7 @@ glm.accuracy()
 Note that if you wanted to output the metric for a specific threshold, you just need to define the threshold inside the parenthesis as shown below:
 
 ```python
-glm.accuracy(thresholds=0.9638505373028652)
+glm.accuracy(thresholds=0.9757992545882868)
 ```
 This should give you the same output as before.
 
@@ -675,10 +675,10 @@ Once you have updated the settings, click on **Build Model.** When the model is 
 
 ![flow-glm-grid-AUC](assets/flow-glm-grid-AUC.jpg)
 
-After looking at the grid search from Flow, let's explore the best model obtained from our grid search in our Jupyter Notebook. Save the best model and print the model summary with the following code:
+After looking at the grid search from Flow, let's explore the best model obtained from our grid search in our Jupyter Notebook. Retrieve the best model and print the model summary with the following code:
 
 ``` python
-tuned_glm = glm_grid.models[0] 
+tuned_glm = sorted_glm_grid.models[0]
 tuned_glm.summary()
 ``` 
 ![glm-summary](assets/glm-summary.jpg)
@@ -712,10 +712,10 @@ print ("Tuned GLM F1 Score", tuned_glm_perf.F1())
 **Output:**
 ``` python
 Default GLM F1 Score: [[0.1223956407234934, 0.28271823505379273]]
-Tuned GLM F1 Score [[0.12656110892470535, 0.2827977315689981]]
+Tuned GLM F1 Score [[0.1260471303106269, 0.28253908457336596]]
 ```
 
-The max F1 Score did not have a significant improvement. Although the threshold slightly increased, it did not improve the overall F1 Score by much. Let’s take a look at the confusion matrix to see if the values changed.  
+The max F1 Score did not really improvement. Although the threshold slightly increased, it did not improve the overall F1 Score. Let’s take a look at the confusion matrix to see if the values changed.  
 
 
 ``` python
@@ -837,7 +837,12 @@ For example, for **max_depth** you can do `1;5;10;12;15;20;50;` You can do the s
 
 Return to the Jupyter Notebook and check some of the outputs that we obtained from our tuned model. 
 
-Print the validation AUC 
+Let's first retrieve the best model from our grid search:
+```python
+tuned_rf = sorted_rf.models[0]
+```
+
+Now, print the validation AUC 
 ```python
 tuned_rf_per = tuned_rf.model_performance(valid)
 tuned_rf_per.auc()
@@ -846,7 +851,7 @@ tuned_rf_per.auc()
 **Output:**
 
 ```python
-0.8532106454866067
+0.8535548143860894
 ```
 And the F1 Score
 
@@ -856,9 +861,9 @@ tuned_rf_per.F1()
 
 **Output:**
 ```python
-[[0.15319305390071997, 0.31049913941480206]]
+[[0.14123073491506105, 0.30839078526988395]]
 ```
-The AUC from the validation data was **0.8532,** and the F1 Score was **0.3105**
+The AUC from the validation data was **0.8536,** and the F1 Score was **0.3084**
 
 Let's compare the tuned model with the default model. 
 
@@ -868,7 +873,7 @@ print("Default RF AUC: %.4f \nTuned RF AUC:%.4f" % (default_rf_per.auc(), tuned_
 **Output:**
 ```python
 Default RF AUC: 0.8265 
-Tuned RF AUC:0.8532
+Tuned RF AUC:0.8536
 ```
 The AUC value for our RF model had a decent improvement by tuning `max_depth` and the `sample_rate` while using `ntrees=500` with early stopping. We will check the F1 score to see how it compares to the F1 of our default model. 
 
@@ -879,7 +884,7 @@ print("Tuned RF F1 Score:", tuned_rf_per.F1())
 
 ```python
 Default RF F1 Score: [[0.18697332295716976, 0.2830355563417654]]
-Tuned RF F1 Score: [[0.15319305390071997, 0.31049913941480206]]
+Tuned RF F1 Score: [[0.14123073491506105, 0.30839078526988395]]
 ```
 The F1 score also improved. Although the F1 score is still considered low, we will look at the confusion matrix, and we will see how this improvement reflects on the confusion matrix
 
@@ -890,7 +895,7 @@ print ("Tuned RF: ",  tuned_rf_per.confusion_matrix())
 
 ![rf-default-vs-tuned-cf-mx](assets/rf-default-vs-tuned-cf-mx.jpg)
 
-The AUC for our tuned model actually improved, as well as the F1 Score and also the misclassification error. From the confusion matrix, we can see that the new model is predicting fewer FALSE labels that are actually FALSE; this means the model is classifying more FALSE labels incorrectly. However, the error is very small and this can still be accepted. On the other side, we can see that our model started to correclty classify more TRUE labels. Remember that we have a highly imbalanced dataset, and with the quick grid search we were able to improve the missclassification error for the minority class, and we can see this also helping improve the overall missclasification error.
+The AUC for our tuned model actually improved, as well as the F1 Score but not the misclassification error. From the confusion matrix, we can see that the new model is predicting fewer FALSE labels that are actually FALSE; this means the model is classifying more FALSE labels incorrectly. However, the error is very small and this can still be accepted. On the other side, we can see that our model started to correclty classify more TRUE labels. Remember that we have a highly imbalanced dataset, and with the quick grid search we were able to improve the missclassification error for the minority class. 
 
 Now, we will see if we can improve our GBM model.
 
@@ -1052,7 +1057,7 @@ print ("GBM Test F1 Score: ",  gbm_test_per.F1())
 **Output:**
 
 ```python
-GLM Test F1 Score:  [[0.14326439932085025, 0.2872583662440241]]
+GLM Test F1 Score:  [[0.14371321518995825, 0.2863113897596656]]
 RF Test F1 Score:  [[0.12904492420714128, 0.29632958801498127]]
 GBM Test F1 Score:  [[0.15359908262968297, 0.30752071383046525]]
 ```
