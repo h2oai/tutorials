@@ -391,7 +391,7 @@ Exploremos la correlación entre la variable 'survived' (sobrevividó) y otras v
 6\. Una vez que haya terminado de explorar los otros gráficos, regrese a la **datasets page** (página de conjuntos de datos).
  
 Driverless AI muestra los gráficos que son aspectos relevantes a los datos. Los siguientes son los tipos de gráficos disponibles:
- 
+ test
 - Correlated Scatterplots (Diagramas de dispersión correlacionados)
 - Spikey Histograms (Histogramas puntiagudos)
 - Skewed Histograms (Histogramas sesgados)
