@@ -153,9 +153,9 @@ AutoML o Aprendizaje de Máquina Automatizado es el proceso de automatización p
  
 ## Tarea 3: Cargar Datos
  
-### ¿Cuál es el flujo de trabajo de Driverless AI?
+### ¿Cuál es el flujo del trabajo de Driverless AI?
  
-El flujo de trabajo típico de Driverless AI es:
+El flujo del trabajo típico de Driverless AI es:
  
 1. Cargar datos
 2. Visualizar datos
@@ -163,7 +163,7 @@ El flujo de trabajo típico de Driverless AI es:
 4. Interpretar el modelo
 5. Desplegar la tubería de puntuación
  
-Además, puedes diagnosticar un modelo, transformar otro conjunto de datos, calificar el modelo con respecto a otro conjunto de datos y administrar sus datos en Proyectos. El enfoque de este tutorial estará en los pasos 1 a 4. Los otros aspectos de Driverless AI se cubrirán en otros tutoriales que se encuentran en la ruta de aprendizaje de Driverless AI. Comenzaremos cargando los datos.
+Además, puedes diagnosticar un modelo, transformar otro conjunto de datos, calificar el modelo con respecto a otro conjunto de datos y administrar sus datos en los Proyectos. El enfoque de este tutorial estará en los pasos del 1 al 4. Los otros aspectos de Driverless AI se cubrirán en otros tutoriales que se encuentran en la ruta de aprendizaje de Driverless AI. Comenzaremos por empesar a  cargar los datos.
  
 ![typical-driverless-ai-workflow](assets/typical-driverless-ai-workflow.jpg)
  
@@ -172,7 +172,7 @@ Además, puedes diagnosticar un modelo, transformar otro conjunto de datos, cali
 ### Información del conjunto de datos
  
 El conjunto de datos usados en este experimento es una versión del conjunto del Titanic elaborado por Kaggle. Este conjunto de datos contiene una lista de los pasajeros a bordo del RMS Titanic.
-El RMS Titanic fue un transatlántico británico que se hundió tras colisionar con un iceberg al norte del océano Atlántico el 15 de abril de 1912. De 2,224 pasajeros y miembros de la tripulación, perdieron la vida más de 1,500 personas en la ruta marítima de Southampton a la Ciudad de Nueva York.
+El RMS Titanic fue un transatlántico británico que se hundió tras colisionar con un iceberg al norte del océano Atlántico el 15 de abril de 1912. Mas de 1500 personas perdieron la vida de un estimado de 2,224 pasajeros y miembros de la tripulación, cuando estaban en camino ala marítima de Southampton en  la Ciudad de Nueva York.
 Esta tragedia impactó a la comunidad internacional, lo que impulsó mejores medidas de seguridad para barcos. La falta de botes salvavidas entre otras cosas, fue uno de los factores determinantes en la pérdida de vidas. Sin embargo, hubo algunos elementos que influyeron para que hubiera sobrevivientes.
  
 ![rms-titanic](assets/rms-titanic.jpeg)
@@ -214,27 +214,28 @@ En el conjunto de datos encontrarás 1,309 filas, una fila por cada pasajero, y 
  
 3\. Ingresa los siguiente 
 1. /data/TestDrive/titanic.csv en la barra de búsqueda.
-2. Selecciona titanic.csv y después titanic.csv 
+2. Selecciona titanic.csv 
 3. Luego haga clic aquí: **Click to Import Selection.**
  
 ![select-titanic-dataset](assets/select-titanic-dataset.jpg)
  
-4\. Si el archivo se carga con éxito deberás ver lo siguiente:
+4\. Si el archivo se cargo con éxito deberiás de ver lo siguiente o algo similar alo que se encuentra en la imagen de abajo:
  
 ![titanic-set-overview](assets/titanic-set-overview.jpg)
  
 **Notas**
+**Cosas que necesitas notar**
  
 1. Podrás ver en cada columna:
  
     - **File name:** Nombre del archivo del conjunto de datos 
     - **File Path:** Ruta del archivo 
     - **File Size:** Tamaño del archivo 
-    - **Rows:** Número de filas Rows
+    - **Rows:** Número de filas o Rows
     - **Columns:** Número de columnas 
-    - **Status:** Estado del archivo Status
+    - **Status:** Estado del archivo osea Status
  
-2. Opción para regresar a la página anterior
+2. La opción para regresar a la página anterior
  
 ### Más información y recursos
  
