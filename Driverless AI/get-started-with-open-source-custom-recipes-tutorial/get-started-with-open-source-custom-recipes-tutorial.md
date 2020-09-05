@@ -17,7 +17,7 @@
 
 At H2O.ai, we believe that every company can and should be an AI company. This is a fundamental concept for the future of every business and organization today. As you embark on this AI journey to make your own AI, we want you to explore the key considerations as well as the technology that will make your own AI a possibility.
 
-To make your own AI with an automatic machine learning platform, the platform needs to be open and extensible. This allows data scientists to influence the automatic machine learning optimization process and for the process to consider additional feature engineering, scorers metrics, and modeling algorithms. Data scientists can add their insights, customizations, and domain expertise to build the most accurate models for each use cases. Driverless AI uses the concept of recipes to optimize the machine learning process, and with Driverless AI 1.7.0 and later versions, users can add and develop custom recipes.
+To make your own AI with an automatic machine learning platform, the platform needs to be open and extensible. This allows data scientists to influence the automatic machine learning optimization process and for the process to consider additional feature engineering, scorers metrics, and modeling algorithms. Data scientists can add their insights, customizations, and domain expertise to build the most accurate models for each use case. Driverless AI uses the concept of recipes to optimize the machine learning process, and with Driverless AI 1.7.0 and later versions, users can add and develop custom recipes.
 
 In this tutorial, we will cover what a recipe is, the different types of recipes available, and how to upload existing recipes to Driverless AI through the URL option. The three types of custom recipes that will be covered are transformer, scorer, and model.
 
@@ -29,7 +29,7 @@ You will need the following to be able to do this tutorial:
 
 - A Driverless AI environment that is version 1.7.0 or newer
 
-- Basic knowledge of Driverless AI or doing the [Automatic Machine Learning Introduction with Drivereless AI Test Drive](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai) 
+- Basic knowledge of Driverless AI or doing the [Automatic Machine Learning Introduction with Driverless AI Test Drive](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai) 
 
 - A **Two-Hour Test Drive session** : Test Drive is H2O.ai's Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.
 
@@ -189,7 +189,7 @@ This dataset set has 3333 customers(rows) and 21 columns representing attributes
 
 - **Under summary**: The validation score is 0.9080 with a best accuracy of 0.9286 (click on ROC then hover over Best ACC)
 
-- **Variable Importance**: The top variable that led to a customer churning according to this model was "CustServ Calls." The other variable of most importance is "Day_charge". Intuitively this makes sense because if a customer is overpaying for calls in the morning when they might be the most active and also overpaying for "CustServ Calls", it could have led a dissatisfied customer.
+- **Variable Importance**: The top variable that led to a customer churning according to this model was "CustServ Calls." The other variable of most importance is "Day_charge". Intuitively this makes sense because if a customer is overpaying for calls in the morning when they might be the most active and also overpaying for "CustServ Calls", it could have led to a dissatisfied customer.
 
 ### Deeper Dive and Resources
 
@@ -272,7 +272,7 @@ https://github.com/h2oai/driverlessai-recipes/blob/rel-1.9.0/transformers/numeri
 
 Note: In Variable Importance: It might be the case that in your experiment  certain features will start with "SUM;" those are the features from the custom transformer. If so, that will mean that they are playing an important role in the new model. 
 
-In this case, the AUC didn't improve, and that is because DAI didn't use the recipe we uploaded. Though sometimes, DAI makes use of the transformer, and that depends on the Data sampling it uses when running the experiment.  If you want to see how the recipe will improve the AUC, you can go back to recipes and only select the transformer. We will further discuss the results at the end of task 6.
+In this case, the AUC didn't improve, and that is because Driverless AI didn't use the recipe we uploaded. Though sometimes, Driverless Ai makes use of the transformer, and that depends on the Data sampling it uses when running the experiment.  If you want to see how the recipe will improve the AUC, you can go back to recipes and only select the transformer. We will further discuss the results at the end of task 6.
 
 ### Deeper Dive and Resources
 
@@ -466,7 +466,7 @@ Confusion Matrices for each of the selected models
 
 ![project-model-comparison-matrix](assets/project-model-comparison-matrix.jpg)
 
-From the confusion matrices shown above, we can get an idea of how the models with the custom recipes improved. We can see that the Scorer recipe, yielded a lower misclassification error compare to the baseline misclassification error of 7.56% .
+From the confusion matrices shown above, we can get an idea of how the models with the custom recipes improved. We can see that the Scorer recipe yielded a lower misclassification error compared to the baseline misclassification error of 7.56% .
 
 - Formula: Misclassification (all **incorrect** / all) = FP + FN / TP + TN + FP + FN
 
@@ -483,13 +483,13 @@ From the confusion matrices shown above, we can get an idea of how the models wi
   Misclassification = 252 / 3,333 = 0.0756 = **7.56%**
 
 
- However, since we were working with a slightly imbalanced dataset, we need to take a closer look at the confusion matrices. We see that by using the custom recipes, the models started predicting more **False** labels correctly, in other words, we see more **True Negatives;** thus, we have a smaller misclassification error for the **False** class. On the other hand, only the Scorer recipe helped our model to predict more **True** labels correctly because, for the Transformer recipe, it was the opposite. The Scorer recipe helped the model get more **True Positives** than the baseline model, while the Transformer recipe got less **True Positives** than the baseline model.  For that reason, we see that the misclassification error for the True label only improved for the model with the Scorer recipe. Though this can change if we inpartiuclar make DAI only use the transformer recipe on experiemnt 2. 
+ However, since we were working with a slightly imbalanced dataset, we need to take a closer look at the confusion matrices. We see that by using the custom recipes, the models started predicting more **False** labels correctly, in other words, we see more **True Negatives;** thus, we have a smaller misclassification error for the **False** class. On the other hand, only the Scorer recipe helped our model to predict more **True** labels correctly because, for the Transformer recipe, it was the opposite. The Scorer recipe helped the model get more **True Positives** than the baseline model, while the Transformer recipe got less **True Positives** than the baseline model.  For that reason, we see that the misclassification error for the True label only improved for the model with the Scorer recipe. Though this can change if we in particular make Driverless AI only use the transformer recipe on experiment 2. 
 
 ROC Curves for each model selected:
 
 ![project-model-comparison2](assets/project-model-comparison2.jpg)
 
-We can see that when we used the Scorer recipe, the model had better AUC with an accuracy of 0.9125 compared to Exp 1 - Baseline, which had an accuracy of 0.9080. Though in Exp 2 - Transformer, the AUC didn't improved, and therefore, there was a small decrease in the AUC. Also, when looking at the variable importance, we see a slight variation on the variables that have the largest contribution to customers churning. In Exp 1 - Baseline, the variables with most importance when it came to customers churning were "CustServ Calls," and "Day Charge." Exp 2, where we used the Transformer to sum columns with similar numerical data, we have the most important variable "CustServ Calls" and "sum of CustServ Calls."
+We can see that when we used the Scorer recipe, the model had better AUC with an accuracy of 0.9125 compared to Exp 1 - Baseline, which had an accuracy of 0.9080. Though in Exp 2 - Transformer, the AUC didn't improve, and therefore, there was a small decrease in the AUC. Also, when looking at the variable importance, we see a slight variation on the variables that have the largest contribution to customers churning. In Exp 1 - Baseline, the variables with most importance when it came to customers churning were "CustServ Calls," and "Day Charge." Exp 2, where we used the Transformer to sum columns with similar numerical data, we have the most important variable "CustServ Calls" and "sum of CustServ Calls."
 
 ### Deeper Dive and Resources
 
@@ -520,7 +520,7 @@ The rel-1.9.0 branch will be similar to the page below:
 
 ### Uploading Recipes via URL
 
-We are going to get the URL for **Brier Loss** Scorer we used in Task 4 and upload it to Driverless AI.
+We are going to get the URL for the **Brier Loss** Scorer we used in Task 4 and upload it to Driverless AI.
 
 1\. Select the folder titled **scorer**
 
