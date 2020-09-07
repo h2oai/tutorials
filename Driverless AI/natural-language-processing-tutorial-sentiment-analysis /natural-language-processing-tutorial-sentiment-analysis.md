@@ -39,7 +39,7 @@ You will need the following to be able to do this tutorial:
 
 - Basic knowledge of Machine Learning and Statistics  
 - A hands on knowledge of Driverless AI environment
-- Basic knowledge of Driverless AI or doing the [Automatic Machine Learning Introduction with Drivereless AI Test Drive](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai) 
+- Basic knowledge of Driverless AI or doing the [Automatic Machine Learning Introduction with Drivereless AI](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai) 
     
 - A **Two-Hour Test Drive session** : Test Drive is H2O.ai's Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.
 
@@ -61,7 +61,7 @@ The dataset provided is a CSV file containing 568,454 rows and a total of 10 fea
  
 ### Dataset Overview
 
-If you are using **Aquarium** as the environment, then the lab **Driverless AI Test Drive** has the Amazon fine review dataset already pre-loaded with separate training and test datasets. The datasets can be located on the Datasets Overview page. However, you can also upload the datasets externally. To learn more about how to add the two datasets from the Driverless AI file system then see [Appendix A: Add the Datasets].(#task-8-appendix-a-add-the-datasets)
+If you are using **Aquarium** as the environment, then the lab **Driverless AI Test Drive** has the Amazon fine review dataset already pre-loaded with separate training and test datasets. The datasets can be located on the Datasets Overview page. However, you can also upload the datasets externally. To learn more about how to add the two datasets from the Driverless AI file system then see [Appendix A: Add the Datasets](#task-8-appendix-a-add-the-datasets).
 
 On clicking the highlighted `Start lab` button , you will be taken  to a Driverless AI platform with several pre-loaded data sets and pre-run visualizations, models, interpretations, and deployments. Here  you will have access to both the training and testing set for Amazon fine food reviews.
 
@@ -192,7 +192,7 @@ Scorer is the metric used to Evaluate the machine learning algorithm. The scorer
 
 ###  Expert Settings
 
-A number of configurable settings are available for NLP in Driverless AI that can be tuned according to the type of experiment. To tune the NLP settings, click on the Expert settings and navigate to the NLP option :
+A number of configurable settings are available for NLP in Driverless AI that can be tuned according to the type of experiment. To tune the NLP settings, click on the Expert settings and navigate to the NLP option:
 
 ![expert-settings-overview](assets/expert-settings-overview.jpg)
 
@@ -212,7 +212,7 @@ Specify whether to use Character-level CNN TensorFlow models for NLP. This optio
 
 - **PyTorch Models for NLP (Experimental)**
 
-Specify whether to enable pretrained PyTorch models and fine-tune them for NLP tasks. This is set to Auto by default. You need to set this to On if you want to use the PyTorch models like BERT for feature engineering or for modeling. We recommend that you use GPUs to speed up execution when this option is used.
+Specify whether to enable pre-trained PyTorch models and fine-tune them for NLP tasks. This is set to Auto by default. You need to set this to On if you want to use the PyTorch models like BERT for feature engineering or for modeling. We recommend that you use GPUs to speed up execution when this option is used.
 
 ![nlp-expert-settings](assets/nlp-expert-settings.jpg)
 
@@ -231,16 +231,13 @@ Click on the `Select Which Pretrained PyTorch NLP Models to Use` and specify one
 
 Additionally, there are three more buttons located beneath the experimental settings knob which stand for the following:
 
--   Classification or Regression : Driverless AI automatically determines the problem type based on the response column. Though not recommended, you can override this setting by clicking this button. Our current problem is that of Classification.
+-   **Classification or Regressio**: Driverless AI automatically determines the problem type based on the response column. Though not recommended, you can override this setting by clicking this button. Our current problem is that of Classification.
     
--   Reproducible: This button allows you to build an experiment with a random seed and get reproducible results. If this is disabled (default), the results will vary between runs.
+-   **Reproducible**: This button allows you to build an experiment with a random seed and get reproducible results. If this is disabled (default), the results will vary between runs.
     
--   Enable GPUs: Specify whether to enable GPUs. (Note that this option is ignored on CPU-only systems.)
+-   **Enable GPUs**: Specify whether to enable GPUs. (Note that this option is ignored on CPU-only systems.)
     
-
 Update the following experiment settings so that they match the image below, then select Launch Experiment. This configuration is selected to generate a model quickly with a sufficient level of accuracy in the H2O Driverless Test Drive environment.
-
-![final-experiment-launch](assets/final-experiment-launch.jpg)
 
 -   **Accuracy**: 5
     
@@ -249,7 +246,8 @@ Update the following experiment settings so that they match the image below, the
 -   **Interpretability**: 5
     
 -   **Scorer**: LogLoss
-    
+
+![final-experiment-launch](assets/final-experiment-launch.jpg)
 
 The time to run this experiment depends upon the memory, availability of GPU in a system and the expert settings which have been selected by the user. If the system does not have a GPU, it might run for a longer time.
 
@@ -288,19 +286,19 @@ The figure above shows how a typical pipeline looks like. It is also important t
 
 ### Text preprocessing
 
-Text pre-processing involves using a variety of techniques to convert raw text into well- defined sequences of linguistic components that have standard structure and notation. Some of those techniques are:
+Text pre-processing involves using a variety of techniques to convert raw text into well-defined sequences of linguistic components that have standard structure and notation. Some of those techniques are:
 
-- **Sentence Segmentation :** involves identifying sentence boundaries between words in different sentences. Since most written languages have punctuation marks which occur at sentence boundaries, sentence segmentation is frequently referred to as sentence boundary detection, sentence boundary disambiguation, or sentence boundary recognition. All these terms refer to the same task: determining how a text should be divided into sentences for further processing.
+- **Sentence Segmentation:** involves identifying sentence boundaries between words in different sentences. Since most written languages have punctuation marks which occur at sentence boundaries, sentence segmentation is frequently referred to as sentence boundary detection, sentence boundary disambiguation, or sentence boundary recognition. All these terms refer to the same task: determining how a text should be divided into sentences for further processing.
 
-- **Text Tokenization :** Tokenization involves splitting raw text corpus into sentences and then further splitting each sentence into words.
+- **Text Tokenization:** Tokenization involves splitting raw text corpus into sentences and then further splitting each sentence into words.
 
 - **Text Standardisation:** Once the text has been tokenized, it is normalised by getting rid of the noise. Noise relates to anything that isn't in a standard format like punctuation marks, special characters or any unwanted tokens. If required, case conversions can also be done i.e converting all tokens into either lowercase or uppercase.
 
 - **Removing Stopwords:** Stop words are words which appear very frequently in a text like "and", "the", and "a" but appear to be of little value in helping select documents. Such words are excluded from the vocabulary entirely.
 
-- **Stemming:** Stemming is the process of reducing inflected (or sometimes derived) words to their stem, base or root form — generally a written word form. Example if we were to stem the following words: “Stems”, “Stemming”, “Stemmed”, “and Stemtization”, the result would be a single token “stem”.
+- **Stemming:** Stemming is the process of reducing inflected (or sometimes derived) words to their stem, base or root form — generally a written word form. Example if we were to stem the following words: “Stems”, “Stemming”, “Stemmed”, “and "Stemtization”, the result would be a single token “stem”.
 
-- **Lemmatization :** a similar operation to stemming is lemmatization. However, the major difference between the two is that stemming can often create non-existent words, whereas lemmatization creates actual words. An example of lemmatization: “run” is a base form for words like “running” or “ran” and the word “better” and “good” are in the same lemma so they are considered the same.
+- **Lemmatization:** a similar operation to stemming is lemmatization. However, the major difference between the two is that stemming can often create non-existent words, whereas lemmatization creates actual words. An example of lemmatization: “run” is a base form for words like “running” or “ran” and the word “better” and “good” are in the same lemma so they are considered the same.
 
 It is important to note here that the above steps are not mandatory and their usage depends upon the use case. For instance, in sentiment analysis emoticons signify polarity and stripping them off from the text may not be a good idea. The general goal of the Normalization, Stemming and Lemmatization techniques is to improve the generalization of the model. Essentially we are mapping different variants of what we consider to be the same or very similar "word" to one token in our data.
 
@@ -308,10 +306,10 @@ It is important to note here that the above steps are not mandatory and their us
 
 The Machine Learning Algorithms usually expect features in the form of numeric vectors . Hence, after the initial preprocessing phase, we need to transform the text into a meaningful vector (or array) of numbers. This process is called **feature extraction**. Let's see how some of the feature-extracting techniques work.
 
-- **Bag of Words :** The bag-of-words is a representation of text that describes the occurrence of words within a document. It involves two things:
+- **Bag of Words:** The bag-of-words is a representation of text that describes the occurrence of words within a document. It involves two things:
 
   - A vocabulary of known words
-  - A measure of the presence of known words.
+  - A measure of the presence of known words
 
 The intuition behind the Bag of Words is that documents are similar if they have similar content and we can get an idea about the meaning of the document from its content alone. 
 
@@ -342,7 +340,7 @@ It is also possible to create BoW models with combination of consecutive words, 
 
      - **Term Frequency**  is a scoring of the frequency of the word in the current document. TF = (Number of times term t appears in a document)/(Number of terms in the document)
 
-    - **Inverse Document Frequency**: is a scoring of how rare the word is across documents.IDF = 1+log(N/n), where N is the number of documents and n is the number of documents a term t has appeared in.TF-IDF weight is often used in information retrieval and text mining. This weight is a statistical measure used to evaluate how important a word is to a document in a collection or corpus
+    - **Inverse Document Frequency**: is a scoring of how rare the word is across documents.IDF = 1+log(N/n), where N is the number of documents and n is the number of documents a term t has appeared in. TF-IDF weight is often used in information retrieval and text mining. This weight is a statistical measure used to evaluate how important a word is to a document in a collection or corpus
 
 ![tfidf](assets/tfidf.jpg)
 
@@ -360,7 +358,7 @@ SVD stands for Singular Value Decomposition[3] which is a way to decompose matri
     
 TFIDF and frequency-based models represent counts and significant word information, but they lack semantics of the words in general. One of the popular representations of text to overcome this is Word Embeddings.
 
-Word embeddings is a feature engineering technique for text where words or phrases from the vocabulary are mapped to vectors of real numbers.There are ways to create more advanced word vectorization models for extracting features from text data like word2vec[2]  model. Released in 2013 by Google, word2vec is a neural network-based implementation that learns distributed vector representations of words based on continuous Bag of Words and skip-gram–based architectures 
+Word embeddings is a feature engineering technique for text where words or phrases from the vocabulary are mapped to vectors of real numbers. There are ways to create more advanced word vectorization models for extracting features from text data like word2vec[2] model. Released in 2013 by Google, word2vec is a neural network-based implementation that learns distributed vector representations of words based on continuous Bag of Words and skip-gram–based architectures 
 
 ![word-vectors](assets/word-vectors.jpg)
 
@@ -469,13 +467,13 @@ A Bi-directional GRU model is like putting two independent RNN models in one. Ta
 
      - **Character embeddings**
 
-     Natural language processing is complex as the language is hard to understand given small data and different languages.Targeting languages like Japanese, Chinese where characters play a major role, we have character level embeddings in our recipe as well.
+     Natural language processing is complex as the language is hard to understand given small data and different languages. Targeting languages like Japanese, Chinese where characters play a major role, we have character level embeddings in our recipe as well.
 
      In character embeddings, each character gets represented in the form of vectors rather than words. Driverless AI uses character level embeddings as input to CNN models and later extract class probabilities to feed as features for downstream models. This gives the ability to work in languages other than English also. In case of languages like Japanese, Chinese etc where there is no concept of words, character embeddings will be useful.
 
 - **BERT/DistilBERT Models for Feature Engineering:**
 
-BERT and [DistilBERT](https://arxiv.org/abs/1910.01108) models can be used for generating embeddings for any text columns. These pretrained models are used to get embeddings for the text followed by Linear/Logistic Regression to generate features that can then be used for any downstream models in Driverless AI.
+BERT and [DistilBERT](https://arxiv.org/abs/1910.01108) models can be used for generating embeddings for any text columns. These pre-trained models are used to get embeddings for the text followed by Linear/Logistic Regression to generate features that can then be used for any downstream models in Driverless AI.
 
 - **PyTorch Transformer Architecture Models (eg. BERT) as Modeling Algorithms:**
 
@@ -489,9 +487,9 @@ The BERT model support multiple languages. [DistilBERT](https://arxiv.org/abs/19
 
 DAI Base BERT model can also be extended for domain specific problems
 
-- [FinBERT](https://github.com/ProsusAI/finBERT) trained on financial text)
-- [SciBERT](https://github.com/allenai/scibert) trained on scientific text)
-- [BioBERT](https://github.com/dmis-lab/biobert) trained on bio-medical text)
+- [FinBERT](https://github.com/ProsusAI/finBERT) (trained on financial text)
+- [SciBERT](https://github.com/allenai/scibert) (trained on scientific text)
+- [BioBERT](https://github.com/dmis-lab/biobert) (trained on bio-medical text)
 
 
 ### Deeper Dive and Resources
@@ -523,11 +521,11 @@ _Things to Note:_
 
 1. Status Complete Options
     
-     -  **Deploy :** Whether to deploy the Model to Cloud or keep it local.
-     -  **Interpret this Model**  - Refers to  Interpreting a machine learning model  in a human-readable format. 
+     -  **Deploy:** Whether to deploy the Model to Cloud or keep it local.
+     -  **Interpret this Model** - Refers to  Interpreting a machine learning model  in a human-readable format. 
 
 
-          Click on `intrepret this Model` button on the completed experiment page to interpret the  Driverless AI NLP model on original and transformed features.This launches the Model Interpretation for that experiment. This page provides several visual explanations and reason codes for the trained  model and its results. Here we shall only go through the explanation of the NLP specific models.For the rest, refer to the tutorial-[Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus).
+          Click on `Intrepret this Model` button on the completed experiment page to interpret the  Driverless AI NLP model on original and transformed features. This launches the Model Interpretation for that experiment. This page provides several visual explanations and reason codes for the trained  model and its results. Here we shall only go through the explanation of the NLP specific models. For the rest,refer to the tutorial-[Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus).
 
            - **NLP TOKENS**
 
@@ -538,7 +536,7 @@ _Things to Note:_
 
            This plot is available for natural language processing (NLP) models. It applies a leave-one-covariate-out (LOCO) styled approach to NLP models by removing a specific token from all text features in a record and predicting local importance without that token. The difference between the resulting score and the original score (token included) is useful when trying to determine how specific changes to text features alter the predictions made by the model.
         
-     - **Diagnose Model on New Dataset**  - allows you to view model performance for multiple scorers based on existing model and a test dataset
+     - **Diagnose Model on New Dataset**  - Allows you to view model performance for multiple scorers based on existing model and a test dataset
      - **Score on another Dataset**  - After you generate a model, you can use that model to make predictions on another dataset.
      - **Transform Another Dataset** - One can specify to transform the new dataset after adding it to Driverless AI, and the same transformations that Driverless AI applied to the original dataset will be applied to these new rows.
 
@@ -620,7 +618,7 @@ H2O has built and open-sourced several recipes[2] which can be used as templates
 4\. Alternately, you can also upload a recipe via URL. Click on the LOAD CUSTOM RECIPE FROM URL tab and enter the raw Github URL of the recipe. Click save when done
     
 ```
-https://raw.githubusercontent.com/h2oai/driverlessai-recipes/master/transformers/nlp/text_sentiment_transformer.py
+https://github.com/h2oai/driverlessai-recipes/blob/rel-1.9.0/transformers/nlp/text_sentiment_transformer.py
 ```
   
 ![uploading-recipe-from-url](assets/uploading-recipe-from-url.jpg)
@@ -633,7 +631,9 @@ https://raw.githubusercontent.com/h2oai/driverlessai-recipes/master/transformers
 
 ![acceptance-tests](assets/acceptance-tests.jpg)
 
-7\. Click on Recipe and select or deselect specific transformers, models and scorers.![Selecting-Specific-Transformers](assets/Selecting-Specific-Transformers.jpg)
+7\. Click on Recipe and select or deselect specific transformers, models and scorers.
+
+![selecting-specific-transformers](assets/selecting-specific-transformers.jpg)
 
 *Things to Note*
 
@@ -733,12 +733,10 @@ You can see that a new set of datasets now appear on the screen.
 
 ## Next Steps
 
-Check out the [Get Started and Consume Existing Recipes](https://h2oai.github.io/tutorials/get-started-and-consume-existing-recipes/#0) tutorial
-
-Where you will learn:
+Check out the [Get Started with Open Source Custom Recipes](https://training.h2o.ai/products/tutorial-3a-get-started-with-open-source-custom-recipes-tutorial) tutorial, where you will learn:
 
 - What is Bring Your Own Recipe
-- What is recipe?
+- What is a recipe
 - Types of Driverless AI open-source recipes available
 - How to upload the recipes into Driverless AI as raw URL’s and .py files
 - Compared the final models of the experiments that were run with custom recipes to Driverless AI’s default settings experiment
