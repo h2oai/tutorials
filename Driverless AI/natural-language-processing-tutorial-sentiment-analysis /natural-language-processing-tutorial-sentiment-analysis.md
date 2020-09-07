@@ -11,7 +11,7 @@
 - [Task 6: Custom Recipe to Improve Predictions](#task-6-custom-recipe-to-improve-predictions) 
 - [Task 7: Challenge](#task-7-challenge)
 - [Task 8: Appendix A: Add the Datasets](#task-8-appendix-a-add-the-datasets)
-- [Next Steps](#tnext-steps)
+- [Next Steps](#next-steps)
 
 
 ## Objective
