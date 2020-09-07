@@ -86,11 +86,11 @@ Once the data has been loaded to Driverless AI, Driverless AI performs Automatic
 
 The data is then sent through Driverless AI’s Automatic Model Optimization. The Automatic Model Optimization is a generic algorithm that learns over time what is working and what is not to make the best model for your data. This includes model recipes, advanced feature engineering, algorithms (such as Xgboost, TensorFlow, LightGBM), and model tuning. 
 
-After the model has been finalized, Driverless AI then auto-generates model documentation that provides an explanation of everything that happened in the experiment and how the model generated makes decisions. Additionally, there is Machine Learning Interpretability of the models generated to explain modeling results in a human-readable format. Once experiments have been completed, Driverless AI automatically generates both Python and Java scoring pipelines so that the model is ready to go for production.
+After the model has been finalized, Driverless AI then auto-generates model documentation that provides an explanation of everything that happened in the experiment and how the model generated decisions. Additionally, there is Machine Learning Interpretability of the models generated to explain modeling results in a human-readable format. Once experiments have been completed, Driverless AI automatically generates both Python and Java scoring pipelines so that the model is ready to go for production.
 
 ### BYOR
 
-**Bring Your Own Recipe** (BYOR) is part of the Automatic Model Optimization process. It is here that Data scientists, through their subject matter expertise and domain knowledge that they get to augment the Automatic Model Optimization by creating and uploading their own transformations, scorers, and algorithms. Driverless AI allows the uploaded scorer, algorithm, and transformations to compete with the existing Driverless AI recipes and allows the best recipe to be used.
+**Bring Your Own Recipe** (BYOR) is part of the Automatic Model Optimization process. It is here that Data scientists, through their subject matter expertise and domain knowledge that they get to augment the Automatic Model Optimization by creating and uploading their own transformations, scorers, and algorithms. Driverless AI allows the uploaded scores, algorithms, and transformations to compete with the existing Driverless AI recipes and allows the best recipe to be used.
 
 ![dai-byor-how-it-works-w-recipes](assets/dai-byor-how-it-works-w-recipes.jpg)
 
@@ -129,7 +129,7 @@ For custom ML Algorithms, there are two functions that are needed:
 
 ### Best Practices for Recipes
 
-Recipes are meant to be built by people you trust, and each recipe should be code-reviewed before going to production. If you decide to make your custom recipes, you can keep them internal or shared them with the Driverless AI team by making a pull request to the Open Source Driverless AI Recipes GitHub Repo. This repo was built and maintained by  H2O Kaggle Grand Masters. All custom recipes will be put through various acceptance tests that include missing values, various examples for binary, and regression to see if your recipe can handle all different types. 
+Recipes are meant to be built by people you trust, and each recipe should be code-reviewed before going to production. If you decide to make your custom recipes, you can keep them internal or shared them with the Driverless AI team by making a pull request to the Open Source Driverless AI Recipes GitHub Repo. This repo was built and is currently maintained by H2O.ai's Kaggle Grand Masters. All custom recipes will be put through various acceptance tests that include missing values, various examples for binary, and regression to see if your recipe can handle all different types. 
 
 **Take a few minutes to review the recommended best practices for building recipes in terms of:**
 
@@ -383,10 +383,6 @@ _excluded_model_classes = None  # List[str]
 _testing_can_skip_failure = False  # ensure tested as if shouldn't fail
 ~~~
 
-Your text editor should look similar to the page below:
-
-![sum-transformer](assets/sum-transformer.jpg)
-
 When writing transformers, we need to ask ourselves the following types of questions:
 
 - What types of ML supervised problems are allowed for my custom transformer? There will be situations where it will not be appropriate to use this transformer, so we need to specify what types of ML problems are allowed for this transformer? For our Sum Transformer, the ML cases below are always applicable; therefore, we set the following variable values to True. 
@@ -412,9 +408,59 @@ In our case there are no models that we need to exclude so we set the value to N
 
 - `_testing_can_skip_failure = False`
 
-7\. Copy and paste the code for the **When to use the transformer** right below the `class SumTransformer(CustomTransformer):` section of code of your .py file. Your text editor should look similar to the page below:
+### All the Custom Transformer Recipe Code
 
-### Challenge 
+Your text editor should look similar to the page below:
+
+![sum-transformer](assets/sum-transformer.jpg)
+
+In case you want to copy and paste all the code to test it out:
+
+~~~python
+"""Adds together 3 or more numeric features"""
+# Extending the Transformer Base Class
+from h2oaicore.transformer_utils import CustomTransformer
+import datatable as dt
+import numpy as np
+
+
+class SumTransformer(CustomTransformer):
+    # When to Use the Transformer
+    _regression = True
+    _binary = True
+    _multiclass = True
+    _numeric_output = True
+    _is_reproducible = True
+    _included_model_classes = None  # List[str]
+    _excluded_model_classes = None  # List[str]
+    _testing_can_skip_failure = False  # ensure tested as if shouldn't fail
+
+    # Specifying Whether our Recipe is Enabled
+    @staticmethod
+    def is_enabled():
+        return True
+
+    # Specifying Whether to do Acceptance Tests
+    @staticmethod
+    def do_acceptance_test():
+        return True
+
+    # Select Which Columns to Use 
+    @staticmethod
+    def get_default_properties():
+        return dict(col_type="numeric", min_cols=3, max_cols="all", relative_importance=1)
+
+    # Transforming the Training Data
+    def fit_transform(self, X: dt.Frame, y: np.array = None):
+        return self.transform(X)
+
+    # Transforming the Validation or Testing Data
+    def transform(self, X: dt.Frame):
+        return X[:, dt.sum([dt.f[x] for x in range(X.ncols)])]
+
+~~~
+
+### Challenge
 
 The final step in building the custom transformer recipe is to upload the custom recipe to Driverless AI and check that it passes the **acceptance test**. If your recipe is not passing the Driverless AI’s acceptance test, see  [Task 5: Troubleshooting](https://training.h2o.ai/products/tutorial-3b-build-your-own-custom-recipe-tutorial).
 
@@ -474,9 +520,9 @@ Driverless AI has Scorer recipes for the following categories:
 
 ### Custom Scorer Recipe
 
-The custom **scorer** that will be built for this section is a **False Discovery Rate** scorer. This scorer works in binary classification problems where a model will predict what two categories(classes) the elements of a given set belong to. The results of the model can be classified as **True** or **False**. However, there will be elements that will be classified as **True** even though they are actually **False**. Those elements are called Type I Errors (reverse precision) or **False Positives**.  Our **False Discovery Rate** scorer will use the **False Positive Rate** equation to obtain the percentage of False Positives out of all the elements that were classified as **Positive**:
+The custom **scorer** that will be built in this section is a **"False Discovery Rate"** scorer. This scorer works in binary classification problems where a model will predict what two categories(classes) the elements of a given set belong to. The results of the model can be classified as **True** or **False**. However, there will be elements that will be classified as **True** even though they are actually **False**. Those elements are called Type I Errors (reverse precision) or **False Positives**.  Our **False Discovery Rate** scorer will use the **False Positive Rate** equation to obtain the percentage of False Positives out of all the elements that were classified as **Positive**:
 
-**False Positive Rate** = False Positives/(True Positives + False Positives)
+**False Positive Rate (FPR)** = False Positives/(False Positives + True Negatives) = FP/(FP + TN)
             
 The **False Positive Rate** is the algorithm where all the elements that were incorrectly classified (False Positives) will be divided by the sum of all the elements that were correctly classified (True Positives) and incorrectly classified (False Positives).
 
@@ -499,7 +545,7 @@ Let's start by creating a scorer recipe class in Python called **MyFDRScorer** t
 
 2\. Save  the new file as `false_discovery_rate.py`
 
-3\. Copy and paste the code above into your .py file. Your text editor should look similar to the page below:
+3\. Copy and paste the code above into your .py file.
 
 The python code for **Extending the Scorer Base Class** is a follows:
 
@@ -543,7 +589,7 @@ def is_enabled():
     return False  # Already part of Driverless AI 1.9.0+
 ~~~
 
-The `is_enabled` method returns that our recipe is enabled. If this method returns False, our recipe is disabled and the recipe will be completely ignored.
+The `is_enabled` method returns when our recipe is enabled. If this method returns False, our recipe is disabled and the recipe will be completely ignored.
 
 ### Implementing Scoring Metric
 
@@ -632,10 +678,6 @@ _threshold_optimizer = "f1"
 _is_for_user = False  # don't let the user pick since can be trivially optimized (even when using F1-optimal thresh)
 ~~~
 
-Your text editor should look similar to the page below:
-
-![false-discovery-rate-scorer](assets/false-discovery-rate-scorer.jpg)
-
 Here are some questions we are going answer based on our optimization variable values, so Driverless AI will know what is appropriate for this scorer.
 
 **What is the problem type this scorer applies to?**
@@ -653,6 +695,80 @@ We set `_threshold_optimizer` to `f1` scorer metric. This means that our False D
 **Is the scorer for the user?**
 
 The `_is_for_user` variable is set to False, so users won't have to pick since the scorer can be optimized even when using F1 optimal threshold.
+
+### All the Custom Scorer Recipe Code
+
+Your text editor should look similar to the page below:
+
+![false-discovery-rate-scorer](assets/false-discovery-rate-scorer.jpg)
+
+In case you want to copy and paste all the code to test it out:
+
+~~~python
+"""Weighted False Discovery Rate: `FP / (FP + TP)` at threshold for optimal F1 Score."""
+# Extending the Scorer Base Class
+import typing
+import numpy as np
+from h2oaicore.metrics import CustomScorer, prep_actual_predicted
+from sklearn.preprocessing import LabelEncoder, label_binarize
+from sklearn.metrics import precision_score
+import h2o4gpu.util.metrics as daicx
+
+
+class MyFDRScorer(CustomScorer):
+    # Optimizing the Scorer
+    _binary = True
+    _multiclass = True
+    _maximize = False
+    _threshold_optimizer = "f1"
+    _is_for_user = False  # don't let the user pick since can be trivially optimized (even when using F1-optimal thresh)
+
+    # Specifying Whether our Recipe is Enabled
+    @staticmethod
+    def is_enabled():
+        return False  # Already part of Driverless AI 1.9.0+
+
+    # Implementing Scoring Metric with helper methods _metric and protected_metric
+    @staticmethod
+    def _metric(tp, fp, tn, fn):
+        if (fp + tp) != 0:
+            return fp / (fp + tp)
+        else:
+            return 1
+
+    def protected_metric(self, tp, fp, tn, fn):
+        try:
+            return self.__class__._metric(tp, fp, tn, fn)
+        except ZeroDivisionError:
+            return 0 if self.__class__._maximize else 1  # return worst score if ill-defined
+
+    def score(self,
+              actual: np.array,
+              predicted: np.array,
+              sample_weight: typing.Optional[np.array] = None,
+              labels: typing.Optional[np.array] = None,
+              **kwargs) -> float:
+
+        if sample_weight is not None:
+            sample_weight = sample_weight.ravel()
+        enc_actual, enc_predicted, labels = prep_actual_predicted(actual, predicted, labels)
+        cm_weights = sample_weight if sample_weight is not None else None
+
+        # multiclass
+        if enc_predicted.shape[1] > 1:
+            enc_predicted = enc_predicted.ravel()
+            enc_actual = label_binarize(enc_actual, labels).ravel()
+            cm_weights = np.repeat(cm_weights, predicted.shape[1]).ravel() if cm_weights is not None else None
+            assert enc_predicted.shape == enc_actual.shape
+            assert cm_weights is None or enc_predicted.shape == cm_weights.shape
+
+        cms = daicx.confusion_matrices(enc_actual.ravel(), enc_predicted.ravel(), sample_weight=cm_weights)
+        cms = cms.loc[
+            cms[[self.__class__._threshold_optimizer]].idxmax()]  # get row(s) for optimal metric defined above
+        cms['metric'] = cms[['tp', 'fp', 'tn', 'fn']].apply(lambda x: self.protected_metric(*x), axis=1, raw=True)
+        return cms['metric'].mean()  # in case of ties
+
+~~~
 
 ### Challenge
 
@@ -896,11 +1012,120 @@ Here is a sample code for handling the missing values in the prediction section:
         X = X.to_numpy()
 ~~~
 
+### The Custom Scorer Recipe Code That was Covered So Far
+
 Your text editor should look similar to the page below:
 
 ![extra-trees-model-1](assets/extra-trees-model-1.jpg)
 
 ![extra-trees-model-2](assets/extra-trees-model-2.jpg)
+
+In case you want to copy and paste all the code we have covered so far to test it out:
+
+~~~python
+"""Extremely Randomized Trees (ExtraTrees) model from sklearn"""
+# Extending the Model Base Class
+import datatable as dt
+import numpy as np
+from h2oaicore.models import CustomModel
+from sklearn.ensemble import ExtraTreesClassifier, ExtraTreesRegressor
+from sklearn.preprocessing import LabelEncoder
+from h2oaicore.systemutils import physical_cores_count
+
+
+class ExtraTreesModel(CustomModel):
+    # Challenge
+    """
+    #Code for when to use the model, and how to set the parameters, and n_estimators
+
+    _regression = True
+    _binary = True
+    _multiclass = True
+    _display_name = "ExtraTrees"
+    _description = "Extra Trees Model based on sklearn"
+    _testing_can_skip_failure = False  # ensure tested as if shouldn't fail
+
+    def set_default_params(self, accuracy=None, time_tolerance=None,
+                           interpretability=None, **kwargs):
+        # Fill up parameters we care about
+        self.params = dict(random_state=kwargs.get("random_state", 1234),
+                           n_estimators=min(kwargs.get("n_estimators", 100), 1000),
+                           criterion="gini" if self.num_classes >= 2 else "mse",
+                           n_jobs=self.params_base.get('n_jobs', max(1, physical_cores_count)))
+
+    # Code for how to modify model parameters
+
+    def mutate_params(self, accuracy=10, **kwargs):
+        if accuracy > 8:
+            estimators_list = [100, 200, 300, 500, 1000, 2000]
+        elif accuracy >= 5:
+            estimators_list = [50, 100, 200, 300, 400, 500]
+        else:
+            estimators_list = [10, 50, 100, 150, 200, 250, 300]
+        # Modify certain parameters for tuning
+        self.params["n_estimators"] = int(np.random.choice(estimators_list))
+        self.params["criterion"] = np.random.choice(["gini", "entropy"]) if self.num_classes >= 2 \
+            else np.random.choice(["mse", "mae"])
+
+    """
+
+    # Fit the model
+    def fit(self, X, y, sample_weight=None, eval_set=None, sample_weight_eval_set=None, **kwargs):
+        orig_cols = list(X.names)
+        if self.num_classes >= 2:
+            lb = LabelEncoder()
+            lb.fit(self.labels)
+            y = lb.transform(y)
+            model = ExtraTreesClassifier(**self.params)
+        else:
+            model = ExtraTreesRegressor(**self.params)
+
+        # Can your model handle missing values??
+        # Add your code here
+        """
+        self.min = dict()
+        for col in X.names:
+            XX = X[:, col]
+            self.min[col] = XX.min1()
+            if self.min[col] is None or np.isnan(self.min[col]):
+                self.min[col] = -1e10
+            else:
+                self.min[col] -= 1
+            XX.replace(None, self.min[col])
+            X[:, col] = XX
+            assert X[dt.isna(dt.f[col]), col].nrows == 0
+        X = X.to_numpy()
+        """
+        model.fit(X, y)
+
+        # Set model parameters
+        importances = np.array(model.feature_importances_)
+        self.set_model_properties(model=model,
+                                  features=orig_cols,
+                                  importances=importances.tolist(),
+                                  iterations=self.params['n_estimators'])
+
+    # Get Predictions
+    def predict(self, X, **kwargs):
+        #Can your model handle missing values??
+        #Add your code here
+        """
+        X = dt.Frame(X)
+        for col in X.names:
+            XX = X[:, col]
+            XX.replace(None, self.min[col])
+            X[:, col] = XX
+        model, _, _, _ = self.get_model_properties()
+        X = X.to_numpy()
+        """
+        
+        if self.num_classes == 1:
+            preds = model.predict(X)
+        else:
+            preds = model.predict_proba(X)
+        return preds
+
+~~~
 
 ### Challenge
 
