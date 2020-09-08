@@ -37,8 +37,8 @@ Recipes:
 
 - Basic knowledge of Driverless AI or doing the following tutorials:
 
-  - [Automatic Machine Learning Introduction with Drivereless AI Test Drive](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai)
-  - [Get Startedand with Open Source Custom Recipes Tutorial](https://training.h2o.ai/products/tutorial-3a-get-started-with-open-source-custom-recipes-tutorial) 
+  - [Automatic Machine Learning Introduction with Drivereless AI](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai)
+  - [Get Started with Open Source Custom Recipes Tutorial](https://training.h2o.ai/products/tutorial-3a-get-started-with-open-source-custom-recipes-tutorial) 
 
 - A text editor or developer environment to create .py text files containing source code (Examples: PyCharm, Jupyter, Spider or a Text Editor like Atom or Visual Studio Code)
 
@@ -49,7 +49,7 @@ Recipes:
 
 In the **Get Started and Consume Existing Recipes** Tutorial we covered the following:
 
-- Bring Your Own Recipe (BYOR) for Driverless AI 1.9.0
+- Bring Your Own Recipe (BYOR) for Driverless AI 1.7.0
 - What is a recipe?
 - Types of Driverless AI open-source recipes available (Transformers, Scorers, and Models)
 - How to upload the recipes into Driverless AI using URL’s and .py files
