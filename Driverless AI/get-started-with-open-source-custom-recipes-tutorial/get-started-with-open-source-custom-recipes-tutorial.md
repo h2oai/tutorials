@@ -1,4 +1,4 @@
-# Get Started with OpenSource Custom Recipes Tutorial
+# Get Started with Open Source Custom Recipes Tutorial
 
 ## Outline
 
@@ -197,7 +197,7 @@ This dataset set has 3333 customers(rows) and 21 columns representing attributes
 
 ## Task 3: Recipe: Transformer
 
-In Task 2, we ran an experiment to build a model that would predict customer churn. The Driverless AI model that was generated with the settings shown above gave us the results below:
+In Task 2, we ran an experiment to build a model that would predict customer churn. The Driverless AI model generated in task 2 gave us the results below:
 
 **Summary of results**:
 
