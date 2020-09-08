@@ -49,7 +49,7 @@ Recipes:
 
 In the **Get Started and Consume Existing Recipes** Tutorial we covered the following:
 
-- Bring Your Own Recipe (BYOR) for Driverless AI 1.7.0
+- Bring Your Own Recipe (BYOR) for Driverless AI 1.9.0
 - What is a recipe?
 - Types of Driverless AI open-source recipes available (Transformers, Scorers, and Models)
 - How to upload the recipes into Driverless AI using URL’s and .py files
@@ -86,11 +86,11 @@ Once the data has been loaded to Driverless AI, Driverless AI performs Automatic
 
 The data is then sent through Driverless AI’s Automatic Model Optimization. The Automatic Model Optimization is a generic algorithm that learns over time what is working and what is not to make the best model for your data. This includes model recipes, advanced feature engineering, algorithms (such as Xgboost, TensorFlow, LightGBM), and model tuning. 
 
-After the model has been finalized, Driverless AI then auto-generates model documentation that provides an explanation of everything that happened in the experiment and how the model generated decisions. Additionally, there is Machine Learning Interpretability of the models generated to explain modeling results in a human-readable format. Once experiments have been completed, Driverless AI automatically generates both Python and Java scoring pipelines so that the model is ready to go for production.
+After the model has been finalized, Driverless AI then auto-generates model documentation that provides an explanation of everything that happened in the experiment. This model documentation also provides an explanation on how the model that was generated/created makes decisions. Additionally, there is Machine Learning Interpretability of the models generated to explain modeling results in a human-readable format. Once experiments have been completed, Driverless AI automatically generates both Python and Java scoring pipelines so that the model is ready to go for production.
 
 ### BYOR
 
-**Bring Your Own Recipe** (BYOR) is part of the Automatic Model Optimization process. It is here that Data scientists, through their subject matter expertise and domain knowledge that they get to augment the Automatic Model Optimization by creating and uploading their own transformations, scorers, and algorithms. Driverless AI allows the uploaded scores, algorithms, and transformations to compete with the existing Driverless AI recipes and allows the best recipe to be used.
+**Bring Your Own Recipe** (BYOR) is part of the Automatic Model Optimization process. It is here that Data scientists, through their subject matter expertise and domain knowledge that they get to augment the Automatic Model Optimization by creating and uploading their own transformations, scorers, and algorithms. Driverless AI allows the uploaded scorers, algorithms, and transformations to compete with the existing Driverless AI recipes and allows the best recipe to be used.
 
 ![dai-byor-how-it-works-w-recipes](assets/dai-byor-how-it-works-w-recipes.jpg)
 
