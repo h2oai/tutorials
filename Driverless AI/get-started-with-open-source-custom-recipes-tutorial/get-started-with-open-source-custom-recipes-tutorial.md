@@ -1,4 +1,4 @@
-# Build Your Own Custom Recipe Tutorial 
+# Get Started with OpenSource Custom Recipes Tutorial
 
 ## Outline
 
@@ -579,7 +579,7 @@ For this tutorial, we are using **Driverless AI 1.9.0,** but we will be working 
 
 ## Next Steps
 
-Check out Driverless AI's next tutorial: [Develop Your Own Custom Recipe Tutorial](https://training.h2o.ai/products/tutorial-3b-build-your-own-custom-recipe-tutorial)
+Check out Driverless AI's next tutorial: [Build Your Own Custom Recipe Tutorial](https://training.h2o.ai/products/tutorial-3b-build-your-own-custom-recipe-tutorial)
 
 Where you will learn to build a:
   - Custom Transformer Recipe
