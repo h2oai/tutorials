@@ -1,4 +1,4 @@
-# Get Started with Open Source Custom Recipes Tutorial
+# Build Your Own Custom Recipe Tutorial 
 
 ## Outline
 
@@ -29,7 +29,7 @@ You will need the following to be able to do this tutorial:
 
 - A Driverless AI environment that is version 1.7.0 or newer
 
-- Basic knowledge of Driverless AI or doing the [Automatic Machine Learning Introduction with Driverless AI Test Drive](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai) 
+- Basic knowledge of Driverless AI or doing the [Automatic Machine Learning Introduction with Driverless AI](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai) 
 
 - A **Two-Hour Test Drive session** : Test Drive is H2O.ai's Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.
 
@@ -238,8 +238,6 @@ The goal of importing the new transformer recipe is to see if we can further opt
 
 6\. Copy and paste  the following URL for the SumTransformer into the **Load Custom Recipe** box then click on **Save.**  
 
-**Note:** The Driverless AI Recipe branches rel-1.9.0 and rel-1.9.0 are the same, and have been merged into rel-1.9.0; that is why we are using the links for the 1.9.0 branch.
-
 ```html
 https://github.com/h2oai/driverlessai-recipes/blob/rel-1.9.0/transformers/numeric/sum.py
 ```
@@ -272,7 +270,7 @@ https://github.com/h2oai/driverlessai-recipes/blob/rel-1.9.0/transformers/numeri
 
 Note: In Variable Importance: It might be the case that in your experiment  certain features will start with "SUM;" those are the features from the custom transformer. If so, that will mean that they are playing an important role in the new model. 
 
-In this case, the AUC didn't improve, and that is because Driverless AI didn't use the recipe we uploaded. Though sometimes, Driverless Ai makes use of the transformer, and that depends on the Data sampling it uses when running the experiment.  If you want to see how the recipe will improve the AUC, you can go back to recipes and only select the transformer. We will further discuss the results at the end of task 6.
+In this case, the AUC didn't improve, and that is because Driverless AI didn't use the recipe we uploaded. Though sometimes, Driverless AI makes use of the transformer, and that depends on the Data sampling it uses when running the experiment.  If you want to see how the recipe will improve the AUC, you can go back to recipes and only select the transformer. We will further discuss the results at the end of task 6.
 
 ### Deeper Dive and Resources
 
@@ -468,17 +466,17 @@ Confusion Matrices for each of the selected models
 
 From the confusion matrices shown above, we can get an idea of how the models with the custom recipes improved. We can see that the Scorer recipe yielded a lower misclassification error compared to the baseline misclassification error of 7.56% .
 
-- Formula: Misclassification (all **incorrect** / all) = FP + FN / TP + TN + FP + FN
+- Formula: Misclassification (all **incorrect** / all) = (FP + FN) / (TP + TN + FP + FN)
 
 - The misclassification percentage for the Scorer recipe is:
 
-   Misclassification = 133 + 103 / 2717 + 380 + 133 + 103
+   Misclassification = (133 + 103) / (2717 + 380 + 133 + 103)
 
    Misclassification = 236 / 3,333 = 0.0708 = **7.08%**
 
 - The misclassification percentage for the Baseline is:
 
-   Misclassification = 146 + 106 / 377 + 2704 + 106 + 146
+   Misclassification = (146 + 106) / (377 + 2704 + 106 + 146)
 
   Misclassification = 252 / 3,333 = 0.0756 = **7.56%**
 
@@ -500,7 +498,6 @@ We can see that when we used the Scorer recipe, the model had better AUC with an
 
 H2O custom recipes reside in the H2O Driverless AI Recipes GitHub repo. **There are multiple branches of Driverless AI recipes so make sure that you are using the same branch as the Driverless AI version you have.**
 
-For this tutorial, we are using **Driverless AI 1.9.0,** but we will be working off the Driverless AI 1.9.0 branch.
 
 1\. Open the link below on a separate tab. Make sure the branch is **rel-1.9.0**
 
