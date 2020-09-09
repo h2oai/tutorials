@@ -234,6 +234,7 @@ En el conjunto de datos encontrarás 1,309 filas, una fila por cada pasajero, y 
     - **Rows:** Número de filas o Rows
     - **Columns:** Número de columnas 
     - **Status:** Estado del archivo osea Status
+    - **Created:** Archivo creado, incluye el dia y la hora cuando fue creado
  
 2. La opción para regresar a la página anterior
  
