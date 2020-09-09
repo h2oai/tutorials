@@ -56,7 +56,7 @@ The training dataset in this tutorial contains 73,165 rows and a total of 11 fea
 
 ### Datasets Overview
 
-If you are using Aquarium as your environment, then the lab **Driverless AI Test Drive (x.x.x.x.)** will have this tutorial training and test subsets of the Retail Store Forecasting dataset preloaded for you. The datasets will be located on the **Datasets Overview** page. You will also see a few more data sets, which you can ignore for now as they are used for another tutorial. 
+If you are using Aquarium as your environment, then the lab **Driverless AI Test Drive (x.x.x.x)** will have this tutorial training and test subsets of the Retail Store Forecasting dataset. The datasets will be located on the **Datasets Overview** page. You will also see a few more data sets, which you can ignore for now as they are used for another tutorial. 
 
 **NOTE:** To learn how to add the two datasets from the Driverless AI file system see [Appendix A: Add the Datasets](#appendix-a-add-the-datasets).
 
@@ -564,7 +564,7 @@ Log
 
 **Unavailable Columns at Prediction Time**
 
-The **Unavailable Columns at Prediction Time** (UCAPT) option is a way to mark features that will not be available in the test dataset or at the time of prediction but might still be predictive when looking at historical values. These features will only be used in historical feature engineering recipes, such as Lagging or Exponential Weighted Moving Average.
+The **Unavailable Columns at Prediction Time** (UCAPT) option is a way to mark features that will not be available in the test dataset or at the time of prediction, but might still be predictive when looking at historical values. These features will only be used in historical feature engineering recipes, such as Lagging or Exponential Weighted Moving Average.
 
 For example, if we were predicting the sales amount each day, we might have the number of customers each day as a feature in our training dataset. In the future, we won’t know how many customers will be coming into the store, so this would be a leaky feature to use. However, the average number of customers last week might be predictive and is something that we could calculate ahead of time. So in this case, looking at the historical values would be better than just dropping the feature.
 
@@ -601,7 +601,7 @@ At the end of the experiment, a similar page will appear:
     - **Download Python Scoring Pipeline** - A standalone Python scoring pipeline for H2O Driverless AI
     - **Download MOJO Scoring Pipeline** - A standalone Model Object, Optimized scoring pipeline
     - **Visualize Scoring Pipeline(Experimental)**
-    - **Download Summary & Logs** - An experiment summary is available for each completed experiment as zip file
+    - **Download Summary & Logs** - An experiment summary is available for each completed experiment as a zip file
     - **Download Autoreport**
 
 2. Iteration Data - Validation
@@ -647,16 +647,16 @@ At the end of the experiment, a similar page will appear:
 1. **MLI TS HELP** 
 
     - **Help Panel**: This panel describes how to read and use the Time Series MLI page.
-    - **Hide Panel**: To hide Help Panel, click on Hide Panel
-    - **Add Panel**:  add a new MLI Time Series panel. This allows you to compare different groups in the same model and also provides the flexibility to do a “side-by-side” comparison between different models.
-    - **MLI TS Docs**: A link to the “Machine Learning Interpretability with Driverless AI” booklet.
+    - **Hide Panel**: To hide Help Panel, click on *Hide Panel*
+    - **Add Panel**:  add a new MLI Time Series panel. This allows you to compare different groups in the same model and also, provides the flexibility to do a “side-by-side” comparison between different models.
+    - **MLI TS Docs**: A link to the following booklet: *Machine Learning Interpretability with Driverless AI*.
 
 2. **Time Series Model Interpretation**
 
     - **Download Logs**: Download a zip file of the logs that were generated during this interpretation
     - **Show Summary**: Button provides details about the experiment settings that were used
     - **Download Group Metrics** : Retrieve the averages of each group’s scorer, as well as each group’s sample size.
-    - **Experiment**: Return to Experiments page
+    - **Experiment**: Return to the Experiments page
     - **Input Box**: this box lists the ID of the current model. The ID value can be changed to view other models. This can be done by adding a panel and searching in the input box for the new ID.
     - **Time Series Plot**: If the test set includes actual results, then a time series plot will be displayed
 
@@ -792,7 +792,7 @@ One important thing to note is why we changed the **Scorer**  that Driverless AI
 
 1. The experiment with the lower settings had less features scored compared to the pre-ran experiment. This means that Driverless AI tested 77 features from which only 15 were found useful compared to the pre-ran experiment which tested 1487 features and found 35 features useful for feature engineering. At higher settings, Driverless AI does a more thorough evaluation. 
 
-2. The lower settings experiment had an Test Score value: R2 value of .8786 compared to .9553 for the pre-ran experiment.
+2. The lower settings experiment had a Test Score value: R2 value of .8786 compared to .9553 for the pre-ran experiment.
 
 3. The variables under variable importance for the low settings are very simple lags compared to the pre-ran experiment that has very sophisticated variables. 
 
@@ -875,13 +875,13 @@ What should the user do once the 2020-11-02 week has passed?
 
 There are two options:
 
-Option 1: Trigger a Driverless AI experiment to be trained once the forecast horizon ends. A Driverless AI experiment will need to be re-trained every week.
+**Option 1**: Trigger a Driverless AI experiment to be trained once the forecast horizon ends. A Driverless AI experiment will need to be re-trained every week.
 
-Option 2: Use Test Time Augmentation to update historical features so that we can use the same model to forecast outside of the forecast horizon.
+**Option 2**: Use Test Time Augmentation to update historical features so that we can use the same model to forecast outside of the forecast horizon.
 
 Test Time Augmentation refers to the process where the model stays the same but the features are refreshed using the latest data. In our Walmart Sales Forecasting example, a feature that may be very important is the Weekly Sales from the previous week. Once we move outside of the forecast horizon, our model no longer knows the Weekly Sales from the previous week. By performing Test Time Augmentation, Driverless AI will automatically generate these historical features if new data is provided.
 
-In Option 1, we would launch a new Driverless AI experiment every week with the latest data and use the resulting model to forecast the next week. In Option 2, we would continue using the same Driverless AI experiment outside of the forecast horizon by using Test Time Augmentation.
+In **Option 1**, we would launch a new Driverless AI experiment every week with the latest data and use the resulting model to forecast the next week. In **Option 2**, we would continue using the same Driverless AI experiment outside of the forecast horizon by using Test Time Augmentation.
 
 Both options have their advantages and disadvantages. By retraining an experiment with the latest data, Driverless AI has the ability to possibly improve the model by changing the features used, choosing a different algorithm, and/or selecting different parameters. As the data changes over time, for example, Driverless AI may find that the best algorithm for this use case has changed.
 
