@@ -585,7 +585,7 @@ Driverless AI utiliza Ingeniería de  las características en el dataset(conjunt
  
 Transformaciones en Driverless AI son aplicadas a las columnas de los datos. Los transformadores crean las característica diseñada en los experimentos. Hay muchos tipos de transformadores, debajo están solo algunos de muchos transformadores que se encuentran en nuestro conjunto de datos (Dataset).
  
-1\. Observa algunas de las variables en **Variable of importance** o Variables de importancia. Nota que algunas de las variables empiezan con ```_CVTE``` seguidas por una columna del conjunto de datos(dataset). Algunas otras variables también podrían empezar con ```_NumToCatTE, Freq``` o ```_WoE``` dependiendo del experimento que estes ejecutando. Estas son las nuevas, características de alto valor o importancia para nuestro conjunto de datos(dataset) para el entrenamiento.
+1\. Observa algunas de las variables en **Variable of importance** o Variables de importancia. Nota que algunas de las variables empiezan con ```_CVTE``` seguidas por una columna del conjunto de datos(dataset). Algunas otras variables también podrían empezar con ```_NumToCatTE, _Freq``` o ```_WoE``` dependiendo del experimento que estes ejecutando. Estas son las nuevas, características de alto valor o importancia para nuestro conjunto de datos(dataset) para el entrenamiento.
  
 Estas transformaciones son creadas con los siguientes transformadores:
  
