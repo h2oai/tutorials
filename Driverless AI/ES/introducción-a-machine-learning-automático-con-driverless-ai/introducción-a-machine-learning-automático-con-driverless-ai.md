@@ -579,19 +579,19 @@ Interpret This Model (Interpreta este modelo)
  
 ## Tarea 6: Explora Feature Engineering
  
-Driverless AI realiza Ingeniería de características en el dataset(conjunto de datos) para determinar la representación óptima de los datos. Varias etapas de las características aparecen a lo largo de la iteración de los datos. Estas se pueden observar al pasar el cursor sobre los puntos de la Gráfica de validación de los datos de iteración y viendo las actualizaciones en la sección de la **Variable Importance** (importancia de variable).
+Driverless AI utiliza Ingeniería de  las características en el dataset(conjunto de datos) para determinar la representación mas óptima de los datos. Varias etapas de las características aparecen a lo largo de la iteración de los datos. Estos datos se pueden observar al pasar el cursor sobre los puntos de la Gráfica de validación de los datos de iteración y viendo las actualizaciones en la sección de la **Variable Importance** (importancia de variable).
  
 ![feature-engineering-1](assets/feature-engineering-1.jpg)
  
-Transformaciones en Driverless AI son aplicadas a las columnas de los datos. Los transformadores crean las características de ingeniería en los experimentos. Hay muchos tipos de transformadores, debajo están solo algunos de los transformadores que se encuentran en nuestro conjunto de datos (Dataset).
+Transformaciones en Driverless AI son aplicadas a las columnas de los datos. Los transformadores crean las característica diseñada en los experimentos. Hay muchos tipos de transformadores, debajo están solo algunos de muchos transformadores que se encuentran en nuestro conjunto de datos (Dataset).
  
-1\. Observa algunas de las variables en **Variable de importancia**. Nota que algunas de las variables empiezan con ```CVTE``` seguidas por una columna del conjunto de datos(dataset). Algunas variables también podrían empezar con ```_NumToCatTE, Freq``` o ```_WoE``` dependiendo del experimento que ejecutes. Estas son las nuevas, características de alto valor para nuestro conjunto de datos(dataset) de entrenamiento.
+1\. Observa algunas de las variables en **Variable of importance** o Variables de importancia. Nota que algunas de las variables empiezan con ```_CVTE``` seguidas por una columna del conjunto de datos(dataset). Algunas otras variables también podrían empezar con ```_NumToCatTE, Freq``` o ```_WoE``` dependiendo del experimento que estes ejecutando. Estas son las nuevas, características de alto valor o importancia para nuestro conjunto de datos(dataset) para el entrenamiento.
  
 Estas transformaciones son creadas con los siguientes transformadores:
  
-- Cross Validation Target Encoding Transformer(Transformador de codificación de objetivo de validación cruzada) : ```_CVTargetEncode```
-- Weight of Evidence(Peso de la evidencia) : ```WoE```
-- Frequent Transformer(Transformador frecuente): ```Freq```
+- Cross Validation Target Encoding Transformer(Transformador de codificación del objetivo de validación cruzada) : ```_CVTargetEncode```
+- Weight of Evidence(Peso de la evidencia) : ```_WoE```
+- Frequent Transformer(Transformador Frecuente): ```_Freq```
 - Numeric to Categorical Target Encoding Transformer(Transformador de codificación de objetivo numérico a categórico) : ```_NumToCatTE```
  
 También puedes pasar el cursor en cualquiera de las variables bajo Variable Importance(Importancia de variables) para obtener una explicación simple del transformador usado como se ve en la imagen de abajo:
