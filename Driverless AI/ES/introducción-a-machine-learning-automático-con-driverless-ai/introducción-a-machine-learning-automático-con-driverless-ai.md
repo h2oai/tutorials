@@ -980,7 +980,7 @@ El archivo zip del **Autoreport** proporciona información sobre lo siguiente:
  
 ## Próximos Pasos
  
-Echa un vistazo al siguiente tutorial de AI sin controlador [Tutorial de análisis y puntuación de experimentos de aprendizaje automático: enfoque financiero](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus)
+Echa un vistazo al siguiente tutorial de AI sin controlador. [Tutorial de análisis y puntuación de experimentos de aprendizaje automático: enfoque financiero](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus)
  
 Donde aprenderás a:
  
