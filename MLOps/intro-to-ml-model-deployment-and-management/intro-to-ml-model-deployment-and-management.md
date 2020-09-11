@@ -5,15 +5,18 @@
 - [Objective](#objective)
 - [Prerequisites](#prerequisites)
 - [Task 1: Explore H2O.ai Platform Studio](#task-1-explore-h2oai-platform-studio)
-- [Task 2: Create Driverless AI Project & Share it with MLOps](#task-2-create-driverless-ai-project-&-share-it-with-mlops)
+- [Task 2: Create Driverless AI Project and Share it with MLOps](#task-2-create-driverless-ai-project-and-share-it-with-mlops)
 - [Task 3: Machine Learning Operations Concepts](#task-3-machine-learning-operations-concepts)
 - [Task 4: Tour of MLOps UI](#task-4-tour-of-mlops-ui)
-- [Task 5: Interactive & Batch Scoring via MLOps Model Deployment](#task-5-interactive-&-batch-scoring-via-mlops-model-deployment)
+- [Task 5: Interactive and Batch Scoring via MLOps Model Deployment](#task-5-interactive-and-batch-scoring-via-mlops-model-deployment)
 - [Task 6: Monitor MLOps Deployed Model](#task-6-monitor-mlops-deployed-model)
 - [Task 7: Challenge](#task-7-challenge)
 - [Next Steps](#next-steps)
+- [Appendix A: AI Glossary](#appendix-a-ai-glossary)
+
+<!--
 - [Appendix A: Share Driverless AI Credit Card Project with MLOps](#appendix-a-share-driverless-ai-credit-card-project-with-mlops)
-- [Appendix B: AI Glossary](#appendix-b-ai-glossary)
+-->
 
 ## Objective
 
@@ -21,7 +24,7 @@
 
 By the end of this tutorial, you will predict the **cooling condition** for a **Hydraulic System Test Rig** by deploying a **Driverless AI MOJO Scoring Pipeline** into test development environment similar to production using **MLOps**. The Hydraulic System Test Rig data comes from **[UCI Machine Learning Repository: Condition Monitoring of Hydraulic Systems Data Set](https://archive.ics.uci.edu/ml/datasets/Condition+monitoring+of+hydraulic+systems#)**. Hydraulic System Test Rigs are used to test components in Aircraft Equipment, Ministry of Defense, Automotive Applications, and more [1]. This Hydraulic Test Rig is capable of testing a range of flow rates that can achieve different pressures with the ability to heat and cool to simulate testing under different conditions [2]. Testing the pressure, volume flow and temperature is possible by Hydraulic Test Rig sensors and digital displays. The display panel alerts the user when certain testing criteria is met displaying either a green/red light [2]. A filter blockage panel indicator is integrated into the panel to ensure the Hydraulic Test Rig’s oil is maintained [2]. The cooling filtration solution is designed to minimize power consumption and expand the life of the Hydraulic Test Rig. We are predicting cooling conditions for Hydraulic System Predictive Maintenance. When the cooling condition is low, our prediction tells us that the cooling of the Hydraulic System is close to total failure and we may need to look into replacing the cooling filtration solution soon.
 
-![Cylinder-Diagram-1](./assets/Cylinder-Diagram-1.jpg)
+![cylinder-diagram-1](./assets/cylinder-diagram-1.jpg)
 
 **Figure 1:** Hydraulic System Cylinder Diagram
 
@@ -59,9 +62,9 @@ The Hydraulic System consists of a primary and secondary cooling filtration circ
 
 ![h2oai-platform-studio](./assets/h2oai-platform-studio.jpg)
 
-**Figure 1:** H2O.ai Platform Studio Splash Page for Launching Driverless AI and/or MLOps
+**Figure 2:** H2O.ai Platform Studio Splash Page for Launching Driverless AI and/or MLOps
 
-## Task 2: Create Driverless AI Project & Share it with MLOps
+## Task 2: Create Driverless AI Project and Share it with MLOps
 
 ### Open Driverless AI Tab
 
@@ -71,13 +74,13 @@ For the first time Driverless AI launches, the terms of agreement page appears, 
 
 ![dai-terms-of-agreement](./assets/dai-terms-of-agreement.jpg)
 
-**Figure 2:** Driverless AI Terms of Agreement
+**Figure 3:** Driverless AI Terms of Agreement
 
 2\. Click **Login with OpenID**
 
 ![dai-login-with-openid](./assets/dai-login-with-openid.jpg)
 
-**Figure 3:** Driverless AI Login with OpenID
+**Figure 4:** Driverless AI Login with OpenID
 
 3\. Enter `ds1/ds1` for username/password
 
@@ -85,175 +88,179 @@ For the first time Driverless AI launches, the terms of agreement page appears, 
 
 ![platform-login](./assets/platform-login.jpg)
 
-**Figure 4:** Driverless AI Login with `ds1/ds1`
+**Figure 5:** Driverless AI Login with `ds1/ds1`
 
 ### Import Hydraulic System Dataset
 
 Driverless AI brings us to the Datasets page.
 
-2\. Download the **[Hydraulic Data Recipe](./recipes/hydraulic-data.py)** to your local machine.
+1\. Download the **[Hydraulic Data Recipe](https://raw.githubusercontent.com/james94/driverlessai-recipes/jm/hydraulic-data-recipe/data/hydraulic-data.py)** to your local machine.
 
-3\. Click **+Add Dataset (Or Drag & Drop)**
+2\. Click **+Add Dataset (Or Drag & Drop)**
 
-4\. Click **Upload Data Recipe**
+3\. Click **Upload Data Recipe**
 
 ![upload-data-recipe](./assets/upload-data-recipe.jpg)
 
-**Figure 4:** Upload Data Recipe
+**Figure 6:** Upload Data Recipe
 
-5\. Search for **hydraulic-data.py** recipe file, then click **Open**
+4\. Search for **hydraulic-data.py** recipe file, then click **Open**
 
 ![search-for-hydraulic-data-py](./assets/search-for-hydraulic-data-py.jpg)
 
-**Figure 5:** Hydraulic Data Recipe File
+**Figure 7:** Hydraulic Data Recipe File
 
 Driverless AI executes the hydraulic-data.py recipe to import the data into datasets.
 
 ![hydraulic-system-data-imported](./assets/hydraulic-system-data-imported.jpg)
 
-**Figure 6:** Import Hydraulic System Data via Data Recipe Execution
+**Figure 8:** Import Hydraulic System Data via Data Recipe Execution
 
 ### Split Hydraulic System Data into Train & Test Set
 
-6\. Click on **hydraulic_system_data.csv** and choose **Split**
+1\. Click on **hydraulic_system_data.csv** and choose **Split**
 
 ![split-hydraulic-dataset](./assets/split-hydraulic-dataset.jpg)
 
-**Figure 7:** Split Hydraulic System Data
+**Figure 9:** Split Hydraulic System Data
 
-7\. For **output name 1**, type `hydraulic_train_data`
+2\. For **output name 1**, type `hydraulic_train_data`
 
-8\. For **output name 2**, type `hydraulic_test_data`
+3\. For **output name 2**, type `hydraulic_test_data`
 
-9\. For **target column**, select `cool_cond_y`
+4\. For **target column**, select `cool_cond_y`
 
-10\. For **select split ratio**, type `0.75`
+5\. For **select split ratio**, type `0.75`
 
-11\. Click **save**
+6\. Click **save**
 
 ![split-hydraulic-train-test.jpg](./assets/split-hydraulic-train-test.jpg)
 
-**Figure 8:** Configure Split for Hydraulic System Data Train and Test Set
+**Figure 10:** Configure Split for Hydraulic System Data Train and Test Set
 
 The hydraulic system data is split into **hydraulic_train_data** and **hydraulic_test_data**:
 
 ![hydraulic-split-into-train-test](./assets/hydraulic-split-into-train-test.jpg)
 
-**Figure 9:** Hydraulic System Data Split into Train and Test Set
+**Figure 11:** Hydraulic System Data Split into Train and Test Set
 
 ### Launch Hydraulic Model Experiment for Condition Classification
 
-12\. Select **predict** for **hydraulic_train_data**
+1\. Select **predict** for **hydraulic_train_data**
 
 ![predict-hydraulic](./assets/predict-hydraulic.jpg)
 
-**Figure 10:** Predict on Hydraulic Train Data
+**Figure 12:** Predict on Hydraulic Train Data
 
 A window titled `First time using Driverless AI? Click Yes to get a tour!` appears, click **Not Now** to ignore the tour.
 
-13\. For **display name**, type `hydraulic_model_1`
+2\. For **display name**, type `hydraulic_model_1`
 
-14\. For **test dataset**, select `hydraulic_test_data`
+3\. For **test dataset**, select `hydraulic_test_data`
 
-15\. For **target column**, select `cool_cond_y`
+4\. For **target column**, select `cool_cond_y`
 
-16\. Click **Launch Experiment**.  (Note: it will take about 13 minutes for completion).
+5\. Click **Launch Experiment**.  (Note: it will take about 13 minutes for completion).
 
 ![launch-experiment-hydraulic](./assets/launch-experiment-hydraulic.jpg)
 
-**Figure 11:** Launch Experiment for Hydraulic Cooling Condition Classification
+**Figure 13:** Launch Experiment for Hydraulic Cooling Condition Classification
 
 When the experiment finishes building, the dashboard will look similar as below:
 
 ![launched-experiment-hydraulic-728](./assets/launched-experiment-hydraulic-728.jpg)
 
-**Figure 12:** Built Experiment for Hydraulic Cooling Condition Classification
+**Figure 14:** Built Experiment for Hydraulic Cooling Condition Classification
 
 ### Create Hydraulic System Project for Condition Classification
 
 We will create a Hydraulic System project for Hydraulic Cooling Condition Classification in Driverless AI to share with MLOps.
 
-17\. Click **Projects**.
+1\. Click **Projects**.
 
 ![dai-select-projects](./assets/dai-select-projects.jpg)
 
-**Figure 13:** Select Projects
+**Figure 15:** Select Projects
 
-18\. Click **+ New Project**.
+2\. Click **+ New Project**.
 
 ![dai-projects-pag](./assets/dai-projects-page.jpg)
 
-**Figure 14:** Create New Project
+**Figure 16:** Create New Project
 
-19\. For **Name**, type `hydraulic system`
+3\. For **Name**, type `hydraulic system`
 
-20\. Click **Create A New Project**.
+4\. Click **Create A New Project**.
 
 ![dai-name-project-hydraulic-system](./assets/dai-name-project-hydraulic-system.jpg)
 
-**Figure 15:** Naming Project hydraulic system
+**Figure 17:** Naming Project hydraulic system
 
 Driverless AI will take you to the new hydraulic system project.
 
-21\. Click **+ Link Experiment**.
+5\. Click **+ Link Experiment**.
 
 ![dai-link-experiment-hydraulic-project](./assets/dai-link-experiment-hydraulic-project.jpg)
 
-**Figure 16:** Link Experiment to hydraulic system Project
+**Figure 18:** Link Experiment to hydraulic system Project
 
-22\. Click **hydraulic_model_1**.
+6\. Click **hydraulic_model_1**.
 
 ![dai-select-hydraulic-model](./assets/dai-select-hydraulic-model.jpg)
 
-**Figure 17:** Select model experiment hydraulic_model_1
+**Figure 19:** Select model experiment hydraulic_model_1
 
 Driverless AI will be linking hydraulic_model_1 experiment into hydraulic system project.
 
 ![dai-hydraulic-experiment-linking](./assets/dai-hydraulic-experiment-linking.jpg)
 
-**Figure 18:** Linking hydraulic_model_1 experiment to hydraulic system Project
+**Figure 20:** Linking hydraulic_model_1 experiment to hydraulic system Project
 
 Driverless AI finished linking experiment.
 
 ![dai-hydraulic-experiment-linked](./assets/dai-hydraulic-experiment-linked.jpg)
 
-**Figure 19:** Linked hydraulic_model_1 experiment to hydraulic system Project
+**Figure 21:** Linked hydraulic_model_1 experiment to hydraulic system Project
 
 ### Open MLOps Tab
 
 If you have not launched MLOps from the H2O.ai Platform Studio Splash page, then follow the instructions:
 
-23\. Click **Launch** MLOps for another new tab to open.
+1\. Click **Launch** MLOps for another new tab to open.
 
-24\. Click **Login with OpenID Connect**
+2\. Click **Login with OpenID Connect**
 
-25\. For Log In, enter `ds1/ds1`
+3\. For Log In, enter `ds1/ds1`
 
 In the MLOps dashboard, the Driverless AI hydraulic system project has been shared.
 
 ![mlops-has-dai-hydraulic-system-project](./assets/mlops-has-dai-hydraulic-system-project.jpg)
 
-**Figure 20:** MLOps My projects
+**Figure 22:** MLOps My projects
 
 ### Login to MLOps as ds2 user from separate Browser
 
 Later we will be working in MLOps as **ds1** user and **ds2** user. So, follow the instructions to also login to MLOps as **ds2** from a separate browser.
 
-26\. If earlier you launched MLOps in google chrome, then open a new chrome incognito window or a different browser like firefox.
+1\. If earlier you launched MLOps in google chrome, then open a new chrome incognito window or a different browser like firefox.
 
-27\. Go to the H2O.ai Platform Studio Splash Page tab for Launching Driverless AI and/or MLOps.
+2\. Go to the H2O.ai Platform Studio Splash Page tab for Launching Driverless AI and/or MLOps.
 
-28\. Click **Launch** MLOps for another new tab to open.
+3\. Click **Launch** MLOps for another new tab to open.
 
-29\. Click **Login with OpenID Connect**.
+4\. Click **Login with OpenID Connect**.
 
-30\. For Log In, enter `ds2/ds2`
+5\. For Log In, enter `ds2/ds2`
 
 ![login-as-ds2](./assets/login-as-ds2.jpg)
+
+**Figure 23:** Login to MLOps as **ds2 user**
 
 In the MLOps dashboard for ds2 user, no Driverless AI projects have been shared with that user yet:
 
 ![mlops-ds2-user](./assets/mlops-ds2-user.jpg)
+
+**Figure 24:** Logged in to MLOps as **ds2 user**
 
 Later we will explore the MLOps UI, share a project from ds1 user to ds2 user, deploy the hydraulic model and monitor the model. Before that, let’s become familiar with Machine Learning Operations concepts.
 
@@ -267,7 +274,7 @@ If you look through various analyst firms and research organizations, you will f
 
 ![ai-lifecycle-with-h2oai-products](./assets/ai-lifecycle-with-h2oai-products.jpg)
 
-**Figure 21:** AI Lifecycle with H2O.ai Products
+**Figure 25:** AI Lifecycle with H2O.ai Products
 
 In this AI lifecycle process diagram above, business users typically have use cases that they need to solve where they need to improve productivity or customer experiences, etc. Business users will engage teams of data engineers and data scientists to build models. The data engineers can use Q for data exploration while the data scientistis can use Driverless AI or H2O for model training. Once the data scientists feel they have a high quality model based on their experimentation and exploration, those models are typically validated by a data science team. Some of the data scientists can use Driverless AI for model testing and validation. Once you have a model where it looks like it performs well and it does what you expect, it is going to be handed over to a production team. That is what you see on the lower right hand side of the diagram. That production team is going to be responsible for deploying that model onto a production environment and making sure that model is serving the needs of business applications. DevOps Engineers and ModelOps Engineers can use MLOps for Driverless AI model production testing, deployment and lifecycle management.  From there, once you have a model that works, you will typically integrate that model into those business applications. Application Developers can use Q SDK to integrate the MLOps deployed model into the AI application for bringing the predictions to the end user. So, there is sort of a down stream service that you are providing support to that you have to make sure you can meet the service level agreement with. [1]
 
@@ -275,11 +282,13 @@ In this AI lifecycle process diagram above, business users typically have use ca
 
 ![barriers-for-ai-adoption-at-scale](./assets/barriers-for-ai-adoption-at-scale.jpg)
 
-**Figure 23:** Barriers for AI Adoption at Scale
+**Figure 26:** Barriers for AI Adoption at Scale
 
 **The Challenge of Model Deployment**
 
-With Machine Learning Operations, it is about getting that initial Machine Learning model into a production environment. That might seem easy if you think that the model that came from Data Science is ready for production use. However, often times what you will find as the model comes from the Data Science team, it kind of gets thrown over the wall to the production team. Then the production team looks at this model object, which is written in Python or R and the production team says we do not know what to do with this thing. Also they do not have the tools on the IT side of the house to deal with Python or R object. They are use to dealing with things like Java or C, etc. **So, you will often find this mismatch between the types of tools and languages that different teams use between the Data Science team and the IT team will just cause a huge disconnect that will prevent the model from being deployed**. Not only that, these two teams are very different in their approach. The Data Science team says there was a business challenge, we were asked to build a model that could predict the outcome, we have done that and they say our model does that prediction very well and it is very accurate. Then the Data Science team hands the model over to the IT team and the IT team has a completely different set of criteria to evaluate that model. They are looking for things like does it perform? Is it fast? Can we scale this model out into production, so that it will be responsive? Can we put it onto a system like Kubernetes, so that it will be resilient? **IT just has a different set of criteria they are looking for compared to the Data Science team, so that mismatch can just cause a lot of models to never be deployed into production**. [3]
+With Machine Learning Operations, it is about getting that initial Machine Learning model into a production environment. That might seem easy if you think that the model that came from Data Science is ready for production use. However, often times what you will find as the model comes from the Data Science team, it kind of gets thrown over the wall to the production team. Then the production team looks at this model object, which is written in Python or R and the production team says we do not know what to do with this thing. Also they do not have the tools on the IT side of the house to deal with Python or R object. The IT team is use to dealing with things like Java or C, etc. [3]
+
+There is often a mismatch between the types of tools and languages that the Data Science team and the IT team use that will cause a huge disconnect, preventing the model from being deployed. Not only that, these two teams are very different in their approach. The Data Science team says there was a business challenge, we were asked to build a model that could predict the outcome and we have done that. Then, the Data Science team says their model does that prediction very well and it is very accurate. Next, the Data Science team hands the model over to the IT team and the IT team has a completely different set of criteria to evaluate that model. The IT team is looking for things like does it perform? Is it fast? Can we scale this model out into production, so that it will be responsive? Can we put it onto a system like Kubernetes, so that it will be resilient? Furthermore, the IT team just has a different set of criteria they are looking for compared to the Data Science team, so that mismatch can just cause a lot of models to never be deployed into production. [3]
 
 **The Challenge of Model Monitoring**
 
@@ -297,7 +306,7 @@ For regulated industries, you will find that if they do not have a plan for how 
 
 ![ml-code-small-fraction-rw-ml-system](./assets/ml-code-small-fraction-rw-ml-system.jpg)
 
-**Figure:** A small fraction of real-world ML system is of ML code [8]
+**Figure: 27** A small fraction of real-world ML system is of ML code [8]
 
 As you can imagine, those challenges we discussed earlier create some signficant barriers, but people are still successfully running and deploying models in production today. This diagram above is pulled from the **Hidden Technical Debt in Machine Learning Systems publication**, which was written by folks at Google. This publication talks about how deploying Machine Learning in production, specifically the model itself is a relatively small part of the overall codebase when you are deploying into in production. You can see this small dot in the middle of the diagram, which is the Machine Learning code. All of these other large boxes are the other things you need to do to make sure that machine learning model is running properly. In the publication, they point out how much glue code needs to be written to get that Machine Learning code running in production. [7]
 
@@ -315,7 +324,7 @@ MLOps is known as Model Operations or ML Ops. In MLOps, we talk about how do we 
 
 ![mlops-key-capabilities](./assets/mlops-key-capabilities.jpg)
 
-**Figure 24:** MLOps Key Capabilities
+**Figure 28:** MLOps Key Capabilities
 
 The key areas of MLOps are production model deployment, production model monitoring, production lifecycle management and production model governance. 
 
@@ -331,13 +340,15 @@ For production model governance, we want to ensure that models are safe and comp
 
 ![model-deployment-1](./assets/model-deployment-1.jpg)
 
-**Figure:** Model Code, Runner, Container, Container Management
+**Figure 29:** Model Code, Runner, Container, Container Management
 
-Earlier in our AI Lifecycle flow diagram, we saw that we built a model and now we are outputting that model from our Data Science system. So, we end up with some code that in the right environment can receive a request with certain data on the request and can respond with a prediction. If you are running this model within a vendor infrastructure, what you will find is that you can deploy this model out to a given vendor's infrastructure and that will allow you to do things like make a rest request to that model and get a response. That is because the vendor has done a lot of work behind the scenes in order to deploy that model into production. The **first thing** you need to have to deploy this code is a runner. This runner code itself cannot respond to your request, it is actually just a bunch of code. The **second thing** you need is something that will have all the information for the rest interface and the dependencies for that model. You need all that additional code in order to have that model be able to respond to a request. This will include things like the rest interface that you will need to set up, it could include the libraries that will be needed for the specific model type. So if it is a Python model, you will probably need the libraries to run that Python model. There is a bunch of pieces of code here that you will need to make this model accessible and able to start doing scoring. The **third piece** is a container. So, typically what you are doing is wrapping up this model with all of its dependencies and everything you will need to do scoring and you are going to drop that into a container. That container will allow you to put this model into a container management system and that container management system is going to allow you to do things like replicate that model, so you can scale and support high performance environments and more. The most common and well known container management system is Kubernetes. Likewise for the container environment, Docker is the most common. So, you will typically Dockerize your model and put it into a Docker container. Then you will deploy them out onto Kubernetes. [11]
+Earlier in our AI Lifecycle flow diagram, we saw that we built a model and now we are outputting that model from our Data Science system. So, we end up with some code that in the right environment can receive a request with certain data on the request and can respond with a prediction. If you are running this model within a vendor infrastructure, what you will find is that you can deploy this model out to a given vendor's infrastructure. This deployment will allow you to do things like make a rest request to that model and get a response. That is because the vendor has done a lot of work behind the scenes in order to deploy that model into production. [11]
+
+So, what steps must one go through to make rest request and get a scored response? The **first step** requires having a runner to deploy this code. This runner code itself can't respond to your request, it is just a bunch of code. The **second step** requires having something with all the information for the rest interface and dependencies or libraries for that specific model type, so it is able to respond to a request. So if it is a Python model, you will probably need the libraries to run that Python model. There is a bunch of code that you will need to make this model accessible and be able to do scoring. The **third piece** requires having a container. So, what you are doing is wrapping this model with all of its dependencies and everything you need to do scoring. Then you are dropping this wrapped model into a container, which allows you to put this model into a container management system. This container management system will allow you to replicate this model for scaling and supporting high performance environments and more. Kubernetes is the most well known container management system. Similarly, Docker is the most common container environment. So, typically you will Dockerize your model and put it into a Docker container. Then you will deploy one or more containers out onto Kubernetes. [11]
 
 ![model-deployment-2](./assets/model-deployment-2.jpg)
 
-**Figure:** Load Balancer, Request, Response
+**Figure 30:** Load Balancer, Request, Response
 
 The diagram above shows Kubernetes container management system is going to deploy these model containers behind a load balancer. Depending on how many replicas you tell Kubernetes to set up, it will replicate your model code, it will replicate your scoring code and it will manage the load balancing across those different nodes. So the beauty of Kubernetes is it will automatically replicate your model code, it will manage the request/response and if one of those pods stop responding, it will route the request to another pod and it will spin up additional pods. So, you can see why Kubernetes has become very popular for this type of deployment. [11]
 
@@ -347,7 +358,7 @@ This is a rudimentary look at deployment, but it gives you an idea of the kind o
 
 ![monitoring-for-ml-models](./assets/monitoring-for-ml-models.jpg)
 
-**Figure:** Levels of Monitoring for Machine Learning Models
+**Figure 31:** Levels of Monitoring for Machine Learning Models
 
 In MLOps, there are different levels of monitoring. **Level 1 is service monitoring**. You can get service monitoring from a variety of software monitoring tools, but you may be surprised how many people still do not have this. They do not even know if a specific model is responding in a timely fashion in their production environment. So that is the first thing you want to make sure you have is some kind of service level monitoring. Is our service up and running? Is it responding within a reasonable timeframe that will meet our service level agreement (SLA) with our downstream application? Another thing you want to monitor is whether the service is using appropriate resource levels because if your model service starts to consume resources and go out of bounds that could not only affect this model, but other models that are potentially sharing resources with that model. Service level monitoring is really important so that you have a level of comfort knowing that the service is responding and that you are delivering results to the downstream application that you are supporting with that model. [12]
 
@@ -359,7 +370,7 @@ In MLOps, there are different levels of monitoring. **Level 1 is service monitor
 
 ![typical-model-lifecycle-flow](./assets/typical-model-lifecycle-flow.jpg)
 
-**Figure 22:** Typical Model Lifecycle Flow
+**Figure 32:** Typical Model Lifecycle Flow
 
 We discussed monitoring, now we focus on lifecycle management. **This is a deeper dive into the AI Lifecycle flow we looked at earlier, but with more detail.** [13]
 
@@ -377,7 +388,7 @@ We discussed monitoring, now we focus on lifecycle management. **This is a deepe
 
 ![production-model-governance](./assets/production-model-governance.jpg)
 
-**Figure:** Production Model Governance
+**Figure 33:** Production Model Governance
 
 Production Model Governance must be taken seriously for a variety of reasons. When we put code into production, we need to make sure that code is safe and that it is going to do what we expect as a business. So, production model governance is about ensuring that the right people have access to that code, not the wrong people and that we can prove that. Additionally, production model governance is about ensuring that the service is doing what we expect and that we can prove that. [14]
 
@@ -393,7 +404,7 @@ Production Model Governance must be taken seriously for a variety of reasons. Wh
 
 ![mlops-impact](./assets/mlops-impact.jpg)
 
-**Figure:** MLOps Impact: Cost Savings, Stay out of jail, Increase profit
+**Figure 34:** MLOps Impact: Cost Savings, Stay out of jail, Increase profit
 
 **What happens when we use technology for Machine Learning operations versus doing this in a manual way? What would you expect to happen?**
 
@@ -407,7 +418,7 @@ Finally, Machine Learning operations allows us to scale Machine Learning in prod
 
 ![mlops-architecture](./assets/mlops-architecture.jpg)
 
-**Figure:** MLOps Architecture
+**Figure 35:** MLOps Architecture
 
 **In the MLOps Architecture diagram above, there are two personas, which are the Data Scientists working with Driverless AI and the Machine Learning (ML) Engineers working with MLOps (a Model Manager).**
 
@@ -417,35 +428,37 @@ From model storage, the ML Engineer uses MLOps, a Model Manager, to access a Dri
 
 ### Deep Dive and Resources
 
-- [1] [1:22 - 3:07 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, AI Lifecycle, Speaker: Dan Darnell](https://training.h2o.ai/products/module-7-machine-learning-operations?packages%5B%5D=47590&in_package=47590&sort_by=package_order&ref=package&ref_id=47590#tab-product_tab_contents__4)
+- [1] [1:22 - 3:07 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, AI Lifecycle, Speaker: Dan Darnell](https://training.h2o.ai/products/module-7-machine-learning-operations)
 
-- [2] [3:06 - 4:03 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, NVP Survey Quote, Speaker: Dan Darnell](https://training.h2o.ai/products/module-7-machine-learning-operations?packages%5B%5D=47590&in_package=47590&sort_by=package_order&ref=package&ref_id=47590#tab-product_tab_contents__4)
 
-- [3] [4:04 - 6:20 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, Barriers for AI Adoption at Scale, Deployment, Speaker: Dan Darnell](https://training.h2o.ai/products/module-7-machine-learning-operations?packages%5B%5D=47590&in_package=47590&sort_by=package_order&ref=package&ref_id=47590#tab-product_tab_contents__4)
 
-- [4] [6:21 - 7:18 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, Barriers for AI Adoption at Scale, Monitoring, Speaker: Dan Darnell](https://training.h2o.ai/products/module-7-machine-learning-operations?packages%5B%5D=47590&in_package=47590&sort_by=package_order&ref=package&ref_id=47590#tab-product_tab_contents__4)
+- [2] [3:06 - 4:03 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, NVP Survey Quote, Speaker: Dan Darnell](https://training.h2o.ai/products/module-7-machine-learning-operations)
 
-- [5] [7:19 - 8:09 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, Barriers for AI Adoption at Scale, Lifecycle Management, Speaker: Dan Darnell](https://training.h2o.ai/products/module-7-machine-learning-operations?packages%5B%5D=47590&in_package=47590&sort_by=package_order&ref=package&ref_id=47590#tab-product_tab_contents__4)
+- [3] [4:04 - 6:20 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, Barriers for AI Adoption at Scale, Deployment, Speaker: Dan Darnell](https://training.h2o.ai/products/module-7-machine-learning-operations)
 
-- [6] [8:10 - 8:47 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, Barriers for AI Adoption at Scale, Governance, Speaker: Dan Darnell](https://training.h2o.ai/products/module-7-machine-learning-operations?packages%5B%5D=47590&in_package=47590&sort_by=package_order&ref=package&ref_id=47590#tab-product_tab_contents__4)
+- [4] [6:21 - 7:18 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, Barriers for AI Adoption at Scale, Monitoring, Speaker: Dan Darnell](https://training.h2o.ai/products/module-7-machine-learning-operations)
 
-- [7] [8:48 - 14:09 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, What "Success" Looks Like Today, Speaker: Dan Darnell](https://training.h2o.ai/products/module-7-machine-learning-operations?packages%5B%5D=47590&in_package=47590&sort_by=package_order&ref=package&ref_id=47590#tab-product_tab_contents__4)
+- [5] [7:19 - 8:09 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, Barriers for AI Adoption at Scale, Lifecycle Management, Speaker: Dan Darnell](https://training.h2o.ai/products/module-7-machine-learning-operations)
+
+- [6] [8:10 - 8:47 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, Barriers for AI Adoption at Scale, Governance, Speaker: Dan Darnell](https://training.h2o.ai/products/module-7-machine-learning-operations)
+
+- [7] [8:48 - 14:09 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, What "Success" Looks Like Today, Speaker: Dan Darnell](https://training.h2o.ai/products/module-7-machine-learning-operations)
 
 - [8] [Hidden Technical Debt in Machine Learning Systems](https://papers.nips.cc/paper/5656-hidden-technical-debt-in-machine-learning-systems.pdf)
 
-- [9] [14:10 - 15:51 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, The Solution MLOps, Speaker: Dan Darnell](https://training.h2o.ai/products/module-7-machine-learning-operations?packages%5B%5D=47590&in_package=47590&sort_by=package_order&ref=package&ref_id=47590#tab-product_tab_contents__4)
+- [9] [14:10 - 15:51 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, The Solution MLOps, Speaker: Dan Darnell](https://training.h2o.ai/products/module-7-machine-learning-operations)
 
-- [10] [15:52 - 17:39 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, MLOps Key Capabilities, Speaker: Dan Darnell](https://training.h2o.ai/products/module-7-machine-learning-operations?packages%5B%5D=47590&in_package=47590&sort_by=package_order&ref=package&ref_id=47590#tab-product_tab_contents__4)
+- [10] [15:52 - 17:39 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, MLOps Key Capabilities, Speaker: Dan Darnell](https://training.h2o.ai/products/module-7-machine-learning-operations)
 
-- [11] [17:40 - 22:05 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, Model Deployment, Speaker: Dan Darnell](https://training.h2o.ai/products/module-7-machine-learning-operations?packages%5B%5D=47590&in_package=47590&sort_by=package_order&ref=package&ref_id=47590#tab-product_tab_contents__4)
+- [11] [17:40 - 22:05 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, Model Deployment, Speaker: Dan Darnell](https://training.h2o.ai/products/module-7-machine-learning-operations)
 
-- [12] [22:06 - 27:20 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, Monitoring for Machine Learning Models, Speaker: Dan Darnell](https://training.h2o.ai/products/module-7-machine-learning-operations?packages%5B%5D=47590&in_package=47590&sort_by=package_order&ref=package&ref_id=47590#tab-product_tab_contents__4)
+- [12] [22:06 - 27:20 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, Monitoring for Machine Learning Models, Speaker: Dan Darnell](https://training.h2o.ai/products/module-7-machine-learning-operations)
 
-- [13] [29:00 - 38:52 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, Typical Model Lifecycle Flow, Speaker: Dan Darnell](https://training.h2o.ai/products/module-7-machine-learning-operations?packages%5B%5D=47590&in_package=47590&sort_by=package_order&ref=package&ref_id=47590#tab-product_tab_contents__4)
+- [13] [29:00 - 38:52 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, Typical Model Lifecycle Flow, Speaker: Dan Darnell](https://training.h2o.ai/products/module-7-machine-learning-operations)
 
-- [14] [41:40 - 45:32 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, Production Model Governance, Speaker: Dan Darnell](https://training.h2o.ai/products/module-7-machine-learning-operations?packages%5B%5D=47590&in_package=47590&sort_by=package_order&ref=package&ref_id=47590#tab-product_tab_contents__4)
+- [14] [41:40 - 45:32 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, Production Model Governance, Speaker: Dan Darnell](https://training.h2o.ai/products/module-7-machine-learning-operations)
 
-- [15] [45:33 - 48:12 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, MLOps Impact, Speaker: Dan Darnell](https://training.h2o.ai/products/module-7-machine-learning-operations?packages%5B%5D=47590&in_package=47590&sort_by=package_order&ref=package&ref_id=47590#tab-product_tab_contents__4)
+- [15] [45:33 - 48:12 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, MLOps Impact, Speaker: Dan Darnell](https://training.h2o.ai/products/module-7-machine-learning-operations)
 
 ## Task 4: Tour of MLOps UI
 
@@ -453,11 +466,7 @@ From model storage, the ML Engineer uses MLOps, a Model Manager, to access a Dri
 
 ![mlops-has-dai-hydraulic-system-project](./assets/mlops-has-dai-hydraulic-system-project.jpg)
 
-**Figure 20:** MLOps Projects Dashboard
-
-- H2O.ai Logo
-
-- H2O.ai MLOps
+**Figure 36:** MLOps **Projects** Dashboard
 
 - Projects: MLOps projects page shows Driverless AI projects shared with MLOps
 
@@ -486,7 +495,7 @@ Click on **hydraulic system** in my projects table.
 
 ![hydraulic-system-project-dashboard](./assets/hydraulic-system-project-dashboard.jpg)
 
-**Figure:** MLOps Hydraulic System Project
+**Figure 37:** MLOps **Hydraulic System** Project
 
 - hydraulic system: is the current project
 
@@ -531,19 +540,21 @@ Click on **hydraulic system** in my projects table.
 
 Open a different browser or incognito window and login to MLOps.
 
-A\. Click on **Share project** to the right of the Summary table to share this project from **ds1** user with **ds2** user. Refer to [Share Project from ds1 user with ds2 user](#share-project-from-ds1-user-with-ds2-user)
+A\. Click on **Share project** to the right of the Summary table to share this project from **ds1** user with **ds2** user. To see a "post-click" screenshot, refer to [A: Share Project from ds1 user with ds2 user](#a-share-project-from-ds1-user-with-ds2-user)
 
-B\. Click on **More experiments...** at the bottom of the Models table to see more experiments in this project. Refer to the [Hydraulic System Models Dashboard Tour](#hydraulic-system-models-dashboard-tour)
+B\. Click on **More experiments...** at the bottom of the Models table to see more experiments in this project. To see a "post-click" screenshot, refer to the [B: Hydraulic System Models Dashboard Tour](#b-hydraulic-system-models-dashboard-tour)
 
-C\. Click on **Actions 3 dot** for **hydraulic_model_1 model** to see the actions that can be performed on this model. Refer to [Hydraulic System Projects Models Actions Tour](#hydraulic-system-projects-models-actions-tour).
+C\. Click on **Actions 3 dot** for **hydraulic_model_1 model** to see the actions that can be performed on this model. To see a "post-click" screenshot, refer to [C: Hydraulic System Projects Models Actions Tour](#c-hydraulic-system-projects-models-actions-tour).
 
-D\. Click on **Events** for **hydraulic system** project to see its events. Refer to [Hydraulic System Events Tour](#hydraulic-system-events-tour)
+D\. Click on **Events** for **hydraulic system** project to see its events. To see a "post-click" screenshot, refer to [D: Hydraulic System Events Tour](#d-hydraulic-system-events-tour)
 
 For the next task, we are going to deploy the **hydraulic_model_1 model** to a **DEV environment**.
 
-### Share Project from ds1 user with ds2 user
+### A: Share Project from ds1 user with ds2 user
 
 ![share-project-hydraulic-system](./assets/share-project-hydraulic-system.jpg)
+
+**Figure 38:** Share project with another user
 
 - Share project: modal that allows you to search for a user you want to share this project with
 - Enter username: username of the user you want to share this project with
@@ -557,6 +568,8 @@ For the next task, we are going to deploy the **hydraulic_model_1 model** to a *
 
 ![share-project-with-ds2](./assets/share-project-with-ds2.jpg)
 
+**Figure 39:** project **hydraulic system shared with ds2 user**
+
 - New sharing: table of user or users who are candidates for sharing this project with
 
 The **ds2** user is added to the **Currently shared with** table.
@@ -564,6 +577,8 @@ The **ds2** user is added to the **Currently shared with** table.
 3\. When you click on the **3 vertical dots**, a dropdown menu appears:
 
 ![shared-project-with-ds2](./assets/shared-project-with-ds2.jpg)
+
+**Figure 40:** Access control dropdown menu for ds2 user
 
 As **ds1** user who shared the project with **ds2** user, you have different sharing actions you can perform:
 
@@ -578,11 +593,15 @@ As **ds1** user who shared the project with **ds2** user, you have different sha
 
 ![ds2-user-sees-shared-project](./assets/ds2-user-sees-shared-project.jpg)
 
+**Figure 41:** project **hydraulic system accessible by ds2 user**
+
 So now multiple people in the ML Operations team can collaborate on the same ML project.
 
-### Hydraulic System Models Dashboard Tour
+### B: Hydraulic System Models Dashboard Tour
 
 ![hydraulic-system-models-dashboard](./assets/hydraulic-system-models-dashboard.jpg)
+
+**Figure 42:** project **hydraulic system models**
 
 - hydraulic system models: models that are a part of this project
 
@@ -593,9 +612,11 @@ So now multiple people in the ML Operations team can collaborate on the same ML 
 
 1\. In the top left, click on Projects > **hydraulic system**.
 
-### Hydraulic System Projects Models Actions Tour
+### C: Hydraulic System Projects Models Actions Tour
 
 ![mlops-models-actions](./assets/mlops-models-actions.jpg)
+
+**Figure 43:** project **hydraulic system model actions dropdown menu**
 
 - Deploy to DEV: deploy this model to a development environment, which is a test production environment that simulates the conditions of a production environment
 
@@ -612,6 +633,8 @@ So now multiple people in the ML Operations team can collaborate on the same ML 
 ### Hydraulic Model More Details Tour
 
 ![hydraulic-model-more-details](./assets/hydraulic-model-more-details.jpg)
+
+**Figure 44:** project **hydraulic system model comments**
 
 - hydraulic_model_1: the particular model being looked at
 
@@ -650,13 +673,17 @@ So now multiple people in the ML Operations team can collaborate on the same ML 
 
 2\. Click **Add comment**.
 
+3\. Click on **Parameters** tab.
+
 ![add-comment-hydraulic-model-ds1](./assets/add-comment-hydraulic-model-ds1.jpg)
 
-3\. Click on **Parameters** tab.
+**Figure 45:** project **hydraulic system model add a comment**
 
 ### Hydraulic Model More Details - Parameters Tour
 
 ![hydraulic-model-parameters](./assets/hydraulic-model-parameters.jpg)
+
+**Figure 46:** project **hydraulic system model parameters**
 
 - Parameters
     - Parameter: target column is the column we are trying to predict using this model
@@ -668,25 +695,33 @@ So now multiple people in the ML Operations team can collaborate on the same ML 
 
 ![hydraulic-model-metadata](./assets/hydraulic-model-metadata.jpg)
 
+**Figure 47:** project **hydraulic system model metadata**
+
 - Metadata: is a table of all the metadata related to this model
     - Metadata key: metadata property name
     - Value: metadata value
 
-1\. As you scroll down the page, you see **dai/iteration_data/{number increases}**, but eventually you will get to dai/labels onward:
+1\. As you scroll down the page, you will see **dai/labels** and other **dai/...** metadata:
 
 ![hydraulic-model-metadata-2](./assets/hydraulic-model-metadata-2.jpg)
 
-2\. As you scroll down the page, you will see **dai/summary**:
+**Figure 48:** project **hydraulic system model metadata dai/labels**
+
+2\. As you scroll down the page, you will see **dai/score, dai/scorer, dai/summary**:
 
 ![hydraulic-model-metadata-3](./assets/hydraulic-model-metadata-3.jpg)
 
+**Figure 49:** project **hydraulic system model metadata dai/{score, scorer, summary}**
+
 3\. Click on Projects > **hydraulic system**.
 
-### Hydraulic System Events Tour
+### D: Hydraulic System Events Tour
 
 Events shows us what has happened in this project:
 
 ![hydraulic-system-events-table](./assets/hydraulic-system-events-table.jpg)
+
+**Figure 50:** project **hydraulic system events**
 
 From the list of events, we can see a **hydraulic_model_1** Experiment deployed by ds1 at a particular date and time.
 
@@ -696,25 +731,25 @@ Does your list of events look different than the image above? If yes, that is ex
 
 1\. Click on Projects > **hydraulic system**.
 
-## Task 5: Interactive & Batch Scoring via MLOps Model Deployment
+## Task 5: Interactive and Batch Scoring via MLOps Model Deployment
 
 1\. In the **Models** table, click on **Actions 3 dot** for **hydraulic_model_1 model**, then click **Deploy to DEV**.
 
 ![deploy-hydraulic-model-to-dev](./assets/deploy-hydraulic-model-to-dev.jpg)
 
-**Figure:** Deploy Hydraulic Model to Dev Environment
+**Figure 51:** Project **Deploy Hydraulic System Model to Dev Environment**
 
 2\. A **Please confirm** modal will appear, click on **Confirm**.
 
 ![confirm-dev-model-deployment](./assets/confirm-dev-model-deployment.jpg)
 
-**Figure:** Confirm Model Deployed to Dev Environment
+**Figure 52:** Confirm you would like Model Deployed to Dev Environment 
 
-You should see the **Environment** for **hydraulic_model_1** update to **DEV**. The **Deployments** table will also update with this model deployed to **DEV** environment.
+You should see the **Environment** for **hydraulic_model_1** deployed to the **DEV environment**. The **Deployments** table will also update with this model deployed to **DEV** environment. As you may have read in the concepts section, deploying the ML model to an development environment, especially a production environment is very difficult to do for many people and organizations. You just did it in about 3 clicks! Congratulations!
 
 ![model-deployed-to-dev](./assets/model-deployed-to-dev.jpg)
 
-**Figure:** Deployed Hydraulic Model to Dev Environment
+**Figure 53:** Project **Deployed Hydraulic Model to Dev Environment**
 
 - Deployments: is a table of deployed models for this project
     - Model: name of a model that is deployed
@@ -730,7 +765,7 @@ You should see the **Environment** for **hydraulic_model_1** update to **DEV**. 
 
 ![model-deployment-actions](./assets/model-deployment-actions.jpg)
 
-**Figure:** Model Deployment Actions
+**Figure 54:** Project **Hydraulic System Model Deployment Actions**
 
 - Actions
     - More details: in depth details on this deployed model 
@@ -738,18 +773,18 @@ You should see the **Environment** for **hydraulic_model_1** update to **DEV**. 
     - Show sample request: curl sample scoring request to have the model perform a prediction on sample data
     - Copy endpoint URL: the url that this model is running on and that you would send a score request to, so this model makes predictions
 
-You should see more details on your model deployment for **hydraulic_model_1**.
+You should see more details for **summary** and **model selections** on your model deployment for **hydraulic_model_1**.
 
 ![model-deployment-more-details](./assets/model-deployment-more-details.jpg)
 
-**Figure:** Model Deployment More Details
+**Figure 55:** Project **Hydraulic System Model Deployment More Details**
 
 - Deployment
 - Summary
     - Endpoint: the url that this model is running on and that you would send a score request to, so this model makes predictions
     - Status: the condition of this model
     - Created on: date and time this model deployment was performed
-    - Top model: uuid of this model deployment
+    - Top model: UUID of this model deployment
 - Monitor: redirect to grafana dashboard for monitoring this deployed model
 - Delete: remove this model deployment
 - Model selections
@@ -758,7 +793,7 @@ You should see more details on your model deployment for **hydraulic_model_1**.
     - Environment: type of environment the model was deployed to either dev or prod
     - Model name: name of model that was deployed
     - Model ID: ID of model that was deployed
-    - Created on: dte and time this model was created
+    - Created on: date and time this model was created
     - Scorer: scorer metric used for this model
     - Score: validation score using this model
     - Owner: user who deployed this model
@@ -770,25 +805,27 @@ You should see more details on your model deployment for **hydraulic_model_1**.
 
 ### Interactive Scoring via Dev Deployment Environment
 
-1\. Click on **Actions 3 dot** for **hydraulic_model_1 model deployments**, then click **Show sample request**:
+1\. Click on **Actions 3 dot** for **hydraulic_model_1 model deployments**, then click **Show sample request**.
+
+2\. Click **Copy request** button.
+
+3\. Click **Close** button.
 
 ![model-deployment-show-sample-request](./assets/model-deployment-show-sample-request.jpg)
 
-**Figure:** Model Deployment Show Sample Request
+**Figure 56:** Project **Hydraulic System Model Deployment Copy Sample Request**
 
-Click **Copy request** button.
-
-Click **Close** button.
-
-Paste **Sample Request** into your terminal:
+Paste **Sample Request** into your terminal and press enter:
 
 ![sample-request-result](./assets/sample-request-result.jpg)
 
-**Figure:** Model Deployment Sample Request Result
+**Figure 57:** Result after **Executing Hydraulic System Model Sample Request**
+
+You can see the result is a classification for hydraulic cooling condition 3, 20 and 100.
 
 ### Batch Scoring via Dev Deployment Environment
 
-From Driverless AI, we insert live code for Data Recipe on our hydraulic_test data and send it as a score request to MLOps Model deployed in Dev environment.
+From Driverless AI, we insert live code for Data Recipe on our hydraulic_test_data and send it as a score request to MLOps Model deployed in Dev environment.
 
 1\. Go to **Driverless AI** tab
 
@@ -802,13 +839,19 @@ From Driverless AI, we insert live code for Data Recipe on our hydraulic_test da
 
 ![dai-test-data-recipe-live-code](./assets/dai-test-data-recipe-live-code.jpg)
 
+**Figure 58:** Enter **Data Recipe Live Code** for hydraulic_test_data
+
 6\. Erase the previous live code template
 
 ![dai-test-data-initial-live-code](./assets/dai-test-data-initial-live-code.jpg)
 
+**Figure 59:** Erase initial live code template
+
 7\. Copy the following **Data Pumper Python code** into Driverless AI **live code** editor:
 
-8\. Update the `scoring_endpoint` variable value with your particular scoring_endpoint for your current deployed model.
+8\. Update the `scoring_endpoint` variable value with your particular scoring_endpoint for your current deployed model. 
+
+> Note: Earlier in [Task 5: Interactive and Batch Scoring via MLOps Model Deployment](#task-5-interactive-and-batch-scoring-via-mlops-model-deployment) at **Figure 54:**, we showed a screenshot of the **Deployments** table with the **Actions 3 dot** dropdown menu opened, there is **Copy endpoint URL** to get the latest **scoring_endpoint**.
 
 ~~~python
 import csv
@@ -844,7 +887,11 @@ return X  # return dt.Frame, pd.DataFrame, np.ndarray or a list or named dict of
 
 ![dai-recipe-live-code-data-pumper](./assets/dai-recipe-live-code-data-pumper.jpg)
 
+**Figure 60:** For hydraulic_test_data, **copy & paste data pumper for live code data recipe**
+
+<!--
 Alternatively, you could run a Python script from your CLI to execute the data pumper. Refer to the script file: [data-pumper-called-from-cli.py](./recipes/data-pumper-called-from-cli.py)
+-->
 
 9\. Click **save** to execute the data pumper
 
@@ -852,35 +899,43 @@ Alternatively, you could run a Python script from your CLI to execute the data p
 
 ## Task 6: Monitor MLOps Deployed Model
 
-1\. In the **Deployments** table on the hydraulic system page, on the **hydraulic_system_2** row, click on **3 dots** actions and then click on **Monitoring**.
+1\. In the **Deployments** table on the hydraulic system page, on the **hydraulic_model_1** row, click on **3 dots** actions and then click on **Monitoring**.
 
 The grafana dashboard with all the monitoring visualizations of our model deployment will be shown. Those visualizations will be updated every 30s by default, but you can adjust this number if you want the visualizations updated faster. For instance, this number has been updated to 10s.
 
-You can see metadata for alerts and column types:
+You can see metadata for **alerts** and **column types**:
 
 ![mlops-deployed-model-monitoring-1](./assets/mlops-deployed-model-monitoring-1.jpg)
 
+**Figure 61:** Enter **MLOps Monitoring for Hydraulic System Model**
+
 2\. Scroll down the monitoring dashboard to see all the visualizations. 
 
-You can see a visualization for the deployed model's scoring latency:
+You can see a visualization for the deployed model's **scoring latency**:
 
 ![mlops-deployed-model-monitoring-2](./assets/mlops-deployed-model-monitoring-2.jpg)
 
-You can see a scatter plot, histogram and heatmap visualization for psa_bar:
+**Figure 62:** MLOps Monitoring's **Scoring Latency visualization**
+
+You can see a **scatter plot**, **histogram** and **heatmap visualization** for **psa_bar**:
 
 ![mlops-deployed-model-monitoring-3](./assets/mlops-deployed-model-monitoring-3.jpg)
 
 ![mlops-deployed-model-monitoring-4](./assets/mlops-deployed-model-monitoring-4.jpg)
 
-As you scroll down the visualizations, you will see the samples collected increasing and visualizations for each column in the test set.
+**Figure 62:** MLOps Monitoring's **Scatter Plot, Histogram and Heatmap visualization**
+
+As you scroll down the visualizations, you will see the **samples collected increasing** and **visualizations for each column in the test set**.
 
 3\. Keep scrolling until you get to the target column, which is **cool_cond_y** in our case:
 
-4\. We have a visualizations for cool_cond_y.3, cool_cond_y.20 and cool_cond_y.100. Let's look at cool_cond_y.3:
+4\. We have a visualizations for **cool_cond_y.3**, **cool_cond_y.20** and **cool_cond_y.100**. Let's look at **cool_cond_y.3**:
 
 ![mlops-deployed-model-monitoring-5](./assets/mlops-deployed-model-monitoring-5.jpg)
 
 ![mlops-deployed-model-monitoring-6](./assets/mlops-deployed-model-monitoring-6.jpg)
+
+**Figure 63:** MLOps Monitoring's Hydraulic Cooling Condition visualizations
 
 What is happening with the variables used when making predictions? How are the visualization graphs for the target column?
 
@@ -899,6 +954,7 @@ So far we have covered making score requests in the command line with curl and t
 - Check out these webinars that dive into how to productionize Driverless AI models using MLOps:
     - H2O Webinar: [Getting the Most Out of Your Machine Learning with Model Ops](https://www.brighttalk.com/service/player/en-US/theme/default/channel/16463/webcast/418711/play?showChannelList=true)
 
+<!--
 ## Appendix A: Share Driverless AI Credit Card Project with MLOps
 
 ### Import Credit Card Dataset
@@ -911,7 +967,7 @@ Open Driverless AI’s Datasets page.
 
 ![add-amazon-s3-data](./assets/add-amazon-s3-data.jpg)
 
-**Figure:** Add Amazon S3 Dataset for Credit Card data
+**Figure 64:** Add Amazon S3 Dataset for Credit Card data
 
 3\. Copy & paste s3 url:
 
@@ -923,13 +979,13 @@ s3://s3.amazonaws.com/data.h2o.ai/DAI-Tutorials/TestDrive-Datasets/UCI_Credit_Ca
 
 ![choose-s3-credit-card-data](./assets/choose-s3-credit-card-data.jpg)
 
-**Figure:** Credit Card S3 Dataset
+**Figure 65:** Credit Card S3 Dataset
 
 Driverless fetches the credit card dataset from s3 and imports it.
 
 ![credit-card-data-imported](./assets/credit-card-data-imported.jpg)
 
-**Figure:** Imported Credit Card Data via S3
+**Figure 66:** Imported Credit Card Data via S3
 
 ### Launch Credit Card Model Experiment
 
@@ -939,7 +995,7 @@ We will launch a credit card model experiment for classifying whether a user def
 
 ![predict-credit-card](./assets/predict-credit-card.jpg)
 
-**Figure:** Predict on Credit Card Data
+**Figure 67:** Predict on Credit Card Data
 
 6\. For display name, type **credit_card_model_1**
 
@@ -953,13 +1009,13 @@ We will launch a credit card model experiment for classifying whether a user def
 
 ![launch-experiment-credit-card](./assets/launch-experiment-credit-card.jpg)
 
-**Figure:** Launching Experiment for Credit Card ML Model
+**Figure 68:** Launching Experiment for Credit Card ML Model
 
 When the experiment finishes building, the dashboard will look similar as below:
 
 ![launched-experiment-credit-card-546](./assets/launched-experiment-credit-card-546.jpg)
 
-**Figure:** Launched Experiment for Credit Card ML Model
+**Figure 69:** Launched Experiment for Credit Card ML Model
 
 ### Create Credit Card Project
 
@@ -975,7 +1031,7 @@ We will create a Credit Card project in Driverless AI to share with MLOps.
 
 ![dai-name-project-credit-card](./assets/dai-name-project-credit-card.jpg)
 
-**Figure:** Name Project Credit Card
+**Figure 70:** Name Project Credit Card
 
 Driverless AI will take you to the new credit card project.
 
@@ -983,13 +1039,13 @@ Driverless AI will take you to the new credit card project.
 
 ![dai-link-experiment-credit-card-project](./assets/dai-link-experiment-credit-card-project.jpg)
 
-**Figure:** Link Experiment to Credit Card Project
+**Figure 71:** Link Experiment to Credit Card Project
 
 16\. Click **credit_card_model_1**
 
 ![dai-select-credit-card-model](./assets/dai-select-credit-card-model.jpg)
 
-**Figure:** Select Credit Card Model Experiment for Project
+**Figure 72:** Select Credit Card Model Experiment for Project
 
 Driverless AI will link **credit_card_model_1** experiment into the **credit card** project.
 
@@ -1003,8 +1059,12 @@ In the MLOps dashboard, the Driverless AI credit card project has been shared.
 
 ![mlops-has-dai-credit-card-project](./assets/mlops-has-dai-credit-card-project.jpg)
 
+**Figure 72:** My projects has **Driverless AI credit card project for ds1 user**
+
 Feel free to explore the credit card project, deploy the credit card model, monitor the model and use other MLOps features for model management.
 
-## Appendix B: AI Glossary
+-->
+
+## Appendix A: AI Glossary
 
 Refer to [H2O.ai AI/ML Glossary](https://docs.google.com/document/d/1v7NzmfuDrr_phVo2hXCCbnj-sDwTKe_FBiNYO94bkN0/edit?usp=sharing) for relevant MLOps Terms
