@@ -55,7 +55,7 @@ If you are new to Driverless AI we highly recommend you start with the **Test Dr
 
 5\. Click on **Create account and email temporary password** at the bottom of the page.
 
-### If you are having issues receiving a temporary password try the following:
+**If you are having issues receiving a temporary password try the following:**
 
 - Force-reload the Aquarium page
 
