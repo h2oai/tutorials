@@ -49,11 +49,23 @@ If you are new to Driverless AI we highly recommend you start with the **Test Dr
  - Country
  - Email
 
-4\. Verify that you are not a robot by checking the "I'm not a robot" box.
+4\. Through the reCAPTCHA test, verify that you are not a robot by checking the "I'm not a robot" box.
+
+**Note**: A password will be sent to your email within minutes.
 
 5\. Click on **Create account and email temporary password** at the bottom of the page.
 
-**Note**: A password will be sent to your email within minutes.
+**If you are having issues receiving a temporary password try the following:**
+
+- Force-reload the Aquarium page
+
+- Try a different browser
+
+- Check corporate settings in your machine
+
+If the three steps above don’t work, please send us an email at **training@h2o.ai** and include the email you used to create the Aquarium account, type of browser you are using, country, and if you can see the reCAPTCHA test in the Aquarium Login page. 
+
+
 
 6\. Check your email for the password.
 
@@ -66,7 +78,7 @@ If you are new to Driverless AI we highly recommend you start with the **Test Dr
 3\. Verify that you are not a robot by checking the "I'm not a robot" box.
 
 4\. Click on **Login**.
-
+ 
 Note: If you are having issues logging in, click on **send us an email**
 
 
@@ -84,7 +96,7 @@ Note: If you are having issues logging in, click on **send us an email**
 
 ## How to Start and End the Test Drive Lab Session
 
-After a successful login, select "Browse Labs" located on the top-left corner of the page, then select Lab 1- Driverless AI Test Drive (x.x.x.x LTS) (1GPU).
+After a successful login, select "Browse Labs" located on the top-left corner of the page, then select Lab 1- Driverless AI Test Drive (x.x.x.x)(1GPU).
 
 Click on the "View Details" button on lab one, as shown in the image below.
 

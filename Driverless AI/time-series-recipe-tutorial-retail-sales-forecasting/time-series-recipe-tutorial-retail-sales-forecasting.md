@@ -11,7 +11,8 @@
 - [Task 6: Analysis](#task-6-analysis) 
 - [Next Steps](#next-steps)
 - [Appendix A: Add the Datasets](#appendix-a-add-the-datasets)
-- [ Appendix B: Time Series FAQ](#appendix-b-time-series-faq)
+- [Appendix B: Forecasting Outside of the Forecast Horizon Tips](#appendix-b-forecasting-outside-of-the-forecast-horizon-tips)
+- [Appendix C: Time Series FAQ](#appendix-c-time-series-faq)
 
 
 
@@ -55,7 +56,7 @@ The training dataset in this tutorial contains 73,165 rows and a total of 11 fea
 
 ### Datasets Overview
 
-If you are using Aquarium as your environment, then the lab **Driverless AI Test Drive (x.x.x.x.)(LTS)** will have this tutorial training and test subsets of the Retail Store Forecasting dataset preloaded for you. The datasets will be located on the **Datasets Overview** page. You will also see two extra data sets, which you can ignore for now as they are used for another tutorial. 
+If you are using Aquarium as your environment, then the lab **Driverless AI Test Drive (x.x.x.x)** will have this tutorial training and test subsets of the Retail Store Forecasting dataset. The datasets will be located on the **Datasets Overview** page. You will also see a few more data sets, which you can ignore for now as they are used for another tutorial. 
 
 **NOTE:** To learn how to add the two datasets from the Driverless AI file system see [Appendix A: Add the Datasets](#appendix-a-add-the-datasets).
 
@@ -100,7 +101,7 @@ As mentioned in the objectives, this tutorial includes a pre-ran experiment that
 
 See [Deeper Dive and Resources](#deeper-dive-and-resources) at the end of this task for additional information on the **Projects Workspace**.
 
-1\. Select **Projects** , an image similar to the one below will appear:
+1\. Select **Projects**, an image similar to the one below will appear:
 
 ![projects-page](assets/projects-page.jpg)
 
@@ -110,10 +111,11 @@ See [Deeper Dive and Resources](#deeper-dive-and-resources) at the end of this t
 2. Pre-created **Projects** which includes the Time Series Tutorial:
       - **Name** : Project name (Time Series Tutorial)
     - **Description**: Optional (N/A)
-    - **Train Datasets**: Number of train datasets (1)
-    - **Valid Datasets**: Number of validation datasets (0)
+    - **Train. Datasets**: Number of train datasets (1)
+    - **Valid. Datasets**: Number of validation datasets (0)
     - **Test Datasets**: Number of test datasets (1)
     - **Experiments**: Number of experiments (1)
+    - **Created**: Date and time the projec was created
 3. Additional options for the created project:
     - **Open**
     - **Rename**
@@ -216,6 +218,7 @@ The scores available in Driverless AI are:
 - MER : Median Error Rate 
 - MSE : Mean Squared Error
 - R2 : R Squared
+- R2COD
 - RMSE : Root Mean Square Error
 - RMSLE : Root Mean Squared Logarithmic Error
 - RMSPE : Root Mean Square Percentage Error
@@ -295,10 +298,10 @@ then select **R2** as the scorer:
 **Note:** These settings were selected to conform to the Aquarium/Test Drive Environment. The goal is to walk-through the mechanics of setting up a time series experiment. Having an interpretability of 10 means that we want a simple model that will be easy to interpret.
 
 - **Accuracy** : 1
-- **Time** : 1
+- **Time** : 5
 - **Interpretability** : 10
 
-![experiment-settings-6-1-5](assets/experiment-settings-6-1-5.jpg)
+![experiment-settings-1-5-10](assets/experiment-settings-1-5-10.jpg)
 
 9\. Now review your experiment settings page and make sure it looks similar to the image below, after, select **Launch Experiment**.
 
@@ -368,7 +371,7 @@ These are the key features/recipes that make the automation possible:
   - Target transformations and differentiation
 - Integration with existing feature engineering functions (recipes and optimization)
 - Rolling-window based predictions for time series experiments with test-time augmentation or re-fit
-- Automatic pipeline generation
+- Automatic pipeline generation (See “From Kaggle Grand Masters’ Recipes to Production Ready in a Few Clicks” [blog post](https://www.h2o.ai/blog/kaggle-grand-masters-recipes-production-ready-clicks/).)
 
 ### Driverless AI Modeling Approach
 
@@ -377,9 +380,15 @@ Driverless AI uses GBMs, GLMs and neural networks with a focus on time-series-sp
 - Autoregressive elements: creating lag variables
 - Aggregated features on lagged variables: moving averages, exponential smoothing descriptive statistics, correlations
 - Date-specific features: week number, day of week, month, year
-- Target transformations: Integration/Differentiation, univariate transforms (like logs, square roots). This approach is combined with AutoDL features as part of the genetic algorithm. The selection is still based on validation accuracy. In other words, the same transformations/genes apply; plus there are new transformations that come from time series. Some transformations (like target encoding) are deactivated.
+- Target transformations: Integration/Differentiation, univariate transforms (like logs, square roots). 
+
+This approach is combined with AutoDL features as part of the genetic algorithm. The selection is still based on validation accuracy. In other words, the same transformations/genes apply; plus there are new transformations that come from time series. Some transformations (like target encoding) are deactivated.
 
 When running a time-series experiment, Driverless AI builds multiple models by rolling the validation window back in time (and potentially using less and less training data).
+
+### Dataset Size
+
+Usually, the forecast horizon (prediction length) 𝐻 equals the number of time periods in the testing data 𝑁𝑇𝐸𝑆𝑇 (i.e. 𝑁𝑇𝐸𝑆𝑇=𝐻). You want to have enough training data time periods 𝑁𝑇𝑅𝐴𝐼𝑁 to score well on the testing dataset. At a minimum, the training dataset should contain at least three times as many time periods as the testing dataset (i.e. 𝑁𝑇𝑅𝐴𝐼𝑁>=3×𝑁𝑇𝐸𝑆𝑇). This allows for the training dataset to be split into a validation set with the same amount of time periods as the testing dataset while maintaining enough historical data for feature engineering.
 
 ### Gap and Horizon 
 
@@ -553,6 +562,14 @@ Log
 
 ![feature-engineering-target-transformations](assets/feature-engineering-target-transformations.jpg)
 
+**Unavailable Columns at Prediction Time**
+
+The **Unavailable Columns at Prediction Time** (UCAPT) option is a way to mark features that will not be available in the test dataset or at the time of prediction, but might still be predictive when looking at historical values. These features will only be used in historical feature engineering recipes, such as Lagging or Exponential Weighted Moving Average.
+
+For example, if we were predicting the sales amount each day, we might have the number of customers each day as a feature in our training dataset. In the future, we won’t know how many customers will be coming into the store, so this would be a leaky feature to use. However, the average number of customers last week might be predictive and is something that we could calculate ahead of time. So in this case, looking at the historical values would be better than just dropping the feature.
+
+The default value for this setting is often ```--```, meaning that all features can be used as they are. If you include a test dataset before selecting a time column, and that test dataset is missing any columns, then you will see a number as the default for Unavailable Columns at Prediction Time, which will be the number of columns that are in the training dataset but not the testing dataset. All of these features will only be looked at historically, and you can see a list of them by clicking on this setting.
+
 ### References
 [1] [Applied Time Series and Box-Jenkins Models by Walter Vandaele pages 3-5](https://www.goodreads.com/book/show/1827184.Applied_Time_Series_and_Box_Jenkins_Models)
 
@@ -574,7 +591,7 @@ At the end of the experiment, a similar page will appear:
 
 1. Status: Complete
     - **Deploy To Cloud**
-    - **Interpret this Mode**l - Launches Model Interpretation on time series data for multiple groups
+    - **Interpret this Model** - Launches Model Interpretation on time series data for multiple groups
     - **Diagnose Model on New Dataset…** -  allows you to view model performance for multiple scorers based on existing model and dataset
     - **Score on another Dataset** - After you generate a model, you can use that model to make predictions on another dataset
     - **Transform Another Dataset..** - Not available for Time Series experiments
@@ -584,23 +601,23 @@ At the end of the experiment, a similar page will appear:
     - **Download Python Scoring Pipeline** - A standalone Python scoring pipeline for H2O Driverless AI
     - **Download MOJO Scoring Pipeline** - A standalone Model Object, Optimized scoring pipeline
     - **Visualize Scoring Pipeline(Experimental)**
-    - **Download Experiment Summary & Logs** - An experiment summary is available for each completed experiment as zip file
+    - **Download Summary & Logs** - An experiment summary is available for each completed experiment as a zip file
     - **Download Autoreport**
 
 2. Iteration Data - Validation
-    - Validation Score - 0.7604 
+    - Validation Score:  R2= 0.7652067 (final pipeline)
     - Model Type: LigthGBM
-    - Variable Importance
+    - Variable Importance: 27_TargetLagsMaxDate:Dept:Store:26:52
 3. Summary:
-    - Summary: See image below:
+    - Summary: See image below
 
     ![experiment-results-summary](assets/experiment-results-summary.jpg)
 
-    - Actual vs Predicted: See image below:
+    - Actual vs Predicted: See image below
 
     ![experiment-results-actual-vs-predicted](assets/experiment-results-actual-vs-predicted.jpg)
 
-    - Residuals : See image below:
+    - Residuals: See image below
 
     ![experiment-results-residuals](assets/experiment-results-residuals.jpg)
 
@@ -629,25 +646,25 @@ At the end of the experiment, a similar page will appear:
 
 1. **MLI TS HELP** 
 
-    - **Help Panel** : This panel describes how to read and use the Time Series MLI page.
-    - **Hide Panel** : To hide Help Panel, click on Hide Panel
-    - **Add Panel** :  add a new MLI Time Series panel. This allows you to compare different groups in the same model and also provides the flexibility to do a “side-by-side” comparison between different models.
-    - **MLI TS Docs** : A link to the “Machine Learning Interpretability with Driverless AI” booklet.
+    - **Help Panel**: This panel describes how to read and use the Time Series MLI page.
+    - **Hide Panel**: To hide Help Panel, click on *Hide Panel*
+    - **Add Panel**:  add a new MLI Time Series panel. This allows you to compare different groups in the same model and also, provides the flexibility to do a “side-by-side” comparison between different models.
+    - **MLI TS Docs**: A link to the following booklet: *Machine Learning Interpretability with Driverless AI*.
 
 2. **Time Series Model Interpretation**
 
-    - **Download Logs** : Download a zip file of the logs that were generated during this interpretation
-    - **Show Summary** : Button provides details about the experiment settings that were used
+    - **Download Logs**: Download a zip file of the logs that were generated during this interpretation
+    - **Show Summary**: Button provides details about the experiment settings that were used
     - **Download Group Metrics** : Retrieve the averages of each group’s scorer, as well as each group’s sample size.
-    - **Experiment** : Return to Experiments page
-    - **Input Box** : this box lists the ID of the current model. The ID value can be changed to view other models. This can be done by adding a panel and searching in the input box for the new ID.
-    - **Time Series Plot** : If the test set includes actual results, then a time series plot will be displayed
+    - **Experiment**: Return to the Experiments page
+    - **Input Box**: this box lists the ID of the current model. The ID value can be changed to view other models. This can be done by adding a panel and searching in the input box for the new ID.
+    - **Time Series Plot**: If the test set includes actual results, then a time series plot will be displayed
 
 3. **Groups Test Metrics** 
 
-    - **Top Group Test Metrics** : Top group matrix based on the scorer that was used in the experiment 
-    - **Bottom Group Test Metrics** : Bottom group matrix based on  the scorer that was used in the experiment 
-    - **Group Search** : Entry field for selecting the groups to view. A chart of "Actual vs Predicted" Shapley values for the group will appear. This chart can be downloaded to your local machine.
+    - **Top Group Test Metrics**: Top group matrix based on the scorer that was used in the experiment 
+    - **Bottom Group Test Metrics**: Bottom group matrix based on  the scorer that was used in the experiment 
+    - **Group Search**: Entry field for selecting the groups to view. A chart of "Actual vs Predicted" Shapley values for the group will appear. This chart can be downloaded to your local machine.
 
 4\. Read the MLI TS Help panel to get a better idea on how to run the MLI on Time Series data for multiple groups, then click on **Hide Help Panel**.
 
@@ -686,11 +703,7 @@ At the end of the experiment, a similar page will appear:
 
     ![mli-group-dept-3-12-peak-point-shapley-value](assets/mli-group-dept-3-12-peak-point-shapley-value.jpg)
 
-    Hover over the first Shapley Value. The value should be something similar to 
-
-    ![mli-group-dept-3-12-shapley-value](assets/mli-group-dept-3-12-shapley-value.jpg)
-
-    At exactly the peak, it is clear that the lag of 52 weeks is the most important feature that drives this prediction that high.
+    At exactly the peak, the lag of 26 and 52 weeks are the most important features that drive this prediction that high.
 
 7. While at the **Actual vs Predicted** chart find a point somewhere at the plateau and double click on it, a local Shapley value will appear right below the plot:
 
@@ -702,9 +715,9 @@ At the end of the experiment, a similar page will appear:
 10\. Go to the top of the page and:
 
 1. Select **Add Panel**
-2. On the new panel, click on the **Select a model interpretation**, then select the Time Series Model named: ``Time Series Forecasting: walirivi``. This will bring in the pre-ran experiment’s MLI results. Click on **Show Summary** for both experiments to compare experiment settings:
+2. On the new panel, click on the **Select a model interpretation**, then select the Time Series Model named: ``Time Series Forecasting: suvatega``. This will bring in the pre-ran experiment’s MLI results. Click on **Show Summary** for both experiments to compare experiment settings:
 
-    - **Note:** the **Driverless AI Experiment Runtime** for both experiments. The pre-ran experiment took about five hours to run. 
+    - **Note:** the **Driverless AI Experiment Runtime** for both experiments. The pre-ran experiment took about two and a half hours to run. 
 
     ![mli-new-experiment-and-preran-experiment-1](assets/mli-new-experiment-and-preran-experiment-1.jpg)
 
@@ -733,17 +746,17 @@ Now we are going to take a look at the pre-ran Time-Series experiment and compar
 
 2\. Select **Projects**, then click on the **Time Series Tutorial** Project.
 
-3\. On the experiments section of the Projects page click on the pre-ran time-series experiment with name **Time Series Forecasting - Experiment 2**. The following image should appear:
+3\. On the experiments section of the Projects page click on the pre-ran time-series experiment with name **Time Series Forecasting**. The following image should appear:
 
-![pre-ran-experiment-settings-10-6-6](assets/pre-ran-experiment-settings-10-6-6.jpg)
+![pre-ran-experiment-settings-7-6-6](assets/pre-ran-experiment-settings-7-6-6.jpg)
 
 This experiment was run in another environment with similar parameters except for the following settings:
 
-- **Accuracy** : 10
+- **Accuracy** : 7
 - **Time** : 6
 - **Interpretability** : 6 
 
-The above settings are recommended settings for time series problems, notice the high accuracy, time, and lower interpretability compared to the settings from task 2. Time-series experiments are very special cases. As a result, it is highly encouraged that the experiments are run with the default settings given by Driverless AI.
+The above settings are recommended settings for time series problems, notice the higher accuracy, time, and lower interpretability compared to the settings from task 2. Time-series experiments are very special cases. As a result, it is highly encouraged that the experiments are run with the default settings given by Driverless AI.
 
 For a time-series experiment the Driverless AI **Accuracy** default value is highly encouraged because it forces many time splits (time splits are critical for stability and prevents overfitting) and allows for multiple window validation. If you must run a time-series experiment with anything lower than the default, the lowest recommended setting for accuracy is a 5.
 
@@ -777,13 +790,13 @@ One important thing to note is why we changed the **Scorer**  that Driverless AI
 
 *Things to Note:*
 
-1. The experiment with the lower settings had less features scored compared to the pre-ran experiment. This means that Driverless AI tested 117 features from which only 6 were found useful compared to the pre-ran experiment which tested 3504 features and found 55 features useful for feature engineering. At higher settings, Driverless AI does a more thorough evaluation. 
+1. The experiment with the lower settings had less features scored compared to the pre-ran experiment. This means that Driverless AI tested 77 features from which only 15 were found useful compared to the pre-ran experiment which tested 1487 features and found 35 features useful for feature engineering. At higher settings, Driverless AI does a more thorough evaluation. 
 
-2. The lower settings experiment had an R2 value of .7856 compared to .9530 for the pre-ran experiment.
+2. The lower settings experiment had a Test Score value: R2 value of .8786 compared to .9553 for the pre-ran experiment.
 
 3. The variables under variable importance for the low settings are very simple lags compared to the pre-ran experiment that has very sophisticated variables. 
 
-When looking at both variable importance results, we can see that for the pre-ran experiment the variable importance that had the most importance was `106 EWMA Lag` or the Exponentially Weighted Moving Average, which calculates the exponentially moving average of a target or feature lag, compared to the lag of 52 weeks for the new experiment. The feature that we see in the pre-ran experiment is a weighted moving average of what happened in various weeks over a course of 2 years; this is a more complex feature than the 52 weeks lag, and that is expected because we built a more complex model from the pre-ran experiment. Although the 52 weeks lag would help make the prediction for a peak value more accurate, our more complex model is trained to be able to predict any point in time, compared to our simple model which would make predictions based on the 1 year lag. Note that the 52 lag is indeed, one of the important variables in the complex model, but is not the most important one.
+When looking at both variable importance results, we can see that for the pre-ran experiment the variable importance that had the most importance was `34_EWMA Lag` or the Exponentially Weighted Moving Average, which calculates the exponentially moving average of a target or feature lag, compared to the 27_TargetLagsMax of 26 and 52 weeks for the new experiment. The feature that we see in the pre-ran experiment is a weighted moving average of what happened in various weeks over a course of 2 years; this is a more complex feature than the 26 and 52 weeks lag, and that is expected because we built a more complex model from the pre-ran experiment. Although the 52 weeks lag would help make the prediction for a peak value more accurate, our more complex model is trained to be able to predict any point in time, compared to our simple model which would make predictions based on the 1 year lag. Note that the 52 lag is indeed, one of the important variables in the complex model, but is not the most important one.
 
 4. On the **Actual vs Predicted** plots, the pre-ran experiment shows the points less dispersed compared to the low settings experiment. This translates to higher accuracy on the predictions.
 
@@ -851,7 +864,58 @@ Import H2O’s training and test subsets of the Retail Store Forecasting dataset
 
 ![retail-store-train-test-datasets](assets/retail-store-train-test-datasets.jpg)
 
-## Appendix B: Time Series FAQ
+
+## Appendix B: Forecasting Outside of the Forecast Horizon Tips 
+
+### Time Series Forecasting with Test Time Augmentation
+
+When you set the experiment’s forecast horizon, you are telling the Driverless AI experiment the dates this model will be asked to forecast for. In the Walmart Sales example, we set the Driverless AI forecast horizon to 1 (1 week in the future). This means that Driverless AI expects this model to be used to forecast 1 week after training ends. Since the training data ends on 2020-10-26, then this model should be used to score for the week of 2020-11-02.
+
+What should the user do once the 2020-11-02 week has passed?
+
+There are two options:
+
+**Option 1**: Trigger a Driverless AI experiment to be trained once the forecast horizon ends. A Driverless AI experiment will need to be re-trained every week.
+
+**Option 2**: Use Test Time Augmentation to update historical features so that we can use the same model to forecast outside of the forecast horizon.
+
+Test Time Augmentation refers to the process where the model stays the same but the features are refreshed using the latest data. In our Walmart Sales Forecasting example, a feature that may be very important is the Weekly Sales from the previous week. Once we move outside of the forecast horizon, our model no longer knows the Weekly Sales from the previous week. By performing Test Time Augmentation, Driverless AI will automatically generate these historical features if new data is provided.
+
+In **Option 1**, we would launch a new Driverless AI experiment every week with the latest data and use the resulting model to forecast the next week. In **Option 2**, we would continue using the same Driverless AI experiment outside of the forecast horizon by using Test Time Augmentation.
+
+Both options have their advantages and disadvantages. By retraining an experiment with the latest data, Driverless AI has the ability to possibly improve the model by changing the features used, choosing a different algorithm, and/or selecting different parameters. As the data changes over time, for example, Driverless AI may find that the best algorithm for this use case has changed.
+
+There may be clear advantages for retraining an experiment after each forecast horizon or for using Test Time Augmentation. Refer to this example to see how to use the scoring pipeline to predict future data instead of using the prediction endpoint on the Driverless AI server.
+
+Using Test Time Augmentation to be able to continue using the same experiment over a longer period of time means there would be no need to continually repeat a model review process. The model may become out of date, however, and the MOJO scoring pipeline is not supported.
+
+![test-time-augmentation-support-table](assets/test-time-augmentation-support-table.jpg)
+
+For different use cases, there may be clear advantages for retraining an experiment after each forecast horizon or for using Test Time Augmentation. In this notebook, we show how to perform both and compare the performance: [Time Series Model Rolling Window](https://github.com/h2oai/driverlessai-tutorials/blob/master/driverlessai_experiments/timeseries/walmart_timeseries_experiment/timeseries_model_rollingwindow.ipynb).
+
+## Triggering Test Time Augmentation
+
+To perform Test Time Augmentation, create your forecast data to include any data that occurred after the training data ended up to the dates you want a forecast for. The dates that you want Driverless AI to forecast should have missing values (NAs) where the target column is. Target values for the remaining dates must be filled in.
+
+The following is an example of forecasting for 2020-11-23 and 2020-11-30 with the remaining dates being used for TTA:
+
+![forecasting-with-tta](assets/forecasting-with-tta.jpg)
+
+Notes:
+
+Although TTA can span any length of time into the future, the dates that are being predicted cannot exceed the horizon.
+
+If the date being forecasted contains any non-missing value in the target column, then TTA is not triggered for that row.
+
+## Forecasting Future Dates 
+
+To forecast or predict future dates, upload a dataset that contains the future dates of interest and provide additional information such as group IDs or features known in the future. The dataset can then be used to run and score your predictions.
+
+The following is an example of a model that was trained up to 2020-05-31:
+
+![forecasting-future-dates-example](assets/forecasting-future-dates-example.jpg)
+
+## Appendix C: Time Series FAQ
 
 **What if my data has a time dependency?**
 
