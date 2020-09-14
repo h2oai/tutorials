@@ -20,7 +20,7 @@ Sentiment analysis, also known as opinion mining is a subfield of Natural Langua
 
 ![sentiment-analysis](assets/sentiment-analysis.jpg)
 
-[Image source](https://dsla1.com/sentiment-analysis-using-python/)
+[Image source]( https://www.kdnuggets.com/images/sentiment-fig-1-689.jpg)
 
 Sentiment Analysis is an important sub-field of NLP. It can help to create targeted brand messages and assist a company in understanding consumer’s preferences. These insights could be critical for a company to increase its reach and influence across a range of sectors.
 
@@ -31,7 +31,7 @@ Here are some of the uses of Sentiment analysis from a business perspective:
 
 In this tutorial, you will learn how to apply automatic machine learning to build a model to classify customer reviews. You will learn some core NLP concepts and then load a dataset, explore it, run an experiment to build a model and explore the results.
 
-**Note**: It is highly recommended that you go over the entire tutorial before starting the experiment. This would help you to become more familiar with the content and aid you while you are performing the experiment.
+**Note**: It is highly recommended that you go over the entire tutorial before starting the experiment. This would help you become more familiar with the content and aid you while you are performing the experiment..
  
 ## Prerequisites
 
@@ -124,7 +124,7 @@ The dataset consists of 10 columns which are as follows:
 
      ![dropped-columns](assets/dropped-columns.jpg)
      
-     However, please note that you can also choose to keep the non-text columns and NLP algorithms will work on that too.
+     However, please note that if you decide to keep the non-text columns, the NLP algorithms will still work on the non-text columns.
 
  4. **Test Dataset** -  The *Test dataset* is a dataset used to provide an unbiased evaluation of a _final_ model fit on the training dataset. It is not used during training of the model and results are available at the end of the experiment. Select the `AmazonFineFoodReviews-test-26k.csv` dataset as follows:
 
@@ -154,9 +154,9 @@ In **Task 2**, we shall explore and update the Experiment Settings.
 
 ## Task 2: Sentiment Analysis Experiment Settings
 
-Once the data has been imported into Driverless AI, there are certain experiment settings that need to be updated. This section deals with experiment settings with respect to NLP tasks. However, if you wish to learn more about the meaning and various experimental settings in general , It is recommender to go through the following tutorial:
+Once the data has been imported into Driverless AI, there are certain experiment settings that need to be updated. This section deals with experiment settings with respect to NLP tasks. However, if you wish to learn more about the meaning and various experimental settings in general, It is recommended to go through the following tutorial:
 
--   [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#3)
+-   [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus)
     
 Experiment Settings describe the Accuracy, Time and Interpretability of a specific experiment. The knobs on the experiment settings are adjustable. As values change, the meaning of the settings on the left-bottom page change.
 
@@ -192,7 +192,7 @@ Scorer is the metric used to Evaluate the machine learning algorithm. The scorer
 
 ###  Expert Settings
 
-A number of configurable settings are available for NLP in Driverless AI that can be tuned according to the type of experiment. To tune the NLP settings, click on the Expert settings and navigate to the NLP option:
+Several configurable settings are available for NLP in Driverless AI, which can be tuned according to the experiment type. To tune the NLP settings, click on the Expert Settings, and navigate to the NLP option:
 
 ![expert-settings-overview](assets/expert-settings-overview.jpg)
 
@@ -294,24 +294,24 @@ Text pre-processing involves using a variety of techniques to convert raw text i
 
 - **Text Standardisation:** Once the text has been tokenized, it is normalised by getting rid of the noise. Noise relates to anything that isn't in a standard format like punctuation marks, special characters or any unwanted tokens. If required, case conversions can also be done i.e converting all tokens into either lowercase or uppercase.
 
-- **Removing Stopwords:** Stop words are words which appear very frequently in a text like "and", "the", and "a" but appear to be of little value in helping select documents. Such words are excluded from the vocabulary entirely.
+- **Removing Stopwords:** Stop words are words which appear very frequently in a text like "and", "the", and "a", but appear to be of little value in helping select documents. Such words are excluded from the vocabulary entirely.
 
-- **Stemming:** Stemming is the process of reducing inflected (or sometimes derived) words to their stem, base or root form — generally a written word form. Example if we were to stem the following words: “Stems”, “Stemming”, “Stemmed”, “and "Stemtization”, the result would be a single token “stem”.
+- **Stemming:** Stemming is the process of reducing inflected (or sometimes derived) words to their stem, base or root form — generally a written word form. Example: if we were to stem the following words: “Stems”, “Stemming”, “Stemmed”, “and "Stemtization”, the result would be a single token “stem”.
 
-- **Lemmatization:** a similar operation to stemming is lemmatization. However, the major difference between the two is that stemming can often create non-existent words, whereas lemmatization creates actual words. An example of lemmatization: “run” is a base form for words like “running” or “ran” and the word “better” and “good” are in the same lemma so they are considered the same.
+- **Lemmatization:** a similar operation to stemming is lemmatization. However, the major difference between the two is that stemming can often create non-existent words, whereas lemmatization creates actual words. An example of lemmatization: “run” is a base form for words like “running” or “ran” and the word “better” and “good” are in the same lemma, so they are considered the same.
 
 It is important to note here that the above steps are not mandatory and their usage depends upon the use case. For instance, in sentiment analysis emoticons signify polarity and stripping them off from the text may not be a good idea. The general goal of the Normalization, Stemming and Lemmatization techniques is to improve the generalization of the model. Essentially we are mapping different variants of what we consider to be the same or very similar "word" to one token in our data.
 
 ### Feature Extraction
 
-The Machine Learning Algorithms usually expect features in the form of numeric vectors . Hence, after the initial preprocessing phase, we need to transform the text into a meaningful vector (or array) of numbers. This process is called **feature extraction**. Let's see how some of the feature-extracting techniques work.
+The Machine Learning Algorithms usually expect features in the form of numeric vectors. Hence, after the initial preprocessing phase, we need to transform the text into a meaningful vector (or array) of numbers. This process is called **feature extraction**. Let's see how some of the feature-extracting techniques work.
 
 - **Bag of Words:** The bag-of-words is a representation of text that describes the occurrence of words within a document. It involves two things:
 
   - A vocabulary of known words
   - A measure of the presence of known words
 
-The intuition behind the Bag of Words is that documents are similar if they have similar content and we can get an idea about the meaning of the document from its content alone. 
+The intuition behind the Bag of Words is that documents are similar if they have identical content, and we can get an idea about the meaning of the document from its content alone. 
 
 ### [Example implementation](https://en.wikipedia.org/wiki/Bag-of-words_model)
 
@@ -378,7 +378,7 @@ Word embeddings can be passed as inputs to CNN models, and cross-validated predi
 
 RNNs like LSTM and GRU are state of the art algorithms for NLP problems. Simply, put a Bi-directional GRU model is putting two independent RNN models in one.
 
-For example, in the sentence "John is walking golf court", a unidirectional model would represent states with representing "golf" based on "John is walking" but not the "court". Using a bi-directional model, the representation would also account the later representations giving the model more predictive power.
+For example, in the sentence "John is walking on the golf court", a unidirectional model would represent states with representing "golf" based on "John is walking" but not the "court". Using a bi-directional model, the representation would also account the later representations giving the model more predictive power.
 
 This makes it a more ‘natural' approach when dealing with textual data since the text is naturally sequential[6].
 
@@ -426,7 +426,7 @@ Once the features have been extracted, they can then be used for training a clas
 
 ## Task 4: Driverless AI NLP Recipe
 
-Text data can contain critical information to inform better predictions. H2O Driverless AI automatically converts text strings into features using powerful techniques like TFIDF, CNN, and GRU. Driverless AI version 1.9 introduces support for PyTorch Transformer Architectures (for example, BERT) that can be used for Feature Engineering or as Modeling Algorithms. The Driverless AI platform has the ability to support both standalone text and text with other columns as predictive features. In particular, The following NLP recipes are available for a given text column:
+Text data can contain critical information to inform better predictions. H2O Driverless AI automatically converts text strings into features using powerful techniques like TFIDF, CNN, and GRU. Driverless AI version 1.9 introduces support for PyTorch Transformer Architectures (for example, BERT) that can be used for Feature Engineering or as Modeling Algorithms. The Driverless AI platform has the ability to support both standalone text and text with other columns as predictive features. In particular, the following NLP recipes are available for a given text column:
 
 ![driverless-nlp-recipe](assets/driverless-nlp-recipe.jpg)
 
@@ -469,7 +469,7 @@ A Bi-directional GRU model is like putting two independent RNN models in one. Ta
 
      Natural language processing is complex as the language is hard to understand given small data and different languages. Targeting languages like Japanese, Chinese where characters play a major role, we have character level embeddings in our recipe as well.
 
-     In character embeddings, each character gets represented in the form of vectors rather than words. Driverless AI uses character level embeddings as input to CNN models and later extract class probabilities to feed as features for downstream models. This gives the ability to work in languages other than English also. In case of languages like Japanese, Chinese etc where there is no concept of words, character embeddings will be useful.
+     In character embeddings, each character gets represented in the form of vectors rather than words. Driverless AI uses character level embeddings as input to CNN models and later extracts class probabilities to feed as features for downstream models: this gives the ability to work in languages other than English. In languages like Japanese and Chinese, where there is no concept of words, character embeddings will be useful.
 
 - **BERT/DistilBERT Models for Feature Engineering:**
 
@@ -481,7 +481,7 @@ Starting with Driverless AI 1.9 release, the Transformer-based architectures sho
 
 ![bert-models](assets/bert-models.jpg)
 
-The BERT model support multiple languages. [DistilBERT](https://arxiv.org/abs/1910.01108) is a distilled version of BERT that has fewer parameters compared to BERT (40% less) and it is faster (60% speedup) while retaining 95% of BERT level performance. The DistilBERT model can be useful when training time and model size is important
+The BERT model supports multiple languages. [DistilBERT](https://arxiv.org/abs/1910.01108) is a distilled version of BERT that has fewer parameters compared to BERT (40% less) and it is faster (60% speedup) while retaining 95% of BERT level performance. The DistilBERT model can be useful when training time and model size is important
 
 - **Domain Specific BERT Recipes**
 
@@ -511,7 +511,7 @@ After an experiment status changes from `RUNNING` to `COMPLETE`, the UI provides
 
 ![experiment-results-ui](assets/experiment-results-ui.jpg)
 
-The Experiment Summary contains a lot of useful information which helps to understand what goes under the hood during the Sentiment Analysis Experiment. If you are interested in learning more about each plot and the metrics derived from those plots covered in this section, then check out our tutorial  [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus).
+The Experiment Summary contains a lot of useful information which helps to understand what goes under the hood during the Sentiment Analysis Experiment. If you are interested in learning more about each plot and the metrics derived from those plots covered in this section, then check out this tutorial [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus).
 
 Please note that the lab also provides a pre-ran experiment. You can either wait for your experiments to finish or use the results of the pre-ran experiment. Click on the **Experiments** tab and select the Amazon Fine Food reviews experiment as follows:
 
@@ -574,7 +574,7 @@ _Things to Note:_
      -   How many features were tested and selected?
      -   How many models were trained for feature evolution?
 
-There are also several plots adjacent to the summary tab that give insight into the experiment. If you are interested in learning more about each plot and the metrics derived from those plots covered in this section, then check out our next tutorial [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus/#0).
+There are also several plots adjacent to the summary tab that give insight into the experiment. If you are interested in learning more about each plot and the metrics derived from those plots covered in this section, then check out our next tutorial [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus).
 
 ### Deeper Dive and Resources
 
@@ -588,15 +588,13 @@ There are also several plots adjacent to the summary tab that give insight into 
 
 ## Task 6: Custom Recipe to Improve Predictions
 
-The latest version(1.7.0) of Driverless AI implements a key feature called BYOR[1] which stands for Bring Your Own Recipes. This feature has been designed to enable Data Scientists or domain experts to influence and customize the machine learning optimization used by Driverless AI as per their business needs. This additional feature engineering technique is aimed towards improving the accuracy of the model.
+The latest version(1.9.0) of Driverless AI implements a key feature called BYOR[1], which stands for Bring Your Own Recipes and was introduced in with Driverless AI (1.7.0). This feature has been designed to enable Data Scientists or domain experts to influence and customize the machine learning optimization used by Driverless AI as per their business needs. This additional feature engineering technique is aimed towards improving the accuracy of the model.
 
-Recipes are customizations and extensions to the Driverless AI platform. They are nothing but Python code snippets that can be uploaded into Driverless AI at runtime, like plugins. Recipes can be either one or a combination of the following:
+Recipes are customizations and extensions to the Driverless AI platform. TThey are nothing but Python code snippets uploaded into Driverless AI at runtime, like plugins. Recipes can be either one or a combination of the following:
 
 -   Custom machine learning models
 -   Custom scorers (classification or regression)
 -   Custom transformers  
-
-
 
 ![recipes-workflow](assets/recipes-workflow.jpg)
 
@@ -684,13 +682,13 @@ This data comes from  [Crowdflower's Data for Everyone library](http://www.crowd
 
 1\. Import the dataset from here:
 
--   [Airline-Sentiment-2-w-AA](http://airline-sentiment-2-w-aa/)
+-   [Airline-Sentiment-2-w-AA](https://data.world/crowdflower/airline-twitter-sentiment)
 
 Here are some samples from the dataset:
 
 ![challenge-dataset](assets/challenge-dataset.jpg)
 
-2\. Split the dataset into a training set and a testing set in 80:20 ratio.
+2\. Split the dataset into a training set and a testing set in an 80:20 ratio.
 
 3\. Run an experiment where the target column is "**airline_sentiment**" using only the default Transformers. You can exclude all other columns from the dataset except the ‘text' column.
 

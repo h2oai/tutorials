@@ -55,7 +55,7 @@ If you are new to Driverless AI we highly recommend you start with the **Test Dr
 
 5\. Click on **Create account and email temporary password** at the bottom of the page.
 
-### If you are having issues receiving a temporary password try the following:
+**If you are having issues receiving a temporary password try the following:**
 
 - Force-reload the Aquarium page
 
@@ -96,7 +96,7 @@ Note: If you are having issues logging in, click on **send us an email**
 
 ## How to Start and End the Test Drive Lab Session
 
-After a successful login, select "Browse Labs" located on the top-left corner of the page, then select Lab 1- Driverless AI Test Drive (x.x.x.x LTS) (1GPU).
+After a successful login, select "Browse Labs" located on the top-left corner of the page, then select Lab 1- Driverless AI Test Drive (x.x.x.x)(1GPU).
 
 Click on the "View Details" button on lab one, as shown in the image below.
 
