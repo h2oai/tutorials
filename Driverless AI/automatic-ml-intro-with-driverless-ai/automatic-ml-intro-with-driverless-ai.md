@@ -228,8 +228,6 @@ This tragedy shooked the international community and led to better safety regula
 
 ### Add the Data 
 
-   
-
 1\. Click on **Add a Dataset(or Drag and Drop)**  
 
 2\. Select **FILE SYSTEM**
@@ -257,6 +255,7 @@ This tragedy shooked the international community and led to better safety regula
     - File size
     - Number of rows/columns 
     - File status
+    - Date created
 
 2. Option to go back to the previous page  
 
@@ -1164,7 +1163,7 @@ Check out Driverless AI next tutorial [Machine Learning Experiment Scoring and A
 	  - MCC
 	  - Log Loss
 
-- Request a [21-Day Free Trial: H2O Driverless AI license Key](https://www.h2o.ai/products/h2o-driverless-ai/)
+- Request a [21-Day Free Trial: H2O Driverless AI license Key](https://www.h2o.ai/try-driverless-ai/)
 
 ## Appendix: Project Workspace
 
