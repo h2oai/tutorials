@@ -9,8 +9,7 @@
 - [Task 3: Machine Learning Operations Concepts](#task-3-machine-learning-operations-concepts)
 - [Task 4: Tour of MLOps UI](#task-4-tour-of-mlops-ui)
 - [Task 5: Interactive and Batch Scoring via MLOps Model Deployment](#task-5-interactive-and-batch-scoring-via-mlops-model-deployment)
-- [Task 6: Monitor MLOps Deployed Model](#task-6-monitor-mlops-deployed-model)
-- [Task 7: Challenge](#task-7-challenge)
+- [Task 6: Challenge](#task-6-challenge)
 - [Next Steps](#next-steps)
 - [Appendix A: AI Glossary](#appendix-a-ai-glossary)
 
@@ -37,7 +36,6 @@ The Hydraulic System consists of a primary and secondary cooling filtration circ
 - A **Two-Hour MLOps Test Drive**: Test Drive is H2O.ai's Driverless AI and MLOps on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform and MLOps.
     - Need a **Two-Hour MLOps Test Drive**? Follow the instructions on this quick **Tutorial 0: Getting Started with MLOps Test Drive (coming soon...)**
 - Basic knowledge of Driverless AI or doing the following tutorial:
-    - [Tutorial 1A: Automatic Machine Learning Introduction with Driverless AI](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai)
     - [Tutorial 4A: Scoring Pipeline Deployment Introduction](https://training.h2o.ai/products/tutorial-4a-scoring-pipeline-deployment-introduction)
 
 **Note: Aquarium’s MLOps Test Drive lab has a license key built-in, so you don’t need to request one to use it. Each Driverless AI Test Drive instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore Driverless AI, you can always launch another Test Drive instance or reach out to our sales team via the [contact us form](https://www.h2o.ai/company/contact/).**
@@ -64,7 +62,7 @@ You can also **launch** MLOps and another new tab will open.
 
 ### Open Driverless AI from H2O.ai Platform Studio
 
-<!-- open-driverless-ai GIF runs at 4 seconds -->
+<!-- open-driverless-ai GIF runs at 15 seconds -->
 
 ![open-driverless-ai](./assets/open-driverless-ai.gif)
 
@@ -108,7 +106,7 @@ Driverless AI executes the hydraulic-data.py recipe to import the data into data
 
 ### Split Hydraulic System Data into Train & Test Set
 
-<!-- split-hydraulic-data GIF runs at 6 seconds -->
+<!-- split-hydraulic-data GIF runs at 20 seconds -->
 
 ![split-hydraulic-data](./assets/split-hydraulic-data.gif)
 
@@ -128,7 +126,7 @@ Driverless AI executes the hydraulic-data.py recipe to import the data into data
 
 ### Launch Hydraulic Model Experiment for Condition Classification
 
-<!-- launch-hydraulic-model-experiment GIF runs at 9 seconds -->
+<!-- launch-hydraulic-model-experiment GIF runs at 20 seconds -->
 
 ![launch-hydraulic-model-experiment](./assets/launch-hydraulic-model-experiment.gif)
 
@@ -148,7 +146,7 @@ Driverless AI executes the hydraulic-data.py recipe to import the data into data
 
 ### Create Hydraulic System Project for Condition Classification
 
-<!-- create-hydraulic-system-project GIF runs at 8 seconds -->
+<!-- create-hydraulic-system-project GIF runs at 14 seconds -->
 
 ![create-hydraulic-system-project](./assets/create-hydraulic-system-project.gif)
 
@@ -168,7 +166,7 @@ Driverless AI executes the hydraulic-data.py recipe to import the data into data
 
 ### Open MLOps to See Project
 
-<!-- open-mlops-see-project GIF runs at 3 seconds -->
+<!-- open-mlops-see-project GIF runs at 6 seconds -->
 
 ![open-mlops-see-project](./assets/open-mlops-see-project.gif)
 
@@ -182,11 +180,11 @@ If you have not launched MLOps from the H2O.ai Platform Studio Splash page, then
 
 2\. Click **Login with OpenID Connect**
 
-3\. For Log In, enter `ds1/ds1`
+3\. For Log In, enter `ds1/ds1`. Note: if you already logged into Driverless AI, then you won't have to enter login credentials for MLOps.
 
 ### Login to MLOps as ds2 user from separate Browser
 
-<!-- open-mlops-as-ds2-user GIF runs at 4 seconds -->
+<!-- open-mlops-as-ds2-user GIF runs at 9 seconds -->
 
 ![open-mlops-as-ds2-user](./assets/open-mlops-as-ds2-user.gif)
 
@@ -494,7 +492,7 @@ For the next task, we are going to deploy the **hydraulic_model_1 model** to a *
 
 ### A: Share Project from ds1 user with ds2 user
 
-<!-- share-ds1-project-with-ds2 GIF runs at 6 seconds -->
+<!-- share-ds1-project-with-ds2 GIF runs at 12 seconds -->
 
 ![share-ds1-project-with-ds2](./assets/share-ds1-project-with-ds2.gif)
 
@@ -512,7 +510,7 @@ So now multiple people in the ML Operations team can collaborate on the same ML 
 
 ### B: Hydraulic System Models Dashboard
 
-<!-- see-more-experiment-models GIF runs at 3 seconds -->
+<!-- see-more-experiment-models GIF runs at 4 seconds -->
 
 ![see-more-experiment-models](./assets/see-more-experiment-models.gif)
 
@@ -579,7 +577,7 @@ So now multiple people in the ML Operations team can collaborate on the same ML 
 
 ### Add Comment as ds1 User for Hydraulic Model
 
-<!-- add-comment-hydraulic-model GIF runs at 3 seconds -->
+<!-- add-comment-hydraulic-model GIF runs at 4 seconds -->
 
 ![add-comment-hydraulic-model](./assets/add-comment-hydraulic-model.gif)
 
@@ -593,7 +591,7 @@ So now multiple people in the ML Operations team can collaborate on the same ML 
 
 ### Hydraulic Model More Details - Parameters Tour
 
-<!-- see-parameters-of-hydraulic-model GIF runs at 2 seconds -->
+<!-- see-parameters-of-hydraulic-model GIF runs at 3 seconds -->
 
 ![see-parameters-of-hydraulic-model](./assets/see-parameters-of-hydraulic-model.gif)
 
@@ -609,7 +607,7 @@ So now multiple people in the ML Operations team can collaborate on the same ML 
 
 ### Hydraulic Model More Details - Metadata Tour
 
-<!-- see-metadata-of-hydraulic-model GIF runs at 6 seconds -->
+<!-- see-metadata-of-hydraulic-model GIF runs at 15 seconds -->
 
 ![see-metadata-of-hydraulic-model](./assets/see-metadata-of-hydraulic-model.gif)
 
@@ -635,9 +633,9 @@ What else does the list of events tell you has happened in this **hydraulic syst
 
 Does your list of events look different than the image above? If yes, that is expected since different events may have happened in your version of the **hydraulic system** project.
 
-1\. Click on Projects > **hydraulic system** to return back to hydraulic system project dashboard.
+1\. Click on Projects > **hydraulic system** to return back to hydraulic system project dashboard. Then next we will deploy the ML model to a dev environment.
 
-## Task 5: Interactive and Batch Scoring via MLOps Model Deployment
+## Task 5: Interactive Scoring via MLOps Model Deployment
 
 1\. In the **Models** table, click on **Actions 3 dot** for **hydraulic_model_1 model**, then click **Deploy to DEV**.
 
@@ -651,7 +649,7 @@ Does your list of events look different than the image above? If yes, that is ex
 
 **Figure 34:** Confirm you would like Model Deployed to Dev Environment 
 
-You should see the **Environment** for **hydraulic_model_1** deployed to the **DEV environment**. The **Deployments** table will also update with this model deployed to **DEV** environment. As you may have read in the concepts section, deploying the ML model to an development environment, especially a production environment is very difficult to do for many people and organizations. You just did it in about 3 clicks! Congratulations!
+You should see the **Environment** for **hydraulic_model_1** deployed to the **DEV environment**. The **Deployments** table will also update with this model deployed to **DEV** environment. The model's deployment **state** will go from "Dployment data not found, Preparing, Launching to Healthy." As you may have read in the concepts section, deploying the ML model to an development environment, especially a production environment is very difficult to do for many people and organizations. You just did it in about 3 clicks! Congratulations!
 
 ![model-deployed-to-dev](./assets/model-deployed-to-dev.jpg)
 
@@ -729,95 +727,7 @@ Paste **Sample Request** into your terminal and press enter:
 
 You can see the result is a classification for hydraulic cooling condition 3, 20 and 100.
 
-### Batch Scoring via Dev Deployment Environment
-
-From Driverless AI, we insert live code for Data Recipe on our hydraulic_test_data and send it as a score request to MLOps Model deployed in Dev environment.
-
-<!-- dai-data-pump-4-mlops-batch-scoring GIF runs at 7 seconds -->
-
-![dai-data-pump-4-mlops-batch-scoring](./assets/dai-data-pump-4-mlops-batch-scoring.gif)
-
-**Figure 40:** Driverless AI Pump Data to MLOps REST Endpoint for Batch Scoring
-
-1\. Go to **Driverless AI** tab
-
-2\. Go to Driverless AI **Datasets** page
-
-3\. Click on **hydraulic_test_data**
-
-4\. Click **Details**
-
-5\. Click **Modify by Recipe** and then click **Live Code**
-
-6\. Erase the previous live code template
-
-7\. Copy the following **Data Pumper Python code** into Driverless AI **live code** editor:
-
-8\. Update the `scoring_endpoint` variable value with your particular scoring_endpoint for your current deployed model. 
-
-> Note: Earlier in [Task 5: Interactive and Batch Scoring via MLOps Model Deployment](#task-5-interactive-and-batch-scoring-via-mlops-model-deployment) at **Figure 54:**, we showed a screenshot of the **Deployments** table with the **Actions 3 dot** dropdown menu opened, there is **Copy endpoint URL** to get the latest **scoring_endpoint**.
-
-~~~python
-import csv
-import requests
-import time
-import datatable
-from typing import List
-
-# Pump data to MLOps
-
-# X is your input dt.Frame (https://github.com/h2oai/datatable)
-X
-
-# This endpoint will need to be updated by copying your endpoint URL from current deployed model 
-scoring_endpoint = "http://34.217.40.39:1080/85bfcf27-fbbb-4248-aa1d-49796c4bc328/model/score"
-
-num_pumps = 1
-
-X_pd = X.to_pandas()
-
-for i in range(num_pumps):
-    for row in range(X.nrows):
-        print(list(X.names))
-        print(list(list(X_pd.iloc[row].values)))
-        response = requests.post(
-            url = scoring_endpoint,
-            json = {"fields": list(X.names), "rows": [[str(num) for num in list(X_pd.iloc[0].values)]]},
-        )
-        time.sleep(1)
-
-return X  # return dt.Frame, pd.DataFrame, np.ndarray or a list or named dict of those
-~~~
-
-9\. Click **save** to execute the data pumper
-
-10\. Go back to MLOps tab and go to the **hydraulic system** project page
-
-## Task 6: Monitor MLOps Deployed Model
-
-<!-- monitor-deployed-model GIF runs at 11 seconds -->
-
-![monitor-deployed-model](./assets/monitor-deployed-model.gif)
-
-**Figure 41:** MLOps Monitoring Visualizations for Deployed Model
-
-1\. In the **Deployments** table on the hydraulic system page, on the **hydraulic_model_1** row, click on **3 dots** actions and then click on **Monitoring**.
-
-2\. Scroll down the grafana dashboard for MLOps and you will see all the monitoring visualizations of our model deployment:
-
-- These visualizations refresh every 30s by default, but you can adjust this number for a faster refresh. In our case, this number has been updated to 10s.
-
-- You can see metadata for **alerts** and **column types**:
-
-- You can see a visualization for the deployed model's **scoring latency**:
-
-- You can see a **scatter plot**, **histogram** and **heatmap visualization** for **psa_bar**
-
-- You can see the **samples collected increasing** and **visualizations for each column in the test set**.
-
-- You can see the target column, which is **cool_cond_y**. Our deployed model classifies for: **cool_cond_y.3**, **cool_cond_y.20** and **cool_cond_y.100**.
-
-## Task 7: Challenge
+## Task 6: Challenge
 
 ### Deploy New Driverless AI Model using MLOps
 
