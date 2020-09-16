@@ -233,7 +233,7 @@ With this context in mind, let’s move forward and dive into the experiment!
 
 2. With the above in mind, you can look at the Global Confison Metrix of our experiment and identify and calculate the *True Positive Rate* and *True Negative Rate*. In the following task we will see how *True Positive Rate* and *True Negative Rate* can be effective. 
 
-*Note:* In the next tutorial, we will be exploring how we can use  *True Positive Rate* and *True Negative Rate* to determine the fairness of an AI model. Therefore, now let us explore the two new MLI tools: 
+*Note:* In the next tutorial (COMING SOON), we will be exploring how we can use  *True Positive Rate* and *True Negative Rate* to determine the fairness of an AI model. Therefore, now let us explore the two new MLI tools: 
 
 1. Disparate Impact Analysis Tool 
 
@@ -431,7 +431,7 @@ You might be asking yourself now why then the prediction was not flipped; well, 
 
 *Note:* 
 
-This AI model that we develop at the start of task 5 made use of all columns and, therefore, took into consideration the demographic variables. In contrast, the first experiment we ran didn't use the demographic columns, so now the question is why we kept them? Isn't it illegal to make use of such demographic columns in production? And the answer to that question is yes, it's illegal. We kept them because we wanted to make use of sensitive columns and demonstrate how we would make use of DAI to check for sensitivity around certain variables if we were to use such demographic variables in our AI model in production. Note one should never make use of such columns in production. Furthermore,  if it were the case that we dropped the demographic columns at the start of task 5, we wouldn't have been able to see a potential bias in the model originating from the following columns: **AGE**, **SEX**, **EDUCATION**, and **MARRIAGE**.  Hence, a way to analyze for bias while dropping the demographic columns is by doing a residual analysis and looking at the constant global matrix. We would not cover this in this tutorial, but on the next one, we will see how we can make use of a residual analysis and a constant global matrix to detect for unfair bias. 
+This AI model that we develop at the start of task 5 made use of all columns and, therefore, took into consideration the demographic variables. In contrast, the first experiment we ran didn't use the demographic columns, so now the question is why we kept them? Isn't it illegal to make use of such demographic columns in production? And the answer to that question is yes, it's illegal. We kept them because we wanted to make use of sensitive columns and demonstrate how we would make use of DAI to check for sensitivity around certain variables if we were to use such demographic variables in our AI model in production. Note one should never make use of such columns in production. Furthermore,  if it were the case that we dropped the demographic columns at the start of task 5, we wouldn't have been able to see a potential bias in the model originating from the following columns: **AGE**, **SEX**, **EDUCATION**, and **MARRIAGE**.  Hence, a way to analyze for bias while dropping the demographic columns is by doing a residual analysis and looking at the constant global matrix. We would not cover this in this tutorial, but on the next one (COMING SOON), we will see how we can make use of a residual analysis and a constant global matrix to detect for unfair bias. 
 
 A way we can flip the prediction for customer 3 is by changing *PAY_0 = 2*. If it's the case that the prediction changes, we will, at the same time, be confirming that being two months late on *PAY_0* will increase your chances of being predicted as *default*.  
 
@@ -449,7 +449,7 @@ As mentioned at the beginning of this tutorial, the disparate impact analysis, a
 
 ## Next Steps
 
-Check out the next tutorial: [Analyzing a Criminal Risk Scorer with DAI MLI](), where you will learn more about:
+Check out the next tutorial: [Analyzing a Criminal Risk Scorer with DAI MLI (COMING SOON)](), where you will learn more about:
 
   - Disparate Impact Analysis 
   - Sensitivity Analysis 
