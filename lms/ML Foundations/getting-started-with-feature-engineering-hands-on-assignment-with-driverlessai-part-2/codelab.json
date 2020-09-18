@@ -1,0 +1,27 @@
+{
+  "environment": "web",
+  "source": "/Users/acastro/Desktop/getting-started-with-feature-engineering-hands-on-assignment-with-driverlessai-part-2/getting-started-with-feature-engineering-hands-on-assignment-with-driverlessai-part-2.md",
+  "format": "html",
+  "prefix": "../assets",
+  "mainga": "UA-49880327-14",
+  "updated": "2020-09-17T22:56:18-07:00",
+  "id": "getting-started-with-feature-engineering-hands-on-assignment-with-driverlessai-part-2",
+  "duration": 0,
+  "title": "ML Foundations: Module 2 Session 2: Getting Started With Feature Engineering Hands-On Assignment with Driverless AI (Part 2)",
+  "summary": "Check the list",
+  "theme": "",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "driverlessai"
+  ],
+  "tags": [
+    "aquarium",
+    "driverlessai",
+    "feature-engieering",
+    "ml-foundations",
+    "test-drive"
+  ],
+  "url": "getting-started-with-feature-engineering-hands-on-assignment-with-driverlessai-part-2"
+}
