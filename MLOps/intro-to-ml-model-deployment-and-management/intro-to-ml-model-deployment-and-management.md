@@ -34,9 +34,7 @@ The Hydraulic System consists of a primary and secondary cooling filtration circ
 ## Prerequisites
 
 - A **Two-Hour MLOps Test Drive**: Test Drive is H2O.ai's Driverless AI and MLOps on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform and MLOps.
-    - Need a **Two-Hour MLOps Test Drive**? Follow the instructions on this quick **Tutorial 0: Getting Started with MLOps Test Drive (coming soon...)**
-- Basic knowledge of Driverless AI or doing the following tutorial:
-    - [Tutorial 4A: Scoring Pipeline Deployment Introduction](https://training.h2o.ai/products/tutorial-4a-scoring-pipeline-deployment-introduction)
+    - Need a **Two-Hour MLOps Test Drive**? Follow the instructions on [Tutorial 0: Getting Started with MLOps Test Drive](https://training.h2o.ai/products/tutorial-0-getting-started-with-mlops-test-drive)
 
 **Note: Aquarium’s MLOps Test Drive lab has a license key built-in, so you don’t need to request one to use it. Each Driverless AI Test Drive instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore Driverless AI, you can always launch another Test Drive instance or reach out to our sales team via the [contact us form](https://www.h2o.ai/company/contact/).**
 
@@ -741,6 +739,10 @@ So far we have covered making score requests in the command line with curl and t
 
 - Check out these webinars that dive into how to productionize Driverless AI models using MLOps:
     - H2O Webinar: [Getting the Most Out of Your Machine Learning with Model Ops](https://www.brighttalk.com/service/player/en-US/theme/default/channel/16463/webcast/418711/play?showChannelList=true)
+
+- Check out these tutorials on Driverless AI model deployment:
+    - [Tutorial 4A: Scoring Pipeline Deployment Introduction](https://training.h2o.ai/products/tutorial-4a-scoring-pipeline-deployment-introduction)
+    - [Tutorial 4B: Scoring Pipeline Deployment Templates](https://training.h2o.ai/products/tutorial-4b-scoring-pipeline-deployment-templates)
 
 ## Appendix A: AI Glossary
 
