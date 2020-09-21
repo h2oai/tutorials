@@ -233,8 +233,7 @@ With this context in mind, let’s move forward and dive into the experiment!
 
 2. With the above in mind, you can look at the Global Confison Metrix of our experiment and identify and calculate the *True Positive Rate* and *True Negative Rate*. In the following task we will see how *True Positive Rate* and *True Negative Rate* can be effective. 
 
-*Note:* In the next tutorial (COMING SOON), we will be exploring how we can use  *True Positive Rate* and *True Negative Rate* to determine the fairness of an AI model. Therefore, now let us explore the two new MLI tools: 
-
+*Note:* In the next tutorial (COMING SOON), we will be exploring how we can use  *True Positive Rate* and *True Negative Rate* to determine the fairness of an AI model. Therefore, let us explore the two new MLI tools: 
 1. Disparate Impact Analysis Tool 
 
  2. Sensitivity/What-If Analysis Tool 
