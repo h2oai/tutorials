@@ -15,7 +15,6 @@
 - [Task 9: Tune the GBM model with H2O-GridSearch](#task-9-tune-the-gbm-model-with-h2o-gridsearch)
 - [Task 10: Test Set Performance](#task-10-test-set-performance)
 - [Task 11: Challenge](#task-11-challenge)
-- [Appendix A: Getting Started with Aquarium](#appendix-a-getting-started-with-aquarium)
 - [Next Steps](#next-steps)
 
 ## Objective
@@ -26,13 +25,11 @@ We will be using a subset of the Freddie Mac Single-Family dataset to try to pre
 
 - Some basic knowledge of machine learning
 - Familiarity with Python
-- An Aquarium account to follow along. 
-    - To help you get started with Aquarium, please see **Appendix A** in this tutorial.
+- H2O-3 installed in your computer
+    - If you need to install H2O-3 on your machine, we recommend creating an Anaconda Cloud environment, as shown in the installation guide, [Install on Anaconda Cloud,](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/downloading.html#install-on-anaconda-cloud) this would help you make sure that you have everything that you need to do this tutorial. 
+    - If you prefer not create an Anaconda environment, please refer to the [H2O Download Page](http://h2o-release.s3.amazonaws.com/h2o/rel-zeno/2/index.html) for more information on how to download H2O-3.
 
-**Note:** We have completed this tutorial in our cloud environment and is intended to take about two hours, or less, to be completed. Therefore, if you decide to do this tutorial on your machine, you might not get the same results, or it might take you longer to complete the tutorial than the intended time.
-
-If you decide to install H2O-3 on your machine, we recommend creating an Anaconda Cloud environment, as shown in the installation guide, [Install on Anaconda Cloud,](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/downloading.html#install-on-anaconda-cloud) this would help you make sure that you have everything that you need to do this tutorial.
-
+**Note:** We have completed this tutorial in a 16 core machine with almost 14Gb of memory; however, it can be done in a machine with different specs, just keep in mind that your results will vary. The tutorial is intended to take about two hours, or less, to be completed. However, you can increase the time in the grid search for each model if you would like to see more results.
 
 ## Task 1: Initial Setup
 
@@ -58,33 +55,21 @@ from h2o.estimators.gbm import H2OGradientBoostingEstimator
 import h2o.grid 
 from h2o.grid.grid_search import H2OGridSearch
 ```
-We now have to initialize an H2O cluster or instance in this case, and we will use the `h2o.init()` command. Please note that we have some extra lines of code to check if you are running the experiment on Aquarium, or if you are running it on your local machine. If you are working on Aquarium, it will connect to the instance running in your lab. If you are working on your local machine, then it will create a new H2O-3 instance.
-
-When you work on your local machine, you can specify how much maximum memory you want your cluster to have. This will only guarantee that the cluster will not use more than the limit you assign from your machine memory. Typically we recommend an H2O Cluster with at least 3-4 times the amount of memory as the dataset size. When you run this on Aquarium, you do not need to worry about the memory because the instance provided has almost 14Gb of memory. 
-
- ``` python
-import os
-import h2o
-
-startup  = '/home/h2o/bin/aquarium_startup'
-shutdown = '/home/h2o/bin/aquarium_stop'
-
-if os.path.exists(startup):
-    os.system(startup)
-    local_url = 'http://localhost:54321/h2o'
-    aquarium = True
-else:
-    local_url = 'http://localhost:54321'
-    aquarium = False
-```
+We now have to initialize an H2O cluster or instance in this case, and we will use the `h2o.init()` command. You can specify how much memory you want your cluster to have. This will only guarantee that the cluster will not use more than the limit you assign from your machine memory. Typically we recommend an H2O Cluster with at least 3-4 times the amount of memory as the dataset size. 
 
 ``` python
-h2o.init(url=local_url)
+h2o.init()
 ```
 
 ![cluster-info](assets/cluster-info.jpg)
 
-After initializing the H2O cluster, you will see the information shown above. We have an H2O cluster with just one node. Clicking on the Flow URL from the Aquarium Lab will take you to your **Flow instance,** where you can see your models, data frames, plots, and much more. Click on the link, and it will take you to a window similar to the one below. Keep it open in a separate tab, as we will come back to it later on.
+If you would like to specify how much memory you want to allocate to your cluster, you can use the following line of code:
+
+```python
+h2o.init(max_mem_size="4G")
+```
+
+After initializing the H2O cluster, you will see the information shown above. We have an H2O cluster with just one node. Clicking on link in the information will take you to your **Flow instance,** where you can see your models, data frames, plots, and much more. Click on the link, and it will take you to a window similar to the one below. Keep it open in a separate tab, as we will come back to it later on.
 
 ![flow-welcome-page](assets/flow-welcome-page.jpg)
 
@@ -1086,115 +1071,12 @@ h2o.cluster().shutdown()
 
 ## Task 11: Challenge
 
-After building three models, you are now familiar with the syntax of H2O-3 models. Now, try to build a Naive Bayes Classifier! We will help you by showing you how to import the model. The rest is up to you. You can do a 5 minutes grid search for `laplace,` `min_prob,` and `eps_prob.` Try it and see what’s the best training, validation, and test AUC that you can get with the Naive Bayes Classifier and compare it to the models that we built in this tutorial. Please keep in mind that the results might not improve by much, so do not spend too much time with this model. We just want you to feel more comfortable initializing models and doing grid searches. A possible solution is shown in the Jupyter Notebook on Aquarium.
+After building three models, you are now familiar with the syntax of H2O-3 models. Now, try to build a Naive Bayes Classifier! We will help you by showing you how to import the model. The rest is up to you. You can do a 5 minutes grid search for `laplace,` `min_prob,` and `eps_prob.` Try it and see what’s the best training, validation, and test AUC that you can get with the Naive Bayes Classifier and compare it to the models that we built in this tutorial. Please keep in mind that the results might not improve by much, so do not spend too much time with this model. We just want you to feel more comfortable initializing models and doing grid searches. 
 
 ``` python
 from h2o.estimators import H2ONaiveBayesEstimator
 ```
 Remember to shut down the cluster if you have not done so, or end the lab if you are done with the tutorial.
-
-## Appendix A: Getting Started with Aquarium
-
-### How to Obtain a Two Hour Test Drive Session
-Driverless AI Test Drive is a two-hour lab session that exists in H2O's Aquarium. Aquarium is the H2O cloud environment providing software access for workshops, conferences, and training. All Aquarium labs have a specific Lab Duration* to complete the lab.
-
-1\. Go to the Aquarium site by copying and pasting the URL below to a browser of your choice or simply click on [Aquarium](http://aquarium.h2o.ai/login).
-
-```html
-http://aquarium.h2o.ai/login
-```
-
-2\. This will take you to the Aquarium login page where you need to create an account.
-
-
-### How to Create an Aquarium Account
-
-1\. Welcome to the Aquarium Login page!
-
-![test-drive-login-page](assets/test-drive-login-page.jpg)
-
-2\. Select **Create a new account**
-
-![test-drive-create-a-new-account](assets/test-drive-create-a-new-account.jpg)
-
-3\. Enter:
-
- - First Name
- - Last Name
- - Organization (Could be your School)
- - Country
- - Email
-
-4\. Click on **Create account and email temporary password** at the bottom of the page.
-
-**Note:** A password will be sent to your email within minutes.
-
-5\. Check your email for the password.
-
-### How to Login
-
-1\. Enter the email you used to create the Aquarium password.
-
-2\. Enter the password you received over email from Aquarium.
-
-3\. Click on **Login**.
-
-![test-drive-login](assets/test-drive-login.jpg)
-
-### Reset Password 
-
-![resetting-password](assets/resetting-password.jpg)
-
-1\. If you forgot your password, select **I forgot my password**.
-
-![reset-password](assets/reset-password.jpg)
-
-2\. Enter your email, and another password will be emailed to you.
-
-### How to Start and End your Lab Session
-
-1\. After a successful login, click on **Browse Labs,** and you should see a list like the one shown below. Look for the lab `H2O-3 and Sparkling Water Test Drive,` **`Lab ID:2`** 
-
-![click-lab-2](assets/click-lab-2.jpg)
-
-2\. Click on **Start Lab** and wait for your instance to be ready. 
-
-![start-lab](assets/start-lab.jpg)
-
-3\. Once your instance is ready, you will see the following screen
-
-![labs-urls](assets/labs-urls.jpg)
-
-**Note:**
-- End Lab
-- The time remaining for the instance
-- Lab URLs
-
-4\. Once the lab has started, you will see a link to a Jupyter Notebook. Click on the **Jupyter URL,** and that will take you to the following screen.
-
-![jupyter-notebook](assets/jupyter-notebook.jpg)
-
-Next, click on the tutorials folder. In this folder, you will find all the tutorials from our learning path. For this tutorial, click on `Introduction to Machine Learning with H2O - Part 1` and follow along. If you are working on a different tutorial, just find the specific tutorial and click on it. The Jupyter Notebooks have the same name as the tutorials; that way, it can be easier to find them.  
-
-If you want to access your Flow instance, go back to your Aquarium Lab, and click on the **Flow URL.** 
-
-Once you are done, you can download your Notebook with your results. Remember that after the two hours, all your progress will be lost.
-
-5\. If you need end your lab, just click on **End Lab.** Please keep in mind that this will terminate your instance, and any work that you have previously done, will be deleted.
-
-### Logout
-
-1\. To logout, click on the box on the top-right corner of the page and select logout.
-
-![test-drive-logout](assets/test-drive-logout.jpg) 
-
-### Questions
-
-Have any questions about Aquarium? Sign up for H2O's Slack Community and post your questions under the #cloud channel. Members of the H2O community will respond as soon as they are available.
-
-Feel free to post any questions you may have in the Discussion tab.
-
-If you do not have H2O-3, you can follow the installation guide on the [H2O Documentation page](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/downloading.html)
 
 ## Next Steps
 
