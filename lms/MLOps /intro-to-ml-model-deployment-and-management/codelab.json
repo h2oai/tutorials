@@ -1,0 +1,31 @@
+{
+  "environment": "web",
+  "source": "/Users/acastro/Desktop/intro-to-ml-model-deployment-and-management/intro-to-ml-model-deployment-and-management.md",
+  "format": "html",
+  "prefix": "../assets",
+  "mainga": "UA-49880327-14",
+  "updated": "2020-09-21T20:40:48-07:00",
+  "id": "intro-to-ml-model-deployment-and-management",
+  "duration": 0,
+  "title": "Intro to ML Model Deployment and Management",
+  "summary": "Check the list",
+  "theme": "",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "mlops"
+  ],
+  "tags": [
+    "aquarium",
+    "current environment this model is deployed to",
+    "management",
+    "mlops",
+    "model-deployment",
+    "status of what type of environment a model was deployed into for this project",
+    "test-drive",
+    "the environment the model was deployed to either dev or prod",
+    "type of environment the model was deployed to either dev or prod"
+  ],
+  "url": "intro-to-ml-model-deployment-and-management"
+}
