@@ -22,9 +22,11 @@ In this tutorial, we will continue using the subset of the Freddie Mac Single-Fa
 - Completion of [Introduction to Machine Learning with H2O-3 - Classification](https://training.h2o.ai/products/introduction-to-machine-learning-with-h2o-classification) tutorial. 
 - Some basic knowledge of machine learning. 
 - Familiarity with Python. 
-- An Aquarium account. If you do not have an Aquarium account, please refer to [Appendix A of Introduction to Machine Learning with H2O-3 - Classification](https://training.h2o.ai/products/introduction-to-machine-learning-with-h2o-classification)
+- H2O-3 installed in your computer
+    - If you need to install H2O-3 on your machine, we recommend creating an Anaconda Cloud environment, as shown in the installation guide, [Install on Anaconda Cloud,](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/downloading.html#install-on-anaconda-cloud) this would help you make sure that you have everything that you need to do this tutorial. 
+    - If you prefer not create an Anaconda environment, please refer to the [H2O Download Page](http://h2o-release.s3.amazonaws.com/h2o/rel-zeno/2/index.html) for more information on how to download H2O-3.
 
-**Note:** We recommend that you follow along on Aquarium, our cloud instance, to get similar results to the ones shown in this tutorial. We also recommend that you go over the concepts section in Task 2 before starting your lab; that way, your instance is not running while you are going over the concepts. You can also use your personal machine with H2O-3, but keep in mind that you will see different results.
+**Note:** We have completed this tutorial in a 16 core machine with almost 14Gb of memory; however, it can be done in a machine with different specs, just keep in mind that your results will vary. The tutorial is intended to take about two hours, or less, to be completed. However, you can increase the time in the grid search for each model if you would like to see more results.
 
 ## Task 1: Initial Setup
 The data set we’re using comes from Freddie Mac and contains 20 years of mortgage history for each loan and contains information about “loan-level credit performance data on a portion of fully amortizing fixed-rate mortgages that Freddie Mac bought between 1999 to 2017. Features include demographic factors, monthly loan performance, credit performance including property disposition, voluntary prepayments, MI Recoveries, non-MI recoveries, expenses, current deferred UPB, and due date of last paid installment.” [1] 
@@ -47,35 +49,19 @@ from h2o.estimators import H2OXGBoostEstimator
 import h2o.grid 
 from h2o.grid.grid_search import H2OGridSearch
 ```
-We now have to initialize our instance. If you are on Aquarium, it will connect to a local instance; if you are on your own machine, it will launch an instance connected to your machine. 
 
-``` python
-import os
-import h2o
+We now have to initialize our instance:
 
-startup  = '/home/h2o/bin/aquarium_startup'
-shutdown = '/home/h2o/bin/aquarium_stop'
-
-if os.path.exists(startup):
-    os.system(startup)
-    local_url = 'http://localhost:54321/h2o'
-    aquarium = True
-else:
-    local_url = 'http://localhost:54321'
-    aquarium = False
+```python
+h2o.init()
 ```
-```
-h2o.init(url=local_url)
-```
-
 ![cluster-info](assets/cluster-info.jpg)
 
-
-After initializing the H2O cluster, you will see the information shown above. We have an H2O cluster with just one node. If you are working on your machine, click on the link above the cluster information, and it will take you to your **Flow instance** where you can see your models, data frames, plots, and much more. If you are working on Aquarium, go to your lab and click on the **Flow URL,** and it will take you to a window similar to the one below. Keep it open on a separate tab, as we will come back to it later on. 
+After initializing the H2O cluster, you will see the information shown above. We have an H2O cluster with just one node. Clicking on link in the information will take you to your **Flow instance,** where you can see your models, data frames, plots, and much more. Click on the link, and it will take you to a window similar to the one below. Keep it open in a separate tab, as we will come back to it later on.
 
 ![flow-welcome-page](assets/flow-welcome-page.jpg)
 
-Next, we will import the dataset. Since we are working with an S3 file,  just specify the path of where the file is located, as shown below:
+Next, we will import the dataset. Since we are working with an S3 file, just specify the path of where the file is located, as shown below:
 
 ``` python
 #Import the dataset 
@@ -813,7 +799,7 @@ h2o.cluster().shutdown()
 ```
 
 ## Task 9:  Challenge
-We tuned the Deep Learning model with two hidden layers with 100 neurons in each layer. Try to tune a Deep Learning model on your own with two layers, or more, and with the number of neurons that you want. You can follow the same procedures as before, but if you wanted to have models wiht three hidden layers you will have to use something like `[165,165, 165],` and for some parameters such as the dropout ratios, you will need to also have two values, such as `[0.01, 0.01, 0.01]`, and so on. If you attempt the challenge, you can download your Jupyter Notebook with your work, and just restart the lab; that way, you have at least 2 hours to tune the new model. You can find our grid search for a neural network with two layers and 165 neurons in each layer at the end of our Jupyter Notebook in Aquarium. Once you’re done with the tutorial, shut down your cluster, or end the lab.
+We tuned the Deep Learning model with two hidden layers with 100 neurons in each layer. Try to tune a Deep Learning model on your own with two layers, or more, and with the number of neurons that you want. You can follow the same procedures as before, but if you wanted to have models wiht three hidden layers you will have to use something like `[165,165, 165],` and for some parameters such as the dropout ratios, you will need to also have two values, such as `[0.01, 0.01, 0.01]`, and so on. Once you’re done with the tutorial, remember to shut down your cluster. 
 
 ## Next steps
 Please make sure you check out our H2O AutoML Tutorial - [Introduction to Machine Learning with H2O-3 - AutoML](https://training.h2o.ai/products/introduction-to-machine-learning-with-h2o-part-3)
