@@ -36,13 +36,13 @@
         <ul>
 <li>Some basic knowledge of machine learning</li>
 <li>Familiarity with Python</li>
-<li>An Aquarium account to follow along.<br><br><ul>
-<li>To help you get started with Aquarium, please see <strong>Appendix A</strong> in this tutorial.</li>
+<li>H2O-3 installed in your computer<br><br><ul>
+<li>If you need to install H2O-3 on your machine, we recommend creating an Anaconda Cloud environment, as shown in the installation guide, <a href="http://docs.h2o.ai/h2o/latest-stable/h2o-docs/downloading.html#install-on-anaconda-cloud" target="_blank">Install on Anaconda Cloud,</a> this would help you make sure that you have everything that you need to do this tutorial.</li>
+<li>If you prefer not create an Anaconda environment, please refer to the <a href="http://h2o-release.s3.amazonaws.com/h2o/rel-zeno/2/index.html" target="_blank">H2O Download Page</a> for more information on how to download H2O-3.</li>
 </ul>
 </li>
 </ul>
-<p><strong>Note:</strong> We have completed this tutorial in our cloud environment and is intended to take about two hours, or less, to be completed. Therefore, if you decide to do this tutorial on your machine, you might not get the same results, or it might take you longer to complete the tutorial than the intended time.</p>
-<p>If you decide to install H2O-3 on your machine, we recommend creating an Anaconda Cloud environment, as shown in the installation guide, <a href="http://docs.h2o.ai/h2o/latest-stable/h2o-docs/downloading.html#install-on-anaconda-cloud" target="_blank">Install on Anaconda Cloud,</a> this would help you make sure that you have everything that you need to do this tutorial.</p>
+<p><strong>Note:</strong> We have completed this tutorial in a 16 core machine with almost 14Gb of memory; however, it can be done in a machine with different specs, just keep in mind that your results will vary. The tutorial is intended to take about two hours, or less, to be completed. However, you can increase the time in the grid search for each model if you would like to see more results.</p>
 
 
       </google-codelab-step>
@@ -66,26 +66,14 @@ from h2o.estimators.gbm import H2OGradientBoostingEstimator
 import h2o.grid 
 from h2o.grid.grid_search import H2OGridSearch
 </code></pre>
-<p>We now have to initialize an H2O cluster or instance in this case, and we will use the <code>h2o.init()</code> command. Please note that we have some extra lines of code to check if you are running the experiment on Aquarium, or if you are running it on your local machine. If you are working on Aquarium, it will connect to the instance running in your lab. If you are working on your local machine, then it will create a new H2O-3 instance.</p>
-<p>When you work on your local machine, you can specify how much maximum memory you want your cluster to have. This will only guarantee that the cluster will not use more than the limit you assign from your machine memory. Typically we recommend an H2O Cluster with at least 3-4 times the amount of memory as the dataset size. When you run this on Aquarium, you do not need to worry about the memory because the instance provided has almost 14Gb of memory.</p>
-<pre><code>import os
-import h2o
-
-startup  = &#39;/home/h2o/bin/aquarium_startup&#39;
-shutdown = &#39;/home/h2o/bin/aquarium_stop&#39;
-
-if os.path.exists(startup):
-    os.system(startup)
-    local_url = &#39;http://localhost:54321/h2o&#39;
-    aquarium = True
-else:
-    local_url = &#39;http://localhost:54321&#39;
-    aquarium = False
-</code></pre>
-<pre><code>h2o.init(url=local_url)
+<p>We now have to initialize an H2O cluster or instance in this case, and we will use the <code>h2o.init()</code> command. You can specify how much memory you want your cluster to have. This will only guarantee that the cluster will not use more than the limit you assign from your machine memory. Typically we recommend an H2O Cluster with at least 3-4 times the amount of memory as the dataset size.</p>
+<pre><code>h2o.init()
 </code></pre>
 <p><img alt="cluster-info" src="img/7e309c6dcaff4cfd.jpg"></p>
-<p>After initializing the H2O cluster, you will see the information shown above. We have an H2O cluster with just one node. Clicking on the Flow URL from the Aquarium Lab will take you to your <strong>Flow instance,</strong> where you can see your models, data frames, plots, and much more. Click on the link, and it will take you to a window similar to the one below. Keep it open in a separate tab, as we will come back to it later on.</p>
+<p>If you would like to specify how much memory you want to allocate to your cluster, you can use the following line of code:</p>
+<pre><code>h2o.init(max_mem_size=&#34;4G&#34;)
+</code></pre>
+<p>After initializing the H2O cluster, you will see the information shown above. We have an H2O cluster with just one node. Clicking on link in the information will take you to your <strong>Flow instance,</strong> where you can see your models, data frames, plots, and much more. Click on the link, and it will take you to a window similar to the one below. Keep it open in a separate tab, as we will come back to it later on.</p>
 <p><img alt="flow-welcome-page" src="img/4d41984db0849706.jpg"></p>
 <p>Next, we will import the dataset. If you are working on your machine, you can download H2O&#39;s subset of the Freddie Mac Single-Family Loan-Level dataset, <a href="https://s3.amazonaws.com/data.h2o.ai/DAI-Tutorials/loan_level_500k.csv" target="_blank">Loan_Level_500k.csv</a>, to your local drive and save it at as csv file.<br>Make sure that the dataset is in the same directory as your Jupyter Notebook. For example, if your Jupyter file is in your <strong>Documents,</strong> save the csv file there. Or you can just specify the path of where the file is located; in our case, the file is in an S3 bucket. That&#39;s why we&#39;ll just do the following:</p>
 <pre><code>#Import the dataset 
@@ -421,7 +409,7 @@ sorted_glm_grid.sorted_metric_table()
 <pre><code>tuned_glm = sorted_glm_grid.models[0]
 tuned_glm.summary()
 </code></pre>
-<p><img alt="glm-summary" src="img/4cbe475e01a83e6d.jpg"></p>
+<p><img alt="glm-summary" src="img/b61b3a05ae0c161b.jpg"></p>
 <p>With the first line of code, we are retrieving the best model from the grid search, and the second line of code will print the parameters used for the best model found by the grid search. We will make a quick comparison between the performance of the default glm model and the best model from the grid search.</p>
 <p>First, evaluate the model performance on the validation set.</p>
 <pre><code>tuned_glm_perf = tuned_glm.model_performance(valid)
@@ -446,7 +434,7 @@ Tuned GLM F1 Score [[0.1260471303106269, 0.28253908457336596]]
 <pre><code>print (&#34;Default GLM: &#34;, default_glm_perf.confusion_matrix())
 print (&#34;Tuned GLM: &#34;,  tuned_glm_perf.confusion_matrix())
 </code></pre>
-<p><img alt="glm-conf-matrix-def-tuned" src="img/f2527c46eab760c7.jpg"></p>
+<p><img alt="glm-conf-matrix-def-tuned" src="img/ce6def4be731c34a.jpg"></p>
 <p>Notice how the overall error slightly improved, as well as the error for the FALSE class. While the error for the TRUE class had minimal increase, meaning the model is classifying a few more samples that are actually TRUE incorrectly. We see that our model has a hard time classifying the TRUE labels, and this is due to the highly imbalanced dataset that we are working with.</p>
 <p>We will do the test evaluation after we tune our other two models.</p>
 
@@ -566,7 +554,7 @@ Tuned RF F1 Score: [[0.14123073491506105, 0.30839078526988395]]
 <pre><code>print (&#34;Default RF: &#34;, default_rf_per.confusion_matrix())
 print (&#34;Tuned RF: &#34;,  tuned_rf_per.confusion_matrix())
 </code></pre>
-<p><img alt="rf-default-vs-tuned-cf-mx" src="img/f549cd94a5ed7870.jpg"></p>
+<p><img alt="rf-default-vs-tuned-cf-mx" src="img/393052931ae45b3a.jpg"></p>
 <p>The AUC for our tuned model actually improved, as well as the F1 Score but not the misclassification error. From the confusion matrix, we can see that the new model is predicting fewer FALSE labels that are actually FALSE; this means the model is classifying more FALSE labels incorrectly. However, the error is very small and this can still be accepted. On the other side, we can see that our model started to correclty classify more TRUE labels. Remember that we have a highly imbalanced dataset, and with the quick grid search we were able to improve the missclassification error for the minority class.</p>
 <p>Now, we will see if we can improve our GBM model.</p>
 
@@ -647,7 +635,7 @@ print(tuned_gbm_per.F1())
 <p>Let&#39;s take a look at the confusion matrix and see how are the misclassification errors from this model look like:</p>
 <pre><code>tuned_gbm_per.confusion_matrix()
 </code></pre>
-<p><img alt="tuned-gbm-m8trix" src="img/e531577f32f3415b.jpg"></p>
+<p><img alt="tuned-gbm-m8trix" src="img/dc6b8bfefd780c7a.jpg"></p>
 <p>Even though the misclassification error for the TRUE class improved, the error for the FALSE class and the overall error did not improve. However, with the tuning that we did, our GBM model was able to make more correct predictions for the TRUE class, which is good since we are dealing with a highly imbalanced dataset.</p>
 <p>Here is how you can compare the AUC from the default model with the tuned model:</p>
 <pre><code>print(&#34;Default GBM AUC: %.4f \nTuned GBM AUC:%.4f&#34; % (default_gbm_per.auc(), tuned_gbm_per.auc()))
@@ -695,7 +683,7 @@ GBM Test F1 Score:  [[0.15359908262968297, 0.30752071383046525]]
 print (&#34;RF Confusion Matrix: &#34;,  rf_test_per.confusion_matrix())
 print (&#34;GBM Confusion Matrix &#34;,  gbm_test_per.confusion_matrix())
 </code></pre>
-<p><img alt="confusion-matrix-test" src="img/f5317dd299665108.jpg"></p>
+<p><img alt="confusion-matrix-test" src="img/3cb2dbb184caf87a.jpg"></p>
 <p>Again, all three scores are very close to each other, but the best one is the GBM, second the GLM, and lastly, our RF. Although we see the largest error for the RF tuned model, we see that this model is the one that was able to better score the TRUE class, getting an even better score than the GBM, which is based on the other scores, our best model. The GBM had the best overall misclassification error as well as the best misclassification error for the FALSE class.</p>
 <p>For this dataset, we obtained a good AUC for all three models. We obtained an okay F1 Score, given that our dataset is highly imbalanced, and we also obtained a good overall misclassification error, although due to the given imbalanced data, the error for the TRUE label was not so low. Overall, The best model trained on our dataset was the GBM, followed by the RF, and lastly, the GLM.</p>
 <h2>Shut down Cluster</h2>
@@ -707,73 +695,10 @@ print (&#34;GBM Confusion Matrix &#34;,  gbm_test_per.confusion_matrix())
       </google-codelab-step>
     
       <google-codelab-step label="Task 11: Challenge" duration="0">
-        <p>After building three models, you are now familiar with the syntax of H2O-3 models. Now, try to build a Naive Bayes Classifier! We will help you by showing you how to import the model. The rest is up to you. You can do a 5 minutes grid search for <code>laplace,min_prob,</code> and <code>eps_prob.</code> Try it and see what&#39;s the best training, validation, and test AUC that you can get with the Naive Bayes Classifier and compare it to the models that we built in this tutorial. Please keep in mind that the results might not improve by much, so do not spend too much time with this model. We just want you to feel more comfortable initializing models and doing grid searches. A possible solution is shown in the Jupyter Notebook on Aquarium.</p>
+        <p>After building three models, you are now familiar with the syntax of H2O-3 models. Now, try to build a Naive Bayes Classifier! We will help you by showing you how to import the model. The rest is up to you. You can do a 5 minutes grid search for <code>laplace,min_prob,</code> and <code>eps_prob.</code> Try it and see what&#39;s the best training, validation, and test AUC that you can get with the Naive Bayes Classifier and compare it to the models that we built in this tutorial. Please keep in mind that the results might not improve by much, so do not spend too much time with this model. We just want you to feel more comfortable initializing models and doing grid searches.</p>
 <pre><code>from h2o.estimators import H2ONaiveBayesEstimator
 </code></pre>
 <p>Remember to shut down the cluster if you have not done so, or end the lab if you are done with the tutorial.</p>
-
-
-      </google-codelab-step>
-    
-      <google-codelab-step label="Appendix A: Getting Started with Aquarium" duration="0">
-        <h2>How to Obtain a Two Hour Test Drive Session</h2>
-<p>Driverless AI Test Drive is a two-hour lab session that exists in H2O&#39;s Aquarium. Aquarium is the H2O cloud environment providing software access for workshops, conferences, and training. All Aquarium labs have a specific Lab Duration* to complete the lab.</p>
-<p>1. Go to the Aquarium site by copying and pasting the URL below to a browser of your choice or simply click on <a href="http://aquarium.h2o.ai/login" target="_blank">Aquarium</a>.</p>
-<pre><code>http://aquarium.h2o.ai/login
-</code></pre>
-<p>2. This will take you to the Aquarium login page where you need to create an account.</p>
-<h2>How to Create an Aquarium Account</h2>
-<p>1. Welcome to the Aquarium Login page!</p>
-<p><img alt="test-drive-login-page" src="img/1628337459485ebc.jpg"></p>
-<p>2. Select <strong>Create a new account</strong></p>
-<p><img alt="test-drive-create-a-new-account" src="img/7c2af561fc730bd7.jpg"></p>
-<p>3. Enter:</p>
-<ul>
-<li>First Name</li>
-<li>Last Name</li>
-<li>Organization (Could be your School)</li>
-<li>Country</li>
-<li>Email</li>
-</ul>
-<p>4. Click on <strong>Create account and email temporary password</strong> at the bottom of the page.</p>
-<p><strong>Note:</strong> A password will be sent to your email within minutes.</p>
-<p>5. Check your email for the password.</p>
-<h2>How to Login</h2>
-<p>1. Enter the email you used to create the Aquarium password.</p>
-<p>2. Enter the password you received over email from Aquarium.</p>
-<p>3. Click on <strong>Login</strong>.</p>
-<p><img alt="test-drive-login" src="img/831fe9adf4b88621.jpg"></p>
-<h2>Reset Password</h2>
-<p><img alt="resetting-password" src="img/997b67770397b569.jpg"></p>
-<p>1. If you forgot your password, select <strong>I forgot my password</strong>.</p>
-<p><img alt="reset-password" src="img/7aa562b820b8d75a.jpg"></p>
-<p>2. Enter your email, and another password will be emailed to you.</p>
-<h2>How to Start and End your Lab Session</h2>
-<p>1. After a successful login, click on <strong>Browse Labs,</strong> and you should see a list like the one shown below. Look for the lab <code>H2O-3 and Sparkling Water Test Drive,Lab ID:2</code></p>
-<p><img alt="click-lab-2" src="img/967b54d2fc04a978.jpg"></p>
-<p>2. Click on <strong>Start Lab</strong> and wait for your instance to be ready.</p>
-<p><img alt="start-lab" src="img/1424084d468bb634.jpg"></p>
-<p>3. Once your instance is ready, you will see the following screen</p>
-<p><img alt="labs-urls" src="img/745d21efb7c0b4fb.jpg"></p>
-<p><strong>Note:</strong></p>
-<ul>
-<li>End Lab</li>
-<li>The time remaining for the instance</li>
-<li>Lab URLs</li>
-</ul>
-<p>4. Once the lab has started, you will see a link to a Jupyter Notebook. Click on the <strong>Jupyter URL,</strong> and that will take you to the following screen.</p>
-<p><img alt="jupyter-notebook" src="img/781d4e347a43dad3.jpg"></p>
-<p>Next, click on the tutorials folder. In this folder, you will find all the tutorials from our learning path. For this tutorial, click on <code>Introduction to Machine Learning with H2O - Part 1</code> and follow along. If you are working on a different tutorial, just find the specific tutorial and click on it. The Jupyter Notebooks have the same name as the tutorials; that way, it can be easier to find them.</p>
-<p>If you want to access your Flow instance, go back to your Aquarium Lab, and click on the <strong>Flow URL.</strong></p>
-<p>Once you are done, you can download your Notebook with your results. Remember that after the two hours, all your progress will be lost.</p>
-<p>5. If you need end your lab, just click on <strong>End Lab.</strong> Please keep in mind that this will terminate your instance, and any work that you have previously done, will be deleted.</p>
-<h2>Logout</h2>
-<p>1. To logout, click on the box on the top-right corner of the page and select logout.</p>
-<p><img alt="test-drive-logout" src="img/56cf244102489056.jpg"></p>
-<h2>Questions</h2>
-<p>Have any questions about Aquarium? Sign up for H2O&#39;s Slack Community and post your questions under the #cloud channel. Members of the H2O community will respond as soon as they are available.</p>
-<p>Feel free to post any questions you may have in the Discussion tab.</p>
-<p>If you do not have H2O-3, you can follow the installation guide on the <a href="http://docs.h2o.ai/h2o/latest-stable/h2o-docs/downloading.html" target="_blank">H2O Documentation page</a></p>
 
 
       </google-codelab-step>
