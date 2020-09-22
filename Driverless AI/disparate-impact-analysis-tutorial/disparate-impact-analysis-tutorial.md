@@ -251,7 +251,7 @@ With this context in mind, let’s move forward and dive into the experiment!
 
 3. The following should appear: 
 
-![DIA-fairness](assets/DIA-fairness.jpg)
+![DIA-fairness](assets/dia-fairness.jpg)
 
 Make sure the Reference level is toggled to 1(Male). With DIA the reference level is somewhat ambiguous, but generally, we want to set it to the category or population we believe may be receiving better treatment compared to other classes. 
 
@@ -309,25 +309,25 @@ After the experiment is over:
 
 After that, you should land on our Sensitivity Analysis Dashboard: 
 
-![SA-UI](assets/SA-UI.jpg)
+![SA-UI](assets/sa-ui.jpg)
 
 Some things to notice:
 
   1. In our *Summary* information for the dataset located on the left side of the dashboard, we, in particular, can see our chosen cutoff metric, and the number for that metric. 
 
-  ![SA-UI-Summary](assets/SA-UI-Summary.jpg)
+  ![SA-UI-Summary](assets/sa-ui-Summary.jpg)
 
   * In our *Summary* information for the dataset located on the left side of the dashboard, we, in particular, can see our chosen cutoff metric, and the number for that metric. Our * CUTOFF* is 0.2676... Anything below the * CUTOFF* will mean the model predicts a customer will not default, while anyone greater than or equal to the * CUTOFF* will default. 
 
 2. This pink summary locator represents the “Average” customer in the dataset, i.e., the average of all computable variables.  
 
-![SA-UI-threshold](assets/SA-UI-threshold.jpg)
+![SA-UI-threshold](assets/sa-ui-threshold.jpg)
 
 * The *Current Working Set Score* indicates that the mean score prediction is .24060 and that the most common prediction is False, which makes sense.
 
 3. Here we can choose to filter down on various portions of the confusion matrix and review each row and prediction.
 
-![SA-UI-CM-table](assets/SA-UI-CM-table.jpg)
+![SA-UI-CM-table](assets/sa-ui-cm-table.jpg)
 
 4.  Now that we have familiarized ourselves with the UI let’s experiment! Reminder *Sensitivity Analysis* enables us to tinker with various settings in the data to see if certain features affect the outcome when we know that they should not. Let’s start by adjusting an entire feature.
 
@@ -394,7 +394,7 @@ On the left side of the table (at the bottom of the page), you will be able to l
 
  Once you get a narrow range, you should see up close which customers are the closest predictions to the cutoff line, as shown above. In this case, we will experiment with a customer holding the *ID* number 3. 
 
-![Before-values-change](assets/Before-values-change.jpg)
+![Before-values-change](assets/before-values-change.jpg)
 
 Now let’s see if we can independently adjust some of the demographic features and push customer three over the threshold from negative(not predicted as defaulting) to positive(predicted to default). Since we are discussing fairness and regulatory considerations, let’s select just the demographic variables to learn more. To choose the demographic variables such as **AGE**, **SEX**, **EDUCATION**, and **MARRIAGE** please follow the following steps: 
 
