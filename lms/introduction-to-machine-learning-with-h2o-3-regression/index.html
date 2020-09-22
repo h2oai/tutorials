@@ -34,7 +34,7 @@
     
       <google-codelab-step label="Prerequisites" duration="0">
         <ul>
-<li>Completion of <a href="https://training.h2o.ai/products/introduction-to-machine-learning-with-h2o-classification" target="_blank">Introduction to Machine Learning with H2O-3 - Classification</a> tutorial.</li>
+<li>Completion of <a href="https://training.h2o.ai/products/introduction-to-machine-learning-with-h2o-3-classification" target="_blank">Introduction to Machine Learning with H2O-3 - Classification</a> tutorial.</li>
 <li>Some basic knowledge of machine learning.</li>
 <li>Familiarity with Python.</li>
 <li>H2O-3 installed in your computer<br><br><ul>
@@ -282,7 +282,7 @@ xgb_def_pred.cbind(valid[&#39;ORIGINAL_INTEREST_RATE&#39;])
     
       <google-codelab-step label="Task 6: Tune the XGBoost Model with H2O GridSearch" duration="0">
         <p>We will use H2O GridSearch to find the best parameters for our XGBoost.</p>
-<p><strong>Note:</strong> If you are not sure what H2O GridSearch is, or how it works, please refer to Task 7 of <a href="https://training.h2o.ai/products/introduction-to-machine-learning-with-h2o-classification" target="_blank">Introduction to Machine Learning with H2O-3 - Classification</a>, or go to <a href="http://docs.h2o.ai/h2o/latest-stable/h2o-docs/grid-search.html#grid-hyperparameter-search" target="_blank">Grid Search Section</a> of the H2O documentation.</p>
+<p><strong>Note:</strong> If you are not sure what H2O GridSearch is, or how it works, please refer to Task 7 of <a href="https://training.h2o.ai/products/introduction-to-machine-learning-with-h2o-3-classification" target="_blank">Introduction to Machine Learning with H2O-3 - Classification</a>, or go to <a href="http://docs.h2o.ai/h2o/latest-stable/h2o-docs/grid-search.html#grid-hyperparameter-search" target="_blank">Grid Search Section</a> of the H2O documentation.</p>
 <p>We will first try to find the <code>max_depth</code> for our XGBoost, as this is one of the most important parameters for an XGBoost model.</p>
 <p><code>max_depth</code> defines the number of nodes along the longest path from the start of the tree to the farthest leaf node. By default, the value is 6. We could do a random search along with the other parameters, but when max_depth is large, the model takes longer to train; therefore, in order to do a more efficient random search with the other parameters, we will first find the best value <code>max_depth</code>, and we will use 100 trees with early stopping to tune our hyper-parameters.</p>
 <pre><code>xgb = H2OXGBoostEstimator(model_id=&#39;xgb&#39;, ntrees=300,
@@ -597,7 +597,7 @@ test_rate_pred.cbind(dl_tuned_pred)
       </google-codelab-step>
     
       <google-codelab-step label="Next steps" duration="0">
-        <p>Please make sure you check out our H2O AutoML Tutorial - <a href="https://training.h2o.ai/products/introduction-to-machine-learning-with-h2o-part-3" target="_blank">Introduction to Machine Learning with H2O-3 - AutoML</a></p>
+        <p>Please make sure you check out our H2O AutoML Tutorial - <a href="https://training.h2o.ai/products/1c-introduction-to-machine-learning-with-h2o-3-automl" target="_blank">Introduction to Machine Learning with H2O-3 - AutoML</a></p>
 
 
       </google-codelab-step>
