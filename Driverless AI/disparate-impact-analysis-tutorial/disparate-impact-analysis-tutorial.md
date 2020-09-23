@@ -317,7 +317,7 @@ Some things to notice:
 
   ![SA-UI-Summary](assets/sa-ui-Summary.jpg)
 
-  * In our *Summary* information for the dataset located on the left side of the dashboard, we, in particular, can see our chosen cutoff metric, and the number for that metric. Our * CUTOFF* is 0.2676... Anything below the * CUTOFF* will mean the model predicts a customer will not default, while anyone greater than or equal to the * CUTOFF* will default. 
+  * In our *Summary* information for the dataset located on the left side of the dashboard, we, in particular, can see our chosen cutoff metric, and the number for that metric. Our *CUTOFF* is 0.2676... Anything below the *CUTOFF* will mean the model predicts a customer will not default, while anyone greater than or equal to the *CUTOFF* will default. 
 
 2. This pink summary locator represents the “Average” customer in the dataset, i.e., the average of all computable variables.  
 
