@@ -18,17 +18,15 @@
 In this tutorial, we will use the subset of the loan-level dataset from Fannie Mae and Freddie Mac. Firstly, we will solve a binary classification problem (predicting if a loan is delinquent or not). Then, we will explore a regression use-case (predicting interest rates on the same dataset). We will try to do both use-cases using Automatic Machine Learning (AutoML), and we will do so using the H2O-3 Python module in a Jupyter Notebook and also in Flow. 
 
 ## Prerequisites 
-- Completion of tutorials [Introduction to Machine Learning with H2O-3 - Classification](https://training.h2o.ai/products/introduction-to-machine-learning-with-h2o-classification) and [Introduction to Machine Learning with H2O-3 - Regression.](https://training.h2o.ai/products/introduction-to-machine-learning-with-h2o-regression)
+- Completion of tutorials [Introduction to Machine Learning with H2O-3 - Classification](https://training.h2o.ai/products/1a-introduction-to-machine-learning-with-h2o-3-classification) and [Introduction to Machine Learning with H2O-3 - Regression.](https://training.h2o.ai/products/1b-introduction-to-machine-learning-with-h2o-3-regression)
 - Some basic knowledge of machine learning. 
 - Familiarity with Python. 
-- H2O-3 installed in your computer
-    - If you need to install H2O-3 on your machine, we recommend creating an Anaconda Cloud environment, as shown in the installation guide, [Install on Anaconda Cloud,](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/downloading.html#install-on-anaconda-cloud) this would help you make sure that you have everything that you need to do this tutorial. 
-    - If you prefer not create an Anaconda environment, please refer to the [H2O Download Page](http://h2o-release.s3.amazonaws.com/h2o/rel-zeno/2/index.html) for more information on how to download H2O-3.
+- An Aquarium account. If you do not have an Aquarium account, please refer to [Appendix A of Introduction to Machine Learning with H2O-3 - Classification](https://training.h2o.ai/products/1a-introduction-to-machine-learning-with-h2o-3-classification)
 
-**Note:** We have completed this tutorial in a 16 core machine with almost 14Gb of memory; however, it can be done in a machine with different specs, just keep in mind that your results will vary. The tutorial is intended to take about two hours, or less, to be completed. However, you can increase the time in the grid search for each model if you would like to see more results.
+**Note:** This tutorial was completed in a cloud environment. If you want to get the same results in a similar time manner, please follow this tutorial in Aquarium. Otherwise, you can use your own machine but you will get different results, for example, it might take you longer to train the models for the classification part, or for the regression part, you might not get the same nunmber of models. 
 
 ## Task 1: Initial Setup
-In this tutorial, we are using a smaller subset of the Freddie Mac Single-Family dataset that we used for the past two tutorials. If you have not done so, complete [Introduction to Machine Learning with H2O-3 - Classification](https://training.h2o.ai/products/introduction-to-machine-learning-with-h2o-classification) and [Introduction to Machine Learning with H2O-3 - Regression](https://training.h2o.ai/products/introduction-to-machine-learning-with-h2o-regression) as this tutorial is a continuation of both of them. 
+In this tutorial, we are using a smaller subset of the Freddie Mac Single-Family dataset that we used for the past two tutorials. If you have not done so, complete [Introduction to Machine Learning with H2O-3 - Classification](https://training.h2o.ai/products/1a-introduction-to-machine-learning-with-h2o-3-classification) and [Introduction to Machine Learning with H2O-3 - Regression](https://training.h2o.ai/products/1b-introduction-to-machine-learning-with-h2o-3-regression) as this tutorial is a continuation of both of them. 
 
 We will use H2O AutoML to make the same predictions as in the previous two tutorials:
 - Predict whether a mortgage loan will be delinquent or not 
@@ -44,16 +42,31 @@ import matplotlib as plt
 from h2o.automl import H2OAutoML
 ```
 
-Next, initialize your H2O instance:
+Next, initialize your H2O instance.
 
+``` python
+import os
+import h2o
+
+startup  = '/home/h2o/bin/aquarium_startup'
+shutdown = '/home/h2o/bin/aquarium_stop'
+
+if os.path.exists(startup):
+    os.system(startup)
+    local_url = 'http://localhost:54321/h2o'
+    aquarium = True
+else:
+    local_url = 'http://localhost:54321'
+    aquarium = False
 ```
-h2o.init()
+```
+h2o.init(url=local_url)
 ```
 If your instance was successfully initialized, you will see a table with a description of it as shown below. 
 
 ![cluster-info](assets/cluster-info.jpg)
 
-After initializing the H2O cluster, you will see the information shown above. We have an H2O cluster with just one node. Clicking on link in the information will take you to your **Flow instance,** where you can see your models, data frames, plots, and much more. Click on the link, and it will take you to a window similar to the one below. Keep it open on a separate tab, as we will come back to it for Tasks 6 and 7.
+If you are working on your machine, if you click on the link above the cluster information, it will take you to your **Flow instance**, where you can see your models, data frames, plots, and much more. If you are working on Aquarium, go to your lab and click on the **Flow URL**, and it will take you to your Flow instance. Keep it open on a separate tab, as we will come back to it for Tasks 6 and 7.
 
 Let’s import the dataset. 
 
@@ -62,7 +75,6 @@ loan_level = h2o.import_file("https://s3.amazonaws.com/data.h2o.ai/H2O-3-Tutoria
 ```
 
 You will notice that instead of using a subset of the dataset with 500k rows, we are using a subset with 50k rows. We decided to use a smaller dataset to run AutoML for a shorter amount of time. If you would like, you can repeat this tutorial after you have completed it, and use the same subset that we used in the previous two tutorials; just keep in mind that you will need to run AutoML for a much longer time. 
-
 Before we continue, let’s explore some concepts about AutoML that will be useful in this tutorial.
 
 ## Task 2: AutoML Concepts
