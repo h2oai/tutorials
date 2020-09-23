@@ -6,7 +6,7 @@
 - [Task 1: Launch Machine Learning Interpretability Experiment](#task-1-launch-machine-learning-interpretability-experiment) 
 - [Task 2: Concepts](#task-2-concepts)
 - [Task 3: Confusion Matrix](#task-3-confusion-matrix)
-- [Task 4: Disparate Impact Analysis (DIA)](#task-4-disparate-impact-analysis-(DIA))
+- [Task 4: Disparate Impact Analysis](#task-4-disparate-impact-analysis)
 - [Task 5: Sensitivity Analysis Part 1](#task-5-sensitivity-analysis-part-1)
 - [Task 6: Sensitivity Analysis Part 2](#task-6-sensitivity-analysis-part-2)
 - [Next Steps](#next-steps)
