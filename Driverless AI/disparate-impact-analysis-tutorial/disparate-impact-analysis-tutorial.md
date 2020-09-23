@@ -394,7 +394,7 @@ On the left side of the table (at the bottom of the page), you will be able to l
 
  Once you get a narrow range, you should see up close which customers are the closest predictions to the cutoff line, as shown above. In this case, we will experiment with a customer holding the *ID* number 3. 
 
-![Before-values-change](assets/before-values-change.jpg)
+![before-values-change](assets/before-values-change.jpg)
 
 Now let’s see if we can independently adjust some of the demographic features and push customer three over the threshold from negative(not predicted as defaulting) to positive(predicted to default). Since we are discussing fairness and regulatory considerations, let’s select just the demographic variables to learn more. To choose the demographic variables such as **AGE**, **SEX**, **EDUCATION**, and **MARRIAGE** please follow the following steps: 
 
