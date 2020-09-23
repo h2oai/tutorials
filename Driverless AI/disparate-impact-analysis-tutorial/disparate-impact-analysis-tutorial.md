@@ -7,8 +7,8 @@
 - [Task 2: Concepts](#task-2-concepts)
 - [Task 3: Confusion Matrix](#task-3-confusion-matrix)
 - [Task 4: Disparate Impact Analysis](#task-4-disparate-impact-analysis)
-- [Task 5: Sensitivity Analysis Part 1](#task-5-sensitivity-analysis-part-1)
-- [Task 6: Sensitivity Analysis Part 2](#task-6-sensitivity-analysis-part-2)
+- [Task 5: Sensitivity Analysis Part 1: Checking for Bias](#task-5-sensitivity-analysis-part-1-checking-for-bias)
+- [Task 6: Sensitivity Analysis Part 2: Checking for Bias](#task-6-sensitivity-analysis-part-2-checking-for-bias)
 - [Next Steps](#next-steps)
 
 ## Objective
@@ -93,7 +93,7 @@ Review the columns in the data set and pay attention to the specific attributes 
 
 ![launch-experiment-drop-columns-2](assets/launch-experiment-drop-columns-2.jpg)
 
-10. When you return, you should see these updates settings. If not, it is essential to make sure the **Interpretability** setting is at **7**. On the left-hand side, verify that **Monotonicity Constraints** is enabled. Enabling **Monotonicity Constraints** is important to Disparate Impact Analysis. If we use an unconstrained model and group fairness metrics, we risk creating group fairness metrics that appear to be reasonable. The consequence of creating group fairness metrics that appear to be reasonable is the illusion that individuals within that group may be treated differently or unfairly. The local (individual) discrimination would likely not appear or be visible in that group metric.
+10. When you return, update the training settings as shown below:it is essential to make sure the **Interpretability** setting is at **7**. On the left-hand side, verify that **Monotonicity Constraints** is enabled. Enabling **Monotonicity Constraints** is important to Disparate Impact Analysis. If we use an unconstrained model and group fairness metrics, we risk creating group fairness metrics that appear to be reasonable. The consequence of creating group fairness metrics that appear to be reasonable is the illusion that individuals within that group may be treated differently or unfairly. The local (individual) discrimination would likely not appear or be visible in that group metric.
 
 ![launch-experiment-interpretability-settings](assets/launch-experiment-interpretability-settings.jpg)
 
@@ -231,7 +231,7 @@ With this context in mind, let’s move forward and dive into the experiment!
 
 ![dia-2](assets/dia-2.jpg)
 
-2. With the above in mind, you can look at the Global Confison Metrix of our experiment and identify and calculate the *True Positive Rate* and *True Negative Rate*. In the following task we will see how *True Positive Rate* and *True Negative Rate* can be effective. 
+2. With the above in mind, you can look at the Global Confusion Metrix of our experiment and identify and calculate the *True Positive Rate* and *True Negative Rate*. In the following task we will see how *True Positive Rate* and *True Negative Rate* can be effective. 
 
 *Note:* In the next tutorial (COMING SOON), we will be exploring how we can use  *True Positive Rate* and *True Negative Rate* to determine the fairness of an AI model. Therefore, let us explore the two new MLI tools: 
 1. Disparate Impact Analysis Tool 
@@ -295,7 +295,7 @@ Here we can see *True* across all classes and metrics, which is what we want to 
 
 - [10] [Encyclopedia of Systems Biology](https://link.springer.com/referenceworkentry/10.1007%2F978-1-4419-9863-7_255)
 
-## Task 5: Sensitivity Analysis Part 1
+## Task 5: Sensitivity Analysis Part 1: Checking for Bias
 
 1. Let’s start up a new experiment with the same dataset as before. Keep the settings & target variable the same; however, this time, let’s keep all the columns in the dataset. 
 
@@ -384,7 +384,7 @@ To set all customers PAY_0 to 2, please consider the following steps:
 
 ![reset](assets/reset.jpg)
 
-## Task 6: Sensitivity Analysis Part 2
+## Task 6: Sensitivity Analysis Part 2: Checking for Bias
 
  For this subsequent analysis, we will tinker with an individual user and see what attribute changes might push them over or under the default/approval threshold. There are a few ways to do this, but since we know the cutoff is *0.26765209436416626*, we will try to find  a particular customer (blue or yellow circle) very close to the cutoff. Note, there are several ways we can filter to get close to a person close to the cutoff. In this case, I was able to find someone close to the cutoff line by filtering as follows: 
 
