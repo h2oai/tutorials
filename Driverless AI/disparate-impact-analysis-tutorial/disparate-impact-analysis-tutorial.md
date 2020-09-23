@@ -3,12 +3,12 @@
 ## Outline
 - [Objective](#objective)
 - [Prerequisites](#prerequisites)
-- [Task 1: Launch Machine Learning Interpretability Experiment](#task-1:-launch-machine-learning-interpretability-experiment) 
-- [Task 2: Concepts](#task-2:-concepts)
-- [Task 3: Confusion Matrix](#task-3:-confusion-matrix)
-- [Task 4: Disparate Impact Analysis (DIA)](#task-4:-disparate-impact-analysis-(DIA))
-- [Task 5: Sensitivity Analysis Part 1](#task-5:-sensitivity-analysis-part-1)
-- [Task 6: Sensitivity Analysis Part 2](#task-6:-sensitivity-analysis-part-2)
+- [Task 1: Launch Machine Learning Interpretability Experiment](#task-1-launch-machine-learning-interpretability-experiment) 
+- [Task 2: Concepts](#task-2-concepts)
+- [Task 3: Confusion Matrix](#task-3-confusion-matrix)
+- [Task 4: Disparate Impact Analysis (DIA)](#task-4-disparate-impact-analysis-(DIA))
+- [Task 5: Sensitivity Analysis Part 1](#task-5-sensitivity-analysis-part-1)
+- [Task 6: Sensitivity Analysis Part 2](#task-6-sensitivity-analysis-part-2)
 - [Next Steps](#next-steps)
 
 ## Objective
@@ -20,11 +20,11 @@ This tutorial's goal is to start a set of tutorials that will explore the ins an
 
 As firms use AI to help them around credit/loan-decisions, cross-sell promotions, and determine the next best action, they must be aware of how certain customer features are being weighting into the AI models in production. Further, they are also required to understand whether the AI models are not negatively impacting protected classes of customers or unfairly weighting for these types of classes. A lack of understanding of the ins of an AI Model in production can lead to legal and financial risks when discovering that the AI model in production is discriminating (bias) against certain ethnicities, genders, etc.
 
-Therefore, AI practitioners must-have tools that will aid them in trying to understand the ins and outs of their AI models. In this case, Driverless AI allows you to check the ins and outs of your build AI model by using the Disparate Impact and Sensitivity/What-If Analysis tool. In particular, Disparate Impact is one of the most commonly discussed methodologies in responsible AI today to check for fairness. 
+Therefore, AI practitioners must have tools that will aid them in trying to understand the ins and outs of their AI models. In this case, Driverless AI allows you to check your built AI model's ins and outs by using the Disparate Impact and Sensitivity/What-If Analysis tool. In particular, Disparate Impact is one of the most commonly discussed methodologies in responsible AI today to check for fairness. 
 
 Additionally, as firms have looked to leverage AI to make more and more decisions for the company, the discussion of Human-Centered Machine learning has become increasingly important. Data science practitioners and firms deploying AI in production want to 'get under the hood' of their models to see what impacts decisions. 
 
-Hence, in this tutorial, we will build an AI model predicting if someone will be defaulting on their credit card. Right after, we will use the two tools, as mentioned earlier, to analyze and check for fairness. 
+Hence, in this tutorial, we will build an AI model predicting whether someone will be defaulting on their credit card. Right after, we will use the two tools, as mentioned earlier, to analyze and check for fairness. 
 
 
 ## Prerequisites
