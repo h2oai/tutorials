@@ -251,7 +251,7 @@ With this context in mind, let’s move forward and dive into the experiment!
 
 3. The following should appear: 
 
-![DIA-fairness](assets/dia-fairness.jpg)
+![dia-fairness](assets/dia-fairness.jpg)
 
 Make sure the Reference level is toggled to 1(Male). With DIA the reference level is somewhat ambiguous, but generally, we want to set it to the category or population we believe may be receiving better treatment compared to other classes. 
 
