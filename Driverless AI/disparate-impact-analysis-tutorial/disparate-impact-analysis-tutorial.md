@@ -239,7 +239,7 @@ With this context in mind, let’s move forward and dive into the experiment!
  2. Sensitivity/What-If Analysis Tool 
 
 
- ## Task 4: Disparate Impact Analysis (DIA)
+ ## Task 4: Disparate Impact Analysis
 
 1. Continuing with the experiment on the top right corner, click on the *Disparate Impact Variable* button. Select the **SEX** variable. 
 
