@@ -18,7 +18,7 @@ This tutorial's goal is to start a set of tutorials that will explore the ins an
  1. Disparate Impact Analysis Tool 
  2. Sensitivity/What-If Analysis Tool 
 
-As firms use AI to help them around credit/loan-decisions, cross-sell promotions, and determine the next best action, they must be aware of how certain customer features are being weighting into the AI models in production. Further, they are also required to understand whether the AI models are not negatively impacting protected classes of customers or unfairly weighting for these types of classes. A lack of understanding of the ins of an AI Model in production can lead to legal and financial risks when discovering that the AI model in production is discriminating(bias) against certain ethnicities, genders, etc.
+As firms use AI to help them around credit/loan-decisions, cross-sell promotions, and determine the next best action, they must be aware of how certain customer features are being weighting into the AI models in production. Further, they are also required to understand whether the AI models are not negatively impacting protected classes of customers or unfairly weighting for these types of classes. A lack of understanding of the ins of an AI Model in production can lead to legal and financial risks when discovering that the AI model in production is discriminating (bias) against certain ethnicities, genders, etc.
 
 Therefore, AI practitioners must-have tools that will aid them in trying to understand the ins and outs of their AI models. In this case, Driverless AI allows you to check the ins and outs of your build AI model by using the Disparate Impact and Sensitivity/What-If Analysis tool. In particular, Disparate Impact is one of the most commonly discussed methodologies in responsible AI today to check for fairness. 
 
@@ -32,7 +32,7 @@ Hence, in this tutorial, we will build an AI model predicting if someone will be
 You will need the following to be able to do this tutorial:
 
 - Basic knowledge of Machine Learning and Statistics
-- Basic knowledge of Driverless AI or doing the [Automatic Machine Learning Introduction with Driverless AI Test Drive](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai) 
+- Basic knowledge of Driverless AI or doing the [Automatic Machine Learning Introduction with Driverless AI](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai) 
 - Completion of the [Machine Learning Interpretability Tutorial](https://training.h2o.ai/products/tutorial-1c-machine-learning-interpretability-tutorial)
 
 - A **Two-Hour Test Drive session** : Test Drive is H2O.ai's Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.
@@ -75,7 +75,7 @@ Review the columns in the data set and pay attention to the specific attributes 
 
 5. Click on the ``UCI_Credit_Card.csv`` file then select **Predict**.
 
-6. A box prompting you to decide whether or not to take a tour on the product (Driverless AI) will appear, click **Not Now** if you already know the different settings to set up an experiment, otherwise click **Yes**. In this case, we will click **Not Now**. A similar image should appear:
+6. Select Not Now on the "First time Driverless AI" box, a similar image should appear:
 
 ![launch-experiment-predict-setup](assets/launch-experiment-predict-setup.jpg)
 
@@ -89,7 +89,7 @@ Review the columns in the data set and pay attention to the specific attributes 
 
 ![launch-experiment-drop-columns](assets/launch-experiment-drop-columns.jpg)
 
-9.  Let’s drop the following columns since, under fair lending regulations, we should not consider these demographic factors in how we treat and analyze a customer. Additionally, **Limit_Bal** has some adverse action considerations, and this variable is usually dictated internally, and therefore, we will also dropp it. Click **Done**.
+9.  Let’s drop the following columns since, under fair lending regulations, we should not consider these demographic factors in how we treat and analyze a customer. Additionally, **Limit_Bal** has some adverse action considerations, and this variable is usually dictated internally, and therefore, we will also drop it. Click **Done**.
 
 ![launch-experiment-drop-columns-2](assets/launch-experiment-drop-columns-2.jpg)
 
@@ -158,9 +158,7 @@ One of the simplest and most common approaches is that of changing one-factor-at
 Sensitivity may then be measured by monitoring changes in the output, e.g. by [partial derivatives](https://en.wikipedia.org/wiki/Partial_derivatives) or [linear regression](https://en.wikipedia.org/wiki/Linear_regression). 
 
 
-### Deeper Dive and Resources
-
-#### Learn more about Interpretability:
+### References
 
 - [1] [Bias of an estimator](https://en.wikipedia.org/wiki/Bias_of_an_estimator)
 
@@ -175,6 +173,8 @@ Sensitivity may then be measured by monitoring changes in the output, e.g. by [p
 - [6]  Leamer, Edward E. (1983). ["Let's Take the Con Out of Econometrics"](https://en.wikipedia.org/wiki/Sensitivity_analysis#cite_note-16). American Economic Review. 73 (1): 31–43. JSTOR 1803924.
 
 - [7]  Leamer, Edward E. (1985). ["Sensitivity Analyses Would Help". American Economic Review](https://en.wikipedia.org/wiki/Sensitivity_analysis#cite_note-17). 75 (3): 308–313. JSTOR 1814801.
+
+### Deeper Dive and Resources
 
 - [Mitigating Bias in AI/ML Models with Disparate Impact Analysis …](https://medium.com/@kguruswamy_37814/mitigating-bias-in-ai-ml-models-with-disparate-impact-analysis-9920212ee01c)
 
@@ -289,7 +289,7 @@ We can see that if we adjust the low threshold, the group disparity metrics will
 
 Here we can see *True* across all classes and metrics, which is what we want to see.
 
-### Deeper Dive and Resources
+### References
 
 - [9] [WHAT IS ADVERSE IMPACT? AND WHY MEASURING IT MATTERS](https://www.hirevue.com/blog/what-is-adverse-impact-and-why-measuring-it-matters)
 
@@ -444,11 +444,11 @@ For this particular dataset, the one variable that, for the most part, determine
 
 ### Conclusion
 
-As mentioned at the beginning of this tutorial, the disparate impact analysis, and sensitivity analysis tool can help you understand your mode's inner workings. Due to regulatory pressures and the aggressive adoption of AI in the enterprise, you are now more often required to be able to review and explain the ins of your model. It is worth noting that being able to explain a model after being built is just one component of responsible AI practices. 
+As mentioned at the beginning of this tutorial, the disparate impact analysis, and sensitivity analysis tool can help you understand your model's inner workings. Due to regulatory pressures and the aggressive adoption of AI in the enterprise, you are now more often required to be able to review and explain the ins of your model. It is worth noting that being able to explain a model after being built is just one component of responsible AI practices. 
 
 ## Next Steps
 
-Check out the next tutorial: [Analyzing a Criminal Risk Scorer with DAI MLI (COMING SOON)](), where you will learn more about:
+Check out the next tutorial: Analyzing a Criminal Risk Scorer with DAI MLI (COMING SOON), where you will learn more about:
 
   - Disparate Impact Analysis 
   - Sensitivity Analysis 
