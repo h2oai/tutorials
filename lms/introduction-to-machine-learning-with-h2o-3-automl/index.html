@@ -34,22 +34,18 @@
     
       <google-codelab-step label="Prerequisites" duration="0">
         <ul>
-<li>Completion of tutorials <a href="https://training.h2o.ai/products/introduction-to-machine-learning-with-h2o-3-classification" target="_blank">Introduction to Machine Learning with H2O-3 - Classification</a> and <a href="https://training.h2o.ai/products/introduction-to-machine-learning-with-h2o-3-regression" target="_blank">Introduction to Machine Learning with H2O-3 - Regression.</a></li>
+<li>Completion of tutorials <a href="https://training.h2o.ai/products/1a-introduction-to-machine-learning-with-h2o-3-classification" target="_blank">Introduction to Machine Learning with H2O-3 - Classification</a> and <a href="https://training.h2o.ai/products/1b-introduction-to-machine-learning-with-h2o-3-regression" target="_blank">Introduction to Machine Learning with H2O-3 - Regression.</a></li>
 <li>Some basic knowledge of machine learning.</li>
 <li>Familiarity with Python.</li>
-<li>H2O-3 installed in your computer<br><br><ul>
-<li>If you need to install H2O-3 on your machine, we recommend creating an Anaconda Cloud environment, as shown in the installation guide, <a href="http://docs.h2o.ai/h2o/latest-stable/h2o-docs/downloading.html#install-on-anaconda-cloud" target="_blank">Install on Anaconda Cloud,</a> this would help you make sure that you have everything that you need to do this tutorial.</li>
-<li>If you prefer not create an Anaconda environment, please refer to the <a href="http://h2o-release.s3.amazonaws.com/h2o/rel-zeno/2/index.html" target="_blank">H2O Download Page</a> for more information on how to download H2O-3.</li>
+<li>An Aquarium account. If you do not have an Aquarium account, please refer to <a href="https://training.h2o.ai/products/1a-introduction-to-machine-learning-with-h2o-3-classification" target="_blank">Appendix A of Introduction to Machine Learning with H2O-3 - Classification</a></li>
 </ul>
-</li>
-</ul>
-<p><strong>Note:</strong> We have completed this tutorial in a 16 core machine with almost 14Gb of memory; however, it can be done in a machine with different specs, just keep in mind that your results will vary. The tutorial is intended to take about two hours, or less, to be completed. However, you can increase the time in the grid search for each model if you would like to see more results.</p>
+<p><strong>Note:</strong> This tutorial was completed in a cloud environment. If you want to get the same results in a similar time manner, please follow this tutorial in Aquarium. Otherwise, you can use your own machine but you will get different results, for example, it might take you longer to train the models for the classification part, or for the regression part, you might not get the same nunmber of models.</p>
 
 
       </google-codelab-step>
     
       <google-codelab-step label="Task 1: Initial Setup" duration="0">
-        <p>In this tutorial, we are using a smaller subset of the Freddie Mac Single-Family dataset that we used for the past two tutorials. If you have not done so, complete <a href="https://training.h2o.ai/products/introduction-to-machine-learning-with-h2o-3-classification" target="_blank">Introduction to Machine Learning with H2O-3 - Classification</a> and <a href="https://training.h2o.ai/products/introduction-to-machine-learning-with-h2o-3-regression" target="_blank">Introduction to Machine Learning with H2O-3 - Regression</a> as this tutorial is a continuation of both of them.</p>
+        <p>In this tutorial, we are using a smaller subset of the Freddie Mac Single-Family dataset that we used for the past two tutorials. If you have not done so, complete <a href="https://training.h2o.ai/products/1a-introduction-to-machine-learning-with-h2o-3-classification" target="_blank">Introduction to Machine Learning with H2O-3 - Classification</a> and <a href="https://training.h2o.ai/products/1b-introduction-to-machine-learning-with-h2o-3-regression" target="_blank">Introduction to Machine Learning with H2O-3 - Regression</a> as this tutorial is a continuation of both of them.</p>
 <p>We will use H2O AutoML to make the same predictions as in the previous two tutorials:</p>
 <ul>
 <li>Predict whether a mortgage loan will be delinquent or not</li>
@@ -62,17 +58,30 @@ import matplotlib as plt
 %matplotlib inline
 from h2o.automl import H2OAutoML
 </code></pre>
-<p>Next, initialize your H2O instance:</p>
-<pre><code>h2o.init()
+<p>Next, initialize your H2O instance.</p>
+<pre><code>import os
+import h2o
+
+startup  = &#39;/home/h2o/bin/aquarium_startup&#39;
+shutdown = &#39;/home/h2o/bin/aquarium_stop&#39;
+
+if os.path.exists(startup):
+    os.system(startup)
+    local_url = &#39;http://localhost:54321/h2o&#39;
+    aquarium = True
+else:
+    local_url = &#39;http://localhost:54321&#39;
+    aquarium = False
+</code></pre>
+<pre><code>h2o.init(url=local_url)
 </code></pre>
 <p>If your instance was successfully initialized, you will see a table with a description of it as shown below.</p>
 <p><img alt="cluster-info" src="img/7e309c6dcaff4cfd.jpg"></p>
-<p>After initializing the H2O cluster, you will see the information shown above. We have an H2O cluster with just one node. Clicking on link in the information will take you to your <strong>Flow instance,</strong> where you can see your models, data frames, plots, and much more. Click on the link, and it will take you to a window similar to the one below. Keep it open on a separate tab, as we will come back to it for Tasks 6 and 7.</p>
+<p>If you are working on your machine, if you click on the link above the cluster information, it will take you to your <strong>Flow instance</strong>, where you can see your models, data frames, plots, and much more. If you are working on Aquarium, go to your lab and click on the <strong>Flow URL</strong>, and it will take you to your Flow instance. Keep it open on a separate tab, as we will come back to it for Tasks 6 and 7.</p>
 <p>Let&#39;s import the dataset.</p>
 <pre><code>loan_level = h2o.import_file(&#34;https://s3.amazonaws.com/data.h2o.ai/H2O-3-Tutorials/loan_level_50k.csv&#34;)
 </code></pre>
-<p>You will notice that instead of using a subset of the dataset with 500k rows, we are using a subset with 50k rows. We decided to use a smaller dataset to run AutoML for a shorter amount of time. If you would like, you can repeat this tutorial after you have completed it, and use the same subset that we used in the previous two tutorials; just keep in mind that you will need to run AutoML for a much longer time.</p>
-<p>Before we continue, let&#39;s explore some concepts about AutoML that will be useful in this tutorial.</p>
+<p>You will notice that instead of using a subset of the dataset with 500k rows, we are using a subset with 50k rows. We decided to use a smaller dataset to run AutoML for a shorter amount of time. If you would like, you can repeat this tutorial after you have completed it, and use the same subset that we used in the previous two tutorials; just keep in mind that you will need to run AutoML for a much longer time.<br>Before we continue, let&#39;s explore some concepts about AutoML that will be useful in this tutorial.</p>
 
 
       </google-codelab-step>
@@ -303,7 +312,7 @@ pred.head()
 <p>To import a file into Flow, you would just need to run the following command in a new cell</p>
 <pre><code>importFiles [&#34;https://s3.amazonaws.com/data.h2o.ai/DAI-Tutorials/loan_level_50k.csv&#34;]
 </code></pre>
-<p><strong>Note:</strong> For a more detailed guide on how to import a file into Flow, check out <a href="https://training.h2o.ai/products/1a-introduction-to-machine-learning-with-h2o-3-classification" target="_blank">Task 3 of Introduction to Machine Learning with H2O-3 - Classification </a></p>
+<p><strong>Note:</strong> For a more detailed guide on how to import a file into Flow, check out <a href="https://training.h2o.ai/products/introduction-to-machine-learning-with-h2o-part-1" target="_blank">Task 3 of Introduction to Machine Learning with H2O-3 - Part 1</a></p>
 <p>Even though we already have the train and test set, let&#39;s split the loan_level_50k.hex file, that way we can give a specific name to the train and test sets. Use the ratio 0.8 for train and 0.2 for test.</p>
 <p><img alt="split-frame" src="img/aa9af47f0b4778.gif"></p>
 <p>Now that we can easily find our train and test set, scroll up again to the <strong>Assistance</strong> panel and click on <code>runAutoML</code>.</p>

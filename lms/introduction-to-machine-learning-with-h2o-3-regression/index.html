@@ -34,16 +34,12 @@
     
       <google-codelab-step label="Prerequisites" duration="0">
         <ul>
-<li>Completion of <a href="https://training.h2o.ai/products/introduction-to-machine-learning-with-h2o-3-classification" target="_blank">Introduction to Machine Learning with H2O-3 - Classification</a> tutorial.</li>
+<li>Completion of <a href="https://training.h2o.ai/products/1a-introduction-to-machine-learning-with-h2o-3-classification" target="_blank">Introduction to Machine Learning with H2O-3 - Classification</a> tutorial.</li>
 <li>Some basic knowledge of machine learning.</li>
 <li>Familiarity with Python.</li>
-<li>H2O-3 installed in your computer<br><br><ul>
-<li>If you need to install H2O-3 on your machine, we recommend creating an Anaconda Cloud environment, as shown in the installation guide, <a href="http://docs.h2o.ai/h2o/latest-stable/h2o-docs/downloading.html#install-on-anaconda-cloud" target="_blank">Install on Anaconda Cloud,</a> this would help you make sure that you have everything that you need to do this tutorial.</li>
-<li>If you prefer not create an Anaconda environment, please refer to the <a href="http://h2o-release.s3.amazonaws.com/h2o/rel-zeno/2/index.html" target="_blank">H2O Download Page</a> for more information on how to download H2O-3.</li>
+<li>An Aquarium account. If you do not have an Aquarium account, please refer to <a href="https://training.h2o.ai/products/1a-introduction-to-machine-learning-with-h2o-3-classification" target="_blank">Appendix A of Introduction to Machine Learning with H2O-3 - Classification</a></li>
 </ul>
-</li>
-</ul>
-<p><strong>Note:</strong> We have completed this tutorial in a 16 core machine with almost 14Gb of memory; however, it can be done in a machine with different specs, just keep in mind that your results will vary. The tutorial is intended to take about two hours, or less, to be completed. However, you can increase the time in the grid search for each model if you would like to see more results.</p>
+<p><strong>Note:</strong> We recommend that you follow along on Aquarium, our cloud instance, to get similar results to the ones shown in this tutorial. We also recommend that you go over the concepts section in Task 2 before starting your lab; that way, your instance is not running while you are going over the concepts. You can also use your personal machine with H2O-3, but keep in mind that you will see different results.</p>
 
 
       </google-codelab-step>
@@ -65,13 +61,27 @@ from h2o.estimators import H2OXGBoostEstimator
 import h2o.grid 
 from h2o.grid.grid_search import H2OGridSearch
 </code></pre>
-<p>We now have to initialize our instance:</p>
-<pre><code>h2o.init()
+<p>We now have to initialize our instance. If you are on Aquarium, it will connect to a local instance; if you are on your own machine, it will launch an instance connected to your machine.</p>
+<pre><code>import os
+import h2o
+
+startup  = &#39;/home/h2o/bin/aquarium_startup&#39;
+shutdown = &#39;/home/h2o/bin/aquarium_stop&#39;
+
+if os.path.exists(startup):
+    os.system(startup)
+    local_url = &#39;http://localhost:54321/h2o&#39;
+    aquarium = True
+else:
+    local_url = &#39;http://localhost:54321&#39;
+    aquarium = False
+</code></pre>
+<pre><code>h2o.init(url=local_url)
 </code></pre>
 <p><img alt="cluster-info" src="img/7e309c6dcaff4cfd.jpg"></p>
-<p>After initializing the H2O cluster, you will see the information shown above. We have an H2O cluster with just one node. Clicking on link in the information will take you to your <strong>Flow instance,</strong> where you can see your models, data frames, plots, and much more. Click on the link, and it will take you to a window similar to the one below. Keep it open in a separate tab, as we will come back to it later on.</p>
+<p>After initializing the H2O cluster, you will see the information shown above. We have an H2O cluster with just one node. If you are working on your machine, click on the link above the cluster information, and it will take you to your <strong>Flow instance</strong> where you can see your models, data frames, plots, and much more. If you are working on Aquarium, go to your lab and click on the <strong>Flow URL,</strong> and it will take you to a window similar to the one below. Keep it open on a separate tab, as we will come back to it later on.</p>
 <p><img alt="flow-welcome-page" src="img/4d41984db0849706.jpg"></p>
-<p>Next, we will import the dataset. Since we are working with an S3 file, just specify the path of where the file is located, as shown below:</p>
+<p>Next, we will import the dataset. Since we are working with an S3 file,  just specify the path of where the file is located, as shown below:</p>
 <pre><code>#Import the dataset 
 loan_level = h2o.import_file(&#34;https://s3.amazonaws.com/data.h2o.ai/DAI-Tutorials/loan_level_500k.csv&#34;)
 </code></pre>
@@ -282,7 +292,7 @@ xgb_def_pred.cbind(valid[&#39;ORIGINAL_INTEREST_RATE&#39;])
     
       <google-codelab-step label="Task 6: Tune the XGBoost Model with H2O GridSearch" duration="0">
         <p>We will use H2O GridSearch to find the best parameters for our XGBoost.</p>
-<p><strong>Note:</strong> If you are not sure what H2O GridSearch is, or how it works, please refer to Task 7 of <a href="https://training.h2o.ai/products/introduction-to-machine-learning-with-h2o-3-classification" target="_blank">Introduction to Machine Learning with H2O-3 - Classification</a>, or go to <a href="http://docs.h2o.ai/h2o/latest-stable/h2o-docs/grid-search.html#grid-hyperparameter-search" target="_blank">Grid Search Section</a> of the H2O documentation.</p>
+<p><strong>Note:</strong> If you are not sure what H2O GridSearch is, or how it works, please refer to Task 7 of <a href="https://training.h2o.ai/products/introduction-to-machine-learning-with-h2o-classification" target="_blank">Introduction to Machine Learning with H2O-3 - Classification</a>, or go to <a href="http://docs.h2o.ai/h2o/latest-stable/h2o-docs/grid-search.html#grid-hyperparameter-search" target="_blank">Grid Search Section</a> of the H2O documentation.</p>
 <p>We will first try to find the <code>max_depth</code> for our XGBoost, as this is one of the most important parameters for an XGBoost model.</p>
 <p><code>max_depth</code> defines the number of nodes along the longest path from the start of the tree to the farthest leaf node. By default, the value is 6. We could do a random search along with the other parameters, but when max_depth is large, the model takes longer to train; therefore, in order to do a more efficient random search with the other parameters, we will first find the best value <code>max_depth</code>, and we will use 100 trees with early stopping to tune our hyper-parameters.</p>
 <pre><code>xgb = H2OXGBoostEstimator(model_id=&#39;xgb&#39;, ntrees=300,
@@ -591,7 +601,7 @@ test_rate_pred.cbind(dl_tuned_pred)
       </google-codelab-step>
     
       <google-codelab-step label="Task 9:  Challenge" duration="0">
-        <p>We tuned the Deep Learning model with two hidden layers with 100 neurons in each layer. Try to tune a Deep Learning model on your own with two layers, or more, and with the number of neurons that you want. You can follow the same procedures as before, but if you wanted to have models wiht three hidden layers you will have to use something like <code>[165,165, 165],</code> and for some parameters such as the dropout ratios, you will need to also have two values, such as <code>[0.01, 0.01, 0.01]</code>, and so on. Once you&#39;re done with the tutorial, remember to shut down your cluster.</p>
+        <p>We tuned the Deep Learning model with two hidden layers with 100 neurons in each layer. Try to tune a Deep Learning model on your own with two layers, or more, and with the number of neurons that you want. You can follow the same procedures as before, but if you wanted to have models wiht three hidden layers you will have to use something like <code>[165,165, 165],</code> and for some parameters such as the dropout ratios, you will need to also have two values, such as <code>[0.01, 0.01, 0.01]</code>, and so on. If you attempt the challenge, you can download your Jupyter Notebook with your work, and just restart the lab; that way, you have at least 2 hours to tune the new model. You can find our grid search for a neural network with two layers and 165 neurons in each layer at the end of our Jupyter Notebook in Aquarium. Once you&#39;re done with the tutorial, shut down your cluster, or end the lab.</p>
 
 
       </google-codelab-step>
