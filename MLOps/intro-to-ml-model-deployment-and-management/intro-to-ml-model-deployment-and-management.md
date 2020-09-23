@@ -633,7 +633,7 @@ Does your list of events look different than the image above? If yes, that is ex
 
 1\. Click on Projects > **hydraulic system** to return back to hydraulic system project dashboard. Then next we will deploy the ML model to a dev environment.
 
-## Task 5: Interactive Scoring via MLOps Model Deployment
+## Task 5: Interactive and Batch Scoring via MLOps Model Deployment
 
 1\. In the **Models** table, click on **Actions 3 dot** for **hydraulic_model_1 model**, then click **Deploy to DEV**.
 
