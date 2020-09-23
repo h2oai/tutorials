@@ -315,7 +315,7 @@ Some things to notice:
 
   1. In our *Summary* information for the dataset located on the left side of the dashboard, we, in particular, can see our chosen cutoff metric, and the number for that metric. 
 
-  ![SA-UI-Summary](assets/sa-ui-Summary.jpg)
+  ![SA-UI-Summary](assets/sa-ui-summary.jpg)
 
   * In our *Summary* information for the dataset located on the left side of the dashboard, we, in particular, can see our chosen cutoff metric, and the number for that metric. Our *CUTOFF* is 0.2676... Anything below the *CUTOFF* will mean the model predicts a customer will not default, while anyone greater than or equal to the *CUTOFF* will default. 
 
@@ -337,7 +337,7 @@ Some things to notice:
 
 5. You can also check the *Partial Dependence Plot* and see the probability of defaulting increases when PAY_0 is two months late. 
 
-![partial-dependence-plot-of-PAY_0](assets/partial-dependence-plot-of-PAY_0.jpg)
+![partial-dependence-plot-of-PAY_0](assets/partial-dependence-plot-of-pay_0.jpg)
 
 Now that we know that being two months late on PAY_0 is terrible and knowing that the average mean score prediction is *0.24060*, what will occur if we were to set all customers to have PAY_0=2? Will the average mean score prediction increase or decrease? 
 
