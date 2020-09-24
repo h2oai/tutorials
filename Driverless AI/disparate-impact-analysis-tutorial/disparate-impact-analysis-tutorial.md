@@ -222,7 +222,7 @@ Specificity, Selectivity, True Negative Rate:
 
 Precision, Positive Predictive Value:
 
-- Precision = True Positives / (True Positives + False Positives)
+- Precision = True Positives / (True Positive + False Positive)
 
 With this context in mind, let’s move forward and dive into the experiment!
 
