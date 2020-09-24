@@ -32,7 +32,7 @@
 <p><img alt="cylinder-diagram-1" src="img/5818cceb8b33d6fc.jpg"></p>
 <p><strong>Figure 1:</strong> Hydraulic System Cylinder Diagram</p>
 <p>The Hydraulic System consists of a primary and secondary cooling filtration circuit with pumps that deliver flow and pressure to the oil tank. The oil tank box at the bottom. There is a pressure relief control valve for controlling the rising and falling flows. There is a pressure gauge for measuring the pressure.</p>
-<h2>Deep Dive and Resources</h2>
+<h2>References</h2>
 <p>[1] <a href="https://www.savery.co.uk/systems/test-benches" target="_blank">SAVERY - HYDRAULIC TEST RIGS AND BENCHES</a></p>
 <p>[2] <a href="https://www.hydrotechnik.co.uk/flow-and-temperature-hydraulic-test-bed" target="_blank">HYDROTECHNIK - Flow and Temperature Testing Components</a></p>
 
@@ -222,24 +222,273 @@
 <p><strong>In the MLOps Architecture diagram above, there are two personas, which are the Data Scientists working with Driverless AI and the Machine Learning (ML) Engineers working with MLOps (a Model Manager).</strong></p>
 <p>The Data Scientists will build Driverless AI experiments, which use AutoML behind the scenes to do model training and come up with the Driverless AI model. A Driverless AI model is a scoring pipeline. Driverless AI has two scoring pipelines: a Python scoring pipeline and a MOJO scoring pipeline. Once they have their model built in a Driverless AI experiment, the Data Scientist will link one or more experiments to a Driverless AI project. That Driverless AI project is then saved in the model storage.</p>
 <p>From model storage, the ML Engineer uses MLOps, a Model Manager, to access a Driverless AI project saved in model storage. Then from there, they will either deploy the model to a development environment that simulates the conditions of the production environment or deploy the model to a production environment. MLOps deploys Driverless AI&#39;s MOJO scoring pipeline. As the model is deployed into a development or production environment, it is deployed on Kubernetes. The end user is able to make scoring requests to the model REST service, so the model performs predictions and returns the scoring results back to them. As the predictions are being made, that predicted data is being saved in influx DB and also used by grafana dashboard to generate visualizations. We can see the grafana dashboard in Model Manager for monitoring the model&#39;s activity as it makes predictions.</p>
-<h2>Deep Dive and Resources</h2>
+<h2>References</h2>
+<p>[1] <a href="https://training.h2o.ai/products/module-7-machine-learning-operations" target="_blank">1:22 - 3:07 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, AI Lifecycle, Speaker: Dan Darnell</a></p>
+<p>[2] <a href="https://training.h2o.ai/products/module-7-machine-learning-operations" target="_blank">3:06 - 4:03 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, NVP Survey Quote, Speaker: Dan Darnell</a></p>
+<p>[3] <a href="https://training.h2o.ai/products/module-7-machine-learning-operations" target="_blank">4:04 - 6:20 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, Barriers for AI Adoption at Scale, Deployment, Speaker: Dan Darnell</a></p>
+<p>[4] <a href="https://training.h2o.ai/products/module-7-machine-learning-operations" target="_blank">6:21 - 7:18 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, Barriers for AI Adoption at Scale, Monitoring, Speaker: Dan Darnell</a></p>
+<p>[5] <a href="https://training.h2o.ai/products/module-7-machine-learning-operations" target="_blank">7:19 - 8:09 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, Barriers for AI Adoption at Scale, Lifecycle Management, Speaker: Dan Darnell</a></p>
+<p>[6] <a href="https://training.h2o.ai/products/module-7-machine-learning-operations" target="_blank">8:10 - 8:47 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, Barriers for AI Adoption at Scale, Governance, Speaker: Dan Darnell</a></p>
+<p>[7] <a href="https://training.h2o.ai/products/module-7-machine-learning-operations" target="_blank">8:48 - 14:09 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, What &#34;Success&#34; Looks Like Today, Speaker: Dan Darnell</a></p>
+<p>[8] <a href="https://papers.nips.cc/paper/5656-hidden-technical-debt-in-machine-learning-systems.pdf" target="_blank">Hidden Technical Debt in Machine Learning Systems</a></p>
+<p>[9] <a href="https://training.h2o.ai/products/module-7-machine-learning-operations" target="_blank">14:10 - 15:51 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, The Solution MLOps, Speaker: Dan Darnell</a></p>
+<p>[10] <a href="https://training.h2o.ai/products/module-7-machine-learning-operations" target="_blank">15:52 - 17:39 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, MLOps Key Capabilities, Speaker: Dan Darnell</a></p>
+<p>[11] <a href="https://training.h2o.ai/products/module-7-machine-learning-operations" target="_blank">17:40 - 22:05 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, Model Deployment, Speaker: Dan Darnell</a></p>
+<p>[12] <a href="https://training.h2o.ai/products/module-7-machine-learning-operations" target="_blank">22:06 - 27:20 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, Monitoring for Machine Learning Models, Speaker: Dan Darnell</a></p>
+<p>[13] <a href="https://training.h2o.ai/products/module-7-machine-learning-operations" target="_blank">29:00 - 38:52 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, Typical Model Lifecycle Flow, Speaker: Dan Darnell</a></p>
+<p>[14] <a href="https://training.h2o.ai/products/module-7-machine-learning-operations" target="_blank">41:40 - 45:32 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, Production Model Governance, Speaker: Dan Darnell</a></p>
+<p>[15] <a href="https://training.h2o.ai/products/module-7-machine-learning-operations" target="_blank">45:33 - 48:12 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, MLOps Impact, Speaker: Dan Darnell</a></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Task 4: Tour of MLOps UI" duration="0">
+        <h2>Projects Dashboard Tour</h2>
+<p><img alt="mlops-has-dai-hydraulic-system-project" src="img/358c7c66e215eefa.jpg"></p>
+<p><strong>Figure 23:</strong> MLOps <strong>Projects</strong> Dashboard</p>
 <ul>
-<li>[1] <a href="https://training.h2o.ai/products/module-7-machine-learning-operations" target="_blank">1:22 - 3:07 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, AI Lifecycle, Speaker: Dan Darnell</a></li>
-<li>[2] <a href="https://training.h2o.ai/products/module-7-machine-learning-operations" target="_blank">3:06 - 4:03 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, NVP Survey Quote, Speaker: Dan Darnell</a></li>
-<li>[3] <a href="https://training.h2o.ai/products/module-7-machine-learning-operations" target="_blank">4:04 - 6:20 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, Barriers for AI Adoption at Scale, Deployment, Speaker: Dan Darnell</a></li>
-<li>[4] <a href="https://training.h2o.ai/products/module-7-machine-learning-operations" target="_blank">6:21 - 7:18 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, Barriers for AI Adoption at Scale, Monitoring, Speaker: Dan Darnell</a></li>
-<li>[5] <a href="https://training.h2o.ai/products/module-7-machine-learning-operations" target="_blank">7:19 - 8:09 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, Barriers for AI Adoption at Scale, Lifecycle Management, Speaker: Dan Darnell</a></li>
-<li>[6] <a href="https://training.h2o.ai/products/module-7-machine-learning-operations" target="_blank">8:10 - 8:47 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, Barriers for AI Adoption at Scale, Governance, Speaker: Dan Darnell</a></li>
-<li>[7] <a href="https://training.h2o.ai/products/module-7-machine-learning-operations" target="_blank">8:48 - 14:09 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, What &#34;Success&#34; Looks Like Today, Speaker: Dan Darnell</a></li>
-<li>[8] <a href="https://papers.nips.cc/paper/5656-hidden-technical-debt-in-machine-learning-systems.pdf" target="_blank">Hidden Technical Debt in Machine Learning Systems</a></li>
-<li>[9] <a href="https://training.h2o.ai/products/module-7-machine-learning-operations" target="_blank">14:10 - 15:51 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, The Solution MLOps, Speaker: Dan Darnell</a></li>
-<li>[10] <a href="https://training.h2o.ai/products/module-7-machine-learning-operations" target="_blank">15:52 - 17:39 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, MLOps Key Capabilities, Speaker: Dan Darnell</a></li>
-<li>[11] <a href="https://training.h2o.ai/products/module-7-machine-learning-operations" target="_blank">17:40 - 22:05 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, Model Deployment, Speaker: Dan Darnell</a></li>
-<li>[12] <a href="https://training.h2o.ai/products/module-7-machine-learning-operations" target="_blank">22:06 - 27:20 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, Monitoring for Machine Learning Models, Speaker: Dan Darnell</a></li>
-<li>[13] <a href="https://training.h2o.ai/products/module-7-machine-learning-operations" target="_blank">29:00 - 38:52 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, Typical Model Lifecycle Flow, Speaker: Dan Darnell</a></li>
-<li>[14] <a href="https://training.h2o.ai/products/module-7-machine-learning-operations" target="_blank">41:40 - 45:32 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, Production Model Governance, Speaker: Dan Darnell</a></li>
-<li>[15] <a href="https://training.h2o.ai/products/module-7-machine-learning-operations" target="_blank">45:33 - 48:12 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, MLOps Impact, Speaker: Dan Darnell</a></li>
+<li>Projects: MLOps projects page shows Driverless AI projects shared with MLOps</li>
+<li>Logged in as ds1</li>
+<li>Logout: logs one out of MLOps</li>
+<li>3 Bar Menu: by default it has the left sidebar open to see <strong>+Add project</strong>, <strong>Projects</strong>. If you click it <strong>3 bar menu</strong>, it will close left sidebar.</li>
+<li><strong>+ Add project</strong></li>
+<li>Projects: list of Driverless AI projects shared with MLOps<ul>
+<li>Type to filter: type keywords to filter for certain content from projects</li>
+<li>hydraulic system: specific Driverless AI project shared with MLOps</li>
 </ul>
+</li>
+<li>My projects: table of rows that contain the projects shared with MLOps<ul>
+<li>Name: Driverless AI project name</li>
+<li>Created time: date and time of the Driverless AI project creation</li>
+<li>Models count: number of models associated with that Driverless AI project</li>
+</ul>
+</li>
+<li>Version: the version of MLOps</li>
+</ul>
+<p>Click on <strong>hydraulic system</strong> in my projects table.</p>
+<h2>Hydraulic System Project Dashboard Tour</h2>
+<p><img alt="hydraulic-system-project-dashboard" src="img/728e90436083351f.jpg"></p>
+<p><strong>Figure 24:</strong> MLOps <strong>Hydraulic System</strong> Project</p>
+<ul>
+<li>hydraulic system: is the current project</li>
+<li>Projects &gt; hydraulic system</li>
+<li>3 Bar Menu: by default it has the left sidebar open to see <strong>+Add project</strong>, <strong>Projects</strong>. If you click it <strong>3 bar menu</strong>, it will close left sidebar.</li>
+<li><strong>+ Add project</strong></li>
+<li>Projects<ul>
+<li>hydraulic system: current open project</li>
+<li>Alerts: show information about the current state of a deployed model and provide alerts for drift, anomalies, and residuals in the data.</li>
+<li>Deployments: shows all deployments for a hydraulic system project</li>
+<li>Models: shows all models that have been exported from Driverless AI into hydraulic system project.</li>
+<li>Events: provides a list of all events that have occurred in the project, such as the project creation and tagging/untagging of deployments.</li>
+</ul>
+</li>
+<li>Summary<ul>
+<li>Name: name of this project</li>
+<li>Project ID: ID of this project</li>
+<li>Created on: date and time this project was created on</li>
+<li>Models: number of models in this project</li>
+<li>Deployments: number of models deployed in this project</li>
+<li>Alerts: provides alerts for drift, anomalies and residuals in the data as red, orange or green alerts</li>
+<li>Owner: username of person who created this project<br></li>
+</ul>
+</li>
+<li>Share Project: with a different user, such as ds2 user</li>
+<li>Deployments: current models deployed in this project<ul>
+<li>No deployments available</li>
+</ul>
+</li>
+<li>Models<ul>
+<li>Model name: name of a model in this project</li>
+<li>Model ID: ID of a model in this project</li>
+<li>Created on: date and time a model was created on in this project</li>
+<li>Scorer: scorer metric used by a model in this project</li>
+<li>Score: validation score from a model in this project</li>
+<li>Owner: username of person who created a model in this project</li>
+<li><strong>Environment</strong>: status of what type of environment a model was deployed into for this project</li>
+<li>Tag: tag name and value to associate with a model in this project</li>
+<li>Actions: actions that can be performed on this model: deploy it to dev/prod, create a challenger, download an autoreport, etc<br><br></li>
+</ul>
+</li>
+<li>A/B Test: allows you to compare the performance of two or more models</li>
+</ul>
+<p>Open a different browser or incognito window and login to MLOps.</p>
+<p>A. To see how to <strong>Share project</strong> with another user in MLOps, refer to section A: Share Project from ds1 user with ds2 user</p>
+<p>B. To see <strong>More experiments</strong> in this project, refer to section B: Hydraulic System Models Dashboard</p>
+<p>C. To see a tour of the <strong>actions</strong> that can be performed on this model <strong>hydraulic_model_1</strong>, refer to section C: Hydraulic System Projects Models Actions Tour</p>
+<p>D. To see the <strong>events</strong> in this project, refer to section D: Hydraulic System Events Tour</p>
+<p>For the next task, we are going to deploy the <strong>hydraulic_model_1 model</strong> to a <strong>DEV environment</strong>.</p>
+<h2>A: Share Project from ds1 user with ds2 user</h2>
+<p><img alt="share-ds1-project-with-ds2" src="img/1b4e44d99ba90866.gif"></p>
+<p><strong>Figure 25:</strong> Share ds1 user project with ds2 user in MLOps</p>
+<p>1. Type in for <strong>Enter username</strong> field, <strong>ds2</strong></p>
+<p>2. Click <strong>Share with ds2</strong></p>
+<p>3.Click the <strong>Close</strong> button at the bottom of the <strong>Share project</strong> modal.</p>
+<p>4. Go back to browser window where you logged into MLOps as <strong>ds2</strong> user and this user now has access to ds1 user&#39;s project</p>
+<p>So now multiple people in the ML Operations team can collaborate on the same ML project.</p>
+<h2>B: Hydraulic System Models Dashboard</h2>
+<p><img alt="see-more-experiment-models" src="img/520bde83d6a24ff4.gif"></p>
+<p><strong>Figure 26:</strong> See More Experiment Models</p>
+<p>1. Click on <strong>More experiments...</strong></p>
+<p>2. In the top left, click on Projects &gt; <strong>hydraulic system</strong> to return back to hydraulic system project dashboard.</p>
+<h2>C: Hydraulic System Projects Models Actions Tour</h2>
+<p><img alt="mlops-models-actions" src="img/3ce7bd20f2df926d.jpg"></p>
+<p><strong>Figure 27:</strong> project <strong>hydraulic system model actions dropdown menu</strong></p>
+<ul>
+<li>Deploy to DEV: deploy this model to a development environment, which is a test production environment that simulates the conditions of a production environment</li>
+<li>Deploy to PROD: deploy this model to a production environment</li>
+<li>Challenger for ...: allows you to continuously compare your chosen best model (Champion) to a Challenger model</li>
+<li>Download Autoreport: downloads the same autoreport from Driverless AI</li>
+<li>More details: in depth details on this model</li>
+</ul>
+<p>1. Click on <strong>More details</strong>.</p>
+<h2>Hydraulic Model More Details Tour</h2>
+<p><img alt="hydraulic-model-more-details" src="img/c1100cddf9d980f5.jpg"></p>
+<p><strong>Figure 28:</strong> project <strong>hydraulic system model comments</strong></p>
+<ul>
+<li>hydraulic_model_1: the particular model being looked at</li>
+<li>Projects &gt; hydraulic system &gt; Models &gt; hydraulic_model_1</li>
+<li><strong>+ Add project</strong></li>
+<li>Projects</li>
+<li>hydraulic system<ul>
+<li>Alerts</li>
+<li>Deployments</li>
+<li><strong>Models</strong>: we were just at the models page and now we are looking at a particular model in this project</li>
+<li>Events</li>
+</ul>
+</li>
+<li>Summary<ul>
+<li>Name: name of this model</li>
+<li>Experiment ID: ID of experiment in which this model was built</li>
+<li>Created at: date and time this model was created at</li>
+<li>Deployments: indicates if this model has been deployed and to which environment dev or prod</li>
+<li>Owner: user who created this model for this project</li>
+<li>Training duration: time that it took for this model to be trained</li>
+</ul>
+</li>
+<li>Comments<ul>
+<li>Add new comment: text body for adding a new comment message. This can be helpful for the current user and other users who are working in this project to see an important message about this model<br><br><ul>
+<li>Add comment: button for adding a new comment to this model</li>
+</ul>
+</li>
+<li>Previous comments: history of comments from users who are working on this model for this project</li>
+</ul>
+</li>
+<li>Parameters</li>
+<li>Metadata</li>
+</ul>
+<p>1. Proceed to the next section to learn how to <strong>add a comment</strong>.</p>
+<h2>Add Comment as ds1 User for Hydraulic Model</h2>
+<p><img alt="add-comment-hydraulic-model" src="img/2d40ddbe111d63b2.gif"></p>
+<p><strong>Figure 29:</strong> Add Comment to Hydraulic Model</p>
+<p>1. Enter the following text <code>This is a good model for predicting hydraulic cooling condition</code> in the <strong>Add new comment</strong> body.</p>
+<p>2. Click <strong>Add comment</strong>.</p>
+<p>3. Proceed to the next section to see the <strong>Parameters</strong> tab.</p>
+<h2>Hydraulic Model More Details - Parameters Tour</h2>
+<p><img alt="see-parameters-of-hydraulic-model" src="img/9d08905cad8e3662.gif"></p>
+<p><strong>Figure 30:</strong> See Parameters of Hydraulic Model</p>
+<ul>
+<li>Parameters<br><br><ul>
+<li>Parameter: target column is the column we are trying to predict using this model</li>
+<li>Value: cool_cond_y is the value we are trying to predict using this model</li>
+</ul>
+</li>
+</ul>
+<p>1. Click on <strong>Parameters</strong> tab.</p>
+<p>2. Proceed to the next section to see <strong>Metadata</strong> tab.</p>
+<h2>Hydraulic Model More Details - Metadata Tour</h2>
+<p><img alt="see-metadata-of-hydraulic-model" src="img/5b7e45f8db3d7026.gif"></p>
+<p><strong>Figure 31:</strong> See Metadata of Hydraulic Model</p>
+<p>1. Click on <strong>Metadata</strong> tab.</p>
+<p>2. As you scroll down the page, you will see <strong>dai/labels</strong>, <strong>dai/score, dai/scorer, dai/summary</strong> and more metadata.</p>
+<p>3. Click on Projects &gt; <strong>hydraulic system</strong> to return back to hydraulic system project dashboard.</p>
+<h2>D: Hydraulic System Events Tour</h2>
+<p>Events shows us what has happened in this project:</p>
+<p><img alt="hydraulic-system-events-table" src="img/b8dd8b365c0c7595.jpg"></p>
+<p><strong>Figure 32:</strong> project <strong>hydraulic system events</strong></p>
+<p>From the list of events, we can see a <strong>hydraulic_model_1</strong> Experiment deployed by ds1 at a particular date and time.</p>
+<p>What else does the list of events tell you has happened in this <strong>hydraulic system</strong> project?</p>
+<p>Does your list of events look different than the image above? If yes, that is expected since different events may have happened in your version of the <strong>hydraulic system</strong> project.</p>
+<p>1. Click on Projects &gt; <strong>hydraulic system</strong> to return back to hydraulic system project dashboard. Then next we will deploy the ML model to a dev environment.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Task 5: Interactive and Batch Scoring via MLOps Model Deployment" duration="0">
+        <p>1. In the <strong>Models</strong> table, click on <strong>Actions 3 dot</strong> for <strong>hydraulic_model_1 model</strong>, then click <strong>Deploy to DEV</strong>.</p>
+<p><img alt="deploy-hydraulic-model-to-dev" src="img/e68059975178e805.jpg"></p>
+<p><strong>Figure 33:</strong> Project <strong>Deploy Hydraulic System Model to Dev Environment</strong></p>
+<p>2. A <strong>Please confirm</strong> modal will appear, click on <strong>Confirm</strong>.</p>
+<p><img alt="confirm-dev-model-deployment" src="img/7f76300d1d4681dd.jpg"></p>
+<p><strong>Figure 34:</strong> Confirm you would like Model Deployed to Dev Environment</p>
+<p>You should see the <strong>Environment</strong> for <strong>hydraulic_model_1</strong> deployed to the <strong>DEV environment</strong>. The <strong>Deployments</strong> table will also update with this model deployed to <strong>DEV</strong> environment. The model&#39;s deployment <strong>state</strong> will go from &#34;Dployment data not found, Preparing, Launching to Healthy.&#34; As you may have read in the concepts section, deploying the ML model to an development environment, especially a production environment is very difficult to do for many people and organizations. You just did it in about 3 clicks! Congratulations!</p>
+<p><img alt="model-deployed-to-dev" src="img/6d339ea767b128e8.jpg"></p>
+<p><strong>Figure 35:</strong> Project <strong>Deployed Hydraulic Model to Dev Environment</strong></p>
+<ul>
+<li>Deployments: is a table of deployed models for this project<br><br><ul>
+<li>Model: name of a model that is deployed</li>
+<li>Deployment type: type of deployment</li>
+<li>Top model</li>
+<li><strong>Environment</strong>: the environment the model was deployed to either dev or prod</li>
+<li>Deployed: the date and time that this model was deployed at</li>
+<li>State: the condition of this model</li>
+<li>Alerts: info, warning, errors or other alerts associated with this model deployment</li>
+<li>Actions: the supported actions that can be performed on this model deployment</li>
+</ul>
+</li>
+</ul>
+<p>3. In the <strong>Deployments</strong> table, click on <strong>Actions 3 dot</strong> for <strong>hydraulic_model_1 model</strong>, then click on <strong>More details</strong>.</p>
+<p><img alt="model-deployment-actions" src="img/a33de42d2da50e68.jpg"></p>
+<p><strong>Figure 36:</strong> Project <strong>Hydraulic System Model Deployment Actions</strong></p>
+<ul>
+<li>Actions<br><br><ul>
+<li>More details: in depth details on this deployed model</li>
+<li>Monitoring: visualizations to represent the predictions the model is performing on new data</li>
+<li>Show sample request: curl sample scoring request to have the model perform a prediction on sample data</li>
+<li>Copy endpoint URL: the url that this model is running on and that you would send a score request to, so this model makes predictions</li>
+</ul>
+</li>
+</ul>
+<p>You should see more details for <strong>summary</strong> and <strong>model selections</strong> on your model deployment for <strong>hydraulic_model_1</strong>.</p>
+<p><img alt="model-deployment-more-details" src="img/b3f993c9ef6ee9bf.jpg"></p>
+<p><strong>Figure 37:</strong> Project <strong>Hydraulic System Model Deployment More Details</strong></p>
+<ul>
+<li>Deployment</li>
+<li>Summary<br><br><ul>
+<li>Endpoint: the url that this model is running on and that you would send a score request to, so this model makes predictions</li>
+<li>Status: the condition of this model</li>
+<li>Created on: date and time this model deployment was performed</li>
+<li>Top model: UUID of this model deployment</li>
+</ul>
+</li>
+<li>Monitor: redirect to grafana dashboard for monitoring this deployed model</li>
+<li>Delete: remove this model deployment</li>
+<li>Model selections<br><br><ul>
+<li>Target type: single model, champion/challenger and A/B test</li>
+<li>Project: name of project this model deployment is associated with</li>
+<li><strong>Environment</strong>: type of environment the model was deployed to either dev or prod</li>
+<li>Model name: name of model that was deployed</li>
+<li>Model ID: ID of model that was deployed</li>
+<li>Created on: date and time this model was created</li>
+<li>Scorer: scorer metric used for this model</li>
+<li>Score: validation score using this model</li>
+<li>Owner: user who deployed this model</li>
+<li><strong>Environment</strong>: current environment this model is deployed to</li>
+<li>Tag: tag name and value associated with this model deployment</li>
+</ul>
+</li>
+<li>Save and deploy</li>
+</ul>
+<p>4. Press the <strong>X</strong> button in the top right corner to exit that <strong>Deployment</strong> page for <strong>hydraulic_model_1</strong>.</p>
+<h2>Interactive Scoring via Dev Deployment Environment</h2>
+<p>1. Click on <strong>Actions 3 dot</strong> for <strong>hydraulic_model_1 model deployments</strong>, then click <strong>Show sample request</strong>.</p>
+<p>2. Click <strong>Copy request</strong> button.</p>
+<p>3. Click <strong>Close</strong> button.</p>
+<p><img alt="model-deployment-show-sample-request" src="img/9c411f79aca9cb08.jpg"></p>
+<p><strong>Figure 38:</strong> Project <strong>Hydraulic System Model Deployment Copy Sample Request</strong></p>
+<p>Paste <strong>Sample Request</strong> into your terminal and press enter:</p>
+<p><img alt="sample-request-result" src="img/8c1c491b93c571a6.jpg"></p>
+<p><strong>Figure 39:</strong> Result after <strong>Executing Hydraulic System Model Sample Request</strong></p>
+<p>You can see the result is a classification for hydraulic cooling condition 3, 20 and 100.</p>
 
 
       </google-codelab-step>
