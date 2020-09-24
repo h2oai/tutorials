@@ -4,7 +4,7 @@
   "format": "html",
   "prefix": "../assets",
   "mainga": "UA-49880327-14",
-  "updated": "2020-09-22T09:01:20-07:00",
+  "updated": "2020-09-23T21:11:24-07:00",
   "id": "intro-to-ml-model-deployment-and-management",
   "duration": 0,
   "title": "Intro to ML Model Deployment and Management",
@@ -18,14 +18,11 @@
   ],
   "tags": [
     "aquarium",
-    "current environment this model is deployed to",
+    "machine-learning",
     "management",
     "mlops",
     "model-deployment",
-    "status of what type of environment a model was deployed into for this project",
-    "test-drive",
-    "the environment the model was deployed to either dev or prod",
-    "type of environment the model was deployed to either dev or prod"
+    "test-drive"
   ],
   "url": "intro-to-ml-model-deployment-and-management"
 }
