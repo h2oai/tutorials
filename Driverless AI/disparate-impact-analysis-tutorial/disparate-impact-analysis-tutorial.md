@@ -261,13 +261,13 @@ The model seems to be performing fairly across all categories, which is good. An
 
 A reminder *Adverse Impact* refers to the following definition: 
 
- - Adverse impact is the negative effect an unfair and biased selection procedure has on a protected class. It occurs when a protected group is discriminated against during a selection process, like a hiring or promotion decision.[9]  
+ - Adverse impact is the negative effect an unfair and biased selection procedure has on a protected class. It occurs when a protected group is discriminated against during a selection process, like a hiring or promotion decision.[8]  
 
   In the US, protected classes include race, sex, age (40 and over), religion, disability status, and veteran status.
 
 Further, *True Positive Rate* refers to the following definition: 
 
- - In machine learning, the true positive rate, also referred to sensitivity or recall, is used to measure the percentage of actual positives which are correctly identified.[10]
+ - In machine learning, the true positive rate, also referred to sensitivity or recall, is used to measure the percentage of actual positives which are correctly identified.[9]
 
 Further we also see a slight population imbalance but not at a worrisome level yet. It will be a problem when the imbalance is huge because it will mean that the model will be learning (through examples) from a particular population or group. 
 
