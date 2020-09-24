@@ -436,7 +436,7 @@ A way we can flip the prediction for customer 3 is by changing *PAY_0 = 2*. If i
 
 ![after-values-change](assets/after-values-change.jpg)
 
-We see that adjusting *PAY_0 = 2* sends the customer very deep into the rejection zone, showing pretty clear how this one feature can dramatically impact that model for a single customer!
+We see that adjusting *PAY_0 = 2* sends the customer very deep into the rejection zone, showing pretty clear how this one feature can dramatically impact the model for a single customer!
 
 *Note:*
 
