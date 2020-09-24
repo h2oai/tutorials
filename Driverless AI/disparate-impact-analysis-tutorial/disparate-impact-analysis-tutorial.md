@@ -214,15 +214,15 @@ Now every case is different, and often in business environments, there exist cer
 
 Sensitivity, Recall, Hit Rate, True Positive Rate:
 
- - True Positive Rate = True Positive/ Condition Positive
+ - True Positive Rate = True Positive / (True Positive + False Negative)
 
 Specificity, Selectivity, True Negative Rate:
 
-- True Negative Rate = True Negative/Condition Negative
+- True Negative Rate = True Negative / (True Negative + False Positive)
 
 Precision, Positive Predictive Value:
 
-- Precision =  True Positive/Predicted Condition Positive
+- Precision = True Positives / (True Positives + False Positives)
 
 With this context in mind, let’s move forward and dive into the experiment!
 
