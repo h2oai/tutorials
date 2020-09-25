@@ -20,12 +20,6 @@ In this overview of H2O-3, you will learn how to load data, define encoding para
    - Need an Aquarium account? Follow the instructions in the next section **Task 1 Create An Account & Log Into Aquarium** to create an account
   - Already have an [Aquarium](https://aquarium.h2o.ai/) account? Log in and continue to **Task 2 Launch the H2O-3 & Sparkling Water Lab** to begin your exercise!
 
-OR
-
-- H2O-3 installed in your computer
-  - If you need to install H2O-3 on your machine, we recommend creating an Anaconda Cloud environment, as shown in the installation guide, [Install on Anaconda Cloud](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/downloading.html#install-on-anaconda-cloud), this would help you make sure that you have everything that you need to do this tutorial.
-  - If you prefer not to create an Anaconda environment, please refer to the [H2O Download Page](http://h2o-release.s3.amazonaws.com/h2o/rel-zeno/2/index.html) for more information on how to download H2O-3.
-
 
 **Note: Aquarium's Driverless AI lab has a license key built-in, so you don't need to request one to use it. Each Driverless AI lab instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore Driverless AI, you can always launch another lab instance or reach out to our sales team via the contact us form.**
 
@@ -40,7 +34,7 @@ Navigate to the following site: https://aquarium.h2o.ai/login and do the followi
 
 ## Task 2: Launch the H2O-3 & Sparkling Water Lab
 
-Once you’ve created your account on Aquarium and/or logged into the site, click on **Browse Labs** and navigate to **Lab 5: H2O-3 and Sparkling Water Training**
+Once you’ve created your account on Aquarium and/or logged into the site, click on **Browse Labs** and navigate to **Lab 2: H2O-3 and Sparkling Water Test Drive**
  
 ![picture-2](assets/picture-2.jpg)
 

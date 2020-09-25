@@ -479,6 +479,8 @@ You should receive classification scores for cool_cond_y.3, cool_cond_y.20, cool
 
 3\. Rename Deployment Name to be **model-hydraulic-lambda**.
 
+NOTE: S3 bucket names can only be lowercase and can't have underscores. [See the naming requirements for Amazon S3 buckets](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-s3-bucket-naming-requirements.html).
+
 4\. Add your **IAM Access Key ID**, **AWS Secret Access Key** and **Region**.
 
 5\. Click **Deploy**.
