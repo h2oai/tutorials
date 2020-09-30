@@ -13,7 +13,7 @@
 
 ## Objective
 
-This tutorial's goal is to start a set of tutorials that will explore the ins and outs of Driverless AI's newer two MLI functionalities. Such two new functionalities are as follows: 
+This tutorial aims to start a set of tutorials that will explore the ins and outs of Driverless AI's newer two MLI functionalities. Such two new functionalities are as follows: 
 
  1. Disparate Impact Analysis Tool 
  2. Sensitivity/What-If Analysis Tool 
