@@ -13,18 +13,18 @@
 
 ## Objective
 
-This tutorial's goal is to start a set of tutorials that will explore the ins and outs of Driverless AI's newer two MLI functionalities. Such two new functionalities are as follows: 
+This tutorial aims to start a set of tutorials that will explore the ins and outs of Driverless AI's newer two MLI functionalities. Such two new functionalities are as follows: 
 
  1. Disparate Impact Analysis Tool 
  2. Sensitivity/What-If Analysis Tool 
 
-As firms use AI to help them around credit/loan-decisions, cross-sell promotions, and determine the next best action, they must be aware of how certain customer features are being weighting into the AI models in production. Further, they are also required to understand whether the AI models are not negatively impacting protected classes of customers or unfairly weighting for these types of classes. A lack of understanding of the ins of an AI Model in production can lead to legal and financial risks when discovering that the AI model in production is discriminating (bias) against certain ethnicities, genders, etc.
+As firms use AI to help them around credit/loan-decisions, cross-sell promotions, and determine the next best action, they must be aware of how certain customer features are being weighed into the AI models in production. Further, they are also required to understand whether the AI models are not negatively impacting protected classes of customers or unfairly weighting for these types of classes. A lack of understanding of the ins of an AI Model in production can lead to legal and financial risks when discovering that the AI model in production is discriminating (bias) against certain ethnicities, genders, etc.
 
 Therefore, AI practitioners must have tools that will aid them in trying to understand the ins and outs of their AI models. In this case, Driverless AI allows you to check your built AI model's ins and outs by using the Disparate Impact and Sensitivity/What-If Analysis tool. In particular, Disparate Impact is one of the most commonly discussed methodologies in responsible AI today to check for fairness. 
 
 Additionally, as firms have looked to leverage AI to make more and more decisions for the company, the discussion of Human-Centered Machine learning has become increasingly important. Data science practitioners and firms deploying AI in production want to 'get under the hood' of their models to see what impacts decisions. 
 
-Hence, in this tutorial, we will build an AI model predicting whether someone will be defaulting on their credit card. Right after, we will use the two tools, as mentioned earlier, to analyze and check for fairness. 
+Hence, in this tutorial, we will build an AI model predicting whether someone will be defaulting on their credit card. Right after, we will use the two tools to analyze and check for fairness. 
 
 
 ## Prerequisites
@@ -239,7 +239,7 @@ With this context in mind, let’s move forward and dive into the experiment!
  2. Sensitivity/What-If Analysis Tool 
 
 
- ## Task 4: Disparate Impact Analysis
+## Task 4: Disparate Impact Analysis
 
 1\. Continuing with the experiment on the top right corner, click on the *Disparate Impact Variable* button. Select the **SEX** variable. 
 
