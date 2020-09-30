@@ -1,0 +1,25 @@
+{
+  "environment": "web",
+  "source": "/Users/acastro/Desktop/disparate-impact-analysis-tutorial/disparate-impact-analysis-tutorial.md",
+  "format": "html",
+  "prefix": "../assets",
+  "mainga": "UA-49880327-14",
+  "updated": "2020-09-30T16:31:52-07:00",
+  "id": "disparate-impact-analysis-tutorial",
+  "duration": 0,
+  "title": "Disparate Impact Analysis Tutorial",
+  "summary": "Check the list",
+  "theme": "",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "driverless"
+  ],
+  "tags": [
+    "disparate-impact-analysis",
+    "driverless",
+    "mli"
+  ],
+  "url": "disparate-impact-analysis-tutorial"
+}
