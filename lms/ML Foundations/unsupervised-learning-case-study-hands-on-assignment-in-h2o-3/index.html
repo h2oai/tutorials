@@ -1,0 +1,222 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Unsupervised Learning Case Study Hands-On Assignment in H2O-3</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="../assets/codelab-elements/codelab-elements.css">
+  <link rel="stylesheet" href="custom.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab title="Unsupervised Learning Case Study Hands-On Assignment in H2O-3"
+                  environment="web"
+                  feedback-link="">
+    
+      <google-codelab-step label="Unsupervised Learning Case Study Hands-On Assignment in H2O-3" duration="0">
+        <h2>Objective</h2>
+<p>This is the hands-on exercise wherein you are required to complete a case study pertaining to Anomaly Detection with Isolation Forests using H2O-3.</p>
+<p>For this assignment, you will be using the <a href="https://www.kaggle.com/mlg-ulb/creditcardfraud" target="_blank">credit card data set</a>, which contains information on various properties of credit card transactions.</p>
+<p><strong>Note: This tutorial has been built on Aquarium, which is H2O.ai&#39;s cloud environment providing software access for workshops, conferences, and training. The labs in Aquarium have datasets, experiments, projects, and other content preloaded. If you use your version of H2O-3 or Driverless AI, you will not see preloaded content.</strong></p>
+<h2>Prerequisites</h2>
+<ul>
+<li>Basic knowledge of Machine Learning and Statistics</li>
+<li>An <a href="https://aquarium.h2o.ai/" target="_blank">Aquarium</a> Account to access H2O.ai&#39;s software on the AWS Cloud.<br><br><ul>
+<li>Need an <a href="https://aquarium.h2o.ai/" target="_blank">Aquarium</a> account? Follow the instructions in the next section <strong>Task 1 Create An Account &amp; Log Into Aquarium</strong> to create an account</li>
+<li>Already have an Aquarium account? Log in and continue to <strong>Task 2 Launch the H2O-3 &amp; Sparkling Water Lab</strong> to begin your exercise!</li>
+</ul>
+</li>
+</ul>
+<p><strong>Note: Aquarium&#39;s Driverless AI lab has a license key built-in, so you don&#39;t need to request one to use it. Each Driverless AI lab instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore Driverless AI, you can always launch another lab instance or reach out to our sales team via the </strong><a href="https://www.h2o.ai/company/contact/" target="_blank"><strong>contact us form</strong></a><strong>.</strong></p>
+<h2>Task 1: Create An Account &amp; Log Into Aquarium</h2>
+<p>Navigate to the following site: https://aquarium.h2o.ai/login and do the following:</p>
+<ol type="1">
+<li>create a new account (if you don&#39;t have one)</li>
+<li>log into the site with your credentials.</li>
+<li>Navigate to the lab: H2O-3 and Sparkling Water Test Drive. Click on Start Lab and wait for your instance to be ready. Once your instance is ready, you will see the following screen.</li>
+</ol>
+<p><img alt="labs-urls" src="img/745d21efb7c0b4fb.jpg"></p>
+<p>Click on the Jupyter url to start a jupyter notebook or the H2O Flow instance( if required). You can create a new Jupyter notebook and follow the steps defined below.</p>
+<h2>Task 2: Open a New Jupyter Notebook</h2>
+<p>Open a new Jupyter Python3 Notebook by clicking New and selecting Python 3</p>
+<p><img alt="new-python-notebook" src="img/5e710b3e96ce7f38.jpg"></p>
+<p>In this notebook, you will:</p>
+<ol type="1">
+<li>Startup an H2O Cluster</li>
+<li>Import necessary packages</li>
+<li>Import the Credit Card dataset</li>
+<li>Train an isolation forest</li>
+<li>Inspect the Predictions</li>
+</ol>
+<h3>Deeper Dive and Resources:</h3>
+<ul>
+<li><a href="https://www.dataquest.io/blog/jupyter-notebook-tutorial/" target="_blank">Jupyter Notebook Tutorial</a></li>
+</ul>
+<h2>Task 3: Initialize the H2O-3 Cluster</h2>
+<p>In this section, you will use the <code>h2o.init()</code> method to initialize H2O. In the first cell of your notebook, you will:</p>
+<ol type="1">
+<li>Import the h2o python library</li>
+<li>Initialize the H2O cluster.<br></li>
+<li>Import the Isolation Forest Algorithm</li>
+</ol>
+<p>You can enter the following in the first cell:</p>
+<pre><code>import h2o
+h2o.init()
+from h2o.estimators import H2OIsolationForestEstimator
+</code></pre>
+<p>Your notebook should look like this:</p>
+<p><img alt="notebook" src="img/dcd643421553f634.jpg"></p>
+<p>Then Run the cell to get started</p>
+<p><img alt="run-notebook" src="img/da78729031b91d91.jpg"></p>
+<h3>Deeper Dive and Resources:</h3>
+<ul>
+<li><a href="http://docs.h2o.ai/h2o/latest-stable/h2o-docs/starting-h2o.html#from-python" target="_blank">Starting H2O from Python</a></li>
+</ul>
+<h2>Task 4: Import the Credit Card Dataset</h2>
+<p>We will be using the <a href="https://www.kaggle.com/mlg-ulb/creditcardfraud" target="_blank">credit card data set</a>, which contains information on various properties of credit card transactions. There are 492 fraudulent and 284,807 genuine transactions, which makes the target class highly imbalanced. We will not use the label during the anomaly detection modelling, but we will use it during the evaluation of our anomaly detection.</p>
+<ol type="1">
+<li>Download the dataset from <a href="https://www.kaggle.com/mlg-ulb/creditcardfraud" target="_blank">here</a> and then Enter the following in the next available cell and run it to bring in the credit card data.</li>
+</ol>
+<pre><code>#Import the dataset
+df = h2o.import_file(&#34;creditcard.csv&#34;)
+</code></pre>
+<p><strong>Note:</strong> The line with the # is a code comment.  These can be useful to describe what you are doing in a given section of code.</p>
+<h3>Deeper Dive and Resources:</h3>
+<ul>
+<li><a href="http://docs.h2o.ai/h2o/latest-stable/h2o-docs/data-munging/importing-data.html" target="_blank">Importing Data in H2O-3</a></li>
+</ul>
+<h2>Task 5: Train the isolation forest model</h2>
+<p>There are multiple approaches to an unsupervised anomaly detection problem that try to exploit the differences between the properties of common and unique observations. The idea behind the Isolation Forest is as follows.</p>
+<ul>
+<li>We start by building multiple decision trees such that the trees isolate the observations in their leaves. Ideally, each leaf of the tree isolates exactly one observation from your data set. The trees are being split randomly. We assume that if one observation is similar to others in our data set, it will take more random splits to perfectly isolate this observation, as opposed to isolating an outlier.</li>
+<li>For an outlier that has some feature values significantly different from the other observations, randomly finding the split isolating it should not be too hard. As we build multiple isolation trees, hence the isolation forest, for each observation we can calculate the average number of splits across all the trees that isolate the observation. The average number of splits is then used as a score, where the less splits the observation needs, the more likely it is to be anomalous.</li>
+</ul>
+<p>Now train your isolation forest. The last column (index 30) of the data contains the class label, so exclude it from the training process.</p>
+<pre><code>seed = 12345 # For reproducability of the experiment
+ntrees = 100 #Specify the number of Trees
+isoforest = H2OIsolationForestEstimator( ntrees=ntrees, seed=seed)
+# Specify x as a vector containing the names or indices of the predictor variables to use when building the model.
+isoforest.train(x=df.col_names[0:30], training_frame=df)
+</code></pre>
+<h3>Deeper Dive and Resources:</h3>
+<ul>
+<li>[Isolation Forest in H2O-3(http://docs.h2o.ai/h2o/latest-stable/h2o-docs/data-science/if.html)</li>
+</ul>
+<h2>Task 6: A look at the model&#39;s predictions</h2>
+<p>Have a look at the predictions.</p>
+<pre><code>predictions = isoforest.predict(df)
+
+predictions
+</code></pre>
+<p>You will see that the <code>prediction h2o frame</code> contains two columns: <code>predict</code> showing a normalized anomaly score and <code>mean_length</code> showing the average number of splits across all trees to isolate the observation. These two columns should have the property of inverse proportion by their definition, as the less random splits you need to isolate the observation, the more anomalous it is. You can easily check that by :</p>
+<pre><code>predictions.cor()
+</code></pre>
+<h2>Task 7: Predicting Anomalies using Quantile</h2>
+<p>As we formulated this problem in an unsupervised fashion, how do we go from the average number of splits / anomaly score to the actual predictions? Using a threshold! If we have an idea about the relative number of outliers in our dataset, we can find the corresponding quantile value of the score and use it as a threshold for our predictions.</p>
+<pre><code>quantile = 0.95
+quantile_frame = predictions.quantile([quantile])
+quantile_frame
+</code></pre>
+<p>We can use the threshold to predict the anomalous class.</p>
+<pre><code>threshold = quantile_frame[0, &#34;predictQuantiles&#34;]
+predictions[&#34;predicted_class&#34;] = predictions[&#34;predict&#34;] &gt; threshold
+predictions[&#34;class&#34;] = df[&#34;Class&#34;]
+predictions
+</code></pre>
+<h2>Task 8: Evaluation</h2>
+<p>Because the isolation forest is an unsupervised method, it makes sense to have a look at the classification metrics that are not dependent on the prediction threshold and give an estimate of the quality of scoring. Two such metrics are Area Under the Receiver Operating Characteristic Curve (AUC) and Area under the Precision-Recall Curve (AUCPR).</p>
+<p><code>AUC</code> is a metric evaluating how well a binary classification model distinguishes true positives from false positives. The perfect AUC score is 1; the baseline score of a random guessing is 0.5.</p>
+<p><code>AUCPR</code> is a metric evaluating the precision recall trade-off of a binary classification using different thresholds of the continuous prediction score. The perfect AUCPR score is 1; the baseline score is the relative count of the positive class.</p>
+<p>For highly imbalanced data, AUCPR is recommended over AUC as the AUCPR is more sensitive to True positives, False positives and False negatives, while not caring about True negatives, which in large quantity usually overshadow the effect of other metrics.</p>
+<pre><code>%matplotlib inline
+from sklearn.metrics import roc_curve, precision_recall_curve, auc
+import matplotlib.pyplot as plt
+import numpy as np
+
+ 
+def get_auc(labels, scores):
+    fpr, tpr, thresholds = roc_curve(labels, scores)
+    auc_score = auc(fpr, tpr)
+    return fpr, tpr, auc_score
+ 
+ 
+def get_aucpr(labels, scores):
+    precision, recall, th = precision_recall_curve(labels, scores)
+    aucpr_score = np.trapz(recall, precision)
+    return precision, recall, aucpr_score
+ 
+ 
+def plot_metric(ax, x, y, x_label, y_label, plot_label, style=&#34;-&#34;):
+    ax.plot(x, y, style, label=plot_label)
+    ax.legend()
+    
+    ax.set_ylabel(x_label)
+    ax.set_xlabel(y_label)
+ 
+ 
+def prediction_summary(labels, predicted_score, predicted_class, info, plot_baseline=True, axes=None):
+    if axes is None:
+        axes = [plt.subplot(1, 2, 1), plt.subplot(1, 2, 2)]
+ 
+    fpr, tpr, auc_score = get_auc(labels, predicted_score)
+    plot_metric(axes[0], fpr, tpr, &#34;False positive rate&#34;,
+                &#34;True positive rate&#34;, &#34;{} AUC = {:.4f}&#34;.format(info, auc_score))
+    if plot_baseline:
+        plot_metric(axes[0], [0, 1], [0, 1], &#34;False positive rate&#34;,
+                &#34;True positive rate&#34;, &#34;baseline AUC = 0.5&#34;, &#34;r--&#34;)
+ 
+    precision, recall, aucpr_score = get_aucpr(labels, predicted_score)
+    plot_metric(axes[1], recall, precision, &#34;Recall&#34;,
+                &#34;Precision&#34;, &#34;{} AUCPR = {:.4f}&#34;.format(info, aucpr_score))
+    if plot_baseline:
+        thr = sum(labels)/len(labels)
+        plot_metric(axes[1], [0, 1], [thr, thr], &#34;Recall&#34;,
+                &#34;Precision&#34;, &#34;baseline AUCPR = {:.4f}&#34;.format(thr), &#34;r--&#34;)
+ 
+    plt.show()
+    return axes
+ 
+ 
+def figure():
+    fig_size = 4.5
+    f = plt.figure()
+    f.set_figheight(fig_size)
+    f.set_figwidth(fig_size*2)
+ 
+ 
+h2o_predictions = predictions.as_data_frame()
+ 
+figure()
+axes = prediction_summary(
+    h2o_predictions[&#34;class&#34;], h2o_predictions[&#34;predict&#34;], h2o_predictions[&#34;predicted_class&#34;], &#34;h2o&#34;)
+
+</code></pre>
+<p>Code link: https://gist.github.com/parulnith/48649e0c82dbb59c6f36e7a507fa1eef</p>
+<h2>Next Steps</h2>
+<p>In the above study, you  learned about the isolation forests, their underlying principle, how to apply them for unsupervised anomaly detection, and how to evaluate the quality of anomaly detection once we have corresponding labels .You can now proceed on to attempt the <strong>Quiz 4: Unsupervised Machine Learning with H2O-3.</strong></p>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="../assets/codelab-elements/native-shim.js"></script>
+  <script src="../assets/codelab-elements/custom-elements.min.js"></script>
+  <script src="../assets/codelab-elements/prettify.js"></script>
+  <script src="../assets/codelab-elements/codelab-elements.js"></script>
+
+</body>
+</html>
