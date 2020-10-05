@@ -249,8 +249,8 @@ Our final analysis in task 8 will explore how the above two questions can be ans
 
 Now that we know that the global model behavior is biased, let us answer the following two questions: 
 
-1. What biases exist in my model?
-2. What levels of disparity exist between population groups? 
+- What biases exist in my model?
+- What levels of disparity exist between population groups? 
 
 To answer both questions, we will use the disparate impact analysis tool located in the DAI model tab. In the DAI Model tab, click on the disparate impact analysis visual. 
 
