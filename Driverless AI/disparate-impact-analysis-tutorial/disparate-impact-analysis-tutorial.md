@@ -13,18 +13,18 @@
 
 ## Objective
 
-This tutorial's goal is to start a set of tutorials that will explore the ins and outs of Driverless AI's newer two MLI functionalities. Such two new functionalities are as follows: 
+This tutorial aims to start a set of tutorials that will explore the ins and outs of Driverless AI's newer two MLI functionalities. Such two new functionalities are as follows: 
 
  1. Disparate Impact Analysis Tool 
  2. Sensitivity/What-If Analysis Tool 
 
-As firms use AI to help them around credit/loan-decisions, cross-sell promotions, and determine the next best action, they must be aware of how certain customer features are being weighting into the AI models in production. Further, they are also required to understand whether the AI models are not negatively impacting protected classes of customers or unfairly weighting for these types of classes. A lack of understanding of the ins of an AI Model in production can lead to legal and financial risks when discovering that the AI model in production is discriminating (bias) against certain ethnicities, genders, etc.
+As firms use AI to help them around credit/loan-decisions, cross-sell promotions, and determine the next best action, they must be aware of how certain customer features are being weighed into the AI models in production. Further, they are also required to understand whether the AI models are not negatively impacting protected classes of customers or unfairly weighting for these types of classes. A lack of understanding of the ins of an AI Model in production can lead to legal and financial risks when discovering that the AI model in production is discriminating (bias) against certain ethnicities, genders, etc.
 
 Therefore, AI practitioners must have tools that will aid them in trying to understand the ins and outs of their AI models. In this case, Driverless AI allows you to check your built AI model's ins and outs by using the Disparate Impact and Sensitivity/What-If Analysis tool. In particular, Disparate Impact is one of the most commonly discussed methodologies in responsible AI today to check for fairness. 
 
 Additionally, as firms have looked to leverage AI to make more and more decisions for the company, the discussion of Human-Centered Machine learning has become increasingly important. Data science practitioners and firms deploying AI in production want to 'get under the hood' of their models to see what impacts decisions. 
 
-Hence, in this tutorial, we will build an AI model predicting whether someone will be defaulting on their credit card. Right after, we will use the two tools, as mentioned earlier, to analyze and check for fairness. 
+Hence, in this tutorial, we will build an AI model predicting whether someone will be defaulting on their credit card. Right after, we will use the two tools to analyze and check for fairness. 
 
 
 ## Prerequisites
@@ -57,13 +57,13 @@ This dataset has a total 25 Features(columns) and 30,000 Clients(rows).
 
 ### Download Dataset
 
-1. Go to our S3 link [UCI_Credit_Card.csv](https://s3.amazonaws.com/data.h2o.ai/DAI-Tutorials/TestDrive-Datasets/UCI_Credit_Card.csv) and download the file to your local drive.
+1\. Go to our S3 link [UCI_Credit_Card.csv](https://s3.amazonaws.com/data.h2o.ai/DAI-Tutorials/TestDrive-Datasets/UCI_Credit_Card.csv) and download the file to your local drive.
 
-2. Load the ``UCI_Credit_Card.csv`` to Driverless AI by clicking **Add Dataset (or Drag and Drop)** on the Datasets overview page.
+2\. Load the ``UCI_Credit_Card.csv`` to Driverless AI by clicking **Add Dataset (or Drag and Drop)** on the Datasets overview page.
 
 ![launch-experiment-add-data](assets/launch-experiment-add-data.jpg)
 
-3. Click on the ``UCI_Credit_Card.csv`` file then select Details.
+3\. Click on the ``UCI_Credit_Card.csv`` file then select Details.
 
 ![launch-experiment-variable-details](assets/launch-experiment-variable-details.jpg)
 
@@ -71,49 +71,49 @@ Review the columns in the data set and pay attention to the specific attributes 
 
 *Note:* When we think about disparate impact, we want to analyze whether specific classes are being treated unfairly.
 
-4. Return to the Datasets page.
+4\. Return to the Datasets page.
 
-5. Click on the ``UCI_Credit_Card.csv`` file then select **Predict**.
+5\. Click on the ``UCI_Credit_Card.csv`` file then select **Predict**.
 
-6. Select Not Now on the "First time Driverless AI" box, a similar image should appear:
+6\. Select Not Now on the "First time Driverless AI" box, a similar image should appear:
 
 ![launch-experiment-predict-setup](assets/launch-experiment-predict-setup.jpg)
 
 - Name your experiment *UCI_CC MLI Tutorial 2*
 
-7. Select Target Column, then **Select default.payment.next.month** as the target.
+7\. Select Target Column, then **Select default.payment.next.month** as the target.
 
 ![launch-experiment-set-target](assets/launch-experiment-set-target.jpg)
 
-8. Before we launch the experiment, let’s take a moment to drop some columns as we would in the real business case of fair lending. Navigate to the dropped columns section here:
+8\. Before we launch the experiment, let’s take a moment to drop some columns as we would in the real business case of fair lending. Navigate to the dropped columns section here:
 
 ![launch-experiment-drop-columns](assets/launch-experiment-drop-columns.jpg)
 
-9.  Let’s drop the following columns since, under fair lending regulations, we should not consider these demographic factors in how we treat and analyze a customer. Additionally, **Limit_Bal** has some adverse action considerations, and this variable is usually dictated internally, and therefore, we will also drop it. Click **Done**.
+9\.  Let’s drop the following columns since, under fair lending regulations, we should not consider these demographic factors in how we treat and analyze a customer. Additionally, **Limit_Bal** has some adverse action considerations, and this variable is usually dictated internally, and therefore, we will also drop it. Click **Done**.
 
 ![launch-experiment-drop-columns-2](assets/launch-experiment-drop-columns-2.jpg)
 
-10. When you return, update the training settings as shown below:it is essential to make sure the **Interpretability** setting is at **7**. On the left-hand side, verify that **Monotonicity Constraints** is enabled. Enabling **Monotonicity Constraints** is important to Disparate Impact Analysis. If we use an unconstrained model and group fairness metrics, we risk creating group fairness metrics that appear to be reasonable. The consequence of creating group fairness metrics that appear to be reasonable is the illusion that individuals within that group may be treated differently or unfairly. The local (individual) discrimination would likely not appear or be visible in that group metric.
+10\. When you return, update the training settings as shown below:it is essential to make sure the **Interpretability** setting is at **7**. On the left-hand side, verify that **Monotonicity Constraints** is enabled. Enabling **Monotonicity Constraints** is important to Disparate Impact Analysis. If we use an unconstrained model and group fairness metrics, we risk creating group fairness metrics that appear to be reasonable. The consequence of creating group fairness metrics that appear to be reasonable is the illusion that individuals within that group may be treated differently or unfairly. The local (individual) discrimination would likely not appear or be visible in that group metric.
 
 ![launch-experiment-interpretability-settings](assets/launch-experiment-interpretability-settings.jpg)
 
-11. Let's also jump to **EXPERT SETTINGS**, select the model tab, and adjust the settings to create a single *XGBoost GBM Model*. 
+11\. Let's also jump to **EXPERT SETTINGS**, select the model tab, and adjust the settings to create a single *XGBoost GBM Model*. 
 
-    1. Turn off all the models besides the **XGBoost GBM Models** setting.
+ 1. Turn off all the models besides the **XGBoost GBM Models** setting.
 
-    2. Then scroll down and adjust the *Ensemble level for final modeling pipeline* setting to 0 for this exercise's interpretability purposes. 
+ 2. Then scroll down and adjust the *Ensemble level for final modeling pipeline* setting to 0 for this exercise's interpretability purposes. 
 
-    3. Click **Save** and return.
+ 3. Click **Save** and return.
 
 ![launch-experiment-model-settings](assets/launch-experiment-model-settings.jpg)
 
 ![launch-experiment-ensemble-level](assets/launch-experiment-ensemble-level.jpg)
 
-12. The last step here is to click **REPRODUCIBLE**, then run the experiment!
+12\. The last step here is to click **REPRODUCIBLE**, then run the experiment!
 
 ![launch-experiment-reproducible](assets/launch-experiment-reproducible.jpg)
 
-13. Since we are already familiar with this page let’s dive in. Select *INTERPRET THIS MODEL*. 
+13\. Since we are already familiar with this page let’s dive in. Select *INTERPRET THIS MODEL*. 
 
 ![experiment-complete](assets/experiment-complete.jpg)
 
@@ -160,19 +160,19 @@ Sensitivity may then be measured by monitoring changes in the output, e.g. by [p
 
 ### References
 
-- [1] [Bias of an estimator](https://en.wikipedia.org/wiki/Bias_of_an_estimator)
+[1] [Bias of an estimator](https://en.wikipedia.org/wiki/Bias_of_an_estimator)
 
-- [2] [Disparate impact](https://en.wikipedia.org/wiki/Disparate_impact)
+[2] [Disparate impact](https://en.wikipedia.org/wiki/Disparate_impact)
 
-- [3]  Saltelli, A. (2002). ["Sensitivity Analysis for Importance Assessment"](https://en.wikipedia.org/wiki/Sensitivity_analysis#cite_note-Risk_Analysis-1). Risk Analysis. 22 (3): 1–12. CiteSeerX 10.1.1.194.7359. doi:10.1111/0272-4332.00040. PMID 12088235.
+[3]  Saltelli, A. (2002). ["Sensitivity Analysis for Importance Assessment"](https://en.wikipedia.org/wiki/Sensitivity_analysis#cite_note-Risk_Analysis-1). Risk Analysis. 22 (3): 1–12. CiteSeerX 10.1.1.194.7359. doi:10.1111/0272-4332.00040. PMID 12088235.
 
-- [4]  Saltelli, A.; Ratto, M.; Andres, T.; Campolongo, F.; Cariboni, J.; Gatelli, D.; Saisana, M.; Tarantola, S. (2008). [Global Sensitivity Analysis: The Primer. John Wiley & Sons](https://en.wikipedia.org/wiki/Sensitivity_analysis#cite_note-Primer-2).
+[4]  Saltelli, A.; Ratto, M.; Andres, T.; Campolongo, F.; Cariboni, J.; Gatelli, D.; Saisana, M.; Tarantola, S. (2008). [Global Sensitivity Analysis: The Primer. John Wiley & Sons](https://en.wikipedia.org/wiki/Sensitivity_analysis#cite_note-Primer-2).
 
-- [5] [Sensitivity analysis](https://en.wikipedia.org/wiki/Sensitivity_analysis#cite_note-15)
+[5] [Sensitivity analysis](https://en.wikipedia.org/wiki/Sensitivity_analysis#cite_note-15)
 
-- [6]  Leamer, Edward E. (1983). ["Let's Take the Con Out of Econometrics"](https://en.wikipedia.org/wiki/Sensitivity_analysis#cite_note-16). American Economic Review. 73 (1): 31–43. JSTOR 1803924.
+[6]  Leamer, Edward E. (1983). ["Let's Take the Con Out of Econometrics"](https://en.wikipedia.org/wiki/Sensitivity_analysis#cite_note-16). American Economic Review. 73 (1): 31–43. JSTOR 1803924.
 
-- [7]  Leamer, Edward E. (1985). ["Sensitivity Analyses Would Help". American Economic Review](https://en.wikipedia.org/wiki/Sensitivity_analysis#cite_note-17). 75 (3): 308–313. JSTOR 1814801.
+[7]  Leamer, Edward E. (1985). ["Sensitivity Analyses Would Help". American Economic Review](https://en.wikipedia.org/wiki/Sensitivity_analysis#cite_note-17). 75 (3): 308–313. JSTOR 1814801.
 
 ### Deeper Dive and Resources
 
@@ -213,43 +213,43 @@ In the case of identifying fraud, you would almost always prefer a prediction ta
 Now every case is different, and often in business environments, there exist certain cost functions associated with false negatives and false positives, so it is essential to be aware that every case has many considerations. We want to provide a few of the key metrics associated with confusion matrices that come up in the industry, depending on the problem you are trying to solve.
 
 Sensitivity, Recall, Hit Rate, True Positive Rate:
- - True Positive Rate = True Positive/ Condition Positive
+
+ - True Positive Rate = True Positive / (True Positive + False Negative)
 
 Specificity, Selectivity, True Negative Rate:
 
-- True Negative Rate = True Negative/Condition Negative
+- True Negative Rate = True Negative / (True Negative + False Positive)
 
 Precision, Positive Predictive Value:
 
-- Precision =  True Positive/Predicted Condition Positive
-
-
+- Precision = True Positives / (True Positive + False Positive)
 
 With this context in mind, let’s move forward and dive into the experiment!
 
-1. Observe the Global Confusion Matrix for our experiment:
+1\. Observe the Global Confusion Matrix for our experiment:
 
 ![dia-2](assets/dia-2.jpg)
 
-2. With the above in mind, you can look at the Global Confusion Metrix of our experiment and identify and calculate the *True Positive Rate* and *True Negative Rate*. In the following task we will see how *True Positive Rate* and *True Negative Rate* can be effective. 
+2\. With the above in mind, you can look at the Global Confusion Metrix of our experiment and identify and calculate the *True Positive Rate* and *True Negative Rate*. In the following task we will see how *True Positive Rate* and *True Negative Rate* can be effective. 
 
 *Note:* In the next tutorial (COMING SOON), we will be exploring how we can use  *True Positive Rate* and *True Negative Rate* to determine the fairness of an AI model. Therefore, let us explore the two new MLI tools: 
-1. Disparate Impact Analysis Tool 
+
+ 1. Disparate Impact Analysis Tool 
 
  2. Sensitivity/What-If Analysis Tool 
 
 
- ## Task 4: Disparate Impact Analysis
+## Task 4: Disparate Impact Analysis
 
-1. Continuing with the experiment on the top right corner, click on the *Disparate Impact Variable* button. Select the **SEX** variable. 
+1\. Continuing with the experiment on the top right corner, click on the *Disparate Impact Variable* button. Select the **SEX** variable. 
 
- ![disparate-impact-select](assets/disparate-impact-select.jpg)
+![disparate-impact-select](assets/disparate-impact-select.jpg)
 
-2. Click on the *Reference Level* button and change the value from 2 to 1. 
+2\. Click on the *Reference Level* button and change the value from 2 to 1. 
 
 ![reference-level](assets/reference-level.jpg)
 
-3. The following should appear: 
+3\. The following should appear: 
 
 ![dia-fairness](assets/dia-fairness.jpg)
 
@@ -261,29 +261,29 @@ The model seems to be performing fairly across all categories, which is good. An
 
 A reminder *Adverse Impact* refers to the following definition: 
 
-  - Adverse impact is the negative effect an unfair and biased selection procedure has on a protected class. It occurs when a protected group is discriminated against during a selection process, like a hiring or promotion decision.[9]  
+ - Adverse impact is the negative effect an unfair and biased selection procedure has on a protected class. It occurs when a protected group is discriminated against during a selection process, like a hiring or promotion decision.[8]  
 
   In the US, protected classes include race, sex, age (40 and over), religion, disability status, and veteran status.
 
 Further, *True Positive Rate* refers to the following definition: 
 
-  - In machine learning, the true positive rate, also referred to sensitivity or recall, is used to measure the percentage of actual positives which are correctly identified.[10]
+ - In machine learning, the true positive rate, also referred to sensitivity or recall, is used to measure the percentage of actual positives which are correctly identified.[9]
 
 Further we also see a slight population imbalance but not at a worrisome level yet. It will be a problem when the imbalance is huge because it will mean that the model will be learning (through examples) from a particular population or group. 
 
-4. Scroll down and let's take a look at *Group Disparity*.
+4\. Scroll down and let's take a look at *Group Disparity*.
 
 ![0.8-low-threshold](assets/0.8-low-threshold.jpg)
 
 You will notice that your benchmark (1/Male) should be one as it provides the level to compare. In financial services, there is an ‘accepted’ rule of thumb that, as a benchmark, one class should not be treated 80% less favorably than another, as a starting point. This benchmark is up for debate, and therefore, we will see how this will develop going forward, but for now, we have set the low (unfairness) threshold to *.8** (it should already be set to .8). As a result, with a .8 low threshold, we can see that none of the group disparity metrics are less than point 8, which is a good sign.
 
-5. Now let’s adjust the *low threshold* to .9 and see what happens: 
+5\. Now let’s adjust the *low threshold* to .9 and see what happens: 
 
 ![0.9-low-threshold](assets/0.9-low-threshold.jpg)
 
 We can see that if we adjust the low threshold, the group disparity metrics will become highlighted and begin to flag, saying that if .9 is the cutoff,  this class (2/Women) will be treated unfairly by the model. Note: the *True Positive Rate Disparity* and *False Negative Rate Disparity* are not affected.
 
-6. Let’s scroll down and investigate *Group Parity* and check if all classes are being treated fairly by the model under the benchmark thresholds.
+6\. Let’s scroll down and investigate *Group Parity* and check if all classes are being treated fairly by the model under the benchmark thresholds.
 
 ![group-parity](assets/group-parity.jpg)
 
@@ -291,13 +291,13 @@ Here we can see *True* across all classes and metrics, which is what we want to 
 
 ### References
 
-- [9] [WHAT IS ADVERSE IMPACT? AND WHY MEASURING IT MATTERS](https://www.hirevue.com/blog/what-is-adverse-impact-and-why-measuring-it-matters)
+[8] [WHAT IS ADVERSE IMPACT? AND WHY MEASURING IT MATTERS](https://www.hirevue.com/blog/what-is-adverse-impact-and-why-measuring-it-matters)
 
-- [10] [Encyclopedia of Systems Biology](https://link.springer.com/referenceworkentry/10.1007%2F978-1-4419-9863-7_255)
+[9] [Encyclopedia of Systems Biology](https://link.springer.com/referenceworkentry/10.1007%2F978-1-4419-9863-7_255)
 
 ## Task 5: Sensitivity Analysis Part 1: Checking for Bias
 
-1. Let’s start up a new experiment with the same dataset as before. Keep the settings & target variable the same; however, this time, let’s keep all the columns in the dataset. 
+1\. Let’s start up a new experiment with the same dataset as before. Keep the settings & target variable the same; however, this time, let’s keep all the columns in the dataset. 
 
 ![new-experiment](assets/new-experiment.jpg)
 
@@ -313,29 +313,29 @@ After that, you should land on our Sensitivity Analysis Dashboard:
 
 Some things to notice:
 
-  1. In our *Summary* information for the dataset located on the left side of the dashboard, we, in particular, can see our chosen cutoff metric, and the number for that metric. 
+ 1. In our *Summary* information for the dataset located on the left side of the dashboard, we, in particular, can see our chosen cutoff metric, and the number for that metric. 
 
-  ![sa-ui-summary](assets/sa-ui-summary.jpg)
+![sa-ui-summary](assets/sa-ui-summary.jpg)
 
-  * In our *Summary* information for the dataset located on the left side of the dashboard, we, in particular, can see our chosen cutoff metric, and the number for that metric. Our *CUTOFF* is 0.2676... Anything below the *CUTOFF* will mean the model predicts a customer will not default, while anyone greater than or equal to the *CUTOFF* will default. 
+ - In our *Summary* information for the dataset located on the left side of the dashboard, we, in particular, can see our chosen cutoff metric, and the number for that metric. Our *CUTOFF* is 0.2676... Anything below the *CUTOFF* will mean the model predicts a customer will not default, while anyone greater than or equal to the *CUTOFF* will default. 
 
-2. This pink summary locator represents the “Average” customer in the dataset, i.e., the average of all computable variables.  
+2\. This pink summary locator represents the “Average” customer in the dataset, i.e., the average of all computable variables.  
 
 ![sa-ui-threshold](assets/sa-ui-threshold.jpg)
 
-* The *Current Working Set Score* indicates that the mean score prediction is .24060 and that the most common prediction is False, which makes sense.
+- The *Current Working Set Score* indicates that the mean score prediction is .24060 and that the most common prediction is False, which makes sense.
 
-3. Here we can choose to filter down on various portions of the confusion matrix and review each row and prediction.
+3\. Here we can choose to filter down on various portions of the confusion matrix and review each row and prediction.
 
 ![sa-ui-cm-table](assets/sa-ui-cm-table.jpg)
 
-4.  Now that we have familiarized ourselves with the UI let’s experiment! Reminder *Sensitivity Analysis* enables us to tinker with various settings in the data to see if certain features affect the outcome when we know that they should not. Let’s start by adjusting an entire feature.
+4\.  Now that we have familiarized ourselves with the UI let’s experiment! Reminder *Sensitivity Analysis* enables us to tinker with various settings in the data to see if certain features affect the outcome when we know that they should not. Let’s start by adjusting an entire feature.
 
-    * If you remember from the previous exercise, the feature PAY_0 was extremely important; if not, you can jump back to *Transformed Shapley* and double-check. You can find the *Transformed Shapley*  in the *DAI MODEL* tab. 
+ - If you remember from the previous exercise, the feature PAY_0 was extremely important; if not, you can jump back to *Transformed Shapley* and double-check. You can find the *Transformed Shapley*  in the *DAI MODEL* tab. 
 
 ![shapley](assets/shapley.jpg)
 
-5. You can also check the *Partial Dependence Plot* and see the probability of defaulting increases when PAY_0 is two months late. 
+5\. You can also check the *Partial Dependence Plot* and see the probability of defaulting increases when PAY_0 is two months late. 
 
 ![partial-dependence-plot-of-pay_0](assets/partial-dependence-plot-of-pay_0.jpg)
 
@@ -343,40 +343,40 @@ Now that we know that being two months late on PAY_0 is terrible and knowing tha
 
 To set all customers PAY_0 to 2, please consider the following steps: 
 
-  1. Click on top of the PAY_0 variable. 
+ 1. Click on top of the PAY_0 variable. 
 
 ![change-pay-0](assets/change-pay-0.jpg)
 
-  2. A box will appear to make sure the absolute radio button is selected. Set the *Absolute* to 2. After, click *Set*.
+ 2. A box will appear to make sure the absolute radio button is selected. Set the *Absolute* to 2. After, click *Set*.
 
 ![pay-0-equal-to-2](assets/pay-0-equal-to-2.jpg)
 
-  4. Click the *RESCORE* button. 
+ 3. Click the *RESCORE* button. 
 
 ![rescore](assets/rescore.jpg)
 
-5. We can check “Current Working Set Score” on the right to see a summation of what occurred. In this run, we see that by switching all to PAY_0=2 that we over doubled the average mean, implying that our model would reject significantly more of the credits because the perceived probability of default was much higher. Our current score is now *0.46028* from a prior score of *0.24060*. Consequently, the absolute change is of *0.21968* an increase of *91.31%* change.
+6\. We can check “Current Working Set Score” on the right to see a summation of what occurred. In this run, we see that by switching all to PAY_0=2 that we over doubled the average mean, implying that our model would reject significantly more of the credits because the perceived probability of default was much higher. Our current score is now *0.46028* from a prior score of *0.24060*. Consequently, the absolute change is of *0.21968* an increase of *91.31%* change.
 
 ![delta](assets/delta.jpg)
 
 
-6. Let's take this one step further and try another adjustment. Let's adjust PAY_AMT2 to 80% of what it originally was i.e., Let's see what happens to the model when we make our entire population only pay 80% of what they did. As you may notice, the variable *PAY_AMT2* is not on the table, but don't worry, we can add it by following these quick steps: 
+7\. Let's take this one step further and try another adjustment. Let's adjust PAY_AMT2 to 80% of what it originally was i.e., Let's see what happens to the model when we make our entire population only pay 80% of what they did. As you may notice, the variable *PAY_AMT2* is not on the table, but don't worry, we can add it by following these quick steps: 
 
-    1. Click on the *Plus* icon, and a box will appear. 
+ 1. Click on the *Plus* icon, and a box will appear. 
 
-    ![add-option](assets/add-option.jpg)
+  ![add-option](assets/add-option.jpg)
 
-    2. Check the *PAY_AMT2* variable and click *SET*
+ 2. Check the *PAY_AMT2* variable and click *SET*
 
-    3. Right after, similar to how we change the value of *PAY_0*, we will click on the *PAY_AMT2* variable. 
+ 3. Right after, similar to how we change the value of *PAY_0*, we will click on the *PAY_AMT2* variable. 
 
-    4. Select the *Percentage* radio button and set the *Percentage* to 80. Click *SET*. 
+ 4. Select the *Percentage* radio button and set the *Percentage* to 80. Click *SET*. 
 
-    ![pay2-80-percent](assets/pay2-80-percent.jpg)
+ ![pay2-80-percent](assets/pay2-80-percent.jpg)
 
-    5. Click the *RESCORE* button. 
+ 5. Click the *RESCORE* button. 
 
-  Interestingly enough, when we finish rescoring and review results, we discover that this adjustment had virtually no effect whatsoever. In this case, the absolute change when modifying *PAY_AMT2* is a *0.00074* increase. It is a crucial consideration in Machine Learning to be aware that there will be many situations where you might think a variable would be important where it is not and vice versa.
+    Interestingly enough, when we finish rescoring and review results, we discover that this adjustment had virtually no effect whatsoever. In this case, the absolute change when modifying *PAY_AMT2* is a *0.00074* increase. It is a crucial consideration in Machine Learning to be aware that there will be many situations where you might think a variable would be important where it is not and vice versa.
 
 ![no-change](assets/no-change.jpg)
 
@@ -398,11 +398,11 @@ On the left side of the table (at the bottom of the page), you will be able to l
 
 Now let’s see if we can independently adjust some of the demographic features and push customer three over the threshold from negative(not predicted as defaulting) to positive(predicted to default). Since we are discussing fairness and regulatory considerations, let’s select just the demographic variables to learn more. To choose the demographic variables such as **AGE**, **SEX**, **EDUCATION**, and **MARRIAGE** please follow the following steps: 
 
-  1. Click the plus icon 
+ 1. Click the plus icon 
 
-  2. Check the radio buttons for **AGE**, **SEX**, **EDUCATION**, and **MARRIAGE** 
+ 2. Check the radio buttons for **AGE**, **SEX**, **EDUCATION**, and **MARRIAGE** 
 
-  3. Click *SET*
+ 3. Click *SET*
 
 After following the above steps, scroll to the right to see the newly added columns name: **AGE**, **SEX**, **EDUCATION**, and **MARRIAGE**. 
 
@@ -436,7 +436,7 @@ A way we can flip the prediction for customer 3 is by changing *PAY_0 = 2*. If i
 
 ![after-values-change](assets/after-values-change.jpg)
 
-We see that adjusting *PAY_0 = 2* sends the customer very deep into the rejection zone, showing pretty clear how this one feature can dramatically impact that model for a single customer!
+We see that adjusting *PAY_0 = 2* sends the customer very deep into the rejection zone, showing pretty clear how this one feature can dramatically impact the model for a single customer!
 
 *Note:*
 
@@ -450,9 +450,9 @@ As mentioned at the beginning of this tutorial, the disparate impact analysis, a
 
 Check out the next tutorial: Analyzing a Criminal Risk Scorer with DAI MLI (COMING SOON), where you will learn more about:
 
-  - Disparate Impact Analysis 
-  - Sensitivity Analysis 
-  - Confusion Matrix
-  - Residual Analysis 
-  - False Positive Rate
-  - True Positive Rate
+ - Disparate Impact Analysis 
+ - Sensitivity Analysis 
+ - Confusion Matrix
+ - Residual Analysis 
+ - False Positive Rate
+ - True Positive Rate
