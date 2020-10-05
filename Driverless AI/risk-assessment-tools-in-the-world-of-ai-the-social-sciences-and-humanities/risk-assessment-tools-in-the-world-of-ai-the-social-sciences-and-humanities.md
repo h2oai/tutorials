@@ -9,7 +9,7 @@
 - [Task 3: Understanding Task 1](#task-3-understanding-task-1)
 - [Task 4: A Global Versus Local Behavior Analysis Concept](#task-4-a-global-versus-local-behavior-analysis-concept)
 - [Task 5: Global Behavior Analysis](#task-5-global-behavior-analysis)
-- [Task 6: What Biases Exist in My Model? What Levels of Disparity Exist Between Population Groups?](#task-6-what-biases-exist-in-my-model?-what-levels-of-disparity-exist-between-population-groups?)
+- [Task 6: What Biases Exist in My Model? What Levels of Disparity Exist Between Population Groups?](#task-6-what-biases-exist-in-my-model-what-levels-of-disparity-exist-between-population-groups)
 - [Task 7: Local Behavior Analysis](#task-7-local-behavior-analysis)
 - [Task 8: The Reciprocal Impact that Should Exist Between AI, the Social Sciences, and Humanities](#Task-8-the-reciprocal-impact-that-should-exist-between-ai-the-social-sciences-and-humanities)
 - [Next Steps](#next-steps)
