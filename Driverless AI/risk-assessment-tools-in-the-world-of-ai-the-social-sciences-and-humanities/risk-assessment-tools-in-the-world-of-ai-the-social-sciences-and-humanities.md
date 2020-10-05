@@ -123,6 +123,7 @@ That is why we are in this tutorial, taking our new AI model and checking whethe
 ### References
 
 [1] [How We Analyzed the COMPAS Recidivism Algorithm](https://www.courts.wa.gov/subsite/mjc/docs/2019/how-we-analyzed-the-compas-r.pdf)
+
 [2] [How We Analyzed the COMPAS Recidivism Algorithm](https://www.courts.wa.gov/subsite/mjc/docs/2019/how-we-analyzed-the-compas-r.pdf)
 
 ## Task 3: Understanding Task 1
@@ -180,6 +181,7 @@ By now, our experiment should be done. Let us explore our model now and see if i
 ### References 
 
 [3][ProPublica’s COMPAS Data Revisited](https://www.groundai.com/project/propublicas-compas-data-revisited/1)
+
 [4][ProPublica’s COMPAS Data Revisited](https://www.groundai.com/project/propublicas-compas-data-revisited/1)
 
 ## Task 4: A Global Versus Local Behavior Analysis Concept 
