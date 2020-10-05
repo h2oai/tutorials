@@ -31,7 +31,7 @@ You will need the following to be able to do this tutorial:
 - Basic knowledge of Confusion Matrices 
 - Basic knowledge of Driverless AI or doing the [Automatic Machine Learning Introduction with Driverless AI Test Drive](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai) 
 - Completion of the [Machine Learning Interpretability Tutorial](https://training.h2o.ai/products/tutorial-1c-machine-learning-interpretability-tutorial)
-- Completion of the Disparate Impact Analysis Tutorial 
+- Completion of the [Disparate Impact Analysis Tutorial](https://training.h2o.ai/products/tutorial-5a-disparate-impact-analysis-tutorial) 
 - Review the following two articles on ProPublica's investigations: 
   - [Machine Bias: There’s software used across the country to predict future criminals. And it’s biased against blacks.](https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing)
   - [How We Analyzed the COMPAS Recidivism Algorithm](https://www.propublica.org/article/how-we-analyzed-the-compas-recidivism-algorithm)
@@ -91,10 +91,10 @@ Download the data recipe for this experiment here: [COMPAS_DATA_RECIPE.py](https
 
 15. On the training settings, set the following:
 
-    - Accuracy: 5
-    - Time: 4
-    - Interpretability: 7
-    - Scorer: AUC 
+    - **Accuracy**: 5
+    - **Time**: 4
+    - **Interpretability**: 7
+    - **Scorer**: AUC 
 
 
 16. Click "REPRODUCIBLE," make sure it's turn on(yellow) 
@@ -377,7 +377,7 @@ With the above, we can conclude that at the local level, we also have a bias in 
 
 Why the social sciences and the humanities? Because the social sciences and humanities can best solve the problems, AI is creating in our society. Plus, AI models will and are already impacting their several subfields of studies. To support this argument, consider the argue below: 
 
-At this point, many will wonder how we can solve these issues presented at the global and local levels. A solution will be to have the humanities, and social sciences integrated and extend their work to the process of AI model creation. Also, have the AI world consult the humanities and social sciences when we could generate models that profoundly impact people's lives. To understand the reciprocal impact that should exist between AI, the social sciences, and humanities, we will explore five problems that can arise if we were to use our model or similar models made by others. Simultaneously, we will discuss how that reciprocal impact can lead to a more acceptable and fair integration of AI into our daily lives and the judicial system.
+- At this point, many will wonder how we can solve these issues presented at the global and local levels. A solution will be to have the humanities, and social sciences integrated and extend their work to the process of AI model creation. Also, have the AI world consult the humanities and social sciences when we could generate models that profoundly impact people's lives. To understand the reciprocal impact that should exist between AI, the social sciences, and humanities, we will explore five problems that can arise if we were to use our model or similar models made by others. Simultaneously, we will discuss how that reciprocal impact can lead to a more acceptable and fair integration of AI into our daily lives and the judicial system.
 
 
 **Problem 1: Confrontation Clause**
