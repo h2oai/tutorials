@@ -107,11 +107,11 @@ Let's have the experiment run in the background. Simultaneously, in task 2, let'
 
 ## Task 2: Explore Criminal Risk Scorers in America and The Compass Dataset
 
-The United States has 5% of the world's population, and therefore, one cannot explain why it holds 25% of the world's prisoners. In other words, one out of four human beings with their hands-on bards is here in the land of the free. As a result, the United States now has the highest rate of incarceration in the world. Such striking statistics are, in part, the product of widespread use of AI models that quote-unquote predict the likelihood of someone to reoffend. Across the United States, "judges, probation, and parole officers are increasingly using algorithms to assess a criminal defendant's likelihood of becoming a recidivist - a term used to describe criminals who reoffend." There are dozens of these risk assessment algorithms in use. Sadly and consequently, many of these risk assessment tools have not been checked for racial bias. As a result, in 2016, ProPublica, a nonprofit newsroom, investigated COMPAS (Correctional Offender Management Profiling for Alternative Sanctions), a commercial risk assessment tool made by Northpointe. ProPublica's investigation concluded that the commercial tool was biased towards African-Americans. In other words, ProPublica ``found that Black defendants were far more likely than white defendants to be incorrectly judged to be at a higher risk of recidivism." In contrast, white defendants were more likely than black defendants to be mistakenly flagged as low risk. Northpointe's COMPAS is one of the most widely utilized risk assessment tools/algorithms within the criminal justice system for guiding decisions such as setting bail. 
+The United States has 5% of the world's population, and therefore, one cannot explain why it holds 25% of the world's prisoners. In other words, one out of four human beings with their hands-on bards is here in the land of the free. As a result, the United States now has the highest rate of incarceration in the world. Such striking statistics are, in part, the product of widespread use of AI models that quote-unquote predict the likelihood of someone to reoffend. Across the United States, "judges, probation, and parole officers are increasingly using algorithms to assess a criminal defendant's likelihood of becoming a recidivist - a term used to describe criminals who reoffend."[1] There are dozens of these risk assessment algorithms in use. Sadly and consequently, many of these risk assessment tools have not been checked for racial bias. As a result, in 2016, ProPublica, a nonprofit newsroom, investigated COMPAS (Correctional Offender Management Profiling for Alternative Sanctions), a commercial risk assessment tool made by Northpointe. ProPublica's investigation concluded that the commercial tool was biased towards African-Americans. In other words, ProPublica "found that Black defendants were far more likely than white defendants to be incorrectly judged to be at a higher risk of recidivism."[2] In contrast, white defendants were more likely than black defendants to be mistakenly flagged as low risk. Northpointe's COMPAS is one of the most widely utilized risk assessment tools/algorithms within the criminal justice system for guiding decisions such as setting bail. 
 
 ![disparity](assets/disparity.jpg)
 
-COMPAS produces a risk score that predicts the probability of someone committing a crime in the next two years. The “model's output is a score between one and ten that maps too low, medium, or high.” The scores are derived from 137 questions that are either answered by defendants themselves or by criminal records. NorthPointe has argued that race is not one of the questions or features they consider when deriving a score. 
+COMPAS produces a risk score that predicts the probability of someone committing a crime in the next two years. The model's output is a score within 1 and 10 that maps too low, medium, or high. The scores are derived from 137 questions that are either answered by defendants themselves or by criminal records. NorthPointe has argued that race is not one of the questions or features they consider when deriving a score. 
 
 ProPublica concluded that COMPAS was biased after obtaining the risk scores assigned to more than 7,000 people arrested in Broward County, Florida, in 2013 and 2014 and checked to see how many were charged with new crimes over the next two years. As stated above, the data collected for ProPublica's investigation revealed the racial bias in the COMPAS model. At the same time, this sparked a national conversation around AI models' effectiveness and fairness when trying to predict if someone will reoffend after a given arrest. 
 
@@ -119,6 +119,11 @@ As often occurs, many risk assessment tools are adopted without any rigorous tes
 With the above in mind, we can agree that we need to create fair AI models that can predict someone's likelihood of reoffending. In particular, the above argues that after creating an AI model, we need to check that the model is not biased. Why? Because such a model can have a profound impact on people's lives, and such an impact can be damaging when we discover that the model is unfair and wrong. As a result, when making decisions that have a large impact on people's lives, no level of unwanted bias is acceptable. 
 
 That is why we are in this tutorial, taking our new AI model and checking whether the model holds any racial bias.
+
+### References
+
+[1] [How We Analyzed the COMPAS Recidivism Algorithm](https://www.courts.wa.gov/subsite/mjc/docs/2019/how-we-analyzed-the-compas-r.pdf)
+[2] [How We Analyzed the COMPAS Recidivism Algorithm](https://www.courts.wa.gov/subsite/mjc/docs/2019/how-we-analyzed-the-compas-r.pdf)
 
 ## Task 3: Understanding Task 1
 
@@ -132,13 +137,13 @@ The original COMPAS dataset (compas-scores-two-years.csv) contains the following
 
 As you notice in task one, we used a data recipe to upload the dataset for our model. The data recipe addresses two significant problems in the original COMPAS dataset that have brought ProPublica's investigation into question. That is why, before making use of specific columns for our model, we used a data recipe to address the two major problems others have pointed to. The two significant issues found in ProPublica's COMPAS dataset are as follows: 
 
-1. As Matias Borenstein notes in GroundAI, a web platform, "ProPublica made a mistake implementing the two-year sample cutoff rule for recidivists in the two-year recidivism datasets (whereas it implemented an appropriate two-year sample cutoff rule for non-recidivists). As a result, ProPublica incorrectly kept a disproportionate share of recidivists in such datasets. This data processing mistake leads to biased two-year recidivism datasets, with artificially high recidivism rates. This also affects the positive and negative values. " In other words, to correct for this mistake, we dropped all defendants whose COMPAS screening date occurs after April 1, 2014, with it, we implemented a more appropriate sample cutoff for all defendants for the two-year recidivism analysis. 
+1. As Matias Borenstein notes in GroundAI, a web platform, "ProPublica made a mistake implementing the two-year sample cutoff rule for recidivists in the two-year recidivism datasets (whereas it implemented an appropriate two-year sample cutoff rule for non-recidivists). As a result, ProPublica incorrectly kept a disproportionate share of recidivists in such datasets. This data processing mistake leads to biased two-year recidivism datasets, with artificially high recidivism rates. This also affects the positive and negative values."[3] In other words, to correct for this mistake, we dropped all defendants whose COMPAS screening date occurs after April 1, 2014, with it, we implemented a more appropriate sample cutoff for all defendants for the two-year recidivism analysis. 
 
 In the data recipe (COMPAS_DATA_RECIPE.py) used in task one, the code that addresses the problem above is as follows: 
 
 ![solving-problem-1-found-in-the-dateset](assets/solving-problem-1-found-in-the-dateset.jpg)
 
-1.  Borenstein also notes the following problem in ProPublica's dataset: "The age variable that ProPublica constructed is not quite accurate. ProPublica calculated age as the difference in years between the point in time when it collected the data, in early April 2016, and the person's date of birth. However, when studying recidivism, one should really use the age of the person at the time of the COMPAS screen date that starts the two year time window. So some people may be up to 25 months younger than the age variable that ProPublica created." To correct this mistake, we had to subtract the c_jail_in column minus dob (date of birth). After correcting the age column, we fixed the age_category column as it is one of the columns we are using to train our model.
+1.  Borenstein also notes the following problem in ProPublica's dataset: "The age variable that ProPublica constructed is not quite accurate. ProPublica calculated age as the difference in years between the point in time when it collected the data, in early April 2016, and the person's date of birth. However, when studying recidivism, one should really use the age of the person at the time of the COMPAS screen date that starts the two year time window. So some people may be up to 25 months younger than the age variable that ProPublica created."[4] To correct this mistake, we had to subtract the c_jail_in column minus dob (date of birth). After correcting the age column, we fixed the age_category column as it is one of the columns we are using to train our model.
 
 In the data recipe (COMPAS_DATA_RECIPE.py) used in task one, the code that addresses the problem above is as follows: 
 
@@ -171,6 +176,11 @@ As noted in task one, we set the interpretability setting to 7. Setting the inte
 Before running our experiment, we enabled "REPRODUCIBLE." Usually, the "REPRODUCIBLE" option is disabled by default. We enabled "REPRODUCIBLE" in our experiment to obtain a high level of precision in our experiment.
 
 By now, our experiment should be done. Let us explore our model now and see if it holds any racial bias.
+
+### References 
+
+[3][ProPublica’s COMPAS Data Revisited](https://www.groundai.com/project/propublicas-compas-data-revisited/1)
+[4][ProPublica’s COMPAS Data Revisited](https://www.groundai.com/project/propublicas-compas-data-revisited/1)
 
 ## Task 4: A Global Versus Local Behavior Analysis Concept 
 
@@ -226,15 +236,15 @@ To better understand this idea of prior_count holding a certain level of racial 
 
   As of October 15, 2016, the National Registry of Exonerations listed 1,900 defendants who were convicted of crimes and later exonerated because they were innocent; 47% of them were African Americans, three times their rate in the population. About 1,900 additional innocent defendants who had been framed and convicted of crimes in 15 large-scale police scandals were cleared in “group exonerations;” the great majority of those defendants were also black. Judging from the cases we know, a substantial majority of innocent people who are convicted of crimes in the United States are African Americans. 
 
-  What explains this stark racial disparity? We study that question by examining exonerations for murder, sexual assault and drug crimes, the three types of crime [that] produce the largest numbers of exonerations. What we see—as so often in considering the role of race in America—is complex and disturbing, familiar but frequently ignored...The causes we have identified run from inevitable consequences of patterns in crime and punishment to deliberate acts of racism, with many stops in between.”
+  What explains this stark racial disparity? We study that question by examining exonerations for murder, sexual assault and drug crimes, the three types of crime [that] produce the largest numbers of exonerations. What we see—as so often in considering the role of race in America—is complex and disturbing, familiar but frequently ignored...The causes we have identified run from inevitable consequences of patterns in crime and punishment to deliberate acts of racism, with many stops in between.”[5]
 
 Besides the National Registry of Exonerations, the Washington Post reported the following this past June in their article title: There’s overwhelming evidence that the criminal justice system is racist. Here’s the proof: 
 
-- “[A 2017 study](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3036726) of about 48,000 criminal cases in Wisconsin showed that white defendants were 25 percent more likely than black defendants to have their most serious charge dismissed in a plea bargain. Among defendants facing misdemeanor charges that could carry a sentence of incarceration, whites were 75 percent more likely to have those charges dropped, dismissed or reduced to a charge that did not include such a punishment.”
+- “[A 2017 study](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3036726) of about 48,000 criminal cases in Wisconsin showed that white defendants were 25 percent more likely than black defendants to have their most serious charge dismissed in a plea bargain. Among defendants facing misdemeanor charges that could carry a sentence of incarceration, whites were 75 percent more likely to have those charges dropped, dismissed or reduced to a charge that did not include such a punishment.”[6]
 
 The New York Times also reported the above last year. As well, the Washington Post reported in a series of reports and analyses that African Americans across the country are being wrongly arrested and, therefore, adding more wrongly convictions to their prior charge count. As a result, of having wrong charges and a high prior_count African Americans experience the following as reported in the Washington Post: 
 
-- "[A 2008 analysis found](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.821.8079&rep=rep1&type=pdf) that black defendants with multiple prior convictions are 28 percent more likely to be charged as “habitual offenders” than white defendants with similar criminal records. The authors conclude that “assessments of dangerousness and culpability are linked to race and ethnicity, even after offense seriousness and prior record are controlled.”
+- "[A 2008 analysis found](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.821.8079&rep=rep1&type=pdf) that black defendants with multiple prior convictions are 28 percent more likely to be charged as “habitual offenders” than white defendants with similar criminal records. The authors conclude that “assessments of dangerousness and culpability are linked to race and ethnicity, even after offense seriousness and prior record are controlled.”[7]
 
 We can see a cycle of unfair charges added to an African American's criminal record with the above in mind. Given these points, we can see that having priors_count at the global level be the most significant deciding factor of a prediction can present problems when we know that the value of priosr_count can result from our existing racist criminal justice system. 
 
@@ -246,6 +256,14 @@ Now, the two questions that come to mind now are:
 2. Are the other features currently used in this model free from racial bias? 
 
 In our final analysis in task 8 will explore how the above two questions can be answered. 
+
+### References
+
+[5][RACE AND WRONGFUL CONVICTIONS IN THE UNITED TATES](http://www.law.umich.edu/special/exoneration/Documents/Race_and_Wrongful_Convictions.pdf)
+
+[6][There’s overwhelming evidence that the criminal justice system is racist. Here’s the proof.](https://www.washingtonpost.com/graphics/2020/opinions/systemic-racism-police-evidence-criminal-justice-system/)
+
+[7][There’s racial bias in our police systems. Here’s the proof.](https://www.washingtonpost.com/graphics/2020/opinions/systemic-racism-police-evidence-criminal-justice-system/)
 
 ## Task 6: What Biases Exist in My Model? What Levels of Disparity Exist Between Population Groups? 
 
@@ -302,7 +320,7 @@ Moving forward with our disparate impact analysis, let's look at the group dispa
 
 1. Before moving forward with our analysis, let us recall the adverse impact analysis / four-fifths rule. According to the Prevue website, the four-fifths rule can be explained as follows: 
 
-   - "Typically, adverse impact is determined by using the four-fifths or eighty percent rule. The four-fifths or 80% rule is described by the guidelines as "a selection rate for any race, sex, or ethnic group which is less than four-fifths (or 80%) of the rate for the group with the highest rate will generally be regarded by the Federal enforcement agencies as evidence of adverse impact, while a greater than four-fifths rate will generally not be regarded by Federal enforcement agencies as evidence of adverse impact.""
+   - "Typically, adverse impact is determined by using the four-fifths or eighty percent rule. The four-fifths or 80% rule is described by the guidelines as "a selection rate for any race, sex, or ethnic group which is less than four-fifths (or 80%) of the rate for the group with the highest rate will generally be regarded by the Federal enforcement agencies as evidence of adverse impact, while a greater than four-fifths rate will generally not be regarded by Federal enforcement agencies as evidence of adverse impact.""[8]
 
 This rule is very up for debate on how this will develop going forward, but for now, we have set the low (unfairness) threshold to .8. But of course, when we are talking about making decisions on whether to send someone to prison, no difference in treatment should be allowed.  But in our efforts to analyze this model, let's see if the model can achieve fairness under a benchmark that will require the model not to treat 80% less favorably the non-white groups than the Caucasian group.
 
@@ -317,6 +335,10 @@ This rule is very up for debate on how this will develop going forward, but for 
 6. In the group parity section, we see that no fairness is achieved across all categories except for the 'negative predicted value parity' column. 
 
 This model will fail the adverse impact analysis / four-fifths rule. If we were to change the rule to a rule where no disparity will be allowed, the model would reflect higher disparity rates across the categories observed above—a much more disturbing disparity. As a result, the appropriate and straightforward answer to the two questions at the beginning of this task will be that the model has a lot of bias, and huge disparities and injustices exist between racial groups, in particular, within the African American community. 
+
+### References
+
+[8][Adverse Impact Analysis / Four-Fifths Rule.](https://www.prevuehr.com/resources/insights/adverse-impact-analysis-four-fifths-rule/)
 
 ## Task 7: Local Behavior Analysis
 
@@ -393,11 +415,11 @@ to bail, evidence, sentencing and parole — computer systems play a role. Artif
 
   The root of the problem is that automated criminal justice technologies are largely privately owned and sold for profit. The developers tend to view their technologies as trade secrets. As a result, they often refuse to disclose details about how their tools work, even to criminal defendants and their attorneys, even under a protective order, even in the controlled context of a criminal proceeding or parole hearing.
 
-  Take the case of Glenn Rodríguez. An inmate at the Eastern Correctional Facility in upstate New York, Mr. Rodríguez was denied parole last year despite having a nearly perfect record of rehabilitation. The reason? A high score from a computer system called Compas. The company that makes Compas [considers the weighting of inputs to be proprietary information](http://washingtonmonthly.com/magazine/junejulyaugust-2017/code-of-silence/).” As a result, Mr. Rodríguez wasn’t able to cross-examine the score (evidence) used against his parole denial. 
+  Take the case of Glenn Rodríguez. An inmate at the Eastern Correctional Facility in upstate New York, Mr. Rodríguez was denied parole last year despite having a nearly perfect record of rehabilitation. The reason? A high score from a computer system called Compas. The company that makes Compas [considers the weighting of inputs to be proprietary information](http://washingtonmonthly.com/magazine/junejulyaugust-2017/code-of-silence/).”[9] As a result, Mr. Rodríguez wasn’t able to cross-examine the score (evidence) used against his parole denial. 
 
 The above is a clear example of how AI is deciding whether someone will receive parole while not allowing a defendant to cross-examine the evidence. For legal practitioners and other social scientists, this will be in clear violation of the confrontation clause found in the constitution. The confrontation clause is as follows: 
 
-- “The Confrontation Clause of the [Sixth Amendment to the United States Constitution](https://en.wikipedia.org/wiki/Sixth_Amendment_to_the_United_States_Constitution) provides that "in all criminal prosecutions, the accused shall enjoy the right…to be confronted with the [witnesses [evidence]](https://en.wikipedia.org/wiki/Witness) against him." Generally, the right is to have a face-to-face confrontation with witnesses who are offering testimonial evidence against the accused in the form of cross-examination during a trial. The [Fourteenth Amendment](https://en.wikipedia.org/wiki/Fourteenth_Amendment_to_the_United_States_Constitution) makes the right to confrontation applicable to the states and not just the federal government.[1] The right only applies to criminal prosecutions, not civil cases or other proceedings.”
+- “The Confrontation Clause of the [Sixth Amendment to the United States Constitution](https://en.wikipedia.org/wiki/Sixth_Amendment_to_the_United_States_Constitution) provides that "in all criminal prosecutions, the accused shall enjoy the right…to be confronted with the [witnesses [evidence]](https://en.wikipedia.org/wiki/Witness) against him." Generally, the right is to have a face-to-face confrontation with witnesses who are offering testimonial evidence against the accused in the form of cross-examination during a trial. The [Fourteenth Amendment](https://en.wikipedia.org/wiki/Fourteenth_Amendment_to_the_United_States_Constitution) makes the right to confrontation applicable to the states and not just the federal government.[1] The right only applies to criminal prosecutions, not civil cases or other proceedings.”[10]
 
 As of now, it isn't very easy to explain an AI model's predictions. And for the most part, the explanations of these AI models cannot be disclosed because they are protected by law. A lack of explanation of how predictions are derived will prevent the recidivism AI model's use if the predictions can't be explained; cross-examination will not be possible. This lack of explainability hasn't stopped courtrooms from using AI models to determine who is incarcerated and for how long. 
 To address this problem, AI makers and law practitioners should discuss and work together when building recidivism models. The collaboration will allow for an understanding of why such models will be violating the law and how we can perhaps work around the problem of a lack of explainability. This joint work can also lead to the often practice to consult law practitioners before using models that can have substantial legal consequences. In our case, consulting legal practitioners can allow for a deeper understanding of how perhaps our model can affect the confrontations clause or other parts of the law. 
@@ -427,6 +449,12 @@ As a final analysis, the AI world is growing and changing our society. We need t
 - Racist Data? Human Bias is Infecting AI Development
 - Google apologizes after its Vision AI produced racist results
 - 600,000 Images Removed from AI Database After Art Project Exposes Racist Bias
+
+### References 
+
+[9][When a Computer Program Keeps You in Jail](https://www.nytimes.com/2017/06/13/opinion/how-computers-are-harming-criminal-justice.html)
+
+[10][Confrontation Clause - Wikipedia](https://en.wikipedia.org/wiki/Confrontation_Clause)
 
 ## Next Steps
 
