@@ -238,12 +238,12 @@ We can see a cycle of unfair charges added to an African American's criminal rec
 
 Generally speaking, we can say that our model's global behavior is biased, given how prior counts are derived in the United States (the dataset we are using holds information of people who were arrested in the United States). In a word, it seems that it will be wrong to make use of the priors_count feature in our model, knowing that it will disproportionately affect African Americans. If we were to look at the rf partial dependence plot in the surrogate model's tab, we would discover that as the count of priors_count increases, the probability of being predicted to be arrested within two years since the last arrest also increases. And knowing that African Americans might have high prior count values due to our existing racist criminal justice system, it will be appropriate and moral to drop the priors_count feature. If we were to eliminate priors_count, the age feature would become the most influential feature when predicting recidivism within a two-year mark since a given arrest. Sadly, that will bring a similar problem that will discriminate based on age. Imagine for a moment being predicted to be arrested within two years since the last arrest only because you are young, between 20 - 25 years old; that seems wrong. All things considered, it will also be appropriate to eliminate the age_cat feature as well. 
 
-The two questions that come to mind now are as follows: 
+Now, the two questions that come to mind now are: 
 
 1. What features will be correct to use in our prediction model? 
 2. Are the other features currently used in this model free from racial bias? 
 
-Our final analysis in task 8 will explore how the above two questions can be answered. 
+In our final analysis in task 8 will explore how the above two questions can be answered. 
 
 ## Task 6: What Biases Exist in My Model? What Levels of Disparity Exist Between Population Groups? 
 
