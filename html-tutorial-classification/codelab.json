@@ -1,0 +1,23 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2020-09-28T15:24:51-07:00",
+  "id": "html-tutorial-3",
+  "duration": 0,
+  "title": "Tutorial 1 - Classification",
+  "summary": "Check the list",
+  "source": "/Users/falvarenga/Desktop/html-tutorial-3/html-tutorial-3.md",
+  "theme": "",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "h2o-3"
+  ],
+  "tags": [
+    "test"
+  ],
+  "url": "html-tutorial-3"
+}
