@@ -824,6 +824,8 @@ Learn more about Driverless AI’s Test Augmentation by visiting H2O’s documen
 
 ### Deeper Dive and Resources
 
+- [Driverless AI Time Series Best Practices by H2O's Megan Kurka](https://s3.amazonaws.com/data.h2o.ai/DAI-Tutorials/Tutorial+Docs/DAI_TimeSeries-BestPractices.pdf)
+
 - [Driverless AI’s Test Augmentation](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/time-series.html#using-a-driverless-ai-time-series-model-to-forecast) 
 
 
