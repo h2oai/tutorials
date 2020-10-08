@@ -13,6 +13,7 @@
 - [Task 7: Local Behavior Analysis](#task-7-local-behavior-analysis)
 - [Task 8: The Reciprocal Impact that Should Exist Between AI, the Social Sciences, and Humanities](#Task-8-the-reciprocal-impact-that-should-exist-between-ai-the-social-sciences-and-humanities)
 - [Next Steps](#next-steps)
+- [Special Thanks](#special-thanks)
 
 
 
@@ -466,3 +467,9 @@ Check out the next tutorial: [Time Series Tutorial - Retail Sales Forecasting](h
 - Experiment results summary
 - Model interpretability
 - Analysis
+
+## Special Thanks 
+
+Thank you to everyone that took the time to make this tutorial possible.
+
+- Patrick Hall 
