@@ -4,7 +4,7 @@
 
 - [Objective](#objective)
 - [Prerequisites](#prerequisites)
-- [Task 1: Create a New Criminal Risk Scorer in DAI](#task-1-create-a-new-criminal-risk-scorer-in-dai)
+- [Task 1: Create a New Criminal Risk Scorer in Driverless AI](#task-1-create-a-new-criminal-risk-scorer-in-driverless-ai)
 - [Task 2: Explore Criminal Risk Scorers in America and The Compass Dataset](#task-2-explore-criminal-risk-scorers-in-america-and-the-compass-dataset)
 - [Task 3: Understanding Task 1](#task-3-understanding-task-1)
 - [Task 4: A Global Versus Local Behavior Analysis Concept](#task-4-a-global-versus-local-behavior-analysis-concept)
@@ -20,7 +20,7 @@
 
 As of now, artificial intelligence is being integrated into our daily lives and at different levels of our society. For many, artificial intelligence is the key to a more prosperous future, and for others, artificial intelligence is a source of wrongness if not understood completely. In recent years, many reputable news sources have pointed out that artificial intelligence has become the reason for many discriminatory actions. In particular, ProPublica, a nonprofit newsroom, concluded in 2016 that automated criminal risk assessment algorithms hold racial inequality. Throughout the United States, an array of distinct automated criminal risk assessment algorithms have been built. Sadly, as often happens with risk assessment tools, many are adopted without rigorous testing on whether it works. In particular, most don't evaluate existing racial disparities and parity in the AI model. That is why, after constructing a criminal risk assessment model, we need to check that the model is fair and that it does not hold any discrimination. Such a post-analysis can prevent the AI model from committing unwanted discriminatory actions.
 
-With the above in mind, in this tutorial, and with the help of DAI, we will build a criminal risk assessment model, but in this case, rather than predicting someone's risk level, we will predict whether someone will be arrested within two years since a given arrest. Right after, we will analyze the AI model, and we will check for fairness, disparity, and parity. To debug and diagnose unwanted bias in our prediction system model, we will conduct a global versus local analysis in which global and local model behavior are compared. We will also conduct a disparate impact analysis to answer the following two questions: what biases exist in my model? And what levels of disparity exist between population groups? Immediately later, we will have an interdisciplinary conversation around risk assessment tools in the world of AI, the social sciences, and humanities.Singularly, we will discuss several societal issues that can arise if we implement our AI recidivism prediction system or someone else's risk assessment tool. In hopes of finding a solution to the issues that can arise, we will explore how the social sciences and humanities can solve these societal issues. Simultaneously, we will discuss the reciprocal impact that should exist between AI, the social sciences, and humanities (such as in philosophy) and how that reciprocal impact can lead to a more acceptable and fair integration of AI into our daily lives and the judicial system. 
+With the above in mind, in this tutorial, and with the help of Driverless AI, we will build a criminal risk assessment model, but in this case, rather than predicting someone's risk level, we will predict whether someone will be arrested within two years since a given arrest. Right after, we will analyze the AI model, and we will check for fairness, disparity, and parity. To debug and diagnose unwanted bias in our prediction system model, we will conduct a global versus local analysis in which global and local model behavior are compared. We will also conduct a disparate impact analysis to answer the following two questions: what biases exist in my model? And what levels of disparity exist between population groups? Immediately later, we will have an interdisciplinary conversation around risk assessment tools in the world of AI, the social sciences, and humanities. Singularly, we will discuss several societal issues that can arise if we implement our AI recidivism prediction system or someone else's risk assessment tool. In hopes of finding a solution to the issues that can arise, we will explore how the social sciences and humanities can solve these societal issues. Simultaneously, we will discuss the reciprocal impact that should exist between AI, the social sciences, and humanities (such as in philosophy) and how that reciprocal impact can lead to a more acceptable and fair integration of AI into our daily lives and the judicial system. 
 
 All things considered, it is the authors' hope that this tutorial inspires the standard to consult the social sciences and humanities when creating AI models that can have a tremendous impact on multiple areas of our diverse society. It is also the hope to alert social scientists and members of the humanities to extend their social activism to AI model creation, which will have a considerable impact on their fields of study. In essence, this joint work between AI, the humanities, and the social sciences can lead us to a more equitable and fair integration of AI into our daily lives and society. 
 
@@ -40,9 +40,9 @@ You will need the following to be able to do this tutorial:
 
 **Note: Aquarium’s Driverless AI Test Drive lab has a license key built-in, so you don’t need to request one to use it. Each Driverless AI Test Drive instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore Driverless AI, you can always launch another Test Drive instance or reach out to our sales team via the contact us form.**
 
-## Task 1: Create a New Criminal Risk Scorer in DAI
+## Task 1: Create a New Criminal Risk Scorer in Driverless AI
 
-In hopes of having the experiment run in the background while we explore the history of criminal risk scores in the United States and COMPAS, we will start the experiment first. In task 3, when the experiment is complete, we will discuss the dataset and different settings used in this task. 
+We will start the experiment first so that it can run in the background while we explore the history of criminal risk scores in the United States and COMPAS. In task 3, when the experiment is complete, we will discuss the dataset and different settings used in this task. 
 
 Download the data recipe for this experiment here: [COMPAS_DATA_RECIPE.py](https://s3.amazonaws.com/data.h2o.ai/DAI-Tutorials/MLI+Tutorials/COMPAS_DATA_RECIPE.py)
 
@@ -170,7 +170,7 @@ We made use of the above columns because they can become good indicators of some
 
 We jumped into our currently running model's expert settings because we needed to create a single XGBoost model and set the ensemble level for the final modeling pipeline to 0. Why? To obtain an MLI interpretability report that will be easy to understand when implementing a global versus local behavior analysis. We will discuss this analysis in our next task to see if our model has generated bias despite excluding the race column. 
 
-We turned off all models except for the 'XGBoost GBM Models' because, by doing so, we strictly enforce monotonicity constraints, which in turn makes our model more interpretable. If you want to learn more about 'XGBoost GBM Models,' you can visit the DAI 1.9 documentation on [XGBoost GBM Models](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/expert-settings.html?highlight=xgboost%20gbm%20models#xgboost-gbm-models). 
+We turned off all models except for the 'XGBoost GBM Models' because, by doing so, we strictly enforce monotonicity constraints, which in turn makes our model more interpretable. If you want to learn more about 'XGBoost GBM Models,' you can visit the Driverless AI 1.9 documentation on [XGBoost GBM Models](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/expert-settings.html?highlight=xgboost%20gbm%20models#xgboost-gbm-models). 
 
 As noted in task one, we set the interpretability setting to 7. Setting the interpretability to 7 enables monotonicity constraints, significant in our post-analysis. Setting interpretability >= 7 enables monotonicity constraints: simpler feature transformations. If we use an unconstrained model and group fairness metrics, we risk creating group fairness metrics that appear to be reasonable. In other words, monotonicity constraints will allow us to understand and see any instances of discrimination at the individual level. 
 
@@ -202,7 +202,7 @@ At this point, several subcomponents of the MLI report should have already been 
 
 ![dai-model](assets/dai-model.jpg)
 
-1. In the DAI Model tab, click the transformed Shapley visual. The following should appear: 
+1. In the 'DAI Model' tab, click the transformed Shapley visual. The following should appear: 
 
 ![transformed-shapley](assets/transformed-shapley.jpg)
 
@@ -218,9 +218,9 @@ At this point, we can see that prior_counts is at the global level driving the m
 
 ![rf-feature-importance](assets/rf-feature-importance.jpg)
 
-When looking at the rf feature importance horizontal graph, we can see that prior_count is at the top. With this in mind, we can see that the prior count feature is the top influencer in the model. To further solidify the pre-conclusion that prior_count is the top influencer in the model, let us see the decision tree in the surrogate models' tab.
+When looking at the RF Feature Importance horizontal graph, we can see that prior_count is at the top. With this in mind, we can see that the prior count feature is the top influencer in the model. To further solidify the pre-conclusion that prior_count is the top influencer in the model, let us see the decision tree in the surrogate models' tab.
 
-4. Click on the "x" mark at the top right corner of the rf feature importance horizontal graph. 
+4. Click on the "x" mark at the top right corner of the RF Feature Importance horizontal graph. 
 
 5. On the surrogate models' tab, click on the decision tree visual. 
 
@@ -228,7 +228,7 @@ When looking at the rf feature importance horizontal graph, we can see that prio
 
 The higher a feature appears in a decision tree, the more critical they are in the model prediction system. The frequency that a particular feature appears in a decision tree can also reveal its importance. Additionally, features connected by a branch can show, to an extent, a relationship between the features when making predictions in our model. Hence, when looking at our decision tree, we can note that prio_count appears four times and is the highest feature in the decision tree. Accordingly, it will be appropriate for us to conclude that indeed it seems that at the global level, prior_count is driving the predictions. 
 
-Before moving forward, I will like to note that based on the transformed Shapley, rf feature importance, and decision tree, age is the second most influential feature in the model. And this can present a problem because we don't want age to be a factor when predicting two-year recidivism. 
+Before moving forward, I will like to note that based on the transformed Shapley, RF Feature Importance, and decision tree, age is the second most influential feature in the model. And this can present a problem because we don't want age to be a factor when predicting two-year recidivism. 
 
 Going back to our conversation around prior_count, for many, using prior_count in our model will seem like a no problem. Many will argue that using prior-count will make sense given that it tells whether someone has been breaking the law. But, when exploring prior_count in-depth, we discover that prior_count holds a tremendous racial bias.
 
@@ -250,7 +250,7 @@ The New York Times also reported the above last year. As well, the Washington Po
 
 We can see a cycle of unfair charges added to an African American's criminal record with the above in mind. Given these points, we can see that having priors_count at the global level be the most significant deciding factor of a prediction can present problems when we know that the value of priosr_count can result from our existing racist criminal justice system. 
 
-Generally speaking, we can say that our model's global behavior is biased, given how prior counts are derived in the United States (the dataset we are using holds information of people who were arrested in the United States). In a word, it seems that it will be wrong to make use of the priors_count feature in our model, knowing that it will disproportionately affect African Americans. If we were to look at the rf partial dependence plot in the surrogate model's tab, we would discover that as the count of priors_count increases, the probability of being predicted to be arrested within two years since the last arrest also increases. And knowing that African Americans might have high prior count values due to our existing racist criminal justice system, it will be appropriate and moral to drop the priors_count feature. If we were to eliminate priors_count, the age feature would become the most influential feature when predicting recidivism within a two-year mark since a given arrest. Sadly, that will bring a similar problem that will discriminate based on age. Imagine for a moment being predicted to be arrested within two years since the last arrest only because you are young, between 20 - 25 years old; that seems wrong. All things considered, it will also be appropriate to eliminate the age_cat feature as well. 
+Generally speaking, we can say that our model's global behavior is biased, given how prior counts are derived in the United States (the dataset we are using holds information of people who were arrested in the United States). In a word, it seems that it will be wrong to make use of the priors_count feature in our model, knowing that it will disproportionately affect African Americans. If we were to look at the RF Partial Pependence plot in the surrogate model's tab, we would discover that as the count of priors_count increases, the probability of being predicted to be arrested within two years since the last arrest also increases. And knowing that African Americans might have high prior count values due to our existing racist criminal justice system, it will be appropriate and moral to drop the priors_count feature. If we were to eliminate priors_count, the age feature would become the most influential feature when predicting recidivism within a two-year mark since a given arrest. Sadly, that will bring a similar problem that will discriminate based on age. Imagine for a moment being predicted to be arrested within two years since the last arrest only because you are young, between 20 - 25 years old; that seems wrong. All things considered, it will also be appropriate to eliminate the age_cat feature as well. 
 
 Now, the two questions that come to mind now are: 
 
@@ -274,7 +274,7 @@ Now that we know that the global model behavior is biased, let us answer the fol
 - What biases exist in my model?
 - What levels of disparity exist between population groups? 
 
-To answer both questions, we will use the disparate impact analysis tool located in the DAI model tab. In the DAI Model tab, click on the disparate impact analysis visual. 
+To answer both questions, we will use the disparate impact analysis tool located in the 'DAI Model' tab. In the 'DAI Model' tab, click on the disparate impact analysis visual. 
 
 1. Click on the Disparate Impact Variable button and select the **race** option.
 2. Click on the Reference Level button and change the reference level to **caucasian**. The following should appear: 
@@ -346,7 +346,7 @@ This model will fail the adverse impact analysis / four-fifths rule. If we were 
 
 Now that we know that bias is introduced to an extent at the global level let us explore how disparity and bias are generated in particular instances now that we know that huge disparities and injustices exist between racial groups. 
 
-In the DAI Model tab, click on the sensitivity analysis visual, the following should appear: 
+In the 'DAI Model' tab, click on the sensitivity analysis visual, the following should appear: 
 
 ![sensitivity-analysis-1](assets/sensitivity-analysis-1.jpg)
 
