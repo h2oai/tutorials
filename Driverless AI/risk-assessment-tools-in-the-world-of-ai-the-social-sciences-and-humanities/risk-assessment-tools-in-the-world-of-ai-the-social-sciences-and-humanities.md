@@ -401,9 +401,7 @@ With the above, we can conclude that at the local level, we also have a bias in 
 
 ## Task 8: The Reciprocal Impact that Should Exist Between AI, the Social Sciences, and Humanities
 
-Why the social sciences and humanities? Because the social sciences and humanities can best solve the problems, AI is creating in our society. Plus, AI models will and are already impacting their several subfields of studies. 
-
-- At this point, many will wonder how we can solve these issues presented at the global and local levels. A solution will be to have the humanities, and social sciences integrated and extend their work to the process of AI model creation. Also, have the AI world consult the humanities and social sciences when we could generate models that profoundly impact people's lives. To understand the reciprocal impact that should exist between AI, the social sciences, and humanities, we will explore five problems that can arise if we were to use our model or similar models made by others. Simultaneously, we will discuss how that reciprocal impact can lead to a more acceptable and fair integration of AI into our daily lives and the judicial system.
+At this point, many will wonder how we can solve these issues presented at the global and local levels. A solution will be to have the humanities, and social sciences integrated and extend their work to the process of AI model creation. Also, have the AI world consult the humanities and social sciences when we could generate models that profoundly impact people's lives. To understand the reciprocal impact that should exist between AI, the social sciences, and humanities, we will explore five problems that can arise if we were to use our model or similar models made by others. Simultaneously, we will discuss how that reciprocal impact can lead to a more acceptable and fair integration of AI into our daily lives and the judicial system.
 
 
 **Problem 1: Confrontation Clause**
