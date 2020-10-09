@@ -19,11 +19,11 @@
 
 ## Objective
 
-As of now, artificial intelligence is being integrated into our daily lives and at different levels of our society. For many, artificial intelligence is the key to a more prosperous future, and for others, artificial intelligence is a source of wrongness if not understood completely. In recent years, many reputable news sources have pointed out that artificial intelligence has become the reason for many discriminatory actions. In particular, ProPublica, a nonprofit newsroom, concluded in 2016 that automated criminal risk assessment algorithms hold racial inequality. Throughout the United States, an array of distinct automated criminal risk assessment algorithms have been built. Sadly, as often happens with risk assessment tools, many are adopted without rigorous testing on whether it works. In particular, most don't evaluate existing racial disparities and parity in the AI model. That is why, after constructing a criminal risk assessment model, we need to check that the model is fair and that it does not hold any discrimination. Such a post-analysis can prevent the AI model from committing unwanted discriminatory actions.
+As of now, artificial intelligence is being integrated into our daily lives and at different levels of our society. For many, artificial intelligence is the key to a more prosperous future,better customer experience, and for others, artificial intelligence could be a source of wrongness if not understood completely. In recent years, many reputable news sources have pointed out that artificial intelligence has become the reason for many discriminatory actions. In particular, ProPublica, a nonprofit newsroom, concluded in 2016 that automated criminal risk assessment algorithms hold racial inequality. Throughout the United States, an array of distinct automated criminal risk assessment algorithms have been built. Sadly, as often happens with risk assessment tools, many are adopted without rigorous testing on whether it works. In particular, most don't evaluate existing racial disparities and parity in the ML model. That is why, after constructing a criminal risk assessment model, we need to check that the model is fair and that it does not hold any discrimination. Such a post-analysis can prevent the ML model from committing unwanted discriminatory actions.
 
-With the above in mind, in this tutorial, and with the help of Driverless AI, we will build a criminal risk assessment model, but in this case, rather than predicting someone's risk level, we will predict whether someone will be arrested within two years since a given arrest. Right after, we will analyze the AI model, and we will check for fairness, disparity, and parity. To debug and diagnose unwanted bias in our prediction system model, we will conduct a global versus local analysis in which global and local model behavior are compared. We will also conduct a disparate impact analysis to answer the following two questions: what biases exist in my model? And what levels of disparity exist between population groups? Immediately later, we will have an interdisciplinary conversation around risk assessment tools in the world of AI, the social sciences, and humanities. Singularly, we will discuss several societal issues that can arise if we implement our AI recidivism prediction system or someone else's risk assessment tool. In hopes of finding a solution to the issues that can arise, we will explore how the social sciences and humanities can solve these societal issues. Simultaneously, we will discuss the reciprocal impact that should exist between AI, the social sciences, and humanities (such as in philosophy) and how that reciprocal impact can lead to a more acceptable and fair integration of AI into our daily lives and the judicial system. 
+With the above in mind, in this tutorial, and with the help of Driverless AI, we will build a criminal risk assessment model, but in this case, rather than predicting someone's risk level, we will predict whether someone will be arrested within two years since a given arrest. Right after, we will analyze the ML model, and we will check for fairness, disparity, and parity. To debug and diagnose unwanted bias in our prediction system model, we will conduct a global versus local analysis in which global and local model behavior are compared. We will also conduct a disparate impact analysis to answer the following two questions: what biases exist in my model? And what levels of disparity exist between population groups? Immediately later, we will have an interdisciplinary conversation around risk assessment tools in the world of AI, the social sciences, and humanities. Singularly, we will discuss several societal issues that can arise if we implement our AI recidivism prediction system or someone else's risk assessment tool. In hopes of finding a solution to the issues that can arise, we will explore how the social sciences and humanities can solve these societal issues. Simultaneously, we will discuss the reciprocal impact that should exist between AI, the social sciences, and humanities (such as in philosophy) and how that reciprocal impact can lead to a more acceptable and fair integration of AI into our daily lives and the judicial system. 
 
-All things considered, it is the authors' hope that this tutorial inspires the standard to consult the social sciences and humanities when creating AI models that can have a tremendous impact on multiple areas of our diverse society. It is also the hope to alert social scientists and members of the humanities to extend their social activism to AI model creation, which will have a considerable impact on their fields of study. In essence, this joint work between AI, the humanities, and the social sciences can lead us to a more equitable and fair integration of AI into our daily lives and society. 
+All things considered, it is the authors' hope that this tutorial inspires data scientists to consult the social sciences and humanities when creating ML models that can have a tremendous impact on multiple areas of our diverse society. It is also the hope to alert social scientists and members of the humanities to extend their social activism to ML model creation, which will have a considerable impact on their fields of study. In essence, this joint work between AI, the humanities, and the social sciences can lead us to a more equitable and fair integration of AI into our daily lives and society. 
 
 ## Prerequisites
 
@@ -37,9 +37,9 @@ You will need the following to be able to do this tutorial:
   - [Machine Bias: There’s software used across the country to predict future criminals. And it’s biased against blacks.](https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing)
   - [How We Analyzed the COMPAS Recidivism Algorithm](https://www.propublica.org/article/how-we-analyzed-the-compas-recidivism-algorithm)
 - A **Two-Hour Test Drive session**: Test Drive is [H2O.ai's](https://www.h2o.ai) Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.
-  - Need a **Two-Hour Test Drive** session?Follow the instructions on this quick tutorial to get a Test Drive session started.
+  - Need a **Two-Hour Test Drive** session? Follow the instructions on this quick tutorial to get a Test Drive session started.
 
-**Note: Aquarium’s Driverless AI Test Drive lab has a license key built-in, so you don’t need to request one to use it. Each Driverless AI Test Drive instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore Driverless AI, you can always launch another Test Drive instance or reach out to our sales team via the contact us form.**
+**Note: Aquarium’s Driverless AI Test Drive lab has a license key built-in, so you don’t need to request one to use it. Each Driverless AI Test Drive instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to explore Driverless AI further, you can always launch another Test Drive instance or reach out to our sales team via the contact us form.**
 
 ## Task 1: Create a New Criminal Risk Scorer in Driverless AI
 
@@ -153,7 +153,7 @@ In the data recipe (COMPAS_DATA_RECIPE.py) used in task one, the code that addre
 
 After correcting the dataset, we made use of the following columns: 
 
-- **sex**: sex of an indiviudal 
+- **sex**: sex of an individual 
 - **age_cat**: age category of an individual, possible categories are as follows:  
 
   - 25 - 45
@@ -243,7 +243,7 @@ To better understand this idea of prior_count holding a certain level of racial 
 
 Besides the National Registry of Exonerations, the Washington Post reported the following this past June in their article title: There’s overwhelming evidence that the criminal justice system is racist. Here’s the proof: 
 
-- “[A 2017 study](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3036726) of about 48,000 criminal cases in Wisconsin showed that white defendants were 25 percent more likely than black defendants to have their most serious charge dismissed in a plea bargain. Among defendants facing misdemeanor charges that could carry a sentence of incarceration, whites were 75 percent more likely to have those charges dropped, dismissed or reduced to a charge that did not include such a punishment.”[6]
+- “[A 2017 study](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3036726) of about 48,000 criminal cases in Wisconsin showed that white defendants were 25 percent more likely than black defendants to have their most serious charge dismissed in a plea bargain. Among defendants facing misdemeanor charges that could carry a sentence of incarceration, whites were 75 percent more likely to have those charges dropped, dismissed, or reduced to a charge that did not include such a punishment.”[6]
 
 The New York Times also reported the above last year. As well, the Washington Post reported in a series of reports and analyses that African Americans across the country are being wrongly arrested and, therefore, adding more wrongly convictions to their prior charge count. As a result, of having wrong charges and a high prior_count African Americans experience the following as reported in the Washington Post: 
 
@@ -327,13 +327,13 @@ Moving forward with our disparate impact analysis, let's look at the group dispa
 
 This rule is very up for debate on how this will develop going forward, but for now, we have set the low (unfairness) threshold to .8. But of course, when we are talking about making decisions on whether to send someone to prison, no difference in treatment should be allowed.  But in our efforts to analyze this model, let's see if the model can achieve fairness under a benchmark that will require the model not to treat 80% less favorably the non-white groups than the Caucasian group.
 
-2. In the group disparity section, note that in the Caucasian row, all column values are 1.00000. The reference level in this case will always be 1.00000. The 1.00000 number will be the acceptable and fair reference value we will desire to see among other racial groups in our model. 
+2. In the group disparity section, note that in the Caucasian row, all column values are 1.00000. The reference level, in this case, will always be 1.00000. The 1.00000 number will be the acceptable and fair reference value we will desire to see among other racial groups in our model. 
 
 3. The adverse impact disparity value for African Americans in this built model is 1.46840. Compared to Caucasians, the difference is .46840. Note that the value is highlighted in orange, and that is because it is out of range. The range is between the high threshold of 1.25 and a low threshold of 0.8. The red flag here is having an increased adverse impact disparity value compared to the reference level or any other group. In other words, this difference is saying that a substantially high rate of wrong predictions exists, which works to the disadvantage of the African American group. 
 
 4. The false-positive rate disparity for African Americans is 1.48404, a .48404 addition to the reference level's false-positive rate disparity value. And this is perhaps the giant red flag because this model is mispredicting African Americans at a 1.48404 rate disparity: the highest rate disparity among all groups. 
 
-5. The false-negative rate disparity for African Americans is 0.49693. In comparison to Caucasians, that's a 0.50307 decrease. This difference results in problems because, in the Caucasian group, we will see a higher rate of false-negatives: a security problem. This difference also presents a wrong double standard wherein one hand, we have the model wrongly predicting more instances of  1 where 1 is a true two_year_recid  in the African American group. And on the other hand, we have the same model predicting higher false-negative instances in the Caucasian group. 
+5. The false-negative rate disparity for African Americans is 0.49693. In comparison to Caucasians, that's a 0.50307 decrease. This difference results in problems because, in the Caucasian group, we will see a higher rate of false-negatives: a security problem. This difference also presents a wrong double standard wherein one hand; we have the model wrongly predicting more instances of  1 where 1 is a true two_year_recid  in the African American group. And on the other hand, we have the same model predicting higher false-negative instances in the Caucasian group. 
 
 6. In the group parity section, we see that no fairness is achieved across all categories except for the 'negative predicted value parity' column. 
 
@@ -345,7 +345,7 @@ This model will fail the adverse impact analysis / four-fifths rule. If we were 
 
 ## Task 7: Local Behavior Analysis
 
-Now that we know that bias is introduced to an extent at the global level let us explore how disparity and bias are generated in particular instances now that we know that huge disparities and injustices exist between racial groups. 
+Now that we know that bias is introduced to an extent at the global level, let us explore how disparity and bias are generated in particular instances now that we know that huge disparities and injustices exist between racial groups. 
 
 In the 'DAI Model' tab, click on the sensitivity analysis visual, the following should appear: 
 
@@ -379,7 +379,7 @@ Rather than looking at every instance of false positives in the African American
 
 1. To get close to the instances that are close to the cut-off line, I filtered [ID] < 5 (it might be the case that you will have to filter with other options to get close) 
 2. The table now represents the five instances that are close to the cut-off line.
-3. The graph will now reflect the above table's information showcasing the five instances that are close to the cut-off line.
+3. The graph will now reflect the above table's information showcasing the five instances close to the cut-off line.
 
 ![sensitivity-analysis-7-id-4](assets/sensitivity-analysis-7-id-4.jpg)
 
@@ -387,7 +387,7 @@ In prediction number 4 ([ID] 4), as highlighted in the image above, we see an Af
 
 ![sensitivity-analysis-8-change-prediction](assets/sensitivity-analysis-8-change-prediction.jpg)
 
-Change the priors_count value from four to zero. Right after, click on the rescore option (on the top left corner where the table is located); something similar to the above page should appear. Here we see that the prediction has been flipped, and as well we come to realize that this person was judged based on his prior counts. It is worth noting that this person perhaps obtained such four prior counts because of racism in our judicial system and, therefore, was predicted by the model as a true two_year_recid. I am not saying that’s true but given our biased judicial system, that’s not hard to believe. It's something to think for now. 
+Change the priors_count value from four to zero. Right after, click on the rescore option (on the top left corner where the table is located); something similar to the above page should appear. Here we see that the prediction has been flipped, and as well we come to realize that this person was judged based on his prior counts. It is worth noting that this person perhaps obtained such four prior counts because of racism in our judicial system and, therefore, was predicted by the model as a true two_year_recid. I am not saying that’s true, but given our biased judicial system, that’s not hard to believe. It's something to think for now. 
 
 ![sensitivity-analysis-9-id-1-prior-count](assets/sensitivity-analysis-9-id-1-prior-count.jpg)
 
@@ -402,14 +402,14 @@ With the above, we can conclude that at the local level, we also have a bias in 
 
 ## Task 8: The Reciprocal Impact that Should Exist Between AI, the Social Sciences, and Humanities
 
-At this point, many will wonder how we can solve these issues presented at the global and local levels. A solution will be to have the humanities, and social sciences integrated and extend their work to the process of AI model creation while the AI world makes it standard to consult the humanities and social sciences. To understand the reciprocal impact that should exist between AI, the social sciences, and humanities, we will explore five problems that can arise if we were to use our model or similar models made by others. Simultaneously, we will discuss how that reciprocal impact can lead to a more acceptable and fair integration of AI into our daily lives and the judicial system. 
+At this point, many will wonder how we can solve these issues presented at the global and local levels. A solution will be to have the humanities and social sciences integrated and extend their work to the process of AI model creation while the AI world makes it standard to consult the humanities and social sciences. To understand the reciprocal impact that should exist between AI, the social sciences, and humanities, we will explore five problems that can arise if we were to use our model or similar models made by others. Simultaneously, we will discuss how that reciprocal impact can lead to a more acceptable and fair integration of AI into our daily lives and the judicial system. 
 
 **Problem 1: Confrontation Clause**
 
-To start our analysis, consider the opening statement Rebecca Wexler wrote in her New York Times article title When a Computer Program Keeps You in Jail:
+To start our analysis, consider the opening statement, Rebecca Wexler wrote in her New York Times article title When a Computer Program Keeps You in Jail:
 
 - “The criminal justice system is becoming automated. At every stage — from policing and investigations
-to bail, evidence, sentencing and parole — computer systems play a role. Artificial intelligence deploys cops on the beat. Audio sensors generate gunshot alerts. Forensic analysts use probabilistic software programs to evaluate fingerprints, faces and DNA. Risk-assessment instruments help to determine who is incarcerated and for how long.
+to bail, evidence, senten, and parole — computer systems play a role. Artificial intelligence deploys cops on the beat. Audio sensors generate gunshot alerts. Forensic analysts use probabilistic software programs to evaluate fingerprints, faces, and DNA. Risk-assessment instruments help to determine who is incarcerated and for how long.
 
   Technological advancement is, in theory, a welcome development. But in practice, aspects of automation are making the justice system less fair for criminal defendants.
 
@@ -434,7 +434,7 @@ In the world of AI, constant work is being done to achieve perfect AI models. St
 
 **Problem 4: Defining Fairness**
 
-The AI world lacks a concrete moral definition of what will be considered an excellent fair model. The author's option is that by studying the several existing moral philosophies, we will clearly define fairness in the AI world. That is why more interdisciplinary conversations around AI and the social sciences and humanities are necessary. If we want to integrate AI into several aspects of our daily lives, we need to make sure that such AI will not create or amplify social problems. That is why we need a concrete definition of fairness to force every AI model to abide to the fairness criteria.   
+The AI world lacks a concrete moral definition of what will be considered an excellent fair model. The author's option is that by studying the several existing moral philosophies, we will clearly define fairness in the AI world. That is why more interdisciplinary conversations around AI and the social sciences and humanities are necessary. If we want to integrate AI into several aspects of our daily lives, we need to make sure that such AI will not create or amplify social problems. That is why we need a concrete definition of fairness to force every AI model to abide by the fairness criteria.   
 
 **Problem 5: Prior Criminal Counts**
 
@@ -458,7 +458,7 @@ As a final analysis, the AI world is growing and changing our society. We need t
 
 ## Next Steps
 
-Check out the next tutorial: [Time Series Tutorial - Retail Sales Forecasting](https://training.h2o.ai/products/tutorial-2a-time-series-recipe-tutorial-retail-sales-forecasting) where you will learn more about:
+Check out the next tutorial: [Time Series Tutorial - Retail Sales Forecasting](https://training.h2o.ai/products/tutorial-2a-time-series-recipe-tutorial-retail-sales-forecasting), where you will learn more about:
 
 - Time-series:
 - Time-series concepts
