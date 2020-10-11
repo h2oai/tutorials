@@ -1,4 +1,4 @@
-# Tutorial 1E: Risk Assessment Tools in the World of AI, the Social Sciences, and Humanities
+# Risk Assessment Tools in the World of AI, the Social Sciences, and Humanities
 
 ## Outline
 
@@ -19,7 +19,7 @@
 
 ## Objective
 
-As of now, artificial intelligence is being integrated into our daily lives and at different levels of our society. For many, artificial intelligence is the key to a more prosperous future,better customer experience, and for others, artificial intelligence could be a source of wrongness if not understood completely. In recent years, many reputable news sources have pointed out that artificial intelligence has become the reason for many discriminatory actions. In particular, ProPublica, a nonprofit newsroom, concluded in 2016 that automated criminal risk assessment algorithms hold racial inequality. Throughout the United States, an array of distinct automated criminal risk assessment algorithms have been built. Sadly, as often happens with risk assessment tools, many are adopted without rigorous testing on whether it works. In particular, most don't evaluate existing racial disparities and parity in the ML model. That is why, after constructing a criminal risk assessment model, we need to check that the model is fair and that it does not hold any discrimination. Such a post-analysis can prevent the ML model from committing unwanted discriminatory actions.
+As of now, artificial intelligence is being integrated into our daily lives and at different levels of our society. For many, artificial intelligence is the key to a more prosperous future, better customer experience, and for others, artificial intelligence could be a source of wrongness if not understood completely. In recent years, many reputable news sources have pointed out that artificial intelligence has become the reason for many discriminatory actions. In particular, ProPublica, a nonprofit newsroom, concluded in 2016 that automated criminal risk assessment algorithms hold racial inequality. Throughout the United States, an array of distinct automated criminal risk assessment algorithms have been built. Sadly, as often happens with risk assessment tools, many are adopted without rigorous testing on whether it works. In particular, most don't evaluate existing racial disparities and parity in the ML model. That is why, after constructing a criminal risk assessment model, we need to check that the model is fair and that it does not hold any discrimination. Such a post-analysis can prevent the ML model from committing unwanted discriminatory actions.
 
 With the above in mind, in this tutorial, and with the help of Driverless AI, we will build a criminal risk assessment model, but in this case, rather than predicting someone's risk level, we will predict whether someone will be arrested within two years since a given arrest. Right after, we will analyze the ML model, and we will check for fairness, disparity, and parity. To debug and diagnose unwanted bias in our prediction system model, we will conduct a global versus local analysis in which global and local model behavior are compared. We will also conduct a disparate impact analysis to answer the following two questions: what biases exist in my model? And what levels of disparity exist between population groups? Immediately later, we will have an interdisciplinary conversation around risk assessment tools in the world of AI, the social sciences, and humanities. Singularly, we will discuss several societal issues that can arise if we implement our AI recidivism prediction system or someone else's risk assessment tool. In hopes of finding a solution to the issues that can arise, we will explore how the social sciences and humanities can solve these societal issues. Simultaneously, we will discuss the reciprocal impact that should exist between AI, the social sciences, and humanities (such as in philosophy) and how that reciprocal impact can lead to a more acceptable and fair integration of AI into our daily lives and the judicial system. 
 
@@ -30,7 +30,7 @@ All things considered, it is the authors' hope that this tutorial inspires data 
 You will need the following to be able to do this tutorial:
 
 - Basic knowledge of Confusion Matrices 
-- Basic knowledge of Driverless AI or doing the [Automatic Machine Learning Introduction with Driverless AI Test Drive](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai) 
+- Basic knowledge of Driverless AI or doing the [Automatic Machine Learning Introduction with Driverless AI](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai) 
 - Completion of the [Machine Learning Interpretability Tutorial](https://training.h2o.ai/products/tutorial-1c-machine-learning-interpretability-tutorial)
 - Completion of the [Disparate Impact Analysis Tutorial](https://training.h2o.ai/products/tutorial-5a-disparate-impact-analysis-tutorial) 
 - Review the following two articles on ProPublica's investigations: 
@@ -99,16 +99,20 @@ Download the data recipe for this experiment here: [COMPAS_DATA_RECIPE.py](https
 
 
 16. Click "REPRODUCIBLE," make sure it's turn on(yellow) 
+
+  - The Reproducible button allows you to build an experiment with a random seed and get reproducible results.[0] 
+
 17. Click "LAUNCH EXPERIMENT"
 
 ![training-settings](assets/training-settings.jpg)
 
 Let's have the experiment run in the background. Simultaneously, in task 2, let's discuss risk assessment tools in the United States, and to understand these tools better, let's explore a particular controversial risk tool name COMPAS. We will continue with the experiment when we debug and diagnose unwanted bias in our prediction system model. 
 
+[0] [What’s Happening in Driverless AI?](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-settings.html?highlight=reproducible#reproducible)
 
 ## Task 2: Explore Criminal Risk Scorers in America and The Compass Dataset
 
-The United States has 5% of the world's population, and therefore, one cannot explain why it holds 25% of the world's prisoners. In other words, one out of four human beings with their hands-on bards is here in the land of the free. As a result, the United States now has the highest rate of incarceration in the world. Such striking statistics are, in part, the product of widespread use of AI models that quote-unquote predict the likelihood of someone to reoffend. Across the United States, "judges, probation, and parole officers are increasingly using algorithms to assess a criminal defendant's likelihood of becoming a recidivist - a term used to describe criminals who reoffend."[1] There are dozens of these risk assessment algorithms in use. Sadly and consequently, many of these risk assessment tools have not been checked for racial bias. As a result, in 2016, ProPublica, a nonprofit newsroom, investigated COMPAS (Correctional Offender Management Profiling for Alternative Sanctions), a commercial risk assessment tool made by Northpointe. ProPublica's investigation concluded that the commercial tool was biased towards African-Americans. In other words, ProPublica "found that Black defendants were far more likely than white defendants to be incorrectly judged to be at a higher risk of recidivism."[2] In contrast, white defendants were more likely than black defendants to be mistakenly flagged as low risk. Northpointe's COMPAS is one of the most widely utilized risk assessment tools/algorithms within the criminal justice system for guiding decisions such as setting bail. 
+The United States has 5% of the world's population, and therefore, one cannot explain why it holds 25% of the world's prisoners. In other words, one out of four human beings with their hands-on bars is here in the land of the free. As a result, the United States now has the highest rate of incarceration in the world. Such striking statistics are, in part, the product of widespread use of AI models that quote-unquote predict the likelihood of someone to reoffend. Across the United States, "judges, probation, and parole officers are increasingly using algorithms to assess a criminal defendant's likelihood of becoming a recidivist - a term used to describe criminals who reoffend."[1] There are dozens of these risk assessment algorithms in use. Sadly and consequently, many of these risk assessment tools have not been checked for racial bias. As a result, in 2016, ProPublica, a nonprofit newsroom, investigated COMPAS (Correctional Offender Management Profiling for Alternative Sanctions), a commercial risk assessment tool made by Northpointe. ProPublica's investigation concluded that the commercial tool was biased towards African-Americans. In other words, ProPublica "found that Black defendants were far more likely than white defendants to be incorrectly judged to be at a higher risk of recidivism."[2] In contrast, white defendants were more likely than black defendants to be mistakenly flagged as low risk. Northpointe's COMPAS is one of the most widely utilized risk assessment tools/algorithms within the criminal justice system for guiding decisions such as setting bail. 
 
 ![disparity](assets/disparity.jpg)
 
@@ -145,7 +149,7 @@ In the data recipe (COMPAS_DATA_RECIPE.py) used in task one, the code that addre
 
 ![solving-problem-1-found-in-the-dateset](assets/solving-problem-1-found-in-the-dateset.jpg)
 
-1.  Borenstein also notes the following problem in ProPublica's dataset: "The age variable that ProPublica constructed is not quite accurate. ProPublica calculated age as the difference in years between the point in time when it collected the data, in early April 2016, and the person's date of birth. However, when studying recidivism, one should really use the age of the person at the time of the COMPAS screen date that starts the two year time window. So some people may be up to 25 months younger than the age variable that ProPublica created."[4] To correct this mistake, we had to subtract the c_jail_in column minus dob (date of birth). After correcting the age column, we fixed the age_category column as it is one of the columns we are using to train our model.
+2.  Borenstein also notes the following problem in ProPublica's dataset: "The age variable that ProPublica constructed is not quite accurate. ProPublica calculated age as the difference in years between the point in time when it collected the data, in early April 2016, and the person's date of birth. However, when studying recidivism, one should really use the age of the person at the time of the COMPAS screen date that starts the two year time window. So some people may be up to 25 months younger than the age variable that ProPublica created."[4] To correct this mistake, we had to subtract the c_jail_in column minus dob (date of birth). After correcting the age column, we fixed the age_category column as it is one of the columns we are using to train our model.
 
 In the data recipe (COMPAS_DATA_RECIPE.py) used in task one, the code that addresses the problem above is as follows: 
 
@@ -175,8 +179,6 @@ We turned off all models except for the 'XGBoost GBM Models' because, by doing s
 
 As noted in task one, we set the interpretability setting to 7. Setting the interpretability to 7 enables monotonicity constraints, significant in our post-analysis. Setting interpretability >= 7 enables monotonicity constraints: simpler feature transformations. If we use an unconstrained model and group fairness metrics, we risk creating group fairness metrics that appear to be reasonable. In other words, monotonicity constraints will allow us to understand and see any instances of discrimination at the individual level. 
 
-Before running our experiment, we enabled "REPRODUCIBLE." Usually, the "REPRODUCIBLE" option is disabled by default. We enabled "REPRODUCIBLE" in our experiment to obtain a high level of precision in our experiment.
-
 By now, our experiment should be done. Let us explore our model now and see if it holds any racial bias.
 
 ### References 
@@ -193,7 +195,7 @@ Now that our experiment is done, we can generate an MLI report to conduct our gl
 
 While the several subcomponents of the MLI report are generated, let us better understand this idea of a global behavior versus local behavior analysis concept. 
 
-The analysis is quite simple; we want to explore how our new criminal risk scorer generally behaves (globally); in other words, we want to understand what columns typically drive the model behavior. Looking at the global behavior will reveal what is predicting whether someone will be arrested within the two-year mark since a given arrest.  We are also trying to conduct this local analysis that refers to the idea of seeing that no bias is present at the individual level in these general observations. For example, it could be the case that at the global level, we can have an apparent fair model where decisions are being made with no racial bias. Still, when exploring the model at a local level, we can discover that particular individuals are subject to discrimination and unfairness. As a result, comparing these two levels of behavior can provide us a clear indication of what perhaps needs to change in the dataset or the model itself. For this reason, in the following three tasks, we will use several DAI and surrogate model graphs to compare the global and local behavior in our model predictions and diagnose confounding bias stemming from a latent racist essence in the features we used. Besides, we will answer the following two questions: what biases exist in my model? And what levels of disparity exist between population groups? 
+The analysis is quite simple; we want to explore how our new criminal risk scorer generally behaves (globally); in other words, we want to understand what columns typically drive the model behavior. Looking at the global behavior will reveal what is predicting whether someone will be arrested within the two-year mark since a given arrest.  We are also trying to conduct this local analysis that refers to the idea of seeing that no bias is present at the individual level in these general observations. For example, it could be the case that at the global level, we can have an apparent fair model where decisions are being made with no racial bias. Still, when exploring the model at a local level, we can discover that particular individuals are subject to discrimination and unfairness. As a result, comparing these two levels of behavior can provide us a clear indication of what perhaps needs to change in the dataset or the model itself. For this reason, in the following three tasks, we will use several Driverless AI and surrogate model graphs to compare the global and local behavior in our model predictions and diagnose confounding bias stemming from a latent racist essence in the features we used. Besides, we will answer the following two questions: what biases exist in my model? And what levels of disparity exist between population groups? 
 
 To learn more about this idea of a global behavior versus a local behavior analysis, click [here](https://openreview.net/pdf?id=r1iWHVJ7Z).  
 
@@ -207,7 +209,7 @@ At this point, several subcomponents of the MLI report should have already been 
 
 ![transformed-shapley](assets/transformed-shapley.jpg)
 
-When looking at the transformed Shapley, we can see that the 3_prios_count is a feature created by Driverless AI that positively drives the model behavior. 3_prios_count, being a positive feature, pushes the model's prediction higher on average. 
+When looking at the transformed Shapley, we can see that the **3_prios_count** is a feature created by Driverless AI that positively drives the model behavior. **3_prios_count**, being a positive feature, pushes the model's prediction higher on average. 
 
 2. If we click on the summary tab and scroll down where it says, "Most Important Variables for DAI...." we can see the transformed features. You will note that 3_priors_count: 3_priors_count appears at the top among all transformed features. 
 
@@ -229,7 +231,7 @@ When looking at the RF Feature Importance horizontal graph, we can see that prio
 
 The higher a feature appears in a decision tree, the more critical they are in the model prediction system. The frequency that a particular feature appears in a decision tree can also reveal its importance. Additionally, features connected by a branch can show, to an extent, a relationship between the features when making predictions in our model. Hence, when looking at our decision tree, we can note that prio_count appears four times and is the highest feature in the decision tree. Accordingly, it will be appropriate for us to conclude that indeed it seems that at the global level, prior_count is driving the predictions. 
 
-Before moving forward, I will like to note that based on the transformed Shapley, RF Feature Importance, and decision tree, age is the second most influential feature in the model. And this can present a problem because we don't want age to be a factor when predicting two-year recidivism. 
+Before moving forward, let's note that based on the transformed Shapley, RF Feature Importance, and decision tree, age is the second most influential feature in the model. And this can present a problem because we don't want age to be a factor when predicting two-year recidivism. 
 
 Going back to our conversation around prior_count, for many, using prior_count in our model will seem like a no problem. Many will argue that using prior-count will make sense given that it tells whether someone has been breaking the law. But, when exploring prior_count in-depth, we discover that prior_count holds a tremendous racial bias.
 
@@ -377,7 +379,7 @@ In the filter section, click on the FP option; this will select the African Amer
 
 Rather than looking at every instance of false positives in the African American group, let's look at the instances that are super close to the cut-off line and see if the priors_count column is truly driving the model behavior. Reminder: sensitivity analysis enables us to tinker with various data settings to see their weight in a prediction.  
 
-1. To get close to the instances that are close to the cut-off line, I filtered [ID] < 5 (it might be the case that you will have to filter with other options to get close) 
+1. To get close to the instances that are close to the cut-off line, filtered [ID] < 5 (it might be the case that you will have to filter with other options to get close) 
 2. The table now represents the five instances that are close to the cut-off line.
 3. The graph will now reflect the above table's information showcasing the five instances close to the cut-off line.
 
@@ -387,7 +389,7 @@ In prediction number 4 ([ID] 4), as highlighted in the image above, we see an Af
 
 ![sensitivity-analysis-8-change-prediction](assets/sensitivity-analysis-8-change-prediction.jpg)
 
-Change the priors_count value from four to zero. Right after, click on the rescore option (on the top left corner where the table is located); something similar to the above page should appear. Here we see that the prediction has been flipped, and as well we come to realize that this person was judged based on his prior counts. It is worth noting that this person perhaps obtained such four prior counts because of racism in our judicial system and, therefore, was predicted by the model as a true two_year_recid. I am not saying that’s true, but given our biased judicial system, that’s not hard to believe. It's something to think for now. 
+Change the priors_count value from four to zero. Right after, click on the rescore option (on the top left corner where the table is located); something similar to the above page should appear. Here we see that the prediction has been flipped, and as well we come to realize that this person was judged based on his prior counts. It is worth noting that this person perhaps obtained such four prior counts because of racism in our judicial system and, therefore, was predicted by the model as a true two_year_recid. Given our biased judicial system, that’s not hard to believe. It's something to think for now. 
 
 ![sensitivity-analysis-9-id-1-prior-count](assets/sensitivity-analysis-9-id-1-prior-count.jpg)
 
@@ -409,7 +411,7 @@ At this point, many will wonder how we can solve these issues presented at the g
 To start our analysis, consider the opening statement, Rebecca Wexler wrote in her New York Times article title When a Computer Program Keeps You in Jail:
 
 - “The criminal justice system is becoming automated. At every stage — from policing and investigations
-to bail, evidence, senten, and parole — computer systems play a role. Artificial intelligence deploys cops on the beat. Audio sensors generate gunshot alerts. Forensic analysts use probabilistic software programs to evaluate fingerprints, faces, and DNA. Risk-assessment instruments help to determine who is incarcerated and for how long.
+to bail, evidence, sentence, and parole — computer systems play a role. Artificial intelligence deploys cops on the beat. Audio sensors generate gunshot alerts. Forensic analysts use probabilistic software programs to evaluate fingerprints, faces, and DNA. Risk-assessment instruments help to determine who is incarcerated and for how long.
 
   Technological advancement is, in theory, a welcome development. But in practice, aspects of automation are making the justice system less fair for criminal defendants.
 
@@ -472,4 +474,4 @@ Check out the next tutorial: [Time Series Tutorial - Retail Sales Forecasting](h
 
 Thank you to everyone that took the time to make this tutorial possible.
 
-- Patrick Hall 
+- [Patrick Hall](https://www.linkedin.com/in/jpatrickhall/)
