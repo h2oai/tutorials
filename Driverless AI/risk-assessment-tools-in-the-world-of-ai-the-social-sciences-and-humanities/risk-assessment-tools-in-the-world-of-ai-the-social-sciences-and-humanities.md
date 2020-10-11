@@ -12,7 +12,6 @@
 - [Task 6: What Biases Exist in My Model? What Levels of Disparity Exist Between Population Groups?](#task-6-what-biases-exist-in-my-model-what-levels-of-disparity-exist-between-population-groups)
 - [Task 7: Local Behavior Analysis](#task-7-local-behavior-analysis)
 - [Task 8: The Reciprocal Impact that Should Exist Between AI, the Social Sciences, and Humanities](#Task-8-the-reciprocal-impact-that-should-exist-between-ai-the-social-sciences-and-humanities)
-- [Next Steps](#next-steps)
 - [Special Thanks](#special-thanks)
 
 
@@ -428,7 +427,7 @@ To address this problem, AI makers and law practitioners should discuss and work
 
 **Problem 2: Fair and unfair models will still be wrong in the legal field**
 
-Even if we were to build recidivism models that can accurately predict whether someone will be arrested within two years since the last arrest, that will still not exclude the model from being labeled as wrong. Image for one moment that you are in court, and you are given more time behind bars because you have been predicted to be arrested again by this perfect AI model. In a way, you will be punished by something that you haven't committed. According to the law, you can't be punished behind bars for something you haven't done. Will it be wrong to keep someone in jail because you know that person will soon commit another crime? Will it be wrong for you to let that person go because the offense hasn't been committed, but will be quickly committed in the near future? Hence, the argument that fair and unfair models will still be wrong in the legal field. The question now is whether this will be wrong or not. In a way, this is a moral problem that I believe the humanities and social sciences can answer best. If it's the case that members of the social sciences and humanities conclude that it will be wrong, that will impact the AI world in a way that it will make their AI model creations unnecessary. Concerning us, this will affect the possible implementation of our built AI model.
+Even if we were to build recidivism models that can accurately predict whether someone will be arrested within two years since the last arrest, that will still not exclude the model from being labeled as wrong. Image for one moment that you are in court, and you are given more time behind bars because you have been predicted to be arrested again by this perfect AI model. In a way, you will be punished by something that you haven't committed. According to the law, you can't be punished behind bars for something you haven't done. Will it be wrong to keep someone in jail because you know that person will soon commit another crime? Will it be wrong for you to let that person go because the offense hasn't been committed, but will be quickly committed in the near future? Hence, the argument that fair and unfair models will still be wrong in the legal field. The question now is whether this will be wrong or not. In a way, this is a moral problem the humanities and social sciences can answer and solve best. If it's the case that members of the social sciences and humanities conclude that it will be wrong, that will impact the AI world in a way that it will make their AI model creations unnecessary. Concerning us, this will affect the possible implementation of our built AI model.
 
 **Problem 3: Unreachable perfect models**
 
@@ -436,7 +435,7 @@ In the world of AI, constant work is being done to achieve perfect AI models. St
 
 **Problem 4: Defining Fairness**
 
-The AI world lacks a concrete moral definition of what will be considered an excellent fair model. The author's option is that by studying the several existing moral philosophies, we will clearly define fairness in the AI world. That is why more interdisciplinary conversations around AI and the social sciences and humanities are necessary. If we want to integrate AI into several aspects of our daily lives, we need to make sure that such AI will not create or amplify social problems. That is why we need a concrete definition of fairness to force every AI model to abide by the fairness criteria.   
+The AI world lacks a concrete moral definition of what will be considered an excellent fair model. It seems plausible that by studying the several existing moral philosophies, we will clearly define fairness in the AI world. That is why more interdisciplinary conversations around AI and the social sciences and humanities are necessary. If we want to integrate AI into several aspects of our daily lives, we need to make sure that such AI will not create or amplify social problems. That is why we need a concrete definition of fairness to force every AI model to abide by the fairness criteria.   
 
 **Problem 5: Prior Criminal Counts**
 
@@ -457,18 +456,6 @@ As a final analysis, the AI world is growing and changing our society. We need t
 [9][When a Computer Program Keeps You in Jail](https://www.nytimes.com/2017/06/13/opinion/how-computers-are-harming-criminal-justice.html)
 
 [10][Confrontation Clause - Wikipedia](https://en.wikipedia.org/wiki/Confrontation_Clause)
-
-## Next Steps
-
-Check out the next tutorial: [Time Series Tutorial - Retail Sales Forecasting](https://training.h2o.ai/products/tutorial-2a-time-series-recipe-tutorial-retail-sales-forecasting), where you will learn more about:
-
-- Time-series:
-- Time-series concepts
-- Forecasting
-- Experiment settings
-- Experiment results summary
-- Model interpretability
-- Analysis
 
 ## Special Thanks 
 
