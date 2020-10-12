@@ -107,6 +107,8 @@ Download the data recipe for this experiment here: [COMPAS_DATA_RECIPE.py](https
 
 Let's have the experiment run in the background. Simultaneously, in task 2, let's discuss risk assessment tools in the United States, and to understand these tools better, let's explore a particular controversial risk tool name COMPAS. We will continue with the experiment when we debug and diagnose unwanted bias in our prediction system model. 
 
+### References
+
 [0] [What’s Happening in Driverless AI?](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-settings.html?highlight=reproducible#reproducible)
 
 ## Task 2: Explore Criminal Risk Scorers in America and The Compass Dataset
@@ -355,10 +357,9 @@ In the 'DAI Model' tab, click on the sensitivity analysis visual, the following 
 1. Here we see that the cut-off is 0.38840827(dash line), anything below the cut-off will be predicted as a true two_year_recid. Anything above the cut-off will be predicted as a true two_year_recid. 
 2. Here the false two_year_recid's are to the left.
 3. Here the true two_year_recid's are to the right. 
+4. To understand the model's local behavior, let us analyze the false-positive instances in the African American community through what is called a  residual analysis. This analysis will allow us to look at multiple false-positive cases that are super close to the cut-off. And with that, we will modify specific column values of these cases, and we will observe for any changes in prediction. As of now, the table in the sensitivity analysis page doesn't have the race column. Why? Because it was not used during our experiment. We need the race column for our residual analysis because we need to know each case's race. To add the race column, click on the plus icon located at the top right corner of the sensitivity analysis table. In there, look for the race option and click on it as shown on the below image.
 
 ![sensitivity-analysis-2-race-column](assets/sensitivity-analysis-2-race-column.jpg)
-
-4. To understand the model's local behavior, let us analyze the false-positive instances in the African American community through what is called a  residual analysis. This analysis will allow us to look at multiple false-positive cases that are super close to the cut-off. And with that, we will modify specific column values of these cases, and we will observe for any changes in prediction. As of now, the table in the sensitivity analysis page doesn't have the race column. Why? Because it was not used during our experiment. We need the race column for our residual analysis because we need to know each case's race. To add the race column, click on the plus icon located at the top right corner of the sensitivity analysis table. In there, look for the race option and click on it as shown on the above image.
 
 5. Click on the SET option 
 
