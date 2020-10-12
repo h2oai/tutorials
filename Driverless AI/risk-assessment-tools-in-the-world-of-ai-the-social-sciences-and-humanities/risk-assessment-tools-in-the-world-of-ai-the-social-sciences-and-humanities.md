@@ -12,6 +12,7 @@
 - [Task 6: What Biases Exist in My Model? What Levels of Disparity Exist Between Population Groups?](#task-6-what-biases-exist-in-my-model-what-levels-of-disparity-exist-between-population-groups)
 - [Task 7: Local Behavior Analysis](#task-7-local-behavior-analysis)
 - [Task 8: The Reciprocal Impact That Should Exist Between AI, the Social Sciences, and Humanities](#Task-8-the-reciprocal-impact-that-should-exist-between-ai-the-social-sciences-and-humanities)
+- [Next Steps](#next-steps)
 - [Special Thanks](#special-thanks)
 
 
@@ -461,6 +462,26 @@ And to further support the argument of how we need collaboration between AI, the
 [9][When a Computer Program Keeps You in Jail](https://www.nytimes.com/2017/06/13/opinion/how-computers-are-harming-criminal-justice.html)
 
 [10][Confrontation Clause - Wikipedia](https://en.wikipedia.org/wiki/Confrontation_Clause)
+
+## Next Steps 
+
+Check out the next tutorial: *Image Classification*, where you will learn about: 
+
+- How to use images to predict the adoption rate of animals in an animal shelter 
+- Pre-trained image transformers - transforming images into vectors 
+- Automatic image model 
+
+**(TUTORIAL COMING SOON)**
+
+In the meantime, you can watch the following webinar: 
+
+**Webinar**: [More Use Cases and More Value with Automated Computer Vision Modeling](https://www.h2o.ai/webinars/?commid=427103)
+
+In this webinar, you will learn about: - Visual AI features in Driverless AI 1.9 - Image modeling use cases with images with other data types and with images stand-alone - The Visual AI roadmap for Driverless AI - How to deploy image models as low latency MOJOs 
+
+Presenters: Dan Darnell, VP of Product Marketing at H2O.ai Yauhen Babakhin, Kaggle Competitions Grandmaster and Data Scientist at H2O.ai
+
+As well, you can read the following article discussing Automatic Image Recognition: [Exploring the Next Frontier of Automatic Machine Learning with H2O Driverless AI](https://www.h2o.ai/blog/exploring-the-next-frontier-of-automatic-machine-learning-with-h2o-driverless-ai/)
 
 ## Special Thanks 
 
