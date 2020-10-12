@@ -11,7 +11,7 @@
 - [Task 5: Global Behavior Analysis](#task-5-global-behavior-analysis)
 - [Task 6: What Biases Exist in My Model? What Levels of Disparity Exist Between Population Groups?](#task-6-what-biases-exist-in-my-model-what-levels-of-disparity-exist-between-population-groups)
 - [Task 7: Local Behavior Analysis](#task-7-local-behavior-analysis)
-- [Task 8: The Reciprocal Impact that Should Exist Between AI, the Social Sciences, and Humanities](#Task-8-the-reciprocal-impact-that-should-exist-between-ai-the-social-sciences-and-humanities)
+- [Task 8: The Reciprocal Impact That Should Exist Between AI, the Social Sciences, and Humanities](#Task-8-the-reciprocal-impact-that-should-exist-between-ai-the-social-sciences-and-humanities)
 - [Special Thanks](#special-thanks)
 
 
@@ -404,7 +404,7 @@ As mentioned above, age was also another factor at the global level, and with th
 With the above, we can conclude that at the local level, we also have a bias in the form of priors_count where priors_count is not a true reflection of someone's true criminal record if we consider the racial bias within the judicial system. We also see that ageism (a type of bias) is introduced to the model when we see that age_cat can determine a true or false two_year_recid. In conclusion, bias exists at the local level.  
 
 
-## Task 8: The Reciprocal Impact that Should Exist Between AI, the Social Sciences, and Humanities
+## Task 8: The Reciprocal Impact That Should Exist Between AI, the Social Sciences, and Humanities
 
 At this point, many will wonder how we can solve these issues presented at the global and local levels. A solution will be to have the humanities and social sciences integrated and extend their work to the process of AI model creation while the AI world makes it standard to consult the humanities and social sciences. To understand the reciprocal impact that should exist between AI, the social sciences, and humanities, we will explore five problems that can arise if we were to use our model or similar models made by others. Simultaneously, we will discuss how that reciprocal impact can lead to a more acceptable and fair integration of AI into our daily lives and the judicial system. 
 
