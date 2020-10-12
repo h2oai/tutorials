@@ -454,6 +454,8 @@ As a final analysis, the AI world is growing and changing our society. We need t
 - Google apologizes after its Vision AI produced racist results
 - 600,000 Images Removed from AI Database After Art Project Exposes Racist Bias
 
+And to further support the argument of how we need collaboration between AI, the social sciences, and humanities, checkout the Awful AI GitHub repository. [Awful AI is a curated list to track current scary usages of AI - hoping to raise awareness of its misuses in society.](https://github.com/daviddao/awful-ai)
+
 ### References 
 
 [9][When a Computer Program Keeps You in Jail](https://www.nytimes.com/2017/06/13/opinion/how-computers-are-harming-criminal-justice.html)
