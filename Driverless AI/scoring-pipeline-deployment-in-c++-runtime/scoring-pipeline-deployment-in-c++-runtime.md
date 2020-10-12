@@ -201,4 +201,196 @@ After downloading the MOJO scoring pipeline, the mojo-pipeline folder comes with
 
 If you have gone through the earlier scoring pipeline deployment tutorials, you have seen the way we deploy the MOJO Scoring Pipeline is to a server or serverless instance and there is some client that interacts with the server to trigger it to execute the MOJO to make predictions. An alternative way to deploy the MOJO Scoring Pipeline is to embed it directly into the C++ Runtime where your application is running. The MOJO C++ Runtime comes with Python and R wrappers called MOJO2 Py Runtime and MOJO2 R Runtime. So if you are building a Python or R application using an Integrated Development Environment (IDE) or a text editor, you can import the MOJO2 Python API or MOJO2 R API, then use it to load the MOJO, put your test data into a MOJO frame, then perform predictions on the data and return the results.
 
-### Task 3: Batch Scoring via Scoring Pipeline Execution
+## Task 3: Batch Scoring via Scoring Pipeline Execution
+
+We will be executing the MOJO scoring pipeline using the Python and R wrapper. We will be doing batch scoring on the Hydraulic System example csv data to classify for the Hydraulic System cooling condition.
+
+### Batch Scoring via Run R Wrapper Program
+
+1. Start R to enter R interactive terminal:
+
+```
+R
+```
+
+2. Now that we are in the R interactive terminal, we will install the MOJO2 R Runtime:
+
+
+```
+# Install the R MOJO runtime using one of the methods below
+
+homePath <- Sys.getenv("HOME")
+
+# Install the R MOJO runtime on PPC Linux
+install.packages(homePath + "/daimojo_2.2.0_ppc64le-linux.tar.gz")
+
+# Install the R MOJO runtime on x86 Linux
+install.packages(homePath + "/daimojo_2.2.0_x86_64-linux.tar.gz")
+
+#Install the R MOJO runtime on Mac OS X
+install.packages(homePath + "/daimojo_2.2.0_x86_64-darwin.tar.gz")
+```
+
+3. Next we will load the Driverless AI MOJO library and load the MOJO scoring pipeline:
+
+```
+# Load the MOJO
+library(daimojo)
+m <- load.mojo(homePath + "/dai-mojo-cpp/mojo-pipeline/pipeline.mojo")
+```
+
+4. We will then retrieve the creation time of the MOJO and the UUID of the experiment:
+
+```
+# retrieve the creation time of the MOJO
+create.time(m)
+
+# retrieve the UUID of the experiment
+uuid(m)
+```
+
+5. We will then set feature data types and names in the column class header, which will be used to initialize the R datatable header and data types, and load Hydraulic System example csv data into the table:
+
+```
+# Load data and make predictions
+col_class <- setNames(feature.types(m), feature.names(m))  # column names and types
+
+library(data.table)
+d <- fread(homePath + "/dai-mojo-cpp/mojo-pipeline/example.csv", colClasses=col_class, header=TRUE, sep=",")
+```
+
+6. Lastly, we will use our MOJO scoring pipeline to predict the Hydraulic System’s cooling condition for each row within the table:
+
+```
+predict(m, d)
+```
+
+This classification output is the batch scoring done for our Hydraulic System cooling condition. You should receive classification probabilities for cool_cond_y.3, cool_cond_y.20, cool_cond_y.100. The 3 means the Hydraulic cooler is close to operating at total failure, 20 means it is operating at reduced efficiency and 100 means it is operating at full efficiency.
+
+7. We will quit the R interactive terminal:
+
+```
+quit()
+```
+
+R will ask you if you want to save the workspace image, feel free to save it if you want.
+
+So that is how you execute the MOJO scoring pipeline to do batch scoring for the Hydraulic System cooling condition using the R wrapper in the C++ Runtime.
+
+### Batch Scoring via Run Python Wrapper Program
+
+1. Start python to enter Python interactive terminal:
+
+2. Let’s import the Driverless AI MOJO model package and load the MOJO scoring pipeline:
+
+```
+# import the daimojo model package
+import os.path
+import daimojo.model
+
+homePath = os.path.expanduser("~")
+# specify the location of the MOJO
+m = daimojo.model(homePath + "/dai-mojo-cpp/mojo-pipeline/pipeline.mojo")
+```
+
+3. We will then retrieve the creation time of the MOJO and the UUID of the experiment:
+
+```
+# retrieve the creation time of the MOJO
+m.created_time
+
+# retrieve the UUID of the experiment
+m.uuid
+```
+
+4. We can also retrieve a list of missing values, feature names, feature types, output names and output types:
+
+```
+# retrieve a list of missing values
+m.missing_values
+# retrieve the feature names
+m.feature_names
+# retrieve the feature types
+m.feature_types
+
+# retrieve the output names
+m.output_names
+# retrieve the output types
+m.output_types
+```
+
+5. Now will import the Python datatable package, load the Hydraulic System example csv data into the datatable, set the table to ignore strings that equal the missing values and display the table:
+
+```
+# import the datatable module
+import datatable as dt
+
+# parse the example.csv file
+pydt = dt.fread(homePath + "/dai-mojo-cpp/mojo-pipeline/example.csv", na_strings=m.missing_values, header=True, separator=',')
+
+pydt
+```
+
+6. We can also display the table column types:
+
+```
+# retrieve the column types
+pydt.stypes
+```
+
+7. We will use our MOJO scoring pipeline to predict the Hydraulic System’s cooling condition for each row within the table:
+
+```
+# make predictions on the example.csv file
+res = m.predict(pydt)
+
+# retrieve the predictions
+res
+```
+
+This classification output is the batch scoring done for our Hydraulic System cooling condition. You should receive classification probabilities for cool_cond_y.3, cool_cond_y.20, cool_cond_y.100. The 3 means the Hydraulic cooler is close to operating at total failure, 20 means it is operating at reduced efficiency and 100 means it is operating at full efficiency.
+
+8. There is some more data we can retrieve from our res predictions, which include the prediction column names, column types:
+
+
+```
+# retrieve the prediction column names
+res.names
+
+# retrieve the prediction column types
+res.stypes
+```
+
+9. We can also convert the datatable results to other data structures, such as pandas, numpy and list:
+
+```
+# need pandas
+res.to_pandas()
+
+# need numpy  
+res.to_numpy()
+
+res.to_list()
+```
+
+You just learned how to execute the MOJO scoring pipeline to do batch scoring for the Hydraulic System cooling condition using the Python wrapper in the C++ Runtime.
+
+## Task 4: Challenge
+
+### Execute Scoring Pipeline for a New Dataset
+
+There are various challenges one could do, you could do something that helps you in your daily life or job. Maybe there is a dataset you are working with, you could reproduce the steps we did above, but for your dataset, build a new experiment and execute your MOJO scoring pipeline to do batch scoring or interactive scoring.
+
+### Embed Scoring Pipeline into Existing Program
+
+Another challenge could be to use the existing MOJO scoring pipeline we executed and instead of using the examples we shared above, integrate the scoring pipeline into an existing Python or R program.
+
+## Next Steps 
+
+- Tutorial 3A: Scoring Pipeline Deployment in Java Runtime
+- Tutorial 4B: Scoring Pipeline Deployment to MiNiFi
+- Tutorial 4C: Scoring Pipeline Deployment to Flask
+- Tutorial 5: Scoring Pipeline Deployment in Python
+
+## Appendix A: Glossary
+Refer to H2O.ai AI/ML Glossary for relevant Model Deployment Terms
