@@ -354,34 +354,35 @@ In the 'DAI Model' tab, click on the sensitivity analysis visual, the following 
 
 ![sensitivity-analysis-1](assets/sensitivity-analysis-1.jpg)
 
-1. Here we see that the cut-off is 0.38840827(dash line), anything below the cut-off will be predicted as a true two_year_recid. Anything above the cut-off will be predicted as a true two_year_recid. 
-2. Here the false two_year_recid's are to the left.
-3. Here the true two_year_recid's are to the right. 
-4. To understand the model's local behavior, let us analyze the false-positive instances in the African American community through what is called a  residual analysis. This analysis will allow us to look at multiple false-positive cases that are super close to the cut-off. And with that, we will modify specific column values of these cases, and we will observe for any changes in prediction. As of now, the table in the sensitivity analysis page doesn't have the race column. Why? Because it was not used during our experiment. We need the race column for our residual analysis because we need to know each case's race. To add the race column, click on the plus icon located at the top right corner of the sensitivity analysis table. In there, look for the race option and click on it as shown on the below image.
+1\. Here we see that the cut-off is 0.38840827(dash line), anything below the cut-off will be predicted as a true two_year_recid. Anything above the cut-off will be predicted as a true two_year_recid. 
+2\. Here the false two_year_recid's are to the left.
+3\. Here the true two_year_recid's are to the right. 
+4\. To understand the model's local behavior, let us analyze the false-positive instances in the African American community through what is called a  residual analysis. This analysis will allow us to look at multiple false-positive cases that are super close to the cut-off. And with that, we will modify specific column values of these cases, and we will observe for any changes in prediction. As of now, the table in the sensitivity analysis page doesn't have the race column. Why? Because it was not used during our experiment. We need the race column for our residual analysis because we need to know each case's race. To add the race column, click on the plus icon located at the top right corner of the sensitivity analysis table. In there, look for the race option and click on it as shown on the below image. After, click on the 'SET' option. 
 
 ![sensitivity-analysis-2-race-column](assets/sensitivity-analysis-2-race-column.jpg)
 
-5. Click on the SET option 
+5\. Scroll to the left of the table, and you will be able to see the rest of the table and the new column added.
+
+6\. On the left side, you will see the filter section of the sensitivity analysis page, and in there, filter with the following options: race == African-American. 
 
 ![sensitivity-analysis-3-african-american](assets/sensitivity-analysis-3-african-american.jpg)
 
-Scroll to the left of the table, and you will be able to see the rest of the table and the new column added. On the left side, you will see the filter section of the sensitivity analysis page, and in there, filter with the following options: race == African-American. 
+7\. In the sensitivity analysis graph, change the [Target] option to [Residuals]. 
 
 ![sensitivity-analysis-4-residuals](assets/sensitivity-analysis-4-residuals.jpg)
 
-In the sensitivity analysis graph, change the [Target] option to [Residuals]. 
+8\. In the filter section, click on the FP option; this will select the African American group's false positives. After clicking the FP option, the graph should look similar to the image below, where the closer you are to the cut-off line, the closer you were in the model to being predicted as a false two_year_recid. 
 
 ![sensitivity-analysis-5-false-positive](assets/sensitivity-analysis-5-false-positive.jpg)
-
-In the filter section, click on the FP option; this will select the African American group's false positives. After clicking the FP option, the graph should look similar to the image above, where the closer you are to the cut-off line, the closer you were in the model to being predicted as a false two_year_recid. 
-
-![sensitivity-analysis-6-close-to-cut-off.jpg](assets/sensitivity-analysis-6-close-to-cut-off.jpg)
 
 Rather than looking at every instance of false positives in the African American group, let's look at the instances that are super close to the cut-off line and see if the priors_count column is truly driving the model behavior. Reminder: sensitivity analysis enables us to tinker with various data settings to see their weight in a prediction.  
 
 1. To get close to the instances that are close to the cut-off line, filtered [ID] < 5 (it might be the case that you will have to filter with other options to get close) 
 2. The table now represents the five instances that are close to the cut-off line.
 3. The graph will now reflect the above table's information showcasing the five instances close to the cut-off line.
+
+
+![sensitivity-analysis-6-close-to-cut-off.jpg](assets/sensitivity-analysis-6-close-to-cut-off.jpg)
 
 ![sensitivity-analysis-7-id-4](assets/sensitivity-analysis-7-id-4.jpg)
 
