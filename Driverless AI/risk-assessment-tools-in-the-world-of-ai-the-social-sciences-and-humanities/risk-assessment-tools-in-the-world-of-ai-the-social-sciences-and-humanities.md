@@ -5,7 +5,7 @@
 - [Objective](#objective)
 - [Prerequisites](#prerequisites)
 - [Task 1: Create a New Criminal Risk Scorer in Driverless AI](#task-1-create-a-new-criminal-risk-scorer-in-driverless-ai)
-- [Task 2: Explore Criminal Risk Scorers in America and The Compass Dataset](#task-2-explore-criminal-risk-scorers-in-america-and-the-compass-dataset)
+- [Task 2: Explore Criminal Risk Scorers in America and The COMPAS Dataset](#task-2-explore-criminal-risk-scorers-in-america-and-the-compas-dataset)
 - [Task 3: Understanding Task 1](#task-3-understanding-task-1)
 - [Task 4: A Global Versus Local Behavior Analysis Concept](#task-4-a-global-versus-local-behavior-analysis-concept)
 - [Task 5: Global Behavior Analysis](#task-5-global-behavior-analysis)
@@ -111,7 +111,7 @@ Let's have the experiment run in the background. Simultaneously, in task 2, let'
 
 [0] [What’s Happening in Driverless AI?](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-settings.html?highlight=reproducible#reproducible)
 
-## Task 2: Explore Criminal Risk Scorers in America and The Compass Dataset
+## Task 2: Explore Criminal Risk Scorers in America and The COMPAS Dataset
 
 The United States has 5% of the world's population, and therefore, one cannot explain why it holds 25% of the world's prisoners. In other words, one out of four human beings with their hands-on bars is here in the land of the free. As a result, the United States now has the highest rate of incarceration in the world. Such striking statistics are, in part, the product of widespread use of AI models that quote-unquote predict the likelihood of someone to reoffend. Across the United States, "judges, probation, and parole officers are increasingly using algorithms to assess a criminal defendant's likelihood of becoming a recidivist - a term used to describe criminals who reoffend."[1] There are dozens of these risk assessment algorithms in use. Sadly and consequently, many of these risk assessment tools have not been checked for racial bias. As a result, in 2016, ProPublica, a nonprofit newsroom, investigated COMPAS (Correctional Offender Management Profiling for Alternative Sanctions), a commercial risk assessment tool made by Northpointe. ProPublica's investigation concluded that the commercial tool was biased towards African-Americans. In other words, ProPublica "found that Black defendants were far more likely than white defendants to be incorrectly judged to be at a higher risk of recidivism."[2] In contrast, white defendants were more likely than black defendants to be mistakenly flagged as low risk. Northpointe's COMPAS is one of the most widely utilized risk assessment tools/algorithms within the criminal justice system for guiding decisions such as setting bail. 
 
