@@ -1,0 +1,28 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2020-10-12T17:55:39-07:00",
+  "id": "risk-assessment-tools-in-the-world-of-ai-the-social-sciences-and-humanities",
+  "duration": 0,
+  "title": "Risk Assessment Tools in the World of AI, the Social Sciences, and Humanities",
+  "summary": "Check the list",
+  "source": "/Users/sperez/Desktop/codelabs/risk-assessment-tools-in-the-world-of-ai-the-social-sciences-and-humanities/risk-assessment-tools-in-the-world-of-ai-the-social-sciences-and-humanities.md",
+  "theme": "",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "driverless"
+  ],
+  "tags": [
+    "disparate-impact-analysis",
+    "driverless",
+    "fairness",
+    "mli",
+    "responsible-ai",
+    "test-drive"
+  ],
+  "url": "risk-assessment-tools-in-the-world-of-ai-the-social-sciences-and-humanities"
+}
