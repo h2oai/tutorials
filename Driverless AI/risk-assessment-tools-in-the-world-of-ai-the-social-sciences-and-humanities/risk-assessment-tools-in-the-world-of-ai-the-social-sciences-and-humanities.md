@@ -15,8 +15,6 @@
 - [Next Steps](#next-steps)
 - [Special Thanks](#special-thanks)
 
-
-
 ## Objective
 
 As of now, artificial intelligence is being integrated into our daily lives and at different levels of our society. For many, artificial intelligence is the key to a more prosperous future and better customer experience. For others, artificial intelligence could be a source of wrongness if not understood completely. In recent years, many reputable news sources have pointed out that artificial intelligence has become the reason for many discriminatory actions. In particular, ProPublica, a nonprofit newsroom, concluded in 2016 that automated criminal risk assessment algorithms hold racial inequality. Throughout the United States, an array of distinct automated criminal risk assessment algorithms have been built. Sadly, as often happens with risk assessment tools, many are adopted without rigorous testing on whether it works. In particular, most don't evaluate existing racial disparities and parity in the ML(Machine Learning) model. That is why, after constructing a criminal risk assessment model, we need to check that the model is fair and that it does not hold any discrimination. Such a post-analysis can prevent the ML model from committing unwanted discriminatory actions.
@@ -49,24 +47,30 @@ Download the data recipe for this experiment here: [COMPAS_DATA_RECIPE.py](https
 
 **Launch Experiment**
 
-1. On the top right corner, click on the button that says "+ ADD DATASET (OR DRAG & DROP)" 
-2. Click on the "</> UPLOAD DATA RECIPE" option
-3. Upload the data recipe you downloaded 
+1\. On the top right corner, click on the button that says "+ ADD DATASET (OR DRAG & DROP)" 
+
+2\. Click on the "</> UPLOAD DATA RECIPE" option
+
+3\. Upload the data recipe you downloaded 
 
 ![uploading-data-recipe](assets/uploading-data-recipe.jpg)
 
-4. After uploading the data recipe, click on the "CORRECTED_compas_two_year.csv."
-5. Click "Predict"
+4\. After uploading the data recipe, click on the "CORRECTED_compas_two_year.csv."
+
+5\. Click "Predict"
 
 ![predict-corrected-compas-two-year-csv.jpg](assets/predict-corrected-compas-two-year-csv.jpg)
 
-6. Name the experiment: "Two_Year_Predict" 
-7. Select as a Target Column: "two_year_recid"
+6\. Name the experiment: "Two_Year_Predict" 
+
+7\. Select as a Target Column: "two_year_recid"
 
 ![name-experiment-and-select-two-year-recid.jpg](assets/name-experiment-and-select-two-year-recid.jpg)
 
-8. Click on the dropped columns option and click the "check all" option. 
-9. Unselect the following columns because it will be the columns we will use: 
+8\. Click on the dropped columns option and click the "check all" option. 
+
+9\. Unselect the following columns because it will be the columns we will use: 
+
    - id
    - sex
    - age_cat
@@ -77,32 +81,34 @@ Download the data recipe for this experiment here: [COMPAS_DATA_RECIPE.py](https
    - r_charge_degree
    - r_charge_desc
 
-10. After selecting the specified columns above, click “Done”.
+10\. After selecting the specified columns above, click “Done”.
 
 ![dropping-columns-1](assets/dropping-columns-1.jpg)
 ![dropping-columns-2](assets/dropping-columns-2.jpg)
 
-11. Jump to the expert settings and click on the "Model" tab
-12. Turn off all models except for the "XGBoost GBM models," make sure it's on.
-13. Scroll down in the model tab and set the "Ensemble level for final modeling pipeline" to 0. 
-14. Click "Save"
+11\. Jump to the expert settings and click on the "Model" tab
+
+12\. Turn off all models except for the "XGBoost GBM models," make sure it's on.
+
+13\. Scroll down in the model tab and set the "Ensemble level for final modeling pipeline" to 0. 
+
+14\. Click "Save"
 
 ![model-selection-xgboost-gbm-models](assets/model-selection-xgboost-gbm-models.jpg)
 ![ensemble-level-to-find-modeling-pipeline](assets/ensemble-level-to-find-modeling-pipeline.jpg)
 
-15. On the training settings, set the following:
+15\. On the training settings, set the following:
 
-    - **Accuracy**: 5
-    - **Time**: 4
-    - **Interpretability**: 7
-    - **Scorer**: AUC 
+  - **Accuracy**: 5
+  - **Time**: 4
+  - **Interpretability**: 7
+  - **Scorer**: AUC 
 
-
-16. Click "REPRODUCIBLE," make sure it's turn on(yellow) 
+16\. Click "REPRODUCIBLE," make sure it's turn on(yellow) 
 
   - The Reproducible button allows you to build an experiment with a random seed and get reproducible results.[0] 
 
-17. Click "LAUNCH EXPERIMENT"
+17\. Click "LAUNCH EXPERIMENT"
 
 ![training-settings](assets/training-settings.jpg)
 
@@ -145,13 +151,13 @@ The original COMPAS dataset (compas-scores-two-years.csv) contains the following
 
 As you notice in task one, we used a data recipe to upload the dataset for our model. The data recipe addresses two significant problems in the original COMPAS dataset that have brought ProPublica's investigation into question. That is why, before making use of specific columns for our model, we used a data recipe to address the two major problems others have pointed to. The two significant issues found in ProPublica's COMPAS dataset are as follows: 
 
-1. As Matias Borenstein notes in GroundAI, a web platform, "ProPublica made a mistake implementing the two-year sample cutoff rule for recidivists in the two-year recidivism datasets (whereas it implemented an appropriate two-year sample cutoff rule for non-recidivists). As a result, ProPublica incorrectly kept a disproportionate share of recidivists in such datasets. This data processing mistake leads to biased two-year recidivism datasets, with artificially high recidivism rates. This also affects the positive and negative values."[3] In other words, to correct for this mistake, we dropped all defendants whose COMPAS screening date occurs after April 1, 2014, with it, we implemented a more appropriate sample cutoff for all defendants for the two-year recidivism analysis. 
+1\. As Matias Borenstein notes in GroundAI, a web platform, "ProPublica made a mistake implementing the two-year sample cutoff rule for recidivists in the two-year recidivism datasets (whereas it implemented an appropriate two-year sample cutoff rule for non-recidivists). As a result, ProPublica incorrectly kept a disproportionate share of recidivists in such datasets. This data processing mistake leads to biased two-year recidivism datasets, with artificially high recidivism rates. This also affects the positive and negative values."[3] In other words, to correct for this mistake, we dropped all defendants whose COMPAS screening date occurs after April 1, 2014, with it, we implemented a more appropriate sample cutoff for all defendants for the two-year recidivism analysis. 
 
 In the data recipe (COMPAS_DATA_RECIPE.py) used in task one, the code that addresses the problem above is as follows: 
 
 ![solving-problem-1-found-in-the-dateset](assets/solving-problem-1-found-in-the-dateset.jpg)
 
-2.  Borenstein also notes the following problem in ProPublica's dataset: "The age variable that ProPublica constructed is not quite accurate. ProPublica calculated age as the difference in years between the point in time when it collected the data, in early April 2016, and the person's date of birth. However, when studying recidivism, one should really use the age of the person at the time of the COMPAS screen date that starts the two year time window. So some people may be up to 25 months younger than the age variable that ProPublica created."[4] To correct this mistake, we had to subtract the c_jail_in column minus dob (date of birth). After correcting the age column, we fixed the age_category column as it is one of the columns we are using to train our model.
+2\.  Borenstein also notes the following problem in ProPublica's dataset: "The age variable that ProPublica constructed is not quite accurate. ProPublica calculated age as the difference in years between the point in time when it collected the data, in early April 2016, and the person's date of birth. However, when studying recidivism, one should really use the age of the person at the time of the COMPAS screen date that starts the two year time window. So some people may be up to 25 months younger than the age variable that ProPublica created."[4] To correct this mistake, we had to subtract the c_jail_in column minus dob (date of birth). After correcting the age column, we fixed the age_category column as it is one of the columns we are using to train our model.
 
 In the data recipe (COMPAS_DATA_RECIPE.py) used in task one, the code that addresses the problem above is as follows: 
 
@@ -207,27 +213,27 @@ At this point, several subcomponents of the MLI report should have already been 
 
 ![dai-model](assets/dai-model.jpg)
 
-1. In the 'DAI Model' tab, click the transformed Shapley visual. The following should appear: 
+1\. In the 'DAI Model' tab, click the transformed Shapley visual. The following should appear: 
 
 ![transformed-shapley](assets/transformed-shapley.jpg)
 
 When looking at the transformed Shapley, we can see that the **3_prios_count** is a feature created by Driverless AI that positively drives the model behavior. **3_prios_count**, being a positive feature, pushes the model's prediction higher on average. 
 
-2. If we click on the summary tab and scroll down where it says, "Most Important Variables for DAI...." we can see the transformed features. You will note that 3_priors_count: 3_priors_count appears at the top among all transformed features. 
+2\. If we click on the summary tab and scroll down where it says, "Most Important Variables for DAI...." we can see the transformed features. You will note that 3_priors_count: 3_priors_count appears at the top among all transformed features. 
 
 ![most-important-variable-for-dai-model](assets/most-important-variables-for-dai-model.jpg)
 
 At this point, we can see that prior_counts is at the global level driving the model behavior. To solidify this statement, let us see the random forest feature importance and see if prior_counts is at the global level a strong factor of whether someone will be predicted to be arrested within the two-year mark since a given arrest. 
 
-3. Click on the Surrogate Models tab and click on the "RF Feature Importance" visual.
+3\. Click on the Surrogate Models tab and click on the "RF Feature Importance" visual.
 
 ![rf-feature-importance](assets/rf-feature-importance.jpg)
 
 When looking at the RF Feature Importance horizontal graph, we can see that prior_count is at the top. With this in mind, we can see that the prior count feature is the top influencer in the model. To further solidify the pre-conclusion that prior_count is the top influencer in the model, let us see the decision tree in the surrogate models' tab.
 
-4. Click on the "x" mark at the top right corner of the RF Feature Importance horizontal graph. 
+4\. Click on the "x" mark at the top right corner of the RF Feature Importance horizontal graph. 
 
-5. On the surrogate models' tab, click on the decision tree visual. 
+5\. On the surrogate models' tab, click on the decision tree visual. 
 
 ![decision-tree](assets/decision-tree.jpg)
 
@@ -281,16 +287,17 @@ Now that we know that the global model behavior is biased, let us answer the fol
 
 To answer both questions, we will use the disparate impact analysis tool located in the 'DAI Model' tab. In the 'DAI Model' tab, click on the disparate impact analysis visual. 
 
-1. Click on the Disparate Impact Variable button and select the **race** option.
-2. Click on the Reference Level button and change the reference level to **caucasian**. The following should appear: 
+1\. Click on the Disparate Impact Variable button and select the **race** option.
+
+2\. Click on the Reference Level button and change the reference level to **caucasian**. The following should appear: 
 
 *Note*: We want to analyze possible harmful disparities, and therefore, we are setting the reference level to the population we believe may be receiving better treatment than other groups. Based on the articles presented earlier in this tutorial, we will have Caucasians as the reference level.  
 
 ![disparate-impact-analysis-1](assets/disparate-impact-analysis-1.jpg)
 
-3. In the summary tab, we can see African Americans, in a general sense, are not receiving fairness compared to Caucasians. The orange "False" label under the African American label indicates such wrongness. It appears that in this model, Caucasians and Latinos, in reference to African Americans, are not experiencing unfairness. The orange "True" label under the Caucasian and Hispanic label indicates such truth.
+3\. In the summary tab, we can see African Americans, in a general sense, are not receiving fairness compared to Caucasians. The orange "False" label under the African American label indicates such wrongness. It appears that in this model, Caucasians and Latinos, in reference to African Americans, are not experiencing unfairness. The orange "True" label under the Caucasian and Hispanic label indicates such truth.
 
-4. Before looking at the disparate impact graph bar, note the following: 
+4\. Before looking at the disparate impact graph bar, note the following: 
 
    - **Blue**: African American
    - **Orange**: Asian
@@ -301,7 +308,7 @@ To answer both questions, we will use the disparate impact analysis tool located
 
 When looking at the disparate impact graph bar, we can see that African Americans and Native Americans in this model are experiencing a high level of disparate impact compared to Caucasians. And this doesn't seem right and, by default, will make this model morally wrong because of its nature to adversely impact African Americans and Native Americans. In other words, the two_year_recid predictions of this model will adversely affect African Americans and Native Americans if used in production. 
 
-5. When looking at the accuracy graph bar, we can see that African Americans have the lowest accuracy compared to other groups. This graph and the disparate impact graph would present a considerable social problem if the model were implemented in production. Given that accuracy is the percentage of classifying true cases of two_year_recid, one will expect accuracy to be the same for all groups. Having a low accuracy, in other words, is a red flag because it will mean that the model is not really able to identify true cases of two_year_recid, and that will mean that the model is now in a way no better than random guessing. 
+5\. When looking at the accuracy graph bar, we can see that African Americans have the lowest accuracy compared to other groups. This graph and the disparate impact graph would present a considerable social problem if the model were implemented in production. Given that accuracy is the percentage of classifying true cases of two_year_recid, one will expect accuracy to be the same for all groups. Having a low accuracy, in other words, is a red flag because it will mean that the model is not really able to identify true cases of two_year_recid, and that will mean that the model is now in a way no better than random guessing. 
 
 In the graphs, scroll to the left to see the other graphs. The following should appear: 
 
@@ -325,21 +332,21 @@ Moving forward with our disparate impact analysis, let's look at the group dispa
 
 ![disparate-impact-analysis-4](assets/disparate-impact-analysis-4.jpg)
 
-1. Before moving forward with our analysis, let us recall the adverse impact analysis / four-fifths rule. According to the Prevue website, the four-fifths rule can be explained as follows: 
+1\. Before moving forward with our analysis, let us recall the adverse impact analysis / four-fifths rule. According to the Prevue website, the four-fifths rule can be explained as follows: 
 
    - "Typically, adverse impact is determined by using the four-fifths or eighty percent rule. The four-fifths or 80% rule is described by the guidelines as "a selection rate for any race, sex, or ethnic group which is less than four-fifths (or 80%) of the rate for the group with the highest rate will generally be regarded by the Federal enforcement agencies as evidence of adverse impact, while a greater than four-fifths rate will generally not be regarded by Federal enforcement agencies as evidence of adverse impact.""[8]
 
 This rule is very up for debate on how this will develop going forward, but for now, we have set the low (unfairness) threshold to .8. But of course, when we are talking about making decisions on whether to send someone to prison, no difference in treatment should be allowed.  But in our efforts to analyze this model, let's see if the model can achieve fairness under a benchmark that will require the model not to treat 80% less favorably the non-white groups than the Caucasian group.
 
-2. In the group disparity section, note that in the Caucasian row, all column values are 1.00000. The reference level, in this case, will always be 1.00000. The 1.00000 number will be the acceptable and fair reference value we will desire to see among other racial groups in our model. 
+2\. In the group disparity section, note that in the Caucasian row, all column values are 1.00000. The reference level, in this case, will always be 1.00000. The 1.00000 number will be the acceptable and fair reference value we will desire to see among other racial groups in our model. 
 
-3. The adverse impact disparity value for African Americans in this built model is 1.46840. Compared to Caucasians, the difference is .46840. Note that the value is highlighted in orange, and that is because it is out of range. The range is between the high threshold of 1.25 and a low threshold of 0.8. The red flag here is having an increased adverse impact disparity value compared to the reference level or any other group. In other words, this difference is saying that a substantially high rate of wrong predictions exists, which works to the disadvantage of the African American group. 
+3\. The adverse impact disparity value for African Americans in this built model is 1.46840. Compared to Caucasians, the difference is .46840. Note that the value is highlighted in orange, and that is because it is out of range. The range is between the high threshold of 1.25 and a low threshold of 0.8. The red flag here is having an increased adverse impact disparity value compared to the reference level or any other group. In other words, this difference is saying that a substantially high rate of wrong predictions exists, which works to the disadvantage of the African American group. 
 
-4. The false-positive rate disparity for African Americans is 1.48404, a .48404 addition to the reference level's false-positive rate disparity value. And this is perhaps the giant red flag because this model is mispredicting African Americans at a 1.48404 rate disparity: the highest rate disparity among all groups. 
+4\. The false-positive rate disparity for African Americans is 1.48404, a .48404 addition to the reference level's false-positive rate disparity value. And this is perhaps the giant red flag because this model is mispredicting African Americans at a 1.48404 rate disparity: the highest rate disparity among all groups. 
 
-5. The false-negative rate disparity for African Americans is 0.49693. In comparison to Caucasians, that's a 0.50307 decrease. This difference results in problems because, in the Caucasian group, we will see a higher rate of false-negatives: a security problem. This difference also presents a wrong double standard wherein one hand; we have the model wrongly predicting more instances of  1 where 1 is a true two_year_recid  in the African American group. And on the other hand, we have the same model predicting higher false-negative instances in the Caucasian group. 
+5\. The false-negative rate disparity for African Americans is 0.49693. In comparison to Caucasians, that's a 0.50307 decrease. This difference results in problems because, in the Caucasian group, we will see a higher rate of false-negatives: a security problem. This difference also presents a wrong double standard wherein one hand; we have the model wrongly predicting more instances of  1 where 1 is a true two_year_recid  in the African American group. And on the other hand, we have the same model predicting higher false-negative instances in the Caucasian group. 
 
-6. In the group parity section, we see that no fairness is achieved across all categories except for the 'negative predicted value parity' column. 
+6\. In the group parity section, we see that no fairness is achieved across all categories except for the 'negative predicted value parity' column. 
 
 This model will fail the adverse impact analysis / four-fifths rule. If we were to change the rule to a rule where no disparity will be allowed, the model would reflect higher disparity rates across the categories observed above—a much more disturbing disparity. As a result, the appropriate and straightforward answer to the two questions at the beginning of this task will be that the model has a lot of bias, and huge disparities and injustices exist between racial groups, in particular, within the African American community. 
 
@@ -465,13 +472,11 @@ And to further support the argument of how we need collaboration between AI, the
 
 ## Next Steps 
 
-Check out the next tutorial: *Image Classification*, where you will learn about: 
+Check out the next tutorial: *Image Classification* **(COMING SOON)**, where you will learn about: 
 
 - How to use images to predict the adoption rate of animals in an animal shelter 
 - Pre-trained image transformers - transforming images into vectors 
 - Automatic image model 
-
-**(TUTORIAL COMING SOON)**
 
 In the meantime, you can watch the following webinar: 
 
@@ -487,4 +492,4 @@ As well, you can read the following article discussing Automatic Image Recogniti
 
 Thank you to everyone that took the time to make this tutorial possible.
 
-- [Patrick Hall](https://www.linkedin.com/in/jpatrickhall/)
+- [Patrick Hall: Data Scientist at H2O.ai](https://www.linkedin.com/in/jpatrickhall/)
