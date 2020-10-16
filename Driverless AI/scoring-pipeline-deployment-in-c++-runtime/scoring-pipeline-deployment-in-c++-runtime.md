@@ -409,4 +409,5 @@ Another challenge could be to use the existing MOJO scoring pipeline we executed
 - Tutorial 5: Scoring Pipeline Deployment in Python
 
 ## Appendix A: Glossary
+
 Refer to H2O.ai AI/ML Glossary for relevant Model Deployment Terms
