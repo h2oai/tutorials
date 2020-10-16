@@ -27,6 +27,12 @@ Check out the [**New H2O.ai Learning Center**](https://training.h2o.ai/) where y
 
 - [NEW - Scoring Pipeline Deployment Introduction](https://training.h2o.ai/products/tutorial-4a-scoring-pipeline-deployment-introduction)
 
+- [NEW - Scoring Pipeline Deployment Templates](https://training.h2o.ai/products/tutorial-4b-scoring-pipeline-deployment-templates)
+
+- [NEW - Disparate Impact Analysis Tutorial](https://training.h2o.ai/products/tutorial-5a-disparate-impact-analysis-tutorial)
+
+- [NEW - Risk Assessment Tools in the World of AI, the Social Sciences, and Humanities](https://training.h2o.ai/products/tutorial-5b-risk-assessment-tools-in-the-world-of-ai-the-social-sciences-and-humanities)
+
 For other versions of the **Driverless AI tutorials**, check out the following repo's:
 
 - [Driverless AI Tutorials 1.8.7.1 Repo](https://github.com/h2oai/tutorials/tree/1.8.7.1/Driverless%20AI)
