@@ -13,9 +13,11 @@
 
 ## Objective
 
-Machine Learning Model Deployment is the process of making your model available in production environments, so they can be used to make predictions for other software systems [1]. Before model deployment, feature engineering occurs in the form of preparing data that later on will be used to train a model [2]. Driverless AI Automatic Machine Learning (AutoML) combines the best feature engineering and one or more machine learning models into a scoring pipeline [3][4]. The scoring pipeline is used to score or predict data when given new test data [5]. The scoring pipeline comes in two flavors. The first scoring pipeline is a Model Object, Optimized(MOJO) Scoring Pipeline, which is a standalone, low-latency model object designed to be easily embeddable in production environments. The second scoring pipeline is a Python Scoring Pipeline, which has a heavy footprint that is all Python and uses the latest libraries of Driverless AI to allow for executing custom scoring recipes[6].
+**Machine Learning Model Deployment** is the process of making your model available in production environments, so they can be used to make predictions for other software systems [1]. Before model deployment, **feature engineering** occurs in the form of preparing data that later on will be used to train a model [2]. Driverless AI **Automatic Machine Learning (AutoML)** combines the best feature engineering and one or more **machine learning models** into a scoring pipeline [3][4]. The **scoring pipeline** is used to score or predict data when given new test data [5]. The scoring pipeline comes in two flavors. The first scoring pipeline is a **Model Object, Optimized(MOJO) Scoring Pipeline**, which is a standalone, low-latency model object designed to be easily embeddable in production environments. The second scoring pipeline is a Python Scoring Pipeline, which has a heavy footprint that is all Python and uses the latest libraries of Driverless AI to allow for executing custom scoring recipes[6].
 
-By the end of this tutorial, you will predict the cooling condition for a Hydraulic System Test Rig by deploying an embeddable MOJO Scoring Pipeline into C++ Runtime using Python and R. The Hydraulic System Test Rig data comes from UCI Machine Learning Repository: Condition Monitoring of Hydraulic Systems Data Set. Hydraulic System Test Rigs are used to test components in Aircraft Equipment, Ministry of Defense, Automotive Applications, and more [7]. This Hydraulic Test Rig is capable of testing a range of flow rates that can achieve different pressures with the ability to heat and cool to simulate testing under different conditions [8]. Testing the pressure, volume flow and temperature is possible by Hydraulic Test Rig sensors and digital displays. The display panel alerts the user when certain testing criteria is met displaying either a green/red light [8]. A filter blockage panel indicator is integrated into the panel to ensure the Hydraulic Test Rig’s oil is maintained [8]. The cooling filtration solution is designed to minimize power consumption and expand the life of the Hydraulic Test Rig. We are predicting cooling conditions for Hydraulic System Predictive Maintenance. When the cooling condition is low, our prediction tells us that the cooling of the Hydraulic System is close to total failure and we may need to look into replacing the cooling filtration solution soon.
+By the end of this tutorial, you will predict the **cooling condition** for a **Hydraulic System Test Rig** by deploying an **embeddable MOJO Scoring Pipeline** into C++ Runtime using **Python** and **R**. The Hydraulic System Test Rig data comes from [UCI Machine Learning Repository: Condition Monitoring of Hydraulic Systems Data Set](https://archive.ics.uci.edu/ml/datasets/Condition+monitoring+of+hydraulic+systems#). Hydraulic System Test Rigs are used to test components in Aircraft Equipment, Ministry of Defense, Automotive Applications, and more [7]. This Hydraulic Test Rig is capable of testing a range of flow rates that can achieve different pressures with the ability to heat and cool to simulate testing under different conditions [8]. Testing the pressure, volume flow and temperature is possible by Hydraulic Test Rig sensors and digital displays. The display panel alerts the user when certain testing criteria is met displaying either a green/red light [8]. A filter blockage panel indicator is integrated into the panel to ensure the Hydraulic Test Rig’s oil is maintained [8]. The cooling filtration solution is designed to minimize power consumption and expand the life of the Hydraulic Test Rig. We are predicting cooling conditions for Hydraulic System Predictive Maintenance. When the cooling condition is low, our prediction tells us that the cooling of the Hydraulic System is close to total failure and we may need to look into replacing the cooling filtration solution soon.
+
+![cylinder-diagram-1](assets/cylinder-diagram-1.jpg)
 
 Figure: Hydraulic Test Rig General Cylinder Diagram
 
@@ -24,21 +26,21 @@ The Hydraulic Test Rig consists of a primary and secondary cooling filtration ci
 
 ### Resources
 
-[1] H2O.ai Community AI Glossary: Machine Learning Model Deployment
+[1] H2O.ai Community AI Glossary: [Machine Learning Model Deployment](https://www.h2o.ai/community/glossary/machine-learning-model-deployment-productionization-productionizing-machine-learning-models)
 
-[2] H2O.ai Community AI Glossary: Feature Engineering
+[2] H2O.ai Community AI Glossary: [Feature Engineering](https://www.h2o.ai/community/glossary/feature-engineering-data-transformation)
 
-[3] H2O.ai Community AI Glossary: Automatic Machine Learning (AutoML)
+[3] H2O.ai Community AI Glossary: [Automatic Machine Learning (AutoML)](https://www.h2o.ai/community/glossary/automatic-machine-learning-automl)
 
-[4] H2O.ai Community AI Glossary: Machine Learning Model
+[4] H2O.ai Community AI Glossary: [Machine Learning Model](https://www.h2o.ai/community/glossary/machine-learning-model)
 
-[5] H2O.ai Community AI Glossary: Scoring Pipeline
+[5] H2O.ai Community AI Glossary: [Scoring Pipeline](https://www.h2o.ai/community/glossary/scoring-pipeline)
 
-[6] H2O.ai Community AI Glossary: Model Object, Optimized (MOJO) Scoring Pipeline
+[6] H2O.ai Community AI Glossary: [Model Object, Optimized (MOJO) Scoring Pipeline](https://www.h2o.ai/community/glossary/model-object-optimized-mojo)
 
-[7] SAVERY - HYDRAULIC TEST RIGS AND BENCHES
+[7] [SAVERY - HYDRAULIC TEST RIGS AND BENCHES](https://www.savery.co.uk/systems/test-benches)
 
-[8] HYDROTECHNIK - Flow and Temperature Testing Components
+[8] [HYDROTECHNIK - Flow and Temperature Testing Components](https://www.hydrotechnik.co.uk/flow-and-temperature-hydraulic-test-bed)
 
 
 ## Prerequisites
@@ -48,13 +50,13 @@ The Hydraulic Test Rig consists of a primary and secondary cooling filtration ci
 - Driverless AI License
     - 21 day trial license
     - It is needed for using the MOJO2 C++ Runtime Python Wrapper API and R Wrapper API to execute the MOJO Scoring Pipeline for making predictions
-    - If you need to purchase a Driverless AI license, reach out to our sales team via the contact us form.
+    - If you need to purchase a Driverless AI license, reach out to our sales team via the [**contact us form**](https://www.h2o.ai/company/contact/).
 - Linux OS (x86 or IBM Power PC) or Mac OS X (10.9 or newer)
 - Anaconda or Miniconda
 - Basic knowledge of Driverless AI or doing the following tutorials:
-    - Automatic Machine Learning Introduction with Driverless AI Test Drive Tutorial.
-    - Tutorial 1: Scoring Pipeline Deployment Introduction
-    - Tutorial 2: Scoring Pipeline Deployment Intermediate
+    - [Automatic Machine Learning Introduction with Driverless AI Test Drive Tutorial.](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai)
+    - [Tutorial 1: Scoring Pipeline Deployment Introduction](https://training.h2o.ai/products/tutorial-4a-scoring-pipeline-deployment-introduction#tab-product_tab_overview)
+    - [Tutorial 2: Scoring Pipeline Deployment Intermediate](https://docs.google.com/document/d/1WKSdH-MNjNQOPWA7xthDpmQytcDc07p_Xua8Rsa_jVk/edit?usp=sharing)
 
 ## Task 1: Set Up Environment
 
@@ -72,9 +74,9 @@ mkdir $HOME/dai-mojo-cpp/
 
 #### Download MOJO Scoring Pipeline
 
-1. If you have not downloaded the MOJO Scoring Pipeline, go to Tutorial 2: Scoring Pipeline Deployment Templates, then go to Task 1: Set Up Environment, then Download MOJO Scoring Pipeline to download it. When finished, come back to this tutorial.
+1. If you have not downloaded the MOJO Scoring Pipeline, go to [Tutorial 2: Scoring Pipeline Deployment](https://docs.google.com/document/d/1WKSdH-MNjNQOPWA7xthDpmQytcDc07p_Xua8Rsa_jVk/edit?usp=sharing) Templates, then go to Task 1: Set Up Environment, then **Download MOJO Scoring Pipeline** to download it. When finished, come back to this tutorial.
 
-2. Move the mojo.zip file to dai-mojo-cpp/ folder and then extract it:
+2. Move the **mojo.zip** file to **dai-mojo-cpp**/ folder and then extract it:
 
 ```
 cd $HOME/dai-mojo-cpp/
@@ -84,15 +86,21 @@ unzip mojo.zip
 
 #### Download MOJO2 Python and R Runtime
 
-We can download the MOJO2 C++ Runtime Python Wrapper API and R Wrapper API in Driverless AI. There are 2 places where we can download the MOJO2 Python and R runtime. 
+We can download the **MOJO2 C++ Runtime Python Wrapper API and R Wrapper API** in Driverless AI. There are 2 places where we can download the MOJO2 Python and R runtime. 
 
-1. The first place is by clicking on Download MOJO Scoring Pipeline, then click Python and click Download the MOJO2 Py Runtime hyperlink.
+1. The first place is by clicking on **Download MOJO Scoring Pipeline**, then click Python and click **Download the MOJO2 Py Runtime** hyperlink.
 
-2. Similar for the MOJO2 R runtime, click R, then Download the MOJO2 R Runtime hyperlink.
+![download-mojo2-py-runtime-1](assets/download-mojo2-py-runtime-1.jpg)
 
-3. The second place you can find these runtimes is under Resources dropdown.
+2. Similar for the MOJO2 R runtime, click R, then **Download the MOJO2 R Runtime** hyperlink.
 
-4. Click MOJO2 Py Runtime and/or MOJO2 R Runtime to download the runtime.
+![download-mojo2-r-runtime-2](assets/download-mojo2-r-runtime-2.jpg)
+
+3. The second place you can find these runtimes is under **Resources** dropdown.
+
+![download-mojo2-py-r-runtime-3](assets/download-mojo2-py-r-runtime-3.jpg)
+
+4. Click **MOJO2 Py Runtime** and/or **MOJO2 R Runtime** to download the runtime.
 
 5. Download and install Anaconda:
 
@@ -104,7 +112,7 @@ wget https://repo.anaconda.com/archive/Anaconda3-2020.02-Linux-x86_64.sh
 bash Anaconda3-2020.02-Linux-x86_64.sh
 ```
 
-6. Move the MOJO2 Py Runtime file to $HOME folder:
+6. Move the **MOJO2 Py Runtime** file to $HOME folder:
 
 ```
 cd $HOME
@@ -119,7 +127,7 @@ mv $HOME/Downloads/daimojo-2.2.0-cp36-cp36m-linux_x86_64.whl .
 mv $HOME/Downloads/daimojo-2.2.0-cp36-cp36m-linux_ppc64le.whl .
 ```
 
-7. Move the MOJO2 R Runtime file to $HOME folder:
+7. Move the **MOJO2 R Runtime** file to $HOME folder:
 
 ```
 cd $HOME
@@ -155,7 +163,7 @@ pip install pandas
 pip install scipy
 ```
 
-10. Depending on your OS, run one of the following commands to install MOJO2 Py Runtime:
+10. Depending on your OS, run one of the following commands to install **MOJO2 Py Runtime**:
 
 ```
 # Install the MOJO2 Py runtime on Mac OS X
@@ -195,7 +203,7 @@ export DRIVERLESS_AI_LICENSE_KEY="{license-key}"
 
 ### MOJO Scoring Pipeline Files
 
-After downloading the MOJO scoring pipeline, the mojo-pipeline folder comes with many files needed to execute the MOJO scoring pipeline, which include pipeline.mojo and example.csv. However, the mojo-pipeline folder does not come with the MOJO2 Py Runtime or MOJO2 R Runtime. These two MOJO2 APIs can be downloaded as separate assets from Driverless AI. The pipeline.mojo is the standalone scoring pipeline in MOJO format. This pipeline file contains the packaged feature engineering pipeline and the machine learning model. The daimojo-2.2.0-cp36-cp36m-{OS: mac, linux. IBM Power}.whl is the MOJO2 Python API. The daimojo_2.2.0_{OS: mac, linux, IBM Power}.tar.gz is the MOJO2 R API. The example.csv contains sample test data. 
+After downloading the MOJO scoring pipeline, the **mojo-pipeline** folder comes with many files needed to execute the MOJO scoring pipeline, which include **pipeline.mojo** and **example.csv**. However, the **mojo-pipeline** folder does not come with the MOJO2 Py Runtime or MOJO2 R Runtime. These two MOJO2 APIs can be downloaded as separate assets from Driverless AI. The **pipeline.mojo** is the standalone scoring pipeline in MOJO format. This pipeline file contains the packaged feature engineering pipeline and the machine learning model. The **daimojo-2.2.0-cp36-cp36m-{OS: mac, linux. IBM Power}.whl** is the MOJO2 Python API. The **daimojo_2.2.0_{OS: mac, linux, IBM Power}.tar.gz** is the MOJO2 R API. The **example.csv** contains sample test data. 
 
 ### Embed the MOJO in the C++ Runtime via Python or R Wrappers
 
@@ -212,6 +220,8 @@ We will be executing the MOJO scoring pipeline using the Python and R wrapper. W
 ```
 R
 ```
+
+![batch-scoring-via-run-r-program-1](assets/batch-scoring-via-run-r-program-1.jpg)
 
 2. Now that we are in the R interactive terminal, we will install the MOJO2 R Runtime:
 
@@ -265,6 +275,8 @@ d <- fread(homePath + "/dai-mojo-cpp/mojo-pipeline/example.csv", colClasses=col_
 predict(m, d)
 ```
 
+![batch-scoring-via-run-r-program-2](assets/batch-scoring-via-run-r-program-2.jpg)
+
 This classification output is the batch scoring done for our Hydraulic System cooling condition. You should receive classification probabilities for cool_cond_y.3, cool_cond_y.20, cool_cond_y.100. The 3 means the Hydraulic cooler is close to operating at total failure, 20 means it is operating at reduced efficiency and 100 means it is operating at full efficiency.
 
 7. We will quit the R interactive terminal:
@@ -280,6 +292,8 @@ So that is how you execute the MOJO scoring pipeline to do batch scoring for the
 ### Batch Scoring via Run Python Wrapper Program
 
 1. Start python to enter Python interactive terminal:
+
+![batch-scoring-via-run-py-program-1](assets/batch-scoring-via-run-py-program-1.jpg)
 
 2. Let’s import the Driverless AI MOJO model package and load the MOJO scoring pipeline:
 
@@ -347,6 +361,8 @@ res = m.predict(pydt)
 # retrieve the predictions
 res
 ```
+
+![batch-scoring-via-run-py-program-2](assets/batch-scoring-via-run-py-program-2.jpg)
 
 This classification output is the batch scoring done for our Hydraulic System cooling condition. You should receive classification probabilities for cool_cond_y.3, cool_cond_y.20, cool_cond_y.100. The 3 means the Hydraulic cooler is close to operating at total failure, 20 means it is operating at reduced efficiency and 100 means it is operating at full efficiency.
 
