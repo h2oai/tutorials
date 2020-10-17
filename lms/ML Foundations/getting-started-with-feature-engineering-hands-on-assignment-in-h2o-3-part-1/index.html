@@ -9,7 +9,7 @@
   <title>ML Foundations: Module 2 Session 2: Getting Started With Feature Engineering Hands-On Assignment in H2O-3 (Part 1)</title>
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
   <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="../assets/codelab-elements/codelab-elements.css">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
   <link rel="stylesheet" href="custom.css">
   <style>
     .success {
@@ -22,43 +22,45 @@
 </head>
 <body>
   <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
-  <google-codelab title="ML Foundations: Module 2 Session 2: Getting Started With Feature Engineering Hands-On Assignment in H2O-3 (Part 1)"
+  <google-codelab codelab-gaid=""
+                  id="getting-started-with-feature-engineering-hands-on-assignment-in-h2o-3-part-1"
+                  title="ML Foundations: Module 2 Session 2: Getting Started With Feature Engineering Hands-On Assignment in H2O-3 (Part 1)"
                   environment="web"
                   feedback-link="">
     
-      <google-codelab-step label="Hands-On Assignment in H2O-3 (Part 1)" duration="0">
-        <h2>Objective</h2>
+      <google-codelab-step label="ML Foundations: Module 2 Session 2: Getting Started With Feature Engineering Hands-On Assignment in H2O-3 (Part 1)" duration="0">
+        <h2 is-upgraded>Objective</h2>
 <p>This is Part 1 of a 2-part exercise examining feature engineering using two different <a href="https://www.h2o.ai/" target="_blank">H2O.ai&#39;s</a> products: the open source machine learning platform, <a href="https://www.h2o.ai/products/h2o/" target="_blank">H2O-3</a> and the Enterprise automated machine learning platform, <a href="https://www.h2o.ai/products/h2o-driverless-ai/" target="_blank">Driverless AI</a>.</p>
-<h2>Part 1 Target Encoding in H2O-3</h2>
+<h2 is-upgraded>Part 1 Target Encoding in H2O-3</h2>
 <p>For Part 1 of this assignment, you will create some new predictors/features for the Titanic dataset using target encoding with open-source platform, <a href="https://www.h2o.ai/products/h2o/" target="_blank">H2O-3</a>. You will explore possible risk factors derived from this dataset that could have been considered when selling passenger insurance during this time. More specifically, we will use a baseline predictive model to determine if new predictive features increased the performance of our predictive model for whether a passenger survived.</p>
 <p>In this overview of H2O-3, you will learn how to load data, define encoding parameters, train a target econding model, train a tree-based model with target encoding and a baseline model, and compare the results.</p>
 <p><strong>Note: This tutorial has been built on Aquarium, which is H2O.ai&#39;s cloud environment providing software access for workshops, conferences, and training. The labs in Aquarium have datasets, experiments, projects, and other content preloaded. If you use your version of H2O-3 or Driverless AI, you will not see preloaded content.</strong></p>
-<h2>Prerequisites</h2>
+<h2 is-upgraded>Prerequisites</h2>
 <ul>
 <li>Basic knowledge of Machine Learning and Statistics</li>
-<li>An <a href="https://aquarium.h2o.ai/" target="_blank">Aquarium</a> Account to access H2O.ai&#39;s software on the AWS Cloud.<br><br><ul>
+<li>An <a href="https://aquarium.h2o.ai/" target="_blank">Aquarium</a> Account to access H2O.ai&#39;s software on the AWS Cloud.  <ul>
 <li>Need an Aquarium account? Follow the instructions in the next section <strong>Task 1 Create An Account &amp; Log Into Aquarium</strong> to create an account</li>
-<li>Already have an <a href="https://aquarium.h2o.ai/" target="_blank">Aquarium</a> account? Log in and continue to <strong>Task 2 Launch the H2O-3 &amp; Sparkling Water Lab</strong> to begin your exercise!</li>
+<li>Already have an <a href="https://aquarium.h2o.ai/" target="_blank">Aquarium</a> account? Log in and continue to <strong>Task 2: Launch the Legacy H2O-3 and Sparkling Water Training Lab</strong> to begin your exercise!</li>
 </ul>
 </li>
 </ul>
 <p><strong>Note: Aquarium&#39;s Driverless AI lab has a license key built-in, so you don&#39;t need to request one to use it. Each Driverless AI lab instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore Driverless AI, you can always launch another lab instance or reach out to our sales team via the contact us form.</strong></p>
-<h2>Task 1: Create An Account &amp; Log Into Aquarium</h2>
+<h2 is-upgraded>Task 1: Create An Account &amp; Log Into Aquarium</h2>
 <p>Navigate to the following site: https://aquarium.h2o.ai/login and do the following:</p>
 <ol type="1">
 <li>create a new account (if you don&#39;t have one)</li>
 <li>log into the site with your credentials</li>
 </ol>
-<p><img alt="picture-1" src="img/26d1cf72ba30b2b1.jpg"></p>
-<h2>Task 2: Launch the H2O-3 &amp; Sparkling Water Lab</h2>
-<p>Once you&#39;ve created your account on Aquarium and/or logged into the site, click on <strong>Browse Labs</strong> and navigate to <strong>Lab 2: H2O-3 and Sparkling Water Test Drive</strong></p>
-<p><img alt="picture-2" src="img/2160dd5b3924530c.jpg"></p>
+<p class="image-container"><img alt="picture-1" src="img/26d1cf72ba30b2b1.jpg"></p>
+<h2 is-upgraded>Task 2: Launch the Legacy H2O-3 and Sparkling Water Training Lab</h2>
+<p>Once you&#39;ve created your account on Aquarium and/or logged into the site, click on <strong>Browse Labs</strong> and navigate to <strong>Lab 16: Legacy H2O-3 and Sparkling Water Training</strong></p>
+<p class="image-container"><img alt="picture-2" src="img/b92e78ac6ff5b7f.jpg"></p>
 <p>Click &#34;Start Lab&#34;.<br><strong>Note: This step may take a few minutes for the AWS instance to be created and ready to access.</strong></p>
-<p><img alt="picture-3" src="img/842da4b2c5ab8674.jpg"></p>
-<p>Once the lab has been created, use the <strong>Jupyter URL</strong> link to launch the Jupyter environment.<br>Welcome to the Juypter environment where we will create a new Python notebook for H2O-3.</p>
-<h2>Task 3: Open a New Jupyter Notebook</h2>
+<p class="image-container"><img alt="picture-3" src="img/cfbd740cbb810395.jpg"></p>
+<p>Once the lab has been created, use the <strong>Jupyter URL</strong> link to launch the Jupyter environment. Welcome to the Juypter environment where we will create a new Python notebook for H2O-3.</p>
+<h2 is-upgraded>Task 3: Open a New Jupyter Notebook</h2>
 <p>Open a new Jupyter Python3 Notebook by clicking <strong>New</strong> and selecting <strong>Python 3</strong></p>
-<p><img alt="picture-4" src="img/6c623102c8affe15.jpg"></p>
+<p class="image-container"><img alt="picture-4" src="img/2b070d7a34c167ab.jpg"></p>
 <p>In this notebook, you will:</p>
 <ol type="1">
 <li>Startup an H2O Cluster</li>
@@ -69,11 +71,11 @@
 <li>Create a baseline model</li>
 <li>Compare your results</li>
 </ol>
-<h3>Deeper Dive and Resources:</h3>
+<h3 is-upgraded>Deeper Dive and Resources:</h3>
 <ul>
 <li><a href="https://www.dataquest.io/blog/jupyter-notebook-tutorial/" target="_blank">Jupyter Notebook Tutorial</a></li>
 </ul>
-<h2>Task 4: Initialize the H2O-3 Cluster</h2>
+<h2 is-upgraded>Task 4: Initialize the H2O-3 Cluster</h2>
 <p>In this section, you will use the <code>h2o.init()</code> method to initialize H2O. In the first cell of your notebook, you will:</p>
 <ol type="1">
 <li>Import the h2o python library</li>
@@ -81,53 +83,63 @@
 <li>Import the Target Encoding and GBM Models</li>
 </ol>
 <p>You can enter the following in the first cell:</p>
-<pre><code>import h2o
+<pre><code language="language-python" class="language-python">import h2o
 h2o.init()
 from h2o.estimators import H2OTargetEncoderEstimator
 from h2o.estimators.gbm import H2OGradientBoostingEstimator
 </code></pre>
 <p>Your notebook should look like this:</p>
-<p><img alt="picture-5" src="img/b111734c3a6dfe32.jpg"></p>
+<p class="image-container"><img alt="picture-5" src="img/b111734c3a6dfe32.jpg"></p>
 <p>Then Run the cell to get started</p>
-<p><img alt="picture-6" src="img/a410fc8901aadbbb.jpg"></p>
-<h3>Deeper Dive and Resources:</h3>
+<p class="image-container"><img alt="picture-6" src="img/a410fc8901aadbbb.jpg"></p>
+<h3 is-upgraded>Deeper Dive and Resources:</h3>
 <ul>
 <li><a href="http://docs.h2o.ai/h2o/latest-stable/h2o-docs/starting-h2o.html#from-python" target="_blank">Starting H2O from Python</a></li>
 </ul>
-<h2>Task 5: Import the Titanic Dataset and Select The Target Column</h2>
+<h2 is-upgraded>Task 5: Import the Titanic Dataset and Select The Target Column</h2>
 <p>Now that your H2O cluster has started, you can import your data.  We will import the Titanic dataset from a public AWS S3 bucket using the h2o.import_file() function.</p>
-<p>1. Enter the following in the next available cell and run it to bring in the Titanic data:</p>
-<pre><code>#Import the titanic dataset
+<ol type="1">
+<li>Enter the following in the next available cell and run it to bring in the Titanic data:</li>
+</ol>
+<pre><code language="language-python" class="language-python">#Import the titanic dataset
 titanic = h2o.import_file(&#34;https://s3.amazonaws.com/h2o-public-test-data/smalldata/gbm_test/titanic.csv&#34;)
 </code></pre>
 <p>Note: The line with the # is a code comment.  These can be useful to describe what you are doing in a given section of code.</p>
-<p>2. Next we will set our target/response variable so that H2O-3 recognizes the problem as a classification problem. H2O algorithms will treat a problem as a classification problem if the column type is factor and a regression problem if the column type is numeric. You can force H2O to use either classification or regression by changing the column type.</p>
+<ol type="1">
+<li>Next we will set our target/response variable so that H2O-3 recognizes the problem as a classification problem. H2O algorithms will treat a problem as a classification problem if the column type is factor and a regression problem if the column type is numeric. You can force H2O to use either classification or regression by changing the column type.</li>
+</ol>
 <p>We will select <strong>survived</strong> as our target and ensure we are doing classification by using .asfactor().</p>
 <p>Enter the following code in a new cell and run it to create the appropriate target in a new cell:</p>
-<pre><code># Set response column as a factor
+<pre><code language="language-python" class="language-python"># Set response column as a factor
 titanic[&#39;survived&#39;] = titanic[&#39;survived&#39;].asfactor()
 response=&#39;survived&#39;
 </code></pre>
-<p>3. Now you will split your data into a training and testing dataset that will be used in the modeling process. In this example, you will direct H2O to split the data by allotting 80% of the records to the training dataset and 20% of the records to the test dataset.</p>
+<ol type="1">
+<li>Now you will split your data into a training and testing dataset that will be used in the modeling process. In this example, you will direct H2O to split the data by allotting 80% of the records to the training dataset and 20% of the records to the test dataset.</li>
+</ol>
 <p>Enter the following in the next cell to and run it to create your train and test datasets.</p>
-<pre><code># Split the dataset into train and test
+<pre><code language="language-python" class="language-python"># Split the dataset into train and test
 train, test = titanic.split_frame(ratios = [.8], seed = 1234)
 </code></pre>
-<h3>Deeper Dive and Resources:</h3>
+<h3 is-upgraded>Deeper Dive and Resources:</h3>
 <ul>
 <li><a href="http://docs.h2o.ai/h2o/latest-stable/h2o-docs/data-munging/importing-data.html" target="_blank">Importing Data in H2O-3</a></li>
 <li><a href="http://docs.h2o.ai/h2o/latest-stable/h2o-docs/data-munging/change-column-type.html" target="_blank">Changing the Column Type in H2O-3</a></li>
 <li><a href="http://docs.h2o.ai/h2o/latest-stable/h2o-docs/data-munging/splitting-datasets.html" target="_blank">Splitting Dataset Into Train/Test/Validation</a></li>
 </ul>
-<h2>Task 6: Define Encoding Parameters</h2>
+<h2 is-upgraded>Task 6: Define Encoding Parameters</h2>
 <p>Now you will begin to define your parameters needed for encoding.</p>
 <p>In this example, we will be trying to predict <code>survived</code> using the popular Titanic dataset: One of the predictors is <code>cabin</code>, a categorical column with a number of unique values. To perform target encoding on <code>cabin</code>, we will calculate the average of <code>home.dest</code> and <code>embarked</code> per cabin. So instead of using <code>cabin</code> as a predictor in our model, we could use the target encoding of <code>cabin</code>.</p>
-<p>1. First, you will select which columns you want to encode. Enter the following code in a new cell and run it:</p>
-<pre><code># Choose which columns to encode
+<ol type="1">
+<li>First, you will select which columns you want to encode. Enter the following code in a new cell and run it:</li>
+</ol>
+<pre><code language="language-python" class="language-python"># Choose which columns to encode
 encoded_columns = [&#34;home.dest&#34;, &#34;cabin&#34;, &#34;embarked&#34;]
 </code></pre>
-<p>2. Set the encoding parameters to use in the target encoding model.  Enter the following code in a new line and run it:</p>
-<pre><code># Set target encoding parameters
+<ol type="1">
+<li>Set the encoding parameters to use in the target encoding model.  Enter the following code in a new line and run it:</li>
+</ol>
+<pre><code language="language-python" class="language-python"># Set target encoding parameters
 blended_avg= True
 inflection_point = 3
 smoothing = 10
@@ -135,30 +147,32 @@ smoothing = 10
 noise = 0.15
 </code></pre>
 <p>The <strong>blended_avg</strong> &amp; <strong>noise</strong> parameters are useful to help prevent overfitting.  The inflection_point &amp; smoothing parameters are necessary when <strong>blended_average</strong> is set to True and these values are by default set to 20 and 0.01 times the range of 𝑦 of random noise, respectively. In this example, you will set those parameters to different values.</p>
-<p>3. Next, you are going to define your data leakage handling strategy (also helps prevent overfitting) that will be used in your target encoding map.  The following are a list of options you have to select from:</p>
+<ol type="1">
+<li>Next, you are going to define your data leakage handling strategy (also helps prevent overfitting) that will be used in your target encoding map.  The following are a list of options you have to select from:</li>
+</ol>
+<p><code>data_leakage_handling</code>: To control data leakage, specify one of the following data leakage handling strategies:</p>
 <ul>
-<li><code>data_leakage_handling</code>: To control data leakage, specify one of the following data leakage handling strategies:</li>
 <li><code>none</code> (Python)/<code>None</code> ®: Do not holdout anything. Using whole frame for training</li>
 <li><code>k_fold</code> (Python)/<code>KFold</code> ®: Encodings for a fold are generated based on out-of-fold data.</li>
 <li><code>leave_one_out</code>(Python)/<code>LeaveOneOut</code> ®: The current row&#39;s response value is subtracted from the pre-calculated per-level frequencies.</li>
 </ul>
 <p>When using the k-fold strategy you need to provide a fold column.  To create a fold_column in your data you can use the <strong>kfold_column()</strong> function.  In the below example you will use n_folds=5.</p>
 <p>Enter the following code in the next cell and run the code.</p>
-<pre><code># For k_fold strategy we need to provide fold column
+<pre><code language="language-python" class="language-python"># For k_fold strategy we need to provide fold column
 data_leakage_handling = &#34;k_fold&#34;
 fold_column = &#34;kfold_column&#34;
 train[fold_column] = train.kfold_column(n_folds=5, seed=3456)
 </code></pre>
-<h3>Deeper Dive and Resources:</h3>
+<h3 is-upgraded>Deeper Dive and Resources:</h3>
 <ul>
 <li><a href="http://docs.h2o.ai/h2o/latest-stable/h2o-docs/data-science/algo-params/fold_column.html?highlight=kfold_column" target="_blank">Using N-fold Cross Validation</a></li>
 <li><a href="http://docs.h2o.ai/h2o/latest-stable/h2o-docs/data-munging/target-encoding.html" target="_blank">Target Encoding in H2O-3</a></li>
 </ul>
-<h2>Task 7: Train the Target Encoded Model</h2>
+<h2 is-upgraded>Task 7: Train the Target Encoded Model</h2>
 <p>Now you are ready to train the target encoding model using the <strong>H2OTargetEncoderEstimator</strong>. You will define a new model <strong>titanic_te</strong> and use the encoding settings you defined in an earlier step.</p>
 <p>Then you will train the model on the encoded columns you created earlier.</p>
 <p>Enter the following code in a new cell and run it to train your target encoding model.</p>
-<pre><code># Train a TE model
+<pre><code language="language-python" class="language-python"># Train a TE model
 titanic_te = H2OTargetEncoderEstimator(fold_column=fold_column,
                                        data_leakage_handling=data_leakage_handling,
                                        blending=blended_avg,
@@ -169,20 +183,24 @@ titanic_te.train(x=encoded_columns,
                  y=response,
                  training_frame=train)
 </code></pre>
-<h3>Deeper Dive and Resources:</h3>
+<h3 is-upgraded>Deeper Dive and Resources:</h3>
 <ul>
 <li><a href="http://docs.h2o.ai/h2o/latest-stable/h2o-docs/data-munging/target-encoding.html" target="_blank">Target Encoding in H2O-3</a></li>
 </ul>
-<h2>Task 8: Apply the Target Encodings on the Datasets and Train a Gradient Boosting Machine Model With Target Encoding</h2>
+<h2 is-upgraded>Task 8: Apply the Target Encodings on the Datasets and Train a Gradient Boosting Machine Model With Target Encoding</h2>
 <p>At this point, you are ready to apply the trained target encodings using <strong>.transform()</strong> to your test and training datasets. This will add those new encoded columns for <code>[&#34;home.dest&#34;, &#34;cabin&#34;, &#34;embarked&#34;]</code> to your datasets.</p>
-<p>1. Enter the following code in the next available cell and run it:</p>
-<pre><code># New target encoded train and test sets
+<ol type="1">
+<li>Enter the following code in the next available cell and run it:</li>
+</ol>
+<pre><code language="language-python" class="language-python"># New target encoded train and test sets
 train_te = titanic_te.transform(frame=train, data_leakage_handling=&#34;k_fold&#34;, seed=1234, noise=noise)
 test_te = titanic_te.transform(frame=test, noise=0.0)
 </code></pre>
-<p>2. Next, you are going to define a Gradient Boosting Machine Model with Target Encoding.  In this example, we are going to use some default settings.  For more information on GBMs, click <a href="http://docs.h2o.ai/h2o/latest-stable/h2o-docs/data-science/gbm.html" target="_blank">here</a>.</p>
+<ol type="1">
+<li>Next, you are going to define a Gradient Boosting Machine Model with Target Encoding.  In this example, we are going to use some default settings.  For more information on GBMs, click <a href="http://docs.h2o.ai/h2o/latest-stable/h2o-docs/data-science/gbm.html" target="_blank">here</a>.</li>
+</ol>
 <p>Enter the following code in the next available cell and run it:</p>
-<pre><code>gbm_with_te=H2OGradientBoostingEstimator(max_depth=6,
+<pre><code language="language-python" class="language-python">gbm_with_te=H2OGradientBoostingEstimator(max_depth=6,
                                          min_rows=1,
                                          fold_column=fold_column,
                                          score_tree_interval=5,
@@ -195,30 +213,37 @@ test_te = titanic_te.transform(frame=test, noise=0.0)
                                          stopping_tolerance=0.001,
                                          model_id=&#34;gbm_with_te&#34;)
 </code></pre>
-<p>3. Next, you are going to train the GBM with target encoded features.</p>
+<ol type="1">
+<li>Next, you are going to train the GBM with target encoded features.</li>
+</ol>
 <p>Enter the following code in a new cell and run it:</p>
-<pre><code># Training is based on training data with early stopping based on xval performance
+<pre><code language="language-python" class="language-python"># Training is based on training data with early stopping based on xval performance
 x_with_te = [&#34;pclass&#34;, &#34;sex&#34;, &#34;age&#34;, &#34;sibsp&#34;, &#34;parch&#34;, &#34;fare&#34;, &#34;cabin_te&#34;, &#34;embarked_te&#34;, &#34;home.dest_te&#34;]
 gbm_with_te.train(x=x_with_te, y=response, training_frame=train_te)
 </code></pre>
-<p>4. Then, you are going to retrieve your model&#39;s performance metric on data that it was not exposed to during training, the <strong>test_te</strong> dataset which will help prevent overly optimistic results.</p>
-<p>In this instance, you are going to retrieve the model&#39;s AUC using the <strong>auc_with_te</strong> variable.<br>Enter the following code in a new cell and run it:</p>
-<pre><code># To prevent overly optimistic results ( overfitting to xval metrics ) metric is computed on yet unseen test split
+<ol type="1">
+<li>Then, you are going to retrieve your model&#39;s performance metric on data that it was not exposed to during training, the <strong>test_te</strong> dataset which will help prevent overly optimistic results.  In this instance, you are going to retrieve the model&#39;s AUC using the <strong>auc_with_te</strong> variable. Enter the following code in a new cell and run it:</li>
+</ol>
+<pre><code language="language-python" class="language-python"># To prevent overly optimistic results ( overfitting to xval metrics ) metric is computed on yet unseen test split
 my_gbm_metrics = gbm_with_te.model_performance(test_te)
 auc_with_te = my_gbm_metrics.auc()
 </code></pre>
-<p>5. To view the AUC on your test data enter the following in a new cell and run it:</p>
-<pre><code>auc_with_te
+<ol type="1">
+<li>To view the AUC on your test data enter the following in a new cell and run it:</li>
+</ol>
+<pre><code language="language-python" class="language-python">auc_with_te
 </code></pre>
-<h3>Deeper Dive and Resources:</h3>
+<h3 is-upgraded>Deeper Dive and Resources:</h3>
 <ul>
 <li><a href="http://docs.h2o.ai/h2o/latest-stable/h2o-docs/data-munging/target-encoding.html" target="_blank">Target Encoding in H2O-3</a></li>
 <li><a href="http://docs.h2o.ai/h2o/latest-stable/h2o-docs/performance-and-prediction.html#metric-best-practices-classification" target="_blank">Performance and Metrics for H20-3 Classification Algorithms</a></li>
 </ul>
-<h2>Task 9: Create a Baseline Gradient Boosting Machine Model</h2>
+<h2 is-upgraded>Task 9: Create a Baseline Gradient Boosting Machine Model</h2>
 <p>Now that you have trained a simple GBM with target encoded features, you can compare that model&#39;s AUC to that of a GBM trained with no target encoding.</p>
-<p>1. Train a GBM with some default parameters.  Enter the below code in a new cell and run it:</p>
-<pre><code># Train a GBM estimator
+<ol type="1">
+<li>Train a GBM with some default parameters.  Enter the below code in a new cell and run it:</li>
+</ol>
+<pre><code language="language-python" class="language-python"># Train a GBM estimator
 gbm_baseline=H2OGradientBoostingEstimator(max_depth=6,
                                           min_rows=1,
                                           fold_column=fold_column,
@@ -235,31 +260,36 @@ gbm_baseline=H2OGradientBoostingEstimator(max_depth=6,
 x_baseline = [&#34;pclass&#34;, &#34;sex&#34;, &#34;age&#34;, &#34;sibsp&#34;, &#34;parch&#34;, &#34;fare&#34;, &#34;cabin&#34;, &#34;embarked&#34;, &#34;home.dest&#34;]
 gbm_baseline.train(x=x_baseline, y=response, training_frame=train)
 </code></pre>
-<p>2. Obtain the performance of this baseline GBM using the unseen test dataset. Enter the following code in a new cell and run it:</p>
-<pre><code># Measuring performance on a test split
+<ol type="1">
+<li>Obtain the performance of this baseline GBM using the unseen test dataset. Enter the following code in a new cell and run it:</li>
+</ol>
+<pre><code language="language-python" class="language-python"># Measuring performance on a test split
 gbm_baseline_metrics = gbm_baseline.model_performance(test)
 auc_baseline = gbm_baseline_metrics.auc()
 </code></pre>
-<p>3. To view the AUC on your test data enter the following code in a new cell and run it:</p>
-<pre><code>auc_baseline
+<ol type="1">
+<li>To view the AUC on your test data enter the following code in a new cell and run it:</li>
+</ol>
+<pre><code language="language-python" class="language-python">auc_baseline
 </code></pre>
-<h2>Task 10: Compare the AUC of GBM with Target Encoding &amp; the Baseline GBM</h2>
+<h2 is-upgraded>Task 10: Compare the AUC of GBM with Target Encoding &amp; the Baseline GBM</h2>
 <p>Review the AUC for your Target Encoded and Baseline GBMs.  The AUC for the target encoded model should be higher than the baseline model.  What this means is that your target encoded features were helpful in improving the model&#39;s performance.</p>
 <p><a href="https://www.h2o.ai/community/glossary/feature-engineering-data-transformation" target="_blank">Feature engineering</a> is a very time-consuming procedure due to its repetitive nature. <a href="https://www.h2o.ai/products/h2o-driverless-ai/" target="_blank">H2O Driverless AI</a> employs a library of algorithms and feature transformations to automatically engineer new, more predictive features for a given dataset . Feature Engineering in Driverless AI is fully aware of missing values, and missing values are treated as information - either as a special categorical level or as a special number. Driverless AI performs feature engineering on the dataset to determine the optimal representation of the data. The top features used in the final model can be seen in the GUI. The complete list of features used in the final model is available in the Experiment Summary artifacts. The Experiment Summary also provides a list of the original features and their estimated feature importance. For example, given the features in the final Driverless AI model, we can estimate the feature importance of the original features.</p>
-<h2>Next Steps</h2>
+<h2 is-upgraded>Next Steps</h2>
 <p>In Part 2 of your assignment, you will leverage Driverless AI to explore the automated feature engineering techniques available.</p>
 <p><strong>Note: Before you end your session, you may want to download your notebook for future reference.</strong></p>
-<p><img alt="picture-7" src="img/5276be4c91d8c2c6.jpg"></p>
+<p class="image-container"><img alt="picture-7" src="img/5276be4c91d8c2c6.jpg"></p>
 
 
       </google-codelab-step>
     
   </google-codelab>
 
-  <script src="../assets/codelab-elements/native-shim.js"></script>
-  <script src="../assets/codelab-elements/custom-elements.min.js"></script>
-  <script src="../assets/codelab-elements/prettify.js"></script>
-  <script src="../assets/codelab-elements/codelab-elements.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
 
 </body>
 </html>

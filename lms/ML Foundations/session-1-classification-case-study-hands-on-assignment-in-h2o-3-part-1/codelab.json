@@ -1,14 +1,14 @@
 {
   "environment": "web",
-  "source": "/Users/acastro/Desktop/session-1-classification-case-study-hands-on-assignment-in-h2o-3-part-1/session-1-classification-case-study-hands-on-assignment-in-h2o-3-part-1.md",
   "format": "html",
-  "prefix": "../assets",
+  "prefix": "https://storage.googleapis.com",
   "mainga": "UA-49880327-14",
-  "updated": "2020-09-24T19:12:37-07:00",
+  "updated": "2020-10-16T20:41:23-07:00",
   "id": "session-1-classification-case-study-hands-on-assignment-in-h2o-3-part-1",
   "duration": 0,
   "title": "ML Foundations: Module 3 Session 1: Dive into Supervised Learning with H2O-3 - Classification Case Study Hands-On Assignment in H2O-3 (Part 1)",
   "summary": "Check the list",
+  "source": "/Users/falvarenga/Desktop/ml-foundations-for-html/session-1-classification-case-study-hands-on-assignment-in-h2o-3-part-1/session-1-classification-case-study-hands-on-assignment-in-h2o-3-part-1.md",
   "theme": "",
   "status": [
     "draft"
