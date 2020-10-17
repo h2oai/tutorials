@@ -179,13 +179,13 @@ After you run the code above, you will see some of the images from the dataset t
 
 Before going to the next Task, here is an example of Augmentation (please note that this images are not part of our dataset)
 
-![Augmentation](assets/Augmentation.jpeg)
+![augmentation](assets/augmentation.jpeg)
 
  
 ## Task 6: Initialize the Model: ResNet 34
 Initialization of ResNet
 
-![Resnet34](assets/Resnet34.png)
+![resnet34](assets/resnet34.jpeg)
 
 ```Python
 # Select the architecture and use ImageNet-pretrained weights
