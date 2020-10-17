@@ -1,14 +1,14 @@
 {
   "environment": "web",
-  "source": "/Users/acastro/Desktop/unsupervised-learning-case-study-hands-on-assignment-in-h2o-3/unsupervised-learning-case-study-hands-on-assignment-in-h2o-3.md",
   "format": "html",
-  "prefix": "../assets",
+  "prefix": "https://storage.googleapis.com",
   "mainga": "UA-49880327-14",
-  "updated": "2020-10-01T20:08:47-07:00",
+  "updated": "2020-10-16T20:46:11-07:00",
   "id": "unsupervised-learning-case-study-hands-on-assignment-in-h2o-3",
   "duration": 0,
   "title": "Unsupervised Learning Case Study Hands-On Assignment in H2O-3",
   "summary": "Check the list",
+  "source": "/Users/falvarenga/Desktop/ml-foundations-for-html/unsupervised-learning-case-study-hands-on-assignment-in-h2o-3/unsupervised-learning-case-study-hands-on-assignment-in-h2o-3.md",
   "theme": "",
   "status": [
     "draft"

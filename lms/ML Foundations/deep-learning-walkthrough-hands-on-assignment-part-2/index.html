@@ -1,0 +1,334 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Deep Learning Walkthrough Hands-On Assignment Part 2</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <link rel="stylesheet" href="custom.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="deep-learning-walkthrough-hands-on-assignment-part-2"
+                  title="Deep Learning Walkthrough Hands-On Assignment Part 2"
+                  environment="web"
+                  feedback-link="">
+    
+      <google-codelab-step label="Deep Learning Walkthrough Hands-On Assignment Part 2" duration="0">
+        <h2 is-upgraded>Objective</h2>
+<p>This is the hands-on exercise wherein you will be doing a walkthrough to observe how to apply Transfer Learning in Computer Vision Problems using PyTorch.</p>
+<p>For this assignment, you will be using image data of natural scenes around the world. This data was initially published on <a href="https://datahack.analyticsvidhya.com" target="_blank">Analytics Vidhya</a> platform by Intel to host an Image Classification Challenge and could be downloaded from <a href="https://www.kaggle.com/puneet6060/intel-image-classification" target="_blank">here</a>.</p>
+<p>Note: This tutorial has been built on Aquarium, which is H2O.ai&#39;s cloud environment providing software access for workshops, conferences, and training. The labs in Aquarium have datasets, experiments, projects, and other content preloaded. If you use your version of H2O-3 or Driverless AI, you will not see preloaded content.</p>
+<h2 is-upgraded>Prerequisites</h2>
+<ul>
+<li>Basic knowledge of Deep Learning</li>
+<li>An <a href="https://aquarium.h2o.ai/" target="_blank">Aquarium</a> Account to access H2O.ai&#39;s software on the AWS Cloud.  <ul>
+<li>Need an Aquarium account? Follow the instructions in the next section <strong>Task 1 Create An Account &amp; Log Into Aquarium</strong> to create an account</li>
+<li>Already have an Aquarium account? Log in and continue to Task 2 Launch <strong>Lab 16: Legacy H2O-3 and Sparkling Water Training</strong> to begin your exercise!</li>
+</ul>
+</li>
+</ul>
+<p><strong>Note:</strong> Aquarium&#39;s Driverless AI lab has a license key built-in, so you don&#39;t need to request one to use it. Each Driverless AI lab instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore Driverless AI, you can always launch another lab instance or reach out to our sales team via the <a href="https://www.h2o.ai/company/contact/" target="_blank">contact us form</a>.</p>
+<h2 is-upgraded>Task 1: Create An Account &amp; Log Into Aquarium</h2>
+<p>Navigate to the following site: https://aquarium.h2o.ai/login and do the following:</p>
+<p>1. create a new account (if you don&#39;t have one)</p>
+<p>2. log into the site with your credentials.</p>
+<p>3. Navigate to Lab 16: Legacy H2O-3 and Sparkling Water Training. Click on Start Lab and wait for your instance to be ready. Once your instance is ready, you will see the following screen.</p>
+<p class="image-container"><img alt="labs-urls" src="img/1363a083367fefbf.jpg"></p>
+<p>Click on the Jupyter URL to start a Jupyter Notebook or the H2O Flow instance( if required). You can create a new Jupyter Notebook and follow the steps defined below.</p>
+<h2 is-upgraded>Task 2: Open a New Jupyter Notebook</h2>
+<p>Open a new Jupyter Python3 Notebook by clicking New and selecting Python 3</p>
+<p class="image-container"><img alt="new-python-notebook" src="img/cbaf29743262b789.jpg"></p>
+<p>In this notebook, you will:</p>
+<ul>
+<li>Startup an H2O Cluster</li>
+<li>Import necessary packages</li>
+<li>Import the Credit Card dataset</li>
+<li>Train an isolation forest</li>
+<li>Inspect the Predictions</li>
+</ul>
+<h3 is-upgraded>Deeper Dive and Resources:</h3>
+<ul>
+<li><a href="https://www.dataquest.io/blog/jupyter-notebook-tutorial/" target="_blank">Jupyter Notebook Tutorial</a></li>
+</ul>
+<h2 is-upgraded>Task 3: Setup PyTorch</h2>
+<p>In this section, you will use PyTorch and import all frameworks required.</p>
+<p>Note: You can give BASH commands in Jupyter by using a <code>!</code> character. We can use this to install PyTorch in Aquarium as follows:</p>
+<p>1. Install PyTorch</p>
+<p>2. Import necessary Modules</p>
+<p>You can enter the following in the first cell:</p>
+<pre><code language="language-python" class="language-python"># PyTorch versions
+# torch==1.6.0
+# torchvision==0.7.0
+ 
+# Import libraries
+!pip install torch torchvision
+import time
+import matplotlib.pyplot as plt
+import numpy as np
+import os
+import torch
+import torch.nn as nn
+import torch.optim as optim
+import torchvision
+from torch.optim import lr_scheduler
+from torchvision import datasets, models, transforms
+</code></pre>
+<p>Your notebook should look like this:</p>
+<p class="image-container"><img alt="notebook" src="img/3a2e6799202f2f1d.jpg"></p>
+<h3 is-upgraded>Deeper Dive and Resources:</h3>
+<ul>
+<li><a href="http://docs.h2o.ai/h2o/latest-stable/h2o-docs/starting-h2o.html#from-python" target="_blank">Starting H2O from Python</a></li>
+</ul>
+<h2 is-upgraded>Task 4: Import the Dataset</h2>
+<p>For this assignment, you will be using image data of natural scenes around the world. This data was initially published on <a href="https://datahack.analyticsvidhya.com" target="_blank">Analytics Vidhya</a> platform by Intel to host an Image Classification Challenge and can be downloaded from <a href="https://www.kaggle.com/puneet6060/intel-image-classification" target="_blank">here</a>.</p>
+<p>1. Import the dataset using the URL</p>
+<pre><code language="language-python" class="language-python"># Download the data
+!wget &#39;https://h2o-public-test-data.s3.amazonaws.com/bigdata/server/Image Data/intel_img_classification.zip&#39;
+!unzip intel_img_classification.zip
+</code></pre>
+<p>Note: The line with the # is a code comment.  These can be useful to describe what you are doing in a given section of code.</p>
+<h2 is-upgraded>Task 5: Load the data</h2>
+<p>We will work with a subset of the original dataset. It has 3k images: 2750 images in training set, and 250 images in the validation set.</p>
+<p>Images have the size of 150x150 pixels distributed under 6 categories:</p>
+<ul>
+<li>Buildings</li>
+<li>Forest</li>
+<li>Glacier</li>
+<li>Mountain</li>
+<li>Sea</li>
+<li>Street</li>
+</ul>
+<pre><code language="language-python" class="language-python"># Data augmentation and normalization for training
+# Just normalization for validation
+data_transforms = {
+    &#34;train&#34;: transforms.Compose(
+        [
+            transforms.Resize((160, 160)),
+            transforms.RandomHorizontalFlip(p=0.5),
+            transforms.RandomGrayscale(p=0.5),
+            transforms.ToTensor(),
+            transforms.RandomErasing(p=0.5),
+            transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225]),
+        ]
+    ),
+    &#34;val&#34;: transforms.Compose(
+        [
+            transforms.Resize((160, 160)),
+            transforms.ToTensor(),
+            transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225]),
+        ]
+    ),
+}
+ 
+# Create Datasets
+data_dir = &#34;classification_data/&#34;
+image_datasets = {
+    x: datasets.ImageFolder(os.path.join(data_dir, x), data_transforms[x])
+    for x in [&#34;train&#34;, &#34;val&#34;]
+}
+ 
+# Create Dataloaders
+dataloaders = {
+    x: torch.utils.data.DataLoader(
+        image_datasets[x], batch_size=8, shuffle=True, num_workers=4
+    )
+    for x in [&#34;train&#34;, &#34;val&#34;]
+}
+dataset_sizes = {x: len(image_datasets[x]) for x in [&#34;train&#34;, &#34;val&#34;]}
+class_names = image_datasets[&#34;train&#34;].classes
+ 
+def imshow(inp, title=None):
+    &#34;&#34;&#34;Imshow for Tensor.&#34;&#34;&#34;
+    inp = inp.numpy().transpose((1, 2, 0))
+    mean = np.array([0.485, 0.456, 0.406])
+    std = np.array([0.229, 0.224, 0.225])
+    inp = std * inp + mean
+    inp = np.clip(inp, 0, 1)
+    plt.imshow(inp)
+    if title is not None:
+        plt.title(title)
+ 
+        
+def plot_grid(inputs, classes):
+    &#34;&#34;&#34;Make a grid from batch.&#34;&#34;&#34;
+    out = torchvision.utils.make_grid(inputs, nrow=4, padding=10, pad_value=255)
+    plt.figure(figsize=(10, 10))
+    imshow(out, title=[class_names[x] for x in classes])
+ 
+    
+# Get a batch of training data
+inputs, classes = next(iter(dataloaders[&#34;train&#34;]))
+plot_grid(inputs, classes)
+ 
+# Get a batch of validation data
+inputs, classes = next(iter(dataloaders[&#34;val&#34;]))
+plot_grid(inputs, classes)
+</code></pre>
+<p>After you run the code above, you will see some of the images from the dataset that we will be using.</p>
+<p>Before going to the next Task, here is an example of Augmentation (please note that this images are not part of our dataset)</p>
+<p class="image-container"><img alt="augmentation" src="img/7c4baea1c349b9f3.jpeg"></p>
+<h2 is-upgraded>Task 6: Initialize the Model: ResNet 34</h2>
+<p>Initialization of ResNet</p>
+<p class="image-container"><img alt="resnet34" src="img/be9050933e8ff4ca.jpeg"></p>
+<pre><code language="language-Python" class="language-Python"># Select the architecture and use ImageNet-pretrained weights
+# The weights will be downloaded for the first time
+model = models.resnet34(pretrained=True)
+ 
+# Change the head of the model with the classes provided
+num_ftrs = model.fc.in_features
+model.fc = nn.Linear(num_ftrs, len(class_names))
+ 
+# Initialize device
+device = torch.device(&#34;cuda:0&#34; if torch.cuda.is_available() else &#34;cpu&#34;)
+# Put the model to the device (GPU)
+model = model.to(device)
+ 
+# Initialize Loss function
+criterion = nn.CrossEntropyLoss()
+ 
+# Initialize the optimizer
+optimizer = optim.SGD(model.parameters(), lr=0.001, momentum=0.9)
+ 
+# Decay LR by a factor of 0.1 every 5 epochs
+exp_lr_scheduler = lr_scheduler.StepLR(optimizer, step_size=5, gamma=0.1)
+</code></pre>
+<h2 is-upgraded>Task 7: Train the Model</h2>
+<p>Next, we will train our model:</p>
+<pre><code language="language-Python" class="language-Python"># Define number of epochs
+num_epochs = 10
+best_acc = 0.0
+ 
+since = time.time()
+ 
+# Loop over all epochs
+for epoch in range(num_epochs):
+    print(f&#34;Epoch {epoch + 1}/{num_epochs}\n&#34;)
+    print(&#34;-&#34; * 10)
+ 
+    # Each epoch has a train and validation phase
+    for phase in [&#34;train&#34;, &#34;val&#34;]:
+        if phase == &#34;train&#34;:
+            model.train()  # Set model to training mode
+        else:
+            model.eval()  # Set model (all layers) to evaluate mode
+ 
+        running_loss = 0.0
+        running_corrects = 0
+ 
+        # Iterate over data
+        for inputs, labels in dataloaders[phase]:
+            
+            # Put data to the devic (GPU)
+            inputs = inputs.to(device)
+            labels = labels.to(device)
+ 
+            # Zero the parameter gradients (not to accumulate them)
+            optimizer.zero_grad()
+ 
+            # Forward pass
+            # Track history if only in the train phase
+            with torch.set_grad_enabled(phase == &#34;train&#34;):
+                outputs = model(inputs)
+                _, preds = torch.max(outputs, 1)
+                loss = criterion(outputs, labels)
+ 
+                # Backward pass + optimize only if in train phase
+                if phase == &#34;train&#34;:
+                    loss.backward()
+                    optimizer.step()
+ 
+            # Calculate running train and validation statistics
+            running_loss += loss.item() * inputs.size(0)
+            running_corrects += torch.sum(preds == labels.data)
+            
+        # Schedule learning rate in the train phase
+        if phase == &#34;train&#34;:
+            exp_lr_scheduler.step()
+ 
+        # Calculate epoch train and validation statistics
+        epoch_loss = running_loss / dataset_sizes[phase]
+        epoch_acc = running_corrects.double() / dataset_sizes[phase]
+        print(&#34;{} Loss: {:.4f} Acc: {:.4f}\n&#34;.format(phase, epoch_loss, epoch_acc))
+ 
+        # Save the weights of the best model so far
+        if phase == &#34;val&#34; and epoch_acc &gt; best_acc:
+            best_acc = epoch_acc
+            torch.save(model.state_dict(), &#34;best_model.ckpt&#34;)
+ 
+time_elapsed = time.time() - since
+print(&#34;Training complete in {:.0f}m {:.0f}s&#34;.format(time_elapsed // 60, time_elapsed % 60))
+</code></pre>
+<h2 is-upgraded>Task 8: Visually Validate the results</h2>
+<p>Lastly, once the model is finished training, we can visualize results:</p>
+<pre><code language="language-Python" class="language-Python"># Show the best validation accuracy
+print(&#34;Best val Acc: {:4f}&#34;.format(best_acc))
+ 
+# Load the best model weights and set to the eval mode
+model.load_state_dict(torch.load(&#34;best_model.ckpt&#34;))
+model.eval()
+ 
+def visualize_model(model, num_images=6):
+    images_so_far = 0
+    fig = plt.figure(figsize=(12, 12))
+ 
+    # Do not track history of the forward pass
+    with torch.no_grad():
+        
+        # Iterate through validation data
+        for i, (inputs, labels) in enumerate(dataloaders[&#34;val&#34;]):
+            # Put data on the GPU
+            inputs = inputs.to(device)
+            labels = labels.to(device)
+ 
+            # Make predictions
+            outputs = model(inputs)
+            _, preds = torch.max(outputs, 1)
+ 
+            # Plot images
+            for j in range(inputs.size()[0]):
+                images_so_far += 1
+                ax = plt.subplot(num_images // 2, 2, images_so_far)
+                ax.axis(&#34;off&#34;)
+                ax.set_title(&#34;predicted: {}&#34;.format(class_names[preds[j]]))
+                imshow(inputs.cpu().data[j])
+ 
+                if images_so_far == num_images:
+                    return
+ 
+visualize_model(model)
+</code></pre>
+<h2 is-upgraded>Next Steps</h2>
+<p>In the above study, you learned above how to apply Transfer Learning in CV using PyTorch.</p>
+<ul>
+<li>Read More about PyTorch <a href="https://pytorch.org" target="_blank">here</a></li>
+<li>Checkout the PyTorch docs <a href="https://pytorch.org/docs" target="_blank">here</a></li>
+</ul>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>
