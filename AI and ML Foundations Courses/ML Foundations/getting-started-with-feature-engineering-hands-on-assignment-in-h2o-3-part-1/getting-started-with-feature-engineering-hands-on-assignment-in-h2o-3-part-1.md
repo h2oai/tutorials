@@ -18,7 +18,7 @@ In this overview of H2O-3, you will learn how to load data, define encoding para
 - Basic knowledge of Machine Learning and Statistics
 - An [Aquarium](https://aquarium.h2o.ai/) Account to access H2O.ai’s software on the AWS Cloud. 
    - Need an Aquarium account? Follow the instructions in the next section **Task 1 Create An Account & Log Into Aquarium** to create an account
-  - Already have an [Aquarium](https://aquarium.h2o.ai/) account? Log in and continue to **Task 2 Launch the H2O-3 & Sparkling Water Lab** to begin your exercise!
+  - Already have an [Aquarium](https://aquarium.h2o.ai/) account? Log in and continue to **Task 2: Launch the Legacy H2O-3 and Sparkling Water Training Lab** to begin your exercise!
 
 
 **Note: Aquarium's Driverless AI lab has a license key built-in, so you don't need to request one to use it. Each Driverless AI lab instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore Driverless AI, you can always launch another lab instance or reach out to our sales team via the contact us form.**
@@ -32,9 +32,9 @@ Navigate to the following site: https://aquarium.h2o.ai/login and do the followi
 
 ![picture-1](assets/picture-1.jpg)
 
-## Task 2: Launch the H2O-3 & Sparkling Water Lab
+## Task 2: Launch the Legacy H2O-3 and Sparkling Water Training Lab
 
-Once you’ve created your account on Aquarium and/or logged into the site, click on **Browse Labs** and navigate to **Lab 2: H2O-3 and Sparkling Water Test Drive**
+Once you’ve created your account on Aquarium and/or logged into the site, click on **Browse Labs** and navigate to **Lab 16: Legacy H2O-3 and Sparkling Water Training**
  
 ![picture-2](assets/picture-2.jpg)
 

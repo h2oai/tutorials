@@ -13,30 +13,28 @@ For this assignment, you will continue using the subset of the Freddie Mac Singl
 - Basic knowledge of Machine Learning and Statistics
 - An [Aquarium](https://aquarium.h2o.ai/) Account to access H2O.ai’s software on the AWS Cloud. 
   - Need an [Aquarium](https://aquarium.h2o.ai/) account? Follow the instructions in the next section **Task 1 Create An Account & Log Into Aquarium** to create an account
-  - Already have an Aquarium account? Log in and continue to **Task 2 Launch the H2O-3 & Sparkling Water Lab** to begin your exercise!
- 
-**Note: Aquarium's Driverless AI lab has a license key built-in, so you don't need to request one to use it. Each Driverless AI lab instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore Driverless AI, you can always launch another lab instance or reach out to our sales team via the [contact us form](https://www.h2o.ai/company/contact/).**
+  - Already have an Aquarium account? Log in and continue to **Task 2: Case Study - Regression** to begin your exercise!
+
  
 ### Task 1: Create An Account & Log Into Aquarium
  
 Navigate to the following site: https://aquarium.h2o.ai/login and do the following: 
 
-1\. create a new account (if you don’t have one) 
+1\. create a new account (if you don’t have one)
+
 2\. log into the site with your credentials.
-3\. Navigate to the lab: *H2O-3 and Sparkling Water Test Drive*. Click on Start Lab and wait for your instance to be ready. Once your instance is ready, you will see the following screen
+
+3\. Navigate to the lab: ***H2O-3 and Sparkling Water Test Drive***. Click on Start Lab and wait for your instance to be ready. Once your instance is ready, you will see the following screen
 
 ![labs-urls](assets/labs-urls.jpg)
 
-Click on the Jupyter url to start a jupyter notebook or the H2O Flow instance( if required). You can create a new Jupyter notebook and follow the steps defined below.
+Click on the Jupyter url to start a Jupyter Notebook or the H2O Flow instance( if required). You can create a new Jupyter Notebook and follow the steps defined below.
 
-
-### Task 2: Case Study- Regression
+### Task 2: Case Study - Regression
 
 Open the following tutorial: [1B. Introduction to Machine Learning with H2O-3 - Regression](https://training.h2o.ai/products/1b-introduction-to-machine-learning-with-h2o-3-regression)
  
 - In this exercise, you will follow the steps in the above tutorial and use H2O’s XGBoost model to try to predict whether or not a mortgage loan will be delinquent or not.
-- You do also have the option to complete the tutorial to earn a badge
-
 
 ### Next Steps
 
