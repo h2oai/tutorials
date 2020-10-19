@@ -56,7 +56,7 @@ The Hydraulic Test Rig consists of a primary and secondary cooling filtration ci
 - Basic knowledge of Driverless AI or doing the following tutorials:
     - [Automatic Machine Learning Introduction with Driverless AI Test Drive Tutorial.](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai)
     - [Tutorial 1: Scoring Pipeline Deployment Introduction](https://training.h2o.ai/products/tutorial-4a-scoring-pipeline-deployment-introduction#tab-product_tab_overview)
-    - [Tutorial 2: Scoring Pipeline Deployment Intermediate](https://docs.google.com/document/d/1WKSdH-MNjNQOPWA7xthDpmQytcDc07p_Xua8Rsa_jVk/edit?usp=sharing)
+    - [Tutorial 2: Scoring Pipeline Deployment Templates](https://training.h2o.ai/products/tutorial-4b-scoring-pipeline-deployment-templates)
 
 ## Task 1: Set Up Environment
 
