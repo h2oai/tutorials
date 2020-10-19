@@ -1,6 +1,6 @@
 # Unsupervised Learning Case Study Hands-On Assignment in H2O-3
 
-## Unsupervised Learning Case Study Hands-On Assignment in H2O-3 
+## Unsupervised Learning Case Study Hands-On Assignment in H2O-3
 
 ### Objective
 
@@ -15,23 +15,22 @@ For this assignment, you will be using the [credit card data set](https://www.ka
 - Basic knowledge of Machine Learning and Statistics
 - An [Aquarium](https://aquarium.h2o.ai/) Account to access H2O.ai’s software on the AWS Cloud. 
   - Need an [Aquarium](https://aquarium.h2o.ai/) account? Follow the instructions in the next section **Task 1 Create An Account & Log Into Aquarium** to create an account
-  - Already have an Aquarium account? Log in and continue to **Task 2 Launch the H2O-3 & Sparkling Water Lab** to begin your exercise!
- 
-**Note: Aquarium's Driverless AI lab has a license key built-in, so you don't need to request one to use it. Each Driverless AI lab instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore Driverless AI, you can always launch another lab instance or reach out to our sales team via the [contact us form](https://www.h2o.ai/company/contact/).**
+  - Already have an Aquarium account? Log in and continue to **Launch Lab 16: Legacy H2O-3 and Sparkling Water Training** to begin your exercise!
  
 ### Task 1: Create An Account & Log Into Aquarium
  
 Navigate to the following site: https://aquarium.h2o.ai/login and do the following: 
 
-1. create a new account (if you don’t have one) 
+1. create a new account (if you don’t have one)
+
 2. log into the site with your credentials.
-3. Navigate to the lab: H2O-3 and Sparkling Water Test Drive. Click on Start Lab and wait for your instance to be ready. Once your instance is ready, you will see the following screen.
+
+3. Navigate to Lab 16: Legacy H2O-3 and Sparkling Water Training. Click on Start Lab and wait for your instance to be ready. Once your instance is ready, you will see the following screen.
 
 ![labs-urls](assets/labs-urls.jpg)
 
-Click on the Jupyter url to start a jupyter notebook or the H2O Flow instance( if required). You can create a new Jupyter notebook and follow the steps defined below.
- 
- 
+Click on the Jupyter URL to start a Jupyter Notebook or the H2O Flow instance( if required). You can create a new Jupyter Notebook and follow the steps defined below.
+
 ### Task 2: Open a New Jupyter Notebook
 
 Open a new Jupyter Python3 Notebook by clicking New and selecting Python 3
@@ -56,7 +55,9 @@ In this notebook, you will:
 In this section, you will use the `h2o.init()` method to initialize H2O. In the first cell of your notebook, you will:
  
 1. Import the h2o python library 
+
 2. Initialize the H2O cluster.  
+
 3. Import the Isolation Forest Algorithm
 
 You can enter the following in the first cell:
@@ -89,7 +90,7 @@ We will be using the [credit card data set](https://www.kaggle.com/mlg-ulb/credi
 
 ~~~python
 #Import the dataset
-df = h2o.import_file("creditcard.csv")
+credit_card = h2o.import_file('https://github.com/nsethi31/Kaggle-Data-Credit-Card-Fraud-Detection/raw/master/creditcard.csv')
 ~~~
 
 **Note:** The line with the # is a code comment.  These can be useful to describe what you are doing in a given section of code.
@@ -113,7 +114,7 @@ seed = 12345 # For reproducability of the experiment
 ntrees = 100 #Specify the number of Trees
 isoforest = H2OIsolationForestEstimator( ntrees=ntrees, seed=seed)
 # Specify x as a vector containing the names or indices of the predictor variables to use when building the model.
-isoforest.train(x=df.col_names[0:30], training_frame=df)
+isoforest.train(x=credit_card.col_names[0:30], training_frame=credit_card)
 ~~~
 
 #### Deeper Dive and Resources:
@@ -126,7 +127,7 @@ isoforest.train(x=df.col_names[0:30], training_frame=df)
 Have a look at the predictions.
 
 ~~~python
-predictions = isoforest.predict(df)
+predictions = isoforest.predict(credit_card)
 
 predictions
 ~~~
@@ -152,7 +153,7 @@ We can use the threshold to predict the anomalous class.
 ~~~python 
 threshold = quantile_frame[0, "predictQuantiles"]
 predictions["predicted_class"] = predictions["predict"] > threshold
-predictions["class"] = df["Class"]
+predictions["class"] = credit_card["Class"]
 predictions
 ~~~
 
@@ -228,7 +229,6 @@ h2o_predictions = predictions.as_data_frame()
 figure()
 axes = prediction_summary(
     h2o_predictions["class"], h2o_predictions["predict"], h2o_predictions["predicted_class"], "h2o")
-
 ~~~
 
 Code link: https://gist.github.com/parulnith/48649e0c82dbb59c6f36e7a507fa1eef
