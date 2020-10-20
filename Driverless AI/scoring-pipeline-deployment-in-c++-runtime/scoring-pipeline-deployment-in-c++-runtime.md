@@ -403,11 +403,9 @@ Another challenge could be to use the existing MOJO scoring pipeline we executed
 
 ## Next Steps 
 
-- Tutorial 3A: Scoring Pipeline Deployment in Java Runtime
-- Tutorial 4B: Scoring Pipeline Deployment to MiNiFi
-- Tutorial 4C: Scoring Pipeline Deployment to Flask
-- Tutorial 5: Scoring Pipeline Deployment in Python
+- Tutorial 4C: Scoring Pipeline Deployment in Java Runtime
+- Tutorial 4E: Scoring Pipeline Deployment in Python Runtime 
 
 ## Appendix A: Glossary
 
-Refer to H2O.ai AI/ML Glossary for relevant Model Deployment Terms
+[Refer to H2O.ai AI/ML Glossary for relevant Model Deployment Terms](https://www.h2o.ai/community/top-links/ai-glossary-search?p=3)
