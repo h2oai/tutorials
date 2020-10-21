@@ -75,6 +75,7 @@ mkdir $HOME/dai-mojo-cpp/
 #### Download MOJO Scoring Pipeline
 
 1. If you have not downloaded the MOJO Scoring Pipeline, go to [Tutorial 2: Scoring Pipeline Deployment](https://docs.google.com/document/d/1WKSdH-MNjNQOPWA7xthDpmQytcDc07p_Xua8Rsa_jVk/edit?usp=sharing) Templates, then go to Task 1: Set Up Environment, then **Download MOJO Scoring Pipeline** to download it. When finished, come back to this tutorial.
+1. If you have not downloaded the MOJO Scoring Pipeline, go to [Tutorial 2: Scoring Pipeline Deployment Templates](https://training.h2o.ai/products/tutorial-4b-scoring-pipeline-deployment-templates) , then go to Task 1: Set Up Environment, then **Download MOJO Scoring Pipeline** to download it. When finished, come back to this tutorial.
 
 2. Move the **mojo.zip** file to **dai-mojo-cpp**/ folder and then extract it:
 
