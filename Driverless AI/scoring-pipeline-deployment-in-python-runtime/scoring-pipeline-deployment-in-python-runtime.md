@@ -55,11 +55,11 @@ The Hydraulic Test Rig consists of a primary and secondary cooling filtration ci
 - Basic knowledge of Driverless AI or doing the following tutorials:
     - [Automatic Machine Learning Introduction with Driverless AI Test Drive Tutorial](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai)
     - [Tutorial 4A: Scoring Pipeline Deployment Introduction](https://training.h2o.ai/products/tutorial-4a-scoring-pipeline-deployment-introduction#tab-product_tab_overview)
-    - [Tutorial 4B: Scoring Pipeline Deployment Intermediate](https://training.h2o.ai/products/tutorial-4b-scoring-pipeline-deployment-templates)
+    - [Tutorial 4B: Scoring Pipeline Deployment Templates](https://training.h2o.ai/products/tutorial-4b-scoring-pipeline-deployment-templates)
 
 ## Task 1: Set Up Environment
 
-### Launch AWS EC2 Instance
+### Launch an AWS EC2 Instance
 
 We will launch an Ubuntu 18.04 LTS AMI that is a t2.2xlarge instance with 256GB storage and open ports for ssh at 22 and custom tcp at 9090. When we are about to launch the system, we will create a key pair to access this system.
 
@@ -311,7 +311,7 @@ After downloading the Python Scoring Pipeline, the **scoring-pipeline** folder c
 
 ### Embedding Python Scoring Pipeline into Python Runtime
 
-To run the Python **example.py** script, there is the helper shell script **run_example.sh.** When the Python **example.py** is executed, it executes the Python scoring pipeline directly in Python and does various types of scoring on the test data. The Python **example.py** does interactive scoring in which it uses **scorer.score([...])** method to score one row at a time. Additionally, the Python **example.py** does batch scoring in which it uses **scorer.score_batch(dataframe** or **datatable)** to score a frame of data. A frame one can think of as a batch of rows. Batch scoring is faster than interactive scoring. The Python **example.py** does batch scoring on a Pandas dataframe and a Datatable. In the Datatable part of the Python **example.py,** Datatable saves the initial test data into a **test.csv** and saves the predictions into a **preds.csv.** To help in interpreting the model’s predictions for individual observations (rows) and batches of observations (frames), the Python **example.py** also obtains per-feature prediction contributions per row and per frame by setting the **pred_contribs** flag to **True** in the **scorer.score([...], pred_contribs=True).** The Python **example.py** also performs feature transformations without scoring to enrich the dataset by using **Scorer.fit_transform_batch()** to fit the feature engineering pipeline on the given training frame, validation frame and optionally on the test frame.
+To run the Python **example.py** script, there is the helper shell script **run_example.sh.** When the Python **example.py** is executed, it executes the Python scoring pipeline directly in Python and does various types of scoring on the test data. The Python **example.py** does interactive scoring in which it uses **scorer.score([...])** method to score one row at a time. Additionally, the Python **example.py** does batch scoring in which it uses **scorer.score_batch(dataframe** or **datatable)** to score a frame of data. One can think of a frame as a batch of rows. Batch scoring is faster than interactive scoring. The Python **example.py** does batch scoring on a Pandas dataframe and a Datatable. In the Datatable part of the Python **example.py,** Datatable saves the initial test data into a **test.csv** and saves the predictions into a **preds.csv.** To help in interpreting the model’s predictions for individual observations (rows) and batches of observations (frames), the Python **example.py** also obtains per-feature prediction contributions per row and per frame by setting the **pred_contribs** flag to **True** in the **scorer.score([...], pred_contribs=True).** The Python **example.py** also performs feature transformations without scoring to enrich the dataset by using **Scorer.fit_transform_batch()** to fit the feature engineering pipeline on the given training frame, validation frame and optionally on the test frame.
 
 ### Deploy Python Scoring Pipeline to a Server via Scoring Service
 
@@ -363,7 +363,7 @@ bash run_http_server.sh
 
 ### Get Predictions using Local HTTP Client
 
-Now the HTTP scoring service is listening on port 9090, we will use an HTTP client local to the HTTP server to get predictions. In the Python Scoring Pipeline folder, we will use **run_http_client.sh**, which executes multiple example json requests for interactive scoring (individual rows), batch scoring (multiple rows), getting input columns, transformed columns and target labels. 
+Now the HTTP scoring service is listening on port 9090, we will use an HTTP client local to the HTTP server to get predictions. In the Python Scoring Pipeline folder, we will use **run_http_client.sh**, which executes multiple example json requests for interactive scoring (individual rows), batch scoring (multiple rows), getting input columns, transformed columns, and target labels. 
  
 Open another terminal to connect to your EC2 instance, then we will navigate to the **scoring-pipeline** folder and then execute the script **run_http_client.sh**:
  
@@ -377,7 +377,7 @@ Output should be similar to the following, but the Hydraulic System cooling cond
 
 ![http-client-get-scores](assets/http-client-get-scores.jpg)
 
-This classification output is the interactive and batch scoring done for our Hydraulic System cooling condition. You should receive classification probabilities for `cool_cond_y.3`, `cool_cond_y.20`, `cool_cond_y.100`. The 3 means the Hydraulic cooler is close to operating at total failure, 20 means it is operating at reduced efficiency and 100 means it is operating at full efficiency.
+This classification output is the interactive and batch scoring done for our Hydraulic System cooling condition. You should receive classification probabilities for `cool_cond_y.3`, `cool_cond_y.20`, and `cool_cond_y.100`. The 3 means the Hydraulic cooler is close to operating at total failure, 20 means it is operating at reduced efficiency and 100 means it is operating at full efficiency.
 
 ### Get Predictions using Remote HTTP Client
 Alternatively, we will use a remote HTTP client to connect to the HTTP server on port 9090 to get a prediction, feature column names and shapley values from the Python Scoring Pipeline. 
@@ -487,7 +487,7 @@ bash run_tcp_server.sh
 
 Now the TCP scoring service is listening on port 9090, we will use a TCP client local to the TCP server to get predictions. In the Python Scoring Pipeline folder, we will create a **custom_tcp_client.py**, which uses **thrift** and **h2oai_scoring** libraries to enable the TCP client to use the Python **scorer** methods through the TCP scoring service. 
  
-With the **TCP client** having access to the **scorer** methods, we will use the **client.score(row)** method to do interactive scoring, **client.get_column_names()** to get input columns, the **client.get_transformed_column_names()** to get feature column names and **client.get_target_labels()** to get target labels. 
+With the **TCP client** having access to the **scorer** methods, we will use the **client.score(row)** method to do interactive scoring, **client.get_column_names()** to get input columns, the **client.get_transformed_column_names()** to get feature column names, and **client.get_target_labels()** to get target labels. 
 
 Go to the terminal where you ran your local HTTP client on your EC2 instance, run the following command to create the **custom_tcp_client.py** script:
 
@@ -572,9 +572,9 @@ Another challenge could be to use the existing Python scoring pipeline we execut
 
 ## Next Steps
 
-- Scoring Pipeline Deployment in C++ (Coming soon...)
-- Scoring Pipeline Deployment in Java Runtime (Coming soon)
-- Scoring Pipeline Deployment to Apache NiFi (Coming soon...)
+- [Tutorial 4C: Scoring Pipeline Execution in Java Runtime](https://training.h2o.ai/products/tutorial-4c-scoring-pipeline-execution-in-java-runtime)
+- [Tutorial 4D: Scoring Pipeline Execution Runtime in C++](https://training.h2o.ai/products/tutorial-4d-scoring-pipeline-execution-runtime-in-c)
+- [Tutorial 4F: Scoring Pipeline Deployment to Apache NiFi](https://training.h2o.ai/products/tutorial-4f-scoring-pipeline-deployment-to-apache-nifi)
 
 ## Appendix A: Glossary
 Refer to [H2O.ai AI/ML Glossary](https://www.h2o.ai/community/top-links/ai-glossary-search?p=1) for relevant Model Deployment Terms
