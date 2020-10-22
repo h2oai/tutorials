@@ -115,7 +115,7 @@ Keep a copy of your **EC2 Public DNS** and remember the file path to your **Priv
 ### Connect to the EC2 Instance
 On your local machine, move the **EC2 Private Key File** to the .ssh folder:
 
-```
+```bash
 # Move Private Key to .ssh folder
 mv $HOME/Downloads/ec2-model-deployment.pem $HOME/.ssh/
 
@@ -125,7 +125,7 @@ chmod 400 $HOME/.ssh/ec2-model-deployment.pem
 
 Depending on your OS, run one of the following set of commands to **add a permanent environment variable** for your **EC2 Public DNS** and **EC2 Private Key:**
 
-```
+```bash
 # Add permanent environment variables on Mac OS X
 tee -a $HOME/.bash_profile << EOF
 export H2O_DAI_SCORING_INSTANCE=<EC2 Public DNS>.compute.amazon.com
@@ -143,7 +143,7 @@ source $HOME/.profile
 
 Connect to your EC2 instance using SSH:
 
-```
+```bash
 # Connect to EC2 instance using SSH
 ssh -i $H2O_DAI_SCORING_PEM ubuntu@$H2O_DAI_SCORING_INSTANCE
 ```
@@ -156,7 +156,7 @@ After connecting to your EC2 instance, your terminal should look as follows:
 
 While connected to the EC2 instance, set the Driverless AI License Key as a permanent environment variable, so you can use the Python scoring pipeline. This is the same license key you used in Driverless AI to train the model.
 
-```
+```bash
 # Set Driverless AI License Key
 echo "export DRIVERLESS_AI_LICENSE_KEY='<license-key>'" | tee -a $HOME/.profile
 source $HOME/.profile
@@ -165,7 +165,7 @@ source $HOME/.profile
 ### Install the Requirements in EC2 Instance
 We will install the required packages on our EC2 instance:
 
-```
+```bash
 # Install the Requirements
 # Make all packages available on EC2 instance
 sudo apt-get -y update
@@ -204,7 +204,7 @@ sudo ldconfig /usr/local/lib
 
 Next, we recommend you create the following environment directory structure in your EC2 instance since it will make it easier to follow along with the rest of the tutorial. Run the following commands:
 
-```
+```bash
 # Create directory structure for model deployment projects (covers MOJO and Python)
 mkdir -p $HOME/model-deployment/common/license
 mkdir -p $HOME/model-deployment/common/hydraulic/testData/{test-batch-data,test-real-time-data}
@@ -225,7 +225,7 @@ Now that the experiment is built, click **Download Python Scoring Pipeline** to 
 ### Move Local Python Scoring Pipeline to EC2 Instance
 The Python Scoring Pipeline scorer.zip was downloaded to the Downloads folder on the local machine. We need to move it to our EC2 instance. Open a new terminal on your local machine, then run the following command:
 
-```
+```bash
 # Move Python Scoring Pipeline to EC2 instance
 scp -i $H2O_DAI_SCORING_PEM $HOME/Downloads/scorer.zip ubuntu@$H2O_DAI_SCORING_INSTANCE:/home/ubuntu
 ```
@@ -236,7 +236,7 @@ It may take up to 7 minutes for the transfer to complete.
 
 Go to the terminal in which you are already connected to your EC2 instance. Move the **scorer.zip** file to `python-scoring-pipeline/` folder and then extract it:
 
-```
+```bash
 cd $HOME/model-deployment/common/hydraulic/python-scoring-pipeline/
 mv $HOME/scorer.zip .
 unzip scorer.zip
@@ -245,7 +245,7 @@ unzip scorer.zip
 ### Create Virtual Environments in EC2 Instance
 In your EC2 instance, create four virtual environments: **env, http_server_env** and **tcp_server_env, tcp_client_env.** Then install all of the required libraries. Any time we wish to run one of our python scripts **example.py, http_server.py, tcp_server.py, custom_tcp_client.py,** we will activate the appropriate environment.
 
-```
+```bash
 # Change to scoring-pipeline folder, Create virtual environments in it
 cd scoring-pipeline
 
@@ -287,9 +287,10 @@ source tcp_client_env/bin/activate
 pip install -r client_requirements.txt
 deactivate
 ```
+
 **Note:** You may see h2o specific error messages during the install process, this is okay and the install will still be successful.
 
-```
+```bash
 ERROR: h2o4gpu 0.3.2+master.65994f3 has requirement python-dateutil==2.7.2, but you'll have python-dateutil 2.8.1 which is incompatible.
 ERROR: h2o4gpu 0.3.2+master.65994f3 has requirement pytz==2018.4, but you'll have pytz 2019.3 which is incompatible.
 ERROR: h2o4gpu 0.3.2+master.65994f3 has requirement scipy==1.2.2, but you'll have scipy 1.3.1 which is incompatible.
@@ -332,7 +333,7 @@ You will run the **example.py** script that came with the scoring-pipeline folde
 
 Since we already set our Driverless AI license key as an environment variable in our EC2 instance, we can run **example.py**:
 
-```
+```bash
 # Activate virtual environment env to run python example.py
 source env/bin/activate
 python example.py
@@ -353,7 +354,7 @@ Output should be similar to the following, but columns and predictions will matc
 
 To deploy the Python Scoring Pipeline to the EC2 HTTP server, run the following command to start the HTTP server and execute the Python Scoring Pipeline on it:
 
-```
+```bash
 # Activates http_server_env, starts HTTP server and executes Python Scoring
 # Pipeline on it, deactivates virtual environment when stopping server
 bash run_http_server.sh
@@ -366,7 +367,7 @@ Now the HTTP scoring service is listening on port 9090, we will use an HTTP clie
  
 Open another terminal to connect to your EC2 instance, then we will navigate to the **scoring-pipeline** folder and then execute the script **run_http_client.sh**:
  
-```
+```bash
 # Change to scoring-pipeline folder
 cd $HOME/model-deployment/common/hydraulic/python-scoring-pipeline/scoring-pipeline
 bash run_http_client.sh
@@ -383,7 +384,7 @@ Alternatively, we will use a remote HTTP client to connect to the HTTP server on
  
 Let’s use the remote HTTP client to do interactive scoring, so we will get the classification for the Hydraulic System cooling condition for an individual row. Open another terminal from your local machine, run the following command:
 
-```
+```bash
 curl http://$H2O_DAI_SCORING_INSTANCE:9090/rpc --header "Content-Type: application/json" --data @- <<EOF
 {
   "id": 1,
@@ -417,7 +418,7 @@ Output should show a score for the Hydraulic System cooling condition of an indi
  
 Next we will use the remote HTTP client to get feature column names for an individual row, so when we retrieve shapley values, we know which value is which column. Run the following command from your local machine:
 
-```
+```bash
 echo "Get the transformed columns"
 curl http://$H2O_DAI_SCORING_INSTANCE:9090/rpc --header "Content-Type: application/json" --data @- <<EOF
 {
@@ -435,7 +436,7 @@ Output should show the featured column names for an individual row.
 
 We will use the remote HTTP client to get shapley values (also known as per-feature prediction contributions) from an individual row. This call is the same as we did for getting a prediction on an individual row, but this time we include the parameter `"pred_contribs": true`. Run the following command from your local machine:
  
-```
+```bash
 curl http://$H2O_DAI_SCORING_INSTANCE:9090/rpc --header "Content-Type: application/json" --data @- <<EOF
 {
  "id": 2,
@@ -475,7 +476,7 @@ You just learned how to perform interactive scoring and batch scoring using the 
 
 To deploy the Python Scoring Pipeline to the EC2 TCP server, go to the terminal that was running the HTTP server on your EC2 instance, run the following command to generate the Thrift bindings once, start the TCP server and execute the Python Scoring Pipeline on it:
 
-```
+```bash
 # Activates tcp_server_env, starts TCP server and executes Python Scoring
 # Pipeline on it, deactivates virtual environment when stopping server
 bash run_tcp_server.sh
@@ -489,7 +490,8 @@ Now the TCP scoring service is listening on port 9090, we will use a TCP client 
 With the **TCP client** having access to the **scorer** methods, we will use the **client.score(row)** method to do interactive scoring, **client.get_column_names()** to get input columns, the **client.get_transformed_column_names()** to get feature column names and **client.get_target_labels()** to get target labels. 
 
 Go to the terminal where you ran your local HTTP client on your EC2 instance, run the following command to create the **custom_tcp_client.py** script:
-```
+
+```bash
 cd $HOME/model-deployment/common/hydraulic/python-scoring-pipeline/scoring-pipeline
 tee -a custom_tcp_client.py << EOF
 import sys
@@ -546,7 +548,7 @@ EOF
 
 Execute the python script, so the TCP client local to the TCP server will get predictions for the Hydraulic System cooling condition:
 
-```
+```bash
 # Activate virtual environment env to run python example.py
 source tcp_client_env/bin/activate
 python custom_tcp_client.py
