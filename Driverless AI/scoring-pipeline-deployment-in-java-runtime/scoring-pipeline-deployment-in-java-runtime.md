@@ -7,7 +7,7 @@
 - [Task 1: Set Up Environment](#task-1-set-up-environment)
 - [Task 2: Deploy Scoring Pipeline in Java Runtime Concepts](#task-2-deploy-scoring-pipeline-in-java-runtime-concepts)
 - [Task 3: Batch Scoring](#task-3-batch-scoring)
-- [Task 4: Real-Time Scoring](#task-4-real-time-scoring)
+- [Task 4: Interactive Scoring](#task-4-interactive-scoring)
 - [Task 5: Challenge](#task-5-challenge)
 - [Next Steps](#next-steps) 
 - [Appendix A: Glossary](#appendix-a-glossary)
@@ -52,11 +52,9 @@ The Hydraulic Test Rig consists of a primary and secondary cooling filtration ci
   - It is needed for using the MOJO2 Java Runtime API to execute the MOJO Scoring Pipeline for making predictions
   - If you need to purchase a Driverless AI license, reach out to our sales team via the [contact us form](https://www.h2o.ai/company/contact/)
 - Basic knowledge of Driverless AI or doing the following tutorials:
-  - [Automatic Machine Learning Introduction with Driverless AI](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai)
-  - [Tutorial 1: Scoring Pipeline Deployment Introduction](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai)
-  - [Tutorial 2: Scoring Pipeline Deployment Templates](https://docs.google.com/document/d/1WKSdH-MNjNQOPWA7xthDpmQytcDc07p_Xua8Rsa_jVk/edit?usp=sharing)
-
-
+  - [Tutorial 1A: Automatic Machine Learning Introduction with Driverless AI](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai)
+  - [Tutorial 4A: Scoring Pipeline Deployment Introduction](https://training.h2o.ai/products/tutorial-4a-scoring-pipeline-deployment-introduction)
+  - [Tutorial 4B: Scoring Pipeline Deployment Templates](https://training.h2o.ai/products/tutorial-4b-scoring-pipeline-deployment-templates)
 
 ## Task 1: Set Up Environment
 
@@ -73,7 +71,7 @@ mkdir $HOME/dai-mojo-java/
 
 Download MOJO Scoring Pipeline
 
-1. If you have not downloaded the MOJO Scoring Pipeline, go to [Tutorial 2: Scoring Pipeline Deployment Templates](https://docs.google.com/document/d/1WKSdH-MNjNQOPWA7xthDpmQytcDc07p_Xua8Rsa_jVk/edit?usp=sharing), then go to Task 1: Set Up Environment, then **Download MOJO Scoring Pipeline** to download it. When finished, come back to this tutorial.
+1. If you have not downloaded the MOJO Scoring Pipeline, go to [Tutorial 4B: Scoring Pipeline Deployment Templates](https://training.h2o.ai/products/tutorial-4b-scoring-pipeline-deployment-templates), then go to Task 1: Set Up Environment, then **Download MOJO Scoring Pipeline** to download it. When finished, come back to this tutorial.
 
 2. Move the **mojo.zip** file to `dai-mojo-java/` folder and then extract it:
 
@@ -159,7 +157,7 @@ If you have gone through the earlier scoring pipeline deployment tutorials, you 
 
 ## Task 3: Batch Scoring
 
-You will execute the MOJO scoring pipeline in the Java Runtime Environment using Java, PySparkling and Sparkling Water.
+You will execute the MOJO scoring pipeline in the Java Runtime Environment using Java, PySparkling, and Sparkling Water.
 
 ### Batch Scoring via Run ExecuteMojo Java Example
 
@@ -185,7 +183,7 @@ Similarly, we could execute **run_example.sh** without passing arguments to it b
 export MOJO_PIPELINE_FILE="$HOME/dai-mojo-java/mojo-pipeline/pipeline.mojo”
 export EXAMPLE_CSV_FILE="$HOME/dai-mojo-java/mojo-pipeline/example.csv”
 ```
-Then trying executing **run_example.sh** and you should get similar results as above.
+Then try executing **run_example.sh** and you should get similar results as above.
 
 ```java
 bash run_example.sh
@@ -329,7 +327,7 @@ So that is how you execute the MOJO scoring pipeline to do batch scoring using S
 
 ## Task 4: Interactive Scoring
 
-The mojo can also predict a Hydraulic System cooling condition for each individual Hydraulic System row of test data. You will build a Java program, PySparkling and Sparkling Water program to execute the mojo to do interactive scoring on individual Hydraulic System rows.
+The mojo can also predict a Hydraulic System cooling condition for each individual Hydraulic System row of test data. You will build a Java program, PySparkling, and Sparkling Water program to execute the mojo to do interactive scoring on individual Hydraulic System rows.
 
 ### Interactive Scoring via Run Custom Java Program
 
@@ -448,9 +446,10 @@ Another challenge could be to use the existing MOJO scoring pipeline we executed
 
 
 ## Next Steps
-- Scoring Pipeline Deployment in C++ Runtime (Coming soon..) 
-- Scoring Pipeline Deployment to Apache NiFi (Coming soon...)
-- Scoring Pipeline Deployment in Python Runtime (Coming soon...)
+- [Scoring Pipeline Deployment in C++ Runtime](https://training.h2o.ai/products/tutorial-4d-scoring-pipeline-execution-runtime-in-c) 
+- [Scoring Pipeline Deployment in Python Runtime](https://training.h2o.ai/products/tutorial-4e-scoring-pipeline-deployment-in-python-runtime) 
+- [Scoring Pipeline Deployment to Apache NiFi](https://training.h2o.ai/products/tutorial-4f-scoring-pipeline-deployment-to-apache-nifi) 
+
 
 
 ## Appendix A: Glossary
