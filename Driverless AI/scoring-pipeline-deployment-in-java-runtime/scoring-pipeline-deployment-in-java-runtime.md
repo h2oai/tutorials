@@ -52,9 +52,9 @@ The Hydraulic Test Rig consists of a primary and secondary cooling filtration ci
   - It is needed for using the MOJO2 Java Runtime API to execute the MOJO Scoring Pipeline for making predictions
   - If you need to purchase a Driverless AI license, reach out to our sales team via the [contact us form](https://www.h2o.ai/company/contact/)
 - Basic knowledge of Driverless AI or doing the following tutorials:
-  - [Automatic Machine Learning Introduction with Driverless AI](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai)
-  - [Tutorial 1: Scoring Pipeline Deployment Introduction](https://training.h2o.ai/products/tutorial-4a-scoring-pipeline-deployment-introduction)
-  - [Tutorial 2: Scoring Pipeline Deployment Templates](https://training.h2o.ai/products/tutorial-4b-scoring-pipeline-deployment-templates)
+  - [Tutorial 1A: Automatic Machine Learning Introduction with Driverless AI](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai)
+  - [Tutorial 4A: Scoring Pipeline Deployment Introduction](https://training.h2o.ai/products/tutorial-4a-scoring-pipeline-deployment-introduction)
+  - [Tutorial 4B: Scoring Pipeline Deployment Templates](https://training.h2o.ai/products/tutorial-4b-scoring-pipeline-deployment-templates)
 
 ## Task 1: Set Up Environment
 
@@ -71,7 +71,7 @@ mkdir $HOME/dai-mojo-java/
 
 Download MOJO Scoring Pipeline
 
-1. If you have not downloaded the MOJO Scoring Pipeline, go to [Tutorial 2: Scoring Pipeline Deployment Templates](https://training.h2o.ai/products/tutorial-4b-scoring-pipeline-deployment-templates), then go to Task 1: Set Up Environment, then **Download MOJO Scoring Pipeline** to download it. When finished, come back to this tutorial.
+1. If you have not downloaded the MOJO Scoring Pipeline, go to [Tutorial 4B: Scoring Pipeline Deployment Templates](https://training.h2o.ai/products/tutorial-4b-scoring-pipeline-deployment-templates), then go to Task 1: Set Up Environment, then **Download MOJO Scoring Pipeline** to download it. When finished, come back to this tutorial.
 
 2. Move the **mojo.zip** file to `dai-mojo-java/` folder and then extract it:
 
