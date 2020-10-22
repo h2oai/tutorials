@@ -277,7 +277,7 @@ predict(m, d)
 
 ![batch-scoring-via-run-r-program-2](assets/batch-scoring-via-run-r-program-2.jpg)
 
-This classification output is the batch scoring done for our Hydraulic System cooling condition. You should receive classification probabilities for cool_cond_y.3, cool_cond_y.20, cool_cond_y.100. The 3 means the Hydraulic cooler is close to operating at total failure, 20 means it is operating at reduced efficiency and 100 means it is operating at full efficiency.
+This classification output is the batch scoring done for our Hydraulic System cooling condition. You should receive classification probabilities for cool_cond_y.3, cool_cond_y.20, and cool_cond_y.100. The 3 means the Hydraulic cooler is close to operating at total failure, 20 means it is operating at reduced efficiency and 100 means it is operating at full efficiency.
 
 7. We will quit the R interactive terminal:
 
@@ -317,7 +317,7 @@ m.created_time
 m.uuid
 ```
 
-4. We can also retrieve a list of missing values, feature names, feature types, output names and output types:
+4. We can also retrieve a list of missing values, feature names, feature types, output names, and output types:
 
 ```bash
 # retrieve a list of missing values
@@ -333,7 +333,7 @@ m.output_names
 m.output_types
 ```
 
-5. Now will import the Python datatable package, load the Hydraulic System example csv data into the datatable, set the table to ignore strings that equal the missing values and display the table:
+5. Now we will import the Python datatable package, load the Hydraulic System example csv data into the datatable, set the table to ignore strings that equal the missing values and display the table:
 
 ```bash
 # import the datatable module
@@ -364,9 +364,9 @@ res
 
 ![batch-scoring-via-run-py-program-2](assets/batch-scoring-via-run-py-program-2.jpg)
 
-This classification output is the batch scoring done for our Hydraulic System cooling condition. You should receive classification probabilities for cool_cond_y.3, cool_cond_y.20, cool_cond_y.100. The 3 means the Hydraulic cooler is close to operating at total failure, 20 means it is operating at reduced efficiency and 100 means it is operating at full efficiency.
+This classification output is the batch scoring done for our Hydraulic System cooling condition. You should receive classification probabilities for cool_cond_y.3, cool_cond_y.20, and cool_cond_y.100. The 3 means the Hydraulic cooler is close to operating at total failure, 20 means it is operating at reduced efficiency and 100 means it is operating at full efficiency.
 
-8. There is some more data we can retrieve from our res predictions, which include the prediction column names, column types:
+8. There is some more data we can retrieve from our res predictions, which include the prediction column names and column types:
 
 
 ```bash
