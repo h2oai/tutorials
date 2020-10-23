@@ -119,9 +119,9 @@ export DRIVERLESS_AI_LICENSE_KEY="{license-key}"
 
 1. Download and install Spark if not already installed from [Sparks Download page](https://spark.apache.org/downloads.html).
 
-   1. Choose Spark release 3.0.0
+   - Choose Spark release 3.0.0
 
-   2. Choose package type: Pre-built for Hadoop 2.7 and later
+   - Choose package type: Pre-built for Hadoop 2.7 and later
 
 2. Point SPARK_HOME to the existing installation of Spark and export variable MASTER.
 
