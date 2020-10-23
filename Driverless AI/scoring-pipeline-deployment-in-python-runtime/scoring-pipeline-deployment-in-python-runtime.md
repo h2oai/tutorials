@@ -47,12 +47,12 @@ The Hydraulic Test Rig consists of a primary and secondary cooling filtration ci
 - Skilled in Python Programming
 - Driverless AI Environment
 - Driverless AI License
-    - 21 day trial license
-    - It is needed for using Driverless AI Python Scoring Pipeline Runtime API to execute the Python Scoring Pipeline for making predictions
+    - The license is needed to use the **Driverless AI Python Scoring Pipeline Runtime API** to execute the **Python Scoring Pipeline** for making predictions
+    - [21 day trial license](https://www.h2o.ai/try-driverless-ai/)
     - If you need to purchase a Driverless AI license, reach out to our sales team via the [contact us form](https://www.h2o.ai/company/contact/).
 - AWS Account
 - Linux (Ubuntu 16.10+, IBM Power PC)
-- Basic knowledge of Driverless AI or doing the following tutorials:
+- Basic knowledge of Driverless AI or completion of the following tutorials:
     - [Tutorial 1A: Automatic Machine Learning Introduction with Driverless AI Test Drive](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai)
     - [Tutorial 4A: Scoring Pipeline Deployment Introduction](https://training.h2o.ai/products/tutorial-4a-scoring-pipeline-deployment-introduction#tab-product_tab_overview)
     - [Tutorial 4B: Scoring Pipeline Deployment Templates](https://training.h2o.ai/products/tutorial-4b-scoring-pipeline-deployment-templates)
@@ -230,7 +230,7 @@ The Python Scoring Pipeline scorer.zip was downloaded to the Downloads folder on
 scp -i $H2O_DAI_SCORING_PEM $HOME/Downloads/scorer.zip ubuntu@$H2O_DAI_SCORING_INSTANCE:/home/ubuntu
 ```
 
-It may take up to 7 minutes for the transfer to complete.
+It may take up to 7 minutes for the transfer to be completed.
 
 ![move-py-scoring-pipeline-to-ec2](assets/move-py-scoring-pipeline-to-ec2.jpg)
 
