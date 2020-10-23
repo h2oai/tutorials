@@ -48,7 +48,8 @@ The Hydraulic Test Rig consists of a primary and secondary cooling filtration ci
 - Skilled in Java Object Oriented Programming
 - Driverless AI Environment
 - Driverless AI License
-  
+  - 21 day trial license
+  - It is needed to use the **MOJO2 Java Runtime API** to execute the **MOJO Scoring Pipeline** for making predictions
   - If you need to purchase a Driverless AI license, reach out to our sales team via the [contact us form](https://www.h2o.ai/company/contact/)
 - Basic knowledge of Driverless AI or completion of the following tutorials:
   - [Tutorial 1A: Automatic Machine Learning Introduction with Driverless AI](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai)
@@ -143,7 +144,7 @@ cd sparkling-water-3.30.0.6-1-3.0
 
 ### MOJO Scoring Pipeline Files
 
-After downloading the MOJO scoring pipeline, the **mojo-pipeline** folder comes with many files. The files that are needed to execute the MOJO scoring pipeline include **pipeline.mojo**, **mojo2-runtime.jar**, **example.csv**. The file that helps with running the pipeline quickly includes **run_example.sh**. The **pipeline.mojo** is the standalone scoring pipeline in MOJO format. This pipeline file contains the packaged feature engineering pipeline and the machine learning model. The **mojo2-runtime.jar** is the MOJO Java API. The **example.csv** contains sample test data. 
+After downloading the MOJO scoring pipeline, the **mojo-pipeline** folder comes with many files. The files that are needed to execute the MOJO scoring pipeline include **pipeline.mojo**, **mojo2-runtime.jar**, and **example.csv**. The file that helps with running the pipeline quickly includes **run_example.sh**. The **pipeline.mojo** is the standalone scoring pipeline in MOJO format. This pipeline file contains the packaged feature engineering pipeline and the machine learning model. The **mojo2-runtime.jar** is the MOJO Java API. The **example.csv** contains sample test data. 
 
 ### Embedding the MOJO into the Java Runtime
 
@@ -160,7 +161,7 @@ You will execute the MOJO scoring pipeline in the Java Runtime Environment using
 
 ### Batch Scoring via Run ExecuteMojo Java Example
 
-You will run the **run_example.sh** script that came with the mojo-pipeline folder. This script requires the mojo file, csv file and license file. It runs the Java **ExecuteMojo** example program and the mojo makes predictions for a batch of Hydraulic cooling condition.
+You will run the **run_example.sh** script that came with the mojo-pipeline folder. This script requires the mojo file, csv file, and license file. It runs the Java **ExecuteMojo** example program and the mojo makes predictions for a batch of Hydraulic cooling condition.
 
 Since we already have our license file path specified as an environment variable, we will pass in the path to the mojo file and example csv data to the **run_example.sh** and then run it:
 
@@ -174,7 +175,7 @@ bash run_example.sh pipeline.mojo example.csv
 ![batch-scoring-via-shell-script-2](assets/batch-scoring-via-shell-script-2.jpg)
 
 
-This classification output is the batch scoring done for our Hydraulic System cooling condition. You should receive classification probabilities for cool_cond_y.3, cool_cond_y.20, cool_cond_y.100. The 3 means the Hydraulic cooler is close to operating at total failure, 20 means it is operating at reduced efficiency and 100 means it is operating at full efficiency.
+This classification output is the batch scoring done for our Hydraulic System cooling condition. You should receive classification probabilities for cool_cond_y.3, cool_cond_y.20, and cool_cond_y.100. The 3 means the Hydraulic cooler is close to operating at total failure, 20 means it is operating at reduced efficiency and 100 means it is operating at full efficiency.
 
 Similarly, we could execute **run_example.sh** without passing arguments to it by creating temporary environment variables for mojo pipeline file and example csv file paths.
 
@@ -249,7 +250,7 @@ predictions.select([mojo.selectPredictionUDF("cool_cond_y.3"), mojo.selectPredic
 quit()
 ```
 
-The MOJO predicted the Hydraulic System cooling condition for each row within the batch of Hydraulic System test data we passed to it. You should receive classification probabilities for cool_cond_y.3, cool_cond_y.20, cool_cond_y.100. The 3 means the Hydraulic cooler is close to operating at total failure, 20 means it is operating at reduced efficiency and 100 means it is operating at full efficiency.
+The MOJO predicted the Hydraulic System cooling condition for each row within the batch of Hydraulic System test data we passed to it. You should receive classification probabilities for cool_cond_y.3, cool_cond_y.20, and cool_cond_y.100. The 3 means the Hydraulic cooler is close to operating at total failure, 20 means it is operating at reduced efficiency and 100 means it is operating at full efficiency.
 
 So that is how you execute the MOJO scoring pipeline to do batch scoring using PySparkling.
 
@@ -310,7 +311,7 @@ predictions.select(mojo.selectPredictionUDF("cool_cond_y.3"), mojo.selectPredict
 :quit
 ```
 
-The MOJO predicted the Hydraulic System cooling condition for each row within the batch of Hydraulic System test data we passed to it. You should receive classification probabilities for cool_cond_y.3, cool_cond_y.20, cool_cond_y.100. The 3 means the Hydraulic cooler is close to operating at total failure, 20 means it is operating at reduced efficiency and 100 means it is operating at full efficiency.
+The MOJO predicted the Hydraulic System cooling condition for each row within the batch of Hydraulic System test data we passed to it. You should receive classification probabilities for cool_cond_y.3, cool_cond_y.20, and cool_cond_y.100. The 3 means the Hydraulic cooler is close to operating at total failure, 20 means it is operating at reduced efficiency and 100 means it is operating at full efficiency.
 
 So that is how you execute the MOJO scoring pipeline to do batch scoring using Sparkling Water.
 
@@ -326,7 +327,7 @@ So that is how you execute the MOJO scoring pipeline to do batch scoring using S
 
 ## Task 4: Interactive Scoring
 
-The mojo can also predict a Hydraulic System cooling condition for each individual Hydraulic System row of test data. You will build a Java program, PySparkling, and Sparkling Water program to execute the mojo to do interactive scoring on individual Hydraulic System rows.
+The mojo can also predict a Hydraulic System cooling condition for each individual Hydraulic System row of test data. You will build a Java, PySparkling, and Sparkling Water program to execute the mojo to do interactive scoring on individual Hydraulic System rows.
 
 ### Interactive Scoring via Run Custom Java Program
 
@@ -411,7 +412,7 @@ Now we have our ExecuteDaiMojo.java code, so let’s compile it:
 javac -cp mojo2-runtime.jar -J-Xms2g ExecuteDaiMojo.java
 ```
 
-ExecuteDaiMojo.class is generated. Run the this Java program to execute the MOJO:
+ExecuteDaiMojo.class is generated. Run this Java program to execute the MOJO:
 
 ```java
 java -Dai.h2o.mojos.runtime.license.file=$DRIVERLESS_AI_LICENSE_KEY -cp .:mojo2-runtime.jar ExecuteDaiMojo
@@ -425,7 +426,7 @@ java -Dai.h2o.mojos.runtime.license.file=license.sig -cp .;mojo2-runtime.jar Exe
 
 ![interactive-scoring-via-custom-java-program-1](assets/interactive-scoring-via-custom-java-program-1.jpg)
 
-The MOJO predicted the cooling condition for the individual row of Hydraulic System test data we passed to it. You should receive classification probabilities for cool_cond_y.3, cool_cond_y.20, cool_cond_y.100. The 3 means the Hydraulic cooler is close to operating at total failure, 20 means it is operating at reduced efficiency and 100 means it is operating at full efficiency.
+The MOJO predicted the cooling condition for the individual row of Hydraulic System test data we passed to it. You should receive classification probabilities for cool_cond_y.3, cool_cond_y.20, and cool_cond_y.100. The 3 means the Hydraulic cooler is close to operating at total failure, 20 means it is operating at reduced efficiency and 100 means it is operating at full efficiency.
 
 So that is how you execute the MOJO scoring pipeline to do interactive scoring using Java directly.
 
