@@ -15,7 +15,7 @@
 
 **Machine Learning Model Deployment** is the process of making your model available in production environments, so they can be used to make predictions for other software systems [1]. Before model deployment, **feature engineering** occurs in the form of preparing data that later on will be used to train a model [2]. Driverless AI **Automatic Machine Learning (AutoML)** combines the best feature engineering and one or more **machine learning models** into a scoring pipeline [3][4]. The **scoring pipeline** is used to score or predict data when given new test data [5]. The scoring pipeline comes in two flavors. The first scoring pipeline is a **Model Object, Optimized(MOJO) Scoring Pipeline**, which is a standalone, low-latency model object designed to be easily embeddable in production environments. The second scoring pipeline is a Python Scoring Pipeline, which has a heavy footprint that is all Python and uses the latest libraries of Driverless AI to allow for executing custom scoring recipes[6].
 
-By the end of this tutorial, you will predict the **cooling condition** for a **Hydraulic System Test Rig** by deploying an **embeddable MOJO Scoring Pipeline** into C++ Runtime using **Python** and **R**. The Hydraulic System Test Rig data comes from [UCI Machine Learning Repository: Condition Monitoring of Hydraulic Systems Data Set](https://archive.ics.uci.edu/ml/datasets/Condition+monitoring+of+hydraulic+systems#). Hydraulic System Test Rigs are used to test components in Aircraft Equipment, Ministry of Defense, Automotive Applications, and more [7]. This Hydraulic Test Rig is capable of testing a range of flow rates that can achieve different pressures with the ability to heat and cool to simulate testing under different conditions [8]. Testing the pressure, volume flow and temperature is possible by Hydraulic Test Rig sensors and digital displays. The display panel alerts the user when certain testing criteria is met displaying either a green/red light [8]. A filter blockage panel indicator is integrated into the panel to ensure the Hydraulic Test Rig’s oil is maintained [8]. The cooling filtration solution is designed to minimize power consumption and expand the life of the Hydraulic Test Rig. We are predicting cooling conditions for Hydraulic System Predictive Maintenance. When the cooling condition is low, our prediction tells us that the cooling of the Hydraulic System is close to total failure and we may need to look into replacing the cooling filtration solution soon.
+By the end of this tutorial, you will predict the **cooling condition** for a **Hydraulic System Test Rig** by deploying an **embeddable MOJO Scoring Pipeline** into C++ Runtime using **Python** and **R**. The Hydraulic System Test Rig data comes from the [UCI Machine Learning Repository: Condition Monitoring of Hydraulic Systems Data Set](https://archive.ics.uci.edu/ml/datasets/Condition+monitoring+of+hydraulic+systems#). Hydraulic System Test Rigs are used to test components in Aircraft Equipment, Ministry of Defense, Automotive Applications, and more [7]. This Hydraulic Test Rig is capable of testing a range of flow rates that can achieve different pressures with the ability to heat and cool to simulate testing under different conditions [8]. Testing the pressure, volume flow and temperature is possible by Hydraulic Test Rig sensors and digital displays. The display panel alerts the user when certain testing criteria is met displaying either a green/red light [8]. A filter blockage panel indicator is integrated into the panel to ensure the Hydraulic Test Rig’s oil is maintained [8]. The cooling filtration solution is designed to minimize power consumption and expand the life of the Hydraulic Test Rig. We are predicting cooling conditions for Hydraulic System Predictive Maintenance. When the cooling condition is low, our prediction tells us that the cooling of the Hydraulic System is close to total failure and we may need to look into replacing the cooling filtration solution soon.
 
 ![cylinder-diagram-1](assets/cylinder-diagram-1.jpg)
 
@@ -48,12 +48,12 @@ The Hydraulic Test Rig consists of a primary and secondary cooling filtration ci
 - Skilled in Python and/or R Programming
 - Driverless AI Environment
 - Driverless AI License
-    - 21 day trial license
-    - It is needed for using the MOJO2 C++ Runtime Python Wrapper API and R Wrapper API to execute the MOJO Scoring Pipeline for making predictions
+    - The license is needed for using the **MOJO2 C++ Runtime Python Wrapper API** and **R Wrapper API** to execute the **MOJO Scoring Pipeline** for making predictions
+    - [21 day trial license](https://www.h2o.ai/try-driverless-ai/)
     - If you need to purchase a Driverless AI license, reach out to our sales team via the [**contact us form**](https://www.h2o.ai/company/contact/).
 - Linux OS (x86 or IBM Power PC) or Mac OS X (10.9 or newer)
 - Anaconda or Miniconda
-- Basic knowledge of Driverless AI or doing the following tutorials:
+- Basic knowledge of Driverless AI or completion of the following tutorials:
     - [Tutorial 1A: Automatic Machine Learning Introduction with Driverless AI Test Drive](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai)
     - [Tutorial 4A: Scoring Pipeline Deployment Introduction](https://training.h2o.ai/products/tutorial-4a-scoring-pipeline-deployment-introduction#tab-product_tab_overview)
     - [Tutorial 4B: Scoring Pipeline Deployment Templates](https://training.h2o.ai/products/tutorial-4b-scoring-pipeline-deployment-templates)
@@ -74,7 +74,7 @@ mkdir $HOME/dai-mojo-cpp/
 
 #### Download MOJO Scoring Pipeline
 
-1. If you have not downloaded the MOJO Scoring Pipeline, go to [Tutorial 4B: Scoring Pipeline Deployment Templates](https://training.h2o.ai/products/tutorial-4b-scoring-pipeline-deployment-templates) , then go to Task 1: Set Up Environment, then **Download MOJO Scoring Pipeline** to download it. When finished, come back to this tutorial.
+1. If you have not downloaded the MOJO Scoring Pipeline, go to [Tutorial 4B: Scoring Pipeline Deployment Templates](https://training.h2o.ai/products/tutorial-4b-scoring-pipeline-deployment-templates) , then go to Task 1: Set Up Environment, then **Download MOJO Scoring Pipeline**. When finished, come back to this tutorial.
 
 2. Move the **mojo.zip** file to **dai-mojo-cpp**/ folder and then extract it:
 
@@ -96,7 +96,7 @@ We can download the **MOJO2 C++ Runtime Python Wrapper API and R Wrapper API** i
 
 ![download-mojo2-r-runtime-2](assets/download-mojo2-r-runtime-2.jpg)
 
-3. The second place you can find these runtimes is under **Resources** dropdown.
+3. The second place you can find these runtimes is under the **Resources** drop-down list.
 
 ![download-mojo2-py-r-runtime-3](assets/download-mojo2-py-r-runtime-3.jpg)
 
@@ -207,7 +207,7 @@ After downloading the MOJO scoring pipeline, the **mojo-pipeline** folder comes 
 
 ### Embed the MOJO in the C++ Runtime via Python or R Wrappers
 
-If you have gone through the earlier scoring pipeline deployment tutorials, you have seen the way we deploy the MOJO Scoring Pipeline is to a server or serverless instance and there is some client that interacts with the server to trigger it to execute the MOJO to make predictions. An alternative way to deploy the MOJO Scoring Pipeline is to embed it directly into the C++ Runtime where your application is running. The MOJO C++ Runtime comes with Python and R wrappers called MOJO2 Py Runtime and MOJO2 R Runtime. So if you are building a Python or R application using an Integrated Development Environment (IDE) or a text editor, you can import the MOJO2 Python API or MOJO2 R API, then use it to load the MOJO, put your test data into a MOJO frame, then perform predictions on the data and return the results.
+If you have gone through the earlier scoring pipeline deployment tutorials, you have seen how we deploy the MOJO Scoring Pipeline to a server or serverless instance. Some clients interact with the server to trigger it to execute the MOJO to make predictions. An alternative way to deploy the MOJO Scoring Pipeline is to embed it directly into the C++ Runtime, where your application is running. The MOJO C++ Runtime comes with Python and R wrappers called MOJO2 Py Runtime and MOJO2 R Runtime. So if you are building a Python or R application using an Integrated Development Environment (IDE) or a text editor, you can import the MOJO2 Python API or MOJO2 R API. Then use it to load the MOJO, put your test data into a MOJO frame, then perform predictions on the data and return the results.
 
 ## Task 3: Batch Scoring via Scoring Pipeline Execution
 
