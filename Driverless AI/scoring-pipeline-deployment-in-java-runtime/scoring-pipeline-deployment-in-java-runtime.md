@@ -48,8 +48,8 @@ The Hydraulic Test Rig consists of a primary and secondary cooling filtration ci
 - Skilled in Java Object Oriented Programming
 - Driverless AI Environment
 - Driverless AI License
-  - 21 day trial license
-  - It is needed to use the **MOJO2 Java Runtime API** to execute the **MOJO Scoring Pipeline** for making predictions
+  - The license is needed to use the **MOJO2 Java Runtime API** to execute the **MOJO Scoring Pipeline** for making predictions
+  - [21 day trial license](https://www.h2o.ai/try-driverless-ai/)
   - If you need to purchase a Driverless AI license, reach out to our sales team via the [contact us form](https://www.h2o.ai/company/contact/)
 - Basic knowledge of Driverless AI or completion of the following tutorials:
   - [Tutorial 1A: Automatic Machine Learning Introduction with Driverless AI](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai)
@@ -148,7 +148,7 @@ After downloading the MOJO scoring pipeline, the **mojo-pipeline** folder comes 
 
 ### Embedding the MOJO into the Java Runtime
 
-If you have gone through the earlier scoring pipeline deployment tutorials, you have seen the way we deploy the MOJO Scoring Pipeline is to a server or serverless instance and there is some client that interacts with the server to trigger it to execute the MOJO to make predictions. An alternative way to deploy the MOJO Scoring Pipeline is to embed it directly into the Java Runtime Environment where your application is running. So if you are building a Java application using an Integrated Development Environment (IDE) or a text editor, you can import the MOJO Java API, then use it to load the MOJO, put your test data into a MOJO frame, then perform predictions on the data and return the results.
+If you have gone through the earlier scoring pipeline deployment tutorials, you have seen how we deploy the MOJO Scoring Pipeline to a server or serverless instance. Some clients interact with the server to trigger it to execute the MOJO to make predictions. An alternative way to deploy the MOJO Scoring Pipeline is to embed it directly into the Java Runtime Environment where your application is running. So if you are building a Java application using an Integrated Development Environment (IDE) or a text editor, you can import the MOJO Java API. Then use it to load the MOJO, put your test data into a MOJO frame, perform predictions on the data, and return the results.
 
 ### Resources
 
