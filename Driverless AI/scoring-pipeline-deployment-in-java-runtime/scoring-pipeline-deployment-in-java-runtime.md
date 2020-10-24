@@ -62,7 +62,7 @@ Create Environment Directory Structure
 
 ### Create directory structure for DAI MOJO Java Projects
 
-```java
+```bash
 # Create directory where the mojo-pipeline/ folder will be stored
 mkdir $HOME/dai-mojo-java/
 ```
@@ -71,11 +71,11 @@ mkdir $HOME/dai-mojo-java/
 
 Download MOJO Scoring Pipeline
 
-1. If you have not downloaded the MOJO Scoring Pipeline, go to [Tutorial 4B: Scoring Pipeline Deployment Templates](https://training.h2o.ai/products/tutorial-4b-scoring-pipeline-deployment-templates), then go to Task 1: Set Up Environment, then **Download MOJO Scoring Pipeline** to download it. When finished, come back to this tutorial.
+1\. If you have not downloaded the MOJO Scoring Pipeline, go to [Tutorial 4B: Scoring Pipeline Deployment Templates](https://training.h2o.ai/products/tutorial-4b-scoring-pipeline-deployment-templates), then go to Task 1: Set Up Environment, then **Download MOJO Scoring Pipeline** to download it. When finished, come back to this tutorial.
 
-2. Move the **mojo.zip** file to `dai-mojo-java/` folder and then extract it:
+2\. Move the **mojo.zip** file to `dai-mojo-java/` folder and then extract it:
 
-```java
+```bash
 cd $HOME/dai-mojo-java/
 mv $HOME/Downloads/mojo.zip .
 unzip mojo.zip
@@ -83,9 +83,9 @@ unzip mojo.zip
 
 ### Install MOJO2 Java Runtime Dependencies
 
-3. Download and install Anaconda
+3\. Download and install Anaconda
 
-```java
+```bash
 # Download Anaconda
 wget https://repo.anaconda.com/archive/Anaconda3-2020.02-Linux-x86_64.sh
 
@@ -93,9 +93,9 @@ wget https://repo.anaconda.com/archive/Anaconda3-2020.02-Linux-x86_64.sh
 bash Anaconda3-2020.02-Linux-x86_64.sh
 ```
 
-4. Create virtual environment and install required packages
+4\. Create virtual environment and install required packages
 
-```java
+```bash
 # Install Python 3.6.10
 conda create -y -n model-deployment python=3.6
 conda activate model-deployment
@@ -108,32 +108,32 @@ conda install -y -c conda-forge maven
 
 ### Set Driverless AI License Key
 
-5. Set the Driverless AI License Key as a temporary environment variable
+5\. Set the Driverless AI License Key as a temporary environment variable
 
-```java
+```bash
 # Set Driverless AI License Key
 export DRIVERLESS_AI_LICENSE_KEY="{license-key}"
 ```
 
 ### Install Sparkling Water
 
-1. Download and install Spark if not already installed from [Sparks Download page](https://spark.apache.org/downloads.html).
+1\. Download and install Spark if not already installed from [Sparks Download page](https://spark.apache.org/downloads.html).
 
    - Choose Spark release 3.0.0
 
    - Choose package type: Pre-built for Hadoop 2.7 and later
 
-2. Point SPARK_HOME to the existing installation of Spark and export variable MASTER.
+2\. Point SPARK_HOME to the existing installation of Spark and export variable MASTER.
 
-```java
+```bash
 export SPARK_HOME="/path/to/spark/installation"
 # To launch a local Spark cluster.
 export MASTER="local[*]"
 ```
 
-3. [Download Sparkling Water](https://s3.amazonaws.com/h2o-release/sparkling-water/spark-3.0/3.30.1.2-1-3.0/index.html) and then move Sparkling Water to the HOME folder and extract it:
+3\. [Download Sparkling Water](https://s3.amazonaws.com/h2o-release/sparkling-water/spark-3.0/3.30.1.2-1-3.0/index.html) and then move Sparkling Water to the HOME folder and extract it:
 
-```java
+```bash
 cd $HOME
 mv $HOME/Downloads/sparkling-water-3.30.0.6-1-3.0.zip .
 unzip sparkling-water-3.30.0.6-1-3.0.zip
@@ -165,7 +165,7 @@ You will run the **run_example.sh** script that came with the mojo-pipeline fold
 
 Since we already have our license file path specified as an environment variable, we will pass in the path to the mojo file and example csv data to the **run_example.sh** and then run it:
 
-```java
+```bash
 cd $HOME/dai-mojo-java/mojo-pipeline/
 bash run_example.sh pipeline.mojo example.csv
 ```
@@ -179,19 +179,19 @@ This classification output is the batch scoring done for our Hydraulic System co
 
 Similarly, we could execute **run_example.sh** without passing arguments to it by creating temporary environment variables for mojo pipeline file and example csv file paths.
 
-```java
+```bash
 export MOJO_PIPELINE_FILE="$HOME/dai-mojo-java/mojo-pipeline/pipeline.mojo”
 export EXAMPLE_CSV_FILE="$HOME/dai-mojo-java/mojo-pipeline/example.csv”
 ```
 Then try executing **run_example.sh** and you should get similar results as above.
 
-```java
+```bash
 bash run_example.sh
 ```
 
 Likewise, we can also execute the **ExecuteMojo** Java application directly as below and get similar results as above:
 
-```java
+```bash
 java -Dai.h2o.mojos.runtime.license.key=$DRIVERLESS_AI_LICENSE_KEY -cp mojo2-runtime.jar ai.h2o.mojos.ExecuteMojo $MOJO_PIPELINE_FILE $EXAMPLE_CSV_FILE
 ```
 
@@ -199,7 +199,7 @@ java -Dai.h2o.mojos.runtime.license.key=$DRIVERLESS_AI_LICENSE_KEY -cp mojo2-run
 
 Start PySparkling to enter PySpark interactive terminal:
 
-```java
+```bash
 cd $HOME/sparkling-water-3.30.0.6-1-3.0
 ./bin/pysparkling --jars $DRIVERLESS_AI_LICENSE_KEY
 ```
@@ -245,7 +245,7 @@ predictions.select([mojo.selectPredictionUDF("cool_cond_y.3"), mojo.selectPredic
 
 ![batch-scoring-via-pysparkling-program-2](assets/batch-scoring-via-pysparkling-program-2.jpg)
 
-```java
+```bash
 # Quit PySparkling
 quit()
 ```
@@ -258,7 +258,7 @@ So that is how you execute the MOJO scoring pipeline to do batch scoring using P
 
 Start Sparkling Water to enter Spark interactive terminal:
 
-```java
+```bash
 cd $HOME/sparkling-water-3.30.0.6-1-3.0
 ./bin/sparkling-shell --jars $DRIVERLESS_AI_LICENSE_KEY
 ```
@@ -306,7 +306,7 @@ predictions.select(mojo.selectPredictionUDF("cool_cond_y.3"), mojo.selectPredict
 ```
 ![batch-scoring-via-sparkling-water-3](assets/batch-scoring-via-sparkling-water-3.jpg)
 
-```java
+```bash
 # Quit Sparkling Water
 :quit
 ```
@@ -333,7 +333,7 @@ The mojo can also predict a Hydraulic System cooling condition for each individu
 
 Create a **MojoDeployment** folder and go into it:
 
-```java
+```bash
 cd $HOME/dai-mojo-java/apps/
 mkdir MojoDeployment
 cd MojoDeployment
@@ -341,7 +341,7 @@ cd MojoDeployment
 
 Make sure the java runtime file mojo2-runtime.jar and pipeline.mojo is located in this folder:
 
-```java
+```bash
 cp $HOME/dai-mojo-java/mojo-pipeline/mojo2-runtime.jar .
 cp $HOME/dai-mojo-java/mojo-pipeline/pipeline.mojo .
 ```
@@ -408,19 +408,19 @@ public class ExecuteDaiMojo {
 
 Now we have our ExecuteDaiMojo.java code, so let’s compile it:
 
-```java
+```bash
 javac -cp mojo2-runtime.jar -J-Xms2g ExecuteDaiMojo.java
 ```
 
 ExecuteDaiMojo.class is generated. Run this Java program to execute the MOJO:
 
-```java
+```bash
 java -Dai.h2o.mojos.runtime.license.file=$DRIVERLESS_AI_LICENSE_KEY -cp .:mojo2-runtime.jar ExecuteDaiMojo
 ```
 
 **Note**: Windows users run
 
-```java
+```bash
 java -Dai.h2o.mojos.runtime.license.file=license.sig -cp .;mojo2-runtime.jar ExecuteDaiMojo
 ```
 
