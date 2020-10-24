@@ -15,9 +15,10 @@
 ## Objective
 **Machine Learning Model Deployment** is the process of making your model available in production environments, so they can be used to make predictions for other software systems [1]. Before model deployment, **feature engineering** occurs in the form of preparing data that later on will be used to train a model [2]. Driverless AI **Automatic Machine Learning (AutoML)** combines the best feature engineering and one or more **machine learning models** into a scoring pipeline [3][4]. The scoring pipeline is used to score or predict data when given new test data [5]. The **scoring pipeline** comes in two flavors. The first scoring pipeline is a **Model Object, Optimized (MOJO) Scoring Pipeline**, which is a standalone, low-latency model object designed to be easily embeddable in production environments. The second scoring pipeline is a Python Scoring Pipeline, which has a heavy footprint that is all Python and uses the latest libraries of Driverless AI to allow for executing custom scoring recipes[6].
 
-By the end of this tutorial, you will predict the **cooling condition** for a Hydraulic System Test Rig by deploying an **embeddable MOJO Scoring Pipeline** to **Apache NiFi**. The Hydraulic System Test Rig data comes from [UCI Machine Learning Repository: Condition Monitoring of Hydraulic Systems Data Set](https://archive.ics.uci.edu/ml/datasets/Condition+monitoring+of+hydraulic+systems#). Hydraulic System Test Rigs are used to test components in Aircraft Equipment, Ministry of Defense, Automotive Applications, and more [7]. This Hydraulic Test Rig is capable of testing a range of flow rates that can achieve different pressures with the ability to heat and cool to simulate testing under different conditions [8]. Testing the pressure, volume flow and temperature is possible by Hydraulic Test Rig sensors and digital displays. The display panel alerts the user when certain testing criteria is met displaying either a green/red light [8]. A filter blockage panel indicator is integrated into the panel to ensure the Hydraulic Test Rig’s oil is maintained [8]. The cooling filtration solution is designed to minimize power consumption and expand the life of the Hydraulic Test Rig. We are predicting cooling conditions for Hydraulic System Predictive Maintenance. When the cooling condition is low, our prediction tells us that the cooling of the Hydraulic System is close to total failure and we may need to look into replacing the cooling filtration solution soon.
+By the end of this tutorial, you will predict the **cooling condition** for a Hydraulic System Test Rig by deploying an **embeddable MOJO Scoring Pipeline** to **Apache NiFi**. The Hydraulic System Test Rig data comes from the [UCI Machine Learning Repository: Condition Monitoring of Hydraulic Systems Data Set](https://archive.ics.uci.edu/ml/datasets/Condition+monitoring+of+hydraulic+systems#). Hydraulic System Test Rigs are used to test components in Aircraft Equipment, Ministry of Defense, Automotive Applications, and more [7]. This Hydraulic Test Rig is capable of testing a range of flow rates that can achieve different pressures with the ability to heat and cool to simulate testing under different conditions [8]. Testing the pressure, volume flow, and the temperature is possible by Hydraulic Test Rig sensors and digital displays.. The display panel alerts the user when certain testing criteria is met displaying either a green/red light [8]. A filter blockage panel indicator is integrated into the panel to ensure the Hydraulic Test Rig’s oil is maintained [8]. The cooling filtration solution is designed to minimize power consumption and expand the life of the Hydraulic Test Rig. We are predicting cooling conditions for Hydraulic System Predictive Maintenance. When the cooling condition is low, our prediction tells us that the cooling of the Hydraulic System is close to total failure and we may need to look into replacing the cooling filtration solution soon.
 
 ![cylinder-diagram-1](assets/cylinder-diagram-1.jpg)
+
 Figure: Hydraulic Test Rig General Cylinder Diagram
 
 The Hydraulic Test Rig consists of a primary and secondary cooling filtration circuit with pumps that deliver flow and pressure to the oil tank. The oil tank box at the bottom. There is a pressure relief control valve for controlling the rising and falling flows. There is a pressure gauge for measuring the pressure. 
@@ -45,10 +46,10 @@ The Hydraulic Test Rig consists of a primary and secondary cooling filtration ci
 - Skilled in Java Object Oriented Programming
 - Driverless AI Environment
 - Driverless AI License
-    - 21 day trial license
-    - It is needed for using the MOJO2 Java Runtime API to execute the MOJO Scoring Pipeline in Apache NiFi
+    - The license is needed to use the MOJO2 Java Runtime API to execute the MOJO Scoring Pipeline in Apache NiFi
+    - [21 day trial license](https://www.h2o.ai/try-driverless-ai/)
     - If you need to purchase a Driverless AI license, reach out to our sales team via the [contact us form](https://www.h2o.ai/company/contact/).
-- Basic knowledge of Driverless AI or doing the following tutorials:
+- Basic knowledge of Driverless AI or completion of the following tutorials:
     - [Automatic Machine Learning Introduction with Driverless AI Test Drive Tutorial](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai)
     - [Tutorial 4A: Scoring Pipeline Deployment Introduction](https://training.h2o.ai/products/tutorial-4a-scoring-pipeline-deployment-introduction#tab-product_tab_overview)
     - [Tutorial 4B: Scoring Pipeline Deployment Templates](https://training.h2o.ai/products/tutorial-4b-scoring-pipeline-deployment-templates)
@@ -77,7 +78,7 @@ mkdir -p $HOME/dai-mojo-nifi/testData/{test-batch-data,test-real-time-data}
 
 #### Download MOJO Scoring Pipeline
 
-1\. If you have not downloaded the MOJO Scoring Pipeline, go to [Tutorial 4B: Scoring Pipeline Deployment Templates](https://training.h2o.ai/products/tutorial-4b-scoring-pipeline-deployment-templates), then go to **Task 1: Set Up Environment**, then go to section **Download MOJO Scoring Pipeline** to download it. When finished, come back to this tutorial.
+1\. If you have not downloaded the MOJO Scoring Pipeline, go to [Tutorial 4B: Scoring Pipeline Deployment Templates](https://training.h2o.ai/products/tutorial-4b-scoring-pipeline-deployment-templates), then go to **Task 1: Set Up Environment**, and then go to **Download MOJO Scoring Pipeline** to download it. When finished, come back to this tutorial.
 
 2\. Move the **mojo.zip** file to `dai-mojo-nifi/` folder and then extract it:
 
@@ -123,7 +124,7 @@ export DRIVERLESS_AI_LICENSE_KEY="{license-key}"
 
 ### Prepare Hydraulic Test Data For Mojo NiFi Scoring
 
-Make sure there is **input test data** in the input directory NiFi will be pulling data from.
+Make sure there is **input test data** in the NiFi input directory.
 
 1\. For **batch scoring**, you should make sure there is one or more files with multiple rows of csv data in the following directory:
 
@@ -262,14 +263,14 @@ While writing the code for the NiFi processor [ExecuteDaiMojoScoringPipeline.jav
 
 ### Add Custom NiFi Processor to NiFi Product
 
-Once you have compiled the NiFi custom processor, a NAR file will be generated. A NAR allows several components and their dependencies to be packaged together into a single package. A NAR package is provided ClassLoader isolation from other NAR packages. So when software from many different organizations is all hosted within the same environment, the Java ClassLoaders will not be an issue.
+Once you have compiled the NiFi custom processor, a NAR file will be generated. A NAR allows several components and their dependencies to be packaged together into a single package. The NAR package is provided ClassLoader isolation from other NAR packages, so when software from many different organizations is all hosted within the same environment, the Java ClassLoaders will not be an issue.
 
 ### Build a NiFi Flow to do Interactive or Batch Scoring
 You could build a NiFi flow from scratch with the custom processor **ExecuteDaiMojoScoringPipeline** to do interactive scoring or batch scoring. You would need at least a processor to ingest the source of data, the MOJO processor to perform predictions on the data and another processor to send the predicted results to a destination.
 
-To make it easier to see how to run the MOJO in the NiFi flow, we will use NiFi flow templates. A NiFi flow template is a flow that has already been built to ingest data, perform transformations on the data and send the data somewhere. There are two NiFi flow templates that have been created: one that can do interactive (real-time) scoring and the other one that can do batch scoring. It just depends on the data you are ingesting into the flow. If you ingest tabular data that has only 1 row of data in each file, then the **ExecuteDaiMojoScoringPipeline** will do interactive scoring. If you ingest tabular data that has multiple rows of data in each file, then the **ExecuteDaiMojoScoringPipeline** will do batch scoring. However, behind the scenes, even if the tabular data contains multiple rows, the NiFi processor iterates over each individual row and performs the prediction on each row.
+To make it easier to see how to run the MOJO in the NiFi flow, we will use NiFi flow templates. A NiFi flow template is a flow that has already been built to ingest data, perform transformations on the data, and send the data somewhere. There are two NiFi flow templates that have been created: one that can do interactive (real-time) scoring and the other one that can do batch scoring. It just depends on the data you are ingesting into the flow. If you ingest tabular data that has only 1 row of data in each file, then the **ExecuteDaiMojoScoringPipeline** will do interactive scoring. If you ingest tabular data that has multiple rows of data in each file, then the **ExecuteDaiMojoScoringPipeline** will do batch scoring. However, behind the scenes, even if the tabular data contains multiple rows, the NiFi processor iterates over each individual row and performs the prediction on each row.
 
-For reference, here is the path the two NiFi flow templates:
+For reference, here is the path to the two NiFi flow templates:
 
 ```bash
 # NiFi Flow Template for batch scoring
@@ -292,7 +293,14 @@ You should see the following NiFi Data Flow appear on the screen:
 
 ![nifi-flow-run-mojo-batch-scores](assets/nifi-flow-run-mojo-batch-scores.jpg)
 
-In the NiFi flow, we are pulling in Hydraulic System csv data with each file having multiple rows of data, telling NiFi the schema to lookup for the input data, performing classifications for Hydraulic cooling condition on the batch of data, writing the classification results in csv format, and providing the classification results with a unique filename and storing the results to a csv file on the local file system.
+In the NiFi flow, we are:
+
+- Pulling in Hydraulic System csv data with each file having multiple rows of data 
+- Telling NiFi the schema to lookup for the input data
+- Performing classifications for Hydraulic cooling condition on the batch of data 
+- Writing the classification results in csv format
+- Providing the classification results with a unique filename
+- Storing the results to a csv file on the local file system
 
 1\. Right click on the PutFile processor, choose Data Provenance.
 
@@ -317,7 +325,14 @@ You should see the following NiFi Data Flow appear on the screen:
 
 ![nifi-flow-run-mojo-interactive-scores](assets/nifi-flow-run-mojo-interactive-scores.jpg)
 
-In the NiFi flow, we are pulling in Hydraulic System csv data with each file having an individual row of data, telling NiFi the schema to lookup for the input data, performing classifications for Hydraulic cooling condition on the individual rows of data, writing the classification results in csv format, and providing the classification results with a unique filename and storing the results to a csv file on the local file system.
+In the NiFi flow, we are:
+
+- Pulling in Hydraulic System csv data with each file having multiple rows of data 
+- Telling NiFi the schema to lookup for the input data
+- Performing classifications for Hydraulic cooling condition on the batch of data 
+- Writing the classification results in csv format
+- Providing the classification results with a unique filename
+- Storing the results to a csv file on the local file system
 
 1\. Right click on the PutFile processor, choose Data Provenance.
 
