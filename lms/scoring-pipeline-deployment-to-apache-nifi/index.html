@@ -1,0 +1,313 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Scoring Pipeline Deployment to Apache NiFi</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <link rel="stylesheet" href="custom.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="scoring-pipeline-deployment-to-apache-nifi"
+                  title="Scoring Pipeline Deployment to Apache NiFi"
+                  environment="web"
+                  feedback-link="">
+    
+      <google-codelab-step label="Objective" duration="0">
+        <p><strong>Machine Learning Model Deployment</strong> is the process of making your model available in production environments, so they can be used to make predictions for other software systems [1]. Before model deployment, <strong>feature engineering</strong> occurs in the form of preparing data that later on will be used to train a model [2]. Driverless AI <strong>Automatic Machine Learning (AutoML)</strong> combines the best feature engineering and one or more <strong>machine learning models</strong> into a scoring pipeline [3][4]. The scoring pipeline is used to score or predict data when given new test data [5]. The <strong>scoring pipeline</strong> comes in two flavors. The first scoring pipeline is a <strong>Model Object, Optimized (MOJO) Scoring Pipeline</strong>, which is a standalone, low-latency model object designed to be easily embeddable in production environments. The second scoring pipeline is a Python Scoring Pipeline, which has a heavy footprint that is all Python and uses the latest libraries of Driverless AI to allow for executing custom scoring recipes[6].</p>
+<p>By the end of this tutorial, you will predict the <strong>cooling condition</strong> for a Hydraulic System Test Rig by deploying an <strong>embeddable MOJO Scoring Pipeline</strong> to <strong>Apache NiFi</strong>. The Hydraulic System Test Rig data comes from the <a href="https://archive.ics.uci.edu/ml/datasets/Condition+monitoring+of+hydraulic+systems#" target="_blank">UCI Machine Learning Repository: Condition Monitoring of Hydraulic Systems Data Set</a>. Hydraulic System Test Rigs are used to test components in Aircraft Equipment, Ministry of Defense, Automotive Applications, and more [7]. This Hydraulic Test Rig is capable of testing a range of flow rates that can achieve different pressures with the ability to heat and cool to simulate testing under different conditions [8]. Testing the pressure, volume flow, and the temperature is possible by Hydraulic Test Rig sensors and digital displays.. The display panel alerts the user when certain testing criteria is met displaying either a green/red light [8]. A filter blockage panel indicator is integrated into the panel to ensure the Hydraulic Test Rig&#39;s oil is maintained [8]. The cooling filtration solution is designed to minimize power consumption and expand the life of the Hydraulic Test Rig. We are predicting cooling conditions for Hydraulic System Predictive Maintenance. When the cooling condition is low, our prediction tells us that the cooling of the Hydraulic System is close to total failure and we may need to look into replacing the cooling filtration solution soon.</p>
+<p class="image-container"><img alt="cylinder-diagram-1" src="img/a8b156e42a5fb1f0.jpg"></p>
+<p>Figure: Hydraulic Test Rig General Cylinder Diagram</p>
+<p>The Hydraulic Test Rig consists of a primary and secondary cooling filtration circuit with pumps that deliver flow and pressure to the oil tank. The oil tank box at the bottom. There is a pressure relief control valve for controlling the rising and falling flows. There is a pressure gauge for measuring the pressure.</p>
+<h2 is-upgraded>Resources</h2>
+<p>[1] H2O.ai Community AI Glossary: <a href="https://www.h2o.ai/community/glossary/machine-learning-model-deployment-productionization-productionizing-machine-learning-models" target="_blank">Machine Learning Model Deployment</a></p>
+<p>[2] H2O.ai Community AI Glossary: <a href="https://www.h2o.ai/community/glossary/feature-engineering-data-transformation" target="_blank">Feature Engineering</a></p>
+<p>[3] H2O.ai Community AI Glossary: <a href="https://www.h2o.ai/community/glossary/automatic-machine-learning-automl" target="_blank">Automatic Machine Learning (AutoML)</a></p>
+<p>[4] H2O.ai Community AI Glossary: <a href="https://www.h2o.ai/community/glossary/machine-learning-model" target="_blank">Machine Learning Model</a></p>
+<p>[5] H2O.ai Community AI Glossary: <a href="https://www.h2o.ai/community/glossary/scoring-pipeline" target="_blank">Scoring Pipeline</a></p>
+<p>[6] H2O.ai Community AI Glossary: <a href="https://www.h2o.ai/community/glossary/model-object-optimized-mojo" target="_blank">Model Object, Optimized (MOJO) Scoring Pipeline</a></p>
+<p>[7] <a href="https://www.savery.co.uk/systems/test-benches" target="_blank">SAVERY - HYDRAULIC TEST RIGS AND BENCHES</a></p>
+<p>[8] <a href="https://www.hydrotechnik.co.uk/flow-and-temperature-hydraulic-test-bed" target="_blank">HYDROTECHNIK - Flow and Temperature Testing Components</a></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Prerequisites" duration="0">
+        <ul>
+<li>Skilled in Java Object Oriented Programming</li>
+<li>Driverless AI Environment</li>
+<li>Driverless AI License  <ul>
+<li>The license is needed to use the MOJO2 Java Runtime API to execute the MOJO Scoring Pipeline in Apache NiFi</li>
+<li><a href="https://www.h2o.ai/try-driverless-ai/" target="_blank">21 day trial license</a></li>
+<li>If you need to purchase a Driverless AI license, reach out to our sales team via the <a href="https://www.h2o.ai/company/contact/" target="_blank">contact us form</a>.</li>
+</ul>
+</li>
+<li>Basic knowledge of Driverless AI or completion of the following tutorials:  <ul>
+<li><a href="https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai" target="_blank">Tutorial 1A: Automatic Machine Learning Introduction with Driverless AI Test Drive</a></li>
+<li><a href="https://training.h2o.ai/products/tutorial-4a-scoring-pipeline-deployment-introduction#tab-product_tab_overview" target="_blank">Tutorial 4A: Scoring Pipeline Deployment Introduction</a></li>
+<li><a href="https://training.h2o.ai/products/tutorial-4b-scoring-pipeline-deployment-templates" target="_blank">Tutorial 4B: Scoring Pipeline Deployment Templates</a></li>
+<li><a href="https://training.h2o.ai/products/tutorial-4c-scoring-pipeline-execution-in-java-runtime" target="_blank">Tutorial 4C: Scoring Pipeline Deployment in Java Runtime</a></li>
+</ul>
+</li>
+<li>Downloaded the Driverless AI Deployment Repo to your local machine since we will be using the NiFi Data Flow xml templates that come with mojo-nifi/ folder.</li>
+</ul>
+<pre><code language="language-bash" class="language-bash">git clone -b mojo-nifi https://github.com/james94/dai-deployment-examples/
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Task 1: Set Up Environment" duration="0">
+        <h2 is-upgraded>Create an Environment Directory Structure</h2>
+<pre><code language="language-bash" class="language-bash"># Create directory structure for DAI MOJO NiFi Projects
+
+# Create directory where the mojo-pipeline/ folder will be stored
+mkdir $HOME/dai-mojo-nifi/
+
+# Create input directory used for batch scoring or real-time scoring
+mkdir -p $HOME/dai-mojo-nifi/testData/{test-batch-data,test-real-time-data}
+</code></pre>
+<h2 is-upgraded>Set Up Driverless AI MOJO Requirements</h2>
+<h3 is-upgraded>Download MOJO Scoring Pipeline</h3>
+<p>1. If you have not downloaded the MOJO Scoring Pipeline, go to <a href="https://training.h2o.ai/products/tutorial-4b-scoring-pipeline-deployment-templates" target="_blank">Tutorial 4B: Scoring Pipeline Deployment Templates</a>, then go to <strong>Task 1: Set Up Environment</strong>, and then go to <strong>Download MOJO Scoring Pipeline</strong> to download it. When finished, come back to this tutorial.</p>
+<p>2. Move the <strong>mojo.zip</strong> file to <code>dai-mojo-nifi/</code> folder and then extract it:</p>
+<pre><code language="language-bash" class="language-bash">cd $HOME/dai-mojo-nifi/
+mv $HOME/Downloads/mojo.zip .
+unzip mojo.zip
+</code></pre>
+<h3 is-upgraded>Install MOJO2 Java Runtime Dependencies</h3>
+<p>3. Download and install Anaconda</p>
+<pre><code language="language-bash" class="language-bash"># Download Anaconda
+wget https://repo.anaconda.com/archive/Anaconda3-2020.02-Linux-x86_64.sh
+
+# Install Anaconda
+bash Anaconda3-2020.02-Linux-x86_64.sh
+</code></pre>
+<p>4. Create virtual environment and install required packages</p>
+<pre><code language="language-bash" class="language-bash"># Install Python 3.6.10
+conda create -y -n model-deployment python=3.6
+conda activate model-deployment
+# Install Java
+conda install -y -c conda-forge openjdk=8.0.192
+
+# Install Maven
+conda install -y -c conda-forge maven
+</code></pre>
+<h3 is-upgraded>Set Driverless AI License Key</h3>
+<p>5. Set the Driverless AI License Key as a temporary environment variable</p>
+<pre><code language="language-bash" class="language-bash"># Set Driverless AI License Key
+export DRIVERLESS_AI_LICENSE_KEY=&#34;{license-key}&#34;
+</code></pre>
+<h2 is-upgraded>Prepare Hydraulic Test Data For Mojo NiFi Scoring</h2>
+<p>Make sure there is <strong>input test data</strong> in the NiFi input directory.</p>
+<p>1. For <strong>batch scoring</strong>, you should make sure there is one or more files with multiple rows of csv data in the following directory:</p>
+<pre><code language="language-bash" class="language-bash"># go to mojo-pipeline/ directory with batch data example.csv
+cd $HOME/dai-mojo-nifi/mojo-pipeline/
+
+# copy this batch data to the input dir where NiFi pulls the batch data
+cp example.csv $HOME/dai-mojo-nifi/testData/test-batch-data/
+</code></pre>
+<p>2. For <strong>real-time scoring</strong>, you should make sure there are files with a single row of csv data in the following directory:</p>
+<pre><code language="language-bash" class="language-bash"># go to real-time input dir where we will store real-time data
+cd $HOME/dai-mojo-nifi/testData/test-real-time-data/
+
+# copy example.csv to the input dir where NiFi pulls the real-time data
+cp $HOME/dai-mojo-nifi/mojo-pipeline/example.csv .
+
+# remove file&#39;s 1st line, the header
+echo -e &#34;$(sed &#39;1d&#39; example.csv)\n&#34; &gt; example.csv
+
+# split example.csv into smaller real-time files each with 1 line
+split -l 1 example.csv test_
+
+# add .csv extension to all test_* files in folder
+for f in test* ; do mv &#34;$f&#34; &#34;${f}.csv&#34;; done
+
+# remove example.csv from real-time input dir
+rm -rf example.csv
+</code></pre>
+<h2 is-upgraded>Set Up NiFi Local Cluster</h2>
+<p>1. Download <strong>NiFi</strong></p>
+<pre><code language="language-bash" class="language-bash">cd $HOME
+# Download NiFi
+wget https://downloads.apache.org/nifi/1.11.4/nifi-1.11.4-bin.tar.gz
+# Extract NiFi tar.gz
+tar -xvf nifi-1.11.4-bin.tar.gz
+</code></pre>
+<h2 is-upgraded>Compile MOJO NiFi Processor</h2>
+<p>1. Download <strong>Driverless AI Deployment Examples</strong> Repo for <strong>NiFi</strong> assets</p>
+<pre><code language="language-bash" class="language-bash">cd $HOME
+git clone -b mojo-nifi https://github.com/james94/dai-deployment-examples/
+</code></pre>
+<p>2. Compile the Java code for <strong>MOJO NiFi processor</strong> into a <strong>NAR package</strong>:</p>
+<pre><code language="language-bash" class="language-bash">cd $HOME/dai-deployment-examples/mojo-nifi/
+cd model-deployment/apps/nifi/nifi-nar-bundles/nifi-h2o-record-bundle/
+mvn clean install
+</code></pre>
+<h2 is-upgraded>Add the MOJO NiFi Processor to the NiFi Product</h2>
+<p>1. Copy over the NiFi NAR file <code>nifi-h2o-record-nar-1.11.4.nar</code>, which contains the Java MOJO NiFi processor to the NiFi lib/ folder:</p>
+<pre><code language="language-bash" class="language-bash"># go into nifi lib/ folder
+cd $HOME/nifi-1.11.4/lib/
+
+# copy nifi h2o nar to current folder
+cp $HOME/dai-deployment-examples/mojo-nifi/model-deployment/apps/nifi/nifi-nar-bundles/nifi-h2o-record-bundle/nifi-h2o-record-nar/target/nifi-h2o-record-nar-1.11.4.nar .
+</code></pre>
+<h2 is-upgraded>Start the NiFi Server</h2>
+<p>1. Start the NiFi server where we will access the NiFi UI to import NiFi data flows to do batch scoring or real-time scoring:</p>
+<pre><code language="language-bash" class="language-bash"># go back to nifi base folder
+cd ../
+
+# start nifi
+./bin/nifi.sh start
+
+# stop nifi
+# ./bin/nifi.sh stop
+</code></pre>
+<p>Access NiFi UI at http://localhost:8080/nifi/</p>
+<p><strong>Note:</strong> It may take a few minutes for the NiFi server to load the NiFi UI application.</p>
+<h2 is-upgraded>Import MOJO NiFi Flow Template into NiFi</h2>
+<p>1. On the left side of the NiFi canvas there is an Operate Panel. Click on the <strong>upload button</strong> to upload a NiFi Data Flow Template from your local machine:</p>
+<p class="image-container"><img alt="nifi-operate-panel-upload" src="img/1f22f3870991b48e.jpg"></p>
+<p>2. Upload each of the following <strong>NiFi Data Flow xml templates</strong> from your local machine to NiFi:</p>
+<pre><code language="language-bash" class="language-bash"># NiFi Data Flow Template executes MOJO for batch scoring
+$HOME/dai-deployment-examples/mojo-nifi/model-deployment/apps/nifi/templates/predBatchesHydCoolCond.xml
+ 
+# NiFi Data Flow Template executes MOJO for real-time scoring
+$HOME/dai-deployment-examples/mojo-nifi/model-deployment/apps/nifi/templates/predRealTimeHydCoolCond.xml
+</code></pre>
+<p>After diving into some concepts on deploying the MOJO Scoring Pipeline to Apache NiFi, we will run these NiFi flow templates to execute MOJO to make predictions.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Task 2: NiFi and MOJO Scoring Pipeline Concepts" duration="0">
+        <h2 is-upgraded>Embedding the MOJO into a Custom NiFi Processor</h2>
+<p>If you have gone through the earlier scoring pipeline deployment tutorials, you have seen one particular way we deploy the MOJO Scoring Pipeline is to a server or serverless instance and there is some client that interacts with the server to trigger it to execute the MOJO to make predictions. An alternative way to deploy the MOJO Scoring Pipeline is to embed it directly into the Java Runtime Environment where your Apache NiFi application is running. With NiFi, we would take advantage of NiFi&#39;s custom processor extensibility and build a custom NiFi processor that uses the MOJO Java API to load the MOJO and perform predictions on the data passing through the processor and output the results to the remaining processors in the NiFi Data Flow. We will be going over the custom MOJO NiFi processor built for this tutorial.</p>
+<h2 is-upgraded>Open Custom NiFi Processor Code in Eclipse IDE</h2>
+<p>If you want to add or update the Java code for the NiFi processor, you can open your favorite IDE, then import the project. Let&#39;s walk through the steps to open the project in Eclipse:</p>
+<pre><code language="language-bash" class="language-bash">cd $HOME/dai-deployment-examples/mojo-nifi/model-deployment/apps/nifi/nifi-nar-bundles/nifi-h2o-record-bundle/
+
+# Download the JAR package dependencies for the Eclipse project
+mvn eclipse:eclipse -DdownloadSource=true
+</code></pre>
+<p><strong>Import the NiFi processor project </strong><code>$HOME/dai-deployment-examples/mojo-nifi/model-deployment/apps/nifi/nifi-nar-bundles/nifi-h2o-record-processors/</code> in Eclipse:</p>
+<p class="image-container"><img alt="nifi-processor-dev-eclipse-ide" src="img/f00fb36cb62daf06.jpg"></p>
+<h2 is-upgraded>Process For Developing the Custom NiFi Processor</h2>
+<p>For developing the custom NiFi processor, you can use Maven and Eclipse IDE. When using NiFi with Maven, there is the option to build a starter template for the custom processor you are going to build. To generate the starter template, you can use the following command: <code>mvn archetype:generate</code>. Next we are ready to work on the processor&#39;s code in an Integrated Development Environment (IDE). In this tutorial, we briefly look at the steps to open and compile the Java code in Eclipse. Ypu can run the command <code>mvn install</code> to compile the project. Then you can run <code>mvn eclipse:eclipse -DdownloadSource=true</code> to download the JARs needed for the project and so Eclipse would be aware of them. Then one opens Eclipse and imports the NiFi processor project folder <a href="https://github.com/james94/dai-deployment-examples/blob/mojo-nifi/mojo-nifi/model-deployment/apps/nifi/nifi-nar-bundles/nifi-h2o-record-bundle/nifi-h2o-record-processors" target="_blank">nifi-h2o-record-processors/</a> into Eclipse.</p>
+<p>While writing the code for the NiFi processor <a href="https://github.com/james94/dai-deployment-examples/blob/mojo-nifi/mojo-nifi/model-deployment/apps/nifi/nifi-nar-bundles/nifi-h2o-record-bundle/nifi-h2o-record-processors/src/main/java/org/apache/nifi/processors/h2o/record/ExecuteDaiMojoScoringPipeline.java" target="_blank">ExecuteDaiMojoScoringPipeline.java</a>, the following package dependencies for using NiFi&#39;s Record Reader, NiFi&#39;s Record Writer and H2O&#39;s MOJO2 Runtime were required. So the <em>nifi-h2o-record-processors/</em> folder&#39;s <a href="https://github.com/james94/dai-deployment-examples/blob/mojo-nifi/mojo-nifi/model-deployment/apps/nifi/nifi-nar-bundles/nifi-h2o-record-bundle/nifi-h2o-record-processors/pom.xml" target="_blank">pom.xml</a> was updated to be able to use these dependencies. Once these new dependencies are added to the <em>pom.xml</em>, you must run the following command mvn <code>eclipse:eclipse -DdownloadSource=true</code> to download them for use in the Eclipse project. Once all the Java code was written for the processor, the code was compiled with command: <code>mvn install</code>. When the code compiled successfully, a Junit test was written in Java <a href="https://github.com/james94/dai-deployment-examples/blob/mojo-nifi/mojo-nifi/model-deployment/apps/nifi/nifi-nar-bundles/nifi-h2o-record-bundle/nifi-h2o-record-processors/src/test/java/org/apache/nifi/processors/h2o/record/TestExecuteDaiMojoScoringPipeline.java" target="_blank">TestExecuteDaiMojoScoringPipeline.java</a> for testing multiple properties and test cases for the processor. The code was recompiled and a NiFi Archive (NAR) was generated. We will talk more about the NAR soon.</p>
+<h2 is-upgraded>Add Custom NiFi Processor to NiFi Product</h2>
+<p>Once you have compiled the NiFi custom processor, a NAR file will be generated. A NAR allows several components and their dependencies to be packaged together into a single package. The NAR package is provided ClassLoader isolation from other NAR packages, so when software from many different organizations is all hosted within the same environment, the Java ClassLoaders will not be an issue.</p>
+<h2 is-upgraded>Build a NiFi Flow to do Interactive or Batch Scoring</h2>
+<p>You could build a NiFi flow from scratch with the custom processor <strong>ExecuteDaiMojoScoringPipeline</strong> to do interactive scoring or batch scoring. You would need at least a processor to ingest the source of data, the MOJO processor to perform predictions on the data and another processor to send the predicted results to a destination.</p>
+<p>To make it easier to see how to run the MOJO in the NiFi flow, we will use NiFi flow templates. A NiFi flow template is a flow that has already been built to ingest data, perform transformations on the data, and send the data somewhere. There are two NiFi flow templates that have been created: one that can do interactive (real-time) scoring and the other one that can do batch scoring. It just depends on the data you are ingesting into the flow. If you ingest tabular data that has only 1 row of data in each file, then the <strong>ExecuteDaiMojoScoringPipeline</strong> will do interactive scoring. If you ingest tabular data that has multiple rows of data in each file, then the <strong>ExecuteDaiMojoScoringPipeline</strong> will do batch scoring. However, behind the scenes, even if the tabular data contains multiple rows, the NiFi processor iterates over each individual row and performs the prediction on each row.</p>
+<p>For reference, here is the path to the two NiFi flow templates:</p>
+<pre><code language="language-bash" class="language-bash"># NiFi Flow Template for batch scoring
+$HOME/dai-deployment-examples/mojo-nifi/model-deployment/apps/nifi/templates/predBatchesHydCoolCond.xml
+
+# NiFi Flow Template for real-time scoring
+$HOME/dai-deployment-examples/mojo-nifi/model-deployment/apps/nifi/templates/predRealTimeHydCoolCond.xml
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Task 3: Batch Scoring" duration="0">
+        <p>Now that we have an idea of how to deploy the MOJO Scoring Pipeline to NiFi, let&#39;s drag and drop the <strong>predBatchesHydCoolCond.xml</strong> NiFi template onto the NiFi canvas.</p>
+<p>1. Drag and drop the NiFi template component onto the NiFi canvas. <img alt="nifi-flow-template-component" src="img/f4ba4c05dc625d96.jpg"></p>
+<p>2. Select the NiFi <strong>predBatchesHydCoolCond</strong> template.</p>
+<p>You should see the following NiFi Data Flow appear on the screen:</p>
+<p class="image-container"><img alt="nifi-flow-run-mojo-batch-scores" src="img/3d3bd99b60f6ed56.jpg"></p>
+<p>In the NiFi flow, we are:</p>
+<ul>
+<li>Pulling in Hydraulic System csv data with each file having multiple rows of data</li>
+<li>Telling NiFi the schema to lookup for the input data</li>
+<li>Performing classifications for Hydraulic cooling condition on the batch of data</li>
+<li>Writing the classification results in csv format</li>
+<li>Providing the classification results with a unique filename</li>
+<li>Storing the results to a csv file on the local file system</li>
+</ul>
+<p>1. Right click on the PutFile processor, choose Data Provenance.</p>
+<p>2. Choose the first event in the list and click on the <code>i</code> on the left corner of the first row.</p>
+<p>3. A provenance event window should appear, then in the <strong>output</strong> side of the window, click on <strong>view</strong> to see the batch scoring data.</p>
+<p>Here we look at a provenance event from the PutFile processor for when NiFi executed the MOJO on some batch data (multiple rows of data) to do batch scoring.</p>
+<p class="image-container"><img alt="nifi-flow-batch-scores" src="img/2d2eb426def0e0cd.jpg"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Task 4: Real-Time Scoring" duration="0">
+        <p>Now that we have an idea of how to deploy the MOJO Scoring Pipeline to NiFi, let&#39;s drag and drop the <strong>predRealTimeHydCoolCond.xml</strong> NiFi template onto the NiFi canvas.</p>
+<p>1. Drag and drop the <strong>NiFi template component</strong> onto the NiFi canvas. <img alt="nifi-flow-template-component" src="img/f4ba4c05dc625d96.jpg"></p>
+<p>2. Select the NiFi <strong>predRealTimeHydCoolCond</strong> template.</p>
+<p>You should see the following NiFi Data Flow appear on the screen:</p>
+<p class="image-container"><img alt="nifi-flow-run-mojo-interactive-scores" src="img/71489135955a17d6.jpg"></p>
+<p>In the NiFi flow, we are:</p>
+<ul>
+<li>Pulling in Hydraulic System csv data with each file having multiple rows of data</li>
+<li>Telling NiFi the schema to lookup for the input data</li>
+<li>Performing classifications for Hydraulic cooling condition on the batch of data</li>
+<li>Writing the classification results in csv format</li>
+<li>Providing the classification results with a unique filename</li>
+<li>Storing the results to a csv file on the local file system</li>
+</ul>
+<p>1. Right click on the PutFile processor, choose Data Provenance.</p>
+<p>2. Choose the first event in the list and click on the <code>i</code> on the left corner of the first row.</p>
+<p>3. A provenance event window should appear, then in the <strong>output</strong> side of the window, click on <strong>view</strong> to see the interactive scoring data.</p>
+<p>Here we look at a provenance event from the PutFile processor for when NiFi executed the MOJO on some real-time data (one row of data) to do interactive scoring.</p>
+<p class="image-container"><img alt="nifi-flow-real-time-scores" src="img/ebcb12c7e6f89a71.jpg"></p>
+<p>Congratulations on learning how to deploy the MOJO Scoring Pipeline to Apache NiFi to do batch scoring and interactive scoring!</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Task 5: Challenge" duration="0">
+        <h2 is-upgraded>Execute New MOJO Scoring Pipeline for a New Dataset in NiFi</h2>
+<p>There are various challenges one could do: you could do something that helps you in your daily life or job. Maybe there is a dataset you are working with, you could reproduce the steps we did above, but for your new dataset, build a new experiment and execute your MOJO scoring pipeline to do batch scoring or interactive scoring in NiFi.</p>
+<h2 is-upgraded>Embed Scoring Pipeline into Existing Program</h2>
+<p>Another challenge could be to use the existing MOJO scoring pipeline in another application, such as Apache Flink using the MOJO Java API to do batch scoring or real-time scoring.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Next Steps" duration="0">
+        <p>Check out our other deployment tutorials, if you have not done so:</p>
+<ul>
+<li><a href="https://training.h2o.ai/products/tutorial-4d-scoring-pipeline-execution-runtime-in-c" target="_blank">Tutorial 4D: Scoring Pipeline Execution Runtime in C++</a></li>
+<li><a href="https://training.h2o.ai/products/tutorial-4e-scoring-pipeline-deployment-in-python-runtime" target="_blank">Tutorial 4E: Scoring Pipeline Deployment in Python Runtime</a></li>
+<li>Scoring Pipeline Deployment to Flink (Coming soon...)</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Appendix A: Glossary" duration="0">
+        <p>Refer to <a href="https://www.h2o.ai/community/top-links/ai-glossary-search?p=1" target="_blank">H2O.ai AI/ML Glossary</a> for relevant Model Deployment Terms</p>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>
