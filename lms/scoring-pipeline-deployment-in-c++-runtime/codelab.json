@@ -1,0 +1,26 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2020-10-25T10:20:16-07:00",
+  "id": "scoring-pipeline-deployment-in-c++-runtime",
+  "duration": 0,
+  "title": "Scoring Pipeline Deployment in C++ Runtime",
+  "summary": "Check the list",
+  "source": "/Users/sperez/Desktop/scoring-pipeline-deployment-in-c++-runtime/scoring-pipeline-deployment-in-c++-runtime.md",
+  "theme": "",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "driverless"
+  ],
+  "tags": [
+    "c++",
+    "driverless",
+    "embeddable-mojo-scoring-pipeline",
+    "scoring-pipeline-deployment"
+  ],
+  "url": "scoring-pipeline-deployment-in-c++-runtime"
+}
