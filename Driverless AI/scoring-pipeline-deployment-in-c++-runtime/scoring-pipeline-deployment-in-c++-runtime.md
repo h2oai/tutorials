@@ -74,9 +74,9 @@ mkdir $HOME/dai-mojo-cpp/
 
 #### Download MOJO Scoring Pipeline
 
-1. If you have not downloaded the MOJO Scoring Pipeline, go to [Tutorial 4B: Scoring Pipeline Deployment Templates](https://training.h2o.ai/products/tutorial-4b-scoring-pipeline-deployment-templates) , then go to Task 1: Set Up Environment, then **Download MOJO Scoring Pipeline** to download it. When finished, come back to this tutorial.
+1\. If you have not downloaded the MOJO Scoring Pipeline, go to [Tutorial 4B: Scoring Pipeline Deployment Templates](https://training.h2o.ai/products/tutorial-4b-scoring-pipeline-deployment-templates) , then go to Task 1: Set Up Environment, then **Download MOJO Scoring Pipeline** to download it. When finished, come back to this tutorial.
 
-2. Move the **mojo.zip** file to **dai-mojo-cpp**/ folder and then extract it:
+2\. Move the **mojo.zip** file to **dai-mojo-cpp**/ folder and then extract it:
 
 ```bash
 cd $HOME/dai-mojo-cpp/
@@ -88,21 +88,21 @@ unzip mojo.zip
 
 We can download the **MOJO2 C++ Runtime Python Wrapper API and R Wrapper API** in Driverless AI. There are 2 places where we can download the MOJO2 Python and R runtime. 
 
-1. The first place is by clicking on **Download MOJO Scoring Pipeline**, then click Python and click **Download the MOJO2 Py Runtime** hyperlink.
+1\. The first place is by clicking on **Download MOJO Scoring Pipeline**, then click Python and click **Download the MOJO2 Py Runtime** hyperlink.
 
 ![download-mojo2-py-runtime-1](assets/download-mojo2-py-runtime-1.jpg)
 
-2. Similar for the MOJO2 R runtime, click R, then **Download the MOJO2 R Runtime** hyperlink.
+2\. Similar for the MOJO2 R runtime, click R, then **Download the MOJO2 R Runtime** hyperlink.
 
 ![download-mojo2-r-runtime-2](assets/download-mojo2-r-runtime-2.jpg)
 
-3. The second place you can find these runtimes is under the **Resources** drop-down list.
+3\. The second place you can find these runtimes is under the **Resources** drop-down list.
 
 ![download-mojo2-py-r-runtime-3](assets/download-mojo2-py-r-runtime-3.jpg)
 
-4. Click **MOJO2 Py Runtime** and/or **MOJO2 R Runtime** to download the runtime.
+4\. Click **MOJO2 Py Runtime** and/or **MOJO2 R Runtime** to download the runtime.
 
-5. Download and install Anaconda:
+5\. Download and install Anaconda:
 
 ```bash
 # Download Anaconda
@@ -112,7 +112,7 @@ wget https://repo.anaconda.com/archive/Anaconda3-2020.02-Linux-x86_64.sh
 bash Anaconda3-2020.02-Linux-x86_64.sh
 ```
 
-6. Move the **MOJO2 Py Runtime** file to $HOME folder:
+6\. Move the **MOJO2 Py Runtime** file to $HOME folder:
 
 ```bash
 cd $HOME
@@ -127,7 +127,7 @@ mv $HOME/Downloads/daimojo-2.2.0-cp36-cp36m-linux_x86_64.whl .
 mv $HOME/Downloads/daimojo-2.2.0-cp36-cp36m-linux_ppc64le.whl .
 ```
 
-7. Move the **MOJO2 R Runtime** file to $HOME folder:
+7\. Move the **MOJO2 R Runtime** file to $HOME folder:
 
 ```bash
 cd $HOME
@@ -143,7 +143,7 @@ mv $HOME/Downloads/daimojo_2.2.0_ppc64le-linux.tar.gz .
 
 ### Install MOJO2 Python and R Runtime Dependencies
 
-8. Create virtual environment and install Python and R packages in it
+8\. Create virtual environment and install Python and R packages in it
 
 ```bash
 # Install Python 3.6.10
@@ -151,7 +151,7 @@ conda create -y -n model-deployment python=3.6
 conda activate model-deployment
 ```
 
-9. Install Python Packages
+9\. Install Python Packages
 
 ```bash
 # Install Python Packages
@@ -163,7 +163,7 @@ pip install pandas
 pip install scipy
 ```
 
-10. Depending on your OS, run one of the following commands to install **MOJO2 Py Runtime**:
+10\. Depending on your OS, run one of the following commands to install **MOJO2 Py Runtime**:
 
 ```bash
 # Install the MOJO2 Py runtime on Mac OS X
@@ -176,7 +176,7 @@ pip install $HOME/daimojo-2.2.0-cp36-cp36m-linux_x86_64.whl
 pip install $HOME/daimojo-2.2.0-cp36-cp36m-linux_ppc64le.whl
 ```
 
-11. Install R packages
+11\. Install R packages
 
 ```bash
 # Install R Packages
@@ -192,7 +192,7 @@ conda install -y -c r r-data.table
 
 ### Set Driverless AI License Key
 
-12. Set the Driverless AI License Key as a temporary environment variable
+12\. Set the Driverless AI License Key as a temporary environment variable
 
 ```bash
 # Set Driverless AI License Key
@@ -215,7 +215,7 @@ We will be executing the MOJO scoring pipeline using the Python and R wrapper. W
 
 ### Batch Scoring via Run R Wrapper Program
 
-1. Start R to enter R interactive terminal:
+1\. Start R to enter R interactive terminal:
 
 ```bash
 R
@@ -223,7 +223,7 @@ R
 
 ![batch-scoring-via-run-r-program-1](assets/batch-scoring-via-run-r-program-1.jpg)
 
-2. Now that we are in the R interactive terminal, we will install the MOJO2 R Runtime:
+2\. Now that we are in the R interactive terminal, we will install the MOJO2 R Runtime:
 
 
 ```bash
@@ -241,7 +241,7 @@ install.packages(homePath + "/daimojo_2.2.0_x86_64-linux.tar.gz")
 install.packages(homePath + "/daimojo_2.2.0_x86_64-darwin.tar.gz")
 ```
 
-3. Next we will load the Driverless AI MOJO library and load the MOJO scoring pipeline:
+3\. Next we will load the Driverless AI MOJO library and load the MOJO scoring pipeline:
 
 ```bash
 # Load the MOJO
@@ -249,7 +249,7 @@ library(daimojo)
 m <- load.mojo(homePath + "/dai-mojo-cpp/mojo-pipeline/pipeline.mojo")
 ```
 
-4. We will then retrieve the creation time of the MOJO and the UUID of the experiment:
+4\. We will then retrieve the creation time of the MOJO and the UUID of the experiment:
 
 ```bash
 # retrieve the creation time of the MOJO
@@ -259,7 +259,7 @@ create.time(m)
 uuid(m)
 ```
 
-5. We will then set feature data types and names in the column class header, which will be used to initialize the R datatable header and data types, and load Hydraulic System example csv data into the table:
+5\. We will then set feature data types and names in the column class header, which will be used to initialize the R datatable header and data types, and load Hydraulic System example csv data into the table:
 
 ```bash
 # Load data and make predictions
@@ -269,7 +269,7 @@ library(data.table)
 d <- fread(homePath + "/dai-mojo-cpp/mojo-pipeline/example.csv", colClasses=col_class, header=TRUE, sep=",")
 ```
 
-6. Lastly, we will use our MOJO scoring pipeline to predict the Hydraulic System’s cooling condition for each row within the table:
+6\. Lastly, we will use our MOJO scoring pipeline to predict the Hydraulic System’s cooling condition for each row within the table:
 
 ```bash
 predict(m, d)
@@ -279,7 +279,7 @@ predict(m, d)
 
 This classification output is the batch scoring done for our Hydraulic System cooling condition. You should receive classification probabilities for cool_cond_y.3, cool_cond_y.20, and cool_cond_y.100. The 3 means the Hydraulic cooler is close to operating at total failure, 20 means it is operating at reduced efficiency and 100 means it is operating at full efficiency.
 
-7. We will quit the R interactive terminal:
+7\. We will quit the R interactive terminal:
 
 ```bash
 quit()
@@ -291,11 +291,11 @@ So that is how you execute the MOJO scoring pipeline to do batch scoring for the
 
 ### Batch Scoring via Run Python Wrapper Program
 
-1. Start python to enter Python interactive terminal:
+1\. Start python to enter Python interactive terminal:
 
 ![batch-scoring-via-run-py-program-1](assets/batch-scoring-via-run-py-program-1.jpg)
 
-2. Let’s import the Driverless AI MOJO model package and load the MOJO scoring pipeline:
+2\. Let’s import the Driverless AI MOJO model package and load the MOJO scoring pipeline:
 
 ```bash
 # import the daimojo model package
@@ -307,7 +307,7 @@ homePath = os.path.expanduser("~")
 m = daimojo.model(homePath + "/dai-mojo-cpp/mojo-pipeline/pipeline.mojo")
 ```
 
-3. We will then retrieve the creation time of the MOJO and the UUID of the experiment:
+3\. We will then retrieve the creation time of the MOJO and the UUID of the experiment:
 
 ```bash
 # retrieve the creation time of the MOJO
@@ -317,7 +317,7 @@ m.created_time
 m.uuid
 ```
 
-4. We can also retrieve a list of missing values, feature names, feature types, output names, and output types:
+4\. We can also retrieve a list of missing values, feature names, feature types, output names, and output types:
 
 ```bash
 # retrieve a list of missing values
@@ -333,7 +333,7 @@ m.output_names
 m.output_types
 ```
 
-5. Now we will import the Python datatable package, load the Hydraulic System example csv data into the datatable, set the table to ignore strings that equal the missing values and display the table:
+5\. Now we will import the Python datatable package, load the Hydraulic System example csv data into the datatable, set the table to ignore strings that equal the missing values and display the table:
 
 ```bash
 # import the datatable module
@@ -345,14 +345,14 @@ pydt = dt.fread(homePath + "/dai-mojo-cpp/mojo-pipeline/example.csv", na_strings
 pydt
 ```
 
-6. We can also display the table column types:
+6\. We can also display the table column types:
 
 ```bash
 # retrieve the column types
 pydt.stypes
 ```
 
-7. We will use our MOJO scoring pipeline to predict the Hydraulic System’s cooling condition for each row within the table:
+7\. We will use our MOJO scoring pipeline to predict the Hydraulic System’s cooling condition for each row within the table:
 
 ```bash
 # make predictions on the example.csv file
@@ -366,7 +366,7 @@ res
 
 This classification output is the batch scoring done for our Hydraulic System cooling condition. You should receive classification probabilities for cool_cond_y.3, cool_cond_y.20, and cool_cond_y.100. The 3 means the Hydraulic cooler is close to operating at total failure, 20 means it is operating at reduced efficiency and 100 means it is operating at full efficiency.
 
-8. There is some more data we can retrieve from our res predictions, which include the prediction column names and column types:
+8\. There is some more data we can retrieve from our res predictions, which include the prediction column names and column types:
 
 
 ```bash
@@ -377,7 +377,7 @@ res.names
 res.stypes
 ```
 
-9. We can also convert the datatable results to other data structures, such as pandas, numpy and list:
+9\. We can also convert the datatable results to other data structures, such as pandas, numpy and list:
 
 ```bash
 # need pandas
