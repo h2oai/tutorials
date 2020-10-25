@@ -1,0 +1,27 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2020-10-25T10:50:01-07:00",
+  "id": "scoring-pipeline-deployment-to-apache-nifi",
+  "duration": 0,
+  "title": "Scoring Pipeline Deployment to Apache NiFi",
+  "summary": "Check the list",
+  "source": "/Users/sperez/Desktop/scoring-pipeline-deployment-to-apache-nifi/scoring-pipeline-deployment-to-apache-nifi.md",
+  "theme": "",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "driverless"
+  ],
+  "tags": [
+    "apache-nifi",
+    "driverless",
+    "embeddable-mojo-scoring-pipeline",
+    "real-time-scoring",
+    "scoring-pipeline-deployment"
+  ],
+  "url": "scoring-pipeline-deployment-to-apache-nifi"
+}
