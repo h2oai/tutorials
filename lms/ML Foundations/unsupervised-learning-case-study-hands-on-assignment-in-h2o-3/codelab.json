@@ -1,0 +1,25 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2020-10-16T20:46:11-07:00",
+  "id": "unsupervised-learning-case-study-hands-on-assignment-in-h2o-3",
+  "duration": 0,
+  "title": "Unsupervised Learning Case Study Hands-On Assignment in H2O-3",
+  "summary": "Check the list",
+  "source": "/Users/falvarenga/Desktop/ml-foundations-for-html/unsupervised-learning-case-study-hands-on-assignment-in-h2o-3/unsupervised-learning-case-study-hands-on-assignment-in-h2o-3.md",
+  "theme": "",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "driverless"
+  ],
+  "tags": [
+    "automl",
+    "h2o-3",
+    "unsupervised"
+  ],
+  "url": "unsupervised-learning-case-study-hands-on-assignment-in-h2o-3"
+}

@@ -1,0 +1,111 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>ML Foundations: Module 2 Session 2: Getting Started With Feature Engineering Hands-On Assignment with Driverless AI (Part 2)</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <link rel="stylesheet" href="custom.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="getting-started-with-feature-engineering-hands-on-assignment-with-driverlessai-part-2"
+                  title="ML Foundations: Module 2 Session 2: Getting Started With Feature Engineering Hands-On Assignment with Driverless AI (Part 2)"
+                  environment="web"
+                  feedback-link="">
+    
+      <google-codelab-step label="ML Foundations: Module 2 Session 2: Getting Started With Feature Engineering Hands-On Assignment with Driverless AI (Part 2)" duration="0">
+        <h2 is-upgraded>Objective</h2>
+<p>This is part 2 of a 2-part exercise examining feature engineering using two different <a href="https://www.h2o.ai/" target="_blank">H2O.ai&#39;s</a> products: the open source machine learning platform, <a href="https://www.h2o.ai/products/h2o/" target="_blank">H2O-3</a> and the Enterprise automated machine learning platform, <a href="https://www.h2o.ai/products/h2o-driverless-ai/" target="_blank">Driverless AI</a>.</p>
+<h2 is-upgraded>Part 2 Automated Feature Engineering with Driverless AI</h2>
+<p>For Part 2 of this assignment, you will learn how to explore data details, launch an experiment, explore feature engineering, and how to extend Driverless AI using Bring Your Own Recipe (BYOR) by accessing the <a href="https://github.com/h2oai/driverlessai-recipes/tree/rel-1.9.0" target="_blank">H2O.ai Recipe Github Repository</a>.</p>
+<p><strong>Note: This tutorial has been built on Aquarium, which is H2O.ai&#39;s cloud environment providing software access for workshops, conferences, and training. The labs in Aquarium have datasets, experiments, projects, and other content preloaded. If you use your version of H2O-3 or Driverless AI, you will not see preloaded content.</strong></p>
+<h2 is-upgraded>Prerequisites</h2>
+<ul>
+<li>Basic knowledge of Machine Learning and Statistics</li>
+<li>An <a href="https://aquarium.h2o.ai/" target="_blank">Aquarium</a> Account to access H2O.ai&#39;s software on the AWS Cloud.  <ul>
+<li>Need an Aquarium account? Follow the instructions in the next section <strong>Task 1 Create An Account &amp; Log Into Aquarium</strong> to create an account</li>
+<li>Already have an <a href="https://aquarium.h2o.ai/" target="_blank">Aquarium</a> account? Log in and continue to <strong>Task 2: Open the Automatic Machine Learning Introduction with Driverless AI Tutorial</strong> to begin your exercise!</li>
+</ul>
+</li>
+</ul>
+<p><strong>Note: Aquarium&#39;s Driverless AI lab has a license key built-in, so you don&#39;t need to request one to use it. Each Driverless AI lab instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore Driverless AI, you can always launch another lab instance or reach out to our sales team via the </strong><a href="https://www.h2o.ai/company/contact/" target="_blank"><strong>contact us form</strong></a><strong>.</strong></p>
+<h2 is-upgraded>Task 1: Create An Account &amp; Log Into Aquarium</h2>
+<p>Navigate to the following site: https://aquarium.h2o.ai/login and do the following:</p>
+<ol type="1">
+<li>create a new account (if you don&#39;t have one)</li>
+<li>log into the site with your credentials</li>
+</ol>
+<p class="image-container"><img alt="picture-1" src="img/26d1cf72ba30b2b1.jpg"></p>
+<h2 is-upgraded>Task 2: Open the Automatic Machine Learning Introduction with Driverless AI Tutorial</h2>
+<p>Once you&#39;ve created your account on Aquarium and/or logged into the site, open the following tutorial: <a href="https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai" target="_blank">Tutorial 1A: Automatic Machine Learning Introduction with Driverless AI</a></p>
+<ul>
+<li>In this exercise, you will follow the steps in the above tutorial, but quiz questions will be focused on the automated feature engineering capabilities  <ul>
+<li>You do also have the option to complete the tutorial to earn a badge</li>
+</ul>
+</li>
+</ul>
+<ol type="1">
+<li>Follow the steps in the tutorial to launch a classification experiment for the Titanic dataset and explore Driverless AI.</li>
+</ol>
+<h2 is-upgraded>Task 3: Exploring Driverless AI Custom Recipes (BYOR)</h2>
+<p>Driverless AI allows you to import custom recipes for machine learning algorithms, feature engineering (transformers), scorers, and configuration. Custom recipes can be used with or instead of the built-in recipes. You have greater flexibility over the Driverless AI Automatic ML Pipeline and control over the choices made by Driverless AI.</p>
+<p>There are 4 types of recipes currently supported by Driverless AI:</p>
+<ul>
+<li><strong>Data:</strong> Use for custom data preparation  <ul>
+<li>Transformations like aggregation, joins &amp; domain specific data cleaning</li>
+</ul>
+</li>
+<li><strong>Transformers:</strong> Custom feature engineering  <ul>
+<li>Transformation for numeric, categorial , timeseries, image, text data, .etc</li>
+</ul>
+</li>
+<li><strong>Models:</strong> Custom algorithms  <ul>
+<li>Extends access to the machine learning custom and even third-party models</li>
+</ul>
+</li>
+<li><strong>Scorers:</strong> Custom model performance measurements  <ul>
+<li>Optimizations for domain-specific metrics including cost, pricing, ranking, and more</li>
+</ul>
+</li>
+</ul>
+<p>H2O.ai has an array of <a href="https://github.com/h2oai/driverlessai-recipes/tree/rel-1.9.0" target="_blank">custom recipes</a> that can be used to extend Driverless AI</p>
+<p class="image-container"><img alt="picture-9" src="img/7a42a3f696afcea9.jpg"></p>
+<ol type="1">
+<li>Explore the recipes available in the transformers folder from the repository.</li>
+</ol>
+<h3 is-upgraded>Deeper Dive and Resources:</h3>
+<ul>
+<li><a href="https://github.com/h2oai/driverlessai-recipes/tree/rel-1.9.0" target="_blank">H2O.ai Github Repository: Driverless AI Recipes</a></li>
+<li><a href="http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/transformations.html" target="_blank">Built-In Driverless AI Transformations</a></li>
+</ul>
+<h2 is-upgraded>Next Steps</h2>
+<p>Now that you have completed the Introduction to Automatic Feature Engineering you can take the <strong>Quiz 1: Session 2: Getting Started With Feature Engineering</strong> assessment.</p>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>

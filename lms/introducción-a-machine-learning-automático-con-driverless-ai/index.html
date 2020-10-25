@@ -140,7 +140,7 @@
 <p>El conjunto de datos usados en este experimento es una versión del conjunto del Titanic elaborado por Kaggle. Este conjunto de datos contiene una lista de los pasajeros a bordo del RMS Titanic.<br>El RMS Titanic fue un transatlántico británico que se hundió tras colisionar con un iceberg al norte del océano Atlántico el 15 de abril de 1912. De 2,224 pasajeros y miembros de la tripulación, perdieron la vida más de 1,500 personas en la ruta marítima de Southampton a la Ciudad de Nueva York.<br>Esta tragedia impactó a la comunidad internacional, lo que impulsó mejores medidas de seguridad para barcos. La falta de botes salvavidas entre otras cosas, fue uno de los factores determinantes en la pérdida de vidas. Sin embargo, hubo algunos elementos que influyeron para que hubiera sobrevivientes.</p>
 <p><img alt="rms-titanic" src="img/206d4c9464b9e4de.jpeg"></p>
 <p><a href="https://en.wikipedia.org/wiki/RMS_Titanic#/media/File:RMS_Titanic_3.jpg" target="_blank">RMS Titanic-Wikipedia</a></p>
-<p>**Titanic dataset: **</p>
+<p><strong>Titanic dataset:</strong></p>
 <p>Conjunto de datos del Titanic:<br>En el conjunto de datos encontrarás 1,309 filas, una fila por cada pasajero, y 16 columnas que representan los atributos de cada pasajero.</p>
 <table>
 <tr></tr>
@@ -462,7 +462,7 @@
 <li>Diagnose Model On New Dataset (Diagnosticar modelo en un nuevo conjunto de datos)</li>
 <li>Score on Another Dataset (Puntuación en otro conjunto de datos)</li>
 <li>Transform Another Dataset (Transformar otro conjunto de datos)</li>
-<li>Download Predictions (Descargar predicciones)<br><br><ul>
+<li>Download Predictions (Descargar predicciones)<br><ul>
 <li>Training Predictions (Predicciones de entrenamiento)</li>
 <li>Validation Set Predictions(available if a validation set was provided) (Predicciones del conjunto de validación (disponible si se proporcionó un conjunto de validación))</li>
 <li>Test Set Predictions (Predicciones de conjuntos de pruebas)</li>
@@ -538,7 +538,7 @@
 <p>En cuanto termine el experimento, un resumen es generado en la parte baja en la esquina derecha de la página de <strong>Experiment</strong> (Experimentar).</p>
 <p>El resumen incluye:</p>
 <ul>
-<li><strong>Experiment:</strong> nombre del experimento,<br><br><ul>
+<li><strong>Experiment:</strong> nombre del experimento,<br><ul>
 <li>Versión (Versión): la versión de Driverless AI y la fecha en que fue lanzada</li>
 <li>Settings (Configuraciones): preferencias del experimento seleccionado, semilla, y la cantidad de unidades de procesamiento gráfico (GPU) utilizados</li>
 <li>Train data (Datos del tren): el nombre del set de datos de entrenamiento, con número de hileras y columnas</li>
@@ -547,16 +547,16 @@
 <li>Target column (Columna de destino): el nombre de la columna usada como el objetivo del experimento (incluye el tipo de data y el % de cada clase)</li>
 </ul>
 </li>
-<li><strong>System Specs</strong> (Especificaciones del sistema): detalles del sistema como memoria de acceso aleatorio (RAM), número de núcleos de CPU (Núcleos de Procesador) y GPU (unidad de procesamiento gráfico)<br><br><ul>
+<li><strong>System Specs</strong> (Especificaciones del sistema): detalles del sistema como memoria de acceso aleatorio (RAM), número de núcleos de CPU (Núcleos de Procesador) y GPU (unidad de procesamiento gráfico)<br><ul>
 <li>Uso máximo de memoria</li>
 </ul>
 </li>
-<li><strong>Recipe</strong> (Receta):<br><br><ul>
+<li><strong>Recipe</strong> (Receta):<br><ul>
 <li>Validation scheme: esquema de validación que incluye el tipo de sampling y número interno de reservación</li>
 <li>Feature Engineering: número de características que fueron evaluadas y la selección final</li>
 </ul>
 </li>
-<li><strong>Timing</strong> (Sincronización)<br><br><ul>
+<li><strong>Timing</strong> (Sincronización)<br><ul>
 <li>Preparación de datos</li>
 <li>Detección de desplazamiento o fuga de datos</li>
 <li>Model and feature tuning: tiempo total para entrenar el modelo y las características, y el número de modelos entrenados</li>
@@ -645,10 +645,11 @@
 <li><strong>Shapley plots for transformed features</strong>(Gráficos de Shapley para características transformadas) son para características transformadas: Las explicaciones de Shapley son una técnica con apoyo teórico creíble que presenta contribuciones variables globales y locales consistentes. Los valores numéricos locales de Shapley se calculan rastreando filas individuales de datos a través de un conjunto de árbol entrenado y agregando la contribución de cada variable de entrada a medida que la fila de datos se mueve a través del conjunto entrenado. Para las tareas de regresión, los valores de Shapley suman la predicción del modelo de IA sin conductor. Para problemas de clasificación, los valores de Shapley suman la predicción del modelo de Driverless AI antes de aplicar la función de enlace. Los valores globales de Shapley son el promedio de los valores absolutos de Shapley en cada fila de un conjunto de datos.</li>
 </ul>
 <p><img alt="dai-model-shapley" src="img/77995d650323787f.jpg"></p>
-<pre><code>- **Partial Dependence/ICE Plot:**(Parcela de dependencia parcial/ICE)La dependencia parcial es una medida de la predicción promedio del modelo con respecto a una variable de entrada. Las gráficas de dependencia parcial muestran cómo cambian las funciones de respuesta aprendidas por la máquina en función de los valores de una variable de entrada de interés mientras se considera la no linealidad y se promedian los efectos de todas las demás variables de entrada. Los gráficos de dependencia parcial son bien conocidos y se describen en los Elementos del Aprendizaje Estadístico (Hastie et al. 2001). Las gráficas de dependencia parcial permiten una mayor transparencia en los modelos de Driverless AI y la capacidad de validar y depurar modelos de Driverless AI al comparar las predicciones promedio de una variable en su dominio con los estándares conocidos, el conocimiento del dominio y las expectativas razonables.
-
-    Individual Conditional Expectation (ICE) (Las gráficas de expectativa condicional individual (ICE)), una adaptación más nueva y menos conocida de las gráficas de dependencia parcial, se pueden usar para crear explicaciones más localizadas para un solo individuo usando las mismas ideas básicas que las gráficas de dependencia parcial. Las parcelas ICE fueron descritas por Goldstein et al. (2015) Los valores de ICE son simplemente dependencia parcial desagregada, pero ICE también es un tipo de análisis de sensibilidad no lineal en el que se miden las predicciones del modelo para una sola fila. Al mismo tiempo, una variable de interés varía según su dominio. Las gráficas ICE permiten a un usuario determinar si el tratamiento del modelo de una fila individual de datos está fuera de una desviación estándar del comportamiento promedio del modelo, si el tratamiento de una fila específica es válido en comparación con el comportamiento promedio del modelo, estándares conocidos, conocimiento del dominio, y expectativas razonables, y cómo se comportará un modelo en situaciones hipotéticas donde una variable en una fila seleccionada varía en su dominio.
-</code></pre>
+<ul>
+<li><strong>Partial Dependence/ICE Plot:<br></strong></li>
+</ul>
+<p>(Parcela de dependencia parcial/ICE)La dependencia parcial es una medida de la predicción promedio del modelo con respecto a una variable de entrada. Las gráficas de dependencia parcial muestran cómo cambian las funciones de respuesta aprendidas por la máquina en función de los valores de una variable de entrada de interés mientras se considera la no linealidad y se promedian los efectos de todas las demás variables de entrada. Los gráficos de dependencia parcial son bien conocidos y se describen en los Elementos del Aprendizaje Estadístico (Hastie et al. 2001). Las gráficas de dependencia parcial permiten una mayor transparencia en los modelos de Driverless AI y la capacidad de validar y depurar modelos de Driverless AI al comparar las predicciones promedio de una variable en su dominio con los estándares conocidos, el conocimiento del dominio y las expectativas razonables.</p>
+<p>Individual Conditional Expectation (ICE) (Las gráficas de expectativa condicional individual (ICE)), una adaptación más nueva y menos conocida de las gráficas de dependencia parcial, se pueden usar para crear explicaciones más localizadas para un solo individuo usando las mismas ideas básicas que las gráficas de dependencia parcial. Las parcelas ICE fueron descritas por Goldstein et al. (2015) Los valores de ICE son simplemente dependencia parcial desagregada, pero ICE también es un tipo de análisis de sensibilidad no lineal en el que se miden las predicciones del modelo para una sola fila. Al mismo tiempo, una variable de interés varía según su dominio. Las gráficas ICE permiten a un usuario determinar si el tratamiento del modelo de una fila individual de datos está fuera de una desviación estándar del comportamiento promedio del modelo, si el tratamiento de una fila específica es válido en comparación con el comportamiento promedio del modelo, estándares conocidos, conocimiento del dominio, y expectativas razonables, y cómo se comportará un modelo en situaciones hipotéticas donde una variable en una fila seleccionada varía en su dominio.</p>
 <p><img alt="dai-model-partial-dependence-ice" src="img/da1cc0e19c609646.jpg"></p>
 <ul>
 <li><strong>Disparate Impact Analysis(NEW)</strong>(Análisis de Impacto Disparado (NUEVO)): El Análisis de Impacto Disparado es una técnica que se utiliza para evaluar la equidad. El sesgo se puede introducir a los modelos durante el proceso de recopilación, procesamiento y etiquetado de datos; como resultado, es esencial determinar si un modelo está dañando a ciertos usuarios al tomar un número significativo de decisiones sesgadas. Aprender más sobre <a href="http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/interpret-non-ts.html#disparate-impact-analysis" target="_blank">Disparate Impact Analysis (Análisis de Impacto Disparado).</a></li>
@@ -789,7 +790,7 @@
 <p>Cuando abre el archivo zip, se deben incluir los siguientes archivos:</p>
 <ul>
 <li>Experiment logs (regular and anonymized) (Registros de experimentos (regulares y anonimizados))</li>
-<li>Un resumen del experimento<br><br><ul>
+<li>Un resumen del experimento<br><ul>
 <li>Características del experimento junto con importancia relevante</li>
 </ul>
 </li>
@@ -826,12 +827,12 @@
         <p>Echa un vistazo al siguiente tutorial de AI sin controlador <a href="https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus" target="_blank">Tutorial de análisis y puntuación de experimentos de aprendizaje automático: enfoque financiero</a></p>
 <p>Donde aprenderás a:</p>
 <ul>
-<li>Evaluar un modelo de Driverless AI a través de herramientas como:<br><br><ul>
+<li>Evaluar un modelo de Driverless AI a través de herramientas como:<br><ul>
 <li>ROC</li>
 <li>Prec-Recall</li>
 <li>Gain and Lift Charts</li>
 <li>K-S Chart</li>
-<li>Métricas como:<br><br><ul>
+<li>Métricas como:<br><ul>
 <li>AUC</li>
 <li>F-Scores</li>
 <li>GINI</li>
@@ -856,7 +857,7 @@
 <p><em>Cosas para tener en cuenta:</em></p>
 <ol type="1">
 <li><strong>Projects</strong> (Proyectos): Opción de menú Proyectos Workspace para gestionar conjuntos de datos y vencimientos</li>
-<li><strong>Project</strong> (Proyecto) <strong>creado previamente</strong> que incluye:<br><br><ul>
+<li><strong>Project</strong> (Proyecto) <strong>creado previamente</strong> que incluye:<br><ul>
 <li><strong>Name</strong> (Nombre): Nombre del proyecto (Tutorial de series temporales)</li>
 <li><strong>Description</strong> (Descripción): Opcional (N/A)</li>
 <li><strong>Train Datasets</strong> (Conjuntos de Datos Entrenamiento): Número de conjuntos de datos de entrenamiento (1)</li>
@@ -865,7 +866,7 @@
 <li><strong>Experiments</strong> (Experimentos): Número de experimentos (1)</li>
 </ul>
 </li>
-<li>Opciones adicionales para el proyecto creado:<br><br><ul>
+<li>Opciones adicionales para el proyecto creado:<br><ul>
 <li><strong>Open</strong> (Abrir)</li>
 <li><strong>Rename</strong> (Renombrar)</li>
 <li><strong>Delete</strong> (Eliminar)</li>
@@ -897,7 +898,7 @@
 <li><strong>Unlink Items</strong> (Desvincular elementos): desvincular conjuntos de datos y / o experimentos</li>
 <li><strong>+ Link Dataset</strong> (Enlace de conjunto de datos): Enlace un conjunto de datos adicional al experimento</li>
 <li><strong>New Experiment</strong> (Experimento Nuevo): crea un nuevo experimento</li>
-<li>Información de los experimentos vinculados actuales:<br><br><ul>
+<li>Información de los experimentos vinculados actuales:<br><ul>
 <li><strong>Name</strong> (Nombre)</li>
 <li><strong>A</strong>: Exactitud</li>
 <li><strong>T</strong> : Tiempo</li>

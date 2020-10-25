@@ -1,0 +1,27 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2020-10-23T18:41:10-07:00",
+  "id": "scoring-pipeline-deployment-in-java-runtime",
+  "duration": 0,
+  "title": "Scoring Pipeline Deployment in Java Runtime",
+  "summary": "Check the list",
+  "source": "/Users/sperez/Desktop/scoring-pipeline-deployment-in-java-runtime/scoring-pipeline-deployment-in-java-runtime.md",
+  "theme": "",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "driverless"
+  ],
+  "tags": [
+    "driverless",
+    "java",
+    "java-runtime",
+    "mojo-scoring-pipeline",
+    "scoring-pipeline-deployment"
+  ],
+  "url": "scoring-pipeline-deployment-in-java-runtime"
+}

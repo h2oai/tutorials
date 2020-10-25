@@ -1,0 +1,353 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Deep Learning Walkthrough Hands-On Assignment in H2O-3</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <link rel="stylesheet" href="custom.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="deep-learning-walkthrough-hands-on-assignment-in-h2o-3"
+                  title="Deep Learning Walkthrough Hands-On Assignment in H2O-3"
+                  environment="web"
+                  feedback-link="">
+    
+      <google-codelab-step label="Deep Learning Walkthrough Hands-On Assignment in H2O-3" duration="0">
+        <h2 is-upgraded>Objective</h2>
+<p>This is the hands-on exercise wherein you will be doing a walkthrough to observe how to train a Deep Neural Network using H2O-3.</p>
+<p>For this assignment, you will be using the <a href="https://s3.amazonaws.com/h2o-public-test-data/smalldata/junit/cars_20mpg.csv" target="_blank">cars-mileage</a> dataset which contains information on various car models, their properties and mileage.</p>
+<p>Followed by a tutorial on <a href="http://yann.lecun.com/exdb/mnist/" target="_blank">MNIST Dataset</a>.</p>
+<p>This tutorial follows an iterative process, where we introduce a ANN using the default parameters of the H2O-3 API and followed by that, add more details and dive into different concepts.</p>
+<p><strong>Note: This tutorial has been built on Aquarium, which is H2O.ai&#39;s cloud environment providing software access for workshops, conferences, and training. The labs in Aquarium have datasets, experiments, projects, and other content preloaded. If you use your version of H2O-3 or Driverless AI, you will not see preloaded content.</strong></p>
+<h2 is-upgraded>Prerequisites</h2>
+<ul>
+<li>Basic knowledge of Machine Learning and Statistics</li>
+<li>An <a href="https://aquarium.h2o.ai/" target="_blank">Aquarium</a> Account to access H2O.ai&#39;s software on the AWS Cloud.  <ul>
+<li>Need an <a href="https://aquarium.h2o.ai/" target="_blank">Aquarium</a> account? Follow the instructions in the next section <strong>Task 1 Create An Account &amp; Log Into Aquarium</strong> to create an account</li>
+<li>Already have an Aquarium account? Log in and continue to <strong>Launch Lab 16: Legacy H2O-3 &amp; Sparkling Water Training</strong> to begin your exercise!</li>
+</ul>
+</li>
+</ul>
+<h2 is-upgraded>Task 1: Create An Account &amp; Log Into Aquarium</h2>
+<p>Navigate to the following site: https://aquarium.h2o.ai/login and do the following:</p>
+<p>1) Create a new account (if you don&#39;t have one)</p>
+<p>2) Log into the site with your credentials.</p>
+<p>3) Navigate to the lab: <strong><em>Legacy H2O-3 &amp; Sparkling Water Training</em></strong>. Click on Start Lab and wait for your instance to be ready. Once your instance is ready, you will see the following screen.</p>
+<p class="image-container"><img alt="labs-urls" src="img/1363a083367fefbf.jpg"></p>
+<p>Click on the Jupyter URL to start a Jupyter Notebook or the H2O Flow instance(if required). You can create a new Jupyter Notebook and follow the steps defined below.</p>
+<h2 is-upgraded>Task 2: Open a New Jupyter Notebook</h2>
+<p>Open a new Jupyter Python3 Notebook by clicking New and selecting Python 3</p>
+<p class="image-container"><img alt="new-python-notebook" src="img/cbaf29743262b789.jpg"></p>
+<p>In this notebook, you will:</p>
+<ol type="1">
+<li>Startup an H2O Cluster</li>
+<li>Import necessary packages</li>
+<li>Import the Credit Card dataset</li>
+<li>Train an isolation forest</li>
+<li>Inspect the Predictions</li>
+</ol>
+<h3 is-upgraded>Deeper Dive and Resources:</h3>
+<ul>
+<li><a href="https://www.dataquest.io/blog/jupyter-notebook-tutorial/" target="_blank">Jupyter Notebook Tutorial</a></li>
+</ul>
+<h2 is-upgraded>Task 3: Initialize the H2O-3 Cluster</h2>
+<p>In this section, you will use the <code>h2o.init()</code> method to initialize H2O. In the first cell of your notebook, you will:</p>
+<ol type="1">
+<li>Import the h2o python library</li>
+<li>Initialize the H2O cluster.<br></li>
+<li>Import the H2oDeepLearningEstimator Algorithm</li>
+</ol>
+<p>You can enter the following in the first cell:</p>
+<pre><code language="language-python" class="language-python">import h2o
+h2o.init()
+from h2o.estimators.deeplearning import H2ODeepLearningEstimator
+</code></pre>
+<p>Your notebook should look like this:</p>
+<p class="image-container"><img alt="notebook" src="img/a8856c1b0c46e995.jpg"></p>
+<h3 is-upgraded>Deeper Dive and Resources:</h3>
+<ul>
+<li><a href="http://docs.h2o.ai/h2o/latest-stable/h2o-docs/starting-h2o.html#from-python" target="_blank">Starting H2O from Python</a></li>
+</ul>
+<h2 is-upgraded>Task 4: Import the Cars Dataset</h2>
+<p>For this assignment, you will be using the cars-mileage dataset which contains information on various car models, their properties and mileage.</p>
+<ol type="1">
+<li>Import the dataset using the URL</li>
+</ol>
+<pre><code language="language-python" class="language-python">#Import the dataset
+cars = h2o.import_file(&#34;https://s3.amazonaws.com/h2o-public-test-data/smalldata/junit/cars_20mpg.csv&#34;)
+cars
+ 
+Note: The line with the # is a code comment.  These can be useful to describe what you are doing in a given section of code.
+</code></pre>
+<h3 is-upgraded>Deeper Dive and Resources:</h3>
+<ul>
+<li><a href="http://docs.h2o.ai/h2o/latest-stable/h2o-docs/data-munging/importing-data.html" target="_blank">Importing Data in H2O-3</a></li>
+</ul>
+<h2 is-upgraded>Task 5: Training the Deep Learning Estimator Function</h2>
+<p class="image-container"><img alt="neuron" src="img/486c25e10c6f5806.jpg"></p>
+<p>In the previous course, AI foundations we had learned about different parts of an ANN, namely:</p>
+<ul>
+<li>Single Neuron: Building block of a NN</li>
+<li>Layers: Consist of multiple Neurons</li>
+<li>Hidden Layers: Layers between input and output layer of an ANN</li>
+<li>Activation Functions: Non-Linearities introduced to train a model</li>
+<li>Training a Model</li>
+<li>Loss values and interpreting loss</li>
+</ul>
+<p>Let&#39;s explore these in H2O-3:</p>
+<p>Here we are trying to predict the response variable, i.e. the number of cylinders based on other properties of the</p>
+<pre><code language="language-python" class="language-python">cars[&#34;economy_20mpg&#34;] = cars[&#34;economy_20mpg&#34;].asfactor()
+predictors = [&#34;displacement&#34;,&#34;power&#34;,&#34;weight&#34;,&#34;acceleration&#34;,&#34;year&#34;]
+response = &#34;cylinders&#34;
+cars_dl = H2ODeepLearningEstimator(activation=None)
+#cars_dl = H2ODeepLearningEstimator(activation=&#34;tanh&#34;)
+cars_dl.train(x=predictors,
+              y=response,
+              training_frame=cars)
+cars_dl.mse()
+</code></pre>
+<p>We just trained our First Neural Network to predict the number of cylinders given: Displacement, Power, Weight, Acceleration and Year of a Car&#39;s make by using the defaults in H2O-3, let&#39;s see what adding a simple activation layer does:</p>
+<p class="image-container"><img alt="activation" src="img/4a733ebebc9fea14.jpg"></p>
+<pre><code language="language-python" class="language-python">train, valid = cars.split_frame(ratios=[.8], seed=1234)
+cars_dl = H2ODeepLearningEstimator(activation=&#34;tanh&#34;,
+                                   epochs=15,
+                                   seed=1234)
+cars_dl.train(x=predictors,
+              y=response,
+              training_frame=train,
+              validation_frame=valid)
+cars_dl.mse()
+</code></pre>
+<h3 is-upgraded>Deeper Dive and Resources:</h3>
+<ul>
+<li><a href="http://docs.h2o.ai/h2o/latest-stable/h2o-py/docs/modeling.html#h2odeeplearningestimator" target="_blank">Deep Learning in H2O-3</a></li>
+</ul>
+<h2 is-upgraded>Task 6: Advanced section: Learning more about NNs</h2>
+<p>Let&#39;s look at some more concepts:</p>
+<ul>
+<li>Epochs: are equivalent to the number of times the DeepLearningEstimator looks at the dataset</li>
+<li>Hidden: used to define the size of the hidden layers</li>
+<li>Dropout: Used for avoiding overfitting, by randomly deleting some &#34;connections&#34; in layers</li>
+</ul>
+<pre><code language="language-python" class="language-python">cars_dl = H2ODeepLearningEstimator(activation=&#39;tanhwithdropout&#39;,
+                                   epochs=20,
+                                   hidden=[200,200],
+                                   hidden_dropout_ratios=[0.5,0.5],
+                                   seed=1234)
+ 
+cars_dl.train(x=predictors,
+              y=response,
+              training_frame=train,
+              validation_frame=valid)
+cars_dl.mse()
+</code></pre>
+<p class="image-container"><img alt="dropout" src="img/4accaea09ea7c3e1.jpg"></p>
+<ul>
+<li>Mini-Batch Size: In reality, all of the dataset cannot be loaded into the memory, in such cases, we&#39;d like to define batches (or mini-batches) that get processed in the memory</li>
+</ul>
+<pre><code language="language-python" class="language-python">cars_dl = H2ODeepLearningEstimator(activation=&#39;tanhwithdropout&#39;,
+                                   epochs=20,
+                                   hidden=[200,200],
+                                   hidden_dropout_ratios=[0.5,0.5],
+                                   seed=1234,
+                                   mini_batch_size=32)
+ 
+cars_dl.train(x=predictors,
+              y=response,
+              training_frame=train,
+              validation_frame=valid)
+cars_dl.mse()
+</code></pre>
+<ul>
+<li>Learning Rate: As we know now, Neural Networks are trained by SGD, but we still need to define a rate at which we can update the weights, hence: learning rate</li>
+</ul>
+<pre><code language="language-python" class="language-python">cars_dl = H2ODeepLearningEstimator(activation=&#39;tanhwithdropout&#39;,
+                                   epochs=20,
+                                   hidden=[200,200],
+                                   hidden_dropout_ratios=[0.5,0.5],
+                                   seed=1234,
+                                   mini_batch_size=32,
+                                   rate=0.01)
+ 
+cars_dl.train(x=predictors,
+              y=response,
+              training_frame=train,
+              validation_frame=valid)
+cars_dl.mse()
+</code></pre>
+<p>Regularisation are techniques to avoid overfitting, let&#39;s take a look at L1 and L2 regularisation:</p>
+<ul>
+<li>L1 regularization (can add stability and improve generalization, causes many weights to become 0).</li>
+<li>L2 regularization (can add stability and improve generalization, causes many weights to be small.</li>
+</ul>
+<pre><code language="language-python" class="language-python">cars_dl = H2ODeepLearningEstimator(activation=&#39;tanhwithdropout&#39;,
+                                   epochs=20,
+                                   hidden=[200,200],
+                                   hidden_dropout_ratios=[0.5,0.5],
+                                   seed=1234,
+                                   mini_batch_size=32,
+                                   rate=0.01,
+                                   l1=1e-5)
+ 
+cars_dl.train(x=predictors,
+              y=response,
+              training_frame=train,
+              validation_frame=valid)
+cars_dl.mse()
+</code></pre>
+<p>A few more advanced tricks that were discussed in the lecture are:</p>
+<ul>
+<li>Weight Initialisation: A NN consists of matrices and there are multiple ways to initialise them</li>
+<li>Cross Validation: Cross validation is a process used to create &#34;folds&#34; of data to evaluate model performance on.</li>
+<li>Adaptive Learning Rate: Specify whether to enable the adaptive learning rate (ADADELTA)</li>
+<li>Checkpointing: Ideally, when working with any form of models, you&#39;d want to checkpoint the training at different parts to utilise these as continuum points</li>
+</ul>
+<p>We leave this to you to explore utilising the documentations and move onto the final Task</p>
+<h2 is-upgraded>Task 7: Working with Digits: MNIST Dataset</h2>
+<p>In the extended task, we&#39;re looking at the <a href="http://yann.lecun.com/exdb/mnist/" target="_blank">MNIST</a> Dataset dataset.</p>
+<p>The goal of this task is to:</p>
+<ul>
+<li>Download and load train dataset</li>
+<li>Download and load test dataset</li>
+<li>setup num of classes</li>
+<li>setup a H2ODeepLearningEstimator and configure values of:  <ul>
+<li>Activation Function</li>
+<li>Adaptive Rate</li>
+<li>Learning Rate</li>
+<li>Learning Rate Decay</li>
+<li>Learning Rate Annealing</li>
+<li>Dropout Ratios</li>
+<li>L1 &amp; L2 Regularisation The goal is to get a feel of how these parameters and these concepts affect model training, kindly toggle different values and see how it affects the model accuracies.</li>
+</ul>
+</li>
+</ul>
+<p>Import the Dataset:</p>
+<pre><code language="language-python" class="language-python">train = h2o.import_file(&#34;https://h2o-public-test-data.s3.amazonaws.com/bigdata/laptop/mnist/train.csv.gz&#34;)
+test = h2o.import_file(&#34;https://h2o-public-test-data.s3.amazonaws.com/bigdata/laptop/mnist/test.csv.gz&#34;)
+train.shape
+</code></pre>
+<p>Starting point, the following snippet should help you get started, as an experiment, try changing values and further datasets to see how the NN behaves:</p>
+<pre><code language="language-python" class="language-python">train = h2o.import_file(&#34;https://s3.amazonaws.com/h2o-public-test-data/bigdata/laptop/mnist/train.csv.gz&#34;)
+test = h2o.import_file(&#34;https://s3.amazonaws.com/h2o-public-test-data/bigdata/laptop/mnist/test.csv.gz&#34;)
+predictors = list(range(0,784))
+resp = 784
+train[resp] = train[resp].asfactor()
+test[resp] = test[resp].asfactor()
+nclasses = train[resp].nlevels()[0]
+model = H2ODeepLearningEstimator(activation=&#34;RectifierWithDropout&#34;,
+                                 adaptive_rate=False,
+                                 rate=0.01,
+                                 rate_decay=0.9,
+                                 rate_annealing=1e-6,
+                                 momentum_start=0.95,
+                                 momentum_ramp=1e5,
+                                 momentum_stable=0.99,
+                                 nesterov_accelerated_gradient=False,
+                                 input_dropout_ratio=0.2,
+                                 train_samples_per_iteration=20000,
+                                 classification_stop=-1,
+                                 l1=1e-5)
+model.train (x=predictors,y=resp, training_frame=train, validation_frame=test)
+model.model_performance(valid=True)
+</code></pre>
+<h2 is-upgraded>Task 8: Evaluation</h2>
+<p>Because the isolation forest is an unsupervised method, it makes sense to have a look at the classification metrics that are not dependent on the prediction threshold and give an estimate of the quality of scoring. Two such metrics are Area Under the Receiver Operating Characteristic Curve (AUC) and Area under the Precision-Recall Curve (AUCPR).</p>
+<p><code>AUC</code> is a metric evaluating how well a binary classification model distinguishes true positives from false positives. The perfect AUC score is 1; the baseline score of a random guessing is 0.5.</p>
+<p><code>AUCPR</code> is a metric evaluating the precision recall trade-off of a binary classification using different thresholds of the continuous prediction score. The perfect AUCPR score is 1; the baseline score is the relative count of the positive class.</p>
+<p>For highly imbalanced data, AUCPR is recommended over AUC as the AUCPR is more sensitive to True positives, False positives and False negatives, while not caring about True negatives, which in large quantity usually overshadow the effect of other metrics.</p>
+<pre><code language="language-python" class="language-python">%matplotlib inline
+from sklearn.metrics import roc_curve, precision_recall_curve, auc
+import matplotlib.pyplot as plt
+import numpy as np
+ 
+ 
+def get_auc(labels, scores):
+    fpr, tpr, thresholds = roc_curve(labels, scores)
+    auc_score = auc(fpr, tpr)
+    return fpr, tpr, auc_score
+ 
+ 
+def get_aucpr(labels, scores):
+    precision, recall, th = precision_recall_curve(labels, scores)
+    aucpr_score = np.trapz(recall, precision)
+    return precision, recall, aucpr_score
+ 
+ 
+def plot_metric(ax, x, y, x_label, y_label, plot_label, style=&#34;-&#34;):
+    ax.plot(x, y, style, label=plot_label)
+    ax.legend()
+    
+    ax.set_ylabel(x_label)
+    ax.set_xlabel(y_label)
+ 
+ 
+def prediction_summary(labels, predicted_score, predicted_class, info, plot_baseline=True, axes=None):
+    if axes is None:
+        axes = [plt.subplot(1, 2, 1), plt.subplot(1, 2, 2)]
+ 
+    fpr, tpr, auc_score = get_auc(labels, predicted_score)
+    plot_metric(axes[0], fpr, tpr, &#34;False positive rate&#34;,
+                &#34;True positive rate&#34;, &#34;{} AUC = {:.4f}&#34;.format(info, auc_score))
+    if plot_baseline:
+        plot_metric(axes[0], [0, 1], [0, 1], &#34;False positive rate&#34;,
+                &#34;True positive rate&#34;, &#34;baseline AUC = 0.5&#34;, &#34;r--&#34;)
+ 
+    precision, recall, aucpr_score = get_aucpr(labels, predicted_score)
+    plot_metric(axes[1], recall, precision, &#34;Recall&#34;,
+                &#34;Precision&#34;, &#34;{} AUCPR = {:.4f}&#34;.format(info, aucpr_score))
+    if plot_baseline:
+        thr = sum(labels)/len(labels)
+        plot_metric(axes[1], [0, 1], [thr, thr], &#34;Recall&#34;,
+                &#34;Precision&#34;, &#34;baseline AUCPR = {:.4f}&#34;.format(thr), &#34;r--&#34;)
+ 
+    plt.show()
+    return axes
+ 
+ 
+def figure():
+    fig_size = 4.5
+    f = plt.figure()
+    f.set_figheight(fig_size)
+    f.set_figwidth(fig_size*2)
+ 
+ 
+h2o_predictions = predictions.as_data_frame()
+ 
+figure()
+axes = prediction_summary(
+    h2o_predictions[&#34;class&#34;], h2o_predictions[&#34;predict&#34;], h2o_predictions[&#34;predicted_class&#34;], &#34;h2o&#34;)
+</code></pre>
+<p>Code link: https://gist.github.com/init27/2b3f1309024e3240046acdf49943a4f2</p>
+<h2 is-upgraded>Next Steps</h2>
+<p>In the above study, you learned above building Deep NNs, how to use them on Tabular Dataset and how to interpret their predictions.</p>
+<p>You can now proceed on to attempt the <strong>Quiz 1: DL Basics with H2O-3</strong></p>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>

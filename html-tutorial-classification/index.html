@@ -1,0 +1,1476 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Tutorial 1 - Classification</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <link rel="stylesheet" href="custom.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+  function changeTab(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+  }
+    
+  </script>
+
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="html-tutorial-3"
+                  title="Tutorial 1 - Classification"
+                  environment="web"
+                  feedback-link="">
+    
+      <google-codelab-step label="Objective" duration="0">
+        <p>We will be using a subset of the Freddie Mac Single-Family dataset to try to predict whether or not a mortgage loan will be delinquent using H2O&#39;s GLM, Random Forest, and GBM models. We will go over how to use these models for classification problems, and we will demonstrate how to use H2O&#39;s grid search to tune the hyper-parameters of each model. This tutorial, as well as the next tutorials, will be done in Python and R.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Prerequisites" duration="0">
+        <ul>
+<li>Some basic knowledge of machine learning.</li>
+<li>Familiarity with Python or R.</li>
+<li>An Aquarium account to follow along. To help you get started with Aquarium, please see <strong>Appendix A</strong> in this tutorial.</li>
+</ul>
+<p><strong>Note:</strong> We have completed this tutorial in our cloud environment and is intended to take about two hours, or less, to be completed. Therefore, if you decide to do this tutorial on your machine, you might not get the same results, or it might take you longer to complete the tutorial than the intended time.</p>
+<p>If you decide to install H2O-3 on your machine, we recommend creating an Anaconda Cloud environment, as shown in the installation guide, <a href="http://docs.h2o.ai/h2o/latest-stable/h2o-docs/downloading.html#install-on-anaconda-cloud" target="_blank">Install on Anaconda Cloud,</a> this would help you make sure that you have everything that you need to do this tutorial.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Task 1: Initial Setup" duration="0">
+
+        <div class="tab">
+          <button class="tablinks active" onclick="changeTab(event, 'Python-task1')">Python</button>
+          <button class="tablinks" onclick="changeTab(event, 'R-task1')">R</button>
+          
+        </div>
+        <div id="Python-task1" class="tabcontent" style = "display: block">
+
+        <p><strong>Python Version</strong></p>
+<h2 is-upgraded>Overview</h2>
+<p>The data set we&#39;re using comes from Freddie Mac and contains 20 years of mortgage history for each loan and contains information about &#34;loan-level credit performance data on a portion of fully amortizing fixed-rate mortgages that Freddie Mac bought between 1999 to 2017. Features include demographic factors, monthly loan performance, credit performance including property disposition, voluntary prepayments, MI Recoveries, non-MI recoveries, expenses, current deferred UPB and due date of last paid installment.&#34;[1]</p>
+<p>We&#39;re going to use machine learning with H2O to predict whether or not a loan holder will default. To do this, we are going to build three classification models: a Linear model, Random Forest, and a Gradient Boosting Machine model, to predict whether or not a loan will be delinquent. Complete this tutorial to see how we achieved those results.</p>
+<p>We will start by importing H2O, the estimators for the algorithms that we will use, and also the function to perform Grid Search on those algorithms.</p>
+<pre><code language="language-python" class="language-python">#Import H2O and other libraries that will be used in this tutorial 
+import h2o
+import matplotlib as plt
+%matplotlib inline
+
+#Import the Estimators
+from h2o.estimators.glm import H2OGeneralizedLinearEstimator
+from h2o.estimators import H2ORandomForestEstimator
+from h2o.estimators.gbm import H2OGradientBoostingEstimator
+
+#Import h2o grid search 
+import h2o.grid 
+from h2o.grid.grid_search import H2OGridSearch
+</code></pre>
+<p>We now have to initialize an H2O cluster or instance in this case, and we will use the <code>h2o.init()</code> command. Please note that we have some extra lines of code to check if you are running the experiment on Aquarium, or if you are running it on your local machine. If you are working on Aquarium, it will connect to the instance running in your lab. If you are working on your local machine, then it will create a new H2O-3 instance.</p>
+<p>When you work on your local machine, you can specify how much maximum memory you want your cluster to have. This will only guarantee that the cluster will not use more than the limit you assign from your machine memory. Typically we recommend an H2O Cluster with at least 3-4 times the amount of memory as the dataset size. When you run this on Aquarium, you do not need to worry about the memory because the instance provided has almost 14Gb of memory.</p>
+<pre><code language="language-python" class="language-python">import os
+import h2o
+
+startup  = &#39;/home/h2o/bin/aquarium_startup&#39;
+shutdown = &#39;/home/h2o/bin/aquarium_stop&#39;
+
+if os.path.exists(startup):
+    os.system(startup)
+    local_url = &#39;http://localhost:54321/h2o&#39;
+    aquarium = True
+else:
+    local_url = &#39;http://localhost:54321&#39;
+    aquarium = False
+</code></pre>
+<pre><code language="language-python" class="language-python">h2o.init(url=local_url)
+</code></pre>
+<p class="image-container"><img alt="cluster-info" src="img/7e309c6dcaff4cfd.jpg"></p>
+<p>After initializing the H2O cluster, you will see the information shown above. We have an H2O cluster with just one node. Clicking on the Flow URL from the Aquarium Lab will take you to your <strong>Flow instance,</strong> where you can see your models, data frames, plots, and much more. Click on the link, and it will take you to a window similar to the one below. Keep it open in a separate tab, as we will come back to it later on.</p>
+<p class="image-container"><img alt="flow-welcome-page" src="img/4d41984db0849706.jpg"></p>
+<p>Next, we will import the dataset. If you are working on your machine, you can download H2O&#39;s subset of the Freddie Mac Single-Family Loan-Level dataset, <a href="https://s3.amazonaws.com/data.h2o.ai/DAI-Tutorials/loan_level_500k.csv" target="_blank">Loan_Level_500k.csv</a>, to your local drive and save it at as csv file. Make sure that the dataset is in the same directory as your Jupyter Notebook. For example, if your Jupyter file is in your <strong>Documents,</strong> save the csv file there. Or you can just specify the path of where the file is located; in our case, the file is in an S3 bucket. That&#39;s why we&#39;ll just do the following:</p>
+<pre><code language="language-python" class="language-python">#Import the dataset 
+loan_level = h2o.import_file(&#34;https://s3.amazonaws.com/data.h2o.ai/DAI-Tutorials/loan_level_500k.csv&#34;)
+</code></pre>
+<p>Now that we have our dataset, we will explore some concepts and then do some exploration of the data and prepare it for modeling.</p>
+<p>Please note that we use the name H2O-3 to refer to our software, but when we usually use the simplified name, H2O, when we refer to specific functions or algorithms.</p>
+<h2 is-upgraded>References</h2>
+<p>[1] Our dataset is a subset of the <a href="http://www.freddiemac.com/research/datasets/sf_loanlevel_dataset.html" target="_blank">Freddie Mac Single-Family Loan-Level Dataset.</a> It contains about 500,000 rows and is about 80 MB.</p>
+
+</div>
+
+<div id="R-task1" class="tabcontent">
+<p><strong>R Version</strong></p>
+<h2 is-upgraded>Overview</h2>
+<p>The data set we&#39;re using comes from Freddie Mac and contains 20 years of mortgage history for each loan and contains information about &#34;loan-level credit performance data on a portion of fully amortizing fixed-rate mortgages that Freddie Mac bought between 1999 to 2017. Features include demographic factors, monthly loan performance, credit performance including property disposition, voluntary prepayments, MI Recoveries, non-MI recoveries, expenses, current deferred UPB and due date of last paid installment.&#34;[1]</p>
+<p>We&#39;re going to use machine learning with H2O to predict whether or not a loan holder will default. To do this, we are going to build three classification models: a Linear model, Random Forest, and a Gradient Boosting Machine model, to predict whether or not a loan will be delinquent. Complete this tutorial to see how we achieved those results.</p>
+<p>We will start by importing the H2O library.</p>
+<pre><code language="language-r" class="language-r">#Import the H2O library
+library(h2o)
+</code></pre>
+<p>We now have to initialize an H2O cluster or instance in this case, and we will use the <code>h2o.init()</code> command. Please note that we have some extra lines of code to check if you are running the experiment on Aquarium, or if you are running it on your local machine. If you are working on Aquarium, it will connect to the instance running in your lab. If you are working on your local machine, then it will create a new H2O-3 instance.</p>
+<p>When you work on your local machine, you can specify how much maximum memory you want your cluster to have. This will only guarantee that the cluster will not use more than the limit you assign from your machine memory. Typically we recommend an H2O Cluster with at least 3-4 times the amount of memory as the dataset size. When you run this on Aquarium, you do not need to worry about the memory because the instance provided has almost 14Gb of memory.</p>
+<pre><code language="language-r" class="language-r">h2o.init(bind_to_localhost = FALSE, context_path=&#34;h2o&#34;)
+</code></pre>
+<p class="image-container"><img alt="r-cluster-info" src="img/22f7567dbc9d3b15.jpg"></p>
+<p>After initializing the H2O cluster, you will see the information shown above. We have an H2O cluster with just one node. Clicking on the Flow URL from the Aquarium Lab will take you to your <strong>Flow instance,</strong> where you can see your models, data frames, plots, and much more. Click on the link, and it will take you to a window similar to the one below. Keep it open in a separate tab, as we will come back to it later on.</p>
+<p class="image-container"><img alt="flow-welcome-page" src="img/4d41984db0849706.jpg"></p>
+<p>Next, we will import the dataset. If you are working on your machine, you can download H2O&#39;s subset of the Freddie Mac Single-Family Loan-Level dataset, <a href="https://s3.amazonaws.com/data.h2o.ai/DAI-Tutorials/loan_level_500k.csv" target="_blank">Loan_Level_500k.csv</a>, to your local drive and save it at as csv file. Make sure that the dataset is in the same directory as your Jupyter Notebook or R file. For example, if your Jupyter file is in your <strong>Documents,</strong> save the csv file there. Or you can just specify the path of where the file is located; in our case, the file is in an S3 bucket. That&#39;s why we&#39;ll just do the following:</p>
+<pre><code language="language-r" class="language-r">#Import the dataset 
+loan_level &lt;- h2o.importFile(path = &#34;https://s3.amazonaws.com/data.h2o.ai/DAI-Tutorials/loan_level_500k.csv&#34;)
+</code></pre>
+<p>Now that we have our dataset, we will explore some concepts and then do some exploration of the data and prepare it for modeling.</p>
+<p>Please note that we use the name H2O-3 to refer to our software, but when we usually use the simplified name, H2O, when we refer to specific functions or algorithms.</p>
+<h2 is-upgraded>References</h2>
+<p>[1] Our dataset is a subset of the <a href="http://www.freddiemac.com/research/datasets/sf_loanlevel_dataset.html" target="_blank">Freddie Mac Single-Family Loan-Level Dataset.</a> It contains about 500,000 rows and is about 80 MB.</p>
+</div>
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Task 2: Machine Learning Concepts" duration="0">
+        <h2 is-upgraded>H2O</h2>
+<p><a href="https://www.h2o.ai/community/glossary/h2o-h2o-3" target="_blank">H2O</a> or <a href="https://www.h2o.ai/community/glossary/h2o-h2o-3" target="_blank">H2O-3</a> is an open-source, in-memory, distributed, fast, and scalable machine learning and predictive analytics platform that allows you to build machine learning models on big data and provides easy productionalization of those models in an enterprise environment.</p>
+<p>H2O&#39;s core code is written in Java. Inside H2O, a Distributed Key/Value store is used to access and reference data, models, objects, etc. across all nodes and machines. The algorithms are implemented on top of H2O&#39;s distributed Map/Reduce framework and utilize the Java Fork/Join framework for multi-threading. The data is read in parallel and is distributed across the cluster and stored in memory in a columnar format in a compressed way. H2O.ai&#39;s data parser has built-in intelligence to guess the schema of the incoming dataset and supports data ingest from multiple sources in various formats.</p>
+<p>The speed, quality, ease-of-use, and model-deployment for the various cutting edge Supervised, and Unsupervised algorithms like Deep Learning, Tree Ensembles, and GLRM make H2O a highly sought after API for big data data science.</p>
+<h2 is-upgraded>Flow</h2>
+<p><a href="https://www.h2o.ai/community/glossary/h2o-flow" target="_blank">H2O Flow</a> is an open-source user interface for H2O. It is a web-based interactive environment that allows you to combine code execution, text, mathematics, plots, and rich media in a single document.</p>
+<p>With H2O Flow, you can capture, rerun, annotate, present, and share your workflow. H2O Flow allows you to use H2O interactively to import files, build models, and iteratively improve them. Based on your models, you can make predictions and add rich text to create vignettes of your work - all within Flow&#39;s browser-based environment.</p>
+<p>Flow&#39;s hybrid user interface seamlessly blends command-line computing with a modern graphical user interface. However, rather than displaying output as plain text, Flow provides a point-and-click user interface for every H2O operation. It allows you to access any H2O object in the form of well-organized tabular data.</p>
+<p>H2O Flow sends commands to H2O as a sequence of executable cells. The cells can be modified, rearranged, or saved to a library. Each cell contains an input field that allows you to enter commands, define functions, call other functions, and access other cells or objects on the page. When you execute the cell, the output is a graphical object, which can be inspected to view additional details.</p>
+<h2 is-upgraded>Supervised Learning</h2>
+<p><a href="https://www.h2o.ai/community/glossary/supervised-learning" target="_blank">Supervised learning</a> is when the dataset contains the output that you are trying to predict. Then, you use an algorithm to try to predict a function between your input and output, such as y=f(X). With supervised learning, you train your algorithms to try to approximate a function that will allow you to predict the variable y.</p>
+<h2 is-upgraded>Binary Classifier</h2>
+<p>A binary <a href="https://www.h2o.ai/community/glossary/classification" target="_blank">classification</a> model predicts in what two categories(classes) the elements of a given set belong to. In the case of our example, the two categories(classes) are defaulting on your home loan and not defaulting.</p>
+<p>Binary classifications produce four outcomes:</p>
+<p><strong>Predicticted as Positive:</strong> True Positive = TP = Actual Positive labels predicted as positives False Positive = FP = Actual Negative labels predicted as positives</p>
+<p><strong>Predicted as Negative:</strong> True Negative = TN = Actual Negative labels predicted as negatives False Negative = FN = Actual Positive labels predicted as negatives</p>
+<h2 is-upgraded>Confusion Matrix</h2>
+<p>The confusion matrix is also known as the error matrix since it makes it easy to visualize the classification rate of the model, including the error rate. With the confusion matrix, you can see the frequency with which a machine learning model confuses one label with another, and thus the name &#34;confusion matrix.&#34;</p>
+<h2 is-upgraded>ROC</h2>
+<p>An essential tool for classification problems is the ROC Curve or Receiver Operating Characteristics Curve. The ROC Curve visually shows the performance of a binary classifier; in other words, it &#34;tells how much a model is capable of distinguishing between classes&#34; [1] and the corresponding threshold. The ROC curve plots the sensitivity or true positive rate (y-axis) versus the Specificity or false positive rate (x-axis) for every possible classification threshold. A classification threshold or decision threshold is the probability value that the model will use to determine where a class belongs. The threshold acts as a boundary between classes to determine one class from another. Since we are dealing with probabilities of values between 0 and 1, an example of a threshold can be 0.5. This tells the model that anything below 0.5 is part of one class, and anything above 0.5 belongs to a different class. A ROC Curve is also able to tell you how well your model did by quantifying its performance. The scoring is determined by the percent of the area that is under the ROC curve, otherwise known as <strong>Area Under the Curve or AUC.</strong> The closer the ROC curve is to the left (the bigger the AUC percentage), the better the model is at separating between classes.</p>
+<p>The ROC curve is a useful tool because it only focuses on how well the model was able to distinguish between classes. &#34;AUC&#39;s can help represent the probability that the classifier will rank a randomly selected positive observation higher than a randomly selected negative observation&#34; [2]. However, on rare occurrences, a high AUC could provide a false sense that the model is correctly predicting the results.</p>
+<h2 is-upgraded>Precision and Recall</h2>
+<p><strong>Precision</strong> is the ratio of correct positive predictions divided by the total number of positive predictions. This ratio is also known as positive predictive value and is measured from 0.0 to 1.0, where 0.0 is the worst, and 1.0 is the best precision.</p>
+<p><strong>Recall</strong> is the true positive rate, which is the ratio of the number of true positive predictions divided by all true positive predictions. Recall is a metric of the actual positive predictions. It tells us how many correct positive results occurred from all the positive samples available during the test of the model.</p>
+<h2 is-upgraded>F1 Score</h2>
+<p>The F1 Score is another measurement of classification accuracy. It represents the harmonic average of precision and recall. F1 is measured in the range of 0 to 1, where 0 means that there are no true positives, and 1 when there is neither false negatives or false positives or perfect precision and recall[3].</p>
+<h2 is-upgraded>Accuracy</h2>
+<p>Accuracy or ACC (not to be confused with AUC or area under the curve) is a single metric in binary classification problems. ACC is the ratio of the number of correct predictions divided by the total number of predictions. In other words, it describes how well the model can correctly identify both the true positives and true negatives. Accuracy is measured in the range of 0 to 1, where 1 is perfect accuracy or perfect classification, and 0 is poor accuracy or poor classification[4]. Using the confusion matrix table, ACC can be calculated in the following manner: Accuracy = (TP + TN) / (TP + TN + FP + FN)</p>
+<h2 is-upgraded>Log loss</h2>
+<p>The logarithmic loss metric can be used to evaluate the performance of a binomial or multinomial classifier. Unlike AUC, which looks at how well a model can classify a binary target, logloss evaluates how close a model&#39;s predicted values (uncalibrated probability estimates) are to the actual target value. For example, does a model tend to assign a high predicted value like .80 for the positive class, or does it show a poor ability to recognize the positive class and assign a lower predicted value like .50? A model with a log loss of 0 would be the perfect classifier. When the model is unable to make correct predictions, the log loss increases, making the model a poor model[5].</p>
+<h2 is-upgraded>Cross-Validation</h2>
+<p><a href="https://www.h2o.ai/community/glossary/model-validation-hold-out-cross-validation" target="_blank">Cross-validation</a> is a model validation technique in which you can check how well a statistical analysis or model, will perform on an independent dataset. We use cross-validation to see how our model will predict on unseen data. We will explore two cross-validation approaches. The first one is to take the training data and split it into training and validation set, which is similar to a test set. This approach is called <strong>validation set cross-validation.</strong> Also, there is <strong>K-Fold</strong> cross-validation, in which you do not need to split the data, but use the entire dataset. Depending on the number of <em>folds</em> that you choose during training, the data is divided into k groups; k-1 groups are trained, and then, the last group serves to evaluate. After every group has been used to evaluate the model, the average of all the scores is obtained; and thus, we obtain a validation score[6].</p>
+<h2 is-upgraded>References</h2>
+<p>[1] <a href="https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5" target="_blank">Towards Data Science - Understanding AUC- ROC Curve</a></p>
+<p>[2] <a href="https://www.youtube.com/watch?v=OAl6eAyP-yo" target="_blank">ROC Curves and Under the Curve (AUC) Explained</a></p>
+<p>[3] <a href="https://en.wikipedia.org/wiki/F1_score" target="_blank">Wiki F1 Score</a></p>
+<p>[4] <a href="https://en.wikipedia.org/wiki/Accuracy_and_precision" target="_blank">Wiki Accuracy</a></p>
+<p>[5] <a href="http://wiki.fast.ai/index.php/Log_Loss" target="_blank">Wiki Log Loss</a></p>
+<p>[6] <a href="https://towardsdatascience.com/cross-validation-70289113a072" target="_blank">Towards Data Science - Cross-Validation</a></p>
+<h2 is-upgraded>Resources</h2>
+<p><a href="https://www.h2o.ai/community/top-links/ai-glossary-search?cs=Glossary" target="_blank">H2O.ai Community AI Glossary</a></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Task 3: Start Experiment" duration="0">
+
+        <div class="tab">
+          <button class="tablinks active" onclick="changeTab(event, 'Python-task3')">Python</button>
+          <button class="tablinks" onclick="changeTab(event, 'R-task3')">R</button>
+          
+        </div>
+
+        <div id="Python-task3" class="tabcontent" style = "display: block">
+
+        <p>To ensure the dataset was properly imported use the <code>.head()</code> function to check the first ten rows of your dataset</p>
+<pre><code language="language-python" class="language-python">loan_level.head()
+</code></pre>
+<p class="image-container"><img alt="dataset-head" src="img/8dffe99868650d5b.jpg"></p>
+<p>Your results should look like the table above. If you scroll to the right, you will be able to see all the features in our dataset. We can also take a look at a quick statistical summary of our dataset with the <code>.describe()</code> command as shown below</p>
+<pre><code language="language-python" class="language-python">loan_level.describe()
+</code></pre>
+<p class="image-container"><img alt="data-describe" src="img/dd98b60c81ba0760.jpg"></p>
+<p>The total number of rows in our dataset is 500,137, and the total number of features or columns is  27. Additionally, you will get a sense of the spread of each of your columns, the column type, as well as the number of missing and zero values in your dataset.</p>
+<p>Let&#39;s take a quick look at the response column by checking the distribution.</p>
+<pre><code language="language-python" class="language-python">loan_level[&#34;DELINQUENT&#34;].table()
+</code></pre>
+<p class="image-container"><img alt="response-distribution" src="img/8421b5eb9bb00c3.jpg"></p>
+<p>As you can see, we have a very imbalanced dataset, as only 3.6% of the samples are TRUE labels, meaning that only 3.6% of the samples in the dataset have been labeled as <code>DELINQUENT.</code></p>
+<p>You can also do the same thing with H2O Flow, by clicking ‘import&#39; and then viewing the actual table once it&#39;s imported. Go to your Flow instance and add a new cell.</p>
+<p class="image-container"><img alt="flow-add-cell" src="img/19e9808d58230352.jpg"></p>
+<p>Copy and paste the following line of code in the new cell and run it. Then, click on <strong>Parse these files</strong></p>
+<pre><code language="language-html" class="language-html">importFiles [&#34;https://s3.amazonaws.com/data.h2o.ai/DAI-Tutorials/loan_level_500k.csv&#34;]
+</code></pre>
+<p class="image-container"><img alt="flow-parse-file" src="img/a0046658153c9949.jpg"></p>
+<p>After clicking on <strong>Parse these files,</strong> you will see a parse set-up similar to the image below:</p>
+<p class="image-container"><img alt="flow-parse-set-up" src="img/e9378db9dcac21e8.jpg"></p>
+<p>H2O will try to parse the file and assign appropriate column types. But you can change column types if they&#39;re not imported correctly. After you have inspected the parse set-up, click on parse.</p>
+<p>Once finished, you will see the following message, confirming that the parsing was completed.</p>
+<p class="image-container"><img alt="flow-parse-finished" src="img/2caa7e5dfc112901.jpg"></p>
+<p><strong>Please note that the main goal of this tutorial is to show the usage of some models for classification problems, as well as to tune some of the hyper-parameters of the models. For that reason, we will be skipping any data visualization and manipulation, as well as feature engineering. The aforementioned stages in machine learning are very important, and should always be done; however, they will be covered in later tutorials.</strong></p>
+<p>Since we have a large enough dataset, we will split our dataset into three sets, and we will call them <strong>train, valid,</strong> and <strong>test.</strong> We will treat the test set as if it were some unseen data in which we want to make predictions, and we will use the valid set for validation purposes and to tune all our models. We will not use the test set until the end of the tutorial to check the final scores of our models.</p>
+<p>Return to your Jupyter Notebook to split our dataset into three sets. We will use the <code>.split_frame()</code> function. Note that we can do this in one line of code. Inside the split function, we declare the ratio of the data that we want in our first set, in this case, the <strong>train</strong> set. We will assign 70% to the training set, and 15% for the validation, as well as for the test set. The random seed is set to 42 just for reproducibility purposes. You can choose any random seed that you want, but if you want to see consistent results, you will have to use the same random seed anytime you re-run your code.</p>
+<pre><code language="language-python" class="language-python">train, valid, test = loan_level.split_frame([0.7, 0.15], seed=42)
+</code></pre>
+<p>We can check the distribution of the data split by checking the number of rows in each set.</p>
+<pre><code language="language-python" class="language-python">print(&#34;train:%d valid:%d test:%d &#34; % (train.nrows, valid.nrows, test.nrows))
+</code></pre>
+<pre><code language="language-bash" class="language-bash">#Output
+train:350268 valid:74971 test:74898
+</code></pre>
+<p>Now we will split the dataset in our Flow instance. Click on <strong>View,</strong> then <strong>Split</strong> and use the default ratios of 0.75 for <strong>train,</strong> and 0.25 for <strong>test</strong> and change the names accordingly. Also, change the <strong>seed</strong> to 42 and click <strong>Create</strong></p>
+<p class="image-container"><img alt="flow-split-data" src="img/af3b6ac8339b1201.gif"></p>
+<p>Next, we need to choose our <strong>predictors</strong>, or <strong>x variable</strong>, and our <strong>response</strong> or <strong>y variable</strong>. For the H2O-3 estimators, we do not use the actual data frame; instead, we use strings containing the name of the columns in our dataset.</p>
+<p>Return to your Jupyter Notebook. For our y variable, we will choose <code>DELINQUENT</code> because we want to predict whether or not a loan will default. For the x variable, we will choose all but four features. One is the feature that we will predict, and then <code>PREPAID</code> and <code>PREPAYMENT_PENALTY_MORTGAGE_FLAG</code> because they are clear indicators if a loan is or is not delinquent and we will not have the information at the time deciding whether to give a loan or not. In machine learning terms, introducing these types of features is called leakage. And lastly, <code>PRODUCT_TYPE</code> because that&#39;s a constant value for every row, meaning all samples have the same value; therefore, this feature will not have any predictive value.</p>
+<p>There are several ways to choose your predictors, but for this tutorial, we will subtract the list in the variable <code>ignore</code> from all the names in our training set.</p>
+<pre><code language="language-python" class="language-python">y = &#34;DELINQUENT&#34;
+
+ignore = [&#34;DELINQUENT&#34;, &#34;PREPAID&#34;, &#34;PREPAYMENT_PENALTY_MORTGAGE_FLAG&#34;, &#34;PRODUCT_TYPE&#34;] 
+
+x = list(set(train.names) - set(ignore))
+</code></pre>
+<p>If you want to see the list of the features that are in your x variable, just print x.</p>
+<pre><code language="language-python" class="language-python">print(x)
+</code></pre>
+<p><strong>Output:</strong></p>
+<pre><code language="language-python" class="language-python">[&#39;PROPERTY_TYPE&#39;, &#39;NUMBER_OF_UNITS&#39;, &#39;POSTAL_CODE&#39;, &#39;CREDIT_SCORE&#39;, &#39;NUMBER_OF_BORROWERS&#39;, &#39;ORIGINAL_INTEREST_RATE&#39;, &#39;ORIGINAL_LOAN_TERM&#39;, &#39;ORIGINAL_DEBT_TO_INCOME_RATIO&#39;, &#39;ORIGINAL_UPB&#39;, &#39;FIRST_TIME_HOMEBUYER_FLAG&#39;, &#39;SELLER_NAME&#39;, &#39;LOAN_SEQUENCE_NUMBER&#39;, &#39;PROPERTY_STATE&#39;, &#39;MATURITY_DATE&#39;, &#39;ORIGINAL_LOAN_TO_VALUE&#39;, &#39;ORIGINAL_COMBINED_LOAN_TO_VALUE&#39;, &#39;MORTGAGE_INSURANCE_PERCENTAGE&#39;, &#39;METROPOLITAN_STATISTICAL_AREA&#39;, &#39;OCCUPANCY_STATUS&#39;, &#39;CHANNEL&#39;, &#39;FIRST_PAYMENT_DATE&#39;, &#39;SERVICER_NAME&#39;, &#39;LOAN_PURPOSE&#39;]
+</code></pre>
+</div>
+
+
+<div id="R-task3" class="tabcontent">
+<p><strong>R Version</strong></p>
+<p>To ensure the dataset was properly imported use the <code>h2o.head()</code> function to check the first ten rows of your dataset. Please note that we need to set a value for <code>n</code> to get the desired numbers of rows.</p>
+<pre><code language="language-r" class="language-r">h2o.head(loan_level, n=10)
+</code></pre>
+<p class="image-container"><img alt="r-dataset-head" src="img/b8b045b4cc47c49a.jpg"></p>
+<p>Your results should look like the table above. If you scroll to the right, you will be able to see all the features in our dataset. We can also take a look at a quick statistical summary of our dataset with the <code>h2o.describe()</code> command as shown below</p>
+<pre><code language="language-r" class="language-r">h2o.describe(loan_level)
+</code></pre>
+<p class="image-container"><img alt="r-data-describe" src="img/4ca7eeadf723729e.jpg"></p>
+<p>The total number of rows in our dataset is 500,137, and the total number of features or columns is  27. Additionally, you will get a sense of the spread of each of your columns, the column type, as well as the number of missing and zero values in your dataset.</p>
+<p>Let&#39;s take a quick look at the response column by checking the distribution.</p>
+<pre><code language="language-r" class="language-r">h2o.table(loan_level[, c(&#34;DELINQUENT&#34;)])
+</code></pre>
+<p class="image-container"><img alt="r-response-distribution" src="img/f0d362aa8c4e2407.jpg"></p>
+<p>As you can see, we have a very imbalanced dataset, as only 3.6% of the samples are TRUE labels, meaning that only 3.6% of the samples in the dataset have been labeled as <code>DELINQUENT.</code></p>
+<p>You can also do the same thing with H2O Flow, by clicking ‘import&#39; and then viewing the actual table once it&#39;s imported. Go to your Flow instance and add a new cell.</p>
+<p class="image-container"><img alt="flow-add-cell" src="img/19e9808d58230352.jpg"></p>
+<p>Copy and paste the following line of code in the new cell and run it. Then, click on <strong>Parse these files</strong></p>
+<pre><code>importFiles [&#34;https://s3.amazonaws.com/data.h2o.ai/DAI-Tutorials/loan_level_500k.csv&#34;]
+</code></pre>
+<p class="image-container"><img alt="flow-parse-file" src="img/a0046658153c9949.jpg"></p>
+<p>After clicking on <strong>Parse these files,</strong> you will see a parse set-up similar to the image below:</p>
+<p class="image-container"><img alt="flow-parse-set-up" src="img/e9378db9dcac21e8.jpg"></p>
+<p>H2O will try to parse the file and assign appropriate column types. But you can change column types if they&#39;re not imported correctly. After you have inspected the parse set-up, click on parse.</p>
+<p>Once finished, you will see the following message, confirming that the parsing was completed.</p>
+<p class="image-container"><img alt="flow-parse-finished" src="img/2caa7e5dfc112901.jpg"></p>
+<p><strong>Please note that the main goal of this tutorial is to show the usage of some models for classification problems, as well as to tune some of the hyper-parameters of the models. For that reason, we will be skipping any data visualization and manipulation, as well as feature engineering. The aforementioned stages in machine learning are very important, and should always be done; however, they will be covered in later tutorials.</strong></p>
+<p>Since we have a large enough dataset, we will split our dataset into three sets, and we will call them <strong>train, valid,</strong> and <strong>test.</strong> We will treat the test set as if it were some unseen data in which we want to make predictions, and we will use the valid set for validation purposes and to tune all our models. We will not use the test set until the end of the tutorial to check the final scores of our models.</p>
+<p>Return to your Jupyter Notebook to split our dataset into three sets. We will use the <code>h2o.splitFrame()</code> function. Inside the split function, we declare the ratio of the data that we want in our first set, in this case, the <strong>train</strong> set. We will assign 70% to the training set, and 15% for the validation, as well as for the test set. The random seed is set to 42 just for reproducibility purposes. You can choose any random seed that you want, but if you want to see consistent results, you will have to use the same random seed anytime you re-run your code.</p>
+<pre><code language="language-r" class="language-r">splits &lt;- h2o.splitFrame(loan_level, c(0.7, 0.15), seed = 42)
+</code></pre>
+<p>The variable <code>splits</code> contains all three frames, so we need to separate them:</p>
+<pre><code language="language-r" class="language-r">train &lt;- splits[[1]]
+valid &lt;- splits[[2]]
+test  &lt;- splits[[3]] 
+</code></pre>
+<p>We can check the distribution of the data split by checking the dimensions in each set.</p>
+<pre><code language="language-r" class="language-r">dim(train)
+dim(valid)
+dim(test)
+</code></pre>
+<p><strong>Output:</strong></p>
+<pre><code language="language-r" class="language-r">350268 27
+74971 27
+74898 27
+</code></pre>
+<p>Now we will split the dataset in our Flow instance. Click on <strong>View,</strong> then <strong>Split</strong> and use the default ratios of 0.75 for <strong>train,</strong> and 0.25 for <strong>test</strong> and change the names accordingly. Also, change the <strong>seed</strong> to 42 and click <strong>Create</strong></p>
+<p class="image-container"><img alt="flow-split-data" src="img/af3b6ac8339b1201.gif"></p>
+<p>Next, we need to choose our <strong>predictors</strong>, or <strong>x variable</strong>, and our <strong>response</strong> or <strong>y variable</strong>. For the H2O-3 estimators, we do not use the actual data frame; instead, we use strings containing the name of the columns in our dataset.</p>
+<p>Return to your Jupyter Notebook. For our y variable, we will choose <code>DELINQUENT</code> because we want to predict whether or not a loan will default. For the x variable, we will choose all but four features. One is the feature that we will predict, and then <code>PREPAID</code> and <code>PREPAYMENT_PENALTY_MORTGAGE_FLAG</code> because they are clear indicators if a loan is or is not delinquent and we will not have the information at the time deciding whether to give a loan or not. In machine learning terms, introducing these types of features is called leakage. And lastly, <code>PRODUCT_TYPE</code> because that&#39;s a constant value for every row, meaning all samples have the same value; therefore, this feature will not have any predictive value.</p>
+<p>There are several ways to choose your predictors, but for this tutorial, we will ignore the list in the variable <code>ignore</code> from all the names in our training set.</p>
+<pre><code language="language-r" class="language-r">ignore &lt;- c(&#34;DELINQUENT&#34;, &#34;PREPAID&#34;, &#34;PREPAYMENT_PENALTY_MORTGAGE_FLAG&#34;, &#34;PRODUCT_TYPE&#34;)
+y &lt;- &#34;DELINQUENT&#34;
+x &lt;- colnames(train)[!(colnames(train) %in% c(ignore))]
+</code></pre>
+<p>If you want to see the list of the features that are in your x variable, just print x.</p>
+<pre><code language="language-r" class="language-r">print(x)
+</code></pre>
+<p><strong>Output:</strong></p>
+<pre><code language="language-r" class="language-r">[1] &#34;CREDIT_SCORE&#34;                    &#34;FIRST_PAYMENT_DATE&#34;             
+[3] &#34;FIRST_TIME_HOMEBUYER_FLAG&#34;       &#34;MATURITY_DATE&#34;                  
+[5] &#34;METROPOLITAN_STATISTICAL_AREA&#34;   &#34;MORTGAGE_INSURANCE_PERCENTAGE&#34;  
+[7] &#34;NUMBER_OF_UNITS&#34;                 &#34;OCCUPANCY_STATUS&#34;               
+[9] &#34;ORIGINAL_COMBINED_LOAN_TO_VALUE&#34; &#34;ORIGINAL_DEBT_TO_INCOME_RATIO&#34;  
+[11] &#34;ORIGINAL_UPB&#34;                    &#34;ORIGINAL_LOAN_TO_VALUE&#34;         
+[13] &#34;ORIGINAL_INTEREST_RATE&#34;          &#34;CHANNEL&#34;                        
+[15] &#34;PROPERTY_STATE&#34;                  &#34;PROPERTY_TYPE&#34;                  
+[17] &#34;POSTAL_CODE&#34;                     &#34;LOAN_SEQUENCE_NUMBER&#34;           
+[19] &#34;LOAN_PURPOSE&#34;                    &#34;ORIGINAL_LOAN_TERM&#34;             
+[21] &#34;NUMBER_OF_BORROWERS&#34;             &#34;SELLER_NAME&#34;                    
+[23] &#34;SERVICER_NAME&#34;
+</code></pre>
+
+</div>
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Task 4: Build a GLM" duration="0">
+
+        <div class="tab">
+          <button class="tablinks active" onclick="changeTab(event, 'Python-task4')">Python</button>
+          <button class="tablinks" onclick="changeTab(event, 'R-task4')">R</button>
+          
+        </div>
+        <div id="Python-task4" class="tabcontent" style = "display: block">
+          
+        <p>Now that we have our train, valid, and test sets, as well as our x and y variables defined, we can start building models! We will start with an H2O Generalized Linear Model (GLM). A GLM fits a generalized linear model, specified by a response variable, a set of predictors, and a description of the error distribution. Since we have a binomial classification problem, we have to specify the family, in this case, it will be <code>binomial.</code></p>
+<p>Since we already imported the H2O GLM estimator, we will just instantiate our model. For simplicity, the name of our model will be <code>glm</code>. To build a GLM, you just need to define the family, and you are ready to go. However, we will set a random seed for reproducibility purposes, and also a model id to be able to retrieve the model later on if we need to access it. You can instantiate your GLM, as shown below.</p>
+<pre><code language="language-python" class="language-python">glm = H2OGeneralizedLinearEstimator(family = &#34;binomial&#34;, seed=42, model_id = &#39;default_glm&#39;)
+</code></pre>
+<p>Now we will train our GLM model. To do so, we just use the <code>.train()</code> function. In the train function, we need to specify the predictors (x), the response (y), the training set (train), and a validation frame, if you have one. In our case, we have our valid set, which we will use.</p>
+<pre><code language="language-python" class="language-python">%time glm.train(x = x, y = y, training_frame = train, validation_frame = valid)
+</code></pre>
+<p><strong>Note:</strong> The <code>%time</code> in front of our train command is used to display the time it takes to train the model, and it&#39;s a feature from Jupyter Notebook; it does not work on a command line or outside of Jupyter Notebook.</p>
+<p>You can do the same thing in Flow with the <strong>Build Model</strong> dialog. Click on your train set, and click on <strong>Build Model,</strong> then scroll down to the &#34;Build a Model&#34; cell, and select <strong>Generalized Linear Modeling</strong> for the algorithm. For model id, you can use <code>flow_default_glm.</code> Instead of doing cross-validation with a validation set, we are going to use Flow&#39;s K-fold cross-validation; therefore, type <strong>5</strong> for <em>nfolds,</em> and set the random seed to 42. Again, choose <code>DELINQUENT</code> for your <em>response_column,</em> and for the <em>ignored columns</em>, choose  <code>PREPAYMENT_PENALTY_MORTGAGE_FLAG</code>, <code>PRODUCT_TYPE</code>, <code>PREPAID</code>. Lastly, choose <strong>binomial</strong> for <em>family.</em></p>
+<p class="image-container"><img alt="flow-default-glm" src="img/6c4d082cde16467c.gif"></p>
+<p>You have now built and trained a GLM! If you type the name of your model in a new cell and run it, H2O will give you a complete summary of your model. You will see your model&#39;s metrics on the training and validation set. From the model details, you will see a short summary with the parameters of your model, the metrics of your model, the confusion matrix, maximum metrics at different thresholds, a Gains/Lift table, and the scoring history. (Gains/Lift and scoring history are not shown below)</p>
+<p class="image-container"><img alt="default-glm-details-1" src="img/dc356236423a7998.jpg"></p>
+<p class="image-container"><img alt="default-glm-details-2" src="img/31ac83682d0d703.jpg"></p>
+<p>From the summary results, we can see the GLM performance. We will focus on the Area Under the Curve (AUC), and since we have a very imbalanced dataset, we will be looking at the F1 score. Additionally, we will also take a quick look at the misclassification error and logloss.</p>
+<p>From the report, we can look at the metrics on the training and validation data, and we see that the training AUC was <strong>0.8502</strong> while the validation AUC was <strong>0.8450</strong></p>
+<p class="image-container"><img alt="default-glm-training-metrics" src="img/43ecf3514e898e3c.jpg"></p>
+<p class="image-container"><img alt="default-glm-validation-metrics" src="img/47a3ea7b3d3a9573.jpg"></p>
+<p>From the report, we can also see the max F1 score as well as all the metrics for our model with their respective thresholds. For the default GLM, we obtained a training F1 score of <strong>0.2882</strong> and a validation F1 score of <strong>0.2827.</strong></p>
+<p><strong>Training maximum metrics</strong></p>
+<p class="image-container"><img alt="default-glm-training-max-metrics" src="img/17f50e5731713d77.jpg"></p>
+<p><strong>Validation maximum metrics</strong></p>
+<p class="image-container"><img alt="default-glm-validation-max-metrics" src="img/ff66934e2c0d7204.jpg"></p>
+<p>We can plot the Scoring history for any of our models, as shown below:</p>
+<pre><code language="language-python" class="language-python">glm.plot(metric=&#39;negative_log_likelihood&#39;)
+</code></pre>
+<p class="image-container"><img alt="default-glm-scoring-history" src="img/578b7d6764075928.jpg"></p>
+<p>We can see from the plot above that after four iterations, the score no longer improves; therefore, if we needed to set a number of iterations as a future parameter, we can choose 4, as the scores don&#39;t really improve after that point. We can also use the default number of iterations and use early stopping; that way, the model will stop training when it is no longer improving. We will use early stopping when we start tuning our models.</p>
+<p>We can also generate a variable importance plot to see how each of our features contribute to the linear model.</p>
+<pre><code language="language-python" class="language-python">glm.varimp_plot()
+</code></pre>
+<p class="image-container"><img alt="default-glm-var-imp" src="img/35dd5f2119dbe74c.jpg"></p>
+<p>From the variable importance plot, we can see that the most significant feature is <code>SERVICER_NAME.</code> In the most important feature, we have different banks or &#34;servicers,&#34; and in our linear model, each one makes a difference; for that reason, we see that the first four variables in the plot above are 4 of the servicers in the dataset. These services are the most influential to our model in making predictions of whether someone will default or not. Please keep in mind that it does not necessarily mean that if someone gets a loan from Wells Fargo, they have a high probability of default.</p>
+<p>You can also print individual metrics as well:</p>
+<pre><code language="language-python" class="language-python">glm.accuracy()
+</code></pre>
+<p><strong>Output</strong></p>
+<pre><code language="language-python" class="language-python">[[0.9757992545882868, 0.9638505373028652]]
+</code></pre>
+<p>Note that if you wanted to output the metric for a specific threshold, you just need to define the threshold inside the parenthesis as shown below:</p>
+<pre><code language="language-python" class="language-python">glm.accuracy(thresholds=0.9638505373028652)
+</code></pre>
+<p>This should give you the same output as before.</p>
+<p>We will now take a look at the first ten predictions of our model with the following command:</p>
+<pre><code language="language-python" class="language-python">glm.predict(valid).head(10)
+</code></pre>
+<p class="image-container"><img alt="default-glm-predictions" src="img/1d3f1099d3cf57f2.jpg"></p>
+<p><strong>Note:</strong> if you want to see more predictions use the <code>.head()</code> function, as shown in the line of code above; it should allow you to view all the predictions on the validation set that you want.</p>
+<p>The model used by H2O for this classification problem is a Logistic Regression model, and the predictions are based on the threshold for each probability[1]. For a binary classifier, H2O predicts the labels based on the maximum F1 threshold. From the report, the threshold for max F1 is  <strong>0.1224.</strong> So, any time the probability for TRUE is greater than the 0.1224, the predicted label will be TRUE, as is in the case of the sixth prediction. To learn more about predictions, you can visit the <a href="http://docs.h2o.ai/h2o/latest-stable/h2o-docs/performance-and-prediction.html?highlight=predict#prediction" target="_blank">Prediction Section</a> from the H2O documentation.</p>
+<p>Lastly, save the default performance of the model, as we will use this for comparison purposes later on.</p>
+<pre><code language="language-python" class="language-python">default_glm_perf=glm.model_performance(valid)
+</code></pre>
+<p>Once you save the model performance on a different data set, you can print individual metrics, such as the AUC as shown below.</p>
+<pre><code language="language-python" class="language-python">print(default_glm_perf.auc())
+</code></pre>
+<p><strong>Output:</strong></p>
+<pre><code language="language-python" class="language-python">0.8449582112507165
+</code></pre>
+<p>The AUC score is the same as the one from the model summary that we printed before.</p>
+<p>Go back to the Flow instance, go to the model you created earlier on and click on &#34;View,&#34;</p>
+<p class="image-container"><img alt="flow-view-default-glm" src="img/310e592d2fdc40b6.jpg"></p>
+<p>Expand the Model parameters tab, and you will see a description of the parameters for your model.</p>
+<p class="image-container"><img alt="flow-default-glm-params" src="img/84213b2e5ba3c2d6.jpg"></p>
+<p>If you scroll down, you will see some plots derived from the training data. The first one is the scoring history plot.</p>
+<p class="image-container"><img alt="flow-default-glm-scoring-history" src="img/339eba7f3472d5a8.jpg"></p>
+<p>We can see that the scoring history from Flow shows us that after four iterations, the score does not improve. Even though we are doing different cross-validation, validation set approach in the python script, and k-fold cross-validation in Flow, we obtained the same results, indicating that four iterations are enough.</p>
+<p>If you continue scrolling down, you will see: ROC Curve  Training Metrics ROC Curve  Cross-validation Metrics Standardized Coefficients Magnitudes Training Metrics - Gains/Lift Table Cross-Validation Metrics - Gains/Lift Table And then all types of outputs When all the tabs are collapsed, you will see the following list of details from your model: <img alt="flow-default-glm-details" src="img/c90947f3842c3b96.jpg"></p>
+<p>You can also take a look at the details of the model you built in your Jupyter Notebook. Scroll up to the <strong>Assist</strong> Cell and click on <strong>getModels</strong></p>
+<p class="image-container"><img alt="flow-get-models" src="img/534c191411841290.jpg"></p>
+<p>Then select <strong>default_glm</strong></p>
+<p class="image-container"><img alt="flow-list-of-models" src="img/532fb881f6e66a17.jpg"></p>
+<p>You can inspect all the plots and outputs from your model in Flow. The plots that we generated in the Jupyter Notebook are automatically created in Flow, so if you prefer, you can just create your model in Jupyter and then analyze the results in Flow.</p>
+<h2 is-upgraded>References</h2>
+<p>[1] <a href="http://docs.h2o.ai/h2o/latest-stable/h2o-docs/data-science/glm.html#logistic-regression-binomial-family" target="_blank">H2O-3 GLM Logistic Regression</a></p>
+
+</div>
+
+<div id="R-task4" class="tabcontent">
+
+<p><strong>Task 4 - R Version</strong></p>
+<p>Now that we have our train, valid, and test sets, as well as our x and y variables defined, we can start building models! We will start with an H2O Generalized Linear Model (GLM). A GLM fits a generalized linear model, specified by a response variable, a set of predictors, and a description of the error distribution. Since we have a binomial classification problem, we have to specify the family, in this case, it will be <code>binomial.</code></p>
+<p>Since we already imported the H2O GLM estimator, we will just instantiate our model. For simplicity, the name of our model will be <code>glm</code>. To build a GLM, you need to specify your <code>x</code>, <code>y</code>, <code>training_frame</code> and <code>validation_frame</code> if you have one. You also need to define the family, and you are ready to go. However, we will set a random seed for reproducibility purposes, and also a model id to be able to retrieve the model later on if we need to access it. You can instantiate your GLM, as shown below.</p>
+<pre><code language="language-R" class="language-R">glm &lt;- h2o.glm (x=x, y=y, training_frame = train, 
+                validation_frame = valid, seed=42,
+                model_id=&#34;default_glm&#34;, family = c(&#34;binomial&#34;),
+                score_each_iteration=TRUE)
+</code></pre>
+<p>You can do the same thing in Flow with the <strong>Build Model</strong> dialog. Click on your train set, and click on <strong>Build Model,</strong> then scroll down to the &#34;Build a Model&#34; cell, and select <strong>Generalized Linear Modeling</strong> for the algorithm. For model id, you can use <code>flow_default_glm.</code> Instead of doing cross-validation with a validation set, we are going to use Flow&#39;s K-fold cross-validation; therefore, type <strong>5</strong> for <em>nfolds,</em> and set the random seed to 42. Again, choose <code>DELINQUENT</code> for your <em>response_column,</em> and for the <em>ignored columns</em>, choose  <code>PREPAYMENT_PENALTY_MORTGAGE_FLAG</code>, <code>PRODUCT_TYPE</code>, <code>PREPAID</code>. Lastly, choose <strong>binomial</strong> for <em>family.</em></p>
+<p class="image-container"><img alt="flow-default-glm" src="img/6c4d082cde16467c.gif"></p>
+<p>You have now built and trained a GLM! If you type the name of your model in a new cell and run it, H2O will give you a complete summary of your model. You will see your model&#39;s metrics on the training and validation set. From the model details, you will see a short summary with the parameters of your model, the metrics of your model, the confusion matrix, maximum metrics at different thresholds, a Gains/Lift table, and the scoring history. (Gains/Lift and scoring history are not shown below)</p>
+<p class="image-container"><img alt="r-default-glm-details-1" src="img/16b0918876a3f7ec.jpg"></p>
+<p class="image-container"><img alt="r-default-glm-details-2" src="img/53554463cee445eb.jpg"></p>
+<p>From the summary results, we can see the GLM performance. We will focus on the Area Under the Curve (AUC), and since we have a very imbalanced dataset, we will be looking at the F1 score. Additionally, we will also take a quick look at the misclassification error and logloss.</p>
+<p>From the report, we can look at the metrics on the training and validation data, and we see that the training AUC was <strong>0.8504</strong> while the validation AUC was <strong>0.8451</strong></p>
+<p class="image-container"><img alt="r-default-glm-training-metrics" src="img/45d6aca76ec91536.jpg"></p>
+<p class="image-container"><img alt="r-default-glm-validation-metrics" src="img/cc6d95f629da7176.jpg"></p>
+<p>From the report, we can also see the max F1 score as well as all the metrics for our model with their respective thresholds. For the default GLM, we obtained a training F1 score of <strong>0.2889</strong> and a validation F1 score of <strong>0.2835.</strong></p>
+<p><strong>Training maximum metrics</strong></p>
+<p class="image-container"><img alt="r-default-glm-training-max-metrics" src="img/e3812e379fa02a0e.jpg"></p>
+<p><strong>Validation maximum metrics</strong></p>
+<p class="image-container"><img alt="r-default-glm-validation-max-metrics" src="img/cb85aa27199e07d8.jpg"></p>
+<p>We can also generate a variable importance plot to see how each of our features contribute to the linear model.</p>
+<pre><code language="language-R" class="language-R">h2o.varimp_plot(glm)
+</code></pre>
+<p class="image-container"><img alt="r-default-glm-var-imp" src="img/ec7f8acd1a18e6af.jpg"></p>
+<p>From the variable importance plot, we can see that the most significant feature is <code>SERVICER_NAME.</code> In the most important feature, we have different banks or &#34;servicers,&#34; and in our linear model, each one makes a difference; for that reason, we see that the first four variables in the plot above are 4 of the servicers in the dataset. These services are the most influential to our model in making predictions of whether someone will default or not. Please keep in mind that it does not necessarily mean that if someone gets a loan from Wells Fargo, they have a high probability of default.</p>
+<p>You can also print individual metrics as well after evaluating your models&#39; performance:</p>
+<pre><code language="language-R" class="language-R">train_glm_perf &lt;- h2o.performance(glm, train) #save model performance on training set
+valid_glm_perf &lt;- h2o.performance(glm, valid) #save model performance on validation set
+</code></pre>
+<p>Now we can print individual metrics at their respective threshold:</p>
+<pre><code language="language-R" class="language-R">print(h2o.accuracy(train_glm_perf, thresholds = 0.975876162456474))
+</code></pre>
+<p><strong>Output</strong></p>
+<pre><code language="language-R" class="language-R">[1] 0.9638505
+</code></pre>
+<p>We can also print the validation AUC of our model:</p>
+<pre><code language="language-R" class="language-R">h2o.auc(valid_glm_perf)
+</code></pre>
+<p><strong>Output</strong></p>
+<pre><code language="language-R" class="language-R">0.845051404584433
+</code></pre>
+<p>You can retrieve the ROC curve:</p>
+<pre><code language="language-R" class="language-R">plot(valid_glm_perf)
+</code></pre>
+<p class="image-container"><img alt="r-def-glm-roc" src="img/88317b13744bade3.jpg"></p>
+<p>We will now take a look at the first ten predictions of our model with the following command:</p>
+<pre><code language="language-R" class="language-R">head(h2o.predict(glm, valid), n=10)
+</code></pre>
+<p class="image-container"><img alt="r-default-glm-predictions" src="img/7a86b45eda088916.jpg"></p>
+<p><strong>Note:</strong> if you want to see more predictions use the <code>h2o.head()</code> function, and setting the value of <code>n</code> to the desired value, as shown in the line of code above; it should allow you to view all the predictions on the validation set that you want.</p>
+<p>The model used by H2O for this classification problem is a Logistic Regression model, and the predictions are based on the threshold for each probability[1]. For a binary classifier, H2O predicts the labels based on the maximum F1 threshold. From the report, the threshold for max F1 is  <strong>0.1261.</strong> So, any time the probability for TRUE is greater than the 0.1261, the predicted label will be TRUE, as is in the case of the sixth prediction. To learn more about predictions, you can visit the <a href="http://docs.h2o.ai/h2o/latest-stable/h2o-docs/performance-and-prediction.html?highlight=predict#prediction" target="_blank">Prediction Section</a> from the H2O documentation.</p>
+<p>Go back to the Flow instance, go to the model you created earlier on and click on &#34;View,&#34;</p>
+<p class="image-container"><img alt="flow-view-default-glm" src="img/310e592d2fdc40b6.jpg"></p>
+<p>Expand the Model parameters tab, and you will see a description of the parameters for your model.</p>
+<p class="image-container"><img alt="flow-default-glm-params" src="img/84213b2e5ba3c2d6.jpg"></p>
+<p>If you scroll down, you will see some plots derived from the training data. The first one is the scoring history plot.</p>
+<p class="image-container"><img alt="flow-default-glm-scoring-history" src="img/339eba7f3472d5a8.jpg"></p>
+<p>We can see that the scoring history from Flow shows us that after four iterations, the score does not improve. Even though we are doing different cross-validation, validation set approach in the python script, and k-fold cross-validation in Flow, we obtained the same results, indicating that four iterations are enough.</p>
+<p>If you continue scrolling down, you will see: ROC Curve  Training Metrics ROC Curve  Cross-validation Metrics Standardized Coefficients Magnitudes Training Metrics - Gains/Lift Table Cross-Validation Metrics - Gains/Lift Table And then all types of outputs When all the tabs are collapsed, you will see the following list of details from your model: <img alt="flow-default-glm-details" src="img/c90947f3842c3b96.jpg"></p>
+<p>You can also take a look at the details of the model you built in your Jupyter Notebook. Scroll up to the <strong>Assist</strong> Cell and click on <strong>getModels</strong></p>
+<p class="image-container"><img alt="flow-get-models" src="img/534c191411841290.jpg"></p>
+<p>Then select <strong>default_glm</strong></p>
+<p class="image-container"><img alt="flow-list-of-models" src="img/532fb881f6e66a17.jpg"></p>
+<p>You can inspect all the plots and outputs from your model in Flow. The plots that we generated in the Jupyter Notebook are automatically created in Flow, so if you prefer, you can just create your model in Jupyter and then analyze the results in Flow.</p>
+<h2 is-upgraded>References</h2>
+<p>[1] <a href="http://docs.h2o.ai/h2o/latest-stable/h2o-docs/data-science/glm.html#logistic-regression-binomial-family" target="_blank">H2O-3 GLM Logistic Regression</a></p>
+
+</div>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Task 5: Build a Random Forest" duration="0">
+
+        <div class="tab">
+          <button class="tablinks active" onclick="changeTab(event, 'Python-task5')">Python</button>
+          <button class="tablinks" onclick="changeTab(event, 'R-task5')">R</button>
+          
+        </div>
+        <div id="Python-task5" class="tabcontent" style = "display: block">
+
+        <p>We will build a default Distributed Random Forest (DRF) model and see how it performs on our validation set. DRF generates a forest of classification or regression trees, rather than a single classification or regression tree. Each of these trees is a weak learner built on a subset of rows and columns. More trees will reduce the variance. Both classification and regression take the average prediction over all of their trees to make a final prediction, whether predicting for a class or numeric value.</p>
+<p>To build and train our Random Forest or RF(as we will be referring to from this point on) model, simply run the following two lines of code:</p>
+<pre><code language="language-python" class="language-python">rf = H2ORandomForestEstimator (seed=42, model_id=&#39;default_rf&#39;)
+%time rf.train(x=x, y=y, training_frame=train, validation_frame=valid)
+</code></pre>
+<p>Note that we defined the random seed and the model id. You do not need to do this; the model can be built without defining these parameters. The reason for choosing the random seed is for reproducibility purposes, and the model id is to recognize the model in Flow easily.</p>
+<p>Again, print the summary of your model as we did with the GLM model. You will see the summary of the model with the default settings, and the metrics score on the training and validation data.</p>
+<p>Below you will see some of the details from the model we just built.</p>
+<p>The AUC and F1 Score reported on the training data are <strong>0.8033</strong> and  <strong>0.2620,</strong> respectively, and you can see them in the image below.</p>
+<p class="image-container"><img alt="default-rf-training-metrics-1" src="img/be31d391f3fc7bce.jpg"><img alt="default-rf-training-metrics-2" src="img/148d19555bf3687.jpg"></p>
+<p><strong>Results from validation data</strong></p>
+<p>The AUC and F1 Score reported on the validation data are <strong>0.8265</strong> and  <strong>0.2830,</strong> respectively.</p>
+<p class="image-container"><img alt="default-rf-validation-metrics-1" src="img/4179b33656eac7f1.jpg"><img alt="default-rf-validation-metrics-2" src="img/17ee11cf9670e7a3.jpg"></p>
+<p>Let&#39;s build an RF model in Flow. Scroll up again to the <strong>Assist</strong> cell, and click on <strong>buildModel</strong></p>
+<p class="image-container"><img alt="flow-build-model" src="img/927b9c51a38a72de.jpg"></p>
+<p>In the <em>select algorithm</em> option, choose <strong>Distributed Random Forest,</strong> then change the model id to <code>flow_default_rf.</code> Click on the <em>training_frame</em> option and select <strong>train.</strong> Change <em>nfolds</em> so that it is 5. Choose &#34;DELINQUENT&#34; for your <em>response_column,</em> and for the <em>ignored columns</em>, choose &#34;PREPAYMENT_PENALTY_MORTGAGE_FLAG,&#34; &#34;PRODUCT_TYPE,&#34; &#34;PREPAID.&#34;</p>
+<p class="image-container"><img alt="flow-default-rf" src="img/96dedc6921ee016c.gif"></p>
+<p>If you would like, you can view the outputs of your RF model in Flow. However, we can also generate the plots in our Jupyter Notebook.</p>
+<pre><code language="language-python" class="language-python">rf.plot(metric=&#39;auc&#39;)
+</code></pre>
+<p>You will see a plot similar to the one below</p>
+<p class="image-container"><img alt="default-rf-scoring-history" src="img/4627a1acdec0abb7.jpg"></p>
+<p>In this case, we see that the RF model is far from overfitting because the training error is still lower than the validation error, and that means that we can probably do some tuning to improve our model.</p>
+<p>We can also generate the variable importance plot,</p>
+<pre><code language="language-python" class="language-python">rf.varimp_plot(20)
+</code></pre>
+<p class="image-container"><img alt="default-rf-var-imp" src="img/f5255be07a05168a.jpg"></p>
+<p>It is interesting to see that for our RF model, <code>PROPERTY_STATE</code> Is the most important variable, implying that the prediction of whether a loan could be delinquent or not depends on the state where someone is trying to buy that property. The second most important is a more intuitive one, which is the <code>CREDIT_SCORE</code>, as one could expect someone with really good credit to pay their loans fully.</p>
+<p>If you want to check the options of what you can print from your model, just type the name of your model along with a dot (<code>.</code>) and press tab. You should see a drop-down menu like the one shown in the image below.</p>
+<p class="image-container"><img alt="printing-options" src="img/be62d3134f5e3fe7.jpg"></p>
+<p>Keep in mind that for some of them, you will need to open and close parentheses at the end in order to display what you want. If we wanted to print the training accuracy of our model, you could select accuracy, but you need to add parentheses in order to get just the accuracy; otherwise, you will get the entire report again.</p>
+<p class="image-container"><img alt="default-rf-acc" src="img/97fb08a2e30fbb78.jpg"></p>
+<p>The first parameter shown in the list above is the threshold, and the second value is the accuracy.</p>
+<p>To print the F1 Score, you simply need to type the following line of code,</p>
+<pre><code language="language-python" class="language-python">rf.F1()
+</code></pre>
+<p>You will see the output in a list format. First, you will see the threshold, and then the actual value, the same as in the accuracy. You could also specify the threshold inside the parenthesis, that way you use the threshold that you want.</p>
+<p>Let&#39;s take a look at the first ten predictions in our validation set, and compare it to our first model.</p>
+<pre><code language="language-python" class="language-python">rf.predict(valid)
+</code></pre>
+<p class="image-container"><img alt="default-rf-pred" src="img/9bb887f5a3d6e924.jpg"></p>
+<p>Both models, GLM and RF, made the same predictions in the first ten predictions. For e.g., the TRUE prediction for the sixth row is the same; there is a different probability, but the prediction is the same.</p>
+<p>Again, save the model performance on the validation data</p>
+<pre><code language="language-python" class="language-python">default_rf_per = rf.model_performance(valid)
+</code></pre>
+</div>
+
+<div id="R-task5" class="tabcontent">
+<p><strong>Task 5 - R Version</strong></p>
+<p>We will build a default Distributed Random Forest (DRF) model and see how it performs on our validation set. DRF generates a forest of classification or regression trees, rather than a single classification or regression tree. Each of these trees is a weak learner built on a subset of rows and columns. More trees will reduce the variance. Both classification and regression take the average prediction over all of their trees to make a final prediction, whether predicting for a class or numeric value.</p>
+<p>To build and train our Random Forest or RF(as we will be referring to from this point on) model, simply run the following code:</p>
+<pre><code language="language-R" class="language-R">rf &lt;- h2o.randomForest(x=x, y=y, training_frame = train, 
+                       validation_frame = valid, seed=42,
+                       model_id = &#34;default_rf&#34;)
+</code></pre>
+<p>Note that we defined the random seed and the model id. You do not need to do this; the model can be built without defining these parameters. The reason for choosing the random seed is for reproducibility purposes, and the model id is to recognize the model in Flow easily.</p>
+<p>Again, print the summary of your model as we did with the GLM model. You will see the summary of the model with the default settings, and the metrics score on the training and validation data.</p>
+<p>Below you will see some of the details from the model we just built.</p>
+<p>The AUC and F1 Score reported on the training data are <strong>0.8033</strong> and  <strong>0.2621,</strong> respectively, and you can see them in the image below.</p>
+<p class="image-container"><img alt="r-default-rf-training-metrics-1" src="img/98b7cd15d426a9a3.jpg"><img alt="r-default-rf-training-metrics-2" src="img/dabc48ad090f160f.jpg"></p>
+<p><strong>Results from validation data</strong></p>
+<p>The AUC and F1 Score reported on the validation data are <strong>0.8265</strong> and  <strong>0.2830,</strong> respectively.</p>
+<p class="image-container"><img alt="r-default-rf-validation-metrics-1" src="img/1487abe7dce2e82.jpg"></p>
+<p>Let&#39;s build an RF model in Flow. Scroll up again to the <strong>Assist</strong> cell, and click on <strong>buildModel</strong></p>
+<p class="image-container"><img alt="flow-build-model" src="img/927b9c51a38a72de.jpg"></p>
+<p>In the <em>select algorithm</em> option, choose <strong>Distributed Random Forest,</strong> then change the model id to <code>flow_default_rf.</code> Click on the <em>training_frame</em> option and select <strong>train.</strong> Change <em>nfolds</em> so that it is 5. Choose &#34;DELINQUENT&#34; for your <em>response_column,</em> and for the <em>ignored columns</em>, choose &#34;PREPAYMENT_PENALTY_MORTGAGE_FLAG,&#34; &#34;PRODUCT_TYPE,&#34; &#34;PREPAID.&#34;</p>
+<p class="image-container"><img alt="flow-default-rf" src="img/96dedc6921ee016c.gif"></p>
+<p>If you would like, you can view the outputs of your RF model in Flow. However, we can also generate the plots in our Jupyter Notebook.</p>
+<pre><code language="language-R" class="language-R">plot(rf, metric=&#39;AUC&#39;)
+</code></pre>
+<p>You will see a plot similar to the one below</p>
+<p class="image-container"><img alt="r-default-rf-scoring-history" src="img/781c493f9b0ad5f0.jpg"></p>
+<p>In this case, we see that the RF model is far from overfitting because the training error is still lower than the validation error, and that means that we can probably do some tuning to improve our model.</p>
+<p>We can also generate the variable importance plot,</p>
+<pre><code language="language-R" class="language-R">h2o.varimp_plot(rf)
+</code></pre>
+<p class="image-container"><img alt="default-rf-var-imp" src="img/f5255be07a05168a.jpg"></p>
+<p>It is interesting to see that for our RF model, <code>PROPERTY_STATE</code> Is the most important variable, implying that the prediction of whether a loan could be delinquent or not depends on the state where someone is trying to buy that property. The second most important is a more intuitive one, which is the <code>CREDIT_SCORE</code>, as one could expect someone with really good credit to pay their loans fully.</p>
+<p>Let&#39;s print the accuracy of our RF model (remember that we need to save the model performance first):</p>
+<pre><code language="language-R" class="language-R">valid_rf_perf &lt;- h2o.performance(rf, valid)
+print(h2o.accuracy(valid_rf_perf, threshold=0.186673294178077))
+</code></pre>
+<p><strong>Output</strong></p>
+<pre><code language="language-R" class="language-R">[1] 0.9458857
+</code></pre>
+<p>Next, we will print the AUC, and we will plot the ROC curve:</p>
+<pre><code language="language-R" class="language-R">h2o.auc(valid_rf_perf)
+</code></pre>
+<p><strong>Output</strong></p>
+<pre><code language="language-R" class="language-R">0.826374425170771
+</code></pre>
+<pre><code language="language-R" class="language-R">plot(valid_rf_perf)
+</code></pre>
+<p class="image-container"><img alt="r-default-rf-roc" src="img/52b64679a0bf38f1.jpg"></p>
+<p>Let&#39;s take a look at the first ten predictions in our validation set, and compare it to our first model.</p>
+<pre><code language="language-R" class="language-R">head(h2o.predict(rf, valid), n=10)
+</code></pre>
+<p class="image-container"><img alt="r-default-rf-pred" src="img/5268ac23b9c47f1a.jpg"></p>
+<p>Both models, GLM and RF, made the same predictions in the first ten predictions. For e.g., the TRUE prediction for the sixth row is the same; there is a different probability, but the prediction is the same.</p>
+</div>
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Task 6: Build a GBM" duration="0">
+
+        <div class="tab">
+          <button class="tablinks active" onclick="changeTab(event, 'Python-task6')">Python</button>
+          <button class="tablinks" onclick="changeTab(event, 'R-task6')">R</button>
+          
+        </div>
+        <div id="Python-task6" class="tabcontent" style = "display: block">
+
+        <p>Gradient Boosting Machine (for Regression and Classification) is a forward learning ensemble method. H2O&#39;s GBM sequentially builds classification trees on all the features of the dataset in a fully distributed way - each tree is built in parallel. H2O&#39;s GBM fits consecutive trees where each solves for the net loss of the prior trees. Sometimes GBMs tend to be the best possible models because they are robust and directly optimize the cost function. On the other hand, they tend to overfit, so you need to find the proper stopping point; they are sensitive to noise, and they have several hyper-parameters.</p>
+<p>Defining a GBM model is as simple as the other models we have been working with.</p>
+<pre><code language="language-python" class="language-python">gbm= H2OGradientBoostingEstimator(seed=42, model_id=&#39;default_gbm&#39;)
+%time gbm.train(x=x, y=y, training_frame=train, validation_frame = valid)
+</code></pre>
+<p>Print the model summary</p>
+<p><strong>Training metrics:</strong></p>
+<p class="image-container"><img alt="default-gbm-training-metrics-1" src="img/21988d36ec858d7c.jpg"><img alt="default-gbm-training-metrics-2" src="img/57fb5ffd5c68f4ca.jpg"></p>
+<p><strong>Validation metrics:</strong></p>
+<p class="image-container"><img alt="default-gbm-validation-metrics-1" src="img/af4313a07c786c8d.jpg"><img alt="default-gbm-validation-metrics-2" src="img/296682dfc979b39f.jpg"></p>
+<p>Now, we will explore this model in Flow. Go to your Flow instance, click on <strong>getModels</strong> and click on &#34;default_glm&#34;</p>
+<p class="image-container"><img alt="get-default-gbm" src="img/94a1b5fde6b5347a.jpg"></p>
+<p>Now scroll down to the scoring history, and you should see a plot like the one below:</p>
+<p class="image-container"><img alt="default-gbm-scoring-history" src="img/6e5c54754955220c.jpg"></p>
+<p>From the scoring history, we can see that we can still increase the number of trees, a little bit more, because the validation score is still improving. We will get into more details during the GBM tuning section. Scroll down to the variable importance plot, and take a look at it. Notice how the most important variable is <code>CREDIT_SCORE</code> for the GBM. If you recall, for RF, <code>CREDIT_SCORE</code> was the second most important variable. And the most important variable for RF is the third most important for the GBM.</p>
+<p class="image-container"><img alt="default-gbm-var-imp" src="img/3881cb1fecd332a4.jpg"></p>
+<p>You can continue exploring the results of your GBM model, or go back to the Jupyter Notebook where we will continue.</p>
+<p>The default GBM model had a slightly better performance than the default RF. We will make the predictions with the GBM model as well.</p>
+<pre><code language="language-python" class="language-python">gbm.predict(valid)
+</code></pre>
+<p class="image-container"><img alt="default-gbm-preds" src="img/522ee32ae8734ee5.jpg"></p>
+<p>All three models made the same ten predictions, and this gives us an indication of why all three scores are close to each other. Although the sixth prediction is TRUE for all three models, the probability is not exactly the same, but since the thresholds for all three models were low, the predictions were still TRUE. As we did with the other two models, save the model performance.</p>
+<pre><code language="language-python" class="language-python">default_gbm_per = gbm.model_performance(valid)
+</code></pre>
+<p>Next, we will tune our models and see if we can achieve better performance.</p>
+</div>
+
+<div id="R-task6" class="tabcontent">
+<p><strong>Task 6 - R Version</strong></p>
+<p>Gradient Boosting Machine (for Regression and Classification) is a forward learning ensemble method. H2O&#39;s GBM sequentially builds classification trees on all the features of the dataset in a fully distributed way - each tree is built in parallel. H2O&#39;s GBM fits consecutive trees where each solves for the net loss of the prior trees. Sometimes GBMs tend to be the best possible models because they are robust and directly optimize the cost function. On the other hand, they tend to overfit, so you need to find the proper stopping point; they are sensitive to noise, and they have several hyper-parameters.</p>
+<p>Defining a GBM model is as simple as the other models we have been working with.</p>
+<pre><code language="language-R" class="language-R">gbm &lt;- h2o.gbm(x=x, y=y, training_frame = train, 
+               validation_frame = valid, seed=42,
+               model_id = &#34;default_gbm&#34;)
+</code></pre>
+<p>Print the model summary</p>
+<pre><code language="language-R" class="language-R">summary(gbm)
+</code></pre>
+<p><strong>Training metrics:</strong></p>
+<p class="image-container"><img alt="r-default-gbm-training-metrics-1" src="img/f8d53ca3f7c868bc.jpg"><img alt="r-default-gbm-training-metrics-2" src="img/163e55fc9ee0451e.jpg"></p>
+<p><strong>Validation metrics:</strong></p>
+<p class="image-container"><img alt="r-default-gbm-validation-metrics-1" src="img/5292d9ccb09c5f8c.jpg"></p>
+<p>Now, we will explore this model in Flow. Go to your Flow instance, click on <strong>getModels</strong> and click on &#34;default_glm&#34;</p>
+<p class="image-container"><img alt="get-default-gbm" src="img/94a1b5fde6b5347a.jpg"></p>
+<p>Now scroll down to the scoring history, and you should see a plot like the one below:</p>
+<p class="image-container"><img alt="default-gbm-scoring-history" src="img/6e5c54754955220c.jpg"></p>
+<p>From the scoring history, we can see that we can still increase the number of trees, a little bit more, because the validation score is still improving. We will get into more details during the GBM tuning section. Scroll down to the variable importance plot, and take a look at it. Notice how the most important variable is <code>CREDIT_SCORE</code> for the GBM. If you recall, for RF, <code>CREDIT_SCORE</code> was the second most important variable. And the most important variable for RF is the third most important for the GBM.</p>
+<p class="image-container"><img alt="default-gbm-var-imp" src="img/3881cb1fecd332a4.jpg"></p>
+<p>You can continue exploring the results of your GBM model, or go back to the Jupyter Notebook where we will continue.</p>
+<p>The default GBM model had a slightly better performance than the default RF. We will make the predictions with the GBM model as well.</p>
+<pre><code language="language-R" class="language-R">head(h2o.predict(gbm, valid), n=10)
+</code></pre>
+<p class="image-container"><img alt="r-default-gbm-preds" src="img/7fecba97f45e41ca.jpg"></p>
+<p>All three models made the same ten predictions, and this gives us an indication of why all three scores are close to each other. Although the sixth prediction is TRUE for all three models, the probability is not exactly the same, but since the thresholds for all three models were low, the predictions were still TRUE. As we did with the other two models, save the model performance.</p>
+<pre><code language="language-R" class="language-R">valid_gbm_perf &lt;- h2o.performance(gbm, valid)
+</code></pre>
+<p>Next, we will tune our models and see if we can achieve better performance.</p>
+</div>
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Task 7: Tune the GLM with H2O GridSearch" duration="0">
+
+        <div class="tab">
+          <button class="tablinks active" onclick="changeTab(event, 'Python-task7')">Python</button>
+          <button class="tablinks" onclick="changeTab(event, 'R-task7')">R</button>
+          
+        </div>
+        <div id="Python-task7" class="tabcontent" style = "display: block">
+
+        <p>H2O supports two types of grid search – traditional (or &#34;cartesian&#34;) grid search and random grid search. In a cartesian grid search, you specify a set of values for each hyperparameter that you want to search over, and H2O will train a model for every combination of the hyperparameter values. This means that if you have three hyperparameters and you specify 5, 10, and 2 values for each, your grid will contain a total of 5*10*2 = 100 models.</p>
+<p>In a random grid search, you specify the hyperparameter space in the exact same way, except H2O will sample uniformly from the set of all possible hyperparameter value combinations. In the random grid search, you also specify a stopping criterion, which controls when the random grid search is completed. You can tell the random grid search to stop by specifying a maximum number of models or the maximum number of seconds allowed for the search. You can also specify a performance-metric-based stopping criterion, which will stop the random grid search when the performance stops improving by a specified amount. Once the grid search is complete, you can query the grid object and sort the models by a particular performance metric (for example, &#34;AUC&#34;). All models are stored in the H2O cluster and are accessible by model id.</p>
+<p>To save some time, we will do a random grid search for our GLM model instead of the cartesian search. The H2OGridSearch has <strong>4 parameters,</strong> and in order to use it, you need <strong>at least three</strong> of them. The first parameter for the grid search is the <strong>model</strong> that you want to tune. Next are your <strong>hyperparameters,</strong> which needs to be a string of parameters, and a list of values to be explored by grid search. The third one is optional, which is the <strong>grid id,</strong> and if you do not specify one, an id will automatically be generated. Lastly, the fourth parameter is the <strong>search criteria,</strong> where you can specify if you want to do a cartesian or random search.</p>
+<p>We will explore two ways of defining your grid search, and you can use the way you prefer. One way is to define all at once in the grid search (as we will do it for the GLM). The second way is to define every parameter separately. For example, define your model, your hyper-parameters, and your search criteria, and just add that to your grid search once you are ready.</p>
+<p>For our GLM, we will tune <code>alpha,</code> and <code>missing_values_handling.</code> We could try to tune <code>lambda</code> but we will just use <code>lambda_search = True</code> so that this value is tuned automatically. The other parameters that you could change, such as <code>solver,</code> <code>max_active_predictors,</code> and <code>nlambdas,</code> to mention a few, are not supported by H2OGridSearch.</p>
+<p>1. <code>alpha</code><strong>:</strong> is the distribution of regularization between the L1 (Lasso) and L2 (Ridge) penalties. A value of 1 for alpha represents Lasso regression, a value of 0 produces Ridge regression, and anything in between specifies the amount of mixing between the two. For alpha, we can explore the range from 0 to 1 in steps of 0.01</p>
+<p>2. <code>lambda</code><strong>:</strong> is the regularization strength.</p>
+<p>3. <code>missing_values_handling</code><strong>:</strong> This parameter allows us to specify how we want to handle any missing data (Options are skip and MeanImputation)</p>
+<p>The grid search is shown below:</p>
+<pre><code language="language-python" class="language-python">glm_grid = h2o.grid.H2OGridSearch (
+    H2OGeneralizedLinearEstimator( 
+        family = &#34;binomial&#34;,
+        lambda_search = True),
+    
+    hyper_params = {
+        &#34;alpha&#34;: [x*0.01 for x in range(0, 100)],
+        &#34;missing_values_handling&#34; : [&#34;Skip&#34;, &#34;MeanImputation&#34;],
+        },
+    
+    grid_id = &#34;glm_random_grid&#34;,
+    
+    search_criteria = {
+        &#34;strategy&#34;:&#34;RandomDiscrete&#34;,
+        &#34;max_models&#34;:300,
+        &#34;max_runtime_secs&#34;:300,
+        &#34;seed&#34;:42
+        }
+)
+
+%time glm_grid.train(x=x, y=y, training_frame=train, validation_frame = valid)
+</code></pre>
+<p>You can easily see all <strong>four parameters</strong> of our grid search in the code sample above. We defined our GLM model the same way we did before. Then, we take care of the hyper-parameters and notice that we have used a for loop for the range of alpha in order to cover more possible values. Because the number of possible models in our search criteria could take a long time to finish, we specify that we want a maximum number of 100 models, or that the grid search runs for only 300 seconds, or 5 minutes.</p>
+<p>Print the models in descending order, sorted by the <strong>AUC</strong>. By default, the grid search will return the best models based on the <strong>logloss</strong>. Therefore, in order to get the best model based on the AUC, we need to specify that we want to sort the models by AUC. You can change this to other metrics, depending on what you are looking for.</p>
+<pre><code language="language-python" class="language-python">sorted_glm_grid = glm_grid.get_grid(sort_by=&#39;auc&#39;,decreasing=True)
+sorted_glm_grid.sorted_metric_table()
+</code></pre>
+<p class="image-container"><img alt="glm-random-grid" src="img/45b12f7d692b277e.jpg"><img alt="glm-random-grid-2" src="img/ccf5cf84aa580d45.jpg"></p>
+<p>With the sample code above, you will get the models that were created with their respective parameters, model id, and AUC. As you can see, the grid search trained 39 models in five minutes. The AUC did improve, and we will compare it to the AUC from our default model later.</p>
+<p>Next, we will do the same in Flow. Using a grid search in Flow is as easy as just clicking some boxes and adding some numbers. Go to the <strong>Assist</strong> cell again and click on <strong>buildModel,</strong> and select <strong>Generalized Linear Modeling</strong> for the algorithm. Repeat the same process as before, when you built the default GLM model. For model id, just use <code>glm.</code> type <em>5</em> for <em>nfolds,</em> and set the random seed to 42. Again, choose <code>DELINQUENT</code> for your <em>response_column,</em> and for the <em>ignored columns,</em> choose  <code>PREPAYMENT_PENALTY_MORTGAGE_FLAG</code>, <code>PRODUCT_TYPE</code>, <code>PREPAID</code>. Lastly, choose <strong>binomial</strong> for <em>family.</em> But this time, don&#39;t click on <strong>Build Model</strong> yet.</p>
+<p>Now, every time you build a model, you are given the option to select the grid option, as shown in the image below. For the parameters shown in the image below, just leave them how they are.</p>
+<p class="image-container"><img alt="flow-glm-grid" src="img/b0900c92bc7785b5.jpg"></p>
+<p>Scroll down to the <em>alpha</em> and <em>lambda</em> parameters and check the boxes next to them and add the list of numbers shown in the image below. In this case we don&#39;t have to check the box for <em>lambda_search</em> because we already defined a range to do a grid search, but if you didn&#39;t have any values for it, then you could just check the <em>lambda_search</em> box as shown in the image below, and this would be equivalent to what we did in the Jupyter Notebook. And now just check the <em>standardize</em> box so that numeric columns have zero variance.</p>
+<p class="image-container"><img alt="flow-glm-grid-alpha" src="img/17bf5ae251d6dc7e.jpg"></p>
+<p>Lastly, for the <strong>Grid Settings,</strong> make sure your settings look similar to the ones in the image below. You will need to change the <strong><em>Grid ID, Strategy, Max Models, Max Runtime, and Stopping Metric.</em></strong></p>
+<p class="image-container"><img alt="flow-glm-grid-settings" src="img/5b6428afab3d84a9.jpg"></p>
+<p>Once you have updated the settings, click on <strong>Build Model.</strong> When the model is done, click on <strong>View,</strong> and you will see the list of your models. The top model will be the model with the best AUC score. Click on it and explore the results. Our best model yielded to a validation AUC score of <strong>0.8548</strong>, and our ROC curve is shown below.</p>
+<p class="image-container"><img alt="flow-glm-grid-AUC" src="img/f3b48bab3604b891.jpg"></p>
+<p>After looking at the grid search from Flow, let&#39;s explore the best model obtained from our grid search in our Jupyter Notebook. Retrieve the best model and print the model summary with the following code:</p>
+<pre><code language="language-python" class="language-python">tuned_glm = sorted_glm_grid.models[0]
+tuned_glm.summary()
+</code></pre>
+<p class="image-container"><img alt="glm-summary" src="img/4cbe475e01a83e6d.jpg"></p>
+<p>With the first line of code, we are retrieving the best model from the grid search, and the second line of code will print the parameters used for the best model found by the grid search. We will make a quick comparison between the performance of the default glm model and the best model from the grid search.</p>
+<p>First, evaluate the model performance on the validation set.</p>
+<pre><code language="language-python" class="language-python">tuned_glm_perf = tuned_glm.model_performance(valid)
+</code></pre>
+<p>Now, print the AUC for the default, and the tuned model.</p>
+<pre><code language="language-python" class="language-python">print(&#34;Default GLM AUC: %.4f \nTuned GLM AUC:%.4f&#34; % (default_glm_perf.auc(), tuned_glm_perf.auc()))
+</code></pre>
+<p><strong>Output:</strong></p>
+<pre><code language="language-python" class="language-python">Default GLM AUC: 0.8450 
+Tuned GLM AUC:0.8534
+</code></pre>
+<p>The AUC slightly improved. We did not expect the GLM model to perform great, or to have a great improvement with the grid search, as it is just a linear model, and in order to perform well, we would need a linear distribution of our data and response variable; however, we were able to get a minor improvement from the default score.</p>
+<p>We can also print the F1 Score</p>
+<pre><code language="language-python" class="language-python">print (&#34;Default GLM F1 Score:&#34;, default_glm_perf.F1())
+print (&#34;Tuned GLM F1 Score&#34;, tuned_glm_perf.F1())
+</code></pre>
+<p><strong>Output:</strong></p>
+<pre><code language="language-python" class="language-python">Default GLM F1 Score: [[0.1223956407234934, 0.28271823505379273]]
+Tuned GLM F1 Score [[0.1260471303106269, 0.28253908457336596]]
+</code></pre>
+<p>The max F1 Score did not really improvement. Although the threshold slightly increased, it did not improve the overall F1 Score. Let&#39;s take a look at the confusion matrix to see if the values changed.</p>
+<pre><code language="language-python" class="language-python">print (&#34;Default GLM: &#34;, default_glm_perf.confusion_matrix())
+print (&#34;Tuned GLM: &#34;,  tuned_glm_perf.confusion_matrix())
+</code></pre>
+<p class="image-container"><img alt="glm-conf-matrix-def-tuned" src="img/f2527c46eab760c7.jpg"></p>
+<p>Notice how the overall error slightly improved, as well as the error for the FALSE class. While the error for the TRUE class had minimal increase, meaning the model is classifying a few more samples that are actually TRUE incorrectly. We see that our model has a hard time classifying the TRUE labels, and this is due to the highly imbalanced dataset that we are working with.</p>
+<p>We will do the test evaluation after we tune our other two models.</p>
+</div>
+
+
+
+<div id="R-task7" class="tabcontent">
+<p><strong>Task 7 - R Version</strong> H2O supports two types of grid search – traditional (or &#34;cartesian&#34;) grid search and random grid search. In a cartesian grid search, you specify a set of values for each hyperparameter that you want to search over, and H2O will train a model for every combination of the hyperparameter values. This means that if you have three hyperparameters and you specify 5, 10, and 2 values for each, your grid will contain a total of 5*10*2 = 100 models.</p>
+<p>In a random grid search, you specify the hyperparameter space in the exact same way, except H2O will sample uniformly from the set of all possible hyperparameter value combinations. In the random grid search, you also specify a stopping criterion, which controls when the random grid search is completed. You can tell the random grid search to stop by specifying a maximum number of models or the maximum number of seconds allowed for the search. You can also specify a performance-metric-based stopping criterion, which will stop the random grid search when the performance stops improving by a specified amount. Once the grid search is complete, you can query the grid object and sort the models by a particular performance metric (for example, &#34;AUC&#34;). All models are stored in the H2O cluster and are accessible by model id.</p>
+<p>To save some time, we will do a random grid search for our GLM model instead of the cartesian search. The H2OGridSearch has <strong>4 parameters,</strong> and in order to use it, you need <strong>at least three</strong> of them. The first parameter for the grid search is the <strong>model</strong> that you want to tune. Next are your <strong>hyperparameters,</strong> which needs to be a string of parameters, and a list of values to be explored by grid search. The third one is optional, which is the <strong>grid id,</strong> and if you do not specify one, an id will automatically be generated. Lastly, the fourth parameter is the <strong>search criteria,</strong> where you can specify if you want to do a cartesian or random search.</p>
+<p>For our GLM, we will tune <code>alpha,</code> and <code>missing_values_handling.</code> We could try to tune <code>lambda</code> but we will just use <code>lambda_search = True</code> so that this value is tuned automatically. The other parameters that you could change, such as <code>solver,</code> <code>max_active_predictors,</code> and <code>nlambdas,</code> to mention a few, are not supported by H2OGridSearch.</p>
+<p>1. <code>alpha</code> is the distribution of regularization between the L1 (Lasso) and L2 (Ridge) penalties. A value of 1 for alpha represents Lasso regression, a value of 0 produces Ridge regression, and anything in between specifies the amount of mixing between the two. For alpha, we can explore the range from 0 to 1 in steps of 0.01</p>
+<p>2. <code>lambda</code><strong>,</strong> is the regularization strength.</p>
+<p>3. <code>missing_values_handling</code> This parameter allows us to specify how we want to handle any missing data (Options are skip and MeanImputation)</p>
+<p>The grid search is shown below:</p>
+<pre><code language="language-R" class="language-R">glm_alpha &lt;- seq(from = 0, to = 1, by = 0.01)
+
+glm_grid &lt;- h2o.grid(algorithm = &#34;glm&#34;, grid_id = &#34;random_glm_grid&#34;, family=&#34;binomial&#34;,
+                     hyper_params = list(
+                       alpha = c(glm_alpha),
+                       missing_values_handling = c(&#34;MeanImputation&#34;, &#34;Skip&#34;)
+                       ),
+                     
+                     x = x, y=y, training_frame= train, validation_frame = valid,
+                     
+                     lambda_search=TRUE,
+                     
+                     search_criteria = list(
+                       strategy = &#34;RandomDiscrete&#34;,
+                       max_runtime_secs=300,
+                       seed=42
+                     )
+)
+</code></pre>
+<p>Notice that we have used a sequence from 0 to 1 in steps of 0.01 for the range of alpha in order to cover more possible values. Because the number of possible models in our search criteria could take a long time to finish, we specify that we want a maximum number of 100 models, or that the grid search runs for only 300 seconds, or 5 minutes.</p>
+<p>Print the models in descending order, sorted by the <strong>AUC</strong>. By default, the grid search will return the best models based on the <strong>logloss</strong>. Therefore, in order to get the best model based on the AUC, we need to specify that we want to sort the models by AUC. You can change this to other metrics, depending on what you are looking for.</p>
+<pre><code language="language-R" class="language-R">gml_grid_auc &lt;- h2o.getGrid(grid_id = &#34;random_glm_grid&#34;, sort_by = &#34;auc&#34;, decreasing = TRUE)
+as.data.frame(gml_grid_auc@summary_table)
+</code></pre>
+<p class="image-container"><img alt="r-glm-random-grid" src="img/f08673d5eb79b0ed.jpg"></p>
+<p>With the sample code above, you will get the models that were created with their respective parameters, model id, and AUC. As you can see, the grid search trained 19 models in five minutes. The AUC did improve, and we will compare it to the AUC from our default model later.</p>
+<p>Next, we will do the same in Flow. Using a grid search in Flow is as easy as just clicking some boxes and adding some numbers. Go to the <strong>Assist</strong> cell again and click on <strong>buildModel,</strong> and select <strong>Generalized Linear Modeling</strong> for the algorithm. Repeat the same process as before, when you built the default GLM model. For model id, just use <code>glm.</code> type <em>5</em> for <em>nfolds,</em> and set the random seed to 42. Again, choose <code>DELINQUENT</code> for your <em>response_column,</em> and for the <em>ignored columns,</em> choose  <code>PREPAYMENT_PENALTY_MORTGAGE_FLAG</code>, <code>PRODUCT_TYPE</code>, <code>PREPAID</code>. Lastly, choose <strong>binomial</strong> for <em>family.</em> But this time, don&#39;t click on <strong>Build Model</strong> yet.</p>
+<p>Now, every time you build a model, you are given the option to select the grid option, as shown in the image below. For the parameters shown in the image below, just leave them how they are.</p>
+<p class="image-container"><img alt="flow-glm-grid" src="img/b0900c92bc7785b5.jpg"></p>
+<p>Scroll down to the <em>alpha</em> and <em>lambda</em> parameters and check the boxes next to them and add the list of numbers shown in the image below. In this case we don&#39;t have to check the box for <em>lambda_search</em> because we already defined a range to do a grid search, but if you didn&#39;t have any values for it, then you could just check the <em>lambda_search</em> box as shown in the image below, and this would be equivalent to what we did in the Jupyter Notebook. And now just check the <em>standardize</em> box so that numeric columns have zero variance.</p>
+<p class="image-container"><img alt="flow-glm-grid-alpha" src="img/17bf5ae251d6dc7e.jpg"></p>
+<p>Lastly, for the <strong>Grid Settings,</strong> make sure your settings look similar to the ones in the image below. You will need to change the <strong><em>Grid ID, Strategy, Max Models, Max Runtime, and Stopping Metric.</em></strong></p>
+<p class="image-container"><img alt="flow-glm-grid-settings" src="img/5b6428afab3d84a9.jpg"></p>
+<p>Once you have updated the settings, click on <strong>Build Model.</strong> When the model is done, click on <strong>View,</strong> and you will see the list of your models. The top model will be the model with the best AUC score. Click on it and explore the results. Our best model yielded to a validation AUC score of <strong>0.8548</strong>, and our ROC curve is shown below.</p>
+<p class="image-container"><img alt="flow-glm-grid-AUC" src="img/f3b48bab3604b891.jpg"></p>
+<p>After looking at the grid search from Flow, let&#39;s explore the best model obtained from our grid search in our Jupyter Notebook. Save the best model and print the model summary with the following code:</p>
+<pre><code language="language-R" class="language-R">tuned_glm &lt;- h2o.getModel(&#34;random_glm_grid_model_9&#34;)
+tuned_glm
+</code></pre>
+<p class="image-container"><img alt="glm-summary" src="img/7471e42650ead208.jpg"></p>
+<p>With the first line of code, we are retrieving the best model from the grid search, and the second line of code will print the parameters used for the best model found by the grid search. We will make a quick comparison between the performance of the default glm model and the best model from the grid search.</p>
+<p>First, evaluate the model performance on the validation set.</p>
+<pre><code language="language-R" class="language-R">valid_tuned_glm_perf &lt;- h2o.performance(tuned_glm, valid)
+</code></pre>
+<p>Now, print the AUC for the default, and the tuned model.</p>
+<pre><code language="language-R" class="language-R">h2o.auc(valid_glm_perf) #default model perf
+h2o.auc(valid_tuned_glm_perf) #tuned model perf
+</code></pre>
+<p><strong>Output:</strong></p>
+<pre><code language="language-R" class="language-R">0.845051404584433
+0.853413141208494
+</code></pre>
+<p>The AUC slightly improved. We did not expect the GLM model to perform great, or to have a great improvement with the grid search, as it is just a linear model, and in order to perform well, we would need a linear distribution of our data and response variable; however, we were able to get a minor improvement from the default score.</p>
+<p>We can also print the F1 Score</p>
+<pre><code language="language-R" class="language-R">h2o.F1(valid_glm_perf, thresholds = 0.126084550789908)
+h2o.F1(valid_tuned_glm_perf, thresholds = 0.125984838627616)
+</code></pre>
+<p><strong>Output:</strong></p>
+<pre><code language="language-R" class="language-R">0.283510936623668
+0.283025969138126
+</code></pre>
+<p>The max F1 Score did not have an improvement. Let&#39;s take a look at the confusion matrix to try to understand the reason of why the F1 did not improve.</p>
+<pre><code language="language-R" class="language-R">h2o.confusionMatrix(valid_glm_perf)
+h2o.confusionMatrix(valid_tuned_glm_perf)
+</code></pre>
+<p class="image-container"><img alt="r-glm-conf-matrix-def-tuned" src="img/bb87218d09a6a8b2.jpg"></p>
+<p>In this case it is difficult to compare the errors, as the tuned model is using less samples; this is a known issue that will be addressed in future releases. However, we can see that the error for the TRUE class had minimal improvement, meaning the model is classifying a few more samples that are actually TRUE correctly. We see that our model has a hard time classifying the TRUE labels, and this is due to the highly imbalanced dataset that we are working with.</p>
+<p>We will do the test evaluation after we tune our other two models.</p>
+</div>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Task 8: Tune the RF model with H2O GridSearch" duration="0">
+
+        <div class="tab">
+          <button class="tablinks active" onclick="changeTab(event, 'Python-task8')">Python</button>
+          <button class="tablinks" onclick="changeTab(event, 'R-task8')">R</button>
+          
+        </div>
+        <div id="Python-task8" class="tabcontent" style = "display: block">
+
+        <p>We will do the grid search a bit differently this time. We are going to define each parameter of the grid search separately, and then pass the variables to the grid search function.</p>
+<p>We will first find one of the most important parameters for an RF, which is the maximum depth.</p>
+<p><code>max_depth</code> defines the number of nodes along the longest path from the start of the tree to the farthest leaf node. Higher values will make the model more complex and can lead to overfitting. Setting this value to 0 specifies no limit. This value defaults to 20. We will first look for the best value for the <strong>max_depth;</strong> this would save us some computational time when we tune the other parameters. As we mentioned before, we will use a slightly different approach for the grid search. We are going to instantiate each parameter for the grid search, and then pass each one into it.</p>
+<pre><code language="language-python" class="language-python">#Grid Search Parameters
+hyper_parameters = {&#39;max_depth&#39;:[1,3,5,6,7,8,9,10,12,13,15,20,25,35]}
+
+rf = H2ORandomForestEstimator(
+    seed=42,
+    stopping_rounds=5, 
+    stopping_tolerance=1e-4, 
+    stopping_metric=&#34;auc&#34;,
+    model_id = &#39;rf&#39;
+    )
+
+grid_id = &#39;depth_grid&#39;
+
+search_criteria = {&#39;strategy&#39;: &#34;Cartesian&#34;}
+
+#Grid Search
+rf_grid = H2OGridSearch(model=rf, 
+                        hyper_params=hyper_parameters, 
+                        grid_id=grid_id, 
+                        search_criteria=search_criteria)
+
+%time rf_grid.train(x=x, y=y, training_frame=train, validation_frame = valid)
+</code></pre>
+<p>We are doing a cartesian search of values for <code>max_depth</code> to see if the default value is good, or if we need to adjust the value. After it is done training, print the models sorted by AUC.</p>
+<pre><code language="language-python" class="language-python">sorted_rf_depth = rf_grid.get_grid(sort_by=&#39;auc&#39;,decreasing=True)
+sorted_rf_depth.sorted_metric_table()
+</code></pre>
+<p class="image-container"><img alt="rf-depth-grid" src="img/7ec5f050476ada91.jpg"></p>
+<p>Now that we have a found the <code>max_depth</code> values that yield the best results, we will do a random grid search using the top five values for <code>max_depth</code> and we will also try to tune our <code>sample_rate</code></p>
+<p><code>sample_rate</code><strong>:</strong> Specifies the row sampling rate (x-axis). (Note that this method is sample without replacement.) The range is 0.0 to 1.0, and this value defaults to 0.6320000291. Higher values may improve training accuracy. Test accuracy improves when either columns or rows are sampled.</p>
+<p>Another important parameter that we could tune is the number of trees (<code>ntrees</code>).</p>
+<p><code>ntrees</code><strong>:</strong> specifies the number of trees that you want your RF to have. When tuning the number of trees, you need to be careful because when you have too many trees, your model will tend to overfit. That&#39;s why it&#39;s always advised to use cross-validation, and never tune models based on training scores.</p>
+<p>We won&#39;t do a grid search for a maximum number of trees. We will use 500 trees for our grid search model while using early stopping; that way, if the model doesn&#39;t improve, it will automatically stop. By doing this, we will be obtaining the best value for <code>ntrees</code> without having to do an extra grid search.</p>
+<p>H2O scores our models regularly against our validation set, and so we can use <strong>early stopping</strong> to stop training the model once our specified metric no longer improves. In order to use early stopping, we need to define the next three parameters:</p>
+<p>1. <code>stopping_rounds</code><strong>:</strong> this is used to stop model training when the option selected for <code>stopping_metric</code> doesn&#39;t improve for this specified number of training rounds, based on a simple moving average.</p>
+<p>2. <code>stopping_tolerance</code><strong>:</strong> This option specifies the tolerance value by which a model must improve before training ceases.</p>
+<p>3. <code>stopping_metric</code><strong>:</strong> specifies the metric that decides if the model is improving or not. In our case, since we are looking at a classification problem, we will use AUC.</p>
+<p>The grid search discussed above looks like the following:</p>
+<pre><code language="language-python" class="language-python">hyper_parameters = {&#34;max_depth&#34;:[8, 9, 10, 11, 12],
+                    &#39;sample_rate&#39;: [x/100. for x in range(20,101)]
+                   }
+
+rf = H2ORandomForestEstimator(
+                              ntrees=500,
+                              seed=42,
+                              stopping_rounds=5, 
+                              stopping_tolerance=1e-3, 
+                              stopping_metric=&#34;auc&#34;,
+                              model_id=&#39;rf_grid&#39;
+    )
+
+grid_id = &#39;rf_random_grid&#39;
+
+search_criteria = { &#34;strategy&#34;:&#34;RandomDiscrete&#34;,
+                    &#34;max_models&#34;:100,
+                    &#34;max_runtime_secs&#34;:900,
+                    &#34;seed&#34;:42
+        }
+
+rf_grid = H2OGridSearch(model=rf, 
+                        hyper_params=hyper_parameters, 
+                        grid_id=grid_id, 
+                        search_criteria=search_criteria)
+
+%time rf_grid.train(x=x, y=y, training_frame=train, validation_frame = valid)
+</code></pre>
+<p>Print the grid results as follow</p>
+<pre><code language="language-python" class="language-python">sorted_rf = rf_grid.get_grid(sort_by=&#39;auc&#39;,decreasing=True)
+sorted_rf.sorted_metric_table()
+</code></pre>
+<p class="image-container"><img alt="rf-random-grid" src="img/7bb51863d8d72484.jpg"></p>
+<p>The reason we do a two-step approach to tune the RF model is that when you have large values for <code>max_depth</code> and <code>ntrees</code> your model will take a long time to train and we could be wasting computational time. For example, say we decided to do just one grid search, and we have <code>max_depth=35</code> and <code>ntrees=500,</code> and our grid search actually chooses to train that model, it would take a long time to train, and based on our results, the score wouldn&#39;t be good. That&#39;s why we narrow down the range for <code>max_depth</code> and then do a local search with the top values. And as you can see from our results, even though in our first grid search <code>max_depth=12</code> was the second best value, when we combined that with another parameter, we see that <code>max_depth=12</code> yields better results that <code>max_depth=10.</code></p>
+<p>To do the grid search for the RF model in Flow, start by building another default RF model the same way we did in Task 5. But this time, check the <em>Grid</em> checkbox next to <code>max_depth</code> and add the list of the hyper-parameters that you want. For example, for <strong>max_depth</strong> you can do <code>1;5;10;12;15;20;50;</code> You can do the same with other parameters that you would like to tune. After you click on <strong>build</strong>, your grid search for your RF will start. You can even use values closest to the one we obtained in the Jupyter Notebook to see if you can get an even better score! Explore the results on your own, and see if the results make sense.</p>
+<p>Return to the Jupyter Notebook and check some of the outputs that we obtained from our tuned model.</p>
+<pre><code language="language-python" class="language-python">tuned_rf = sorted_rf.models[0]
+</code></pre>
+<p>Print the validation AUC</p>
+<pre><code language="language-python" class="language-python">tuned_rf_per = tuned_rf.model_performance(valid)
+tuned_rf_per.auc()
+</code></pre>
+<p><strong>Output:</strong></p>
+<pre><code language="language-python" class="language-python">0.8532106454866067
+</code></pre>
+<p>And the F1 Score</p>
+<pre><code language="language-python" class="language-python">tuned_rf_per.F1()
+</code></pre>
+<p><strong>Output:</strong></p>
+<pre><code language="language-python" class="language-python">[[0.15319305390071997, 0.31049913941480206]]
+</code></pre>
+<p>The AUC from the validation data was <strong>0.8532,</strong> and the F1 Score was <strong>0.3105</strong></p>
+<p>Let&#39;s compare the tuned model with the default model.</p>
+<pre><code language="language-python" class="language-python">print(&#34;Default RF AUC: %.4f \nTuned RF AUC:%.4f&#34; % (default_rf_per.auc(), tuned_rf_per.auc()))
+</code></pre>
+<p><strong>Output:</strong></p>
+<pre><code language="language-python" class="language-python">Default RF AUC: 0.8265 
+Tuned RF AUC:0.8532
+</code></pre>
+<p>The AUC value for our RF model had a decent improvement by tuning <code>max_depth</code> and the <code>sample_rate</code> while using <code>ntrees=500</code> with early stopping. We will check the F1 score to see how it compares to the F1 of our default model.</p>
+<pre><code language="language-python" class="language-python">print(&#34;Default RF F1 Score:&#34;, default_rf_per.F1())
+print(&#34;Tuned RF F1 Score:&#34;, tuned_rf_per.F1())
+</code></pre>
+<pre><code language="language-python" class="language-python">Default RF F1 Score: [[0.18697332295716976, 0.2830355563417654]]
+Tuned RF F1 Score: [[0.15319305390071997, 0.31049913941480206]]
+</code></pre>
+<p>The F1 score also improved. Although the F1 score is still considered low, we will look at the confusion matrix, and we will see how this improvement reflects on the confusion matrix</p>
+<pre><code language="language-python" class="language-python">print (&#34;Default RF: &#34;, default_rf_per.confusion_matrix())
+print (&#34;Tuned RF: &#34;,  tuned_rf_per.confusion_matrix())
+</code></pre>
+<p class="image-container"><img alt="rf-default-vs-tuned-cf-mx" src="img/f549cd94a5ed7870.jpg"></p>
+<p>The AUC for our tuned model actually improved, as well as the F1 Score and also the misclassification error. From the confusion matrix, we can see that the new model is predicting fewer FALSE labels that are actually FALSE; this means the model is classifying more FALSE labels incorrectly. However, the error is very small and this can still be accepted. On the other side, we can see that our model started to correclty classify more TRUE labels. Remember that we have a highly imbalanced dataset, and with the quick grid search we were able to improve the missclassification error for the minority class, and we can see this also helping improve the overall missclasification error.</p>
+<p>Now, we will see if we can improve our GBM model.</p>
+</div>
+
+<div id="R-task8" class="tabcontent">
+
+<p><strong>Task 8 - R Version</strong></p>
+<p>We will first find one of the most important parameters for an RF, which is the maximum depth.</p>
+<p><code>max_depth</code> defines the number of nodes along the longest path from the start of the tree to the farthest leaf node. Higher values will make the model more complex and can lead to overfitting. Setting this value to 0 specifies no limit. This value defaults to 20. We will first look for the best value for the <strong>max_depth;</strong> this would save us some computational time when we tune the other parameters. As we mentioned before, we will use a slightly different approach for the grid search. We are going to instantiate each parameter for the grid search, and then pass each one into it.</p>
+<pre><code language="language-R" class="language-R">rf_depth_grid &lt;- h2o.grid(algorithm = &#34;randomForest&#34;, grid_id = &#34;rf_depth_grid&#34;,
+                          seed=42, stopping_rounds= 5, stopping_metric=&#34;AUC&#34;, stopping_tolerance= 1e-4, 
+                          
+                          hyper_params = list(
+                            max_depth = c(1,3,5,6,7,8,9,10,12,13,15,20,25,35)
+                          ),
+                          
+                          search_criteria = list(
+                            strategy = &#34;Cartesian&#34;
+                          ),
+                          
+                          x=x, 
+                          y=y, 
+                          training_frame= train, 
+                          validation_frame = valid
+  
+)
+</code></pre>
+<p>We are doing a cartesian search of values for <code>max_depth</code> to see if the default value is good, or if we need to adjust the value. After it is done training, print the models sorted by AUC.</p>
+<pre><code language="language-R" class="language-R">rf_depth_grid_auc &lt;- h2o.getGrid(grid_id = &#34;rf_depth_grid&#34;, sort_by = &#34;auc&#34;, decreasing = TRUE)
+as.data.frame(rf_depth_grid_auc@summary_table)
+</code></pre>
+<p class="image-container"><img alt="rf-depth-grid" src="img/fe26b80206ca1d8f.jpg"></p>
+<p>Now that we have a found the <code>max_depth</code> values that yield the best results, we will do a random grid search using the top five values for <code>max_depth</code> and we will also try to tune our <code>sample_rate</code></p>
+<p><code>sample_rate</code><strong>:</strong> Specifies the row sampling rate (x-axis). (Note that this method is sample without replacement.) The range is 0.0 to 1.0, and this value defaults to 0.6320000291. Higher values may improve training accuracy. Test accuracy improves when either columns or rows are sampled.</p>
+<p>Another important parameter that we could tune is the number of trees (<code>ntrees</code>).</p>
+<p><code>ntrees</code><strong>:</strong> specifies the number of trees that you want your RF to have. When tuning the number of trees, you need to be careful because when you have too many trees, your model will tend to overfit. That&#39;s why it&#39;s always advised to use cross-validation, and never tune models based on training scores.</p>
+<p>We won&#39;t do a grid search for a maximum number of trees. We will use 500 trees for our grid search model while using early stopping; that way, if the model doesn&#39;t improve, it will automatically stop. By doing this, we will be obtaining the best value for <code>ntrees</code> without having to do an extra grid search.</p>
+<p>H2O scores our models regularly against our validation set, and so we can use <strong>early stopping</strong> to stop training the model once our specified metric no longer improves. In order to use early stopping, we need to define the next three parameters:</p>
+<p>1. <code>stopping_rounds</code><strong>:</strong> this is used to stop model training when the option selected for <code>stopping_metric</code> doesn&#39;t improve for this specified number of training rounds, based on a simple moving average.</p>
+<p>2. <code>stopping_tolerance</code><strong>:</strong> This option specifies the tolerance value by which a model must improve before training ceases.</p>
+<p>3. <code>stopping_metric</code><strong>:</strong> specifies the metric that decides if the model is improving or not. In our case, since we are looking at a classification problem, we will use AUC.</p>
+<p>The grid search discussed above looks like the following:</p>
+<pre><code language="language-R" class="language-R">rf_sample_rate &lt;- seq(from=0.2, to=1, by=0.01)
+
+rf_random_grid &lt;- h2o.grid(algorithm = &#34;randomForest&#34;, grid_id = &#34;rf_random_search&#34;, ntrees=500,
+                          seed=42, stopping_rounds= 5, stopping_metric=&#34;AUC&#34;, stopping_tolerance= 1e-3, 
+                          
+                          hyper_params = list(
+                            max_depth = c(8, 9, 10, 11, 12),
+                            sample_rate = c(rf_sample_rate)
+                          ),
+                          
+                          search_criteria = list(
+                            strategy = &#34;RandomDiscrete&#34;,
+                            max_runtime_secs=900,
+                            seed=42
+                          ),
+                          
+                          x=x, 
+                          y=y, 
+                          training_frame= train, 
+                          validation_frame = valid                          
+)
+</code></pre>
+<p>Print the grid results as follow</p>
+<pre><code language="language-R" class="language-R">rf_random_grid_auc &lt;- h2o.getGrid(grid_id = &#34;rf_random_search&#34;, sort_by = &#34;auc&#34;, decreasing = TRUE)
+as.data.frame(rf_random_grid_auc@summary_table)
+</code></pre>
+<p class="image-container"><img alt="rf-random-grid" src="img/a594ba12f5ed73b0.jpg"></p>
+<p>The reason we do a two-step approach to tune the RF model is that when you have large values for <code>max_depth</code> and <code>ntrees</code> your model will take a long time to train and we could be wasting computational time. For example, say we decided to do just one grid search, and we have <code>max_depth=35</code> and <code>ntrees=500,</code> and our grid search actually chooses to train that model, it would take a long time to train, and based on our results, the score wouldn&#39;t be good. That&#39;s why we narrow down the range for <code>max_depth</code> and then do a local search with the top values. And as you can see from our results, even though in our first grid search <code>max_depth=10</code> was the best value, when we combined that with another parameter, we see that <code>max_depth=10</code> is no longer the best depth.</p>
+<p>To do the grid search for the RF model in Flow, start by building another default RF model the same way we did in Task 5. But this time, check the <em>Grid</em> checkbox next to <code>max_depth</code> and add the list of the hyper-parameters that you want. For example, for <strong>max_depth</strong> you can do <code>1;5;10;12;15;20;50;</code> You can do the same with other parameters that you would like to tune. After you click on <strong>build</strong>, your grid search for your RF will start. You can even use values closest to the one we obtained in the Jupyter Notebook to see if you can get an even better score! Explore the results on your own, and see if the results make sense.</p>
+<p>Return to the Jupyter Notebook and check some of the outputs that we obtained from our tuned model. We will need to retrieve the best model from the grid search, and them save the model performance on the validation set.</p>
+<pre><code language="language-R" class="language-R">tuned_rf &lt;- h2o.getModel(&#34;rf_random_search_model_10&#34;) #Change model id to your best model
+valid_tuned_rf_perf &lt;- h2o.performance(tuned_rf, valid)
+</code></pre>
+<p>Now we can print the validation AUC and F1 score</p>
+<pre><code language="language-R" class="language-R">h2o.auc(valid_tuned_rf_perf)
+h2o.F1(valid_tuned_rf_perf, thresholds = 0.129582071491562)
+</code></pre>
+<p><strong>Output:</strong></p>
+<pre><code language="language-R" class="language-R">0.852186858510548
+0.302973688307644
+</code></pre>
+<p>The AUC from the validation data was <strong>0.8522,</strong> and the F1 Score was <strong>0.3030</strong></p>
+<p>Let&#39;s print the validation AUC and the F1 from our default model</p>
+<pre><code language="language-R" class="language-R">h2o.auc(valid_rf_perf)
+h2o.F1(valid_rf_perf, thresholds = 0.129906784624539)
+</code></pre>
+<p><strong>Output:</strong></p>
+<pre><code language="language-R" class="language-R">0.826374425170771
+0.27234753550543
+</code></pre>
+<p>The AUC value for our RF model had a decent improvement by tuning <code>max_depth</code> and the <code>sample_rate</code> while using <code>ntrees=500</code> with early stopping. The F1 score also ahd a significant improvement. Although the F1 score is still considered low, we will look at the confusion matrix, and we will see how this improvement reflects on the confusion matrix</p>
+<pre><code language="language-R" class="language-R">h2o.confusionMatrix(valid_tuned_rf_perf)
+h2o.confusionMatrix(valid_rf_perf)
+</code></pre>
+<p class="image-container"><img alt="r-rf-default-vs-tuned-cf-mx" src="img/321427596b63fe55.jpg"></p>
+<p>The AUC for our tuned model actually improved, as well as the F1 Score and also the misclassification error. From the confusion matrix, we can see that the new model is predicting more FALSE labels that are actually FALSE; this means the model is classifying more FALSE labels correctly. On the other side, we can see that our model started to incorreclty classify more TRUE labels. Remember that we have a highly imbalanced dataset, and with the quick grid search we were able to improve the missclassification error for the majority class and also the overall missclasification error, but not the misclassification error for the minority class.</p>
+<p>Now, we will see if we can improve our GBM model.</p>
+</div>
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Task 9: Tune the GBM model with H2O GridSearch" duration="0">
+
+        <div class="tab">
+          <button class="tablinks active" onclick="changeTab(event, 'Python-task9')">Python</button>
+          <button class="tablinks" onclick="changeTab(event, 'R-task9')">R</button>
+          
+        </div>
+        <div id="Python-task9" class="tabcontent" style = "display: block">
+
+        <p>We will tune our GBM model using the same approach we used for the RF. We will first find a good range for <code>max_depth</code> and then we will try to tune some other parameters. For a GBM model, conceptually speaking, the <strong>max_depth</strong> and <strong>ntrees</strong> are similar to the RF model. However, we will see that the values are smaller than the ones used for the RF.</p>
+<pre><code language="language-python" class="language-python">hyper_params = {&#39;max_depth&#39; : [3,4,5,6,7,8,9,10,12,13,15],
+               }
+
+gbm = H2OGradientBoostingEstimator(model_id=&#39;grid_gbm&#39;, ntrees=50,
+    seed=42
+    )
+
+gbm_grid = H2OGridSearch(gbm, hyper_params,
+                         grid_id = &#39;depth_gbm_grid&#39;,
+                         search_criteria = {
+                             &#34;strategy&#34;:&#34;Cartesian&#34;})
+
+%time gbm_grid.train(x=x, y=y, training_frame=train, validation_frame = valid)
+</code></pre>
+<p>Print the models</p>
+<pre><code language="language-python" class="language-python">sorted_gbm_depth = gbm_grid.get_grid(sort_by=&#39;auc&#39;,decreasing=True)
+sorted_gbm_depth.sorted_metric_table()
+</code></pre>
+<p class="image-container"><img alt="gbm-depth-grid" src="img/1820733d5c43d78d.jpg"></p>
+<p>Based on the grid search that we just did, the best <code>max_depth</code> is 6, but we will use the top 5 values for our next grid search. We will do a random grid search with a few parameters to see if we can get a better score.</p>
+<p><strong>Note:</strong> The search criteria will only allow the grid search to run for 15 minutes, if you would like to see the results of running it for longer, just increase the <code>max_runtime_secs</code> to a higher value and wait for the results.</p>
+<p>Here is the list of parameters that we are going to try to tune</p>
+<p>1. <code>sample_rate</code><strong>:</strong> Specify the row sampling rate (x-axis). (Note that this method is sample without replacement.) The range is 0.0 to 1.0, and this value defaults to 1. Higher values may improve training accuracy. Test accuracy improves when either columns or rows are sampled.</p>
+<p>2. <code>col_sample_rate</code><strong>:</strong> Specify the column sampling rate (y-axis). (Note that this method is sampling without replacement.) The range is 0.0 to 1.0.</p>
+<p>3. <code>col_sample_rate_per_tree</code><strong>:</strong> Specify the column sample rate per tree. This can be a value from 0.0 to 1.0 and defaults to 1. Note that it is multiplicative with col_sample_rate, so setting both parameters to 0.8, for example, results in 64% of columns being considered at any given node to split.</p>
+<p>4. <code>col_sample_rate_change_per_level</code><strong>:</strong> This option specifies to change the column sampling rate as a function of the depth in the tree.</p>
+<p>Find more parameters and more information about them at the <a href="http://docs.h2o.ai/h2o/latest-stable/h2o-docs/data-science/gbm.html#gradient-boosting-machine-gbm" target="_blank">Documentation - GBM Section</a> and also the <a href="https://h2o-release.s3.amazonaws.com/h2o/rel-wheeler/4/docs-website/h2o-py/docs/modeling.html#h2ogradientboostingestimator" target="_blank">Python Module</a></p>
+<pre><code language="language-python" class="language-python">gbm = H2OGradientBoostingEstimator(
+    ntrees=500,
+    learn_rate=0.05,
+    seed=42,
+    model_id=&#39;grid_gbm&#39;
+    )
+
+hyper_params_tune = {
+                &#39;max_depth&#39; : [4, 5, 6, 7, 8],
+                &#39;sample_rate&#39;: [x/100. for x in range(20,101)],
+                &#39;col_sample_rate&#39; : [x/100. for x in range(20,101)],
+                &#39;col_sample_rate_per_tree&#39;: [x/100. for x in range(20,101)],
+                &#39;col_sample_rate_change_per_level&#39;: [x/100. for x in range(90,111)],
+}
+
+search_criteria_tune = {&#39;strategy&#39;: &#34;RandomDiscrete&#34;,
+                   &#39;max_runtime_secs&#39;: 900,  
+                   &#39;max_models&#39;: 100,  ## build no more than 100 models
+                   &#39;seed&#39; : 42 }
+
+random_grid = H2OGridSearch(model=gbm, hyper_params=hyper_params_tune,
+                         grid_id = &#39;random_grid&#39;,
+                         search_criteria =search_criteria_tune)
+
+%time random_grid.train(x=x, y=y, training_frame=train, validation_frame = valid)
+</code></pre>
+<p>Print the results</p>
+<pre><code language="language-python" class="language-python">sorted_random_search = random_grid.get_grid(sort_by=&#39;auc&#39;,decreasing=True)
+sorted_random_search.sorted_metric_table()
+</code></pre>
+<p class="image-container"><img alt="gbm-random-grid" src="img/78460155800e7af2.jpg"><img alt="gbm-random-grid-2" src="img/9ea7c33297e4a4e.jpg"></p>
+<p>With the quick random grid search that we just performed we were able to improve the AUC value to <strong>0.8621</strong>. Note that since the combination of possible models is so large, we could run the grid search for much longer to see if there are models that further improve the AUC. For the purpose of this tutorial, we will leave it at that, but feel free to modify the grid search, try to use a narrower range for the parameters based on the values we found, and run the grid search for a longer period of time and see if you can get a much better model than the one we just found.</p>
+<p>We will now print the AUC and F1 scores to see how the model performed:</p>
+<pre><code language="language-python" class="language-python">tuned_gbm = sorted_random_search.models[0]
+</code></pre>
+<pre><code language="language-python" class="language-python">tuned_gbm_per = tuned_gbm.model_performance(valid)
+print(tuned_gbm_per.auc())
+print(tuned_gbm_per.F1())
+</code></pre>
+<p><strong>Output:</strong></p>
+<pre><code language="language-python" class="language-python">0.8620868754474125
+[[0.16371106543078953, 0.31935320869125816]]
+</code></pre>
+<p>We were able to get the highest validation AUC among the three models with our GBM. The model reached a <strong>0.8621</strong> AUC, while also improving the F1 to <strong>0.3194.</strong></p>
+<p>Let&#39;s take a look at the confusion matrix and see how are the misclassification errors from this model look like:</p>
+<pre><code language="language-python" class="language-python">tuned_gbm_per.confusion_matrix()
+</code></pre>
+<p class="image-container"><img alt="tuned-gbm-m8trix" src="img/e531577f32f3415b.jpg"></p>
+<p>Even though the misclassification error for the TRUE class improved, the error for the FALSE class and the overall error did not improve. However, with the tuning that we did, our GBM model was able to make more correct predictions for the TRUE class, which is good since we are dealing with a highly imbalanced dataset.</p>
+<p>Here is how you can compare the AUC from the default model with the tuned model:</p>
+<pre><code language="language-python" class="language-python">print(&#34;Default GBM AUC: %.4f \nTuned GBM AUC:%.4f&#34; % (default_gbm_per.auc(), tuned_gbm_per.auc()))
+</code></pre>
+<p><strong>Output:</strong></p>
+<pre><code language="language-python" class="language-python">Default GBM AUC: 0.8541 
+Tuned GBM AUC:0.8621
+</code></pre>
+<p>If you go to your Flow instance, you can check your best model. See the results for yourself and compare it to the results that we obtained from the default model. You can also look at the Variable importance plot. The variable importance plot seems very similar to the one we obtained for the default GBM model, except for the 5th predictor, which has changed. You can also look at the confusion matrix on both training and validation data.</p>
+<p>We will do the final test performance next.</p>
+</div>
+
+
+<div id="R-task9" class="tabcontent">
+<p><strong>Task 8 - R Version</strong></p>
+<p>We will tune our GBM model using the same approach we used for the RF. We will first find a good range for <code>max_depth</code> and then we will try to tune some other parameters. For a GBM model, conceptually speaking, the <strong>max_depth</strong> and <strong>ntrees</strong> are similar to the RF model. However, we will see that the values are smaller than the ones used for the RF.</p>
+<pre><code language="language-R" class="language-R">gbm_depth_grid &lt;- h2o.grid(algorithm = &#34;gbm&#34;, grid_id = &#34;gbm_depth_grid&#34;,
+                          seed=42, stopping_rounds= 5, stopping_metric=&#34;AUC&#34;, stopping_tolerance= 1e-4, 
+                          
+                          hyper_params = list(
+                            max_depth = c(3,4,5,6,7,8,9,10,12,13,15)
+                          ),
+                          
+                          search_criteria = list(
+                            strategy = &#34;Cartesian&#34;
+                          ),
+                          
+                          x=x, 
+                          y=y, 
+                          training_frame= train, 
+                          validation_frame = valid
+                          
+)
+</code></pre>
+<p>Print the models</p>
+<pre><code language="language-R" class="language-R">gbm_depth_grid_auc &lt;- h2o.getGrid(grid_id = &#34;gbm_depth_grid&#34;, sort_by = &#34;auc&#34;, decreasing = TRUE)
+as.data.frame(gbm_depth_grid_auc@summary_table)
+</code></pre>
+<p class="image-container"><img alt="r-gbm-depth-grid" src="img/7ed0bfc4409eaf39.jpg"></p>
+<p>Based on the grid search that we just did, the best <code>max_depth</code> is 6, but we will use the top 5 values for our next grid search. We will do a random grid search with a few parameters to see if we can get a better score.</p>
+<p><strong>Note:</strong> The search criteria will only allow the grid search to run for 15 minutes, if you would like to see the results of running it for longer, just increase the <code>max_runtime_secs</code> to a higher value and wait for the results.</p>
+<p>Here is the list of parameters that we are going to try to tune</p>
+<p>1. <code>sample_rate</code><strong>:</strong> Specify the row sampling rate (x-axis). (Note that this method is sample without replacement.) The range is 0.0 to 1.0, and this value defaults to 1. Higher values may improve training accuracy. Test accuracy improves when either columns or rows are sampled.</p>
+<p>2. <code>col_sample_rate</code><strong>:</strong> Specify the column sampling rate (y-axis). (Note that this method is sampling without replacement.) The range is 0.0 to 1.0.</p>
+<p>3. <code>col_sample_rate_per_tree</code><strong>:</strong> Specify the column sample rate per tree. This can be a value from 0.0 to 1.0 and defaults to 1. Note that it is multiplicative with col_sample_rate, so setting both parameters to 0.8, for example, results in 64% of columns being considered at any given node to split.</p>
+<p>4. <code>col_sample_rate_change_per_level</code><strong>:</strong> This option specifies to change the column sampling rate as a function of the depth in the tree.</p>
+<p>Find more parameters and more information about them at the <a href="http://docs.h2o.ai/h2o/latest-stable/h2o-docs/data-science/gbm.html#gradient-boosting-machine-gbm" target="_blank">Documentation - GBM Section</a> and also the <a href="https://h2o-release.s3.amazonaws.com/h2o/rel-wheeler/4/docs-website/h2o-py/docs/modeling.html#h2ogradientboostingestimator" target="_blank">Python Module</a></p>
+<pre><code language="language-R" class="language-R">gbm_sample_rate &lt;- seq(from=0.2, to=1, by=0.01)
+gbm_col_sample_rate &lt;- seq(from=0.2, to=1, by=0.01)
+gbm_col_sample_rate_per_tree &lt;- seq(from=0.2, to=1, by=0.01)
+gbm_col_sample_rate_change_per_level &lt;- seq(from=0.9, to=1.1, by=0.01)
+
+gbm_random_grid_3 &lt;- h2o.grid(algorithm = &#34;gbm&#34;, grid_id = &#34;gbm_random_search_3&#34;, ntrees=500, learn_rate=0.05,
+                           seed=42, stopping_rounds= 5, stopping_metric=&#34;AUC&#34;, stopping_tolerance= 1e-3, 
+                           
+                           hyper_params = list(
+                             max_depth = c(4, 5, 6, 7, 8),
+                             sample_rate = c(gbm_sample_rate),
+                             col_sample_rate = c(gbm_col_sample_rate),
+                             col_sample_rate_per_tree = c(gbm_col_sample_rate_per_tree),
+                             col_sample_rate_change_per_level = c(gbm_col_sample_rate_change_per_level)
+                             
+                           ),
+                           
+                           search_criteria = list(
+                             strategy = &#34;RandomDiscrete&#34;,
+                             max_runtime_secs=900,
+                             seed=42
+                           ),
+                           
+                           x=x, 
+                           y=y, 
+                           training_frame= train, 
+                           validation_frame = valid                          
+)
+</code></pre>
+<p>Print the results</p>
+<pre><code language="language-R" class="language-R">gbm_random_grid_auc &lt;- h2o.getGrid(grid_id = &#34;gbm_random_search_3&#34;, sort_by = &#34;auc&#34;, decreasing = TRUE)
+as.data.frame(gbm_random_grid_auc@summary_table)
+</code></pre>
+<p class="image-container"><img alt="r-gbm-random-grid" src="img/99ddce61866a26f4.jpg"></p>
+<p>With the quick random grid search that we just performed we were able to improve the AUC value to <strong>0.8615</strong>. Note that since the combination of possible models is so large, we could run the grid search for much longer to see if there are models that further improve the AUC. For the purpose of this tutorial, we will leave it at that, but feel free to modify the grid search, try to use a narrower range for the parameters based on the values we found, and run the grid search for a longer period of time and see if you can get a much better model than the one we just found.</p>
+<p>We will now print the AUC and F1 scores to see how the model performed:</p>
+<pre><code language="language-R" class="language-R">tuned_gbm &lt;- h2o.getModel(&#34;gbm_random_search_3_model_18&#34;)
+valid_tuned_gbm_perf &lt;- h2o.performance(tuned_gbm, valid)
+
+h2o.auc(valid_tuned_gbm_perf)
+h2o.F1(valid_tuned_gbm_perf, thresholds = 0.156707382927359)
+</code></pre>
+<p><strong>Output:</strong></p>
+<pre><code language="language-R" class="language-R">0.86149239172485
+0.318667098026529
+</code></pre>
+<p>We were able to get the highest validation AUC among the three models with our GBM. The model reached a <strong>0.8615</strong> AUC, while also improving the F1 to <strong>0.3187.</strong></p>
+<p>If you want to compared the results from the tuned model with the results from the default model, you can print the metrics from the default model:</p>
+<pre><code language="language-R" class="language-R">h2o.auc(valid_gbm_perf)
+h2o.F1(valid_gbm_perf, thresholds = 0.167245135230797)
+</code></pre>
+<p><strong>Output</strong></p>
+<pre><code language="language-R" class="language-R">0.854207745221616
+0.299480566003941
+</code></pre>
+<p>Let&#39;s take a look at the confusion matrix and see how are the misclassification errors from this model look like as well as the confusion matrix from the default model:</p>
+<pre><code language="language-R" class="language-R">h2o.confusionMatrix(valid_tuned_gbm_perf)
+h2o.confusionMatrix(valid_gbm_perf)
+</code></pre>
+<p class="image-container"><img alt="r-tuned-gbm-m8trix" src="img/b00d6e8519fee16.jpg"></p>
+<p>Even though the misclassification error for the TRUE class did not improved, the error for the FALSE class and the overall error did improve. However, with the tuning that we did, our GBM model was able to make more correct predictions for FALSE class, and the overall misclassification error was also improved.</p>
+<p>If you go to your Flow instance, you can check your best model. See the results for yourself and compare it to the results that we obtained from the default model. You can also look at the Variable importance plot. The variable importance plot seems very similar to the one we obtained for the default GBM model, except for the 5th predictor, which has changed. You can also look at the confusion matrix on both training and validation data.</p>
+<p>We will do the final test performance next.</p>
+</div>
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Task 10: Test Set Performance" duration="0">
+
+        <div class="tab">
+          <button class="tablinks active" onclick="changeTab(event, 'Python-task10')">Python</button>
+          <button class="tablinks" onclick="changeTab(event, 'R-task10')">R</button>
+          
+        </div>
+        <div id="Python-task10" class="tabcontent" style = "display: block">
+
+        <p>We are going to obtain the test performance of each of the best models. If you named your models the same as in this tutorial, then you should be able to just run the following code. Notice that we are just taking the best models and checking the model performance with the test set.</p>
+<pre><code language="language-python" class="language-python">glm_test_per = tuned_glm.model_performance(test)
+rf_test_per = tuned_rf.model_performance(test)
+gbm_test_per = tuned_gbm.model_performance(test)
+</code></pre>
+<p>You can now print any performance metric that you would like. Right now, we will just focus on the AUC, F1 Score, and the misclassification error from the confusion matrix.</p>
+<p>Print the test AUC of each model.</p>
+<pre><code language="language-python" class="language-python">print(&#34;GLM Test AUC: %.4f \nRF Test AUC: %.4f \nGBM Test AUC: %.4f &#34; % 
+      (glm_test_per.auc(), rf_test_per.auc(), gbm_test_per.auc()))
+</code></pre>
+<p><strong>Output:</strong></p>
+<pre><code language="language-python" class="language-python">GLM Test AUC: 0.8549 
+RF Test AUC: 0.8568 
+GBM Test AUC: 0.8646 
+</code></pre>
+<p>We were able to improve the AUC of all three models with the quick grid search that we did for all three models. We saw the greatest improvement with the RF model, as the default parameters were a little off from what we found to be good. All three AUC test scores are slightly higher than the validation scores but close enough to trust the validation score to tune all our models. And as it could be expected, the GBM had the best AUC, followed by the RF and, lastly, the GLM.</p>
+<p>Now print the F1 Score for each model,</p>
+<pre><code language="language-python" class="language-python">print (&#34;GLM Test F1 Score: &#34;, glm_test_per.F1())
+print (&#34;RF Test F1 Score: &#34;,  rf_test_per.F1())
+print (&#34;GBM Test F1 Score: &#34;,  gbm_test_per.F1())
+</code></pre>
+<p><strong>Output:</strong></p>
+<pre><code language="language-python" class="language-python">GLM Test F1 Score:  [[0.14371321518995825, 0.2863113897596656]]
+RF Test F1 Score:  [[0.12904492420714128, 0.29632958801498127]]
+GBM Test F1 Score:  [[0.15359908262968297, 0.30752071383046525]]
+</code></pre>
+<p>All three F1 scores slightly improved compared to the default value, and are very close to the validation scores. Now, and we will see shortly how that is reflected in the misclassification error. On the other hand, by tuning some parameters, we were able to get better AUC and better F1 scores for all the models.</p>
+<p>Lastly, we will take a look at the confusion matrix for each model:</p>
+<pre><code language="language-python" class="language-python">print (&#34;GLM Confusion Matrix: &#34;, glm_test_per.confusion_matrix())
+print (&#34;RF Confusion Matrix: &#34;,  rf_test_per.confusion_matrix())
+print (&#34;GBM Confusion Matrix &#34;,  gbm_test_per.confusion_matrix())
+</code></pre>
+<p class="image-container"><img alt="confusion-matrix-test" src="img/f5317dd299665108.jpg"></p>
+<p>Again, all three scores are very close to each other, but the best one is the GBM, second the GLM, and lastly, our RF. Although we see the largest error for the RF tuned model, we see that this model is the one that was able to better score the TRUE class, getting an even better score than the GBM, which is based on the other scores, our best model. The GBM had the best overall misclassification error as well as the best misclassification error for the FALSE class.</p>
+<p>For this dataset, we obtained a good AUC for all three models. We obtained an okay F1 Score, given that our dataset is highly imbalanced, and we also obtained a good overall misclassification error, although due to the given imbalanced data, the error for the TRUE label was not so low. Overall, The best model trained on our dataset was the GBM, followed by the RF, and lastly, the GLM.</p>
+</div>
+
+<div id="R-task10" class="tabcontent">
+
+<p><strong>Task 9 - R Version</strong> We are going to obtain the test performance of each of the best models. If you named your models the same as in this tutorial, then you should be able to just run the following code. Notice that we are just taking the best models and checking the model performance with the test set.</p>
+<pre><code language="language-R" class="language-R">tuned_glm_test_perf &lt;- h2o.performance(tuned_glm, test)
+tuned_rf_test_perf  &lt;- h2o.performance(tuned_rf, test)
+tuned_gbm_test_perf &lt;- h2o.performance(tuned_gbm, test)
+</code></pre>
+<p>You can now print any performance metric that you would like. Right now, we will just focus on the AUC, F1 Score, and the misclassification error from the confusion matrix.</p>
+<p>Print the test AUC of each model.</p>
+<pre><code language="language-R" class="language-R">h2o.auc(tuned_glm_test_perf)
+h2o.auc(tuned_rf_test_perf)
+h2o.auc(tuned_gbm_test_perf)
+</code></pre>
+<p><strong>Output:</strong></p>
+<pre><code language="language-R" class="language-R">0.85488571615415
+0.853117093803698
+0.865328967407859
+</code></pre>
+<p>All three AUC test scores are slightly higher than the validation scores but close enough to trust the validation score to tune all our models. The GBM had the best AUC, followed by the GLM and, lastly, the RF. Since the validation scores are very close to the test scores, we can assume a similar improvement was achived by tuning the models. If you would like to see the results for yourself, run the following lines of code:</p>
+<pre><code language="language-R" class="language-R">#Save the test performance of the default models
+def_glm_test_perf &lt;- h2o.performance(glm, test)
+def_rf_test_perf  &lt;- h2o.performance(rf, test)
+def_gbm_test_perf &lt;- h2o.performance(gbm, test)
+</code></pre>
+<p>And now print the test AUC of the default models</p>
+<pre><code language="language-R" class="language-R">h2o.auc(def_glm_test_perf)
+h2o.auc(def_rf_test_perf)
+h2o.auc(def_gbm_test_perf)
+</code></pre>
+<p>Now print the test F1 Score for each model,</p>
+<pre><code language="language-R" class="language-R">h2o.F1(tuned_glm_test_perf, thresholds =  0.119598339799305)
+h2o.F1(tuned_rf_test_perf, thresholds = 0.130063539285958)
+h2o.F1(tuned_gbm_test_perf, thresholds = 0.159335074403634)
+</code></pre>
+<p><strong>Output:</strong></p>
+<pre><code language="language-R" class="language-R">0.285562632696391
+0.285665412247691
+0.30675251774806
+</code></pre>
+<p>All three F1 scores slightly improved compared to the default value, and are very close to the validation scores. Now, and we will see shortly how that is reflected in the misclassification error. On the other hand, by tuning some parameters, we were able to get better AUC and better F1 scores for all the models.</p>
+<p>Lastly, we will take a look at the confusion matrix for each model:</p>
+<pre><code language="language-R" class="language-R">h2o.confusionMatrix(tuned_glm_test_perf)
+h2o.confusionMatrix(tuned_rf_test_perf)
+h2o.confusionMatrix(tuned_gbm_test_perf)
+</code></pre>
+<p class="image-container"><img alt="r-confusion-matrix-test" src="img/c0421b7a9a2a5c89.jpg"></p>
+<p>Again, all three scores are very close to each other, but the best one is the GBM, second the GLM, and lastly, our RF. Although we see the largest error for the RF tuned model, we see that this model is the one that was able to better score the TRUE class, getting an even better score than the GBM, which is based on the other scores, our best model. The GBM had the best overall misclassification error as well as the best misclassification error for the FALSE class.</p>
+<p>For this dataset, we obtained a good AUC for all three models. We obtained an okay F1 Score, given that our dataset is highly imbalanced, and we also obtained a good overall misclassification error, although due to the given imbalanced data, the error for the TRUE label was not so low. Overall, The best model trained on our dataset was the GBM, followed by the RF, and lastly, the GLM.</p>
+<h2 is-upgraded>Shut down Cluster</h2>
+<p>Once you are done with the tutorial, remember to shut down the cluster, unless you want to try the challenge after this task, in which case you can shut it down after you are done with the challenge.</p>
+<pre><code language="language-python" class="language-python">h2o.shutdown()
+</code></pre>
+</div>
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Task 11: Challenge" duration="0">
+        <p>After building three models, you are now familiar with the syntax of H2O-3 models. Now, try to build a Naive Bayes Classifier! We will help you by showing you how to import the model. The rest is up to you. You can do a 5 minutes grid search for <code>laplace,</code> <code>min_prob,</code> and <code>eps_prob.</code> Try it and see what&#39;s the best training, validation, and test AUC that you can get with the Naive Bayes Classifier and compare it to the models that we built in this tutorial. Please keep in mind that the results might not improve by much, so do not spend too much time with this model. We just want you to feel more comfortable initializing models and doing grid searches. A possible solution is shown in the Jupyter Notebook on Aquarium.</p>
+<pre><code language="language-python" class="language-python">from h2o.estimators import H2ONaiveBayesEstimator
+</code></pre>
+<p>Remember to shut down the cluster if you have not done so, or end the lab if you are done with the tutorial.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Appendix A: Getting Started with Aquarium" duration="0">
+        <h2 is-upgraded>How to Obtain a Two Hour Test Drive Session</h2>
+<p>Driverless AI Test Drive is a two-hour lab session that exists in H2O&#39;s Aquarium. Aquarium is the H2O cloud environment providing software access for workshops, conferences, and training. All Aquarium labs have a specific Lab Duration* to complete the lab.</p>
+<p>1. Go to the Aquarium site by copying and pasting the URL below to a browser of your choice or simply click on <a href="http://aquarium.h2o.ai/login" target="_blank">Aquarium</a>.</p>
+<pre><code language="language-html" class="language-html">http://aquarium.h2o.ai/login
+</code></pre>
+<p>2. This will take you to the Aquarium login page where you need to create an account.</p>
+<h2 is-upgraded>How to Create an Aquarium Account</h2>
+<p>1. Welcome to the Aquarium Login page!</p>
+<p class="image-container"><img alt="test-drive-login-page" src="img/1628337459485ebc.jpg"></p>
+<p>2. Select <strong>Create a new account</strong></p>
+<p class="image-container"><img alt="test-drive-create-a-new-account" src="img/7c2af561fc730bd7.jpg"></p>
+<p>3. Enter:</p>
+<ul>
+<li>First Name</li>
+<li>Last Name</li>
+<li>Organization (Could be your School)</li>
+<li>Country</li>
+<li>Email</li>
+</ul>
+<p>4. Click on <strong>Create account and email temporary password</strong> at the bottom of the page.</p>
+<p><strong>Note:</strong> A password will be sent to your email within minutes.</p>
+<p>5. Check your email for the password.</p>
+<h2 is-upgraded>How to Login</h2>
+<p>1. Enter the email you used to create the Aquarium password.</p>
+<p>2. Enter the password you received over email from Aquarium.</p>
+<p>3. Click on <strong>Login</strong>.</p>
+<p class="image-container"><img alt="test-drive-login" src="img/831fe9adf4b88621.jpg"></p>
+<h2 is-upgraded>Reset Password</h2>
+<p class="image-container"><img alt="resetting-password" src="img/997b67770397b569.jpg"></p>
+<p>1. If you forgot your password, select <strong>I forgot my password</strong>.</p>
+<p class="image-container"><img alt="reset-password" src="img/7aa562b820b8d75a.jpg"></p>
+<p>2. Enter your email, and another password will be emailed to you.</p>
+<h2 is-upgraded>How to Start and End your Lab Session</h2>
+<p>1. After a successful login, click on <strong>Browse Labs,</strong> and you should see a list like the one shown below. Look for the lab <code>H2O-3 and Sparkling Water Test Drive,</code> <code>Lab ID:2</code></p>
+<p class="image-container"><img alt="click-lab-2" src="img/967b54d2fc04a978.jpg"></p>
+<p>2. Click on <strong>Start Lab</strong> and wait for your instance to be ready.</p>
+<p class="image-container"><img alt="start-lab" src="img/1424084d468bb634.jpg"></p>
+<p>3. Once your instance is ready, you will see the following screen</p>
+<p class="image-container"><img alt="labs-urls" src="img/745d21efb7c0b4fb.jpg"></p>
+<p><strong>Note:</strong></p>
+<ul>
+<li>End Lab</li>
+<li>The time remaining for the instance</li>
+<li>Lab URLs</li>
+</ul>
+<p>4. Once the lab has started, you will see a link to a Jupyter Notebook. Click on the <strong>Jupyter URL,</strong> and that will take you to the following screen.</p>
+<p class="image-container"><img alt="jupyter-notebook" src="img/781d4e347a43dad3.jpg"></p>
+<p>Next, click on the tutorials folder. In this folder, you will find all the tutorials from our learning path. For this tutorial, click on <code>Introduction to Machine Learning with H2O - Part 1</code> and follow along. If you are working on a different tutorial, just find the specific tutorial and click on it. The Jupyter Notebooks have the same name as the tutorials; that way, it can be easier to find them.</p>
+<p>If you want to access your Flow instance, go back to your Aquarium Lab, and click on the <strong>Flow URL.</strong></p>
+<p>Once you are done, you can download your Notebook with your results. Remember that after the two hours, all your progress will be lost.</p>
+<p>5. If you need end your lab, just click on <strong>End Lab.</strong> Please keep in mind that this will terminate your instance, and any work that you have previously done, will be deleted.</p>
+<h2 is-upgraded>Logout</h2>
+<p>1. To logout, click on the box on the top-right corner of the page and select logout.</p>
+<p class="image-container"><img alt="test-drive-logout" src="img/56cf244102489056.jpg"></p>
+<h2 is-upgraded>Questions</h2>
+<p>Have any questions about Aquarium? Sign up for H2O&#39;s Slack Community and post your questions under the #cloud channel. Members of the H2O community will respond as soon as they are available.</p>
+<p>Feel free to post any questions you may have in the Discussion tab.</p>
+<p>If you do not have H2O-3, you can follow the installation guide on the <a href="http://docs.h2o.ai/h2o/latest-stable/h2o-docs/downloading.html" target="_blank">H2O Documentation page</a></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Next Steps" duration="0">
+        <p>Please make sure you check our Regression tutorial - <a href="https://training.h2o.ai/products/introduction-to-machine-learning-with-h2o-regression" target="_blank">Introduction to Machine Learning with H2O-3 - Regression</a>.</p>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>
