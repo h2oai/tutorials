@@ -211,7 +211,7 @@ Now that we are in the PySpark interactive terminal, we will import some depende
 ```java
 # First, specify the dependency
 import os.path
-from pysparkling.ml import H2OMOJOPipelineModel, H2OMOJOSettings
+from pysparkling.ml import H2OMOJOPipelineModel,H2OMOJOSettings
 ```
 
 We configure the H2O MOJO Settings to ensure the output columns are named properly and then load the MOJO scoring pipeline:
@@ -270,7 +270,7 @@ Now that we are in the Spark interactive terminal, we will import some dependenc
 
 ```java
 // First, specify the dependency
-import ai.h2o.sparkling.ml.models.{H2OMOJOPipelineModel, H2OMOJOSettings}
+import ai.h2o.sparkling.ml.models.{H2OMOJOPipelineModel,H2OMOJOSettings}
 ```
 
 We configure the H2O MOJO Settings to ensure the output columns are named properly and then load the MOJO scoring pipeline:
