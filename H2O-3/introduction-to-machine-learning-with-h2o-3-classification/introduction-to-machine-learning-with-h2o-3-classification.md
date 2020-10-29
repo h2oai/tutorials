@@ -1198,4 +1198,4 @@ If you do not have H2O-3, you can follow the installation guide on the [H2O Docu
 
 ## Next Steps
 
-Please make sure you check our Regression tutorial - [Introduction to Machine Learning with H2O-3 - Regression](https://training.h2o.ai/products/introduction-to-machine-learning-with-h2o-regression). 
+Please make sure you check our Regression tutorial - [Introduction to Machine Learning with H2O-3 - Regression](https://training.h2o.ai/products/1b-introduction-to-machine-learning-with-h2o-3-regression). 

@@ -19,10 +19,10 @@
 In this tutorial, we will continue using the subset of the Freddie Mac Single-Family dataset to try to predict the interest rate for a loan using H2O’s XGBoost and Deep Learning models. We will explore how to use these models for a regression problem, and we will also demonstrate how to use H2O’s grid search to tune the hyper-parameters of both models. 
 
 ## Prerequisites 
-- Completion of [Introduction to Machine Learning with H2O-3 - Classification](https://training.h2o.ai/products/introduction-to-machine-learning-with-h2o-classification) tutorial. 
+- Completion of [Introduction to Machine Learning with H2O-3 - Classification](https://training.h2o.ai/products/1a-introduction-to-machine-learning-with-h2o-3-classification) tutorial. 
 - Some basic knowledge of machine learning. 
 - Familiarity with Python. 
-- An Aquarium account. If you do not have an Aquarium account, please refer to [Appendix A of Introduction to Machine Learning with H2O-3 - Classification](https://training.h2o.ai/products/introduction-to-machine-learning-with-h2o-classification)
+- An Aquarium account. If you do not have an Aquarium account, please refer to [Appendix A of Introduction to Machine Learning with H2O-3 - Classification](https://training.h2o.ai/products/1a-introduction-to-machine-learning-with-h2o-3-classification)
 
 **Note:** We recommend that you follow along on Aquarium, our cloud instance, to get similar results to the ones shown in this tutorial. We also recommend that you go over the concepts section in Task 2 before starting your lab; that way, your instance is not running while you are going over the concepts. You can also use your personal machine with H2O-3, but keep in mind that you will see different results.
 
@@ -816,4 +816,4 @@ h2o.cluster().shutdown()
 We tuned the Deep Learning model with two hidden layers with 100 neurons in each layer. Try to tune a Deep Learning model on your own with two layers, or more, and with the number of neurons that you want. You can follow the same procedures as before, but if you wanted to have models wiht three hidden layers you will have to use something like `[165,165, 165],` and for some parameters such as the dropout ratios, you will need to also have two values, such as `[0.01, 0.01, 0.01]`, and so on. If you attempt the challenge, you can download your Jupyter Notebook with your work, and just restart the lab; that way, you have at least 2 hours to tune the new model. You can find our grid search for a neural network with two layers and 165 neurons in each layer at the end of our Jupyter Notebook in Aquarium. Once you’re done with the tutorial, shut down your cluster, or end the lab.
 
 ## Next steps
-Please make sure you check out our H2O AutoML Tutorial - [Introduction to Machine Learning with H2O-3 - AutoML](https://training.h2o.ai/products/introduction-to-machine-learning-with-h2o-part-3)
+Please make sure you check out our H2O AutoML Tutorial - [Introduction to Machine Learning with H2O-3 - AutoML](https://training.h2o.ai/products/1c-introduction-to-machine-learning-with-h2o-3-automl)

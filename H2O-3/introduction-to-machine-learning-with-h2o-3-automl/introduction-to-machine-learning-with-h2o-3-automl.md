@@ -18,15 +18,15 @@
 In this tutorial, we will use the subset of the loan-level dataset from Fannie Mae and Freddie Mac. Firstly, we will solve a binary classification problem (predicting if a loan is delinquent or not). Then, we will explore a regression use-case (predicting interest rates on the same dataset). We will try to do both use-cases using Automatic Machine Learning (AutoML), and we will do so using the H2O-3 Python module in a Jupyter Notebook and also in Flow. 
 
 ## Prerequisites 
-- Completion of tutorials [Introduction to Machine Learning with H2O-3 - Classification](https://training.h2o.ai/products/introduction-to-machine-learning-with-h2o-classification) and [Introduction to Machine Learning with H2O-3 - Regression.](https://training.h2o.ai/products/introduction-to-machine-learning-with-h2o-regression)
+- Completion of tutorials [Introduction to Machine Learning with H2O-3 - Classification](https://training.h2o.ai/products/1a-introduction-to-machine-learning-with-h2o-3-classification) and [Introduction to Machine Learning with H2O-3 - Regression.](https://training.h2o.ai/products/1b-introduction-to-machine-learning-with-h2o-3-regression)
 - Some basic knowledge of machine learning. 
 - Familiarity with Python. 
-- An Aquarium account. If you do not have an Aquarium account, please refer to [Appendix A of Introduction to Machine Learning with H2O-3 - Classification](https://training.h2o.ai/products/introduction-to-machine-learning-with-h2o-classification)
+- An Aquarium account. If you do not have an Aquarium account, please refer to [Appendix A of Introduction to Machine Learning with H2O-3 - Classification](https://training.h2o.ai/products/1a-introduction-to-machine-learning-with-h2o-3-classification)
 
 **Note:** This tutorial was completed in a cloud environment. If you want to get the same results in a similar time manner, please follow this tutorial in Aquarium. Otherwise, you can use your own machine but you will get different results, for example, it might take you longer to train the models for the classification part, or for the regression part, you might not get the same nunmber of models. 
 
 ## Task 1: Initial Setup
-In this tutorial, we are using a smaller subset of the Freddie Mac Single-Family dataset that we used for the past two tutorials. If you have not done so, complete [Introduction to Machine Learning with H2O-3 - Classification](https://training.h2o.ai/products/introduction-to-machine-learning-with-h2o-classification) and [Introduction to Machine Learning with H2O-3 - Regression](https://training.h2o.ai/products/introduction-to-machine-learning-with-h2o-regression) as this tutorial is a continuation of both of them. 
+In this tutorial, we are using a smaller subset of the Freddie Mac Single-Family dataset that we used for the past two tutorials. If you have not done so, complete [Introduction to Machine Learning with H2O-3 - Classification](https://training.h2o.ai/products/1a-introduction-to-machine-learning-with-h2o-3-classification) and [Introduction to Machine Learning with H2O-3 - Regression](https://training.h2o.ai/products/1b-introduction-to-machine-learning-with-h2o-3-regression) as this tutorial is a continuation of both of them. 
 
 We will use H2O AutoML to make the same predictions as in the previous two tutorials:
 - Predict whether a mortgage loan will be delinquent or not 
