@@ -76,7 +76,7 @@ mkdir $HOME/dai-mojo-java/
 </code></pre>
 <h2 is-upgraded>Set Up Driverless AI MOJO Requirements</h2>
 <p>Download MOJO Scoring Pipeline</p>
-<p>1. If you have not downloaded the MOJO Scoring Pipeline, go to <a href="https://training.h2o.ai/products/tutorial-4b-scoring-pipeline-deployment-templates" target="_blank">Tutorial 4B: Scoring Pipeline Deployment Templates</a>, then go to Task 1: Set Up Environment, then <strong>Download MOJO Scoring Pipeline</strong> to download it. When finished, come back to this tutorial.</p>
+<p>1. If you have not downloaded the MOJO Scoring Pipeline, go to <a href="https://training.h2o.ai/products/tutorial-4b-scoring-pipeline-deployment-templates" target="_blank">Tutorial 4B: Scoring Pipeline Deployment Templates</a>, then go to <strong>Task 1: Set Up Environment</strong>, then <strong>Download MOJO Scoring Pipeline</strong> to download it. When finished, come back to this tutorial.</p>
 <p>2. Move the <strong>mojo.zip</strong> file to <code>dai-mojo-java/</code> folder and then extract it:</p>
 <pre><code language="language-bash" class="language-bash">cd $HOME/dai-mojo-java/
 mv $HOME/Downloads/mojo.zip .
@@ -169,7 +169,7 @@ export EXAMPLE_CSV_FILE=&#34;$HOME/dai-mojo-java/mojo-pipeline/example.csv&#34;
 <p>Now that we are in the PySpark interactive terminal, we will import some dependencies:</p>
 <pre><code language="language-java" class="language-java"># First, specify the dependency
 import os.path
-from pysparkling.ml import H2OMOJOPipelineModel, H2OMOJOSettings
+from pysparkling.ml import H2OMOJOPipelineModel,H2OMOJOSettings
 </code></pre>
 <p>We configure the H2O MOJO Settings to ensure the output columns are named properly and then load the MOJO scoring pipeline:</p>
 <pre><code language="language-java" class="language-java"># The &#39;namedMojoOutputColumns&#39; option ensures the output columns are named properly.
@@ -205,7 +205,7 @@ quit()
 <p class="image-container"><img alt="batch-scoring-via-sparkling-water-2" src="img/4fe644ece6cdd609.jpg"></p>
 <p>Now that we are in the Spark interactive terminal, we will import some dependencies:</p>
 <pre><code language="language-java" class="language-java">// First, specify the dependency
-import ai.h2o.sparkling.ml.models.{H2OMOJOPipelineModel, H2OMOJOSettings}
+import ai.h2o.sparkling.ml.models.{H2OMOJOPipelineModel,H2OMOJOSettings}
 </code></pre>
 <p>We configure the H2O MOJO Settings to ensure the output columns are named properly and then load the MOJO scoring pipeline:</p>
 <pre><code language="language-java" class="language-java">// The &#39;namedMojoOutputColumns&#39; option ensures the output columns are named properly.
@@ -262,25 +262,24 @@ cp $HOME/dai-mojo-java/mojo-pipeline/pipeline.mojo .
 <p>In the H2O documentation <a href="http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/scoring-mojo-scoring-pipeline.html" target="_blank">Driverless AI MOJO Scoring Pipeline - Java Runtime</a>, they give us a Java code example to predict a CAPSULE value from an individual row of data, we need to modify this code for our Hydraulic System data. Create a Java file called <strong>ExecuteDaiMojo.java</strong>.</p>
 <p>Based on our Hydraulic System <strong>example.csv</strong> data, we can take the header row and a row of data to replace the data in rowBuilder in the Java code example. So, the Java code example becomes:</p>
 <pre><code language="language-java" class="language-java">import java.io.IOException;
- 
 import ai.h2o.mojos.runtime.MojoPipeline;
 import ai.h2o.mojos.runtime.frame.MojoFrame;
 import ai.h2o.mojos.runtime.frame.MojoFrameBuilder;
 import ai.h2o.mojos.runtime.frame.MojoRowBuilder;
-import ai.h2o.mojos.runtime.utils.SimpleCSV;
 import ai.h2o.mojos.runtime.lic.LicenseException;
- 
+import ai.h2o.mojos.runtime.utils.CsvWritingBatchHandler;
+import com.opencsv.CSVWriter;
+import java.io.BufferedWriter;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 public class ExecuteDaiMojo {
- 
  public static void main(String[] args) throws IOException, LicenseException {
-   // Load model and csv
+    // Load model and csv
    String homePath = System.getProperty(&#34;user.home&#34;);
-   MojoPipeline model = MojoPipeline.loadFrom(homePath + &#34;/dai-mojo-java/mojo-pipeline/pipeline.mojo&#34;);
- 
+   final MojoPipeline model = MojoPipeline.loadFrom(homePath + &#34;/dai-mojo-java/mojo-pipeline/pipeline.mojo&#34;);
    // Get and fill the input columns
-   MojoFrameBuilder frameBuilder = model.getInputFrameBuilder();
-   MojoRowBuilder rowBuilder = frameBuilder.getMojoRowBuilder();
- 
+    final MojoFrameBuilder frameBuilder = model.getInputFrameBuilder();
+    final MojoRowBuilder rowBuilder = frameBuilder.getMojoRowBuilder();
    rowBuilder.setValue(&#34;psa_bar&#34;, &#34;155.6405792236328&#34;);
    rowBuilder.setValue(&#34;psb_bar&#34;, &#34;104.91106414794922&#34;);
    rowBuilder.setValue(&#34;psc_bar&#34;, &#34;0.862698495388031&#34;);
@@ -300,18 +299,16 @@ public class ExecuteDaiMojo {
    rowBuilder.setValue(&#34;cool_pwr_kw&#34;, &#34;1.3104666471481323&#34;);
    rowBuilder.setValue(&#34;eff_fact_pct&#34;, &#34;29.127466201782227&#34;);
    frameBuilder.addRow(rowBuilder);
- 
-   // Create a frame which can be transformed by MOJO pipeline
-   MojoFrame iframe = frameBuilder.toMojoFrame();
- 
-   // Transform input frame by MOJO pipeline
-   MojoFrame oframe = model.transform(iframe);
-   // `MojoFrame.debug()` can be used to view the contents of a Frame
-   // oframe.debug();
- 
-   // Output prediction as CSV
-   SimpleCSV outCsv = SimpleCSV.read(oframe);
-   outCsv.write(System.out);
+  // Create a frame which can be transformed by MOJO pipeline
+  final MojoFrame iframe = frameBuilder.toMojoFrame();
+  // Transform input frame by MOJO pipeline
+  final MojoFrame oframe = model.transform(iframe);
+  // `MojoFrame.debug()` can be used to view the contents of a Frame
+  // oframe.debug();
+  // Output prediction as CSV
+  final Writer writer = new BufferedWriter(new OutputStreamWriter(System.out));
+  final CSVWriter csvWriter = new CSVWriter(writer, &#39;\n&#39;, &#39;&#34;&#39;, &#39;&#34;&#39;);
+  CsvWritingBatchHandler.csvWriteFrame(csvWriter, oframe, true);
  }
 }
 </code></pre>
@@ -324,7 +321,13 @@ public class ExecuteDaiMojo {
 <p><strong>Note</strong>: Windows users run</p>
 <pre><code language="language-bash" class="language-bash">java -Dai.h2o.mojos.runtime.license.file=license.sig -cp .;mojo2-runtime.jar ExecuteDaiMojo
 </code></pre>
-<p class="image-container"><img alt="interactive-scoring-via-custom-java-program-1" src="img/a5b3df61e291fb52.jpg"></p>
+<p class="image-container"><img alt="interactive-scoring-via-custom-java-program-1" src="img/fa00e6b6e38d36a1.jpg"></p>
+<p><em>Note:</em></p>
+<ul>
+<li>cool_cond_y.3 =  0.28380922973155975</li>
+<li>cool_cond_y.20 = 0.14792289088169733</li>
+<li>cool_cond_y.100 = 0.5682678818702698</li>
+</ul>
 <p>The MOJO predicted the cooling condition for the individual row of Hydraulic System test data we passed to it. You should receive classification probabilities for cool_cond_y.3, cool_cond_y.20, and cool_cond_y.100. The 3 means the Hydraulic cooler is close to operating at total failure, 20 means it is operating at reduced efficiency and 100 means it is operating at full efficiency.</p>
 <p>So that is how you execute the MOJO scoring pipeline to do interactive scoring using Java directly.</p>
 <h2 is-upgraded>Resources</h2>
@@ -346,9 +349,9 @@ public class ExecuteDaiMojo {
     
       <google-codelab-step label="Next Steps" duration="0">
         <ul>
-<li><a href="https://training.h2o.ai/products/tutorial-4d-scoring-pipeline-execution-runtime-in-c" target="_blank">Scoring Pipeline Deployment in C++ Runtime</a></li>
-<li><a href="https://training.h2o.ai/products/tutorial-4e-scoring-pipeline-deployment-in-python-runtime" target="_blank">Scoring Pipeline Deployment in Python Runtime</a></li>
-<li><a href="https://training.h2o.ai/products/tutorial-4f-scoring-pipeline-deployment-to-apache-nifi" target="_blank">Scoring Pipeline Deployment to Apache NiFi</a></li>
+<li><a href="https://training.h2o.ai/products/tutorial-4d-scoring-pipeline-execution-runtime-in-c" target="_blank">Tutorial 4D: Scoring Pipeline Deployment in C++ Runtime</a></li>
+<li><a href="https://training.h2o.ai/products/tutorial-4e-scoring-pipeline-deployment-in-python-runtime" target="_blank">Tutorial 4E: Scoring Pipeline Deployment in Python Runtime</a></li>
+<li><a href="https://training.h2o.ai/products/tutorial-4f-scoring-pipeline-deployment-to-apache-nifi" target="_blank">Tutorial 4F: Scoring Pipeline Deployment to Apache NiFi</a></li>
 </ul>
 
 

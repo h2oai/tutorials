@@ -1,0 +1,25 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2020-10-29T16:25:27-07:00",
+  "id": "ml-foundations-module-6-session-1-introduction-to-machine-learning-interpretability-with-driverless-ai",
+  "duration": 0,
+  "title": "ML Foundations: Module 6 Session 1: Introduction to Machine Learning Interpretability with Driverless AI",
+  "summary": "Check the list",
+  "source": "/Users/falvarenga/Desktop/ml-foundations-for-html/ml-foundations-module-6-session-1-introduction-to-machine-learning-interpretability-with-driverless-ai.md",
+  "theme": "",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "driverless"
+  ],
+  "tags": [
+    "automl",
+    "driverlessai",
+    "supervised"
+  ],
+  "url": "ml-foundations-module-6-session-1-introduction-to-machine-learning-interpretability-with-driverless-ai"
+}
