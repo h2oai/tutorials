@@ -14,7 +14,7 @@ In this assignment, you will complete three of [H2O.ai's](https://www.h2o.ai/) M
 - Basic knowledge of Machine Learning and Statistics
 
 - An [Aquarium](https://aquarium.h2o.ai/) account to access H2O.ai’s software on the AWS Cloud. 
-   - Need an [Aquarium](https://aquarium.h2o.ai/) account? Follow the instructions in the next section **Task 1 Create An Account & Log Into Aquarium** to create an account
+   - Need an [Aquarium](https://aquarium.h2o.ai/) account? Follow the instructions in the next section **Task 1** to create an account
  
 **Note: Aquarium's Driverless AI lab has a license key built-in, so you don't need to request one to use it. Each Driverless AI lab instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore Driverless AI, you can always launch another lab instance or reach out to our sales team via the [contact us form](https://www.h2o.ai/company/contact/).**
 
@@ -24,6 +24,7 @@ In this assignment, you will complete three of [H2O.ai's](https://www.h2o.ai/) M
 Navigate to the [Aquarium](https://aquarium.h2o.ai/login) home page: 
 
 1\. Create a new account (if you don’t have one) AND/OR
+
 2\. Log into the site with your credentials
 
 
@@ -33,7 +34,7 @@ Navigate to the [Aquarium](https://aquarium.h2o.ai/login) home page:
 Once you’ve created your account on Aquarium and/or logged into the site, open and complete the following tutorial: [Tutorial 4A: Scoring Pipeline Deployment Introduction](https://training.h2o.ai/products/tutorial-4a-scoring-pipeline-deployment-introduction)
 
 - In this exercise, you will follow the instructions provided in the above tutorial.
-   - You do also have the option to complete the quiz associated with that tutorial to earn the tutorial badge.
+   - You also can complete the quiz associated with that tutorial to earn the tutorial badge.
 
 *Note: The questions for the quiz for Module 7: Session 1 will be not derived from this tutorial, but steps from Tutorial 4C will reference parts of this tutorial.*
 
@@ -43,7 +44,7 @@ Once you’ve created your account on Aquarium and/or logged into the site, open
 Next open and complete the following tutorial: [Tutorial 4B: Scoring Pipeline Deployment Templates](https://training.h2o.ai/products/tutorial-4b-scoring-pipeline-deployment-templates)
 
 - In this exercise, you will follow the instructions provided in the above tutorial.
-   - You do also have the option to complete the quiz associated with that tutorial to earn the tutorial badge.
+   - You also can complete the quiz associated with that tutorial to earn the tutorial badge.
  
 *Note: The questions for the quiz for Module 7: Session 1 will be not derived from this tutorial, but steps from Tutorial 4C will reference parts of this tutorial.*
 
