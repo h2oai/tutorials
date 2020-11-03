@@ -12,7 +12,7 @@ In this assignment, you will go through the H2O-3 [model explainability toolkit 
 
 ### Task 1: Model Explainability Tutorial
 
-1\. Check out the tutorial notebook on GitHub: https://github.com/h2oai/h2o-tutorials/blob/master/tutorials/explainability/Explain-wine.ipynb
+1\. Check out the tutorial notebook on GitHub: [https://github.com/h2oai/h2o-tutorials/blob/master/tutorials/explainability/Explain-wine.ipynb](https://github.com/h2oai/h2o-tutorials/blob/master/tutorials/explainability/Explain-wine.ipynb)
 
 2\. Go through all the steps and make sure you are familiar with the new functions like explain(...) and explain_row(...). More importantly, try to understand the differences between global explanations and local explanations.
 

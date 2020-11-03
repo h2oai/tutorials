@@ -67,7 +67,7 @@ You will need the following to be able to do this tutorial:
 This dataset contains information about credit card clients in Taiwan from April 2005 to September 2005. Features include demographic factors, repayment statuses, history of payment, bill statements and default payments.
 
 
-The data set comes from the [UCI Machine Learning Repository Irvine, CA: University of California, School of Information and Computer Science](hhttps://archive.ics.uci.edu/ml/datasets/default+of+credit+card+clients#)
+The data set comes from the [UCI Machine Learning Repository Irvine, CA: University of California, School of Information and Computer Science](https://archive.ics.uci.edu/ml/datasets/default+of+credit+card+clients#)
 
 This dataset has a total 25 Features(columns) and 30,000 Clients(rows).
 
