@@ -1,0 +1,26 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2020-11-02T16:18:49-08:00",
+  "id": "ml-foundations-module-6-session-2-explainable-ai-with-h2o-3",
+  "duration": 0,
+  "title": "ML Foundations: Module 6 Session 2: Explainable AI with H2O-3",
+  "summary": "Check the list",
+  "source": "/Users/sperez/Desktop/ml-foundations-module-6-session-2-explainable-ai-with-h2o-3/ml-foundations-module-6-session-2-explainable-ai-with-h2o-3.md",
+  "theme": "",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "driverless"
+  ],
+  "tags": [
+    "automl",
+    "driverlessai",
+    "h2o-3",
+    "model-explainability"
+  ],
+  "url": "ml-foundations-module-6-session-2-explainable-ai-with-h2o-3"
+}
