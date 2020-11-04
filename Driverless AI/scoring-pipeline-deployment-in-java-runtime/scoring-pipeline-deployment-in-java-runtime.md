@@ -334,7 +334,7 @@ The mojo can also predict a Hydraulic System cooling condition for each individu
 Create a **MojoDeployment** folder and go into it:
 
 ```bash
-cd $HOME/dai-mojo-java/apps/
+cd $HOME/dai-mojo-java
 mkdir MojoDeployment
 cd MojoDeployment
 ```
