@@ -549,7 +549,7 @@ Does your list of events look different than the image above? If yes, that is ex
 
 **Figure 34:** Confirm you would like Model Deployed to Dev Environment 
 
-You should see the **Environment** for **hydraulic_model_1** deployed to the **DEV environment**. The **Deployments** table will also update with this model deployed to **DEV** environment. The model's deployment **state** will go from "Deployment data not found, Preparing, Launching to Healthy." As you may have read in the concepts section, deploying the ML model to an development environment, especially a production environment is very difficult to do for many people and organizations. You just did it in about 3 clicks! Congratulations!
+You should see the **Environment** for **hydraulic_model_1** deployed to the **DEV environment**. The **Deployments** table will also update with this model deployed to **DEV** environment. The model's deployment **state** will go from "Deployment data not found, Preparing, Launching to Healthy." As you may have read in the concepts section, deploying the ML model to a development environment, especially a production environment is very difficult to do for many people and organizations. You just did it in about 3 clicks! Congratulations!
 
 ![model-deployed-to-dev](./assets/model-deployed-to-dev.jpg)
 
@@ -625,7 +625,7 @@ Paste **Sample Request** into your terminal and press enter:
 
 **Figure 39:** Result after **Executing Hydraulic System Model Sample Request**
 
-You can see the result is a classification for hydraulic cooling condition 3, 20 and 100.
+You can see the result is a classification for hydraulic cooling condition 3, 20, and 100.
 
 ### Deep Dive and Resources 
 
