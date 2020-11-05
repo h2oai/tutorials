@@ -5,7 +5,7 @@
 - [Objective](#objective)
 - [Prerequisites](#prerequisites)
 - [Task 1: Explore H2O.ai Platform Studio](#task-1-explore-h2oai-platform-studio)
-- [Task 2: Driverless AI Project Shared to MLOps](#task-2-driverless-ai-project-shared-to-mlops)
+- [Task 2: Shared Driverless AI Project to MLOps](#task-2-shared-driverless-ai-project-to-mlops)
 - [Task 3: Machine Learning Operations Concepts](#task-3-machine-learning-operations-concepts)
 - [Task 4: Tour of MLOps UI](#task-4-tour-of-mlops-ui)
 - [Task 5: Interactive and Batch Scoring via MLOps Model Deployment](#task-5-interactive-and-batch-scoring-via-mlops-model-deployment)
@@ -56,7 +56,7 @@ You can also **launch** MLOps and another new tab will open.
 
 **Figure 2:** H2O.ai Platform Studio Splash Page for Launching Driverless AI and/or MLOps
 
-## Task 2: Driverless AI Project Shared to MLOps
+## Task 2: Shared Driverless AI Project to MLOps
 
 ### Open MLOps to See Project
 
@@ -70,7 +70,7 @@ Note: the MLOps dashboard already has the Driverless AI hydraulic system project
 
 If you want to access the project, you need to access Driverless AI from the H2O.ai Platform Studio Splash Page. Note: the prebuilt project was built under the following credentials: ds1/ds1. Accordingly, you will need to access Driverless AI with such credentials to see the project. 
 
-If you have not launched MLOps from the H2O.ai Platform Studio Splash page, then follow the following instructions:
+If you have not launched MLOps from the H2O.ai Platform Studio Splash page, proceed to the following instructions:
 
 1\. Click **Launch** MLOps for another new tab to open.
 
