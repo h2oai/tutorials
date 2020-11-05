@@ -1,0 +1,26 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2020-11-04T15:43:18-08:00",
+  "id": "ml-foundations-module-7-session-1-deploying-models-with-h2o-ai",
+  "duration": 0,
+  "title": "ML Foundations: Module 7 Session 1: Deploying Models with H2O.ai",
+  "summary": "Check the list",
+  "source": "/Users/sperez/Desktop/ml-foundations-module-7-session-1-deploying-models-with-h2o-ai/ml-foundations-module-7-session-1-deploying-models-with-h2o-ai.md",
+  "theme": "",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "driverless"
+  ],
+  "tags": [
+    "aquarium",
+    "automl",
+    "driverlessai",
+    "scoring-pipeline-deployment"
+  ],
+  "url": "ml-foundations-module-7-session-1-deploying-models-with-h2o-ai"
+}
