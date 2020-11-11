@@ -5,7 +5,7 @@
 - [Objective](#objective)
 - [Prerequisites](#prerequisites)
 - [Task 1: Explore H2O.ai Platform Studio](#task-1-explore-h2oai-platform-studio)
-- [Task 2: Create Driverless AI Project and Share it with MLOps](#task-2-create-driverless-ai-project-and-share-it-with-mlops)
+- [Task 2: Shared Driverless AI Project to MLOps](#task-2-shared-driverless-ai-project-to-mlops)
 - [Task 3: Machine Learning Operations Concepts](#task-3-machine-learning-operations-concepts)
 - [Task 4: Tour of MLOps UI](#task-4-tour-of-mlops-ui)
 - [Task 5: Interactive and Batch Scoring via MLOps Model Deployment](#task-5-interactive-and-batch-scoring-via-mlops-model-deployment)
@@ -56,111 +56,7 @@ You can also **launch** MLOps and another new tab will open.
 
 **Figure 2:** H2O.ai Platform Studio Splash Page for Launching Driverless AI and/or MLOps
 
-## Task 2: Create Driverless AI Project and Share it with MLOps
-
-### Open Driverless AI from H2O.ai Platform Studio
-
-<!-- open-driverless-ai GIF runs at 15 seconds -->
-
-![open-driverless-ai](./assets/open-driverless-ai.gif)
-
-**Figure 3:** Open Driverless AI as `ds1` user from H2O.ai Platform Studio
-
-1\. For H2O.ai Platform Studio in Driverless AI box, click **Launch**
-
-2\. Scroll down Driverless AI end user software license agreement, click **I Agree To These Terms**.
-
-3\. Click **Login with OpenID**
-
-4\. Enter `ds1/ds1` for username/password
-
-5\. Click **Log In**
-
-### Import Hydraulic System Dataset
-
-Driverless AI brings us to the Datasets page.
-
-1\. Download the **[Hydraulic Data Recipe](https://raw.githubusercontent.com/james94/driverlessai-recipes/jm/hydraulic-data-recipe/data/hydraulic-data.py)** to your local machine.
-
-2\. Click **+Add Dataset (Or Drag & Drop)**
-
-3\. Click **Data Recipe URL**
-
-![upload-data-recipe](./assets/upload-data-recipe.jpg)
-
-**Figure 4:** Upload Data Recipe
-
-4\. Search for **hydraulic-data.py** recipe file, then click **Open**
-
-![search-for-hydraulic-data-py](./assets/search-for-hydraulic-data-py.jpg)
-
-**Figure 5:** Hydraulic Data Recipe File
-
-Driverless AI executes the hydraulic-data.py recipe to import the data into datasets.
-
-![hydraulic-system-data-imported](./assets/hydraulic-system-data-imported.jpg)
-
-**Figure 6:** Import Hydraulic System Data via Data Recipe Execution
-
-### Split Hydraulic System Data into Train & Test Set
-
-<!-- split-hydraulic-data GIF runs at 20 seconds -->
-
-![split-hydraulic-data](./assets/split-hydraulic-data.gif)
-
-**Figure 7:** Split Hydraulic System Data into Train and Test Set
-
-1\. Click on **hydraulic_system_data.csv** and choose **Split**
-
-2\. For **output name 1**, type `hydraulic_train_data`
-
-3\. For **output name 2**, type `hydraulic_test_data`
-
-4\. For **target column**, select `cool_cond_y`
-
-5\. For **select split ratio**, type `0.75`
-
-6\. Click **save**
-
-### Launch Hydraulic Model Experiment for Condition Classification
-
-<!-- launch-hydraulic-model-experiment GIF runs at 20 seconds -->
-
-![launch-hydraulic-model-experiment](./assets/launch-hydraulic-model-experiment.gif)
-
-**Figure 8:** Launch Driverless AI Hydraulic Model Experiment
-
-1\. Select **predict** for **hydraulic_train_data**
-
-2\. A window titled `First time using Driverless AI? Click Yes to get a tour!` appears, click **Not Now** to ignore the tour.
-
-3\. For **display name**, type `hydraulic_model_1`
-
-4\. For **test dataset**, select `hydraulic_test_data`
-
-5\. For **target column**, select `cool_cond_y`
-
-6\. Click **Launch Experiment**.  (Note: it will take about 13 minutes for completion).
-
-### Create Hydraulic System Project for Condition Classification
-
-<!-- create-hydraulic-system-project GIF runs at 14 seconds -->
-
-![create-hydraulic-system-project](./assets/create-hydraulic-system-project.gif)
-
-**Figure 9:** Create Driverless AI Hydraulic System Project
-
-1\. Click **Projects**.
-
-2\. Click **+ New Project**.
-
-3\. For **Name**, type `hydraulic system`
-
-4\. Click **Create A New Project**.
-
-5\. Click **+ Link Experiment**.
-
-6\. Click **hydraulic_model_1**.
+## Task 2: Shared Driverless AI Project to MLOps
 
 ### Open MLOps to See Project
 
@@ -170,9 +66,11 @@ Driverless AI executes the hydraulic-data.py recipe to import the data into data
 
 **Figure 10:** Open MLOps to See Driverless AI Project
 
-In the MLOps dashboard, the Driverless AI hydraulic system project has been shared.
+Note: the MLOps dashboard already has the Driverless AI hydraulic system project for this tutorial; the project was prebuilt in Driverless AI. 
 
-If you have not launched MLOps from the H2O.ai Platform Studio Splash page, then follow the instructions:
+If you want to access the project, you need to access Driverless AI from the H2O.ai Platform Studio Splash Page. Note: the prebuilt project was built under the following credentials: ds1/ds1. Accordingly, you will need to access Driverless AI with such credentials to see the project. 
+
+If you have not launched MLOps from the H2O.ai Platform Studio Splash page, proceed to the following instructions:
 
 1\. Click **Launch** MLOps for another new tab to open.
 
@@ -206,9 +104,7 @@ Later we will explore the MLOps UI, share a project from ds1 user to ds2 user, d
 
 ## Task 3: Machine Learning Operations Concepts
 
-If you look through various analyst firms and research organizations, you will find varying percentages of companies that have deployed AI into production. However, depending on the type of organization and where they are in their AI journey, you will find universally that most companies have not broadly deployed AI & Machine Learning in their companies. 70 enterprise leading firms took a survey and only 15% have some kind of AI deployed in production and that is because there are various challenges that come into play when productionizing Machine Learning models [2].
-
-    “Perhaps not surprisingly, only 15% have deployed AI broadly into production - because that is where people and process issues come into play.” - NVP Survey of 70 industry leading firms you would recognize [2]
+If you look through various analyst firms and research organizations, you will find varying percentages of companies that have deployed AI into production. However, depending on the type of organization and where they are in their AI journey, you will find universally that most companies have not broadly deployed AI & Machine Learning in their companies. 70 enterprise leading firms took a survey and only 15% have some kind of AI deployed in production and that is because there are various challenges that come into play when productionizing Machine Learning models [2]. “Perhaps not surprisingly, only 15% have deployed AI broadly into production - because that is where people and process issues come into play.” - NVP Survey of 70 industry leading firms you would recognize [2]
 
 ### AI Lifecycle with H2O.ai Products
 
@@ -366,6 +262,8 @@ The Data Scientists will build Driverless AI experiments, which use AutoML behin
 
 From model storage, the ML Engineer uses MLOps, a Model Manager, to access a Driverless AI project saved in model storage. Then from there, they will either deploy the model to a development environment that simulates the conditions of the production environment or deploy the model to a production environment. MLOps deploys Driverless AI's MOJO scoring pipeline. As the model is deployed into a development or production environment, it is deployed on Kubernetes. The end user is able to make scoring requests to the model REST service, so the model performs predictions and returns the scoring results back to them. As the predictions are being made, that predicted data is being saved in influx DB and also used by grafana dashboard to generate visualizations. We can see the grafana dashboard in Model Manager for monitoring the model's activity as it makes predictions.
 
+
+
 ### Deep Dive and Resources
 
 - [1] [1:22 - 3:07 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, AI Lifecycle, Speaker: Dan Darnell](https://training.h2o.ai/products/module-7-machine-learning-operations)
@@ -397,6 +295,10 @@ From model storage, the ML Engineer uses MLOps, a Model Manager, to access a Dri
 - [14] [41:40 - 45:32 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, Production Model Governance, Speaker: Dan Darnell](https://training.h2o.ai/products/module-7-machine-learning-operations)
 
 - [15] [45:33 - 48:12 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, MLOps Impact, Speaker: Dan Darnell](https://training.h2o.ai/products/module-7-machine-learning-operations)
+
+- [Diagram: What is a MOJO?](https://www.h2o.ai/community/glossary/model-object-optimized-mojo)
+
+- [Diagram: What is a Scoring Pipeline?](https://www.h2o.ai/community/glossary/scoring-pipeline)
 
 ## Task 4: Tour of MLOps UI
 
@@ -647,7 +549,7 @@ Does your list of events look different than the image above? If yes, that is ex
 
 **Figure 34:** Confirm you would like Model Deployed to Dev Environment 
 
-You should see the **Environment** for **hydraulic_model_1** deployed to the **DEV environment**. The **Deployments** table will also update with this model deployed to **DEV** environment. The model's deployment **state** will go from "Dployment data not found, Preparing, Launching to Healthy." As you may have read in the concepts section, deploying the ML model to an development environment, especially a production environment is very difficult to do for many people and organizations. You just did it in about 3 clicks! Congratulations!
+You should see the **Environment** for **hydraulic_model_1** deployed to the **DEV environment**. The **Deployments** table will also update with this model deployed to **DEV** environment. The model's deployment **state** will go from "Deployment data not found, Preparing, Launching to Healthy." As you may have read in the concepts section, deploying the ML model to a development environment, especially a production environment is very difficult to do for many people and organizations. You just did it in about 3 clicks! Congratulations!
 
 ![model-deployed-to-dev](./assets/model-deployed-to-dev.jpg)
 
@@ -723,7 +625,11 @@ Paste **Sample Request** into your terminal and press enter:
 
 **Figure 39:** Result after **Executing Hydraulic System Model Sample Request**
 
-You can see the result is a classification for hydraulic cooling condition 3, 20 and 100.
+You can see the result is a classification for hydraulic cooling condition 3, 20, and 100.
+
+### Deep Dive and Resources 
+
+- [Diagram: What is Scoring?](https://www.h2o.ai/community/glossary/scoring-making-predictions-inferencing)
 
 ## Task 6: Challenge
 
@@ -746,4 +652,5 @@ So far we have covered making score requests in the command line with curl and t
 
 ## Appendix A: AI Glossary
 
-Refer to [H2O.ai AI/ML Glossary](https://docs.google.com/document/d/1v7NzmfuDrr_phVo2hXCCbnj-sDwTKe_FBiNYO94bkN0/edit?usp=sharing) for relevant MLOps Terms
+Refer to [H2O.ai AI/ML Glossary](https://www.h2o.ai/community/top-links/ai-glossary-search) for relevant MLOps Terms
+
