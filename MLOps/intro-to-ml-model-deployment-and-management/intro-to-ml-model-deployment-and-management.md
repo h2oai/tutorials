@@ -630,9 +630,33 @@ Paste **Sample Request** into your terminal and press enter:
 
 You can see the result is a classification for hydraulic cooling condition 3, 20, and 100.
 
+
+### Monitoring Deployments
+
+Driverless AI + MLOps can monitor models for drift, anomalies, and residuals, providing more traceability and governance of models. The alerts provided on the dashboard can help you determine whether to re-tune or re-train models.
+
+In the Deployment section, click on **Actions(the three dots icon)** > **Copy endpoint URL**. Right after, return to the **H2O.ai Platform Studio** and click  **Demo** located at the top right corner of the page. Click the following option: **Hydraulic System demo data pump** > paste the **end point URL** we just copied > click **submit** > click **ok**. 
+
+![start-hydraulic-systems-demo-data-pump](./assets/start-hydraulic-systems-demo-data-pump.gif)
+
+In the Deployments section, click on **Actions** > **Monitoring** to open a [Grafana](https://grafana.com) dashboard and view metrics for the deployment. (Refer to the [Grafana documentation](https://grafana.com/docs/) for more information.)
+
+![mlops-monitoring](./assets/mlops-monitoring.jpg)
+
+By default, the **Monitoring** page shows:
+
+- Alerts
+- Column types
+- Drift detection
+- Scoring latency (Populated only after the scoring service is started. See below section on how to copy the Endpoint URLfor an example.)
+- Scatterplots, histograms, and heatmaps for input columns and output columns
+
+![monitoring-start-hydraulic-systems-demo-data-pump](./assets/monitoring-start-hydraulic-systems-demo-data-pump.gif)
+
 ### Deep Dive and Resources 
 
 - [Diagram: What is Scoring?](https://www.h2o.ai/community/glossary/scoring-making-predictions-inferencing)
+- [Monitoring Deployments](https://docs.h2o.ai/mlops-release/latest-stable/docs/userguide/using.html?highlight=monitoring#monitoring-deployments)
 
 ## Task 6: Challenge
 
