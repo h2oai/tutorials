@@ -648,7 +648,7 @@ By default, the **Monitoring** page shows:
 - Alerts
 - Column types
 - Drift detection
-- Scoring latency (Populated only after the scoring service is started. See below section on how to copy the Endpoint URLfor an example.)
+- Scoring latency (Populated only after the scoring service is started.)
 - Scatterplots, histograms, and heatmaps for input columns and output columns
 
 ![monitoring-start-hydraulic-systems-demo-data-pump](./assets/monitoring-start-hydraulic-systems-demo-data-pump.gif)
