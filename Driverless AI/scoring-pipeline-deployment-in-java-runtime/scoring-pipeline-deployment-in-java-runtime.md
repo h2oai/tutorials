@@ -22,7 +22,10 @@ By the end of this tutorial, you will predict the **cooling condition** for a **
 
 Figure: Hydraulic Test Rig General Cylinder Diagram
 
-The Hydraulic Test Rig consists of a primary and secondary cooling filtration circuit with pumps that deliver flow and pressure to the oil tank. The oil tank box at the bottom. There is a pressure relief control valve for controlling the rising and falling flows. There is a pressure gauge for measuring the pressure. 
+The Hydraulic Test Rig consists of the following: 
+- A primary and secondary cooling filtration circuit with pumps that deliver flow and pressure to the oil tank (the box at the bottom)
+- A pressure relief control valve for controlling the rising and falling flows
+- A pressure gauge for measuring the pressure
 
 ### References
 
@@ -49,7 +52,7 @@ The Hydraulic Test Rig consists of a primary and secondary cooling filtration ci
 - Driverless AI Environment
 - Driverless AI License
   - The license is needed to use the **MOJO2 Java Runtime API** to execute the **MOJO Scoring Pipeline** for making predictions
-  - [21 day trial license](https://www.h2o.ai/try-driverless-ai/)
+  - If you don't have a license, you can obtain one through our [21-day trial license](https://www.h2o.ai/try-driverless-ai/) option. Note: Aquarium will not contain a **Driverless AI License Key**. Through the [21-day trial license](https://www.h2o.ai/try-driverless-ai/) option, you will be able to obtain a temporary **Driverless AI License Key** necessary for this tutorial. 
   - If you need to purchase a Driverless AI license, reach out to our sales team via the [contact us form](https://www.h2o.ai/company/contact/)
 - Basic knowledge of Driverless AI or completion of the following tutorials:
   - [Tutorial 1A: Automatic Machine Learning Introduction with Driverless AI](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai)
@@ -71,9 +74,21 @@ mkdir $HOME/dai-mojo-java/
 
 Download MOJO Scoring Pipeline
 
-1\. If you have not downloaded the MOJO Scoring Pipeline, go to [Tutorial 4B: Scoring Pipeline Deployment Templates](https://training.h2o.ai/products/tutorial-4b-scoring-pipeline-deployment-templates), then go to **Task 1: Set Up Environment**, then **Download MOJO Scoring Pipeline** to download it. When finished, come back to this tutorial.
+1\. If you have not downloaded the MOJO Scoring Pipeline, consider the following steps: 
 
-2\. Move the **mojo.zip** file to `dai-mojo-java/` folder and then extract it:
+1\. Start a new Two-Hour Test Drive session in Aquarium 
+
+2\. In your Driverless AI instance, click on the Experiments section 
+
+3\. In the Experiments section, click on the following experiment: Model_deployment_HydraulicSystem
+
+4\. On the STATUS: COMPLETE section on the  experiment page, click DOWNLOAD MOJO SCORING PIPELINE
+
+5\. In the Java tab, click DOWNLOAD MOJO SCORING PIPELINE
+
+When finished, come back to this tutorial. 
+
+2\. Move the mojo.zip file to the `dai-mojo-java/` folder and then extract it(depending on your OS, the file will sometimes be already unzipped with a name close to this: mojo-pipeline 2): 
 
 ```bash
 cd $HOME/dai-mojo-java/
@@ -109,6 +124,8 @@ conda install -y -c conda-forge maven
 ### Set Driverless AI License Key
 
 5\. Set the Driverless AI License Key as a temporary environment variable
+
+Note: If you don't have a license, you can obtain one through our [21-day trial license](https://www.h2o.ai/try-driverless-ai/) option. Note: Aquarium will not contain a **Driverless AI License Key**. Through the [21-day trial license](https://www.h2o.ai/try-driverless-ai/) option, you will be able to obtain a temporary **Driverless AI License Key** necessary for this tutorial. 
 
 ```bash
 # Set Driverless AI License Key
@@ -175,7 +192,7 @@ bash run_example.sh pipeline.mojo example.csv
 ![batch-scoring-via-shell-script-2](assets/batch-scoring-via-shell-script-2.jpg)
 
 
-This classification output is the batch scoring done for our Hydraulic System cooling condition. You should receive classification probabilities for cool_cond_y.3, cool_cond_y.20, and cool_cond_y.100. The 3 means the Hydraulic cooler is close to operating at total failure, 20 means it is operating at reduced efficiency and 100 means it is operating at full efficiency.
+This classification output is the batch scoring done for our Hydraulic System cooling condition. You should receive classification probabilities for cool_cond_y.3, cool_cond_y.20, and cool_cond_y.100. The 3 means the Hydraulic cooler is close to operating at total failure, 20 means it is operating at reduced efficiency, and 100 means it is operating at full efficiency.
 
 Similarly, we could execute **run_example.sh** without passing arguments to it by creating temporary environment variables for mojo pipeline file and example csv file paths.
 
@@ -250,7 +267,7 @@ predictions.select([mojo.selectPredictionUDF("cool_cond_y.3"), mojo.selectPredic
 quit()
 ```
 
-The MOJO predicted the Hydraulic System cooling condition for each row within the batch of Hydraulic System test data we passed to it. You should receive classification probabilities for cool_cond_y.3, cool_cond_y.20, and cool_cond_y.100. The 3 means the Hydraulic cooler is close to operating at total failure, 20 means it is operating at reduced efficiency and 100 means it is operating at full efficiency.
+The MOJO predicted the Hydraulic System cooling condition for each row within the batch of Hydraulic System test data we passed to it. You should receive classification probabilities for cool_cond_y.3, cool_cond_y.20, and cool_cond_y.100. The 3 means the Hydraulic cooler is close to operating at total failure, 20 means it is operating at reduced efficiency, and 100 means it is operating at full efficiency.
 
 So that is how you execute the MOJO scoring pipeline to do batch scoring using PySparkling.
 
@@ -311,7 +328,7 @@ predictions.select(mojo.selectPredictionUDF("cool_cond_y.3"), mojo.selectPredict
 :quit
 ```
 
-The MOJO predicted the Hydraulic System cooling condition for each row within the batch of Hydraulic System test data we passed to it. You should receive classification probabilities for cool_cond_y.3, cool_cond_y.20, and cool_cond_y.100. The 3 means the Hydraulic cooler is close to operating at total failure, 20 means it is operating at reduced efficiency and 100 means it is operating at full efficiency.
+The MOJO predicted the Hydraulic System cooling condition for each row within the batch of Hydraulic System test data we passed to it. You should receive classification probabilities for cool_cond_y.3, cool_cond_y.20, and cool_cond_y.100. The 3 means the Hydraulic cooler is close to operating at total failure, 20 means it is operating at reduced efficiency, and 100 means it is operating at full efficiency.
 
 So that is how you execute the MOJO scoring pipeline to do batch scoring using Sparkling Water.
 
@@ -429,7 +446,7 @@ java -Dai.h2o.mojos.runtime.license.file=license.sig -cp .;mojo2-runtime.jar Exe
 - cool_cond_y.20 = 0.14792289088169733
 - cool_cond_y.100 = 0.5682678818702698
 
-The MOJO predicted the cooling condition for the individual row of Hydraulic System test data we passed to it. You should receive classification probabilities for cool_cond_y.3, cool_cond_y.20, and cool_cond_y.100. The 3 means the Hydraulic cooler is close to operating at total failure, 20 means it is operating at reduced efficiency and 100 means it is operating at full efficiency.
+The MOJO predicted the cooling condition for the individual row of Hydraulic System test data we passed to it. You should receive classification probabilities for cool_cond_y.3, cool_cond_y.20, and cool_cond_y.100. The 3 means the Hydraulic cooler is close to operating at total failure, 20 means it is operating at reduced efficiency, and 100 means it is operating at full efficiency.
 
 So that is how you execute the MOJO scoring pipeline to do interactive scoring using Java directly.
 
