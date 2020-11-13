@@ -25,7 +25,7 @@ Figure: Hydraulic Test Rig General Cylinder Diagram
 The Hydraulic Test Rig consists of the following: 
 - A primary and secondary cooling filtration circuit with pumps that deliver flow and pressure to the oil tank (the box at the bottom)
 - A pressure relief control valve for controlling the rising and falling flows
-- A pressure gauge to measure pressure
+- A pressure gauge 
 
 ### References
 
