@@ -80,11 +80,11 @@ Download MOJO Scoring Pipeline
 
 2\. In your Driverless AI instance, click on the Experiments section 
 
-3\. In the Experiments section, click on the following experiment: Model_deployment_HydraulicSystem
+3\. In the Experiments section, click on the following experiment: **Model_deployment_HydraulicSystem**
 
-4\. On the STATUS: COMPLETE section on the  experiment page, click DOWNLOAD MOJO SCORING PIPELINE
+4\. On the STATUS: COMPLETE section on the  experiment page, click **DOWNLOAD MOJO SCORING PIPELINE**
 
-5\. In the Java tab, click DOWNLOAD MOJO SCORING PIPELINE
+5\. In the Java tab, click **DOWNLOAD MOJO SCORING PIPELINE**
 
 When finished, come back to this tutorial. 
 
