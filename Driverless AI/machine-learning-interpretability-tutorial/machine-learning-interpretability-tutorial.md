@@ -536,7 +536,7 @@ The local model predictions (white points) can be used to reason through the Dri
  
 ### Local Shapley Concepts
 
-Shapley explanations are a technique with credible theoretical support that presents globally consistent global and locally accurate variable contributions. Local numeric Shapley values are calculated by repeatedly tracing single rows of data through a trained tree ensemble and aggregating the contribution of each input variable as the row of data moves through the trained ensemble.
+Shapley explanations are a technique with credible theoretical support that presents consistent global and local variable contributions. Local numeric Shapley values are calculated by repeatedly tracing single rows of data through a trained tree ensemble and aggregating the contribution of each input variable as the row of data moves through the trained ensemble.
 
 Shapley values sum to the prediction of the Driverless AI model before applying the link function or any regression transforms. (Global Shapley values are the average of the local Shapley values over every row of a data set.)
 
