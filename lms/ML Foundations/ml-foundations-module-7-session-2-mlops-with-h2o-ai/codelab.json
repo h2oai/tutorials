@@ -1,0 +1,35 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+
+  "updated": "2020-11-05T14:59:10-08:00",
+=======
+  "updated": "2020-11-05T14:41:41-08:00",
+
+  "id": "ml-foundations-module-7-session-2-mlops-with-h2o-ai",
+  "duration": 0,
+  "title": "ML Foundations: Module 7 Session 2: MLOps with H2O.ai",
+  "summary": "Check the list",
+  "source": "/Users/falvarenga/Desktop/ml-foundations-for-html/ml-foundations-module-7-session-2-mlops-with-h2o-ai.md",
+  "theme": "",
+  "status": [
+    "draft"
+  ],
+  "category": [
+
+    "driverless"
+=======
+    "driverless",
+    "mlops"
+
+  ],
+  "tags": [
+    "automl",
+    "deployment",
+    "driverlessai",
+    "mlops"
+  ],
+  "url": "ml-foundations-module-7-session-2-mlops-with-h2o-ai"
+}
