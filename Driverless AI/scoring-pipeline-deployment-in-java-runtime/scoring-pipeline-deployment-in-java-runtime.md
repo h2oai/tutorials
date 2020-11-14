@@ -76,15 +76,15 @@ Download MOJO Scoring Pipeline
 
 1\. If you have not downloaded the MOJO Scoring Pipeline, consider the following steps: 
 
-1\. Start a new Two-Hour Test Drive session in Aquarium 
+- Start a new Two-Hour Test Drive session in Aquarium 
 
-2\. In your Driverless AI instance, click on the Experiments section 
+- In your Driverless AI instance, click on the Experiments section 
 
-3\. In the Experiments section, click on the following experiment: **Model_deployment_HydraulicSystem**
+- In the Experiments section, click on the following experiment: **Model_deployment_HydraulicSystem**
 
-4\. On the STATUS: COMPLETE section on the  experiment page, click **DOWNLOAD MOJO SCORING PIPELINE**
+- On the STATUS: COMPLETE section on the  experiment page, click **DOWNLOAD MOJO SCORING PIPELINE**
 
-5\. In the Java tab, click **DOWNLOAD MOJO SCORING PIPELINE**
+- In the Java tab, click **DOWNLOAD MOJO SCORING PIPELINE**
 
 When finished, come back to this tutorial. 
 
