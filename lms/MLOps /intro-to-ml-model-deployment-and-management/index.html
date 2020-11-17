@@ -200,6 +200,261 @@
 
       </google-codelab-step>
     
+      <google-codelab-step label="Task 4: Tour of MLOps UI" duration="0">
+        <h2 is-upgraded>Projects Dashboard Tour</h2>
+<p class="image-container"><img alt="mlops-has-dai-hydraulic-system-project" src="img/358c7c66e215eefa.jpg"></p>
+<p><strong>Figure 23:</strong> MLOps <strong>Projects</strong> Dashboard</p>
+<ul>
+<li>Projects: MLOps projects page shows Driverless AI projects shared with MLOps</li>
+<li>Logged in as ds1</li>
+<li>Logout: logs one out of MLOps</li>
+<li>3 Bar Menu: by default it has the left sidebar open to see <strong>+Add project</strong>, <strong>Projects</strong>. If you click it <strong>3 bar menu</strong>, it will close left sidebar.</li>
+<li><strong>+ Add project</strong></li>
+<li>Projects: list of Driverless AI projects shared with MLOps  <ul>
+<li>Type to filter: type keywords to filter for certain content from projects</li>
+<li>hydraulic system: specific Driverless AI project shared with MLOps</li>
+</ul>
+</li>
+<li>My projects: table of rows that contain the projects shared with MLOps  <ul>
+<li>Name: Driverless AI project name</li>
+<li>Created time: date and time of the Driverless AI project creation</li>
+<li>Models count: number of models associated with that Driverless AI project</li>
+</ul>
+</li>
+<li>Version: the version of MLOps</li>
+</ul>
+<p>Click on <strong>hydraulic system</strong> in my projects table.</p>
+<h2 is-upgraded>Hydraulic System Project Dashboard Tour</h2>
+<p class="image-container"><img alt="hydraulic-system-project-dashboard" src="img/728e90436083351f.jpg"></p>
+<p><strong>Figure 24:</strong> MLOps <strong>Hydraulic System</strong> Project</p>
+<ul>
+<li>hydraulic system: is the current project</li>
+<li>Projects &gt; hydraulic system</li>
+<li>3 Bar Menu: by default it has the left sidebar open to see <strong>+Add project</strong>, <strong>Projects</strong>. If you click it <strong>3 bar menu</strong>, it will close left sidebar.</li>
+<li><strong>+ Add project</strong></li>
+<li>Projects</li>
+<li>hydraulic system: current open project  <ul>
+<li>Alerts: show information about the current state of a deployed model and provide alerts for drift, anomalies, and residuals in the data.</li>
+<li>Deployments: shows all deployments for a hydraulic system project</li>
+<li>Models: shows all models that have been exported from Driverless AI into hydraulic system project.</li>
+<li>Events: provides a list of all events that have occurred in the project, such as the project creation and tagging/untagging of deployments.</li>
+</ul>
+</li>
+<li>Summary  <ul>
+<li>Name: name of this project</li>
+<li>Project ID: ID of this project</li>
+<li>Created on: date and time this project was created on</li>
+<li>Models: number of models in this project</li>
+<li>Deployments: number of models deployed in this project</li>
+<li>Alerts: provides alerts for drift, anomalies and residuals in the data as red, orange or green alerts</li>
+<li>Owner: username of person who created this project</li>
+</ul>
+</li>
+<li>Share Project: with a different user, such as ds2 user</li>
+<li>Deployments: current models deployed in this project  <ul>
+<li>No deployments available.</li>
+</ul>
+</li>
+<li>Models  <ul>
+<li>Model name: name of a model in this project</li>
+<li>Model ID: ID of a model in this project</li>
+<li>Created on: date and time a model was created on in this project</li>
+<li>Scorer: scorer metric used by a model in this project</li>
+<li>Score: validation score from a model in this project</li>
+<li>Owner: username of person who created a model in this project</li>
+<li>Environment - status of what type of environment a model was deployed into for this project</li>
+<li>Tag: tag name and value to associate with a model in this project</li>
+<li>Actions: actions that can be performed on this model: deploy it to dev/prod, create a challenger, download an autoreport, etc</li>
+</ul>
+</li>
+<li>A/B Test: allows you to compare the performance of two or more models</li>
+</ul>
+<p>Open a different browser or incognito window and login to MLOps.</p>
+<p>A. To see how to <strong>Share project</strong> with another user in MLOps, refer to section <strong>A: Share Project from ds1 user with ds2 user</strong></p>
+<p>B. To see <strong>More experiments</strong> in this project, refer to section <strong>B: Hydraulic System Models Dashboard</strong></p>
+<p>C. To see a tour of the <strong>actions</strong> that can be performed on this model <strong>hydraulic_model_1</strong>, refer to section <strong>C: Hydraulic System Projects Models Actions Tour</strong></p>
+<p>D. To see the <strong>events</strong> in this project, refer to section <strong>D: Hydraulic System Events Tour</strong></p>
+<p>For the next task, we are going to deploy the <strong>hydraulic_model_1 model</strong> to a <strong>DEV environment</strong>.</p>
+<h2 is-upgraded>A: Share Project from ds1 user with ds2 user</h2>
+<p class="image-container"><img alt="share-ds1-project-with-ds2" src="img/1b4e44d99ba90866.gif"></p>
+<p><strong>Figure 25:</strong> Share ds1 user project with ds2 user in MLOps</p>
+<p>1. Type in for <strong>Enter username</strong> field, <strong>ds2</strong></p>
+<p>2. Click <strong>Share with ds2</strong></p>
+<p>3.Click the <strong>Close</strong> button at the bottom of the <strong>Share project</strong> modal.</p>
+<p>4. Go back to browser window where you logged into MLOps as <strong>ds2</strong> user and this user now has access to ds1 user&#39;s project</p>
+<p>So now multiple people in the ML Operations team can collaborate on the same ML project.</p>
+<h2 is-upgraded>B: Hydraulic System Models Dashboard</h2>
+<p class="image-container"><img alt="see-more-experiment-models" src="img/520bde83d6a24ff4.gif"></p>
+<p><strong>Figure 26:</strong> See More Experiment Models</p>
+<p>1. Click on <strong>More experiments...</strong></p>
+<p>2. In the top left, click on Projects &gt; <strong>hydraulic system</strong> to return back to hydraulic system project dashboard.</p>
+<h2 is-upgraded>C: Hydraulic System Projects Models Actions Tour</h2>
+<p class="image-container"><img alt="mlops-models-actions" src="img/3ce7bd20f2df926d.jpg"></p>
+<p><strong>Figure 27:</strong> project <strong>hydraulic system model actions dropdown menu</strong></p>
+<ul>
+<li>Deploy to DEV: deploy this model to a development environment, which is a test production environment that simulates the conditions of a production environment</li>
+<li>Deploy to PROD: deploy this model to a production environment</li>
+<li>Challenger for ...: allows you to continuously compare your chosen best model (Champion) to a Challenger model</li>
+<li>Download Autoreport: downloads the same autoreport from Driverless AI</li>
+<li>More details: in depth details on this model</li>
+</ul>
+<p>1. Click on <strong>More details</strong>.</p>
+<h2 is-upgraded>Hydraulic Model More Details Tour</h2>
+<p class="image-container"><img alt="hydraulic-model-more-details" src="img/c1100cddf9d980f5.jpg"></p>
+<p><strong>Figure 28:</strong> project <strong>hydraulic system model comments</strong></p>
+<ul>
+<li>hydraulic_model_1: the particular model being looked at</li>
+<li>Projects &gt; hydraulic system &gt; Models &gt; hydraulic_model_1</li>
+<li><strong>+ Add project</strong></li>
+<li>Projects</li>
+<li>hydraulic system  <ul>
+<li>Alerts</li>
+<li>Deployments</li>
+<li><strong>Models</strong>: we were just at the models page and now we are looking at a particular model in this project</li>
+<li>Events</li>
+</ul>
+</li>
+<li>Summary  <ul>
+<li>Name: name of this model</li>
+<li>Experiment ID: ID of experiment in which this model was built</li>
+<li>Created at: date and time this model was created at</li>
+<li>Deployments: indicates if this model has been deployed and to which environment dev or prod</li>
+<li>Owner: user who created this model for this project</li>
+<li>Training duration: time that it took for this model to be trained</li>
+</ul>
+</li>
+<li>Comments  <ul>
+<li>Add new comment: text body for adding a new comment message. This can be helpful for the current user and other users who are working in this project to see an important message about this model  <ul>
+<li>Add comment: button for adding a new comment to this model</li>
+</ul>
+</li>
+<li>Previous comments: history of comments from users who are working on this model for this project</li>
+</ul>
+</li>
+<li>Parameters</li>
+<li>Metadata</li>
+</ul>
+<p>1. Proceed to the next section to learn how to <strong>add a comment</strong>.</p>
+<h2 is-upgraded>Add Comment as ds1 User for Hydraulic Model</h2>
+<p class="image-container"><img alt="add-comment-hydraulic-model" src="img/2d40ddbe111d63b2.gif"></p>
+<p><strong>Figure 29:</strong> Add Comment to Hydraulic Model</p>
+<p>1. Enter the following text <code>This is a good model for predicting hydraulic cooling condition</code> in the <strong>Add new comment</strong> body.</p>
+<p>2. Click <strong>Add comment</strong>.</p>
+<p>3. Proceed to the next section to see the <strong>Parameters</strong> tab.</p>
+<h2 is-upgraded>Hydraulic Model More Details - Parameters Tour</h2>
+<p class="image-container"><img alt="see-parameters-of-hydraulic-model" src="img/9d08905cad8e3662.gif"></p>
+<p><strong>Figure 30:</strong> See Parameters of Hydraulic Model</p>
+<ul>
+<li>Parameters  <ul>
+<li>Parameter: target column is the column we are trying to predict using this model</li>
+<li>Value: cool_cond_y is the value we are trying to predict using this model</li>
+</ul>
+</li>
+</ul>
+<p>1. Click on <strong>Parameters</strong> tab.</p>
+<p>2. Proceed to the next section to see <strong>Metadata</strong> tab.</p>
+<h2 is-upgraded>Hydraulic Model More Details - Metadata Tour</h2>
+<p class="image-container"><img alt="see-metadata-of-hydraulic-model" src="img/5b7e45f8db3d7026.gif"></p>
+<p><strong>Figure 31:</strong> See Metadata of Hydraulic Model</p>
+<p>1. Click on <strong>Metadata</strong> tab.</p>
+<p>2. As you scroll down the page, you will see <strong>dai/labels</strong>, <strong>dai/score, dai/scorer, dai/summary</strong> and more metadata.</p>
+<p>3. Click on Projects &gt; <strong>hydraulic system</strong> to return back to hydraulic system project dashboard.</p>
+<h2 is-upgraded>D: Hydraulic System Events Tour</h2>
+<p>Events shows us what has happened in this project:</p>
+<p class="image-container"><img alt="hydraulic-system-events-table" src="img/b8dd8b365c0c7595.jpg"></p>
+<p><strong>Figure 32:</strong> project <strong>hydraulic system events</strong></p>
+<p>From the list of events, we can see a <strong>hydraulic_model_1</strong> Experiment deployed by ds1 at a particular date and time.</p>
+<p>What else does the list of events tell you has happened in this <strong>hydraulic system</strong> project?</p>
+<p>Does your list of events look different than the image above? If yes, that is expected since different events may have happened in your version of the <strong>hydraulic system</strong> project.</p>
+<p>1. Click on Projects &gt; <strong>hydraulic system</strong> to return back to hydraulic system project dashboard. Then next we will deploy the ML model to a dev environment.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Task 5: Interactive and Batch Scoring via MLOps Model Deployment" duration="0">
+        <p>1. In the <strong>Models</strong> table, click on <strong>Actions 3 dot</strong> for <strong>hydraulic_model_1 model</strong>, then click <strong>Deploy to DEV</strong>.</p>
+<p class="image-container"><img alt="deploy-hydraulic-model-to-dev" src="img/e68059975178e805.jpg"></p>
+<p><strong>Figure 33:</strong> Project <strong>Deploy Hydraulic System Model to Dev Environment</strong></p>
+<p>2. A <strong>Please confirm</strong> modal will appear, click on <strong>Confirm</strong>.</p>
+<p class="image-container"><img alt="confirm-dev-model-deployment" src="img/7f76300d1d4681dd.jpg"></p>
+<p><strong>Figure 34:</strong> Confirm you would like Model Deployed to Dev Environment</p>
+<p>You should see the <strong>Environment</strong> for <strong>hydraulic_model_1</strong> deployed to the <strong>DEV environment</strong>. The <strong>Deployments</strong> table will also update with this model deployed to <strong>DEV</strong> environment. The model&#39;s deployment <strong>state</strong> will go from &#34;Deployment data not found, Preparing, Launching to Healthy.&#34; As you may have read in the concepts section, deploying the ML model to a development environment, especially a production environment is very difficult to do for many people and organizations. You just did it in about 3 clicks! Congratulations!</p>
+<p class="image-container"><img alt="model-deployed-to-dev" src="img/6d339ea767b128e8.jpg"></p>
+<p><strong>Figure 35:</strong> Project <strong>Deployed Hydraulic Model to Dev Environment</strong></p>
+<ul>
+<li>Deployments: is a table of deployed models for this project  <ul>
+<li>Model: name of a model that is deployed</li>
+<li>Deployment type: type of deployment</li>
+<li>Top model</li>
+<li>Environment - the environment the model was deployed to either dev or prod</li>
+<li>Deployed: the date and time that this model was deployed at</li>
+<li>State: the condition of this model</li>
+<li>Alerts: info, warning, errors or other alerts associated with this model deployment</li>
+<li>Actions: the supported actions that can be performed on this model deployment</li>
+</ul>
+</li>
+</ul>
+<p>3. In the <strong>Deployments</strong> table, click on <strong>Actions 3 dot</strong> for <strong>hydraulic_model_1 model</strong>, then click on <strong>More details</strong>.</p>
+<p class="image-container"><img alt="model-deployment-actions" src="img/a33de42d2da50e68.jpg"></p>
+<p><strong>Figure 36:</strong> Project <strong>Hydraulic System Model Deployment Actions</strong></p>
+<ul>
+<li>Actions  <ul>
+<li>More details: in depth details on this deployed model</li>
+<li>Monitoring: visualizations to represent the predictions the model is performing on new data</li>
+<li>Show sample request: curl sample scoring request to have the model perform a prediction on sample data</li>
+<li>Copy endpoint URL: the url that this model is running on and that you would send a score request to, so this model makes predictions</li>
+</ul>
+</li>
+</ul>
+<p>You should see more details for <strong>summary</strong> and <strong>model selections</strong> on your model deployment for <strong>hydraulic_model_1</strong>.</p>
+<p class="image-container"><img alt="model-deployment-more-details" src="img/b3f993c9ef6ee9bf.jpg"></p>
+<p><strong>Figure 37:</strong> Project <strong>Hydraulic System Model Deployment More Details</strong></p>
+<ul>
+<li>Deployment</li>
+<li>Summary  <ul>
+<li>Endpoint: the url that this model is running on and that you would send a score request to, so this model makes predictions</li>
+<li>Status: the condition of this model</li>
+<li>Created on: date and time this model deployment was performed</li>
+<li>Top model: UUID of this model deployment</li>
+</ul>
+</li>
+<li>Monitor: redirect to grafana dashboard for monitoring this deployed model</li>
+<li>Delete: remove this model deployment</li>
+<li>Model selections  <ul>
+<li>Target type: single model, champion/challenger and A/B test</li>
+<li>Project: name of project this model deployment is associated with</li>
+<li>Environment - type of environment the model was deployed to either dev or prod</li>
+<li>Model name: name of model that was deployed</li>
+<li>Model ID: ID of model that was deployed</li>
+<li>Created on: date and time this model was created</li>
+<li>Scorer: scorer metric used for this model</li>
+<li>Score: validation score using this model</li>
+<li>Owner: user who deployed this model</li>
+<li>Environment - current environment this model is deployed to</li>
+<li>Tag: tag name and value associated with this model deployment</li>
+</ul>
+</li>
+<li>Save and deploy</li>
+</ul>
+<p>4. Press the <strong>X</strong> button in the top right corner to exit that <strong>Deployment</strong> page for <strong>hydraulic_model_1</strong>.</p>
+<h2 is-upgraded>Interactive Scoring via Dev Deployment Environment</h2>
+<p>1. Click on <strong>Actions 3 dot</strong> for <strong>hydraulic_model_1 model deployments</strong>, then click <strong>Show sample request</strong>.</p>
+<p>2. Click <strong>Copy request</strong> button.</p>
+<p>3. Click <strong>Close</strong> button.</p>
+<p class="image-container"><img alt="model-deployment-show-sample-request" src="img/9c411f79aca9cb08.jpg"></p>
+<p><strong>Figure 38:</strong> Project <strong>Hydraulic System Model Deployment Copy Sample Request</strong></p>
+<p>Paste <strong>Sample Request</strong> into your terminal and press enter:</p>
+<p class="image-container"><img alt="sample-request-result" src="img/8c1c491b93c571a6.jpg"></p>
+<p><strong>Figure 39:</strong> Result after <strong>Executing Hydraulic System Model Sample Request</strong></p>
+<p>You can see the result is a classification for hydraulic cooling condition 3, 20, and 100.</p>
+<h2 is-upgraded>Deep Dive and Resources</h2>
+<ul>
+<li><a href="https://www.h2o.ai/community/glossary/scoring-making-predictions-inferencing" target="_blank">Diagram: What is Scoring?</a></li>
+</ul>
+
+
+      </google-codelab-step>
+    
       <google-codelab-step label="Task 6: Challenge" duration="0">
         <h2 is-upgraded>Deploy New Driverless AI Model using MLOps</h2>
 <p>You just learned how to deploy a Driverless AI model that predicts hydraulic cooling condition. You may have some other problems you are working on solving. Try deploying a new Driverless AI model from a different Diverless AI project using MLOps.</p>
