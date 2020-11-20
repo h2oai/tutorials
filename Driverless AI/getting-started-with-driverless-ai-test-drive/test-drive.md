@@ -106,6 +106,8 @@ Click on the "View Details" button on lab one, as shown in the image below.
 After the Driverless AI Test Drive Lab will appear:
 
 ![driverless-ai-test-drive-page](assets/driverless-ai-test-drive-page.jpg)
+![driverless-ai-test-drive-page-2](assets/driverless-ai-test-drive-page-2.jpg)
+
 
 **Note**: 
 
