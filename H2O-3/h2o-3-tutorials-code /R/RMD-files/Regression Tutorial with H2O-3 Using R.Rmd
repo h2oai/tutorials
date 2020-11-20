@@ -1,0 +1,382 @@
+---
+title: "Regression Tutorial with H2O-3 Using R"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. To execute a code chunk, click *Run* (play) button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*. 
+
+## Task 1: Initial Setup
+
+```{r}
+library(h2o)
+library(tidyverse)
+library(DT)
+
+h2o.init(bind_to_localhost = FALSE, context_path = "h2o")
+```
+
+```{r}
+h2o.no_progress()
+```
+
+```{r}
+loan_level <- h2o.importFile(path = "https://s3.amazonaws.com/data.h2o.ai/DAI-Tutorials/loan_level_500k.csv")
+```
+
+
+## Task 2: Machine Learning Concepts - See Tutorial
+Please look at the tutorial file for concepts that will help you better understand this tutorial
+
+## Task 3: Start Experiment ----
+
+```{r}
+h2o.head(loan_level, n = 10) %>% as_tibble()
+```
+
+```{r}
+h2o.describe(loan_level[, c("ORIGINAL_INTEREST_RATE")])
+```
+
+```{r}
+h2o.hist(loan_level[, c("ORIGINAL_INTEREST_RATE")])
+
+splits <- h2o.splitFrame(loan_level, c(0.7, 0.15), seed = 42)
+```
+
+```{r}
+train <- splits[[1]]
+valid <- splits[[2]]
+test <- splits[[3]]
+
+dim(train)
+dim(valid)
+dim(test)
+```
+
+```{r}
+ignore <- c("ORIGINAL_INTEREST_RATE", "FIRST_PAYMENT_DATE", "MATURITY_DATE", 
+            "MORTGAGE_INSURANCE_PERCENTAGE", "PREPAYMENT_PENALTY_MORTGAGE_FLAG", 
+            "LOAN_SEQUENCE_NUMBER", "PREPAID", "DELINQUENT", "PRODUCT_TYPE")
+
+y <- "ORIGINAL_INTEREST_RATE"
+
+x <- setdiff(colnames(train), ignore)
+x
+```
+
+## Task 4: Build an XGBoost Model
+
+```{r}
+xgb <- h2o.xgboost(x = x, y = y, training_frame = train, validation_frame = valid, 
+                   seed = 42, model_id = "default_xgb")
+
+summary(xgb)
+```
+
+```{r}
+h2o.varimp_plot(xgb)
+```
+
+```{r}
+xgb_def_pred <- h2o.predict(xgb, valid)
+xgb_def_pred
+```
+
+```{r}
+h2o.cbind(xgb_def_pred, valid[, c("ORIGINAL_INTEREST_RATE")])
+```
+
+```{r}
+valid_def_xgb_perf <- h2o.performance(xgb, valid)
+```
+
+```{r}
+h2o.rmse(valid_def_xgb_perf)
+h2o.mae(valid_def_xgb_perf)
+```
+
+## Task 5: Build a Deep Learning Model
+
+```{r}
+dl <- h2o.deeplearning(x = x, y = y, training_frame = train, validation_frame = valid, 
+                       seed = 42, model_id = "default_dl")
+
+dl
+```
+
+```{r}
+plot(dl)
+```
+
+```{r}
+dl@allparameters[["epochs"]]
+dl@allparameters[["hidden"]]
+```
+
+```{r}
+h2o.varimp_plot(dl)
+```
+
+```{r}
+valid_def_dl_perf <- h2o.performance(dl, valid)
+```
+
+```{r}
+h2o.rmse(valid_def_dl_perf)
+h2o.mae(valid_def_dl_perf)
+```
+
+```{r}
+dl_def_pred <- h2o.predict(dl, valid)
+dl_def_pred
+```
+
+```{r}
+h2o.cbind(dl_def_pred, valid[, c("ORIGINAL_INTEREST_RATE")])
+```
+
+
+## Task 6: Tune the XGBoost Model with H2O GridSearch
+
+```{r}
+xgb_depth_grid <- h2o.grid(algorithm = "xgboost",
+                           grid_id = "xgb_depth_grid",
+                           seed = 42, stopping_rounds = 3,
+                           stopping_metric ="RMSE",
+                           stopping_tolerance = 1e-3,
+                           
+                           hyper_params = list(
+                             max_depth = c(5,7,9,10,12,13,15,20)
+                           ),
+                           
+                           search_criteria = list(
+                             strategy = "Cartesian"
+                           ),
+                           
+                           x = x,
+                           y = y,
+                           training_frame = train,
+                           validation_frame = valid
+                           
+)
+```
+
+```{r}
+xgb_depth_grid_rmse <- h2o.getGrid(grid_id = "xgb_depth_grid", sort_by = "rmse", decreasing = FALSE)
+as.data.frame(xgb_depth_grid_rmse@summary_table)
+```
+
+
+Do the second grid search for xgboost
+
+```{r}
+xgb_sample_rate <- seq(from = 0.2, to = 1, by = 0.01)
+xgb_col_sample_rate <- seq(from = 0.2, to = 1, by = 0.01)
+xgb_col_sample_rate_per_tree <- seq(from = 0.2, to = 1, by = 0.01)
+
+xgb_random_grid <- h2o.grid(algorithm = "xgboost",
+                            grid_id = "xgb_random_grid",
+                            ntrees = 500,
+                            learn_rate = 0.25,
+                            seed = 42, stopping_rounds = 3,
+                            stopping_metric = "RMSE", stopping_tolerance = 1e-3,
+                            
+                            hyper_params = list(
+                              max_depth = c(5,6,7,9),
+                              sample_rate = xgb_sample_rate, 
+                              col_sample_rate = xgb_col_sample_rate, 
+                              col_sample_rate_per_tree = xgb_col_sample_rate_per_tree 
+                            ),
+                            
+                            search_criteria = list(
+                              strategy = "RandomDiscrete",
+                              max_runtime_secs = 900,
+                              seed = 42
+                            ),
+                            
+                            x = x,
+                            y = y,
+                            training_frame = train,
+                            validation_frame = valid
+                            
+)
+```
+
+```{r}
+xgb_random_grid_rmse <- h2o.getGrid(grid_id = "xgb_random_grid", sort_by = "rmse", decreasing = FALSE)
+as.data.frame(xgb_random_grid_rmse@summary_table)
+```
+
+```{r}
+tuned_xgb <- h2o.getModel(xgb_random_grid_rmse@model_ids[[1]]) #getting the best model
+tuned_xgb
+```
+
+```{r}
+valid_tuned_xgb_perf <- h2o.performance(tuned_xgb, valid)
+```
+
+Print validation rmse for default and tuned model
+```{r}
+h2o.rmse(valid_def_xgb_perf)
+h2o.rmse(valid_tuned_xgb_perf)
+```
+
+Print the validation mae for both default and tuned model
+```{r}
+h2o.mae(valid_def_xgb_perf)
+h2o.mae(valid_tuned_xgb_perf)
+```
+
+
+# Task 7: Tune the Deep Learning Model with H2O GridSearch
+
+```{r}
+dl_hidden_grid <- h2o.grid(algorithm = "deeplearning",
+                           grid_id = "dl_hidden_grid",
+                           epochs = 10,
+                           activation = "RectifierWithDropout",
+                           seed = 42,
+                           stopping_rounds = 3,
+                           stopping_metric ="RMSE",
+                           stopping_tolerance = 1e-3,
+                           
+                           hyper_params = list(
+                             hidden = list(c(100, 100), c(165, 165), c(200, 200), c(330, 330),
+                                           c(165, 200)),
+                             
+                             hidden_dropout_ratios = list(c(0,0), c(0.01,0.01), c(0.15,0.15),
+                                                          c(0.30, 0.30), c(0.5,0.5))
+                           ),
+                           
+                           search_criteria = list(
+                             strategy = "RandomDiscrete",
+                             max_runtime_secs = 900,
+                             seed = 42
+                           ),
+                           
+                           x = x,
+                           y = y,
+                           training_frame = train,
+                           validation_frame = valid
+                           
+)
+```
+
+```{r}
+dl_hidden_grid_rmse <- h2o.getGrid(grid_id = "dl_hidden_grid", sort_by = "rmse", decreasing = FALSE)
+as.data.frame(dl_hidden_grid_rmse@summary_table)
+```
+
+Random grid search for DL model
+```{r}
+dl_random_grid_rmse <- h2o.grid(algorithm = "deeplearning", grid_id = "dl_random_grid",
+                                epochs = 10, activation = "RectifierWithDropout",
+                                seed = 42,
+                                stopping_rounds = 3,
+                                stopping_metric = "RMSE",
+                                stopping_tolerance = 1e-3,
+                                hidden = c(165, 200),
+                                hidden_dropout_ratios = c(0.3, 0.3),
+                                
+                                hyper_params = list(
+                                  max_w2 = c(1e38, 1e35, 1e36, 1e37, 1e34, 5e35),
+                                  l2 = c(1e-7, 1e-6, 1e-5, 1e-4, 5e-4, 1e-3, 0)
+                                ),
+                                
+                                search_criteria = list(
+                                  strategy = "RandomDiscrete",
+                                  max_runtime_secs = 900,
+                                  seed = 42
+                                ),
+                                
+                                x = x,
+                                y = y,
+                                training_frame = train,
+                                validation_frame = valid
+)
+```
+
+```{r}
+dl_random_grid_rmse <- h2o.getGrid(grid_id = "dl_random_grid", sort_by = "rmse", decreasing = FALSE)
+as.data.frame(dl_random_grid_rmse@summary_table)
+```
+
+```{r}
+tuned_dl <- h2o.getModel(dl_random_grid_rmse@model_ids[[1]]) #getting the best model
+tuned_dl
+```
+
+```{r}
+dl_checkpoint <- h2o.deeplearning(model_id = "dl_checkpoint_1",
+                                  epochs = 400, activation = "RectifierWithDropout",
+                                  seed = 42,
+                                  stopping_rounds = 5,
+                                  stopping_metric = "RMSE",
+                                  stopping_tolerance= 1e-5,
+                                  
+                                  hidden = tuned_dl@parameters$hidden,
+                                  hidden_dropout_ratios = tuned_dl@parameters$hidden_dropout_ratios,
+                                  
+                                  checkpoint = dl_random_grid_rmse@model_ids[[1]],
+                                  
+                                  max_w2 = tuned_dl@parameters$max_w2,
+                                  l2 = tuned_dl@parameters$l2,
+                                  
+                                  x = x,
+                                  y = y,
+                                  training_frame = train,
+                                  validation_frame = valid
+)
+```
+
+```{r}
+dl_checkpoint
+```
+
+```{r}
+valid_tuned_dl_perf <- h2o.performance(dl_checkpoint, valid)
+```
+
+```{r}
+h2o.rmse(valid_def_dl_perf)
+h2o.rmse(valid_tuned_dl_perf)
+```
+
+```{r}
+h2o.mae(valid_def_dl_perf)
+h2o.mae(valid_tuned_dl_perf)
+```
+
+## Task 8: Test Set Performance
+
+```{r}
+tuned_xgb_test_perf <- h2o.performance(tuned_xgb, test)
+tuned_dl_test_perf  <- h2o.performance(dl_checkpoint, test)
+```
+
+```{r}
+h2o.rmse(tuned_xgb_test_perf)
+h2o.rmse(tuned_dl_test_perf)
+```
+
+```{r}
+h2o.mae(tuned_xgb_test_perf)
+h2o.mae(tuned_dl_test_perf)
+```
+
+```{r}
+tuned_xgb_pred <- h2o.predict(tuned_xgb, test)
+tuned_dl_pred  <- h2o.predict(dl_checkpoint, test)
+```
+
+```{r}
+h2o.cbind(test[, c("ORIGINAL_INTEREST_RATE")], tuned_xgb_pred, tuned_dl_pred)
+```
+
+# Challenge ----
+Please look at the tutorial file for a challenge to test your understanding of this tutorial
+
+```{r}
+h2o.shutdown()
+```
