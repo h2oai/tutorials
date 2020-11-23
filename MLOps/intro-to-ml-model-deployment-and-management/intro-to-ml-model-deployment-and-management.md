@@ -5,7 +5,7 @@
 - [Objective](#objective)
 - [Prerequisites](#prerequisites)
 - [Task 1: Explore the H2O.ai Platform Studio](#task-1-explore-the-h2oai-platform-studio)
-- [Task 2: Driverless AI Project in MLOps ](#task-2-driverless-ai-project-in-mlops)
+- [Task 2: Driverless AI Project(s) in MLOps ](#task-2-driverless-ai-project(s)-in-mlops)
 - [Task 3: Machine Learning Operations Concepts](#task-3-machine-learning-operations-concepts)
 - [Task 4: Tour of MLOps UI](#task-4-tour-of-mlops-ui)
 - [Task 5: Interactive and Batch Scoring via MLOps Model Deployment](#task-5-interactive-and-batch-scoring-via-mlops-model-deployment)
@@ -15,18 +15,9 @@
 
 ## Objective
 
-**MLOps(Machine Learning Operations)** is responsible for putting Machine Learning models into production environments. Before having these technologies that make it easier to deploy models into production, operation teams had to manually go through the process of production deployment, which required talent, time, and trust. To help make this effort easier for operations teams, H2O.ai developed **MLOps**: a tool to ease the process of successfully deploying and managing models into production. MLOps has the following capabilities: production model deployment, production model monitoring, production lifecycle management, and production model governance. Such capabilities can enable operation teams to scale their model deployments to 50, 500, 1,000, and more models in a timely manner. 
+**MLOps(Machine Learning Operations)** is responsible for putting Machine Learning models into production environments. Before having these technologies that make it easier to deploy models into production, operation teams had to manually go through the process of production deployment, which required talent, time, and trust. To help make this effort easier for operations teams, H2O.ai developed **H2O MLOps**. **H2O MLOps** has the following capabilities: production model deployment, production model monitoring, production lifecycle management, and production model governance. Such capabilities can enable operation teams to scale their model deployments to **50**, **500**, **1,000**, and more models in a timely manner. 
 
-By the end of this tutorial, you will predict the **cooling condition** for a **Hydraulic System Test Rig** by deploying a **Driverless AI MOJO Scoring Pipeline** into a test development environment similar to production using **MLOps**. After going through this tutorial, you will be able to recognize several features of the MLOps UI, particularly how to deploy and monitor a hydraulic model. As well, this tutorial will cover several concepts around Machine Learning Operations. The Hydraulic System Test Rig data comes from the **[UCI Machine Learning Repository: Condition Monitoring of Hydraulic Systems Data Set](https://archive.ics.uci.edu/ml/datasets/Condition+monitoring+of+hydraulic+systems#)**. Hydraulic System Test Rigs are used to test Aircraft Equipment components, Automotive Applications, and more [1]. This Hydraulic Test Rig can test a range of flow rates that can achieve different pressures with the ability to heat and cool while simulating testing under different conditions [2]. Testing the pressure, volume flow, and the temperature is possible by Hydraulic Test Rig sensors and digital displays. The display panel alerts the user when certain testing criteria are met while displaying either a green/red light [2]. Further, a filter blockage panel indicator is integrated into the panel to ensure the Hydraulic Test Rig's oil is maintained [2]. Additionally, the cooling filtration solution is designed to minimize power consumption and expand the Hydraulic Test Rig's life. In the case of predicting cooling conditions for a Hydraulic System, when the cooling condition is low, our prediction will tell us that the cooling of the Hydraulic System is close to total failure, and we may need to look into replacing the cooling filtration solution soon. 
-
-![cylinder-diagram-1](./assets/hydraulic-system-diagram.jpg)
-
-**Figure 1:** Hydraulic System Cylinder Diagram
-
-The Hydraulic Test Rig consists of the following: 
-- A primary and secondary cooling filtration circuit with pumps that deliver flow and pressure to the oil tank (the box at the bottom)
-- A pressure relief control valve for controlling the rising and falling flows
-- A pressure gauge
+By the end of this tutorial, you will predict the **cooling condition** for a **Hydraulic System Test Rig** by deploying a **Driverless AI MOJO Scoring Pipeline** into a test development environment (similar to production) using **H2O MLOps**. After going through this tutorial, you will be able to recognize several features of the MLOps UI, particularly how to deploy and monitor a hydraulic model. As well, this tutorial will cover several concepts around Machine Learning Operations. 
 
 ### Deep Dive and Resources
 
@@ -38,40 +29,60 @@ The Hydraulic Test Rig consists of the following:
 
 - A **Two-Hour MLOps Test Drive**: Test Drive is H2O.ai's Driverless AI and MLOps on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform and MLOps.
     - Need a **Two-Hour MLOps Test Drive**? Follow the instructions on this tutorial:[Getting Started with MLOps Test Drive](https://training.h2o.ai/products/tutorial-0-getting-started-with-mlops-test-drive).
+- An intermediate understanding of Driverless AI 
+ - For a general overview of Driverless AI, you can follow this tutorial: [Tutorial 1A: Automatic Machine Learning Introduction with Driverless AI](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai)
 
 **Note: Aquarium’s MLOps Test Drive lab has a license key built-in, so you don’t need to request one to use it. Each Driverless AI Test Drive instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore Driverless AI, you can always launch another Test Drive instance or reach out to our sales team via the [contact us form](https://www.h2o.ai/company/contact/).**
 
 ## Task 1: Explore the H2O.ai Platform Studio
 
-**Driverless AI version 1.9.0** and **MLOps version 0.31.1** can be launched from the H2O.ai Platform Studio.
+**MLOps 0.31.1** and **Driverless AI 1.9.0** can be launched from the H2O.ai Platform Studio.
 
-To launch **Driverless AI**, click the **Launch** button located in the **Driverless AI** section; a new tab will open.
+To launch **Driverless AI**, click the **Launch** button located in the **Driverless AI** section, a new tab will open. 
 
 - Click **Login with OpenID**
 - For **Log In**, you can enter `ds1/ds1` or `ds2/ds2`
 
-To launch **MLOps**, click the **Launch** button located in the **MLOPs** section; a new tab will open.
+To launch MLOps, click the Launch button located in the MLOPs section, a new tab will open.
 
 - Click **Login with OpenID Connect**
 - For **Log In**, you can enter `ds1/ds1` or `ds2/ds2`
 
 ![h2oai-platform-studio](./assets/h2oai-platform-studio.jpg)
 
-**Figure 2:** H2O.ai Platform Studio Splash Page for Launching Driverless AI and/or MLOps
+H2O.ai MLOps ties into Driverless AI and allows you to export your Driverless AI experiments into an MLOps project that can be viewed and shared from a single site. It also allows you to import, view, and share regression and classification models from H2O-3. H2O MLOps is a complete system for the deployment, management, and governance of models in production with seamless integration to H2O Driverless AI and H2O open source for model experimentation and training.
 
-## Task 2: Driverless AI Project in MLOps 
+**Figure 2:** H2O.ai Platform Studio Splash Page 
+
+## Task 2: Driverless AI Project(s) in MLOps 
+
+We will be using a prebuilt experiment linked to a project titled **hydraulic system** for this tutorial. The MLOps dashboard already has the Driverless AI **hydraulic system** project for this tutorial; it was shared with MLOps when the project was created.  If you want to access the project, you need to access Driverless AI from the **H2O.ai Platform Studio Splash Page**. The prebuilt project was built under the following credentials: `ds1/ds1`. Accordingly, you will need to access Driverless AI with such credentials to see the project. 
+
+The Driverless AI  experiment is a classifier model that classifies whether the **cooling condition** of a **Hydraulic System Test Rig** is 3, 20, or 100. By looking at the **cooling condition,** we can predict whether the Hydraulic Cooler operates **close to total failure**, **reduced efficiency**, or **full efficiency**. 
+
+- **3**: operates at close to total failure 
+- **20**: operates at reduced efficiency
+- **100**: operates at full efficiency
+
+
+
+The Hydraulic System Test Rig data for this tutorial comes from the **[UCI Machine Learning Repository: Condition Monitoring of Hydraulic Systems Data Set](https://archive.ics.uci.edu/ml/datasets/Condition+monitoring+of+hydraulic+systems#)**. Hydraulic System Test Rigs are used to test Aircraft Equipment components, Automotive Applications, and more [1]. A Hydraulic Test Rig can test a range of flow rates that can achieve different pressures with the ability to heat and cool while simulating testing under different conditions [2].
+ Testing the pressure, volume flow, and the temperature is possible by Hydraulic Test Rig sensors and digital displays. The display panel alerts the user when certain testing criteria are met while displaying either a green/red light [2]. Further, a filter blockage panel indicator is integrated into the panel to ensure the Hydraulic Test Rig's oil is maintained [2]. Additionally, the cooling filtration solution is designed to minimize power consumption and expand the Hydraulic Test Rig's life. In the case of predicting cooling conditions for a Hydraulic System, when the cooling condition is low, our prediction will tell us that the cooling of the Hydraulic System is close to total failure, and we may need to look into replacing the cooling filtration solution soon. 
+
+
+
+
+
+
+
+
+
 
 ### Open MLOps to See Project
-
-<!-- open-mlops-see-project GIF runs at 6 seconds -->
 
 ![open-mlops-see-project](./assets/open-mlops-see-project.gif)
 
 **Figure 10:** Open MLOps to See Driverless AI Project
-
-The MLOps dashboard already has the Driverless AI hydraulic system project for this tutorial; it was prebuilt in Driverless AI. 
-
-If you want to access the project, you need to access Driverless AI from the H2O.ai Platform Studio Splash Page. The prebuilt project was built under the following credentials: ds1/ds1. Accordingly, you will need to access Driverless AI with such credentials to see the project. 
 
 If you have not launched MLOps from the H2O.ai Platform Studio Splash page, proceed to the following instructions:
 
