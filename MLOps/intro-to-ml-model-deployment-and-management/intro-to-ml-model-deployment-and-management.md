@@ -5,7 +5,7 @@
 - [Objective](#objective)
 - [Prerequisites](#prerequisites)
 - [Task 1: Explore the H2O.ai Platform Studio](#task-1-explore-the-h2oai-platform-studio)
-- [Task 2: Driverless AI Project(s) in MLOps ](#task-2-driverless-ai-project(s)-in-mlops)
+- [Task 2: Driverless AI Project in MLOps ](#task-2-driverless-ai-project-in-mlops)
 - [Task 3: Machine Learning Operations Concepts](#task-3-machine-learning-operations-concepts)
 - [Task 4: Tour of MLOps UI](#task-4-tour-of-mlops-ui)
 - [Task 5: Interactive and Batch Scoring via MLOps Model Deployment](#task-5-interactive-and-batch-scoring-via-mlops-model-deployment)
@@ -48,7 +48,7 @@ H2O.ai MLOps ties into Driverless AI and allows you to export your Driverless AI
 
 **Figure 2:** H2O.ai Platform Studio Splash Page 
 
-## Task 2: Driverless AI Project(s) in MLOps 
+## Task 2: Driverless AI Project in MLOps 
 
 We will be using a prebuilt experiment linked to a project titled **hydraulic system** for this tutorial. The MLOps dashboard already has the Driverless AI **hydraulic system** project for this tutorial; it was shared with MLOps when the project was created.  If you want to access the project, you need to access Driverless AI from the **H2O.ai Platform Studio Splash Page**. The prebuilt project was built under the following credentials: `ds1/ds1`. Accordingly, you will need to access Driverless AI with such credentials to see the project. 
 
