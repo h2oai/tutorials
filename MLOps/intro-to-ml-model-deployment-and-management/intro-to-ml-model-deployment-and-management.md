@@ -19,20 +19,14 @@
 
 By the end of this tutorial, you will predict the **cooling condition** for a **Hydraulic System Test Rig** by deploying a **Driverless AI MOJO Scoring Pipeline** into a test development environment (similar to production) using **H2O MLOps**. After going through this tutorial, you will be able to recognize several features of the MLOps UI, particularly how to deploy and monitor a hydraulic model. As well, this tutorial will cover several concepts around Machine Learning Operations. 
 
-### Deep Dive and Resources
-
-[1] [SAVERY - HYDRAULIC TEST RIGS AND BENCHES](https://www.savery.co.uk/systems/test-benches)
-
-[2] [HYDROTECHNIK - Flow and Temperature Testing Components](https://www.hydrotechnik.co.uk/flow-and-temperature-hydraulic-test-bed)
-
 ## Prerequisites
 
 - A **Two-Hour MLOps Test Drive**: Test Drive is H2O.ai's Driverless AI and MLOps on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform and MLOps.
     - Need a **Two-Hour MLOps Test Drive**? Follow the instructions on this tutorial:[Getting Started with MLOps Test Drive](https://training.h2o.ai/products/tutorial-0-getting-started-with-mlops-test-drive).
-- An intermediate understanding of Driverless AI 
- - For a general overview of Driverless AI, you can follow this tutorial: [Tutorial 1A: Automatic Machine Learning Introduction with Driverless AI](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai)
+- A general understanding of Driverless AI 
+    - For a general overview of Driverless AI, you can follow this tutorial: [Tutorial 1A: Automatic Machine Learning Introduction with Driverless AI](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai)
 
-**Note: Aquarium’s MLOps Test Drive lab has a license key built-in, so you don’t need to request one to use it. Each Driverless AI Test Drive instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore Driverless AI, you can always launch another Test Drive instance or reach out to our sales team via the [contact us form](https://www.h2o.ai/company/contact/).**
+**Note: Aquarium’s MLOps Test Drive lab has a license key built-in, so you don’t need to request one to use it. Each MLOps Test Drive instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore H2O.ai MLOps, you can always launch another Test Drive instance or reach out to our sales team via the [contact us form](https://www.h2o.ai/company/contact/).**
 
 ## Task 1: Explore the H2O.ai Platform Studio
 
@@ -60,23 +54,28 @@ We will be using a prebuilt experiment linked to a project titled **hydraulic sy
 
 The Driverless AI  experiment is a classifier model that classifies whether the **cooling condition** of a **Hydraulic System Test Rig** is 3, 20, or 100. By looking at the **cooling condition,** we can predict whether the Hydraulic Cooler operates **close to total failure**, **reduced efficiency**, or **full efficiency**. 
 
-- **3**: operates at close to total failure 
-- **20**: operates at reduced efficiency
-- **100**: operates at full efficiency
+| Hydraulic Cooling Condition | Description |
+|:--:|:--:|
+| 3 | operates at close to total failure |
+| 20 | operates at reduced efficiency |
+| 100 | operates at full efficiency |
 
 
 
-The Hydraulic System Test Rig data for this tutorial comes from the **[UCI Machine Learning Repository: Condition Monitoring of Hydraulic Systems Data Set](https://archive.ics.uci.edu/ml/datasets/Condition+monitoring+of+hydraulic+systems#)**. Hydraulic System Test Rigs are used to test Aircraft Equipment components, Automotive Applications, and more [1]. A Hydraulic Test Rig can test a range of flow rates that can achieve different pressures with the ability to heat and cool while simulating testing under different conditions [2].
- Testing the pressure, volume flow, and the temperature is possible by Hydraulic Test Rig sensors and digital displays. The display panel alerts the user when certain testing criteria are met while displaying either a green/red light [2]. Further, a filter blockage panel indicator is integrated into the panel to ensure the Hydraulic Test Rig's oil is maintained [2]. Additionally, the cooling filtration solution is designed to minimize power consumption and expand the Hydraulic Test Rig's life. In the case of predicting cooling conditions for a Hydraulic System, when the cooling condition is low, our prediction will tell us that the cooling of the Hydraulic System is close to total failure, and we may need to look into replacing the cooling filtration solution soon. 
+The Hydraulic System Test Rig data for this tutorial comes from the **[UCI Machine Learning Repository: Condition Monitoring of Hydraulic Systems Data Set](https://archive.ics.uci.edu/ml/datasets/Condition+monitoring+of+hydraulic+systems#)**. The data set was experimentally obtained with a hydraulic test rig. This test rig consists of a primary working and a secondary cooling-filtration circuit which are connected via the oil tank [1], [2]. The system cyclically repeats constant load cycles (duration 60 seconds) and measures process values such as pressures, volume flows and temperatures while the condition of four hydraulic components (cooler, valve, pump and accumulator) is quantitatively varied.
+The data set contains raw process sensor data (i.e. without feature extraction) which are structured as matrices (tab-delimited) with the rows representing the cycles and the columns the data points within a cycle.
 
 
+Hydraulic System Test Rigs are used to test Aircraft Equipment components, Automotive Applications, and more [1]. A Hydraulic Test Rig can test a range of flow rates that can achieve different pressures with the ability to heat and cool while simulating testing under different conditions [2]. Testing the pressure, volume flow, and temperature is possible by Hydraulic Test Rig sensors and a digital display. The display panel alerts the user when certain testing criteria are met while displaying either a green or red light [2]. Further, a filter blockage panel indicator is integrated into the panel to ensure the Hydraulic Test Rig's oil is maintained [2]. In the case of predicting cooling conditions for a Hydraulic System, when the cooling condition is low, our prediction will tell us that the cooling of the Hydraulic System is close to total failure, and we may need to look into replacing the cooling filtration solution soon. In our case, the shared porject classifies the probability of the cooler condition is 3, 20, or 100.  
 
+![cylinder-diagram-1](./assets/hydraulic-system-diagram.jpg)
 
+**Figure 1:** Hydraulic System Cylinder Diagram
 
-
-
-
-
+From a general pespective a Hydraulic Test Rig consists of the following: 
+- A primary and secondary cooling filtration circuit with pumps that deliver flow and pressure to the oil tank (the box at the bottom)
+- A pressure relief control valve for controlling the rising and falling flows
+- A pressure gauge
 
 ### Open MLOps to See Project
 
@@ -93,6 +92,8 @@ If you have not launched MLOps from the H2O.ai Platform Studio Splash page, proc
 3\. For **Log In**, enter `ds1/ds1`
 
 Note: if you already logged into Driverless AI, you won't have to enter login credentials for MLOps.
+
+Regard the **hydraulic system** project on the **My Projects** page. Disregard the other project, as it will not be used in this tutorial.
 
 ### Login to MLOps as a `ds2` user from a separate browser tab
 
@@ -118,9 +119,16 @@ If you need help following along with the gif above, follow the instructions bel
 
 Later we will explore the MLOps UI, share a project from ds1 user to ds2 user, deploy the hydraulic model, and monitor the model. Before that, let’s become familiar with Machine Learning Operations concepts.
 
+### Deep Dive and Resources
+
+[1] [SAVERY - HYDRAULIC TEST RIGS AND BENCHES](https://www.savery.co.uk/systems/test-benches)
+
+[2] [HYDROTECHNIK - Flow and Temperature Testing Components](https://www.hydrotechnik.co.uk/flow-and-temperature-hydraulic-test-bed)
+
 ## Task 3: Machine Learning Operations Concepts
 
-If you look through various analyst firms and research organizations, you will find varying percentages of companies that have deployed AI into production. However, depending on the type of organization and where they are in their AI journey, you will find universally that most companies have not broadly deployed AI & Machine Learning in their companies. Seventy enterprise leading firms took a survey and only 15% have some kind of AI deployed in production and that is because there are various challenges that come into play when productionizing Machine Learning models [2]. “Perhaps not surprisingly, only 15% have deployed AI broadly into production - because that is where people and process issues come into play.” - NVP Survey of 70 industry leading firms you would recognize [2]
+If you look through various analyst firms and research organizations, you will find varying percentages of companies that have deployed AI into production. However, depending on the type of organization and where they are in their AI journey, you will find universally that most companies have not broadly deployed AI & Machine Learning in their companies. 
+According to a New Vantage Partners Survey, only 15% have some AI deployed in production because various challenges come into play when producing Machine Learning models [2]. Only 15% have deployed AI broadly into production - because that is where people and process issues come into play. 
 
 ### AI Lifecycle with H2O.ai Products
 
@@ -128,7 +136,7 @@ If you look through various analyst firms and research organizations, you will f
 
 **Figure 12:** AI Lifecycle with H2O.ai Products
 
-In the above AI lifecycle process diagram, business users typically have use cases that they need to solve where they need to improve productivity or customer experiences, etc. Business users will engage teams of data engineers and data scientists to build models. The data engineers can use Q for data exploration while the data scientistis can use Driverless AI or H2O for model training. Once the data scientists feel they have a high quality model based on their experimentation and exploration, those models are typically validated by a data science team. Some of the data scientists can use Driverless AI for model testing and validation. Once you have a model where it looks like it performs well and it does what you expect, it is going to be handed over to a production team. That is what you see on the lower right hand side of the diagram. That production team is going to be responsible for deploying that model onto a production environment and making sure that model is serving the needs of business applications. DevOps Engineers and ModelOps Engineers can use MLOps for Driverless AI model production testing, deployment, and lifecycle management.  From there, once you have a model that works, you will typically integrate that model into those business applications. Application Developers can use Q SDK to integrate the MLOps deployed model into the AI application for bringing the predictions to the end user. So, there is sort of a down stream service that you are providing support to that you have to make sure you can meet the service level agreement with. [1]
+In the above AI lifecycle with H2O.ai Products (H2O AI Platform), business users can solve or improve productivity issues, customer experience issues, etc. Business users will engage teams of data engineers and data scientists to build models. Data engineers can use H2O.ai Wave (Apps) for data exploration, while data scientists can use Driverless AI for model training. Once the data scientists feel they have a high-quality model base on their experimentation and exploration, those models are typically validated by a data science team. Through the H2O AI Platform, data scientists can use Driverless AI for model testing and validation. Once you have a model where it looks like it performs well and does what you expect, it will be handed over to a production team. That is what you see on the lower right-hand side of the diagram. That production team will be responsible for deploying that model into a production environment and ensuring that the model is serving business applications' needs. DevOps Engineers and ModelOps Engineers can use MLOps for Driverless AI model production testing, deployment, and lifecycle management. From there, once you have a model that works, you will typically integrate that model into those business applications. Application Developers can use the H2O.ai Wave SDK to incorporate the MLOps deployed model into the AI application to bring the end-user predictions. Hence, a downstream service can be created in the H2O AI Platform to make sure you can meet the service-level agreement or an array of other desires. 
 
 ### Barriers for AI Adoption at Scale
 
@@ -138,39 +146,39 @@ In the above AI lifecycle process diagram, business users typically have use cas
 
 **The Challenge of Model Deployment**
 
-With Machine Learning Operations, it is about getting that initial Machine Learning model into a production environment. That might seem easy if you think that the model that came from Data Science is ready for production use. However, often times what you will find as the model comes from the Data Science team, it kind of gets thrown over the wall to the production team. Then the production team looks at this model object, which is written in Python or R and the production team says we do not know what to do with this thing. Also they do not have the tools on the IT side of the house to deal with Python or R object. The IT team is use to dealing with things like Java or C, etc. [3]
+With Machine Learning Operations, it is about getting that initial machine learning model into a production environment. That might seem straightforward if you think that the model that came from the data science team is ready for production use. However, you will often find that the model that comes from the data science team kind of gets thrown over the wall to the production team. As a result, production teams are required to look at this model object, which is written in Python or R. For the most part, production teams do not have the tools on the IT side of the house to deal with Python or R. [3]
 
-There is often a mismatch between the types of tools and languages that the Data Science team and the IT team use that will cause a huge disconnect, preventing the model from being deployed. Not only that, these two teams are very different in their approach. The Data Science team says there was a business challenge, we were asked to build a model that could predict the outcome and we have done that. Then, the Data Science team says their model does that prediction very well and it is very accurate. Next, the Data Science team hands the model over to the IT team and the IT team has a completely different set of criteria to evaluate that model. The IT team is looking for things like does it perform? Is it fast? Can we scale this model out into production, so that it will be responsive? Can we put it onto a system like Kubernetes, so that it will be resilient? Furthermore, the IT team just has a different set of criteria they are looking for compared to the Data Science team, so that mismatch can just cause a lot of models to never be deployed into production. [3]
+Often, there is a mismatch between the types of tools and languages that the data science team and the IT team use that will cause a huge disconnect, preventing the model from being deployed. Not only that, these two teams are very different in their approach. To image this difference, a data science team will say, "there was a business challenge; we were asked to build a model that could predict the outcome, and we have done that." The data science team will then say, "our model predicts very well, and it is very accurate." Next, the data science team will hand the model over to the IT team, and the IT team will have an entirely different set of criteria to evaluate that model. The IT team will look for things like does it perform? Is it fast? Can we scale this model out into production so that it will be responsive? Can we put it into a system like Kubernetes so that it will be resilient? In general, the IT team has a different set of criteria they are looking for compared to the data science team, so that mismatch can cause a lot of models never to be deployed into production. [3]
 
 **The Challenge of Model Monitoring**
 
-Once you have a model up and running, a lot of times people will realize that they need a partially different kind of model monitoring in order to make sure that the model is healthy in production. So, they have existing software tools that allow them to monitor things like the service and whether the service is up and running and responding to requests. But what they do not have is specific Machine Learning monitoring tools that would allow them to see if the model is still accurate. In some cases, not having monitoring can make some people very uncomfortable because they do not know how the model is behaving. They may not be willing to deploy that model into production because they are really unsure about how it is going to behave. So, they may not be willing to take that risk. [4]
+Once you have a model up and running, a lot of times, people will realize that they need a partially different kind of model monitoring to make sure that the model is healthy in production. They have existing software tools that allow them to monitor things like the service and whether the service is up and running and responding to requests. But what they do not have is specific Machine Learning monitoring tools that would allow them to see if the model is still accurate. In some cases, not having monitoring can make some people very uncomfortable because they do not know how the model is behaving. They may not be willing to deploy that model into production because they are unsure about how it will behave. So, they may not be willing to take that risk. [4]
 
 **The Challenge of Model Lifecycle Management**
 
-For Machine Learning models to maintain their accuracy in production, they will sometimes need frequent updates. Those updates need to be done seemlessly, so we do not disrupt the services to those downstream applications. A lot of times, companies will find that they do not have a plan for how they are going to update the model and how they are going to retrain it. Additionally, they do not have a way to seemlessly roll this model out into production. So, they can not even deploy it out in the first place because they do not have a plan for how they are going to manage it. [5]
+For Machine Learning models to maintain their accuracy in production, they will sometimes need frequent updates. Those updates need to be done seamlessly not to disrupt the services to those downstream applications. Often, companies will find that they do not have a plan for how they are going to update the model and how they are going to retrain it. Additionally, they do not have a way to roll this model out into production seamlessly. So, they can not even deploy it out in the first place because they do not have a plan for managing it.[5]
 
 **The Challenge of Model Governance**
 
-For regulated industries, you will find that if they do not have a plan for how they are going to govern their deployed models, they might not be able to deploy the models in the first place. Governance means you have a plan for how you are going to control access and you have a plan for how to capture information about the models being deployed into production, which you can use for legal and regulatory compliance. So, you will find if you do not have a plan for these things especially if you are in a regulated industry, you might not be able to deploy the model in the first place. [6]
+For regulated industries, you will find that if they do not have a plan for how they will govern their deployed models, they might not be able to deploy the models in the first place. Governance means you have a plan for how you will control access and have a plan for how to capture information about the models being deployed into production, which you can use for legal and regulatory compliance. So, you will find if you do not have a plan for these things, especially if you are in a regulated industry, you might not be able to deploy the model in the first place. [6]
 
-### What "Success" Looks Like Today
+### How "Success" Looks Like Today? 
 
 ![ml-code-small-fraction-rw-ml-system](./assets/ml-code-small-fraction-rw-ml-system.jpg)
 
-**Figure: 14** A small fraction of real-world ML system is of ML code [8]
+**Figure: 14** A small fraction of a real-world ML system is of ML code [8]
 
-As you can imagine, those challenges we discussed earlier create some signficant barriers, but people are still successfully running and deploying models in production today. This diagram above is pulled from the **Hidden Technical Debt in Machine Learning Systems publication**, which was written by folks at Google. This publication talks about how deploying Machine Learning in production, specifically the model itself is a relatively small part of the overall codebase when you are deploying into in production. You can see this small dot in the middle of the diagram, which is the Machine Learning code. All of these other large boxes are the other things you need to do to make sure that machine learning model is running properly. In the publication, they point out how much glue code needs to be written to get that Machine Learning code running in production. [7]
+As you can imagine, those challenges we discussed earlier create some significant barriers, but people are still successfully running and deploying models in production today. This diagram above is pulled from the **Hidden Technical Debt in Machine Learning Systems publication**, written by folks at Google. This publication discusses how deploying Machine Learning in production; specifically, the model itself, is a relatively small part of the overall codebase when deploying into production. You can see this small orange box in the middle of the diagram, the Machine Learning code. These other large boxes are the other things you need to do to ensure that the machine learning model is running properly.  Only a small fraction of real-work ML systems are composed of the ML code, as shown by the middle small orange box. The required surrounding infrastructure is vast and complex. Henceforward, "success" today, to an extend, looks like the diagram above where the larger boxes are working properly, and the machine learning model is running. [7]
 
-**What does success look like today with companies trying to deploy Machine Learning models in a very manual way or by themselves?** 
+**How Does Success Look Like Today With Companies Trying to Deploy Machine Learning Models in a Very Manual Way or by Themselves?** 
 
-Each time we want to deploy a new model into production, there is just an intense and manual effort by the teams including Data Scientists and production teams. They have to get the model up and running, which means writing a lot of custom code, wrapping that model in the code, deploying it out to production. That code tends to be brittle because it is all custom written and when it breaks there is a mad scramble to fix things. It turns out that a lot of people really do not have a plan for what they are going to do for when something breaks or when the model stops working well. So, when something stops working properly it is all hands on deck. The Data Science team has to stop what they are working on, the IT team mobilizes their resources and all of a sudden you have this tiger team trying to figure out what is wrong with this model. Meanwhile, that service you set up, we talked about earlier in AI Lifecycle, supplying results to a downstream application is offline because there was not really a plan for what not to do with this service should there be a problem. [7]
+Each time we want to deploy a new model into production, data science and production teams have to perform an intense and manual effort. They have to get the model up and running, which means writing a lot of custom code, wrapping that model in the code, and deploying it to production. That code tends to be brittle because it is all custom-written, and when it breaks, there is a mad scramble to fix things. It turns out that many people do not have a plan for what they are going to do when something breaks or when the model stops working well. So, when something stops working properly, it is all hands on deck. The data science team has to stop what they are working on, and the IT team mobilizes their resources, and suddenly, you have this entire team trying to figure out what is wrong with this model. Meanwhile, we talked about that service you set up earlier in AI Lifecycle; supplying results to a downstream application is offline because there was not a plan for what not to do with this service should there be a problem.[7]
 
-In a lot of cases, models are deployed into production but there is really no monitoring for the Machine Learning part of the code, which means that service could be up and running. That service could be responding to the request, but it may not be accurate anymore. You can imagine that even the ongoing management of such a system with a lot of custom code requires a team of people. So one of the biggest symptoms here is that leaders in these organizations will say their Data Scientists are kind of embroiled in these projects. They are spending 60% to 80% of time just managing these production projects and they are not doing new Data Science projects. We have heard it over and over that people will say they just want their Data Scientists to be doing Data Science, not production. However, once you get a few Machine Learning projects up and running in production with the effort of a team of people contantly keeping these projects up and running, business leaders want more than just 1 or 2 projects. Business leaders want more of these projects running because they typically see increased efficiency by say 10% and they see a generated incremental $2 million dollars in revenue. Therefore, now business leaders want to deploy those technologies across a variety of use cases in the business. So once you have a little success even with manual means, your business is going to want to scale from not just 2 to 4, but 2 to 20 or 2 to 50 Machine Learning models in production. So that is what success looks like today for a lot of organizations, which is a very challenging situation. [7]
+In many cases, models are deployed into production, but there is no monitoring for the Machine Learning part of the code. That service could be responding to the request, but it may not be accurate anymore. You can imagine that even the ongoing management of such a system with a lot of custom code requires a team of people. So one of the most significant symptoms here is that leaders in these organizations will say their data scientists are embroiled in these projects. They spend 60% to 80% of the time just managing these production projects and are not doing new data science projects. We have heard that people will say they want their data scientists to be doing data science, not production. However, once you get a few Machine Learning projects up and running in production with the effort of a team of people constantly keeping these projects up and running, business leaders want more than just one or two projects. Business leaders want more of these projects running because they typically see increased efficiency by, say, 10%, and they see a generated increase in revenue by around 2 million dollars. Therefore, now business leaders want to deploy those technologies across various use cases in the business. So once you have a little success even with manual means, your business is going to want to scale from not just two to four, but two to twenty or two to fifty Machine Learning models in production. So that is what many organizations want and what they consider success, which is a very challenging situation. [7]
 
 ### What is MLOps?
 
-MLOps is known as Model Operations or ML Ops. In MLOps, we talk about how do we put Machine Learning models into production environments. This is a new set of technologies and practices, which you need to have in your organization in order to make sure that you can successfully deploy and manage models in production. In this system, you hopefully have the right people doing the right things. So your Data Scientists are doing Data Science and they can hand over their models to a production team. The production team can successfully deploy and manage those models on the production environment and these two teams can collaborate together. So if there is ever an issue, the production team can go back to the Data Science team and share the right information with them and they can work together to fix a problem or rebuild a model, etc. In the end, MLOps allows you to scale your adoption of Machine Learning. If you do not have this technology in place, you can imagine you are stuck in that manual model and there is really no way you can scale to 20, 50 or 100 models, much less 10,000 models in production, which is where a lot of us are heading. [9]
+MLOps is known as Model Operations. In MLOps, we talk about how do we put Machine Learning models into production environments. MLOps is a new set of technologies and practices that you need to have in your organization to make sure that you can successfully deploy and manage models in production. MLOps is communication between data scientists and the operations or production team. It's deeply collaborative, designed to eliminate waste, automate as much as possible, and produce more prosperous, more consistent insights with machine learning. In this system, you want to have the right people doing the right things to have your data scientists only focus on producing models for the production team. If there is ever an issue, the production team can go back to the data science team and share the right information with them, and they can work together to fix a problem or rebuild a model, etc. In the end, MLOps allows you to scale your adoption of Machine Learning. If you do not have this technology in place or collaboration, there are no ways you can scale to 20, 50, or 100 models, much less 10,000 models in production, which is where a lot of us are heading. [9]
 
 ### What are the Key Components of MLOps?
 
@@ -178,15 +186,23 @@ MLOps is known as Model Operations or ML Ops. In MLOps, we talk about how do we 
 
 **Figure 15:** MLOps Key Capabilities
 
-The key areas of MLOps are production model deployment, production model monitoring, production lifecycle management, and production model governance. 
+The key areas of MLOps are as follows: 
 
-With MLOps, we want to automate as much of the process of deploying model artifacts onto production and facilitating that collaboration between teams to get the artifacts over into production and get them up and running. [10]
+Production Model Deployment
 
-A lot of systems are not designed with Machine Learning in mind. So, for MLOps, we want to have monitoring for things like not just service levels, but also things like data drift. Is the data we trained on similar to the data we are seeing in production? We also want to have monitoring for things like accuracy where we can see if the model is continuing to provide reliable and accurate results [10]
+- With MLOps, we want to automate as much of the process of deploying model artifacts into production and facilitating that collaboration between teams to get the artifacts over into production and get them up and running. [10]
 
-For production lifecycle management, we want to provide the ability to troubleshoot, test, and seamlessly upgrade models in production and even rollback models. We want to have other options if we have a problem in production. [10]
+Production Model Monitoring
 
-For production model governance, we want to ensure that models are safe and compliant with our legal and regulatory standards with things like access control, audit trails and model lineage [10]
+- A lot of systems are not designed with Machine Learning in mind. So, for MLOps, we want to monitor service levels, data drift, etc. In the case of data drift, we want to know whether the data we trained on is similar to the data we see in production. We also want to monitor things like accuracy, where we can see if the model is continuing to provide reliable and accurate results. [10]
+
+Production Lifecycle Management
+
+- For production lifecycle management, we want to provide the ability to troubleshoot, test, and seamlessly upgrade models in production and even rollback models. We want to have other options if we have a problem in production. [10]
+
+Production Model Governance
+
+- We want to ensure that models are safe and compliant with our legal and regulatory standards with things like access control, audit trails, and model lineage for production model governance. [10]
 
 ### Model Deployment
 
@@ -194,9 +210,11 @@ For production model governance, we want to ensure that models are safe and comp
 
 **Figure 16:** Model Code, Runner, Container, Container Management
 
-Earlier in our AI Lifecycle flow diagram, we saw that we built a model and now we are outputting that model from our Data Science system. So, we end up with some code that in the right environment can receive a request with certain data on the request and can respond with a prediction. If you are running this model within a vendor infrastructure, what you will find is that you can deploy this model out to a given vendor's infrastructure. This deployment will allow you to do things like make a rest request to that model and get a response. That is because the vendor has done a lot of work behind the scenes in order to deploy that model into production. [11]
+Earlier in our AI Lifecycle flow diagram, we saw that we built a model, and now we are outputting that model from our data science system. So, we end up with some code that can receive a request with certain data and respond with a prediction in the right environment. If you are running this model within a vendor infrastructure, what you will find is that you can deploy this model out to a given vendor's infrastructure. This deployment will allow you to do things like make a rest request to that model and get a response. That is because the vendor has done a lot of work behind the scenes to deploy that model into production. [11]
 
-So, what steps must one go through to make rest request and get a scored response? The **first step** requires having a runner to deploy this code. This runner code itself can't respond to your request, it is just a bunch of code. The **second step** requires having something with all the information for the rest interface and dependencies or libraries for that specific model type, so it is able to respond to a request. So if it is a Python model, you will probably need the libraries to run that Python model. There is a bunch of code that you will need to make this model accessible and be able to do scoring. The **third piece** requires having a container. So, what you are doing is wrapping this model with all of its dependencies and everything you need to do scoring. Then you are dropping this wrapped model into a container, which allows you to put this model into a container management system. This container management system will allow you to replicate this model for scaling and supporting high performance environments and more. Kubernetes is the most well known container management system. Similarly, Docker is the most common container environment. So, typically you will Dockerize your model and put it into a Docker container. Then you will deploy one or more containers out onto Kubernetes. [11]
+So, what steps must one go through to make a rest request and get a scored response? The **first step** requires having a runner to deploy this code. This runner code itself can't respond to your request; it is just a bunch of code. The **second step** requires having something with all the information for the rest interface and dependencies or libraries for that specific model type to respond to a request. So if it is a Python model, you will probably need the libraries to run that Python model. There is a bunch of code that you will need to make this model accessible and do the scoring. The **third piece** requires having a container. You will need to wrap the model with all of its dependencies and everything you need to do the scoring. Then you are dropping this wrapped model into a container, which allows you to put this model into a container management system. This container management system will allow you to replicate this model for scaling and supporting high-performance environments and more. Kubernetes is the most well-known container management system.
+
+Similarly, Docker is the most common container environment. So, typically you will Dockerize your model and put it into a Docker container. Then you will deploy one or more containers out into Kubernetes. [11]
 
 ![model-deployment-2](./assets/model-deployment-2.jpg)
 
