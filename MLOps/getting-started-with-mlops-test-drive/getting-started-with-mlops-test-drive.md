@@ -49,7 +49,7 @@ If you are new to **MLOps**, we highly recommend finishing this tutorial to set 
  - Country
  - Email
 
-4\. Through the reCAPTCHA test, verify that you are not a robot by checking the "I'm not a robot" box.
+4\. Through the **reCAPTCHA** test, verify that you are not a robot by checking the "I'm not a robot" box.
 
 5\. Click on **Create account and email temporary password** at the bottom of the page.
 
@@ -108,7 +108,7 @@ After the **MLOps Test Drive lab** appears:
 
 2. Note that the lab automatically ends after two hours and can be taken multiple times
 
-3. [H2O.ai Learning Center](https://training.h2o.ai/): Build your Knowledge Base and Skills at your pace. Enter a place for knowledge-sharing, skills-enhancements, idea-sharing and more!
+3. [H2O.ai Learning Center](https://training.h2o.ai/): Build your Knowledge Base and Skills at your pace. Enter a place for knowledge-sharing, skills-enhancements, idea-sharing, and more!
 
 4. [H2O.ai Community(HaC)](https://www.h2o.ai/community/home): HaC is a community to share, learn, network, ask questions, provide answers, take the next step, and explore Artificial Intelligence, Machine Learning, and Data Science.  We are here to democratize AI. It will take a village to democratize AI.
 
