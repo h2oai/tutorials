@@ -162,7 +162,7 @@ For Machine Learning models to maintain their accuracy in production, they will 
 
 For regulated industries, you will find that if they do not have a plan for how they will govern their deployed models, they might not be able to deploy the models in the first place. Governance means you have a plan for how you will control access and have a plan for how to capture information about the models being deployed into production, which you can use for legal and regulatory compliance. So, you will find if you do not have a plan for these things, especially if you are in a regulated industry, you might not be able to deploy the model in the first place. [6]
 
-### How "Success" Looks Like Today? 
+### How "Success" Looks Like Today
 
 ![ml-code-small-fraction-rw-ml-system](./assets/ml-code-small-fraction-rw-ml-system.jpg)
 
