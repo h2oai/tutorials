@@ -14,18 +14,18 @@
 
 ## MLOps Test Drive
 
-**MLOps Test Drive** is a two-hour lab session that exists in H2O's Aquarium. Aquarium is the H2O cloud environment providing software access for workshops, conferences, and training.
+If you are new to **MLOps**, we highly recommend finishing this tutorial before proceeding to other MLOps tutorials.
 
-All Aquarium labs have a specific **Lab Duration*** to complete the lab. **All MLOps Test Drive Lab sessions will terminate after two-hours. No work will be saved!**. However, you can retake the lab multiple times.
+**MLOps Test Drive** is a two-hour lab session that exists in H2O's Aquarium. Aquarium is the H2O.ai cloud environment providing software access for workshops, conferences, and training.
 
-If you are new to MLOps we highly recommend you start with the **MLOps Test Drive**!
+**All MLOps Test Drive Lab sessions will terminate after two-hours. No work will be saved!**. However, you can retake the lab multiple times.
 
 **Note**: **Aquarium’s MLOps Test Drive lab has a license key built-in, so you don’t need to request one to use it**.
 
 
 ## How to Obtain a Two Hour MLOps Test Drive Session
 
-1\. Go to the Aquarium site by copying and pasting the URL below to a browser of your choice or simply click on [Aquarium](http://aquarium.h2o.ai/login).
+1\. Go to the Aquarium site by pasting the URL below to your chosen browser or click on [Aquarium](http://aquarium.h2o.ai/login).
 
 ```http://aquarium.h2o.ai/login```
 
@@ -57,7 +57,7 @@ If you are new to MLOps we highly recommend you start with the **MLOps Test Driv
 
 **If you are having issues receiving a temporary password try the following:**
 
-- Force-reload the Aquarium page
+- Force-reload on the Aquarium page
 
 - Try a different browser
 
