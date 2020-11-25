@@ -13,18 +13,9 @@
 - [Appendix A: Glossary](#appendix-a-glossary)
 
 ## Objective
-**Machine Learning Model Deployment** is the process of making your model available in production environments, so they can be used to make predictions for other software systems [1]. Before model deployment, **feature engineering** occurs in the form of preparing data that later on will be used to train a model [2]. Driverless AI **Automatic Machine Learning (AutoML)** combines the best feature engineering and one or more **machine learning models** into a scoring pipeline [3][4]. The **scoring pipeline** is used to score or predict data when given new test data [5]. The scoring pipeline comes in two flavors. The first scoring pipeline is a **Model Object, Optimized(MOJO) Scoring Pipeline,** which is a standalone, low-latency model object designed to be easily embeddable in production environments. The second scoring pipeline is a Python Scoring Pipeline, which has a heavy footprint that is all Python and uses the latest libraries of Driverless AI to allow for executing custom scoring recipes[6].
+**Machine Learning Model Deployment** is the process of making your models available in production environments, so they can be used to make predictions for other software systems [1]. Before model deployment, **feature engineering** occurs in the form of preparing data that later on will be used to train a model [2]. Driverless AI **Automatic Machine Learning (AutoML)** combines the best feature engineering and one or more **machine learning models** into a scoring pipeline [3][4]. The **scoring pipeline** is used to score or predict data when given new test data [5]. The scoring pipeline comes in two flavors. The first scoring pipeline is a **Model Object, Optimized(MOJO) Scoring Pipeline,** which is a standalone, low-latency model object designed to be easily embeddable in production environments. The second scoring pipeline is a Python Scoring Pipeline, which has a heavy footprint that is all Python and uses the latest libraries of Driverless AI to allow for executing custom scoring recipes[6].
 
-By the end of this tutorial, you will predict the **cooling condition** for a **Hydraulic System Test Rig** by deploying an **embeddable Python Scoring Pipeline** into **Python Runtime** using **Python**. The Hydraulic System Test Rig data comes from the [UCI Machine Learning Repository: Condition Monitoring of Hydraulic Systems Data Set](https://archive.ics.uci.edu/ml/datasets/Condition+monitoring+of+hydraulic+systems#). Hydraulic System Test Rigs are used to test components in Aircraft Equipment, Ministry of Defense, Automotive Applications, and more [7]. This Hydraulic Test Rig is capable of testing a range of flow rates that can achieve different pressures with the ability to heat and cool to simulate testing under different conditions [8]. Testing the pressure, the volume flow, and the temperature is possible by Hydraulic Test Rig sensors and digital displays. The display panel alerts the user when certain testing criteria are met, displaying either a green/red light [8]. A filter blockage panel indicator is integrated into the panel to ensure the Hydraulic Test Rig’s oil is maintained [8]. The cooling filtration solution is designed to minimize power consumption and expand the life of the Hydraulic Test Rig. We are predicting cooling conditions for Hydraulic System Predictive Maintenance. When the cooling condition is low, our prediction tells us that the cooling of the Hydraulic System is close to total failure, and we may need to look into replacing the cooling filtration solution soon.
-
-![Cylinder-Diagram-1](assets/Cylinder-Diagram-1.jpg)
-
-Figure: Hydraulic Test Rig General Cylinder Diagram
-
-The Hydraulic Test Rig consists of the following: 
-- A primary and secondary cooling filtration circuit with pumps that deliver flow and pressure to the oil tank (the box at the bottom)
-- A pressure relief control valve for controlling the rising and falling flows
-- A pressure gauge to measure pressure
+By the end of this tutorial, you will predict the **cooling condition** for a **Hydraulic System Test Rig** by deploying an **embeddable Python Scoring Pipeline** into **Python Runtime** using **Python**. 
 
 ### Resources
 
@@ -39,10 +30,6 @@ The Hydraulic Test Rig consists of the following:
 [5] H2O.ai Community AI Glossary: [Scoring Pipeline](https://www.h2o.ai/community/glossary/scoring-pipeline)
 
 [6] H2O.ai Community AI Glossary: [Model Object, Optimized (MOJO) Scoring Pipeline](https://www.h2o.ai/community/glossary/model-object-optimized-mojo)
-
-[7] [SAVERY - HYDRAULIC TEST RIGS AND BENCHES](https://www.savery.co.uk/systems/test-benches)
-
-[8] [HYDROTECHNIK - Flow and Temperature Testing Components](https://www.hydrotechnik.co.uk/flow-and-temperature-hydraulic-test-bed)
 
 
 ## Prerequisites
@@ -72,7 +59,7 @@ Search for EC2 service and click it in the dropdown:
 
 ![search-for-ec2-service](assets/search-for-ec2-service.jpg)
 
-On the page that appears, in the left sidebar, click Instances. Then click **Launch Instance.**
+On the page that appears in the left sidebar, click Instances. Then click **Launch Instance.**
 
 ![launch-instance](assets/launch-instance.jpg)
 
@@ -84,7 +71,7 @@ Choose **t2.2xlarge** instance. Then click **Next: Configure Instance Details.**
 
 ![choose-t2-2xlarge-instance](assets/choose-t2-2xlarge-instance.jpg)
 
-For **Configure Instance Details**, keep them default. Please make sure that **Use subnet setting (Enable)** for *Auto-assign Public IP* is selected. Then click **Next: Add Storage.**
+For **Configure Instance Details**, keep them default. Please ensure that **Use subnet setting (Enable)** for *Auto-assign Public IP* is selected. Then click **Next: Add Storage.**
 
 ![configure-instance](assets/configure-instance.jpg)
 
@@ -160,7 +147,7 @@ After connecting to your EC2 instance, your terminal should look as follows:
 
 ### Set the Driverless AI License Key in EC2 Instance
 
-While connected to the EC2 instance, set the Driverless AI License Key as a permanent environment variable, so you can use the Python scoring pipeline.
+While connected to the EC2 instance, set the Driverless AI License Key as a permanent environment variable, so that you can use the Python scoring pipeline.
 
 
 ```bash
@@ -209,7 +196,7 @@ Once you are done, you can exit the `thrift-0.10.0` directory.
 
 ### Create Environment Directory Structure in EC2 Instance
 
-Next, we recommend you create the following environment directory structure in your EC2 instance since it will make it easier to follow along with the rest of the deployment tutorials, or if you already have it from the other tutorials, you can skip this step. To create the environment directory, run the following commands:
+Next, we recommend creating the following environment directory structure in your EC2 instance since it will make it easier to follow along with the rest of the deployment tutorials. If you already have it from the other tutorials, you can skip this step. To create the environment directory, run the following commands:
 
 ```bash
 # Create directory structure for model deployment projects (covers MOJO and Python)
@@ -235,7 +222,7 @@ Download MOJO Scoring Pipeline
 
 - In the **Experiments** section, click on the following experiment: **Model_deployment_HydraulicSystem**
 
-- On the STATUS: COMPLETE section in the experiment page, click **DOWNLOAD PYTHON SCORING PIPELINE**
+- On the STATUS: COMPLETE section on the experiment page, click **DOWNLOAD PYTHON SCORING PIPELINE**
 
 ![download-python-scoring-pipeline](assets/download-python-scoring-pipeline.jpg)
 
@@ -306,25 +293,25 @@ With the environment set up for the **Python Scoring Pipeline**, we are ready to
 
 ### Python Scoring Pipeline Files
 
-After downloading the Python Scoring Pipeline, the **scoring-pipeline** folder comes with many files. The wheel file that is needed to execute the Python Scoring Pipeline is the **scoring_h2oai_experiment_6a77d0a4_6a25_11ea_becf_0242ac110002-1.0.0-py3-none-any.whl**, which is a library that we use to import the **Scorer** from. The **Scorer** is a class we use to do interactive or batch scoring on data. There are Python scripts that help with executing the scoring pipeline directly in Python, on an HTTP server and on a TCP server. They include **example.py,** **http_server.py,** and **tcp_server.py.** In the Python Scoring Pipeline, we have an HTTP scoring service and a TCP scoring service. These two scoring services are independent and mutually exclusive.
+After downloading the Python Scoring Pipeline, the **scoring-pipeline** folder comes with many files. The wheel file that is needed to execute the Python Scoring Pipeline is the **scoring_h2oai_experiment_6a77d0a4_6a25_11ea_becf_0242ac110002-1.0.0-py3-none-any.whl**, which is a library that we use to import the **Scorer** from. The **Scorer** is a class we use to do interactive or batch scoring on data. There are Python scripts that help with executing the scoring pipeline directly in Python, on an HTTP server and a TCP server. They include **example.py,** **http_server.py,** and **tcp_server.py.** In the Python Scoring Pipeline, we have an HTTP scoring service and a TCP scoring service. These two scoring services are independent and mutually exclusive.
 
 ### Embedding Python Scoring Pipeline into Python Runtime
 
-To run the Python **example.py** script, there is the helper shell script **run_example.sh.** When the Python **example.py** is executed, it executes the Python scoring pipeline directly in Python and does various types of scoring on the test data. The Python **example.py** does interactive scoring in which it uses **scorer.score([...])** method to score one row at a time. Additionally, the Python **example.py** does batch scoring in which it uses **scorer.score_batch(dataframe** or **datatable)** to score a frame of data. You can think of a frame as a batch of rows. Batch scoring is faster than interactive scoring. The Python **example.py** does batch scoring on a Pandas dataframe and a Datatable. In the Datatable part of the Python **example.py,** Datatable saves the initial test data into a **test.csv** and saves the predictions into a **preds.csv.** To help in interpreting the model’s predictions for individual observations (rows) and batches of observations (frames), the Python **example.py** also obtains per-feature prediction contributions per row and per frame by setting the **pred_contribs** flag to **True** in the **scorer.score([...], pred_contribs=True).** The Python **example.py** also performs feature transformations without scoring to enrich the dataset by using **Scorer.fit_transform_batch()** to fit the feature engineering pipeline on the given training frame, validation frame and optionally on the test frame.
+To run the Python **example.py** script, there is the helper shell script **run_example.sh.** When the Python **example.py** is executed, it executes the Python scoring pipeline directly in Python and does various types of scoring on the test data. The Python **example.py** does interactive scoring in which it uses **scorer.score([...])** method to score one row at a time. Additionally, the Python **example.py** does batch scoring in which it uses **scorer.score_batch(dataframe** or **datatable)** to score a frame of data. You can think of a frame as a batch of rows. Batch scoring is faster than interactive scoring. The Python **example.py** does batch scoring on a Pandas dataframe and a Datatable. In the Datatable part of the Python **example.py,** Datatable saves the initial test data into a **test.csv** and the predictions into a **preds.csv.** To help in interpreting the model’s predictions for individual observations (rows) and batches of observations (frames), the Python **example.py** also obtains per-feature prediction contributions per row and per frame by setting the **pred_contribs** flag to **True** in the **scorer.score([...], pred_contribs=True).** The Python **example.py** also performs feature transformations without scoring to enrich the dataset by using **Scorer.fit_transform_batch()** to fit the feature engineering pipeline on the given training frame, validation frame, and optionally on the test frame.
 
 ### Deploy Python Scoring Pipeline to a Server via Scoring Service
 
 #### Scoring Pipeline Deployment To an HTTP Server
 
-The HTTP scoring service has 2 functions: start the HTTP scoring service and get prediction results back by giving it data. To start the HTTP scoring service, run the Python **http_server.py** by executing the helper shell script **run_http_server.sh.** To use the HTTP scoring service to send data and get predictions results back over **JSON-RPC 2.0 calls**, run the helper shell script **run_http_client.sh**. When the **http_server.py** is executed, it deploys the Python scoring pipeline on an HTTP server, which makes the scoring pipeline’s modules available to be called through remote procedure calls (RPC). Once the JSON-RPC 2.0 call powered by Tornado is made by the client, data is sent to the HTTP server with a request for the Python scorer to make predictions on the data using **scorer.score()** method. Then the prediction results are returned back to the client. Predictions can be made on individual rows (row-by-row) known as interactive scoring or on frames (multiple rows) known as batch scoring.
+The HTTP scoring service has two functions: start the HTTP scoring service and get prediction results back by giving it data. To start the HTTP scoring service, run the Python **http_server.py** by executing the helper shell script **run_http_server.sh.** To use the HTTP scoring service to send data and get predictions results back over **JSON-RPC 2.0 calls**, run the helper shell script **run_http_client.sh**. When the **http_server.py** is executed, it deploys the Python scoring pipeline on an HTTP server, making the scoring pipeline’s modules available to be called through remote procedure calls (RPC). Once the client makes the JSON-RPC 2.0 call powered by Tornado, data is sent to the HTTP server with a request for the Python scorer to make predictions on the data using **scorer.score()** method. Then the prediction results are returned to the client. Predictions can be made on individual rows (row-by-row) known as interactive scoring or on frames (multiple rows) known as batch scoring.
 
 #### Scoring Pipeline Deployment To a TCP Server
 
-The TCP scoring service has 2 functions: start the scoring TCP scoring service and get prediction results back by giving it data. The TCP scoring service provides high-performance RPC calls by way of Apache Thrift using a binary wire protocol. To start the TCP scoring service, run the Python **tcp_server.py** by executing the helper shell script **run_tcp_server.sh**. To use the TCP scoring service to send data and get prediction results over high-performance RPC calls, run the helper shell script **run_tcp_client.sh**. When the **tcp_server.py** is executed, it deploys the Python scoring pipeline on a TCP server, which makes the scoring pipeline’s modules available to be called through remote procedure calls (RPC). Once the RPC call powered by the thrift and h2oai_scoring libraries is made by the client, data is sent to the TCP server with a request for the Python scorer to make predictions on the data using the **scorer.score()** method. Then the prediction results are returned back to the client. Then the prediction results are returned back to the client. Predictions can be made on individual rows (row-by-row) known as interactive scoring or on frames (multiple rows) known as batch scoring.
+The TCP scoring service has two functions: start the scoring TCP scoring service and get prediction results back by giving it data. The TCP scoring service provides high-performance RPC calls by way of Apache Thrift using a binary wire protocol. To start the TCP scoring service, run the Python **tcp_server.py** by executing the helper shell script **run_tcp_server.sh**. To use the TCP scoring service to send data and get prediction results over high-performance RPC calls, run the helper shell script **run_tcp_client.sh**. When the **tcp_server.py** is executed, it deploys the Python scoring pipeline on a TCP server, making the scoring pipeline’s modules available to be called through remote procedure calls (RPC). Once the client makes the RPC call powered by the thrift and h2oai_scoring libraries, data is sent to the TCP server with a request for the Python scorer to make predictions on the data using the **scorer.score()** method. Then the prediction results are returned to the client. Then the prediction results are returned to the client. Predictions can be made on individual rows (row-by-row) known as interactive scoring or on frames (multiple rows) known as batch scoring.
 
 ## Task 3: Interactive and Batch Scoring via Embedded Deployment
 
-You will execute the Python Scoring Pipeline using Python directly, HTTP scoring service and TCP scoring service to do batch scoring and interactive scoring on data.
+You will execute the Python Scoring Pipeline using Python directly, HTTP scoring service, and TCP scoring service to do batch scoring and interactive scoring on data.
 
 ### Interactive and Batch Scoring via Run Python Example
 
@@ -369,7 +356,7 @@ After running the command above, a virtual environment with all the requirements
 
 ### Get Predictions using Local HTTP Client
 
-Now the HTTP scoring service is listening on port 9090; we will use an HTTP client local to the HTTP server to get predictions. In the Python Scoring Pipeline folder, we will use **run_http_client.sh**, which executes multiple example json requests for interactive scoring (individual rows), batch scoring (multiple rows), getting input columns, transformed columns, and target labels. 
+The HTTP scoring service is now listening on port 9090; we will use an HTTP client local to the HTTP server to get predictions. In the Python Scoring Pipeline folder, we will use **run_http_client.sh**, which executes multiple example json requests for interactive scoring (individual rows), batch scoring (multiple rows), getting input columns, transformed columns, and target labels. 
  
 Open another terminal to connect to your EC2 instance, then we will navigate to the **scoring-pipeline** folder and then execute the script **run_http_client.sh**:
  
@@ -386,12 +373,12 @@ The output should be similar to the following, but the Hydraulic System cooling 
 
 ![http-client-get-scores](assets/http-client-get-scores.jpg)
 
-This classification output is the interactive and batch scoring done for our Hydraulic System cooling condition. You should receive classification probabilities for `cool_cond_y.3`, `cool_cond_y.20`, and `cool_cond_y.100`. The 3 means the Hydraulic cooler is close to operating at total failure, 20 means it is operating at reduced efficiency, and 100 means it is operating at full efficiency.
+This classification output is the interactive and batch scoring done for our Hydraulic System cooling condition. You should receive classification probabilities for `cool_cond_y.3`, `cool_cond_y.20`, and `cool_cond_y.100`. The `3` means the Hydraulic cooler is close to operating at total failure, `20` means it is operating at reduced efficiency, and `100` means it is operating at full efficiency.
 
 ### Get Predictions using Remote HTTP Client
 Alternatively, we will use a remote HTTP client to connect to the HTTP server on port 9090 to get a prediction, feature column names, and Shapley values from the Python Scoring Pipeline. 
  
-Let’s use the remote HTTP client to do interactive scoring, so we will get the classification for the Hydraulic System cooling condition for an individual row. Open another terminal from your local machine, run the following command:
+Let’s use the remote HTTP client to do interactive scoring to get the classification for the Hydraulic System cooling condition for an individual row. Open another terminal from your local machine, run the following command:
 
 ```bash
 curl http://$H2O_DAI_SCORING_INSTANCE:9090/rpc --header "Content-Type: application/json" --data @- <<EOF
@@ -496,7 +483,7 @@ Once again, the line above will create a new environment with all the requiremen
 
 ### Get Predictions using Local TCP Client
 
-Now the TCP scoring service is listening on port 9090; we will use a TCP client local to the TCP server to get predictions. In the Python Scoring Pipeline folder, we will create a **custom_tcp_client.py**, which uses **thrift** and **h2oai_scoring** libraries to enable the TCP client to use the Python **scorer** methods through the TCP scoring service. 
+The TCP scoring service is now listening on port 9090; we will use a TCP client local to the TCP server to get predictions. In the Python Scoring Pipeline folder, we will create a **custom_tcp_client.py**, which uses **thrift** and **h2oai_scoring** libraries to enable the TCP client to use the Python **scorer** methods through the TCP scoring service. 
  
 With the **TCP client** having access to the **scorer** methods, we will use the **client.score(row)** method to do interactive scoring, **client.get_column_names()** to get input columns, the **client.get_transformed_column_names()** to get feature column names, and **client.get_target_labels()** to get target labels. 
 
@@ -579,11 +566,11 @@ deactivate
 
 ### Execute Scoring Pipeline for a New Dataset
 
-There are various challenges you could do, you could do something that helps you in your daily life or job. Maybe there is a dataset you are working with, you could reproduce the steps we did above, but for your dataset, build a new experiment and execute your Python scoring pipeline to do batch scoring or interactive scoring.
+There are various challenges you could do. You could do something that helps you in your daily life or job. Maybe there is a dataset you are working with; you could reproduce the steps we did above, but for your dataset, build a new experiment and execute your Python scoring pipeline to do batch scoring or interactive scoring.
 
 ### Embed Scoring Pipeline into Existing Program
 
-Another challenge could be to use the existing Python scoring pipeline we executed and instead of using the examples we shared above, integrate the scoring pipeline into an existing Java, Python or C++ program using the TCP or HTTP scoring service.
+Another challenge could be to use the existing Python scoring pipeline we executed. Instead of using the examples we shared above, integrate the scoring pipeline into an existing Java, Python, or C++ program using the TCP or HTTP scoring service.
 
 ## Next Steps
 
