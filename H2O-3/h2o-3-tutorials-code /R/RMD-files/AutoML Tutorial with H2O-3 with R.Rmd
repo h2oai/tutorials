@@ -1,0 +1,193 @@
+---
+title: "AutoML Tutorial with H2O-3 Using R"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. To execute a code chunk, click *Run* (play) button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*. 
+
+## Task 1: Initial Setup
+
+```{r}
+library(h2o)
+library(tidyverse)
+library(DT)
+
+h2o.init(bind_to_localhost = FALSE, context_path = "h2o")
+```
+
+```{r}
+h2o.no_progress()
+```
+
+```{r}
+loan_level <- h2o.importFile(path = "https://s3.amazonaws.com/data.h2o.ai/H2O-3-Tutorials/loan_level_50k.csv")
+```
+
+## Task 2: Machine Learning Concepts - See Tutorial
+
+## Task 3: Start Experiment
+
+```{r}
+h2o.head(loan_level) %>% as_tibble()
+h2o.describe(loan_level) %>% as_tibble()
+```
+
+```{r}
+h2o.table(loan_level[, c("DELINQUENT")])
+```
+
+```{r}
+h2o.hist(loan_level[, c("ORIGINAL_INTEREST_RATE")])
+```
+
+```{r}
+splits <- h2o.splitFrame(loan_level, c(0.8), seed = 42)
+
+train <- splits[[1]]
+test  <- splits[[2]] 
+
+dim(train)
+dim(test)
+```
+
+## Task 4: H2O AutoML Classification
+
+```{r}
+ignore <- c("DELINQUENT", "PREPAID", "PREPAYMENT_PENALTY_MORTGAGE_FLAG", "PRODUCT_TYPE")
+y <- "DELINQUENT"
+
+x <- setdiff(colnames(train), ignore)
+
+x
+```
+
+```{r}
+aml_cl <- h2o.automl(max_models = 25, max_runtime_secs_per_model = 30,
+                     seed = 42, project_name = "classification",
+                     balance_classes = TRUE, class_sampling_factors = c(0.5, 1.25),
+                     
+                     x = x,
+                     y = y,
+                     training_frame = train
+                     
+)
+```
+
+```{r}
+lb <- h2o.get_leaderboard(aml_cl)
+h2o.head(lb, n = 25)
+```
+
+```{r}
+lb2 <- h2o.get_leaderboard(aml_cl, extra_columns = "ALL")
+h2o.head(lb2, n = 25)
+```
+
+```{r}
+# Get model ids for all models in the AutoML Leaderboard
+model_ids <- as.data.frame(aml_cl@leaderboard$model_id)[,1]
+# Get the "All Models" Stacked Ensemble model
+se <- h2o.getModel(grep("StackedEnsemble_AllModels", model_ids, value = TRUE)[1])
+# Get the Stacked Ensemble metalearner model
+metalearner <- h2o.getModel(se@model$metalearner$name)
+```
+
+```{r}
+h2o.coef(metalearner)
+h2o.coef_norm(metalearner)
+h2o.std_coef_plot(metalearner)
+```
+
+```{r}
+aml_cl@leader
+```
+
+```{r}
+aml_leader <- aml_cl@leader
+
+aml_leader_test_perf <- h2o.performance(aml_leader, test)
+```
+
+```{r}
+h2o.auc(aml_leader_test_perf)
+plot(aml_leader_test_perf)
+```
+
+```{r}
+aml_leader_pred <- h2o.predict(aml_leader, test)
+h2o.head(aml_leader_pred, n=10)
+```
+
+## Task 5: h2O AutoML Regression
+
+```{r}
+ignore_reg <- c("ORIGINAL_INTEREST_RATE", "FIRST_PAYMENT_DATE", "MATURITY_DATE", "MORTGAGE_INSURANCE_PERCENTAGE",
+            "PREPAYMENT_PENALTY_MORTGAGE_FLAG", "LOAN_SEQUENCE_NUMBER", "PREPAID",
+            "DELINQUENT", "PRODUCT_TYPE")
+
+y_reg <- "ORIGINAL_INTEREST_RATE"
+
+x_reg <- setdiff(colnames(train), ignore_reg)
+x_reg
+```
+
+```{r}
+aml_reg <- h2o.automl(max_runtime_secs = 900, max_runtime_secs_per_model = 30, seed = 42,
+                      project_name = "regression", stopping_metric = 'RMSE', sort_metric = 'RMSE',
+                      
+                      x = x_reg,
+                      y = y_reg,
+                      training_frame = train
+                      )
+```
+
+```{r}
+lb <- h2o.get_leaderboard(aml_reg)
+h2o.head(lb, n = -1)
+```
+
+ To get specific models, you have two options
+
+```{r}
+# Get model ids for all models in the AutoML Leaderboard
+model_ids <- as.data.frame(aml_reg@leaderboard$model_id)[,1]
+# Get the "All Models" Stacked Ensemble model
+gbm <- h2o.getModel(grep("GBM_2", model_ids, value = TRUE)[1])
+gbm
+```
+
+And you can just get the model id and place it inside the parenthesis
+```{r}
+#gbm <- h2o.getModel("model_id")
+```
+
+```{r}
+gbm@allparameters[["ntrees"]]
+gbm@allparameters[["max_depth"]]
+gbm@allparameters[["learn_rate"]]
+gbm@allparameters[["sample_rate"]]
+```
+
+```{r}
+gbm
+```
+
+```{r}
+gbm_test_perf <- h2o.performance(gbm, test)
+
+h2o.rmse(gbm_test_perf)
+h2o.mae(gbm_test_perf)
+```
+
+```{r}
+gbm_pred <- h2o.predict(gbm, test)
+
+preds <- h2o.cbind(test[, c("ORIGINAL_INTEREST_RATE")], gbm_pred)
+
+h2o.head(preds, n=10)
+```
+
+## For Task 6-8 please refer to md file ----
+```{r}
+h2o.shutdown()
+```
