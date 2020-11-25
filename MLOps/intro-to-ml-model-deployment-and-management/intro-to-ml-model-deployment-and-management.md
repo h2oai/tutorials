@@ -462,7 +462,7 @@ So now multiple people in the ML Operations team can collaborate on the same ML 
 
 1\. Click on **More experiments...**
 
-2\. In the top left, click on Projects > **hydraulic system** to return back to hydraulic system project dashboard.
+2\. On the top left corner, click on **Projects** > **hydraulic system** to return back to hydraulic system project dashboard.
 
 ### C: Hydraulic System Projects Models Actions Tour
 
