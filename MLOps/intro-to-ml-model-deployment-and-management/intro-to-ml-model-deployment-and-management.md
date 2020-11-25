@@ -561,7 +561,7 @@ So now multiple people in the ML Operations team can collaborate on the same ML 
 
 2\. As you scroll down the page, you will see **dai/labels**, **dai/score, dai/scorer, dai/summary** and more metadata.
 
-3\. Click on Projects > **hydraulic system** to return back to hydraulic system project dashboard.
+3\. Click on Projects > **hydraulic system** to return back to the hydraulic system project dashboard.
 
 ### D: Hydraulic System Events Tour
 
@@ -571,7 +571,7 @@ So now multiple people in the ML Operations team can collaborate on the same ML 
 
 **Figure 32:** project **hydraulic system events**
 
-From the list of events, we can see a **hydraulic_model_1** Experiment deployed by ds1 at a particular date and time.
+From the list of events, we can see a **hydraulic_model_1** deployed by ds1 at a particular date and time.
 
 What else does the list of events tell you has happened in this **hydraulic system** project?
 
