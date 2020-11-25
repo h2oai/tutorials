@@ -14,9 +14,9 @@
 
 ## MLOps Test Drive
 
-If you are new to **MLOps**, we highly recommend finishing this tutorial before proceeding to other MLOps tutorials.
-
 **MLOps Test Drive** is a two-hour lab session that exists in H2O's Aquarium. Aquarium is the H2O.ai cloud environment providing software access for workshops, conferences, and training.
+
+If you are new to **MLOps**, we highly recommend finishing this tutorial to set up your MLOps Test Drive
 
 **All MLOps Test Drive Lab sessions will terminate after two-hours. No work will be saved!**. However, you can retake the lab multiple times.
 
@@ -29,7 +29,7 @@ If you are new to **MLOps**, we highly recommend finishing this tutorial before 
 
 ```http://aquarium.h2o.ai/login```
 
-2\. This will take you to the Aquarium login page where you need to create an account.
+2\. The URL will take you to the Aquarium login page, where you need to create an account.
 
 ## How to Create an Aquarium Account
 
@@ -63,7 +63,7 @@ If you are new to **MLOps**, we highly recommend finishing this tutorial before 
 
 - Check corporate settings in your machine
 
-If the three steps above don’t work, please send us an email at **training@h2o.ai** and include the email you used to create the Aquarium account, type of browser you are using, country, and if you can see the reCAPTCHA test in the Aquarium Login page. 
+If the three steps above don’t work, please send us an email at **training@h2o.ai** and include the email you used to create the Aquarium account, type of browser you are using, country, and if you can see the reCAPTCHA test on the Aquarium Login page. 
 
 6\. Check your email for the password.
 
@@ -77,18 +77,18 @@ If the three steps above don’t work, please send us an email at **training@h2o
 
 4\. Click on **Login**.
  
-Note: If you are having issues logging in, click on **send us an email**
+Note: If you are having issues logging in, click the **send us an email** hyperlink.
 
 
 ![test-drive-login](assets/test-drive-login.jpg)
 
 ## Reset Password 
 
-1\. If you forgot your password, then select **I forgot my password**.
+1\. If you forgot your password, select **I forgot my password**.
 
 ![resetting-password](assets/resetting-password.jpg)
 
-2\. Enter your email, verify that you are not a robot by checking the "I'm not a robot" box, then click on **Email temporary password**, another password will be emailed to you.
+2\. Enter your email, verify that you are not a robot by checking the "I'm not a robot" box, then click on **Email temporary password**. Another password will be emailed to you.
 
 ![reset-password](assets/reset-password.jpg)
 
@@ -96,11 +96,9 @@ Note: If you are having issues logging in, click on **send us an email**
 
 After a successful login, select "Browse Labs" located on the top-left corner of the page, then select Lab 3 - MLOps Test Drive (1GPU).
 
-Click on the "View Details" button on lab one, as shown in the image below.
-
 ![select-lab-3-mlops-test-drive](assets/select-lab-3-mlops-test-drive.jpg)
 
-After the MLOps Test Drive Lab will appear:
+After the **MLOps Test Drive lab** appears:
 
 ![mlops-test-drive-page](assets/mlops-test-drive-page.jpg)
 
@@ -116,27 +114,27 @@ After the MLOps Test Drive Lab will appear:
 
 5. **Start** button starts the lab session
 
-1\. To start a Lab click on **Start Lab**. You will see an image similar to the one below:
+1\. To start a lab click on **Start Lab**. You will see an image similar to the one below:
 
 ![mlops-test-drive-start-lab](assets/mlops-test-drive-start-lab.jpg)
 
-2\. Aquarium will then start the Lab session for you (this will take a few minutes). After the lab session starts a similar image should appear:
+2\. Aquarium will then start the lab session for you (this will take a few minutes). After the lab session starts, a similar image should appear:
 
 ![mlops-test-drive-session](assets/mlops-test-drive-session.jpg)
 
 **Note**:
 
- - The time remaining for the instance use
+ - The remainning time before the current instance, terminates. 
  - MLOps URL
  - End Lab 
 
-3\. Once the Lab has started, the MLOps URL will appear at bottom of the page. Click on that URL. This will take you to the H2O.ai Platform Studio where you will see both H2O Driverless AI and MLOps. 
+3\. Once the lab has started, the MLOps URL will appear at the bottom of the page. Click on that URL. The URL will take you to the **H2O.ai Platform Studio** where you will see both **H2O Driverless AI** and **H2O MLOps**. 
 
 ![h2oai-platform-studio-page](assets/h2oai-platform-studio-page.jpg)
 
 ## Logout
 
-1\. To logout, click on the box on the top-right corner of the page and select logout.
+1\. To **logout**, click on the box on the top-right corner of the page and select **logout**.
 
 ![test-drive-logout](assets/test-drive-logout.jpg) 
 
