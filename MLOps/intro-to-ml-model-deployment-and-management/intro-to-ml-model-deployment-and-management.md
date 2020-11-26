@@ -50,7 +50,7 @@ H2O.ai MLOps ties into Driverless AI and allows you to export your Driverless AI
 
 ## Task 2: Driverless AI Project in MLOps 
 
-For this tutorial we will be using a prebuilt experiment linked to a project titled **hydraulic system**. The MLOps dashboard already has the Driverless AI **hydraulic system** project for this tutorial; it was shared with MLOps when the project was created.  If you want to access the project, you need to access Driverless AI from the **H2O.ai Platform Studio Splash Page**. The prebuilt project was built under the following credentials: `ds1/ds1`. Accordingly, you will need to access Driverless AI with such credentials to see the project. 
+For this tutorial, we will be using a prebuilt experiment linked to a project titled **hydraulic system**. The MLOps dashboard already has the Driverless AI **hydraulic system** project for this tutorial; it was shared with MLOps when the project was created.  If you want to access the project, you need to access Driverless AI from the **H2O.ai Platform Studio Splash Page**. The prebuilt project was built under the following credentials: `ds1/ds1`. Accordingly, you will need to access Driverless AI with such credentials to see the project. 
 
 The Driverless AI  experiment is a classifier model that classifies whether the **cooling condition** of a **Hydraulic System Test Rig** is 3, 20, or 100. By looking at the **cooling condition,** we can predict whether the Hydraulic Cooler operates **close to total failure**, **reduced efficiency**, or **full efficiency**. 
 
@@ -60,19 +60,16 @@ The Driverless AI  experiment is a classifier model that classifies whether the 
 | 20 | operates at reduced efficiency |
 | 100 | operates at full efficiency |
 
+The Hydraulic System Test Rig data for this tutorial comes from the **[UCI Machine Learning Repository: Condition Monitoring of Hydraulic Systems Data Set](https://archive.ics.uci.edu/ml/datasets/Condition+monitoring+of+hydraulic+systems#)**. The data set was experimentally obtained with a hydraulic test rig. This test rig consists of a primary working and a secondary cooling-filtration circuit connected via the oil tank [1], [2]. The system cyclically repeats constant load cycles (duration 60 seconds) and measures process values such as pressures, volume flows, and temperatures. The condition of four hydraulic components (cooler, valve, pump, and accumulator) is quantitatively varied. The data set contains raw process sensor data (i.e., without feature extraction), structured as matrices (tab-delimited) with the rows representing the cycles and the columns the data points within a cycle.
 
 
-The Hydraulic System Test Rig data for this tutorial comes from the **[UCI Machine Learning Repository: Condition Monitoring of Hydraulic Systems Data Set](https://archive.ics.uci.edu/ml/datasets/Condition+monitoring+of+hydraulic+systems#)**. The data set was experimentally obtained with a hydraulic test rig. This test rig consists of a primary working and a secondary cooling-filtration circuit which are connected via the oil tank [1], [2]. The system cyclically repeats constant load cycles (duration 60 seconds) and measures process values such as pressures, volume flows and temperatures while the condition of four hydraulic components (cooler, valve, pump and accumulator) is quantitatively varied.
-The data set contains raw process sensor data (i.e. without feature extraction) which are structured as matrices (tab-delimited) with the rows representing the cycles and the columns the data points within a cycle.
-
-
-Hydraulic System Test Rigs are used to test Aircraft Equipment components, Automotive Applications, and more [1]. A Hydraulic Test Rig can test a range of flow rates that can achieve different pressures with the ability to heat and cool while simulating testing under different conditions [2]. Testing the pressure, volume flow, and temperature is possible by Hydraulic Test Rig sensors and a digital display. The display panel alerts the user when certain testing criteria are met while displaying either a green or red light [2]. Further, a filter blockage panel indicator is integrated into the panel to ensure the Hydraulic Test Rig's oil is maintained [2]. In the case of predicting cooling conditions for a Hydraulic System, when the cooling condition is low, our prediction will tell us that the cooling of the Hydraulic System is close to total failure, and we may need to look into replacing the cooling filtration solution soon. In our case, the shared project classifies the probability of the cooler condition is 3, 20, or 100.  
+Hydraulic System Test Rigs are used to test Aircraft Equipment components, Automotive Applications, and more [1]. A Hydraulic Test Rig can test a range of flow rates that can achieve different pressures with the ability to heat and cool while simulating testing under different conditions [2]. Testing the pressure, the volume flow, and the temperature is possible by Hydraulic Test Rig sensors and a digital display. The display panel alerts the user when certain testing criteria are met while displaying either a green or red light [2]. Further, a filter blockage panel indicator is integrated into the panel to ensure the Hydraulic Test Rig's oil is maintained [2]. In the case of predicting cooling conditions for a Hydraulic System, when the cooling condition is low, our prediction will tell us that the cooling of the Hydraulic System is close to total failure, and we may need to look into replacing the cooling filtration solution soon. In our case, the shared project classifies the probability of the cooler condition is 3, 20, or 100.  
 
 ![cylinder-diagram-1](./assets/hydraulic-system-diagram.jpg)
 
 **Figure 1:** Hydraulic System Cylinder Diagram
 
-From a general pespective a Hydraulic Test Rig consists of the following: 
+From a general pespective, a Hydraulic Test Rig consists of the following: 
 - A primary and secondary cooling filtration circuit with pumps that deliver flow and pressure to the oil tank (the box at the bottom)
 - A pressure relief control valve for controlling the rising and falling flows
 - A pressure gauge
@@ -87,7 +84,7 @@ If you have not launched MLOps from the H2O.ai Platform Studio Splash page, proc
 
 1\. Click the **Launch** button located in the MLOps section of the studio 
 
-2\. Click **Login with OpenID Connect**
+2\. Click **Log in with OpenID Connect**
 
 3\. For **Log In**, enter `ds1/ds1`
 
@@ -107,7 +104,7 @@ As you can see in the gif above, in the MLOps dashboard for ds2 user, no Driverl
 
 If you need help following along with the gif above, follow the instructions below to login to MLOps as **ds2**.
 
-1\. If earlier you launched MLOps in google chrome, then open a new chrome incognito window or a different browser like firefox.
+1\. If earlier you launched MLOps in google chrome, then open a new Chrome incognito window or a different browser like Firefox.
 
 2\. Go to the **H2O.ai Platform Studio Splash Page** 
 
@@ -220,9 +217,9 @@ Similarly, Docker is the most common container environment. So, typically you wi
 
 **Figure 17:** Load Balancer, Request, Response
 
-The diagram above shows Kubernetes container management system is going to deploy these model containers behind a load balancer. Depending on how many replicas you tell Kubernetes to set up, it will replicate your model code, it will replicate your scoring code and it will manage the load balancing across those different nodes. So the beauty of Kubernetes is it will automatically replicate your model code, it will manage the request/response and if one of those pods stop responding, it will route the request to another pod and it will spin up additional pods. So, you can see why Kubernetes has become very popular for this type of deployment. [11]
+The diagram above shows the Kubernetes container management system is going to deploy these model containers behind a load balancer. Depending on how many replicas you tell Kubernetes to set up, it will replicate your model code, it will replicate your scoring code, and it will manage the load balancing across those different nodes. So the beauty of Kubernetes is it will automatically replicate your model code. It will manage the request/response, and if one of those pods stops responding, it will route the request to another pod and spin up additional pods. So, you can see why Kubernetes has become very popular for this type of deployment. [11]
 
-This is a rudimentary look at deployment, but it gives you an idea of the kind of tasks that your production team needs to handle. If you are trying to do it manually, then it gives you a look at the kind of code that you are going to have to write to support each model deployment. [11]
+This is a rudimentary look at deployment, but it gives you an idea of the kind of tasks your production team needs to handle. If you are trying to do it manually, it gives you a look at the kind of code that you will have to write to support each model deployment. [11]
 
 ### Monitoring for Machine Learning Models
 
@@ -356,7 +353,7 @@ In the MLOps dashboard for `ds1` user, observe the following:
 
 - Logout: logs one out of MLOps
 
-- 3 Bar Menu: by default it has the left sidebar open to see **+Add project** and **Projects**. If you click the **3 bar menu**, it will close the left sidebar.
+- 3 Bar Menu: by default, it has the left sidebar open to see **+Add project** and **Projects**. If you click the **3 bar menu**, it will close the left sidebar.
 
 - **+ Add project**
 
@@ -383,7 +380,7 @@ Click on **hydraulic system** in my projects table.
 
 - Projects > hydraulic system
 
-- 3 Bar Menu: by default it has the left sidebar open to see **+Add project** and **Projects**. If you click the **3 bar menu**, it will close the left sidebar.
+- 3 Bar Menu: by default, it has the left sidebar open to see **+Add project** and **Projects**. If you click the **3 bar menu**, it will close the left sidebar.
 
 - **+ Add project**
 - Projects
@@ -399,8 +396,8 @@ Click on **hydraulic system** in my projects table.
     - Created on: date and time this project was created on
     - Models: number of models in this project
     - Deployments: number of models deployed in this project
-    - Alerts: provides alerts for drift, anomalies and residuals in the data as red, orange or green alerts
-    - Owner: username of person who created this project
+    - Alerts: provides alerts for drift, anomalies, and residuals in the data as red, orange, or green alerts
+    - Owner: username of the user who created this project
 
 - (A) Share Project: with a different user, such as ds2 user
 
@@ -413,7 +410,7 @@ Click on **hydraulic system** in my projects table.
     - Created on: date and time a model was created in this project
     - Scorer: scorer metric used by a model in this project
     - Score: validation score from a model in this project
-    - Owner: username of user who created a model in this project
+    - Owner: username of the user who created a model in this project
     - Environment: status of what type of environment a model was deployed for this project
     - Tag: tag name and value to associate with a model in this project
     - (C) Actions: actions that can be performed on this model: deploy it to dev/prod, create a challenger, download an autoreport, etc
@@ -450,7 +447,7 @@ For the next task, we are going to deploy the **hydraulic_mode_1** to a **DEV en
 
 5\. **ds2** user should now have the project (you can login as ds2 and see for yourself) 
 
-So now multiple people in the ML Operations team can collaborate on the same ML project.
+So now, multiple people in the ML Operations team can collaborate on the same ML project.
 
 ### B: Hydraulic System Models Dashboard
 
@@ -502,14 +499,14 @@ So now multiple people in the ML Operations team can collaborate on the same ML 
 
 - Summary
     - Name: name of this model
-    - Experiment ID: ID of experiment in which this model was built
+    - Experiment ID: ID of the experiment in which this model was built
     - Created at: date and time this model was created at
     - Deployments: indicates if this model has been deployed and to which environment dev or prod
-    - Owner: user who created this model for this project
+    - Owner: the user who created this model for this project
     - Training duration: time that it took for this model to be trained
 
 - Comments
-    - Add new comment: text body for adding a new comment message. This can be helpful for the current user and other users who are working in this project to see an important message about this model
+    - Add new comment: text body for adding a new comment message. This can be helpful for the current user and other users who are working on this project to see an important message about this model
         - Add comment: button for adding a new comment to this model
     - Previous comments: history of comments from users who are working on this model for this project
 
@@ -577,7 +574,7 @@ What else does the list of events tell you has happened in this **hydraulic syst
 
 Does your list of events look different than the image above? If yes, that is expected since different events may have happened in your version of the **hydraulic system** project.
 
-1\. Click on Projects > **hydraulic system** to return back to hydraulic system project dashboard. Next we will deploy the ML model to a dev environment.
+1\. Click on Projects > **hydraulic system** to return back to the hydraulic system project dashboard. Next, we will deploy the ML model to a dev environment.
 
 ## Task 5: Interactive and Batch Scoring via MLOps Model Deployment
 
@@ -606,7 +603,7 @@ You should see the **Environment** for **hydraulic_model_1** deployed to the **D
     - Environment: the environment the model was deployed to either dev or prod
     - Deployed: the date and time that this model was deployed at
     - State: the condition of this model
-    - Alerts: info, warning, errors or other alerts associated with this model deployment
+    - Alerts: info, warning, errors, or other alerts associated with this model deployment
     - Actions: the supported actions that can be performed on this model deployment
 
 3\. In the **Deployments** table, click on **Actions** for **hydraulic_model_1**, then click on **More details**.
@@ -627,22 +624,22 @@ You should see the **Environment** for **hydraulic_model_1** deployed to the **D
 
 - Deployment
 - Summary
-    - Endpoint: the url that this model is running on and that you would send a score request to, so this model can make predictions
+    - Endpoint: the URL that this model is running on and that you would send a score request to, so this model can make predictions
     - Status: the condition of this model
     - Created on: date and time this model deployment was performed
     - Top model: UUID of this model deployment
 - Monitor: redirect to Grafana dashboard for monitoring deployed model
 - Delete: remove this model deployment
 - Model selections
-    - Target type: single model, champion/challenger and A/B test
-    - Project: name of project this model deployment is associated with
+    - Target type: single model, champion/challenger, and A/B test
+    - Project: name of the project this model deployment is associated with
     - Environment: type of environment the model was deployed (to either dev or prod)
-    - Model name: name of model that was deployed
-    - Model ID: ID of model that was deployed
+    - Model name: name of the model that was deployed
+    - Model ID: ID of the model that was deployed
     - Created on: date and time this model was created
     - Scorer: scorer metric used for this model
     - Score: validation score being used in this model
-    - Owner: user who deployed this model
+    - Owner: the user who deployed this model
     - Environment: current environment this model is deployed to
     - Tag: tag name and value associated with this model deployment
 - Save and deploy
