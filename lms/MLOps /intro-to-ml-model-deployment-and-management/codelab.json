@@ -3,7 +3,7 @@
   "format": "html",
   "prefix": "https://storage.googleapis.com",
   "mainga": "UA-49880327-14",
-  "updated": "2020-11-05T04:34:58-08:00",
+  "updated": "2020-11-29T15:45:52-08:00",
   "id": "intro-to-ml-model-deployment-and-management",
   "duration": 0,
   "title": "Intro to ML Model Deployment and Management",
@@ -18,15 +18,11 @@
   ],
   "tags": [
     "aquarium",
-    "current environment this model is deployed to",
     "machine-learning",
     "management",
     "mlops",
     "model-deployment",
-    "status of what type of environment a model was deployed into for this project",
-    "test-drive",
-    "the environment the model was deployed to either dev or prod",
-    "type of environment the model was deployed to either dev or prod"
+    "test-drive"
   ],
   "url": "intro-to-ml-model-deployment-and-management"
 }
