@@ -1,14 +1,14 @@
 {
   "environment": "web",
-  "source": "/Users/acastro/Desktop/getting-started-with-driverless-ai-test-drive/test-drive.md",
   "format": "html",
-  "prefix": "../assets",
+  "prefix": "https://storage.googleapis.com",
   "mainga": "UA-49880327-14",
-  "updated": "2020-09-11T17:44:54-07:00",
+  "updated": "2020-11-30T10:44:27-08:00",
   "id": "getting-started-with-driverless-ai-test-drive",
   "duration": 0,
   "title": "Getting Started with Driverless AI Test Drive",
   "summary": "Check the list",
+  "source": "/Users/sperez/Desktop/getting-started-with-driverless-ai-test-drive/test-drive.md",
   "theme": "",
   "status": [
     "draft"
