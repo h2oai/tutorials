@@ -74,7 +74,6 @@ Hydraulic System Test Rigs are used to test Aircraft Equipment components, Autom
 
 ```bash
 # Create directory structure for DAI MOJO C++ Projects
-
 # Create directory where the mojo-pipeline folder will be stored
 mkdir $HOME/dai-mojo-cpp/
 
@@ -86,7 +85,7 @@ mkdir $HOME/dai-mojo-cpp/
 
 1\. If you have not downloaded the MOJO Scoring Pipeline, consider the following steps: 
 
-- Start a new Two-Hour Test Drive Session in Aquarium 
+- Start a new **Two-Hour Test Drive Session** in Aquarium 
 - In your Driverless AI instance, click on the Experiments section
 - In the Experiments section, click on the following experiment: **Model_deployment_HydraulicSystem**
 - On the **STATUS:COMPLETE** section on the experiment page, click **DOWNLOAD MOJO SCORING PIPELINE**
@@ -98,7 +97,7 @@ When finished, come back to this tutorial.
 
 ```bash
 cd $HOME/dai-mojo-cpp/
-# Depending on your OS, sometimes the mojo.zip is unzipped automatically and instead of mojo.zip, write mojo-pipeline for the first command. If it's mojo-pipeline no need to execute the unzip command.  
+# Depending on your OS, sometimes the mojo.zip is unzipped automatically and therefore, instead of mojo.zip, write mojo-pipeline for the first command. If it's mojo-pipeline no need to execute the unzip command.  
 mv $HOME/Downloads/mojo.zip .
 unzip mojo.zip
 ```
@@ -130,7 +129,7 @@ wget https://repo.anaconda.com/archive/Anaconda3-2020.02-Linux-x86_64.sh
 # Install Anaconda (Note: the command is for a Linux environment)
 bash Anaconda3-2020.02-Linux-x86_64.sh
 
-# To Download and Install Anaconda follow the steps on this link: https://docs.anaconda.com/anaconda/install/mac-os/
+# (Mac)) To Download and Install Anaconda follow the steps on this link: https://docs.anaconda.com/anaconda/install/mac-os/
 ```
 
 Move the **MOJO2 Py Runtime** file to the $HOME folder:
@@ -199,7 +198,7 @@ pip install daimojo-2.4.8-cp36-cp36m-linux_ppc64le.whl
 pip install daimojo-2.4.8-cp36-cp36m-linux_x86_64.whl
 ```
 
-Install R packages
+Install **R** packages
 
 ```bash
 # Install R Packages
@@ -217,7 +216,7 @@ conda install -y -c r r-data.table
 
 Set the Driverless AI License Key as a temporary environment variable.
 
-Note: If you don't have a license, you can obtain one through our [21-day trial license](https://www.h2o.ai/try-driverless-ai/) option. Through the [21-day trial license](https://www.h2o.ai/try-driverless-ai/) option, you will be able to obtain a temporary **Driverless AI License Key** necessary for this tutorial. 
+**Note**: If you don't have a license, you can obtain one through our [21-day trial license](https://www.h2o.ai/try-driverless-ai/) option. Through the [21-day trial license](https://www.h2o.ai/try-driverless-ai/) option, you will be able to obtain a temporary **Driverless AI License Key** necessary for this tutorial. 
 
 ```bash
 # Set Driverless AI License Key
@@ -232,7 +231,9 @@ After downloading the MOJO scoring pipeline, the **mojo-pipeline** folder comes 
 
 ### Embed the MOJO in the C++ Runtime via Python or R Wrappers
 
-If you have gone through the earlier scoring pipeline deployment tutorials, you have seen how we deploy the MOJO Scoring Pipeline to a server or serverless instance. Some clients interact with the server to trigger it to execute the MOJO to make predictions. An alternative way to deploy the MOJO Scoring Pipeline is to embed directly into the C++ Runtime, where your application is running. The MOJO C++ Runtime comes with Python and R wrappers called MOJO2 Py Runtime and MOJO2 R Runtime.  Suppose you are building a Python or R application using an **Integrated Development Environment (IDE)** or a text editor. In that case, you can import the MOJO2 Python API or MOJO2 R API. Then use it to load the MOJO, put your test data into a MOJO frame, then perform predictions on the data to obtain results.
+If you have gone through the earlier scoring pipeline deployment tutorials, you have seen how we deploy the MOJO Scoring Pipeline to a server or serverless instance. Some clients interact with the server to trigger it to execute the MOJO to make predictions. An alternative way to deploy the MOJO Scoring Pipeline is to embed directly into the C++ Runtime, where your application is running. The MOJO C++ Runtime comes with Python and R wrappers called MOJO2 Py Runtime and MOJO2 R Runtime.  
+
+Suppose you are building a Python or R application using an **Integrated Development Environment (IDE)** or a text editor. In that case, you can import the MOJO2 Python API or MOJO2 R API. Then use it to load the MOJO, put your test data into a MOJO frame, then perform predictions on the data to obtain results.
 
 ## Task 3: Batch Scoring via Scoring Pipeline Execution
 
@@ -311,7 +312,7 @@ predict(m, d)
 
 This classification output is the batch scoring done for our Hydraulic System cooling condition. You should receive classification probabilities for cool_cond_y.3, cool_cond_y.20, and cool_cond_y.100. The 3 means the Hydraulic cooler is close to operating at total failure, 20 means it is operating at reduced efficiency, and 100 means operating at full efficiency.
 
-The results will give you a probability (a decimal value) for cool_cond_y.3, cool_cond_y.20, and cool_cond_y.100. After converting each decimal value to a percentage, note that the highest percentage per row will determine the type of cool_cond_y. 
+The results will give you a probability (a decimal value) for cool_cond_y.3, cool_cond_y.20, and cool_cond_y.100. After converting each decimal value to a percentage, note that the highest percentage per row will determine the type of *cool_cond_y* for that row. 
 
 7\. Quit the R interactive terminal:
 
@@ -321,9 +322,11 @@ quit()
 
 R will ask you if you want to save the workspace image; feel free to save it if you wish.
 
-Therefore that is how you execute the MOJO scoring pipeline to do batch scoring for the Hydraulic System cooling condition using the R wrapper in the C++ Runtime. 
+In conclusion, that is how you execute the MOJO scoring pipeline to do batch scoring for the Hydraulic System cooling condition using the R wrapper in the C++ Runtime. 
 
 ### Batch Scoring through the Run Python Wrapper Program
+
+**Note: For macOS users, this section of the tutorial will not work, given a recent *OpenSSL* update. In order to overcome this bug caused by the update, you will have to downgrade your OpenSSL to any version before *version 1.1.1* (We don't advise for this downgrade, but that is a possible solution).  We are currently working on this recent update to be once again compatible with the latest version of OpenSSL.**
 
 1\. Enter **python** to enter Python's interactive terminal:
 
@@ -423,7 +426,7 @@ res.to_numpy()
 res.to_list()
 ```
 
-You just learned how to execute the MOJO scoring pipeline to do batch scoring for the Hydraulic System cooling condition using the Python wrapper in the C++ Runtime.
+In conclusion, that is how you execute the MOJO scoring pipeline to do batch scoring for the Hydraulic System cooling condition using the Python wrapper in the C++ Runtime.
 
 ## Task 4: Challenge
 
