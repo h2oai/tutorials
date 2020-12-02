@@ -5,7 +5,7 @@
 - [Objective](#objective)
 - [Prerequisites](#prerequisites)
 - [Task 1: Set Up Environment](#task-1-set-up-environment)
-- [Task 2: Deploy Scoring Pipeline in C++ Runtime Concepts](#task-2-deploy-scoring-pipeline-in-c-runtime-concepts)
+- [Task 2: Concepts Around Scoring Pipeline in C++ Runtime](#task-2-concepts-around-scoring-pipeline-in-c++-runtime)
 - [Task 3: Batch Scoring via Scoring Pipeline Execution](#task-3-batch-scoring-via-scoring-pipeline-execution)
 - [Task 4: Challenge](#task-4-challenge)
 - [Next Steps](#next-steps)
