@@ -226,9 +226,7 @@ After downloading the MOJO scoring pipeline, the **mojo-pipeline** folder comes 
 
 ### Embed the MOJO in the C++ Runtime via Python or R Wrappers
 
-If you have gone through the earlier scoring pipeline deployment tutorials, you have seen how we deploy the MOJO Scoring Pipeline to a server or serverless instance. Some clients interact with the server to trigger it to execute the MOJO to make predictions. An alternative way to deploy the MOJO Scoring Pipeline is to embed directly into the C++ Runtime, where your application is running. The MOJO C++ Runtime comes with Python and R wrappers called MOJO2 Py Runtime and MOJO2 R Runtime.  
-
-Suppose you are building a Python or R application using an **Integrated Development Environment (IDE)** or a text editor. In that case, you can import the MOJO2 Python API or MOJO2 R API. Then use it to load the MOJO, put your test data into a MOJO frame, then perform predictions on the data to obtain results.
+If you have gone through the earlier scoring pipeline deployment tutorials, you have seen how we deploy the MOJO Scoring Pipeline to a server or serverless instance. Some clients interact with the server to trigger it to execute the MOJO to make predictions. An alternative way to deploy the MOJO Scoring Pipeline is to embed directly into the C++ Runtime, where your application is running. The MOJO C++ Runtime comes with Python and R wrappers called MOJO2 Py Runtime and MOJO2 R Runtime. Accordingly, suppose you are building a Python or R application using an **Integrated Development Environment (IDE)** or a text editor. In that case, you can import the MOJO2 Python API or MOJO2 R API. Then use it to load the MOJO, put your test data into a MOJO frame, then perform predictions on the data to obtain results.
 
 ## Task 3: Batch Scoring via Scoring Pipeline Execution
 
