@@ -326,7 +326,7 @@ In conclusion, that is how you execute the MOJO scoring pipeline to do batch sco
 
 ### Batch Scoring through the Run Python Wrapper Program
 
-**Note: For macOS users, this section of the tutorial will not work, given a recent *OpenSSL* update. In order to overcome this bug caused by the update, you will have to downgrade your OpenSSL to any version before *version 1.1.1* (We don't advise for this downgrade, but that is a possible solution).  We are currently working on this recent update to be once again compatible with the latest version of OpenSSL.**
+**Note: This section of the tutorial will not work, given a recent *OpenSSL* update. In order to overcome this bug caused by the update, you will have to downgrade your OpenSSL to any version before *version 1.1.1* (We don't advise for this downgrade, but that is a possible solution).  We are currently working on this recent update to be once again compatible with the latest version of OpenSSL.**
 
 1\. Enter **python** to enter Python's interactive terminal:
 
