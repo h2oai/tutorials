@@ -31,11 +31,6 @@ By the end of this tutorial, you will predict the **cooling condition** for a **
 
 [6] H2O.ai Community AI Glossary: [Model Object, Optimized (MOJO) Scoring Pipeline](https://www.h2o.ai/community/glossary/model-object-optimized-mojo)
 
-[7] [SAVERY - HYDRAULIC TEST RIGS AND BENCHES](https://www.savery.co.uk/systems/test-benches)
-
-[8] [HYDROTECHNIK - Flow and Temperature Testing Components](https://www.hydrotechnik.co.uk/flow-and-temperature-hydraulic-test-bed)
-
-
 ## Prerequisites
 
 - Skilled in Python and/or R Programming
