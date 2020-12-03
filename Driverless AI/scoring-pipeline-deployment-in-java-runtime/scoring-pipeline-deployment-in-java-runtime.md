@@ -335,7 +335,7 @@ Next, load the example CSV data as a Spark’s DataFrame.
 val dataFrame = spark.read.option("header", "true").csv(homePath + "/dai-mojo-java/mojo-pipeline/example.csv")
 ```
 
-Finally, we will run batch scoring on the Spark DataFrame using mojo transform with it will get the scored data for cool efficiency:
+Finally, we will run batch scoring on the Spark DataFrame using mojo transform; with it, we will get the scored data for cool efficiency:
 
 ```java
 // Run the predictions. The predictions contain all the original columns plus the predictions.
@@ -471,7 +471,7 @@ java -Dai.h2o.mojos.runtime.license.file=license.sig -cp .;mojo2-runtime.jar Exe
 - cool_cond_y.20 = 0.14792289088169733
 - cool_cond_y.100 = 0.5682678818702698
 
-The MOJO predicted the cooling condition for the individual row of Hydraulic System test data we passed to it. You should receive classification probabilities for cool_cond_y.3, cool_cond_y.20, and cool_cond_y.100. The 3 means the Hydraulic cooler is close to operating at total failure, 20 means it is operating at reduced efficiency, and 100 means operating at full efficiency.
+The MOJO predicted the cooling condition for the individual row of Hydraulic System *test data* we passed to it. You should receive classification probabilities for cool_cond_y.3, cool_cond_y.20, and cool_cond_y.100. The 3 means the Hydraulic cooler is close to operating at total failure, 20 means it is operating at reduced efficiency, and 100 means operating at full efficiency.
 
 So that is how you execute the MOJO scoring pipeline to do interactive scoring using Java directly.
 
