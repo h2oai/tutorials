@@ -255,7 +255,7 @@ import os.path
 from pysparkling.ml import H2OMOJOPipelineModel,H2OMOJOSettings
 ```
 
-We configure the H2O MOJO Settings to ensure the output columns are named properly and then load the MOJO scoring pipeline:
+We configured the H2O MOJO Settings to ensure the output columns are appropriately named. Now we will load the MOJO scoring pipeline:
 
 ```java
 # The 'namedMojoOutputColumns' option ensures the output columns are named properly.
@@ -267,14 +267,14 @@ homePath = os.path.expanduser("~")
 # Load the pipeline. 'settings' is an optional argument.
 mojo = H2OMOJOPipelineModel.createFromMojo(homePath + "/dai-mojo-java/mojo-pipeline/pipeline.mojo", settings)
 ```
-Next load the example csv data as Spark’s DataFrame
+Next, load the example CSV data as a Spark’s DataFrame
 
 ```java
 # Load the data as Spark's Data Frame
 dataFrame = spark.read.csv(homePath + "/dai-mojo-java/mojo-pipeline/example.csv", header=True)
 ```
 
-Finally, we will run batch scoring on the Spark DataFrame using mojo transform and get the scored data for the hydraulic cool condition:
+Finally, we will run batch scoring on the Spark DataFrame using mojo transform. Right after, we will  get the scored data for the cool hydraulic condition:
 
 ```java
 # Run the predictions. The predictions contain all the original columns plus the predictions added as new columns
@@ -291,13 +291,13 @@ predictions.select([mojo.selectPredictionUDF("cool_cond_y.3"), mojo.selectPredic
 quit()
 ```
 
-The MOJO predicted the Hydraulic System cooling condition for each row within the batch of Hydraulic System test data we passed to it. You should receive classification probabilities for cool_cond_y.3, cool_cond_y.20, and cool_cond_y.100. The 3 means the Hydraulic cooler is close to operating at total failure, 20 means it is operating at reduced efficiency, and 100 means it is operating at full efficiency.
+The MOJO predicted the Hydraulic System cooling condition for each row within the batch of Hydraulic System test data we provided. You should receive classification probabilities for cool_cond_y.3, cool_cond_y.20, and cool_cond_y.100. The 3 means the Hydraulic cooler is close to operating at total failure, 20 means it is operating at reduced efficiency, and 100 means operating at full efficiency.
 
-So that is how you execute the MOJO scoring pipeline to do batch scoring using PySparkling.
+Accordingly, that is how you execute the MOJO scoring pipeline to do batch scoring using PySparkling.
 
-### Batch Scoring via Run Sparkling Water Program
+### Batch Scoring Through the Run Sparkling Water Program
 
-Start Sparkling Water to enter Spark interactive terminal:
+Start **Sparkling Water** to enter Spark's interactive terminal:
 
 ```bash
 cd $HOME/sparkling-water-3.30.0.6-1-3.0
@@ -314,7 +314,7 @@ Now that we are in the Spark interactive terminal, we will import some dependenc
 import ai.h2o.sparkling.ml.models.{H2OMOJOPipelineModel,H2OMOJOSettings}
 ```
 
-We configure the H2O MOJO Settings to ensure the output columns are named properly and then load the MOJO scoring pipeline:
+Now configure the **H2O MOJO Settings** to ensure the output columns are correctly named. As well, load the MOJO scoring pipeline:
 
 ```java
 // The 'namedMojoOutputColumns' option ensures the output columns are named properly.
@@ -328,18 +328,17 @@ val homePath = sys.env("HOME")
 val mojo = H2OMOJOPipelineModel.createFromMojo(homePath + "/dai-mojo-java/mojo-pipeline/pipeline.mojo", settings)
 ```
 
-Next load the example csv data as Spark’s DataFrame
+Next, load the example CSV data as a Spark’s DataFrame.
 
 ```java
-// Load the data as Spark's Data Frame
+// Load the data as a Spark's DataFrame
 val dataFrame = spark.read.option("header", "true").csv(homePath + "/dai-mojo-java/mojo-pipeline/example.csv")
 ```
 
-Finally, we will run batch scoring on the Spark DataFrame using mojo transform and get the scored data for cool efficiency:
+Finally, we will run batch scoring on the Spark DataFrame using mojo transform with it will get the scored data for cool efficiency:
 
 ```java
-// Run the predictions. The predictions contain all the original columns plus the predictions
-// added as new columns
+// Run the predictions. The predictions contain all the original columns plus the predictions.
 val predictions = mojo.transform(dataFrame)
 
 # Get the predictions for desired cols sep by comma with selected col names
@@ -352,9 +351,9 @@ predictions.select(mojo.selectPredictionUDF("cool_cond_y.3"), mojo.selectPredict
 :quit
 ```
 
-The MOJO predicted the Hydraulic System cooling condition for each row within the batch of Hydraulic System test data we passed to it. You should receive classification probabilities for cool_cond_y.3, cool_cond_y.20, and cool_cond_y.100. The 3 means the Hydraulic cooler is close to operating at total failure, 20 means it is operating at reduced efficiency, and 100 means it is operating at full efficiency.
+The MOJO predicted the Hydraulic System cooling condition for each row within the batch of Hydraulic System test data we provided. You should receive classification probabilities for cool_cond_y.3, cool_cond_y.20, and cool_cond_y.100. The 3 means the Hydraulic cooler is close to operating at total failure, 20 means it is operating at reduced efficiency, and 100 means operating at full efficiency.
 
-So that is how you execute the MOJO scoring pipeline to do batch scoring using Sparkling Water.
+With the above in mind, that is how you execute the MOJO scoring pipeline to do batch scoring using Sparkling Water.
 
 ### Resources
 
@@ -368,9 +367,9 @@ So that is how you execute the MOJO scoring pipeline to do batch scoring using S
 
 ## Task 4: Interactive Scoring
 
-The mojo can also predict a Hydraulic System cooling condition for each individual Hydraulic System row of test data. You will build a Java, PySparkling, and Sparkling Water program to execute the mojo to do interactive scoring on individual Hydraulic System rows.
+The mojo can also predict a Hydraulic System cooling condition for each individual Hydraulic System row of test data. Moving forward, we will build a Java program to execute the mojo to do interactive scoring on individual Hydraulic System rows.
 
-### Interactive Scoring via Run Custom Java Program
+### Interactive Scoring Through the Run Custom Java Program
 
 Create a **MojoDeployment** folder and go into it:
 
@@ -387,7 +386,7 @@ cp $HOME/dai-mojo-java/mojo-pipeline/mojo2-runtime.jar .
 cp $HOME/dai-mojo-java/mojo-pipeline/pipeline.mojo .
 ```
 
-In the H2O documentation [Driverless AI MOJO Scoring Pipeline - Java Runtime](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/scoring-mojo-scoring-pipeline.html), they give us a Java code example to predict a CAPSULE value from an individual row of data, we need to modify this code for our Hydraulic System data. Create a Java file called **ExecuteDaiMojo.java**.
+In the H2O documentation [Driverless AI MOJO Scoring Pipeline - Java Runtime](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/scoring-mojo-scoring-pipeline.html), they give us a Java code example to predict a CAPSULE value from an individual row of data; we need to modify this code for our Hydraulic System data. Create a Java file called **ExecuteDaiMojo.java**.
 
 Based on our Hydraulic System **example.csv** data, we can take the header row and a row of data to replace the data in rowBuilder in the Java code example. So, the Java code example becomes:
 
@@ -444,13 +443,15 @@ public class ExecuteDaiMojo {
 }
 ```
 
-Now we have our ExecuteDaiMojo.java code, so let’s compile it:
+Paste the above Java code to your **ExecuteDaiMojo.java**. 
+
+Now we have our Java code, let’s compile it:
 
 ```bash
 javac -cp mojo2-runtime.jar -J-Xms2g ExecuteDaiMojo.java
 ```
 
-ExecuteDaiMojo.class is generated. Run this Java program to execute the MOJO:
+Now that the **ExecuteDaiMojo.class** has been generated, run this Java program to execute the MOJO:
 
 ```bash
 java -Dai.h2o.mojos.runtime.license.file=$DRIVERLESS_AI_LICENSE_KEY -cp .:mojo2-runtime.jar ExecuteDaiMojo
@@ -470,7 +471,7 @@ java -Dai.h2o.mojos.runtime.license.file=license.sig -cp .;mojo2-runtime.jar Exe
 - cool_cond_y.20 = 0.14792289088169733
 - cool_cond_y.100 = 0.5682678818702698
 
-The MOJO predicted the cooling condition for the individual row of Hydraulic System test data we passed to it. You should receive classification probabilities for cool_cond_y.3, cool_cond_y.20, and cool_cond_y.100. The 3 means the Hydraulic cooler is close to operating at total failure, 20 means it is operating at reduced efficiency, and 100 means it is operating at full efficiency.
+The MOJO predicted the cooling condition for the individual row of Hydraulic System test data we passed to it. You should receive classification probabilities for cool_cond_y.3, cool_cond_y.20, and cool_cond_y.100. The 3 means the Hydraulic cooler is close to operating at total failure, 20 means it is operating at reduced efficiency, and 100 means operating at full efficiency.
 
 So that is how you execute the MOJO scoring pipeline to do interactive scoring using Java directly.
 
@@ -481,19 +482,19 @@ So that is how you execute the MOJO scoring pipeline to do interactive scoring u
 
 ### Execute Scoring Pipeline for a New Dataset
 
-There are various challenges one could do, you could do something that helps you in your daily life or job. Maybe there is a dataset you are working with, you could reproduce the steps we did above, but for your dataset, build a new experiment and execute your MOJO scoring pipeline to do batch scoring or interactive scoring.
+You could do something that helps you in your daily life or job. Maybe you could reproduce the steps we did above, but for a new experiment or dataset. In that case, you could either decide to do batch scoring, interactive scoring, or both. 
 
 ### Embed Scoring Pipeline into Existing Program
 
-Another challenge could be to use the existing MOJO scoring pipeline we executed and instead of using the examples we shared above, integrate the scoring pipeline into an existing Java, Python or Scala program.
+Another challenge could be to use the existing MOJO scoring pipeline we executed. Instead of using the examples, we shared above, integrate the scoring pipeline into an existing Java, Python, or Scala program.
 
 
 ## Next Steps
-- [Tutorial 4D: Scoring Pipeline Deployment in C++ Runtime](https://training.h2o.ai/products/tutorial-4d-scoring-pipeline-execution-runtime-in-c) 
+- [Tutorial 4D: Scoring Pipeline Deployment in C++ Runtime](https://training.h2o.ai/products/tutorial-4d-scoring-pipeline-deployment-in-c-runtime#tab-product_tab_contents__8) 
 - [Tutorial 4E: Scoring Pipeline Deployment in Python Runtime](https://training.h2o.ai/products/tutorial-4e-scoring-pipeline-deployment-in-python-runtime) 
 - [Tutorial 4F: Scoring Pipeline Deployment to Apache NiFi](https://training.h2o.ai/products/tutorial-4f-scoring-pipeline-deployment-to-apache-nifi) 
 
 
 
 ## Appendix A: Glossary
-Refer to [H2O.ai AI Glossary](https://www.h2o.ai/community/top-links/ai-glossary-search) for relevant Model Deployment Terms
+Refer to the [H2O.ai AI Glossary](https://www.h2o.ai/community/top-links/ai-glossary-search) for relevant Model Deployment Terms.
