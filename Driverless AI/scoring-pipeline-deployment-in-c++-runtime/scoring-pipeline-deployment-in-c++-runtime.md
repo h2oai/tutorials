@@ -5,7 +5,7 @@
 - [Objective](#objective)
 - [Prerequisites](#prerequisites)
 - [Task 1: Set Up Environment](#task-1-set-up-environment)
-- [Task 2: Concepts Around Scoring Pipeline in C++ Runtime](#task-2-concepts-around-scoring-pipeline-in-c-runtime)
+- [Task 2: Concepts Around Scoring Pipeline Deployment in C++ Runtime](#task-2-concepts-around-scoring-pipeline-deployment-in-c-runtime)
 - [Task 3: Batch Scoring via Scoring Pipeline Execution](#task-3-batch-scoring-via-scoring-pipeline-execution)
 - [Task 4: Challenge](#task-4-challenge)
 - [Next Steps](#next-steps)
@@ -14,6 +14,20 @@
 ## Objective
 
 **Machine Learning Model Deployment** is the process of making your model available in production environments, so it can be used to make predictions for other software systems [1]. Before model deployment, **feature engineering** occurs in the form of preparing data that will later be used to train a model [2]. Driverless AI **Automatic Machine Learning (AutoML)** combines the best feature engineering and one or more **machine learning models** into a scoring pipeline [3][4]. The **scoring pipeline** is used to score or predict data when given new test data [5]. The scoring pipeline comes in two flavors. The first scoring pipeline is a **Model Object, Optimized(MOJO) Scoring Pipeline**, a standalone, low-latency model object designed to be easily embeddable in production environments. The second scoring pipeline is a Python Scoring Pipeline, which has a heavy footprint that is all Python and uses the latest libraries of Driverless AI to allow for executing custom scoring recipes[6].
+
+For this tutorial, we will continue making use of the prebuilt experiment: **Model_deployment_HydraulicSystem.**  The Driverless AI  experiment is a classifier model that classifies whether the **cooling condition** of a **Hydraulic System Test Rig** is 3, 20, or 100. By looking at the **cooling condition,** we can predict whether the Hydraulic Cooler operates **close to total failure**, **reduced efficiency**, or **full efficiency**. 
+
+| Hydraulic Cooling Condition | Description |
+|:--:|:--:|
+| 3 | operates at close to total failure |
+| 20 | operates at reduced efficiency |
+| 100 | operates at full efficiency |
+
+The Hydraulic System Test Rig data for this tutorial comes from the **[UCI Machine Learning Repository: Condition Monitoring of Hydraulic Systems Data Set](https://archive.ics.uci.edu/ml/datasets/Condition+monitoring+of+hydraulic+systems#)**. The data set was experimentally obtained with a hydraulic test rig. This test rig consists of a primary working and a secondary cooling-filtration circuit connected via the oil tank [7]. The system cyclically repeats constant load cycles (duration 60 seconds) and measures process values such as pressures, volume flows, and temperatures. The condition of four hydraulic components (cooler, valve, pump, and accumulator) is quantitatively varied. The data set contains raw process sensor data (i.e., without feature extraction), structured as matrices (tab-delimited) with the rows representing the cycles and the columns the data points within a cycle. Hydraulic System Test Rigs are used to test Aircraft Equipment components, Automotive Applications, and more [8]. A Hydraulic Test Rig can test a range of flow rates that can achieve different pressures with the ability to heat and cool while simulating testing under different conditions [9]. Testing the pressure, the volume flow, and the temperature is possible by Hydraulic Test Rig sensors and a digital display. The display panel alerts the user when certain testing criteria are met while displaying either a green or red light [9]. Further, a filter blockage panel indicator is integrated into the panel to ensure the Hydraulic Test Rig's oil is maintained [9]. In the case of predicting cooling conditions for a Hydraulic System, when the cooling condition is low, our prediction will tell us that the cooling of the Hydraulic System is close to total failure, and we may need to look into replacing the cooling filtration solution soon. 
+
+![cylinder-diagram-1](./assets/hydraulic-system-diagram.jpg)
+
+**Figure 1:** Hydraulic System Cylinder Diagram
 
 By the end of this tutorial, you will predict the **cooling condition** for a **Hydraulic System Test Rig** by deploying an **embeddable MOJO Scoring Pipeline** into C++ Runtime using **Python** and **R**. 
 
@@ -30,6 +44,12 @@ By the end of this tutorial, you will predict the **cooling condition** for a **
 [5] H2O.ai Community AI Glossary: [Scoring Pipeline](https://www.h2o.ai/community/glossary/scoring-pipeline)
 
 [6] H2O.ai Community AI Glossary: [Model Object, Optimized (MOJO) Scoring Pipeline](https://www.h2o.ai/community/glossary/model-object-optimized-mojo)
+
+[7] [Condition monitoring of hydraulic systems Data Set ](https://archive.ics.uci.edu/ml/datasets/Condition+monitoring+of+hydraulic+systems#)
+
+[8] [SAVERY - HYDRAULIC TEST RIGS AND BENCHES](https://www.savery.co.uk/systems/test-benches)
+
+[9] [HYDROTECHNIK - Flow and Temperature Testing Components](https://www.hydrotechnik.co.uk/flow-and-temperature-hydraulic-test-bed)
 
 ## Prerequisites
 
@@ -48,27 +68,10 @@ By the end of this tutorial, you will predict the **cooling condition** for a **
 
 ## Task 1: Set Up Environment
 
-For this tutorial, we will continue making use of the prebuilt experiment: **Model_deployment_HydraulicSystem.**  The Driverless AI  experiment is a classifier model that classifies whether the **cooling condition** of a **Hydraulic System Test Rig** is 3, 20, or 100. By looking at the **cooling condition,** we can predict whether the Hydraulic Cooler operates **close to total failure**, **reduced efficiency**, or **full efficiency**. 
-
-| Hydraulic Cooling Condition | Description |
-|:--:|:--:|
-| 3 | operates at close to total failure |
-| 20 | operates at reduced efficiency |
-| 100 | operates at full efficiency |
-
-The Hydraulic System Test Rig data for this tutorial comes from the **[UCI Machine Learning Repository: Condition Monitoring of Hydraulic Systems Data Set](https://archive.ics.uci.edu/ml/datasets/Condition+monitoring+of+hydraulic+systems#)**. The data set was experimentally obtained with a hydraulic test rig. This test rig consists of a primary working and a secondary cooling-filtration circuit connected via the oil tank [1], [2]. The system cyclically repeats constant load cycles (duration 60 seconds) and measures process values such as pressures, volume flows, and temperatures. The condition of four hydraulic components (cooler, valve, pump, and accumulator) is quantitatively varied. The data set contains raw process sensor data (i.e., without feature extraction), structured as matrices (tab-delimited) with the rows representing the cycles and the columns the data points within a cycle.
-
-
-Hydraulic System Test Rigs are used to test Aircraft Equipment components, Automotive Applications, and more [1]. A Hydraulic Test Rig can test a range of flow rates that can achieve different pressures with the ability to heat and cool while simulating testing under different conditions [2]. Testing the pressure, the volume flow, and the temperature is possible by Hydraulic Test Rig sensors and a digital display. The display panel alerts the user when certain testing criteria are met while displaying either a green or red light [2]. Further, a filter blockage panel indicator is integrated into the panel to ensure the Hydraulic Test Rig's oil is maintained [2]. In the case of predicting cooling conditions for a Hydraulic System, when the cooling condition is low, our prediction will tell us that the cooling of the Hydraulic System is close to total failure, and we may need to look into replacing the cooling filtration solution soon. 
-
-![cylinder-diagram-1](./assets/hydraulic-system-diagram.jpg)
-
-**Figure 1:** Hydraulic System Cylinder Diagram
-
 ### Create Environment Directory Structure
 
 ```bash
-# Create directory structure for DAI MOJO C++ Projects
+# Create directory structure for Driverless AI MOJO C++ Projects
 # Create directory where the mojo-pipeline folder will be stored
 mkdir $HOME/dai-mojo-cpp/
 
@@ -136,7 +139,7 @@ cd $HOME
 mv $HOME/Downloads/daimojo-2.4.8-cp36-cp36m-macosx_10_7_x86_64.whl .
  
 # If you have Linux, move the MOJO2 Py runtime for Linux x86 to the $HOME folder
-mv $HOME/Downloads/ddaimojo-2.4.8-cp36-cp36m-linux_x86_64.whl .
+mv $HOME/Downloads/daimojo-2.4.8-cp36-cp36m-linux_x86_64.whl .
  
 # If you have a Linux PPC, move the MOJO2 Py runtime for Linux PPC to the $HOME folder
 mv $HOME/Downloads/daimojo-2.4.8-cp36-cp36m-linux_ppc64le.whl .
@@ -218,7 +221,7 @@ Set the Driverless AI License Key as a temporary environment variable.
 export DRIVERLESS_AI_LICENSE_KEY="{license-key}"
 ```
 
-## Task 2: Concepts Around Scoring Pipeline in C++ Runtime  
+## Task 2: Concepts Around Scoring Pipeline Deployment in C++ Runtime  
 
 ### MOJO Scoring Pipeline Files
 
@@ -240,7 +243,7 @@ We will be executing the MOJO scoring pipeline using the Python and R wrapper. W
 R
 ```
 
-![batch-scoring-via-run-r-program-1](assets/batch-scoring-via-run-r-program-1.jpg)
+![batch-scoring-via-run-r-program-1](assets/batch-scoring-via-run-r-program-1.png)
 
 2\. Now that we are in the R interactive terminal, we will install the MOJO2 R Runtime:
 
@@ -301,7 +304,7 @@ d <- fread(path, colClasses=col_class, header=TRUE, sep=",")
 predict(m, d)
 ```
 
-![batch-scoring-via-run-r-program-2](assets/batch-scoring-via-run-r-program-2.jpg)
+![batch-scoring-via-run-r-program-2](assets/batch-scoring-via-run-r-program-2.png)
 
 This classification output is the batch scoring done for our Hydraulic System cooling condition. You should receive classification probabilities for cool_cond_y.3, cool_cond_y.20, and cool_cond_y.100. The 3 means the Hydraulic cooler is close to operating at total failure, 20 means it is operating at reduced efficiency, and 100 means operating at full efficiency.
 
@@ -323,7 +326,7 @@ In conclusion, that is how you execute the MOJO scoring pipeline to do batch sco
 
 1\. Enter **python** to enter Python's interactive terminal:
 
-![batch-scoring-via-run-py-program-1](assets/batch-scoring-via-run-py-program-1.jpg)
+![batch-scoring-via-run-py-program-1](assets/batch-scoring-via-run-py-program-1.png)
 
 2\. Let’s import the Driverless AI MOJO model package and load the MOJO scoring pipeline:
 
@@ -433,10 +436,10 @@ Another challenge could be to use the existing MOJO scoring pipeline we executed
 
 ## Next Steps 
 
-- [Tutorial 4C: Scoring Pipeline Deployment in Java Runtime](https://training.h2o.ai/products/tutorial-4c-scoring-pipeline-deployment-in-java-runtime#tab-product_tab_contents__9)
-- [Tutorial 4E: Scoring Pipeline Deployment in Python Runtime](https://training.h2o.ai/products/tutorial-4e-scoring-pipeline-deployment-in-python-runtime#tab-product_tab_contents__9) 
-- [Tutorial 4F: Scoring Pipeline Deployment to Apache NIFI](https://training.h2o.ai/products/tutorial-4f-scoring-pipeline-deployment-to-apache-nifi#tab-product_tab_contents__9)
+- [Tutorial 4C: Scoring Pipeline Deployment in Java Runtime](https://training.h2o.ai/products/tutorial-4c-scoring-pipeline-deployment-in-java-runtime#tab-product_tab_overview)
+- [Tutorial 4E: Scoring Pipeline Deployment in Python Runtime](https://training.h2o.ai/products/tutorial-4e-scoring-pipeline-deployment-in-python-runtime#tab-product_tab_overview) 
+- [Tutorial 4F: Scoring Pipeline Deployment to Apache NIFI](https://training.h2o.ai/products/tutorial-4f-scoring-pipeline-deployment-to-apache-nifi#tab-product_tab_overview)
 
 ## Appendix A: Glossary
 
-Refer to the [H2O.ai Glossary](https://www.h2o.ai/community/top-links/ai-glossary-search?p=3) for relevant Model Deployment Terms
+Refer to the [H2O.ai Glossary](https://www.h2o.ai/community/top-links/ai-glossary-search?p=3) for relevant Model Deployment Terms.
