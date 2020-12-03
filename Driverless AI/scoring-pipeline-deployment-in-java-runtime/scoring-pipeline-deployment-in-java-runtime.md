@@ -443,7 +443,7 @@ public class ExecuteDaiMojo {
 }
 ```
 
-Paste the above Java code to your **ExecuteDaiMojo.java**. 
+Paste the above Java code to your **ExecuteDaiMojo.java**. Move the java file to the **MojoDeployment** folder. 
 
 Now we have our Java code, let’s compile it:
 
