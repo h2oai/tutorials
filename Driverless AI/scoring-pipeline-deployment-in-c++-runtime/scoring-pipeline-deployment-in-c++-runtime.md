@@ -74,7 +74,6 @@ By the end of this tutorial, you will predict the **cooling condition** for a **
 # Create directory structure for Driverless AI MOJO C++ Projects
 # Create directory where the mojo-pipeline folder will be stored
 mkdir $HOME/dai-mojo-cpp/
-
 ```
 
 ### Set Up Driverless AI MOJO Requirements
