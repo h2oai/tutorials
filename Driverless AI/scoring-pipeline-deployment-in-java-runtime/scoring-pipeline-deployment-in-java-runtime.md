@@ -492,7 +492,7 @@ Another challenge could be to use the existing MOJO scoring pipeline we executed
 ## Next Steps
 - [Tutorial 4D: Scoring Pipeline Deployment in C++ Runtime](https://training.h2o.ai/products/tutorial-4d-scoring-pipeline-deployment-in-c-runtime#tab-product_tab_contents__8) 
 - [Tutorial 4E: Scoring Pipeline Deployment in Python Runtime](https://training.h2o.ai/products/tutorial-4e-scoring-pipeline-deployment-in-python-runtime) 
-- [Tutorial 4F: Scoring Pipeline Deployment to Apache NiFi](https://training.h2o.ai/products/tutorial-4f-scoring-pipeline-deployment-to-apache-nifi) 
+- (COMING SOON) Tutorial 4F: Scoring Pipeline Deployment to Apache NiFi
 
 
 
