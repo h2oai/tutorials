@@ -93,7 +93,7 @@ Review the columns in the data set and pay attention to the specific attributes 
 
 ![launch-experiment-drop-columns-2](assets/launch-experiment-drop-columns-2.jpg)
 
-10\. When you return, update the training settings as shown below:it is essential to make sure the **Interpretability** setting is at **7**. On the left-hand side, verify that **Monotonicity Constraints** is enabled. Enabling **Monotonicity Constraints** is important to Disparate Impact Analysis. If we use an unconstrained model and group fairness metrics, we risk creating group fairness metrics that appear to be reasonable. The consequence of creating group fairness metrics that appear to be reasonable is the illusion that individuals within that group may be treated differently or unfairly. The local (individual) discrimination would likely not appear or be visible in that group metric.
+10\. When you return, update the training settings as shown below:it is essential to make sure the **Interpretability** setting is at **7**. On the left-hand side, verify that **Monotonicity Constraints** is enabled. Enabling **Monotonicity Constraints** is important to Disparate Impact Analysis. If we use an unconstrained model and group fairness metrics, we risk creating group fairness metrics that appear to be reasonable. The consequence of creating group fairness metrics that appear to be reasonable is the illusion that individuals within that group may NOT be treated differently or unfairly. The local (individual) discrimination would likely not appear or be visible in that group metric.
 
 ![launch-experiment-interpretability-settings](assets/launch-experiment-interpretability-settings.jpg)
 
