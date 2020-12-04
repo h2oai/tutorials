@@ -607,7 +607,7 @@ Another challenge could be to use the existing Python scoring pipeline we execut
 
 - [Tutorial 4C: Scoring Pipeline Execution in Java Runtime](https://training.h2o.ai/products/tutorial-4c-scoring-pipeline-execution-in-java-runtime)
 - [Tutorial 4D: Scoring Pipeline Execution Runtime in C++](https://training.h2o.ai/products/tutorial-4d-scoring-pipeline-execution-runtime-in-c)
-- [Tutorial 4F: Scoring Pipeline Deployment to Apache NiFi](https://training.h2o.ai/products/tutorial-4f-scoring-pipeline-deployment-to-apache-nifi)
+- (COMING SOON) Tutorial 4F: Scoring Pipeline Deployment to Apache NIFI
 
 ## Appendix A: Glossary
 Refer to [H2O.ai AI/ML Glossary](https://www.h2o.ai/community/top-links/ai-glossary-search?p=1) for relevant Model Deployment Terms
