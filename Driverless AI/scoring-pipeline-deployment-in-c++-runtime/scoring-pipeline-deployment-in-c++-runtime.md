@@ -437,7 +437,7 @@ Another challenge could be to use the existing MOJO scoring pipeline we executed
 
 - [Tutorial 4C: Scoring Pipeline Deployment in Java Runtime](https://training.h2o.ai/products/tutorial-4c-scoring-pipeline-deployment-in-java-runtime#tab-product_tab_overview)
 - [Tutorial 4E: Scoring Pipeline Deployment in Python Runtime](https://training.h2o.ai/products/tutorial-4e-scoring-pipeline-deployment-in-python-runtime#tab-product_tab_overview) 
-- [Tutorial 4F: Scoring Pipeline Deployment to Apache NIFI](https://training.h2o.ai/products/tutorial-4f-scoring-pipeline-deployment-to-apache-nifi#tab-product_tab_overview)
+- (COMING SOON) Tutorial 4F: Scoring Pipeline Deployment to Apache NIFI
 
 ## Appendix A: Glossary
 
