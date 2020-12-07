@@ -25,7 +25,7 @@ For this tutorial, we will continue making use of the prebuilt experiment: **Mod
 
 The Hydraulic System Test Rig data for this tutorial comes from the **[UCI Machine Learning Repository: Condition Monitoring of Hydraulic Systems Dataset](https://archive.ics.uci.edu/ml/datasets/Condition+monitoring+of+hydraulic+systems#)**. The dataset was experimentally obtained with a hydraulic test rig. This test rig consists of a primary working and a secondary cooling-filtration circuit connected via the oil tank [7]. The system cyclically repeats constant load cycles (duration 60 seconds) and measures process values such as pressures, volume flows, and temperatures. The condition of four hydraulic components (cooler, valve, pump, and accumulator) is quantitatively varied. The dataset contains raw process sensor data (i.e., without feature extraction), structured as matrices (tab-delimited) with the rows representing the cycles and the columns the data points within a cycle. Hydraulic System Test Rigs are used to test Aircraft Equipment components, Automotive Applications, and more [8]. A Hydraulic Test Rig can test a range of flow rates that can achieve different pressures with the ability to heat and cool while simulating testing under different conditions [9]. Testing the pressure, the volume flow, and the temperature is possible by Hydraulic Test Rig sensors and a digital display. The display panel alerts the user when certain testing criteria are met while displaying either a green or red light [9]. Further, a filter blockage panel indicator is integrated into the panel to ensure the Hydraulic Test Rig's oil is maintained [9]. In the case of predicting cooling conditions for a Hydraulic System, when the cooling condition is low, our prediction will tell us that the cooling of the Hydraulic System is close to total failure, and we may need to look into replacing the cooling filtration solution soon. 
 
-![cylinder-diagram-1](./assets/hydraulic-system-diagram.jpg)
+![cylinder-diagram-1](./assets/hydraulic-system-diagram.png)
 
 **Figure 1:** Hydraulic System Cylinder Diagram
 
@@ -104,15 +104,15 @@ We can download the **MOJO2 C++ Runtime Python Wrapper API and R Wrapper API** i
 
 1\. Similar to where we downloaded the **MOJO SCORING PIPELINE**, we will download the **MOJO2 Py Runtime**.   Instead of clicking on the **Java** tab, click on the **Python** tab. Right after, click on the **Download the MOJO2 Py Runtime** hyperlink. Select the type of download you want, depending on your OS. 
 
-![download-mojo2-py-runtime-1](assets/download-mojo2-py-runtime-1.jpg)
+![download-mojo2-py-runtime-1](assets/download-mojo2-py-runtime-1.png)
 
 Similar for the **MOJO2 R runtime**, click the **R** tab, then click the **Download the MOJO2 R Runtime** hyperlink. Select the type of download you want, depending on your OS. 
 
-![download-mojo2-r-runtime-2](assets/download-mojo2-r-runtime-2.jpg)
+![download-mojo2-r-runtime-2](assets/download-mojo2-r-runtime-2.png)
 
 2\. The second place you can find these runtimes is under the **Resources** drop-down list.
 
-![download-mojo2-py-r-runtime-3](assets/download-mojo2-py-r-runtime-3.jpg)
+![download-mojo2-py-r-runtime-3](assets/download-mojo2-py-r-runtime-3.png)
 
 Click **MOJO2 Py Runtime** and/or **MOJO2 R Runtime** to download the runtime.
 
@@ -392,7 +392,7 @@ res = m.predict(pydt)
 res
 ```
 
-![batch-scoring-via-run-py-program-2](assets/batch-scoring-via-run-py-program-2.jpg)
+![batch-scoring-via-run-py-program-2](assets/batch-scoring-via-run-py-program-2.png)
 
 This classification output is the batch scoring done for our Hydraulic System cooling condition. You should receive classification probabilities for cool_cond_y.3, cool_cond_y.20, and cool_cond_y.100. The 3 means the Hydraulic cooler is close to operating at total failure, 20 means it is operating at reduced efficiency, and 100 means operating at full efficiency.
 
