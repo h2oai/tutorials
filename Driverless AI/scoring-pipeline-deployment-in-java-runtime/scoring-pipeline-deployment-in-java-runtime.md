@@ -139,7 +139,7 @@ pip install numpy
 
 5\. Set the Driverless AI License Key as a temporary environment variable:
 
-Note: If you don't have a license key, you can obtain one through our [21-day trial license](https://www.h2o.ai/try-driverless-ai/) option. Note: Aquarium will not contain a **Driverless AI License Key**. Through the [21-day trial license](https://www.h2o.ai/try-driverless-ai/) option, you will be able to obtain a temporary **Driverless AI License Key** necessary for this tutorial. 
+Note: If you don't have a license, you can obtain one through our [21-day trial license](https://www.h2o.ai/try-driverless-ai/) option. Note: Aquarium will not contain a **Driverless AI License Key**. Through the [21-day trial license](https://www.h2o.ai/try-driverless-ai/) option, you will be able to obtain a temporary **Driverless AI License Key** necessary for this tutorial. 
 
 ```bash
 # Set Driverless AI License Key
