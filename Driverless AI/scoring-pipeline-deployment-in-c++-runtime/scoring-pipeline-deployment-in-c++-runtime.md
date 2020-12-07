@@ -23,7 +23,7 @@ For this tutorial, we will continue making use of the prebuilt experiment: **Mod
 | 20 | operates at reduced efficiency |
 | 100 | operates at full efficiency |
 
-The Hydraulic System Test Rig data for this tutorial comes from the **[UCI Machine Learning Repository: Condition Monitoring of Hydraulic Systems Data Set](https://archive.ics.uci.edu/ml/datasets/Condition+monitoring+of+hydraulic+systems#)**. The data set was experimentally obtained with a hydraulic test rig. This test rig consists of a primary working and a secondary cooling-filtration circuit connected via the oil tank [7]. The system cyclically repeats constant load cycles (duration 60 seconds) and measures process values such as pressures, volume flows, and temperatures. The condition of four hydraulic components (cooler, valve, pump, and accumulator) is quantitatively varied. The data set contains raw process sensor data (i.e., without feature extraction), structured as matrices (tab-delimited) with the rows representing the cycles and the columns the data points within a cycle. Hydraulic System Test Rigs are used to test Aircraft Equipment components, Automotive Applications, and more [8]. A Hydraulic Test Rig can test a range of flow rates that can achieve different pressures with the ability to heat and cool while simulating testing under different conditions [9]. Testing the pressure, the volume flow, and the temperature is possible by Hydraulic Test Rig sensors and a digital display. The display panel alerts the user when certain testing criteria are met while displaying either a green or red light [9]. Further, a filter blockage panel indicator is integrated into the panel to ensure the Hydraulic Test Rig's oil is maintained [9]. In the case of predicting cooling conditions for a Hydraulic System, when the cooling condition is low, our prediction will tell us that the cooling of the Hydraulic System is close to total failure, and we may need to look into replacing the cooling filtration solution soon. 
+The Hydraulic System Test Rig data for this tutorial comes from the **[UCI Machine Learning Repository: Condition Monitoring of Hydraulic Systems Dataset](https://archive.ics.uci.edu/ml/datasets/Condition+monitoring+of+hydraulic+systems#)**. The dataset was experimentally obtained with a hydraulic test rig. This test rig consists of a primary working and a secondary cooling-filtration circuit connected via the oil tank [7]. The system cyclically repeats constant load cycles (duration 60 seconds) and measures process values such as pressures, volume flows, and temperatures. The condition of four hydraulic components (cooler, valve, pump, and accumulator) is quantitatively varied. The dataset contains raw process sensor data (i.e., without feature extraction), structured as matrices (tab-delimited) with the rows representing the cycles and the columns the data points within a cycle. Hydraulic System Test Rigs are used to test Aircraft Equipment components, Automotive Applications, and more [8]. A Hydraulic Test Rig can test a range of flow rates that can achieve different pressures with the ability to heat and cool while simulating testing under different conditions [9]. Testing the pressure, the volume flow, and the temperature is possible by Hydraulic Test Rig sensors and a digital display. The display panel alerts the user when certain testing criteria are met while displaying either a green or red light [9]. Further, a filter blockage panel indicator is integrated into the panel to ensure the Hydraulic Test Rig's oil is maintained [9]. In the case of predicting cooling conditions for a Hydraulic System, when the cooling condition is low, our prediction will tell us that the cooling of the Hydraulic System is close to total failure, and we may need to look into replacing the cooling filtration solution soon. 
 
 ![cylinder-diagram-1](./assets/hydraulic-system-diagram.jpg)
 
@@ -45,7 +45,7 @@ By the end of this tutorial, you will predict the **cooling condition** for a **
 
 [6] H2O.ai Community AI Glossary: [Model Object, Optimized (MOJO) Scoring Pipeline](https://www.h2o.ai/community/glossary/model-object-optimized-mojo)
 
-[7] [Condition monitoring of hydraulic systems Data Set ](https://archive.ics.uci.edu/ml/datasets/Condition+monitoring+of+hydraulic+systems#)
+[7] [Condition monitoring of hydraulic systems Dataset ](https://archive.ics.uci.edu/ml/datasets/Condition+monitoring+of+hydraulic+systems#)
 
 [8] [SAVERY - HYDRAULIC TEST RIGS AND BENCHES](https://www.savery.co.uk/systems/test-benches)
 
@@ -71,8 +71,7 @@ By the end of this tutorial, you will predict the **cooling condition** for a **
 ### Create Environment Directory Structure
 
 ```bash
-# Create directory structure for Driverless AI MOJO C++ Projects
-# Create directory where the mojo-pipeline folder will be stored
+# Create directory structure for the Driverless AI MOJO C++ Projects and the mojo-pipeline folder 
 mkdir $HOME/dai-mojo-cpp/
 ```
 
@@ -103,7 +102,7 @@ unzip mojo.zip
 
 We can download the **MOJO2 C++ Runtime Python Wrapper API and R Wrapper API** in Driverless AI. There are two places where we can download the MOJO2 Python and R runtime. 
 
-1\. Similar to where we downloaded the **MOJO SCORING PIPELINE**, we will download the **Download the MOJO2 Py Runtime**.   Instead of clicking on the **Java** tab, click on the **Python** tab. Right after, click on the **Download the MOJO2 Py Runtime** hyperlink. Select the type of download you want, depending on your OS. 
+1\. Similar to where we downloaded the **MOJO SCORING PIPELINE**, we will download the **MOJO2 Py Runtime**.   Instead of clicking on the **Java** tab, click on the **Python** tab. Right after, click on the **Download the MOJO2 Py Runtime** hyperlink. Select the type of download you want, depending on your OS. 
 
 ![download-mojo2-py-runtime-1](assets/download-mojo2-py-runtime-1.jpg)
 
