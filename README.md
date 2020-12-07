@@ -10,7 +10,7 @@ Tutorials are developed and maintained on Github and published onto the [H2O.ai 
 
 ## New to AI?
 
-Begin your journey by browsing the tutorials in the [H2O.ai Learning Center](https://training.h2o.ai/) under Self-Paced Tutorials..
+Begin your journey by browsing the tutorials in the [H2O.ai Learning Center](https://training.h2o.ai/) under Self-Paced Tutorials.
 
 ## Running Into Issues With Tutorials?
 

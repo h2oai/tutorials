@@ -33,13 +33,13 @@ Check out the [**New H2O.ai Learning Center**](https://training.h2o.ai/) where y
 
 - [NEW - Risk Assessment Tools in the World of AI, the Social Sciences, and Humanities](https://training.h2o.ai/products/tutorial-5b-risk-assessment-tools-in-the-world-of-ai-the-social-sciences-and-humanities)
 
-- [NEW - Scoring Pipeline Deployment in Java Runtime](https://training.h2o.ai/products/tutorial-4c-scoring-pipeline-execution-in-java-runtime)
+- (COMING SOON) - Scoring Pipeline Deployment in Java Runtime
 
-- [NEW - Scoring Pipeline Deployment in C++ Runtime](https://training.h2o.ai/products/tutorial-4d-scoring-pipeline-execution-runtime-in-c)
+- (COMING SOON) - Scoring Pipeline Deployment in C++ Runtime
 
-- [NEW - Scoring Pipeline Deployment in Python Runtime](https://training.h2o.ai/products/tutorial-4e-scoring-pipeline-deployment-in-python-runtime)
+- (COMING SOON) - Scoring Pipeline Deployment in Python Runtime
 
-- [NEW - Scoring Pipeline Deployment to Apache NiFi](https://training.h2o.ai/products/tutorial-4f-scoring-pipeline-deployment-to-apache-nifi)
+- (COMING SOON) - Scoring Pipeline Deployment to Apache NiFi
 
 For other versions of the **Driverless AI tutorials**, check out the following repo's:
 
