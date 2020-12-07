@@ -62,7 +62,7 @@ By the end of this tutorial, you will predict the **cooling condition** for a **
 - Linux OS (x86 or IBM Power PC) or Mac OS X (10.9 or newer)
 - Anaconda or Miniconda
 - Basic knowledge of Driverless AI or completion of the following tutorials:
-    - [Tutorial 1A: Automatic Machine Learning Introduction with Driverless AI Test Drive](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai)
+    - [Tutorial 1A: Automatic Machine Learning Introduction with Driverless AI](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai)
     - [Tutorial 4A: Scoring Pipeline Deployment Introduction](https://training.h2o.ai/products/tutorial-4a-scoring-pipeline-deployment-introduction#tab-product_tab_contents__12)
     - [Tutorial 4B: Scoring Pipeline Deployment Templates](https://training.h2o.ai/products/tutorial-4b-scoring-pipeline-deployment-templates)
 
@@ -106,7 +106,7 @@ We can download the **MOJO2 C++ Runtime Python Wrapper API and R Wrapper API** i
 
 ![download-mojo2-py-runtime-1](assets/download-mojo2-py-runtime-1.jpg)
 
-Similar for the **MOJO2 R runtime**, click the **R** tab, then **Download the MOJO2 R Runtime** hyperlink. Select the type of download you want, depending on your OS. 
+Similar for the **MOJO2 R runtime**, click the **R** tab, then click the **Download the MOJO2 R Runtime** hyperlink. Select the type of download you want, depending on your OS. 
 
 ![download-mojo2-r-runtime-2](assets/download-mojo2-r-runtime-2.jpg)
 
@@ -161,7 +161,7 @@ mv $HOME/Downloads/daimojo_2.4.8_ppc64le-linux.tar.gz .
 
 ### Install MOJO2 Python and R Runtime Dependencies
 
-Create virtual environment and install Python and R packages in it
+Create virtual environment and install Python and R packages in it:
 
 ```bash
 # Install Python 3.6.10
@@ -212,7 +212,7 @@ conda install -y -c r r-data.table
 
 Set the Driverless AI License Key as a temporary environment variable.
 
-**Note**: If you don't have a license, you can obtain one through our [21-day trial license](https://www.h2o.ai/try-driverless-ai/) option. Through the [21-day trial license](https://www.h2o.ai/try-driverless-ai/) option, you will be able to obtain a temporary **Driverless AI License Key** necessary for this tutorial. 
+**Note**: If you don't have a license key, you can obtain one through our [21-day trial license](https://www.h2o.ai/try-driverless-ai/) option. Through the [21-day trial license](https://www.h2o.ai/try-driverless-ai/) option, you will be able to obtain a temporary **Driverless AI License Key** necessary for this tutorial. 
 
 ```bash
 # Set Driverless AI License Key
