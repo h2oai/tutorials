@@ -33,11 +33,11 @@ Check out the [**New H2O.ai Learning Center**](https://training.h2o.ai/) where y
 
 - [NEW - Risk Assessment Tools in the World of AI, the Social Sciences, and Humanities](https://training.h2o.ai/products/tutorial-5b-risk-assessment-tools-in-the-world-of-ai-the-social-sciences-and-humanities)
 
-- (COMING SOON) - Scoring Pipeline Deployment in Java Runtime
+- [NEW - Scoring Pipeline Deployment in Java Runtime](https://training.h2o.ai/products/tutorial-4c-scoring-pipeline-deployment-in-java-runtime)
 
-- (COMING SOON) - Scoring Pipeline Deployment in C++ Runtime
+- [NEW - Scoring Pipeline Deployment in C++ Runtime](https://training.h2o.ai/products/tutorial-4d-scoring-pipeline-deployment-in-c-runtime)
 
-- (COMING SOON) - Scoring Pipeline Deployment in Python Runtime
+- [NEW - Scoring Pipeline Deployment in Python Runtime](https://training.h2o.ai/products/tutorial-4e-scoring-pipeline-deployment-in-python-runtime)
 
 - (COMING SOON) - Scoring Pipeline Deployment to Apache NiFi
 
