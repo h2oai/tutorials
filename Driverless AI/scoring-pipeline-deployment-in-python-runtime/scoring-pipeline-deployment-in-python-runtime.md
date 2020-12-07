@@ -16,6 +16,7 @@
 **Machine Learning Model Deployment** is the process of making your models available in production environments, so they can be used to make predictions for other software systems [1]. Before model deployment, **feature engineering** occurs in preparing data that will later be used to train a model [2]. Driverless AI **Automatic Machine Learning (AutoML)** combines the best feature engineering and one or more **machine learning models** into a scoring pipeline [3][4]. The **scoring pipeline** is used to score or predict data when given new test data [5]. The scoring pipeline comes in two flavors. The first scoring pipeline is a **Model Object, Optimized(MOJO) Scoring Pipeline,** which is a standalone, low-latency model object designed to be easily embeddable in production environments. The second scoring pipeline is a Python Scoring Pipeline, which has a heavy footprint that is all Python and uses the latest libraries of Driverless AI to allow for executing custom scoring recipes[6].
 
 For this tutorial, we will continue using the prebuilt experiment: **Model_deployment_HydraulicSystem.**  The Driverless AI  experiment is a classifier model that classifies whether the **cooling condition** of a **Hydraulic System Test Rig** is 3, 20, or 100. By looking at the **cooling condition,** we can predict whether the Hydraulic Cooler operates **close to total failure**, **reduced efficiency**, or **full efficiency**. 
+
 | Hydraulic Cooling Condition | Description |
 |:--:|:--:|
 | 3 | operates at close to total failure |
@@ -27,7 +28,7 @@ The Hydraulic System Test Rig data for this tutorial comes from the **[UCI Machi
 
 Hydraulic System Test Rigs are used to test Aircraft Equipment components, Automotive Applications, and more [8]. A Hydraulic Test Rig can test a range of flow rates that can achieve different pressures with the ability to heat and cool while simulating testing under different conditions [9]. Testing the pressure, the volume flow, and the temperature is possible by Hydraulic Test Rig sensors and a digital display. The display panel alerts the user when certain testing criteria are met while displaying either a green or red light [9]. Further, a filter blockage panel indicator is integrated into the panel to ensure the Hydraulic Test Rig's oil is maintained [9]. In the case of predicting cooling conditions for a Hydraulic System, when the cooling condition is low, our prediction will tell us that the cooling of the Hydraulic System is close to total failure, and we may need to look into replacing the cooling filtration solution soon. 
 
-![cylinder-diagram-1](assets/Cylinder-Diagram-1.jpg)
+![cylinder-diagram-1](assets/Cylinder-Diagram-1.png)
 
 **Figure 1:** Hydraulic System Cylinder Diagram
 
@@ -84,50 +85,50 @@ Login to your AWS Management Console using your AWS account root user credential
 
 Search for EC2 service and click it in the dropdown:
 
-![search-for-ec2-service](assets/search-for-ec2-service.jpg)
+![search-for-ec2-service](assets/search-for-ec2-service.png)
 
 On the page that appears in the left sidebar, click Instances. Then click **Launch Instance.**
 
-![launch-instance](assets/launch-instance.jpg)
+![launch-instance](assets/launch-instance.png)
 
 Choose AMI: **Ubuntu 18.04 LTS (HVM), SSD Volume Type.** Click **Select.**
 
-![choose-ubuntu-1804-ami](assets/choose-ubuntu-1804-ami.jpg)
+![choose-ubuntu-1804-ami](assets/choose-ubuntu-1804-ami.png)
 
 Choose **t2.2xlarge** instance. Then click **Next: Configure Instance Details.**
 
-![choose-t2-2xlarge-instance](assets/choose-t2-2xlarge-instance.jpg)
+![choose-t2-2xlarge-instance](assets/choose-t2-2xlarge-instance.png)
 
 For **Configure Instance Details**, keep them default. Please ensure that **Use subnet setting (Enable)** for *Auto-assign Public IP* is selected. Then click **Next: Add Storage.**
 
-![configure-instance](assets/configure-instance.jpg)
+![configure-instance](assets/configure-instance.png)
 
 
 Set the Storage to **256 GB** size or less for Root General Purpose SSD (gp2). Then click **Next: Add Tags.**
 
-![set-storage-256-gb](assets/set-storage-256-gb.jpg)
+![set-storage-256-gb](assets/set-storage-256-gb.png)
 
 
 Set the **Key** as **Model Deployment** and **Value** as **Driverless AI Python Scoring Pipeline.** Then click **Next: Configure Security Group.**
 
-![set-tags](assets/set-tags.jpg)
+![set-tags](assets/set-tags.png)
 
 
 Open ports for **ssh at 22** and **custom tcp at 9090.** Then click **Review and Launch.** 
 
-![open-ssh-tcp-ports](assets/open-ssh-tcp-ports.jpg)
+![open-ssh-tcp-ports](assets/open-ssh-tcp-ports.png)
 
 When you are ready, click **Launch.** A window will appear asking you to select an existing key pair or create a new key pair. Choose **Create a new key pair.** Name it **ec2-model-deployment.** Then click **Download Key Pair.** 
 
-![create-ec2-key-pair](assets/create-ec2-key-pair.jpg)
+![create-ec2-key-pair](assets/create-ec2-key-pair.png)
 
 The **Launch Instances** will be highlighted. Click it. You should see your **Launch Status:**
 
-![ec2-launch-status](assets/ec2-launch-status.jpg)
+![ec2-launch-status](assets/ec2-launch-status.png)
 
 Click on the hyperlink instance that is located inside the green box. You should see your EC2 instance state go from pending to running.
 
-![ec2-instance-running](assets/ec2-instance-running.jpg)
+![ec2-instance-running](assets/ec2-instance-running.png)
 
 
 Keep a copy of your **EC2 Public DNS** and remember the file path to your **Private Key File ec2-model-deployment.pem.** We will use this information to securely SSH into our EC2 instance.
@@ -170,7 +171,7 @@ ssh -i $H2O_DAI_SCORING_PEM ubuntu@$H2O_DAI_SCORING_INSTANCE
 
 After connecting to your EC2 instance, your terminal should look as follows:
 
-![ssh-into-ec2](assets/ssh-into-ec2.jpg)
+![ssh-into-ec2](assets/ssh-into-ec2.png)
 
 ### Set the Driverless AI License Key in EC2 Instance
 
@@ -233,7 +234,7 @@ mkdir -p $HOME/model-deployment/common/hydraulic/{mojo-scoring-pipeline/{java-ru
 mkdir -p $HOME/model-deployment/apps
 tree model-deployment
 ```
-![env-dir-structure-ubuntu](assets/env-dir-structure-ubuntu.jpg)
+![env-dir-structure-ubuntu](assets/env-dir-structure-ubuntu.png)
 
 Now we have the environment directory structure built. Next, we will connect to a Driverless AI EC2 instance to download a python scoring pipeline built for the Hydraulic sensor data.
 
@@ -251,7 +252,7 @@ Download MOJO Scoring Pipeline
 
 - On the STATUS: COMPLETE section on the experiment page, click **DOWNLOAD PYTHON SCORING PIPELINE**
 
-![download-python-scoring-pipeline](assets/download-python-scoring-pipeline.jpg)
+![download-python-scoring-pipeline](assets/download-python-scoring-pipeline.png)
 
 When finished, come back to this tutorial.
 
@@ -265,7 +266,7 @@ scp -i $H2O_DAI_SCORING_PEM $HOME/Downloads/scorer.zip ubuntu@$H2O_DAI_SCORING_I
 
 It may take up to 14 minutes for the transfer to be completed.
 
-![move-py-scoring-pipeline-to-ec2](assets/move-py-scoring-pipeline-to-ec2.jpg)
+![move-py-scoring-pipeline-to-ec2](assets/move-py-scoring-pipeline-to-ec2.png)
 
 Please keep in mind that you need to have the variables `H2O_DAI_SCORING_PEM` and `H2O_DAI_SCORING_INSTANCE` stored in your local machine for the above command to work. 
 
@@ -354,10 +355,10 @@ python example.py
 
 The output should be similar to the following, but columns and predictions will match the data in your scoring pipeline:
 
-![scoring-data-example-py-1](assets/scoring-data-example-py-1.jpg)
-![scoring-data-example-py-2](assets/scoring-data-example-py-2.jpg)
-![scoring-data-example-py-3](assets/scoring-data-example-py-3.jpg)
-![scoring-data-example-py-4](assets/scoring-data-example-py-4.jpg)
+![scoring-data-example-py-1](assets/scoring-data-example-py-1.png)
+![scoring-data-example-py-2](assets/scoring-data-example-py-2.png)
+![scoring-data-example-py-3](assets/scoring-data-example-py-3.png)
+![scoring-data-example-py-4](assets/scoring-data-example-py-4.png)
 
 As you can see in the output above, after running the **example.py** file, we could retrieve different types of predictions for our Hydraulic dataset. We can see scores per row, frame, feature prediction contribution for row, transformed frames, column names, and transformed column names. 
 
@@ -381,7 +382,7 @@ bash run_http_server.sh
 
 After running the command above, a virtual environment with all the requirements will be created. Once this is done, you will see the following:
 
-![run-http-server-sh](assets/run-http-server-sh.jpg)
+![run-http-server-sh](assets/run-http-server-sh.png)
 
 ### Get Predictions using Local HTTP Client
 
@@ -400,7 +401,7 @@ bash run_http_client.sh
 
 The output should be similar to the following, but the Hydraulic System cooling condition classification shown in the json responses will match the data in your scoring pipeline:
 
-![http-client-get-scores](assets/http-client-get-scores.jpg)
+![http-client-get-scores](assets/http-client-get-scores.png)
 
 This classification output is the interactive and batch scoring done for our Hydraulic System cooling condition. You should receive classification probabilities for `cool_cond_y.3`, `cool_cond_y.20`, and `cool_cond_y.100`. The `3` means the Hydraulic cooler is close to operating at total failure, `20` means it is operating at reduced efficiency, and `100` means it is operating at full efficiency.
 
@@ -439,7 +440,7 @@ EOF
 ```
 The output should show a score for the Hydraulic System cooling condition of an individual row.
 
-![remote-http-client-get-scores-1](assets/remote-http-client-get-scores-1.jpg)
+![remote-http-client-get-scores-1](assets/remote-http-client-get-scores-1.png)
 
 By looking at the predictions, we can see that the highest probability belongs to cool_cond_y.100, which means that we are predicting that the hydraulic system is operating at full efficiency.
  
@@ -458,7 +459,7 @@ EOF
 
 The output should show the featured column names for an individual row.
 
-![remote-http-client-get-scores-2](assets/remote-http-client-get-scores-2.jpg)
+![remote-http-client-get-scores-2](assets/remote-http-client-get-scores-2.png)
 
 
 We will use the remote HTTP client to get the Shapley values (also known as per-feature prediction contributions) from an individual row. This call is the same as we did for getting a prediction on an individual row, but this time we include the parameter `"pred_contribs": true`. Run the following command from your local machine:
@@ -495,7 +496,7 @@ EOF
 
 The output should show a score for the Shapley values from an individual row.
 
-![remote-http-client-get-scores-3](assets/remote-http-client-get-scores-3.jpg)
+![remote-http-client-get-scores-3](assets/remote-http-client-get-scores-3.png)
 
 You just learned how to perform interactive scoring and batch scoring using the HTTP scoring service. Next, we will deploy the Python Scoring Pipeline to a TCP server that will run on our EC2 instance. So, go to your terminal where your HTTP server is running on EC2, then press `control + C` to stop the HTTP server.
 
@@ -510,7 +511,7 @@ bash run_tcp_server.sh
 ```
 Once again, the line above will create a new environment with all the requirements. Once this is done, you will see the following:
 
-![run-tcp-server](assets/run-tcp-server.jpg)
+![run-tcp-server](assets/run-tcp-server.png)
 
 ### Get Predictions using Local TCP Client
 
@@ -585,7 +586,7 @@ python custom_tcp_client.py
 
 The output should be similar to the following, but columns and predictions will match the data in your scoring pipeline:
 
-![tcp-client-get-scores](assets/tcp-client-get-scores.jpg)
+![tcp-client-get-scores](assets/tcp-client-get-scores.png)
 
 Once you are done, you can deactivate your virtual environment.
 
