@@ -47,7 +47,7 @@
 </table>
 <p>The Hydraulic System Test Rig data for this tutorial comes from the <a href="https://archive.ics.uci.edu/ml/datasets/Condition+monitoring+of+hydraulic+systems#" target="_blank"><strong>UCI Machine Learning Repository: Condition Monitoring of Hydraulic Systems Data Set</strong></a>. The data set was experimentally obtained with a hydraulic test rig. This test rig consists of a primary working and a secondary cooling-filtration circuit connected via the oil tank [7]. The system cyclically repeats constant load cycles (duration 60 seconds) and measures process values such as pressures, volume flows, and temperatures. The condition of four hydraulic components (cooler, valve, pump, and accumulator) is quantitatively varied. The data set contains raw process sensor data (i.e., without feature extraction), structured as matrices (tab-delimited) with the rows representing the cycles and the columns the data points within a cycle.</p>
 <p>Hydraulic System Test Rigs are used to test Aircraft Equipment components, Automotive Applications, and more [8]. A Hydraulic Test Rig can test a range of flow rates that can achieve different pressures with the ability to heat and cool while simulating testing under different conditions [9]. Testing the pressure, the volume flow, and the temperature is possible by Hydraulic Test Rig sensors and a digital display. The display panel alerts the user when certain testing criteria are met while displaying either a green or red light [9]. Further, a filter blockage panel indicator is integrated into the panel to ensure the Hydraulic Test Rig&#39;s oil is maintained [9]. In the case of predicting cooling conditions for a Hydraulic System, when the cooling condition is low, our prediction will tell us that the cooling of the Hydraulic System is close to total failure, and we may need to look into replacing the cooling filtration solution soon.</p>
-<p class="image-container"><img alt="cylinder-diagram-1" src="img/a8b156e42a5fb1f0.jpg"></p>
+<p class="image-container"><img alt="cylinder-diagram-1" src="img/a8b156e42a5fb1f0.png"></p>
 <p><strong>Figure 1:</strong> Hydraulic System Cylinder Diagram</p>
 <p>By the end of this tutorial, you will predict the Hydraulic System Test Rig&#39;s cooling condition by deploying an embeddable Python Scoring Pipeline into Python Runtime using Python.</p>
 <h2 is-upgraded>Resources</h2>
@@ -96,27 +96,27 @@
 <p>We will launch an Ubuntu 18.04 LTS AMI that is a t2.2xlarge instance with 256GB storage and open ports for ssh at 22 and custom TCP at 9090. When we are about to launch the system, we will create a key pair to access this system.</p>
 <p>Login to your AWS Management Console using your AWS account root user credentials: https://console.aws.amazon.com/console/home</p>
 <p>Search for EC2 service and click it in the dropdown:</p>
-<p class="image-container"><img alt="search-for-ec2-service" src="img/f161c2725539dc06.jpg"></p>
+<p class="image-container"><img alt="search-for-ec2-service" src="img/f161c2725539dc06.png"></p>
 <p>On the page that appears in the left sidebar, click Instances. Then click <strong>Launch Instance.</strong></p>
-<p class="image-container"><img alt="launch-instance" src="img/6357ad00eb1f3e99.jpg"></p>
+<p class="image-container"><img alt="launch-instance" src="img/6357ad00eb1f3e99.png"></p>
 <p>Choose AMI: <strong>Ubuntu 18.04 LTS (HVM), SSD Volume Type.</strong> Click <strong>Select.</strong></p>
-<p class="image-container"><img alt="choose-ubuntu-1804-ami" src="img/ee1070fd7f934e7.jpg"></p>
+<p class="image-container"><img alt="choose-ubuntu-1804-ami" src="img/ee1070fd7f934e7.png"></p>
 <p>Choose <strong>t2.2xlarge</strong> instance. Then click <strong>Next: Configure Instance Details.</strong></p>
-<p class="image-container"><img alt="choose-t2-2xlarge-instance" src="img/f5c7e17f43a40f69.jpg"></p>
+<p class="image-container"><img alt="choose-t2-2xlarge-instance" src="img/f5c7e17f43a40f69.png"></p>
 <p>For <strong>Configure Instance Details</strong>, keep them default. Please ensure that <strong>Use subnet setting (Enable)</strong> for <em>Auto-assign Public IP</em> is selected. Then click <strong>Next: Add Storage.</strong></p>
-<p class="image-container"><img alt="configure-instance" src="img/7650aed717f7cdb3.jpg"></p>
+<p class="image-container"><img alt="configure-instance" src="img/7650aed717f7cdb3.png"></p>
 <p>Set the Storage to <strong>256 GB</strong> size or less for Root General Purpose SSD (gp2). Then click <strong>Next: Add Tags.</strong></p>
-<p class="image-container"><img alt="set-storage-256-gb" src="img/8aa2663467b216b.jpg"></p>
+<p class="image-container"><img alt="set-storage-256-gb" src="img/8aa2663467b216b.png"></p>
 <p>Set the <strong>Key</strong> as <strong>Model Deployment</strong> and <strong>Value</strong> as <strong>Driverless AI Python Scoring Pipeline.</strong> Then click <strong>Next: Configure Security Group.</strong></p>
-<p class="image-container"><img alt="set-tags" src="img/3a0ad04751731a31.jpg"></p>
+<p class="image-container"><img alt="set-tags" src="img/3a0ad04751731a31.png"></p>
 <p>Open ports for <strong>ssh at 22</strong> and <strong>custom tcp at 9090.</strong> Then click <strong>Review and Launch.</strong></p>
-<p class="image-container"><img alt="open-ssh-tcp-ports" src="img/202152f6b02cc8a7.jpg"></p>
+<p class="image-container"><img alt="open-ssh-tcp-ports" src="img/202152f6b02cc8a7.png"></p>
 <p>When you are ready, click <strong>Launch.</strong> A window will appear asking you to select an existing key pair or create a new key pair. Choose <strong>Create a new key pair.</strong> Name it <strong>ec2-model-deployment.</strong> Then click <strong>Download Key Pair.</strong></p>
-<p class="image-container"><img alt="create-ec2-key-pair" src="img/ccc5edec92346f0f.jpg"></p>
+<p class="image-container"><img alt="create-ec2-key-pair" src="img/ccc5edec92346f0f.png"></p>
 <p>The <strong>Launch Instances</strong> will be highlighted. Click it. You should see your <strong>Launch Status:</strong></p>
-<p class="image-container"><img alt="ec2-launch-status" src="img/d907fc3398c2d0b0.jpg"></p>
+<p class="image-container"><img alt="ec2-launch-status" src="img/d907fc3398c2d0b0.png"></p>
 <p>Click on the hyperlink instance that is located inside the green box. You should see your EC2 instance state go from pending to running.</p>
-<p class="image-container"><img alt="ec2-instance-running" src="img/8e7d5bdc1a925f29.jpg"></p>
+<p class="image-container"><img alt="ec2-instance-running" src="img/8e7d5bdc1a925f29.png"></p>
 <p>Keep a copy of your <strong>EC2 Public DNS</strong> and remember the file path to your <strong>Private Key File ec2-model-deployment.pem.</strong> We will use this information to securely SSH into our EC2 instance.</p>
 <h2 is-upgraded>Connect to the EC2 Instance</h2>
 <p>On your local machine, move the <strong>EC2 Private Key File</strong> to the .ssh folder:</p>
@@ -146,7 +146,7 @@ source $HOME/.profile
 ssh -i $H2O_DAI_SCORING_PEM ubuntu@$H2O_DAI_SCORING_INSTANCE
 </code></pre>
 <p>After connecting to your EC2 instance, your terminal should look as follows:</p>
-<p class="image-container"><img alt="ssh-into-ec2" src="img/10cc69540c7f7ace.jpg"></p>
+<p class="image-container"><img alt="ssh-into-ec2" src="img/10cc69540c7f7ace.png"></p>
 <h2 is-upgraded>Set the Driverless AI License Key in EC2 Instance</h2>
 <p>While connected to the EC2 instance, set the Driverless AI License Key as a permanent environment variable so that you can use the Python scoring pipeline.</p>
 <pre><code language="language-bash" class="language-bash">echo &#39;export DRIVERLESS_AI_LICENSE_KEY=&#34;&lt;license-key&gt;&#34;&#39; &gt;&gt; $HOME/.bashrc
@@ -197,7 +197,7 @@ mkdir -p $HOME/model-deployment/common/hydraulic/{mojo-scoring-pipeline/{java-ru
 mkdir -p $HOME/model-deployment/apps
 tree model-deployment
 </code></pre>
-<p class="image-container"><img alt="env-dir-structure-ubuntu" src="img/18da1abf9283b50c.jpg"></p>
+<p class="image-container"><img alt="env-dir-structure-ubuntu" src="img/18da1abf9283b50c.png"></p>
 <p>Now we have the environment directory structure built. Next, we will connect to a Driverless AI EC2 instance to download a python scoring pipeline built for the Hydraulic sensor data.</p>
 <h2 is-upgraded>Download Python Scoring Pipeline to Local Machine</h2>
 <p>Download MOJO Scoring Pipeline</p>
@@ -208,7 +208,7 @@ tree model-deployment
 <li>In the <strong>Experiments</strong> section, click on the following experiment: <strong>Model_deployment_HydraulicSystem</strong></li>
 <li>On the STATUS: COMPLETE section on the experiment page, click <strong>DOWNLOAD PYTHON SCORING PIPELINE</strong></li>
 </ul>
-<p class="image-container"><img alt="download-python-scoring-pipeline" src="img/d03dcb8ca826dc5d.jpg"></p>
+<p class="image-container"><img alt="download-python-scoring-pipeline" src="img/d03dcb8ca826dc5d.png"></p>
 <p>When finished, come back to this tutorial.</p>
 <h2 is-upgraded>Move Local Python Scoring Pipeline to EC2 Instance</h2>
 <p>The Python Scoring Pipeline scorer.zip was downloaded to the Downloads folder on the local machine. We need to move it to our EC2 instance. Open a new terminal on your local machine, then run the following command:</p>
@@ -216,7 +216,7 @@ tree model-deployment
 scp -i $H2O_DAI_SCORING_PEM $HOME/Downloads/scorer.zip ubuntu@$H2O_DAI_SCORING_INSTANCE:/home/ubuntu
 </code></pre>
 <p>It may take up to 14 minutes for the transfer to be completed.</p>
-<p class="image-container"><img alt="move-py-scoring-pipeline-to-ec2" src="img/69f00a7d1acc6522.jpg"></p>
+<p class="image-container"><img alt="move-py-scoring-pipeline-to-ec2" src="img/69f00a7d1acc6522.png"></p>
 <p>Please keep in mind that you need to have the variables <code>H2O_DAI_SCORING_PEM</code> and <code>H2O_DAI_SCORING_INSTANCE</code> stored in your local machine for the above command to work.</p>
 <p>Go to the terminal in which you are already connected to your EC2 instance. Move the <strong>scorer.zip</strong> file to <code>python-scoring-pipeline/</code> folder and then extract it:</p>
 <pre><code language="language-bash" class="language-bash">cd $HOME/model-deployment/common/hydraulic/python-scoring-pipeline/
@@ -283,7 +283,7 @@ source env/bin/activate
 python example.py
 </code></pre>
 <p>The output should be similar to the following, but columns and predictions will match the data in your scoring pipeline:</p>
-<p class="image-container"><img alt="scoring-data-example-py-1" src="img/881a3f76edea3b78.jpg"><img alt="scoring-data-example-py-2" src="img/549f63c35820d9fa.jpg"><img alt="scoring-data-example-py-3" src="img/a0bf1944e79ae9ec.jpg"><img alt="scoring-data-example-py-4" src="img/2748ad8caf1a4421.jpg"></p>
+<p class="image-container"><img alt="scoring-data-example-py-1" src="img/881a3f76edea3b78.png"><img alt="scoring-data-example-py-2" src="img/549f63c35820d9fa.png"><img alt="scoring-data-example-py-3" src="img/a0bf1944e79ae9ec.png"><img alt="scoring-data-example-py-4" src="img/2748ad8caf1a4421.png"></p>
 <p>As you can see in the output above, after running the <strong>example.py</strong> file, we could retrieve different types of predictions for our Hydraulic dataset. We can see scores per row, frame, feature prediction contribution for row, transformed frames, column names, and transformed column names.</p>
 <p>After reviewing these outputs, you can deactivate the virtual environment as we will move on to the next task.</p>
 <pre><code language="language-bash" class="language-bash">deactivate
@@ -300,7 +300,7 @@ python example.py
 bash run_http_server.sh
 </code></pre>
 <p>After running the command above, a virtual environment with all the requirements will be created. Once this is done, you will see the following:</p>
-<p class="image-container"><img alt="run-http-server-sh" src="img/cf469907f5a76ef3.jpg"></p>
+<p class="image-container"><img alt="run-http-server-sh" src="img/cf469907f5a76ef3.png"></p>
 <h2 is-upgraded>Get Predictions using Local HTTP Client</h2>
 <p>The HTTP scoring service is now listening on port 9090; we will use an HTTP client local to the HTTP server to get predictions. In the Python Scoring Pipeline folder, we will use <strong>run_http_client.sh</strong>, which executes multiple example json requests for interactive scoring (individual rows), batch scoring (multiple rows), getting input columns, transformed columns, and target labels.</p>
 <p>Open another terminal to connect to your EC2 instance; then navigate to the <strong>scoring-pipeline</strong> folder and then execute the script <strong>run_http_client.sh</strong>:</p>
@@ -312,7 +312,7 @@ cd $HOME/model-deployment/common/hydraulic/python-scoring-pipeline/scoring-pipel
 bash run_http_client.sh
 </code></pre>
 <p>The output should be similar to the following, but the Hydraulic System cooling condition classification shown in the json responses will match the data in your scoring pipeline:</p>
-<p class="image-container"><img alt="http-client-get-scores" src="img/52b5945d353a93f4.jpg"></p>
+<p class="image-container"><img alt="http-client-get-scores" src="img/52b5945d353a93f4.png"></p>
 <p>This classification output is the interactive and batch scoring done for our Hydraulic System cooling condition. You should receive classification probabilities for <code>cool_cond_y.3</code>, <code>cool_cond_y.20</code>, and <code>cool_cond_y.100</code>. The <code>3</code> means the Hydraulic cooler is close to operating at total failure, <code>20</code> means it is operating at reduced efficiency, and <code>100</code> means it is operating at full efficiency.</p>
 <h2 is-upgraded>Get Predictions using Remote HTTP Client</h2>
 <p>Alternatively, we will use a remote HTTP client to connect to the HTTP server on port 9090 to get a prediction, feature column names, and Shapley values from the Python Scoring Pipeline.</p>
@@ -345,7 +345,7 @@ bash run_http_client.sh
 EOF
 </code></pre>
 <p>The output should show a score for the Hydraulic System cooling condition of an individual row.</p>
-<p class="image-container"><img alt="remote-http-client-get-scores-1" src="img/5a8fe8088c4d7fa9.jpg"></p>
+<p class="image-container"><img alt="remote-http-client-get-scores-1" src="img/5a8fe8088c4d7fa9.png"></p>
 <p>By looking at the predictions, we can see that the highest probability belongs to cool_cond_y.100, which means that we are predicting that the hydraulic system is operating at full efficiency.</p>
 <p>Next, we will use the remote HTTP client to get feature column names for an individual row, so when we retrieve the Shapley values, we know which value is which column. Run the following command from your local machine:</p>
 <pre><code language="language-bash" class="language-bash">echo &#34;Get the transformed columns&#34;
@@ -358,7 +358,7 @@ curl http://$H2O_DAI_SCORING_INSTANCE:9090/rpc --header &#34;Content-Type: appli
 EOF
 </code></pre>
 <p>The output should show the featured column names for an individual row.</p>
-<p class="image-container"><img alt="remote-http-client-get-scores-2" src="img/931c0d6cad912563.jpg"></p>
+<p class="image-container"><img alt="remote-http-client-get-scores-2" src="img/931c0d6cad912563.png"></p>
 <p>We will use the remote HTTP client to get the Shapley values (also known as per-feature prediction contributions) from an individual row. This call is the same as we did for getting a prediction on an individual row, but this time we include the parameter <code>"pred_contribs": true</code>. Run the following command from your local machine:</p>
 <pre><code language="language-bash" class="language-bash">curl http://$H2O_DAI_SCORING_INSTANCE:9090/rpc --header &#34;Content-Type: application/json&#34; --data @- &lt;&lt;EOF
 {
@@ -389,7 +389,7 @@ EOF
 EOF
 </code></pre>
 <p>The output should show a score for the Shapley values from an individual row.</p>
-<p class="image-container"><img alt="remote-http-client-get-scores-3" src="img/18e19ba5798affd5.jpg"></p>
+<p class="image-container"><img alt="remote-http-client-get-scores-3" src="img/18e19ba5798affd5.png"></p>
 <p>You just learned how to perform interactive scoring and batch scoring using the HTTP scoring service. Next, we will deploy the Python Scoring Pipeline to a TCP server that will run on our EC2 instance. So, go to your terminal where your HTTP server is running on EC2, then press <code>control + C</code> to stop the HTTP server.</p>
 <h2 is-upgraded>Deploy Python Scoring Pipeline to EC2 TCP Server</h2>
 <p>To deploy the Python Scoring Pipeline to the EC2 TCP server, go to the terminal that was running the HTTP server on your EC2 instance, run the following command to generate the Thrift bindings once, start the TCP server and execute the Python Scoring Pipeline on it:</p>
@@ -398,7 +398,7 @@ EOF
 bash run_tcp_server.sh
 </code></pre>
 <p>Once again, the line above will create a new environment with all the requirements. Once this is done, you will see the following:</p>
-<p class="image-container"><img alt="run-tcp-server" src="img/df0c9199fc0712ba.jpg"></p>
+<p class="image-container"><img alt="run-tcp-server" src="img/df0c9199fc0712ba.png"></p>
 <h2 is-upgraded>Get Predictions using Local TCP Client</h2>
 <p>The TCP scoring service is now listening on port 9090; we will use a TCP client local to the TCP server to get predictions. In the Python Scoring Pipeline folder, we will create a <strong>custom_tcp_client.py</strong>, which uses <strong>thrift</strong> and <strong>h2oai_scoring</strong> libraries to enable the TCP client to use the Python <strong>scorer</strong> methods through the TCP scoring service.</p>
 <p>With the <strong>TCP client</strong> having access to the <strong>scorer</strong> methods, we will use the <strong>client.score(row)</strong> method to do interactive scoring, <strong>client.get_column_names()</strong> to get input columns, the <strong>client.get_transformed_column_names()</strong> to get feature column names, and <strong>client.get_target_labels()</strong> to get target labels.</p>
@@ -462,7 +462,7 @@ source tcp_client_env/bin/activate
 python custom_tcp_client.py
 </code></pre>
 <p>The output should be similar to the following, but columns and predictions will match the data in your scoring pipeline:</p>
-<p class="image-container"><img alt="tcp-client-get-scores" src="img/8b819e4b453eeaf4.jpg"></p>
+<p class="image-container"><img alt="tcp-client-get-scores" src="img/8b819e4b453eeaf4.png"></p>
 <p>Once you are done, you can deactivate your virtual environment.</p>
 <pre><code language="language-bash" class="language-bash">deactivate
 </code></pre>
