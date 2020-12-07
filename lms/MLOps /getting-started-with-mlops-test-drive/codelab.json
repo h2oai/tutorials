@@ -1,14 +1,14 @@
 {
   "environment": "web",
-  "source": "/Users/acastro/Desktop/getting-started-with-mlops-test-drive/getting-started-with-mlops-test-drive.md",
   "format": "html",
-  "prefix": "../assets",
+  "prefix": "https://storage.googleapis.com",
   "mainga": "UA-49880327-14",
-  "updated": "2020-09-21T20:39:04-07:00",
+  "updated": "2020-11-30T10:45:10-08:00",
   "id": "getting-started-with-mlops-test-drive",
   "duration": 0,
   "title": "Getting Started with MLOps Test Drive",
   "summary": "Check the list",
+  "source": "/Users/sperez/Desktop/getting-started-with-mlops-test-drive/getting-started-with-mlops-test-drive.md",
   "theme": "",
   "status": [
     "draft"
