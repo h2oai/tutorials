@@ -16,7 +16,7 @@
 
 ## Objective 
 
-As the field of machine learning continues to grow, more industries from healthcare to banking are adopting machine learning models to generate predictions. These predictions are being used to justify the cost of healthcare and for loan approvals or denials. For Regulated industries that are adopting machine learning, **interpretability** is a requirement. In [“Towards a rigorous science of interpretable machine learning”](https://arxiv.org/pdf/1702.08608.pdf) by Finale Doshi-Velez and Been Kim,“ interpretability is the “the ability to explain or to present in understandable terms to a human”. This is a straightforward definition of interpretability. See the Deeper Dive and Resource section to read more about other takes on interpretability. 
+As Machine Learning continues to grow, more industries, from healthcare to banking, adopt machine learning models to generate predictions. These predictions are being used to justify the cost of healthcare and for loan approvals or denials. For regulated industries that are adopting machine learning, **interpretability** is a requirement.  In Machine Learning **interpretability** can be defined as “the ability to explain or present in understandable terms to a human.”[1] 
 
 The motivations for interpretability are:
 
@@ -28,9 +28,19 @@ The motivations for interpretability are:
 * Prevent building excessive machine learning technical debt
 * Deeper insight to understanding your data through better understanding of your AI models
 
-In this tutorial, we will build a machine learning model using a financial dataset, and we will explore some of the most leading methods for explaining and interpreting AI models. We will also learn to interpret the results, graphs, scores, and reason code values of the model generated from the financial dataset. 
+For these reasons, in this tutorial, we will build a machine learning model using the famous Default of Credit Card Clients Dataset. This advanced-level data set has 30,000 rows and 24 columns. We will use the dataset to build a classification model that will predict the probability of default payment by credit card clients using the data provided. In contrast to previous tutorials, we will focus on the most leading methods and concepts for explaining and interpreting AI models. Therefore, we will not focus so much on the experiment itself. Instead, we would shift our attention to how we can use the following metrics that a model generates (or we can generate) to truly understand our built model: results, graphs, scores, and reason code values. In particular, we will explore the following graphs in Driverless AI: 
 
-**Note:** We recommend that you go over the entire tutorial first to review all the concepts, that way, once you start the experiment, you will be more familiar with the content.
+- Global Shapley 
+- Local Shapley 
+- Transformed Shapley 
+- Random Forest (RF) Feature Importance
+- Partial Dependence Plots 
+- Surrogate Decision Tree
+- K-Lime 
+- Leave-One-Covariate-Out (LOCO)
+- Individual Conditional Expectation (ICE)
+
+**Note:** We recommend that you go over the entire tutorial first to review all the concepts; that way, you will be more familiar with the content once you start the experiment.
 
 ### Deeper Diver and Resources 
 
@@ -45,14 +55,17 @@ In this tutorial, we will build a machine learning model using a financial datas
 
 - [XAI](https://www.darpa.mil/program/explainable-artificial-intelligence)
 
+
+[1] [“Towards a rigorous science of interpretable machine learning”](https://arxiv.org/pdf/1702.08608.pdf) 
+
 ## Prerequisites
 
 You will need the following to be able to do this tutorial:
 
 - Basic knowledge of Machine Learning and Statistics
-- Basic knowledge of Driverless AI or doing the [Automatic Machine Learning Introduction with Drivereless AI Test Drive](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai) 
+- Basic knowledge of Driverless AI or doing the following tutorial: [Automatic Machine Learning Introduction with Driverless AI](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai) 
 
-- A **Two-Hour Test Drive session** : Test Drive is H2O.ai's Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.
+- A **Two-Hour Test Drive session**: Test Drive is H2O.ai's Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.
 
   - Need a **Two-Hour Test Drive** session?Follow the instructions on [this quick tutorial](https://training.h2o.ai/products/tutorial-0-getting-started-with-driverless-ai-test-drive) to get a Test Drive session started. 
 
@@ -106,9 +119,9 @@ This dataset has a total 25 Features(columns) and 30,000 Clients(rows).
 
 3\. Continue scrolling the current page to see more columns.
 
--  **BILL_AMT0-BILL_AMT6** - Recent credit card bills up to 6 months ago
+-  **BILL_AMT0 - BILL_AMT6** - Recent credit card bills up to 6 months ago
 -  **PAYAMT0-_PAY_AMT6** - Recent payment towards their bill up to 6 months ago
--  **default.payment.next.month**- Prediction of whether someone will default on the next month’s payment using given information.
+-  **default.payment.next.month** - Prediction of whether someone will default on the next month’s payment (using given information).
 
 4\. Return to the **Datasets** page.
 
@@ -279,7 +292,7 @@ Global feature importance values give an indication of the magnitude of a featur
 
 - Scope of Interpretability. (1) Random forest feature importance is a global interpretability measure. (2) Shapley and LOCO feature importance is a local interpretability measure, but can be aggregated to become global.
 
-- Appropriate Response Function Complexity.Random forest, Shapley, and LOCO feature importance can be used to explain tree-based response functions of nearly any complexity.
+- Appropriate Response Function Complexity, Random forest, Shapley, and LOCO feature importance can be used to explain tree-based response functions of nearly any complexity.
 
  - Understanding and Trust. (1) Random forest feature importance and global Shapley feature importance increases transparency by reporting and ranking influential input features (2) Local Shapley and LOCO feature importance enhances accountability by creating explanations for each model prediction. (3) Both global and local feature importance enhance trust and fairness when reported values conform to human domain knowledge and reasonable expectations.
 
@@ -353,15 +366,12 @@ The results indicate that overall, in the entire dataset, the worst thing for a 
 
 8. Explore the partial dependence for **LIMIT_BAL** by changing the **PDP Variable** at the upper-left side of the **Partial Dependence Plot** to **LIMIT_BAL**, then hovering over the yellow circles.
 
-The grey area is the standard deviation of the partial dependence. The wider the standard deviation, the less trustworthy the average behavior (yellow line) is. In this case, the standard deviation follows the average behavior and is narrow enough, therefore trustworthy.
+The grey area is the standard deviation of the partial dependence. The wider the standard deviation, the less trustworthy the average behavior is. In this case, the standard deviation follows the average behavior and is narrow enough, therefore trustworthy.
 
 9. What is the average default probability for the lowest credit limit? How about for the highest credit limit?
 
 10. What seems to be the trend regarding credit limit and a person defaulting on their payments?
 
-### Task 4 summary:
-
-Examined how the model behaves with respect to its individual values
 
 ### Deeper Dive and Resources
 
@@ -511,7 +521,7 @@ The local model predictions (white points) can be used to reason through the Dri
 
 *Things to Note:*
 
-1. The reason codes show that the Driverless model prediction gave this person .78 percent probability of defaulting. LIME gave them a .82 percent probability of defaulting and in this case we can say that LIME is 95.1% accurate. Based on this observation, it can be concluded that the local reason codes are fairly trustworthy. If **Lime Prediction Accuracy** drops below 75% then we can say that the numbers are probably untrustworthy and the Shapley plot or LOCO plot should be revisited since the Shapley values are always accurate, and LOCO accounts for nonlinearity and interactions.
+1. The reason codes show that the Driverless model prediction gave this person a .78 percent probability of defaulting. LIME gave them a .82 percent probability of defaulting and in this case we can say that LIME is 95.1% accurate. Based on this observation, it can be concluded that the local reason codes are fairly trustworthy. If **Lime Prediction Accuracy** drops below 75% then we can say that the numbers are probably untrustworthy and the Shapley plot or LOCO plot should be revisited since the Shapley values are always accurate, and LOCO accounts for nonlinearity and interactions.
 
 2. PAY_0 = 2 months late is the top positive local attribute for this person and contributes .35 probability points to their prediction according to this linear model. 0.35 is the local linear model coefficient for level 3 of the categorical variable PAY_0.
 
@@ -519,11 +529,7 @@ The local model predictions (white points) can be used to reason through the Dri
 
 4. Global reason codes show the average linear trends in the data set as a whole.
 
-### Task 6 summary:
-
-- LIME values are an approximate estimate of the trend of how the model is behaving in a local region for a specific point
-
-- Reason codes help us describe why the model made the decision is made for this specific person. Reason codes are particularly important in highly regulated industries when often regulators will want to see in as simple as possible terms “how did the model come to the conclusion it did.”
+In conclusion, LIME values are an approximate estimate of the trend of how the model is behaving in a local region for a specific point. Further, reason codes help us describe why the model made the decision is made for this specific person. Reason codes are particularly important in highly regulated industries when often regulators will want to see in as simple as possible terms “how did the model come to the conclusion it did.”
 
 ### Deeper Dive and Resources
 
@@ -570,9 +576,8 @@ The grey bars or local numeric contributions can be used to generate reason code
 
 4\. How do those Shapley local values compare to their perspective Shapley Global values? Are the local Shapley values leaning towards defaulting even though the Shapley global values are leaning towards not defaulting? How do the local Shapley values compare to the local K-LIME values?
 
-### Task 7 summary:
 
-Shapley local variables are locally accurate and globally consistent
+In conclusion, Shapley local variables are locally accurate and globally consistent
 If the dataset changes slightly the variable importance can be expected to not reshuffle
 Shapley local values should be good enough to create reason codes
 Shapley values operate on the trained model itself and are more exact compared to surrogate models which are more approximate
