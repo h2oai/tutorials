@@ -16,7 +16,7 @@
 
 ## Objective 
 
-As Machine Learning continues to grow, more industries, from healthcare to banking, adopt machine learning models to generate predictions. These predictions are being used to justify the cost of healthcare and for loan approvals or denials. For regulated industries that are adopting machine learning, **interpretability** is a requirement.  In Machine Learning, **interpretability** can be defined as “the ability to explain or present in understandable terms to a human [being].”[1] 
+As Machine Learning (ML) continues to grow, more industries, from healthcare to banking, adopt machine learning models to generate predictions. These predictions are being used to justify the cost of healthcare and for loan approvals or denials. For regulated industries that are adopting machine learning, the **interpretability** of models is a requirement. In Machine Learning, **interpretability** can be defined as “the ability to explain or present in understandable terms to a human [being].”[1] 
 
 Few of the motivations for interpretability are:
 
@@ -28,7 +28,7 @@ Few of the motivations for interpretability are:
 - Prevent the building of excessive Machine Learning Technical Debt
 - More in-depth insight and understanding of your data 
 
-In this tutorial, we will build a machine learning model using the famous **Default of Credit Card Clients Dataset**. We will use the dataset to build a classification model that will predict the probability of default payment by credit card clients using the data provided. In contrast to previous tutorials, we will focus on the most leading methods and concepts for explaining and interpreting ML models. Therefore, we will not focus so much on the experiment itself. Instead, we would shift our attention to how we can use the following metrics that a model generates (or we can generate) to truly understand our built model: results, graphs, scores, and reason code values. In particular, we will explore the following graphs in Driverless AI: 
+In this tutorial, we will build a machine learning model using the famous **Default of Credit Card Clients Dataset**. We will use the dataset to build a classification model that will predict the probability of default payment by credit card clients using the data provided. In contrast to previous tutorials, we will focus on the most leading methods and concepts for explaining and interpreting Machine Learning models. Therefore, we will not focus so much on the experiment itself. Instead, we would shift our attention to how we can use the following metrics that a model generates (or we can generate) to truly understand our built model: results, graphs, scores, and reason code values. In particular, we will explore the following graphs in Driverless AI: 
 
 - Global Shapley 
 - Local Shapley 
@@ -67,7 +67,7 @@ You will need the following to be able to do this tutorial:
 
 - A **Two-Hour Test Drive session**: Test Drive is H2O.ai's Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.
 
-  - Need a **Two-Hour Test Drive** session?Follow the instructions on [this quick tutorial](https://training.h2o.ai/products/tutorial-0-getting-started-with-driverless-ai-test-drive) to get a Test Drive session started. 
+  - Need a **Two-Hour Test Drive** session? Follow the instructions on [this quick tutorial](https://training.h2o.ai/products/tutorial-0-getting-started-with-driverless-ai-test-drive) to get a Test Drive session started. 
 
 **Note:  Aquarium’s Driverless AI Test Drive lab has a license key built-in, so you don’t need to request one to use it. Each Driverless AI Test Drive instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore Driverless AI, you can always launch another Test Drive instance or reach out to our sales team via the [contact us form](https://www.h2o.ai/company/contact/).**
 
@@ -86,7 +86,7 @@ This dataset has a total of 25 Features(columns) and 30,000 Clients(rows).
 
 ### Download Dataset
 
-1\. Go to our S3 link [UCI_Credit_Card.csv](https://s3.amazonaws.com/data.h2o.ai/DAI-Tutorials/TestDrive-Datasets/UCI_Credit_Card.csv) and download the file to your local drive.
+1\. Go to our S3 link [UCI_Credit_Card.csv](https://s3.amazonaws.com/data.h2o.ai/DAI-Tutorials/TestDrive-Datasets/UCI_Credit_Card.csv) and download the file(dataset) to your local drive.
 
 ### Launch Experiment 
 
@@ -132,7 +132,7 @@ This dataset has a total of 25 Features(columns) and 30,000 Clients(rows).
 
 ![experiment-page](assets/experiment-page.jpg)
 
-7\. Select **Target Column**, then Select **default.payment.next.month** as the target. As mentioned in the **Objective** section, we will be creating a classification model to predict whether someone will be defaulting on their next payment, in this case, on PAY7. We will be using part of the information in the dataset to train our model. 
+7\. Select **Target Column**, then Select **default.payment.next.month** as the target column. As mentioned in the **Objective** section, we will be creating a classification model to predict whether someone will be defaulting on their next payment, in this case, on PAY7. We will be using part of the information in the dataset to train our model. 
 
 ![target-column](assets/target-column.jpg)
 
@@ -170,7 +170,7 @@ After click on **Launch Experiment.**
 
 ![landing-page](assets/landing-page.jpg)
 
-12. If we click on the summary section, we can scroll through and learn the following:
+12. If we click on the **Summary** tab, we can scroll through and learn the following:
 
 ![summary-1](assets/summary-1.jpg)
 
@@ -193,7 +193,9 @@ Notice that some of the highly ranked variables of the original features (4) sho
 
 ### Responsibility in AI and Machine Learning
 
-The explainability and interpretability in the machine learning space has grown a tremendous amount since we first developed Driverless AI, with that in mind it is important to frame the larger context in which our interpretability toolkit falls within. It is also worth noting that since this first training was developed, the push toward regulation, oversight, and auditing of ML models and the companies who deploy them has moved rapidly, making these techniques critical requirements for firms looking to make artificial intelligence a part of their companies operations going forward. There have been many recent developments globally, which we have linked below, but the consistent themes seen are fairness, transparency, explainability, interpretability, privacy and security. We have defined a handful of these terms below.
+Explainability and interpretability in the machine learning space have grown tremendously since we first developed Driverless AI. With that in mind, it is important to frame the larger context in which our interpretability toolkit falls. It is worth noting that since this first training was developed, the push towards regulation, oversight, and auditing of ML models has increased. As a result, **interpretability**  has become a critical requirement for firms looking to make artificial intelligence a part of their operations. There have been many recent developments globally, which we have linked below, but the consistent themes are fairness, transparency, explainability, interpretability, privacy, and security. 
+
+As the field has evolved, many definitions and concepts have come into the mainstream; below, we outline H2O.ai’s respective definitions & understanding around the factors that make up Responsible Artificial Intelligence.
 
 ![task-2-venn-diagram](assets/task-2-venn-diagram.jpg)
 
