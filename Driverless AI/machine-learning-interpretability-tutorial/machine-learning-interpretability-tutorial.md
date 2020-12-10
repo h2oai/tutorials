@@ -16,19 +16,19 @@
 
 ## Objective 
 
-As Machine Learning continues to grow, more industries, from healthcare to banking, adopt machine learning models to generate predictions. These predictions are being used to justify the cost of healthcare and for loan approvals or denials. For regulated industries that are adopting machine learning, **interpretability** is a requirement.  In Machine Learning **interpretability** can be defined as “the ability to explain or present in understandable terms to a human.”[1] 
+As Machine Learning continues to grow, more industries, from healthcare to banking, adopt machine learning models to generate predictions. These predictions are being used to justify the cost of healthcare and for loan approvals or denials. For regulated industries that are adopting machine learning, **interpretability** is a requirement.  In Machine Learning, **interpretability** can be defined as “the ability to explain or present in understandable terms to a human [being].”[1] 
 
-The motivations for interpretability are:
+Few of the motivations for interpretability are:
 
-* Better human understanding of impactful technologies
-* Regulation compliance and GDPR “Right to explanation” 
-* Check and balance against accidental or intentional discrimination
-* Hacking and adversarial attacks
-* Alignment with US FTC and OMB guidance on transparency and explainability
-* Prevent building excessive machine learning technical debt
-* Deeper insight to understanding your data through better understanding of your AI models
+- Better human understanding of impactful technologies
+- Regulation compliance and General Data Protection Regulations (GDPRs) 
+- Check and balance against accidental or intentional discrimination
+- Hacking and adversarial attacks
+- Alignment with US FTC and OMB guidance on transparency and explainability
+- Prevent the building of excessive Machine Learning Technical Debt
+- More in-depth insight and understanding of your data 
 
-For these reasons, in this tutorial, we will build a machine learning model using the famous Default of Credit Card Clients Dataset. This advanced-level data set has 30,000 rows and 24 columns. We will use the dataset to build a classification model that will predict the probability of default payment by credit card clients using the data provided. In contrast to previous tutorials, we will focus on the most leading methods and concepts for explaining and interpreting AI models. Therefore, we will not focus so much on the experiment itself. Instead, we would shift our attention to how we can use the following metrics that a model generates (or we can generate) to truly understand our built model: results, graphs, scores, and reason code values. In particular, we will explore the following graphs in Driverless AI: 
+In this tutorial, we will build a machine learning model using the famous **Default of Credit Card Clients Dataset**. We will use the dataset to build a classification model that will predict the probability of default payment by credit card clients using the data provided. In contrast to previous tutorials, we will focus on the most leading methods and concepts for explaining and interpreting ML models. Therefore, we will not focus so much on the experiment itself. Instead, we would shift our attention to how we can use the following metrics that a model generates (or we can generate) to truly understand our built model: results, graphs, scores, and reason code values. In particular, we will explore the following graphs in Driverless AI: 
 
 - Global Shapley 
 - Local Shapley 
@@ -77,12 +77,12 @@ You will need the following to be able to do this tutorial:
 
 ### About the Dataset
 
-This dataset contains information about credit card clients in Taiwan from April 2005 to September 2005. Features include demographic factors, repayment statuses, history of payment, bill statements and default payments.
+This dataset contains information about credit card clients in Taiwan from April 2005 to September 2005. Features include demographic factors, repayment statuses, history of payment, bill statements, and default payments.
 
 
 The data set comes from the [UCI Machine Learning Repository Irvine, CA: University of California, School of Information and Computer Science](https://archive.ics.uci.edu/ml/datasets/default+of+credit+card+clients#)
 
-This dataset has a total 25 Features(columns) and 30,000 Clients(rows).
+This dataset has a total of 25 Features(columns) and 30,000 Clients(rows).
 
 ### Download Dataset
 
@@ -90,7 +90,7 @@ This dataset has a total 25 Features(columns) and 30,000 Clients(rows).
 
 ### Launch Experiment 
 
-1. Load the UCI_Credit_Card.csv to Driverless AI by clicking **Add Dataset (or Drag and Drop)** on the **Datasets overview** page.  
+1. Load the **UCI_Credit_Card.csv** to Driverless AI by clicking **Add Dataset (or Drag and Drop)** on the **Datasets overview** page.  
 
 2. Click on the **UCI_Credit_Card.csv** file then select **Details**.
 
@@ -103,35 +103,36 @@ This dataset has a total 25 Features(columns) and 30,000 Clients(rows).
 *Things to Note:*
 
 1. **ID** - Row identifier (which will not be used for this experiment)
-2. **LIMIT_BAL** - Credit Limit
-3. **Sex**
-4. **EDUCATION**- Education Level
-5. **MARRIAGE** - Marital Status
+2. **LIMIT_BAL** - Amount of the given credit: it includes the individual consumer credit and family (supplementary) credit
+3. **Sex** - Gender (1 =  male; 2 = female)
+4. **EDUCATION**- Education (1 = graduate school; 2 = university; 3 = high school; 4 = others)
+5. **MARRIAGE** - Marital status (1 = married; 2 = single; 3 = others)
 6. **Age**
-7. **PAY0-PAY6**: Payment Information including most recent repayment status values:
+7. **PAY0-PAY6**: History of past payment:
 
     - -2: Paid in full
     - -1: Paid with another line of credit
     - 0: No consumption
     - 1: 1 Month late
     - 2: 2 Months late
+    - 3: 3 Months late
     - Up to 9 Months late
 
 3\. Continue scrolling the current page to see more columns.
 
--  **BILL_AMT0 - BILL_AMT6** - Recent credit card bills up to 6 months ago
--  **PAYAMT0-_PAY_AMT6** - Recent payment towards their bill up to 6 months ago
--  **default.payment.next.month** - Prediction of whether someone will default on the next month’s payment (using given information).
+-  **BILL_AMT0 - BILL_AMT6** - Amount of bill statement 
+-  **PAYAMT0-_PAY_AMT6** - Amount of previous payment 
+-  **default.payment.next.month** -  Probability of Default (1: Yes, 0: No)
 
 4\. Return to the **Datasets** page.
 
-5\. Click on the **UCI_Credit_Card.csv** file then select **Predict**.
+5\. Click on the **UCI_Credit_Card.csv** file, then select **Predict**.
 
 6\. Select **Not Now** on the "First time Driverless AI" box, a similar image should appear:
 
 ![experiment-page](assets/experiment-page.jpg)
 
-7\. Select **Target Column**, then Select **default.payment.next.month** as the target.
+7\. Select **Target Column**, then Select **default.payment.next.month** as the target. As mentioned in the **Objective** section, we will be creating a classification model to predict whether someone will be defaulting on their next payment, in this case, on PAY7. We will be using part of the information in the dataset to train our model. 
 
 ![target-column](assets/target-column.jpg)
 
@@ -142,35 +143,34 @@ This dataset has a total 25 Features(columns) and 30,000 Clients(rows).
 - **Time:4**
 - **Interpretability:6**
 
-After click on **Launch Experiment** 
+After click on **Launch Experiment.** 
 
 ![settings](assets/settings.jpg)
 
-9\. When your experiment finishes building, you should see the following dashboard
+9\. When your experiment finishes building, you should see the following dashboard:
 
 ![experiment-results](assets/experiment-results.jpg)
 
 
 *Things to note:*
 
-1. **Interpretability**  - The interpretability knob is adjustable. The higher the interpretability, the simpler the features the main modeling routine will extract from the dataset.
-If the interpretability is high enough then a monotonically constrained model will be generated. Put simply, monotonicity constraint allows our features predictive weightings to get weighted in a single direction i.e. to prevent common sense feature importance like the higher your credit score, the most likely to be approved you are, versus facing random negative weightings for a higher credit score.
+1. **Interpretability** - The interpretability knob is adjustable. The higher the Interpretability, the simpler the features the main modeling routine will extract from the dataset. If the Interpretability is high enough, then a monotonically constrained model will be generated. 
 
-2. **Time** - The number of generations a genetic algorithm you can wait for. Higher the time the longer the wait since Driverless AI will work to engineer many features.
+2. **Time** - This specifies the relative time for completing the experiment (i.e., higher settings take longer). Higher the time, the longer the wait since Driverless AI will work on engineering many features.
 
-3. **Accuracy** -  The complexity of the underlying models. High accuracy will build complex underlying models. 
+3. **Accuracy** -  The complexity of the underlying models: High accuracy will build complex underlying models. 
 
-4. **Variable Importance** -  Here we can see a variety of automatically generated engineered features 
+4. **Variable Importance** -  Here we can see a variety of automatically generated engineered features.
 
-10\. Select **Interpret this Model** 
+10\. Select **Interpret this Model:** 
 
 ![interpret](assets/interpret.jpg)
 
-11\. Once the **MLI Experiment is Finished** something similar to the below image should appear
+11\. Once the **MLI Experiment is Finished** something similar to the below image should appear:
 
 ![landing-page](assets/landing-page.jpg)
 
-12. If we click into the summary section we can scroll through and learn the following
+12. If we click on the summary section, we can scroll through and learn the following:
 
 ![summary-1](assets/summary-1.jpg)
 
