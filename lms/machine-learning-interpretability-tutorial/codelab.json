@@ -1,14 +1,14 @@
 {
   "environment": "web",
-  "source": "/Users/acastro/Desktop/machine-learning-interpretability-tutorial/machine-learning-interpretability-tutorial.md",
   "format": "html",
-  "prefix": "../assets",
+  "prefix": "https://storage.googleapis.com",
   "mainga": "UA-49880327-14",
-  "updated": "2020-08-27T18:28:13-07:00",
+  "updated": "2020-12-11T17:14:40-08:00",
   "id": "machine-learning-interpretability-tutorial",
   "duration": 0,
   "title": "Machine Learning Interpretability Tutorial",
   "summary": "Check the list",
+  "source": "/Users/sperez/Desktop/machine-learning-interpretability-tutorial/machine-learning-interpretability-tutorial.md",
   "theme": "",
   "status": [
     "draft"
