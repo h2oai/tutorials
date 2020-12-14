@@ -194,7 +194,7 @@ Sensitivity may then be measured by monitoring changes in the output, e.g. by [p
 ## Task 3: Confusion Matrix
 
 
-After the model is interpreted, you will be taken to the "MLI: Regression and Classification Explanations" page. The *DAI Model* tab (not to be confused with the **DIA** Metrics: Disparate Impact Analysis Metrics)should already be selected for you thereafter, click on *Disparate Impact Analysis* located at the bottom left corner of the page. The following page should appear: 
+After the model is interpreted, you will be taken to the "MLI: Regression and Classification Explanations" page. The *DAI Model* tab (not to be confused with the **DIA** Metrics: Disparate Impact Analysis Metrics) should already be selected for you thereafter, click on *Disparate Impact Analysis* located at the bottom left corner of the page. The following page should appear: 
 
 ![dia](assets/dia.jpg)
 
