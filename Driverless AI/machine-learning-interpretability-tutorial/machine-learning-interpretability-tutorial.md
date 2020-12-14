@@ -221,7 +221,7 @@ In machine learning models and results, interpretability has been defined as the
 
 The more complex a function, the more difficult it is to explain. Simple functions can be used to explain more complex functions, and not all explanatory techniques are a good match for all types of models. Hence, it’s convenient to have a classification system for response function complexity.
 
-- **Linear, monotonic functions**: Response functions created by linear regression algorithms are probably the most popular, accountable, and transparent class of machine learning models. These models will be referred to here as linear and monotonic. They are transparent because changing any given input feature (or sometimes a combination or function of an input feature) changes the response function output at a defined rate, in only one direction. Monotonicity also enables accountability through intuitive, and even automatic, reasoning about predictions. 
+- **Linear, monotonic functions**: Response functions created by linear regression algorithms are probably the most popular, accountable, and transparent class of machine learning models. These models will be referred to here as linear and monotonic. They are transparent because changing any given input feature (or sometimes a combination or function of an input feature) changes the response function output at a defined rate, in only one direction. Monotonicity also enables accountability through intuitive and even automatic reasoning about predictions. 
 
 - **Nonlinear, monotonic response functions**: Although most ML response functions are nonlinear, some can be constrained to be monotonic for any given input feature. 
 
@@ -243,7 +243,7 @@ Another important way to classify interpretability techniques is to determine wh
 
 - **Model-agnostic:** Meaning they can be applied to different types of machine learning algorithms. 
 
-- **Model-specific:** Meaning techniques that are only applicable for a single type of class of algorithms. 
+- **Model-specific:** Techniques that are only applicable for a single type of class of algorithms. 
 
 In Driverless AI, decision tree surrogate, ICE, K-LIME, and Partial Dependence are all model-agnostic techniques, whereas Shapley, LOCO, and Random Forest Feature Importance are model-specific techniques.
 
@@ -253,7 +253,7 @@ Machine learning algorithms and the functions they create during training are so
 
 ### The Multiplicity of Good Models 
 
-It is well understood that complex machine learning algorithms can produce multiple accurate models for the same set of input features and prediction targets, but not the same internal architectures [6]. This alone is an obstacle to interpretation. This instability of explanations is a driving factor behind the presentation of multiple explanatory results in Driverless AI, enabling users to find explanatory information consistent across multiple modeling and interpretation techniques.
+It is well understood that complex machine learning algorithms can produce multiple accurate models for the same set of input features and prediction targets, but not the same internal architectures [6]. This alone is an obstacle to interpretation. This instability of not being able to reproduce internal architectures is a driving factor behind the presentation of multiple explanatory results in Driverless AI, enabling users to find explanatory information consistent across multiple modeling and interpretation techniques.
 
 ### References 
 
@@ -428,6 +428,8 @@ A potential interaction happens when a variable is below another variable in the
 1. Potential interaction between **PAY_0** and **PAY_2**: this observation can be strengthened by looking at the Shapley Plot and locating any **PAY_0** and **PAY_2** interactions.
 
 2. The thickness of the yellow line indicates that this is the most common path through the decision tree. This path is the lowest probability of default leaf node. 
+
+3. Variables in a Decision Tree connected by a line might suggest a possible connection that impacts predictions.
 
 It can be observed from the **Decision Tree** that most people tend to pay their bills on time based on the thickness of the path highlighted with green arrows. The people in the highlighted path are those with the lowest default probability. This low default probability path on the **Decision Tree** is an approximation to how the complex model would place people in a low default probability “bucket.” 
 
