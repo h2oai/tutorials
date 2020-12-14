@@ -187,7 +187,7 @@
 <h2 is-upgraded>Response Function Complexity</h2>
 <p>The more complex a function, the more difficult it is to explain. Simple functions can be used to explain more complex functions, and not all explanatory techniques are a good match for all types of models. Hence, it&#39;s convenient to have a classification system for response function complexity.</p>
 <ul>
-<li><strong>Linear, monotonic functions</strong>: Response functions created by linear regression algorithms are probably the most popular, accountable, and transparent class of machine learning models. These models will be referred to here as linear and monotonic. They are transparent because changing any given input feature (or sometimes a combination or function of an input feature) changes the response function output at a defined rate, in only one direction. Monotonicity also enables accountability through intuitive, and even automatic, reasoning about predictions.</li>
+<li><strong>Linear, monotonic functions</strong>: Response functions created by linear regression algorithms are probably the most popular, accountable, and transparent class of machine learning models. These models will be referred to here as linear and monotonic. They are transparent because changing any given input feature (or sometimes a combination or function of an input feature) changes the response function output at a defined rate, in only one direction. Monotonicity also enables accountability through intuitive and even automatic reasoning about predictions.</li>
 <li><strong>Nonlinear, monotonic response functions</strong>: Although most ML response functions are nonlinear, some can be constrained to be monotonic for any given input feature.</li>
 <li><strong>Nonlinear, monotonic response functions</strong> also enable accountability through the generation of both reason codes and feature importance measures. Moreover, nonlinear, monotonic response functions may even be suitable for use in regulated applications. Their output can change positively or negatively and at a varying rate for any change in an input feature.</li>
 </ul>
@@ -200,13 +200,13 @@
 <p>Another important way to classify interpretability techniques is to determine whether they are model-agnostic or model-specific.</p>
 <ul>
 <li><strong>Model-agnostic:</strong> Meaning they can be applied to different types of machine learning algorithms.</li>
-<li><strong>Model-specific:</strong> Meaning techniques that are only applicable for a single type of class of algorithms.</li>
+<li><strong>Model-specific:</strong> Techniques that are only applicable for a single type of class of algorithms.</li>
 </ul>
 <p>In Driverless AI, decision tree surrogate, ICE, K-LIME, and Partial Dependence are all model-agnostic techniques, whereas Shapley, LOCO, and Random Forest Feature Importance are model-specific techniques.</p>
 <h2 is-upgraded>Understanding and Trust</h2>
 <p>Machine learning algorithms and the functions they create during training are sophisticated, intricate, and opaque. Humans who would like to use these models have basic, emotional needs to understand and trust them because we rely on them for our livelihoods or need them to make important decisions. The techniques in Driverless AI enhance understanding and transparency by providing specific insights into the mechanisms and results of the generated model and its predictions. The techniques described here enhance trust, accountability, and fairness by enabling users to compare model mechanisms and results to domain expertise or reasonable expectations by allowing users to observe or ensure the Driverless AI model&#39;s stability.</p>
 <h2 is-upgraded>The Multiplicity of Good Models</h2>
-<p>It is well understood that complex machine learning algorithms can produce multiple accurate models for the same set of input features and prediction targets, but not the same internal architectures [6]. This alone is an obstacle to interpretation. This instability of explanations is a driving factor behind the presentation of multiple explanatory results in Driverless AI, enabling users to find explanatory information consistent across multiple modeling and interpretation techniques.</p>
+<p>It is well understood that complex machine learning algorithms can produce multiple accurate models for the same set of input features and prediction targets, but not the same internal architectures [6]. This alone is an obstacle to interpretation. This instability of not being able to reproduce internal architectures is a driving factor behind the presentation of multiple explanatory results in Driverless AI, enabling users to find explanatory information consistent across multiple modeling and interpretation techniques.</p>
 <h2 is-upgraded>References</h2>
 <p>[1] <a href="https://www.oreilly.com/ideas/ideas-on-interpreting-machine-learning" target="_blank">Patrick Hall, Wen Phan, and Sri Satish Ambati. Ideas on interpreting machine learning. O&#39;Reilly Ideas, 2017</a></p>
 <p>[6] <a href="https://projecteuclid.org/euclid.ss/1009213726" target="_blank">Leo Breiman. Statistical modeling: The two cultures (with comments and a rejoinder by the author). Statistical Science, 16(3), 2001.</a></p>
@@ -333,6 +333,7 @@
 <ol type="1">
 <li>Potential interaction between <strong>PAY_0</strong> and <strong>PAY_2</strong>: this observation can be strengthened by looking at the Shapley Plot and locating any <strong>PAY_0</strong> and <strong>PAY_2</strong> interactions.</li>
 <li>The thickness of the yellow line indicates that this is the most common path through the decision tree. This path is the lowest probability of default leaf node.</li>
+<li>Variables in a Decision Tree connected by a line might suggest a possible connection that impacts predictions.</li>
 </ol>
 <p>It can be observed from the <strong>Decision Tree</strong> that most people tend to pay their bills on time based on the thickness of the path highlighted with green arrows. The people in the highlighted path are those with the lowest default probability. This low default probability path on the <strong>Decision Tree</strong> is an approximation to how the complex model would place people in a low default probability &#34;bucket.&#34;</p>
 <p>The path to a low default probability can be confirmed by looking at the <strong>Partial Dependency</strong> plots for both <strong>PAY_0</strong> and <strong>PAY_2</strong> from earlier. Both plots confirm the low default probability before month two.</p>
