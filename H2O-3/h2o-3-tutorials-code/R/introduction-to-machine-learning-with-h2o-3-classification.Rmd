@@ -1,0 +1,524 @@
+---
+title: "Introduction to Machine Learning with H2O-3 - Classification"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. To execute a code chunk, click *Run* (play) button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter.*
+
+
+## Task 1: Initial Setup
+
+```{r}
+# Export the libraries needed for this tutorial
+library(h2o)
+
+# Initialize your h2o cluster
+h2o.init(bind_to_localhost = FALSE, context_path = "h2o")
+```
+
+```{r}
+# Turn off progress bars for notebook readability
+h2o.no_progress()
+```
+
+Load the data
+```{r}
+# Import dataset
+loan_level <- h2o.importFile(path = "https://s3.amazonaws.com/data.h2o.ai/DAI-Tutorials/loan_level_500k.csv")
+```
+
+## Task 2: Machine Learning Concepts - See Tutorial
+
+## Task 3: Start Experiment
+
+```{r}
+# Get first rows of your data
+h2o.head(loan_level, n = 10)
+
+# Get an statistical description of your data
+h2o.describe(loan_level)
+```
+
+```{r}
+# Print a table with the distribution for column "DELINQUENT"
+h2o.table(loan_level[, c("DELINQUENT")])
+```
+
+```{r}
+# Split your data into 3 and save into variable "splits"
+splits <- h2o.splitFrame(loan_level, c(0.7, 0.15), seed = 42)
+
+# Extract all 3 splits and save them as train, valid and test
+train <- splits[[1]]
+valid <- splits[[2]]
+test  <- splits[[3]]
+```
+
+```{r}
+# Check the number of rows for each set
+nrow(train)
+nrow(valid)
+nrow(test)
+```
+
+```{r}
+# Identify predictors and response
+
+# Columns not used for training
+ignore <- c("DELINQUENT", "PREPAID", "PREPAYMENT_PENALTY_MORTGAGE_FLAG", "PRODUCT_TYPE")
+
+y <- "DELINQUENT"
+
+x <- setdiff(colnames(train), ignore)
+x
+```
+
+## Task 4: build a GLM
+
+```{r}
+# Train a GLM
+glm <- h2o.glm(x = x, 
+               y = y, 
+               training_frame = train,
+               model_id = "default_glm",
+               validation_frame = valid, 
+               seed = 42,
+               family = c("binomial"))
+
+# Print the model's results
+glm 
+```
+
+```{r}
+# Plot variable importance
+h2o.varimp_plot(glm)
+```
+
+```{r}
+# Save model performance on training set
+train_glm_perf <- h2o.performance(glm, train)
+
+# Save model performance on validation set
+valid_glm_perf <- h2o.performance(glm, valid)
+```
+
+We can print all the metrics from either of our performance
+```{r}
+# Print the train performance of the model
+train_glm_perf
+```
+
+We can print individual metrics
+```{r}
+# Accessing threshold for max accuracy -  verify with previous output
+train_glm_perf@metrics$max_criteria_and_metric_scores$threshold[4]
+```
+
+print the training accuracy at an specific threshold (max threshold)
+```{r}
+# Print training accuracy for threshold that maximizes accuracy
+h2o.accuracy(train_glm_perf, thresholds = train_glm_perf@metrics$max_criteria_and_metric_scores$threshold[4])
+```
+
+print the validation accuracy at an specific threshold
+```{r}
+# Print validation accuracy for threshold that maximizes accuracy
+h2o.accuracy(valid_glm_perf, thresholds = valid_glm_perf@metrics$max_criteria_and_metric_scores$threshold[4])
+```
+
+Printing and plotting validation AUC
+```{r}
+# Print the AUC value
+h2o.auc(valid_glm_perf) 
+
+# Plot the ROC curve
+plot(valid_glm_perf)
+```
+
+```{r}
+# Make predictions on validation set using our GLM model
+h2o.predict(glm, valid) 
+```
+
+## Task 5: Build a Random Forest
+
+```{r}
+# Train a Random Forest
+rf <- h2o.randomForest(x = x,
+                       y = y,
+                       training_frame = train,
+                       model_id = "default_rf",
+                       validation_frame = valid,
+                       seed = 42)
+
+rf # print the results for the model
+```
+
+```{r}
+# Plot the scoring history of the Random Forest, using AUC as metric
+plot(rf, metric='AUC')
+```
+```{r}
+# Plot the variable importance
+h2o.varimp_plot(rf) 
+```
+
+Exploring training metrics
+```{r}
+# Save the model training performance
+train_rf_perf <- h2o.performance(rf, train)  
+
+# Print the max Accuracy
+h2o.accuracy(train_rf_perf, thresholds = train_rf_perf@metrics$max_criteria_and_metric_scores$threshold[4])
+
+# Print AUC
+h2o.auc(train_rf_perf) 
+```
+
+Validation metrics
+```{r}
+# Save the model performance on the validation set
+valid_rf_perf <- h2o.performance(rf, valid)
+
+# Print max accuracy
+h2o.accuracy(valid_rf_perf, threshold = valid_rf_perf@metrics$max_criteria_and_metric_scores$threshold[4])
+
+# Print AUC
+h2o.auc(valid_rf_perf)
+
+# Plot AUC
+plot(valid_rf_perf)
+```
+
+```{r}
+# Make predictions on validation set with the Random Forest model
+h2o.predict(rf, valid)
+```
+
+## Task 6: Build a GBM
+
+```{r}
+# Train a GBM
+gbm <- h2o.gbm(x = x,
+               y = y,
+               training_frame = train,
+               model_id = "default_gbm",
+               validation_frame = valid, 
+               seed = 42)
+
+# Print the summary of the model
+summary(gbm)
+```
+
+```{r}
+# Make predictions on validation set with GBM
+h2o.predict(gbm, valid)
+```
+
+```{r}
+# Save performance of GBM on validation data
+valid_gbm_perf <- h2o.performance(gbm, valid)
+```
+
+```{r}
+# Print validation AUC
+h2o.auc(valid_gbm_perf)
+
+# Print max F1
+h2o.F1(valid_gbm_perf, thresholds = valid_gbm_perf@metrics$max_criteria_and_metric_scores$threshold[1])
+```
+
+## Task 7: Tune the GLM with H2O Grid Search
+
+Save a sequence for alpha to use in grid search
+```{r}
+# Create a sequence to have a wide range of values for alpha
+glm_alpha <- seq(from = 0, to = 1, by = 0.01)
+
+# Set up grid search
+glm_grid <- h2o.grid(algorithm = "glm",
+                     family = "binomial",
+                     grid_id = "random_glm_grid",  
+                     lambda_search = TRUE, 
+                     seed = 42,
+                     x = x, 
+                     y = y, 
+                     training_frame = train, 
+                     validation_frame = valid,
+                     hyper_params = list(
+                       alpha = glm_alpha,
+                       missing_values_handling = c("MeanImputation", "Skip")),
+                     search_criteria = list(
+                       strategy = "RandomDiscrete",
+                       max_runtime_secs = 300,
+                       seed = 42))
+```
+
+
+Retrieve all the models from the grid search using AUC as sort metric
+```{r}
+# Save the grid search sorted by AUC in decreasing order
+gml_grid_auc <- h2o.getGrid(grid_id = "random_glm_grid", sort_by = "auc", decreasing = TRUE)
+
+# Print the results for grid search
+as.data.frame(gml_grid_auc@summary_table)
+```
+
+Retirieve the best model
+```{r}
+# Retrieve the best model from the grid search
+tuned_glm <- h2o.getModel(gml_grid_auc@model_ids[[1]]) 
+
+# Print the results of the best model
+tuned_glm
+```
+
+Save model performance on validation set
+```{r}
+# Save the performance on validation data from the best model
+valid_tuned_glm_perf <- h2o.performance(tuned_glm, valid)
+```
+
+
+```{r}
+# Print the AUC for default and tuned model
+h2o.auc(valid_glm_perf) 
+h2o.auc(valid_tuned_glm_perf) 
+```
+
+
+```{r}
+# Print max F1 scores for default and tuned models
+h2o.F1(valid_glm_perf, thresholds = valid_glm_perf@metrics$max_criteria_and_metric_scores$threshold[1])
+
+h2o.F1(valid_tuned_glm_perf, thresholds = valid_tuned_glm_perf@metrics$max_criteria_and_metric_scores$threshold[1])
+```
+
+Print confusion matrix
+```{r}
+# Print the confusion matrix for default and tuned models
+h2o.confusionMatrix(valid_glm_perf)
+h2o.confusionMatrix(valid_tuned_glm_perf)
+```
+
+## Task 8: Tune the RF model with H2O Grid Search
+
+```{r}
+# Set-up grid search for Random Forest
+rf_depth_grid <- h2o.grid(algorithm = "randomForest", 
+                          grid_id = "rf_depth_grid",
+                          seed = 42,
+                          stopping_rounds = 5,
+                          stopping_metric = "AUC",
+                          stopping_tolerance = 1e-4,
+                          x = x, 
+                          y = y, 
+                          training_frame = train, 
+                          validation_frame = valid,
+                          hyper_params = list(
+                            max_depth = c(1, 3, 5, 6, 7, 8, 9, 10, 12, 13, 15, 20, 25, 35)),
+                          search_criteria = list(
+                            strategy = "Cartesian"))
+```
+
+```{r}
+# Retrieve the grid search results
+rf_depth_grid_auc <- h2o.getGrid(grid_id = "rf_depth_grid", sort_by = "auc", decreasing = TRUE)
+as.data.frame(rf_depth_grid_auc@summary_table)
+```
+
+```{r}
+# Create a sequence for sample rate
+rf_sample_rate <- seq(from = 0.2, to = 1, by = 0.01)
+
+rf_random_grid <- h2o.grid(algorithm = "randomForest",
+                           grid_id = "rf_random_search",
+                           ntrees = 500,
+                           seed = 42,
+                           stopping_rounds = 5,
+                           stopping_metric = "AUC",
+                           stopping_tolerance = 1e-3,
+                           x = x, 
+                           y = y, 
+                           training_frame = train, 
+                           validation_frame = valid,
+                           hyper_params = list(
+                            max_depth = c(8, 9, 10, 11, 12),
+                            sample_rate = rf_sample_rate),
+                           search_criteria = list(
+                            strategy = "RandomDiscrete",
+                            max_runtime_secs = 900,
+                            seed = 42))
+```
+
+```{r}
+# Retrieve and print grif search results
+rf_random_grid_auc <- h2o.getGrid(grid_id = "rf_random_search", sort_by = "auc", decreasing = TRUE)
+as.data.frame(rf_random_grid_auc@summary_table)
+```
+
+```{r}
+# Get the best model and print the results
+tuned_rf <- h2o.getModel(rf_random_grid_auc@model_ids[[1]]) #getting the best model
+tuned_rf
+```
+
+```{r}
+# Save the validation performance of the tuned RF
+valid_tuned_rf_perf <- h2o.performance(tuned_rf, valid)
+```
+
+```{r}
+# Print AUC and max F1 of the tuned model
+h2o.auc(valid_tuned_rf_perf)
+h2o.F1(valid_tuned_rf_perf, thresholds = valid_tuned_rf_perf@metrics$max_criteria_and_metric_scores$threshold[1])
+```
+
+```{r}
+# Print the AUC and max F1 of the Default model
+h2o.auc(valid_rf_perf)
+h2o.F1(valid_rf_perf, thresholds = valid_rf_perf@metrics$max_criteria_and_metric_scores$threshold[1])
+```
+
+```{r}
+# Print confusion matrix of the tuned model and the default model 
+h2o.confusionMatrix(valid_tuned_rf_perf)
+h2o.confusionMatrix(valid_rf_perf)
+```
+
+## Task 9: Tune the GBM with H2O GridSearch
+
+```{r}
+gbm_depth_grid <- h2o.grid(algorithm = "gbm", 
+                           grid_id = "gbm_depth_grid",
+                           seed = 42,
+                           stopping_rounds = 5,
+                           stopping_metric = "AUC",
+                           stopping_tolerance = 1e-4,
+                           x = x, 
+                           y = y, 
+                           training_frame = train, 
+                           validation_frame = valid,
+                           hyper_params = list(
+                             max_depth = c(3,4,5,6,7,8,9,10,12,13,15)),
+                          search_criteria = list(
+                             strategy = "Cartesian"))
+```
+
+```{r}
+# Retrieve and print the results of the grid search
+gbm_depth_grid_auc <- h2o.getGrid(grid_id = "gbm_depth_grid", sort_by = "auc", decreasing = TRUE)
+as.data.frame(gbm_depth_grid_auc@summary_table)
+```
+
+```{r}
+# Create sequences for 4 different parameters in order to explore more models
+gbm_sample_rate <- seq(from = 0.2, to = 1, by = 0.01)
+gbm_col_sample_rate <- seq(from = 0.2, to = 1, by = 0.01)
+gbm_col_sample_rate_per_tree <- seq(from = 0.2, to = 1, by = 0.01)
+gbm_col_sample_rate_change_per_level <- seq(from = 0.9, to = 1.1, by = 0.01)
+
+gbm_random_grid_2 <- h2o.grid(algorithm = "gbm", 
+                              grid_id = "gbm_random_search", 
+                              ntrees = 500, 
+                              learn_rate = 0.05,
+                              seed = 42, 
+                              stopping_rounds = 5, 
+                              stopping_metric = "AUC", 
+                              stopping_tolerance = 1e-3, 
+                              x = x, 
+                              y = y, 
+                              training_frame = train, 
+                              validation_frame = valid,
+                              hyper_params = list(
+                                max_depth = c(4, 5, 6, 7, 8),
+                                sample_rate = gbm_sample_rate,
+                                col_sample_rate = gbm_col_sample_rate,
+                                col_sample_rate_per_tree = gbm_col_sample_rate_per_tree,
+                                col_sample_rate_change_per_level = gbm_col_sample_rate_change_per_level),
+                              search_criteria = list(
+                                strategy = "RandomDiscrete",
+                                max_runtime_secs = 900,
+                                seed = 42))
+```
+
+
+
+```{r}
+# Retrieve and print the grid search results
+gbm_random_grid_auc <- h2o.getGrid(grid_id = "gbm_random_search", sort_by = "auc", decreasing = TRUE)
+as.data.frame(gbm_random_grid_auc@summary_table)
+```
+
+```{r}
+# Retrieve the best model and print the results
+tuned_gbm <- h2o.getModel(gbm_random_grid_auc@model_ids[[1]])
+tuned_gbm
+```
+
+```{r}
+# Save the validation performance of the tuned model
+valid_tuned_gbm_perf <- h2o.performance(tuned_gbm, valid)
+```
+
+
+```{r}
+# Print validation AUC of the tuned model
+h2o.auc(valid_tuned_gbm_perf)
+
+# Print the validation max F1 value of the tuned model
+h2o.F1(valid_tuned_gbm_perf, thresholds = valid_tuned_gbm_perf@metrics$max_criteria_and_metric_scores$threshold[1])
+```
+
+
+
+```{r}
+# Print validation AUC and max F1 of default model
+h2o.auc(valid_gbm_perf)
+h2o.F1(valid_gbm_perf, thresholds = valid_gbm_perf@metrics$max_criteria_and_metric_scores$threshold[1])
+```
+
+
+```{r}
+# Compare the confusion matrix of the tuned and default model
+h2o.confusionMatrix(valid_tuned_gbm_perf)
+h2o.confusionMatrix(valid_gbm_perf)
+```
+
+## Task 10: Test Performance
+
+
+```{r}
+# Save test performance of each tuned model
+tuned_glm_test_perf <- h2o.performance(tuned_glm, test)
+tuned_rf_test_perf  <- h2o.performance(tuned_rf, test)
+tuned_gbm_test_perf <- h2o.performance(tuned_gbm, test)
+```
+
+
+```{r}
+# Print the test AUC
+h2o.auc(tuned_glm_test_perf)
+h2o.auc(tuned_rf_test_perf)
+h2o.auc(tuned_gbm_test_perf)
+```
+
+
+```{r}
+# Print the Confusion Matrix for the test set
+h2o.confusionMatrix(tuned_glm_test_perf)
+h2o.confusionMatrix(tuned_rf_test_perf)
+h2o.confusionMatrix(tuned_gbm_test_perf)
+```
+
+
+```{r}
+# Print the max F1 test score
+h2o.F1(tuned_glm_test_perf, thresholds =  tuned_glm_test_perf@metrics$max_criteria_and_metric_scores$threshold[1])
+h2o.F1(tuned_rf_test_perf, thresholds = tuned_rf_test_perf@metrics$max_criteria_and_metric_scores$threshold[1])
+h2o.F1(tuned_gbm_test_perf, thresholds = tuned_gbm_test_perf@metrics$max_criteria_and_metric_scores$threshold[1])
+```
+## Task 11: Challenge
+```{r}
+h2o.shutdown()
+```
