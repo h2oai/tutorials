@@ -1,0 +1,203 @@
+---
+title: "Introduction to Machine Learning with H2O-3 - AutoML"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. To execute a code chunk, click *Run* (play) button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*
+
+## Task 1: Initial Setup
+
+```{r}
+# Import the required libraries
+library(h2o)
+
+# Initialize the H2O-3 cluster
+h2o.init(bind_to_localhost = FALSE, context_path = "h2o")
+```
+
+```{r}
+# Turn off progress bars for notebook readability
+h2o.no_progress()
+```
+
+```{r}
+# Import dataset
+loan_level <- h2o.importFile(path = "https://s3.amazonaws.com/data.h2o.ai/H2O-3-Tutorials/loan_level_50k.csv")
+```
+
+## Task 2: Machine Learning Concepts - See Tutorial
+
+## Task 3: Start Experiment
+
+```{r}
+# Get first 10 rows and a statistical summary of the data
+h2o.head(loan_level, n = 10)
+h2o.describe(loan_level)
+```
+
+```{r}
+# Print a table with the distribution for column "DELINQUENT"
+h2o.table(loan_level[, c("DELINQUENT")])
+```
+
+```{r}
+# Plot a histogram for the Regression problem target column
+h2o.hist(loan_level[, c("ORIGINAL_INTEREST_RATE")])
+```
+
+```{r}
+# Split your data into 3 and save into variable "splits"
+splits <- h2o.splitFrame(loan_level, c(0.8), seed = 42)
+
+# Extract all 3 splits into train, valid and test
+train <- splits[[1]]
+test  <- splits[[2]]
+
+# Check the dimensions of both sets
+dim(train)
+dim(test)
+```
+
+## Task 4: H2O AutoML Classification
+
+```{r}
+# Identify predictors and response for the classification use case
+ignore <- c("DELINQUENT", "PREPAID", "PREPAYMENT_PENALTY_MORTGAGE_FLAG", "PRODUCT_TYPE")
+y <- "DELINQUENT"
+
+x <- setdiff(colnames(train), ignore)
+
+x
+```
+
+```{r}
+# Run AutoML for 25 base models or 15 minutes
+aml_cl <- h2o.automl(x = x,
+                     y = y,
+                     training_frame = train,
+                     max_runtime_secs = 900,
+                     max_models = 25,
+                     seed = 42,
+                     project_name = "classification")
+```
+
+```{r}
+# View the AutoML Leaderboard
+lb <- h2o.get_leaderboard(aml_cl)
+h2o.head(lb, n = 25)
+```
+
+```{r}
+# Get leaderboard with 'extra_columns = 'ALL'
+lb2 <- h2o.get_leaderboard(aml_cl, extra_columns = "ALL")
+h2o.head(lb2, n = 25)
+```
+
+
+```{r}
+# Retrieve the best model from AutoML
+print(aml_cl@leader)
+```
+
+```{r}
+# Save the test performance of the leader model
+aml_cl_test_perf <- h2o.performance(aml_cl@leader, test)
+```
+
+```{r}
+# Print the AUC of the best model and plot it
+h2o.auc(aml_cl_test_perf)
+plot(aml_cl_test_perf)
+```
+
+```{r}
+# Make predictions
+aml_cl_pred <- h2o.predict(aml_cl@leader, test)
+h2o.head(aml_cl_pred, n=10)
+```
+
+## Task 5: h2O AutoML Regression
+
+```{r}
+# Identify predictors and response for the regression use case
+ignore_reg <- c("ORIGINAL_INTEREST_RATE", "FIRST_PAYMENT_DATE", "MATURITY_DATE", "MORTGAGE_INSURANCE_PERCENTAGE",
+            "PREPAYMENT_PENALTY_MORTGAGE_FLAG", "LOAN_SEQUENCE_NUMBER", "PREPAID",
+            "DELINQUENT", "PRODUCT_TYPE")
+
+y_reg <- "ORIGINAL_INTEREST_RATE"
+
+x_reg <- setdiff(colnames(train), ignore_reg)
+x_reg
+```
+
+```{r}
+#Run AutoML for 15 minutes
+aml_reg <- h2o.automl(x = x_reg,
+                      y = y_reg,
+                      training_frame = train,
+                      max_runtime_secs = 900,
+                      stopping_metric = 'RMSE',
+                      seed = 42,
+                      project_name = "regression",
+                      sort_metric = 'RMSE')
+```
+
+```{r}
+# View the AutoML Leaderboard
+lb <- h2o.get_leaderboard(aml_reg)
+h2o.head(lb, n = -1)
+```
+
+ To get specific models, you have two options
+
+```{r}
+# Get model ids for all models in the AutoML Leaderboard
+model_ids <- as.data.frame(aml_reg@leaderboard$model_id)[,1]
+# Get top GBM from leaderboard
+gbm <- h2o.getModel(grep("GBM", model_ids, value = TRUE)[1])
+gbm
+```
+
+Or you can just get the model id and place it inside the parenthesis
+```{r}
+# gbm <- h2o.getModel("model_id")
+```
+
+```{r}
+# Retrieve specific parameters from the obtained model
+gbm@allparameters[["ntrees"]]
+gbm@allparameters[["max_depth"]]
+gbm@allparameters[["learn_rate"]]
+gbm@allparameters[["sample_rate"]]
+```
+
+```{r}
+# Print the results for the model
+gbm
+```
+
+```{r}
+#Save the test performance of the model
+gbm_test_perf <- h2o.performance(gbm, test)
+
+#Print the test RMSE and MAE
+h2o.rmse(gbm_test_perf)
+h2o.mae(gbm_test_perf)
+```
+
+```{r}
+# Make predictions on test set
+gbm_pred <- h2o.predict(gbm, test)
+
+# Combine the predictions with the original response column
+preds <- h2o.cbind(test[, c("ORIGINAL_INTEREST_RATE")], gbm_pred)
+
+h2o.head(preds, n=10)
+```
+
+## For Task 6-8 please refer to md file ----
+```{r}
+h2o.shutdown()
+```
+
+
