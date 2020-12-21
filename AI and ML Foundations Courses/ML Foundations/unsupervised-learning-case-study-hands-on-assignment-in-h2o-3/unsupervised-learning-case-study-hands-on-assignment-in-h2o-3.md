@@ -15,7 +15,7 @@ For this assignment, you will be using the [credit card data set](https://www.ka
 - Basic knowledge of Machine Learning and Statistics
 - An [Aquarium](https://aquarium.h2o.ai/) Account to access H2O.ai’s software on the AWS Cloud. 
   - Need an [Aquarium](https://aquarium.h2o.ai/) account? Follow the instructions in the next section **Task 1 Create An Account & Log Into Aquarium** to create an account
-  - Already have an Aquarium account? Log in and continue to **Launch Lab 16: Legacy H2O-3 and Sparkling Water Training** to begin your exercise!
+  - Already have an Aquarium account? Log in and continue to **Launch Lab 5: H2O-3 Training** to begin your exercise!
  
 ### Task 1: Create An Account & Log Into Aquarium
  
@@ -25,7 +25,7 @@ Navigate to the following site: https://aquarium.h2o.ai/login and do the followi
 
 2. log into the site with your credentials.
 
-3. Navigate to Lab 16: Legacy H2O-3 and Sparkling Water Training. Click on Start Lab and wait for your instance to be ready. Once your instance is ready, you will see the following screen.
+3. Navigate to Lab 5: H2O-3 Training. Click on Start Lab and wait for your instance to be ready. Once your instance is ready, you will see the following screen.
 
 ![labs-urls](assets/labs-urls.jpg)
 
