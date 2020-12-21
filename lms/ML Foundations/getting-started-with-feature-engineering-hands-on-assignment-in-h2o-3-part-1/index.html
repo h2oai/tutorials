@@ -40,7 +40,7 @@
 <li>Basic knowledge of Machine Learning and Statistics</li>
 <li>An <a href="https://aquarium.h2o.ai/" target="_blank">Aquarium</a> Account to access H2O.ai&#39;s software on the AWS Cloud.  <ul>
 <li>Need an Aquarium account? Follow the instructions in the next section <strong>Task 1 Create An Account &amp; Log Into Aquarium</strong> to create an account</li>
-<li>Already have an <a href="https://aquarium.h2o.ai/" target="_blank">Aquarium</a> account? Log in and continue to <strong>Task 2: Launch the Legacy H2O-3 and Sparkling Water Training Lab</strong> to begin your exercise!</li>
+<li>Already have an <a href="https://aquarium.h2o.ai/" target="_blank">Aquarium</a> account? Log in and continue to <strong>Task 2: Launch the H2O-3 Training Lab</strong> to begin your exercise!</li>
 </ul>
 </li>
 </ul>
@@ -52,15 +52,16 @@
 <li>log into the site with your credentials</li>
 </ol>
 <p class="image-container"><img alt="picture-1" src="img/26d1cf72ba30b2b1.jpg"></p>
-<h2 is-upgraded>Task 2: Launch the Legacy H2O-3 and Sparkling Water Training Lab</h2>
-<p>Once you&#39;ve created your account on Aquarium and/or logged into the site, click on <strong>Browse Labs</strong> and navigate to <strong>Lab 16: Legacy H2O-3 and Sparkling Water Training</strong></p>
-<p class="image-container"><img alt="picture-2" src="img/b92e78ac6ff5b7f.jpg"></p>
-<p>Click &#34;Start Lab&#34;.<br><strong>Note: This step may take a few minutes for the AWS instance to be created and ready to access.</strong></p>
-<p class="image-container"><img alt="picture-3" src="img/cfbd740cbb810395.jpg"></p>
+<h2 is-upgraded>Task 2: Launch the H2O-3 Training Lab</h2>
+<p>Once you&#39;ve created your account on Aquarium and/or logged into the site, click on <strong>Browse Labs</strong> and navigate to <strong>Lab 5: H2O-3 Training</strong></p>
+<p class="image-container"><img alt="picture-2" src="img/6ad491dd72f63a61.jpg"></p>
+<p>Click <strong>&#34;Start Lab&#34;</strong>.</p>
+<p><strong>Note: This step may take a few minutes for the AWS instance to be created and ready to access.</strong></p>
+<p class="image-container"><img alt="picture-3" src="img/22201847f4d74ff.jpg"></p>
 <p>Once the lab has been created, use the <strong>Jupyter URL</strong> link to launch the Jupyter environment. Welcome to the Juypter environment where we will create a new Python notebook for H2O-3.</p>
 <h2 is-upgraded>Task 3: Open a New Jupyter Notebook</h2>
 <p>Open a new Jupyter Python3 Notebook by clicking <strong>New</strong> and selecting <strong>Python 3</strong></p>
-<p class="image-container"><img alt="picture-4" src="img/2b070d7a34c167ab.jpg"></p>
+<p class="image-container"><img alt="picture-4" src="img/c244fff3bfbc048d.jpg"></p>
 <p>In this notebook, you will:</p>
 <ol type="1">
 <li>Startup an H2O Cluster</li>
@@ -212,12 +213,15 @@ test_te = titanic_te.transform(frame=test, noise=0.0)
                                          stopping_metric=&#34;auto&#34;,
                                          stopping_tolerance=0.001,
                                          model_id=&#34;gbm_with_te&#34;)
-</code></pre>
-<ol type="1">
-<li>Next, you are going to train the GBM with target encoded features.</li>
-</ol>
-<p>Enter the following code in a new cell and run it:</p>
-<pre><code language="language-python" class="language-python"># Training is based on training data with early stopping based on xval performance
+~~~~
+
+
+3. Next, you are going to train the GBM with target encoded features.
+
+Enter the following code in a new cell and run it:
+
+~~~python 
+# Training is based on training data with early stopping based on xval performance
 x_with_te = [&#34;pclass&#34;, &#34;sex&#34;, &#34;age&#34;, &#34;sibsp&#34;, &#34;parch&#34;, &#34;fare&#34;, &#34;cabin_te&#34;, &#34;embarked_te&#34;, &#34;home.dest_te&#34;]
 gbm_with_te.train(x=x_with_te, y=response, training_frame=train_te)
 </code></pre>
