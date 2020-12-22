@@ -30,7 +30,7 @@ In this tutorial, you will predict the **cooling condition** for a **Hydraulic S
 
 ## Task 1: Explore the H2O.ai Platform Studio
 
-**MLOps 0.31.1** and **Driverless AI 1.9.0** can be launched from the H2O.ai Platform Studio.
+**MLOps 0.31.1** and **Driverless AI 1.9.0.3** can be launched from the H2O.ai Platform Studio.
 
 To launch **Driverless AI**, click the **Launch** button located in the **Driverless AI** section, a new tab will open. 
 
