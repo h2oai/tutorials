@@ -480,7 +480,7 @@ Note: To disable **assistant**, click on assistant again.
 
 ![titanic-train-assist-sample](assets/titanic-train-assist-sample.jpg)
  
-1. **Display Name** - Optional: Specify a display name for the new experiment. There are no character or length restrictions for naming. If this field is left blank, Driverless AI will automatically generate a name for the experiment.
+1. **Display Name** - Opcional: especifique un nombre para mostrar para el nuevo experimento. No hay restricciones de caracteres o longitud para nombrar. Si este campo se deja en blanco, Driverless AI generará automáticamente un nombre para el experimento.
 2. **Dataset** - The name of the dataset being used to create an experiment
 3. **Rows** - Total number of rows 
 4. **Columns** - Total number of columns 
