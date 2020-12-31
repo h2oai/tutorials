@@ -1194,7 +1194,7 @@ From the Projects page, you can link datasets and/or experiments, and you can ru
 4. **+New Project**: Option to create a new project 
 5. **Type value to search for or date e.g. 15/09**
 
-3\. Open the **Time Series Tutorial**, an image similar to the one below will appear:
+2\. Open the **Time Series Tutorial**, an image similar to the one below will appear:
 
 ![projects-page-time-series](assets/projects-page-time-series.jpg)
 
