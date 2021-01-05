@@ -1136,7 +1136,7 @@ Desde la página de Projects, puede vincular conjuntos de datos y / o experiment
 
 ### Explore un espacio de trabajo de proyecto existente
 
-1. Seleccione **Projects (Proyectos)**, aparecerá una imagen similar a la siguiente:
+1\. Seleccione **Projects (Proyectos)**, aparecerá una imagen similar a la siguiente:
 
 ![projects-page](assets/projects-page.jpg)
 
@@ -1158,7 +1158,9 @@ Desde la página de Projects, puede vincular conjuntos de datos y / o experiment
 4. **+New Project (Proyecto Nuevo)**: Opción para crear un nuevo proyecto
 5. **Escriba el valor para buscar o la fecha, p. Ej. 15/09**
 
-2\. Abra el Time Series Tutorial (Tutorial de series temporales), aparecerá una imagen similar a la siguiente:
+2\. Abra **Time Series Tutorial (Tutorial de series temporales)**, aparecerá una imagen similar a la siguiente:
+
+![projects-page-time-series](assets/projects-page-time-series.jpg)
 
 *Cosas para tener en cuenta:*
 
@@ -1167,9 +1169,9 @@ Desde la página de Projects, puede vincular conjuntos de datos y / o experiment
     - **Selected Datasets Type (Tipo de conjuntos de datos seleccionados)**: Entrenamiento, Pruebas o Validación
     - Información adicional sobre el conjunto de datos que se seleccionó: nombre, filas, columnas
 
-![projects-page-time-series-datasets](assets/projects-page-time-series-datasets.jpg)
+   ![projects-page-time-series-datasets](assets/projects-page-time-series-datasets.jpg)
 
- -  +Link dataset (Conjunto de datos de enlace): Vincular un conjunto de datos adicional (capacitación, pruebas o validación) al proyecto existente
+   -  +Link dataset (Conjunto de datos de enlace): Vincular un conjunto de datos adicional (capacitación, pruebas o validación) al proyecto existente
 
 2. **Experiments (Experimentos)**
 
@@ -1190,7 +1192,7 @@ Desde la página de Projects, puede vincular conjuntos de datos y / o experiment
     - **I**: Interpretabilidad
     - **Scorer**: Anotador utilizado
     - **Status(estado)**: En progreso, completado
-    - **Train Time(tiempo de entreno)**:** Tiempo total para entrenar experimento
+    - **Train Time(tiempo de entreno)**: Tiempo total para entrenar experimento
     - **Val. Score(puntuación válida)**: Puntuación de validación del experimento
     - **Test Score(resultado de la prueba) (Resultado de la prueba)**: Puntaje de prueba para el experimento
     - **Test Time (tiempo de prueba) (Tiempo de prueba)**: Tiempo total para probar el experimento.
@@ -1204,7 +1206,6 @@ Para crear un espacio de trabajo para un proyecto:
 3. Especifique un nombre para el proyecto y proporcione una descripción
 4. Haga clic en **Create Project (Crear Proyecto Nuevo)**. Esto crea una página de proyecto vacía.
 
-- Obtenga más información sobre proyectos en Driverless AI: 
-    - Revise [la documentación del espacio de trabajo del proyecto.](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/projects.html?highlight=projects%20workspace)
+- Obtenga más información sobre proyectos en Driverless AI: Revise [la documentación del espacio de trabajo del proyecto.](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/projects.html?highlight=projects%20workspace)
 - Se puede explorar una aplicación más amplia de **Project Workspace** en el [Tutorial de series temporales: pronóstico de ventas minoristas.](https://training.h2o.ai/products/tutorial-2a-time-series-recipe-tutorial-retail-sales-forecasting)
 
