@@ -219,7 +219,7 @@ Conjunto de datos del Titanic: En el conjunto de datos encontrarás 1,309 filas,
  
 ![add-dataset-file-system](assets/add-dataset-file-system.jpg)
  
-3\. Ingresa los siguiente
+3\. Ingresa los siguiente:
 
 1. ```/data/TestDrive/titanic.csv ```en la barra de búsqueda.
 2. Selecciona ```titanic.csv```
@@ -278,7 +278,7 @@ Ahora vamos a explorar el conjunto de datos Titanic que acabamos de cargar.
 
 2\. A continuación, confirmaremos que el conjunto de datos se cargó correctamente y que tiene el número correcto de filas y columnas haciendo clic en **Details (detalles)**.
 
-3\. Haga clic en Details. Details lo llevará a Dataset Details Page (Página de detalles del conjunto de datos)
+3\. Haga clic en **Details**. Details lo llevará a **Dataset Details Page (Página de detalles del conjunto de datos)**
 
  ![titanic-set-details-page](assets/titanic-set-details-page.jpg)
 
