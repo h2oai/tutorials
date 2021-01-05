@@ -1,1248 +1,1191 @@
+### Tutorial: Introducción a Machine Learning Automático con H2O.ai Test Drive
 
-# Automatic Machine Learning Introduction with Driverless AI
+## Contenido
 
-## Outline
+- [Objetivo](#objetivo)
+- [Prerrequisitos](#Prerrequisitos)
+- [Tarea 1: Tour del Producto](#Tarea-1-Tour-del-Producto)
+- [Tarea 2: Conceptos de Aprendizaje de Máquina](#tarea-2-conceptos-de-aprendizaje-de-máquina)
+- [Tarea 3: Cargar Datos](#tarea-3-cargar-datos)
+- [Tarea 4: Explora los Detalles de Datos y AutoViz](#tarea-4-explora-los-detalles-de-datos-y-autoviz)
+- [Tarea 5: Lanza el Primer Experimento](#tarea-5-lanza-el-primer-experimento)
+- [Tarea 6: Explora Feature Engineering](#tarea-6-explora-feature-engineering)
+- [Tarea 7: Explora Resultados del Experimento](#tarea-7-explora-resultados-del-experimento)
+- [Tarea 8: Reporte MLI Para Series no Cronológicas](#tarea-8-reporte-mli-para-series-no-cronológicas)
+- [Tarea 9: Resumen del Experimento y Autoreport](#tarea-9-resumen-del-experimento-y-autoreport)
+- [Próximos Pasos](#Próximos-pasos)
+- [Apéndice: Proyecto Workspace](#Apéndice-proyecto-workspace)
 
-- [Objective](#objective)
-- [Prerequisites](#prerequisites)
-- [Task 1: Product Tour](#task-1-product-tour)
-- [Task 2: Automatic Machine Learning Concepts](#task-2-automatic-machine-learning-concepts)
-- [Task 3: Load Data](#task-3-load-data)
-- [Task 4: Explore Data Details and AutoViz](#task-4-explore-data-details-and-autoviz)
-- [Task 5: Launch First Experiment](#task-5-launch-first-experiment)
-- [Task 6: Explore Feature Engineering](#task-6-explore-feature-engineering)
-- [Task 7: Explore Experiment Results](#task-7-explore-experiment-results)
-- [Task 8: MLI Report for Non-Time-Series](#task-8-mli-report-for-non-time-series)
-- [Task 9: Experiment Summary and Autoreport](#task-9-experiment-summary-and-autoreport)
-- [Next Steps](#next-steps)
-- [Appendix: Project Workspace](#appendix-project-workspace)
-
-## Objective
-
-For this tutorial, we will explore the Titanic dataset from the perspective of a passenger life insurance company with [H2O.ai's](https://www.h2o.ai/) enterprise product, [Driverless AI](https://www.h2o.ai/products/h2o-driverless-ai/). We will explore possible risk factors derived from this dataset that could have been considered when selling passenger insurance during this time. More specifically, we will create a predictive model to determine what factors contributed to a passenger surviving.
-
-In this overview of Driverless AI, you will learn how to load data, explore data details, generate Auto visualizations, launch an experiment, explore feature engineering, view experiment results and get a quick tour of the Machine Learning Interpretability report. 
-
-**Note**: This tutorial has been built on Aquarium, which is H2O.ai's cloud environment providing software access for workshops, conferences, and training. The labs in Aquarium have datasets, experiments, projects, and other content preloaded. If you use your version of Driverless AI, you will not see the preloaded content.
-
-## Prerequisites
-
-- Basic knowledge of Machine Learning and Statistics
-
-- A **Two-Hour Test Drive session**: Test Drive is H2O.ai's Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.
-
-  - Need a **Two-Hour Test Drive** session? Follow the instructions [on this quick tutorial](https://training.h2o.ai/products/tutorial-0-getting-started-with-driverless-ai-test-drive) to get a Test Drive session started. After the Driverless AI Test Drive session starts, continue reading the remaining prerequisites of this tutorial, then start Task 1: Product Tour.
-
-  - Already have a **Two-Hour Test Drive** session? Continue reading the remaining prerequisites of this tutorial. then start Task 1: Product Tour.
-
-**Note:  Aquarium’s Driverless AI Test Drive lab has a license key built-in, so you don’t need to request one to use it. Each Driverless AI Test Drive instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore Driverless AI, you can always launch another Test Drive instance or reach out to our sales team via the [contact us form](https://www.h2o.ai/company/contact/).**
-
-
-## Task 1: Product Tour
-
-Welcome to the Driverless AI **Datasets** page! 
-
-![dai-datasets-page](assets/dai-datasets-page.jpg)
-
-The Driverless UI is easy to navigate. The following features, as well as a few datasets, are found on the **Datasets** page. We will explore these features as we launch an experiment in the next tasks.
-
-1. **Projects**: Projects Workspace for managing datasets and experiments related to a specific business problem  or use case.
-
-2. **Datasets**: View of current datasets. Other features for datasets include the options to add a dataset, get dataset details, visualize, split, predict, rename, download, and delete. 
-
-3. **Autoviz**: The Visualization page shows all available graphs for the selected dataset. Note that the graphs on the Visualization page can vary based on the information in your dataset. You can also view and download logs that were generated during the visualization.
-
-4. **Experiments**: View of completed experiments. Experiments can be revised or deleted. 
-
-5. **Diagnostics**: Diagnose a model and view model performance for multiple scorers based on the existing model and dataset.
-
-6. **MLI**: View a list of interpreted models or interpret a model.
-
-7. **Deployments**: Deploy the MOJO and Python scoring pipelines for you to test or to integrate into a final product. You can also deploy locally or in the cloud.
-
-8. **Resources**: The Resources dropdown menu provides you with links to view System Information, the Driverless AI User Guide and Help. From this dropdown menu, you can also download the Python Client, R Client, the MOJO2 JAVA runtime, MOJO2 Py runtime, and MOJO2 R runtime.
-
-9. **Messages[ ]**: View upcoming events regardinging Driverless AI .
-
-10. **Logout H2OAI**: Logs you out of your current session.
-
-11. **<**: Go back to the previous page.
-
-12. **H2OAI**: Takes you back to the H2OAI **Datasets** Page.
-
-13. **Driverless AI 1.X.X**: Version of Driverless AI 
-
-14. **+ Add a Dataset(or Drag and Drop)**: Upload or add a dataset, add a data recipe via URL, upload a data recipe from your local machine.
-
-15. **Type value to search for or date, e,g, 15/09:** Search for a given dataset by inputting its creation date.
-
-
-### Deeper Dive and Resources
-
--  [Join the H2O community](https://www.h2o.ai/community/home). Post your questions, discuss use cases, give feedback, stay informed about the latest H2O.ai updates, and more.
-
-- Learn more are about H2O Driverless through the [H2O documentation](http://docs.h2o.ai/driverless-ai/latest-stable/docs/booklets/DriverlessAIBooklet.pdf).
-
-- [Explore H2O Product Documentation](http://docs.h2o.ai/)
-
-- [Learn more H2O Driverless by reviewing the FAQs](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/faq.html) 
-
-## Task 2: Automatic Machine Learning Concepts
-
-###  Artificial Intelligence and Machine Learning
-
-The concepts found in this section are meant to provide a high-level overview of Machine Learning. At the end of this section, you can find links to resources that offer a more in-depth explanation of the concepts covered here.
-
- Machine learning is a subset of Artificial intelligence where the focus is to create machines that can simulate human intelligence. One critical distinction between artificial intelligence and machine learning is that machine learning models "learn" from the data the models get exposed to. Arthur Samuel, a machine learning pioneer back in 1959, defined machine learning as a " field of study that gives computers the ability to learn without being explicitly programmed" [1]. A machine learning algorithm trains on a dataset to make predictions. These predictions are, at times, used to optimize a system or assist with decision making.
-
-### Machine Learning Training
-
-Advances in technology have made it easier for data to be collected and made available.  The available type of data will determine the kind of training that the machine learning model can undergo. There are two types of machine learning training, supervised and unsupervised learning. Supervised learning is when the dataset contains the output that you are trying to predict. For those cases where the predicting variable is not present, it's called unsupervised learning. Both types of training define the relationship between input and output variables.
-
-In machine learning, the input variables are called **features** and the output variables **labels**. The labels, in this case, are what we are trying to predict. The goal is to take the inputs/variables/features and use them to come up with predictions on never-before-seen data. In linear regression, the features are the x-variables, and the labels are the y-variables. An example of a label could be the price of future price of avocados. Some examples of features could be the features found in the dataset for this tutorial on Task 3 such as Passanger Class, Sex, Age, Passanger Fare, Cabin number etc.  
-
-A machine learning model defines the relationship between features and labels. A model can be trained by feeding it examples. Examples are a particular instance of data.  You can have two types of examples: labeled and unlabeled. Labeled examples are those where the x and y values (features, labels) are known. Unlabeled examples are those where we know the x value, but we don't know what the y value is (feature,?)[1]. Your dataset is like an example; the columns that will be used for training are the features; the rows are the instances of those features. The column that you want to predict is the label.
-
-Supervised learning takes labeled examples and allows a model that is being trained to learn the relationship between features and labels. The trained model can then be used on unlabelled data to predict the missing y value. The model can be tested with either labeled or unlabeled data. Note that H2O Driverless AI creates models with labeled examples.
-
-### Data Preparation 
-
-A machine learning model is as good as the data that is used to train it. If you use garbage data to train your model, you will get a garbage model. With that said, before uploading a dataset into tools that will assist you with building your machine learning model such as Driverless AI, ensure that the dataset has been cleaned and prepared for training. The process of transforming raw data into another format, which is more appropriate and valuable for analytics, is called data wrangling. 
-
-Data wrangling can include extractions, parsing, joining, standardizing, augmenting, cleansing, and consolidating until the missing data is fixed or removed. Data preparation includes the dataset being in the correct format for what you are trying to do. Duplicates have been removed.  Missing data is fixed or removed, and finally, categorial values have been transformed or encoded to a numerical type. Tools like [Python datatable](https://datatable.readthedocs.io/en/latest/?badge=latest), [Pandas](https://pandas.pydata.org/) and [R](https://www.r-project.org/) are great assets for data wrangling. 
-
- Data wrangling can be done in Driverless AI via a [data recipe](https://www.r-project.org/), the [JDBC connector](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/connectors-nd/jdbc.html?highlight=jdbc) or through [live code](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/datasets-describing.html?highlight=live%20code#modify-by-recipe) which will create a new dataset by modifying the existing one. 
-
+## Objetivo
  
-### Data Transformation/Feature Engineering
+Para este tutorial, vamos a explorar el conjunto de datos sobre el accidente del Titanic desde la perspectiva de una empresa de seguros de vidas usando el producto empresarial [H2O Driverless AI](https://www.h2o.ai/products/h2o-driverless-ai/). Vamos a explorar posibles factores de riesgos derivados de este conjunto de datos que la empresa podría haber considerado al momento de vender seguros de vida a estos pasajeros. Específicamente, crearemos un modelo de predicción para determinar cuáles factores contribuyeron a la supervivencia de los pasajeros.
+
+En esta descripción general de Driverless AI, aprenderá cómo cargar datos, explorar detalles de datos, generar visualizaciones automáticas, iniciar un experimento, explorar feature engineering, ver resultados de experimentos y obtener un recorrido rápido por el informe de Interpretabilidad de machine learning.
+
+**Nota**: Este tutorial ha sido creado en Aquarium, lo cual es parte de la nube de H2O y provee acceso a varias herramientas para talleres, conferencias, y entrenamientos de enseñanza. Los laboratorios en Aquarium tienen conjuntos de datos, experimentos, proyectos, y otros contenidos precargados. Si usas tu propia versión de Driverless AI, no podrás ver el contenido precargado.
+
+## Prerrequisitos
+
+- Conocimientos básicos de Machine Learning y Estadística 
+- **Sesión de Dos Horas de Test Drive**: Test Drive es "H2O Driverless AI" y está sobre la nube de AWS (Amazon Web Service Cloud). No es necesario descargar ningún software para utilizar Test Drive. Explora todas las características y beneficios de la plataforma de H2O machine learning.
+
+    - ¿Necesita una **Sesión de Dos Horas de Test Drive?** Sigue las instrucciones [en este tutorial](https://training.h2o.ai/products/tutorial-0-getting-started-with-driverless-ai-test-drive) para comenzar tu sesión. Después de comenzar la sesión de Driverless AI Test Drive, continúa leyendo los requisitos restantes de este tutorial y proceda a comenzar Tarea 1: Tour del Producto
+ 
+    - ¿Ya tienes una sesión de prueba de conducción de dos horas? Continúe leyendo los requisitos previos restantes de este tutorial, luego inicie la Tarea 1: Tour del producto
+ 
+**Nota: Test Drive de Driverless AI ya tiene la clave de licencia incorporada, así que no necesita solicitar una para usarlo. Cada sesión de Test Drive en Aquarium estará disponible por dos horas. Después que la sesión termine su trabajo no será guardado. Si necesita más tiempo para seguir explorando Driverless AI, puedes lanzar una nueva sesión de Test Drive o puede contactar nuestro equipo de ventas por medio de nuestro [formulario de contacto](https://www.h2o.ai/company/contact/).**
+
+## Tarea 1: Tour del Producto
 
 
-Data transformation or feature engineering is the process of creating new features from the existing ones. Proper data transformations on a dataset can include scaling, decomposition, and aggregation [2]. Some data transformations include looking at all the features and identifying which features can be combined to make new ones that will be more useful to the performance of the model. For categorical features, the recommendation is for classes that have few observations to be grouped to reduce the likelihood of the model overfitting. Categorical features may be converted to numerical represenations since many algorithms cannot handle categorical features directly. Last but not least, remove features that are not used or are redundant [3]. These are only a few suggestions when approaching feature engineering. Feature engineering is very time-consuming due to its repetitive nature; it can also be costly. The next step in creating a model is selecting an algorithm.
+¡Bienvenido a la página Datasets (Conjunto de Datos) de Driverless AI!
+ 
+![dai-datasets-page](assets/dai-datasets-page.jpg)
+ 
+La interfaz del usuario (UI) de Driverless AI es muy fácil de navegar. Las siguientes características, al igual que algunos conjuntos de datos se pueden encontrar en la página de **Datasets**. Vamos a explorar estas características al tiempo de lanzar nuestro experimento en los siguientes pasos.
 
-### Algorithm Selection
 
-“Machine learning algorithms are described as learning a target function (f) that best maps input variables (x) to an output variable(y): Y= f(x)” [4]. In supervised learning, there are many algorithms to select from for training. The type of algorithm(s) will depend on the size of your data set, structure, and the type of problem you are trying to solve.  Through trial and error, the best performing algorithms can be found for your dataset. Some of those algorithms include linear regression, regression trees, random forests, naive Bayes, and boosting, to name a few [5]. 
+1. **Projects (Proyectos)**: Área de trabajo de proyectos para administrar conjuntos de datos y experimentos relacionados con un caso de uso o problema comercial específico.
+2. **Datasets (Conjuntos de datos)**: Muestra los conjuntos de datos disponibles. Algunas otras opciones incluyen la habilidad de agregar nuevos conjuntos de datos, obtener detalles sobre los datos, visualizar, dividir, predecir, renombrar, descargar, y eliminar.
+3. **Autoviz**: La página de visualización muestra todos los gráficos disponibles para el conjunto de datos seleccionado. Nota: Ten en cuenta que los gráficos de la página de visualización pueden variar según la información de su conjunto de datos. También puede ver y descargar los registros que se generaron durante la visualización.
+4. **Experiments (Experimentos)**: Muestra todos los experimentos que han sido completados. Los experimentos pueden ser corregidos o borrados.
+5. **Diagnostics (Diagnósticos)**: Muestra diagnósticos acerca del modelo creado y puede ver los resultados de ese modelo usando diferentes formas de evaluación basado en el modelo y conjunto de datos existentes.
+6. **MLI**: Muestra una lista de interpretaciones de los modelos y permite realizar una interpretación de un modelo nuevo.
+7. **Deployments (Implementaciones)**: Despliega los modos de evaluación de MOJO y Python para hacer pruebas o integrar a tu producto final, también se puede desplegar localmente o en la nube.
+8. **Resources (Recursos)**: El menú de Recursos permite ver enlaces relacionados con Información del Sistema, Guia de Uso de Driverless AI,y Ayuda. Desde este menú, también se puede descargar Python Client, R Client, MOJO2 Runtime, MOJO2 Py Runtime, y MOJO2 R Runtime.
+9. **Messages[] (Mensajes [])**: Muestra noticias y próximos eventos de Driverless AI.
+10. **Logout H2OAI (Cerrar sesión H2OAI)**: Permite salir de la sesión actual de Driverless AI.
+11. **<**: Regresa a la página anterior
+12. **H2OAI**: Regresa a las página de Datasets
+13. **Driverless AI 1.X.X**: Versión de Driverless AI
+14. **+Add a Dataset(or Drag and Drop)**: Cargue o agregue un conjunto de datos, agregue una receta de datos a través de URL, cargue una receta de datos desde su máquina local.
+15. Escriba el valor o la fecha para buscar, p. Ej., 15/09: Busque un conjunto de datos ingresando su fecha de creación.
 
-### Model Training
+### Exploración más Profunda y Recursos
 
-**Datasets** 
+- [Únete a la comunidad H2O.](https://www.h2o.ai/community/home) Haz preguntas, discute posibles usos, da recomendaciones, mantente informado sobre lo más nuevo de H2O.ai, y mucho más. Aprende más sobre H2O.ai Driverless por medio de nuestra[Documentación de H2O Driverless AI.](http://docs.h2o.ai/driverless-ai/latest-stable/docs/booklets/DriverlessAIBooklet.pdf)
+- [Explora la Documentación del Producto de H2O](http://docs.h2o.ai/) 
+- [Aprende más sobre H2O Driverless al revisar nuestra lista de preguntas frecuentes](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/faq.html)
 
-One good practice when training a machine learning model is to split up your dataset into subsets: training, validation, and testing sets. A good ratio for the entire dataset is 70-15-15, 70% of the whole dataset for training, 15% for validation, and the remaining 15% for testing. The **training set** is the data that will be used to train the model, and it needs to be big enough to get significant results from it. The **validation set** is the data that has been held back from the training and will be used to evaluate and adjust the hyperparameters of the trained model and hence adjust the performance. Finally, the **test set** is data that has also been held back and will be used to confirm the results of the final model [1].
 
-Note: The validation dataset is used for tuning the modeling pipeline. If provided, the entire training data will be used for training, and validation of the modeling pipeline is performed with only this validation dataset. When you do not include a validation dataset, Driverless AI will do K-fold cross validation for I.I.D. experiments and multiple rolling window validation splits for time series experiments. For this reason it is not generally recommended to include a validation dataset as you are then validating on only a single dataset. Please note that time series experiments cannot be used with a validation dataset: including a validation dataset will disable the ability to select a time column and vice versa.
+## Tarea 2: Conceptos de Aprendizaje de Máquina 
 
+### Inteligencia Artificial y Aprendizaje de Máquina
+ 
+Los conceptos que se encuentran en esta sección están destinados a proporcionar una vista general de alto nivel de Aprendizaje de Máquina. Al final de esta sección, podrás encontrar enlaces a recursos que ofrecen una explicación más profunda de los conceptos cubiertos aquí.Machine learning es un subconjunto de Inteligencia Artificial donde el enfoque está en crear máquinas que puedan simular la inteligencia humana. Una distinción crítica entre Inteligencia Artificial y Machine learning es que los modelos de Machine Learning "aprenden" de los datos a los que los modelos son expuestos. Arthur Samuel, un pionero de Machine Learning en 1959,  definió Machine Learning como un "campo de estudio que le da a las computadoras la habilidad de aprender sin ser explícitamente programadas"[1]. Un algoritmo de Machine Learning se entrena con un conjunto de datos para hacer predicciones. Estas predicciones son, a veces, utilizadas para optimizar un sistema o asistir a la toma de decisiones.
+ 
+### Entrenamiento de Machine Learning
+ 
+Avances en la tecnología han facilitado la recopilación y disponibilidad de los datos. Los tipos de datos disponibles determinarán el tipo de entrenamiento al que el modelo de Aprendizaje de Máquina puede someterse. Hay dos tipos de entrenamiento de Machine Learning, aprendizaje supervisado y no-supervisado. Aprendizaje supervisado es cuando el conjunto de datos que contiene la respuesta que estás tratando de predecir. Para esos casos donde la variable de predicción no está presente, se le llama aprendizaje no-supervisado. Ambos tipos de entrenamiento definen la relación entre las variables de entrada y de salida.
+
+En Machine Learning, las variables de entrada son llamadas características(features) y las variables de salida etiquetas(labels).Las etiquetas, en este caso, son las que estamos tratando de predecir. 
+El objetivo es tomar las entradas/características y usarlas para llegar a predicciones sobre datos nunca vistos. En aprendizaje supervisado, las características son las variables X, y las etiquetas son las variables Y.
+
+Un modelo de Machine Learning define la relación entre características y etiquetas. Cuando los modelos son entrenados, puedes entrenar el modelo alimentándose con ejemplos. Los ejemplos son una instancia particular de datos. Puedes tener dos tipos de ejemplos: etiquetados y no-etiquetados. Los ejemplos etiquetados son aquellos donde se conoce el valor de las variables X, Y (características, etiquetas). Los ejemplos no-etiquetados son aquellos donde conocemos el valor de la variable X, pero no sabemos qué valor tiene la variable y(características) [1]. Tu conjunto de datos es como un ejemplo; las columnas que se utilizarán para el entrenamiento son las características; las filas son las instancias de esas características. Las columnas que quieres predecir son las etiquetas.
+
+El aprendizaje supervisado toma los ejemplos etiquetados y permite a un modelo que está siendo entrenado aprender la relación entre características y etiquetas. El modelo entrenado es entonces probado con datos no-etiquetados, y eso permite predecir el valor de Y(etiqueta) para los datos no-etiquetados. El modelo se puede probar con datos etiquetados o no etiquetados. Tenga en cuenta que H2O Driverless AI crea modelos con ejemplos etiquetados.
+ 
+### Preparación de datos
+
+Un modelo de Machine Learning es tan bueno como los datos que se usan para entrenarlo. Si usas datos malos para entrenar tu modelo, obtendrás un modelo malo. Dicho esto, antes de cargar un conjunto de datos dentro de la herramienta que te ayudará con la construcción de tu modelo de Machine Learning como Driverless AI, asegúrate de que el conjunto de datos ha sido limpiado y preparado para el entrenamiento. El proceso de transformación de datos a otro formato, el cual es más apropiado y valioso para el análisis, se le llama "data wrangling" o disputa de datos.
+
+La gestión de datos, que puede incluir extracciones, análisis, uniones, estandarización, aumento, limpieza, consolidación, filtrado es altamente recomendado terminarlo antes de cargar el conjunto de datos a Driverless AI. La preparación de datos incluye el conjunto de datos en un correcto formato para lo que se intenta hacer. Los duplicados se han eliminado. Los datos perdidos se arreglan o se eliminan, y finalmente, los valores categóricos se han transformado o codificado a un tipo numérico. Herramientas como la tabla de datos de Python, Pandas y R son excelentes recursos para la gestión de datos.
+
+Driverless AI puede hacer algunas disputas de datos. La disputa de datos se puede hacer a través de una [data recipe](https://www.r-project.org/), de el [JDBC connector](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/connectors-nd/jdbc.html?highlight=jdbc) o a través de [live code](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/datasets-describing.html?highlight=live%20code#modify-by-recipe) el cual creará un nuevo conjunto de datos modificando el existente.
+ 
+### Transformación de datos/Feature Engineering
+ 
+La transformación de datos o feature engineering (ingeniería de características) es el proceso de crear nuevas características a partir de las existentes.Las transformaciones de datos adecuadas en un conjunto de datos pueden incluir escalado, descomposición y agregación [2].Algunas transformaciones incluyen observar todas las características e identificar cuáles características pueden ser combinadas para hacer nuevas que serán más útiles para el rendimiento del modelo. Para las características categóricas, la recomendación es que las clases que tengan pocas observaciones sean agrupadas para reducir la probabilidad de que el modelo se sobreajuste (overfitting). Adicionalmente, variables ficticias son introducidas a las características categóricas para facilitar Machine Learning ya que muchos algoritmos no pueden manejar características categóricas directamente. Por último, pero no menos importante, eliminar características que no son usadas o son redundantes [3]. Estas son solo algunas sugerencias al acercarse a Feature Engineering. Feature engineering consume mucho tiempo debido a que su naturaleza es repetitiva; también puede ser costoso. El siguiente paso en la creación de un modelo es seleccionar un algoritmo.
+ 
+### Selección de algoritmo
+ 
+“Los algoritmos de Machine Learning se describen como el aprendizaje de una función objetivo (f) que asigna mejor las variables de entrada (x) a una variable de salida (y): Y= f(x)”[4]. En aprendizaje supervisado, hay muchos algoritmos que seleccionar para el entrenamiento. El tipo de algoritmo(s) dependerá del tamaño de tu conjunto de datos, la estructura, y el tipo de problema que estás tratando de resolver. A través de prueba y error, se pueden encontrar los mejores algoritmos de rendimiento para tu conjunto de datos. Algunos de estos algoritmos incluyen regresión lineal, clasificación, regression trees, random forests, naive Bayes, y boosting, por nombrar algunos [5].
+ 
+### Modelo de entrenamiento
+ 
+**Conjunto de datos(datasets)**
+ 
+Una buena práctica cuando entrenamos un modelo de Machine Learning es dividir tu conjunto de datos en subconjuntos: Conjuntos de entrenamiento, validación, y prueba. Una buena proporción para todo el conjunto de datos es 70-15-15, 70% de todo el conjunto de datos para el entrenamiento, 15% para la validación, y el 15% restante para la prueba. El **conjunto de entrenamiento** son los datos que se usarán para entrenar el modelo, y necesita ser suficientemente grande para obtener resultados. El **conjunto de validación** son los datos que se retuvieron del entrenamiento y se usarán para evaluar y ajustar los hiper-parámetros del modelo entrenado y, por lo tanto, ajustar el rendimiento. Finalmente, El **conjunto de prueba** son datos que también se retuvieron y se usarán para confirmar los resultados del modelo final [1].
+
+**Nota**: El conjunto de datos de validación se utiliza para ajustar la canalización de modelado. Si se proporciona, todos los datos de entrenamiento se utilizarán para el entrenamiento y la validación de la canalización de modelado se realiza solo con este conjunto de datos de validación. Cuando no incluye un conjunto de datos de validación, Driverless AI realizará una validación cruzada K-fold para I.I.D. experimentos y múltiples divisiones de validación de ventana móvil para experimentos de series de tiempo. Por esta razón, generalmente no se recomienda incluir un conjunto de datos de validación, ya que luego se validará en un solo conjunto de datos. Tenga en cuenta que los experimentos de series de tiempo no se pueden utilizar con un conjunto de datos de validación: incluir un conjunto de datos de validación deshabilitará la capacidad de seleccionar una columna de tiempo y viceversa.
+ 
 ![datasets-split-ratio-diagram](assets/datasets-split-ratio-diagram.jpg)
+ 
+Otra parte del entrenamiento de modelos es ajustar y afinar los modelos. Para el ajuste y afinación, los hiper parámetros deben ajustarse y la validación cruzada debe llevarse a cabo utilizando sólo los datos del entrenamiento. Se deberán probar varios valores de hiper parámetros. "Un hiper parámetro es un parámetro que se establece antes de que comience el proceso de aprendizaje. Estos parámetros son ajustables y pueden afectar directamente qué tan bien se entrena un modelo. Un ejemplo de hiper parámetro en el machine learning es la tasa de aprendizaje" [7]. Con la validación cruzada, se utiliza todo el conjunto de datos, y cada modelo se entrena en un subconjunto diferente de los datos de entrenamiento [8]. Además, se establecerá un ciclo de validación cruzada para calcular la puntuación de validación cruzada para cada conjunto de híper parámetros para cada algoritmo. Basado en la puntuación de validación cruzada y los valores de híper parámetro, puede seleccionar el modelo (recuerde que "un modelo en Machine Learning es la salida de un algoritmo de Machine Learning ejecutado en datos. Representa lo que aprendió un algoritmo de machine learning" [9] ) para cada algoritmo que se haya ajustado con datos de entrenamiento y pruébelo usando su conjunto de prueba.
 
-Another part of model training is fitting and tuning the models. For fitting and tuning, hyperparameters need to be tuned, and cross-validation needs to take place using only the training data. Various hyperparameter values will need to be tested. "A hyperparameter is a parameter that is set before the learning process begins. These parameters are tunable and can directly affect how well a model trains. An example of hyperparameter in machine learning is the learning rate" [7]. With cross-validation, the whole dataset is utilized, and each model is trained on a different subset of the training data [8]. Additionally, a cross-validation loop will be set to calculate the cross-validation score for each set of hyperparameters for each algorithm. Based on the cross-validation score and hyperparameter values, you can select the model(remember that "a model in ML is the output of a machine learning algorithm run on data. It represents what was learned by a machine learning algorithm" [9]) for each algorithm that has been tuned with training data and tested with your test set.
+### ¿Cuáles son los desafíos al desarrollar un modelo de IA?
+ 
+Uno de los desafíos importantes es desarrollar un solo modelo listo para la producción. Desarrollar un modelo implica la Ingeniería de características, construcción del modelo, y la implementación del modelo. Todas las tareas son muy repetitivas, que consumen tiempo, requieren un conocimiento avanzado de generación de características, algoritmos, parámetros, y la implementación del modelo. Finalmente, necesita haber un profundo conocimiento y confianza en cómo el modelo se generó para explicar y justificar cómo el modelo tomó sus decisiones.
+ 
+### ¿Qué es Automatic Machine Learning, y por qué es tan importante?
+ 
+AutoML o Aprendizaje de Máquina Automatizado es el proceso de automatización para la selección de algoritmos, generación de características, ajuste de hiper parámetros, modelado iterativo, y la evaluación del modelo. Herramientas de AutoML, como son H2O Driverless AI hace más fácil entrenar y evaluar los modelos de Aprendizaje de Máquina. La automatización de las tareas repetitivas del desarrollo de Machine Learning permite a las personas en la industria enfocarse en los datos y los problemas de negocios que están tratando resolver.
+ 
+ 
+### Referencias Electrónicas
 
-### What are the challenges in AI Model Development?
+[1] [Curso intensivo de machine learning de Google](https://developers.google.com/machine-learning/crash-course/training-and-test-sets/splitting-data)
 
-One of the significant challenges faced in developing a single production-ready model is that it can take weeks or months to build it. Developing a model involves feature engineering, model building, and model deployment. All tasks are very repetitive, time-consuming, require advanced knowledge of feature generation, algorithms, parameters, and model deployment. Finally, there needs to be in-depth knowledge and confidence in how the model was generated to explain and justify how the model made its decisions.
+[2] [Acerca de los conjuntos de entrenamiento, validación y prueba en el machine learning](https://towardsdatascience.com/train-validation-and-test-sets-72cb40cba9e7)
 
+[3] [Introducción a la ciencia de datos: limpieza de datos](https://elitedatascience.com/data-cleaning)
 
-### What is Automated Machine Learning, and why is it important?
+[4] [Ingeniería de funciones](https://elitedatascience.com/feature-engineering)
 
-AutoML or Automated Machine Learning is the process of automating algorithm selection, feature generation, hyperparameter tuning, iterative modeling, and model assessment. AutoML tools such as H2O Driverless AI makes it easy to train and evaluate machine learning models. Automating the repetitive tasks of Machine Learning Development allows people in the industry to focus on the data and the business problems they are trying to solve. 
+[5] [Hacia la ciencia de datos: aprendizaje supervisado frente a no supervisado](https://towardsdatascience.com/supervised-vs-unsupervised-learning-14f68e32ea8d)
 
+[6] [Seleccionar el mejor algoritmo de machine learning para su problema de regresión](https://towardsdatascience.com/selecting-the-best-machine-learning-algorithm-for-your-regression-problem-20c330bad4ef)
 
-### References
-[1] [Google’s Machine Learning Crash Course](https://developers.google.com/machine-learning/crash-course/training-and-test-sets/splitting-data)
+[7] [IA profunda: ¿qué es un hiperparámetro?](https://deepai.org/machine-learning-glossary-and-terms/hyperparameter)
 
-[2] [About Train, Validation and Test Sets in Machine Learning](https://towardsdatascience.com/train-validation-and-test-sets-72cb40cba9e7)
+[8] [Driverless AI de H2O.ai: técnica de validación interna](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/internal-validation.html?highlight=cross%20validation)
 
-[3] [Data Science Primer - Data Cleaning](https://elitedatascience.com/data-cleaning)
+[9] [Diferencia entre algoritmo y modelo en el machine learning](https://machinelearningmastery.com/difference-between-algorithm-and-model-in-machine-learning/)
 
-[4] [Feature Engineering](https://elitedatascience.com/feature-engineering) 
+### Exploración más Profunda y Recursos
 
-[5] [Towards Data Science- Supervised vs Unsupervised Learning](https://towardsdatascience.com/supervised-vs-unsupervised-learning-14f68e32ea8d) 
+- [Explore las repeticiones de H2O World en todo el mundo](https://www.h2o.ai/h2oworldnewyork/)
 
-[6] [Selecting the best Machine Learning Algorithm for your regression problem](https://towardsdatascience.com/selecting-the-best-machine-learning-algorithm-for-your-regression-problem-20c330bad4ef)
+- [Explore las repeticiones del seminario web](https://www.brighttalk.com/search/?q=driverless+ai)
 
-[7] [Deep AI - What is a hyperparameter?](https://deepai.org/machine-learning-glossary-and-terms/hyperparameter)
-
-[8] [H2O.ai's Driverless AI - Internal Validation Technique](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/internal-validation.html?highlight=cross%20validation)
-
-[9] [Difference between Algorithm and Model in Machine Learning](https://machinelearningmastery.com/difference-between-algorithm-and-model-in-machine-learning/)
-### Deeper Dive and Resources
-
-- [Explore the replays from H2O World Around the World](
-https://www.h2o.ai/h2oworldnewyork/) 
-- [Explore the Webinar Replays](
-https://www.brighttalk.com/search/?q=driverless+ai) 
-- [Explore the various H2O Driverless AI playlists on YouTube](https://www.youtube.com/user/0xdata/playlists) 
+- [Explore las diversas listas de reproducción de Driverless AI H2O en YouTube](https://www.youtube.com/user/0xdata/playlists)
 
 
-## Task 3: Load Data
+## Tarea 3: Cargar Datos
 
-### What is the Driverless AI Workflow?
+### ¿Cuál es el flujo del trabajo de Driverless AI?
+ 
+El flujo del trabajo típico de Driverless AI es:
+ 
+1. Cargar datos
+2. Visualizar datos
+3. Ejecutar un experimento
+4. Interpretar el modelo
+5. Desplegar pipeline de puntuación
 
-The typical Driverless AI workflow is to:
-
-1. Load data
-2. Visualize data
-3. Run an experiment
-4. Interpret the model
-5. Deploy the scoring pipeline
-
-In addition, you can diagnose a model, transform another dataset, score the model against antoher dataset and manage your data in Projects. The focus of this tutorial will be in steps 1 - 4. The other aspects of the Driverless AI will be covered in other tutorials found in the Driverless AI learning path. We will start with loading the data. 
-
+ Además, puedes diagnosticar un modelo, transformar otro conjunto de datos, calificar el modelo con respecto a otro conjunto de datos y administrar sus datos en los Proyectos. El enfoque de este tutorial estará en los pasos del 1 al 4. Los otros aspectos de Driverless AI se cubrirán en otros tutoriales que se encuentran en la ruta de aprendizaje de Driverless AI. Comenzaremos por empezar a cargar los datos.
+ 
 ![typical-driverless-ai-workflow](assets/typical-driverless-ai-workflow.jpg)
-
-1\. Navigate back to the H2O Driverless AI **Datasets** page.
-
-### About the Dataset
-
-The dataset used for this experiment is a version of the Titanic Kaggle dataset. This dataset contains the list of estimated passengers aboard the RMS Titanic.
-
-The RMS Titanic was a British commercial passenger liner that sank after colliding with an iceberg in the North Atlantic Ocean on April 15, 1912. More than 1,500 people lost their lives from an estimated 2,224 passengers and crew members while on their way to New York City from Southampton. 
-
-This tragedy shooked the international community and led to better safety regulations for ships. The lack of lifeboats, amongst other things, was one of the factors that resulted in a significant loss of life. Although there was some element of luck involved in surviving the sinking, some groups of people were more likely to survive than others.
-
+ 
+1\. Regresa a la página H2O Driverless **AI Datasets**.
+ 
+### Información del conjunto de datos
+ 
+El conjunto de datos usados en este experimento es una versión de datos elaborado por Kaggle. Este conjunto de datos contiene una lista de los pasajeros a bordo del RMS Titanic. El RMS Titanic fue un transatlántico británico que se hundió tras colisionar con un iceberg al norte del océano Atlántico el 15 de abril de 1912. Más de 1500 personas perdieron la vida de un estimado de 2,224 pasajeros y miembros de la tripulación, cuando estaban en camino a la marítima de Southampton en la Ciudad de Nueva York. Esta tragedia impactó a la comunidad internacional, lo que impulsó mejores medidas de seguridad para barcos. La falta de botes salvavidas entre otras cosas, fue uno de los factores determinantes en la pérdida de vidas. Sin embargo, hubo algunos elementos que influyeron para que hubiera sobrevivientes.
+ 
 ![rms-titanic](assets/rms-titanic.jpeg)
-
+ 
 [RMS Titanic-Wikipedia](https://en.wikipedia.org/wiki/RMS_Titanic#/media/File:RMS_Titanic_3.jpg)
+ 
+**Titanic: conjunto de datos**
+ 
+Conjunto de datos del Titanic: En el conjunto de datos encontrarás 1,309 filas, una fila por cada pasajero, y 16 columnas que representan los atributos de cada pasajero.
 
-**Titanic dataset**:
-
-1309 rows, one row per passenger, and 16 columns representing attributes of each passenger:
-
-|Attribute|Definition|Key|
+|Atributos |Definición | Código |
 |---|---|---|
-|passenger Id|Id randomly generated| - |
-|pclass|Passenger Class| 1= 1st, 2 =2nd, 3=3rd|
-|survived|Survival| 0=No, 1=Yes|
-|name_with_salutations|Passenger name| - |
-|name_without_salutations|Passenger name without salutations| - |
-|sex|Sex|Female, Male|
-|age|Age in years| - |
-|sibsp|Number of siblings/Spouse aboard| - |
-|parch|Number of Parents/Children aboard| - |
-|ticket|Ticket number| - |
-|fare|Passenger fare| - |
-|cabin|Cabin number| - |
-|embarked|Port of Embarkment|C = Cherbourg, Q = Queenstown, S = Southampton|
-|boat|Boat number| - |
-|body|Body number| - |
-|home.des|Home Destination| - |
-
-
-### Add the Data 
-
-1\. Click on **Add a Dataset(or Drag and Drop)**  
-
-2\. Select **FILE SYSTEM**
-
+|Atributos |Definición | Código |
+|passenger Id|Identificador generado aleatoriamente| - |
+|pclass|Clase del pasajero| 1= Primera, 2 = Segunda, 3= Tercera|
+|survived|Sobrevivió| 0=No, 1=Si|
+|name_with_salutations|Nombre del pasajero| - |
+|name_without_salutations|Nombre del pasajero sin título personal| - |
+|sex|Sexo|Female=Mujer, Male=Hombre|
+|age|Edad en años| - |
+|sibsp|Numero de parentesco/Cónyuge abordo| - |
+|parch|Número de padres/hijos abordo| - |
+|ticket|Número de boleto| - |
+|fare|Tarifa de pasajero| - |
+|cabin|Número de cabina| - |
+|embarked|Puerto de embarque|C = Cherbourg, Q = Queenstown, S = Southampton|
+|boat|Número de bote| - |
+|body|Numero de cuerpo| - |
+|home.des|Destino| - |
+ 
+### Agregar los datos
+ 
+1\. Presiona en **Add a Dataset(or Drag and Drop) (Agregar un conjunto de datos (o arrastrar y soltar))**
+ 
+2\. Selecciona **FILE SYSTEM (SISTEMA DE ARCHIVO)**
+ 
 ![add-dataset-file-system](assets/add-dataset-file-system.jpg)
+ 
+3\. Ingresa los siguiente
 
-3\. Enter the following:
-1. ```/data/TestDrive/titanic.csv``` into the search bar
-2. Select ```titanic.csv``` 
-3. **Click to Import Selection**. 
-
-    ![select-titanic-dataset](assets/select-titanic-dataset.jpg)
-
-
-4\. If the file loaded successfully, then you should see an  image similar to the one below:
-
+1. /data/TestDrive/titanic.csv en la barra de búsqueda.
+2. Selecciona titanic.csv
+3. Luego haga clic aquí: **Click to Import Selection**.
+ 
+![select-titanic-dataset](assets/select-titanic-dataset.jpg)
+ 
+4\. Si el archivo se cargó con éxito deberías de ver lo siguiente o algo similar al 67o que se encuentra en la imagen de abajo:
+ 
 ![titanic-set-overview](assets/titanic-set-overview.jpg)
+ 
+**Notas**
+ 
+1. Podrás ver en cada columna:
+ 
+    - **File name**: Nombre del archivo del conjunto de datos
+    - **File Path**: Ruta del archivo
+    - **File Size**: Tamaño del archivo
+    - **Rows**: Número de filas o Rows
+    - **Columns**: Número de columnas
+    - **Status**: Estado del archivo
+    - **Created**: Archivo creado, incluye el día y la hora cuando fue creado
+ 
+2. La opción para regresar a la página anterior
+ 
+### Más información y recursos
+ 
+- [Aprende más sobre los tipos de formatos para archivos de conjunto de datos que se pueden cargar](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/datasets.html#adding-datasets)
+ 
+- Para descubrir más conjunto de datos, revisa [el conjunto de datos Kaggle](https://www.kaggle.com/datasets)
 
-*Things to Note:*
+## Tarea 4: Explora los Detalles de Datos y AutoViz
 
-1. You can view:
+### Detalles
 
-    - File name
-    - File path
-    - File size
-    - Number of rows/columns 
-    - File status
-    - Date created
+Ahora vamos a explorar el conjunto de datos Titanic que acabamos de cargar.
 
-2. Option to go back to the previous page  
-
-### Deeper Dive and Resources
-
-- [Learn More About the Type of Dataset File Formats that can be Uploaded](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/datasets.html#adding-datasets) 
-
-- For more datasets, check out [Kaggle Datasets](https://www.kaggle.com/datasets)
-
-## Task 4: Explore Data Details and AutoViz
-
-### Details
-
-We are now going to explore the Titanic dataset that we just loaded. 
-
-1\. Continuing on the **Dataset Overview page**, click on the titanic.csv dataset. The following options will appear:
+1\. Continuando en Dataset Overview page (página de descripción general del conjunto de datos), haga clic en el conjunto de datos titanic.csv. Aparecerán las siguientes opciones:
 
 ![titanic-set-actions](assets/titanic-set-actions.jpg)
 
-1. The dataset we imported in task 3
+1. El conjunto de datos que importamos en la tarea 3
 
-2. Options:
-    - Details - View a summary of the dataset or preview the dataset
-    - Visualize - Visualize the dataset with available graphs
-    - Split - Split the dataset
-    - Predict - Run an experiment using Driverless AI
-    - Rename - Rename the dataset
-    - Download - Download the dataset
-    - Display Logs
-    - Delete - Delete the dataset 
+2. Opciones:
 
-**Note**: A dataset can only be deleted if it's not being used in an experiment. Otherwise, you must delete the experiment first, and then the dataset.
+- **Details (Detalles)** - Vea un resumen del conjunto de datos y obtenga una vista previa del conjunto de datos
+- **Visualize (Visualizar)** - Visualiza el conjunto de datos con gráficos disponibles
+- **Split (Dividir)** - Dividir el conjunto de datos
+- **Predict (Predecir)** - Ejecute un experimento usando Driverless AI
+- **Rename (Cambiar Nombre)** - Cambiar el nombre del conjunto de datos
+- **Download (Descargar)** - Descargar el conjunto de datos
+- **Display Logs** - Mostrar Logaritmo 
+- **Delete (Eliminar)** - Eliminar el conjunto de datos
 
-2\. Next, we are going to confirm that the dataset loaded correctly and that it has the correct number of rows and columns by clicking on **Details**.
+**Nota**: Un conjunto de datos solo se puede eliminar si no se está utilizando en un experimento. De lo contrario, primero debe eliminar el experimento y luego se puede eliminar el conjunto de datos.
 
-3\. Click on **Details**.  **Details** will take you to the **Dataset Details Page**
- 
+2\. A continuación, confirmaremos que el conjunto de datos se cargó correctamente y que tiene el número correcto de filas y columnas haciendo clic en Details (detalles).
+
+3\. Haga clic en Details. Details lo llevará a Dataset Details Page (Página de detalles del conjunto de datos)
+
  ![titanic-set-details-page](assets/titanic-set-details-page.jpg)
 
-*Things to Note:*
+*Cosas para tener en cuenta:*
 
-1. The **Dataset Details Page** provides a summary of the dataset. 
+1. La página de detalles del conjunto de datos proporciona un resumen del conjunto de datos.
 
-    - View the first 20 rows of a column by hovering over the column name (see image below)
+    - Vea las primeras 20 filas de una columna colocando el cursor sobre el nombre de la columna (vea la imagen a continuación)
 
 ![datasets-details-first-20-rows.jpg](assets/datasets-details-first-20-rows.jpg)
 
-**Note**: Driverless AI recognizes the following column types: integer, string, real, boolean, and time. Date columns are given a string "str" type.
+**Nota**: Driverless AI reconoce los siguientes tipos de columna: integer (entero), string (cadena de texto), real (real), boolean (booleano) y time (tiempo). Las columnas de Date (fecha) reciben un tipo de "str (cadena de texto)".
 
-2. You can view information for a specific column by entering the name of the column in the field above the graph.
+2. Puede ver la información de una columna específica ingresando el nombre de la columna en el campo sobre el gráfico.
 
-3. **Modify by Recipe** allows you to create a new dataset by modifying an existing dataset with custom recipes. 
+3. **Modify by Recipe (Modificar por receta)** le permite crear un nuevo conjunto de datos modificando un conjunto de datos existente con recetas personalizadas.
 
-4. **Dataset Rows** allows you to preview the dataset
+4. **Dataset Rows (Filas de conjunto de datos)** le permite obtener una vista previa del conjunto de datos
 
-5. Option to exit and return to the H2O **Datasets** page
+5. Opción para salir y volver a la página **H2O Data Sets (Conjuntos de datos)**
 
-6. **Feature Props:** Allows you to change the column's logical type, and change the type of a column, consider the following steps:
+6. **Feature Props (Accesorios de funciones)**: le permite cambiar el tipo lógico de la columna y cambiar el tipo de una columna, considere los siguientes pasos:
 
-- **Click to Edit:**
+- **Haz clic para editar**:
 
 ![feature-props-click-to-edit](assets/feature-props-click-to-edit.jpg)
 
-- Select **Feature Engineering Type(s):** 
+- Seleccione los **tipos de ingeniería de funciones(Feature Engineering Types)**:
 
 ![feature-props-auto-to-detect](assets/feature-props-auto-detect.jpg)
 
-- Select column feature engineering types (then click **done** at the bottom of page):
+- Seleccione los tipos de ingeniería de características de columna (luego haga **clic** en Done (listo) en la parte inferior de la página):
 
 ![logical-type-options](assets/logical-type-options.jpg)
-*Things to Note:*
 
-1. "Start typing to filter our items"
+**Cosas a tener en cuenta:**
 
-2. Available feature engineering types
+1. "Empiece a escribir para filtrar nuestros artículos"
+2. Tipos de ingeniería de características disponibles
+3. Botón listo
 
-3. **Done** button
-
-4\. Select  **Dataset Rows**    
+4\. Seleccionar filas del conjunto de datos (Dataset Rows)
 
 ![titanic-set-rows-page](assets/titanic-set-rows-page.jpg)
 
-*Things to Note:*
- 1. Preview the dataset 
- 2. View the remaining rows
- 3. **Modify by Recipe** - Modify the dataset through a custom recipe or live code (manually enter custom recipe code to use to modify the dataset)
- 3. Return to the **Dataset Overview** 
- 4. Option to Exit and return to the H2O **Datasets** page
+*Cosas para tener en cuenta:*
 
-5\. Exit and return to **Datasets Overview** page.
+1. Vista previa del conjunto de datos
+2. Ver las filas restantes
+3. Modificar por receta: modifique el conjunto de datos a través de una receta personalizada o un código en vivo (ingrese manualmente el código de receta personalizado para usar para modificar el conjunto de datos)
+4. Regrese a Dataset Overview (Descripción general del conjunto de datos)
+5. Opción para salir y volver a la página H2O Datasets
 
-### Split the Dataset
+5\. Salga y regrese a la página Datasets Overview.
 
-From the Titanic.csv dataset, we are going to create two datasets, training and test. 75% of the data will be used for training the model, and the other 25% will be use to test the trained model.
 
-1\. Click on the titanic.csv file and select **Split** 
+### Dividir el conjunto de datos
+
+Al partir el conjunto de datos Titanic.csv, vamos a crear dos conjuntos de datos, uno de entrenamiento y uno de prueba. El 75% de los datos se utilizarán para entrenar el modelo y el 25% para probar el modelo entrenado.
+
+1. Haga clic en el archivo titanic.csv y seleccione Split
 
 ![titanic-set-split-1](assets/titanic-set-split-1.jpg)
 
-2\. Split the data into two sets: ```titanic_train``` and ```titanic_test```, then save the changes. Use the image below as a guide: 
+2. Divida los datos en dos conjuntos: ```titanic_train (titanic_entrenamiento)``` y ```titanic_test (titanic_prueba)```, luego guarde los cambios. Use la imagen a continuación como guía:
 
 ![titanic-set-split-2](assets/titanic-set-split-2.jpg)
 
-*Things to Note:*
+*Cosas para tener en cuenta:*
 
-1. For OUTPUT NAME 1: enter ```titanic_train``` (this will serve as the training set)
-2. For OUTPUT NAME 2: enter ```titanic_test``` (this will serve as the test set)
-3. You can change the Random Seed; this will generate the same split every time
-4. Change the split value to .75 by adjusting the slider to 75% or entering .75 in the section that says *Train/Valid Split Ratio*
-5. Save the changes you made 
+1. Para OUTPUT NAME 1: ingrese titanic_train (esto servirá como conjunto de entrenamiento)
 
-The split ratio of .75 (75% for the training set and 25% fo the test set) was selected for this particular dataset to not generalize the model given the total size of the set.
+2. Para OUTPUT NAME 2: ingrese titanic_test (esto servirá como el conjunto de prueba)
 
-**The training set** contains 981 rows, each row representing a passenger, and 16 columns representing the attributes of each passenger.
+3. Puede cambiar Random Seed (semilla aleatoria); esto generará la misma división cada vez
 
-**The Test set** contains 328 rows, each row representing a passenger, and 16 attribute columns representing attributes of each passenger. 
+4. Cambie el valor de división a .75 ajustando el control deslizante a 75% o ingresando .75 en la sección que dice Train/Valid Split Ratio(Entrenamiento / Relación de división válida)
 
-Verify that the three Titanic datasets, titanic_test, titanic_train and titanic.csv are there:
+5. Guarda los cambios que hiciste
+
+Se seleccionó la proporción de división de .75 (75% para el conjunto de entrenamiento y 25% del conjunto de prueba) para este conjunto de datos en particular para no generalizar el modelo dado el tamaño total del conjunto.
+
+The training set (El conjunto de entrenamiento) contiene 981 filas, cada fila representa un pasajero y las 16 columnas de atributos representan los atributos de cada pasajero.
+The Test set (El conjunto de prueba) contiene 328 filas, cada fila representa un pasajero y las 16 columnas de atributos representan los atributos de cada pasajero. 
+
+Verifique que los tres conjuntos de datos Titanic, titanic_test, titanic_train y titanic.csv estén allí:
+
 
 ![three-datasets](assets/three-datasets.jpg)
 
-### Autoviz
+## Autoviz
 
-Now that the titanic.csv dataset has been split, we will use the **titanic_train** set for the remaining of the tutorial.
+Ahora que el conjunto de datos titanic.csv se ha dividido, utilizaremos el conjunto titanic_train para el resto del tutorial.
 
-There are two ways to visualize the training set:
+Hay dos formas de visualizar el conjunto de entrenamiento:
 
 ![titanic-train-visualize](assets/titanic-train-visualize.jpg)
 
-**Method 1** : Clicking on the **titanic_train** file, select **Visualize**, then click on the visualization file generated.
+**Método 1:** haciendo clic en el archivo titanic_train, seleccione Visualize, luego haga clic en el archivo de visualización generado.
 
-**Method 2**: Clicking on  **Autoviz** located at the top of the UI page, where you will be asked for the dataset you want to visualize.
+**Método 2:** haciendo clic en Autoviz ubicado en la parte superior de la página de la interfaz de usuario, donde se le pedirá el conjunto de datos que desea visualizar.
 
-1\. Pick a method to visualize the **titanic_train** dataset. A similar image should appear:
+1\. Elija un método para visualizar el conjunto de datos titanic_train. Debería aparecer una imagen similar:
 
 ![train-set-visualization-ready](assets/train-set-visualization-ready.jpg)
 
-Click on the **titanic_train** visualization, and the following screen will appear.
+Haga clic en la visualización titanic_train y aparecerá la siguiente pantalla.
 
 ![train-set-visualizations](assets/train-set-visualizations.jpg)
 
-Is it possible to visualize how variables on the training set are correlated? Can we determine what other variables are strongly correlated to a passenger's survival? The answer to those questions is yes! One of the graphs that allow us to visualize the correlations between variables is the **Correlation Graph**.
+¿Es posible visualizar cómo se correlacionan las variables en el conjunto de entrenamiento? ¿Podemos determinar qué otras variables están fuertemente correlacionadas con la supervivencia de un pasajero? ¡La respuesta a esas preguntas es sí! Uno de los gráficos que nos permite visualizar las correlaciones entre variables es el Correlation Graph (Gráfico de correlación).
 
-Let's explore the correlation between the 'survived' variable and other variables in the dataset.
+Exploremos la correlación entre la variable 'survived' (sobreviviente) y otras variables en el conjunto de datos.
 
-2\. Select the **Correlation Graph** and then click on **Help** located at the lower-left corner of the graph. 
+2\. Seleccione Correlation Graph y luego haga clic en Help (ayuda) ubicado en la esquina inferior izquierda del gráfico.
 
-3\. Take a minute to read about how the correlation graph was constructed.  Learn more about how variables are color-coded to show their correlations. 
+3\. Tómese un minuto para leer acerca de cómo se construyó el gráfico de correlación. Obtenga más información sobre cómo las variables están codificadas por colores para mostrar sus correlaciones.
 
-4\. Take the 'survived' variable and drag it slightly to have a better look at the other variables Driverless AI found it is correlated to. 
+4\. Tome la variable 'survived (sobreviviente)' y arrastrela un poco para ver mejor las otras variables con las que Driverless AI descubrió que está correlacionada.
 
-What variables are strongly correlated with the 'survived' variable?
+¿Qué variables están fuertemente correlacionadas con la variable 'survived'?
 
 ![train-set-correlation-graph](assets/train-set-correlation-graph.jpg)
 
-*Things to Note:*
+Cosas para tener en cuenta:
 
- - The **Help** button explains the **Correlation Graph**. This feature is available for all graphs.
- - **Download** allows for a full-scale image of the graph to be downloaded
+- El botón Help explica el Correlation Graph. Esta característica está disponible para todos los gráficos.
+- Download (Descargar) permite descargar una imagen a escala completa del gráfico.
 
-5\. Exit out of the **Correlation Graph** view by clicking on the **X** at the top-right corner of the graph.
+5\. Salga de la vista Correlation Graph haciendo clic en X en la esquina superior derecha del gráfico.
 
-6\. After you are done exploring the other graphs, go back to the **datasets page**.
+6\. Una vez que haya terminado de explorar los otros gráficos, regrese a la datasets page (página de conjuntos de datos).
 
-Driverless AI  shows the graphs that are "relevant" aspects of the data. The following are the type of graphs available:
+Driverless AI muestra los gráficos que son aspectos relevantes a los datos. Los siguientes son los tipos de gráficos disponibles: test
 
-- Correlated Scatterplots
-- Spikey Histograms
-- Skewed Histograms
-- Varying Boxplots
-- Heteroscedastic Boxplots
-- Biplots
-- Outliers
-- Correlation Graph
-- Parallel Coordinates Plot
-- Radar Plot
-- Data Heatmap
-- Missing Values Heatmap
-- Gaps Histogram
+- Correlated Scatterplots (Diagramas de dispersión correlacionados)
+- Spikey Histograms (Histogramas puntiagudos)
+- Skewed Histograms (Histogramas sesgados)
+- Varying Boxplots (Varias parcelas)
+- Heteroscedastic Boxplots (Diagramas de caja heterocedásticos)
+- Biplots (Biplots)
+- Outliers (Valores atípicos)
+- Correlation Graph (Gráfico de correlación)
+- Parallel Coordinates Plot (Trazado de coordenadas paralelas)
+- Radar Plot (Gráfico de radar)
+- Data Heat Map (Mapa de calor de datos)
+- Missing Values Heatmap (Mapa de calor de valores perdidos)
+- Gaps Histogram (Brechas Histograma)
 
+### Inmersión más Profunda y Recursos
 
-### Deeper Dive and Resources
+- [Obtenga más información sobre la visualización automática de los documentos sin controlador](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/datasets.html#visualizing-datasets)
 
-- [Learn more about Automatic Visualization from the H2O Driverless AIdocs](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/datasets.html#visualizing-datasets)
+- [Obtenga más información sobre la visualización automática del arquitecto Leland Wilkinson, científico jefe de H2O.ai de la sesión en el video de YouTube de H2O World 2017](https://www.youtube.com/watch?v=bas3-Ue2qxc)
 
-- [Learn more about Automatic Visualization from the architect Leland Wilkinson, Chief Scientist, H2O.ai from session at H2O World 2017 Youtube Video](https://www.youtube.com/watch?v=bas3-Ue2qxc)
+- [Visualización automática SlideShare](https://www.slideshare.net/0xdata/automatic-visualization)
 
-- [H2O.ai Automatic Visualization by Leland Wikinson (SlideShare)](https://www.slideshare.net/0xdata/automatic-visualization)
+## Tarea 5: Lanza el Primer Experimento
 
-## Task 5: Launch First Experiment
+Vamos a lanzar nuestro primer experimento. Lanzar un experimento significa que vamos a generar una predicción utilizando un conjunto de datos de nuestra elección.
 
-We are going to launch our first experiment. An experiment means that we are going to generate a prediction using a dataset of our choice.
+1\. Regrese a la página Dataset Overview page
 
-1\. Return to  the **Dataset Overview page**
-
-2\. Click on the **titanic_train** dataset then select **Predict**
+2\. Haga clic en el conjunto de datos titanic_train y luego seleccione Predict
 
 ![titanic-train-predict](assets/titanic-train-predict.jpg)
 
-If this is your first time launching an experiment, the following prompt will appear, asking if you want to take a tour.  
+Si es la primera vez que inicia un experimento, aparecerá el siguiente mensaje que le preguntará si desea realizar un recorrido.
 
 ![driverless-tour](assets/driverless-tour.jpg)
 
-If you would like to take a quick tour of the **Experiments** page, select **YES**, the quick tour will cover the following items:
+Si desea realizar un recorrido rápido por la página Experiments (Experimentos), seleccione YES (Si). El recorrido rápido cubrirá los siguientes elementos:
 
-- Select the training dataset 
-- Select the target column that you want Driverless AI to predict from all columns
-- Select if it is a Time Series problem or not [Time Series ON or OFF]
+- Seleccione el conjunto de datos de entrenamiento
+- Seleccione la columna que desee que Driverless AI prediga entre todas las columnas
+- Seleccione si es un problema de serie temporal o no [Time Series ON or OFF] ([Serie temporal activada o desactivada])
 
-3\. Select **Not Now** to come back and take the tour at another time.
+3\. Seleccione Not Now (ahora no) para regresar y hacer el recorrido en otro momento.
 
-4\. The following  **Experiment** page will appear:
+4\. Aparecerá la siguiente página Experiment (Experimento):
 
 ![train-set-experiment-page](assets/train-set-experiment-page.jpg)
 
-*Things to Note:*
+*Cosas para tener en cuenta:*
 
-0. Assistant - Interactive tour for first-time users. 
-Click on  **assistant** to enable it. Yellow circles appear around selected sections of the experiment setup page. You can hover any of them to get more info on each section. 
+1. Assistant (Asistente): recorrido interactivo para usuarios nuevos. Haga clic en assistant (asistente) para habilitarlo. Apareceran círculos amarillos alrededor de las secciones seleccionadas de la página de configuración del experimento. Puede seleccionar cualquiera de ellos para obtener más información sobre cada sección.
 
-Note: To disable **assistant**, click on assistant again.
+**Nota**: Para inhabilitar assistant, haga clic en asistente nuevamente.
 
 ![titanic-train-assist-sample](assets/titanic-train-assist-sample.jpg)
- 
-1. **Display Name** - Opcional: especifique un nombre para mostrar para el nuevo experimento. No hay restricciones de caracteres o longitud para nombrar. Si este campo se deja en blanco, Driverless AI generará automáticamente un nombre para el experimento.
-2. **Dataset** - The name of the dataset being used to create an experiment
-3. **Rows** - Total number of rows 
-4. **Columns** - Total number of columns 
-5. **Dropped Columns** - Drop column(s) from your dataset that you don't want to use in the experiment. For more information see the H2O.ai documentation [here](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#dropped-columns).
-6. **Validation Dataset** - Select the dataset you want to validate. This set will be used to validate parameters like models, features, etc. For more information see the H2O.ai documentation [here](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#validation-dataset).
-7. **Test Dataset** - The dataset that will be used to test the model generated from the training dataset. It's not used during training of the model, and results are available at the end of the experiment.For more information see the H2O.ai documentation [here](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#test-dataset).
-8. **Target column** -  What do you want to predict? 
-9. **Fold column** - The fold column is used to create the training and validation datasets so that all rows with the same Fold value will be in the same dataset. This column will be used if no validation dataset is provided and the model is trained using cross validation. For more information see the H2O.ai documentation [here](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#fold-column).
-10. **Weight column** - Column that indicates the observation/isntance weight (a.k.a. sample or row weight), if applicable. For more information see the H2O.ai documentation [here](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#weight-column).
-11. **Time Column**(OFF by default) - Provides a time order(timestamps for observations). Used when data has a high dependency on time (such as seasonality or trend), and you want to treat this problem as a time series problem. For more information see the H2O.ai documentation [here](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#time-column).
 
-Continuing with our experiment:
+1. Display Name (Nombre para mostrar) - De un nombre a su experimento Titanic Classification Tutorial.
+2. Dataset (Conjunto de datos) - El nombre del conjunto de datos que se utilizara para crear un experimento
+3. Rows (Filas) - Número total de filas
+4. Columns (Columnas) - Número total de columnas
+5. [Dropped Columns (Columnas eliminadas)](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#dropped-columns) - Elimine las columnas de su conjunto de datos que no desea usar en el experimento
+6. [Validation Dataset (Conjunto de datos de validación)](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#validation-dataset) - Seleccione el conjunto de datos que desea usar para validar. Este conjunto se usará para validar parámetros como modelos, características, etc.
+7. [Test Dataset (Conjunto de datos de prueba)](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#test-dataset) - El conjunto de datos que se utilizará para probar el modelo generado usando el conjunto de datos de entrenamiento. No se usa durante el entrenamiento del modelo, y los resultados están disponibles al final del experimento.
+8. Target Column (Columna objetivo) - ¿Qué quieres predecir?
+9. [Fold column(Columna de plegado)](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#fold-column) - La columna de plegado se utiliza para crear los conjuntos de datos de capacitación y validación para que todas las filas con el mismo valor de plegado estén en el mismo conjunto de datos
+10. [Weight column (Columna de peso)](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#weight-column) - Columna que indica el peso de observación (también conocido como peso de muestra o fila), si corresponde.
+11. [Time Column (Columna de tiempo) (DESACTIVADO de forma predeterminada)](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#time-column): proporciona un orden de tiempo (marcas de tiempo para las observaciones). Se usa cuando los datos tienen una alta dependencia del tiempo (como la estacionalidad o tendencia), y desea tratar este problema como un problema de serie temporal.
 
-Name your experiment as follows : `Titanic Classification Tutorial`
+Continuando con nuestro experimento:
 
-5\. Click **Dropped Columns**, drop the the following columns: Passenger_Id, name_with_salutations, name_without_salutations, boat, body and home.dest. Then select **Done**. 
+Nombre su experimento de la siguiente manera: `Tutorial de Clasificación Titanic`
+
+5\. Haga clic en Dropped Columns, retire las siguientes columnas: Passenger_Id (Id. De pasajero), name_with_salutations (nombre_con_saludos), name_without_salutations (nombre_sin_saludos), boat (bote), body (cuerpo) y home.dest (destino de origen). Luego seleccione Done (Listo).
 
 ![train-set-drop-columns](assets/train-set-drop-columns.jpg)
 
-These attributes (columns) were removed to create a cleaner dataset. Attributes such as boat and body are excluded because they are clear indicators that a passenger survived and can lead to data leakage. For our experiment, the survived column will suffice to create a model. 
+Estos atributos (columnas) se eliminaron para crear un conjunto de datos más limpio. Los atributos como el bote y el cuerpo están excluidos porque son indicadores claros de que un pasajero sobrevivió y pueden conducir a la fuga de datos. Para nuestro experimento, la columna de sobrevivencia será suficiente para crear un modelo.
 
-A clean dataset is essential for the creation of a good predictive model. The process of data cleansing needs to be done with all datasets to rid the set of any unwanted observations, structural errors, unwanted outliers, or missing data. 
+Un conjunto de datos limpios es esencial para la creación de un buen modelo de predicción. El proceso de limpieza de datos debe hacerse con todos los conjuntos de datos para eliminar cualquier conjunto de observaciones no deseadas, errores estructurales, valores atípicos no deseados o datos faltantes.
 
-6\. Select **Test Dataset** and then click on ```titanic_test```
+6\. Seleccione **Test Dataset** y luego haga clic en ```titanic_test```
 
 ![add-test-set](assets/add-test-set.jpg)
 
-7\. Now select the **Target Column**. In our case, the column will be 'survived.'
+7\. Ahora seleccione **Target Column**. En nuestro caso, la columna será 'survived' (sobrevivió).
 
 ![train-set-drop-name-column](assets/train-set-drop-name-column.jpg)
 
-The survived attribute was selected because, as an insurance company, we want to know what other attributes can contribute to the survival of passengers aboard a ship and incorporate that into our insurance rates.
+El atributo "sobrevivió" fue seleccionado porque, como empresa de seguros, queremos saber qué otros atributos pueden contribuir a la supervivencia de los pasajeros a bordo de un barco e incorporarlo a nuestras tarifas de seguro.
 
-8\. Your experiment page should look similar to the one below; these are the system suggestions:
+8\. Su página de experimento debería ser similar a la siguiente; Estas son las sugerencias del sistema:
+
 
 ![experiment-settings](assets/experiment-settings.jpg)
 
-*Things to Note:*
+Cosas para tener en cuenta:
 
-1. **Training Settings** - Describes the Accuracy, Time, and Interpretability of your specific experiment.  The knobs on the experiment settings are adjustable as values change the meaning of the settings on the left-bottom page change.
-    - **Accuracy** - As accuracy increases, Driverless AI gradually adjusts the method for performing the evolution and ensemble. At low accuracy, Driverless AI varies features and models, but they all compete evenly against each other. At higher accuracy, each independent main model will evolve independently and be part of the final ensemble as an ensemble over different main models. At higher accuracies, Driverless AI will evolve+ensemble feature types like Target Encoding on and off that evolve independently. Finally, at highest accuracies, Driverless AI performs both model and feature tracking and ensembles all those variations. Changing this value affects the feature evolution and final pipeline. For more information see the H2O.ai documentation [here](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-settings.html?highlight=accuracy%20setting#accuracy).
+1. Training Settings (Configuración de entrenamiento) - Describe la precisión, el tiempo y la interpretabilidad de su experimento específico. Las perillas en la configuración del experimento son ajustables a medida que los valores cambian el significado de la configuración en el cambio de página inferior izquierdo.
+    - [Accuracy (Precisión)](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-settings.html?highlight=accuracy%20setting#accuracy) - A medida que aumenta la precisión, Driverless AI ajusta gradualmente el método para realizar la evolución y el conjunto. Con baja precisión,Driverless AI varía en características y modelos, pero todos compiten de manera uniforme entre sí. Con mayor precisión, cada modelo principal independiente evolucionará de forma independiente y será parte del conjunto final como un conjunto sobre diferentes modelos principales. Con precisiones más altas, Driverless AI evolucionará más tipos de funciones de conjunto, como la codificación de destino, dentro y fuera, que evolucionan independientemente. Finalmente, con las precisiones más altas, Driverless AI realiza el seguimiento de modelos y características y combina todas esas variaciones. Cambiar este valor afecta la evolución de la característica y la canalización final.
+    - [Time (Tiempo)](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#time) - Esto especifica el tiempo relativo para completar el experimento (es decir, las configuraciones más altas tardan más). La detección temprana tendrá lugar si el experimento no mejora la puntuación para la cantidad especificada de iteraciones.
+    - [Interpretability (Interpretabilidad)](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#time) - Especifique la interpretabilidad relativa de este experimento. Los valores más altos favorecen modelos más interpretables. Cambiar el nivel de interpretabilidad afecta la estrategia de poda previa de la función, las restricciones de monotonicidad y el espacio de búsqueda de ingeniería de características.
+2. [Expert Settings (Configuración experta)](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/expert-settings.html#expert-settings) - Configuración experta disponible para personalizar su experimento.
+3. [Scorer (Anotador)](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/scorers.html) - Driverless AI selecciona al mejor anotador en función de su conjunto de datos. Se pueden seleccionar otros anotadores manualmente. (Explore más sobre los puntajes en el próximo tutorial: [Tutorial de puntaje y análisis de experimentos de machine learning - Enfoque financiero](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus))
+4. [Clasificación / Regresión](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#classification-regression-button) - Botón de clasificación o regresión. Driverless AI determina automáticamente el tipo de problema en función de la columna de destino. Aunque no se recomienda, puede anular esta configuración haciendo clic en este botón.
+5. [Reproducible](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#reproducible) - este botón le permite construir un experimento con una semilla aleatoria y obtener resultados reproducibles. Si esto está deshabilitado (predeterminado), los resultados variarán entre ejecuciones.
+6. [GPU habilitadas](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#enable-gpus) - especifique si desea habilitar las GPU. (Tenga en cuenta que esta opción se ignora en los sistemas solo con CPU)
+7. Launch Experiment (Lanzar experimento) - Inicia el experimento
+8. Create Leaderboard (Crear tabla de clasificación): la función Crear tabla de clasificación ejecuta varios experimentos diversos que brindan una descripción general del conjunto de datos. Esta función también le proporciona información relevante para decidir sobre la complejidad, la precisión, el tamaño y las compensaciones de tiempo al poner los modelos en producción. Consulte el tema Configuración experta (Expert Settings) para obtener información sobre la configuración experta que se puede utilizar para controlar esta función. Para obtener más información sobre los modelos predeterminados creados para una tabla de clasificación, consulte [Modelos de tabla de clasificación.](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/leaderboard.html?highlight=create%20leaderboard#leaderboard-models)
 
-    - **Time** - This specifies the relative time for completing the experiment (i.e., higher settings take longer). Early stopping will take place if the experiment doesn’t improve the score for the specified amount of iterations. For more information see the H2O.ai documentation [here](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#time).
-
-    - **Interpretability** -  Specify the relative interpretability for this experiment. Higher values favor more interpretable models. Changing the interpretability level affects the feature pre-pruning strategy, monotonicity constraints, and the feature engineering search space. For more information see the H2O.ai documentation [here](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#interpretability).
-
-2. **Expert Settings** - Available expert settings to customize your experiment. For more information see the H2O.ai documentation [here](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/expert-settings.html#expert-settings).
-3. **Scorer** - Driverless AI selects the best scorer based on your dataset. Other scorers can be manually selected. For more information see the H2O.ai documentation [here](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/scorers.html). (Explore more about scores in the next tutorial [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus))
-4. **Classification/Regression** - Classification or Regression button. Driverless AI automatically determines the problem type based on the target column. Though not recommended, you can override this setting by clicking this button. For more information see the H2O.ai documentation [here](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#classification-regression-button).
-6. **GPUs Enabled** - Specify whether to enable GPUs. (Note that this option is ignored on CPU-only systems). For more information see the H2O.ai documentation [here](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#enable-gpus).
-5. **Reproducible** - This button allows you to build an experiment with a random seed and get reproducible results. If this is disabled (default), the results will vary between runs. For more information see the H2O.ai documentation [here](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#reproducible).
-7. **Launch Experiment** - Launches the experiment
-8. **Create Leaderboard:** The Create Leaderboard feature runs multiple diverse experiments that provide an overview of the dataset. This feature also provides you with relevant information for deciding on complexity, accuracy, size, and time tradeoffs when putting models into production. Refer to the Expert Settings topic for information on expert settings that can be used to control this feature. For more information on the default models built for a leaderboard, see [Leaderboard Models](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/leaderboard.html?highlight=create%20leaderboard#leaderboard-models).
-
-
-9\. Update the following experiment settings so that they match the image below, then select **Launch Experiment**.
-
-- Accuracy: 4
-- Time: 2
-- Interpretability: 6
-- Scorer: AUC
+9\. Actualice la siguiente configuración del experimento para que coincida con la imagen a continuación, luego seleccione Launch Experiment.
+- Accuracy (Precisión): 4
+- Time (Tiempo): 2
+- Interpretability (Interpretability): 6
+- Scorer (Anotador): AUC
 
 ![update-experiment-settings](assets/update-experiment-settings.jpg)
 
-1. Here you can update the experiment settings
+1. Aquí puede actualizar la configuración del experimento.
+2. Haga clic en Launch Experiment; Usaremos "Crear tabla de clasificación en otros tutoriales".
 
-2. Click on Launch Experiment; We will be using "Create Leaderboard in other tutorials."
+Nota: Para iniciar un experimento: el conjunto de datos y la columna de destino son los elementos mínimos necesarios para iniciar un experimento.
 
-**Note**: To Launch an Experiment: The dataset and the target column are the minimum elements required to launch an experiment.
-
-10\. The **Experiment** page will look similar to the one below after 46% complete:
+10\. La página Experiment (Experimento) se verá similar a la siguiente después de completar el 46%:
 
 ![experiment-running-46](assets/experiment-running-46.jpg)
 
-*Things to Note:*
-1. **Experiment Name** - Name of your experiment. If you do not assign a name to it, a random name will be generated. The name can be changed at any time.
-2. **Experiment Setup** - Summary of experiment setup and dataset details.
-3. **Running Status Display** -Status of the model training process. Experiments can be stopped by clicking the ```Finish``` button.
-4. Overview of training settings (unable to adjust while experiment is running): **Training Settings**, **Experiment Settings**, **Scorer**, **Classification**, **Reproducible** and **GPU Enabled**. 
-5. **CPU/Memory** information including **Notifications**, **Logs**, **Trace**  and **Scores** info. (Note that Trace is used for development/debugging and to show what the system is doing at that moment.) **Scores** or model scores allow you to view the detailed information about model scores after an experiment is complete. **Scores** includes model and feature tuning leaderboard, single final model cross-validation fold scores, and final ensemble scores.
-6. **Iteration Data** and **Variable Importance** - Iteration Data is the internal validation for each cross-validation fold with the specified scorer value. You can hover over any of the iteration points in the Iteration Data graph, and the see the updated variable importance for that iteration on the **Variable Importance**
-7. **Classification Problem Graphs** - Toggle between a ROC curve, Precision-Recall graph, Lift chart, Gains chart, and GPU Usage information (if GPUs are available). For regression problems, the lower right section includes a toggle between a Residuals chart, an Actual vs. Predicted chart, and GPU Usage information (if GPUs are available). 
-                                                            
-Once the experiment is complete, an **Experiment Summary** will appear:
+*Cosas para tener en cuenta*:
+
+1. Experiment Name (Nombre del experimento) - Nombre de tu experimento. Si no le asigna un nombre, se generará un nombre aleatorio. El nombre se puede cambiar en cualquier momento.
+2. Experiment Setup (Configuración del experimento) - Resumen de la configuración del experimento y detalles del conjunto de datos.
+3. Running Status Display (Visualización del estado de ejecución) - Estado de ajuste de parámetros seguido de ingeniería de características y canalización de puntuación. Los experimentos se pueden detener haciendo clic en el botón Finish (Finalizar).
+4. Descripción general de la configuración del entrenamiento (no se puede ajustar mientras el experimento se está ejecutando): Training Settings, Experiment Settings, Scorer, Classification, Reproducible y GPU Enabled.
+5. CPU/Memory (Información de CPU / Memoria) incluye Notifications (Notificaciones), Logs (Registros), Trace (Información de seguimiento), y Scorer (puntuaciones). (Tenga en cuenta que Trace se usa para el desarrollo / depuración y para mostrar lo que el sistema está haciendo en ese momento). Scorers, o los calificadores del modelo, le permiten ver la información detallada sobre los puntajes del modelo después de completar un experimento. Scorers incluyen la tabla de clasificación de ajuste de modelo y características, las puntuaciones del pliegue de validación cruzada del modelo final único y las puntuaciones finales del conjunto.
+6. Iteration Data (Datos de iteración) y Variable Importance (Importancia variable) - Los Datos de iteración son la validación interna para cada pliegue de validación cruzada con el valor de puntaje deseado. Puede pasar el mouse sobre cualquiera de los puntos de iteración en el gráfico de Datos de iteración y ver la importancia de la variable actualizada para esa iteración en Variable Importance(Importancia de la variable)
+7. Classification Problem Graphs (Gráficos de problemas de clasificación): Alterna entre una curva ROC, un gráfico de recuperación de precisión, un gráfico de elevación, un gráfico de ganancias y la información de uso de GPU (si hay GPU disponibles). Para los problemas de regresión, la sección inferior derecha incluye una alternancia entre un gráfico de Residuos, un gráfico Real frente a un Gráfico predicho e información de uso de GPU (si las GPU están disponibles).
+
+Una vez que se complete el experimento, aparecerá un Experiment Summary (Resumen del experimento):
+
 
 ![experiment-summary](assets/experiment-summary.jpg)
 
-*Things to Note:*
-1. **Status Complete Options:**
-    - Deploy (Local and Cloud)
-    - Interpret This Model 
-    - Diagnose Model On New Dataset 
-    - Score on Another Dataset
-    - Transform Another Dataset
-    - Download Predictions
-        - Training Predictions
-        - Validation Set Predictions (available if a validation set was provided)
-        - Test Set Predictions
-    - Download Python Scoring Pipeline - A standalone Python Scoring pipeline that downloads a package containing an exported model and Python 3.6 source code examples for productionizing models built using H2O Driverless AI. 
-    - Download MOJO Scoring Pipeline - A standalone scoring pipeline that converts experiments to MOJO's, which can be scored in realtime. It is available as either Java runtime or a C++ runtime (with Python and R wrappers).
-    - Visualize Scoring Pipeline (Experimental): A visualization of the scoring pipeline is available for each completed experiment.
+**Para tener en cuenta:**
+
+1. Opciones de estado completo
+    - Deploy (Local and Cloud) (Implementación (local y en la nube))
+    - Interpret This Model (Interpreta este modelo)
+    - Diagnose Model On New Dataset (Diagnosticar modelo en un nuevo conjunto de datos)
+    - Score on Another Dataset (Puntuación en otro conjunto de datos)
+    - Transform Another Dataset (Transformar otro conjunto de datos)
+    - Download Predictions (Descargar predicciones)
+        - Training Predictions (Predicciones de entrenamiento)
+        - Validation Set Predictions(available if a validation set was provided) (Predicciones del conjunto de validación (disponible si se proporcionó un conjunto de validación))
+        - Test Set Predictions (Predicciones de conjuntos de pruebas)
+    - Descargar Python Scoring Pipeline: una tubería de puntuación de Python independiente que descarga un paquete que contiene un modelo exportado y ejemplos de código fuente de Python 3.6 para la producción de modelos creados con Driverless AI H2O.
+    - Descargar MOJO Scoring Pipeline: un canal de puntuación independiente que convierte los experimentos en MOJO, que se pueden puntuar en tiempo real. Está disponible como tiempo de ejecución Java o tiempo de ejecución C ++ (con envoltorios Python y R).
+    - Visualize Scoring Pipeline (Visualizar la tubería de puntuación) (experimental): hay disponible una visualización de la tubería de puntuación para cada experimento completado.
+
 
     ![visualize-scoring-pipeline-experimental](assets/visualize-scoring-pipeline-experimental.jpg)
 
-    - Download Experiment Summary - A zip file providing textual explanations of the graphical representations that are shown in the Driverless AI UI.
-        - Experiment logs (regular and anonymized)
-        - A summary of the experiment
-        - The experiment features along with their relative importance
-        - Ensemble information
-        - An experiment preview
-        - Word version of an auto-generated report for the experiment
-        - Target transformations tuning leaderboard
-        - A tuning leaderboard
- 
-    - Download Autoreport - This report provides insight into the training data and any detected shifts in distribution, the validation schema selected, model parameter tuning, feature evolution, and the final set of features chosen during the experiment.
 
-2. **Iteration Data** - Validation/Variable Importance - Summary of top 20 - Feature Engineered variables
+    - Descargar resumen del experimento - Un archivo zip que proporciona explicaciones textuales de las representaciones gráficas que se muestran en la interfaz de usuario de Driverless AI UI.
+        - Registros experimentales (regulares y anonimizados)
+        - Un resumen del experimento
+        - Las características del experimento junto con su importancia relativa
+        - Información del conjunto
+        - Una vista previa del experimento
+        - Versión de Word de un informe generado automáticamente para el experimento
+        - Tabla de clasificación de ajuste de transformaciones de destino
+        - Una tabla de clasificación de ajuste
 
-3. **Experiment Graphs and Summary** - This section describes the dashboard graphs that display for running and completed experiments. These graphs are interactive. Hover over a point on the graph for more details about the point.
+    - Descargar Autoreport - Este informe proporciona información sobre los datos de entrenamiento y los cambios detectados en la distribución, el esquema de validación seleccionado, el ajuste de parámetros del modelo, la evolución de las características y el conjunto final de características elegidas durante el experimento.
+    - Iteration Data (Datos de iteración) - Validación / Importancia de variables - Resumen de las 20 principales - Variables de ingeniería de características
+    - Experiment Graphs and Summary (Gráficos y resumen de experimentos): esta sección describe los gráficos del tablero que se muestran para ejecutar y completar experimentos. Estos gráficos son interactivos. Desplácese sobre un punto en el gráfico para obtener más detalles sobre el punto.
 
-### Deeper Dive and Resources
+### Inmersión más Profunda y Recursos
 
-- [Learn more about running Experiments from H2O Driverless AI docs](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/running-experiment.html#)
+- [Obtenga más información sobre la ejecución de experimentos de Driverless AI documentos](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/running-experiment.html#)
+- [Explore la documentación de los experimentos completados](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-completed.html)
+- [Explore la documentación sobre la visualización de la tubería de puntuación](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/scoring_pipeline_visualize.html?highlight=visualize%20scoring%20pipeline)
+- [Explore la documentación en el resumen del experimento](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-summary.html)
+- [Revise el folleto Driverless AI para obtener más información sobre cómo ejecutar experimentos](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-summary.html)
 
-- [H2O Driverless AI - Explore Documentation on Completed Experiments](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-completed.html)
+## Tarea 6: Explora Feature Engineering
 
-- [H2O Driverless AI - Explore Documentation on Visualizing the Scoring Pipeline](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/scoring_pipeline_visualize.html?highlight=visualize%20scoring%20pipeline)
-
-- [H2O Driverless AI - Explore Documentation on Experiment Summary](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-summary.html) 
-
-- [Review the Driverless AI Booklet to learn more about running experiments](http://docs.h2o.ai/driverless-ai/latest-stable/docs/booklets/DriverlessAIBooklet.pdf) 
-
-
-## Task 6: Explore Feature Engineering
-
-Driverless AI performs feature Engineering on the dataset to determine the optimal representation of the data. Various stages of the features appear throughout the iteration of the data. These can be viewed by hovering over points on the "Iteration Data - Validation" Graph and seeing the updates on the **Variable Importance** section.
+Driverless AI utiliza Ingeniería de las características en el dataset(conjunto de datos) para determinar la representación más óptima de los datos. Varias etapas de las características aparecen a lo largo de la iteración de los datos. Estos datos se pueden observar al pasar el cursor sobre los puntos de la Gráfica de validación de los datos de iteración y viendo las actualizaciones en la sección de la Variable Importance (importancia de variable).
 
 ![feature-engineering-1](assets/feature-engineering-1.jpg)
 
-Transformations in Driverless AI are applied to columns in the data. The transformers create engineered features in experiments. There are many types of transformers, below are just some of the transformers found in our dataset:
+Transformaciones en Driverless AI son aplicadas a las columnas de los datos. Los transformadores crean las característica diseñada en los experimentos. Hay muchos tipos de transformadores, debajo están solo algunos de muchos transformadores que se encuentran en nuestro conjunto de datos (Dataset).
 
-1\. Look at some of the variables in **Variable of Importance**. Note that some of the variables start with ```_CVTE``` followed by a column from the dataset. Some other variables might also begin with ```_NumToCatTE```, ```_Freq``` or ```_WoE``` depending on the experiment you run. These are the new, high-value features for our training dataset.
+1. Observa algunas de las variables en Variable of importance o Variables de importancia. Nota que algunas de las variables empiezan con ```_CVTE``` seguidas por una columna del conjunto de datos(dataset). Algunas otras variables también podrían empezar con ```_NumToCatTE```, ```_Freq``` o ```_WoE``` dependiendo del experimento que estés ejecutando. Estas son las nuevas, características de alto valor o importancia para nuestro conjunto de datos(dataset) para el entrenamiento.
 
-These transformations are created with the following transformers:
+Estas transformaciones son creadas con los siguientes transformadores:
 
-- Cross Validation Target Encoding Transformer: ```_CVTargetEncode```
-- Weight of Evidence : ```_WoE```
-- Frequent Transformer: ```_Freq```  
-- Numeric to Categorical Target Encoding Transformer = ```_NumToCatTE```
+- Cross Validation Target Encoding Transformer(Transformador de codificación del objetivo de validación cruzada) : ```_CVTargetEncode```
+- Weight of Evidence(Peso de la evidencia) : ```_WoE```
+- Frequent Transformer(Transformador Frecuente): ```_Freq```
+- Numeric to Categorical Target Encoding Transformer(Transformador de codificación de objetivo numérico a categórico) : ```_NumToCatTE```
 
-You can also hover over any of the variables under variable importance to get a simple explanation of the transformer used as seen in the image below:
+También puedes pasar el cursor en cualquiera de las variables bajo Variable Importance(Importancia de variables) para obtener una explicación simple del transformador usado como se ve en la imagen de abajo:
 
 ![variable-importance-hover-for-transformer](assets/variable-importance-hover-for-transformer.jpg)
 
-The complete list of features used in the final model is available in the Experiment Summary artifacts. The Experiment Summary also provides a list of the original features and their estimated feature importance. 
+La lista completa de características usadas en el modelo final está disponible en los Experiment Summary Artifacts(Artefactos de resumen del experimento). El resumen del experimento también proporciona una lista de las características originales y su característica de importancia estimada (Estimated Feature Importance”).
 
-### Deeper Dive and Resources
+### Exploración más profunda y recursos
 
-- [Learn more about H2O Driverless AI Transformations](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/transformations.html) 
+- [Obtenga más información sobre las transformaciones de Driverless AI](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/transformations.html)
+- [Ingeniería de características para el machine learning de Dmitry Larko](https://www.youtube.com/playlist?list=PLrsf4weWJKynQBvh0i-YxDDVqCcIrF28o)
+- [Reproducción de la sesión de H2O World London 2018 Feature Engineering](https://www.youtube.com/watch?v=d6UMEmeXB6o) and [presentación por Dmitry](https://www.slideshare.net/0xdata/feature-engineering-in-h2o-driverless-ai-dmitry-larko-h2o-ai-world-london-2018)
 
-- [Feature Engineering for Machine Learning by H2O.ai's Dmitry Larko](https://www.youtube.com/playlist?list=PLrsf4weWJKynQBvh0i-YxDDVqCcIrF28o) 
+## Tarea 7: Explora Resultados del Experimento
 
-- [H2O World London 2018 Feature Engineering session replay](https://www.youtube.com/watch?v=d6UMEmeXB6o ) and [slides  by Dmitry](https://www.slideshare.net/0xdata/feature-engineering-in-h2o-driverless-ai-dmitry-larko-h2o-ai-world-london-2018 ) 
+Vamos a explorar los resultados de este experimento de clasificación. Se pueden encontrar los resultados en la página Experiment Summary (Resumen del experimento) al final de la página de Experiment (Experimentar) de lado izquierdo. Los gráficos de los resultados nos dan más información sobre los datos de entrenamiento y validación que resultan del problema de clasificación. Para cada gráfico, daremos una breve explicación.
 
-## Task 7: Explore Experiment Results
+Si está interesado/a en aprender más sobre cada gráfico y las métricas derivadas en esta sección, haga el favor de leer nuestro próximo tutorial [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus.](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus)
 
-Let’s explore the results of this classification experiment. You can find the results on the **Experiment Summary** at the left-bottom of the **Experiment** page. The resulting plots are insights from the training and validation data resulting from the classification problem. Each plot will be given a brief overview. 
-
-If you are interested in learning more about each plot and the metrics derived from those plots covered in this section, then check out our next tutorial [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus).
 
 ![experiment-summary-expanded](assets/experiment-summary-expanded.jpg)
 
-1\. **Summary**
+1\. Resumen
 
-Once the experiment is done, a summary is generated at the bottom-right corner of the **Experiment** page.
+En cuanto termine el experimento, un resumen es generado en la parte baja en la esquina derecha de la página de Experiment(Experimentar).
 
-The summary includes:
+El resumen incluye:
 
-- **Experiment**: experiment name,
-  - Version: the version of Driverless AI and the date it was launched
-  - Settings: selected experiment settings, seed, whether or not GPU’s are enabled
-  - Train data: name of the training set, number of rows and columns
-  - Validation data: name of  the validation set, number of rows and columns
-  - Test data: name of the test set, number of rows and columns
-  - Target column: name of the target column (the type of data and % target class)
+- Experiment: nombre del experimento,
+    - Versión (Versión): la versión de Driverless AI y la fecha en que fue lanzada
+    - Settings (Configuraciones): preferencias del experimento seleccionado, semilla, y la cantidad de unidades de procesamiento gráfico (GPU) utilizados
+    - Train data (Datos del tren): el nombre del set de datos de entrenamiento, con número de hileras y columnas
+    - Validation data (Datos de validación): el nombre del set de datos de validación, con número de hileras y columnas
+    - Test data (Datos de prueba): el nombre del set de datos de examinación, con número de hileras y columnas
+    - Target column (Columna de destino): el nombre de la columna usada como el objetivo del experimento (incluye el tipo de data y el % de cada clase)
+- System Specs (Especificaciones del sistema): detalles del sistema como memoria de acceso aleatorio (RAM), número de núcleos de CPU (Núcleos de Procesador) y GPU (unidad de procesamiento gráfico)
+-    Uso máximo de memoria
+- Recipe (Receta):
+    - Validation scheme: esquema de validación que incluye el tipo de sampling y número interno de reservación
+    - Feature Engineering: número de características que fueron evaluadas y la selección final
+- Timing (Sincronización)
+    - Preparación de datos
+    - Detección de desplazamiento o fuga de datos
+    - Model and feature tuning: tiempo total para entrenar el modelo y las características, y el número de modelos entrenados
+    - Feature evolution (Evolución de características): tiempo total para la evolución de las características y el número de modelos entrenados
+    - Final pipeline training (Entrenamiento final de tubería): tiempo total para el entrenamiento total y el número de modelos entrenados
+    - Python / MOJO constructor de evaluación
+- Validation Score (Puntaje de validación): valor de Pérdida Logarítmica +/- épsilon de la base de la máquina
+- Validation Score (Puntaje de validación:) puntaje de pérdida de registro +/- maquina épsilon para la tubería final
+- Test Score (Resultado de la prueba): puntaje de pérdida de registro +/- puntaje de máquina épsilon para la tubería final
 
-- **System Specs**: machine specs including RAM, number of CPU cores and GPU’s
-  - Max memory usage  
+La mayoría de la información en la página de Experiment Summary, junto con más detalles, puede ser encontrada en Experiment Summary Report (Informe resumido del experimento) (botón amarillo “Download Experiment Summary” el cual descarga la página)
 
-- **Recipe**: 
-  - Validation scheme: type of sampling, number of internal holdouts
-  - Feature Engineering: number of features scored and the final selection
+1. Encuentra el número de características que fueron evaluadas para el modelo y el número de características que fueron seleccionadas
+2. Encuentra el valor de validación de la pipa final y compara el valor con el valor de la examinación. ¿Basado en estos valores, consideras que el modelo es un buen modelo o no?
 
-- **Timing**
-  - Data preparation 
-  - Shift/Leakage detection
-  - Model and feature tuning: total time for model and feature training and  number of models trained 
-  - Feature evolution: total time for feature evolution and number of models trained 
-  - Final pipeline training: total time for final pipeline training and the total models trained 
-  - Python / MOJO scorer building 
-- Validation Score: Log loss score +/- machine epsilon for the baseline
-- Validation Score: Log loss score +/- machine epsilon for the final pipeline
-- Test Score: Log loss score +/- machine epsilon score for the final pipeline 
+2\. ROC - Característica Operativa del Receptor
 
-Most of the information in the Experiment Summary tab, along with additional details, can be found in the Experiment Summary Report (Yellow Button “Download Experiment Summary”).
+A este tipo de gráfico se le llama curva Característica Operativa del Receptor (curva ROC). El gráfico demuestra el porcentaje de predicciones positivas correctas contra el porcentaje de predicciones positivas incorrectas.
 
-1. Find the number of features that were scored for your model and the total features that were selected. 
+Una curva ROC es una herramienta muy útil porque solamente se enfoca en que bien el modelo pudo distinguir entre las dos clases. “El área debajo de la curva (AUC) ayuda en representar la probabilidad de que el clasificador organizará una observación positiva seleccionada al azar más arriba que una observación negativa seleccionada al azar”[1]. Tomando eso en cuenta, para modelos donde la predicción ocurre muy raramente, un valor alto de AUC puede proveer un sentido falso que el modelo está prediciendo los resultados correctamente. Aquí es donde la noción de precisión y recall se vuelven esenciales.
 
-2. Take a look at the validation Score for the final pipeline and compare that value to the test score. Based on those scores, would you consider this model a good or bad model? 
-
-2\. **ROC - Receiver Operating Characteristics**
-
-This type of graph is called a Receiver Operating Characteristic curve (or ROC curve.) It is a plot of the true positive rate against the false-positive rate for the different possible cutpoints of a diagnostic test.
-
-An ROC curve is a useful tool because it only focuses on how well the model was able to distinguish between classes with the help of the Area Under the Cure or AUC. “AUC’s can help represent the probability that the classifier will rank a randomly selected positive observation higher than a randomly selected negative observation”[1].  However, for models where one of the classes occurs rarely, a high AUC could provide a false sense that the model is correctly predicting the results.  This is where the notion of precision and recall become essential.
-
-The ROC curve below shows Receiver-Operator Characteristics curve stats on validation data along with the best Accuracy, MCC, and F1 values[2].
+La curva ROC debajo demuestra estadísticas del ROC contra los datos de validación junto con la mejor Precisión, FCC, y valores de F1[2].
 
 ![assets/experiment-results-roc-graph](assets/experiment-results-roc-graph.jpg)
 
-This ROC gives an Area Under the Curve or AUC of .7980. The AUC tells us that the model is able to separate the survivor class with an accuracy of 79.80%.
+La curva ROC da un valor de área bajo la curva de .7980. Este valor nos deja saber que el modelo es capaz de clasificar el número de sobrevivientes 79.80% de las veces correctamente.
 
-Learn more about the ROC Curve on [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus: ROC](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus).
+Puedes encontrar más información sobre la curva ROC en [Tutorial de análisis y puntuación de experimentos de machine learning - Enfoque financiero: ROC.](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus)
 
-3\. **Prec-Recall: Precision-Recall Graph**
+3\. Prec-Recall - Gráfico de la Curva de Precisión-Recall
 
-Prec-Recall is a complementary tool to ROC curves, especially when the dataset has a significant skew. The Prec-Recall curve plots the precision or positive predictive value (y-axis) versus sensitivity or true positive rate (x-axis) for every possible classification threshold. At a high level, we can think of precision as a measure of exactness or quality of the results while recall as a measure of completeness or quantity of the results obtained by the model. Prec-Recall measures the relevance of the results obtained by the model.
+Prec-Recall es una herramienta complementaria a la curva ROC, especialmente cuando el conjunto de datos no está balanceado entre el número de casos positivos y negativos. La curva de PR demuestra la precisión contra la sensibilidad o porcentaje de predicciones positivas correctas para cada límite de clasificación posible. A gran nivel, podemos pensar en precisión como una medida de exactitud o calidad de los resultados, mientras que recall en una medida de que tan completo o cantidad de resultados obtenidos por el modelo. Prec-Recall mide la relevancia de los resultados obtenidos por el modelo.
 
-The Prec-Recall plot below shows the Precision-Recall curve on validation data along with the best Accuracy, MCC, and F1 values. The area under this curve is called AUCPR.
+El gráfico debajo demuestra Prec-Recall contra los datos de validación junto con la mejor Accuracy, FCC, y valores F1. Al área debajo de esta curva se la llama AUCPR.
 
 ![experiment-results-prec-recall-graph](assets/experiment-results-prec-recall-graph.jpg)
 
-Similarly to the ROC curve, when we take a look at the area under the curve of the Prec-Recall Curve of AUCPR we get a value of .7614. This tells us that the model brings forth relevant results or those cases of the passengers that survived with an accuracy of 76.14%.
+Al igual que la curva ROC, cuando vemos el área debajo de la curva PR encontramos un valor de AUCPR de .7614. Esto nos deja saber que el modelo da resultados relevantes, o casos de pasajeros que sobrevivieron, 76.14% de las veces.
 
-Learn more about the Prec-Curve Curve on [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus: Prec-Recall](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus).
+Aprende más sobre la curva PR en [Tutorial de análisis y puntuación de experimentos de machine learning - Enfoque financiero: retiro previo.](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus)
 
-4\. **Cumulative Lift Chart** 
+4\. Gráfico de Elevación Acumulativa
 
-Lift can help us answer the question of how much better one can expect to do with the predictive model compared to a random model(or no model). Lift is a measure of the effectiveness of a predictive model calculated as the ratio between the results obtained with a model and with a random model (or no model). In other words, the ratio of gain % to the random expectation % at a given quantile. The random expectation of the xth quantile is x% [4].
+El valor de elevación nos puede ayudar a contestar la pregunta de cuánto mejor podemos predecir con nuestro modelo al comparar los resultados con un modelo creado al azar (o sin ningún modelo). Elevación es una medida de la efectividad de un modelo de predicciones y es calculado como el porcentaje de los resultados obtenidos por nuestro modelo contra los resultados de un modelo creado al azar. En otras palabras, el porcentaje de ganancia dividido por el porcentaje de la expectativa al azar genera en cualquier cuantil. La expectativa al azar del cuantil x es x%.
 
-The Cumulative Lift chart shows lift stats on validation data. For example, “How many times more observations of the positive target class are in the top predicted 1%, 2%, 10%, etc. (cumulative) compared to selecting observations randomly?” By definition, the Lift at 100% is 1.0.
+El gráfico de elevación acumulativa demuestra estadísticas sobre el valor de elevación para los datos de validación. Por ejemplo, ¿cuántas veces más sucede que los puntos de la clase positiva terminan en la clase alta de predicciones 1%, 2%, 10%, etc (acumulativo) al comparar con seleccionar puntos al azar?” Por definición, la elevación al 100% es 1.0.
 
 ![experiment-results-lift-graph](assets/experiment-results-lift-graph.jpg)
 
+Aprende más sobre el gráfico de elevación acumulativa en [Tutorial de análisis y puntuación de experimentos de machine learning: enfoque financiero: elevación acumulativa.](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus)
 
-Learn more about the Cumulative Lift Chart on [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus: Cumulative Lift](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus).
+5\. Gráfico de Ganancia Acumulativa
 
-5\. **Cumulative Gains Chart**
+Los gráficos de ganancia y elevación miden la eficacia de un modelo de clasificación al comparar el porcentaje entre los resultados obtenidos con un modelo entrenado contra los resultados obtenidos por un modelo creado al azar (o ningún modelo) [3]. Los gráficos nos ayudan a evaluar el rendimiento del modelo de clasificación al igual que contestar preguntas como “¿al seleccionar un cierto porcentaje del conjunto de datos como prueba, qué porcentaje del nuevo conjunto de datos tiene una respuesta positiva?” Adicionalmente, podemos explorar cual mejor podemos esperar ver con nuestro modelo que con un modelo creado al azar (o ningún modelo) [4].
 
-Gain and Lift charts measure the effectiveness of a classification model by looking at the ratio between the results obtained with a trained model versus a random model(or no model)[3]. The Gain and Lift charts help us evaluate the performance of the classifier as well as answer questions such as what percentage of the dataset captured has a positive response as a function of the selected percentage of a sample. Additionally, we can explore how much better we can expect to do with a model compared to a random model(or no model)[4].
+Para mejores visualizaciones, el porcentaje de respuestas positivas al comparar con un porcentaje seleccionado de prueba, utilizamos Ganancia Acumulativa y Cuantiles. En el gráfico debajo, el axis-x demuestra el porcentaje de casos del total número de casos en el conjunto de datos para prueba, mientras que el y-axis demuestra el porcentaje de casos positivos o sobrevivientes en término de cuantiles.
 
-For better visualization, the percentage of positive responses compared to a selected percentage sample, we use Cumulative Gains and Quantile. 
+El gráfico de ganancias acumulativas debajo demuestra estadísticas sobre el conjunto de datos de validación. Por ejemplo, “¿qué fracción de todas las observaciones de la clase positiva están en el primer 1%, 2%, 10%, etc. de todas las predicciones” Por definición, la ganancia al 100% es 1.0.
 
-In the Gains Chart below, the x-axis shows the percentage of cases from the total number of cases in the test dataset, while the y-axis shows the percentage of positive outcomes or survivors in terms of quantiles.
-
-The Cumulative Gains Chart below shows Gains stats on validation data. For example, “What fraction of all observations of the positive target class are in the top predicted 1%, 2%, 10%, etc. (cumulative)?” By definition, the Gains at 100% are 1.0.
 
 ![experiment-results-gains-graph](assets/experiment-results-gains-graph.jpg)
 
-The Gains chart above tells us that when looking at the 20% quantile, the model can positively identify ~45% of the survivors compared to a random model(or no model) which would be able to positively identify about ~20% of the survivors at the 20% quantile.
+El gráfico de arriba nos deja saber que al mirar el cuantil del 20%, el modelo puede positivamente identificar ~45% de los sobrevivientes al comparar con un modelo creado al azar (o ningún modelo), el cual podría positivamente identificar aproximadamente el 20% de los sobrevivientes en el cuantil de 20%. Aprende más sobre el gráfico de ganancias acumulativas en [Tutorial de análisis y puntuación de experimentos de machine learning: enfoque financiero: ganancias acumulativas.](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus)
 
-Learn more about the Cumulative Gains Chart on [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus: Cumulative Gains](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus).
+6\. K-S
 
-6\. **Kolmogorov-Smirnov**
+Kolmogorov-Smirnov o K-S es una forma de medir el rendimiento de modelos de clasificación por medio de medir el nivel de separación entre los positivos y negativos del conjunto de datos de validación o prueba [5]. “El K-S es 100 si los valores separan lo población en dos grupos distintos en cual un grupo contiene todos los valores positivos y el otro todos los negativos. Al contrario, si el modelo no puede diferenciar entre entre los positivos y negativos, entonces es como si el modelo seleccionara casos al azar de la población. El K-S en este caso sería 0. En la mayoría de modelos de clasificación, el K-S tendrá un valor entre 0 y 100, y entre más alto el valor, mejor será el modelo en separar los casos positivos de los negativos.”[6]
 
-Kolmogorov-Smirnov or K-S measures the performance of classification models by measuring the degree of separation between positives and negatives for validation or test data[5]. “The K-S is 100 if the scores partition the population into two separate groups in which one group contains all the positives and the other all the negatives. On the other hand, If the model cannot differentiate between positives and negatives, then it is as if the model selects cases randomly from the population. The K-S would be 0. In most classification models, the K-S will fall between 0 and 100, and that the higher the value, the better the model is at separating the positive from negative cases.”[6].
+Los gráficos de K-S o Kolmogorov-Smirnov miden la separación entre los casos positivos y los negativos para el conjunto de datos de validación o de prueba.
 
-K-S or the Kolmogorov-Smirnov chart measures the degree of separation between positives and negatives for validation or test data.
-
-Hover over a point in the chart to view the quantile percentage and Kolmogorov-Smirnov value for that point.
+Ponga su cursor sobre cualquier punto en el gráfico para ver el porcentaje del cuantil y el valor de K-S en ese punto.
 
 ![experiment-results-gains-k-s](assets/experiment-results-gains-k-s.jpg)
 
+Para el gráfico de K-S de arriba, si nos enfocamos en los datos que componen el 60% más alto de todos los datos, el modelo al azar (la línea punteada) nos deja saber que sólo 60% de los datos fueron separados exitosamente entre los positivos y negativos (sobrevivientes y no-sobrevivientes). Sin embargo, el modelo fue capaz de hacerlo con .4005 o ~40% de los casos fueron exitosamente separados en positivos y negativos.
 
-For the K-S chart above, if we look at the top 60% of the data, the at-chance model (the dotted diagonal line) tells us that only 60% of the data was successfully separate between positives and negatives (survived and did not survived). However, with the model, it was able to do .4005, or about ~40% of the cases were successfully separated between positives and negatives.
+Aprende más sobre el gráfico de K-S en [Tutorial de análisis y puntuación de experimentos de machine learning: enfoque financiero: gráfico de Kolmogorov-Smirnov.](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus)
 
-Learn more about the Kolmogorov-Smirnov chart on [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus: Kolmogorov-Smirnov chart](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus).
+Referencias
 
-### References
- 
-[1] [ROC Curves and Under the Curve (AUC) Explained](https://www.youtube.com/watch?v=OAl6eAyP-yo)
+[1] [Curvas ROC y bajo la curva (AUC) explicadas](https://www.youtube.com/watch?v=OAl6eAyP-yo)
 
-[2] [H2O Driverless AI - Experiment Graphs](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-graphs.html?highlight=roc%20curve)
+[2] [H2O Driverless AI - Gráficos de experimentos](https://www.youtube.com/watch?v=OAl6eAyP-yo)
 
-[3] [Model Evaluation Classification](https://www.saedsayad.com/model_evaluation_c.htm)
+[3] [Clasificación de evaluación del modelo](https://www.youtube.com/watch?v=OAl6eAyP-yo)
 
-[4] [Lift Analysis Data Scientist Secret Weapon](https://www.kdnuggets.com/2016/03/lift-analysis-data-scientist-secret-weapon.html)
+[4] [Levante el arma secreta del científico de datos de análisis](https://www.youtube.com/watch?v=OAl6eAyP-yo)
 
-[5] [H2O Driverless AI - Kolmogorov-Smirnov](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-graphs.html?highlight=mcc)
+[5] [H2O’s Kolmogorov-Smirnov](https://www.youtube.com/watch?v=OAl6eAyP-yo)
 
-[6] [Model Evaluation- Classification](https://www.saedsayad.com/model_evaluation_c.htm)
+[6] [Evaluación del modelo: clasificación](https://www.youtube.com/watch?v=OAl6eAyP-yo)
 
+### Inmersión Más Profunda y Recursos
 
-### Deeper Dive and Resources
+[La mejor métrica para medir la precisión de los modelos de clasificación](https://clevertap.com/blog/the-best-metric-to-measure-accuracy-of-classification-models/)
 
-- [The Best Metric to Measure Accuracy of Classification Models](https://clevertap.com/blog/the-best-metric-to-measure-accuracy-of-classification-models/)
+## Tarea 8: MLI Reporte Para Series no Cronológicas
 
-## Task 8: MLI Report for Non-Time-Series
+Una vez finalizado el modelo predictivo, podemos explorar la interpretabilidad de nuestro modelo. En otras palabras, ¿cuáles son los resultados y cómo llegaron a ser esos resultados?
 
-After the predictive model is finished, we can explore the interpretability of our model. In other words, what are the results and how did those results came to be?
+Preguntas a considerar antes de ver el Informe MLI:
 
-Questions to consider before viewing the MLI Report:
+- ¿Qué atributos de nuestro Titanic Training Set son los más importantes en relación con la supervivencia? Tome nota de sus 2 atributos principales para compararlos con los resultados del modelo.
 
-- Which attributes from our Titanic Training Set are the most important in relation to surviving? Make a note of your top 2 attributes to compare it with the model's results
+Hay dos formas de generar el informe MLI, seleccionando el enlace MLI en la esquina superior derecha de la interfaz de usuario o haciendo clic en el botón Interpretar este modelo (Interpret this Model) en la página Experimento (Experiment page).
 
-There are two ways to generate the MLI Report, selecting the **MLI** link on the upper-right corner of the UI or clicking **Interpret this Model** button on the **Experiment** page. 
+Genere el informe MLI:
 
-**Generate the MLI report**:
-
-1\. **On the Status: Complete** Options, select **Interpret this Model**
+1. En "Estado: Completo (Status: Complete)" Opciones, seleccione Interpretar este modelo (Interpret this Model)
 
 ![interpret-this-model](assets/interpret-this-model.jpg)
 
-2\. The MLI Interpretability Page has the explanations to the model results in a human-readable format. Once the **MLI Experiment is finished** the following should appear:
+2. La página de interpretación de MLI tiene las explicaciones de los resultados del modelo en un formato legible por humanos. Una vez finalizado el Experimento MLI, debería aparecer lo siguiente:
 
-This section describes MLI functionality and features for regular experiments. For non-time-series experiments, this page provides several visual explanations and reason codes for the trained Driverless AI  model, and it's results.  
+Esta sección describe la funcionalidad y las características de MLI para experimentos regulares. Para los experimentos que no son de series temporales, esta página proporciona varias explicaciones visuales y códigos de motivo para el modelo entrenado Driverless AI y sus resultados.
 
 ![dai-model](assets/dai-model.jpg)
 
-*Things to Note:*
+*Cosas a tener en cuenta*:
 
-1. Summary -  Summary of MLI experiment. This page provides an overview of the interpretation, including the dataset and Driverless AI experiment (if available) that were used for the interpretation along with the feature space (original or transformed), target column, problem type, and k-Lime information.
+1. Summary (Resumen): resumen del experimento MLI. Esta página proporciona una descripción general de la interpretación, incluido el conjunto de datos y el experimento de Driverless AI (si está disponible) que se utilizaron para la interpretación junto con el espacio de características (original o transformado), la columna de destino, el tipo de problema y la información de k-Lime.
+
 
     ![mli-report-page-1.jpg](assets/mli-report-page-1.jpg)
     ![mli-report-page-1.jpg](assets/mli-report-page-2.jpg)
     ![mli-report-page-1.jpg](assets/mli-report-page-3.jpg)
     ![mli-report-page-1.jpg](assets/mli-report-page-4.jpg)
 
+2. El modelo Driverless AI: para experimentos de regresión y clasificación binaria, el menú del modelo de Driverless AI proporciona los siguientes gráficos para los modelos de Driverless AI:
 
-2. Driverless AI Model: For binary classification and regression experiments, the Driverless AI Model menu provides the following plots for Driverless AI models:
+    - **Original Feature Importance (Importancia de la característica original)**: Este gráfico muestra la importancia de la característica original y para acceder a ella, considere los siguientes pasos:
 
-    - **Original Feature Importance:** This plot shows the original feature importance and to access it consider the following steps: 
+        ![dai-model-original-feature-importance.jpg](assets/dai-model-original-feature-importance.jpg)
+ 
+        1: Haga clic en el texto DAI MODEL
 
-    ![dai-model-original-feature-importance.jpg](assets/dai-model-original-feature-importance.jpg)
+        2: Haga clic en la imagen Original Feature Importance
 
-    
-    1: Click on the **DAI MODEL** text
-
-    2: Click on the **Original Feature Importance** visual
-
-    ![original-feature-importance](assets/original-feature-importance.jpg)
+        ![original-feature-importance.jpg](assets/original-feature-importance.jpg)
 
 
-    - **Transformed Feature Importance:** This plot shows the Driverless AI feature importance. Driverless AI feature importance is a measure of the contribution of an input variable to the overall predictions of the Driverless AI model. Global feature importance is calculated by aggregating the improvement in splitting criterion caused by a single variable across all of the decision trees in the Driverless AI model. To access it consider the following steps: 
+- **Transformed Feature Importance (Importancia de la función transformada):** Este gráfico muestra la importancia de la función de Driverless AI. La importancia de la característica de Driverless AI es una medida de la contribución de una variable de entrada a las predicciones generales del modelo de Driverless AI. La importancia de la característica global se calcula agregando la mejora en el criterio de división causada por una sola variable en todos los árboles de decisión en el modelo de Driverless AI. Para acceder a él considere los siguientes pasos:
 
-    ![dai-model-transformed-feature-importance](assets/dai-model-transformed-feature-importance.jpg)
+![dai-model-transformed-feature-importance](assets/dai-model-transformed-feature-importance.jpg)
 
-    1: Click on the **Transformed Feature Importance** visual
+1: Haga clic en **Transformed Feature Importance**
 
-    ![transformed-feature-importance](assets/transformed-feature-importance.jpg)
+![transformed-feature-importance](assets/transformed-feature-importance.jpg)
 
-    *Note:*
+*Nota*:
 
-    Feature Importance (Original and Transformed Features)
+Importancia de las funciones (funciones originales y transformadas)
+Este gráfico está disponible para todos los modelos de clasificación binaria, clasificación multiclase y experimentos de regresión.
 
-    This plot is available for all models for binary classification, multiclass classification, and regression experiments.
+Este gráfico muestra la importancia de la función Driverless AI. La importancia de la característica de Driverless AI es una medida de la contribución de una variable de entrada a las predicciones generales del modelo de Driverless AI.
 
-    This plot shows the Driverless AI feature importance. Driverless AI feature importance is a measure of the contribution of an input variable to the overall predictions of the Driverless AI model.
+- **Shapley original (Naive Shapley)**: Este gráfico muestra el Shapley original (Naive Shapley) y para acceder a él considera los siguientes pasos:
 
-    - **Original Shapley (Naive Shapley):** This plot shows the original Shapley (Naive Shapley) and to access it consider the following steps: 
-
-    ![dai-model-original-shapley-(naive-shapley)](assets/dai-model-original-shapley-(naive-shapley).jpg)
-
-    1: Click on the **Original Shapley (Naive Shapley)** visual
-
-    ![original-shapley-(naive-shapley))](assets/original-shapley-(naive-shapley).jpg)
-
-    - **Transformed Shapley:** Shapley explanations are a technique with credible theoretical support that presents consistent global and local variable contributions. Local numeric Shapley values are calculated by tracing single rows of data through a trained tree ensemble and aggregating the contribution of each input variable as the row of data moves through the trained ensemble. For regression tasks, Shapley values sum to the prediction of the Driverless AI model. For classification problems, Shapley values sum to the prediction of the Driverless AI model before applying the link function. Global Shapley values are the average of the absolute Shapley values over every row of a dataset. To access it consider the following steps: 
-
-    ![dai-model-transformed-shapley](assets/dai-model-transformed-shapley.jpg)
-
-    1: Click on the **Transformed Shapley** visual
-
-    ![transformed-shapley](assets/transformed-shapley.jpg)
-
-    *Note:*
-
-    This plot is not available for RuleFit or TensorFlow models. For all other models, this plot is available for binary classification, multiclass classification, and regression experiments.
-
-    - **Partial Dependence/ICE Plot:** Partial dependence is a measure of the average model prediction with respect to an input variable. Partial dependence plots display how machine-learned response functions change based on the values of an input variable of interest while considering nonlinearity and averaging out the effects of all other input variables. Partial dependence plots are well-known and described in the Elements of Statistical Learning (Hastie et al., 2001). Partial dependence plots enable increased transparency in Driverless AI models and the ability to validate and debug Driverless AI models by comparing a variable's average predictions across its domain to known standards, domain knowledge, and reasonable expectations. 
-    
-      Individual conditional expectation (ICE) plots, a newer and less well-known adaptation of partial dependence plots, can be used to create more localized explanations for a single individual using the same basic ideas as partial dependence plots. ICE Plots were described by Goldstein et al. (2015). ICE values are simply disaggregated partial dependence, but ICE is also a type of nonlinear sensitivity analysis in which the model predictions for a single row are measured. At the same time, a variable of interest is varied over its domain. ICE plots enable a user to determine whether the model's treatment of an individual row of data is outside one standard deviation from the average model behavior, whether the treatment of a specific row is valid in comparison to average model behavior, known standards, domain knowledge, and reasonable expectations, and how a model will behave in hypothetical situations where one variable in a selected row is varied across its domain. To access it consider the following steps: 
-
-    ![dai-model-partial-dependence-plot](assets/dai-model-partial-dependence-plot.jpg)
-
-    1: Click on the **Partial Dependence Plot** visual
-
-    ![partial-dependence-plot](assets/partial-dependence-plot.jpg)
-
-    *Note:*
-
-    This plot is available for binary classification and regression models.
-
-    Overlaying ICE plots onto partial dependence plots allow the comparison of the Driverless AI model’s treatment of certain examples or individuals to the model’s average predictions over the domain of an input variable of interest.
-
-    This plot shows the partial dependence when a variable is selected and the ICE values when a specific row is selected. Users may select a point on the graph to see the specific value at that point. Partial dependence (yellow) portrays the average prediction behavior of the Driverless AI model across the domain of an input variable along with +/- 1 standard deviation bands. ICE (grey) displays the prediction behavior for an individual row of data when an input variable is toggled across its domain. Currently, partial dependence and ICE plots are only available for the top ten most important original input variables. Categorical variables with 20 or more unique values are never included in these plots.
-
-    - **Disparate Impact Analysis (NEW):** Disparate Impact Analysis is a technique that is used to evaluate fairness. Bias can be introduced to models during the process of collecting, processing, and labeling data—as a result, it is essential to determine whether a model is harming certain users by making a significant number of biased decisions. Learn more about [Disparate Impact Analysis](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/interpret-non-ts.html#disparate-impact-analysis).To access it consider the following steps: 
-
-    ![dai-model-disparate-impact-analysis](assets/dai-model-disparate-impact-analysis.jpg)
-
-    1: Click on the **Disparate Impact Analysis** visual
-
-    ![disparate-impact-analysis-1](assets/disparate-impact-analysis-1.jpg)
-    ![disparate-impact-analysis-1](assets/disparate-impact-analysis-2.jpg)
-    ![disparate-impact-analysis-1](assets/disparate-impact-analysis-3.jpg)
+ ![dai-model-original-shapley-(naive-shapley)](assets/dai-model-original-shapley-(naive-shapley).jpg)
 
 
-    - **Sensitivity Analysis (NEW)** : Sensitivity Analysis (or "What if?") is a simple and powerful model debugging, explanation, fairness, and security tool. The idea behind Sensitivity Analysis is both direct and straightforward: Score your trained model on a single row, on multiple rows, or an entire dataset of potentially interesting simulated values and compare the model's new outcome to the predicted outcome on the original data.
+1: Haga clic en la imagen **Original Shapley (Naive Shapley)**
 
-      Sensitivity analysis investigates whether model behavior and outputs remain stable when data is intentionally perturbed, or other changes are simulated in the data. Machine learning models can make drastically differing predictions for only minor changes in input variable values. For example, when looking at predictions that determine financial decisions, SA can be used to help you understand the impact of changing the most important input variables and the impact of changing socially sensitive variables (such as Sex, Age, Race, etc.) in the model. If the model changes in reasonable and expected ways when important variable values are changed, this can enhance trust in the model. Similarly, if the model changes to sensitive variables have minimal impact on the model, then this is an indication of fairness in the model predictions.  Learn more about [Sensitivity Analysis](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/interpret-non-ts.html#sensitivity-analysis). To access it consider the following steps: 
 
-    ![dai-model-sensitivity-analysis](assets/dai-model-sensitivity-analysis.jpg)
+ ![original-shapley-(naive-shapley))](assets/original-shapley-(naive-shapley).jpg)
 
-    1: Click on the **Sensitivity Analysis** visual
+- **Transformed Shapley (Shapley transformado)**: Las explicaciones de Shapley son una técnica con apoyo teórico creíble que presenta contribuciones consistentes de variables globales y locales. Los valores numéricos locales de Shapley se calculan rastreando filas individuales de datos a través de un conjunto de árbol entrenado y agregando la contribución de cada variable de entrada a medida que la fila de datos se mueve a través del conjunto entrenado. Para las tareas de regresión, los valores de Shapley se suman a la predicción del modelo de Driverless AI. Para problemas de clasificación, los valores de Shapley se suman a la predicción del modelo de Driverless AI antes de aplicar la función de enlace. Los valores globales de Shapley son el promedio de los valores absolutos de Shapley en cada fila de un conjunto de datos. Para acceder a él considere los siguientes pasos:
 
-    ![sensitivity-analysis](assets/sensitivity-analysis.jpg)
+![dai-model-transformed-shapley](assets/dai-model-transformed-shapley.jpg)
 
-    - **NLP Tokens (for text experiments only)**: This plot shows both the global and local importance values of each token in a corpus (a large and structured set of texts). The corpus is automatically generated from text features used by Driverless AI models prior to the process of tokenization
+1: Haga clic en la imagen **Transformed Shapley**
 
-    - **NLP LOCO (for text experiments)**: This plot applies a leave-one-covariate-out (LOCO) styled approach to NLP models by removing a specific token from all text features in a record and predicting local importance without that token. The difference between the resulting score and the original score (token included) is useful when trying to determine how specific changes to text features alter the predictions made by the model.
+![transformed-shapley](assets/transformed-shapley.jpg)
 
-    - [See documentation for multiclass classification and time-series experiments](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/interpret-non-ts.html#summary-page)
 
-3. Surrogate Models - For classification and regression experiments
+*Nota*:
 
-    1: Click on the **Surrogate Models** text 
+Este gráfico no está disponible para los modelos RuleFit o TensorFlow. Para todos los demás modelos, este gráfico está disponible para experimentos de clasificación binaria, clasificación multiclase y regresión.
+
+- **Partial Dependence/ICE Plot (Gráfico de dependencia parcial/ICE):** La dependencia parcial es una medida de la predicción promedio del modelo con respecto a una variable de entrada. Los gráficos de dependencia parcial muestran cómo cambian las funciones de respuesta aprendidas por la máquina en función de los valores de una variable de entrada de interés, mientras se considera la no linealidad y se promedian los efectos de todas las demás variables de entrada. Las gráficas de dependencia parcial son bien conocidas y se describen en Elements of Statistical Learning (Hastie et al., 2001). Las gráficas de dependencia parcial permiten una mayor transparencia en los modelos de Driverless AI y la capacidad de validar y depurar modelos de Driverless AI al comparar las predicciones promedio de una variable en su dominio con estándares conocidos, conocimiento del dominio y expectativas razonables.
+
+- Las gráficas de expectativa condicional individual (ICE), una adaptación más nueva y menos conocida de las gráficas de dependencia parcial, se pueden utilizar para crear explicaciones más localizadas para un solo individuo utilizando las mismas ideas básicas que las gráficas de dependencia parcial. Los gráficos ICE fueron descritos por Goldstein et al. (2015). Los valores de ICE son simplemente una dependencia parcial desagregada, pero ICE también es un tipo de análisis de sensibilidad no lineal en el que se miden las predicciones del modelo para una sola fila. Al mismo tiempo, se varía una variable de interés en su dominio. Los gráficos ICE permiten al usuario determinar si el tratamiento del modelo de una fila individual de datos está fuera de una desviación estándar del comportamiento promedio del modelo, si el tratamiento de una fila específica es válido en comparación con el comportamiento promedio del modelo, estándares conocidos, conocimiento del dominio, y expectativas razonables, y cómo se comportará un modelo en situaciones hipotéticas donde una variable en una fila seleccionada varía en su dominio. Para acceder a él considere los siguientes pasos:
+
+ ![dai-model-partial-dependence-plot](assets/dai-model-partial-dependence-plot.jpg)
+
+1: Haga clic en la imagen **Partial Dependence Plot (Parcela de dependencia parcial)**
+
+![partial-dependence-plot](assets/partial-dependence-plot.jpg)
+
+*Nota:*
+
+Este gráfico está disponible para modelos de regresión y clasificación binaria.
+La superposición de gráficos de ICE en gráficos de dependencia parcial permite comparar el tratamiento del modelo de Driverless AI de ciertos ejemplos o individuos con las predicciones promedio del modelo sobre el dominio de una variable de entrada de interés.
+
+Este gráfico muestra la dependencia parcial cuando se selecciona una variable y los valores ICE cuando se selecciona una fila específica. Los usuarios pueden seleccionar un punto del gráfico para ver el valor específico en ese punto. La dependencia parcial (amarillo) representa el comportamiento de predicción promedio del modelo de Driverless AI en el dominio de una variable de entrada junto con las bandas de desviación estándar de +/- 1. ICE (gris) muestra el comportamiento de predicción para una fila individual de datos cuando una variable de entrada se alterna en su dominio. Actualmente, las gráficas de dependencia parcial y ICE solo están disponibles para las diez variables de entrada originales más importantes. Las variables categóricas con 20 o más valores únicos nunca se incluyen en estos gráficos.
+
+- **Disparate Impact Analysis (NEW) (Análisis de impacto desigual (NUEVO)):** El análisis de impacto desigual es una técnica que se utiliza para evaluar la equidad. Se pueden introducir sesgos en los modelos durante el proceso de recopilación, procesamiento y etiquetado de datos; como resultado, es esencial determinar si un modelo está perjudicando a ciertos usuarios al tomar una cantidad significativa de decisiones sesgadas. Obtenga más información sobre [Análisis de impacto diferencial](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/interpret-non-ts.html#disparate-impact-analysis). Para acceder a él considere los siguientes pasos:
+
+ ![dai-model-disparate-impact-analysis](assets/dai-model-disparate-impact-analysis.jpg)
+
+1: Haga clic en la imagen **Disparate Impact Analysis**
+
+![disparate-impact-analysis-1](assets/disparate-impact-analysis-1.jpg)
+![disparate-impact-analysis-1](assets/disparate-impact-analysis-2.jpg)
+![disparate-impact-analysis-1](assets/disparate-impact-analysis-3.jpg)
+
+- **Sensitivity Analysis (NEW) (Análisis de sensibilidad (NUEVO)):** El análisis de sensibilidad (o "¿Qué pasa sí?") Es una herramienta de depuración, explicación, equidad y seguridad de modelos simple y poderosa. La idea detrás del análisis de sensibilidad es directa y sencilla: califique su modelo entrenado en una sola fila, en varias filas o en un conjunto de datos completo de valores simulados potencialmente interesantes y compare el nuevo resultado del modelo con el resultado predicho en los datos originales.
+
+El análisis de sensibilidad investiga si el comportamiento y los resultados del modelo permanecen estables cuando los datos se alteran intencionalmente o se simulan otros cambios en los datos. Los modelos de machine learning pueden hacer predicciones drásticamente diferentes para solo cambios menores en los valores de las variables de entrada. Por ejemplo, al mirar las predicciones que determinan las decisiones financieras, SA puede usarse para ayudarlo a comprender el impacto de cambiar las variables de entrada más importantes y el impacto de cambiar las variables socialmente sensibles (como sexo, edad, raza, etc.) en el modelo. Si el modelo cambia de manera razonable y esperada cuando se cambian valores de variables importantes, esto puede mejorar la confianza en el modelo. De manera similar, si los cambios del modelo en variables sensibles tienen un impacto mínimo en el modelo, esto es una indicación de equidad en las predicciones del modelo. Más información sobre [Análisis de sensibilidad](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/interpret-non-ts.html#sensitivity-analysis). Para acceder a él considere los siguientes pasos:
+
+![dai-model-sensitivity-analysis](assets/dai-model-sensitivity-analysis.jpg)
+
+1: Haga clic en el elemento visual **Sensitivity Analysis (Análisis de sensibilidad)**
+
+![sensitivity-analysis](assets/sensitivity-analysis.jpg)
+
+- **Fichas de NLP(Procesamiento natural del lenguaje) (solo para experimentos de texto):** este gráfico muestra los valores de importancia local y global de cada ficha en un corpus (un conjunto de textos grande y estructurado). El corpus se genera automáticamente a partir de características de texto utilizadas por los modelos de Driverless AI antes del proceso de tokenización.Procesamiento natural del lenguaje
+
+- **NLP LOCO (para experimentos de texto):** este gráfico aplica un enfoque de estilo de dejar una covariable fuera (LOCO) a los modelos NLP al eliminar un token específico de todas las características de texto en un registro y predecir la importancia local sin ese token . La diferencia entre la puntuación resultante y la puntuación original (token incluido) es útil cuando se intenta determinar cómo los cambios específicos en las características del texto alteran las predicciones realizadas por el modelo.
+
+- [Consulte la documentación para la clasificación multiclase y los experimentos de series de tiempo](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/interpret-non-ts.html#summary-page)
+
+
+3. Modelos sustitutos: para experimentos de clasificación y regresión
+
+    1: Haga clic en el texto **Surrogate Models**
 
     ![surrogate-models](assets/surrogate-models.jpg)
 
-    - **K-LIME**
+    - K-LIME
 
-    To access the Surrogate K-Lime Model consider the following steps:
+Para acceder al modelo Surrogate K-Lime, considere los siguientes pasos:
 
-    ![surrogate-models-klime](assets/surrogate-models-klime.jpg)
+ ![surrogate-models-klime](assets/surrogate-models-klime.jpg)
 
-    1: Click on the **K-LIME** visual
+1: Haga clic en **K-LIME**
 
-    ![k-lime](assets/k-lime.jpg)
-  
+![k-lime](assets/k-lime.jpg)
 
-    - **Decision Tree**
+- Decision Tree (Árbol de decisión)
 
-    To access the Surrogate Decision Tree Model consider the following steps:
+Para acceder al modelo de árbol de decisión sustituto, considere los siguientes pasos:
 
-    ![surrogate-models-decision-tree](assets/surrogate-models-decision-tree.jpg)
+![surrogate-models-decision-tree](assets/surrogate-models-decision-tree.jpg)
 
-    1: Click on the **Decision Tree** visual
+1: Haga clic en la imagen Decision Tree (Árbol de decisión)
 
-    ![decision-tree](assets/decision-tree.jpg)
+![decision-tree](assets/decision-tree.jpg)
 
-    - **RF(Random Forest) Feature Importance**
+- RF(Random Forest) Feature Importance (Importancia de la característica RF (bosque aleatorio))
 
-    To access the Surrogate RF(Random Forest)Feature Importance Model consider the following steps:
+Para acceder al modelo de importancia de características de RF sustituto (bosque aleatorio), considere los siguientes pasos:
 
-    ![surrogate-models-rf-feature-importance](assets/surrogate-models-rf-feature-importance.jpg)
+![surrogate-models-rf-feature-importance](assets/surrogate-models-rf-feature-importance.jpg)
 
-    1: Click on the **RF Feature Importance** visual
+1: Haga clic en **RF Feature Importance (Importancia de la función RF)**
 
-    ![rf-feature-importance](assets/rf-feature-importance.jpg)
-  
-    
-    - **RF(Random Forest) Partial Dependence Plot**
+![rf-feature-importance](assets/rf-feature-importance.jpg)
 
-    To access the Surrogate RF(Random Forest) Partial Dependence Plot Model consider the following steps:
+- **Gráfica de dependencia parcial de RF (bosque aleatorio)**
 
-   ![surrogate-models-rf-partial-dependence-plot](assets/surrogate-models-rf-partial-dependence-plot.jpg)
+Para acceder al modelo de gráfico de dependencia parcial de RF sustituto (bosque aleatorio), considere los siguientes pasos:
 
-    1: Click on the **RF Partial Dependence Plot** visual
+![surrogate-models-rf-partial-dependence-plot](assets/surrogate-models-rf-partial-dependence-plot.jpg)
 
-    ![rf-partial-dependence-plot](assets/rf-partial-dependence-plot.jpg)
+1: Haga clic en la imagen **RF Partial Dependence Plot (Gráfica de dependencia parcial de RF)**
 
-    - **RF(Random Forest) LOCO**
+![rf-partial-dependence-plot](assets/rf-partial-dependence-plot.jpg)
 
-    To access the Surrogate RF(Random Forest) LOCO Model consider the following steps:
+- **RF(Bosque aleatorio) LOCO**
 
-    ![surrogate-models-rf-loco](assets/surrogate-models-rf-loco.jpg)
+Para acceder al modelo LOCO de RF sustituto (bosque aleatorio), considere los siguientes pasos:
 
-    1: Click on the **RF LOCO** visual
+![surrogate-models-rf-loco](assets/surrogate-models-rf-loco.jpg)
 
-    ![rf-loco](assets/rf-loco.jpg)
 
-4. **Dashboard** - The Model Interpretation Page includes the following:
-    - K-Lime: Global Interpretability Model Explanation Plot
-    - Feature Importance: Surrogate RF Feature Importance
-    - Decision Tree Surrogate model
-    - Partial Dependence and Individual Conditional Expectation (ICE) plots
+1: Haga clic **RF LOCO**
 
-5. **Actions:** 
+![rf-loco](assets/rf-loco.jpg)
 
-   ![regression-and-classification-explanations-actions](assets/regression-and-classification-explanations-actions.jpg)
 
-    *Note:*
 
-   1\. Go to ML documentation
-   - MLI Docs - Link to the "Machine Learning Interpretability with Driverless AI" booklet
+4. **Dashboard (Tablero):** - la página de interpretación del modelo incluye lo siguiente:
 
-   2\.Display MLI Java Logs
+- K-Lime: Gráfico de explicación del modelo de interpretabilidad global
+- Importancia de la función: Importancia de la función de RF sustituta
+- Modelo sustituto de árbol de decisión
+- Gráficas de dependencia parcial y expectativa condicional individual (ICE)
+- Actions (Comportamiento):
 
-   3\. Display MLI Python Logs
+5. **Acciónes:**
 
-   4\. Go to Experiment
+![regression-and-classification-explanations-actions](assets/regression-and-classification-explanations-actions.jpg)
 
-   5\. Download Decision Tree Surrogate Rules
-    
-6. Datasets - Takes you back to the Datasets page 
+*Nota:*
 
-7. Experiments - Takes you back to the Experiments page
+1\. Go to ML documentation (Ir a la documentación de MLI)
+    - MLI Docs: enlace al folleto "Interpretabilidad del machine learning con Driverless AI"
+2\. Display MLI Java Logs (Mostrar registros de Java MLI)
+3\. Display MLI Python Logs (Mostrar registros de Python de MLI)
+4\. Go to Experiment (Ir a Experimento)
+5\. Download Decision Tree Surrogate Rules (Descargar reglas sustitutas del árbol de decisiones)
 
-8. MLI - Takes you back to the MLI page 
+6. Datasets (Conjuntos de datos): lo lleva de vuelta a la página Conjuntos de datos.
+7. Experiments (Experimentos): lo lleva de regreso a la página Experimentos.
+8. MLI: lo lleva de regreso a la página de MLI.
 
-### MLI Dashboard
+### Panel de MLI
 
-Select the MLI **Dashboard** and explore the different types of insights and explanations regarding the model and its results. All plots are interactive.
+Seleccione el Dashboard (Panel) de **MLI** y explore los diferentes tipos de conocimientos y explicaciones sobre el modelo y sus resultados. Todas las parcelas son interactivas.
 
 ![mli-dashboard](assets/mli-dashboard.jpg)
 
-*NOTE:* On the top right corner where it says "Row Number or Feature Value," you are allow the following actions: The row selection feature allows a user to search for a particular observation by row number or by an identifier column. Identifier columns cannot be specified by the user - MLI makes this choice automatically by choosing columns whose values are unique (dataset row count equals the number of unique values in a column).
+*NOTA:* En la esquina superior derecha donde dice "Row Number or Feature Value (Número de fila o Valor de característica)", se le permiten las siguientes acciones: La característica de selección de fila permite al usuario buscar una observación en particular por número de fila o por una columna de identificación. El usuario no puede especificar las columnas de identificación: MLI hace esta elección automáticamente al elegir columnas cuyos valores son únicos (el recuento de filas del conjunto de datos es igual al número de valores únicos en una columna).
 
-1\. K-Lime - Global Interpretability model explanation plot: 
-This plot shows Driverless AI model and LIME model predictions in sorted order by the Driverless AI model predictions. In white, is the global linear model of Driverless AI predictions.
+1\. K-Lime - Gráfico de explicación del modelo de interpretación global:Este gráfico muestra el modelo de Driverless AI y las predicciones del modelo LIME en orden según las predicciones del modelo de Driverless AI. En blanco, es el modelo lineal global de predicciones de Driverless AI.
 
-1. Hover over any of the points of the plot and view the LIME reason codes for that value.
-
-2. Select a point where *Actual value* is 1 and note the reason codes for that prediction value
+1. Desplácese sobre cualquiera de los puntos del gráfico y vea los códigos de motivo LIME para ese valor.
+2. Seleccione un punto donde Actual value (Valor real) es 1 y anote los códigos de motivo para ese valor de predicción
 
 ![dashboard-klime](assets/dashboard-klime.jpg)
 
-Learn more about K-Lime with our [Machine Learning Interpretability Tutorial](https://training.h2o.ai/products/tutorial-1c-machine-learning-interpretability-tutorial).
+Obtenga más información sobre K-Lime con nuestro [Tutorial de interpretación de Machine Learning.](https://training.h2o.ai/products/tutorial-1c-machine-learning-interpretability-tutorial)
 
-2\. Feature Importance - 
-This graph shows the essential features that drive the model behavior.
-1. Which attribute/feature had the most importance?
-2. Was this the same attribute that you hypothesized?
+2\. Feature Importance (Importancia de la característica) - Este gráfico muestra las características esenciales que impulsan el comportamiento del modelo.
 
+1. ¿Qué atributo/característica tuvo la mayor importancia?
+2. ¿Era este el mismo atributo que planteaste?
 
 ![dashboard-feature-importance](assets/dashboard-feature-importance.jpg)
 
-Learn more about Feature Importance with our [Machine Learning Interpretability Tutorial](https://training.h2o.ai/products/tutorial-1c-machine-learning-interpretability-tutorial).
+Obtenga más información sobre la importancia de las funciones con nuestro [Tutorial de interpretación de Machine Learning.](https://training.h2o.ai/products/tutorial-1c-machine-learning-interpretability-tutorial)
 
-3\. Decision Tree Surrogate model
+3\. Decision Tree Surrogate model (Modelo sustituto de árbol de decisión)
 
-The decision Tree Surrogate model displays the model's approximate flowchart of the complex Driverless AI model's decision making.Higher and more frequent features are more important. Features above or below one-another can indicate an interaction. Finally, the thickest edges are the most common decision paths through the tree that lead to a predicted numerical outcome.
+El modelo de árbol sustituto de decisiones muestra el diagrama de flujo aproximado del modelo de la toma de decisiones del complejo modelo Driverless AI. Las características más altas y frecuentes son más importantes. Las características encima o debajo de la otra pueden indicar una interacción. Finalmente, los bordes más gruesos son los caminos de decisión más comunes a través del árbol que conducen a un resultado numérico predicho.
 
-1. What is the most common decision path for the Titanic Training set?
+1. ¿Cuál es la ruta de decisión más común para el conjunto de entrenamiento Titanic?
 
-Solution:
+Solución:
 
 ![decision-tree-task-8-answer](assets/decision-tree-task-8-answer.jpg)
 
-Learn more about Decision Trees with our [Machine Learning Interpretability Tutorial](https://training.h2o.ai/products/tutorial-1c-machine-learning-interpretability-tutorial).
+Obtenga más información sobre los árboles de decisión con nuestro [Tutorial de interpretación de Machine Learning.](https://training.h2o.ai/products/tutorial-1c-machine-learning-interpretability-tutorial)
 
-4\. Partial Dependence and Individual Conditional Expectation (ICE) plot. This plot represents the model prediction for different values of the original variables. It shows the average model behavior for important original variables.
+4\. Gráfico de dependencia parcial y expectativa condicional individual (ICE). Esta gráfica representa la predicción del modelo para diferentes valores de las variables originales. Muestra el comportamiento promedio del modelo para importantes variables originales.
 
-The grey bar represents the standard deviation of predictions. The yellow dot represents the average predictions.
+La barra gris representa la desviación estándar de las predicciones. El punto amarillo representa las predicciones promedio.
 
 ![dashboard-partial-dependence-plot](assets/dashboard-partial-dependence-plot.jpg)
 
-1. Explore other average values for different variables and compare the results to your original observations. To change the variable, select **PDP Variable:** located at the top of the Partial Dependence plot.
- 
-Learn more about Partial Dependence Plots with our [Machine Learning Interpretability Tutorial](https://training.h2o.ai/products/tutorial-1c-machine-learning-interpretability-tutorial).
+1. Explore otros valores promedio para diferentes variables y compare los resultados con sus observaciones originales. Para cambiar la variable, seleccione **PDP Variable (Variable PDP)**: ubicada en la parte superior de la gráfica de dependencia parcial.
 
-5\. Explanations 
+Obtenga más información sobre las gráficas de dependencia parcial con nuestro [Tutorial de interpretación de Machine Learning.](https://training.h2o.ai/products/tutorial-1c-machine-learning-interpretability-tutorial)
 
-Explanations provide a detailed, easy-to-read **Reason Codes** for the top Global/Local Attributions.
-1. Click on Explanations
+5\. Explicaciones
+
+Las explicaciones proporcionan **Reason Codes (códigos de motivo)** detallados y fáciles de leer para las principales atribuciones globales/locales.
+
+1. Haga clic en Explicaciones
 
 ![explanations-button](assets/explanations-button.jpg)
 
 ![mli-dashboard-explanation](assets/mli-dashboard-explanation.jpg)
 
-2. Determine the top 2 global attributions associated with 'survived.'
 
-*Note:* 
+2. Determine las 2 principales atribuciones globales asociadas con "survived (sobrevivido)."
 
-Driverless AI offers other plots located under Driverless AI Model and Surrogate Models, take a few minutes to explore these plots; they are all interactive. The **?** mark will provide an explanation of each plot.
+*Nota:*
 
-Driverless AI Model
-- Original Feature Importance
-- Transformed Feature Importance 
-- Original Shapley (Naive shapley)
-- Transformed shapley
-- Partial Dependence Plot
-- Disparate Impact Analysis
-- Sensitivity Analysis 
+Driverless AI ofrece otras parcelas ubicadas en Driverless AI Model y Surrogate Models, tómese unos minutos para explorar estas parcelas; todos son interactivos. La marca ? proporcionará una explicación de cada trama.
 
+Modelo de Driverless AI
 
-Surrogate Models
+- Importancia de la característica original
+- Importancia de la función transformada
+- Shapley original (Shapley ingenuo)
+- Shapley transformado
+- Parcela de dependencia parcial
+- Análisis de impacto desigual
+- Análisis de sensibilidad
+
+Surrogate Models (Modelos sustitutos)
 - KLime
-- Decision Tree
-- Random Forest
-    - Feature Importance
-    - Partial Dependency Plot
-    - LOCO
+- Decision Tree (Árbol de decisión)
+- Random Forest (Bosque aleatorio)
+  - Importancia de la característica
+  - Gráfica de dependencia parcial
+  - LOCO
+
+### Inmersión más Profunda y Recursos
+
+- [Machine learning, H2O.ai e interpretación del machine learning | Entrevista con Patrick Hall](https://www.youtube.com/watch?v=TSmSBWnVSzc)
+- [Tutorial de interpretación de machine learning de Driverless AI H2O (Oct 18)](https://www.youtube.com/watch?v=5jSU3CUReXY)
+- [Consejos prácticos para interpretar modelos de machine learning - Patrick Hall, H2O.ai Youtube Video (June 18)](https://www.youtube.com/watch?v=vUqC8UPw9SU)
+- [Consejos prácticos para interpretar modelos de machine learning - Patrick Hall, H2O.ai Slideshare](https://www.slideshare.net/0xdata/practical-tips-for-interpreting-machine-learning-models-patrick-hall-h2oai)
+- [Creación de sistemas de machine learning explicables: lo bueno, lo malo y lo feo (May 18)](https://www.slideshare.net/0xdata/practical-tips-for-interpreting-machine-learning-models-patrick-hall-h2oai)
+- [Una introducción a la interpretabilidad del machine learning](https://www.oreilly.com/library/view/an-introduction-to/9781492033158/)
+- [Prueba de técnicas de explicación de machine learning](https://www.oreilly.com/ideas/testing-machine-learning-interpretability-techniques)
+- [Patrick Hall y H2O Github - machine learning con Python](https://github.com/jphall663/interpretable_machine_learning_with_python)
+- [Patrick Hall y H2O Github - Interpretabilidad de machine learning](https://github.com/jphall663/awesome-machine-learning-interpretability)
 
 
+## Tarea 9: Resumen del Experimento y Autoreport
 
-### Deeper Dive and Resources
+Driverless AI permite descargar documentos generados automáticamente, como el resumen del experimento de descarga y el Informe MLI, todo con solo hacer clic en un botón.
 
-- [Machine Learning, H2O.ai & Machine Learning  Interpretability | Interview with Patrick Hall](https://www.youtube.com/watch?v=TSmSBWnVSzc)
+### Resumen del experimento
 
-- [H2O Driverless AI Machine Learning Interpretability walkthrough]( 
-https://www.youtube.com/watch?v=5jSU3CUReXY) (Oct 18)
+1\. Haga clic en **Download Experiment Summary (Descargar resumen del experimento)**:
 
-- [Practical Tips for Interpreting Machine Learning Models - Patrick Hall, H2O.ai Youtube Video](https://www.youtube.com/watch?v=vUqC8UPw9SU) (June 18)
+![download-experiment-summary](assets/download-experiment-summary.jpg)
 
-- [Practical Tips for Interpreting Machine Learning Models - Patrick Hall, H2O.ai Slideshare](https://www.slideshare.net/0xdata/practical-tips-for-interpreting-machine-learning-models-patrick-hall-h2oai)
+Cuando abre el archivo zip, se deben incluir los siguientes archivos:
 
-- [Building Explainable Machine Learning Systems: The Good, the Bad, and the Ugly](https://www.youtube.com/watch?v=Q8rTrmqUQsU) (May 18)
- 
-- [An Introduction to Machine Learning Interpretability Second Edition by Patrick Hall & Navdeep Gill](https://www.h2o.ai/wp-content/uploads/2019/08/An-Introduction-to-Machine-Learning-Interpretability-Second-Edition.pdf) 
+- Experiment logs (regular and anonymized) (Registros de experimentos (regulares y anonimizados))
+- Un resumen del experimento
+- Características del experimento junto con importancia relevante
+- Información del conjunto
+- Vista previa del experimento
+- Versión de Word de un informe generado automáticamente para el experimento
+- Tabla de clasificación de ajuste de transformaciones de destino
+- Tuning Leaderboard (Tabla de posiciones de ajuste)
 
-- [Testing Machine Learning Explanation Techniques by Patrick Hall, Navdeep Gill and Lingyao Meng](https://www.oreilly.com/ideas/testing-machine-learning-interpretability-techniques)
+2\. Abra el auto-generated.doc (informe.doc generado automáticamente) y revise los resultados del experimento:
 
-- [Patrick Hall and H2O Github - Machine Learning with Python](https://github.com/jphall663/interpretable_machine_learning_with_python)
+3\. Haga clic en Download Autoreport (Descargar Autoreport):
 
-- [Patrick Hall and H2O Github - Machine Learning Interpretability](https://github.com/jphall663/awesome-machine-learning-interpretability) 
+![download-autoreport](assets/download-autoreport.jpg)
 
+**Autoreport**: Es una versión de Word de un informe generado automáticamente para el experimento. Se incluye un archivo de informe (AutoDoc) en el resumen del experimento.
 
-## Task 9: Experiment Summary and Autoreport
+El archivo zip del **Autoreport** proporciona información sobre lo siguiente:
 
-Driverless AI allows you to download auto-generated documents such as the Download Experiment Summary and the MLI Report, all at the click of a button. 
+- Datos de entrenamiento
+- Cualquier cambio detectado en la distribución
+- Esquema de validación seleccionado
+- Ajuste de parámetros del modelo
+- Evolución de funciones
+- Conjunto final de características elegidas durante el experimento
 
-###  Experiment Summary & Logs
+### Inmersión más Profunda y Recursos
 
-1\. Click on **Download Summary & Logs**
+- [H2O.ai, Resumen del experimento de Driverless AI y Autoinforme](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-summary.html#autoreport)
+- [Revise este seminario web "Mire bajo el capó de Driverless AI H2O con Auto Doc"](https://www.brighttalk.com/webcast/16463/332693/peek-under-the-hood-of-h2o-driverless-ai-with-auto-doc)
+- [Hacia AutoML para la industria regulada con Driverless AI H2](https://www.h2o.ai/blog/toward-automl-for-regulated-industry-with-h2o-driverless-ai/)
 
- ![download-experiment-summary](assets/download-experiment-summary.jpg)
+### Próximos Pasos
 
-When you open the zip file, the following files should be included:
+Echa un vistazo al siguiente tutorial Driverless AI: [Tutorial de análisis y puntuación de experimentos de machine learning: enfoque financiero](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus)
 
-- Experiment logs (regular and anonymized)
-- A Summary of the experiment
-- Experiment features along with relevant importance
-- Ensemble information
-- Experiment preview 
-- Word version of an auto-generated report for the experiment
-- Target transformations tuning leaderboard
-- Tuning leaderboard
+- Donde aprenderás a evaluar un modelo de Driverless AI a través de herramientas como:
 
-2\. Open the auto-generated .doc report and review the experiment results.
+    - ROC
+    - Prec-Recall
+    - Gain and Lift Charts
+    - K-S Chart
+    - Métricas como:
+        - AUC
+        - F-Scores
+        - GINI
+        - MCC
+        - Log Loss
 
-3\. Click on **Download Autoreport**
+- Solicite una [Prueba gratuita de 21 días: clave de licencia de Driverless AI H2O](https://www.h2o.ai/try-driverless-ai/)
 
- ![download-autoreport](assets/download-autoreport.jpg)
+## Apéndice: Proyecto Workspace
 
-**Autoreport** is a Word version of an auto-generated report for the experiment. A report file (AutoDoc) is included in the experiment summary.
+Driverless AI proporciona un espacio de trabajo del proyecto para administrar conjuntos de datos y experimentos relacionados con un problema comercial específico o un caso de uso. Ya sea que esté tratando de detectar el fraude o predecir la retención de usuarios, los conjuntos de datos y los experimentos se pueden almacenar y guardar en los proyectos individuales. Una tabla de clasificación en la página de Projects (Proyectos) le permite comparar fácilmente el rendimiento y los resultados e identificar la mejor solución para su problema.
+Desde la página de Projects, puede vincular conjuntos de datos y / o experimentos, y puede ejecutar nuevos experimentos. Cuando vincula un experimento existente a un proyecto, los conjuntos de datos utilizados para el experimento se vinculan automáticamente a este proyecto (si no está vinculado).
 
-The zip file for the **Autoreport** provides insight into the following:
+### Explore un espacio de trabajo de proyecto existente
 
-- Training data
-- Any Detected Shifts in Distribution
-- Validation Schema selected
-- Model Parameter Tuning 
-- Feature Evolution 
-- Final set of Features chosen during the Experiment
-
-
-### Deeper Dive and Resources
-
-- [H2O Driverless AI - Experiment Summary and Autoreport](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-summary.html#autoreport)
-
-- [Review this Webinar “Peek Under the Hood of H2O Driverless AI with Auto Doc”](https://www.brighttalk.com/webcast/16463/332693/peek-under-the-hood-of-h2o-driverless-ai-with-auto-doc) 
-
-- [Toward AutoML for Regulated Industry with H2O Driverless AI](https://www.h2o.ai/blog/toward-automl-for-regulated-industry-with-h2o-driverless-ai/)
-
-## Next Steps
-
-Check out Driverless AI next tutorial [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus) where you will learn how to:
-
-- Evaluate a Driverless AI model through tools like:
-	- ROC
-	- Prec-Recall
-	- Gain and Lift Charts
-	- K-S Chart
-	- Metrics such as:
-	  - AUC
-	  - F-Scores
-	  - GINI
-	  - MCC
-	  - Log Loss
-
-- Request a [21-Day Free Trial: H2O Driverless AI license Key](https://www.h2o.ai/try-driverless-ai/)
-
-## Appendix: Project Workspace
-
-Driverless AI provides a Project Workspace for managing datasets and experiments related to a specific business problem or use case. Whether you are trying to detect fraud or predict user retention, datasets, and experiments can be stored and saved in the individual projects. A Leaderboard on the Projects page allows you to easily compare performance and results and identify the best solution for your problem.
-
-From the Projects page, you can link datasets and/or experiments, and you can run new experiments. When you link an existing experiment to a Project, the datasets used for the experiment will automatically be linked to this project (if not already linked).
-
-### Explore an Existing Project Workspace
-
-1\. Select **Projects** , an image similar to the one below will appear:
+1. Seleccione **Projects (Proyectos)**, aparecerá una imagen similar a la siguiente:
 
 ![projects-page](assets/projects-page.jpg)
 
-*Things to Note:*
+*Cosas para tener en cuenta:*
 
-1. **Projects**: Projects Workspace for managing datasets and expirments menu option
-2. Pre-created **Project** which includes:
-    - **Name** : Project name (Time Series Tutorial)
-    - **Description**: Optional (N/A)
-    - **Train Datasets**: Number of train datasets (1)
-    - **Valid Datasets**: Number of validation datasets (0)
-    - **Test Datasets**: Number of test datasets (1)
-    - **Experiments**: Number of experiments (1)
-3. Additional options for the created project:
-    - **Open**
-    - **Rename**
-    - **Delete**
-4. **+New Project**: Option to create a new project 
-5. **Type value to search for or date e.g. 15/09**
+1. **Projects (Proyectos)**: Opción del menú Proyectos Workspace para gestionar conjuntos de datos y vencimientos
+2. **Project (Proyecto)** creado previamente que incluye:
+    - Name (Nombre): Nombre del proyecto (Tutorial de series temporales)
+    - Description (Descripción): Opcional (N/A)
+    - Train Datasets (Conjuntos de Datos Entrenamiento): Número de conjuntos de datos de entrenamiento (1)
+    - Valid Datasets (Conjuntos de Datos Validación): Número de conjuntos de datos de validación (0)
+    - Test Datasets(Conjuntos de Datos Prueba): Número de conjuntos de datos de prueba (1)
+    - Experiments (Experimentos): Número de experimentos (1)
+    - Created (creado): Archivo creado, incluye el dia y la hora cuando fue creado
+3. Opciones adicionales para el proyecto creado:
+    - Open (Abrir)
+    - Rename (Renombrar)
+    - Delete (Eliminar)
+4. +New Project (Proyecto Nuevo): Opción para crear un nuevo proyecto
+5. Escriba el valor para buscar o la fecha, p. Ej. 15/09
 
-2\. Open the **Time Series Tutorial**, an image similar to the one below will appear:
+2\. Abra el Time Series Tutorial (Tutorial de series temporales), aparecerá una imagen similar a la siguiente:
 
-![projects-page-time-series](assets/projects-page-time-series.jpg)
+*Cosas para tener en cuenta:*
 
-*Things to Note:*
+1. **Datasets (Conjuntos de Datos)**
 
-1. **Datasets** 
-    - **Selected Datasets Type**: Training, Testing or Validation
-    - Additional information on the dataset that was selected: Name, Rows, Columns
+- **Selected Datasets Type (Tipo de conjuntos de datos seleccionados)**: Entrenamiento, Pruebas o Validación
+- Información adicional sobre el conjunto de datos que se seleccionó: nombre, filas, columnas
 
-    ![projects-page-time-series-datasets](assets/projects-page-time-series-datasets.jpg)
-        
-    - **+ Link dataset** : Link an additional dataset (Training, Testing or Validation) to the existing project
+![projects-page-time-series-datasets](assets/projects-page-time-series-datasets.jpg)
 
-2. **Experiments** 
+-  +Link dataset (Conjunto de datos de enlace): Vincular un conjunto de datos adicional (capacitación, pruebas o validación) al proyecto existente
+
+2. **Experiments (Experimentos)**
 
 ![projects-page-time-series-experiments](assets/projects-page-time-series-experiments.jpg)
 
-- **Select Scoring Dataset**: Select a test dataset to score using selected experiment
-- **Select Experiments**: Select any experiment for this project
-- **Select Scorer for Test Score**: Select a valid scorer for this experiment
-- **Score Dataset on Experiments**: Once you have selected the data for scoring, the scorer, and the model or models, you can begin the scoring process by clicking **Score Items**.
-- **Compare**: You can compare two or three experiments and view side-by-side detailed information about each.
-- **Unlink Items**: Unlink datasets and/or experiments
-- **New Experiment**: Create a new experiment
-- Current linked experiment(s) info :
-    - **Name**
-    - **A**: Accuracy
-    - **T** : Time
-    - **I**: Interpretability
-    - **Scorer**: Scorer used 
-    - **Status**: In progress, completed
-    - **Train Time**: Total time to train experiment
-    - **Val. Score** : Validation score for the experiment
-    - **Test Score**: Test score for the experiment
-    - **Test Time**: Total time to test experiment 
- 
-### Create a Project Workspace
+- **Select Scoring Dataset (Seleccionar conjunto de datos de puntuación)**: Seleccione un conjunto de datos de prueba para calificar usando el experimento seleccionado
+- **Select Experiments (Seleccionar experimentos)**: Seleccione cualquier experimento para este proyecto.
+- **Select Scorer for Test Score (Seleccionar anotador para puntaje de prueba)**: Select a valid scorer for this experiment
+- **Score Dataset on Experiments (Conjunto de datos de puntaje en experimentos)**: Una vez que haya seleccionado los datos para la puntuación, el anotador y el modelo o modelos, puede comenzar el proceso de puntuación haciendo clic en Score Items(Elementos de puntuación).
+- **Compare (Comparar)**: Puede comparar dos o tres experimentos y ver información detallada lado a lado sobre cada uno.
+- **Unlink Items (Desvincular elementos)**: Desvincular conjuntos de datos y / o experimentos
+- **+ Link Dataset (Enlace de conjunto de datos)**: Enlace un conjunto de datos adicional al experimento
+- **New Experiment (Experimento Nuevo)**: Crea un nuevo experimento
+- Información de los experimentos vinculados actuales:
+    - Name (Nombre)
+    - A: Exactitud
+    - T : Tiempo
+    - I: Interpretabilidad
+    - Scorer: Anotador utilizado
+    - Status(estado): En progreso, completado
+    - Train Time(tiempo de entreno): Tiempo total para entrenar experimento
+    - Val. Score(puntuación válida): Puntuación de validación del experimento
+    - Test Score(resultado de la prueba) (Resultado de la prueba): Puntaje de prueba para el experimento
+    - Test Time(tiempo de prueba) (Tiempo de prueba): Tiempo total para probar el experimento.
 
-To create a Project Workspace:
+### Crear un espacio de trabajo para un proyecto
 
-1. Click the **Projects** option on the top menu
-2. Click **New Project**
-3. Specify a name for the project and provide a description
-4. Click **Create Project**. This creates an empty Project page
+Para crear un espacio de trabajo para un proyecto:
 
-- Learn more about projects in Driverless AI; check out the [Project Workspace Documentation](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/projects.html?highlight=projects%20workspace).
+1. Haga clic en la opción **Projects** en el menú superior
+2. Haga clic en **New Project**
+3. Especifique un nombre para el proyecto y proporcione una descripción
+4. Haga clic en **Create Project (Crear Proyecto Nuevo)**. Esto crea una página de proyecto vacía.
 
-- A more extensive application of **Project Workspace** can be explored in the [Time Series Tutorial - Retail Sales Forecasting](https://training.h2o.ai/products/tutorial-2a-time-series-recipe-tutorial-retail-sales-forecasting). 
- 
+- Obtenga más información sobre proyectos en Driverless AI: 
+    - Revise [la documentación del espacio de trabajo del proyecto.](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/projects.html?highlight=projects%20workspace)
+- Se puede explorar una aplicación más amplia de **Project Workspace** en el [Tutorial de series temporales: pronóstico de ventas minoristas.](https://training.h2o.ai/products/tutorial-2a-time-series-recipe-tutorial-retail-sales-forecasting)
 
- 
