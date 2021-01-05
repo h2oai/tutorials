@@ -20,7 +20,7 @@
  
 Para este tutorial, vamos a explorar el conjunto de datos sobre el accidente del Titanic desde la perspectiva de una empresa de seguros de vidas usando el producto empresarial [H2O Driverless AI](https://www.h2o.ai/products/h2o-driverless-ai/). Vamos a explorar posibles factores de riesgos derivados de este conjunto de datos que la empresa podría haber considerado al momento de vender seguros de vida a estos pasajeros. Específicamente, crearemos un modelo de predicción para determinar cuáles factores contribuyeron a la supervivencia de los pasajeros.
 
-En esta descripción general de Driverless AI, aprenderá cómo cargar datos, explorar detalles de datos, generar visualizaciones automáticas, iniciar un experimento, explorar feature engineering, ver resultados de experimentos y obtener un recorrido rápido por el informe de Interpretabilidad de machine learning.
+En esta descripción general de Driverless AI, aprenderá cómo cargar datos, explorar detalles de datos, generar visualizaciones automáticas, iniciar un experimento, explorar feature engineering, ver resultados de experimentos y obtener un recorrido rápido a través del informe de interpretabilidad de machine learning.
 
 **Nota**: Este tutorial ha sido creado en Aquarium, lo cual es parte de la nube de H2O y provee acceso a varias herramientas para talleres, conferencias, y entrenamientos de enseñanza. Los laboratorios en Aquarium tienen conjuntos de datos, experimentos, proyectos, y otros contenidos precargados. Si usas tu propia versión de Driverless AI, no podrás ver el contenido precargado.
 
@@ -31,7 +31,7 @@ En esta descripción general de Driverless AI, aprenderá cómo cargar datos, ex
 
     - ¿Necesita una **Sesión de Dos Horas de Test Drive?** Sigue las instrucciones [en este tutorial](https://training.h2o.ai/products/tutorial-0-getting-started-with-driverless-ai-test-drive) para comenzar tu sesión. Después de comenzar la sesión de Driverless AI Test Drive, continúa leyendo los requisitos restantes de este tutorial y proceda a comenzar Tarea 1: Tour del Producto
  
-    - ¿Ya tienes una sesión de prueba de conducción de dos horas? Continúe leyendo los requisitos previos restantes de este tutorial, luego inicie la Tarea 1: Tour del producto
+    - ¿Ya tienes una sesión de **Test Drive** de dos horas? Continúe leyendo los requisitos previos restantes de este tutorial, luego inicie la Tarea 1: Tour del producto
  
 **Nota: Test Drive de Driverless AI ya tiene la clave de licencia incorporada, así que no necesita solicitar una para usarlo. Cada sesión de Test Drive en Aquarium estará disponible por dos horas. Después que la sesión termine su trabajo no será guardado. Si necesita más tiempo para seguir explorando Driverless AI, puedes lanzar una nueva sesión de Test Drive o puede contactar nuestro equipo de ventas por medio de nuestro [formulario de contacto](https://www.h2o.ai/company/contact/).**
 
@@ -52,7 +52,7 @@ La interfaz del usuario (UI) de Driverless AI es muy fácil de navegar. Las sigu
 5. **Diagnostics (Diagnósticos)**: Muestra diagnósticos acerca del modelo creado y puede ver los resultados de ese modelo usando diferentes formas de evaluación basado en el modelo y conjunto de datos existentes.
 6. **MLI**: Muestra una lista de interpretaciones de los modelos y permite realizar una interpretación de un modelo nuevo.
 7. **Deployments (Implementaciones)**: Despliega los modos de evaluación de MOJO y Python para hacer pruebas o integrar a tu producto final, también se puede desplegar localmente o en la nube.
-8. **Resources (Recursos)**: El menú de Recursos permite ver enlaces relacionados con Información del Sistema, Guia de Uso de Driverless AI,y Ayuda. Desde este menú, también se puede descargar Python Client, R Client, MOJO2 Runtime, MOJO2 Py Runtime, y MOJO2 R Runtime.
+8. **Resources (Recursos)**: El menú de Recursos permite ver enlaces relacionados con Información del Sistema, Guia de Uso de Driverless AI, y Ayuda. Desde este menú, también se puede descargar Python Client, R Client, MOJO2 Runtime, MOJO2 Py Runtime, y MOJO2 R Runtime.
 9. **Messages[] (Mensajes [])**: Muestra noticias y próximos eventos de Driverless AI.
 10. **Logout H2OAI (Cerrar sesión H2OAI)**: Permite salir de la sesión actual de Driverless AI.
 11. **<**: Regresa a la página anterior
@@ -65,7 +65,7 @@ La interfaz del usuario (UI) de Driverless AI es muy fácil de navegar. Las sigu
 
 - [Únete a la comunidad H2O.](https://www.h2o.ai/community/home) Haz preguntas, discute posibles usos, da recomendaciones, mantente informado sobre lo más nuevo de H2O.ai, y mucho más. 
 
-- Aprende más sobre H2O.ai Driverless por medio de nuestra[Documentación de H2O Driverless AI.](http://docs.h2o.ai/driverless-ai/latest-stable/docs/booklets/DriverlessAIBooklet.pdf)
+- Aprende más sobre H2O.ai Driverless por medio de nuestra [Documentación de H2O Driverless AI.](http://docs.h2o.ai/driverless-ai/latest-stable/docs/booklets/DriverlessAIBooklet.pdf)
 
 - [Explora la Documentación del Producto de H2O](http://docs.h2o.ai/) 
 
@@ -101,7 +101,7 @@ Driverless AI puede hacer algunas disputas de datos. La disputa de datos se pued
  
 ### Transformación de datos/Feature Engineering
  
-La transformación de datos o feature engineering (ingeniería de características) es el proceso de crear nuevas características a partir de las existentes.Las transformaciones de datos adecuadas en un conjunto de datos pueden incluir escalado, descomposición y agregación [2].Algunas transformaciones incluyen observar todas las características e identificar cuáles características pueden ser combinadas para hacer nuevas que serán más útiles para el rendimiento del modelo. Para las características categóricas, la recomendación es que las clases que tengan pocas observaciones sean agrupadas para reducir la probabilidad de que el modelo se sobreajuste (overfitting). Adicionalmente, variables ficticias son introducidas a las características categóricas para facilitar Machine Learning ya que muchos algoritmos no pueden manejar características categóricas directamente. Por último, pero no menos importante, eliminar características que no son usadas o son redundantes [3]. Estas son solo algunas sugerencias al acercarse a Feature Engineering. Feature engineering consume mucho tiempo debido a que su naturaleza es repetitiva; también puede ser costoso. El siguiente paso en la creación de un modelo es seleccionar un algoritmo.
+La transformación de datos o feature engineering (ingeniería de características) es el proceso de crear nuevas características a partir de las existentes. Las transformaciones de datos adecuadas en un conjunto de datos pueden incluir escalado, descomposición y agregación [2].Algunas transformaciones incluyen observar todas las características e identificar cuáles características pueden ser combinadas para hacer nuevas que serán más útiles para el rendimiento del modelo. Para las características categóricas, la recomendación es que las clases que tengan pocas observaciones sean agrupadas para reducir la probabilidad de que el modelo se sobreajuste (overfitting). Adicionalmente, variables ficticias son introducidas a las características categóricas para facilitar Machine Learning ya que muchos algoritmos no pueden manejar características categóricas directamente. Por último, pero no menos importante, eliminar características que no son usadas o son redundantes [3]. Estas son solo algunas sugerencias al acercarse a Feature Engineering. Feature engineering consume mucho tiempo debido a que su naturaleza es repetitiva; también puede ser costoso. El siguiente paso en la creación de un modelo es seleccionar un algoritmo.
  
 ### Selección de algoritmo
  
@@ -111,21 +111,21 @@ La transformación de datos o feature engineering (ingeniería de característic
  
 **Conjunto de datos(datasets)**
  
-Una buena práctica cuando entrenamos un modelo de Machine Learning es dividir tu conjunto de datos en subconjuntos: Conjuntos de entrenamiento, validación, y prueba. Una buena proporción para todo el conjunto de datos es 70-15-15, 70% de todo el conjunto de datos para el entrenamiento, 15% para la validación, y el 15% restante para la prueba. El **conjunto de entrenamiento** son los datos que se usarán para entrenar el modelo, y necesita ser suficientemente grande para obtener resultados. El **conjunto de validación** son los datos que se retuvieron del entrenamiento y se usarán para evaluar y ajustar los hiper-parámetros del modelo entrenado y, por lo tanto, ajustar el rendimiento. Finalmente, El **conjunto de prueba** son datos que también se retuvieron y se usarán para confirmar los resultados del modelo final [1].
+Una buena práctica cuando entrenamos un modelo de Machine Learning es dividir tu conjunto de datos en subconjuntos: Conjuntos de entrenamiento, validación, y prueba. Una buena proporción para todo el conjunto de datos es 70-15-15, 70% de todo el conjunto de datos para el entrenamiento, 15% para la validación, y el 15% restante para la prueba. El **conjunto de entrenamiento** son los datos que se usarán para entrenar el modelo, y necesita ser suficientemente grande para obtener resultados. El **conjunto de validación** son los datos que se retuvieron del entrenamiento y se usarán para evaluar y ajustar los hiper-parámetros del modelo entrenado y, por lo tanto, ajustar el rendimiento. Finalmente, el **conjunto de prueba** son datos que también se retuvieron y se usarán para confirmar los resultados del modelo final [1].
 
-**Nota**: El conjunto de datos de validación se utiliza para ajustar la canalización de modelado. Si se proporciona, todos los datos de entrenamiento se utilizarán para el entrenamiento y la validación de la canalización de modelado se realiza solo con este conjunto de datos de validación. Cuando no incluye un conjunto de datos de validación, Driverless AI realizará una validación cruzada K-fold para I.I.D. experimentos y múltiples divisiones de validación de ventana móvil para experimentos de series de tiempo. Por esta razón, generalmente no se recomienda incluir un conjunto de datos de validación, ya que luego se validará en un solo conjunto de datos. Tenga en cuenta que los experimentos de series de tiempo no se pueden utilizar con un conjunto de datos de validación: incluir un conjunto de datos de validación deshabilitará la capacidad de seleccionar una columna de tiempo y viceversa.
+**Nota**: El conjunto de datos de validación se utiliza para ajustar la canalización de modelado. Si se proporciona, todos los datos de entrenamiento se utilizarán para el entrenamiento y la validación de la canalización de modelado se realiza solo con este conjunto de datos de validación. Cuando no incluye un conjunto de datos de validación, Driverless AI realizará una validación cruzada K-fold para experimentos y múltiples divisiones de validación de ventana móvil para experimentos de series de tiempo. Por esta razón, generalmente no se recomienda incluir un conjunto de datos de validación, ya que luego se validará en un solo conjunto de datos. Tenga en cuenta que los experimentos de series de tiempo no se pueden utilizar con un conjunto de datos de validación: incluir un conjunto de datos de validación deshabilitará la capacidad de seleccionar una columna de tiempo y viceversa.
  
 ![datasets-split-ratio-diagram](assets/datasets-split-ratio-diagram.jpg)
  
-Otra parte del entrenamiento de modelos es ajustar y afinar los modelos. Para el ajuste y afinación, los hiper parámetros deben ajustarse y la validación cruzada debe llevarse a cabo utilizando sólo los datos del entrenamiento. Se deberán probar varios valores de hiper parámetros. "Un hiper parámetro es un parámetro que se establece antes de que comience el proceso de aprendizaje. Estos parámetros son ajustables y pueden afectar directamente qué tan bien se entrena un modelo. Un ejemplo de hiper parámetro en el machine learning es la tasa de aprendizaje" [7]. Con la validación cruzada, se utiliza todo el conjunto de datos, y cada modelo se entrena en un subconjunto diferente de los datos de entrenamiento [8]. Además, se establecerá un ciclo de validación cruzada para calcular la puntuación de validación cruzada para cada conjunto de híper parámetros para cada algoritmo. Basado en la puntuación de validación cruzada y los valores de híper parámetro, puede seleccionar el modelo (recuerde que "un modelo en Machine Learning es la salida de un algoritmo de Machine Learning ejecutado en datos. Representa lo que aprendió un algoritmo de machine learning" [9] ) para cada algoritmo que se haya ajustado con datos de entrenamiento y pruébelo usando su conjunto de prueba.
+Otra parte del entrenamiento de modelos es ajustar y afinar los modelos. Para el ajuste y afinación, los hiper parámetros deben ajustarse y la validación cruzada debe llevarse a cabo utilizando sólo los datos del entrenamiento. Se deberán probar varios valores de hiper parámetros. "Un hiper parámetro es un parámetro que se establece antes de que comience el proceso de aprendizaje. Estos parámetros son ajustables y pueden afectar directamente qué tan bien se entrena un modelo. Un ejemplo de hiper parámetro en el machine learning es la tasa de aprendizaje" [7]. Con la validación cruzada, se utiliza todo el conjunto de datos, y cada modelo se entrena en un subconjunto diferente de los datos de entrenamiento [8]. Además, se establecerá un ciclo de validación cruzada para calcular la puntuación de validación cruzada para cada conjunto de híper parámetros para cada algoritmo. Basado en la puntuación de validación cruzada y los valores de híper parámetro, puede seleccionar el modelo (recuerde que "un modelo en Machine Learning es la salida de un algoritmo de Machine Learning ejecutado en datos. Representa lo que aprendió un algoritmo de machine learning" [9] ) para cada algoritmo que se haya ajustado con datos de entrenamiento y provado usando su conjunto de prueba.
 
-### ¿Cuáles son los desafíos al desarrollar un modelo de IA?
+### ¿Cuáles son los desafíos al desarrollar un modelo de IA (Inteligencia Artificial)?
  
 Uno de los desafíos importantes es desarrollar un solo modelo listo para la producción. Desarrollar un modelo implica la Ingeniería de características, construcción del modelo, y la implementación del modelo. Todas las tareas son muy repetitivas, que consumen tiempo, requieren un conocimiento avanzado de generación de características, algoritmos, parámetros, y la implementación del modelo. Finalmente, necesita haber un profundo conocimiento y confianza en cómo el modelo se generó para explicar y justificar cómo el modelo tomó sus decisiones.
  
 ### ¿Qué es Automatic Machine Learning, y por qué es tan importante?
  
-AutoML o Aprendizaje de Máquina Automatizado es el proceso de automatización para la selección de algoritmos, generación de características, ajuste de hiper parámetros, modelado iterativo, y la evaluación del modelo. Herramientas de AutoML, como son H2O Driverless AI hace más fácil entrenar y evaluar los modelos de Aprendizaje de Máquina. La automatización de las tareas repetitivas del desarrollo de Machine Learning permite a las personas en la industria enfocarse en los datos y los problemas de negocios que están tratando resolver.
+AutoML o Aprendizaje de Máquina Automatizado es el proceso de automatización para la selección de algoritmos, generación de características, ajuste de hiper parámetros, modelado iterativo, y la evaluación del modelo. Herramientas de AutoML, como H2O Driverless AI hace más fácil entrenar y evaluar los modelos de Aprendizaje de Máquina. La automatización de las tareas repetitivas del desarrollo de Machine Learning permite a las personas en la industria enfocarse en los datos y los problemas de negocios que están tratando resolver.
  
  
 ### Referencias Electrónicas
@@ -257,7 +257,7 @@ Conjunto de datos del Titanic: En el conjunto de datos encontrarás 1,309 filas,
 
 Ahora vamos a explorar el conjunto de datos Titanic que acabamos de cargar.
 
-1\. Continuando en **Dataset Overview page (página de descripción general del conjunto de datos)**, haga clic en el conjunto de datos titanic.csv. Aparecerán las siguientes opciones:
+1\. Continuando en **Dataset Overview page (página de descripción general del conjunto de datos)**, haz clic en el conjunto de datos titanic.csv. Aparecerán las siguientes opciones:
 
 ![titanic-set-actions](assets/titanic-set-actions.jpg)
 
@@ -266,7 +266,7 @@ Ahora vamos a explorar el conjunto de datos Titanic que acabamos de cargar.
 2. Opciones:
 
     - **Details (Detalles)** - Vea un resumen del conjunto de datos y obtenga una vista previa del conjunto de datos
-    - **Visualize (Visualizar)** - Visualiza el conjunto de datos con gráficos disponibles
+    - **Visualize (Visualizar)** - Visualiza el conjunto de datos con gráficas disponibles
     - **Split (Dividir)** - Dividir el conjunto de datos
     - **Predict (Predecir)** - Ejecute un experimento usando Driverless AI
     - **Rename (Cambiar Nombre)** - Cambiar el nombre del conjunto de datos
@@ -318,7 +318,7 @@ Ahora vamos a explorar el conjunto de datos Titanic que acabamos de cargar.
 
 1. "Empiece a escribir para filtrar nuestros artículos"
 2. Tipos de ingeniería de características disponibles
-3. Botón listo
+3. Botón **Done (listo)**
 
 4\. Seleccionar filas del **conjunto de datos (Dataset Rows)**
 
@@ -343,7 +343,7 @@ Al partir el conjunto de datos Titanic.csv, vamos a crear dos conjuntos de datos
 
 ![titanic-set-split-1](assets/titanic-set-split-1.jpg)
 
-2. Divida los datos en dos conjuntos: ```titanic_train (titanic_entrenamiento)``` y ```titanic_test (titanic_prueba)```, luego guarde los cambios. Use la imagen a continuación como guía:
+2. Divida los datos en dos conjuntos: ```titanic_train``` (titanic_entrenamiento) y ```titanic_test``` (titanic_prueba), luego guarde los cambios. Use la imagen a continuación como guía:
 
 ![titanic-set-split-2](assets/titanic-set-split-2.jpg)
 
@@ -352,7 +352,7 @@ Al partir el conjunto de datos Titanic.csv, vamos a crear dos conjuntos de datos
 1. Para OUTPUT NAME 1: ingrese ```titanic_train``` (esto servirá como conjunto de entrenamiento)
 2. Para OUTPUT NAME 2: ingrese ```titanic_test``` (esto servirá como el conjunto de prueba)
 3. Puede cambiar Random Seed (semilla aleatoria); esto generará la misma división cada vez
-4. Cambie el valor de división a .75 ajustando el control deslizante a 75% o ingresando .75 en la sección que dice Train/Valid Split Ratio(Entrenamiento / Relación de división válida)
+4. Cambie el valor de división a .75 ajustando el control deslizante a 75% o ingresando .75 en la sección que dice *Select Split Ratio* 
 5. Guarda los cambios que hiciste
 
 Se seleccionó la proporción de división de .75 (75% para el conjunto de entrenamiento y 25% del conjunto de prueba) para este conjunto de datos en particular para no generalizar el modelo dado el tamaño total del conjunto.
