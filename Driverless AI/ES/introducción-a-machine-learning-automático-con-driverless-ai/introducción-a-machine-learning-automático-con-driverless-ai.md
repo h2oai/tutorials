@@ -1,4 +1,4 @@
-### Tutorial: Introducción a Machine Learning Automático con H2O.ai Test Drive
+# Introducción a Machine Learning Automático con H2O.ai Test Drive
 
 ## Contenido
 
