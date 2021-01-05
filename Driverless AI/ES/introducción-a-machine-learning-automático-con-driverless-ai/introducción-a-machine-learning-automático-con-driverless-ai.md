@@ -63,8 +63,12 @@ La interfaz del usuario (UI) de Driverless AI es muy fácil de navegar. Las sigu
 
 ### Exploración más Profunda y Recursos
 
-- [Únete a la comunidad H2O.](https://www.h2o.ai/community/home) Haz preguntas, discute posibles usos, da recomendaciones, mantente informado sobre lo más nuevo de H2O.ai, y mucho más. Aprende más sobre H2O.ai Driverless por medio de nuestra[Documentación de H2O Driverless AI.](http://docs.h2o.ai/driverless-ai/latest-stable/docs/booklets/DriverlessAIBooklet.pdf)
+- [Únete a la comunidad H2O.](https://www.h2o.ai/community/home) Haz preguntas, discute posibles usos, da recomendaciones, mantente informado sobre lo más nuevo de H2O.ai, y mucho más. 
+
+- Aprende más sobre H2O.ai Driverless por medio de nuestra[Documentación de H2O Driverless AI.](http://docs.h2o.ai/driverless-ai/latest-stable/docs/booklets/DriverlessAIBooklet.pdf)
+
 - [Explora la Documentación del Producto de H2O](http://docs.h2o.ai/) 
+
 - [Aprende más sobre H2O Driverless al revisar nuestra lista de preguntas frecuentes](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/faq.html)
 
 
@@ -72,7 +76,9 @@ La interfaz del usuario (UI) de Driverless AI es muy fácil de navegar. Las sigu
 
 ### Inteligencia Artificial y Aprendizaje de Máquina
  
-Los conceptos que se encuentran en esta sección están destinados a proporcionar una vista general de alto nivel de Aprendizaje de Máquina. Al final de esta sección, podrás encontrar enlaces a recursos que ofrecen una explicación más profunda de los conceptos cubiertos aquí.Machine learning es un subconjunto de Inteligencia Artificial donde el enfoque está en crear máquinas que puedan simular la inteligencia humana. Una distinción crítica entre Inteligencia Artificial y Machine learning es que los modelos de Machine Learning "aprenden" de los datos a los que los modelos son expuestos. Arthur Samuel, un pionero de Machine Learning en 1959,  definió Machine Learning como un "campo de estudio que le da a las computadoras la habilidad de aprender sin ser explícitamente programadas"[1]. Un algoritmo de Machine Learning se entrena con un conjunto de datos para hacer predicciones. Estas predicciones son, a veces, utilizadas para optimizar un sistema o asistir a la toma de decisiones.
+Los conceptos que se encuentran en esta sección están destinados a proporcionar una vista general de alto nivel de Aprendizaje de Máquina. Al final de esta sección, podrás encontrar enlaces a recursos que ofrecen una explicación más profunda de los conceptos cubiertos aquí.
+
+Machine learning es un subconjunto de Inteligencia Artificial donde el enfoque está en crear máquinas que puedan simular la inteligencia humana. Una distinción crítica entre Inteligencia Artificial y Machine learning es que los modelos de Machine Learning "aprenden" de los datos a los que los modelos son expuestos. Arthur Samuel, un pionero de Machine Learning en 1959,  definió Machine Learning como un "campo de estudio que le da a las computadoras la habilidad de aprender sin ser explícitamente programadas"[1]. Un algoritmo de Machine Learning se entrena con un conjunto de datos para hacer predicciones. Estas predicciones son, a veces, utilizadas para optimizar un sistema o asistir a la toma de decisiones.
  
 ### Entrenamiento de Machine Learning
  
@@ -89,7 +95,7 @@ El aprendizaje supervisado toma los ejemplos etiquetados y permite a un modelo q
 
 Un modelo de Machine Learning es tan bueno como los datos que se usan para entrenarlo. Si usas datos malos para entrenar tu modelo, obtendrás un modelo malo. Dicho esto, antes de cargar un conjunto de datos dentro de la herramienta que te ayudará con la construcción de tu modelo de Machine Learning como Driverless AI, asegúrate de que el conjunto de datos ha sido limpiado y preparado para el entrenamiento. El proceso de transformación de datos a otro formato, el cual es más apropiado y valioso para el análisis, se le llama "data wrangling" o disputa de datos.
 
-La gestión de datos, que puede incluir extracciones, análisis, uniones, estandarización, aumento, limpieza, consolidación, filtrado es altamente recomendado terminarlo antes de cargar el conjunto de datos a Driverless AI. La preparación de datos incluye el conjunto de datos en un correcto formato para lo que se intenta hacer. Los duplicados se han eliminado. Los datos perdidos se arreglan o se eliminan, y finalmente, los valores categóricos se han transformado o codificado a un tipo numérico. Herramientas como la tabla de datos de Python, Pandas y R son excelentes recursos para la gestión de datos.
+La gestión de datos, que puede incluir extracciones, análisis, uniones, estandarización, aumento, limpieza, consolidación, filtrado es altamente recomendado terminarlo antes de cargar el conjunto de datos a Driverless AI. La preparación de datos incluye el conjunto de datos en un correcto formato para lo que se intenta hacer. Los duplicados se han eliminado. Los datos perdidos se arreglan o se eliminan, y finalmente, los valores categóricos se han transformado o codificado a un tipo numérico. Herramientas como [la tabla de datos de Python](https://datatable.readthedocs.io/en/latest/?badge=latest), [Pandas](https://pandas.pydata.org/) y [R](https://www.r-project.org/) son excelentes recursos para la gestión de datos.
 
 Driverless AI puede hacer algunas disputas de datos. La disputa de datos se puede hacer a través de una [data recipe](https://www.r-project.org/), de el [JDBC connector](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/connectors-nd/jdbc.html?highlight=jdbc) o a través de [live code](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/datasets-describing.html?highlight=live%20code#modify-by-recipe) el cual creará un nuevo conjunto de datos modificando el existente.
  
@@ -171,7 +177,11 @@ El flujo del trabajo típico de Driverless AI es:
  
 ### Información del conjunto de datos
  
-El conjunto de datos usados en este experimento es una versión de datos elaborado por Kaggle. Este conjunto de datos contiene una lista de los pasajeros a bordo del RMS Titanic. El RMS Titanic fue un transatlántico británico que se hundió tras colisionar con un iceberg al norte del océano Atlántico el 15 de abril de 1912. Más de 1500 personas perdieron la vida de un estimado de 2,224 pasajeros y miembros de la tripulación, cuando estaban en camino a la marítima de Southampton en la Ciudad de Nueva York. Esta tragedia impactó a la comunidad internacional, lo que impulsó mejores medidas de seguridad para barcos. La falta de botes salvavidas entre otras cosas, fue uno de los factores determinantes en la pérdida de vidas. Sin embargo, hubo algunos elementos que influyeron para que hubiera sobrevivientes.
+El conjunto de datos usados en este experimento es una versión de datos elaborado por Kaggle. Este conjunto de datos contiene una lista de los pasajeros a bordo del RMS Titanic. 
+
+El RMS Titanic fue un transatlántico británico que se hundió tras colisionar con un iceberg al norte del océano Atlántico el 15 de abril de 1912. Más de 1500 personas perdieron la vida de un estimado de 2,224 pasajeros y miembros de la tripulación, cuando estaban en camino a la marítima de Southampton en la Ciudad de Nueva York. 
+
+Esta tragedia impactó a la comunidad internacional, lo que impulsó mejores medidas de seguridad para barcos. La falta de botes salvavidas entre otras cosas, fue uno de los factores determinantes en la pérdida de vidas. Sin embargo, hubo algunos elementos que influyeron para que hubiera sobrevivientes.
  
 ![rms-titanic](assets/rms-titanic.jpeg)
  
@@ -211,8 +221,8 @@ Conjunto de datos del Titanic: En el conjunto de datos encontrarás 1,309 filas,
  
 3\. Ingresa los siguiente
 
-1. /data/TestDrive/titanic.csv en la barra de búsqueda.
-2. Selecciona titanic.csv
+1. ```/data/TestDrive/titanic.csv ```en la barra de búsqueda.
+2. Selecciona ```titanic.csv```
 3. Luego haga clic aquí: **Click to Import Selection**.
  
 ![select-titanic-dataset](assets/select-titanic-dataset.jpg)
