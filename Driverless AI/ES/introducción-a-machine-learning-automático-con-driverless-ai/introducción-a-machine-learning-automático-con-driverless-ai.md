@@ -257,7 +257,7 @@ Conjunto de datos del Titanic: En el conjunto de datos encontrarás 1,309 filas,
 
 Ahora vamos a explorar el conjunto de datos Titanic que acabamos de cargar.
 
-1\. Continuando en Dataset Overview page (página de descripción general del conjunto de datos), haga clic en el conjunto de datos titanic.csv. Aparecerán las siguientes opciones:
+1\. Continuando en **Dataset Overview page (página de descripción general del conjunto de datos)**, haga clic en el conjunto de datos titanic.csv. Aparecerán las siguientes opciones:
 
 ![titanic-set-actions](assets/titanic-set-actions.jpg)
 
@@ -265,18 +265,18 @@ Ahora vamos a explorar el conjunto de datos Titanic que acabamos de cargar.
 
 2. Opciones:
 
-- **Details (Detalles)** - Vea un resumen del conjunto de datos y obtenga una vista previa del conjunto de datos
-- **Visualize (Visualizar)** - Visualiza el conjunto de datos con gráficos disponibles
-- **Split (Dividir)** - Dividir el conjunto de datos
-- **Predict (Predecir)** - Ejecute un experimento usando Driverless AI
-- **Rename (Cambiar Nombre)** - Cambiar el nombre del conjunto de datos
-- **Download (Descargar)** - Descargar el conjunto de datos
-- **Display Logs** - Mostrar Logaritmo 
-- **Delete (Eliminar)** - Eliminar el conjunto de datos
+    - **Details (Detalles)** - Vea un resumen del conjunto de datos y obtenga una vista previa del conjunto de datos
+    - **Visualize (Visualizar)** - Visualiza el conjunto de datos con gráficos disponibles
+    - **Split (Dividir)** - Dividir el conjunto de datos
+    - **Predict (Predecir)** - Ejecute un experimento usando Driverless AI
+    - **Rename (Cambiar Nombre)** - Cambiar el nombre del conjunto de datos
+    - **Download (Descargar)** - Descargar el conjunto de datos
+    - **Display Logs** - Mostrar Logaritmo 
+    - **Delete (Eliminar)** - Eliminar el conjunto de datos
 
 **Nota**: Un conjunto de datos solo se puede eliminar si no se está utilizando en un experimento. De lo contrario, primero debe eliminar el experimento y luego se puede eliminar el conjunto de datos.
 
-2\. A continuación, confirmaremos que el conjunto de datos se cargó correctamente y que tiene el número correcto de filas y columnas haciendo clic en Details (detalles).
+2\. A continuación, confirmaremos que el conjunto de datos se cargó correctamente y que tiene el número correcto de filas y columnas haciendo clic en **Details (detalles)**.
 
 3\. Haga clic en Details. Details lo llevará a Dataset Details Page (Página de detalles del conjunto de datos)
 
@@ -284,7 +284,7 @@ Ahora vamos a explorar el conjunto de datos Titanic que acabamos de cargar.
 
 *Cosas para tener en cuenta:*
 
-1. La página de detalles del conjunto de datos proporciona un resumen del conjunto de datos.
+1. La **página de detalles del conjunto de datos** proporciona un resumen del conjunto de datos.
 
     - Vea las primeras 20 filas de una columna colocando el cursor sobre el nombre de la columna (vea la imagen a continuación)
 
@@ -310,7 +310,7 @@ Ahora vamos a explorar el conjunto de datos Titanic que acabamos de cargar.
 
 ![feature-props-auto-to-detect](assets/feature-props-auto-detect.jpg)
 
-- Seleccione los tipos de ingeniería de características de columna (luego haga **clic** en Done (listo) en la parte inferior de la página):
+- Seleccione los tipos de ingeniería de características de columna (luego haga clic en **Done (listo)** en la parte inferior de la página):
 
 ![logical-type-options](assets/logical-type-options.jpg)
 
@@ -320,7 +320,7 @@ Ahora vamos a explorar el conjunto de datos Titanic que acabamos de cargar.
 2. Tipos de ingeniería de características disponibles
 3. Botón listo
 
-4\. Seleccionar filas del conjunto de datos (Dataset Rows)
+4\. Seleccionar filas del **conjunto de datos (Dataset Rows)**
 
 ![titanic-set-rows-page](assets/titanic-set-rows-page.jpg)
 
@@ -328,18 +328,18 @@ Ahora vamos a explorar el conjunto de datos Titanic que acabamos de cargar.
 
 1. Vista previa del conjunto de datos
 2. Ver las filas restantes
-3. Modificar por receta: modifique el conjunto de datos a través de una receta personalizada o un código en vivo (ingrese manualmente el código de receta personalizado para usar para modificar el conjunto de datos)
-4. Regrese a Dataset Overview (Descripción general del conjunto de datos)
-5. Opción para salir y volver a la página H2O Datasets
+3. **Modificar por receta:** modifique el conjunto de datos a través de una receta personalizada o un código en vivo (ingrese manualmente el código de receta personalizado para usar para modificar el conjunto de datos)
+4. Regrese a **Dataset Overview (Descripción general del conjunto de datos)**
+5. Opción para salir y volver a la página H2O **Datasets**
 
-5\. Salga y regrese a la página Datasets Overview.
+5\. Salga y regrese a la página **Datasets Overview**.
 
 
 ### Dividir el conjunto de datos
 
 Al partir el conjunto de datos Titanic.csv, vamos a crear dos conjuntos de datos, uno de entrenamiento y uno de prueba. El 75% de los datos se utilizarán para entrenar el modelo y el 25% para probar el modelo entrenado.
 
-1. Haga clic en el archivo titanic.csv y seleccione Split
+1. Haga clic en el archivo titanic.csv y seleccione **Split**
 
 ![titanic-set-split-1](assets/titanic-set-split-1.jpg)
 
@@ -349,20 +349,17 @@ Al partir el conjunto de datos Titanic.csv, vamos a crear dos conjuntos de datos
 
 *Cosas para tener en cuenta:*
 
-1. Para OUTPUT NAME 1: ingrese titanic_train (esto servirá como conjunto de entrenamiento)
-
-2. Para OUTPUT NAME 2: ingrese titanic_test (esto servirá como el conjunto de prueba)
-
+1. Para OUTPUT NAME 1: ingrese ```titanic_train``` (esto servirá como conjunto de entrenamiento)
+2. Para OUTPUT NAME 2: ingrese ```titanic_test``` (esto servirá como el conjunto de prueba)
 3. Puede cambiar Random Seed (semilla aleatoria); esto generará la misma división cada vez
-
 4. Cambie el valor de división a .75 ajustando el control deslizante a 75% o ingresando .75 en la sección que dice Train/Valid Split Ratio(Entrenamiento / Relación de división válida)
-
 5. Guarda los cambios que hiciste
 
 Se seleccionó la proporción de división de .75 (75% para el conjunto de entrenamiento y 25% del conjunto de prueba) para este conjunto de datos en particular para no generalizar el modelo dado el tamaño total del conjunto.
 
-The training set (El conjunto de entrenamiento) contiene 981 filas, cada fila representa un pasajero y las 16 columnas de atributos representan los atributos de cada pasajero.
-The Test set (El conjunto de prueba) contiene 328 filas, cada fila representa un pasajero y las 16 columnas de atributos representan los atributos de cada pasajero. 
+**The training set (El conjunto de entrenamiento)** contiene 981 filas, cada fila representa un pasajero y las 16 columnas de atributos representan los atributos de cada pasajero.
+
+**The Test set (El conjunto de prueba)** contiene 328 filas, cada fila representa un pasajero y las 16 columnas de atributos representan los atributos de cada pasajero. 
 
 Verifique que los tres conjuntos de datos Titanic, titanic_test, titanic_train y titanic.csv estén allí:
 
@@ -371,29 +368,29 @@ Verifique que los tres conjuntos de datos Titanic, titanic_test, titanic_train y
 
 ## Autoviz
 
-Ahora que el conjunto de datos titanic.csv se ha dividido, utilizaremos el conjunto titanic_train para el resto del tutorial.
+Ahora que el conjunto de datos titanic.csv se ha dividido, utilizaremos el conjunto **titanic_train** para el resto del tutorial.
 
 Hay dos formas de visualizar el conjunto de entrenamiento:
 
 ![titanic-train-visualize](assets/titanic-train-visualize.jpg)
 
-**Método 1:** haciendo clic en el archivo titanic_train, seleccione Visualize, luego haga clic en el archivo de visualización generado.
+**Método 1:** haciendo clic en el archivo **titanic_train**, seleccione **Visualize**, luego haga clic en el archivo de visualización generado.
 
-**Método 2:** haciendo clic en Autoviz ubicado en la parte superior de la página de la interfaz de usuario, donde se le pedirá el conjunto de datos que desea visualizar.
+**Método 2:** haciendo clic en **Autoviz** ubicado en la parte superior de la página de la interfaz de usuario, donde se le pedirá el conjunto de datos que desea visualizar.
 
-1\. Elija un método para visualizar el conjunto de datos titanic_train. Debería aparecer una imagen similar:
+1\. Elija un método para visualizar el conjunto de datos **titanic_train**. Debería aparecer una imagen similar:
 
 ![train-set-visualization-ready](assets/train-set-visualization-ready.jpg)
 
-Haga clic en la visualización titanic_train y aparecerá la siguiente pantalla.
+Haga clic en la visualización **titanic_train** y aparecerá la siguiente pantalla.
 
 ![train-set-visualizations](assets/train-set-visualizations.jpg)
 
-¿Es posible visualizar cómo se correlacionan las variables en el conjunto de entrenamiento? ¿Podemos determinar qué otras variables están fuertemente correlacionadas con la supervivencia de un pasajero? ¡La respuesta a esas preguntas es sí! Uno de los gráficos que nos permite visualizar las correlaciones entre variables es el Correlation Graph (Gráfico de correlación).
+¿Es posible visualizar cómo se correlacionan las variables en el conjunto de entrenamiento? ¿Podemos determinar qué otras variables están fuertemente correlacionadas con la supervivencia de un pasajero? ¡La respuesta a esas preguntas es sí! Uno de los gráficos que nos permite visualizar las correlaciones entre variables es el **Correlation Graph (Gráfico de correlación)**.
 
 Exploremos la correlación entre la variable 'survived' (sobreviviente) y otras variables en el conjunto de datos.
 
-2\. Seleccione Correlation Graph y luego haga clic en Help (ayuda) ubicado en la esquina inferior izquierda del gráfico.
+2\. Seleccione **Correlation Graph (gráfico de correlación)** y luego haga clic en **Help (ayuda)** ubicado en la esquina inferior izquierda del gráfico.
 
 3\. Tómese un minuto para leer acerca de cómo se construyó el gráfico de correlación. Obtenga más información sobre cómo las variables están codificadas por colores para mostrar sus correlaciones.
 
@@ -405,12 +402,12 @@ Exploremos la correlación entre la variable 'survived' (sobreviviente) y otras 
 
 Cosas para tener en cuenta:
 
-- El botón Help explica el Correlation Graph. Esta característica está disponible para todos los gráficos.
-- Download (Descargar) permite descargar una imagen a escala completa del gráfico.
+- El botón **Help** explica el gráfico de correlación. Esta característica está disponible para todos los gráficos.
+- **Download (Descargar)** permite descargar una imagen a escala completa del gráfico.
 
-5\. Salga de la vista Correlation Graph haciendo clic en X en la esquina superior derecha del gráfico.
+5\. Salga de la vista Correlation Graph haciendo clic en **X** en la esquina superior derecha del gráfico.
 
-6\. Una vez que haya terminado de explorar los otros gráficos, regrese a la datasets page (página de conjuntos de datos).
+6\. Una vez que haya terminado de explorar los otros gráficos, regrese a la **datasets page (página de conjuntos de datos)**.
 
 Driverless AI muestra los gráficos que son aspectos relevantes a los datos. Los siguientes son los tipos de gráficos disponibles: test
 
@@ -430,7 +427,7 @@ Driverless AI muestra los gráficos que son aspectos relevantes a los datos. Los
 
 ### Inmersión más Profunda y Recursos
 
-- [Obtenga más información sobre la visualización automática de los documentos sin controlador](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/datasets.html#visualizing-datasets)
+- [Obtenga más información sobre la visualización automática de los documentos Driverless](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/datasets.html#visualizing-datasets)
 
 - [Obtenga más información sobre la visualización automática del arquitecto Leland Wilkinson, científico jefe de H2O.ai de la sesión en el video de YouTube de H2O World 2017](https://www.youtube.com/watch?v=bas3-Ue2qxc)
 
@@ -440,9 +437,9 @@ Driverless AI muestra los gráficos que son aspectos relevantes a los datos. Los
 
 Vamos a lanzar nuestro primer experimento. Lanzar un experimento significa que vamos a generar una predicción utilizando un conjunto de datos de nuestra elección.
 
-1\. Regrese a la página Dataset Overview page
+1\. Regrese a la página **Dataset Overview page**
 
-2\. Haga clic en el conjunto de datos titanic_train y luego seleccione Predict
+2\. Haga clic en el conjunto de datos **titanic_train** y luego seleccione **Predict**
 
 ![titanic-train-predict](assets/titanic-train-predict.jpg)
 
@@ -450,43 +447,43 @@ Si es la primera vez que inicia un experimento, aparecerá el siguiente mensaje 
 
 ![driverless-tour](assets/driverless-tour.jpg)
 
-Si desea realizar un recorrido rápido por la página Experiments (Experimentos), seleccione YES (Si). El recorrido rápido cubrirá los siguientes elementos:
+Si desea realizar un recorrido rápido sobre la página **Experiments (Experimentos)**, seleccione **YES (Si)**. El recorrido rápido cubrirá los siguientes elementos:
 
 - Seleccione el conjunto de datos de entrenamiento
 - Seleccione la columna que desee que Driverless AI prediga entre todas las columnas
 - Seleccione si es un problema de serie temporal o no [Time Series ON or OFF] ([Serie temporal activada o desactivada])
 
-3\. Seleccione Not Now (ahora no) para regresar y hacer el recorrido en otro momento.
+3\. Seleccione **Not Now (ahora no)** para regresar y hacer el recorrido en otro momento.
 
-4\. Aparecerá la siguiente página Experiment (Experimento):
+4\. Aparecerá la siguiente página **Experiment (Experimento)**:
 
 ![train-set-experiment-page](assets/train-set-experiment-page.jpg)
 
 *Cosas para tener en cuenta:*
 
-1. Assistant (Asistente): recorrido interactivo para usuarios nuevos. Haga clic en assistant (asistente) para habilitarlo. Apareceran círculos amarillos alrededor de las secciones seleccionadas de la página de configuración del experimento. Puede seleccionar cualquiera de ellos para obtener más información sobre cada sección.
+0. Assistant (Asistente): recorrido interactivo para usuarios nuevos. Haga clic en **assistant (asistente)** para habilitarlo. Apareceran círculos amarillos alrededor de las secciones seleccionadas de la página de configuración del experimento. Puede seleccionar cualquiera de ellos para obtener más información sobre cada sección.
 
-**Nota**: Para inhabilitar assistant, haga clic en asistente nuevamente.
+**Nota**: Para inhabilitar **assistant**, haga clic en asistente nuevamente.
 
 ![titanic-train-assist-sample](assets/titanic-train-assist-sample.jpg)
 
-1. Display Name (Nombre para mostrar) - De un nombre a su experimento Titanic Classification Tutorial.
-2. Dataset (Conjunto de datos) - El nombre del conjunto de datos que se utilizara para crear un experimento
-3. Rows (Filas) - Número total de filas
-4. Columns (Columnas) - Número total de columnas
+1. **Display Name (Nombre para mostrar)** - De un nombre a su experimento Titanic Classification Tutorial
+2. **Dataset (Conjunto de datos)** - El nombre del conjunto de datos que se utilizara para crear un experimento
+3. **Rows (Filas)** - Número total de filas
+4. **Columns (Columnas)** - Número total de columnas
 5. [Dropped Columns (Columnas eliminadas)](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#dropped-columns) - Elimine las columnas de su conjunto de datos que no desea usar en el experimento
 6. [Validation Dataset (Conjunto de datos de validación)](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#validation-dataset) - Seleccione el conjunto de datos que desea usar para validar. Este conjunto se usará para validar parámetros como modelos, características, etc.
-7. [Test Dataset (Conjunto de datos de prueba)](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#test-dataset) - El conjunto de datos que se utilizará para probar el modelo generado usando el conjunto de datos de entrenamiento. No se usa durante el entrenamiento del modelo, y los resultados están disponibles al final del experimento.
+7. [Test Dataset (Conjunto de datos de prueba)](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#test-dataset) - El conjunto de datos que se utilizará para probar el modelo generado usando el conjunto de datos de entrenamiento. No se usa durante el entrenamiento del modelo, y los resultados están disponibles al final del experimento
 8. Target Column (Columna objetivo) - ¿Qué quieres predecir?
 9. [Fold column(Columna de plegado)](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#fold-column) - La columna de plegado se utiliza para crear los conjuntos de datos de capacitación y validación para que todas las filas con el mismo valor de plegado estén en el mismo conjunto de datos
-10. [Weight column (Columna de peso)](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#weight-column) - Columna que indica el peso de observación (también conocido como peso de muestra o fila), si corresponde.
-11. [Time Column (Columna de tiempo) (DESACTIVADO de forma predeterminada)](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#time-column): proporciona un orden de tiempo (marcas de tiempo para las observaciones). Se usa cuando los datos tienen una alta dependencia del tiempo (como la estacionalidad o tendencia), y desea tratar este problema como un problema de serie temporal.
+10. [Weight column (Columna de peso)](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#weight-column) - Columna que indica el peso de observación (también conocido como peso de muestra o fila), si corresponde
+11. [Time Column (Columna de tiempo) (DESACTIVADO de forma predeterminada)](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#time-column): proporciona un orden de tiempo (marcas de tiempo para las observaciones). Se usa cuando los datos tienen una alta dependencia del tiempo (como la estacionalidad o tendencia), y desea tratar este problema como un problema de serie temporal
 
 Continuando con nuestro experimento:
 
 Nombre su experimento de la siguiente manera: `Tutorial de Clasificación Titanic`
 
-5\. Haga clic en Dropped Columns, retire las siguientes columnas: Passenger_Id (Id. De pasajero), name_with_salutations (nombre_con_saludos), name_without_salutations (nombre_sin_saludos), boat (bote), body (cuerpo) y home.dest (destino de origen). Luego seleccione Done (Listo).
+5\. Haga clic en **Dropped Columns**, retire las siguientes columnas: Passenger_Id (Id. De pasajero), name_with_salutations (nombre_con_saludos), name_without_salutations (nombre_sin_saludos), boat (bote), body (cuerpo) y home.dest (destino de origen). Luego seleccione **Done (Listo)**.
 
 ![train-set-drop-columns](assets/train-set-drop-columns.jpg)
 
@@ -511,7 +508,7 @@ El atributo "sobrevivió" fue seleccionado porque, como empresa de seguros, quer
 
 Cosas para tener en cuenta:
 
-1. Training Settings (Configuración de entrenamiento) - Describe la precisión, el tiempo y la interpretabilidad de su experimento específico. Las perillas en la configuración del experimento son ajustables a medida que los valores cambian el significado de la configuración en el cambio de página inferior izquierdo.
+1. **Training Settings (Configuración de entrenamiento)** - Describe la precisión, el tiempo y la interpretabilidad de su experimento específico. Las perillas en la configuración del experimento son ajustables a medida que los valores cambian el significado de la configuración en el cambio de página inferior izquierdo.
     - [Accuracy (Precisión)](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-settings.html?highlight=accuracy%20setting#accuracy) - A medida que aumenta la precisión, Driverless AI ajusta gradualmente el método para realizar la evolución y el conjunto. Con baja precisión,Driverless AI varía en características y modelos, pero todos compiten de manera uniforme entre sí. Con mayor precisión, cada modelo principal independiente evolucionará de forma independiente y será parte del conjunto final como un conjunto sobre diferentes modelos principales. Con precisiones más altas, Driverless AI evolucionará más tipos de funciones de conjunto, como la codificación de destino, dentro y fuera, que evolucionan independientemente. Finalmente, con las precisiones más altas, Driverless AI realiza el seguimiento de modelos y características y combina todas esas variaciones. Cambiar este valor afecta la evolución de la característica y la canalización final.
     - [Time (Tiempo)](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#time) - Esto especifica el tiempo relativo para completar el experimento (es decir, las configuraciones más altas tardan más). La detección temprana tendrá lugar si el experimento no mejora la puntuación para la cantidad especificada de iteraciones.
     - [Interpretability (Interpretabilidad)](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#time) - Especifique la interpretabilidad relativa de este experimento. Los valores más altos favorecen modelos más interpretables. Cambiar el nivel de interpretabilidad afecta la estrategia de poda previa de la función, las restricciones de monotonicidad y el espacio de búsqueda de ingeniería de características.
@@ -520,7 +517,7 @@ Cosas para tener en cuenta:
 4. [Clasificación / Regresión](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#classification-regression-button) - Botón de clasificación o regresión. Driverless AI determina automáticamente el tipo de problema en función de la columna de destino. Aunque no se recomienda, puede anular esta configuración haciendo clic en este botón.
 5. [Reproducible](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#reproducible) - este botón le permite construir un experimento con una semilla aleatoria y obtener resultados reproducibles. Si esto está deshabilitado (predeterminado), los resultados variarán entre ejecuciones.
 6. [GPU habilitadas](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#enable-gpus) - especifique si desea habilitar las GPU. (Tenga en cuenta que esta opción se ignora en los sistemas solo con CPU)
-7. Launch Experiment (Lanzar experimento) - Inicia el experimento
+7. **Launch Experiment (Lanzar experimento)** - Inicia el experimento
 8. Create Leaderboard (Crear tabla de clasificación): la función Crear tabla de clasificación ejecuta varios experimentos diversos que brindan una descripción general del conjunto de datos. Esta función también le proporciona información relevante para decidir sobre la complejidad, la precisión, el tamaño y las compensaciones de tiempo al poner los modelos en producción. Consulte el tema Configuración experta (Expert Settings) para obtener información sobre la configuración experta que se puede utilizar para controlar esta función. Para obtener más información sobre los modelos predeterminados creados para una tabla de clasificación, consulte [Modelos de tabla de clasificación.](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/leaderboard.html?highlight=create%20leaderboard#leaderboard-models)
 
 9\. Actualice la siguiente configuración del experimento para que coincida con la imagen a continuación, luego seleccione Launch Experiment.
@@ -534,30 +531,31 @@ Cosas para tener en cuenta:
 1. Aquí puede actualizar la configuración del experimento.
 2. Haga clic en Launch Experiment; Usaremos "Crear tabla de clasificación en otros tutoriales".
 
-Nota: Para iniciar un experimento: el conjunto de datos y la columna de destino son los elementos mínimos necesarios para iniciar un experimento.
+**Nota**: Para iniciar un experimento: el conjunto de datos y la columna de destino son los elementos mínimos necesarios para iniciar un experimento.
 
-10\. La página Experiment (Experimento) se verá similar a la siguiente después de completar el 46%:
+10\. La página **Experiment (Experimento)** se verá similar a la siguiente después de completar el 46%:
 
 ![experiment-running-46](assets/experiment-running-46.jpg)
 
 *Cosas para tener en cuenta*:
 
-1. Experiment Name (Nombre del experimento) - Nombre de tu experimento. Si no le asigna un nombre, se generará un nombre aleatorio. El nombre se puede cambiar en cualquier momento.
-2. Experiment Setup (Configuración del experimento) - Resumen de la configuración del experimento y detalles del conjunto de datos.
-3. Running Status Display (Visualización del estado de ejecución) - Estado de ajuste de parámetros seguido de ingeniería de características y canalización de puntuación. Los experimentos se pueden detener haciendo clic en el botón Finish (Finalizar).
-4. Descripción general de la configuración del entrenamiento (no se puede ajustar mientras el experimento se está ejecutando): Training Settings, Experiment Settings, Scorer, Classification, Reproducible y GPU Enabled.
-5. CPU/Memory (Información de CPU / Memoria) incluye Notifications (Notificaciones), Logs (Registros), Trace (Información de seguimiento), y Scorer (puntuaciones). (Tenga en cuenta que Trace se usa para el desarrollo / depuración y para mostrar lo que el sistema está haciendo en ese momento). Scorers, o los calificadores del modelo, le permiten ver la información detallada sobre los puntajes del modelo después de completar un experimento. Scorers incluyen la tabla de clasificación de ajuste de modelo y características, las puntuaciones del pliegue de validación cruzada del modelo final único y las puntuaciones finales del conjunto.
-6. Iteration Data (Datos de iteración) y Variable Importance (Importancia variable) - Los Datos de iteración son la validación interna para cada pliegue de validación cruzada con el valor de puntaje deseado. Puede pasar el mouse sobre cualquiera de los puntos de iteración en el gráfico de Datos de iteración y ver la importancia de la variable actualizada para esa iteración en Variable Importance(Importancia de la variable)
-7. Classification Problem Graphs (Gráficos de problemas de clasificación): Alterna entre una curva ROC, un gráfico de recuperación de precisión, un gráfico de elevación, un gráfico de ganancias y la información de uso de GPU (si hay GPU disponibles). Para los problemas de regresión, la sección inferior derecha incluye una alternancia entre un gráfico de Residuos, un gráfico Real frente a un Gráfico predicho e información de uso de GPU (si las GPU están disponibles).
+1. **Experiment Name (Nombre del experimento)** - Nombre de tu experimento. Si no le asigna un nombre, se generará un nombre aleatorio. El nombre se puede cambiar en cualquier momento.
+2. **Experiment Setup (Configuración del experimento)* - Resumen de la configuración del experimento y detalles del conjunto de datos.
+3. **Running Status Display (Visualización del estado de ejecución)** - Estado de ajuste de parámetros seguido de ingeniería de características y canalización de puntuación. Los experimentos se pueden detener haciendo clic en el botón Finish (Finalizar).
+4. Descripción general de la configuración del entrenamiento (no se puede ajustar mientras el experimento se está ejecutando): **Training Settings**, **Experiment Settings**, **Scorer**, **Classification**, **Reproducible** y **GPU Enabled**.
+5. **CPU/Memory** (Información de CPU / Memoria) incluye **Notifications (Notificaciones)**, **Logs (Registros)**, **Trace (Información de seguimiento)**, y **Scorer (puntuaciones)**. (Tenga en cuenta que Trace se usa para el desarrollo / depuración y para mostrar lo que el sistema está haciendo en ese momento). **Scorers**, o los calificadores del modelo, le permiten ver la información detallada sobre los puntajes del modelo después de completar un experimento. **Scorers** incluyen la tabla de clasificación de ajuste de modelo y características, las puntuaciones del pliegue de validación cruzada del modelo final único y las puntuaciones finales del conjunto.
+6. **Iteration Data (Datos de iteración)** y **Variable Importance (Importancia variable)** - Los Datos de iteración son la validación interna para cada pliegue de validación cruzada con el valor de puntaje deseado. Puede pasar el mouse sobre cualquiera de los puntos de iteración en el gráfico de Datos de iteración y ver la importancia de la variable actualizada para esa iteración en **Variable Importance(Importancia de la variable)**
+7. **Classification Problem Graphs (Gráficos de problemas de clasificación)**: Alterna entre una curva ROC, un gráfico de recuperación de precisión, un gráfico de elevación, un gráfico de ganancias y la información de uso de GPU (si hay GPU disponibles). Para los problemas de regresión, la sección inferior derecha incluye una alternancia entre un gráfico de Residuos, un gráfico Real frente a un Gráfico predicho e información de uso de GPU (si las GPU están disponibles).
 
-Una vez que se complete el experimento, aparecerá un Experiment Summary (Resumen del experimento):
+Una vez que se complete el experimento, aparecerá un **Experiment Summary (Resumen del experimento)**:
 
 
 ![experiment-summary](assets/experiment-summary.jpg)
 
 **Para tener en cuenta:**
 
-1. Opciones de estado completo
+1. **Opciones de estado completo**:
+
     - Deploy (Local and Cloud) (Implementación (local y en la nube))
     - Interpret This Model (Interpreta este modelo)
     - Diagnose Model On New Dataset (Diagnosticar modelo en un nuevo conjunto de datos)
@@ -586,8 +584,10 @@ Una vez que se complete el experimento, aparecerá un Experiment Summary (Resume
         - Una tabla de clasificación de ajuste
 
     - Descargar Autoreport - Este informe proporciona información sobre los datos de entrenamiento y los cambios detectados en la distribución, el esquema de validación seleccionado, el ajuste de parámetros del modelo, la evolución de las características y el conjunto final de características elegidas durante el experimento.
-    - Iteration Data (Datos de iteración) - Validación / Importancia de variables - Resumen de las 20 principales - Variables de ingeniería de características
-    - Experiment Graphs and Summary (Gráficos y resumen de experimentos): esta sección describe los gráficos del tablero que se muestran para ejecutar y completar experimentos. Estos gráficos son interactivos. Desplácese sobre un punto en el gráfico para obtener más detalles sobre el punto.
+
+2. **Iteration Data (Datos de iteración)** - Validación / Importancia de variables - Resumen de las 20 principales variables de ingeniería de características
+
+3. **Experiment Graphs and Summary (Gráficos y resumen de experimentos)** - esta sección describe los gráficos del tablero que se muestran para ejecutar y completar experimentos. Estos gráficos son interactivos. Desplácese sobre un punto en el gráfico para obtener más detalles sobre el punto.
 
 ### Inmersión más Profunda y Recursos
 
@@ -605,7 +605,7 @@ Driverless AI utiliza Ingeniería de las características en el dataset(conjunto
 
 Transformaciones en Driverless AI son aplicadas a las columnas de los datos. Los transformadores crean las característica diseñada en los experimentos. Hay muchos tipos de transformadores, debajo están solo algunos de muchos transformadores que se encuentran en nuestro conjunto de datos (Dataset).
 
-1. Observa algunas de las variables en Variable of importance o Variables de importancia. Nota que algunas de las variables empiezan con ```_CVTE``` seguidas por una columna del conjunto de datos(dataset). Algunas otras variables también podrían empezar con ```_NumToCatTE```, ```_Freq``` o ```_WoE``` dependiendo del experimento que estés ejecutando. Estas son las nuevas, características de alto valor o importancia para nuestro conjunto de datos(dataset) para el entrenamiento.
+1. Observa algunas de las variables en **Variable of importance (Variables de importancia)**. Nota que algunas de las variables empiezan con ```_CVTE``` seguidas por una columna del conjunto de datos(dataset). Algunas otras variables también podrían empezar con ```_NumToCatTE```, ```_Freq``` o ```_WoE``` dependiendo del experimento que estés ejecutando. Estas son las nuevas, características de alto valor o importancia para nuestro conjunto de datos(dataset) para el entrenamiento.
 
 Estas transformaciones son creadas con los siguientes transformadores:
 
@@ -628,32 +628,32 @@ La lista completa de características usadas en el modelo final está disponible
 
 ## Tarea 7: Explora Resultados del Experimento
 
-Vamos a explorar los resultados de este experimento de clasificación. Se pueden encontrar los resultados en la página Experiment Summary (Resumen del experimento) al final de la página de Experiment (Experimentar) de lado izquierdo. Los gráficos de los resultados nos dan más información sobre los datos de entrenamiento y validación que resultan del problema de clasificación. Para cada gráfico, daremos una breve explicación.
+Vamos a explorar los resultados de este experimento de clasificación. Se pueden encontrar los resultados en la página **Experiment Summary (Resumen del experimento)** al final de la página de Experiment (Experimentar) de lado izquierdo. Los gráficos de los resultados nos dan más información sobre los datos de entrenamiento y validación que resultan del problema de clasificación. Para cada gráfico, daremos una breve explicación.
 
 Si está interesado/a en aprender más sobre cada gráfico y las métricas derivadas en esta sección, haga el favor de leer nuestro próximo tutorial [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus.](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus)
 
 
 ![experiment-summary-expanded](assets/experiment-summary-expanded.jpg)
 
-1\. Resumen
+1\. **Resumen**
 
 En cuanto termine el experimento, un resumen es generado en la parte baja en la esquina derecha de la página de Experiment(Experimentar).
 
 El resumen incluye:
 
-- Experiment: nombre del experimento,
+- **Experiment**: nombre del experimento,
     - Versión (Versión): la versión de Driverless AI y la fecha en que fue lanzada
     - Settings (Configuraciones): preferencias del experimento seleccionado, semilla, y la cantidad de unidades de procesamiento gráfico (GPU) utilizados
     - Train data (Datos del tren): el nombre del set de datos de entrenamiento, con número de hileras y columnas
     - Validation data (Datos de validación): el nombre del set de datos de validación, con número de hileras y columnas
     - Test data (Datos de prueba): el nombre del set de datos de examinación, con número de hileras y columnas
     - Target column (Columna de destino): el nombre de la columna usada como el objetivo del experimento (incluye el tipo de data y el % de cada clase)
-- System Specs (Especificaciones del sistema): detalles del sistema como memoria de acceso aleatorio (RAM), número de núcleos de CPU (Núcleos de Procesador) y GPU (unidad de procesamiento gráfico)
+- **System Specs (Especificaciones del sistema)**: detalles del sistema como memoria de acceso aleatorio (RAM), número de núcleos de CPU (Núcleos de Procesador) y GPU (unidad de procesamiento gráfico)
 -    Uso máximo de memoria
-- Recipe (Receta):
+- **Recipe (Receta)**:
     - Validation scheme: esquema de validación que incluye el tipo de sampling y número interno de reservación
     - Feature Engineering: número de características que fueron evaluadas y la selección final
-- Timing (Sincronización)
+- **Timing (Sincronización)**
     - Preparación de datos
     - Detección de desplazamiento o fuga de datos
     - Model and feature tuning: tiempo total para entrenar el modelo y las características, y el número de modelos entrenados
@@ -669,7 +669,7 @@ La mayoría de la información en la página de Experiment Summary, junto con m�
 1. Encuentra el número de características que fueron evaluadas para el modelo y el número de características que fueron seleccionadas
 2. Encuentra el valor de validación de la pipa final y compara el valor con el valor de la examinación. ¿Basado en estos valores, consideras que el modelo es un buen modelo o no?
 
-2\. ROC - Característica Operativa del Receptor
+2\. **ROC - Característica Operativa del Receptor**
 
 A este tipo de gráfico se le llama curva Característica Operativa del Receptor (curva ROC). El gráfico demuestra el porcentaje de predicciones positivas correctas contra el porcentaje de predicciones positivas incorrectas.
 
@@ -683,7 +683,7 @@ La curva ROC da un valor de área bajo la curva de .7980. Este valor nos deja sa
 
 Puedes encontrar más información sobre la curva ROC en [Tutorial de análisis y puntuación de experimentos de machine learning - Enfoque financiero: ROC.](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus)
 
-3\. Prec-Recall - Gráfico de la Curva de Precisión-Recall
+3\. **Prec-Recall - Gráfico de la Curva de Precisión-Recall**
 
 Prec-Recall es una herramienta complementaria a la curva ROC, especialmente cuando el conjunto de datos no está balanceado entre el número de casos positivos y negativos. La curva de PR demuestra la precisión contra la sensibilidad o porcentaje de predicciones positivas correctas para cada límite de clasificación posible. A gran nivel, podemos pensar en precisión como una medida de exactitud o calidad de los resultados, mientras que recall en una medida de que tan completo o cantidad de resultados obtenidos por el modelo. Prec-Recall mide la relevancia de los resultados obtenidos por el modelo.
 
@@ -695,7 +695,7 @@ Al igual que la curva ROC, cuando vemos el área debajo de la curva PR encontram
 
 Aprende más sobre la curva PR en [Tutorial de análisis y puntuación de experimentos de machine learning - Enfoque financiero: retiro previo.](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus)
 
-4\. Gráfico de Elevación Acumulativa
+4\. **Gráfico de Elevación Acumulativa**
 
 El valor de elevación nos puede ayudar a contestar la pregunta de cuánto mejor podemos predecir con nuestro modelo al comparar los resultados con un modelo creado al azar (o sin ningún modelo). Elevación es una medida de la efectividad de un modelo de predicciones y es calculado como el porcentaje de los resultados obtenidos por nuestro modelo contra los resultados de un modelo creado al azar. En otras palabras, el porcentaje de ganancia dividido por el porcentaje de la expectativa al azar genera en cualquier cuantil. La expectativa al azar del cuantil x es x%.
 
@@ -705,7 +705,7 @@ El gráfico de elevación acumulativa demuestra estadísticas sobre el valor de 
 
 Aprende más sobre el gráfico de elevación acumulativa en [Tutorial de análisis y puntuación de experimentos de machine learning: enfoque financiero: elevación acumulativa.](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus)
 
-5\. Gráfico de Ganancia Acumulativa
+5\. **Gráfico de Ganancia Acumulativa**
 
 Los gráficos de ganancia y elevación miden la eficacia de un modelo de clasificación al comparar el porcentaje entre los resultados obtenidos con un modelo entrenado contra los resultados obtenidos por un modelo creado al azar (o ningún modelo) [3]. Los gráficos nos ayudan a evaluar el rendimiento del modelo de clasificación al igual que contestar preguntas como “¿al seleccionar un cierto porcentaje del conjunto de datos como prueba, qué porcentaje del nuevo conjunto de datos tiene una respuesta positiva?” Adicionalmente, podemos explorar cual mejor podemos esperar ver con nuestro modelo que con un modelo creado al azar (o ningún modelo) [4].
 
@@ -718,7 +718,7 @@ El gráfico de ganancias acumulativas debajo demuestra estadísticas sobre el co
 
 El gráfico de arriba nos deja saber que al mirar el cuantil del 20%, el modelo puede positivamente identificar ~45% de los sobrevivientes al comparar con un modelo creado al azar (o ningún modelo), el cual podría positivamente identificar aproximadamente el 20% de los sobrevivientes en el cuantil de 20%. Aprende más sobre el gráfico de ganancias acumulativas en [Tutorial de análisis y puntuación de experimentos de machine learning: enfoque financiero: ganancias acumulativas.](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus)
 
-6\. K-S
+6\. **K-S**
 
 Kolmogorov-Smirnov o K-S es una forma de medir el rendimiento de modelos de clasificación por medio de medir el nivel de separación entre los positivos y negativos del conjunto de datos de validación o prueba [5]. “El K-S es 100 si los valores separan lo población en dos grupos distintos en cual un grupo contiene todos los valores positivos y el otro todos los negativos. Al contrario, si el modelo no puede diferenciar entre entre los positivos y negativos, entonces es como si el modelo seleccionara casos al azar de la población. El K-S en este caso sería 0. En la mayoría de modelos de clasificación, el K-S tendrá un valor entre 0 y 100, y entre más alto el valor, mejor será el modelo en separar los casos positivos de los negativos.”[6]
 
@@ -758,15 +758,15 @@ Preguntas a considerar antes de ver el Informe MLI:
 
 - ¿Qué atributos de nuestro Titanic Training Set son los más importantes en relación con la supervivencia? Tome nota de sus 2 atributos principales para compararlos con los resultados del modelo.
 
-Hay dos formas de generar el informe MLI, seleccionando el enlace MLI en la esquina superior derecha de la interfaz de usuario o haciendo clic en el botón Interpretar este modelo (Interpret this Model) en la página Experimento (Experiment page).
+Hay dos formas de generar el informe MLI, seleccionando el enlace **MLI** en la esquina superior derecha de la interfaz de usuario o haciendo clic en el botón **Interpretar este modelo (Interpret this Model)** en la página Experimento (Experiment page).
 
-Genere el informe MLI:
+**Genere el informe MLI**:
 
-1. En "Estado: Completo (Status: Complete)" Opciones, seleccione Interpretar este modelo (Interpret this Model)
+1. En las opciones disponibles en el **"Estado: Completo (Status: Complete)"**, seleccione **Interpretar este modelo (Interpret this Model)**
 
 ![interpret-this-model](assets/interpret-this-model.jpg)
 
-2. La página de interpretación de MLI tiene las explicaciones de los resultados del modelo en un formato legible por humanos. Una vez finalizado el Experimento MLI, debería aparecer lo siguiente:
+2. La página de interpretación de MLI tiene las explicaciones de los resultados del modelo en un formato legible por humanos. **Una vez finalizado el Experimento MLI**, debería aparecer lo siguiente:
 
 Esta sección describe la funcionalidad y las características de MLI para experimentos regulares. Para los experimentos que no son de series temporales, esta página proporciona varias explicaciones visuales y códigos de motivo para el modelo entrenado Driverless AI y sus resultados.
 
@@ -788,9 +788,9 @@ Esta sección describe la funcionalidad y las características de MLI para exper
 
         ![dai-model-original-feature-importance.jpg](assets/dai-model-original-feature-importance.jpg)
  
-        1: Haga clic en el texto DAI MODEL
+        1: Haga clic en el texto **DAI MODEL**
 
-        2: Haga clic en la imagen Original Feature Importance
+        2: Haga clic en la imagen **Original Feature Importance**
 
         ![original-feature-importance.jpg](assets/original-feature-importance.jpg)
 
@@ -806,6 +806,7 @@ Esta sección describe la funcionalidad y las características de MLI para exper
 *Nota*:
 
 Importancia de las funciones (funciones originales y transformadas)
+
 Este gráfico está disponible para todos los modelos de clasificación binaria, clasificación multiclase y experimentos de regresión.
 
 Este gráfico muestra la importancia de la función Driverless AI. La importancia de la característica de Driverless AI es una medida de la contribución de una variable de entrada a las predicciones generales del modelo de Driverless AI.
@@ -893,13 +894,13 @@ Para acceder al modelo Surrogate K-Lime, considere los siguientes pasos:
 
 ![k-lime](assets/k-lime.jpg)
 
-- Decision Tree (Árbol de decisión)
+- **Decision Tree (Árbol de decisión)**
 
 Para acceder al modelo de árbol de decisión sustituto, considere los siguientes pasos:
 
 ![surrogate-models-decision-tree](assets/surrogate-models-decision-tree.jpg)
 
-1: Haga clic en la imagen Decision Tree (Árbol de decisión)
+1: Haga clic en la imagen **Decision Tree (Árbol de decisión)**
 
 ![decision-tree](assets/decision-tree.jpg)
 
@@ -946,24 +947,31 @@ Para acceder al modelo LOCO de RF sustituto (bosque aleatorio), considere los si
 
 5. **Acciónes:**
 
-![regression-and-classification-explanations-actions](assets/regression-and-classification-explanations-actions.jpg)
+    ![regression-and-classification-explanations-actions](assets/regression-and-classification-explanations-actions.jpg)
 
-*Nota:*
+    *Nota:*
 
-1\. Go to ML documentation (Ir a la documentación de MLI)
-    - MLI Docs: enlace al folleto "Interpretabilidad del machine learning con Driverless AI"
-2\. Display MLI Java Logs (Mostrar registros de Java MLI)
-3\. Display MLI Python Logs (Mostrar registros de Python de MLI)
-4\. Go to Experiment (Ir a Experimento)
-5\. Download Decision Tree Surrogate Rules (Descargar reglas sustitutas del árbol de decisiones)
+   1\. Go to ML documentation (Ir a la documentación de MLI)
+
+   - MLI Docs: enlace al folleto "Interpretabilidad del machine learning con Driverless AI"
+
+   2\. Display MLI Java Logs (Mostrar registros de Java MLI)
+
+   3\. Display MLI Python Logs (Mostrar registros de Python de MLI)
+
+   4\. Go to Experiment (Ir a Experimento)
+
+   5\. Download Decision Tree Surrogate Rules (Descargar reglas sustitutas del árbol de decisiones)
 
 6. Datasets (Conjuntos de datos): lo lleva de vuelta a la página Conjuntos de datos.
+
 7. Experiments (Experimentos): lo lleva de regreso a la página Experimentos.
+
 8. MLI: lo lleva de regreso a la página de MLI.
 
 ### Panel de MLI
 
-Seleccione el Dashboard (Panel) de **MLI** y explore los diferentes tipos de conocimientos y explicaciones sobre el modelo y sus resultados. Todas las parcelas son interactivas.
+Seleccione el **Dashboard (Panel) de MLI** y explore los diferentes tipos de conocimientos y explicaciones sobre el modelo y sus resultados. Todas las parcelas son interactivas.
 
 ![mli-dashboard](assets/mli-dashboard.jpg)
 
@@ -1080,7 +1088,7 @@ Cuando abre el archivo zip, se deben incluir los siguientes archivos:
 
 2\. Abra el auto-generated.doc (informe.doc generado automáticamente) y revise los resultados del experimento:
 
-3\. Haga clic en Download Autoreport (Descargar Autoreport):
+3\. Haga clic en **Download Autoreport (Descargar Autoreport)**:
 
 ![download-autoreport](assets/download-autoreport.jpg)
 
@@ -1123,6 +1131,7 @@ Echa un vistazo al siguiente tutorial Driverless AI: [Tutorial de análisis y pu
 ## Apéndice: Proyecto Workspace
 
 Driverless AI proporciona un espacio de trabajo del proyecto para administrar conjuntos de datos y experimentos relacionados con un problema comercial específico o un caso de uso. Ya sea que esté tratando de detectar el fraude o predecir la retención de usuarios, los conjuntos de datos y los experimentos se pueden almacenar y guardar en los proyectos individuales. Una tabla de clasificación en la página de Projects (Proyectos) le permite comparar fácilmente el rendimiento y los resultados e identificar la mejor solución para su problema.
+
 Desde la página de Projects, puede vincular conjuntos de datos y / o experimentos, y puede ejecutar nuevos experimentos. Cuando vincula un experimento existente a un proyecto, los conjuntos de datos utilizados para el experimento se vinculan automáticamente a este proyecto (si no está vinculado).
 
 ### Explore un espacio de trabajo de proyecto existente
@@ -1135,19 +1144,19 @@ Desde la página de Projects, puede vincular conjuntos de datos y / o experiment
 
 1. **Projects (Proyectos)**: Opción del menú Proyectos Workspace para gestionar conjuntos de datos y vencimientos
 2. **Project (Proyecto)** creado previamente que incluye:
-    - Name (Nombre): Nombre del proyecto (Tutorial de series temporales)
-    - Description (Descripción): Opcional (N/A)
-    - Train Datasets (Conjuntos de Datos Entrenamiento): Número de conjuntos de datos de entrenamiento (1)
-    - Valid Datasets (Conjuntos de Datos Validación): Número de conjuntos de datos de validación (0)
-    - Test Datasets(Conjuntos de Datos Prueba): Número de conjuntos de datos de prueba (1)
-    - Experiments (Experimentos): Número de experimentos (1)
-    - Created (creado): Archivo creado, incluye el dia y la hora cuando fue creado
+    - **Name (Nombre)**: Nombre del proyecto (Tutorial de series temporales)
+    - **Description (Descripción)**: Opcional (N/A)
+    - **Train Datasets (Conjuntos de Datos Entrenamiento)**: Número de conjuntos de datos de entrenamiento (1)
+    - **Valid Datasets (Conjuntos de Datos Validación)**: Número de conjuntos de datos de validación (0)
+    - **Test Datasets(Conjuntos de Datos Prueba)**: Número de conjuntos de datos de prueba (1)
+    - **Experiments (Experimentos)**: Número de experimentos (1)
+    - **Created (creado)**: Archivo creado, incluye el dia y la hora cuando fue creado
 3. Opciones adicionales para el proyecto creado:
-    - Open (Abrir)
-    - Rename (Renombrar)
-    - Delete (Eliminar)
-4. +New Project (Proyecto Nuevo): Opción para crear un nuevo proyecto
-5. Escriba el valor para buscar o la fecha, p. Ej. 15/09
+    - **Open (Abrir)**
+    - **Rename (Renombrar)**
+    - **Delete (Eliminar)**
+4. **+New Project (Proyecto Nuevo)**: Opción para crear un nuevo proyecto
+5. **Escriba el valor para buscar o la fecha, p. Ej. 15/09**
 
 2\. Abra el Time Series Tutorial (Tutorial de series temporales), aparecerá una imagen similar a la siguiente:
 
@@ -1155,12 +1164,12 @@ Desde la página de Projects, puede vincular conjuntos de datos y / o experiment
 
 1. **Datasets (Conjuntos de Datos)**
 
-- **Selected Datasets Type (Tipo de conjuntos de datos seleccionados)**: Entrenamiento, Pruebas o Validación
-- Información adicional sobre el conjunto de datos que se seleccionó: nombre, filas, columnas
+    - **Selected Datasets Type (Tipo de conjuntos de datos seleccionados)**: Entrenamiento, Pruebas o Validación
+    - Información adicional sobre el conjunto de datos que se seleccionó: nombre, filas, columnas
 
 ![projects-page-time-series-datasets](assets/projects-page-time-series-datasets.jpg)
 
--  +Link dataset (Conjunto de datos de enlace): Vincular un conjunto de datos adicional (capacitación, pruebas o validación) al proyecto existente
+ -  +Link dataset (Conjunto de datos de enlace): Vincular un conjunto de datos adicional (capacitación, pruebas o validación) al proyecto existente
 
 2. **Experiments (Experimentos)**
 
@@ -1175,16 +1184,16 @@ Desde la página de Projects, puede vincular conjuntos de datos y / o experiment
 - **+ Link Dataset (Enlace de conjunto de datos)**: Enlace un conjunto de datos adicional al experimento
 - **New Experiment (Experimento Nuevo)**: Crea un nuevo experimento
 - Información de los experimentos vinculados actuales:
-    - Name (Nombre)
-    - A: Exactitud
-    - T : Tiempo
-    - I: Interpretabilidad
-    - Scorer: Anotador utilizado
-    - Status(estado): En progreso, completado
-    - Train Time(tiempo de entreno): Tiempo total para entrenar experimento
-    - Val. Score(puntuación válida): Puntuación de validación del experimento
-    - Test Score(resultado de la prueba) (Resultado de la prueba): Puntaje de prueba para el experimento
-    - Test Time(tiempo de prueba) (Tiempo de prueba): Tiempo total para probar el experimento.
+    - **Name (Nombre)**
+    - **A**: Exactitud
+    - **T**: Tiempo
+    - **I**: Interpretabilidad
+    - **Scorer**: Anotador utilizado
+    - **Status(estado)**: En progreso, completado
+    - **Train Time(tiempo de entreno)**:** Tiempo total para entrenar experimento
+    - **Val. Score(puntuación válida)**: Puntuación de validación del experimento
+    - **Test Score(resultado de la prueba) (Resultado de la prueba)**: Puntaje de prueba para el experimento
+    - **Test Time (tiempo de prueba) (Tiempo de prueba)**: Tiempo total para probar el experimento.
 
 ### Crear un espacio de trabajo para un proyecto
 
