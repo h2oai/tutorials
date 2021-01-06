@@ -386,7 +386,7 @@ Haga clic en la visualización **titanic_train** y aparecerá la siguiente panta
 
 ![train-set-visualizations](assets/train-set-visualizations.jpg)
 
-¿Es posible visualizar cómo se correlacionan las variables en el conjunto de entrenamiento? ¿Podemos determinar qué otras variables están fuertemente correlacionadas con la supervivencia de un pasajero? ¡La respuesta a esas preguntas es sí! Uno de los gráficos que nos permite visualizar las correlaciones entre variables es el **Correlation Graph (Gráfico de correlación)**.
+¿Es posible visualizar cómo se correlacionan las variables en el conjunto de entrenamiento? ¿Podemos determinar qué otras variables están fuertemente correlacionadas con la supervivencia de un pasajero? ¡La respuesta a esas preguntas es sí! Uno de los gráficos que nos permite visualizar las correlaciones entre variables es la **Gráfica de Correlación (Correlation Graph)**.
 
 Exploremos la correlación entre la variable 'survived' (sobreviviente) y otras variables en el conjunto de datos.
 
@@ -405,11 +405,11 @@ Cosas para tener en cuenta:
 - El botón **Help** explica el gráfico de correlación. Esta característica está disponible para todos los gráficos.
 - **Download (Descargar)** permite descargar una imagen a escala completa del gráfico.
 
-5\. Salga de la vista Correlation Graph haciendo clic en **X** en la esquina superior derecha del gráfico.
+5\. Haz clic en **X** en la esquina superior derecha del gráfico.
 
 6\. Una vez que haya terminado de explorar los otros gráficos, regrese a la **datasets page (página de conjuntos de datos)**.
 
-Driverless AI muestra los gráficos que son aspectos relevantes a los datos. Los siguientes son los tipos de gráficos disponibles: test
+Driverless AI muestra los gráficos que son aspectos relevantes a los datos. Los siguientes son los tipos de gráficos disponibles: 
 
 - Correlated Scatterplots (Diagramas de dispersión correlacionados)
 - Spikey Histograms (Histogramas puntiagudos)
