@@ -23,9 +23,7 @@ With this in mind, and with the hopes to democratize AI, H2O.ai has automated th
 
 This tutorial will explore the two different approaches to modeling images in Driverless AI: Embeddings Transformer(Image Vectorizer) and Automatic Image Model. To illustrate the first image modeling approach, we will build an image model to predict a car's price. Right after, we will better understand the second approach by building an image model capable of predicting a true case of metastatic cancer.  In the final analysis, we will compare and contrast each image modeling approach, and we will discuss several scenarios when a given approach will be better.
 
-MyAutoData | Histopathologic Cancer Detection
-- | - 
-![car-price](assets/car-price.png) | ![metastic-cancer](assets/metastic-cancer.png)
+![overview-of-experiments](assets/overview-of-experiments.jpg)
 
 
 In particular, and as a point of distinction,  we will discuss how the Embeddings Transformer approach only supports a MOJO Scoring Pipeline. Correspondingly, we will discuss how a user can only obtain details about the current best individual model through the Automatic Image Model approach. 
