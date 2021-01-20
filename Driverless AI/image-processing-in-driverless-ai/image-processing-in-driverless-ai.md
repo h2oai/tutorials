@@ -104,7 +104,49 @@ On the *Datasets page*:
 
 ![embeddings-transformer-a](assets/embeddings-transformer-a.png)
 
+While our experiment runs in the background, let's discuss the two current approaches to modeling images. 
 
+## Task 2: 
+
+### First Approach: *Embeddings Transformer (Image Vectorizer)*
+
+The Image Vectorizer transformer utilizes pre-trained ImageNet models to convert a column with an image path or URI ((Uniform Resource Identifier)) to an embeddings (vector) representation that is derived from the last global average pooling layer of the model. The resulting vector is then used for modeling in Driverless AI.
+
+#### Background
+
+In image classification, the goal is to classify an image based on a set of possible categories. In general, classifying images is a bit hard, but such a difficulty can find ease in transfer learning. 
+
+Transfer learning allows anyone to build accurate models that make building image models less painful. "With transfer learning, instead of starting the learning process from scratch, you start from patterns that have been learned when solving a different problem. This way you leverage previous learnings and avoid starting from scratch" (Pedro Marcelino).
+
+''In computer vision, transfer learning is usually expressed through the use of pre-trained models. A pre-trained model is a model that was trained on a large benchmark dataset to solve a problem similar to the one that we want to solve. Accordingly, due to the computational cost of training such models, it is common practice to import and use models from published literature (e.g. VGG, Inception, MobileNet)" (Pedro Marcelino).
+
+For the most part, pre-trained models used in transfer learning are based on large CNNs. Why? Because CNN's have express high performance and easiness in training. In neural networks, Convolutional Neural Networks (CNNs) have become essential to the process of face recognition and object detection. In layman's terms, a CNN can take an input image, process it, and classify it under certain categories (Eg., Snake, Cat, Dog, Monkey).
+
+![](assets/general-neural-network-setup.png)
+
+<p align="center">
+  general neural network setup
+</p>
+
+![](assets/cnn.png)
+<p align="center">
+  CNN Overview
+</p>
+
+![](assets/cnn-2.png)
+<p align="center">
+    CNN Overview
+</p>
+
+
+A common CNN has two parts: 
+
+1. "**Convolutional base**, which is composed by a stack of convolutional and pooling layers. The main goal of the convolutional base is to generate features from the image"(Pedro Marcelino).
+
+2. "**Classifier**, which is usually composed by fully connected layers. The main goal of the classifier is to classify the image based on the detected features. A fully connected layer is a layer whose neurons have full connections to all activation in the previous layer"(Pedro Marcelino).
+
+
+### Second Approach: *Automatic Image Model*
 
 
 
