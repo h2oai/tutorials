@@ -120,7 +120,7 @@ In image classification, the goal is to classify an image based on a set of poss
 
 > ''In computer vision, transfer learning is usually expressed through the use of pre-trained models. A pre-trained model is a model that was trained on a large benchmark dataset to solve a problem similar to the one that we want to solve. Accordingly, due to the computational cost of training such models, it is common practice to import and use models from published literature (e.g. VGG, Inception, MobileNet)" (Pedro Marcelino).
 
-For the most part, pre-trained models used in transfer learning are based on large CNNs. Why? Because CNN's have express high performance and easiness in training. In neural networks, Convolutional Neural Networks (CNNs) have become essential to the process of face recognition and object detection. In layman's terms, a CNN can take an input image, process it, and classify it under certain categories (Eg., Snake, Cat, Dog, Monkey).
+For the most part, pre-trained models used in transfer learning are based on large Convolutional Neural Networks (CNNs). Why? Because CNN's have express high performance and easiness in training. In neural networks, CNNs have become essential to the process of face recognition and object detection. In layman's terms, a CNN can take an input image, process it, and classify it under certain categories (Eg., Snake, Cat, Dog, Monkey).
 
 ![](assets/general-neural-network-setup.png)
 
@@ -146,10 +146,22 @@ A common CNN has two parts:
 2. "**Classifier**, which is usually composed by fully connected layers. The main goal of the classifier is to classify the image based on the detected features. A fully connected layer is a layer whose neurons have full connections to all activation in the previous layer"(Pedro Marcelino).
 
 The following image shows the architecture of a model based on CNN. 
-This illustration is a simplified version that fits this text's purposes. The illustration doesn't capture the complexity of the model's architecture. 
+It is important to note that this illustration is a simplified version that fits this text's purposes. The illustration doesn't capture the complexity of the model's architecture. 
+
+
+<p align="center">
+    Architecture of a model based on CNN.
+     <br><img src='assets/simplified-cnn.png'></img>    
+</p>
 
 
 > One important aspect of these deep learning models is that they can automatically learn hierarchical feature representations. This means that features computed by the first layer are general and can be reused in different problem domains, while features computed by the last layer are specific and depend on the chosen dataset and task. According to Yosinski et al. (2014), ‘if first-layer features are general and last-layer features are specific, then there must be a transition from general to specific somewhere in the network’. As a result, the convolutional base of our CNN — especially its lower layers (those who are closer to the inputs) — refer to general features, whereas the classifier part, and some of the higher layers of the convolutional base, refer to specialised features."(Pedro Marcelino)
+
+Therefore, when you are remodeling a pre-trained model for your tasks, you begin by removing the original Classifier, then you add a new classifier that fits your purposes, and lastly, you are required to fine-tune your model according to one of three strategies: 
+
+1. **Train the entire model**
+2. **Train some layers and leave the others frozen** 
+3. **Freeze the convolutional base** 
 
 
 ### Second Approach: *Automatic Image Model*
