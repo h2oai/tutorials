@@ -145,6 +145,11 @@ A common CNN has two parts:
 
 2. "**Classifier**, which is usually composed by fully connected layers. The main goal of the classifier is to classify the image based on the detected features. A fully connected layer is a layer whose neurons have full connections to all activation in the previous layer"(Pedro Marcelino).
 
+"Figure 1 shows the architecture of a model based on CNN. Note that this is a simplified version, which fits the purposes of this text. In fact, the architecture of this type of model is more complex than what we suggest here."(Pedro Marcelino)
+
+
+    "One important aspect of these deep learning models is that they can automatically learn hierarchical feature representations. This means that features computed by the first layer are general and can be reused in different problem domains, while features computed by the last layer are specific and depend on the chosen dataset and task. According to Yosinski et al. (2014), ‘if first-layer features are general and last-layer features are specific, then there must be a transition from general to specific somewhere in the network’. As a result, the convolutional base of our CNN — especially its lower layers (those who are closer to the inputs) — refer to general features, whereas the classifier part, and some of the higher layers of the convolutional base, refer to specialised features."(Pedro Marcelino)
+
 
 ### Second Approach: *Automatic Image Model*
 
