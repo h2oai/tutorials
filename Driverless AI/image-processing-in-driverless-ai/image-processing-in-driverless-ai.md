@@ -114,7 +114,7 @@ The Image Vectorizer transformer utilizes pre-trained ImageNet models to convert
 
 #### Background
 
-In image classification, the goal is to classify an image based on a set of possible categories. In general, classifying images is a bit hard, but such a difficulty can find ease in transfer learning. 
+In image classification, the goal is to classify an image based on a set of possible categories. In general, classifying images is a bit hard, but such a difficulty can find ease in **transfer learning**. 
 
 Transfer learning allows anyone to build accurate models that make building image models less painful. "With transfer learning, instead of starting the learning process from scratch, you start from patterns that have been learned when solving a different problem. This way you leverage previous learnings and avoid starting from scratch" (Pedro Marcelino).
 
