@@ -106,9 +106,7 @@ On the *Datasets page*:
 
 While our experiment runs in the background, let's discuss the two current approaches to modeling images. 
 
-## Task 2: 
-
-### Background
+## Task 2: Transfer learning from pre-trained models
 
 In image classification, the goal is to classify an image based on a set of possible categories. In general, classifying images is a bit hard, but such a difficulty can find ease in **transfer learning**. 
 
@@ -221,12 +219,12 @@ As noted above, models for image classification that result from a transfer lear
 Other approaches include Fully-connected layers and Linear support vector machines. 
 
 
-### First Approach: *Embeddings Transformer (Image Vectorizer)*
+## Tasl 3: First Approach: *Embeddings Transformer (Image Vectorizer)
 
 The Image Vectorizer transformer utilizes pre-trained ImageNet models to convert a column with an image path or URI ((Uniform Resource Identifier)) to an embeddings (vector) representation that is derived from the last global average pooling layer of the model. The resulting vector is then used for modeling in Driverless AI.
 
 
-### Second Approach: *Automatic Image Model*
+## Task 4: Second Approach: *Automatic Image Model
 
 
 
