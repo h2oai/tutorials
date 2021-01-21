@@ -4,11 +4,11 @@
 
 - [Objective](#objective)
 - [Prerequisites](#prerequisites)
-- [Task 1: ](#task-1-)
-- [Task 2: ](#task-2-)
-- [Task 3: ](#task-3-)
-- [Task 4: ](#task-4-)
-- [Task 5: ](#task-5-)
+- [Task 1: Launch Experiment One: Predict a Car's Price](#task-1-launch-experiment-one-predict-a-car's-price)
+- [Task 2: Transfer learning from pre-trained models](#task-2-transfer-learning-from-pre-trained-models)
+- [Task 3: First Approach: Embeddings Transformer (Image Vectorizer)](#task-3-first-approach-embeddings-transformer-image-vectorizer)
+- [Task 4: Second Approach: Automatic Image Model](#task-4-second-approach-automatic-image-model)
+- [Task 5: Understand Experiment One ](#task-5-understand-experiment-one)
 - [Task 6: ](#task-6-)
 - [Task 7: ](#task-7-)
 - [Task 8: ](#Task-8-)
@@ -21,7 +21,7 @@
 Image processing techniques have become crucial for a diverse range of companies despite their operations in the course of time. In other words, to compete in this global economy, image processing is becoming a requirement for any company hoping to become a credible competitor. Everyone can now see image processing in Agricultural Landscape, Disaster Management, and Biomedical and Other Healthcare Applications. 
 With this in mind, and with the hopes to democratize AI, H2O.ai has automated the processes of obtaining high-quality models capable of image processing. 
 
-This tutorial will explore the two different approaches to modeling images in Driverless AI: Embeddings Transformer(Image Vectorizer) and Automatic Image Model. To illustrate the first image modeling approach, we will build an image model to predict a car's price. Right after, we will better understand the second approach by building an image model capable of predicting a true case of metastatic cancer.  In the final analysis, we will compare and contrast each image modeling approach, and we will discuss several scenarios when a given approach will be better.
+This tutorial will explore the two different approaches to modeling images in Driverless AI: Embeddings Transformer(Image Vectorizer) and Automatic Image Model. To lay down the foundations for this tutorial, we will review transfer learning from pre-trained models. Right after, we will illustrate the first image modeling approach by building an image model capable of predicting car prices. Directly after, we will better understand the second approach by building an image model capable of predicting a true case of metastatic cancer. In the final analysis, we will compare and contrast each image modeling approach, and we will discuss several scenarios when a given approach will be better.
 
 In particular, and as a point of distinction,  we will discuss how the Embeddings Transformer approach only supports a MOJO Scoring Pipeline. Correspondingly, we will discuss how a user can only obtain details about the current best individual model through the Automatic Image Model approach. 
 
@@ -29,8 +29,21 @@ All things consider, let us start.
 
 ## Prerequisites 
 
+You will need the following to be able to do this tutorial:
 
-## Task 1: 
+
+- Basic knowledge of Driverless AI 
+- Completion of the 
+- Understanding of Understanding of Convolutional Neural Networks (CNNs)
+
+
+- A **Two-Hour Test Drive session**: Test Drive is [H2O.ai's](https://www.h2o.ai) Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.
+  - Need a **Two-Hour Test Drive** session? Follow the instructions on this quick tutorial to get a Test Drive session started.
+
+**Note: Aquarium’s Driverless AI Test Drive lab has a license key built-in, so you don’t need to request one to use it. Each Driverless AI Test Drive instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to explore Driverless AI further, you can always launch another Test Drive instance or reach out to our sales team via the contact us form.**
+
+
+## Task 1: Launch Experiment One: Predict a Car's Price 
 
 As mentioned in this tutorial's objective section, we will use three image models, but running each experiment takes time to run. For this reason, 
 the experiment that takes the longest to complete has already been built for you and can be found in Driverless AI's Experiments section. We will use that experiment when exploring the second approach to image processing in Driverless AI. For now, we will follow to build the other two image models that will help us better understand the first approach.
@@ -219,12 +232,29 @@ As noted above, models for image classification that result from a transfer lear
 Other approaches include Fully-connected layers and Linear support vector machines. 
 
 
-## Tasl 3: First Approach: *Embeddings Transformer (Image Vectorizer)
+## Task 3: First Approach: Embeddings Transformer (Image Vectorizer)
 
 The Image Vectorizer transformer utilizes pre-trained ImageNet models to convert a column with an image path or URI ((Uniform Resource Identifier)) to an embeddings (vector) representation that is derived from the last global average pooling layer of the model. The resulting vector is then used for modeling in Driverless AI.
 
 
-## Task 4: Second Approach: *Automatic Image Model
+## Task 4: Second Approach: Automatic Image Model
+
+Automatic Image Model is an AutoML model that accepts only an image and a label as input features. This model automatically selects hyperparameters such as learning rate, optimizer, batch size, and image input size. It also automates the training process by selecting the number of epochs, cropping strategy, augmentations, and learning rate scheduler.
+
+Automatic Image Model uses pre-trained ImageNet models and starts the training process from them. The possible architectures list includes all the well-known models: (SE)-ResNe(X)ts; DenseNets; EfficientNets; Inceptions; etc.
+
+## Task 5: Understand Experiment One
+
+## Task 6:
+
+## Task 7: 
+
+## Task 8: 
+
+## Next Steps: 
+
+## Special Thanks: 
+
 
 
 
