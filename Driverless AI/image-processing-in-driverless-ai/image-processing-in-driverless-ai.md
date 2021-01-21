@@ -142,7 +142,7 @@ A common CNN has two parts:
 2. "**Classifier**, which is usually composed by fully connected layers. The main goal of the classifier is to classify the image based on the detected features. A fully connected layer is a layer whose neurons have full connections to all activation in the previous layer"(Pedro Marcelino).
 
 The following image shows the architecture of a model based on CNNs. 
-It is important to note that this illustration is a simplified version that fits this text's purposes. The illustration doesn't capture the complexity of the model's architecture. 
+It is important to note that this illustration is a simplified version that fits this text's purposes (The illustration doesn't capture the complexity of the model's architecture.).  
 
 
 <p align="center">
