@@ -34,7 +34,7 @@ You will need the following to be able to do this tutorial:
 
 - Basic knowledge of Driverless AI 
 - Completion of the 
-- Understanding of Understanding of Convolutional Neural Networks (CNNs)
+- Understanding of Convolutional Neural Networks (CNNs)
 
 
 - A **Two-Hour Test Drive session**: Test Drive is [H2O.ai's](https://www.h2o.ai) Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.
