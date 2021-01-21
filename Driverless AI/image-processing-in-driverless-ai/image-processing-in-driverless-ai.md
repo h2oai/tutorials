@@ -163,11 +163,6 @@ Therefore, when you are remodeling a pre-trained model for your tasks, you begin
 
 ![](assets/three-strategies.png)
 
-Therefore, when you are remodeling a pre-trained model for your tasks, you begin by removing the original Classifier, then you add a new classifier that fits your purposes, and lastly, you are required to fine-tune your model according to one of three strategies: 
-
-1. Train the entire model 
-2. Train some layers and leave the others frozen 
-3. Freeze the convolutional base 
 
 Accordingly and from a practical perspective, the process of **transfer learning** can be summed up as follows: 
 
