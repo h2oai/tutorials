@@ -236,6 +236,14 @@ Other approaches include Fully-connected layers and Linear support vector machin
 
 The Image Vectorizer transformer utilizes pre-trained ImageNet models to convert a column with an image path or URI ((Uniform Resource Identifier)) to an embeddings (vector) representation that is derived from the last global average pooling layer of the model. The resulting vector is then used for modeling in Driverless AI.
 
+There are several options in the Expert Settings panel that allow you to configure the Image Vectorizer transformer. This panel is available from within the experiment page above the Scorer knob. Refer to Image Settings for more information on these options.
+
+Notes:
+
+This modeling approach supports classification and regression experiments.
+
+This modeling approach supports the use of mixed data types (any number of image columns, text columns, numeric or categorical columns)
+
 
 ## Task 4: Second Approach: Automatic Image Model
 
@@ -243,11 +251,48 @@ Automatic Image Model is an AutoML model that accepts only an image and a label 
 
 Automatic Image Model uses pre-trained ImageNet models and starts the training process from them. The possible architectures list includes all the well-known models: (SE)-ResNe(X)ts; DenseNets; EfficientNets; Inceptions; etc.
 
+
+Notes:
+
+This modeling approach only supports a single image column as an input.
+
+This modeling approach does not support any transformers.
+
+This modeling approach supports classification and regression experiments.
+
+This modeling approach does not support the use of mixed data types because of its limitation on input features.
+
+This modeling approach does not use Genetic Algorithm (GA).
+
+The use of one or more GPUs is strongly recommended for this modeling approach.
+
+If an internet connection is available, ImageNet pretrained weights are downloaded automatically. If an internet connection is not available, weights must be downloaded from http://s3.amazonaws.com/artifacts.h2o.ai/releases/ai/h2o/pretrained/autoimage_weights.zip and extracted into ./tmp or tensorflow_image_pretrained_models_dir (specified in the config.toml file).
+
 ## Task 5: Understand Experiment One
+
+![car-delas-dataset-details](assets/car-delas-dataset-details.png)
 
 ## Task 6:
 
+![exp2-new-experiment](assets/exp2-new-experiment.png)
+
+![enabled-fine-tuning](assets/enabled-fine-tuning.png)
+
+![exp2-launch-experiment](assets/exp2-launch-experiment.png) 
+
 ## Task 7: 
+
+![metastic-cancer-dataset-details](assets/metastic-cancer-dataset-details.png)
+
+![expert-settings-exp3](assets/expert-settings-exp3.png)
+
+![image-model](assets/image-model.png)
+
+![warning](assets/warning.png)
+
+![exp3-launch-experiment](assets/exp3-launch-experiment.png)
+
+
 
 ## Task 8: 
 
