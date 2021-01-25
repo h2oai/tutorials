@@ -139,9 +139,9 @@ For the most part, pre-trained models used in transfer learning are based on lar
 
 A typical CNN has two parts:
 
-1. A **Convilitonal Base** is structured by a stack of convolutional and pooling layers, and the goal of this stack is to generate features from the image (input). 
+1. A **Convolutional Base** is structured by a stack of convolutional and pooling layers, and the goal of this stack is to generate features from the image (input). 
 
-2. A **Classifier** is formed by fully connected layers. The Classifier's goal is to classify the image based on the detected features. 
+2. A **Classifier** is formed by fully connected layers which classify the input image based on the convolutional base's features. The Classifier's goal is to classify the image based on the detected features. 
 
 The following image shows the architecture of a model based on CNNs. It is important to note that this illustration is a simplified version that fits this text's purposes (the illustration doesn't capture the complexity of the model's architecture).  
 
@@ -154,15 +154,7 @@ The following image shows the architecture of a model based on CNNs. It is impor
 
 
 
-Therefore, when you are remodeling a pre-trained model for your tasks, you begin by removing the original Classifier, then you add a new classifier that fits your purposes, and lastly, you fine-tune your model according to one of three strategies: 
-
-- **Stradegy 1**: *Train the entire model*
-
-- **Stradegy 2**: *Train some layers and leave the others frozen* 
-
-- **Stradegy 3**: *Freeze the convolutional base*
-
-
+When you are remodeling a pre-trained model for your tasks, you begin by removing the original Classifier, then you add a new classifier that fits your purposes, and lastly, you fine-tune your model according to one of three strategies: 
 
 <p align="center">
     <img src="assets/three-strategies.png" width="590" height="380"> 
@@ -188,14 +180,14 @@ When it comes to selecting a pre-trained model - you pick one that looks suitabl
 - seresnext50
 - xception (Selected by default)
 
-Note: You can specify the supported ImageNet pre-trained architectures for image transformer (approach one).
+You can specify the supported ImageNet pre-trained architectures for image transformer (approach one).
 
 
 2. ***Classify your problem according to the Size-Similarity Matrix*** -> 
 
 In the following image, you have 'The Matrix' that controls your choices regarding classifying your problem according to the Size-Similarity Matrix. 
 
-> This matrix classifies your computer vision problem considering [your dataset's size] and its similarity to the dataset in which your pre-trained model was trained. As a rule of thumb, [a dataset is small if it has less than 1000 images per class]. Regarding dataset similarity, let common sense prevail. For example, if your task is to identify cats and dogs, ImageNet (an image database) would be a similar dataset because it has images of cats and dogs. However, if your task is to identify cancer cells, ImageNet can't be considered a similar dataset.
+> This matrix classifies your computer vision problem considering [your dataset's size] and its similarity to the dataset in which your pre-trained model was trained. [Note that] as a rule of thumb, [a dataset is small if it has less than 1000 images per class]. Regarding dataset similarity, common sense should prevail. For example, if your task is to identify cats and dogs, ImageNet (an image database) would be a similar dataset because it has images of cats and dogs. However, if your task is to identify cancer cells, ImageNet can't be considered a similar dataset.
 
 
 <p align="center">
@@ -220,13 +212,7 @@ Here you can use the Size-Similarity Matrix to oversee your selection and then r
     <img src="assets/stradegy-matrix.png" width="505" height="490"> 
 </p>
 
-As noted above, models for image classification that result from a transfer learning approach based on pre-trained convolutional neural networks are usually composed of two parts: 
-
-1. **Convolutional base**, which performs feature extraction from an input (image). 
-
-2. **Classifier**, which classifies the input image based on the convolutional base's features. 
-
-When it comes to the Classifier one can follow several approaches when building the Classifier. For example:
+As noted above, models for image classification that result from a transfer learning approach based on pre-trained convolutional neural networks are usually composed of two parts. When it comes to the Classifier one can follow several approaches when building the Classifier. For example:
 
 > **Global Average Pooling**: In this approach, instead of adding fully connected layers on top of the convolutional base, we add a global average pooling layer and feed its output directly into the softmax activated layer. Lin et al. (2013) provides a detailed discussion on the advantages and disadvantages of this approach.
 
