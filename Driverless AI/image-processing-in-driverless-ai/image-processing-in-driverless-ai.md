@@ -19,11 +19,10 @@
 ## Objective 
 
 Image processing techniques have become crucial for a diverse range of companies despite their operations in the course of time. In other words, to compete in this global economy, image processing is becoming a requirement for any company hoping to become a credible competitor. Everyone can now see image processing in Agricultural Landscape, Disaster Management, and Biomedical and Other Healthcare Applications. 
+
 With this in mind, and with the hopes to democratize AI, H2O.ai has automated the processes of obtaining high-quality models capable of image processing. 
 
-This tutorial will explore the two different approaches to modeling images in Driverless AI: Embeddings Transformer(Image Vectorizer) and Automatic Image Model. To lay down the foundations for this tutorial, we will review transfer learning from pre-trained models. Right after, we will illustrate the first image modeling approach by building an image model capable of predicting car prices. Directly after, we will better understand the second approach by building an image model capable of predicting a true case of metastatic cancer. In the final analysis, we will compare and contrast each image modeling approach, and we will discuss several scenarios when a given approach will be better.
-
-In particular, and as a point of distinction,  we will discuss how the Embeddings Transformer approach only supports a MOJO Scoring Pipeline. Correspondingly, we will discuss how a user can only obtain details about the current best individual model through the Automatic Image Model approach. 
+This tutorial will explore the two different approaches to modeling images in Driverless AI: Embeddings Transformer(Image Vectorizer) and Automatic Image Model. To lay down the foundations for this tutorial, we will review transfer learning from pre-trained models. Right after, we will illustrate the first image modeling approach by building an image model capable of predicting car prices. Directly after, we will better understand the second approach by building an image model capable of predicting a true case of metastatic cancer. In the final analysis, we will compare and contrast each image modeling approach, and we will discuss several scenarios when a given approach will be better. In particular, and as a point of distinction,  we will discuss how the Embeddings Transformer approach only supports a MOJO Scoring Pipeline. Correspondingly, we will discuss how a user can only obtain details about the current best individual model through the Automatic Image Model approach. 
 
 All things consider, let us start. 
 
@@ -123,7 +122,7 @@ While our experiment runs in the background, let's discuss the two current appro
 
 In image classification, the goal is to classify an image based on a set of possible categories. In general, classifying images is a bit hard, but such a difficulty can find ease in **transfer learning**. 
 
-> Transfer learning allows anyone to build accurate models that make building image models less painful. "With transfer learning, instead of starting the learning process from scratch, you start from patterns that have been learned when solving a different problem. This way you leverage previous learnings and avoid starting from scratch" (Pedro Marcelino).
+Transfer learning allows anyone to build accurate models that make building image models less painful. Transfer Learning allows you to avoid relearning certain patterns again because you can use patterns others learned when solving a similar and different problem. In general, Transfer Learning prevents many from starting from scratch. 
 
 > ''In computer vision, transfer learning is usually expressed through the use of pre-trained models. A pre-trained model is a model that was trained on a large benchmark dataset to solve a problem similar to the one that we want to solve. Accordingly, due to the computational cost of training such models, it is common practice to import and use models from published literature (e.g. VGG, Inception, MobileNet)" (Pedro Marcelino).
 
@@ -146,14 +145,13 @@ For the most part, pre-trained models used in transfer learning are based on lar
 </p>
 
 
-A common CNN has two parts: 
+A typical CNN has two parts:
 
-1. "**Convolutional base**, which is composed by a stack of convolutional and pooling layers. The main goal of the convolutional base is to generate features from the image"(Pedro Marcelino).
+1. A **Convilitonal Base** is structured by a stack of convolutional and pooling layers, and the goal of this stack is to generate features from the image (input). 
 
-2. "**Classifier**, which is usually composed by fully connected layers. The main goal of the classifier is to classify the image based on the detected features. A fully connected layer is a layer whose neurons have full connections to all activation in the previous layer"(Pedro Marcelino).
+2. A **Classifier** is formed by fully connected layers. The Classifier's goal is to classify the image based on the detected features. 
 
-The following image shows the architecture of a model based on CNNs. 
-It is important to note that this illustration is a simplified version that fits this text's purposes (The illustration doesn't capture the complexity of the model's architecture.).  
+The following image shows the architecture of a model based on CNNs. It is important to note that this illustration is a simplified version that fits this text's purposes (the illustration doesn't capture the complexity of the model's architecture).  
 
 
 <p align="center">
@@ -162,9 +160,9 @@ It is important to note that this illustration is a simplified version that fits
 </p>
 
 
-> One important aspect of these deep learning models is that they can automatically learn hierarchical feature representations. This means that features computed by the first layer are general and can be reused in different problem domains, while features computed by the last layer are specific and depend on the chosen dataset and task. According to Yosinski et al. (2014), ‘if first-layer features are general and last-layer features are specific, then there must be a transition from general to specific somewhere in the network’. As a result, the convolutional base of our CNN — especially its lower layers (those who are closer to the inputs) — refer to general features, whereas the classifier part, and some of the higher layers of the convolutional base, refer to specialised features."(Pedro Marcelino)
 
-Therefore, when you are remodeling a pre-trained model for your tasks, you begin by removing the original Classifier, then you add a new classifier that fits your purposes, and lastly, you are required to fine-tune your model according to one of three strategies: 
+
+Therefore, when you are remodeling a pre-trained model for your tasks, you begin by removing the original Classifier, then you add a new classifier that fits your purposes, and lastly, you fine-tune your model according to one of three strategies: 
 
 - **Stradegy 1**: *Train the entire model*
 
@@ -194,7 +192,7 @@ When it comes to selecting a pre-trained model - you pick one that looks suitabl
 - seresnext50
 - xception (Selected by default)
 
-Note: You can specify the supported ImageNet pre-trained architectures for image transformer. 
+Note: You can specify the supported ImageNet pre-trained architectures for image transformer (approach one). 
 
 **Classify your problem according to the Size-Similariy Matrix**
 
@@ -202,7 +200,8 @@ Note: You can specify the supported ImageNet pre-trained architectures for image
 > Classify your problem according to the Size-Similarity Matrix. In [the following image] you have ‘The Matrix’ that controls your choices. This matrix classifies your computer vision problem considering the size of your dataset and its similarity to the dataset in which your pre-trained model was trained. As a rule of thumb, consider that your dataset is small if it has less than 1000 images per class. Regarding dataset similarity, let common sense prevail. For example, if your task is to identify cats and dogs, ImageNet would be a similar dataset because it has images of cats and dogs. However, if your task is to identify cancer cells, ImageNet can’t be considered a similar dataset.
 
 
-![](assets/matrix.png)
+
+<img src="assets/matrix.png" width="505" height="490">
 
 **Fine-tune your model**
 
@@ -217,7 +216,7 @@ Here you can use the Size-Similarity Matrix to oversee your selection and then r
 
 > **Quadrant 4**. "Small dataset, but similar to the pre-trained model’s dataset. I asked Master Yoda about this one he told me that ‘be the best option, Strategy 3 should’. I don’t know about you, but I don’t underestimate the Force. Accordingly, go for Strategy 3. You just need to remove the last fully-connected layer (output layer), run the pre-trained model as a fixed feature extractor, and then use the resulting features to train a new classifier"(Pedro Marcelino).
 
-![](assets/stradegy-matrix.png)
+![](assets/stradegy-matrix.png )
 
 As noted above, models for image classification that result from a transfer learning approach based on pre-trained convolutional neural networks are usually composed of two parts: 
 
@@ -271,6 +270,17 @@ If an internet connection is available, ImageNet pretrained weights are download
 ## Task 5: Understand Experiment One
 
 ![car-delas-dataset-details](assets/car-delas-dataset-details.png)
+
+
+![image-tab](assets/image-tab.png)
+
+![supported-imagenet-pretrained-architectures-for-image-transformer](assets/supported-imagenet-pretrained-architectures-for-image-transformer.png)
+
+![dimensionality-of-feature-space-created-by-image-transformer](assets/dimensionality-of-feature-space-created-by-image-transformer.png)
+
+![list-of-augmentations-for-fine-tuning-used-for-image-transformer](assets/list-of-augmentations-for-fine-tuning-used-for-image-transformer.png)
+
+
 
 ## Task 6:
 
