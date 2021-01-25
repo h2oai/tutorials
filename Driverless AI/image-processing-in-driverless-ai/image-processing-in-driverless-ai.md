@@ -122,28 +122,20 @@ While our experiment runs in the background, let's discuss the two current appro
 
 In image classification, the goal is to classify an image based on a set of possible categories. In general, classifying images is a bit hard, but such a difficulty can find ease in **transfer learning**. 
 
-Transfer learning allows anyone to build accurate models that make building image models less painful. Transfer Learning allows you to avoid relearning certain patterns again because you can use patterns others learned when solving a similar and different problem. In general, Transfer Learning prevents many from starting from scratch. 
+**Transfer learning** allows anyone to build accurate models that make building image models less painful. Transfer Learning allows you to avoid relearning certain patterns again because you can use patterns others learned when solving a similar and different problem. Transfer Learning prevents many from starting from scratch. 
 
 > ''In computer vision, transfer learning is usually expressed through the use of pre-trained models. A pre-trained model is a model that was trained on a large benchmark dataset to solve a problem similar to the one that we want to solve. Accordingly, due to the computational cost of training such models, it is common practice to import and use models from published literature (e.g. VGG, Inception, MobileNet)" (Pedro Marcelino).
 
 For the most part, pre-trained models used in transfer learning are based on large Convolutional Neural Networks (CNNs). Why? Because CNN's have express high performance and easiness in training. In neural networks, CNNs have become essential to the process of face recognition and object detection. In layman's terms, a CNN can take an input image, process it, and classify it under certain categories (Eg., Snake, Cat, Dog, Monkey).
 
-![](assets/general-neural-network-setup.png)
-
 <p align="center">
-  general neural network setup
-</p>
-
-![](assets/cnn.png)
-<p align="center">
-  CNN Overview
+    <img src="assets/cnn.png" width="690" height="400"> 
 </p>
 
 ![](assets/cnn-2.png)
 <p align="center">
     CNN Overview
 </p>
-
 
 A typical CNN has two parts:
 
@@ -170,14 +162,18 @@ Therefore, when you are remodeling a pre-trained model for your tasks, you begin
 
 - **Stradegy 3**: *Freeze the convolutional base*
 
-![](assets/three-strategies.png)
+
+
+<p align="center">
+    <img src="assets/three-strategies.png" width="590" height="380"> 
+</p>
+
+
 
 
 Accordingly and from a practical perspective, the process of **transfer learning** can be summed up as follows: 
 
-***Select a pre-trained model*** -> ***Classify your problem according to the Size-Similarity Matrix*** -> ***Fine-tune your model***
-
-**Select a pre-trained model**: 
+1. ***Select a pre-trained model*** -> 
 
 When it comes to selecting a pre-trained model - you pick one that looks suitable for your problem. Note, in Driverless AI; you have access to the following set of models: 
 
@@ -192,18 +188,22 @@ When it comes to selecting a pre-trained model - you pick one that looks suitabl
 - seresnext50
 - xception (Selected by default)
 
-Note: You can specify the supported ImageNet pre-trained architectures for image transformer (approach one). 
-
-**Classify your problem according to the Size-Similariy Matrix**
+Note: You can specify the supported ImageNet pre-trained architectures for image transformer (approach one).
 
 
-> Classify your problem according to the Size-Similarity Matrix. In [the following image] you have ‘The Matrix’ that controls your choices. This matrix classifies your computer vision problem considering the size of your dataset and its similarity to the dataset in which your pre-trained model was trained. As a rule of thumb, consider that your dataset is small if it has less than 1000 images per class. Regarding dataset similarity, let common sense prevail. For example, if your task is to identify cats and dogs, ImageNet would be a similar dataset because it has images of cats and dogs. However, if your task is to identify cancer cells, ImageNet can’t be considered a similar dataset.
+2. ***Classify your problem according to the Size-Similarity Matrix*** -> 
+
+In the following image, you have 'The Matrix' that controls your choices regarding classifying your problem according to the Size-Similarity Matrix. 
+
+> This matrix classifies your computer vision problem considering [your dataset's size] and its similarity to the dataset in which your pre-trained model was trained. As a rule of thumb, [a dataset is small if it has less than 1000 images per class]. Regarding dataset similarity, let common sense prevail. For example, if your task is to identify cats and dogs, ImageNet (an image database) would be a similar dataset because it has images of cats and dogs. However, if your task is to identify cancer cells, ImageNet can't be considered a similar dataset.
 
 
+<p align="center">
+    <img src="assets/matrix.png" width="505" height="490"> 
+</p>
 
-<img src="assets/matrix.png" width="505" height="490">
 
-**Fine-tune your model**
+3. **Fine-tune your model**
 
 Here you can use the Size-Similarity Matrix to oversee your selection and then refer to the three alternatives we mentioned before about remodeling a pre-trained model. The following image provides a visual summary of the text that follows.
 
@@ -214,9 +214,11 @@ Here you can use the Size-Similarity Matrix to oversee your selection and then r
 
 > **Quadrant 3**. "Small dataset and different from the pre-trained model’s dataset. This is the 2–7 off-suit hand of computer vision problems. Everything is against you. If complaining is not an option, the only hope you have is Strategy 2. It will be hard to find a balance between the number of layers to train and freeze. If you go to deep your model can overfit, if you stay in the shallow end of your model you won’t learn anything useful. Probably, you’ll need to go deeper than in Quadrant 2 and you’ll need to consider data augmentation techniques (a nice summary on data augmentation techniques is provided here)"(Pedro Marcelino).
 
-> **Quadrant 4**. "Small dataset, but similar to the pre-trained model’s dataset. I asked Master Yoda about this one he told me that ‘be the best option, Strategy 3 should’. I don’t know about you, but I don’t underestimate the Force. Accordingly, go for Strategy 3. You just need to remove the last fully-connected layer (output layer), run the pre-trained model as a fixed feature extractor, and then use the resulting features to train a new classifier"(Pedro Marcelino).
+> **Quadrant 4**. "Small dataset, but similar to the pre-trained model’s dataset. [For this situation, Strategy 3 will work best.] You just need to remove the last fully-connected layer (output layer), run the pre-trained model as a fixed feature extractor, and then use the resulting features to train a new classifier"(Pedro Marcelino).
 
-![](assets/stradegy-matrix.png )
+<p align="center">
+    <img src="assets/stradegy-matrix.png" width="505" height="490"> 
+</p>
 
 As noted above, models for image classification that result from a transfer learning approach based on pre-trained convolutional neural networks are usually composed of two parts: 
 
@@ -224,11 +226,19 @@ As noted above, models for image classification that result from a transfer lear
 
 2. **Classifier**, which classifies the input image based on the convolutional base's features. 
 
-*Note*, one can follow several approaches when building the Classifier. For example:
+When it comes to the Classifier one can follow several approaches when building the Classifier. For example:
 
 > **Global Average Pooling**: In this approach, instead of adding fully connected layers on top of the convolutional base, we add a global average pooling layer and feed its output directly into the softmax activated layer. Lin et al. (2013) provides a detailed discussion on the advantages and disadvantages of this approach.
 
-Other approaches include Fully-connected layers and Linear support vector machines. 
+Other approaches include **Fully-connected layers** and **Linear support vector machines**. 
+
+When it comes to image classification, you don't have to use the transfer learning technique. Therefore, what are the advantages of using transfer learning? 
+
+1. Transfer Learning brings already a certain amount of **performance** before any **training** occurs 
+
+![](assets/three-ways-in-which-transfer-might-improve-learning.png)
+
+2. Transfer learning leads to generalization where the model is prepared to perform well with data it was not trained on
 
 
 ## Task 3: First Approach: Embeddings Transformer (Image Vectorizer)
