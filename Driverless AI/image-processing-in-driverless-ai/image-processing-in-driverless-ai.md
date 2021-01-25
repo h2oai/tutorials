@@ -236,7 +236,10 @@ When it comes to image classification, you don't have to use the transfer learni
 
 1. Transfer Learning brings already a certain amount of **performance** before any **training** occurs 
 
-![](assets/three-ways-in-which-transfer-might-improve-learning.png)
+
+<p align="center">
+    <img src="assets/three-ways-in-which-transfer-might-improve-learning.png" width="350" height="215"> 
+</p>
 
 2. Transfer learning leads to generalization where the model is prepared to perform well with data it was not trained on
 
