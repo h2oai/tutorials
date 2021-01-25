@@ -8,7 +8,7 @@
 - [Task 2: Transfer learning from pre-trained models](#task-2-transfer-learning-from-pre-trained-models)
 - [Task 3: First Approach: Embeddings Transformer (Image Vectorizer)](#task-3-first-approach-embeddings-transformer-image-vectorizer)
 - [Task 4: Second Approach: Automatic Image Model](#task-4-second-approach-automatic-image-model)
-- [Task 5: Understand Experiment One ](#task-5-understand-experiment-one)
+- [Task 5: ](#task-5-)
 - [Task 6: ](#task-6-)
 - [Task 7: ](#task-7-)
 - [Task 8: ](#Task-8-)
@@ -44,7 +44,7 @@ You will need the following to be able to do this tutorial:
 
 ## Task 1: Launch Experiment One: Predict a Car's Price 
 
-As mentioned in this tutorial's objective section, we will use three image models, but running each experiment takes time to run. For this reason, 
+As mentioned in the *objective* section, we will use three image models, but running each experiment takes time to run. For this reason, 
 the experiment that takes the longest to complete has already been built for you and can be found in Driverless AI's Experiments section. We will use that experiment when exploring the second approach to image processing in Driverless AI. For now, we will follow to build the other two image models that will help us better understand the first approach.
 
 We will start the first experiment so that it can run in the background while we explore the two current approaches to image processing in Driverless AI. Right after, we will follow to understand the dataset and settings used in the first image model. 
@@ -145,13 +145,10 @@ A typical CNN has two parts:
 
 The following image shows the architecture of a model based on CNNs. It is important to note that this illustration is a simplified version that fits this text's purposes (the illustration doesn't capture the complexity of the model's architecture).  
 
-
 <p align="center">
     Architecture of a model based on CNN.
      <br><img src='assets/simplified-cnn.png'></img>    
 </p>
-
-
 
 
 When you are remodeling a pre-trained model for your tasks, you begin by removing the original Classifier, then you add a new classifier that fits your purposes, and lastly, you fine-tune your model according to one of three strategies: 
@@ -161,11 +158,9 @@ When you are remodeling a pre-trained model for your tasks, you begin by removin
 </p>
 
 
-
-
 Accordingly and from a practical perspective, the process of **transfer learning** can be summed up as follows: 
 
-1. ***Select a pre-trained model*** -> 
+1. ***Select a pre-trained model*** 
 
 When it comes to selecting a pre-trained model - you pick one that looks suitable for your problem. Note, in Driverless AI; you have access to the following set of models: 
 
@@ -183,7 +178,7 @@ When it comes to selecting a pre-trained model - you pick one that looks suitabl
 You can specify the supported ImageNet pre-trained architectures for image transformer (approach one).
 
 
-2. ***Classify your problem according to the Size-Similarity Matrix*** -> 
+2. ***Classify your problem according to the Size-Similarity Matrix*** 
 
 In the following image, you have 'The Matrix' that controls your choices regarding classifying your problem according to the Size-Similarity Matrix. 
 
@@ -212,9 +207,9 @@ Here you can use the Size-Similarity Matrix to oversee your selection and then r
     <img src="assets/stradegy-matrix.png" width="505" height="490"> 
 </p>
 
-As noted above, models for image classification that result from a transfer learning approach based on pre-trained convolutional neural networks are usually composed of two parts. When it comes to the Classifier one can follow several approaches when building the Classifier. For example:
+As noted above, models for image classification that result from a transfer learning approach based on **pre-trained convolutional neural networks** are usually composed of two parts. When it comes to the Classifier one can follow several approaches when building the Classifier. For example:
 
-> **Global Average Pooling**: In this approach, instead of adding fully connected layers on top of the convolutional base, we add a global average pooling layer and feed its output directly into the softmax activated layer. Lin et al. (2013) provides a detailed discussion on the advantages and disadvantages of this approach.
+> **Global Average Pooling**: In this approach, instead of adding fully connected layers on top of the convolutional base, we add a global average pooling layer and feed its output directly into the softmax activated layer. 
 
 Other approaches include **Fully-connected layers** and **Linear support vector machines**. 
 
@@ -232,15 +227,20 @@ When it comes to image classification, you don't have to use the transfer learni
 
 ## Task 3: First Approach: Embeddings Transformer (Image Vectorizer)
 
-The Image Vectorizer transformer utilizes pre-trained ImageNet models to convert a column with an image path or URI ((Uniform Resource Identifier)) to an embeddings (vector) representation that is derived from the last global average pooling layer of the model. The resulting vector is then used for modeling in Driverless AI.
+### Embeddings Transformer (Image Vectorizer)
 
-There are several options in the Expert Settings panel that allow you to configure the Image Vectorizer transformer. This panel is available from within the experiment page above the Scorer knob. Refer to Image Settings for more information on these options.
+The **Image Vectorizer transformer** utilizes pre-trained **ImageNet** models to convert a column with an image path or URI ((Uniform Resource Identifier)) to an **embeddings** (vector) representation that is derived from the last global average pooling layer of the model. The resulting vector is then used for modeling in Driverless AI.
 
-Notes:
+There are several options in the **Expert Settings** panel that allow you to configure the Image Vectorizer **transformer**. This panel is available from within the experiment page above the Scorer knob. 
 
-This modeling approach supports classification and regression experiments.
+***Notes:***
 
-This modeling approach supports the use of mixed data types (any number of image columns, text columns, numeric or categorical columns)
+- This modeling approach supports classification and regression experiments.
+
+- This modeling approach supports the use of mixed data types (any number of image columns, text columns, numeric or categorical columns)
+
+### Understand Experiment One
+
 
 
 ## Task 4: Second Approach: Automatic Image Model
@@ -266,7 +266,7 @@ The use of one or more GPUs is strongly recommended for this modeling approach.
 
 If an internet connection is available, ImageNet pretrained weights are downloaded automatically. If an internet connection is not available, weights must be downloaded from http://s3.amazonaws.com/artifacts.h2o.ai/releases/ai/h2o/pretrained/autoimage_weights.zip and extracted into ./tmp or tensorflow_image_pretrained_models_dir (specified in the config.toml file).
 
-## Task 5: Understand Experiment One
+## Task 5: 
 
 ![car-delas-dataset-details](assets/car-delas-dataset-details.png)
 
