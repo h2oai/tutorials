@@ -80,7 +80,7 @@ After initializing the H2O cluster, you will see the information shown above. We
 
 ![flow-welcome-page](assets/flow-welcome-page.png)
 
-Next, we will import the dataset. If you are working on your machine, you can download H2O's subset of the Freddie Mac Single-Family Loan-Level dataset, [Loan_Level_500k.csv](https://s3.amazonaws.com/data.h2o.ai/DAI-Tutorials/loan_level_500k.csv), to your local drive and save it at as csv file. 
+Next, we will import the dataset. If you are working on your machine, you can download H2O's subset of the Freddie Mac Single-Family Loan-Level dataset ([Loan_Level_500k.csv](https://s3.amazonaws.com/data.h2o.ai/DAI-Tutorials/loan_level_500k.csv)) to your local drive and save it at as csv file. 
 Make sure that the dataset is in the same directory as your Jupyter Notebook. For example, if your Jupyter file is in your **Documents,** save the csv file there. Or you can just specify the path of where the file is located; in our case, the file is in an S3 bucket. That’s why we’ll just do the following:
 
 ~~~python
@@ -90,7 +90,7 @@ loan_level = h2o.import_file("https://s3.amazonaws.com/data.h2o.ai/DAI-Tutorials
 
 Now that we have our dataset, we will explore some concepts and then do some exploration of the data and prepare it for modeling.
 
-Please note that we use the name H2O-3 to refer to our software, but when we usually use the simplified name, H2O, when we refer to specific functions or algorithms.
+Please note that we use the name H2O-3 to refer to our software, and when we say H2O, we refer to specific functions or algorithms.
 
 ### References
 
@@ -153,7 +153,7 @@ Please note that we use the name H2O-3 to refer to our software, but when we usu
 ### H2O
 [H2O](https://www.h2o.ai/community/glossary/h2o-h2o-3) or [H2O-3](https://www.h2o.ai/community/glossary/h2o-h2o-3) is an open-source, in-memory, distributed, fast, and scalable machine learning and predictive analytics platform that allows you to build machine learning models on big data and provides easy productionalization of those models in an enterprise environment.
 
-H2O's core code is written in Java. Inside H2O, a Distributed Key/Value store is used to access and reference data, models, objects, etc. across all nodes and machines. The algorithms are implemented on top of H2O's distributed Map/Reduce framework and utilize the Java Fork/Join framework for multi-threading. The data is read in parallel and is distributed across the cluster and stored in memory in a columnar format in a compressed way. H2O.ai's data parser has built-in intelligence to guess the schema of the incoming dataset and supports data ingest from multiple sources in various formats.
+H2O's core code is written in Java. Inside H2O, a Distributed Key/Value store is used to access and reference data, models, objects, etc., cross all nodes and machines. The algorithms are implemented on top of H2O's distributed Map/Reduce framework and utilize the Java Fork/Join framework for multi-threading. The data is read in parallel and is distributed across the cluster and stored in memory in a columnar format in a compressed way. H2O.ai's data parser has built-in intelligence to guess the schema of the incoming dataset and supports data ingest from multiple sources in various formats.
 
 The speed, quality, ease-of-use, and model-deployment for the various cutting edge Supervised, and Unsupervised algorithms like Deep Learning, Tree Ensembles, and GLRM make H2O a highly sought after API for big data data science.
 
@@ -176,16 +176,28 @@ A binary [classification](https://www.h2o.ai/community/glossary/classification) 
 Binary classifications produce four outcomes:
 
 **Predicticted as Positive:**
-True Positive = TP = Actual Positive labels predicted as positives
-False Positive = FP = Actual Negative labels predicted as positives
+
+**True Positive** = TP = Actual Positive labels predicted as positives
+
+**False Positive** = FP = Actual Negative labels predicted as positives
  
 **Predicted as Negative:**
-True Negative = TN = Actual Negative labels predicted as negatives
-False Negative = FN = Actual Positive labels predicted as negatives
+
+**True Negative** = TN = Actual Negative labels predicted as negatives
+
+**False Negative** = FN = Actual Positive labels predicted as negatives
 
 
 ### Confusion Matrix
-The confusion matrix is also known as the error matrix since it makes it easy to visualize the classification rate of the model, including the error rate. With the confusion matrix, you can see the frequency with which a machine learning model confuses one label with another, and thus the name “confusion matrix.”
+The confusion matrix is also known as the error matrix since it makes it easy to visualize the classification rate of the model, including the error rate. With the confusion matrix, you can see the frequency with which a machine learning model confuses one label with another, and thus the name “confusion matrix.” 
+
+The confusion matrix can give us a better understanding of our positive and negative predictions in contrast to the actual values as seen below:
+
+|              |**Predicted = 0**|**Predicted = 1**|  
+|:---:         |:---:            |:---:            |
+|**Actual = 0**|True Negative    |False Positive   |
+|**Actual = 1**|False Negative   | True Positive   |
+
 
 ### ROC
 An essential tool for classification problems is the ROC Curve or Receiver Operating Characteristics Curve. The ROC Curve visually shows the performance of a binary classifier; in other words, it "tells how much a model is capable of distinguishing between classes" [1] and the corresponding threshold.
@@ -287,7 +299,7 @@ train:350268 valid:74971 test:74898
 
 Next, we need to choose our **predictors**, or **x variable**, and our **response** or **y variable**. For the H2O-3 estimators, we do not use the actual data frame; instead, we use strings containing the name of the columns in our dataset.
 
-For our y variable, we will choose `DELINQUENT` because we want to predict whether or not a loan will default. For the x variable, we will choose all but four features. One is the feature that we will predict, and then `PREPAID` and `PREPAYMENT_PENALTY_MORTGAGE_FLAG` because they are clear indicators if a loan is or is not delinquent and we will not have the information at the time deciding whether to give a loan or not. In machine learning terms, introducing these types of features is called leakage. And lastly, `PRODUCT_TYPE` because that’s a constant value for every row, meaning all samples have the same value; therefore, this feature will not have any predictive value.
+For our y variable, we will choose `DELINQUENT` because we want to predict whether or not a loan will default. For the x variable, we will choose all but four features. One is the feature that we will predict, and then `PREPAID and PREPAYMENT_PENALTY_MORTGAGE_FLAG` because they are clear indicators if a loan is or is not delinquent. As well, it makes sense to remove them, given that in a real case scenario, we will not have that information when deciding whether to give a loan or not. In machine learning terms, introducing these types of features is called leakage. And lastly, `PRODUCT_TYPE` because that’s a constant value for every row, meaning all samples have the same value; therefore, this feature will not have any predictive value.
 
 There are several ways to choose your predictors, but for this tutorial, we will subtract the list in the variable `ignore` from all the names in our training set.
 
@@ -310,7 +322,7 @@ print(x)
 ~~~
 
 
-**R Version**
+**Task 3 - R Version**
 
 To ensure the dataset was properly imported use the `h2o.head()` function to check the first ten rows of your dataset. Please note that we need to set a value for `n` to get the desired numbers of rows.
 
@@ -382,7 +394,7 @@ nrow(test)
 
 Next, we need to choose our **predictors**, or **x variable**, and our **response** or **y variable**. For the H2O-3 estimators, we do not use the actual data frame; instead, we use strings containing the name of the columns in our dataset.
 
-For our y variable, we will choose `DELINQUENT` because we want to predict whether or not a loan will default. For the x variable, we will choose all but four features. One is the feature that we will predict, and then `PREPAID` and `PREPAYMENT_PENALTY_MORTGAGE_FLAG` because they are clear indicators if a loan is or is not delinquent and we will not have the information at the time deciding whether to give a loan or not. In machine learning terms, introducing these types of features is called leakage. And lastly, `PRODUCT_TYPE` because that’s a constant value for every row, meaning all samples have the same value; therefore, this feature will not have any predictive value.
+For our y variable, we will choose `DELINQUENT` because we want to predict whether or not a loan will default. For the x variable, we will choose all but four features. One is the feature that we will predict, and then `PREPAID and PREPAYMENT_PENALTY_MORTGAGE_FLAG` because they are clear indicators if a loan is or is not delinquent. As well, it makes sense to remove them, given that in a real case scenario, we will not have that information when deciding whether to give a loan or not. In machine learning terms, introducing these types of features is called leakage. And lastly, `PRODUCT_TYPE` because that’s a constant value for every row, meaning all samples have the same value; therefore, this feature will not have any predictive value.
 
 There are several ways to choose your predictors, but for this tutorial, we will ignore the list in the variable `ignore` from all the names in our training set. 
 
@@ -811,7 +823,7 @@ default_rf_per = rf.model_performance(valid)
 ~~~
 
 
-**Task 4 - R Version**
+**Task 5 - R Version**
 
 We will build a default Distributed Random Forest (DRF) model and see how it performs on our validation set. DRF generates a forest of classification or regression trees, rather than a single classification or regression tree. Each of these trees is a weak learner built on a subset of rows and columns. More trees will reduce the variance. Both classification and regression take the average prediction over all of their trees to make a final prediction, whether predicting for a class or numeric value. 
 
@@ -975,7 +987,7 @@ Print the model summary
 ![default-gbm-validation-metrics-1](assets/default-gbm-validation-metrics-1.png)
 ![default-gbm-validation-metrics-2](assets/default-gbm-validation-metrics-2.png)
 
-The training and validation AUC are **0.878** and **0.854,** respectively. And we obtained a training and validation F1 Scores are **0.343** and **0.30** We can see the that the AUC and F1 Score of our default GBM is better than the values we obtained from our GLM and RF. We will now make the predictions with the GBM model as well.
+The training and validation AUC are **0.878** and **0.854,** respectively. And we obtained a training and validation F1 Scores are **0.343** and **0.30.** We can see the that the AUC and F1 Score of our default GBM is better than the values we obtained from our GLM and RF. We will now make the predictions with the GBM model as well.
 
 ~~~python
 gbm.predict(valid)
@@ -991,7 +1003,7 @@ default_gbm_per = gbm.model_performance(valid)
 ~~~
 Next, we will tune our models and see if we can achieve better performance. 
 
-**Task 5 - R Version**
+**Task 6 - R Version**
 
 Gradient Boosting Machine (for Regression and Classification) is a forward learning ensemble method. H2O’s GBM sequentially builds classification trees on all the features of the dataset in a fully distributed way - each tree is built in parallel. H2O’s GBM fits consecutive trees where each solves for the net loss of the prior trees. 
 Sometimes GBMs tend to be the best possible models because they are robust and directly optimize the cost function. On the other hand, they tend to overfit, so you need to find the proper stopping point; they are sensitive to noise, and they have several hyper-parameters.
@@ -1180,7 +1192,7 @@ Notice how the overall error slightly improved, as well as the error for the FAL
 We will do the test evaluation after we tune our other two models.
 
 
-**Task 6 - R Version**
+**Task 7 - R Version**
 
 H2O supports two types of grid search – traditional (or “cartesian”) grid search and random grid search. In a cartesian grid search, you specify a set of values for each hyperparameter that you want to search over, and H2O will train a model for every combination of the hyperparameter values. This means that if you have three hyperparameters and you specify 5, 10, and 2 values for each, your grid will contain a total of 5*10*2 = 100 models.
 
@@ -1492,7 +1504,7 @@ The AUC for our tuned model actually improved, as well as the F1 Score. From the
 
 Now, we will see if we can improve our GBM model.
 
-**Task 7 - R Version**
+**Task 8 - R Version**
 
 We will first find one of the most important parameters for an RF, which is the maximum depth.
 
@@ -1765,7 +1777,7 @@ If you go to your Flow instance, you can check your best model. See the results 
 
 We will do the final test performance next.
 
-**Task 8 - R Version**
+**Task 9 - R Version**
 
 We will tune our GBM model using the same approach we used for the RF. We will first find a good range for `max_depth` and then we will try to tune some other parameters. For a GBM model, conceptually speaking, the **max_depth** and **ntrees** are similar to the RF model. However, we will see that the values are smaller than the ones used for the RF.
 
@@ -1973,7 +1985,8 @@ Again, all three scores are very close to each other, but the best one is the GB
 
 For this dataset, we obtained a good AUC for all three models. We obtained an okay F1 Score, given that our dataset is highly imbalanced, and we also obtained a good overall misclassification error, although due to the given imbalanced data, the error for the TRUE label was not so low. Overall, The best model trained on our dataset was the GBM, followed by the RF, and lastly, the GLM.
 
-**Task 9 - R Version**
+**Task 10 - R Version**
+
 We are going to obtain the test performance of each of the best models. If you named your models the same as in this tutorial, then you should be able to just run the following code. Notice that we are just taking the best models and checking the model performance with the test set. 
 
 ~~~R

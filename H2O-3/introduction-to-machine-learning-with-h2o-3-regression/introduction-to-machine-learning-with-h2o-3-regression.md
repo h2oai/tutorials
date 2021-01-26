@@ -19,12 +19,12 @@ In this tutorial, we will continue using the subset of the Freddie Mac Single-Fa
 
 ## Prerequisites
 
-- Completion of [Introduction to Machine Learning with H2O-3 - Classification](https://training.h2o.ai/products/1a-introduction-to-machine-learning-with-h2o-3-classification) tutorial. 
+- Completion of the following tutorial: [Introduction to Machine Learning with H2O-3 - Classification](https://training.h2o.ai/products/1a-introduction-to-machine-learning-with-h2o-3-classification) tutorial. 
 - Some basic knowledge of machine learning. 
 - Familiarity with Python. 
 - An Aquarium account. If you do not have an Aquarium account, please refer to [Appendix A of Introduction to Machine Learning with H2O-3 - Classification](https://training.h2o.ai/products/1a-introduction-to-machine-learning-with-h2o-3-classification)
 
-**Note:** We recommend that you follow along on Aquarium, our cloud instance, to get similar results to the ones shown in this tutorial. We also recommend that you go over the concepts section in Task 2 before starting your lab; that way, your instance is not running while you are going over the concepts. You can also use your personal machine with H2O-3, but keep in mind that you will see different results.
+**Note:** We recommend that you follow along on Aquarium, our cloud instance, to get similar results to the ones shown in this tutorial. We also recommend that you go over the concepts section in Task 2 before starting your lab; that way, your instance is not running while you are going over the concepts. You can also use your personal machine with H2O-3, but keep in mind that you will see different results, as the machines have different results.
 
 ## Task 1: Initial Setup
 
@@ -372,8 +372,10 @@ To use the XGBoost estimator, we can just define a random seed (for reproducibil
 To build your default XGBoost model and to train it, just run the following two lines of code:
 
 ~~~python
-xgb = H2OXGBoostEstimator(seed = 42, model_id = 'XGBoost', 
-                          nfolds = 0, keep_cross_validation_predictions = False)
+xgb = H2OXGBoostEstimator(seed = 42, 
+                          model_id = 'XGBoost', 
+                          nfolds = 0, 
+                          keep_cross_validation_predictions = False)
 
 %time xgb.train(x = x, y = y, training_frame = train, validation_frame = valid)
 ~~~
@@ -531,7 +533,8 @@ Deep learning models are not reproducible, meaning they won't yield the same res
 As mentioned before, the deep learning estimator is fairly easy to use. For our default Deep Learning model, we do not need to define any parameters, but we will define the seed, model id, and we will also make sure that cross-validation is disabled, as we are already using a validation frame. 
 
 ~~~python
-dl = H2ODeepLearningEstimator(seed = 42, model_id = 'DL',
+dl = H2ODeepLearningEstimator(seed = 42, 
+                              model_id = 'DL',
                               nfolds = 0,
                               keep_cross_validation_predictions = False)
 
@@ -799,7 +802,7 @@ Default XGB MAE: 0.3108
 Tuned XGB MAE:0.2986
 ~~~
 
-In the case of an interest rate decision, an MAE of 0.30 is good enough as it tells us that, on average, the model would predict a very close interest rate to what someone with “x” characteristics should get. However, for some companies that MAE might be too high, so it all depends on the application to decide whether or not our MAE results are satisfactory. We will see if the Deep Learning model can yield a lower RMSE and MAE.
+In the case of an interest rate decision, an MAE of 0.30 is good enough as it tells us that, on average, the model would predict a very close interest rate to what someone with “x” characteristics should get. However, for some use cases an MAE of 0.30 might be too high, so it all depends on the application to decide whether or not our MAE results are satisfactory. We will see if the Deep Learning model can yield a lower RMSE and MAE.
 
 **Task 6 - R Version**
 
@@ -937,7 +940,7 @@ h2o.mae(valid_tuned_xgb_perf)
 0.2989957
 ~~~
 
-In the case of an interest rate decision, an MAE of 0.30 is good enough as it tells us that, on average, the model would predict a very close interest rate to what someone with “x” characteristics should get. However, for some companies that MAE might be too high, so it all depends on the application to decide whether or not our MAE results are satisfactory. We will see if the Deep Learning model can yield a lower RMSE and MAE.
+In the case of an interest rate decision, an MAE of 0.30 is good enough as it tells us that, on average, the model would predict a very close interest rate to what someone with “x” characteristics should get. However, for some use cases the MAE of 0.30 might be too high, so it all depends on the application to decide whether or not our MAE results are satisfactory. We will see if the Deep Learning model can yield a lower RMSE and MAE.
 
 **Task 6 - Flow Version**
 

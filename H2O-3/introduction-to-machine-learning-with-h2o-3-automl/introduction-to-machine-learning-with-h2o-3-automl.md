@@ -20,13 +20,13 @@ In this tutorial, we will use the subset of the loan-level dataset from Fannie M
 ## Prerequisites 
 - Completion of tutorials [Introduction to Machine Learning with H2O-3 - Classification](https://training.h2o.ai/products/1a-introduction-to-machine-learning-with-h2o-3-classification) and [Introduction to Machine Learning with H2O-3 - Regression.](https://training.h2o.ai/products/1b-introduction-to-machine-learning-with-h2o-3-regression)
 - Some basic knowledge of machine learning. 
-- Familiarity with Python. 
+- Familiarity with Python or R.
 - An Aquarium account. If you do not have an Aquarium account, please refer to [Appendix A of Introduction to Machine Learning with H2O-3 - Classification](https://training.h2o.ai/products/1a-introduction-to-machine-learning-with-h2o-3-classification)
 
 **Note:** This tutorial was completed in a cloud environment. If you want to get the same results in a similar time manner, please follow this tutorial in Aquarium. Otherwise, you can use your own machine but you will get different results, for example, it might take you longer to train the models for the classification part, or for the regression part, you might not get the same nunmber of models.
 
 ## Task 1: Initial Setup
-In this tutorial, we are using a smaller subset of the Freddie Mac Single-Family dataset that we used for the past two tutorials. If you have not done so, complete [Introduction to Machine Learning with H2O-3 - Classification](https://training.h2o.ai/products/1a-introduction-to-machine-learning-with-h2o-3-classification) and [Introduction to Machine Learning with H2O-3 - Regression](https://training.h2o.ai/products/1b-introduction-to-machine-learning-with-h2o-3-regression) as this tutorial is a continuation of both of them. 
+In this tutorial, we are using a smaller subset of the Freddie Mac Single-Family dataset compared to the past two tutorials. If you have not done so, complete [Introduction to Machine Learning with H2O-3 - Classification](https://training.h2o.ai/products/1a-introduction-to-machine-learning-with-h2o-3-classification) and [Introduction to Machine Learning with H2O-3 - Regression](https://training.h2o.ai/products/1b-introduction-to-machine-learning-with-h2o-3-regression) as this tutorial is a continuation of both of them. 
 
 We will use H2O AutoML to make the same predictions as in the previous two tutorials:
 - Predict whether a mortgage loan will be delinquent or not 
@@ -152,7 +152,7 @@ loan_level.describe()
 ~~~
 We will not focus on the visualization of the dataset as a whole, as we have already worked with this dataset. But, we are going to take a look at the distribution of our response variables. 
 
-Let’s take a look at the `DELINQUENT,` which is the response of our classification problem.
+Let’s take a look at the `DELINQUENT` column, which is the response for our classification problem.
 ~~~python
 loan_level["DELINQUENT"].table()
 ~~~
@@ -263,7 +263,7 @@ ignore = ["DELINQUENT",
 x = list(set(train.names) - set(ignore))
 ~~~
 
-Now we are ready to run AutoML. Below you can see some of the default parameters that we could change for AutoML
+Now we are ready to run AutoML. Below you can see some of the default parameters that we could change for AutoML:
 
 ~~~markdown
 H2OAutoML(nfolds=5, max_runtime_secs=3600, max_models=None, stopping_metric='AUTO', stopping_tolerance=None, stopping_rounds=3, seed=None, project_name=None)
@@ -285,7 +285,7 @@ The only required parameters for H2O's AutoML are, `y` `training_frame,` and `ma
 
 The second line of code has the parameters that we need in order to train our model. For now, we will just pass x, y, and the training frame. Please note that the parameter `x` is optional because if you use all the columns in your dataset, you do not need to declare this parameter. The `leaderboard frame` can be used to score and rank models on the leaderboard, but we will use the validation scores to do so because we will check the performance of our models with the test set. 
 
-Below is a list of optional parameters that the user could be set for H2O’s AutoML:
+Below is a list of optional parameters that the user could set for H2O’s AutoML:
 
 - validation_frame
 - leaderboard_frame
@@ -316,10 +316,9 @@ lb.head(rows = lb.nrows)
 
 ![aml-cl-leaderboard-1](assets/aml-cl-leaderboard-1.png)
 
-**Note:** We could’ve just printed the leaderboard with `aml.leaderboard`, but we have added an extra line of code just so that we make sure that we print all the models that were scored. 
+**Note:** We can just print the leaderboard by running `aml.leaderboard`, but we have added an extra line of code just so that get all the models that were scored. 
 
-We can also print a leaderboard with the training time, in milliseconds, of each model and the time it takes each model to predict each row, in milliseconds:
-
+We can also print a leaderboard with two extra columns, one column with the training time, and the second one with the prediction time per row of each model (both columns are printed in milliseconds):
 ~~~python
 lb2 = get_leaderboard(aml, extra_columns = 'ALL')
 lb2.head(rows = lb2.nrows)
@@ -359,7 +358,7 @@ aml.predict(test)
 
 ![automl-cl-preds](assets/automl-cl-preds.png)
 
-As we mentioned in the first tutorial, the predictions we get are based on a probability. In the frame above, we have a probability for **FALSE,**, and another one for **TRUE**. The prediction, **predict**, is based on the threshold that maximizes the F1 score. For example, the threshold that maximizes the F1 is about `0.1061`, meaning that if the probability of **TRUE** is greater than the threshold, the predicted label would be **TRUE.**
+As we mentioned in the first tutorial, the predictions we get are based on a probability. In the frame above, we have a probability for **FALSE,** and another one for **TRUE**. The prediction, **predict**, is based on the threshold that maximizes the F1 score. For example, the threshold that maximizes the F1 is about `0.1061`, meaning that if the probability of **TRUE** is greater than the threshold, the predicted label would be **TRUE.**
 
 After exploring the results for our classification problem, let’s use AutoML to explore a regression use-case.
 
@@ -375,7 +374,7 @@ y <- "DELINQUENT"
 x <- setdiff(colnames(train), ignore)
 ~~~
 
-Now we are ready to run AutoML. Below you can see some of the default parameters that we could change for AutoML
+Now we are ready to run AutoML. Below you can see some of the default parameters that we could change for AutoML:
 
 ~~~markdown
 H2OAutoML(nfolds=5, max_runtime_secs=3600, max_models=None, stopping_metric='AUTO', stopping_tolerance=None, stopping_rounds=3, seed=None, project_name=None)
@@ -399,7 +398,8 @@ The only required parameters for H2O's AutoML are, `y` `training_frame,` and `ma
 
 The second line of code has the parameters that we need in order to train our model. For now, we will just pass x, y, and the training frame. Please note that the parameter `x` is optional because if you were using all the columns in your dataset, you would not need to declare this parameter. The `leaderboard frame` can be used to score and rank models on the leaderboard, but we will use the validation scores to do so because we will check the performance of our models with the test set.
 
-Below is a list of optional parameters that the user could be set for H2O’s AutoML
+Below is a list of optional parameters that the user could set for H2O’s AutoML:
+
 - validation_frame
 - leaderboard_frame
 - blending_frame
@@ -430,9 +430,9 @@ h2o.head(lb, n = 25)
 
 ![r-aml-cl-leaderboard-1](assets/r-aml-cl-leaderboard-1.png)
 
-**Note:** We could’ve just printed the leaderboard with `aml.leaderboard`, but we have added an extra line of code just so that we make sure that we print all the models that were scored. Also, note that you can view the other models by clicking **Next** or any of the numbers at the bottom left of the table. And you can view the other metrics for the models by clicking the arrow at the top right corner of the table. 
+**Note:** We can just print the leaderboard by running `aml.leaderboard`, but we have added an extra line of code just so that we get all the models that were scored. Also, note that you can view the other models by clicking **Next** or any of the numbers at the bottom left of the table. And you can view the other metrics for the models by clicking the arrow at the top right corner of the table. 
 
-We can also print a leaderboard with the training time, in milliseconds, of each model, and the time it takes each model to predict each row, in milliseconds:
+We can also print a leaderboard with two extra columns, one column with the training time, and the second one with the prediction time per row of each model (both columns are printed in milliseconds):
 
 ~~~r
 # Get leaderboard with 'extra_columns = 'ALL'
@@ -539,12 +539,13 @@ model_ids = list(aml.leaderboard['model_id'].as_data_frame().iloc[:,0])
 # Get the top GBM model
 gbm = h2o.get_model([mid for mid in model_ids if "GBM" in mid][0])
 ~~~
-Note that you would need to change the name `GBM`, in the code above, to the name of the model that you want, and that should retrieve the desired model. For example, if you wanted to get the best XGBoost in the leaderboard, you would need to make the following change (you do not need to run the following line of code, this is just an example)
+
+To retrieve different models, you just need to change the name of the model, `GBM`, to the model that you want. For example, if you wanted to get the best XGBoost in the leaderboard, you would need to make the following change (you do not need to run the following line of code, this is just an example)
 
 ~~~python
 xgb = h2o.get_model([mid for mid in model_ids if "XGBoost" in mid][0])
 ~~~
-Now that we have retrieved the best model, we can take a look at some of the parameters
+Now that we have retrieved the best model, we can take a look at some of the parameters:
 
 ~~~python
 print("ntrees = ", gbm.params['ntrees'])
@@ -651,7 +652,7 @@ h2o.head(lb, n = -1)
 
 ![r-automl-reg-leaderboard_1](assets/r-automl-reg-leaderboard_1.png)
 
-**Note:** In the table above, only the top ten models are shown. You can view the other models by clicking **Next** button in your table. 
+**Note:** In the table above, only the top ten models are shown. You can view the other models by clicking **Next** in your table. 
 
 The leaderboard shows that the GBM models clearly dominated this task. We can retrieve the best model with the `model.leader` command; but, what if we wanted to get another model from our leaderboard? One way to do so is shown below:
 
@@ -674,7 +675,7 @@ You could retrieve any model you want by providing a model ID to the `getModel` 
 gbm <- h2o.getModel("desired_model_id")
 ~~~
 
-Now that we have retrieved the best model, we can take a look at some of the parameters
+Now that we have retrieved the best model, we can take a look at some of the parameters:
 
 ~~~r
 # Retrieve specific parameters from the obtained model
@@ -713,7 +714,7 @@ Now, let’s see how the leader from our AutoML performs on our test set.
 gbm_test_perf <- h2o.performance(gbm, test)
 ~~~
 
-Now you can print the RMSE and the MAE
+Now you can print the RMSE and the MAE:
 
 ~~~r
 # Print the test RMSE
@@ -777,7 +778,7 @@ To import a file into Flow, you would just need to run the following command in 
 importFiles ["https://s3.amazonaws.com/data.h2o.ai/DAI-Tutorials/loan_level_50k.csv"]
 ~~~
 
-**Note:** For a more detailed guide on how to import a file into Flow, check out [Task 3 of Introduction to Machine Learning with H2O-3 - Part 1](https://training.h2o.ai/products/introduction-to-machine-learning-with-h2o-part-1)
+**Note:** For a more detailed guide on how to import a file into Flow, check out [Task 3 of Introduction to Machine Learning with H2O-3 - Part 1](https://training.h2o.ai/products/introduction-to-machine-learning-with-h2o-part-1).
 
 Even though we already have the train and test set, let’s split the loan_level_50k.hex file, that way we can give a specific name to the train and test sets. Use the ratio 0.8 for train and 0.2 for test.
 
@@ -792,7 +793,8 @@ You can name your model `flow-automl.` For *Training Frame* choose `train.` For 
 
 ![flow-cl-automl-1](assets/flow-cl-automl-1.png)
 
-Click on the *balance_classes* box. Now, For *Ignored Columns* Select 
+Click on the *balance_classes* box. Now, for *Ignored Columns* Select 
+
 - `PREPAYMENT_PENALTY_MORTGAGE_FLAG`, 
 - `PRODUCT_TYPE,` 
 - `PREPAID.`
@@ -879,13 +881,13 @@ Set the *Seed* to `42,` change the number of *max_runtime_secs* to `900,` and ch
 
 ![flow-automl-reg-3](assets/flow-automl-reg-3.png)
 
-Lastly, leave the expert settings as default, and click on **Build Model**
+Lastly, leave the expert settings as default, and click on **Build Model:**
 
 
 ![flow-automl-build](assets/flow-automl-build.png)
  
 
-Once it’s done, click on **View** and you should be able to see the **Leaderboard** and the **Event Log** 
+Once it’s done, click on **View** and you should be able to see the **Leaderboard** and the **Event Log:**
 
 
 ![flow-reg-view-leaderboard](assets/flow-reg-view-leaderboard.png)
