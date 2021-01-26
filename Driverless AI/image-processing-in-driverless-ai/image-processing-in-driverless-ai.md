@@ -5,7 +5,7 @@
 - [Objective](#objective)
 - [Prerequisites](#prerequisites)
 - [Task 1: Launch Experiment One: Predict a Car's Price](#task-1-launch-experiment-one-predict-a-car's-price)
-- [Task 2: Transfer learning from pre-trained models](#task-2-transfer-learning-from-pre-trained-models)
+- [Task 2: Concepts: Transfer learning from pre-trained models](#task-2-concepts-transfer-learning-from-pre-trained-models)
 - [Task 3: First Approach: Embeddings Transformer (Image Vectorizer)](#task-3-first-approach-embeddings-transformer-image-vectorizer)
 - [Task 4: Second Approach: Automatic Image Model](#task-4-second-approach-automatic-image-model)
 - [Task 5: ](#task-5-)
@@ -44,13 +44,12 @@ You will need the following to be able to do this tutorial:
 
 ## Task 1: Launch Experiment One: Predict a Car's Price 
 
-As mentioned in the *objective* section, we will use three image models, but running each experiment takes time to run. For this reason, 
-the experiment that takes the longest to complete has already been built for you and can be found in Driverless AI's Experiments section. We will use that experiment when exploring the second approach to image processing in Driverless AI. For now, we will follow to build the other two image models that will help us better understand the first approach.
+As mentioned in the **objective** section, we will use three image models, but running each experiment takes time to run. For this reason, 
+the experiment that takes the longest to complete has already been built for you and can be found in Driverless AI's **Experiments** section. We will use that pre-built model when exploring the second approach to image processing in Driverless AI. For now, we will follow to build the other two image models that will help us better understand the first approach.
 
-We will start the first experiment so that it can run in the background while we explore the two current approaches to image processing in Driverless AI. Right after, we will follow to understand the dataset and settings used in the first image model. 
+We will start the first experiment so that it can run in the background while we understnad **Transfer Learning**. Right after, we will follow to understand the dataset and settings used in the first image model; doing so will allow us to understand **Embeddigns Transformer** (the first approach to image processing in Driverless AI).
 
 Our first image model will predict a car's price (again, we will explore the dataset and all settings for this model in a moment).  
-
 
 On the *Datasets page*, import the *Kaggle-MyAutoData-dataset*:
 
@@ -116,9 +115,9 @@ On the *Datasets page*:
 
 ![embeddings-transformer-a](assets/embeddings-transformer-a.png)
 
-While our experiment runs in the background, let's discuss the two current approaches to modeling images. 
+While our experiment runs in the background, let's discuss transfer learning from pre-trained models. 
 
-## Task 2: Transfer learning from pre-trained models
+## Task 2: Concepts: Transfer learning from pre-trained models
 
 In image classification, the goal is to classify an image based on a set of possible categories. In general, classifying images is a bit hard, but such a difficulty can find ease in **transfer learning**. 
 
@@ -224,6 +223,7 @@ When it comes to image classification, you don't have to use the transfer learni
 
 2. Transfer learning leads to generalization where the model is prepared to perform well with data it was not trained on
 
+With this task in mind, let us now understand the dataset and settings used in the first experiment; doing so will allow us to understand Embeddigns Transformer (the first approach to image processing in Driverless AI).
 
 ## Task 3: First Approach: Embeddings Transformer (Image Vectorizer)
 
@@ -231,7 +231,32 @@ When it comes to image classification, you don't have to use the transfer learni
 
 The **Image Vectorizer transformer** utilizes pre-trained **ImageNet** models to convert a column with an image path or URI ((Uniform Resource Identifier)) to an **embeddings** (vector) representation that is derived from the last global average pooling layer of the model. The resulting vector is then used for modeling in Driverless AI.
 
-There are several options in the **Expert Settings** panel that allow you to configure the Image Vectorizer **transformer**. This panel is available from within the experiment page above the Scorer knob. 
+There are several options in the **Expert Settings** panel that allow you to configure the Image Vectorizer **transformer**. 
+
+While building the first experiment, note that we never configure the **Image Vectorizer transformer**. The reason being, when Driverless AI detected an image column in our dataset, certain default settings were used for our experiment. To bring the above into a clearer perspective, let us review how we ran our first experiment in task one while, understaing a bit more about **Embeddings Transformer** . 
+
+**Note**: we will only discuss the settings relevant to this tutorial. 
+
+First, let's briefly discuss the multiple methods **Driverless AI** supports for uploading image datasets:
+
+- Archive with images in directories for each class. Labels for each class are created based on the directory hierarchy 
+- Archive with images and a CSV file that contains at least one column with relative image paths and a target column(best method for regression)
+- CSV file with local paths to the images on the disk 
+- CSV file with remote URLs to the images 
+
+Now let's focus on the dataset used for the first experiment: 
+
+1. In the **Datasets** page click the **car_deals_train** dataset
+2. Click the **DETAILS** options 
+3. In the dataset details page, click the following button located at the top right corner of the page: **DATASET ROWS**
+
+The following should appear: 
+
+![car-delas-dataset-details](assets/car-delas-dataset-details.png)
+
+When looking at the dataset rows, we will notice that our dataset has columns with different data types (such as images, strings, ints, etc.). That is because this modeling approach (Embeddigns Transformer) supports the use of mixed data types (any number of image columns, text columns, numeric or categorical columns). 
+
+
 
 ***Notes:***
 
@@ -268,7 +293,7 @@ If an internet connection is available, ImageNet pretrained weights are download
 
 ## Task 5: 
 
-![car-delas-dataset-details](assets/car-delas-dataset-details.png)
+
 
 
 ![image-tab](assets/image-tab.png)
