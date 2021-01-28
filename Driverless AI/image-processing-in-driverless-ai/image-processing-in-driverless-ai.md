@@ -105,7 +105,7 @@ On the *Datasets page*:
 
 14. First time using Driverless AI? Click **Yes** to get a tour! Otherwise, click **No**
 
-15. Name you experiment `Embeddings-Transformer-A`
+15. Name you experiment `Embeddings-Transformer-Without-Fine-Tuning`
 
 16. For the *TEST DATASET* select the following dataset: **car_deals_tes**
 
@@ -232,12 +232,13 @@ With this task in mind, let us now understand the dataset and settings used in t
 
 ## Task 3: First Approach: Embeddings Transformer (Image Vectorizer)
 
-### Embeddings Transformer (Image Vectorizer)
+### Embeddings Transformer (Image Vectorizer) without Fine-tuning 
 
-The **Image Vectorizer transformer** utilizes pre-trained **ImageNet** models to convert a column with an image path or URI ((Uniform Resource Identifier)) to an **embeddings** (vector) representation that is derived from the last global average pooling layer of the model. The resulting vector is then used for modeling in Driverless AI.
+The **Image Vectorizer transformer** utilizes pre-trained **ImageNet** models to convert a column with an image path or URI ((Uniform Resource Identifier)) to an **embeddings** (vector) representation that is derived from the last global average pooling layer of the model. The resulting vector is then used for modeling in Driverless AI. This approach can be use with and without fine-tuning. In a moment, we will further explore the difference between with and without fine-tuning. 
 
-**Notes**:
+**Note**:
 
+- "Transformer" refers to a particular type of neural network, in this case, CNN's. 
 - This modeling approach supports classification and regression experiments.
 
 In Driverless AI, there are several options in the **Expert Settings** panel that allow you to configure the Image Vectorizer **transformer**. While building the first experiment, note that we never configure the **Image Vectorizer transformer**. The reason being, when Driverless AI detected an image column in our dataset, certain default settings were used for our experiment. To bring the above into a clearer perspective, let us review how we ran our first experiment in task one while, understaing a bit more about **Embeddings Transformer** . 
@@ -269,17 +270,72 @@ To rephrase it, you can specify whether to use pre-trained deep learning models 
 
 When the Image Transformer is enabled, Driverless AI defaults the **xception ImageNet Pretrained Architecture** for the Image Transformer. As mentioned in task 2, Driverless AI offers an array of supported **ImageNet pre-trained architectures** for **image transformer**.
 
-The **CNN Xception ImageNet Architecture** is an extension of the Inception Architecture, where the Inception modules have been replaced with depthwise separable convolutions. As an overview, Xception takes the Inception hypothesis to an eXtreme where 1×1 convolutions capture cross-channel (or cross-feature map) correlations. Right after,  spatial correlations within each channel are captured via the regular 3×3 or 5×5 convolutions. Thus,  is approach is identical to replacing the Inception module with depthwise separable convolutions. To note, Xception slightly outperforms Inception v3 on the ImageNet dataset and outperforms it on a larger image classification dataset with 17,000 classes. With the above in mind, that is why we say that Xception is an extension of the Inception architecture, which replaces the standard Inception modules with depthwise separable convolutions.
+The **CNN Xception ImageNet Architecture** is an extension of the Inception Architecture, where the Inception modules have been replaced with depthwise separable convolutions. As an overview, Xception takes the Inception hypothesis to an eXtreme where 1×1 convolutions capture cross-channel (or cross-feature map) correlations. Right after,  spatial correlations within each channel are captured via the regular 3×3 or 5×5 convolutions. Thus, this approach is identical to replacing the Inception module with depthwise separable convolutions. To note, Xception slightly outperforms Inception v3 on the ImageNet dataset and outperforms it on a larger image classification dataset with 17,000 classes. With the above in mind, that is why we say that Xception is an extension of the Inception architecture, which replaces the standard Inception modules with depthwise separable convolutions. To learn more about other architecures please refer to the following article: [Illustrated: 10 CNN Architectures](https://towardsdatascience.com/illustrated-10-cnn-architectures-95d78ace614d#d27e).
 
 ![](assets/xception.png)
-
-The **CNN Xception ImageNet Architecture** is an extension of the Inception Architecture, where the Inception modules have been replaced with depthwise separable convolutions. As an overview, Xception takes the Inception hypothesis to an eXtreme where 1×1 convolutions capture cross-channel (or cross-feature map) correlations. Right after,  spatial correlations within each channel are captured via the regular 3×3 or 5×5 convolutions. Thus,  is approach is identical to replacing the Inception module with depthwise separable convolutions. To note, Xception slightly outperforms Inception v3 on the ImageNet dataset and outperforms it on a larger image classification dataset with 17,000 classes. With the above in mind, that is why we say that Xception is an extension of the Inception architecture, which replaces the standard Inception modules with depthwise separable convolutions. To learn more about other architecures please refer to the following article: [Illustrated: 10 CNN Architectures](https://towardsdatascience.com/illustrated-10-cnn-architectures-95d78ace614d#d27e).
 
 **Note**:
 
 - Multiple transformes can be activated at the same time to allow the selection of multiple options. In this case, embeddigns from the different architectures are concatenated together (in a single embedding). 
 
 In terms of which architecture to use, the answer is more complicated than one might think. There are a lot of CNN architectures out there, but how do we choose the best one for our problem? But exactly what is defined as the **best architecture**? Best can mean the simplest or perhaps the most efficient at producing accuracy while reducing computational complexity. Choosing a CNN architecture for your problem also depends on the problem you want to solve, and as of now is know that certain architectures are good and bad for certain problems.  As well, to find the best architecture for your problem, you have to run your problem with several architectures and see which one provides the best efficiency or perhaps the best accuracy while reducing computational complexity. 
+
+Besides being able to select the **ImageNet Pretrained architecture** for the **Image transformer**, you can also **Fine-Tune** the ImageNet Pretrained Models used for the Image Transformer. This is disabled by default. And therefore, the fine-tuning technique was not used in our first experiment in task one. In a bit, we will rerun the experiment in task one, but this time we will enable fine-tuning, and we will see how it impacts our results. But before, let us quickly review what fine-tuning does. 
+
+As mentioned above, we can define a neural network architecture by choosing an existing ImageNet architecture, but how can we avoid the need to train our neural network from scratch? Usually, neural networks are initialized with random weights that reach a level of value that allows the network to classify the image input after a series of epochs are executed. With the just mentioned, the question that must be asked now is what if we could initialize those weights to certain values that we know beforehand that are already good to classify a certain dataset. In our case, the car deals dataset. Considering that, we would not need a big dataset to train a network, nor would we need to wait for a good number of epochs for the weights to take good values for the classification. The weights will have it much easier. Besides transfer learning, this can also be achieved with fine-tuning. In the case that our dataset is not similar to the ImageNet dataset or we want to improve the results of our model using ImageNet architectures, we can use fine-tuning. 
+
+When enabling fine-tuning, we are not limited to retrain only the classifier section of the CNN, but we are also able to retrain the feature extraction stage: the convolutional and pooling layers. 
+
+**Note**: In practice, networks are fine-tuned when trained on a large dataset like the ImageNet. In other words, with fine-tuning, we continue the training of the architecture with the smaller dataset we have imported(running back-propagation). Fine-tuning will only work well if the smaller dataset is not so different from the original dataset (ImageNet) our architecture was trained. Once again, the pre-trained model will contain learned features relevant to our classification problem. 
+
+Before we rerun the experiment from task one with **Embeddings Transformer (Image Vectorizer) without Fine-tuning,** let us end this task by mentioning other default settings enabled by default during the first experiment. 
+
+
+When fine-tuning is enable, Driverless AI provides a list of possible image augmentations to apply while fine-tuning the ImageNet pre-trained models used for the Image Transformer. By default, **HorizontalFlip** is enabled, but please refer to the Driverless AI documentation right here for a full list of all other augmentations. 
+
+Augmentations for Fine-tuning used for the Image Transformer. Only when fine-tuning is enable. 
+
+Every time we define a classification learning problem with a feature-vector, we are creating a feature space. Consequently, Driverless AI allows you to enable the dimensionality of the feature (embeddings) space by Image Transformer. The following are options that you can choose from: 
+
+- 10
+- 25 
+- 100 (default)
+- 200
+- 300
+
+**Note**: You can activate multiple transformers simultaneously to allow the selection of multiple options. 
+
+On the point of Epochs, Driverless AI allows you to specify the number of epochs for fine-tuning ImageNet pre-trained models used for the Image Transformer. This value defaults to 2. 
+
+Other settings exist to configure the **Image Vectorizer transformer,** but we will not cover all of them for this tutorial. Though, we will discuss the other settings in future tutorials.  For now, please refer to the Driverless AI documentation here for more details on the different settings. 
+
+Now, in the next section, let's rebuild the first experiment, but this time let's enable fine-tuning. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
 
 
 
