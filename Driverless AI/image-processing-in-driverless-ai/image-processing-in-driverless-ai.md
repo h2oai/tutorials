@@ -7,7 +7,7 @@
 - [Task 1: Launch Experiment One: Predict a Car's Price](#task-1-launch-experiment-one-predict-a-car's-price)
 - [Task 2: Concepts: Transfer learning from pre-trained models](#task-2-concepts-transfer-learning-from-pre-trained-models)
 - [Task 3: First Approach: Embeddings Transformer (Image Vectorizer)](#task-3-first-approach-embeddings-transformer-image-vectorizer)
-- [Task 4: Second Approach: Automatic Image Model](#task-4-second-approach-automatic-image-model)
+- [Task 4: ](#)
 - [Task 5: ](#task-5-)
 - [Task 6: ](#task-6-)
 - [Task 7: ](#task-7-)
@@ -264,11 +264,15 @@ The following should appear:
 
 When looking at the dataset rows, we will notice that our dataset has columns with different data types (such as images, strings, ints, etc.). That is because this modeling approach (Embeddings Transformer) supports the use of mixed data types (any number of image columns, text columns, numeric or categorical columns).
 
-In the first column (image_id), you will see images. When we **predicted** on the **car_deals_train** dataset, Driverless AI detected the images, and in the **EXPERIMENT SETUP** page, it decided to enable the **Image Transformer setting**. In other words, Driverless AI enabled the Image Transformer for the processing of image data. Accordingly, Driverless AI makes use of the first image processing approach when an image column is detected. In a moment, we will discuss how we can tell Driverless AI how to use another approach to image processing. 
+In the first column (image_id), you will see images. When we **predicted** on the **car_deals_train** dataset, Driverless AI detected the images, and in the **EXPERIMENT SETUP** page, it decided to enable the **Image Transformer setting** (as observed in the image below). In other words, Driverless AI enabled the Image Transformer for the processing of image data. Accordingly, Driverless AI makes use of the first image processing approach when an image column is detected. In a moment, we will discuss how we can tell Driverless AI how to use another approach to image processing. 
+
+![image-tab](assets/image-tab.png)
 
 To rephrase it, you can specify whether to use pre-trained deep learning models to process image data as part of the feature engineering pipeline. When this is enabled, a column of Uniform Resources Identifiers (URIs) to images is converted to a numeric representation using ImageNet-pre-trained deep learning models. Again, the Image Transformer is enabled by default. 
 
-When the Image Transformer is enabled, Driverless AI defaults the **xception ImageNet Pretrained Architecture** for the Image Transformer. As mentioned in task 2, Driverless AI offers an array of supported **ImageNet pre-trained architectures** for **image transformer**.
+When the Image Transformer is enabled, Driverless AI defaults the **xception ImageNet Pretrained Architecture** for the Image Transformer. As mentioned in task 2, Driverless AI offers an array of supported **ImageNet pre-trained architectures** for **image transformer**.(The default **xception ImageNet Pretrained Architecture** setting. One can find it in the **Expert Settings** under the **Image Tab** under the **Supported ImageNet pre-trained Architecture for Image Transformer** setting(as observed in the image below )) 
+
+![supported-imagenet-pretrained-architectures-for-image-transformer](assets/supported-imagenet-pretrained-architectures-for-image-transformer.png)
 
 The **CNN Xception ImageNet Architecture** is an extension of the Inception Architecture, where the Inception modules have been replaced with depthwise separable convolutions. As an overview, Xception takes the Inception hypothesis to an eXtreme where 1×1 convolutions capture cross-channel (or cross-feature map) correlations. Right after,  spatial correlations within each channel are captured via the regular 3×3 or 5×5 convolutions. Thus, this approach is identical to replacing the Inception module with depthwise separable convolutions. To note, Xception slightly outperforms Inception v3 on the ImageNet dataset and outperforms it on a larger image classification dataset with 17,000 classes. With the above in mind, that is why we say that Xception is an extension of the Inception architecture, which replaces the standard Inception modules with depthwise separable convolutions. To learn more about other architecures please refer to the following article: [Illustrated: 10 CNN Architectures](https://towardsdatascience.com/illustrated-10-cnn-architectures-95d78ace614d#d27e).
 
@@ -288,12 +292,7 @@ When enabling fine-tuning, we are not limited to retrain only the classifier sec
 
 **Note**: In practice, networks are fine-tuned when trained on a large dataset like the ImageNet. In other words, with fine-tuning, we continue the training of the architecture with the smaller dataset we have imported(running back-propagation). Fine-tuning will only work well if the smaller dataset is not so different from the original dataset (ImageNet) our architecture was trained. Once again, the pre-trained model will contain learned features relevant to our classification problem. 
 
-Before we rerun the experiment from task one with **Embeddings Transformer (Image Vectorizer) without Fine-tuning,** let us end this task by mentioning other default settings enabled by default during the first experiment. 
-
-
-When fine-tuning is enable, Driverless AI provides a list of possible image augmentations to apply while fine-tuning the ImageNet pre-trained models used for the Image Transformer. By default, **HorizontalFlip** is enabled, but please refer to the Driverless AI documentation right here for a full list of all other augmentations. 
-
-Augmentations for Fine-tuning used for the Image Transformer. Only when fine-tuning is enable. 
+Before we rerun the experiment from task one let us end this task by mentioning one more default setting enabled by default during the first experiment. 
 
 Every time we define a classification learning problem with a feature-vector, we are creating a feature space. Consequently, Driverless AI allows you to enable the dimensionality of the feature (embeddings) space by Image Transformer. The following are options that you can choose from: 
 
@@ -303,14 +302,68 @@ Every time we define a classification learning problem with a feature-vector, we
 - 200
 - 300
 
+![dimensionality-of-feature-space-created-by-image-transformer](assets/dimensionality-of-feature-space-created-by-image-transformer.png)
+
 **Note**: You can activate multiple transformers simultaneously to allow the selection of multiple options. 
 
-On the point of Epochs, Driverless AI allows you to specify the number of epochs for fine-tuning ImageNet pre-trained models used for the Image Transformer. This value defaults to 2. 
+Other settings exist to configure the **Image Vectorizer transformer,** but we will not cover all of them for this tutorial. Though, we will discuss the other settings in future tutorials. For now, please refer to the Driverless AI documentation [here](https://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/expert_settings/image_settings.html#image-settings) for more details on the pre-define settings used in our first experiment.
 
-Other settings exist to configure the **Image Vectorizer transformer,** but we will not cover all of them for this tutorial. Though, we will discuss the other settings in future tutorials.  For now, please refer to the Driverless AI documentation here for more details on the different settings. 
+On the point of how our model performed with the auto default settings for Embeddings Transformer without Fine-tuning, one can observe the following:
+
+The validation score for the final pipeline is RMSE = 4058.833 +/- 154.7854
+
+- Note: "Root Mean Square Error (RMSE) is the standard deviation of the residuals (prediction errors). 
+
+    - Residuals are a measure of how far from the regression line data points are; RMSE is a measure of how spread out these residuals are. In other words, it tells you how concentrated the data is around the line of best fit."
+    - Recall that RMSE is a popular formula to measure a regression model's error rate. However, one can only compare it between models whose errors are measured in the same units.
+    - Also, recall that RMSE has the same unit as the dependent variable in our case; our dependent variable(DV) is dollars. Consequently, what will be considered a good RMSE value depends on our DV, and, therefore, there is no absolute good or bad RMSE threshold when DV is not known. 
+    - Because the range of our DV is from 1,000 (min) - 97,000(max) our RMSE(4058.833) will be consider small. The smaller the RMSE, in this case, the better. 
 
 Now, in the next section, let's rebuild the first experiment, but this time let's enable fine-tuning. 
 
+## Task 4: Embeddings Transformer (Image Vectorizer) with Fine-tuning
+
+
+The experiment from task one has been rerun already (with fine-tuning) because it takes longer than two hours (once again, the Aquarium test drive only runs for two hours). The experiment has been named `Embeddings-Transformer-With-Fine-Tuning`
+
+To showcase how fine-tuning was enabled for the first approach to image processing in DAI, observe the steps you cantake to rerun the experiment with fine-tuning: 
+
+In the **Experiments** section:
+
+1. Click the **three vertical dots** (located on the right side of the experiment) of the following experiment: `Embeddings-Transformer-Without-Fine-Tuning`
+
+![exp2-new-experiment](assets/exp2-new-experiment.png)
+
+2. Click the following option: **NEW EXPERIMENT WITH SAME SETTINGS**
+
+3. Rename the experiment to `Embeddings-Transformer-With-Fine-Tuning`
+
+4. Under the **IMAGE** tab located in the **EXPERT SETTINGS** click the **DISABLED** button under the following setting: **Enable Fine-tuning of pre-trained models used for image Transformer** 
+
+    - This setting will change from **DISABLED** to **ENABLED** 
+
+![enabled-fine-tuning](assets/enabled-fine-tuning.png)
+
+5. **LAUNCH EXPERIMENT**
+
+![exp2-launch-experiment](assets/exp2-launch-experiment.png) 
+
+When fine-tuning is enable, Driverless AI provides a list of possible image augmentations to apply while fine-tuning the ImageNet pre-trained models used for the Image Transformer. By default, **HorizontalFlip** is enabled, and for purposes of this tutorial, let's not change it. This default setting can be found and change in the **IMAGE** tab inside the **EXPERT SETTINGS**. Please refer to the Driverless AI documentation right [here](https://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/expert_settings/image_settings.html#list-of-augmentations-for-fine-tuning-used-for-the-image-transformer) for a full list of all other augmentations. 
+
+![list-of-augmentations-for-fine-tuning-used-for-image-transformer](assets/list-of-augmentations-for-fine-tuning-used-for-image-transformer.png)
+
+**NOTE**: Augmentations for fine-tuning used for the Image Transformer is only available when Fine-tuning is enabled.  
+
+As well, when fine-tuning is enabled, you can specify the number of epochs for fine-tuning ImageNet pre-trained models used for the Image Transformer. This value defaults to 2.This default setting can be found and change in the **IMAGE** tab inside the **EXPERT SETTINGS**.
+
+Now that you know how to rerun the experiment with fine-tuning let's explore the new experiment (Embeddings-Transformer-With-Fine-Tuning). 
+
+![finish-experiment-car_deals_with_fine_tuning](assets/finish-experiment-car_deals_with_fine_tuning.png)
+
+
+
+
+----------------
 
 
 
@@ -321,32 +374,6 @@ Now, in the next section, let's rebuild the first experiment, but this time let'
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-### Understand Experiment One
-
-
-
-## Task 4: Second Approach: Automatic Image Model
 
 Automatic Image Model is an AutoML model that accepts only an image and a label as input features. This model automatically selects hyperparameters such as learning rate, optimizer, batch size, and image input size. It also automates the training process by selecting the number of epochs, cropping strategy, augmentations, and learning rate scheduler.
 
@@ -374,23 +401,19 @@ If an internet connection is available, ImageNet pretrained weights are download
 
 
 
-![image-tab](assets/image-tab.png)
 
-![supported-imagenet-pretrained-architectures-for-image-transformer](assets/supported-imagenet-pretrained-architectures-for-image-transformer.png)
 
-![dimensionality-of-feature-space-created-by-image-transformer](assets/dimensionality-of-feature-space-created-by-image-transformer.png)
 
-![list-of-augmentations-for-fine-tuning-used-for-image-transformer](assets/list-of-augmentations-for-fine-tuning-used-for-image-transformer.png)
+
+
+
+
 
 
 
 ## Task 6:
 
-![exp2-new-experiment](assets/exp2-new-experiment.png)
 
-![enabled-fine-tuning](assets/enabled-fine-tuning.png)
-
-![exp2-launch-experiment](assets/exp2-launch-experiment.png) 
 
 ## Task 7: 
 
