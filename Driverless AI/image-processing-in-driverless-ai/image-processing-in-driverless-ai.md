@@ -360,6 +360,7 @@ Now that you know how to rerun the experiment with fine-tuning let's explore the
 
 ![finish-experiment-car_deals_with_fine_tuning](assets/finish-experiment-car_deals_with_fine_tuning.png)
 
+For our second experiment, we see that the validation score for the final pipeline is RMSE = 4114.0424 +/- 231.9882. Recall that the RMSE for the first experiment was 4058.833 +/- 154.7854. Enabling fine-tuning didn't improve the RMSE; instead, it did the opposite. The RMSE increase by ~55.209.
 
 
 
