@@ -7,7 +7,7 @@
 - [Task 1: Launch Experiment One: Predict a Car's Price](#task-1-launch-experiment-one-predict-a-car's-price)
 - [Task 2: Concepts: Transfer learning from pre-trained models](#task-2-concepts-transfer-learning-from-pre-trained-models)
 - [Task 3: First Approach: Embeddings Transformer (Image Vectorizer)](#task-3-first-approach-embeddings-transformer-image-vectorizer)
-- [Task 4: ](#)
+- [Task 4: Embeddings Transformer (Image Vectorizer) with Fine-tuning](#task-4-embeddings-transformer-image-vectorizer-with-fine-tuning)
 - [Task 5: ](#task-5-)
 - [Task 6: ](#task-6-)
 - [Task 7: ](#task-7-)
@@ -155,6 +155,13 @@ When you are remodeling a pre-trained model for your tasks, you begin by removin
 <p align="center">
     <img src="assets/three-strategies.png" width="590" height="380"> 
 </p>
+
+
+> "Train the entire model. In this case, you use the architecture of the pre-trained model and train it according to your dataset. You're learning the model from scratch, so you'll need a large dataset (and a lot of computational power)."(Pedro Marcelino)
+
+> "Train some layers and leave the others frozen. As you remember, lower layers refer to general features (problem independent), while higher layers refer to specific features (problem dependent). Here, we play with that dichotomy by choosing how much we want to adjust the weights of the network (a frozen layer does not change during training). Usually, if you've a small dataset and a large number of parameters, you'll leave more layers frozen to avoid overfitting. By contrast, if the dataset is large and the number of parameters is small, you can improve your model by training more layers to the new task since overfitting is not an issue."(Pedro Marcelino)
+
+> "Freeze the convolutional base. This case corresponds to an extreme situation of the train/freeze trade-off. The main idea is to keep the convolutional base in its original form and then use its outputs to feed the classifier. You're using the pre-trained model as a fixed feature extraction mechanism, which can be useful if you're short on computational power, your dataset is small, and/or pre-trained model solves a problem very similar to the one you want to solve."(Pedro Marcelino)
 
 
 Accordingly and from a practical perspective, the process of **transfer learning** can be summed up as follows: 
@@ -323,7 +330,6 @@ Now, in the next section, let's rebuild the first experiment, but this time let'
 
 ## Task 4: Embeddings Transformer (Image Vectorizer) with Fine-tuning
 
-
 The experiment from task one has been rerun already (with fine-tuning) because it takes longer than two hours (once again, the Aquarium test drive only runs for two hours). The experiment has been named `Embeddings-Transformer-With-Fine-Tuning`
 
 To showcase how fine-tuning was enabled for the first approach to image processing in DAI, observe the steps you cantake to rerun the experiment with fine-tuning: 
@@ -362,10 +368,25 @@ Now that you know how to rerun the experiment with fine-tuning let's explore the
 
 For our second experiment, we see that the validation score for the final pipeline is RMSE = 4114.0424 +/- 231.9882. Recall that the RMSE for the first experiment was 4058.833 +/- 154.7854. Enabling fine-tuning didn't improve the RMSE; instead, it did the opposite. The RMSE increase by ~55.209.
 
+For the most part, fine-tuning will lead to better results, though there are times when that will not be the case. Performance (an improvement on a scorer) depends on the type of problem you have: If: 
+
+Our dataset(car_deals_train) is smaller and similar to the original one(ImageNet) - you need to be careful with fine-tuning because it could be the case that other learning models can achieve better results(e.g., SVM). In this case, fine-tuning is not necessary. 
+When the new dataset is larger and similar to the original, having more data will not over-fit the model. Therefore, we can say with confidence that fine-tuning can achieve better results. 
+
+In our case, the Xception model has been trained on ~1.2 million training images with another 50,000 images for validation and 100,000 images for testing. Our car_deals_train dataset with 26k images will be considered small. That is why fine-tuning did not improve the RMSE because it could be the case that an SVM or a linear classifier can improve the scorer. 
+
+So how else can we improve the RMSE for the first experiment? Well, if you recall task 2, the following is stated: 
 
 
-----------------
+ > "Small dataset, but similar to the pre-trained model's dataset. [For this situation, Strategy 3 will work best.] You just need to remove the last fully-connected layer (output layer), run the pre-trained model as a fixed feature extractor, and then use the resulting features to train a new classifier" (Pedro Marcelino).
 
+ In other words, we don't need to fine-tune in this case. In this case, the score can be improved if we do not edit the convolutional base in its original form and we use its outputs to feed the classifier. Therefore, the Xception model will suffice while only training the model's classification part. 
+
+Now in the next task, let's explore **automatic image model** as the second approach to image processing in Driverless AI. 
+
+
+
+## Task 5: 
 
 
 
@@ -397,7 +418,7 @@ The use of one or more GPUs is strongly recommended for this modeling approach.
 
 If an internet connection is available, ImageNet pretrained weights are downloaded automatically. If an internet connection is not available, weights must be downloaded from http://s3.amazonaws.com/artifacts.h2o.ai/releases/ai/h2o/pretrained/autoimage_weights.zip and extracted into ./tmp or tensorflow_image_pretrained_models_dir (specified in the config.toml file).
 
-## Task 5: 
+
 
 
 
