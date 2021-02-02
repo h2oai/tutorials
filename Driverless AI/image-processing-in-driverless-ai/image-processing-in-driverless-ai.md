@@ -22,7 +22,7 @@ Image processing techniques have become crucial for a diverse range of companies
 
 With this in mind, and with the hopes to democratize AI, H2O.ai has automated the processes of obtaining high-quality models capable of image processing. 
 
-This tutorial will explore the two different approaches to modeling images in Driverless AI: Embeddings Transformer(Image Vectorizer) and Automatic Image Model. To lay down the foundations for this tutorial, we will review transfer learning from pre-trained models. Right after, we will illustrate the first image modeling approach by building an image model capable of predicting car prices. Directly after, we will better understand the second approach by building an image model capable of predicting a true case of metastatic cancer. In the final analysis, we will compare and contrast each image modeling approach, and we will discuss several scenarios when a given approach will be better. In particular, and as a point of distinction,  we will discuss how the Embeddings Transformer approach only supports a MOJO Scoring Pipeline. Correspondingly, we will discuss how a user can only obtain details about the current best individual model through the Automatic Image Model approach. 
+This tutorial will explore the two different approaches to modeling images in Driverless AI: Embeddings Transformer(Image Vectorizer) and Automatic Image Model. To lay down the foundations for this tutorial, we will review transfer learning from pre-trained models. Right after, we will illustrate the first image modeling approach by analyzing a pre-built **image model** capable of predicting car prices. Directly after, we will better understand the second approach by analyze a pre-built **image model** capable of predicting a true case of metastatic cancer. In the final analysis, we will compare and contrast each image modeling approach, and we will discuss several scenarios when a given approach will be better. In particular, and as a point of distinction,  we will discuss how the Embeddings Transformer approach only supports a MOJO Scoring Pipeline. Correspondingly, we will discuss how a user can only obtain details about the current best individual model through the Automatic Image Model approach. 
 
 All things consider, let us start. 
 
@@ -44,12 +44,17 @@ You will need the following to be able to do this tutorial:
 
 ## Task 1: Launch Experiment One: Predict a Car's Price 
 
-As mentioned in the **objective** section, we will use three image models, but running each experiment takes time to run. For this reason, 
-the experiment that takes the longest to complete has already been built for you and can be found in Driverless AI's **Experiments** section. We will use that pre-built model when exploring the second approach to image processing in Driverless AI. For now, we will follow to build the other two image models that will help us better understand the first approach.
+As mentioned in the **objective** section, we will use three image models, but running each experiment takes time to run. For this reason, all experiments have been built for you and can be found in Driverless AI's **Experiments** section. 
 
-We will start the first experiment so that it can run in the background while we understnad **Transfer Learning**. Right after, we will follow to understand the dataset and settings used in the first image model; doing so will allow us to understand **Embeddigns Transformer** (the first approach to image processing in Driverless AI).
 
-Our first image model will predict a car's price (again, we will explore the dataset and all settings for this model in a moment).  
+To help us understand the first approach to image processing in Driverless AI, let's look at the following experiment: `Embeddings-Transformer-Without-Fine-Tuning`
+
+For understanding purposes, let's see how the first experiment was run.
+Right after, we will follow to understand the dataset and settings used in the first image model; doing so will allow us to understand **Embeddigns Transformer** (the first approach to image processing in Driverless AI).
+
+Our first image model predicts a car's price (again, we will explore the dataset and all settings for this model in a moment). 
+
+If you were to run the experiment, you would take the following steps: 
 
 On the *Datasets page*, import the *Kaggle-MyAutoData-dataset*:
 
@@ -384,17 +389,7 @@ So how else can we improve the RMSE for the first experiment? Well, if you recal
 
 Now in the next task, let's explore **automatic image model** as the second approach to image processing in Driverless AI. 
 
-
-
 ## Task 5: 
-
-
-
-
-
-
-
-
 
 
 Automatic Image Model is an AutoML model that accepts only an image and a label as input features. This model automatically selects hyperparameters such as learning rate, optimizer, batch size, and image input size. It also automates the training process by selecting the number of epochs, cropping strategy, augmentations, and learning rate scheduler.
