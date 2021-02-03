@@ -22,7 +22,7 @@ Image processing techniques have become crucial for a diverse range of companies
 
 With this in mind, and with the hopes to democratize AI, H2O.ai has automated the processes of obtaining high-quality models capable of image processing. 
 
-This tutorial will explore the two different approaches to modeling images in Driverless AI: **Embeddings Transformer(Image Vectorizer)** and **Automatic Image Model**. To lay down the foundations for this tutorial, we will review transfer learning from pre-trained models. Right after, we will illustrate the first image modeling approach by analyzing a pre-built **image model** capable of predicting car prices. Directly after, we will better understand the second approach by analyze a pre-built **image model** capable of predicting a true case of metastatic cancer. In the final analysis, we will compare and contrast each image modeling approach, and we will discuss several scenarios when a given approach will be better. In particular, and as a point of distinction,  we will discuss how the **Embeddings Transformer** approach only supports a MOJO Scoring Pipeline. Correspondingly, we will discuss how a user can only obtain details about the current best individual model through the **Automatic Image Model** approach. 
+This tutorial will explore the two different approaches to modeling images in Driverless AI: **Embeddings Transformer(Image Vectorizer)** and **Automatic Image Model**. To lay down the foundations for this tutorial, we will review transfer learning from pre-trained models. Right after, we will illustrate the first image modeling approach by analyzing a pre-built **image model** capable of predicting car prices. Directly after, we will better understand the second approach by analyzing a pre-built **image model** capable of predicting a true case of metastatic cancer. In the final analysis, we will compare and contrast each image modeling approach, and we will discuss several scenarios when a given approach will be better. In particular, and as a point of distinction,  we will discuss how the **Embeddings Transformer** approach only supports a MOJO Scoring Pipeline. Correspondingly, we will discuss how a user can only obtain details about the current best individual model through the **Automatic Image Model** approach. 
 
 All things consider, let us start. 
 
@@ -244,7 +244,7 @@ With this task in mind, let us now understand the dataset and settings used in t
 
 The **Image Vectorizer transformer** utilizes pre-trained **ImageNet** models to convert a column with an image path or URI ((Uniform Resource Identifier)) to an **embeddings** (vector) representation that is derived from the last global average pooling layer of the model. The resulting vector is then used for modeling in Driverless AI. This approach can be use with and without fine-tuning. In a moment, we will further explore the difference between with and without fine-tuning. 
 
-**Note**:
+**Notes**:
 
 - "Transformer" refers to a particular type of neural network, in this case, CNN's. 
 - This modeling approach supports classification and regression experiments.
@@ -389,19 +389,83 @@ Now in the next task, let's explore **automatic image model** as the second appr
 
 ## Task 5: 
 
-Automatic Image Model is an AutoML model that accepts only an image and a label as input features. This model automatically selects hyperparameters such as learning rate, optimizer, batch size, and image input size. It also automates the training process by selecting the number of epochs, cropping strategy, augmentations, and learning rate scheduler.
+**Automatic Image Model** is the second approach to modeling images in Driverless AI. Automatic Image Model is an **AutoML model** that accepts only an image and a label as input features. This Model automatically selects hyperparameters such as learning rate, optimizer, batch size, and image input size. It also automates the training process by selecting the number of epochs, cropping strategy, augmentations, and learning rate scheduler.
 
 Automatic Image Model uses pre-trained ImageNet models and starts the training process from them. The possible architectures list includes all the well-known models: (SE)-ResNe(X)ts; DenseNets; EfficientNets; Inceptions; etc.
 
+Unique **insights** that provide information and sample **images** for the current best individual model are available for the **Automatic Image Model**. These insights are available while an experiment is running or after an experiment is complete. In a moment, we will see how we can use these insights to analyze an experiment predicting true cases of metastatic cancer. 
 
-Notes:
+**Notes**:
 
-- This modeling approach only supports a single image column as an input.
+- This modeling approach only supports a **single** image column as an input.
 - This modeling approach does not support any transformers.
 - This modeling approach supports classification and regression experiments.
-- This modeling approach does not support the use of mixed data types because of its limitation on input features.
+- This modeling approach does not support the use of mixed data types because of its limitation on input    features.
 - This modeling approach does not use Genetic Algorithm (GA).
 - The use of one or more GPUs is strongly recommended for this modeling approach.
+
+To illustrate how we will use the second approach, let's explore the pre-built experiment predicting true cases of metastatic cancer. Before that, let's see how you can run the experiment while learning how to active **AutoML** when modeling images in Driverless AI. 
+
+In the **Datasets** page: 
+
+1. Import the dataset by selecting the **AMAZON S3** option 
+
+2. Paste the following in the search bar: `s3://h2o-public-test-data/bigdata/server/ImageData/histopathology_train.zip`
+
+3. Selet the followign option: **histopathology_train.zip [488.5MB]**
+4. **CLICK TO IMPORT SELECTION**
+
+5. The following dataset should appear on the **Datasets** page: **histopathology_train.zip**
+
+6. Click on the **histopathology_train.zip** and click the **PREDICT** option
+
+7. Name your experiment as follows: `Metastatic Cancer - Automatic Image Model`
+
+8. Select **label** as the **Target Column**  
+
+9. To enable the Automatic **Image** Model, navigate to the *Pipeline Building Recipe* expert setting and select the **image_model** option
+
+    - You can find the *Pipeline Building Recipe* inside the **EXPERIMENT** tab inside the **EXPERT SETTINGS**
+
+    ![expert-settings-exp3](assets/expert-settings-exp3.png)
+
+    ![image-model](assets/image-model.png)
+
+    Right after, a *warning* dialog box will appear stating the following about selecting **image_model**:    
+
+    ![warning](assets/warning.png)
+
+    > Based on last changes some settings were automatically updated: 
+    > - **Include specific transformers**: ImageOriginalTransfomer 
+    > - **Whether to skip failures of transformers**: disabled
+    > - **Include specific models**: ImageAutoModel
+    > - **last_recipe**: image_model
+    > - **Whether to skip failures of models**: disabled 
+
+    
+10. In terms of the **training settings**, don't change them; we will use the recommended settings. 
+
+11. **LAUNCH EXPERIMENT**
+
+![exp3-launch-experiment](assets/exp3-launch-experiment.png)
+
+Now that you know how to run the experiment using the **AutoML** model, let's explore the results and use **insights** to see images and information about the current best individual model for the **Automatic Image Model**. As mentioned, this experiment has been pre-built and can be found in the **Experiment** section.
+
+1. In the **Experiment** section, select the **Metastatic Cancer - Automatic Image Model** experiment the following should appear: 
+
+![metastatic-experiment-results](assets/metastatic-experiment-results.png)
+
+As mentioned above, this second modeling approach only supports a **single** image column as an input. Therefore, let's see the dataset used for the Metastatic cancer experiment. 
+
+1. In the *Datasets* page, click the following dataset: histopathology_train.zip
+
+2. Select the **DETAILS** option 
+
+3. On the top right corner of the page, click **DATASET ROWS**
+
+4. The following will appear: 
+
+![metastic-cancer-dataset-details](assets/metastic-cancer-dataset-details.png)
 
 
 
@@ -422,27 +486,14 @@ Notes:
 
 ## Task 6:
 
-
-
 ## Task 7: 
-
-![metastic-cancer-dataset-details](assets/metastic-cancer-dataset-details.png)
-
-![expert-settings-exp3](assets/expert-settings-exp3.png)
-
-![image-model](assets/image-model.png)
-
-![warning](assets/warning.png)
-
-![exp3-launch-experiment](assets/exp3-launch-experiment.png)
-
-
 
 ## Task 8: 
 
 ## Next Steps: 
 
 ## Special Thanks: 
+
 
 
 
