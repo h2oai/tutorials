@@ -22,7 +22,7 @@ Image processing techniques have become crucial for a diverse range of companies
 
 With this in mind, and with the hopes to democratize AI, H2O.ai has automated the processes of obtaining high-quality models capable of image processing. 
 
-This tutorial will explore the two different approaches to modeling images in Driverless AI: Embeddings Transformer(Image Vectorizer) and Automatic Image Model. To lay down the foundations for this tutorial, we will review transfer learning from pre-trained models. Right after, we will illustrate the first image modeling approach by analyzing a pre-built **image model** capable of predicting car prices. Directly after, we will better understand the second approach by analyze a pre-built **image model** capable of predicting a true case of metastatic cancer. In the final analysis, we will compare and contrast each image modeling approach, and we will discuss several scenarios when a given approach will be better. In particular, and as a point of distinction,  we will discuss how the Embeddings Transformer approach only supports a MOJO Scoring Pipeline. Correspondingly, we will discuss how a user can only obtain details about the current best individual model through the Automatic Image Model approach. 
+This tutorial will explore the two different approaches to modeling images in Driverless AI: **Embeddings Transformer(Image Vectorizer)** and **Automatic Image Model**. To lay down the foundations for this tutorial, we will review transfer learning from pre-trained models. Right after, we will illustrate the first image modeling approach by analyzing a pre-built **image model** capable of predicting car prices. Directly after, we will better understand the second approach by analyze a pre-built **image model** capable of predicting a true case of metastatic cancer. In the final analysis, we will compare and contrast each image modeling approach, and we will discuss several scenarios when a given approach will be better. In particular, and as a point of distinction,  we will discuss how the **Embeddings Transformer** approach only supports a MOJO Scoring Pipeline. Correspondingly, we will discuss how a user can only obtain details about the current best individual model through the **Automatic Image Model** approach. 
 
 All things consider, let us start. 
 
@@ -46,11 +46,9 @@ You will need the following to be able to do this tutorial:
 
 As mentioned in the **objective** section, we will use three image models, but running each experiment takes time to run. For this reason, all experiments have been built for you and can be found in Driverless AI's **Experiments** section. 
 
-
 To help us understand the first approach to image processing in Driverless AI, let's look at the following experiment: `Embeddings-Transformer-Without-Fine-Tuning`
 
-For understanding purposes, let's see how the first experiment was run.
-Right after, we will follow to understand the dataset and settings used in the first image model; doing so will allow us to understand **Embeddigns Transformer** (the first approach to image processing in Driverless AI).
+For understanding purposes, let's see how the first experiment was run. Right after, we will follow to understand the dataset and settings used in the first image model; doing so will allow us to understand **Embeddigns Transformer** (the first approach to image processing in Driverless AI).
 
 Our first image model predicts a car's price (again, we will explore the dataset and all settings for this model in a moment). 
 
@@ -120,7 +118,7 @@ On the *Datasets page*:
 
 ![embeddings-transformer-a](assets/embeddings-transformer-a.png)
 
-While our experiment runs in the background, let's discuss transfer learning from pre-trained models. 
+Before we further explore the dataset and settings used in the first image model, let's discuss **transfer learning** concepts from pre-trained models. Concepts that will help us understand **Embeddings Transformer(Image Vectorizer)**. 
 
 ## Task 2: Concepts: Transfer learning from pre-trained models
 
@@ -147,7 +145,7 @@ A typical CNN has two parts:
 
 2. A **Classifier** is formed by fully connected layers which classify the input image based on the convolutional base's features. The Classifier's goal is to classify the image based on the detected features. 
 
-The following image shows the architecture of a model based on CNNs. It is important to note that this illustration is a simplified version that fits this text's purposes (the illustration doesn't capture the complexity of the model's architecture).  
+The following image shows the architecture of a model based on CNNs. It is important to note that this illustration is a simplified version that fits this tutorial's purposes (the illustration doesn't capture the complexity of the model's architecture).  
 
 <p align="center">
     Architecture of a model based on CNN.
@@ -162,11 +160,11 @@ When you are remodeling a pre-trained model for your tasks, you begin by removin
 </p>
 
 
-> "Train the entire model. In this case, you use the architecture of the pre-trained model and train it according to your dataset. You're learning the model from scratch, so you'll need a large dataset (and a lot of computational power)."(Pedro Marcelino)
+1. **Stradegy 1**: "Train the entire model. In this case, you use the architecture of the pre-trained model and train it according to your dataset. You're learning the model from scratch, so you'll need a large dataset (and a lot of computational power)."(Pedro Marcelino)
 
-> "Train some layers and leave the others frozen. As you remember, lower layers refer to general features (problem independent), while higher layers refer to specific features (problem dependent). Here, we play with that dichotomy by choosing how much we want to adjust the weights of the network (a frozen layer does not change during training). Usually, if you've a small dataset and a large number of parameters, you'll leave more layers frozen to avoid overfitting. By contrast, if the dataset is large and the number of parameters is small, you can improve your model by training more layers to the new task since overfitting is not an issue."(Pedro Marcelino)
+2. **Stradegy 2**:  "Train some layers and leave the others frozen. As you remember, lower layers refer to general features (problem independent), while higher layers refer to specific features (problem dependent). Here, we play with that dichotomy by choosing how much we want to adjust the weights of the network (a frozen layer does not change during training). Usually, if you've a small dataset and a large number of parameters, you'll leave more layers frozen to avoid overfitting. By contrast, if the dataset is large and the number of parameters is small, you can improve your model by training more layers to the new task since overfitting is not an issue."(Pedro Marcelino)
 
-> "Freeze the convolutional base. This case corresponds to an extreme situation of the train/freeze trade-off. The main idea is to keep the convolutional base in its original form and then use its outputs to feed the classifier. You're using the pre-trained model as a fixed feature extraction mechanism, which can be useful if you're short on computational power, your dataset is small, and/or pre-trained model solves a problem very similar to the one you want to solve."(Pedro Marcelino)
+3. **Stradegy 3**: "Freeze the convolutional base. This case corresponds to an extreme situation of the train/freeze trade-off. The main idea is to keep the convolutional base in its original form and then use its outputs to feed the classifier. You're using the pre-trained model as a fixed feature extraction mechanism, which can be useful if you're short on computational power, your dataset is small, and/or pre-trained model solves a problem very similar to the one you want to solve."(Pedro Marcelino)
 
 
 Accordingly and from a practical perspective, the process of **transfer learning** can be summed up as follows: 
@@ -188,17 +186,15 @@ When it comes to selecting a pre-trained model - you pick one that looks suitabl
 
 The above pre-trained ImagNet Models (CNN architectures), also know as Convolutional Neural Networks, have been pre-trained on the ImageNet dataset. 
 
-ImageNet is a project that aims to label and categorize images into almost 22,000 separate object categories. Through the categorization and labeling of images, ImageNet hopes to make the ImageNet dataset a useful resource for educators, students, and the mission of computer vision research. In the world of deep learning and Convolutional Neural Networks, people often refer to the **ImageNet Large Scale Visual Recognition Challenge** when the term "ImageNet" is mentioned. 
-"The goal of this image classification challenge is to train a model that can correctly classify an input image into 1,000 separate object categories. Models are trained on ~1.2 million training images with another 50,000 images for validation and 100,000 images for testing.
-These 1,000 image categories represent object classes that we encounter in our day-to-day lives, such as species of dogs, cats, various household objects, vehicle types, and much more."
+ImageNet is a project that aims to label and categorize images into almost 22,000 separate object categories. Through the categorization and labeling of images, ImageNet hopes to make the ImageNet dataset a useful resource for educators, students, and the mission of computer vision research. In the world of deep learning and Convolutional Neural Networks, people often refer to the **ImageNet Large Scale Visual Recognition Challenge** when the term "ImageNet" is mentioned. "The goal of this image classification challenge is to train a model that can correctly classify an input image into 1,000 separate object categories. Models are trained on ~1.2 million training images with another 50,000 images for validation and 100,000 images for testing. These 1,000 image categories represent object classes that we encounter in our day-to-day lives, such as species of dogs, cats, various household objects, vehicle types, and much more."
 
-The ImageNet challenge is now leading in the realm of image classification. This challenge has been dominated by **Convolutional Neural Networks** and **deep learning techniques**. Right now, several networks exist that represent some of the highest performing  **Convolutional Neural Networks** on the **ImageNet challenge**. These networks also demonstrate a strong ability to generalize to images outside the ImageNet dataset via transfer learning, such as feature extraction and fine-tuning. That is why Driverless AI can use the mentioned **network architectures** above because of their fine-tuning and feature extraction ability. 
+The ImageNet challenge is now leading in the realm of image classification. This challenge has been dominated by **Convolutional Neural Networks** and **deep learning techniques**. Right now, several networks exist that represent some of the highest performing  **Convolutional Neural Networks** on the **ImageNet challenge**. These networks also demonstrate a strong ability to generalize images outside the ImageNet dataset via transfer learning, such as feature extraction and fine-tuning. That is why Driverless AI can use the mentioned **network architectures** above because of their fine-tuning and feature extraction ability. 
 
 2. ***Classify your problem according to the Size-Similarity Matrix*** 
 
 In the following image, you have 'The Matrix' that controls your choices regarding classifying your problem according to the Size-Similarity Matrix. 
 
-> This matrix classifies your computer vision problem considering [your dataset's size] and its similarity to the dataset in which your pre-trained model was trained. [Note that] as a rule of thumb, [a dataset is small if it has less than 1000 images per class]. Regarding dataset similarity, common sense should prevail. For example, if your task is to identify cats and dogs, ImageNet (an image database) would be a similar dataset because it has images of cats and dogs. However, if your task is to identify cancer cells, ImageNet can't be considered a similar dataset.
+This matrix classifies your computer vision problem considering [your dataset's size] and its similarity to the dataset in which your pre-trained model was trained. [Note that] as a rule of thumb, [a dataset is small if it has less than 1000 images per class]. Regarding dataset similarity, common sense should prevail. For example, if your task is to identify cats and dogs, ImageNet (an image database) would be a similar dataset because it has images of cats and dogs. However, if your task is to identify cancer cells, ImageNet can't be considered a similar dataset.
 
 
 <p align="center">
@@ -235,7 +231,7 @@ When it comes to image classification, you don't have to use the transfer learni
 
 
 <p align="center">
-    <img src="assets/three-ways-in-which-transfer-might-improve-learning.png" width="350" height="215"> 
+    <img src="assets/three-ways-in-which-transfer-might-improve-learning.png" width="370" height="230"> 
 </p>
 
 2. Transfer learning leads to generalization where the model is prepared to perform well with data it was not trained on
@@ -276,13 +272,13 @@ The following should appear:
 
 When looking at the dataset rows, we will notice that our dataset has columns with different data types (such as images, strings, ints, etc.). That is because this modeling approach (Embeddings Transformer) supports the use of mixed data types (any number of image columns, text columns, numeric or categorical columns).
 
-In the first column (image_id), you will see images. When we **predicted** on the **car_deals_train** dataset, Driverless AI detected the images, and in the **EXPERIMENT SETUP** page, it decided to enable the **Image Transformer setting** (as observed in the image below). In other words, Driverless AI enabled the Image Transformer for the processing of image data. Accordingly, Driverless AI makes use of the first image processing approach when an image column is detected. In a moment, we will discuss how we can tell Driverless AI how to use another approach to image processing. 
+In the first column (image_id), you will see images. When we **predicted** on the **car_deals_train** dataset, Driverless AI detected the images, and in the **EXPERIMENT SETUP** page, it decided to enable the **Image Transformer setting** (as observed in the image below). In other words, Driverless AI enabled the Image Transformer for the processing of image data. Accordingly, Driverless AI makes use of the first image processing approach when an image column is detected. In a moment, we will discuss how we can tell Driverless AI to use the second approach to image processing. 
 
 ![image-tab](assets/image-tab.png)
 
-To rephrase it, you can specify whether to use pre-trained deep learning models to process image data as part of the feature engineering pipeline. When this is enabled, a column of Uniform Resources Identifiers (URIs) to images is converted to a numeric representation using ImageNet-pre-trained deep learning models. Again, the Image Transformer is enabled by default. 
+To rephrase it, you can specify whether to use pre-trained deep learning models to process image data as part of the feature engineering pipeline. When this is enabled, a column of **Uniform Resources Identifiers (URIs)** to images is converted to a numeric representation using ImageNet pre-trained deep learning models. Again, the Image Transformer is enabled by default. 
 
-When the Image Transformer is enabled, Driverless AI defaults the **xception ImageNet Pretrained Architecture** for the Image Transformer. As mentioned in task 2, Driverless AI offers an array of supported **ImageNet pre-trained architectures** for **image transformer**.(The default **xception ImageNet Pretrained Architecture** setting. One can find it in the **Expert Settings** under the **Image Tab** under the **Supported ImageNet pre-trained Architecture for Image Transformer** setting(as observed in the image below )) 
+When the Image Transformer is enabled, Driverless AI defaults the **xception ImageNet Pretrained Architecture** for the Image Transformer. As mentioned in task 2, Driverless AI offers an array of supported **ImageNet pre-trained architectures** for **image transformer**.(One can find it in the **Expert Settings** under the **Image Tab** under the **Supported ImageNet pre-trained Architecture for Image Transformer** setting(as observed in the image below )) 
 
 ![supported-imagenet-pretrained-architectures-for-image-transformer](assets/supported-imagenet-pretrained-architectures-for-image-transformer.png)
 
@@ -294,17 +290,19 @@ The **CNN Xception ImageNet Architecture** is an extension of the Inception Arch
 
 - Multiple transformes can be activated at the same time to allow the selection of multiple options. In this case, embeddigns from the different architectures are concatenated together (in a single embedding). 
 
-In terms of which architecture to use, the answer is more complicated than one might think. There are a lot of CNN architectures out there, but how do we choose the best one for our problem? But exactly what is defined as the **best architecture**? Best can mean the simplest or perhaps the most efficient at producing accuracy while reducing computational complexity. Choosing a CNN architecture for your problem also depends on the problem you want to solve, and as of now is know that certain architectures are good and bad for certain problems.  As well, to find the best architecture for your problem, you have to run your problem with several architectures and see which one provides the best efficiency or perhaps the best accuracy while reducing computational complexity. 
+In terms of which architecture to use, the answer is more complicated than one might think. There are a lot of CNN architectures out there, but how do we choose the best one for our problem? But exactly what is defined as the **best architecture**? Best can mean the simplest or perhaps the most efficient at producing accuracy while reducing computational complexity. Choosing a CNN architecture for your problem also depends on the problem you want to solve, and as of now is known that certain architectures are good and bad for certain problems.  As well, to find the best architecture for your problem, you have to run your problem with several architectures and see which one provides the best efficiency or perhaps the best accuracy while reducing computational complexity. Though I will say that if your dataset is similar to the dataset used to train the architecture, you will discover better results when the datasets are different. 
 
-Besides being able to select the **ImageNet Pretrained architecture** for the **Image transformer**, you can also **Fine-Tune** the ImageNet Pretrained Models used for the Image Transformer. This is disabled by default. And therefore, the fine-tuning technique was not used in our first experiment in task one. In a bit, we will rerun the experiment in task one, but this time we will enable fine-tuning, and we will see how it impacts our results. But before, let us quickly review what fine-tuning does. 
+Besides being able to select the **ImageNet Pretrained architecture** for the **Image transformer**, you can also **Fine-Tune** the ImageNet Pretrained Models used for the Image Transformer. This is disabled by default, and therefore, the fine-tuning technique was not used in our first experiment in task one. In a bit, we will explore a pre-built rerun of the first experiment with fine-tuning enable, and we will see how it impacts our results. But before, let us quickly review what fine-tuning does. 
 
-As mentioned above, we can define a neural network architecture by choosing an existing ImageNet architecture, but how can we avoid the need to train our neural network from scratch? Usually, neural networks are initialized with random weights that reach a level of value that allows the network to classify the image input after a series of epochs are executed. With the just mentioned, the question that must be asked now is what if we could initialize those weights to certain values that we know beforehand that are already good to classify a certain dataset. In our case, the car deals dataset. Considering that, we would not need a big dataset to train a network, nor would we need to wait for a good number of epochs for the weights to take good values for the classification. The weights will have it much easier. Besides transfer learning, this can also be achieved with fine-tuning. In the case that our dataset is not similar to the ImageNet dataset or we want to improve the results of our model using ImageNet architectures, we can use fine-tuning. 
+As mentioned above, we can define a neural network architecture by choosing an existing ImageNet architecture, but how can we avoid the need to train our neural network from scratch? Usually, neural networks are initialized with random weights that reach a level of value that allows the network to classify the image input after a series of epochs are executed. With the just mentioned, the question that must be asked now is what if we could initialize those weights to certain values that we know beforehand are already good to classify a certain dataset. In our case, the car deals dataset. If the weights are predefined to correct values, we will not need to wait for a good number of epochs, and therefore, the weights will have it much more manageable. And the just mentioned above is achieved through transfer learning. Besides transfer learning, this can also be achieved with fine-tuning. 
+
+In the case that our dataset is not similar to the ImageNet dataset or we want to improve the results of our model using ImageNet architectures, we can use fine-tuning. 
 
 When enabling fine-tuning, we are not limited to retrain only the classifier section of the CNN, but we are also able to retrain the feature extraction stage: the convolutional and pooling layers. 
 
 **Note**: In practice, networks are fine-tuned when trained on a large dataset like the ImageNet. In other words, with fine-tuning, we continue the training of the architecture with the smaller dataset we have imported(running back-propagation). Fine-tuning will only work well if the smaller dataset is not so different from the original dataset (ImageNet) our architecture was trained. Once again, the pre-trained model will contain learned features relevant to our classification problem. 
 
-Before we rerun the experiment from task one let us end this task by mentioning one more default setting enabled by default during the first experiment. 
+Before we explore a rerun of the first experiment from task one, let us end this task by mentioning one more default setting that was enabled by default during the first experiment. 
 
 Every time we define a classification learning problem with a feature-vector, we are creating a feature space. Consequently, Driverless AI allows you to enable the dimensionality of the feature (embeddings) space by Image Transformer. The following are options that you can choose from: 
 
@@ -320,7 +318,7 @@ Every time we define a classification learning problem with a feature-vector, we
 
 Other settings exist to configure the **Image Vectorizer transformer,** but we will not cover all of them for this tutorial. Though, we will discuss the other settings in future tutorials. For now, please refer to the Driverless AI documentation [here](https://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/expert_settings/image_settings.html#image-settings) for more details on the pre-define settings used in our first experiment.
 
-On the point of how our model performed with the auto default settings for Embeddings Transformer without Fine-tuning, one can observe the following:
+On the point of how our model performed with the auto default settings for **Embeddings Transformer without Fine-tuning**, one can observe the following:
 
 The validation score for the final pipeline is RMSE = 4058.833 +/- 154.7854
 
@@ -331,7 +329,7 @@ The validation score for the final pipeline is RMSE = 4058.833 +/- 154.7854
     - Also, recall that RMSE has the same unit as the dependent variable in our case; our dependent variable(DV) is dollars. Consequently, what will be considered a good RMSE value depends on our DV, and, therefore, there is no absolute good or bad RMSE threshold when DV is not known. 
     - Because the range of our DV is from 1,000 (min) - 97,000(max) our RMSE(4058.833) will be consider small. The smaller the RMSE, in this case, the better. 
 
-Now, in the next section, let's rebuild the first experiment, but this time let's enable fine-tuning. 
+In the next section, let's explore the pre-rebuilt experiment from task one, and let's see the impact fine-tuning has on the model's performance.
 
 ## Task 4: Embeddings Transformer (Image Vectorizer) with Fine-tuning
 
@@ -359,13 +357,13 @@ In the **Experiments** section:
 
 ![exp2-launch-experiment](assets/exp2-launch-experiment.png) 
 
-When fine-tuning is enable, Driverless AI provides a list of possible image augmentations to apply while fine-tuning the ImageNet pre-trained models used for the Image Transformer. By default, **HorizontalFlip** is enabled, and for purposes of this tutorial, let's not change it. This default setting can be found and change in the **IMAGE** tab inside the **EXPERT SETTINGS**. Please refer to the Driverless AI documentation right [here](https://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/expert_settings/image_settings.html#list-of-augmentations-for-fine-tuning-used-for-the-image-transformer) for a full list of all other augmentations. 
+When fine-tuning is enable, Driverless AI provides a list of possible image augmentations to apply while fine-tuning the **ImageNet pre-trained models** used for the **Image Transformer**. By default, **HorizontalFlip** is enabled, and for purposes of this tutorial, it was not changed.. This default setting can be found and change in the **IMAGE** tab inside the **EXPERT SETTINGS**. Please refer to the Driverless AI documentation right [here](https://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/expert_settings/image_settings.html#list-of-augmentations-for-fine-tuning-used-for-the-image-transformer) for a full list of all other augmentations. 
 
 ![list-of-augmentations-for-fine-tuning-used-for-image-transformer](assets/list-of-augmentations-for-fine-tuning-used-for-image-transformer.png)
 
-**NOTE**: Augmentations for fine-tuning used for the Image Transformer is only available when Fine-tuning is enabled.  
+**NOTE**: Augmentations for fine-tuning used for the Image Transformer is only available when Fine-tuning is **enabled**.  
 
-As well, when fine-tuning is enabled, you can specify the number of epochs for fine-tuning ImageNet pre-trained models used for the Image Transformer. This value defaults to 2.This default setting can be found and change in the **IMAGE** tab inside the **EXPERT SETTINGS**.
+As well, when fine-tuning is enabled, you can specify the number of epochs for fine-tuning **ImageNet pre-trained** models used for the **Image Transformer**. This value defaults to **2**. This default setting can be found and change in the **IMAGE** tab inside the **EXPERT SETTINGS**.
 
 Now that you know how to rerun the experiment with fine-tuning let's explore the new experiment (Embeddings-Transformer-With-Fine-Tuning). 
 
@@ -375,13 +373,13 @@ For our second experiment, we see that the validation score for the final pipeli
 
 For the most part, fine-tuning will lead to better results, though there are times when that will not be the case. Performance (an improvement on a scorer) depends on the type of problem you have: If: 
 
-Our dataset(car_deals_train) is smaller and similar to the original one(ImageNet) - you need to be careful with fine-tuning because it could be the case that other learning models can achieve better results(e.g., SVM). In this case, fine-tuning is not necessary. 
-When the new dataset is larger and similar to the original, having more data will not over-fit the model. Therefore, we can say with confidence that fine-tuning can achieve better results. 
+- Our dataset(car_deals_train) is smaller and similar to the original one(ImageNet) - you need to be careful with fine-tuning because it could be the case that other learning models can achieve better results(e.g., SVM). In this case, fine-tuning is not necessary for our car deals dataset. 
+
+- When the new dataset is larger and similar to the original, having more data will not over-fit the model. Therefore, we can say with confidence that fine-tuning can achieve better results. 
 
 In our case, the Xception model has been trained on ~1.2 million training images with another 50,000 images for validation and 100,000 images for testing. Our car_deals_train dataset with 26k images will be considered small. That is why fine-tuning did not improve the RMSE because it could be the case that an SVM or a linear classifier can improve the scorer. 
 
 So how else can we improve the RMSE for the first experiment? Well, if you recall task 2, the following is stated: 
-
 
  > "Small dataset, but similar to the pre-trained model's dataset. [For this situation, Strategy 3 will work best.] You just need to remove the last fully-connected layer (output layer), run the pre-trained model as a fixed feature extractor, and then use the resulting features to train a new classifier" (Pedro Marcelino).
 
@@ -391,7 +389,6 @@ Now in the next task, let's explore **automatic image model** as the second appr
 
 ## Task 5: 
 
-
 Automatic Image Model is an AutoML model that accepts only an image and a label as input features. This model automatically selects hyperparameters such as learning rate, optimizer, batch size, and image input size. It also automates the training process by selecting the number of epochs, cropping strategy, augmentations, and learning rate scheduler.
 
 Automatic Image Model uses pre-trained ImageNet models and starts the training process from them. The possible architectures list includes all the well-known models: (SE)-ResNe(X)ts; DenseNets; EfficientNets; Inceptions; etc.
@@ -399,19 +396,14 @@ Automatic Image Model uses pre-trained ImageNet models and starts the training p
 
 Notes:
 
-This modeling approach only supports a single image column as an input.
+- This modeling approach only supports a single image column as an input.
+- This modeling approach does not support any transformers.
+- This modeling approach supports classification and regression experiments.
+- This modeling approach does not support the use of mixed data types because of its limitation on input features.
+- This modeling approach does not use Genetic Algorithm (GA).
+- The use of one or more GPUs is strongly recommended for this modeling approach.
 
-This modeling approach does not support any transformers.
 
-This modeling approach supports classification and regression experiments.
-
-This modeling approach does not support the use of mixed data types because of its limitation on input features.
-
-This modeling approach does not use Genetic Algorithm (GA).
-
-The use of one or more GPUs is strongly recommended for this modeling approach.
-
-If an internet connection is available, ImageNet pretrained weights are downloaded automatically. If an internet connection is not available, weights must be downloaded from http://s3.amazonaws.com/artifacts.h2o.ai/releases/ai/h2o/pretrained/autoimage_weights.zip and extracted into ./tmp or tensorflow_image_pretrained_models_dir (specified in the config.toml file).
 
 
 
