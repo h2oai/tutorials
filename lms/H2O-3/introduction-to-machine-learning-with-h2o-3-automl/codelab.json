@@ -1,14 +1,14 @@
 {
   "environment": "web",
-  "source": "/Users/acastro/Desktop/introduction-to-machine-learning-with-h2o-3-automl/introduction-to-machine-learning-with-h2o-3-automl.md",
   "format": "html",
-  "prefix": "../assets",
+  "prefix": "https://storage.googleapis.com",
   "mainga": "UA-49880327-14",
-  "updated": "2020-09-22T21:39:49-07:00",
+  "updated": "2021-01-25T17:28:55-08:00",
   "id": "introduction-to-machine-learning-with-h2o-3-automl",
   "duration": 0,
   "title": "Introduction to Machine Learning with H2O-3 - AutoML",
-  "summary": "Check the list",
+  "summary": "Introduction To Machine Learning With H2O-3 AutoML",
+  "source": "/Users/falvarenga/Desktop/md-to-html/introduction-to-machine-learning-with-h2o-3-automl/introduction-to-machine-learning-with-h2o-3-automl.md",
   "theme": "",
   "status": [
     "draft"
@@ -17,14 +17,7 @@
     "h2o-3"
   ],
   "tags": [
-    "auto-ml",
-    "binary-classification",
-    "flow",
-    "h2o-3",
-    "jupyter-notebook",
-    "machine-learning",
-    "python-module",
-    "regression"
+    "test"
   ],
   "url": "introduction-to-machine-learning-with-h2o-3-automl"
 }

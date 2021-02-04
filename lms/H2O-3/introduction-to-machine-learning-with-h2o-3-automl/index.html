@@ -9,8 +9,9 @@
   <title>Introduction to Machine Learning with H2O-3 - AutoML</title>
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
   <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="../assets/codelab-elements/codelab-elements.css">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
   <link rel="stylesheet" href="custom.css">
+  
   <style>
     .success {
       color: #1e8e3e;
@@ -19,15 +20,34 @@
       color: red;
     }
   </style>
+  <script>
+    function changeTab(evt, cityName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(cityName).style.display = "block";
+      evt.currentTarget.className += " active";
+    }
+      
+    </script>
+
 </head>
 <body>
   <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
-  <google-codelab title="Introduction to Machine Learning with H2O-3 - AutoML"
+  <google-codelab codelab-gaid=""
+                  id="introduction-to-machine-learning-with-h2o-3-automl"
+                  title="Introduction to Machine Learning with H2O-3 - AutoML"
                   environment="web"
                   feedback-link="">
     
       <google-codelab-step label="Objective" duration="0">
-        <p>In this tutorial, we will use the subset of the loan-level dataset from Fannie Mae and Freddie Mac. Firstly, we will solve a binary classification problem (predicting if a loan is delinquent or not). Then, we will explore a regression use-case (predicting interest rates on the same dataset). We will try to do both use-cases using Automatic Machine Learning (AutoML), and we will do so using the H2O-3 Python module in a Jupyter Notebook and also in Flow.</p>
+        <p>In this tutorial, we will use the subset of the loan-level dataset from Fannie Mae and Freddie Mac. Firstly, we will solve a binary classification problem (predicting if a loan is delinquent or not). Then, we will explore a regression use-case (predicting interest rates on the same dataset). We will try to do both use-cases using Automatic Machine Learning (AutoML), and we will do so using H2O-3 in Python, R and also in Flow. Please note that you can choose to do only Python, or only R, or if you would like, you can do both.</p>
 
 
       </google-codelab-step>
@@ -36,7 +56,7 @@
         <ul>
 <li>Completion of tutorials <a href="https://training.h2o.ai/products/1a-introduction-to-machine-learning-with-h2o-3-classification" target="_blank">Introduction to Machine Learning with H2O-3 - Classification</a> and <a href="https://training.h2o.ai/products/1b-introduction-to-machine-learning-with-h2o-3-regression" target="_blank">Introduction to Machine Learning with H2O-3 - Regression.</a></li>
 <li>Some basic knowledge of machine learning.</li>
-<li>Familiarity with Python.</li>
+<li>Familiarity with Python or R.</li>
 <li>An Aquarium account. If you do not have an Aquarium account, please refer to <a href="https://training.h2o.ai/products/1a-introduction-to-machine-learning-with-h2o-3-classification" target="_blank">Appendix A of Introduction to Machine Learning with H2O-3 - Classification</a></li>
 </ul>
 <p><strong>Note:</strong> This tutorial was completed in a cloud environment. If you want to get the same results in a similar time manner, please follow this tutorial in Aquarium. Otherwise, you can use your own machine but you will get different results, for example, it might take you longer to train the models for the classification part, or for the regression part, you might not get the same nunmber of models.</p>
@@ -45,7 +65,14 @@
       </google-codelab-step>
     
       <google-codelab-step label="Task 1: Initial Setup" duration="0">
-        <p>In this tutorial, we are using a smaller subset of the Freddie Mac Single-Family dataset that we used for the past two tutorials. If you have not done so, complete <a href="https://training.h2o.ai/products/1a-introduction-to-machine-learning-with-h2o-3-classification" target="_blank">Introduction to Machine Learning with H2O-3 - Classification</a> and <a href="https://training.h2o.ai/products/1b-introduction-to-machine-learning-with-h2o-3-regression" target="_blank">Introduction to Machine Learning with H2O-3 - Regression</a> as this tutorial is a continuation of both of them.</p>
+        <div class="tab">
+          <button class="tablinks active" onclick="changeTab(event, 'Python-task1')">Python</button>
+          <button class="tablinks" onclick="changeTab(event, 'R-task1')">R</button>
+          
+        </div>
+        <div id="Python-task1" class="tabcontent" style = "display: block">
+          
+        <p>In this tutorial, we are using a smaller subset of the Freddie Mac Single-Family dataset compared to the past two tutorials. If you have not done so, complete <a href="https://training.h2o.ai/products/1a-introduction-to-machine-learning-with-h2o-3-classification" target="_blank">Introduction to Machine Learning with H2O-3 - Classification</a> and <a href="https://training.h2o.ai/products/1b-introduction-to-machine-learning-with-h2o-3-regression" target="_blank">Introduction to Machine Learning with H2O-3 - Regression</a> as this tutorial is a continuation of both of them.</p>
 <p>We will use H2O AutoML to make the same predictions as in the previous two tutorials:</p>
 <ul>
 <li>Predict whether a mortgage loan will be delinquent or not</li>
@@ -53,14 +80,12 @@
 </ul>
 <p>Complete this tutorial to see how we achieved those results.</p>
 <p>We will start by importing the libraries that we will use, as well as the algorithm that we will be using.</p>
-<pre><code>import h2o
-import matplotlib as plt
+<pre><code language="language-python" class="language-python">import h2o
+from h2o.automl import *
 %matplotlib inline
-from h2o.automl import H2OAutoML
 </code></pre>
 <p>Next, initialize your H2O instance.</p>
-<pre><code>import os
-import h2o
+<pre><code language="language-python" class="language-python">import os
 
 startup  = &#39;/home/h2o/bin/aquarium_startup&#39;
 shutdown = &#39;/home/h2o/bin/aquarium_stop&#39;
@@ -73,25 +98,56 @@ else:
     local_url = &#39;http://localhost:54321&#39;
     aquarium = False
 </code></pre>
-<pre><code>h2o.init(url=local_url)
+<pre><code>h2o.init(url = local_url)
 </code></pre>
 <p>If your instance was successfully initialized, you will see a table with a description of it as shown below.</p>
-<p><img alt="cluster-info" src="img/7e309c6dcaff4cfd.jpg"></p>
+<p class="image-container"><img alt="cluster-info" src="img/11e4d465b6104a91.png"></p>
 <p>If you are working on your machine, if you click on the link above the cluster information, it will take you to your <strong>Flow instance</strong>, where you can see your models, data frames, plots, and much more. If you are working on Aquarium, go to your lab and click on the <strong>Flow URL</strong>, and it will take you to your Flow instance. Keep it open on a separate tab, as we will come back to it for Tasks 6 and 7.</p>
 <p>Let&#39;s import the dataset.</p>
-<pre><code>loan_level = h2o.import_file(&#34;https://s3.amazonaws.com/data.h2o.ai/H2O-3-Tutorials/loan_level_50k.csv&#34;)
+<pre><code language="language-python" class="language-python">loan_level = h2o.import_file(&#34;https://s3.amazonaws.com/data.h2o.ai/H2O-3-Tutorials/loan_level_50k.csv&#34;)
 </code></pre>
-<p>You will notice that instead of using a subset of the dataset with 500k rows, we are using a subset with 50k rows. We decided to use a smaller dataset to run AutoML for a shorter amount of time. If you would like, you can repeat this tutorial after you have completed it, and use the same subset that we used in the previous two tutorials; just keep in mind that you will need to run AutoML for a much longer time.<br>Before we continue, let&#39;s explore some concepts about AutoML that will be useful in this tutorial.</p>
+<p>You will notice that instead of using a subset of the dataset with 500k rows, we are using a subset with 50k rows. We decided to use a smaller dataset to run AutoML for a shorter amount of time. If you would like, you can repeat this tutorial after you have completed it, and use the same subset that we used in the previous two tutorials; just keep in mind that you will need to run AutoML for a much longer time. Before we continue, let&#39;s explore some concepts about AutoML that will be useful in this tutorial.</p>
+        </div>
 
+<div id="R-task1" class="tabcontent">
+<p>In this tutorial, we are using a smaller subset of the Freddie Mac Single-Family dataset compared to the past two tutorials. If you have not done so, complete <a href="https://training.h2o.ai/products/1a-introduction-to-machine-learning-with-h2o-3-classification" target="_blank">Introduction to Machine Learning with H2O-3 - Classification</a> and <a href="https://training.h2o.ai/products/1b-introduction-to-machine-learning-with-h2o-3-regression" target="_blank">Introduction to Machine Learning with H2O-3 - Regression</a> as this tutorial is a continuation of both of them.</p>
+<p>We will use H2O AutoML to make the same predictions as in the previous two tutorials:</p>
+<ul>
+<li>Predict whether a mortgage loan will be delinquent or not</li>
+<li>Predict the interest rate for each loan</li>
+</ul>
+<p>Complete this tutorial to see how we achieved those results.</p>
+<p>We will start by importing the H2O library that we will use:</p>
+<pre><code language="language-r" class="language-r"># Import the required libraries
+library(h2o)
+</code></pre>
+<p>Next, initialize your H2O instance.</p>
+<pre><code language="language-r" class="language-r"># Initialize the H2O-3 cluster
+h2o.init(bind_to_localhost = FALSE, context_path = &#34;h2o&#34;)
+</code></pre>
+<p>If your instance was successfully initialized, you will see a table with a description of it as shown below.</p>
+<p class="image-container"><img alt="r-cluster-info" src="img/7a9cb9d95d95d683.png"></p>
+<p>If you are working on your machine, if you click on the link above the cluster information, it will take you to your <strong>Flow instance</strong>, where you can see your models, data frames, plots, and much more. If you are working on Aquarium, go to your lab and click on the <strong>Flow URL</strong>, and it will take you to your Flow instance. Keep it open on a separate tab, as we will come back to it for Tasks 6 and 7.</p>
+<p>Before we import the dataset, let&#39;s turn off the progress bar for readability purposes:</p>
+<pre><code language="language-r" class="language-r"># Turn off progress bars for notebook readability
+h2o.no_progress()
+</code></pre>
+<p>Now, import the dataset</p>
+<pre><code language="language-r" class="language-r"># Import dataset
+loan_level &lt;- h2o.importFile(path = &#34;https://s3.amazonaws.com/data.h2o.ai/H2O-3-Tutorials/loan_level_50k.csv&#34;)
+</code></pre>
+<p>You will notice that instead of using a subset of the dataset with 500k rows, we are using a subset with 50k rows. We decided to use a smaller dataset to run AutoML for a shorter amount of time. If you would like, you can repeat this tutorial after you have completed it, and use the same subset that we used in the previous two tutorials; just keep in mind that you will need to run AutoML for a much longer time</p>
+<p>Before we continue, let&#39;s explore some concepts about AutoML that will be useful in this tutorial.</p>
+</div>
 
       </google-codelab-step>
     
       <google-codelab-step label="Task 2: AutoML Concepts" duration="0">
-        <h2><a href="https://www.h2o.ai/community/glossary/automatic-machine-learning-automl" target="_blank">AutoML</a></h2>
+        <h2 is-upgraded><a href="https://www.h2o.ai/community/glossary/automatic-machine-learning-automl" target="_blank">AutoML</a></h2>
 <p>Choosing the best machine learning models and tuning them can be time consuming and exhaustive. Often, it requires levels of expertise to know what parameters to tune. The field of AutoML focuses on solving this issue. AutoML is useful both for experts, by automating the process of choosing and tuning a model; and for non-experts as well, by helping them to create high performing models in a short time frame. Some of the aspects of machine learning that can be automated include data preparation, which can include imputation, one-hot encoding, feature selection/extraction, and also feature engineering. Another aspect that can be automated is the model generation, which includes training a model and tuning it with cartesian or random grid search. Lastly, a third aspect that could be using ensembles, as they usually outperform individual models.</p>
 <p>H2O AutoML is an automated algorithm for automating the machine learning workflow, which includes some light data preparation such as imputing missing data, standardization of numeric features, and one-hot encoding categorical features. It also provides automatic training, hyper-parameter optimization, model search, and selection under time, space, and resource constraints. H2O&#39;s AutoML further optimizes model performance by stacking an ensemble of models. H2O AutoML trains one stacked ensemble based on all previously trained models and another one on the best model of each family.</p>
-<p>The current version of AutoML trains and cross-validates the following model: GLMs, a Random Forest, an Extremely-Randomized Forest, a random grid of Gradient Boosting Machines (GBMs), XGBoosts, a random grid of Deep Neural Nets, and a Stacked Ensemble of all the models. If you would like to know more details about the models trained by AutoML, please visit <a href="http://docs.h2o.ai/h2o/latest-stable/h2o-docs/automl.html#faq" target="_blank">Which models are trained in the AutoML process?</a> under the FAQ of the AutoML Documentation section.<br>To see how H2O AutoML performs compared to other AutoML algorithms, please look at <a href="https://arxiv.org/pdf/1907.00909.pdf" target="_blank">An Open Source AutoML Benchmark</a></p>
-<h2>Stacked Ensembles</h2>
+<p>The current version of AutoML trains and cross-validates the following model: GLMs, a Random Forest, an Extremely-Randomized Forest, a random grid of Gradient Boosting Machines (GBMs), XGBoosts, a random grid of Deep Neural Nets, and a Stacked Ensemble of all the models. If you would like to know more details about the models trained by AutoML, please visit <a href="http://docs.h2o.ai/h2o/latest-stable/h2o-docs/automl.html#faq" target="_blank">Which models are trained in the AutoML process?</a> under the FAQ of the AutoML Documentation section. To see how H2O AutoML performs compared to other AutoML algorithms, please look at <a href="https://arxiv.org/pdf/1907.00909.pdf" target="_blank">An Open Source AutoML Benchmark</a></p>
+<h2 is-upgraded>Stacked Ensembles</h2>
 <p>Ensemble machine learning methods use multiple learning algorithms to obtain better predictive performance than the ones that could be obtained from any of the constituent learning algorithms. Many of the popular modern machine learning algorithms are actually ensembles. For example, Random Forest and Gradient Boosting Machine (GBM) are both ensemble learners. Both bagging (e.g., Random Forest) and boosting (e.g., GBM) are methods for ensembling that take a collection of weak learners (e.g., decision tree) and form a single, strong learner.</p>
 <p>H2O&#39;s Stacked Ensemble method is a supervised ensemble machine learning algorithm that finds the optimal combination of a collection of prediction algorithms using a process called stacking. Like all supervised models in H2O, Stacked Ensemble supports regression, binary classification, and multiclass classification. If you would like to know more, make sure to check the <a href="http://docs.h2o.ai/h2o/latest-stable/h2o-docs/data-science/stacked-ensembles.html#stacked-ensembles" target="_blank">Stacked Ensemble Section</a> in the <a href="http://docs.h2o.ai/h2o/latest-stable/h2o-docs/index.html#overview" target="_blank">H2O-3 Documentation.</a></p>
 
@@ -99,54 +155,118 @@ else:
       </google-codelab-step>
     
       <google-codelab-step label="Task 3: Start Experiment" duration="0">
+        <div class="tab">
+          <button class="tablinks active" onclick="changeTab(event, 'Python-task3')">Python</button>
+          <button class="tablinks" onclick="changeTab(event, 'R-task3')">R</button>
+          
+        </div>
+
+        <div id="Python-task3" class="tabcontent" style = "display: block">
         <p>You can make sure that your dataset was properly imported by printing the first ten rows of your dataset (output not shown here)</p>
-<pre><code>loan_level.head()
+<pre><code language="language-python" class="language-python">loan_level.head()
 </code></pre>
 <p>And also, you can look at the statistical summary of it by printing a description of it (output not shown here)</p>
-<pre><code>loan_level.describe()
+<pre><code language="language-python" class="language-python">loan_level.describe()
+</code></pre>
+<p>We will not focus on the visualization of the dataset as a whole, as we have already worked with this dataset. But, we are going to take a look at the distribution of our response variables.</p>
+<p>Let&#39;s take a look at the <code>DELINQUENT</code> column, which is the response for our classification problem.</p>
+<pre><code language="language-python" class="language-python">loan_level[&#34;DELINQUENT&#34;].table()
+</code></pre>
+<p class="image-container"><img alt="delinquent-dist" src="img/6c753e9fc837798b.png"></p>
+<p>As we saw in the classification tutorial, the dataset is highly imbalanced, which is the same scenario in this case.</p>
+<p>Now, let&#39;s take a quick look at the response for our regression use-case.</p>
+<pre><code language="language-python" class="language-python">loan_level[&#34;ORIGINAL_INTEREST_RATE&#34;].hist()
+</code></pre>
+<p class="image-container"><img alt="rate-dist" src="img/339b409f28ebe3c6.png"></p>
+<p>Again, we see that the average interest rate ranges from 7% to 8%, similar to what we saw in the previous tutorial.</p>
+<p>Now that we have an idea of the distribution of the responses let&#39;s split the dataset. For this tutorial, we will take a slightly different approach. Instead of splitting the dataset into three sets, we are just going to do 2, a train and test set. We will be using cross-validation to validate our models, as we need to use the k-fold cross-validation in order to get the stacked ensembles from the AutoML.</p>
+<pre><code language="language-python" class="language-python">train, test = loan_level.split_frame([0.8], seed=42)
+</code></pre>
+<p>Now, check that the split is what we expected.</p>
+<pre><code language="language-python" class="language-python">print(&#34;train:%d test:%d&#34; % (train.nrows, test.nrows))
+</code></pre>
+<p><strong>Output:</strong></p>
+<pre><code language="language-python" class="language-python">train:39984 test:9946
+</code></pre>
+<p>Since we will need two different responses and predictors, we will do that in each of the corresponding tasks.</p>
+        </div>
+
+<div id="R-task3" class="tabcontent">
+<p>You can make sure that your dataset was properly imported by printing the first ten rows of your dataset (output not shown here)</p>
+<pre><code language="language-r" class="language-r"># Get first 10 rows and a statistical summary of the data
+h2o.head(loan_level, n = 10)
+</code></pre>
+<p>And also, you can look at the statistical summary of it by printing a description of it (output not shown here)</p>
+<pre><code language="language-r" class="language-r">h2o.describe(loan_level)
 </code></pre>
 <p>We will not focus on the visualization of the dataset as a whole, as we have already worked with this dataset. But, we are going to take a look at the distribution of our response variables.</p>
 <p>Let&#39;s take a look at the <code>DELINQUENT,</code> which is the response of our classification problem.</p>
-<pre><code>loan_level[&#34;DELINQUENT&#34;].table()
+<pre><code language="language-r" class="language-r"># Print a table with the distribution for column &#34;DELINQUENT&#34;
+h2o.table(loan_level[, c(&#34;DELINQUENT&#34;)])
 </code></pre>
-<p><img alt="delinquent-dist" src="img/6c753e9fc837798b.jpg"></p>
+<p class="image-container"><img alt="r-delinquent-dist" src="img/54a6f91d4ec385e3.png"></p>
 <p>As we saw in the classification tutorial, the dataset is highly imbalanced, which is the same scenario in this case.</p>
 <p>Now, let&#39;s take a quick look at the response for our regression use-case.</p>
-<pre><code>loan_level[&#34;ORIGINAL_INTEREST_RATE&#34;].hist()
+<pre><code language="language-r" class="language-r"># Plot a histogram for the Regression problem target column
+h2o.hist(loan_level[, c(&#34;ORIGINAL_INTEREST_RATE&#34;)])
 </code></pre>
-<p><img alt="rate-dist" src="img/339b409f28ebe3c6.jpg"></p>
+<p class="image-container"><img alt="r-rate-dist" src="img/914556f0b274593f.png"></p>
 <p>Again, we see that the average interest rate ranges from 7% to 8%, similar to what we saw in the previous tutorial.</p>
 <p>Now that we have an idea of the distribution of the responses let&#39;s split the dataset. For this tutorial, we will take a slightly different approach. Instead of splitting the dataset into three sets, we are just going to do 2, a train and test set. We will be using cross-validation to validate our models, as we need to use the k-fold cross-validation in order to get the stacked ensembles from the AutoML.</p>
-<pre><code>train, test = loan_level.split_frame([0.8], seed=42)
+<pre><code language="language-r" class="language-r"># Split your data into 3 and save into variable &#34;splits&#34;
+splits &lt;- h2o.splitFrame(loan_level, c(0.8), seed = 42)
+
+# Extract all 3 splits into train, valid and test
+train &lt;- splits[[1]]
+test  &lt;- splits[[2]]
 </code></pre>
 <p>Now, check that the split is what we expected.</p>
-<pre><code>print(&#34;train:%d test:%d&#34; % (train.nrows, test.nrows))
+<pre><code language="language-r" class="language-r"># Check the dimensions of both sets
+dim(train)
+dim(test)
 </code></pre>
 <p><strong>Output:</strong></p>
-<pre><code>train:39984 test:9946
-</code></pre>
-<p>Since we will need two different responses and predictors, we will do that in each of the corresponding tasks.</p>
+<pre><code language="language-r" class="language-r">39984    27
 
+9946   27
+</code></pre>
+<p>Since we will need two different responses and predictors, we will choose them in their corresponding tasks.</p>
+</div>
 
       </google-codelab-step>
     
       <google-codelab-step label="Task 4: H2O AutoML Classification" duration="0">
+        <div class="tab">
+          <button class="tablinks active" onclick="changeTab(event, 'Python-task4')">Python</button>
+          <button class="tablinks" onclick="changeTab(event, 'R-task4')">R</button>
+          
+        </div>
+
+        <div id="Python-task4" class="tabcontent" style = "display: block">
+
         <p>We already have our train and test sets, so we just need to choose our response variable, as well as the predictors. We will do the same thing that we did for the first tutorial.</p>
-<pre><code>y = &#34;DELINQUENT&#34;
-ignore = [&#34;DELINQUENT&#34;, &#34;PREPAID&#34;, &#34;PREPAYMENT_PENALTY_MORTGAGE_FLAG&#34;, &#34;PRODUCT_TYPE&#34;] 
+<pre><code language="language-python" class="language-python">y = &#34;DELINQUENT&#34;
+ignore = [&#34;DELINQUENT&#34;, 
+          &#34;PREPAID&#34;, 
+          &#34;PREPAYMENT_PENALTY_MORTGAGE_FLAG&#34;, 
+          &#34;PRODUCT_TYPE&#34;] 
 x = list(set(train.names) - set(ignore))
 </code></pre>
-<p>Now we are ready to run AutoML. Below you can see some of the default parameters that we could change for AutoML</p>
-<pre><code>H2OAutoML(nfolds=5, max_runtime_secs=3600, max_models=None, stopping_metric=&#39;AUTO&#39;, stopping_tolerance=None, stopping_rounds=3, seed=None, project_name=None)
+<p>Now we are ready to run AutoML. Below you can see some of the default parameters that we could change for AutoML:</p>
+<pre><code language="language-markdown" class="language-markdown">H2OAutoML(nfolds=5, max_runtime_secs=3600, max_models=None, stopping_metric=&#39;AUTO&#39;, stopping_tolerance=None, stopping_rounds=3, seed=None, project_name=None)
 </code></pre>
-<p>As you can see, H2O AutoML is designed to have as few parameters as possible, which makes it very easy to use. For this experiment, we could&#39;ve just changed the maximum runtime, the seed, and the project name; however, from our first tutorial, we learned that our dataset is highly imbalanced and that models have a hard time classifying the minority class. For that reason, we are setting <code>balance_classes=True</code>, and we are setting the sampling factors to [0.5,1.25], which means that we will undersample the majority class, and oversample the minority class. Also, we will set <code>max_models = 25</code> and to make sure that AutoML trains all 25 models in less than 20 min, we will also set <code>max_runtime_secs_per_model=30</code> which will make sure no model takes more than 30 seconds to be trained.</p>
-<pre><code>aml = H2OAutoML(max_models=25, max_runtime_secs_per_model=30, seed=42, project_name=&#39;classification&#39;, 
-                balance_classes=True, class_sampling_factors=[0.5,1.25])
-%time aml.train(x=x, y=y, training_frame=train)
+<p>As you can see, H2O AutoML is designed to have as few parameters as possible, which makes it very easy to use. For this experiment, we will set values for the maximum runtime, and we will choose fifteen minutes, the seed, and the project name; Also, we will set <code>max_models = 25</code> so that AutoML runs for fifteen minutes or only trains twenty-five models. Lastly, we will set <code>sort_metric</code> to <code>AUC</code> so that the leaderboard gets sorted by AUC.</p>
+<pre><code language="language-python" class="language-python">aml = H2OAutoML(max_runtime_secs = 900, 
+                max_models = 25,  
+                seed = 42, 
+                project_name=&#39;classification&#39;,
+                sort_metric = &#34;AUC&#34;)
+
+%time aml.train(x = x, y = y, training_frame = train)
 </code></pre>
-<p>The only required parameters for H2O&#39;s AutoML are, <code>ytraining_frame,</code> and <code>max_runtime_secs,</code> which let us train AutoML for ‘x&#39; amount of seconds and/or <code>max_models,</code> which would train a maximum number of models. Please note that  <code>max_runtime_secs</code> has a default value, while <code>max_models</code> does not. For this task, we will set a number of models constraint. The seed is the usual parameter that we set for reproducibility purposes. We also need a project name because we will do both classification and regression with AutoML. Lastly, we are setting <code>balance_classes=True</code> because we have a very imbalanced dataset, and we are using the default number of folds for cross-validation.</p>
-<p>The second line of code has the parameters that we need in order to train our model. For now, we will just pass x, y, and the training frame. Please note that the parameter <code>x</code> is optional because if you were using all the columns in your dataset, you would not need to declare this parameter. The <code>leaderboard frame</code> can be used to score and rank models on the leaderboard, but we will use the validation scores to do so because we will check the performance of our models with the test set.</p>
-<p>Below is a list of optional parameters that the user could set for H2O&#39;s AutoML</p>
+<p>The only required parameters for H2O&#39;s AutoML are, <code>y</code> <code>training_frame,</code> and <code>max_runtime_secs,</code> which let us train AutoML for ‘x&#39; amount of seconds and/or <code>max_models,</code> which would train a maximum number of models. Please note that  <code>max_runtime_secs</code> has a default value, while <code>max_models</code> does not. The seed is the usual parameter that we set for reproducibility purposes. We also need a project name because we will do both classification and regression with AutoML. Lastly, we are using the default number of folds for cross-validation.</p>
+<p>The second line of code has the parameters that we need in order to train our model. For now, we will just pass x, y, and the training frame. Please note that the parameter <code>x</code> is optional because if you use all the columns in your dataset, you do not need to declare this parameter. The <code>leaderboard frame</code> can be used to score and rank models on the leaderboard, but we will use the validation scores to do so because we will check the performance of our models with the test set.</p>
+<p>Below is a list of optional parameters that the user could set for H2O&#39;s AutoML:</p>
 <ul>
 <li>validation_frame</li>
 <li>leaderboard_frame</li>
@@ -168,184 +288,353 @@ x = list(set(train.names) - set(ignore))
 </ul>
 <p>To learn more about each of them, make sure to check the <a href="http://docs.h2o.ai/h2o/latest-stable/h2o-docs/automl.html#optional-parameters" target="_blank">AutoML Section</a> in the Documentation. We will be using some of them in the regression part of this tutorial.</p>
 <p>Once AutoML is finished, print the leaderboard, and check out the results.</p>
-<pre><code>lb = aml.leaderboard
-lb.head(rows=lb.nrows)
+<pre><code language="language-python" class="language-python">lb = aml.leaderboard
+lb.head(rows = lb.nrows)
 </code></pre>
-<p><img alt="aml-cl-leaderboard-1" src="img/5091a1c5b397cada.jpg"></p>
-<p><strong>Note:</strong> We could&#39;ve just printed the leaderboard with <code>aml.leaderboard</code>, but we have added an extra line of code just so that we make sure that we print all the models that were scored.</p>
-<p>We can also print a leaderboard with the training time, in milliseconds, of each model and the time it takes each model to predict each row, in milliseconds:</p>
-<pre><code>from h2o.automl import get_leaderboard
-lb2 = get_leaderboard(aml, extra_columns=&#39;ALL&#39;)
-lb2.head(rows=lb2.nrows)
+<p class="image-container"><img alt="aml-cl-leaderboard-1" src="img/818f01e9f95e5f84.png"></p>
+<p><strong>Note:</strong> We can just print the leaderboard by running <code>aml.leaderboard</code>, but we have added an extra line of code just so that get all the models that were scored.</p>
+<p>We can also print a leaderboard with two extra columns, one column with the training time, and the second one with the prediction time per row of each model (both columns are printed in milliseconds):</p>
+<pre><code language="language-python" class="language-python">lb2 = get_leaderboard(aml, extra_columns = &#39;ALL&#39;)
+lb2.head(rows = lb2.nrows)
 </code></pre>
-<p><img alt="aml-cl-leaderboard-2" src="img/f2f82218e2b03179.jpg"></p>
-<p>By looking at the leaderboard, we can see that the best model is the Stacked Ensemble with the best model from each family, meaning that this model was built using the best model of each of the trained algorithms. This Ensemble will usually have a GLM, a Distributed Random Forest, Extremely-Randomized Forest, a GBM, and XGBoost, and Deep Learning model if you give it enough time to train all those models. Let&#39;s explore the coefficients of the metalearner to see the models in the Stacked Ensemble with their relative importance.</p>
-<p>First, let&#39;s retrieve the metalearner, and we can do it as follow:</p>
-<pre><code># Get model ids for all models in the AutoML Leaderboard
-model_ids = list(aml.leaderboard[&#39;model_id&#39;].as_data_frame().iloc[:,0])
-
-# Get the &#34;All Models&#34; Stacked Ensemble model
-se = h2o.get_model([mid for mid in model_ids if &#34;StackedEnsemble_BestOfFamily&#34; in mid][0])
-
-# Get the Stacked Ensemble metalearner model
-metalearner = h2o.get_model(se.metalearner()[&#39;name&#39;])
-metalearner.coef()
-</code></pre>
-<p><strong>Output:</strong></p>
-<pre><code>{&#39;Intercept&#39;: -4.163158893916475,
- &#39;GLM_1_AutoML_20200624_224336&#39;: 1.7792606607674282,
- &#39;GBM_grid__1_AutoML_20200624_224336_model_3&#39;: 0.27345402509523253,
- &#39;XGBoost_3_AutoML_20200624_224336&#39;: 1.7331622245284657,
- &#39;DeepLearning_1_AutoML_20200624_224336&#39;: 2.129448067858176,
- &#39;DRF_1_AutoML_20200624_224336&#39;: 3.9428536283073945,
- &#39;XRT_1_AutoML_20200624_224336&#39;: 4.968106163200721}
-</code></pre>
-<p>If you wanted to check this for the Ensemble with all the models, you will just simply change the name <code>StackedEnsemble_BestOfFamily</code> to <code>StackedEnsemble_AllModels</code> when saving the <code>se</code> variable in the code above.</p>
-<p>From the list above, we can see that the most important model used in our Stacked Ensemble is an XRT(Extremely Randomized Tree model, which is a variation of random forest). We can also plot the standardized coefficients with the following code (assuming you retrieved the metalearner from the step above):</p>
-<pre><code>metalearner.std_coef_plot()
-</code></pre>
-<p><img alt="std_coef_plot" src="img/46b61ddea075a7d6.jpg"></p>
+<p class="image-container"><img alt="aml-cl-leaderboard-2" src="img/94c964a3a664a8.png"></p>
+<p>By looking at the leaderboard, we can see that the best model is the Stacked Ensemble with all the models, meaning that this Stacked Ensemble was built using all the models that were trained. Secondly, we have the Stacked Ensemble with the best models from each family. The Best of Family Ensemble will usually have a GLM, a Distributed Random Forest, Extremely-Randomized Forest, a GBM, and XGBoost, and Deep Learning model if you give it enough time to train all those models.</p>
 <p>Now, let&#39;s see how the best model performs on our test set.</p>
-<pre><code>aml.leader.model_performance(test_data=test)
+<pre><code language="language-python" class="language-python">aml.leader.model_performance(test_data=test)
 </code></pre>
-<p><img alt="automl-cl-perf-1" src="img/1ed413f3bbbd5440.jpg"><img alt="automl-cl-perf-2" src="img/f11aac4cebc470bf.jpg"></p>
-<p>By looking at the results, we can see that in fifteen minutes, and with less data, AutoML obtained scores somewhat close to what we obtained in the first tutorial. The AUC that we obtained was <strong>0.828.</strong> Although this is a good AUC, because we have a very imbalanced dataset, we must also look at the misclassification errors for both classes. As you can see, our model is having a hard time classifying bad loans; this is mainly due because only about 3.6% of loans are labeled as bad loans. However, the model is doing very well when classifying good loans; although it is still far from being the best model, this gives us a solid starting point. Even though we set <code>balance _lasses=True</code>, we just tried a quick under-over sampling ratio. If we were to find the right value and gave AutoML more time, we could potentially improve the misclassification error for the <strong>bad_loan</strong> or predicted TRUE class.</p>
+<p class="image-container"><img alt="automl-cl-perf-1" src="img/1c94b950243b0466.png"><img alt="automl-cl-perf-2" src="img/93509a6e03babec4.png"></p>
+<p>By looking at the results, we can see that in fifteen minutes, and with less data, AutoML obtained scores close to what we obtained in the first tutorial. The AUC that we obtained was <strong>0.824.</strong> Although this is could be a good AUC, because we have a very imbalanced dataset, we must also look at the misclassification errors for both classes. As you can see, our model is having a hard time classifying bad loans; this is mainly due because only about 3.6% of loans are labeled as bad loans. However, the model is doing very well when classifying good loans; although it is still far from being the best model, this gives us a solid starting point.</p>
 <p>We can also take a quick look at the ROC curve:</p>
-<pre><code>%matplotlib inline
+<pre><code language="language-python" class="language-python">%matplotlib inline
 aml.leader.model_performance(test_data=test).plot()
 </code></pre>
-<p><img alt="automl-cl-roc" src="img/49ec824ed1f124d7.jpg"></p>
+<p class="image-container"><img alt="automl-cl-roc" src="img/abd657ae03634b19.png"></p>
 <p>As you can see, it&#39;s the same AUC value that we obtained in the model summary, but the plot helps us visualize it better.</p>
 <p>Lastly, let&#39;s make some predictions on our test set.</p>
-<pre><code>aml.predict(test)
+<pre><code language="language-python" class="language-python">aml.predict(test)
 </code></pre>
-<p><img alt="automl-cl-preds" src="img/3d607c42ffe0da97.jpg"></p>
-<p>As we mentioned in the first tutorial, the predictions we get are based on a probability. In the frame above, we have a probability for <strong>FALSE,</strong>, and another one for <strong>TRUE</strong>. The prediction, <strong>predict</strong>, is based on the threshold that maximizes the F1 score. For example, the threshold that maximizes the F1 is about <code>0.1061</code>, meaning that if the probability of <strong>TRUE</strong> is greater than the threshold, the predicted label would be <strong>TRUE.</strong></p>
+<p class="image-container"><img alt="automl-cl-preds" src="img/41eb1319f907b10.png"></p>
+<p>As we mentioned in the first tutorial, the predictions we get are based on a probability. In the frame above, we have a probability for <strong>FALSE,</strong> and another one for <strong>TRUE</strong>. The prediction, <strong>predict</strong>, is based on the threshold that maximizes the F1 score. For example, the threshold that maximizes the F1 is about <code>0.1061</code>, meaning that if the probability of <strong>TRUE</strong> is greater than the threshold, the predicted label would be <strong>TRUE.</strong></p>
 <p>After exploring the results for our classification problem, let&#39;s use AutoML to explore a regression use-case.</p>
+        </div>
 
+<div id="R-task4" class="tabcontent">
+<p>We already have our train and test sets, so we just need to choose our response variable, as well as the predictors. We will do the same thing that we did for the first tutorial.</p>
+<pre><code language="language-r" class="language-r"># Identify predictors and response for the classification use case
+ignore &lt;- c(&#34;DELINQUENT&#34;, &#34;PREPAID&#34;, &#34;PREPAYMENT_PENALTY_MORTGAGE_FLAG&#34;, &#34;PRODUCT_TYPE&#34;)
+y &lt;- &#34;DELINQUENT&#34;
+
+x &lt;- setdiff(colnames(train), ignore)
+</code></pre>
+<p>Now we are ready to run AutoML. Below you can see some of the default parameters that we could change for AutoML:</p>
+<pre><code language="language-markdown" class="language-markdown">H2OAutoML(nfolds=5, max_runtime_secs=3600, max_models=None, stopping_metric=&#39;AUTO&#39;, stopping_tolerance=None, stopping_rounds=3, seed=None, project_name=None)
+</code></pre>
+<p>As you can see, H2O AutoML is designed to have as few parameters as possible, which makes it very easy to use. For this experiment, we will set values for the maximum runtime, and we will choose fifteen minutes, the seed, and the project name; Also, we will set <code>max_models = 25</code> so that AutoML runs for fifteen minutes or only trains twenty-five models. Lastly, we will set <code>sort_metric</code> to <code>AUC</code> so that the leaderboard gets sorted by AUC.</p>
+<pre><code language="language-r" class="language-r"># Run AutoML for 25 base models or 15 minutes
+aml_cl &lt;- h2o.automl(x = x,
+                     y = y,
+                     training_frame = train,
+                     max_runtime_secs = 900,
+                     max_models = 25,
+                     seed = 42,
+                     project_name = &#34;classification2&#34;,
+                     sort_metric = &#34;AUC&#34;)
+</code></pre>
+<p>The only required parameters for H2O&#39;s AutoML are, <code>y</code> <code>training_frame,</code> and <code>max_runtime_secs,</code> which let us train AutoML for ‘x&#39; amount of seconds and/or <code>max_models,</code> which would train a maximum number of models. Please note that  <code>max_runtime_secs</code> has a default value, while <code>max_models</code> does not. The seed is the usual parameter that we set for reproducibility purposes. We also need a project name because we will do both classification and regression with AutoML. Lastly, we are using the default number of folds for cross-validation.</p>
+<p>The second line of code has the parameters that we need in order to train our model. For now, we will just pass x, y, and the training frame. Please note that the parameter <code>x</code> is optional because if you were using all the columns in your dataset, you would not need to declare this parameter. The <code>leaderboard frame</code> can be used to score and rank models on the leaderboard, but we will use the validation scores to do so because we will check the performance of our models with the test set.</p>
+<p>Below is a list of optional parameters that the user could set for H2O&#39;s AutoML:</p>
+<ul>
+<li>validation_frame</li>
+<li>leaderboard_frame</li>
+<li>blending_frame</li>
+<li>fold_column</li>
+<li>weights_column</li>
+<li>ignored_columns</li>
+<li>class_sampling_factors</li>
+<li>max_after_balance_size</li>
+<li>max_runtime_secs_per_model</li>
+<li>sort_metric</li>
+<li>exclude_algos</li>
+<li>include_algos</li>
+<li>keep_cross_validation_predictions</li>
+<li>keep_cross_validation_models</li>
+<li>keep_cross_validation_fold_assignment</li>
+<li>verbosity</li>
+<li>export_checkpoints_dir</li>
+</ul>
+<p>To learn more about each of them, make sure to check the <a href="http://docs.h2o.ai/h2o/latest-stable/h2o-docs/automl.html#optional-parameters" target="_blank">AutoML Section</a> in the Documentation. We will be using some of them in the regression part of this tutorial.</p>
+<p>Once AutoML is finished, print the leaderboard, and check out the results.</p>
+<pre><code language="language-r" class="language-r"># View the AutoML Leaderboard
+lb &lt;- h2o.get_leaderboard(aml_cl)
+h2o.head(lb, n = 25)
+</code></pre>
+<p class="image-container"><img alt="r-aml-cl-leaderboard-1" src="img/e184399ceb317a29.png"></p>
+<p><strong>Note:</strong> We can just print the leaderboard by running <code>aml.leaderboard</code>, but we have added an extra line of code just so that we get all the models that were scored. Also, note that you can view the other models by clicking <strong>Next</strong> or any of the numbers at the bottom left of the table. And you can view the other metrics for the models by clicking the arrow at the top right corner of the table.</p>
+<p>We can also print a leaderboard with two extra columns, one column with the training time, and the second one with the prediction time per row of each model (both columns are printed in milliseconds):</p>
+<pre><code language="language-r" class="language-r"># Get leaderboard with &#39;extra_columns = &#39;ALL&#39;
+lb2 &lt;- h2o.get_leaderboard(aml_cl, extra_columns = &#34;ALL&#34;)
+h2o.head(lb2, n = 25)
+</code></pre>
+<p class="image-container"><img alt="r-aml-cl-leaderboard-2" src="img/ac5040079d7ed9c.png"></p>
+<p><strong>Note:</strong> In order to show the training time, and predict time per row, only the second half of the table is being shown.</p>
+<p>By looking at the leaderboard, we can see that the best model is the Stacked Ensemble with all the models, meaning that this Stacked Ensemble was built using all the models that were trained. Secondly, we have the Stacked Ensemble with the best models from each family. The Best of Family Ensemble will usually have a GLM, a Distributed Random Forest, Extremely-Randomized Forest, a GBM, and XGBoost, and Deep Learning model if you give it enough time to train all those models.</p>
+<p>Now, let&#39;s see how the best model performs on our test set.</p>
+<pre><code language="language-r" class="language-r"># Save the test performance of the leader model
+aml_cl_test_perf &lt;- h2o.performance(aml_cl@leader, test)
+aml_cl_test_perf
+</code></pre>
+<p class="image-container"><img alt="r-automl-cl-perf-1" src="img/d1a733fc320aaa65.png"><img alt="r-automl-cl-perf-2" src="img/d06832bf94e5db06.png"></p>
+<p>By looking at the results, we can see that in fifteen minutes, and with less data, AutoML obtained scores somewhat close to what we obtained in the first tutorial. The AUC that we obtained was <strong>0.823.</strong> Although this is a good AUC, because we have a very imbalanced dataset, we must also look at the misclassification errors for both classes. As you can see, our model is having a hard time classifying bad loans; this is mainly due because only about 3.6% of loans are labeled as bad loans. However, the model is doing very well when classifying good loans; although it is still far from being the best model, this gives us a solid starting point.</p>
+<p>We can also take a quick look at the ROC curve:</p>
+<pre><code language="language-python" class="language-python">%matplotlib inline
+aml.leader.model_performance(test_data=test).plot()
+</code></pre>
+<p class="image-container"><img alt="r-automl-cl-roc" src="img/b3edea52a91e5608.png"></p>
+<p>As you can see, it&#39;s the same AUC value that we obtained in the model summary, but the plot helps us visualize it better.</p>
+<p>Lastly, let&#39;s make some predictions on our test set.</p>
+<pre><code language="language-python" class="language-python"># Make predictions
+aml_cl_pred &lt;- h2o.predict(aml_cl@leader, test)
+h2o.head(aml_cl_pred, n=10)
+</code></pre>
+<p class="image-container"><img alt="r-automl-cl-preds" src="img/56340b5543a647.png"></p>
+<p>As we mentioned in the first tutorial, the predictions we get are based on a probability. In the frame above, we have a probability for <strong>FALSE,</strong> and another one for <strong>TRUE</strong>. The prediction, <strong>predict</strong>, is based on the threshold that maximizes the F1 score. For example, the threshold that maximizes the F1 is about <code>0.1116</code> (this value comes from the maximun metrics table) meaning that if the probability of <strong>TRUE</strong> is greater than the threshold, the predicted label would be <strong>TRUE.</strong></p>
+<p>After exploring the results for our classification problem, let&#39;s use AutoML to explore a regression use-case.</p>
+</div>
 
       </google-codelab-step>
     
       <google-codelab-step label="Task 5: H2O AutoML Regression" duration="0">
-        <p>For our regression use-case, we are using the same dataset and the same training and test sets. But we do need to choose our predictors and response columns, and we will do it as follow:</p>
-<pre><code>y_reg = &#34;ORIGINAL_INTEREST_RATE&#34;
+        <div class="tab">
+          <button class="tablinks active" onclick="changeTab(event, 'Python-task5')">Python</button>
+          <button class="tablinks" onclick="changeTab(event, 'R-task5')">R</button>
+          
+        </div>
 
-ignore_reg = [&#34;ORIGINAL_INTEREST_RATE&#34;, &#34;FIRST_PAYMENT_DATE&#34;, &#34;MATURITY_DATE&#34;, &#34;MORTGAGE_INSURANCE_PERCENTAGE&#34;, &#34;PREPAYMENT_PENALTY_MORTGAGE_FLAG&#34;, &#34;LOAN_SEQUENCE_NUMBER&#34;, &#34;PREPAID&#34;, &#34;DELINQUENT&#34;, &#34;PRODUCT_TYPE&#34;] 
+        <div id="Python-task5" class="tabcontent" style = "display: block">
+
+        <p>For our regression use-case, we are using the same dataset and the same training and test sets. But we do need to choose our predictors and response columns, and we will do it as follow:</p>
+<pre><code language="language-python" class="language-python">y_reg = &#34;ORIGINAL_INTEREST_RATE&#34;
+
+ignore_reg = [&#34;ORIGINAL_INTEREST_RATE&#34;, 
+              &#34;FIRST_PAYMENT_DATE&#34;, 
+              &#34;MATURITY_DATE&#34;, 
+              &#34;MORTGAGE_INSURANCE_PERCENTAGE&#34;, 
+              &#34;PREPAYMENT_PENALTY_MORTGAGE_FLAG&#34;, 
+              &#34;LOAN_SEQUENCE_NUMBER&#34;, 
+              &#34;PREPAID&#34;, 
+              &#34;DELINQUENT&#34;, 
+              &#34;PRODUCT_TYPE&#34;]
 
 x_reg = list(set(train.names) - set(ignore_reg))
 </code></pre>
 <p>You can print both your y and x variables</p>
-<pre><code>print(&#34;y:&#34;, y_reg, &#34;\nx:&#34;, x_reg)
+<pre><code language="language-python" class="language-python">print(&#34;y:&#34;, y_reg, &#34;\nx:&#34;, x_reg)
 </code></pre>
-<p>Now we are ready to start our second AutoML model and train it. This time we will use a time constrain, and set <code>max_runtime_secs</code> to 900 seconds, or 15 minutes. Again, we set <code>max_runtime_secs_per_model</code> to 30 seconds. You will notice that we are specifying the stopping metric and also the sort metric. In the second tutorial, we focused on RMSE and MAE to check the performance of our model, and we noticed that the two values seemed very correlated. For that reason, we could use any of those metrics. We will use the RMSE for early stopping because it penalizes the error more than the MAE, and we will also use it to sort the leaderboard based on the best value.</p>
-<pre><code>aml = H2OAutoML(max_runtime_secs=900, max_runtime_secs_per_model=30, seed=42, project_name=&#39;regression&#39;, 
-                stopping_metric=&#34;RMSE&#34;, sort_metric=&#34;RMSE&#34;)
+<p>Now we are ready to start our second AutoML model and train it. This time we will use a time constrain, and set <code>max_runtime_secs</code> to 900 seconds, or 15 minutes. You will notice that we are specifying the stopping metric and also the sort metric. In the second tutorial, we focused on RMSE and MAE to check the performance of our model, and we noticed that the two values seemed very correlated. For that reason, we could use any of those metrics. We will use the RMSE for early stopping because it penalizes the error more than the MAE, and we will also use it to sort the leaderboard based on the best value.</p>
+<pre><code language="language-python" class="language-python">aml = H2OAutoML(max_runtime_secs = 900,
+                seed = 42,
+                project_name = &#39;regression&#39;,
+                stopping_metric = &#34;RMSE&#34;,
+                sort_metric = &#34;RMSE&#34;)
 
-%time aml.train(x=x_reg, y=y_reg, training_frame=train)
+%time aml.train(x = x_reg, y = y_reg, training_frame = train)
 </code></pre>
 <p>Once it&#39;s done, print the leaderboard.</p>
-<pre><code>lb = aml.leaderboard
-lb.head(rows=lb.nrows)
+<pre><code language="language-python" class="language-python">lb = aml.leaderboard
+lb.head(rows = lb.nrows)
 </code></pre>
-<p><img alt="automl-reg-leaderboard_1" src="img/b267e6405dfd862f.jpg"><img alt="automl-reg-leaderboard_2" src="img/eb570e23b377f04e.jpg"></p>
+<p class="image-container"><img alt="automl-reg-leaderboard_1" src="img/59536936f03237d9.png"><img alt="automl-reg-leaderboard_2" src="img/e51564460516fdca.png"></p>
 <p>The leaderboard shows that the GBM models clearly dominated this task. We can retrieve the best model with the <code>model.leader</code> command; but, what if we wanted to get another model from our leaderboard? One way to do so is shown below:</p>
-<pre><code># Get model ids for all models in the AutoML Leaderboard
+<pre><code language="language-python" class="language-python"># Get model ids for all models in the AutoML Leaderboard
 model_ids = list(aml.leaderboard[&#39;model_id&#39;].as_data_frame().iloc[:,0])
 
 # Get the top GBM model
-gbm = h2o.get_model([mid for mid in model_ids if &#34;GBM_3&#34; in mid][0])
+gbm = h2o.get_model([mid for mid in model_ids if &#34;GBM&#34; in mid][0])
 </code></pre>
-<p>Note that you would need to change the name <code>GBM_3</code>, in the code above, to the name of the model that you want, and that should retrieve the desired model. For example, if you wanted to get the best XGBoost in the leaderboard, you would need to make the following change (you do not need to run the following line of code, this is just an example)</p>
-<pre><code>xgb = h2o.get_model([mid for mid in model_ids if &#34;XGBoost_2&#34; in mid][0])
+<p>To retrieve different models, you just need to change the name of the model, <code>GBM</code>, to the model that you want. For example, if you wanted to get the best XGBoost in the leaderboard, you would need to make the following change (you do not need to run the following line of code, this is just an example)</p>
+<pre><code language="language-python" class="language-python">xgb = h2o.get_model([mid for mid in model_ids if &#34;XGBoost&#34; in mid][0])
 </code></pre>
-<p>Now that we have retrieved the best model, we can take a look at some of the parameters</p>
-<pre><code>print(&#34;ntrees = &#34;, gbm.params[&#39;ntrees&#39;])
+<p>Now that we have retrieved the best model, we can take a look at some of the parameters:</p>
+<pre><code language="language-python" class="language-python">print(&#34;ntrees = &#34;, gbm.params[&#39;ntrees&#39;])
 print(&#34;max depth = &#34;, gbm.params[&#39;max_depth&#39;])
 print(&#34;learn rate = &#34;, gbm.params[&#39;learn_rate&#39;])
 print(&#34;sample rate = &#34;, gbm.params[&#39;sample_rate&#39;])
 </code></pre>
 <p><strong>Output:</strong></p>
-<pre><code>ntrees =  {&#39;default&#39;: 50, &#39;actual&#39;: 63}
+<pre><code language="language-python" class="language-python">ntrees =  {&#39;default&#39;: 50, &#39;actual&#39;: 63}
 max depth =  {&#39;default&#39;: 5, &#39;actual&#39;: 8}
 learn rate =  {&#39;default&#39;: 0.1, &#39;actual&#39;: 0.1}
 sample rate =  {&#39;default&#39;: 1.0, &#39;actual&#39;: 0.8}
 </code></pre>
 <p>If you want to see a complete list with all the parameters you can use the following command (output not shown here)</p>
-<pre><code>gbm.params
+<pre><code language="language-python" class="language-python">gbm.params
 </code></pre>
 <p>This is useful because we can see the parameters that were changed and the ones that were kept as default. After exploring those parameters, we could try to tune a GBM with parameters close to the ones from the AutoML model and see if we can get a better score.</p>
 <p>Now let&#39;s take a quick look at the model summary.</p>
-<pre><code>gbm
+<pre><code language="language-python" class="language-python">gbm
 </code></pre>
-<p><img alt="automl-reg-summary-1" src="img/ac74550ed61d9018.jpg"><img alt="automl-reg-summary-2" src="img/be2bd8ee709fb389.jpg"><img alt="automl-reg-summary-3" src="img/4e5a5b95cb89c307.jpg"></p>
+<p class="image-container"><img alt="automl-reg-summary-1" src="img/1c7bcc549f57bbaf.png"><img alt="automl-reg-summary-2" src="img/1998749a6b2e0e2e.png"><img alt="automl-reg-summary-3" src="img/d731503f89fca33b.png"></p>
 <p>In the model summary above, we can see some of the parameters of our model, the metrics on the training data, and also the metrics from the cross-validation, as well as a detailed cross-validation metrics summary. We can also look at scoring history. However, by looking at the RMSE and MAE in the picture above for both training and validation, we can see that the model was starting to overfit because the training error is much lower than the validation error. Lastly, we can see the variable importance table, which shows both relative_importance, as well as scaled_importance, and also the percentage. For this model, the most important variable is <code>SELLER_NAME</code>, meaning that for our model, knowing which bank is providing the loan is very important.</p>
 <p>Now, let&#39;s see how the leader from our AutoML performs on our test set.</p>
-<pre><code>gbm.model_performance(test_data=test)
+<pre><code language="language-python" class="language-python">gbm.model_performance(test_data=test)
 </code></pre>
-<p><img alt="gbm-test-per" src="img/ad4b8c6b8c309321.jpg"></p>
+<p class="image-container"><img alt="gbm-test-per" src="img/a0e9b993a4550df6.png"></p>
 <p>In case you had retrieved a different model other than the leader, and you actually wanted to check the performance of the best model in the leaderboard, you can do the following:</p>
-<pre><code>aml.leader.model_performance(test_data=test)
+<pre><code language="language-python" class="language-python">aml.leader.model_performance(test_data=test)
 </code></pre>
 <p>If you do that right now, you will see the same results because the gbm that we retrieved was the leader.</p>
 <p>We can see that the test RMSE and MAE, <strong>0.4289</strong> and <strong>0.3132</strong> respectively, are very close to the validation RMSE and MAE, <strong>0.4309</strong> and <strong>0.3127,</strong> which shows us that doing 5-fold cross-validation gives us a good estimation of the error on unseen data.</p>
 <p>Now, let&#39;s make some predictions on our test set.</p>
-<pre><code>pred = gbm.predict(test)
+<pre><code language="language-python" class="language-python">pred = gbm.predict(test)
 pred = pred.cbind(test[&#39;ORIGINAL_INTEREST_RATE&#39;])
 pred.head()
 </code></pre>
-<p><img alt="automl-preds-reg" src="img/a347f0897786b67c.jpg"></p>
+<p class="image-container"><img alt="automl-preds-reg" src="img/838b8343a8b9e2f0.png"></p>
 <p>Please note that we just combined the response column from our test frame to our predictions to see how the predictions compare to the actual value.</p>
 <p>Out of the first ten predictions, most of them are very close to the actual values, with the exception of some predictions, such as the seventh prediction, which is <strong>6.89,</strong> compared to the actual value which is <strong>8.75.</strong> Because the RMSE is higher than the MAE, we can deduce that we have a couple of instances similar to the one mentioned above, because the larger errors are penalized more.</p>
 <p>Now, let&#39;s try to do what we just did one more time, but this time in Flow.</p>
+        </div>
 
+<div id="R-task5" class="tabcontent">
+<p>For our regression use-case, we are using the same dataset and the same training and test sets. But we do need to choose our predictors and response columns, and we will do it as follow:</p>
+<pre><code language="language-r" class="language-r"># Identify predictors and response for the regression use case
+ignore_reg &lt;- c(&#34;ORIGINAL_INTEREST_RATE&#34;, &#34;FIRST_PAYMENT_DATE&#34;, &#34;MATURITY_DATE&#34;, &#34;MORTGAGE_INSURANCE_PERCENTAGE&#34;,
+            &#34;PREPAYMENT_PENALTY_MORTGAGE_FLAG&#34;, &#34;LOAN_SEQUENCE_NUMBER&#34;, &#34;PREPAID&#34;,
+            &#34;DELINQUENT&#34;, &#34;PRODUCT_TYPE&#34;)
+
+y_reg &lt;- &#34;ORIGINAL_INTEREST_RATE&#34;
+
+x_reg &lt;- setdiff(colnames(train), ignore_reg)
+x_reg
+</code></pre>
+<p>Now we are ready to start our second AutoML model and train it. This time we will only use a time constrain, and set <code>max_runtime_secs</code> to <code>900 seconds</code>, or fifteen minutes. You will notice that we are specifying the stopping metric and also the sort metric. In the second tutorial, we focused on RMSE and MAE to check the performance of our model, and we noticed that the two values seemed very correlated. For that reason, we could use any of those metrics. For this task, we will use the RMSE for early stopping because it penalizes the error more than the MAE, and we will also use it to sort the leaderboard based on the best value.</p>
+<pre><code language="language-r" class="language-r">#Run AutoML for 15 minutes
+aml_reg &lt;- h2o.automl(x = x_reg,
+                      y = y_reg,
+                      training_frame = train,
+                      max_runtime_secs = 900,
+                      stopping_metric = &#39;RMSE&#39;,
+                      seed = 42,
+                      project_name = &#34;regression&#34;,
+                      sort_metric = &#39;RMSE&#39;)
+</code></pre>
+<p>Once it&#39;s done, print the leaderboard.</p>
+<pre><code language="language-r" class="language-r"># View the AutoML Leaderboard
+lb &lt;- h2o.get_leaderboard(aml_reg)
+h2o.head(lb, n = -1)
+</code></pre>
+<p class="image-container"><img alt="r-automl-reg-leaderboard_1" src="img/1b566ad3af896d7c.png"></p>
+<p><strong>Note:</strong> In the table above, only the top ten models are shown. You can view the other models by clicking <strong>Next</strong> in your table.</p>
+<p>The leaderboard shows that the GBM models clearly dominated this task. We can retrieve the best model with the <code>model.leader</code> command; but, what if we wanted to get another model from our leaderboard? One way to do so is shown below:</p>
+<pre><code language="language-r" class="language-r"># Get model ids for all models in the AutoML Leaderboard
+model_ids &lt;- as.data.frame(aml_reg@leaderboard$model_id)[,1]
+# Get top GBM from leaderboard
+gbm &lt;- h2o.getModel(grep(&#34;GBM&#34;, model_ids, value = TRUE)[1])
+</code></pre>
+<p>In case you are trying to retrieve another model, you would need to change the name <code>GBM</code>, in the code above, to the name of the model that you want, and that should retrieve the desired model. For example, if you wanted to get the best XGBoost in the leaderboard, you would need to make the following change (you do not need to run the following line of code, this is just an example).</p>
+<pre><code language="language-r" class="language-r">xgb &lt;- h2o.getModel(grep(&#34;XGBoost&#34;, model_ids, value = TRUE)[1])
+</code></pre>
+<p>You could retrieve any model you want by providing a model ID to the <code>getModel</code> function as follow:</p>
+<pre><code language="language-r" class="language-r">gbm &lt;- h2o.getModel(&#34;desired_model_id&#34;)
+</code></pre>
+<p>Now that we have retrieved the best model, we can take a look at some of the parameters:</p>
+<pre><code language="language-r" class="language-r"># Retrieve specific parameters from the obtained model
+gbm@allparameters[[&#34;ntrees&#34;]]
+gbm@allparameters[[&#34;max_depth&#34;]]
+gbm@allparameters[[&#34;learn_rate&#34;]]
+gbm@allparameters[[&#34;sample_rate&#34;]]
+</code></pre>
+<p><strong>Output:</strong></p>
+<pre><code language="language-r" class="language-r">63
+8
+0.1
+0.8
+</code></pre>
+<p>After exploring those parameters, a next step could be to try to tune the GBM with grid searches around the parameters obtained from AutoML and see if we can get a better score.</p>
+<p>Now let&#39;s take a quick look at the model summary.</p>
+<pre><code language="language-r" class="language-r"># Print the results for the model
+gbm
+</code></pre>
+<p class="image-container"><img alt="r-automl-reg-summary-1" src="img/c57ed3d4cc76dd2d.png"><img alt="r-automl-reg-summary-2" src="img/67afb0bc38ac6d77.png"></p>
+<p>In the model summary above, we can see some of the parameters of our model, the metrics on the training data, and also the metrics from the cross-validation, as well as a detailed cross-validation metrics summary. We can also look at scoring history. However, by looking at the RMSE and MAE in the picture above for both training and validation, we can see that the model was starting to overfit because the training error is much lower than the validation error. Lastly, we can see the variable importance table, which shows both relative_importance, as well as scaled_importance, and also the percentage. For this model, the most important variable is <code>SELLER_NAME</code>, meaning that for our model, knowing which bank is providing the loan is very important.</p>
+<p>Now, let&#39;s see how the leader from our AutoML performs on our test set.</p>
+<pre><code language="language-r" class="language-r"># Save the test performance of the model
+gbm_test_perf &lt;- h2o.performance(gbm, test)
+</code></pre>
+<p>Now you can print the RMSE and the MAE:</p>
+<pre><code language="language-r" class="language-r"># Print the test RMSE
+h2o.rmse(gbm_test_perf)
+</code></pre>
+<pre><code language="language-r" class="language-r">0.4289321
+</code></pre>
+<pre><code language="language-r" class="language-r"># Print the test MAE
+h2o.mae(gbm_test_perf)
+</code></pre>
+<pre><code language="language-r" class="language-r">0.3131541
+</code></pre>
+<p>We can see that the test RMSE and MAE, <strong>0.4289</strong> and <strong>0.3132</strong> respectively, are very close to the validation RMSE and MAE, <strong>0.4309</strong> and <strong>0.3128,</strong> which shows us that doing 5-fold cross-validation gives us a good estimation of the error on unseen data.</p>
+<p>Now, let&#39;s make some predictions on our test set.</p>
+<pre><code language="language-r" class="language-r"># Make predictions on test set
+gbm_pred &lt;- h2o.predict(gbm, test)
+
+# Combine the predictions with the original response column
+preds &lt;- h2o.cbind(test[, c(&#34;ORIGINAL_INTEREST_RATE&#34;)], gbm_pred)
+
+h2o.head(preds, n=10)
+</code></pre>
+<p class="image-container"><img alt="r-automl-preds-reg" src="img/5e1eef9a2d6c4755.png"></p>
+<p>Please note that we just combined the response column from our test frame with our predictions to see how the predictions compare to the actual value.</p>
+<p>Out of the first ten predictions, most of them are very close to the actual values, with the exception of some predictions, such as the seventh prediction, which is <strong>6.89,</strong> compared to the actual value which is <strong>8.75.</strong> Because the RMSE is higher than the MAE, we can deduce that we have a couple of instances similar to the one mentioned above, because the larger errors are penalized more.</p>
+<p>Now, let&#39;s try to do what we just did one more time, but this time in Flow.</p>
+</div>
 
       </google-codelab-step>
     
       <google-codelab-step label="Task 6: H2O AutoML Classification in Flow" duration="0">
         <p>Our dataset should already be in our Flow instance; go to your Flow instance, by either clicking the link we mentioned at the beginning of the tutorial or switching to the tab that you opened earlier.</p>
 <p>Your Flow instance should look similar to the one below:</p>
-<p><img alt="flow-instance" src="img/4e74d32df47e8e9.jpg"></p>
+<p class="image-container"><img alt="flow-instance" src="img/4e74d32df47e8e9.png"></p>
 <p>Click on <code>getFrames</code> in the <strong>Assistance</strong> panel on the left side. This will show you a list of all the frames currently stored in your instance.</p>
-<p><img alt="get-frames" src="img/a9841f866e02c707.jpg"></p>
+<p class="image-container"><img alt="get-frames" src="img/a9841f866e02c707.png"></p>
 <p>Here you will be able to see all the &#34;tables&#34; that we have printed in our Jupyter Notebook, for example, you will see the outputs of the <code>.head()</code> function that we used earlier. Also, you will see a frame with the predictions and all the frames which we have worked with. Look for the <code>loan_level_50k.hex</code> frame, this is the dataset that we imported at the beginning of the tutorial. In the picture below, you will see three frames highlighted, the first one is the dataset we imported, and the other two are the train and test sets.</p>
-<p><img alt="flow-frames" src="img/14318e486e7429c2.jpg"></p>
+<p class="image-container"><img alt="flow-frames" src="img/14318e486e7429c2.png"></p>
 <p>To import a file into Flow, you would just need to run the following command in a new cell</p>
 <pre><code>importFiles [&#34;https://s3.amazonaws.com/data.h2o.ai/DAI-Tutorials/loan_level_50k.csv&#34;]
 </code></pre>
-<p><strong>Note:</strong> For a more detailed guide on how to import a file into Flow, check out <a href="https://training.h2o.ai/products/introduction-to-machine-learning-with-h2o-part-1" target="_blank">Task 3 of Introduction to Machine Learning with H2O-3 - Part 1</a></p>
+<p><strong>Note:</strong> For a more detailed guide on how to import a file into Flow, check out <a href="https://training.h2o.ai/products/introduction-to-machine-learning-with-h2o-part-1" target="_blank">Task 3 of Introduction to Machine Learning with H2O-3 - Part 1</a>.</p>
 <p>Even though we already have the train and test set, let&#39;s split the loan_level_50k.hex file, that way we can give a specific name to the train and test sets. Use the ratio 0.8 for train and 0.2 for test.</p>
-<p><img alt="split-frame" src="img/aa9af47f0b4778.gif"></p>
+<p class="image-container"><img alt="split-frame" src="img/aa9af47f0b4778.gif"></p>
 <p>Now that we can easily find our train and test set, scroll up again to the <strong>Assistance</strong> panel and click on <code>runAutoML</code>.</p>
-<p><img alt="flow-run-automl" src="img/bc286917dc48f5b1.jpg"></p>
+<p class="image-container"><img alt="flow-run-automl" src="img/bc286917dc48f5b1.png"></p>
 <p>You can name your model <code>flow-automl.</code> For <em>Training Frame</em> choose <code>train.</code> For the <em>Response Column</em> select <code>DELINQUENT.</code> For the <em>Leaderboard Frame</em> select <code>test.</code></p>
-<p><img alt="flow-cl-automl-1" src="img/78eca755ee4b9ca0.jpg"></p>
-<p>Click on the <em>balance_classes</em> box. Now, For <em>Ignored Columns</em> Select</p>
+<p class="image-container"><img alt="flow-cl-automl-1" src="img/78eca755ee4b9ca0.png"></p>
+<p>Click on the <em>balance_classes</em> box. Now, for <em>Ignored Columns</em> Select</p>
 <ul>
 <li><code>PREPAYMENT_PENALTY_MORTGAGE_FLAG</code>,</li>
 <li><code>PRODUCT_TYPE,</code></li>
 <li><code>PREPAID.</code></li>
 </ul>
 <p>Also, change the <em>sort metric</em> to <code>AUC.</code></p>
-<p><img alt="flow-cl-automl-2" src="img/dd5fec44437ed94f.jpg"></p>
+<p class="image-container"><img alt="flow-cl-automl-2" src="img/dd5fec44437ed94f.png"></p>
 <p>Since the Deep Learning models take longer to train, let&#39;s exclude it from this AutoML, just check the box next to <em>DeepLearning</em> as shown below. Change the <em>Seed</em> to <code>42</code> and <em>Max Run Time (sec)</em> to <code>900.</code></p>
-<p><img alt="flow-cl-automl-3" src="img/388dc3347831702f.jpg"></p>
+<p class="image-container"><img alt="flow-cl-automl-3" src="img/388dc3347831702f.png"></p>
 <p>Leave the Expert settings as they are, and click on <strong>Build Model.</strong> Make sure your AutoML settings look similar to the ones shown in the images above.</p>
-<p><img alt="flow-automl-build-cl" src="img/60707513b491528b.jpg"></p>
+<p class="image-container"><img alt="flow-automl-build-cl" src="img/60707513b491528b.png"></p>
 <p>Once your model is building, you will see a cell with a dialog similar to the image below:</p>
-<p><img alt="auto-ml-cl-75" src="img/7ce1c0ea8abf0417.jpg"></p>
+<p class="image-container"><img alt="auto-ml-cl-75" src="img/7ce1c0ea8abf0417.png"></p>
 <p>Once AutoMl finishes running, click on <strong>View</strong>, and you will see a new cell that will have the <strong>leaderboard</strong> and an <strong>Event Log</strong> tab as shown below:</p>
-<p><img alt="flow-view-cl-automl" src="img/c6bebaf3144ca56.jpg"></p>
-<p><img alt="flow-cl-leaderboard" src="img/85c9c0b1888f587f.jpg"></p>
+<p class="image-container"><img alt="flow-view-cl-automl" src="img/c6bebaf3144ca56.png"></p>
+<p class="image-container"><img alt="flow-cl-leaderboard" src="img/85c9c0b1888f587f.png"></p>
 <p>In Flow, we can access any of the models in the leaderboard just by clicking on it. Click on the <code>StackedEnsemble_BestOfFamily</code> model, and you will get all the details about it. Below you can see all the outputs that Flow shows you from that model. Some of the outputs are the model parameters, the training ROC Curve, the cross-validation ROC curve, and much more.</p>
-<p><img alt="automl-cl-output" src="img/25cad2d2a7d0072c.jpg"></p>
+<p class="image-container"><img alt="automl-cl-output" src="img/25cad2d2a7d0072c.png"></p>
 <p>Go to the <code>ROC CURVE - CROSS VALIDATION METRIC</code> and on the criterion dropdown menu, choose <code>f1</code> and you will see something like the image below:</p>
-<p><img alt="cl-training-auc" src="img/587c0eac9653f48a.jpg"></p>
+<p class="image-container"><img alt="cl-training-auc" src="img/587c0eac9653f48a.png"></p>
 <p>You can see all the metrics at the specified threshold, which gives us the max F1 score. You can also see the confusion matrix, and how the misclassification error for the TRUE class seems lower than what we got in the Jupyter Notebook. Now, let&#39;s try to make some predictions on our test set. At the top of the cell, click on <code>Predict</code>.</p>
-<p><img alt="cl-predict" src="img/925e45540360f996.jpg"></p>
+<p class="image-container"><img alt="cl-predict" src="img/925e45540360f996.png"></p>
 <p>You will see another cell that will ask for a name and frame. You can name it <code>automl-cl-predictions</code> (cl referring to classifier). And for the <em>Frame</em> click on the dropdown menu, and look for the <code>test</code> frame. Once you have updated those two fields, click on <strong>Predict</strong>.</p>
-<p><img alt="automl-cl-pred" src="img/b2822526e402a6b0.jpg"></p>
+<p class="image-container"><img alt="automl-cl-pred" src="img/b2822526e402a6b0.png"></p>
 <p>Again, now we have several outputs, but now they are the performance on the test set. So we can take a look at the ROC Curve and AUC on the test set, confusion matrix, the maximum metrics at their specific thresholds, the maximum metrics, and the gains/lift table.</p>
-<p><img alt="cl-predictions-outputs" src="img/c866af8480d9c05f.jpg"></p>
+<p class="image-container"><img alt="cl-predictions-outputs" src="img/c866af8480d9c05f.png"></p>
 <p>Go over the results by yourself, and see how they compare to the results from the cross-validation. Are the results what you expected? Do the scores make sense to you? How are the results from Flow similar to the ones from our Jupyter Notebook? How are they different?</p>
 <p>After you are done exploring the results, move on to the next task, where we will do a last run of AutoML for the regression use case.</p>
 
@@ -353,8 +642,8 @@ pred.head()
       </google-codelab-step>
     
       <google-codelab-step label="Task 7: H2O AutoML Regression in Flow" duration="0">
-        <p>Scroll up to the <strong>Assistance</strong> panel once again, and click on <strong>runAutoML</strong>. We will do something similar to what we just did in the previous task.<br>In the AutoML settings, change <em>Project Name</em> to <code>flow-automl-regression</code>, for <em>Training Frame</em> choose <code>train</code>, for <em>Response Column</em> choose <code>ORIGINAL_INTEREST_RATE</code>, and choose <code>test</code> for the <em>Leaderboard Frame</em>.</p>
-<p><img alt="flow-automl-reg-1" src="img/3feb8934b94b1780.jpg"></p>
+        <p>Scroll up to the <strong>Assistance</strong> panel once again, and click on <strong>runAutoML</strong>. We will do something similar to what we just did in the previous task. In the AutoML settings, change <em>Project Name</em> to <code>flow-automl-regression</code>, for <em>Training Frame</em> choose <code>train</code>, for <em>Response Column</em> choose <code>ORIGINAL_INTEREST_RATE</code>, and choose <code>test</code> for the <em>Leaderboard Frame</em>.</p>
+<p class="image-container"><img alt="flow-automl-reg-1" src="img/3feb8934b94b1780.png"></p>
 <p>for ignore columns select the following:</p>
 <ul>
 <li><code>FIRST_PAYMENT_DATE,</code></li>
@@ -368,32 +657,32 @@ pred.head()
 </ul>
 <p>Please note that in the figure below, only three columns are selected, but we are ignoring all the above columns, just not showing them in the figure below.</p>
 <p>Change the <em>sort metric</em> to <code>RMSE.</code> Let&#39;s use all the models, so make sure all the models are unchecked, or click <strong>None</strong> in the <em>exclude_algos</em> menu.</p>
-<p><img alt="flow-automl-reg-2" src="img/36935cbc1572c62a.jpg"></p>
+<p class="image-container"><img alt="flow-automl-reg-2" src="img/36935cbc1572c62a.png"></p>
 <p>Set the <em>Seed</em> to <code>42,</code> change the number of <em>max_runtime_secs</em> to <code>900,</code> and change the <em>stopping_metric</em> to <code>RMSE.</code></p>
-<p><img alt="flow-automl-reg-3" src="img/4248430880d4f4fc.jpg"></p>
-<p>Lastly, leave the expert settings as default, and click on <strong>Build Model</strong></p>
-<p><img alt="flow-automl-build" src="img/7a616b3a83649d75.jpg"></p>
-<p>Once it&#39;s done, click on <strong>View</strong> and you should be able to see the <strong>Leaderboard</strong> and the <strong>Event Log</strong></p>
-<p><img alt="flow-reg-view-leaderboard" src="img/37554a93a6ac9167.jpg"></p>
-<p><img alt="flow-automl-regression-leaderboard" src="img/8bed07d49ea91d54.jpg"></p>
+<p class="image-container"><img alt="flow-automl-reg-3" src="img/4248430880d4f4fc.png"></p>
+<p>Lastly, leave the expert settings as default, and click on <strong>Build Model:</strong></p>
+<p class="image-container"><img alt="flow-automl-build" src="img/7a616b3a83649d75.png"></p>
+<p>Once it&#39;s done, click on <strong>View</strong> and you should be able to see the <strong>Leaderboard</strong> and the <strong>Event Log:</strong></p>
+<p class="image-container"><img alt="flow-reg-view-leaderboard" src="img/37554a93a6ac9167.png"></p>
+<p class="image-container"><img alt="flow-automl-regression-leaderboard" src="img/8bed07d49ea91d54.png"></p>
 <p>In the leaderboard, we can see that the best model from AutoML is an XGBoost, which is different from our AutoML in the Jupyter Notebook; however, the best model from our notebook is still in the top five models.</p>
 <p>Click on the best model and explore the results. Take a look at the parameters and their descriptions. If we were trying to explore different models, we could use this model as a baseline and do a local grid search based on the parameters found by the AutoML.</p>
-<p><img alt="leader-automl-reg" src="img/bf0fd24c41f5f5f9.jpg"></p>
+<p class="image-container"><img alt="leader-automl-reg" src="img/bf0fd24c41f5f5f9.png"></p>
 <p>You can also look at the scoring history and the variable importance plot (not shown here), and all the outputs related to a regression use case.</p>
 <p>Let&#39;s make some predictions and explore the results. At the top of the <strong>Model</strong> panel, click on <strong>Predict</strong>.</p>
-<p><img alt="xgb-predict" src="img/2c2d3e4c1b0ec685.jpg"></p>
+<p class="image-container"><img alt="xgb-predict" src="img/2c2d3e4c1b0ec685.png"></p>
 <p>Name it <code>flow-xgb-predictions</code> and choose <code>test</code> for <em>Frame</em> and click on <strong>Predict</strong>.</p>
-<p><img alt="flow-xgb-predict-2" src="img/a344b03f08f8759f.jpg"></p>
+<p class="image-container"><img alt="flow-xgb-predict-2" src="img/a344b03f08f8759f.png"></p>
 <p>Once you&#39;re done, you will see a summary of the scores on the test set.</p>
-<p><img alt="flow-xgb-preds" src="img/60abba697337999.jpg"></p>
+<p class="image-container"><img alt="flow-xgb-preds" src="img/60abba697337999.png"></p>
 <p>If you click on predictions, you will get a summary of another frame. Click on <strong>View Data</strong> you will get the actual predictions for each sample of the data frame.</p>
-<p><img alt="flow-choose-frame" src="img/fdba41f957b4f7d7.jpg"></p>
-<p><img alt="xgb-view-preds" src="img/25c4908ed714f580.jpg"></p>
-<p><img alt="xgb-actual-preds" src="img/e40fc59ec9b3df7e.jpg"></p>
+<p class="image-container"><img alt="flow-choose-frame" src="img/fdba41f957b4f7d7.png"></p>
+<p class="image-container"><img alt="xgb-view-preds" src="img/25c4908ed714f580.png"></p>
+<p class="image-container"><img alt="xgb-actual-preds" src="img/e40fc59ec9b3df7e.png"></p>
 <p>Feel free to explore the results on your own. Are the first ten predictions similar to what we got in our Jupyter Notebook? Are the metrics from the test set close to those of the cross-validation?</p>
 <p>Now that you can run AutoML in Flow and in the Jupyter Notebook, you can focus on a task and run it for a longer time; you can even run AutoML on the 500k subset of the dataset and see how the results compare to the results in this tutorial.</p>
 <p>If you do not want to attempt the challenge, you can shut down your cluster; otherwise, check out the next task.</p>
-<pre><code>h2o.cluster().shutdown()
+<pre><code language="language-python" class="language-python">h2o.cluster().shutdown()
 </code></pre>
 
 
@@ -413,10 +702,11 @@ pred.head()
     
   </google-codelab>
 
-  <script src="../assets/codelab-elements/native-shim.js"></script>
-  <script src="../assets/codelab-elements/custom-elements.min.js"></script>
-  <script src="../assets/codelab-elements/prettify.js"></script>
-  <script src="../assets/codelab-elements/codelab-elements.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
 
 </body>
 </html>
