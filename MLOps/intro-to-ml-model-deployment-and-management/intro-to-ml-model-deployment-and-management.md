@@ -34,19 +34,27 @@ In this tutorial, you will predict the **cooling condition** for a **Hydraulic S
 
 To launch **Driverless AI**, click the **Launch** button located in the **Driverless AI** section, a new tab will open. 
 
+- Agree to the Terms 
 - Click **Login with OpenID**
 - For **Log In**, you can enter `ds1/ds1` or `ds2/ds2`
 
+**EX**:
+
+![h2oai-platform-studio](./assets/h2oai-platform-studio.gif)
+
 To launch MLOps, click the Launch button located in the MLOPs section, a new tab will open.
+
+Note: If you already login to Driverless AI using either credential, you will not be required to log in when trying to access MLOps. The Studio will sign you into both platforms when you login into one platform (with ds1/ds1 or ds2/ds2: each credential is its own account (profile) with Driverless AI and MLOps). 
 
 - Click **Login with OpenID Connect**
 - For **Log In**, you can enter `ds1/ds1` or `ds2/ds2`
 
-![h2oai-platform-studio](./assets/h2oai-platform-studio.jpg)
+
+**EX**:
+
+![h2oai-platform-studio-MLOps](./assets/h2oai-platform-studio-MLOps.gif)
 
 H2O.ai MLOps ties into Driverless AI and allows you to export your Driverless AI experiments into an MLOps project that can be viewed and shared from a single site. It also allows you to import, view, and share regression and classification models from H2O-3. H2O MLOps is a complete system for the deployment, management, and governance of models in production with seamless integration to H2O Driverless AI and H2O open source for model experimentation and training.
-
-**Figure 2:** H2O.ai Platform Studio Splash Page 
 
 ## Task 2: Driverless AI Project in MLOps 
 
