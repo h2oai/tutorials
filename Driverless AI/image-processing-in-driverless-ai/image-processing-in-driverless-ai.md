@@ -29,21 +29,23 @@ All things consider, let us start.
 You will need the following to be able to do this tutorial:
 
 - Basic knowledge of Driverless AI 
-- Completion of the 
+- Completion of the following two tutorials: 
+    - [Tutorial 1A: Automatic Machine Learning Introduction with Driverless AI](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai#tab-product_tab_overview)
+    - [Tutorial 1B: Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus#tab-product_tab_overview)
 - Understanding of Convolutional Neural Networks (CNNs)
 - Basic understanding of confusion matrices 
 
 - A **Two-Hour Test Drive session**: Test Drive is [H2O.ai's](https://www.h2o.ai) Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.
-  - Need a **Two-Hour Test Drive** session? Follow the instructions on this quick tutorial to get a Test Drive session started.
+  - Need a **Two-Hour Test Drive** session? Follow the instructions on [this](https://training.h2o.ai/products/tutorial-0-getting-started-with-driverless-ai-test-drive#tab-product_tab_overview) quick tutorial to get a Test Drive session started.
 
-**Note: Aquarium’s Driverless AI Test Drive lab has a license key built-in, so you don’t need to request one to use it. Each Driverless AI Test Drive instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to explore Driverless AI further, you can always launch another Test Drive instance or reach out to our sales team via the contact us form.**
+**Note: Aquarium’s Driverless AI Test Drive lab has a license key built-in, so you don’t need to request one to use it. Each Driverless AI Test Drive instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to explore Driverless AI further, you can always launch another Test Drive instance or reach out to our sales team via the [contact us form](https://www.h2o.ai/company/contact/).**
 
 
 ## Task 1: Launch Experiment One: Predict a Car's Price 
 
 As mentioned in the **objective** section, we will use three image models, but running each experiment takes time to run. For this reason, all experiments have been built for you and can be found in Driverless AI's **Experiments** section. 
 
-To help us understand the first approach to image processing in Driverless AI, let's look at the following experiment: `Embeddings-Transformer-Without-Fine-Tuning`
+To help us understand the first approach to image processing in Driverless AI, let's look at the following experiment: `Embeddings-Transformer-Without-Fine-Tuning`.We will analyze this experiment in a moment. 
 
 For understanding purposes, let's see how the first experiment was run. Right after, we will follow to understand the dataset and settings used in the first image model; doing so will allow us to understand **Embeddigns Transformer** (the first approach to image processing in Driverless AI).
 
@@ -228,7 +230,7 @@ When it comes to image classification, you don't have to use the transfer learni
 
 
 <p align="center">
-    <img src="assets/three-ways-in-which-transfer-might-improve-learning.png" width="370" height="230"> 
+    <img src="assets/three-ways-in-which-transfer-might-improve-learning.png" width="380" height="230"> 
 </p>
 
 2. Transfer learning leads to generalization where the model is prepared to perform well with data it was not trained on
@@ -239,7 +241,7 @@ With this task in mind, let us now understand the dataset and settings used in t
 
 ### Embeddings Transformer (Image Vectorizer) without Fine-tuning 
 
-**Embeddings Transformer (Image Vectorizer)** is the first approach to modeling images in Driverless AI.The **Image Vectorizer transformer** utilizes pre-trained **ImageNet** models to convert a column with an image path or URI ((Uniform Resource Identifier)) to an **embeddings** (vector) representation that is derived from the last global average pooling layer of the model. The resulting vector is then used for modeling in Driverless AI. This approach can be use with and without fine-tuning. In a moment, we will further explore the difference between with and without fine-tuning. 
+**Embeddings Transformer (Image Vectorizer)** is the first approach to modeling images in Driverless AI. The **Image Vectorizer transformer** utilizes pre-trained **ImageNet** models to convert a column with an image path or URI ((Uniform Resource Identifier)) to an **embeddings** (vector) representation that is derived from the last global average pooling layer of the model. The resulting vector is then used for modeling in Driverless AI. This approach can be use with and without fine-tuning. In a moment, we will further explore the difference between with and without fine-tuning. 
 
 **Notes**:
 
@@ -332,9 +334,9 @@ In the next section, let's explore the pre-rebuilt experiment from task one, and
 
 ## Task 4: Embeddings Transformer (Image Vectorizer) with Fine-tuning
 
-The experiment from task one has been rerun already (with fine-tuning) because it takes longer than two hours (once again, the Aquarium test drive only runs for two hours). The experiment has been named `Embeddings-Transformer-With-Fine-Tuning`
+The experiment from task one has been rerun already (with fine-tuning) because it takes longer than two hours (once again, the Aquarium test drive only runs for two hours). The experiment has been named `Embeddings-Transformer-With-Fine-Tuning`.
 
-To showcase how fine-tuning was enabled for the first approach to image processing in DAI, observe the steps you cantake to rerun the experiment with fine-tuning: 
+To showcase how fine-tuning was enabled for the first approach to image processing in DAI, observe the steps you can take to rerun the experiment with fine-tuning: 
 
 In the **Experiments** section:
 
@@ -482,7 +484,7 @@ Before we determine whether the AUC (Area under the ROC Curve) is good or bad, c
 - An AUC value of **0.6 - 0.7** will be considered **Satisfactory**
 - An AUC value of **0.5 - 0.6** will be considered **Unsatisfactory**
 
-With the above in mind, our AUC of **0.9476** will mean that our model is **Excellent**. Note that this model was not tested with a training dataset, and therefore, it could be the case that our AUC can decrease, but for now, it's safe to say that our model is doing a great job at classifying metastatic cancer cases *(True or False)*.
+With the above in mind, our AUC of **0.9476** will mean that our model is **Excellent**. Note that this model was not tested with a training dataset, and therefore, it could be the case that our AUC can decrease, but for now, it's safe to say that our model is doing a great job at classifying metastatic cancer cases *(True or False)*. Also note, that the difference between the metastatic dataset and the ImageNet dataset didn't prevent good results for this model. 
 
 For this model, the confusion matrix looks as follows:
 
@@ -493,7 +495,7 @@ For the most part, having low **False Negatives** and **False Positives** will b
 
 Now let's look at the **Insights** of the current best individual model for the **Automatic Image Model**. On the top right corner of the **complete experiment screen** click **Insights** (training settings area).
 
-The Insights page for ImageAuto Model experiments contains the following about the current best individual model: 
+The Insights page contains the following about the current best individual model: 
 
 - Best individual hyperparameters - for our model we observe the following: 
 
@@ -535,7 +537,7 @@ The Insights page for ImageAuto Model experiments contains the following about t
     - The **Grad-CAM** visualization samples allow us to see where the model looked when generating a prediction and probability. In the two pair images on the top left corner, we see the images being label as part of the *True* class (1). In this sample, we see the model observed in the middle left part of the image when saying that this model belongs to the *True* class and that the probability is 0.852.  
 
 
-**Note**: For time series and Automatic Image Modell experiments, you can view detailed insights while an experiment is running or after an experiment is complete by clicking on the **Insights** option.  
+**Note**: For time series and Automatic Image Model experiments, you can view detailed insights while an experiment is running or after an experiment is complete by clicking on the **Insights** option.  
 
 Now in the next task, let's compare and contrast each image modeling approach, and let's discuss several scenarios when a given approach will be better. In particular, and as a point of distinction, let's discuss how, between the two approaches, only the **Embeddings Transformer** approach supports a MOJO Scoring Pipeline. 
 
@@ -543,7 +545,7 @@ Now in the next task, let's compare and contrast each image modeling approach, a
 
 Under what circumstances a certain approach will be better? When answering that question, consider the following:
 
-- When your classification or regression problem is making use of a mixed data type - you can only use the Embeddings Transformer (Image Vectorizer) approach. 
+- When your classification or regression problem is making use of a mixed data type - you can only use the Embeddings Transformer (Image Vectorizer) approach: 
 
     - When deciding whether to use it with or without fine-tuning, you can consider what was discussed in tasks 2 and 3. In general, if your dataset is not similar to the ImageNet dataset or we want to improve the results of our model using ImageNet architectures, we can use fine-tuning. 
 
@@ -571,7 +573,7 @@ Though in the roadmap, Driverless AI will be able to support the following probl
 
 ## Next Steps: 
 
-To understand more about the **C++ MOJO Scoring**, we recommend checking the following tutorial three tutorials in order: 
+To understand more about the **C++ MOJO Scoring**, we recommend checking the following three tutorials in order: 
 
 - [Tutorial 1A: Intro to ML Model Deployment and Management](https://training.h2o.ai/products/tutorial-4a-scoring-pipeline-deployment-introduction#tab-product_tab_overview)
 - [Tutorial 4B: Scoring Pipeline Deployment Templates](https://training.h2o.ai/products/tutorial-4b-scoring-pipeline-deployment-templates#tab-product_tab_overview)
