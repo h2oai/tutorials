@@ -472,7 +472,7 @@ To further see the difference between the first and second approach to Image pro
 
 On the bottom right corner of the **complete experiment screen** select the **ROC** graph; the following should appear: 
 
-![ROC](assets/ROC.png)
+![roc](assets/roc.png)
 
 Before we determine whether the AUC (Area under the ROC Curve) is good or bad, consider the following: 
 
