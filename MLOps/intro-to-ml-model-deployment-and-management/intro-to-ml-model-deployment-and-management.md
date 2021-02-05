@@ -56,8 +56,6 @@ Note: If you already login to Driverless AI using either credential, you will no
 
 H2O.ai MLOps ties into Driverless AI and allows you to export your Driverless AI experiments into an MLOps project that can be viewed and shared from a single site. It also allows you to import, view, and share regression and classification models from H2O-3. H2O MLOps is a complete system for the deployment, management, and governance of models in production with seamless integration to H2O Driverless AI and H2O open source for model experimentation and training.
 
-**Figure 2:** H2O.ai Platform Studio Splash Page 
-
 ## Task 2: Driverless AI Project in MLOps 
 
 For this tutorial, we will be using a prebuilt experiment linked to a project titled **hydraulic system**. The MLOps dashboard already has the Driverless AI **hydraulic system** project for this tutorial; it was shared with MLOps when the project was created.  If you want to access the project, you need to access Driverless AI from the **H2O.ai Platform Studio Splash Page**. The prebuilt project was built under the following credentials: `ds1/ds1`. Accordingly, you will need to access Driverless AI with such credentials to see the project. 
