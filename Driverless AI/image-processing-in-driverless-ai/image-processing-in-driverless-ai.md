@@ -8,7 +8,7 @@
 - [Task 2: Concepts: Transfer learning from pre-trained models](#task-2-concepts-transfer-learning-from-pre-trained-models)
 - [Task 3: First Approach: Embeddings Transformer (Image Vectorizer)](#task-3-first-approach-embeddings-transformer-image-vectorizer)
 - [Task 4: Embeddings Transformer (Image Vectorizer) with Fine-tuning](#task-4-embeddings-transformer-image-vectorizer-with-fine-tuning)
-- [Task 5: Second Approach: Automatic Image Model ](#task-5-second-approach-automatic-image-model)
+- [Task 5: Second Approach: Automatic Image Model](#task-5-second-approach-automatic-image-model)
 - [Task 6: Final Analysis ](#task-6-final-analysis)
 - [Next Steps](#next-steps)
 - [Special Thanks](#special-thanks)
@@ -28,11 +28,10 @@ All things consider, let us start.
 
 You will need the following to be able to do this tutorial:
 
-
 - Basic knowledge of Driverless AI 
 - Completion of the 
 - Understanding of Convolutional Neural Networks (CNNs)
-
+- Basic understanding of confusion matrices 
 
 - A **Two-Hour Test Drive session**: Test Drive is [H2O.ai's](https://www.h2o.ai) Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.
   - Need a **Two-Hour Test Drive** session? Follow the instructions on this quick tutorial to get a Test Drive session started.
@@ -240,7 +239,7 @@ With this task in mind, let us now understand the dataset and settings used in t
 
 ### Embeddings Transformer (Image Vectorizer) without Fine-tuning 
 
-The **Image Vectorizer transformer** utilizes pre-trained **ImageNet** models to convert a column with an image path or URI ((Uniform Resource Identifier)) to an **embeddings** (vector) representation that is derived from the last global average pooling layer of the model. The resulting vector is then used for modeling in Driverless AI. This approach can be use with and without fine-tuning. In a moment, we will further explore the difference between with and without fine-tuning. 
+**Embeddings Transformer (Image Vectorizer)** is the first approach to modeling images in Driverless AI.The **Image Vectorizer transformer** utilizes pre-trained **ImageNet** models to convert a column with an image path or URI ((Uniform Resource Identifier)) to an **embeddings** (vector) representation that is derived from the last global average pooling layer of the model. The resulting vector is then used for modeling in Driverless AI. This approach can be use with and without fine-tuning. In a moment, we will further explore the difference between with and without fine-tuning. 
 
 **Notes**:
 
@@ -261,7 +260,9 @@ First, let's briefly discuss the multiple methods **Driverless AI** supports for
 Now let's focus on the dataset used for the first experiment: 
 
 1. In the **Datasets** page click the **car_deals_train** dataset
+
 2. Click the **DETAILS** options 
+
 3. In the dataset details page, click the following button located at the top right corner of the page: **DATASET ROWS**
 
 The following should appear: 
@@ -476,13 +477,12 @@ On the bottom right corner of the **complete experiment screen** select the **RO
 Before we determine whether the AUC (Area under the ROC Curve) is good or bad, consider the following: 
 
 - An AUC value of **0.9 - 1.0** will be considered **Excellent**
-
 - An AUC value of **0.8 - 0.9** will be considered **Very Good**
 - An AUC value of **0.7 - 0.8** will be considered **Good**
 - An AUC value of **0.6 - 0.7** will be considered **Satisfactory**
 - An AUC value of **0.5 - 0.6** will be considered **Unsatisfactory**
 
-With the above in mind, our AUC of 0.9476 will mean that our model is **Excellent**. Note that this model was not tested with a training dataset, and therefore, it could be the case that our AUC can decrease, but for now, it's safe to say that our model is doing a great job at classifying metastatic cancer cases *(True or False)*.
+With the above in mind, our AUC of **0.9476** will mean that our model is **Excellent**. Note that this model was not tested with a training dataset, and therefore, it could be the case that our AUC can decrease, but for now, it's safe to say that our model is doing a great job at classifying metastatic cancer cases *(True or False)*.
 
 For this model, the confusion matrix looks as follows:
 
@@ -493,42 +493,93 @@ For the most part, having low **False Negatives** and **False Positives** will b
 
 Now let's look at the **Insights** of the current best individual model for the **Automatic Image Model**. On the top right corner of the **complete experiment screen** click **Insights** (training settings area).
 
-
 The Insights page for ImageAuto Model experiments contains the following about the current best individual model: 
 
-- Best individual hyperparameters - For our model we observe the following: 
+- Best individual hyperparameters - for our model we observe the following: 
 
     ![best-individual-hyperparameters](assets/best-individual-hyperparameters.png)
 
-- Train and validation loss graph(by epoch) - For our model we observe the following: 
+    - **Note**: The **resnet101** architecture (a residual CNN for Image Classification Tasks) is 101 layers deep. This pretrained model has been trained on more than a million images from the ImageNet database. 
+
+- Train and validation loss graph(by epoch) - for our model we observe the following: 
 
     ![train-and-validation-loss-graph(by epoch)](assets/train-and-validation-loss-graph-by-epoch.png)
 
 
-- Validation Scorer graph (by epoch) - For our model we observe the following: 
+- Validation Scorer graph (by epoch) - for our model we observe the following: 
 
     ![validation-scorer-graph-by-epoch](assets/validation-scorer-graph-by-epoch.png)
 
-- Sample train and augmented train images - For our model we observe the following: 
+- Sample train and augmented train images - for our model we observe the following: 
 
     ![sample-train-and-augmented-train-images-one](assets/sample-train-and-augmented-train-images-one.png)
 
+    - **Note**: Zero (0) refers to False and One (1) refers to True  
+
     ![sample-train-and-augmented-train-images-two](assets/sample-train-and-augmented-train-images-two.png)
 
-- Sample validation error images - For our model we observe the following: 
+    - **Note**: Image augmentation is a technique that can artificially expand the size of a training dataset by creating modified versions of images in the dataset. To make new images, you can change original images. For example, you can make a new image a little darker; you could cut a piece from the original image, etc. Therefore, you could create an infinite amount of new training samples. For example: 
+
+        ![augmentation](assets/augmentation.png)
+
+- Sample validation error images - for our model we observe the following: 
 
     ![sample-validation-error-images](assets/sample-validation-error-images.png)
+
+     - The above **sample validation errors** display instances when the model predicted wrongly. For example, the top left corner sample shows the model predicting a False (0) case of metastatic cancer when the **True** is (1). 
 
 - Sample Grad-CAM visualization - For our model we observe the following: 
 
     ![sample-grad-cam-visualization](assets/sample-grad-cam-visualization.png)
 
+    - The **Grad-CAM** visualization samples allow us to see where the model looked when generating a prediction and probability. In the two pair images on the top left corner, we see the images being label as part of the *True* class (1). In this sample, we see the model observed in the middle left part of the image when saying that this model belongs to the *True* class and that the probability is 0.852.  
+
+
 **Note**: For time series and Automatic Image Modell experiments, you can view detailed insights while an experiment is running or after an experiment is complete by clicking on the **Insights** option.  
 
+Now in the next task, let's compare and contrast each image modeling approach, and let's discuss several scenarios when a given approach will be better. In particular, and as a point of distinction, let's discuss how, between the two approaches, only the **Embeddings Transformer** approach supports a MOJO Scoring Pipeline. 
 
 ## Task 6: Final Analysis 
 
+Under what circumstances a certain approach will be better? When answering that question, consider the following:
+
+- When your classification or regression problem is making use of a mixed data type - you can only use the Embeddings Transformer (Image Vectorizer) approach. 
+
+    - When deciding whether to use it with or without fine-tuning, you can consider what was discussed in tasks 2 and 3. In general, if your dataset is not similar to the ImageNet dataset or we want to improve the results of our model using ImageNet architectures, we can use fine-tuning. 
+
+        - **Without fine-tuning**: the experiment will usually finish faster but has the lowest performance 
+        - **With fine-tuning**: the experiment will be a bit slower, but should produce better results  
+        - **Automatic Image Model**: the slowest by far, but produces the best results 
+
+- When your dataset image column is crucial to your regression or classification problem, it is best to use the second approach: Automatic Image Model. Hence, if images are not playing a crucial role in your experiment, you can use the Embeddings Transformer.
+
+- **Python scoring** and **C++ MOJO Scoring** are supported for the image transformer.
+
+- Presently, only **Python scoring** is supported for **Automatic Image Model**
+
+With the above in mind, you are ready to generate your Image Models. Note: as of now, Driverless AI supports the following problem types: 
+
+- Embeddings Transformer 
+- Classification 
+- Regression 
+
+Though in the roadmap, Driverless AI will be able to support the following problem types: 
+
+- Semantic segmentation 
+- Object detection 
+- Instance segmentation  
+
 ## Next Steps: 
+
+To understand more about the **C++ MOJO Scoring**, we recommend checking the following tutorial three tutorials in order: 
+
+- [Tutorial 1A: Intro to ML Model Deployment and Management](https://training.h2o.ai/products/tutorial-4a-scoring-pipeline-deployment-introduction#tab-product_tab_overview)
+- [Tutorial 4B: Scoring Pipeline Deployment Templates](https://training.h2o.ai/products/tutorial-4b-scoring-pipeline-deployment-templates#tab-product_tab_overview)
+- [Tutorial 4D: Scoring Pipeline Deployment in C++ Runtime](https://training.h2o.ai/products/tutorial-4d-scoring-pipeline-deployment-in-c-runtime#tab-product_tab_overview)
+
+To continue with the Driverless AI learning path, consider the next tutorial in the learning path: 
+
+- [Tutorial 3A: Get Started with Open Source Custom Recipes Tutorial](https://training.h2o.ai/products/tutorial-3a-get-started-with-open-source-custom-recipes-tutorial#tab-product_tab_overview)
 
 ## Special Thanks: 
 
