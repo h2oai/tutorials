@@ -8,10 +8,8 @@
 - [Task 2: Concepts: Transfer learning from pre-trained models](#task-2-concepts-transfer-learning-from-pre-trained-models)
 - [Task 3: First Approach: Embeddings Transformer (Image Vectorizer)](#task-3-first-approach-embeddings-transformer-image-vectorizer)
 - [Task 4: Embeddings Transformer (Image Vectorizer) with Fine-tuning](#task-4-embeddings-transformer-image-vectorizer-with-fine-tuning)
-- [Task 5: ](#task-5-)
-- [Task 6: ](#task-6-)
-- [Task 7: ](#task-7-)
-- [Task 8: ](#Task-8-)
+- [Task 5: Second Approach: Automatic Image Model ](#task-5-second-approach-automatic-image-model)
+- [Task 6: Final Analysis ](#task-6-final-analysis)
 - [Next Steps](#next-steps)
 - [Special Thanks](#special-thanks)
 
@@ -387,7 +385,7 @@ So how else can we improve the RMSE for the first experiment? Well, if you recal
 
 Now in the next task, let's explore **automatic image model** as the second approach to image processing in Driverless AI. 
 
-## Task 5: 
+## Task 5: Second Approach: Automatic Image Model
 
 **Automatic Image Model** is the second approach to modeling images in Driverless AI. Automatic Image Model is an **AutoML model** that accepts only an image and a label as input features. This Model automatically selects hyperparameters such as learning rate, optimizer, batch size, and image input size. It also automates the training process by selecting the number of epochs, cropping strategy, augmentations, and learning rate scheduler.
 
@@ -400,7 +398,7 @@ Unique **insights** that provide information and sample **images** for the curre
 - This modeling approach only supports a **single** image column as an input.
 - This modeling approach does not support any transformers.
 - This modeling approach supports classification and regression experiments.
-- This modeling approach does not support the use of mixed data types because of its limitation on input    features.
+- This modeling approach does not support the use of mixed data types because of its limitation on input features.
 - This modeling approach does not use Genetic Algorithm (GA).
 - The use of one or more GPUs is strongly recommended for this modeling approach.
 
@@ -467,28 +465,68 @@ As mentioned above, this second modeling approach only supports a **single** ima
 
 ![metastic-cancer-dataset-details](assets/metastic-cancer-dataset-details.png)
 
+As we can see, the images(id) have labels of bool storage type. In this case, True refers to a true case of metastatic cancer, and False refers to a false case of metastatic cancer. 
+
+To further see the difference between the first and second approach to Image processing, let's see how the automated selected settings generated a model to classify metastatic cancer cases (True or False). 
+
+On the bottom right corner of the **complete experiment screen** select the **ROC** graph; the following should appear: 
+
+![ROC](assets/ROC.png)
+
+Before we determine whether the AUC (Area under the ROC Curve) is good or bad, consider the following: 
+
+- An AUC value of **0.9 - 1.0** will be considered **Excellent**
+
+- An AUC value of **0.8 - 0.9** will be considered **Very Good**
+- An AUC value of **0.7 - 0.8** will be considered **Good**
+- An AUC value of **0.6 - 0.7** will be considered **Satisfactory**
+- An AUC value of **0.5 - 0.6** will be considered **Unsatisfactory**
+
+With the above in mind, our AUC of 0.9476 will mean that our model is **Excellent**. Note that this model was not tested with a training dataset, and therefore, it could be the case that our AUC can decrease, but for now, it's safe to say that our model is doing a great job at classifying metastatic cancer cases *(True or False)*.
+
+For this model, the confusion matrix looks as follows:
+
+![confusion-matrix](assets/confusion-matrix.png)
+![confusion-matrix-explain](assets/confusion-matrix-explain.png)
+
+For the most part, having low **False Negatives** and **False Positives** will be considered reasonable. With that in mind, this model will be acceptable. For example, when calculating **accuracy** we see **0.8870((Acc = (TN + TP) / (TN + FP + FN + TP)))**, a high value.
+
+Now let's look at the **Insights** of the current best individual model for the **Automatic Image Model**. On the top right corner of the **complete experiment screen** click **Insights** (training settings area).
 
 
+The Insights page for ImageAuto Model experiments contains the following about the current best individual model: 
+
+- Best individual hyperparameters - For our model we observe the following: 
+
+    ![best-individual-hyperparameters](assets/best-individual-hyperparameters.png)
+
+- Train and validation loss graph(by epoch) - For our model we observe the following: 
+
+    ![train-and-validation-loss-graph(by epoch)](assets/train-and-validation-loss-graph-by-epoch.png)
 
 
+- Validation Scorer graph (by epoch) - For our model we observe the following: 
+
+    ![validation-scorer-graph-by-epoch](assets/validation-scorer-graph-by-epoch.png)
+
+- Sample train and augmented train images - For our model we observe the following: 
+
+    ![sample-train-and-augmented-train-images-one](assets/sample-train-and-augmented-train-images-one.png)
+
+    ![sample-train-and-augmented-train-images-two](assets/sample-train-and-augmented-train-images-two.png)
+
+- Sample validation error images - For our model we observe the following: 
+
+    ![sample-validation-error-images](assets/sample-validation-error-images.png)
+
+- Sample Grad-CAM visualization - For our model we observe the following: 
+
+    ![sample-grad-cam-visualization](assets/sample-grad-cam-visualization.png)
+
+**Note**: For time series and Automatic Image Modell experiments, you can view detailed insights while an experiment is running or after an experiment is complete by clicking on the **Insights** option.  
 
 
-
-
-
-
-
-
-
-
-
-
-
-## Task 6:
-
-## Task 7: 
-
-## Task 8: 
+## Task 6: Final Analysis 
 
 ## Next Steps: 
 
