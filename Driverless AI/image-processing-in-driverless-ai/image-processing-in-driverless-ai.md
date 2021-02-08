@@ -544,18 +544,14 @@ Now in the next task, let's compare and contrast each image modeling approach, a
 
 Under what circumstances a particular approach will be better? When answering this question, consider the following:
 
-- When your classification or regression problem is making use of a mixed data type - you can only use the Embeddings Transformer (Image Vectorizer) approach: 
-
+- When your classification or regression problem is making use of a mixed data type 
+- you can only use the Embeddings Transformer (Image Vectorizer) approach: 
     - When deciding whether to use it with or without fine-tuning, you can consider what was discussed in tasks 2 and 3. In general, if your dataset is not similar to the ImageNet dataset or we want to improve the results of our model using ImageNet architectures, we can use fine-tuning. 
-
         - **Without fine-tuning**: the experiment will usually finish faster but has the lowest performance 
         - **With fine-tuning**: the experiment will be a bit slower, but should produce better results  
         - **Automatic Image Model**: the slowest by far, but produces the best results 
-
 - When your dataset image column is crucial to your regression or classification problem, it is best to use the second approach: Automatic Image Model. Hence, if images are not playing a crucial role in your experiment, you can use the Embeddings Transformer.
-
 - **Python scoring** and **C++ MOJO Scoring** are supported for the image transformer.
-
 - Presently, only **Python scoring** is supported for **Automatic Image Model**
 
 With the above in mind, you are ready to generate your Image Models. Note: as of now, Driverless AI supports the following problem types: 
