@@ -534,8 +534,7 @@ The Insights page contains the following about the current best individual model
 
     ![sample-grad-cam-visualization](assets/sample-grad-cam-visualization.png)
 
-    - The **Grad-CAM** visualization samples allow us to see where the model looked when generating a prediction and probability. In the two pair images on the top left corner, we see the images being label as part of the *True* class (1). In this sample, we see the model observed in the middle left part of the image when saying that this model belongs to the *True* class and that the probability is 0.852.  
-
+    - The **Grad-CAM** visualization samples allow us to see where the model looked when generating a prediction and probability. In the two pair images on the top left corner, we see the images being label as part of the *True* class (1). In this sample, we see that the model observed the middle left part of the image when deciding that this model belongs to the *True* class and that its probability is 0.852. 
 
 **Note**: For time series and Automatic Image Model experiments, you can view detailed insights while an experiment is running or after an experiment is complete by clicking on the **Insights** option.  
 
@@ -543,7 +542,7 @@ Now in the next task, let's compare and contrast each image modeling approach, a
 
 ## Task 6: Final Analysis 
 
-Under what circumstances a certain approach will be better? When answering that question, consider the following:
+Under what circumstances a particular approach will be better? When answering this question, consider the following:
 
 - When your classification or regression problem is making use of a mixed data type - you can only use the Embeddings Transformer (Image Vectorizer) approach: 
 
