@@ -1,13 +1,13 @@
 ---
-name: Issue report
-about: Create a report to help us improve
+name: Bug report
+about: 'A bug about a particular tutorial (or task) or a bug in the Learning Center '
 title: ''
 labels: ''
 assignees: ''
 
 ---
 
-**Tutorial title**
+**Tutorial Title**
 
 **Task #** 
 
