@@ -109,7 +109,7 @@ On the *Datasets page*:
 
 15. Name you experiment `Embeddings-Transformer-Without-Fine-Tuning`
 
-16. For the *TEST DATASET* select the following dataset: **car_deals_tes**
+16. For the *TEST DATASET* select the following dataset: **car_deals_test**
 
 18. As a target column, select **Price**
 
@@ -245,8 +245,10 @@ With this task in mind, let us now understand the dataset and settings used in t
 
 **Notes**:
 
-- "Transformer" refers to a particular type of neural network, in this case, CNN's. 
-- This modeling approach supports classification and regression experiments.
+- Transformer refers to the DAI internal terms (e.g., like a target-encoding transformer for tabular data). To learn more about Driverless AI Transformations, please refer to [this](https://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/transformations.html?highlight=target%20encoding) documentation 
+
+
+- This modeling approach supports classification and regression experiments
 
 In Driverless AI, there are several options in the **Expert Settings** panel that allow you to configure the Image Vectorizer **transformer**. While building the first experiment, note that we never configure the **Image Vectorizer transformer**. The reason being, when Driverless AI detected an image column in our dataset, certain default settings were used for our experiment. To bring the above into a clearer perspective, let us review how we ran our first experiment in task one while, understaing a bit more about **Embeddings Transformer** . 
 
@@ -273,7 +275,8 @@ The following should appear:
 
 When looking at the dataset rows, we will notice that our dataset has columns with different data types (such as images, strings, ints, etc.). That is because this modeling approach (Embeddings Transformer) supports the use of mixed data types (any number of image columns, text columns, numeric or categorical columns).
 
-In the first column (image_id), you will see images. When we **predicted** on the **car_deals_train** dataset, Driverless AI detected the images, and in the **EXPERIMENT SETUP** page, it decided to enable the **Image Transformer setting** (as observed in the image below). In other words, Driverless AI enabled the Image Transformer for the processing of image data. Accordingly, Driverless AI makes use of the first image processing approach when an image column is detected. In a moment, we will discuss how we can tell Driverless AI to use the second approach to image processing. 
+In the first column (image_id), you will see images. When we **predicted** on the **car_deals_train** dataset, Driverless AI detected the images, and in the **EXPERIMENT SETUP** page, it decided to enable the **Image Transformer setting** (as observed in the image below). In other words, Driverless AI enabled the Image Transformer for the processing of image data. Driverless AI uses Image Transformer (first approach) by default if there is at least a single image column in the dataset, and the ImageAuto model (second approach) will be considered below. (In a moment, we will discuss how we can tell Driverless AI to use the second approach to image processing).
+
 
 ![image-tab](assets/image-tab.png)
 
@@ -295,13 +298,13 @@ In terms of which architecture to use, the answer is more complicated than one m
 
 Besides being able to select the **ImageNet Pretrained architecture** for the **Image transformer**, you can also **Fine-Tune** the ImageNet Pretrained Models used for the Image Transformer. This is disabled by default, and therefore, the fine-tuning technique was not used in our first experiment in task one. In a bit, we will explore a pre-built rerun of the first experiment with fine-tuning enable, and we will see how it impacts our results. But before, let us quickly review what fine-tuning does. 
 
-As mentioned above, we can define a neural network architecture by choosing an existing ImageNet architecture, but how can we avoid the need to train our neural network from scratch? Usually, neural networks are initialized with random weights that reach a level of value that allows the network to classify the image input after a series of epochs are executed. With the just mentioned, the question that must be asked now is what if we could initialize those weights to certain values that we know beforehand are already good to classify a certain dataset. In our case, the car deals dataset. If the weights are predefined to correct values, we will not need to wait for a good number of epochs, and therefore, the weights will have it much more manageable. And the just mentioned above is achieved through transfer learning. Besides transfer learning, this can also be achieved with fine-tuning. 
+As mentioned above, we can define a neural network architecture by choosing an existing ImageNet architecture, but how can we avoid the need to train our neural network from scratch? Usually, neural networks are initialized with random weights that reach a level of value that allows the network to classify the image input after a series of epochs are executed. With the just mentioned, the question that must be asked now is what if we could initialize those weights to certain values that we know beforehand are already good to classify a certain dataset. In our case, the car deals dataset. If the weights are predefined to correct values, we will not need to wait for a good number of epochs, and therefore, the weights will have it much more manageable. And this can be achieved with fine-tuning. 
 
-In the case that our dataset is not similar to the ImageNet dataset or we want to improve the results of our model using ImageNet architectures, we can use fine-tuning. 
+Note: In Driverless AI, we kind of counterpart transfer learning and fine-tuning. But transfer learning, in general, is the method of using pre-trained models on some new datasets. At the same time, fine-tuning is just one of the ways of applying transfer learning. Therefore, when we enabled fine-tuning, we specify a specific way to apply transfer learning. Accordingly, if our dataset is not similar to the ImageNet dataset or we want to improve the results of our model using ImageNet architectures, we can use fine-tuning. 
 
 When enabling fine-tuning, we are not limited to retrain only the classifier section of the CNN, but we are also able to retrain the feature extraction stage: the convolutional and pooling layers. 
 
-**Note**: In practice, networks are fine-tuned when trained on a large dataset like the ImageNet. In other words, with fine-tuning, we continue the training of the architecture with the smaller dataset we have imported(running back-propagation). Fine-tuning will only work well if the smaller dataset is not so different from the original dataset (ImageNet) our architecture was trained. Once again, the pre-trained model will contain learned features relevant to our classification problem. 
+**Note**: In practice, networks are fine-tuned when trained on a large dataset like the ImageNet. In other words, with fine-tuning, we continue the training of the architecture with the smaller dataset we have imported(running back-propagation). Fine-tuning will work better if the smaller dataset is not so different from the original dataset (ImageNet) our architecture was trained. (In practice, fine-tuning works for any dataset, no matter how large it differs from the ImageNet. And the reason for that is that pre-trained models in the early layers learned some simple representations like edges, strokes, etc. And these representations are always more useful than start training from the random weights). Once again, the pre-trained model will contain learned features relevant to our classification or regression problem. 
 
 Before we explore a rerun of the first experiment from task one, let us end this task by mentioning one more default setting that was enabled by default during the first experiment. 
 
