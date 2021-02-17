@@ -275,10 +275,14 @@ The following should appear:
 
 When looking at the dataset rows, we will notice that our dataset has columns with different data types (such as images, strings, ints, etc.). That is because this modeling approach (Embeddings Transformer) supports the use of mixed data types (any number of image columns, text columns, numeric or categorical columns).
 
-In the first column (image_id), you will see images. When we **predicted** on the **car_deals_train** dataset, Driverless AI detected the images, and in the **EXPERIMENT SETUP** page, it decided to enable the **Image Transformer setting** (as observed in the image below). In other words, Driverless AI enabled the Image Transformer for the processing of image data. Driverless AI uses Image Transformer (first approach) by default if there is at least a single image column in the dataset, and the ImageAuto model (second approach) will be considered below. (In a moment, we will discuss how we can tell Driverless AI to use the second approach to image processing).
+In the first column (image_id), you will see images. When we **predicted** on the **car_deals_train** dataset, Driverless AI detected the images, and in the **EXPERIMENT SETUP** page, it decided to enable the **Image Transformer setting** (as observed in the image below). In other words, Driverless AI enabled the Image Transformer for the processing of image data. Driverless AI uses Image Transformer (first approach) by default if there is at least a single image column in the dataset, and the ImageAuto model (second approach) will be considered below. In a moment, we will discuss how we can tell Driverless AI to use the second approach to image processing.
+
+![imagetransformer-automatically-enabled-without-fine-tuning](assets/imagetransformer-automatically-enabled-without-fine-tuning.png)
+
 
 
 ![image-tab](assets/image-tab.png)
+
 
 To rephrase it, you can specify whether to use pre-trained deep learning models to process image data as part of the feature engineering pipeline. When this is enabled, a column of **Uniform Resources Identifiers (URIs)** to images is converted to a numeric representation using ImageNet pre-trained deep learning models. Again, the Image Transformer is enabled by default. 
 
