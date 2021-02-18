@@ -125,7 +125,7 @@ In image classification, the goal is to classify an image based on a set of poss
 
 **Transfer learning** allows anyone to build accurate models that make building image models less painful. Transfer Learning allows you to avoid relearning certain patterns again because you can use patterns others learned when solving a similar and different problem. Transfer Learning prevents many from starting from scratch. 
 
-> ''In computer vision, transfer learning is usually expressed through the use of pre-trained models. A pre-trained model is a model that was trained on a large benchmark dataset to solve a problem similar to the one that we want to solve. Accordingly, due to the computational cost of training such models, it is common practice to import and use models from published literature (e.g. VGG, Inception, MobileNet)" (Pedro Marcelino).
+- ''In computer vision, transfer learning is usually expressed through the use of pre-trained models. A pre-trained model is a model that was trained on a large benchmark dataset to solve a problem similar to the one that we want to solve. Accordingly, due to the computational cost of training such models, it is common practice to import and use models from published literature (e.g. VGG, Inception, MobileNet)" (Pedro Marcelino).
 
 For the most part, pre-trained models used in transfer learning are based on large Convolutional Neural Networks (CNNs). Why? Because CNN's have express high performance and easiness in training. In neural networks, CNNs have become essential to the process of face recognition and object detection. In layman's terms, a CNN can take an input image, process it, and classify it under certain categories (Eg., Snake, Cat, Dog, Monkey).
 
@@ -159,11 +159,11 @@ When you are remodeling a pre-trained model for your tasks, you begin by removin
 </p>
 
 
-1. **Stradegy 1**: "Train the entire model. In this case, you use the architecture of the pre-trained model and train it according to your dataset. You're learning the model from scratch, so you'll need a large dataset (and a lot of computational power)."(Pedro Marcelino)
+1. **Stradegy 1**: "Train the entire model. In this case, you use the architecture of the pre-trained model and train it according to your dataset. You're learning the model from scratch, so you'll need a large dataset (and a lot of computational power)"(Pedro Marcelino).
 
-2. **Stradegy 2**:  "Train some layers and leave the others frozen. As you remember, lower layers refer to general features (problem independent), while higher layers refer to specific features (problem dependent). Here, we play with that dichotomy by choosing how much we want to adjust the weights of the network (a frozen layer does not change during training). Usually, if you've a small dataset and a large number of parameters, you'll leave more layers frozen to avoid overfitting. By contrast, if the dataset is large and the number of parameters is small, you can improve your model by training more layers to the new task since overfitting is not an issue."(Pedro Marcelino)
+2. **Stradegy 2**:  "Train some layers and leave the others frozen. As you remember, lower layers refer to general features (problem independent), while higher layers refer to specific features (problem dependent). Here, we play with that dichotomy by choosing how much we want to adjust the weights of the network (a frozen layer does not change during training). Usually, if you've a small dataset and a large number of parameters, you'll leave more layers frozen to avoid overfitting. By contrast, if the dataset is large and the number of parameters is small, you can improve your model by training more layers to the new task since overfitting is not an issue"(Pedro Marcelino).
 
-3. **Stradegy 3**: "Freeze the convolutional base. This case corresponds to an extreme situation of the train/freeze trade-off. The main idea is to keep the convolutional base in its original form and then use its outputs to feed the classifier. You're using the pre-trained model as a fixed feature extraction mechanism, which can be useful if you're short on computational power, your dataset is small, and/or pre-trained model solves a problem very similar to the one you want to solve."(Pedro Marcelino)
+3. **Stradegy 3**: "Freeze the convolutional base. This case corresponds to an extreme situation of the train/freeze trade-off. The main idea is to keep the convolutional base in its original form and then use its outputs to feed the classifier. You're using the pre-trained model as a fixed feature extraction mechanism, which can be useful if you're short on computational power, your dataset is small, and/or pre-trained model solves a problem very similar to the one you want to solve"(Pedro Marcelino).
 
 
 Accordingly and from a practical perspective, the process of **transfer learning** can be summed up as follows: 
@@ -185,7 +185,7 @@ When it comes to selecting a pre-trained model - you pick one that looks suitabl
 
 The above pre-trained ImagNet Models (CNN architectures), also know as Convolutional Neural Networks, have been pre-trained on the ImageNet dataset. 
 
-ImageNet is a project that aims to label and categorize images into almost 22,000 separate object categories. Through the categorization and labeling of images, ImageNet hopes to make the ImageNet dataset a useful resource for educators, students, and the mission of computer vision research. In the world of deep learning and Convolutional Neural Networks, people often refer to the **ImageNet Large Scale Visual Recognition Challenge** when the term "ImageNet" is mentioned. "The goal of this image classification challenge is to train a model that can correctly classify an input image into 1,000 separate object categories. Models are trained on ~1.2 million training images with another 50,000 images for validation and 100,000 images for testing. These 1,000 image categories represent object classes that we encounter in our day-to-day lives, such as species of dogs, cats, various household objects, vehicle types, and much more."
+ImageNet is a project that aims to label and categorize images into almost 22,000 separate object categories. Through the categorization and labeling of images, ImageNet hopes to make the ImageNet dataset a useful resource for educators, students, and the mission of computer vision research. In the world of deep learning and Convolutional Neural Networks, people often refer to the **ImageNet Large Scale Visual Recognition Challenge** when the term "ImageNet" is mentioned. "The goal of this image classification challenge is to train a model that can correctly classify an input image into 1,000 separate object categories. Models are trained on ~1.2 million training images with another 50,000 images for validation and 100,000 images for testing. These 1,000 image categories represent object classes that we encounter in our day-to-day lives, such as species of dogs, cats, various household objects, vehicle types, and much more"(Adrian Rosebrock).
 
 The ImageNet challenge is now leading in the realm of image classification. This challenge has been dominated by **Convolutional Neural Networks** and **deep learning techniques**. Right now, several networks exist that represent some of the highest performing  **Convolutional Neural Networks** on the **ImageNet challenge**. These networks also demonstrate a strong ability to generalize images outside the ImageNet dataset via transfer learning, such as feature extraction and fine-tuning. That is why Driverless AI can use the mentioned **network architectures** above because of their fine-tuning and feature extraction ability. 
 
@@ -203,16 +203,16 @@ This matrix classifies your computer vision problem considering [your dataset's 
 
 3. **Fine-tune your model**
 
-Here you can use the Size-Similarity Matrix to oversee your selection and then refer to the three alternatives we mentioned before about remodeling a pre-trained model. The following image provides a visual summary of the text that follows.
+Here you can use the Size-Similarity Matrix to oversee your selection and then refer to the three alternatives we mentioned before about remodeling a pre-trained model. The following image provides a visual summary of the text that follows:
 
 
-> **Quadrant 1**. "Large dataset, but different from the pre-trained model’s dataset. This situation will lead you to Strategy 1. Since you have a large dataset, you’re able to train a model from scratch and do whatever you want. Despite the dataset dissimilarity, in practice, it can still be useful to initialise your model from a pre-trained model, using its architecture and weights"(Pedro Marcelino).
+- **Quadrant 1**. "Large dataset, but different from the pre-trained model’s dataset. This situation will lead you to Strategy 1. Since you have a large dataset, you’re able to train a model from scratch and do whatever you want. Despite the dataset dissimilarity, in practice, it can still be useful to initialise your model from a pre-trained model, using its architecture and weights"(Pedro Marcelino).
 
-> **Quadrant 2**. "Large dataset and similar to the pre-trained model’s dataset. Here you’re in la-la land. Any option works. Probably, the most efficient option is Strategy 2. Since we have a large dataset, overfitting shouldn’t be an issue, so we can learn as much as we want. However, since the datasets are similar, we can save ourselves from a huge training effort by leveraging previous knowledge. Therefore, it should be enough to train the classifier and the top layers of the convolutional base"(Pedro Marcelino).
+- **Quadrant 2**. "Large dataset and similar to the pre-trained model’s dataset. Here you’re in la-la land. Any option works. Probably, the most efficient option is Strategy 2. Since we have a large dataset, overfitting shouldn’t be an issue, so we can learn as much as we want. However, since the datasets are similar, we can save ourselves from a huge training effort by leveraging previous knowledge. Therefore, it should be enough to train the classifier and the top layers of the convolutional base"(Pedro Marcelino).
 
-> **Quadrant 3**. "Small dataset and different from the pre-trained model’s dataset. This is the 2–7 off-suit hand of computer vision problems. Everything is against you. If complaining is not an option, the only hope you have is Strategy 2. It will be hard to find a balance between the number of layers to train and freeze. If you go to deep your model can overfit, if you stay in the shallow end of your model you won’t learn anything useful. Probably, you’ll need to go deeper than in Quadrant 2 and you’ll need to consider data augmentation techniques (a nice summary on data augmentation techniques is provided here)"(Pedro Marcelino).
+- **Quadrant 3**. "Small dataset and different from the pre-trained model’s dataset. This is the 2–7 off-suit hand of computer vision problems. Everything is against you. If complaining is not an option, the only hope you have is Strategy 2. It will be hard to find a balance between the number of layers to train and freeze. If you go to deep your model can overfit, if you stay in the shallow end of your model you won’t learn anything useful. Probably, you’ll need to go deeper than in Quadrant 2 and you’ll need to consider data augmentation techniques (a nice summary on data augmentation techniques is provided here)"(Pedro Marcelino).
 
-> **Quadrant 4**. "Small dataset, but similar to the pre-trained model’s dataset. [For this situation, Strategy 3 will work best.] You just need to remove the last fully-connected layer (output layer), run the pre-trained model as a fixed feature extractor, and then use the resulting features to train a new classifier"(Pedro Marcelino).
+- **Quadrant 4**. "Small dataset, but similar to the pre-trained model’s dataset. [For this situation, Strategy 3 will work best.] You just need to remove the last fully-connected layer (output layer), run the pre-trained model as a fixed feature extractor, and then use the resulting features to train a new classifier"(Pedro Marcelino).
 
 <p align="center">
     <img src="assets/stradegy-matrix.png" width="505" height="490"> 
@@ -220,7 +220,7 @@ Here you can use the Size-Similarity Matrix to oversee your selection and then r
 
 As noted above, models for image classification that result from a transfer learning approach based on **pre-trained convolutional neural networks** are usually composed of two parts. When it comes to the Classifier one can follow several approaches when building the Classifier. For example:
 
-> **Global Average Pooling**: In this approach, instead of adding fully connected layers on top of the convolutional base, we add a global average pooling layer and feed its output directly into the softmax activated layer. 
+- **Global Average Pooling**: "In this approach, instead of adding fully connected layers on top of the convolutional base, we add a global average pooling layer and feed its output directly into the softmax activated layer"(Pedro Marcelino). 
 
 Other approaches include **Fully-connected layers** and **Linear support vector machines**. 
 
@@ -236,6 +236,12 @@ When it comes to image classification, you don't have to use the transfer learni
 2. Transfer learning leads to generalization where the model is prepared to perform well with data it was not trained on
 
 With this task in mind, let us now understand the dataset and settings used in the first experiment; doing so will allow us to understand Embeddigns Transformer (the first approach to image processing in Driverless AI).
+
+### References 
+
+- Marcelino, Pedro. “Transfer Learning from Pre-Trained Models.” Medium, Towards Data Science, 23 Oct. 2018, towardsdatascience.com/transfer-learning-from-pre-trained-models-f2393f124751.
+
+- Rosebrock, Adrian. "ImageNet: VGGNet, ResNet, Inception, and Xception with Keras." Py Image Search, 20 March. 2017, pyimagesearch.com/2017/03/20/imagenet-vggnet-resnet-inception-xception-keras/.
 
 ## Task 3: First Approach: Embeddings Transformer (Image Vectorizer)
 
@@ -304,7 +310,7 @@ Besides being able to select the **ImageNet Pretrained architecture** for the **
 
 As mentioned above, we can define a neural network architecture by choosing an existing ImageNet architecture, but how can we avoid the need to train our neural network from scratch? Usually, neural networks are initialized with random weights that reach a level of value that allows the network to classify the image input after a series of epochs are executed. With the just mentioned, the question that must be asked now is what if we could initialize those weights to certain values that we know beforehand are already good to classify a certain dataset. In our case, the car deals dataset. If the weights are predefined to correct values, we will not need to wait for a good number of epochs, and therefore, the weights will have it much more manageable. And this can be achieved with fine-tuning. 
 
-Note: In Driverless AI, we kind of counterpart transfer learning and fine-tuning. But transfer learning, in general, is the method of using pre-trained models on some new datasets. At the same time, fine-tuning is just one of the ways of applying transfer learning. Therefore, when we enabled fine-tuning, we specify a specific way to apply transfer learning. Accordingly, if our dataset is not similar to the ImageNet dataset or we want to improve the results of our model using ImageNet architectures, we can use fine-tuning. 
+**Note**: In Driverless AI, we kind of counterpart transfer learning and fine-tuning. But transfer learning, in general, is the method of using pre-trained models on some new datasets. At the same time, fine-tuning is just one of the ways of applying transfer learning. Therefore, when we enabled fine-tuning, we specify a specific way to apply transfer learning. Accordingly, if our dataset is not similar to the ImageNet dataset or we want to improve the results of our model using ImageNet architectures, we can use fine-tuning. 
 
 When enabling fine-tuning, we are not limited to retrain only the classifier section of the CNN, but we are also able to retrain the feature extraction stage: the convolutional and pooling layers. 
 
@@ -312,7 +318,7 @@ When enabling fine-tuning, we are not limited to retrain only the classifier sec
 
 Before we explore a rerun of the first experiment from task one, let us end this task by mentioning one more default setting that was enabled by default during the first experiment. 
 
-Every time we define a classification learning problem with a feature-vector, we are creating a feature space. Consequently, Driverless AI allows you to enable the dimensionality of the feature (embeddings) space by Image Transformer. The following are options that you can choose from: 
+Driverless AI allows you to enable the dimensionality of the feature (embeddings) space by Image Transformer. We take the embeddings vector from the last global average pooling layer of the pre-trained model. For different models, it has different dimensionalities (usually ranging from 512 to 2k). And in DAI, we suppress these representations to a lower number to suppress the transformer's number of features. The following are options that you can choose from: 
 
 - 10
 - 25 
@@ -332,12 +338,22 @@ The validation score for the final pipeline is RMSE = 4058.833 +/- 154.7854
 
 - Note: "Root Mean Square Error (RMSE) is the standard deviation of the residuals (prediction errors). 
 
-    - Residuals are a measure of how far from the regression line data points are; RMSE is a measure of how spread out these residuals are. In other words, it tells you how concentrated the data is around the line of best fit."
+    - Residuals are a measure of how far from the regression line data points are; RMSE is a measure of how spread out these residuals are. In other words, it tells you how concentrated the data is around the line of best fit"(Ashutosh Krishna).
     - Recall that RMSE is a popular formula to measure a regression model's error rate. However, one can only compare it between models whose errors are measured in the same units.
     - Also, recall that RMSE has the same unit as the dependent variable in our case; our dependent variable(DV) is dollars. Consequently, what will be considered a good RMSE value depends on our DV, and, therefore, there is no absolute good or bad RMSE threshold when DV is not known. 
-    - Because the range of our DV is from 1,000 (min) - 97,000(max) our RMSE(4058.833) will be consider small. The smaller the RMSE, in this case, the better. 
+    - Because the range of our DV is from 1,000 (min) - 97,000(max) our RMSE(4058.833) will be consider small. The closer the RMSE is to zero, the better the regression model. In this case, we can say the regression model is good because the RMSE is not too far from zero. From our observations, we see that our data is pretty well concentrated around the line of best fit.  
 
 In the next section, let's explore the pre-rebuilt experiment from task one, and let's see the impact fine-tuning has on the model's performance.
+
+### References 
+
+- Krishna, Ashutosh. "Machine Learning Algorithms-Linear Regression." Data Driven investor, 14 March. 2019, medium.com/datadriveninvestor/machine-learning-algorithms-linear-regression-f89ab64ac490.
+
+### Deeper Dive and Resources
+
+- [Driverless AI Transformations](https://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/transformations.html?highlight=target%20encoding#driverless-ai-transformations)
+- [Illustrated: 10 CNN Architectures](https://towardsdatascience.com/illustrated-10-cnn-architectures-95d78ace614d#d27e)
+- [Image Settings](https://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/expert_settings/image_settings.html#image-settings)
 
 ## Task 4: Embeddings Transformer (Image Vectorizer) with Fine-tuning
 
@@ -389,11 +405,19 @@ In our case, the Xception model has been trained on ~1.2 million training images
 
 So how else can we improve the RMSE for the first experiment? Well, if you recall task 2, the following is stated: 
 
- > "Small dataset, but similar to the pre-trained model's dataset. [For this situation, Strategy 3 will work best.] You just need to remove the last fully-connected layer (output layer), run the pre-trained model as a fixed feature extractor, and then use the resulting features to train a new classifier" (Pedro Marcelino).
+ - "Small dataset, but similar to the pre-trained model's dataset. [For this situation, Strategy 3 will work best.] You just need to remove the last fully-connected layer (output layer), run the pre-trained model as a fixed feature extractor, and then use the resulting features to train a new classifier" (Pedro Marcelino).
 
  In other words, we don't need to fine-tune in this case. In this case, the score can be improved if we do not edit the convolutional base in its original form and we use its outputs to feed the classifier. Therefore, the Xception model will suffice while only training the model's classification part. 
 
 Now in the next task, let's explore **automatic image model** as the second approach to image processing in Driverless AI. 
+
+### References 
+
+- Marcelino, Pedro. “Transfer Learning from Pre-Trained Models.” Medium, Towards Data Science, 23 Oct. 2018, towardsdatascience.com/transfer-learning-from-pre-trained-models-f2393f124751.
+
+### Deeper Dive and Resources
+
+- [List of Augmentations for Fine-Tuning Used for the Image Transformer](https://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/expert_settings/image_settings.html#list-of-augmentations-for-fine-tuning-used-for-the-image-transformer)
 
 ## Task 5: Second Approach: Automatic Image Model
 
@@ -442,14 +466,6 @@ In the **Datasets** page:
     Right after, a *warning* dialog box will appear stating the following about selecting **image_model**:    
 
     ![warning](assets/warning.png)
-
-    > Based on last changes some settings were automatically updated: 
-    > - **Include specific transformers**: ImageOriginalTransfomer 
-    > - **Whether to skip failures of transformers**: disabled
-    > - **Include specific models**: ImageAutoModel
-    > - **last_recipe**: image_model
-    > - **Whether to skip failures of models**: disabled 
-
     
 10. In terms of the **training settings**, don't change them; we will use the recommended settings. 
 
@@ -563,8 +579,7 @@ Under what circumstances a particular approach will be better? When answering th
 
 With the above in mind, you are ready to generate your Image Models. Note: as of now, Driverless AI supports the following problem types: 
 
-- Embeddings Transformer 
-- Classification 
+- Classification (single-label)
 - Regression 
 
 Though in the roadmap, Driverless AI will be able to support the following problem types: 
@@ -586,6 +601,14 @@ To continue with the Driverless AI learning path, consider the next tutorial in 
 - [Tutorial 3A: Get Started with Open Source Custom Recipes Tutorial](https://training.h2o.ai/products/tutorial-3a-get-started-with-open-source-custom-recipes-tutorial#tab-product_tab_overview)
 
 ## Special Thanks: 
+
+Thank you to everyone that took the time to make this tutorial possible.
+
+- Yauhen Babakhin -
+Data Scientist | Kaggle Grandmaster
+- Jo-fai (Joe) Chow - 
+Data Science + Community + #360Selfie
+- Sanyam Bhutani - Machine Learning Engineer and AI Content Creator at H2O.ai | Kaggle Master + x2 Expert (Ranked in Top 1%)
 
 
 
