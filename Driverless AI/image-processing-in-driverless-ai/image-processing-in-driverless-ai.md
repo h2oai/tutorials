@@ -65,14 +65,11 @@ On the *Datasets page*, import the *Kaggle-MyAutoData-dataset*:
 
 4. Select the following option: **car_deals.zip [776.5MB]**
 
+![explore-s3](assets/explore-s3.png)
+
 5. **CLICK TO IMPORT SELECTION**
 
     - After the dataset is imported successfully, the new dataset will be under the following name: *car_deals.zip*
-
-![amazon-s3-dataset-import](assets/amazon-s3-dataset-import.png)
-
-![explore-s3](assets/explore-s3.png)
-
 
 On the *Datasets page*: 
 
@@ -335,6 +332,8 @@ Driverless AI allows you to enable the dimensionality of the feature (embeddings
 Other settings exist to configure the **Image Vectorizer transformer,** but we will not cover all of them for this tutorial. Though, we will discuss the other settings in future tutorials. For now, please refer to the Driverless AI documentation [here](https://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/expert_settings/image_settings.html#image-settings) for more details on the predefined settings used in our first experiment.
 
 On the point of how our model performed with the auto default settings for **Embeddings Transformer without Fine-tuning**, one can observe the following:
+
+![exp1-summary-page](assets/exp1-summary-page.png)
 
 The validation score for the final pipeline model is RMSE = 4058.833 +/- 154.7854
 
