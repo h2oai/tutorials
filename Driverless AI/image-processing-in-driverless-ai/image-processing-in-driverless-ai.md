@@ -274,8 +274,6 @@ With this task in mind, let us now understand the dataset and settings used in t
 **Notes**:
 
 - Transformer refers to the Driverless AI internal terms (e.g., like a target-encoding transformer for tabular data). To learn more about Driverless AI Transformations, please refer to [this](https://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/transformations.html?highlight=target%20encoding) documentation 
-
-
 - This modeling approach supports classification and regression experiments
 
 In Driverless AI, there are several options in the **Expert Settings** panel that allow you to configure the Image Vectorizer **transformer**. While building the first experiment, note that we never configure the **Image Vectorizer transformer**. The reason being, when Driverless AI detected an image column in our dataset, certain default settings were used for our experiment. To bring the above into a clearer perspective, let us review how we ran our first experiment in task one while, understaing a bit more about **Embeddings Transformer** . 
@@ -439,7 +437,6 @@ For our second experiment, we see that the validation score for the final pipeli
 For the most part, fine-tuning will lead to better results, though there are times when that will not be the case. Performance depends on the type of problem you have: If: 
 
 - Our dataset(car_deals_train) is smaller and similar to the original one(ImageNet) - you need to be careful with fine-tuning because it could be the case that other learning models can achieve better results(e.g., linear classifier). 
-
 - When the new dataset is larger and similar to the original, having more data will not over-fit the model. Therefore, we can say with confidence that fine-tuning can achieve better results. 
 
 In our case, the Xception model has been trained on ~1.2 million training images with another 50,000 images for validation and 100,000 images for testing. Although the RMSE improve, note that it didn't improve drastically. Fine-tuning could not help much, as the ImageNet has already been trained on various car models. 
@@ -652,11 +649,11 @@ To continue with the Driverless AI learning path, consider the next tutorial in 
 
 Thank you to everyone that helped make this tutorial possible.
 
-- Yauhen Babakhin -
+- **Yauhen Babakhin** -
 Data Scientist | Kaggle Grandmaster
-- Jo-fai (Joe) Chow - 
+- **Jo-fai (Joe) Chow** - 
 Data Science + Community + #360Selfie
-- Sanyam Bhutani - Machine Learning Engineer and AI Content Creator at H2O.ai | Kaggle Master + x2 Expert (Ranked in Top 1%)
+- **Sanyam Bhutani** - Machine Learning Engineer and AI Content Creator at H2O.ai | Kaggle Master + x2 Expert (Ranked in Top 1%)
 
 
 
