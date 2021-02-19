@@ -47,7 +47,7 @@ As mentioned in the **objective** section, we will use three image models, but r
 
 ![image-processing-three-pre-built-experiments](assets/image-processing-three-pre-built-experiments.png)
 
-For understanding purposes, let's see how the first experiment was run. Right after, we will follow to understand the dataset and settings used in the first image model; doing so will allow us to understand **Embeddigns Transformer** (the first approach to image processing in Driverless AI).
+For understanding purposes, let's see how the first experiment was run. Right after, we will follow to understand the dataset and settings used in the first image model; doing so will allow us to understand **embeddings Transformer** (the first approach to image processing in Driverless AI).
 
 Our first image model(experiment) predicts a car's price (again, we will explore the dataset and all settings for this model in a moment). 
 
@@ -108,9 +108,22 @@ On the *Datasets page*:
 
 16. For the *TEST DATASET* select the following dataset: **car_deals_test**
 
-18. As a target column, select **Price**
+17. As a target column, select **Price**
 
-20. **LAUNCH EXPERIMENT**
+18. Click the **DROPPED COLUMNS** option 
+
+    - Click the **CHECK ALL** option
+    - Deselect the following columns:
+        
+        - image_id
+        - Color
+        - InteriorColor
+        - Leatherinterior
+     
+
+    ![drop-columns](assets/drop-columns.png)
+
+19. **LAUNCH EXPERIMENT**
 
 ![embeddings-transformer-a](assets/embeddings-transformer-a.png)
 
@@ -126,13 +139,14 @@ In image classification, the goal is to classify an image based on a set of poss
 
 For the most part, pre-trained models used in transfer learning are based on large Convolutional Neural Networks (CNNs). Why? Because CNN's have express high performance and easiness in training. In neural networks, CNNs have become essential to the process of face recognition and object detection. In layman's terms, a CNN can take an input image, process it, and classify it under certain categories (Eg., Snake, Cat, Dog, Monkey).
 
+![](assets/cnn.png)
 <p align="center">
-    <img src="assets/cnn.png" width="690" height="400"> 
+    Figure 1. CNN Overview One
 </p>
 
 ![](assets/cnn-2.png)
 <p align="center">
-    CNN Overview
+    Figure 2. CNN Overview Two
 </p>
 
 A typical CNN has two parts:
@@ -143,9 +157,10 @@ A typical CNN has two parts:
 
 The following image shows the architecture of a model based on CNNs. It is important to note that this illustration is a simplified version that fits this tutorial's purposes (the illustration doesn't capture the complexity of the model's architecture).  
 
-<p align="center">
-    Architecture of a model based on CNNs
-     <br><img src='assets/simplified-cnn.png'></img>    
+
+<p align="center"> 
+    <img src='assets/simplified-cnn.png'></img>    
+    <p align="center">Figure 3. Architecture of a model based on CNNs</p>
 </p>
 
 
@@ -153,6 +168,7 @@ When you are remodeling a pre-trained model for your tasks, you begin by removin
 
 <p align="center">
     <img src="assets/three-strategies.png" width="590" height="380"> 
+    <p align="center">Figure 4. strategies</p>
 </p>
 
 
@@ -195,6 +211,7 @@ This matrix classifies your computer vision problem considering [your dataset's 
 
 <p align="center">
     <img src="assets/matrix.png" width="505" height="490"> 
+    <p align="center">Figure 5. Quadrants</p>
 </p>
 
 
@@ -212,7 +229,8 @@ Here you can use the Size-Similarity Matrix to oversee your selection and then r
 - **Quadrant 4**. "Small dataset, but similar to the pre-trained model’s dataset. [For this situation, Strategy 3 will work best.] You just need to remove the last fully-connected layer (output layer), run the pre-trained model as a fixed feature extractor, and then use the resulting features to train a new classifier"(Pedro Marcelino).
 
 <p align="center">
-    <img src="assets/stradegy-matrix.png" width="505" height="490"> 
+    <img src="assets/stradegy-matrix.png" width="505" height="490">
+    <p align="center">Figure 6. Quadrants + Strategies</p> 
 </p>
 
 As noted above, models for image classification that result from a transfer learning approach based on **pre-trained convolutional neural networks** are usually composed of two parts. When it comes to the Classifier one can follow several approaches when building the Classifier. For example:
@@ -228,17 +246,24 @@ When it comes to image classification, you don't have to use the transfer learni
 
 <p align="center">
     <img src="assets/three-ways-in-which-transfer-might-improve-learning.png" width="380" height="230"> 
+    <p align="center">Figure 7. Transfer Learning</p>
 </p>
 
 2. Transfer learning leads to generalization where the model is prepared to perform well with data it was not trained on.
 
-With this task in mind, let us now understand the dataset and settings used in the first experiment; doing so will allow us to understand Embeddigns Transformer (the first approach to image processing in Driverless AI).
+With this task in mind, let us now understand the dataset and settings used in the first experiment; doing so will allow us to understand Embeddings Transformer (the first approach to image processing in Driverless AI).
 
 ### References 
 
 - Marcelino, Pedro. “Transfer Learning from Pre-Trained Models.” Medium, Towards Data Science, 23 Oct. 2018, towardsdatascience.com/transfer-learning-from-pre-trained-models-f2393f124751.
-
 - Rosebrock, Adrian. "ImageNet: VGGNet, ResNet, Inception, and Xception with Keras." Py Image Search, 20 March. 2017, pyimagesearch.com/2017/03/20/imagenet-vggnet-resnet-inception-xception-keras/.
+- [Figure 1. CNN Overview One](https://www.researchgate.net/figure/A-general-architecture-of-CNN-taken-from-27_fig2_342763400)
+- [Figure 2. CNN Overview Two](https://towardsdatascience.com/from-lenet-to-efficientnet-the-evolution-of-cnns-3a57eb34672f)
+- [Figure 3. Architecture of a model based on CNNs](https://towardsdatascience.com/transfer-learning-from-pre-trained-models-f2393f124751)
+- [Figure 4. strategies](https://towardsdatascience.com/transfer-learning-from-pre-trained-models-f2393f124751)
+- [Figure 5. Quadrants](https://towardsdatascience.com/transfer-learning-from-pre-trained-models-f2393f124751)
+- [Figure 6. Quadrants + Strategies](https://towardsdatascience.com/transfer-learning-from-pre-trained-models-f2393f124751)
+- [Figure 7. Transfer Learning](https://analyticsindiamag.com/transfer-learning-deep-learning-significance/)
 
 ## Task 3: First Approach: Embeddings Transformer (Image Vectorizer)
 
@@ -276,9 +301,9 @@ The following should appear:
 
 ![car-delas-dataset-details](assets/car-delas-dataset-details.png)
 
-When looking at the dataset rows, we will notice that our dataset has columns with different data types (such as images, strings, ints, etc.). That is because this modeling approach (Embeddings Transformer) supports the use of mixed data types (any number of image columns, text columns, numeric or categorical columns).
+When looking at the dataset rows, we will notice that our dataset has columns with different data types. That is because this modeling approach (Embeddings Transformer) supports the use of mixed data types (any number of image columns, text columns, numeric or categorical columns).
 
-In the first column (image_id), you will see images. When we **predicted** on the **car_deals_train** dataset, Driverless AI detected the images, and in the **EXPERIMENT PREVIEW** page, it decided to enable the **Image Transformer setting** (as observed in the image below). In other words, Driverless AI enabled the Image Transformer for the processing of image data. Driverless AI uses Image Transformer (first approach) by default if there is at least a single image column in the dataset, and the ImageAuto model (second approach) will be considered below. In a moment, we will discuss how we can tell Driverless AI to use the second approach to image processing.
+In the first column (image_id), you will see images. When we **predicted** on the **car_deals_train** dataset, Driverless AI detected the images, and in the **EXPERIMENT PREVIEW** page, it decided to enable the **Image Transformer setting** (as observed in the image below). In other words, Driverless AI enabled the Image Transformer for the processing of image data. Driverless AI uses Image Transformer (first approach) by default if there is at least a single image column in the dataset. In a moment, we will discuss how we can tell Driverless AI to use the second approach to image processing.
 
 ![imagetransformer-automatically-enabled-without-fine-tuning](assets/imagetransformer-automatically-enabled-without-fine-tuning.png)
 
@@ -289,7 +314,7 @@ Note that in the **Image** tab inside the **EXPERT SETTINGS** you can **Enable I
 
 To rephrase it, you can specify whether to use pre-trained deep learning models to process image data as part of the feature engineering pipeline. When this is enabled, a column of **Uniform Resources Identifiers (URIs)** to images is converted to a numeric representation using ImageNet pre-trained deep learning models. Again, the Image Transformer is enabled by default. 
 
-When the Image Transformer is enabled, Driverless AI defaults the **xception ImageNet Pretrained Architecture** for the Image Transformer. As mentioned in task 2, Driverless AI offers an array of supported **ImageNet pre-trained architectures** for **image transformer**.(One can find it in the **Expert Settings** under the **Image Tab** under the **Supported ImageNet pre-trained Architecture for Image Transformer** setting(as observed in the image below )) 
+When the Image Transformer is enabled, Driverless AI defaults the **xception ImageNet Pretrained Architecture** for the Image Transformer. As mentioned in task 2, Driverless AI offers an array of supported **ImageNet pre-trained architectures** for **image transformer**.(One can find it in the **Expert Settings** under the **Image Tab** under the following settings: **Supported ImageNet pre-trained Architecture for Image Transformer** (as observed in the image below)
 
 
 
@@ -297,11 +322,14 @@ When the Image Transformer is enabled, Driverless AI defaults the **xception Ima
 
 The **CNN Xception ImageNet Architecture** is an extension of the Inception Architecture, where the Inception modules have been replaced with depthwise separable convolutions. As an overview, Xception takes the Inception hypothesis to an eXtreme where 1×1 convolutions capture cross-channel (or cross-feature map) correlations. Right after,  spatial correlations within each channel are captured via the regular 3×3 or 5×5 convolutions. Thus, this approach is identical to replacing the Inception module with depthwise separable convolutions. To note, Xception slightly outperforms Inception v3 on the ImageNet dataset and outperforms it on a larger image classification dataset with 17,000 classes. With the above in mind, that is why we say that Xception is an extension of the Inception architecture, which replaces the standard Inception modules with depthwise separable convolutions. To learn more about other architecures please refer to the following article: [Illustrated: 10 CNN Architectures](https://towardsdatascience.com/illustrated-10-cnn-architectures-95d78ace614d#d27e).
 
-![](assets/xception.png)
+![xception](assets/xception.png)
+<p align="center">
+    Figure 8. Xception
+</p>
 
 **Note**:
 
-- Multiple transformes can be activated at the same time to allow the selection of multiple options. In this case, embeddigns from the different architectures are concatenated together (in a single embedding). 
+- Multiple transformes can be activated at the same time to allow the selection of multiple options. In this case, embeddings from the different architectures are concatenated together (in a single embedding). 
 
 In terms of which architecture to use, the answer is more complicated than one might think. There are a lot of CNN architectures out there, but how do we choose the best one for our problem? But exactly what is defined as the **best architecture**? Best can mean the simplest or perhaps the most efficient at producing accuracy while reducing computational complexity. Choosing a CNN architecture for your problem also depends on the problem you want to solve, and as of now is known that certain architectures are good and bad for certain problems.  As well, to find the best architecture for your problem, you have to run your problem with several architectures and see which one provides the best efficiency or perhaps the best accuracy while reducing computational complexity.Though I will say that if your dataset is similar to the dataset used to train the architecture, you will discover better results.
 
@@ -313,7 +341,7 @@ As mentioned above, we can define a neural network architecture by choosing an e
 
 When enabling fine-tuning, we are not limited to retrain only the classifier section of the CNN, but we are also able to retrain the feature extraction stage: the convolutional and pooling layers. 
 
-**Note**: In practice, networks are fine-tuned when trained on a large dataset like the ImageNet. In other words, with fine-tuning, we continue the training of the architecture with the smaller dataset we have imported(running back-propagation). Fine-tuning will work better if the smaller dataset is not so different from the original dataset (ImageNet) our architecture was trained. (In practice, fine-tuning works for any dataset, no matter how large it differs from the ImageNet. And the reason for that is that pre-trained models in the early layers learned some simple representations like edges, strokes, etc. And these representations are always more useful than start training from the random weights). Once again, the pre-trained model will contain learned features relevant to our classification or regression problem. 
+**Note**: In practice, networks are fine-tuned when trained on a large dataset like the ImageNet. In other words, with fine-tuning, we continue the training of the architecture with the large dataset we have imported. Fine-tuning will work better if the large dataset is not so different from the original dataset (ImageNet) our architecture was trained. (In practice, fine-tuning works for any dataset, no matter how large it differs from the ImageNet. And the reason for that is that pre-trained models in the early layers learned some simple representations like edges, strokes, etc. And these representations are always more useful than start training from the random weights). Once again, the pre-trained model will contain learned features relevant to our classification or regression problem. 
 
 Before we explore a rerun of the first experiment from task one, let us end this task by mentioning one more default setting that was enabled by default during the first experiment. 
 
@@ -335,14 +363,16 @@ On the point of how our model performed with the auto default settings for **Emb
 
 ![exp1-summary-page](assets/exp1-summary-page.png)
 
-The validation score for the final pipeline model is RMSE = 4058.833 +/- 154.7854
+The validation score for the final pipeline model is RMSE = 5539.728 +/- 141.9786
 
 - Note: "Root Mean Square Error (RMSE) is the standard deviation of the residuals (prediction errors). 
 
     - Residuals are a measure of how far from the regression line data points are; RMSE is a measure of how spread out these residuals are. In other words, it tells you how concentrated the data is around the line of best fit"(Ashutosh Krishna).
     - Recall that RMSE is a popular formula to measure a regression model's error rate. However, one can only compare it between models whose errors are measured in the same units.
     - Also, recall that RMSE has the same unit as the dependent variable in our case; our dependent variable(DV) is dollars. Consequently, what will be considered a good RMSE value depends on our DV, and, therefore, there is no absolute good or bad RMSE threshold when DV is not known. 
-    - Because the range of our DV is from 1,000 (min) - 97,000(max) our RMSE(4058.833) will be consider small. The closer the RMSE is to zero, the better the regression model. In this case, we can say the regression model is good because the RMSE is not too far from zero. From our observations, we see that our data is pretty well concentrated around the line of best fit.  
+    - Because the range of our DV is from 1,000 (min) - 97,000(max) our RMSE(5539.728) will be consider small. The closer the RMSE is to zero, the better the regression model. In this case, we can say the regression model is good because the RMSE is not too far from zero. From our observations, we see that our data is pretty well concentrated around the line of best fit.  
+
+    ![with-out-fine-tuning](assets/with-out-fine-tuning.png)
 
 In the next section, let's explore the pre-rebuilt experiment from task one, and let's see the impact fine-tuning has on the model's performance.
 
@@ -355,6 +385,7 @@ In the next section, let's explore the pre-rebuilt experiment from task one, and
 - [Driverless AI Transformations](https://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/transformations.html?highlight=target%20encoding#driverless-ai-transformations)
 - [Illustrated: 10 CNN Architectures](https://towardsdatascience.com/illustrated-10-cnn-architectures-95d78ace614d#d27e)
 - [Image Settings](https://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/expert_settings/image_settings.html#image-settings)
+- [Figure 8. Xception](https://www.programmersought.com/article/77022193232/)
 
 ## Task 4: Embeddings Transformer (Image Vectorizer) with Fine-tuning
 
@@ -403,21 +434,21 @@ The following should appear:
 
 ![finish-experiment-car_deals_with_fine_tuning](assets/finish-experiment-car_deals_with_fine_tuning.png)
 
-For our second experiment, we see that the validation score for the final pipeline is RMSE = 4114.0424 +/- 231.9882. Recall that the RMSE for the first experiment was 4058.833 +/- 154.7854. Enabling fine-tuning didn't improve the RMSE; instead, it did the opposite. The RMSE increase by ~55.209.
+For our second experiment, we see that the validation score for the final pipeline is RMSE = 4838.458 +/- 123.3152. Recall that the RMSE for the first experiment was 5539.728 +/- 141.9786. Enabling fine-tuning improve the RMSE. The RMSE decrease by ~701.27.
 
 For the most part, fine-tuning will lead to better results, though there are times when that will not be the case. Performance depends on the type of problem you have: If: 
 
-- Our dataset(car_deals_train) is smaller and similar to the original one(ImageNet) - you need to be careful with fine-tuning because it could be the case that other learning models can achieve better results(e.g., linear classifier). In this case, fine-tuning is not necessary for our car deals dataset. 
+- Our dataset(car_deals_train) is smaller and similar to the original one(ImageNet) - you need to be careful with fine-tuning because it could be the case that other learning models can achieve better results(e.g., linear classifier). 
 
 - When the new dataset is larger and similar to the original, having more data will not over-fit the model. Therefore, we can say with confidence that fine-tuning can achieve better results. 
 
-In our case, the Xception model has been trained on ~1.2 million training images with another 50,000 images for validation and 100,000 images for testing. Our car_deals_train dataset with 26k images will be considered small. That is why fine-tuning did not improve the RMSE because it could be the case that a linear classifier can improve the scorer. 
+In our case, the Xception model has been trained on ~1.2 million training images with another 50,000 images for validation and 100,000 images for testing. Although the RMSE improve, note that it didn't improve drastically. Fine-tuning could not help much, as the ImageNet has already been trained on various car models. 
 
 So how else can we improve the RMSE for the first experiment? Well, if you recall task 2, the following is stated: 
 
- - "Small dataset, but similar to the pre-trained model's dataset. [For this situation, Strategy 3 will work best.] You just need to remove the last fully-connected layer (output layer), run the pre-trained model as a fixed feature extractor, and then use the resulting features to train a new classifier" (Pedro Marcelino).
+ > **Quadrant 2**. "Large dataset and similar to the pre-trained model’s dataset. Here you’re in la-la land. Any option works. Probably, the most efficient option is Strategy 2. Since we have a large dataset, overfitting shouldn’t be an issue, so we can learn as much as we want. However, since the datasets are similar, we can save ourselves from a huge training effort by leveraging previous knowledge. Therefore, it should be enough to train the classifier and the top layers of the convolutional base"(Pedro Marcelino).
 
- In other words, we don't need to fine-tune in this case. In this case, the score can be improved if we do not edit the convolutional base in its original form and we use its outputs to feed the classifier. Therefore, the Xception model will suffice while only training the model's classification part. 
+Note that in Driverless AI and when we enabled fine-tuning, we unfreeze the whole network.
 
 Now in the next task, let's explore **automatic image model** as the second approach to image processing in Driverless AI. 
 
@@ -439,12 +470,12 @@ Unique **insights** that provide information and sample **images** for the curre
 
 **Notes**:
 
-- This modeling approach only supports a **single** image column as an input.
-- This modeling approach does not support any transformers.
-- This modeling approach supports classification and regression experiments.
-- This modeling approach does not support the use of mixed data types because of its limitation on input features.
-- This modeling approach does not use Genetic Algorithm (GA).
-- The use of one or more GPUs is strongly recommended for this modeling approach.
+- This modeling approach only supports a **single** image column as an input
+- This modeling approach does not support any transformers
+- This modeling approach supports classification and regression experiments
+- This modeling approach does not support the use of mixed data types because of its limitation on input features
+- This modeling approach does not use Genetic Algorithm (GA)
+- The use of one or more GPUs is strongly recommended for this modeling approach
 
 To illustrate how we will use the second approach, let's explore the pre-built experiment predicting true cases of metastatic cancer. Before that, let's see how you can run the experiment while learning how to active **AutoML** when modeling images in Driverless AI. 
 
@@ -524,7 +555,7 @@ For this model, the confusion matrix looks as follows:
 ![confusion-matrix](assets/confusion-matrix.png)
 ![confusion-matrix-explain](assets/confusion-matrix-explain.png)
 
-For the most part, having low **False Negatives** and **False Positives** will be considered reasonable. With that in mind, this model will be acceptable. For example, when calculating **accuracy** we see **0.9766((Acc = (TN + TP) / (TN + FP + FN + TP)))**, a high value.
+For the most part, having low **False Negatives** and **False Positives** will be considered reasonable. With that in mind, this model will be acceptable. For example, when calculating **accuracy** we see **0.9373((Acc = (TN + TP) / (TN + FP + FN + TP)))**, a high value.
 
 Now let's look at the **Insights** of the current best individual model for the **Automatic Image Model**. On the top right corner of the **complete experiment screen** click **Insights** (training settings area).
 
@@ -557,6 +588,10 @@ The Insights page contains the following about the current best individual model
 
         ![augmentation](assets/augmentation.png)
 
+        <p align="center">
+            Figure 9. Augmentation
+        </p>
+
 - Sample validation error images: 
 
     ![sample-validation-error-images](assets/sample-validation-error-images.png)
@@ -567,23 +602,27 @@ The Insights page contains the following about the current best individual model
 
     ![sample-grad-cam-visualization](assets/sample-grad-cam-visualization.png)
 
-    - The **Grad-CAM** visualization samples allow us to see where the model looked when generating a prediction and probability. In the two pair images on the middle left of the image, we see the images being label as part of the *True* class (1). In this sample, we see that the model observed the middle part of the image when predicting that this model belongs to the *True* class and that its probability is 1.000. 
+    - The **Grad-CAM** visualization samples allow us to see where the model looked when generating a prediction and probability. In the two pair images on the middle left of the image, we see the images being label as part of the *True* class (1). In this sample, we see that the model observed the middle part of the image when predicting that this image belongs to the *True* class and that its probability is 1.000. 
 
 **Note**: For time series and Automatic Image Model experiments, you can view detailed insights while an experiment is running or after an experiment is complete by clicking on the **Insights** option.  
 
 Now in the next task, let's compare and contrast each image modeling approach, and let's discuss several scenarios when a given approach will be better. In particular, and as a point of distinction, let's discuss how, between the two approaches, only the **Embeddings Transformer** approach supports a MOJO Scoring Pipeline. 
+
+### References 
+
+- [Figure 9. Augmentation](https://medium.com/pytorch/multi-target-in-albumentations-16a777e9006e)
 
 ## Task 6: Final Analysis 
 
 Under what circumstances a particular approach will be better? When answering this question, consider the following:
 
 - When your classification or regression problem is making use of a mixed data type, you can only use the Embeddings Transformer (Image Vectorizer) approach:
-    - When deciding whether to use it with or without fine-tuning, you can consider what was discussed in tasks 2 and 3. In general, if your dataset is not similar to the ImageNet dataset or we want to improve the results of our model using ImageNet architectures, we can use fine-tuning. 
+    - When deciding whether to use it with or without fine-tuning, you can consider what was discussed in tasks 2 and 3. In general, if your dataset is not similar to the ImageNet dataset or we want to improve the results of our model using ImageNet architectures, we can use fine-tuning 
         - **Without fine-tuning**: the experiment will usually finish faster but has the lowest performance 
-        - **With fine-tuning**: the experiment will be a bit slower, but should produce better results  
+        - **With fine-tuning**: the experiment will slower, but should produce better results  
         - **Automatic Image Model**: the slowest by far, but produces the best results 
-- When your dataset image column is crucial to your regression or classification problem, it is best to use the second approach: Automatic Image Model. Hence, if images are not playing a crucial role in your experiment, you can use the Embeddings Transformer.
-- **Python scoring** and **C++ MOJO Scoring** are supported for the image transformer.
+- When your dataset image column is crucial to your regression or classification problem, it is best to use the second approach: Automatic Image Model. Hence, if images are not playing a crucial role in your experiment, you can use the Embeddings Transformer
+- **Python scoring** and **C++ MOJO Scoring** are supported for the image transformer
 - Presently, only **Python scoring** is supported for **Automatic Image Model**
 
 With the above in mind, you are ready to generate your Image Models. Note: as of now, Driverless AI supports the following problem types: 
@@ -597,7 +636,7 @@ Though in the roadmap, Driverless AI will be able to support the following probl
 - Object detection 
 - Instance segmentation  
 
-## Next Steps: 
+## Next Steps 
 
 To understand more about the **C++ MOJO Scoring**, we recommend checking the following three tutorials in order: 
 
@@ -609,7 +648,7 @@ To continue with the Driverless AI learning path, consider the next tutorial in 
 
 - [Tutorial 3A: Get Started with Open Source Custom Recipes](https://training.h2o.ai/products/tutorial-3a-get-started-with-open-source-custom-recipes-tutorial#tab-product_tab_overview)
 
-## Special Thanks: 
+## Special Thanks 
 
 Thank you to everyone that helped make this tutorial possible.
 
