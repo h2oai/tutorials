@@ -112,13 +112,15 @@ On the *Datasets page*:
 
 18. Click the **DROPPED COLUMNS** option 
 
-    - Click the **CHECK ALL** option
-    - Deselect the following columns:
+    1. Click the **CHECK ALL** option
+    2. Deselect the following columns:
         
         - image_id
         - Color
         - InteriorColor
         - Leatherinterior
+
+    3. Click **Done**
      
 
     ![drop-columns](assets/drop-columns.png)
