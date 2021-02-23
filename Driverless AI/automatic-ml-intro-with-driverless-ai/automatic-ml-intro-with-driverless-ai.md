@@ -40,7 +40,7 @@ In part, this tutorial will also be an overview of Driverless AI. You will learn
 
 ## Task 1: Product Tour
 
-Welcome to the Driverless AI **Datasets** page(this will be the first thing you will see when you click your Driverless AI URL): 
+Welcome to the Driverless AI **Datasets** page(this will be the first thing you will see when you click your **Driverless AI URL**): 
 
 ![dai-datasets-page](assets/dai-datasets-page.jpg)
 
