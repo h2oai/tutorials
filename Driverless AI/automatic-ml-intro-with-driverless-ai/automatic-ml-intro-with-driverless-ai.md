@@ -19,9 +19,9 @@
 
 ## Objective
 
-For this tutorial, we will explore the Titanic dataset from the perspective of a passenger life insurance company with [H2O.ai's](https://www.h2o.ai/) enterprise product, [Driverless AI](https://www.h2o.ai/products/h2o-driverless-ai/). We will explore possible risk factors derived from this dataset that could have been considered when selling passenger insurance during this time. More specifically, we will create a predictive model to determine what factors contributed to a passenger surviving.
+For this tutorial, we will explore the Titanic dataset from the perspective of a passenger life insurance company while using and learning about [H2O.ai's](https://www.h2o.ai/) enterprise product, [Driverless AI](https://www.h2o.ai/products/h2o-driverless-ai/). We will explore possible risk factors derived from this dataset that could have been considered when selling passenger insurances. More specifically, we will create a predictive model to determine what factors contributed to a passenger surviving.
 
-In this overview of Driverless AI, you will learn how to load data, explore data details, generate Auto visualizations, launch an experiment, explore feature engineering, view experiment results and get a quick tour of the Machine Learning Interpretability report. 
+In part, this tutorial will also be an overview of Driverless AI. You will learn how to load data, explore data details, generate Auto visualizations, launch an experiment, explore feature engineering, view experiment results. As well, we will go through a quick tour of the Machine Learning Interpretability report that you can generate right after an experiment is complete. 
 
 **Note**: This tutorial has been built on Aquarium, which is H2O.ai's cloud environment providing software access for workshops, conferences, and training. The labs in Aquarium have datasets, experiments, projects, and other content preloaded. If you use your version of Driverless AI, you will not see the preloaded content.
 
@@ -31,48 +31,65 @@ In this overview of Driverless AI, you will learn how to load data, explore data
 
 - A **Two-Hour Test Drive session**: Test Drive is H2O.ai's Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.
 
-  - Need a **Two-Hour Test Drive** session? Follow the instructions [on this quick tutorial](https://training.h2o.ai/products/tutorial-0-getting-started-with-driverless-ai-test-drive) to get a Test Drive session started. After the Driverless AI Test Drive session starts, continue reading the remaining prerequisites of this tutorial, then start Task 1: Product Tour.
+  - Need a **Two-Hour Test Drive** session? Follow the instructions [on this quick tutorial](https://training.h2o.ai/products/tutorial-0-getting-started-with-driverless-ai-test-drive) to get a Test Drive session started. After the Driverless AI Test Drive session starts, continue reading the remaining prerequisites of this tutorial, then start **Task 1: Product Tour**.
 
-  - Already have a **Two-Hour Test Drive** session? Continue reading the remaining prerequisites of this tutorial. then start Task 1: Product Tour.
+  - Already have a **Two-Hour Test Drive** session? Proceed to **Task 1: Product Tour**.
 
 **Note:  Aquarium’s Driverless AI Test Drive lab has a license key built-in, so you don’t need to request one to use it. Each Driverless AI Test Drive instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore Driverless AI, you can always launch another Test Drive instance or reach out to our sales team via the [contact us form](https://www.h2o.ai/company/contact/).**
 
 
 ## Task 1: Product Tour
 
-Welcome to the Driverless AI **Datasets** page! 
+Welcome to the Driverless AI **Datasets** page(this will be the first thing you will see when you click your Driverless AI URL): 
 
 ![dai-datasets-page](assets/dai-datasets-page.jpg)
 
-The Driverless UI is easy to navigate. The following features, as well as a few datasets, are found on the **Datasets** page. We will explore these features as we launch an experiment in the next tasks.
+On the **Datasets** page, the following options and features can be found. Now, we will quickly review them, but we will further explore these options and features before and after we launch an experiment in the upcoming tasks. 
 
-1. **Projects**: Projects Workspace for managing datasets and experiments related to a specific business problem  or use case.
+1. In the **Projects** section, you can manage your datasets and experiments related to a specific business problem or use case.
 
-2. **Datasets**: View of current datasets. Other features for datasets include the options to add a dataset, get dataset details, visualize, split, predict, rename, download, and delete. 
+2. In the **Datasets** section, you can view current datasets that have been added. Other dataset features include the option to get dataset details, visualize, split, predict, rename, download, and delete. 
 
-3. **Autoviz**: The Visualization page shows all available graphs for the selected dataset. Note that the graphs on the Visualization page can vary based on the information in your dataset. You can also view and download logs that were generated during the visualization.
+3. **Autoviz** shows graphs explaining the selected dataset to visualize. Note that the graphs on the visualization page can vary based on the information in your dataset. You can also view and download logs that Driverless AI generated during the visualization.
 
-4. **Experiments**: View of completed experiments. Experiments can be revised or deleted. 
+4. In the **Experiments** section, you can view completed experiments. Experiments can be revised or deleted.
 
-5. **Diagnostics**: Diagnose a model and view model performance for multiple scorers based on the existing model and dataset.
+5. In the **Diagnostics** section, you can diagnose a model and view model performance for multiple scorers based on the existing model and dataset.
 
-6. **MLI**: View a list of interpreted models or interpret a model.
+6. In the **MLI (Machine Learning Interpretability)** section, you can interpret a model and view a list of already interpreted models.
 
-7. **Deployments**: Deploy the MOJO and Python scoring pipelines for you to test or to integrate into a final product. You can also deploy locally or in the cloud.
+7. The **Deployments** section allows you to access the MOJO and Python scoring pipelines for you to test or integrate into a final product. You can also deploy locally or in the cloud.
 
-8. **Resources**: The Resources dropdown menu provides you with links to view System Information, the Driverless AI User Guide and Help. From this dropdown menu, you can also download the Python Client, R Client, the MOJO2 JAVA runtime, MOJO2 Py runtime, and MOJO2 R runtime.
+8. The **Resources** dropdown menu provides you with the following options to view or download: 
 
-9. **Messages[ ]**: View upcoming events regardinging Driverless AI .
+    - System Info
+    - Python Client 
+    - R Client 
+    - MOJO2 Java Runtime
+    - MOJO2 Py Runtime 
+    - MOJO 2 R Runtime
+    - Tutorials 
+    - Help
+    - About 
+
+9. **Messages[ ]**: View upcoming events regardinging Driverless AI.
 
 10. **Logout H2OAI**: Logs you out of your current session.
 
-11. **<**: Go back to the previous page.
+11. **<**: Takes you back to the previous page.
 
-12. **H2OAI**: Takes you back to the H2OAI **Datasets** Page.
+12. **H2OAI**: Takes you back to the H2OAI **Datasets** page.
 
 13. **Driverless AI 1.X.X**: Version of Driverless AI 
 
-14. **+ Add a Dataset(or Drag and Drop)**: Upload or add a dataset, add a data recipe via URL, upload a data recipe from your local machine.
+14. The **+ Add a Dataset(or Drag and Drop)** button provides the following options: 
+
+    - *File System*: Search for datasets in our repository 
+    - *Upload File*: Upload a dataset from your computer 
+    - *Amazon S3*: Upload a dataset by using S3 buckets
+    - *Hadoop File System*: Upload a dataset from Hadoop 
+    - *Data Recipe URL*: Upload a dataset with a customize data recipe reachable through a URL
+    - *Upload Data Recipe*: Upload a dataset with a customize data recipe located on your computer 
 
 15. **Type value to search for or date, e,g, 15/09:** Search for a given dataset by inputting its creation date.
 
