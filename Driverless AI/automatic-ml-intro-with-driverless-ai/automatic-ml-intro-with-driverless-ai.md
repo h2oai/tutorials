@@ -72,17 +72,18 @@ On the **Datasets** page, the following options and features can be found. Now, 
     - Help
     - About 
 
-9. **Messages[ ]**: View upcoming events regardinging Driverless AI.
+9. The **User** option offers the following options:
 
-10. **Logout H2OAI**: Logs you out of your current session.
+    - **Messages[ ]**: View upcoming events regardinging Driverless AI.
+    -  **Logout**: Logs you out of your current session.
 
-11. **<**: Takes you back to the previous page.
+10. **<**: Takes you back to the previous page.
 
-12. **H2OAI**: Takes you back to the H2OAI **Datasets** page.
+11. **H2O.ai**: Takes you back to the H2OAI **Datasets** page.
 
-13. **Driverless AI 1.X.X**: Version of Driverless AI 
+12. **Driverless AI 1.X.X**: Version of Driverless AI 
 
-14. The **+ Add a Dataset(or Drag and Drop)** button provides the following options: 
+13. The **+ Add a Dataset(or Drag and Drop)** button provides the following options: 
 
     - *File System*: Search for datasets in our repository 
     - *Upload File*: Upload a dataset from your computer 
@@ -91,7 +92,7 @@ On the **Datasets** page, the following options and features can be found. Now, 
     - *Data Recipe URL*: Upload a dataset with a customize data recipe reachable through a URL
     - *Upload Data Recipe*: Upload a dataset with a customize data recipe located on your computer 
 
-15. **Type value to search for or date, e,g, 15/09:** Search for a given dataset by inputting its creation date.
+14. **Type value to search for or date, e,g, 15/09:** Search for a given dataset by inputting its creation date.
 
 
 Before we load the dataset for our experiment, let us review some introductory concepts around Machine Learning. 
@@ -159,32 +160,25 @@ With cross-validation, the whole dataset is utilized, and each model is trained 
 
 ### What are the challenges in AI Model Development?
 
-One of the significant challenges faced in developing a single production-ready model is that it can take weeks or months to build it. Developing a model involves feature engineering, model building, and model deployment. All tasks are very repetitive, time-consuming, require advanced knowledge of feature generation, algorithms, parameters, and model deployment. Finally, there needs to be in-depth knowledge and confidence in how the model was generated to explain and justify how the model made its decisions.
+One of the significant challenges in developing a single production-ready model is that it can take weeks or months to build it. Developing a model involves feature engineering, model building, and model deployment. All tasks are very repetitive, time-consuming, require advanced knowledge of feature generation, algorithms, parameters, and model deployment. Finally, there needs to be in-depth knowledge and confidence in how the model was generated to justify how it made its decisions.
 
 
 ### What is Automated Machine Learning, and why is it important?
 
-AutoML or Automated Machine Learning is the process of automating algorithm selection, feature generation, hyperparameter tuning, iterative modeling, and model assessment. AutoML tools such as H2O Driverless AI makes it easy to train and evaluate machine learning models. Automating the repetitive tasks of Machine Learning Development allows people in the industry to focus on the data and the business problems they are trying to solve. 
+AutoML or Automated Machine Learning is the process of automating algorithm selection, feature generation, hyperparameter tuning, iterative modeling, and model assessment. AutoML tools such as H2O Driverless AI makes it easy to train and evaluate machine learning models. Automating the repetitive tasks around Machine Learning development allow individuals to focus on the data and the business problems they are trying to solve. 
 
+With this task in mind, let's explore and load the data that we will be using when predicting whether a passenger will survive the titanic accident. 
 
 ### References
-[1] [Google’s Machine Learning Crash Course](https://developers.google.com/machine-learning/crash-course/training-and-test-sets/splitting-data)
-
-[2] [About Train, Validation and Test Sets in Machine Learning](https://towardsdatascience.com/train-validation-and-test-sets-72cb40cba9e7)
-
-[3] [Data Science Primer - Data Cleaning](https://elitedatascience.com/data-cleaning)
-
-[4] [Feature Engineering](https://elitedatascience.com/feature-engineering) 
-
-[5] [Towards Data Science- Supervised vs Unsupervised Learning](https://towardsdatascience.com/supervised-vs-unsupervised-learning-14f68e32ea8d) 
-
-[6] [Selecting the best Machine Learning Algorithm for your regression problem](https://towardsdatascience.com/selecting-the-best-machine-learning-algorithm-for-your-regression-problem-20c330bad4ef)
-
-[7] [Deep AI - What is a hyperparameter?](https://deepai.org/machine-learning-glossary-and-terms/hyperparameter)
-
-[8] [H2O.ai's Driverless AI - Internal Validation Technique](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/internal-validation.html?highlight=cross%20validation)
-
-[10][Validation Dataset](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-settings.html#validation-dataset)
+- [1] [Google’s Machine Learning Crash Course](https://developers.google.com/machine-learning/crash-course/training-and-test-sets/splitting-data)
+- [2] [About Train, Validation and Test Sets in Machine Learning](https://towardsdatascience.com/train-validation-and-test-sets-72cb40cba9e7)
+- [3] [Data Science Primer - Data Cleaning](https://elitedatascience.com/data-cleaning)
+- [4] [Feature Engineering](https://elitedatascience.com/feature-engineering) 
+- [5] [Towards Data Science- Supervised vs Unsupervised Learning](https://towardsdatascience.com/supervised-vs-unsupervised-learning-14f68e32ea8d) 
+- [6] [Selecting the best Machine Learning Algorithm for your regression problem](https://towardsdatascience.com/selecting-the-best-machine-learning-algorithm-for-your-regression-problem-20c330bad4ef)
+- [7] [Deep AI - What is a hyperparameter?](https://deepai.org/machine-learning-glossary-and-terms/hyperparameter)
+- [8] [H2O.ai's Driverless AI - Internal Validation Technique](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/internal-validation.html?highlight=cross%20validation)
+- [10][Validation Dataset](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-settings.html#validation-dataset)
 
 ### Deeper Dive and Resources
 
@@ -207,11 +201,10 @@ The typical Driverless AI workflow is to:
 4. Interpret the model
 5. Deploy the scoring pipeline
 
-In addition, you can diagnose a model, transform another dataset, score the model against antoher dataset and manage your data in Projects. The focus of this tutorial will be in steps 1 - 4. The other aspects of the Driverless AI will be covered in other tutorials found in the Driverless AI learning path. We will start with loading the data. 
+Besides, you can diagnose a model, transform another dataset, score the model against another dataset and manage your data in Projects. This tutorial's focus will be on steps 1 - 4. We will cover Driverless AI's other aspects in other tutorials found in the Driverless AI learning path. We will start with loading the data. 
 
 ![typical-driverless-ai-workflow](assets/typical-driverless-ai-workflow.jpg)
 
-1\. Navigate back to the H2O Driverless AI **Datasets** page.
 
 ### About the Dataset
 
@@ -219,15 +212,14 @@ The dataset used for this experiment is a version of the Titanic Kaggle dataset.
 
 The RMS Titanic was a British commercial passenger liner that sank after colliding with an iceberg in the North Atlantic Ocean on April 15, 1912. More than 1,500 people lost their lives from an estimated 2,224 passengers and crew members while on their way to New York City from Southampton. 
 
-This tragedy shooked the international community and led to better safety regulations for ships. The lack of lifeboats, amongst other things, was one of the factors that resulted in a significant loss of life. Although there was some element of luck involved in surviving the sinking, some groups of people were more likely to survive than others.
+This tragedy shocked the international community and led to better safety regulations for ships. The lack of lifeboats, amongst other things, was one of the factors that resulted in a significant loss of life. Although there was some element of luck involved in surviving the sinking, some groups of people were more likely to survive than others.
 
-![rms-titanic](assets/rms-titanic.jpeg)
+<p align="center"> 
+    <img src='assets/rms-titanic.png' width="500"></img>    
+    <p align="center">Figure 1. RMS Titanic</p>
+</p>
 
-[RMS Titanic-Wikipedia](https://en.wikipedia.org/wiki/RMS_Titanic#/media/File:RMS_Titanic_3.jpg)
-
-**Titanic dataset**:
-
-1309 rows, one row per passenger, and 16 columns representing attributes of each passenger:
+To further understand the data, please consider the table below:
 
 |Attribute|Definition|Key|
 |---|---|---|
@@ -248,31 +240,32 @@ This tragedy shooked the international community and led to better safety regula
 |body|Body number| - |
 |home.des|Home Destination| - |
 
-
-### Add the Data 
+Now, navigate back to the H2O Driverless AI **Datasets** page. To add the dataset:
 
 1\. Click on **Add a Dataset(or Drag and Drop)**  
 
-2\. Select **FILE SYSTEM**
+2\. Select **FILE SYSTEM**:
 
-![add-dataset-file-system](assets/add-dataset-file-system.jpg)
+<p align="center">
+<img src="assets/add-dataset-file-system.jpg" width="320" height="490">
+</p>
 
-3\. Enter the following:
-1. ```/data/TestDrive/titanic.csv``` into the search bar
-2. Select ```titanic.csv``` 
-3. **Click to Import Selection**. 
+
+3\. Inside the **FILE SYSTEM**:
+
+1. Enter the following in the search bar:```/data/TestDrive/titanic.csv``` 
+2. Select the ```titanic.csv``` 
+3. **Click to Import Selection**:
 
     ![select-titanic-dataset](assets/select-titanic-dataset.jpg)
 
-
-4\. If the file loaded successfully, then you should see an  image similar to the one below:
+4\. The following will appear after the dataset is successfully imported:
 
 ![titanic-set-overview](assets/titanic-set-overview.jpg)
 
 *Things to Note:*
 
 1. You can view:
-
     - File name
     - File path
     - File size
@@ -280,12 +273,11 @@ This tragedy shooked the international community and led to better safety regula
     - File status
     - Date created
 
-2. Option to go back to the previous page  
+Now that the dataset has been imported let's discover on the next task how Driverless AI allows users to further understand a selected dataset. 
 
 ### Deeper Dive and Resources
 
 - [Learn More About the Type of Dataset File Formats that can be Uploaded](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/datasets.html#adding-datasets) 
-
 - For more datasets, check out [Kaggle Datasets](https://www.kaggle.com/datasets)
 
 ## Task 4: Explore Data Details and AutoViz
@@ -294,27 +286,27 @@ This tragedy shooked the international community and led to better safety regula
 
 We are now going to explore the Titanic dataset that we just loaded. 
 
-1\. Continuing on the **Dataset Overview page**, click on the titanic.csv dataset. The following options will appear:
+1\. On the **Dataset Overview page**, click on the *titanic.csv*. The following options will appear:
 
 ![titanic-set-actions](assets/titanic-set-actions.jpg)
 
 1. The dataset we imported in task 3
 
 2. Options:
-    - Details - View a summary of the dataset or preview the dataset
-    - Visualize - Visualize the dataset with available graphs
-    - Split - Split the dataset
-    - Predict - Run an experiment using Driverless AI
-    - Rename - Rename the dataset
-    - Download - Download the dataset
-    - Display Logs
-    - Delete - Delete the dataset 
+    - **Details** - View a summary of the dataset or preview the dataset
+    - **Visualize** - Visualize the dataset with available graphs
+    - **Split** - Split the dataset
+    - **Predict** - Run an experiment using Driverless AI
+    - **Rename** - Rename the dataset
+    - **Download** - Download the dataset
+    - **Display Logs** - Dataset logs
+    - **Delete** - Delete the dataset 
 
 **Note**: A dataset can only be deleted if it's not being used in an experiment. Otherwise, you must delete the experiment first, and then the dataset.
 
-2\. Next, we are going to confirm that the dataset loaded correctly and that it has the correct number of rows and columns by clicking on **Details**.
+2\. Next, we are going to confirm that the dataset loaded correctly and that it has the correct number of rows and columns.
 
-3\. Click on **Details**.  **Details** will take you to the **Dataset Details Page**
+3\. Click the **Details** option, and it will take you to the **Dataset Details Page**:
  
  ![titanic-set-details-page](assets/titanic-set-details-page.jpg)
 
@@ -324,57 +316,72 @@ We are now going to explore the Titanic dataset that we just loaded.
 
     - View the first 20 rows of a column by hovering over the column name (see image below)
 
-![datasets-details-first-20-rows.jpg](assets/datasets-details-first-20-rows.jpg)
 
-**Note**: Driverless AI recognizes the following column types: integer, string, real, boolean, and time. Date columns are given a string "str" type.
+<p align="center">
+<img src="assets/datasets-details-first-20-rows.jpg" height="500">
+</p>
 
-2. You can view information for a specific column by entering the name of the column in the field above the graph.
+- **Note**: Driverless AI recognizes the following column types: integer, string, real, boolean, and time. Date columns are given a string "str" type.
 
-3. **Modify by Recipe** allows you to create a new dataset by modifying an existing dataset with custom recipes. 
+2. You can view information for a specific column by entering the column's name in the field above the graph.
 
-4. **Dataset Rows** allows you to preview the dataset
+3. The **Dataset Actions** button provides the following options: 
 
-5. Option to exit and return to the H2O **Datasets** page
+    - Visualize 
+    - Split
+    - Predict
+    - Rename
+    - Download 
+    - Display Logs
+    - Delete
 
-6. **Feature Props:** Allows you to change the column's logical type, and change the type of a column, consider the following steps:
+4. **Modify by Recipe** allows you to create a new dataset by modifying an existing dataset with custom recipes. 
 
-- **Click to Edit:**
+5. **Dataset Rows** allows you to preview the dataset.
 
-![feature-props-click-to-edit](assets/feature-props-click-to-edit.jpg)
+6. Option to exit and return to the H2O **Datasets** page.
+
+7. **Feature Props:** Allows you to change the column's logical type. If you were to change a given column, you could do so by following these steps:
+
+    - Click **Auto-detect**:
+
+    ![feature-props-click-to-edit](assets/feature-props-click-to-edit.jpg)
 
 - Select **Feature Engineering Type(s):** 
 
-![feature-props-auto-to-detect](assets/feature-props-auto-detect.jpg)
+    ![feature-props-auto-to-detect](assets/feature-props-auto-detect.jpg)
 
 - Select column feature engineering types (then click **done** at the bottom of page):
 
-![logical-type-options](assets/logical-type-options.jpg)
-*Things to Note:*
+    ![logical-type-options](assets/logical-type-options.jpg)
 
-1. "Start typing to filter our items"
+    *Things to Note:*
 
-2. Available feature engineering types
+    1. "Start typing to filter out items"
 
-3. **Done** button
+    2. Available feature engineering types
 
-4\. Select  **Dataset Rows**    
+    3. **Done** button
+
+4\. To continue learning about what details are available, click on the following button: **Dataset Rows**. The following should appear: 
 
 ![titanic-set-rows-page](assets/titanic-set-rows-page.jpg)
 
 *Things to Note:*
  1. Preview the dataset 
  2. View the remaining rows
- 3. **Modify by Recipe** - Modify the dataset through a custom recipe or live code (manually enter custom recipe code to use to modify the dataset)
- 3. Return to the **Dataset Overview** 
- 4. Option to Exit and return to the H2O **Datasets** page
+ 3. Dataset actions (same options as discuss earlier)
+ 4. **Modify by Recipe** - Modify the dataset through a custom recipe or live code (manually enter custom recipe code to use to modify the dataset)
+ 5. Return to the **Dataset Overview** 
+ 6. Option to Exit and return to the H2O **Datasets** page
 
 5\. Exit and return to **Datasets Overview** page.
 
 ### Split the Dataset
 
-From the Titanic.csv dataset, we are going to create two datasets, training and test. 75% of the data will be used for training the model, and the other 25% will be use to test the trained model.
+From the Titanic.csv dataset, we are going to create two datasets, training and test. 75% of the data will be used to train the model, and the other 25% will be used to test the trained model.
 
-1\. Click on the titanic.csv file and select **Split** 
+1\. Click on the *titanic.csv* file and select **Split** 
 
 ![titanic-set-split-1](assets/titanic-set-split-1.jpg)
 
@@ -460,6 +467,10 @@ Driverless AI  shows the graphs that are "relevant" aspects of the data. The fol
 - Gaps Histogram
 
 
+
+### Refeences 
+
+- [Figure 1. RMS Titanic](https://en.wikipedia.org/wiki/RMS_Titanic#/media/File:RMS_Titanic_3.jpg)
 ### Deeper Dive and Resources
 
 - [Learn more about Automatic Visualization from the H2O Driverless AIdocs](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/datasets.html#visualizing-datasets)
