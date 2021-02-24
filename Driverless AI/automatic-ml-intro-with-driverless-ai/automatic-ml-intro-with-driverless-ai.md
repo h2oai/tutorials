@@ -89,7 +89,7 @@ Before we load the dataset for our experiment, let us review some introductory c
 
 ###  Artificial Intelligence and Machine Learning
 
-The concepts found in this section are meant to provide a high-level overview of Machine Learning. At the end of this section, you can find links to resources that offer a more in-depth explanation of the concepts covered here.
+The concepts found in this task are meant to provide a high-level overview of Machine Learning. At the end of this task, you can find links to resources that offer a more in-depth explanation of the concepts covered here.
 
 Machine learning is a subset of Artificial intelligence where the focus is to create machines that can simulate human intelligence. One critical distinction between artificial intelligence and machine learning is that machine learning models "learn" from the data the models get exposed to. Arthur Samuel, a machine learning pioneer back in 1959, defined machine learning as a " field of study that gives computers the ability to learn without being explicitly programmed" [1]. A machine learning algorithm trains on a dataset to make predictions. These predictions are, at times, used to optimize a system or assist with decision-making.
 
@@ -132,7 +132,6 @@ This dataset must have the same number of columns (and column types) as the trai
 
 <p align="center"> 
     <img src='assets/datasets-split-ratio-diagram.jpg' ></img>    
-    
 </p>
 
 Another part of model training is fitting and tuning the models. For fitting and tuning, hyperparameters need to be tuned, and cross-validation needs to take place using only the training data. Various hyperparameter values will need to be tested. "A hyperparameter is a parameter that is set before the learning process begins. These parameters are tunable and can directly affect how well a model trains. [In Machine Learning, a hyperparameter is the learning rate]" [7]. In other words, the hyperparameter value is used to determine the rate at which the model learns.  
@@ -148,7 +147,7 @@ One of the significant challenges in developing a single production-ready model 
 
 AutoML or Automated Machine Learning is the process of automating algorithm selection, feature generation, hyperparameter tuning, iterative modeling, and model assessment. AutoML tools such as H2O Driverless AI makes it easy to train and evaluate machine learning models. Automating the repetitive tasks around Machine Learning development allow individuals to focus on the data and the business problems they are trying to solve. 
 
-With this task in mind, let's explore and load the data that we will be using when predicting whether a passenger will survive the titanic accident. 
+With this task in mind, let's explore and load the data that we will be using when predicting whether a passenger would've survived the titanic accident. 
 
 ### References
 - [1] [Google’s Machine Learning Crash Course](https://developers.google.com/machine-learning/crash-course/training-and-test-sets/splitting-data)
@@ -182,7 +181,7 @@ The typical Driverless AI workflow is to:
 4. Interpret the model
 5. Deploy the scoring pipeline
 
-Besides, you can diagnose a model, transform another dataset, score the model against another dataset and manage your data in Projects. This tutorial's focus will be on steps 1 - 4. We will cover Driverless AI's other aspects in other tutorials found in the Driverless AI learning path. We will start with loading the data. 
+Besides, you can diagnose a model, transform another dataset, score the model against another dataset and manage your data in Projects. This tutorial's focus will be on steps 1 - 4. We will cover Driverless AI's other aspects in other tutorials found in the Driverless AI learning path. We will start with step 1: load data.
 
 <p align="center"> 
     <img src='assets/typical-driverless-ai-workflow.jpg' ></img>      
@@ -230,7 +229,7 @@ Now, navigate back to the H2O Driverless AI **Datasets** page. To add the datase
 2\. Select **FILE SYSTEM**:
 
 <p align="center">
-<img src="assets/add-dataset-file-system.jpg" width="320" height="490">
+<img src="assets/add-dataset-file-system.jpg" width="320" height="460">
 </p>
 
 
@@ -279,23 +278,22 @@ We are now going to explore the Titanic dataset that we just loaded.
     - **Download** - Download the dataset
     - **Display Logs** - Dataset logs
     - **Delete** - Delete the dataset 
-
 **Note**: A dataset can only be deleted if it's not being used in an experiment. Otherwise, you must delete the experiment first, and then the dataset.
 
-2\. Next, we are going to confirm that the dataset loaded correctly and that it has the correct number of rows and columns.
+2\. Next, we are going to confirm that the dataset loaded correctly and that it has the correct number of rows and columns. 
 
 3\. Click the **Details** option, and it will take you to the **Dataset Details Page**:
- 
-![titanic-set-details-page](assets/titanic-set-details-page.jpg)
+
+<p align="center">
+<img src="assets/titanic-set-details-page.jpg">
+</p>
 
 1. The **Dataset Details Page** provides a summary of the dataset. 
     - View the first 20 rows of a column by hovering over the column name (see image below)
-    <p align="center">
-    <img src="assets/datasets-details-first-20-rows.jpg" height="500">
-    </p>
-
+        <p align="center">
+        <img src="assets/datasets-details-first-20-rows.jpg" height="510" width="365">
+        </p>
     **Note**: Driverless AI recognizes the following column types: integer, string, real, boolean, and time. Date columns are given a string "str" type.
-
 2. You can view information for a specific column by entering the column's name in the field above the graph.
 3. The **Dataset Actions** button provides the following options: 
     - Visualize 
@@ -309,24 +307,17 @@ We are now going to explore the Titanic dataset that we just loaded.
 5. **Dataset Rows** allows you to preview the dataset.
 6. Option to exit and return to the H2O **Datasets** page.
 7. **Feature Props:** Allows you to change the column's logical type. If you were to change a given column, you could do so by following these steps:
-
     * Click **Auto-detect**:
-
         ![feature-props-click-to-edit](assets/feature-props-click-to-edit.jpg)
-
-    
     * Select **Feature Engineering Type(s):** 
-
         ![feature-props-auto-to-detect](assets/feature-props-auto-detect.jpg)
-
     * Select column feature engineering types (then click **done** at the bottom of page) or start typing to filter out items:
-
         ![logical-type-options](assets/logical-type-options.jpg)
 
 4\. To continue learning about what details are available, click on the following button: **Dataset Rows**. The following will appear: 
 
 ![titanic-set-rows-page](assets/titanic-set-rows-page.jpg)
-
+    
 1. Preview the dataset 
 2. View the remaining rows
 3. Dataset actions (same options as discuss earlier)
@@ -338,7 +329,7 @@ We are now going to explore the Titanic dataset that we just loaded.
 
 ### Split the Dataset
 
-From the Titanic.csv dataset, we are going to create two datasets, *training* and *test*. 75% of the data will be used to train the model, and the other 25% will be used to test the trained model.
+From the *Titanic.csv* dataset, we are going to create two datasets, *training* and *test*. 75% of the data will be used to train the model, and the other 25% will be used to test the trained model.
 
 1\. Click on the *titanic.csv* file and select **Split** 
 
@@ -350,64 +341,57 @@ From the Titanic.csv dataset, we are going to create two datasets, *training* an
 
 *Things to Note:*
 
-1. For OUTPUT NAME 1: enter ```titanic_train``` (this will serve as the training set)
-2. For OUTPUT NAME 2: enter ```titanic_test``` (this will serve as the test set)
+1. For **OUTPUT NAME 1**: enter ```titanic_train``` (this will serve as the training set)
+2. For **OUTPUT NAME 2**: enter ```titanic_test``` (this will serve as the test set)
 3. You can change the Random Seed; this will generate the same split every time
-4. Change the split value to .75 by adjusting the slider to 75% or entering .75 in the section that says *Train/Valid Split Ratio*
+4. Change the split value to .75 by adjusting the slider to 75% or entering .75 in the section that says *SELECT SPLIT RATIO(BY ROWS)*
 5. Save the changes you made 
 
-The split ratio of .75 (75% for the training set and 25% fo the test set) was selected for this particular dataset to not generalize the model given the total size of the set.
+The split ratio of .75 (75% for the training set and 25% for the test set) was selected for this particular dataset, not to generalize the model given the set's total size.
 
-**The training set** contains 981 rows, each row representing a passenger, and 16 columns representing the attributes of each passenger.
+- **The training set** contains 981 rows, each row representing a passenger and 16 columns representing each passenger's attributes.
+- **The Test set** contains 328 rows, each row representing a passenger and 16 attribute columns representing attributes of each passenger. 
 
-**The Test set** contains 328 rows, each row representing a passenger, and 16 attribute columns representing attributes of each passenger. 
-
-Verify that the three Titanic datasets, titanic_test, titanic_train and titanic.csv are there:
+Verify that the three Titanic datasets, *titanic_test*, *titanic_train*, and *titanic.csv*, are there:
 
 ![three-datasets](assets/three-datasets.jpg)
 
 ### Autoviz
 
-Now that the titanic.csv dataset has been split, we will use the **titanic_train** set for the remaining of the tutorial.
-
-There are two ways to visualize the training set:
+Now that the *titanic.csv* dataset has been split, we will now use the **titanic_train** dataset. Before we begin our experiment, let's begin by visualizing our dataset while further understanding what features and labels will play a crucial role in our Machine learning model. There are two ways to visualize the training set:
 
 ![titanic-train-visualize](assets/titanic-train-visualize.jpg)
 
-**Method 1** : Clicking on the **titanic_train** file, select **Visualize**, then click on the visualization file generated.
+- **Method 1**: Clicking on the **titanic_train** file, select **Visualize**, then click on the visualization file generated.
+- **Method 2**: Clicking on the **Autoviz** section(button) inside the section, you will need to click on the **+ NEW VISUALIZATION** button. It will ask you to pick the dataset you want to visualize. 
 
-**Method 2**: Clicking on  **Autoviz** located at the top of the UI page, where you will be asked for the dataset you want to visualize.
-
-1\. Pick a method to visualize the **titanic_train** dataset. A similar image should appear:
+1\. Pick a method to visualize the **titanic_train** dataset. Right after, the following will appear: 
 
 ![train-set-visualization-ready](assets/train-set-visualization-ready.jpg)
 
-Click on the **titanic_train** visualization, and the following screen will appear.
+1. Click on the **titanic_train** visualization, and the following graphs will appear:
 
 ![train-set-visualizations](assets/train-set-visualizations.jpg)
 
-Is it possible to visualize how variables on the training set are correlated? Can we determine what other variables are strongly correlated to a passenger's survival? The answer to those questions is yes! One of the graphs that allow us to visualize the correlations between variables is the **Correlation Graph**.
+Is it possible to visualize how variables on the training set are correlated? Can we determine what other variables are strongly correlated to a passenger's survival? The answer to those questions is **yes!** One of the graphs that allow us to visualize the correlations between variables is the **Correlation Graph**.
 
-Let's explore the correlation between the 'survived' variable and other variables in the dataset.
+Let's explore the correlation between the **survived** variable and other variables in the dataset.
 
-2\. Select the **Correlation Graph** and then click on **Help** located at the lower-left corner of the graph. 
+2. Select the **Correlation Graph** and then click on **Help** located at the graph's lower-left corner. 
+3. Take a minute to read about how Driverless AI constructed the correlation graph. Learn more about how variables are color-coded to show their correlations. 
+4. Take the 'survived' variable and drag it slightly to look at the other variables correlated to the **survived** attribute. 
 
-3\. Take a minute to read about how the correlation graph was constructed.  Learn more about how variables are color-coded to show their correlations. 
-
-4\. Take the 'survived' variable and drag it slightly to have a better look at the other variables Driverless AI found it is correlated to. 
-
-What variables are strongly correlated with the 'survived' variable?
+What variables are strongly correlated with the 'survived' variable? Based on the correlational graph, we can see that no correlations were inferred to the **survived** attribute based on the *titanic_train* dataset. Although the graph inferred no correlation, that is not to say that we will not be able to predict whether someone will survive the titanic accident. Visualizing the dataset only gives us an idea/preview of what data will be used to train our model. As well, visualizing can allow for a deeper understanding while highlighting outliers. 
 
 ![train-set-correlation-graph](assets/train-set-correlation-graph.jpg)
 
 *Things to Note:*
 
  - The **Help** button explains the **Correlation Graph**. This feature is available for all graphs.
- - **Download** allows for a full-scale image of the graph to be downloaded
+ - **Download** allows for a full-scale image of the Graph to be downloaded.
 
-5\. Exit out of the **Correlation Graph** view by clicking on the **X** at the top-right corner of the graph.
-
-6\. After you are done exploring the other graphs, go back to the **datasets page**.
+5. Exit out of the **Correlation Graph** view by clicking on the **X** at the top-right corner of the graph.
+6. After you are done exploring the other graphs, go back to the **Datasets page**.
 
 Driverless AI  shows the graphs that are "relevant" aspects of the data. The following are the type of graphs available:
 
@@ -425,26 +409,25 @@ Driverless AI  shows the graphs that are "relevant" aspects of the data. The fol
 - Missing Values Heatmap
 - Gaps Histogram
 
-
+Now in the next task, let's proceed to step 3 in our Driverless AI workflow: run an experiment. 
 
 ### Refeences 
 
 - [Figure 1. RMS Titanic](https://en.wikipedia.org/wiki/RMS_Titanic#/media/File:RMS_Titanic_3.jpg)
+
 ### Deeper Dive and Resources
 
 - [Learn more about Automatic Visualization from the H2O Driverless AIdocs](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/datasets.html#visualizing-datasets)
-
 - [Learn more about Automatic Visualization from the architect Leland Wilkinson, Chief Scientist, H2O.ai from session at H2O World 2017 Youtube Video](https://www.youtube.com/watch?v=bas3-Ue2qxc)
-
 - [H2O.ai Automatic Visualization by Leland Wikinson (SlideShare)](https://www.slideshare.net/0xdata/automatic-visualization)
 
 ## Task 5: Launch First Experiment
 
-We are going to launch our first experiment. An experiment means that we are going to generate a prediction using a dataset of our choice.
+We are going to launch our first experiment. An experiment means that we are going to generate a prediction using a dataset of our choice. In this case, we will use the **titanic_train** dataset. 
 
-1\. Return to  the **Dataset Overview page**
+1\. Return to  the **Datasets Overview** page.
 
-2\. Click on the **titanic_train** dataset then select **Predict**
+2\. Click on the **titanic_train** dataset then select **Predict**.
 
 ![titanic-train-predict](assets/titanic-train-predict.jpg)
 
