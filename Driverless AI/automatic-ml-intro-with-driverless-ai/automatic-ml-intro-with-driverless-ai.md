@@ -260,8 +260,6 @@ Now, navigate back to the H2O Driverless AI **Datasets** page. To add the datase
 
 ![titanic-set-overview](assets/titanic-set-overview.jpg)
 
-*Things to Note:*
-
 1. You can view:
     - File name
     - File path
@@ -305,9 +303,7 @@ We are now going to explore the Titanic dataset that we just loaded.
 
 3\. Click the **Details** option, and it will take you to the **Dataset Details Page**:
  
- ![titanic-set-details-page](assets/titanic-set-details-page.jpg)
-
-*Things to Note:*
+![titanic-set-details-page](assets/titanic-set-details-page.jpg)
 
 1. The **Dataset Details Page** provides a summary of the dataset. 
 
@@ -340,36 +336,33 @@ We are now going to explore the Titanic dataset that we just loaded.
 
 7. **Feature Props:** Allows you to change the column's logical type. If you were to change a given column, you could do so by following these steps:
 
-    - Click **Auto-detect**:
+    * Click **Auto-detect**:
 
-    ![feature-props-click-to-edit](assets/feature-props-click-to-edit.jpg)
+        ![feature-props-click-to-edit](assets/feature-props-click-to-edit.jpg)
 
-    - Select **Feature Engineering Type(s):** 
+    
+    * Select **Feature Engineering Type(s):** 
 
-    ![feature-props-auto-to-detect](assets/feature-props-auto-detect.jpg)
+        ![feature-props-auto-to-detect](assets/feature-props-auto-detect.jpg)
 
-    - Select column feature engineering types (then click **done** at the bottom of page):
+    * Select column feature engineering types (then click **done** at the bottom of page):
 
-    ![logical-type-options](assets/logical-type-options.jpg)
+        ![logical-type-options](assets/logical-type-options.jpg)
 
-    *Things to Note:*
-
-    1. Start typing to filter out items
-    2. Available feature engineering types
-    3. **Done** button
+        1. Start typing to filter out items
+        2. Available feature engineering types
+        3. **Done** button
 
 4\. To continue learning about what details are available, click on the following button: **Dataset Rows**. The following will appear: 
 
 ![titanic-set-rows-page](assets/titanic-set-rows-page.jpg)
 
-*Things to Note:*
-
- 1. Preview the dataset 
- 2. View the remaining rows
- 3. Dataset actions (same options as discuss earlier)
- 4. **Modify by Recipe** - Modify the dataset through a custom recipe or live code (manually enter custom recipe code to use to modify the dataset)
- 5. Return to the **Dataset Overview** 
- 6. Option to Exit and return to the H2O **Datasets** page
+1. Preview the dataset 
+2. View the remaining rows
+3. Dataset actions (same options as discuss earlier)
+4. **Modify by Recipe** - Modify the dataset through a custom recipe or live code (manually enter custom recipe code to use to modify the dataset)
+5. Return to the **Dataset Overview** 
+6. Option to Exit and return to the H2O **Datasets** page
 
 5\. Exit and return to **Datasets** page.
 
