@@ -350,7 +350,9 @@ We are now going to explore the Titanic dataset that we just loaded.
         ![logical-type-options](assets/logical-type-options.jpg)
 
         1. Start typing to filter out items
+
         2. Available feature engineering types
+        
         3. **Done** button
 
 4\. To continue learning about what details are available, click on the following button: **Dataset Rows**. The following will appear: 
