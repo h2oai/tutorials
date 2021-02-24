@@ -345,15 +345,9 @@ We are now going to explore the Titanic dataset that we just loaded.
 
         ![feature-props-auto-to-detect](assets/feature-props-auto-detect.jpg)
 
-    * Select column feature engineering types (then click **done** at the bottom of page):
+    * Select column feature engineering types (then click **done** at the bottom of page) or start typing to filter out items:
 
         ![logical-type-options](assets/logical-type-options.jpg)
-
-        1. Start typing to filter out items
-
-        2. Available feature engineering types
-        
-        3. **Done** button
 
 4\. To continue learning about what details are available, click on the following button: **Dataset Rows**. The following will appear: 
 
