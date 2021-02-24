@@ -344,11 +344,11 @@ We are now going to explore the Titanic dataset that we just loaded.
 
     ![feature-props-click-to-edit](assets/feature-props-click-to-edit.jpg)
 
-- Select **Feature Engineering Type(s):** 
+    - Select **Feature Engineering Type(s):** 
 
     ![feature-props-auto-to-detect](assets/feature-props-auto-detect.jpg)
 
-- Select column feature engineering types (then click **done** at the bottom of page):
+    - Select column feature engineering types (then click **done** at the bottom of page):
 
     ![logical-type-options](assets/logical-type-options.jpg)
 
