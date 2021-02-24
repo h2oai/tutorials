@@ -28,11 +28,8 @@ In part, this tutorial will also be an overview of Driverless AI. You will learn
 ## Prerequisites
 
 - Basic knowledge of Machine Learning and Statistics
-
 - A **Two-Hour Test Drive session**: Test Drive is H2O.ai's Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.
-
   - Need a **Two-Hour Test Drive** session? Follow the instructions [on this quick tutorial](https://training.h2o.ai/products/tutorial-0-getting-started-with-driverless-ai-test-drive) to get a Test Drive session started. After the Driverless AI Test Drive session starts, continue reading the remaining prerequisites of this tutorial, then start **Task 1: Product Tour**.
-
   - Already have a **Two-Hour Test Drive** session? Proceed to **Task 1: Product Tour**.
 
 **Note:  Aquarium’s Driverless AI Test Drive lab has a license key built-in, so you don’t need to request one to use it. Each Driverless AI Test Drive instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore Driverless AI, you can always launch another Test Drive instance or reach out to our sales team via the [contact us form](https://www.h2o.ai/company/contact/).**
@@ -47,21 +44,13 @@ Welcome to the Driverless AI **Datasets** page(this will be the first thing you 
 On the **Datasets** page, the following options and features can be found. Now, we will quickly review them, but we will further explore these options and features before and after we launch an experiment in the upcoming tasks. 
 
 1. In the **Projects** section, you can manage your datasets and experiments related to a specific business problem or use case.
-
 2. In the **Datasets** section, you can view current datasets that have been added. Other dataset features include the option to get dataset details, visualize, split, predict, rename, download, and delete. 
-
 3. **Autoviz** shows graphs explaining the selected dataset to visualize. Note that the graphs on the visualization page can vary based on the information in your dataset. You can also view and download logs that Driverless AI generated during the visualization.
-
 4. In the **Experiments** section, you can view completed experiments. Experiments can be revised or deleted.
-
 5. In the **Diagnostics** section, you can diagnose a model and view model performance for multiple scorers based on the existing model and dataset.
-
 6. In the **MLI (Machine Learning Interpretability)** section, you can interpret a model and view a list of already interpreted models.
-
 7. The **Deployments** section allows you to access the MOJO and Python scoring pipelines for you to test or integrate into a final product. You can also deploy locally or in the cloud.
-
 8. The **Resources** dropdown menu provides you with the following options to view or download: 
-
     - System Info
     - Python Client 
     - R Client 
@@ -71,27 +60,19 @@ On the **Datasets** page, the following options and features can be found. Now, 
     - Tutorials 
     - Help
     - About 
-
 9. The **User** option offers the following options:
-
     - **Messages[ ]**: View upcoming events regardinging Driverless AI.
     -  **Logout**: Logs you out of your current session.
-
 10. **<**: Takes you back to the previous page.
-
 11. **H2O.ai**: Takes you back to the H2OAI **Datasets** page.
-
 12. **Driverless AI 1.X.X**: Version of Driverless AI 
-
 13. The **+ Add a Dataset(or Drag and Drop)** button provides the following options: 
-
     - *File System*: Search for datasets in our repository 
     - *Upload File*: Upload a dataset from your computer 
     - *Amazon S3*: Upload a dataset by using S3 buckets
     - *Hadoop File System*: Upload a dataset from Hadoop 
     - *Data Recipe URL*: Upload a dataset with a customize data recipe reachable through a URL
     - *Upload Data Recipe*: Upload a dataset with a customize data recipe located on your computer 
-
 14. **Type value to search for or date, e,g, 15/09:** Search for a given dataset by inputting its creation date.
 
 
@@ -149,7 +130,10 @@ When training a machine learning model, one good practice is to split up your da
 
 This dataset must have the same number of columns (and column types) as the training dataset. Also, note that if provided, the validation set is not sampled down, so it can lead to large memory usage, even if accuracy=1 (which reduces the train size). In a moment, we will learn more about **accuracy** when preparing an experiment.[10] 
 
-![datasets-split-ratio-diagram](assets/datasets-split-ratio-diagram.jpg)
+<p align="center"> 
+    <img src='assets/datasets-split-ratio-diagram.jpg' ></img>    
+    
+</p>
 
 Another part of model training is fitting and tuning the models. For fitting and tuning, hyperparameters need to be tuned, and cross-validation needs to take place using only the training data. Various hyperparameter values will need to be tested. "A hyperparameter is a parameter that is set before the learning process begins. These parameters are tunable and can directly affect how well a model trains. [In Machine Learning, a hyperparameter is the learning rate]" [7]. In other words, the hyperparameter value is used to determine the rate at which the model learns.  
 
@@ -200,7 +184,9 @@ The typical Driverless AI workflow is to:
 
 Besides, you can diagnose a model, transform another dataset, score the model against another dataset and manage your data in Projects. This tutorial's focus will be on steps 1 - 4. We will cover Driverless AI's other aspects in other tutorials found in the Driverless AI learning path. We will start with loading the data. 
 
-![typical-driverless-ai-workflow](assets/typical-driverless-ai-workflow.jpg)
+<p align="center"> 
+    <img src='assets/typical-driverless-ai-workflow.jpg' ></img>      
+</p>
 
 
 ### About the Dataset
@@ -249,15 +235,12 @@ Now, navigate back to the H2O Driverless AI **Datasets** page. To add the datase
 
 
 3\. Inside the **FILE SYSTEM**:
-
 1. Enter the following in the search bar:```/data/TestDrive/titanic.csv``` 
 2. Select the ```titanic.csv``` 
 3. **Click to Import Selection**:
-
     ![select-titanic-dataset](assets/select-titanic-dataset.jpg)
 
 4\. The following will appear after the dataset is successfully imported:
-
 ![titanic-set-overview](assets/titanic-set-overview.jpg)
 
 1. You can view:
@@ -286,7 +269,6 @@ We are now going to explore the Titanic dataset that we just loaded.
 ![titanic-set-actions](assets/titanic-set-actions.jpg)
 
 1. The dataset we imported in task 3
-
 2. Options:
     - **Details** - View a summary of the dataset or preview the dataset
     - **Visualize** - Visualize the dataset with available graphs
@@ -306,20 +288,15 @@ We are now going to explore the Titanic dataset that we just loaded.
 ![titanic-set-details-page](assets/titanic-set-details-page.jpg)
 
 1. The **Dataset Details Page** provides a summary of the dataset. 
-
     - View the first 20 rows of a column by hovering over the column name (see image below)
-
-
 <p align="center">
 <img src="assets/datasets-details-first-20-rows.jpg" height="500">
 </p>
 
-- **Note**: Driverless AI recognizes the following column types: integer, string, real, boolean, and time. Date columns are given a string "str" type.
+**Note**: Driverless AI recognizes the following column types: integer, string, real, boolean, and time. Date columns are given a string "str" type.
 
 2. You can view information for a specific column by entering the column's name in the field above the graph.
-
 3. The **Dataset Actions** button provides the following options: 
-
     - Visualize 
     - Split
     - Predict
@@ -327,13 +304,9 @@ We are now going to explore the Titanic dataset that we just loaded.
     - Download 
     - Display Logs
     - Delete
-
 4. **Modify by Recipe** allows you to create a new dataset by modifying an existing dataset with custom recipes. 
-
 5. **Dataset Rows** allows you to preview the dataset.
-
 6. Option to exit and return to the H2O **Datasets** page.
-
 7. **Feature Props:** Allows you to change the column's logical type. If you were to change a given column, you could do so by following these steps:
 
     * Click **Auto-detect**:
