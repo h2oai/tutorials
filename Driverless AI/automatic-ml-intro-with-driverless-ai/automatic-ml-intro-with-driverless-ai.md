@@ -241,6 +241,7 @@ Now, navigate back to the H2O Driverless AI **Datasets** page. To add the datase
     ![select-titanic-dataset](assets/select-titanic-dataset.jpg)
 
 4\. The following will appear after the dataset is successfully imported:
+
 ![titanic-set-overview](assets/titanic-set-overview.jpg)
 
 1. You can view:
@@ -289,11 +290,11 @@ We are now going to explore the Titanic dataset that we just loaded.
 
 1. The **Dataset Details Page** provides a summary of the dataset. 
     - View the first 20 rows of a column by hovering over the column name (see image below)
-<p align="center">
-<img src="assets/datasets-details-first-20-rows.jpg" height="500">
-</p>
+    <p align="center">
+    <img src="assets/datasets-details-first-20-rows.jpg" height="500">
+    </p>
 
-**Note**: Driverless AI recognizes the following column types: integer, string, real, boolean, and time. Date columns are given a string "str" type.
+    **Note**: Driverless AI recognizes the following column types: integer, string, real, boolean, and time. Date columns are given a string "str" type.
 
 2. You can view information for a specific column by entering the column's name in the field above the graph.
 3. The **Dataset Actions** button provides the following options: 
