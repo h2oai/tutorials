@@ -354,8 +354,8 @@ We are now going to explore the Titanic dataset that we just loaded.
 
     *Things to Note:*
 
-    1. "Start typing to filter out items"
-    
+    1. Start typing to filter out items
+
     2. Available feature engineering types
 
     3. **Done** button
