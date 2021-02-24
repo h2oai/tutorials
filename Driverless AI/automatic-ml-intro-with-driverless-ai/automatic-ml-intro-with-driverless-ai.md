@@ -375,7 +375,7 @@ We are now going to explore the Titanic dataset that we just loaded.
 
 ### Split the Dataset
 
-From the Titanic.csv dataset, we are going to create two datasets, training and test. 75% of the data will be used to train the model, and the other 25% will be used to test the trained model.
+From the Titanic.csv dataset, we are going to create two datasets, *training* and *test*. 75% of the data will be used to train the model, and the other 25% will be used to test the trained model.
 
 1\. Click on the *titanic.csv* file and select **Split** 
 
