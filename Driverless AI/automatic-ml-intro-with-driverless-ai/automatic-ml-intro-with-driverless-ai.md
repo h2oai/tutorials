@@ -100,11 +100,8 @@ Before we load the dataset for our experiment, let us review some introductory c
 ### Deeper Dive and Resources
 
 -  [Join the H2O community](https://www.h2o.ai/community/home). Post your questions, discuss use cases, give feedback, stay informed about the latest H2O.ai updates, and more.
-
 - Learn more are about H2O Driverless through the [H2O documentation](http://docs.h2o.ai/driverless-ai/latest-stable/docs/booklets/DriverlessAIBooklet.pdf).
-
 - [Explore H2O Product Documentation](http://docs.h2o.ai/)
-
 - [Learn more H2O Driverless by reviewing the FAQs](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/faq.html) 
 
 ## Task 2: Automatic Machine Learning Concepts
@@ -363,11 +360,12 @@ We are now going to explore the Titanic dataset that we just loaded.
 
     3. **Done** button
 
-4\. To continue learning about what details are available, click on the following button: **Dataset Rows**. The following should appear: 
+4\. To continue learning about what details are available, click on the following button: **Dataset Rows**. The following will appear: 
 
 ![titanic-set-rows-page](assets/titanic-set-rows-page.jpg)
 
 *Things to Note:*
+
  1. Preview the dataset 
  2. View the remaining rows
  3. Dataset actions (same options as discuss earlier)
@@ -375,7 +373,7 @@ We are now going to explore the Titanic dataset that we just loaded.
  5. Return to the **Dataset Overview** 
  6. Option to Exit and return to the H2O **Datasets** page
 
-5\. Exit and return to **Datasets Overview** page.
+5\. Exit and return to **Datasets** page.
 
 ### Split the Dataset
 
