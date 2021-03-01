@@ -598,9 +598,7 @@ Once the experiment is complete, an **Experiment Summary** will appear:
     - Visualize Scoring Pipeline (Experimental) - A visualization of the scoring pipeline is available for each completed experiment.    
     ![visualize-scoring-pipeline-experimental](assets/visualize-scoring-pipeline-experimental.jpg)
     - Download Summary & Logs 
-        - This will download a zip file that includes the following logs along with a summary of the experiment:
-            - **h2oai_experiment.log**: This is the log corresponding to the experiment. The details contained in this log are categorized as either INFO, DEBUG, or DATA.
-            - **h2oai_experiment_anonymized.log**: This is the log corresponding to the experiment where all data in the log is anonymized. Details categorized as DATA in a regular log are not included in this log.
+        - The files within the experiment summary zip provide textual explanations of the graphical representations that are shown on the Driverless AI UI. To learn more click [here](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-summary.html?highlight=download%20summary%20logs#experiment-summary).
     - Download Autodoc 
         - The AutoDoc feature is used to generate automated machine learning documentation for individual Driverless AI experiments. This editable document contains an overview of the experiment and includes other significant details like feature engineering and final model performance.
 2. **Iteration Data** - Validation/Variable Importance: summary of the top variables (for the final model)
@@ -804,11 +802,7 @@ Let's explore the results of this classification experiment. You can find useful
 
 For non-time-series experiments, Driverless AI  provides several visual explanations and reason codes for the trained Driverless AI model and its results. After the predictive model is finished, we can have access to this reason codes and visuals by generating an **MLI Report**. With that in mind, let us focus on the fourth step of the Driverless AI workflow: **Interpret the model**. 
 
-
-
-- **Generate MLI Report**:
-
-    In the **Status Complete** section, click **Interpret this Model**:
+- **Generate MLI Report**: In the **Status Complete** section, click **Interpret this Model**:
 
     <p align="center"> 
     <img src='assets/interpret-this-model.jpg' width="355" height="345"></img>    
@@ -884,7 +878,7 @@ For binary classification and regression experiments, this tab includes Feature 
 
     ![transformed-shapley](assets/transformed-shapley.jpg)
 
-6. **DAI Data Zip Archive**
+6. **DAI Data Zip Archive** - dia-explainer.zip
 
 7. **DAI PD/ICE**
 
@@ -932,13 +926,13 @@ The Surrogate Model tab is organized into tiles for each interpretation method. 
 
     ![rf-partial-dependence-plot](assets/rf-partial-dependence-plot.jpg)
 
-5. **Surrogate and Shapley Zip Archive**(to access this, click on the zip tile):
+5. **Surrogate and Shapley Zip Archive**(to access this, click on the zip tile): surrogates-and-shapleys-explainer.zip
 
 6. **Decision Tree**(to access this, click on the graph tile):
 
     ![decision-tree](assets/decision-tree.jpg)
 
-7. **Decision Tree Surrogate Rules Zip**(to access this, click on the zip tile):
+7. **Decision Tree Surrogate Rules Zip**(to access this, click on the zip tile): dt-surrogate-explainer.zip
 
 
 4\. **Dashboard** - The Dashboard button contains a dashboard with an overview of the interpretations (built using surrogate models).
@@ -1026,12 +1020,9 @@ This graph shows the essential features that drive the model behavior.
     ![explanations-button](assets/explanations-button.jpg)
     ![mli-dashboard-explanation](assets/mli-dashboard-explanation.jpg)
 
-     To test your understanding: determine the top 2 global attributions associated with 'survived.'
+**Every single graph, plot, or chart we have observed has a *?* icon, and this provides further information about the visual. It can be located at the top right corner of each visual.** 
 
-
-**Note that every single graph, plot, or chart we observe the following is available: Each visual has a *?* icon, and this provides further information about the visual. It can be located at the top right corner of each visual.** 
-
-
+With the above in mind, we can say that the top three factors that contributed to a passenger surviving are as follows: sex, cabin, and class. From the perspective of an insurance company, knowing this information can drastically determine certain groups' insurance rates. 
 
 ### Deeper Dive and Resources
 
@@ -1049,99 +1040,86 @@ https://www.youtube.com/watch?v=5jSU3CUReXY) (Oct 18)
 
 ## Task 9: Experiment Summary and Autoreport
 
-Driverless AI allows you to download auto-generated documents such as the Download Experiment Summary and the MLI Report, all at the click of a button. 
+To emphasize, Driverless AI allows you to download auto-generated documents such as the **Experiment Summary & Logs** and the **MLI** Report, all at the click of a button. 
 
 ###  Experiment Summary & Logs
 
-1\. Click on **Download Summary & Logs**
+Click on **Download Summary & Logs**: Driverless AI will download a zip file:
 
- ![download-experiment-summary](assets/download-experiment-summary.jpg)
+![download-experiment-summary](assets/download-experiment-summary.jpg)
 
-When you open the zip file, the following files should be included:
+When you open the zip file, Driverless AI will include the following files:
 
-- Experiment logs (regular and anonymized)
-- A Summary of the experiment
-- Experiment features along with relevant importance
-- Ensemble information
-- Experiment preview 
-- Word version of an auto-generated report for the experiment
-- Target transformations tuning leaderboard
-- Tuning leaderboard
+- **preview.txt**: provides a preview of the experiment. (This is the same information that was included on the UI before starting the experiment.)
+- **summary**: provides the same summary that appears in the lower-right portion of the UI for the experiment. (Available in txt or json.)
+- **config.json**: provides a list of the settings used in the experiment.
+- **config_overrides_toml_string.txt**: provides any overrides for this experiment that were made to the config.toml file.
+- **args_do_auto_dl.json**: the internal arguments used in the Driverless AI experiment based on the dataset and accuracy, time and interpretability settings.
+- **experiment_column_types.json**: provides the column types for each column included in the experiment.
+- **experiment_original_column.json**: a list of all columns available in the dataset that was used in the experiment.
+- **experiment_pipeline_original_required_columns.json**: for columns used in the experiment, this includes the column name and type.
+- **experiment_sampling_description.json**: a description of the sampling performed on the dataset.
+- **timing.json**: the timing and number of models generated in each part of the Driverless AI pipeline.
 
-2\. Open the auto-generated .doc report and review the experiment results.
+Besides the **DOWNLOAD SUMMARY & LOGS**, you can click the **DOWNLOAD AUTODOC** option to gain insights about the experiment further: 
 
-3\. Click on **Download Autoreport**
+The **AutoDoc** feature is used to generate automated machine learning documentation for individual Driverless AI experiments. This editable document contains an overview of the experiment and includes other significant details like feature engineering and final model performance. To generate an AutoDoc click on the **DOWNLOAD AUTODOC** option located in the **STATUS: COMPLETE** section. 
 
- ![download-autoreport](assets/download-autoreport.jpg)
-
-**Autoreport** is a Word version of an auto-generated report for the experiment. A report file (AutoDoc) is included in the experiment summary.
-
-The zip file for the **Autoreport** provides insight into the following:
-
-- Training data
-- Any Detected Shifts in Distribution
-- Validation Schema selected
-- Model Parameter Tuning 
-- Feature Evolution 
-- Final set of Features chosen during the Experiment
-
+![download-autoreport](assets/download-autoreport.jpg)
 
 ### Deeper Dive and Resources
 
 - [H2O Driverless AI - Experiment Summary and Autoreport](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-summary.html#autoreport)
-
 - [Review this Webinar “Peek Under the Hood of H2O Driverless AI with Auto Doc”](https://www.brighttalk.com/webcast/16463/332693/peek-under-the-hood-of-h2o-driverless-ai-with-auto-doc) 
-
 - [Toward AutoML for Regulated Industry with H2O Driverless AI](https://www.h2o.ai/blog/toward-automl-for-regulated-industry-with-h2o-driverless-ai/)
 
 ## Next Steps
 
-Check out Driverless AI next tutorial [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus) where you will learn how to:
 
-- Evaluate a Driverless AI model through tools like:
-	- ROC
-	- Prec-Recall
-	- Gain and Lift Charts
-	- K-S Chart
-	- Metrics such as:
-	  - AUC
-	  - F-Scores
-	  - GINI
-	  - MCC
-	  - Log Loss
+Before we conclude this tutorial, note that we haven't focus on the firth step of our Driverless AI workflow: deploy the scoring pipeline. Given the complexity of the step, we will be exploring the final step in the following tutorial: 
 
-- Request a [21-Day Free Trial: H2O Driverless AI license Key](https://www.h2o.ai/try-driverless-ai/)
+- [Introduction to Machine Learning Model Deployment and Management](https://training.h2o.ai/products/tutorial-1a-intro-to-ml-model-deployment-and-management)
+
+Before moving forward to the above tutorial, it is recommended to proceed to the next tutorial in the learning path before exploring the final step of the Driverless AI workflow. The second tutorial in the learning path will provide a deeper understanding of Driverless AI's UI and its functionalities. Once again, the second tutorial is as follows: 
+
+- [Machine Learning Experiment Scoring and Analysis - Financial Focus](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus) 
+
+    > This tutorial will be working with a subset of the Freddie Mac Single-Family Loan-Level Dataset to build a classification model. We will be exploring how to evaluate a DAI model through tools like ROC, Prec-Recall, Gain, Lift Charts, K-S Chart, and metrics such as AUC, F-Scores, GINI, MCC, and Log Loss.
+
+If you want to test Driverless AI without the constraints the Aquarium lab holds, such as the two-hour mark and no save work, you can request a [**21-day trial license key**](https://www.h2o.ai/try-driverless-ai/) for your own Driverless AI environment. 
 
 ## Appendix: Project Workspace
 
-Driverless AI provides a Project Workspace for managing datasets and experiments related to a specific business problem or use case. Whether you are trying to detect fraud or predict user retention, datasets, and experiments can be stored and saved in the individual projects. A Leaderboard on the Projects page allows you to easily compare performance and results and identify the best solution for your problem.
+Driverless AI provides a Project Workspace for managing datasets and experiments related to a specific business problem or use case. Whether you are trying to detect fraud or predict user retention, datasets and experiments can be stored and saved in individual projects. A **Leaderboard** on the Projects page allows you to quickly compare performance and results and identify the best solution for your problem.
 
-From the Projects page, you can link datasets and/or experiments, and you can run new experiments. When you link an existing experiment to a Project, the datasets used for the experiment will automatically be linked to this project (if not already linked).
+You can link datasets and experiments from the Projects page, and you can run new experiments. When you link an existing experiment to a Project, Driverless AI will automatically link the experiment's datasets to this project (if not already linked).
 
 ### Explore an Existing Project Workspace
 
-1\. Select **Projects** , an image similar to the one below will appear:
+Select **Projects**, an image similar to the one below will appear(the projects section is located on the top of the Driverless AI UI next to the datasets section):
 
 ![projects-page](assets/projects-page.jpg)
 
 *Things to Note:*
 
-1. **Projects**: Projects Workspace for managing datasets and expirments menu option
+1. **Projects**: Projects Workspace for managing datasets and expirments 
 2. Pre-created **Project** which includes:
-    - **Name** : Project name (Time Series Tutorial)
-    - **Description**: Optional (N/A)
-    - **Train Datasets**: Number of train datasets (1)
-    - **Valid Datasets**: Number of validation datasets (0)
-    - **Test Datasets**: Number of test datasets (1)
-    - **Experiments**: Number of experiments (1)
-3. Additional options for the created project:
+    - **Name** : project name 
+    - **Description**: description of the project 
+    - **Train Datasets**: number of train datasets 
+    - **Valid Datasets**: number of validation datasets 
+    - **Test Datasets**: number of test datasets 
+    - **Experiments**: number of experiments 
+    - **Created**: date and time project was created 
+3.  Options for a project created:
     - **Open**
     - **Rename**
+    - **Edit Description**
     - **Delete**
 4. **+New Project**: Option to create a new project 
-5. **Type value to search for or date e.g. 15/09**
+5. **Type value to search for or date e.g. 15/09**: allows you to search for a particular project base on a data value
 
-3\. Open the **Time Series Tutorial**, an image similar to the one below will appear:
+Let's explore what each project can contain: open the project  **Time Series Tutorial**, and the following will appear: 
 
 ![projects-page-time-series](assets/projects-page-time-series.jpg)
 
@@ -1150,33 +1128,30 @@ From the Projects page, you can link datasets and/or experiments, and you can ru
 1. **Datasets** 
     - **Selected Datasets Type**: Training, Testing or Validation
     - Additional information on the dataset that was selected: Name, Rows, Columns
-
-    ![projects-page-time-series-datasets](assets/projects-page-time-series-datasets.jpg)
-        
-    - **+ Link dataset** : Link an additional dataset (Training, Testing or Validation) to the existing project
-
+        ![projects-page-time-series-datasets](assets/projects-page-time-series-datasets.jpg) 
+    - **+ Link dataset** : Link an additional dataset (Training, Testing, or Validation) to the existing project
 2. **Experiments** 
+    ![projects-page-time-series-experiments](assets/projects-page-time-series-experiments.jpg)
 
-![projects-page-time-series-experiments](assets/projects-page-time-series-experiments.jpg)
-
-- **Select Scoring Dataset**: Select a test dataset to score using selected experiment
-- **Select Experiments**: Select any experiment for this project
-- **Select Scorer for Test Score**: Select a valid scorer for this experiment
-- **Score Dataset on Experiments**: Once you have selected the data for scoring, the scorer, and the model or models, you can begin the scoring process by clicking **Score Items**.
-- **Compare**: You can compare two or three experiments and view side-by-side detailed information about each.
-- **Unlink Items**: Unlink datasets and/or experiments
-- **New Experiment**: Create a new experiment
-- Current linked experiment(s) info :
-    - **Name**
-    - **A**: Accuracy
-    - **T** : Time
-    - **I**: Interpretability
-    - **Scorer**: Scorer used 
-    - **Status**: In progress, completed
-    - **Train Time**: Total time to train experiment
-    - **Val. Score** : Validation score for the experiment
-    - **Test Score**: Test score for the experiment
-    - **Test Time**: Total time to test experiment 
+    - **Select Scoring Dataset**: select a test dataset to score using the selected experiment
+    - **Select Experiments**: select any experiment for this project
+    - **Select Scorer for Test Score**: select a valid scorer for this experiment
+    - **Score Dataset on Experiments**: once you have selected the data for scoring, the scorer, and the model or models, you can begin the scoring process by clicking **Score Items**.
+    - **Compare**: You can compare two or three experiments and view detailed side-by-side information about each.
+    - **Unlink Items**: Unlink datasets and experiments
+    - **+ Link Experiment**: allows you to link experiments to the open project 
+    - **New Experiment**: create a new experiment
+    - Current linked experiment(s) info :
+        - **Name**: experiment name
+        - **A**: accuracy
+        - **T**: time
+        - **I**: interpretability
+        - **Scorer**: scorer used 
+        - **Status**: in progress, completed
+        - **Train Time**: total time to train experiment
+        - **Val. Score**: validation score for the experiment
+        - **Test Score**: test score for the experiment
+        - **Test Time**: total time to test experiment 
  
 ### Create a Project Workspace
 
@@ -1188,8 +1163,7 @@ To create a Project Workspace:
 4. Click **Create Project**. This creates an empty Project page
 
 - Learn more about projects in Driverless AI; check out the [Project Workspace Documentation](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/projects.html?highlight=projects%20workspace).
-
-- A more extensive application of **Project Workspace** can be explored in the [Time Series Tutorial - Retail Sales Forecasting](https://training.h2o.ai/products/tutorial-2a-time-series-recipe-tutorial-retail-sales-forecasting). 
+- A more extensive application of **Project Workspace** can be explored in the following tutorial: [Time Series - Retail Sales Forecasting](https://training.h2o.ai/products/tutorial-2a-time-series-recipe-tutorial-retail-sales-forecasting). 
  
 
  
