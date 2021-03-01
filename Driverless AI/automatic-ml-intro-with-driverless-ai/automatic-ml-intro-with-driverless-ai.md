@@ -802,7 +802,9 @@ Let's explore the results of this classification experiment. You can find useful
 ## Task 8: Machine Learning Interpretability Report for Non-Time-Series Experiments
 
 
-For non-time-series experiments, Driverless AI  provides several visual explanations and reason codes for the trained Driverless AI model and its results. After the predictive model is finished, we can have access to this reason codes and visuals by generating an **MLI Report**. 
+For non-time-series experiments, Driverless AI  provides several visual explanations and reason codes for the trained Driverless AI model and its results. After the predictive model is finished, we can have access to this reason codes and visuals by generating an **MLI Report**. With that in mind, let us focus on the fourth step of the Driverless AI workflow: **Interpret the model**. 
+
+
 
 - **Generate MLI Report**:
 
@@ -941,6 +943,8 @@ The Surrogate Model tab is organized into tiles for each interpretation method. 
 
 4\. **Dashboard** - The Dashboard button contains a dashboard with an overview of the interpretations (built using surrogate models).
 
+![dashboard](assets/dashboard.jpg)
+
 5\. The **Action** button on the MLI page ca be used to download the reason codes, scoring pipelines for productionization and MLI logs: 
 
 <p align="center"> 
@@ -961,12 +965,14 @@ Display MLI Python Logs: View MLI Python logs for the interpretation.
 10. **Download Reason Codes Original Shapley (Kernel Shapley)**: For regression, binary, and multinomial experiments, download a CSV file of Original Shapley reason codes.
 11. **Go to Experiment**: View the experiment that was used to generate the interpretation.
 
- 
-6\. Datasets - Takes you back to the Datasets page 
 
-7\. Experiments - Takes you back to the Experiments page
+6\. ***n* Running | *n* Failed | *n* Done** 
 
-8\. MLI - Takes you back to the MLI page 
+7\. **DATASETS** - It takes you to the Datasets page.
+
+8\. **EXPERIMENTS** - Takes you to the Experiments page. 
+
+9\. **MLI** - It takes you to the MLI page to generate or find already developed various interpretations for experiments.
 
 ### MLI Dashboard
 
@@ -974,105 +980,70 @@ Select the MLI **Dashboard** and explore the different types of insights and exp
 
 ![mli-dashboard](assets/mli-dashboard.jpg)
 
-*NOTE:* On the top right corner where it says "Row Number or Feature Value," you are allow the following actions: The row selection feature allows a user to search for a particular observation by row number or by an identifier column. Identifier columns cannot be specified by the user - MLI makes this choice automatically by choosing columns whose values are unique (dataset row count equals the number of unique values in a column).
+**Note**: On the top right corner, where it says "Row Number or Column Value," you are allowed the following actions: This option allows a user to search for a particular observation by row number or the column value.  The user cannot specify column values - MLI automatically chooses columns whose values are unique (dataset row count equals the number of unique values in a column).
 
-1\. K-Lime - Global Interpretability model explanation plot: 
-This plot shows Driverless AI model and LIME model predictions in sorted order by the Driverless AI model predictions. In white, is the global linear model of Driverless AI predictions.
+1. **K-Lime** -  This plot shows the Driverless AI model and LIME model predictions in sorted order by the Driverless AI model predictions. In white is the global linear model of Driverless AI predictions.
+    - Hover over any of the plot points and view the LIME reason codes for that value.
+    - Select a point where *Actual value* is **1** and note the reason codes for that prediction value.
 
-1. Hover over any of the points of the plot and view the LIME reason codes for that value.
+        ![dashboard-klime](assets/dashboard-klime.jpg)
 
-2. Select a point where *Actual value* is 1 and note the reason codes for that prediction value
+        Learn more about the **K-Lime** graph on the next tutorial: [Machine Learning Experiment Scoring and Analysis - Financial Focus](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus).
 
-![dashboard-klime](assets/dashboard-klime.jpg)
-
-Learn more about K-Lime with our [Machine Learning Interpretability Tutorial](https://training.h2o.ai/products/tutorial-1c-machine-learning-interpretability-tutorial).
-
-2\. Feature Importance - 
+2. Feature Importance - 
 This graph shows the essential features that drive the model behavior.
-1. Which attribute/feature had the most importance?
-2. Was this the same attribute that you hypothesized?
+    - Which attribute/feature had the most importance?
+
+        ![dashboard-feature-importance](assets/dashboard-feature-importance.jpg)
+
+        Learn more about the **Feature Importance** graph on the next tutorial:[ Machine Learning Interpretability - Financial Focus](https://training.h2o.ai/products/tutorial-1c-machine-learning-interpretability-tutorial).
 
 
-![dashboard-feature-importance](assets/dashboard-feature-importance.jpg)
+        
 
-Learn more about Feature Importance with our [Machine Learning Interpretability Tutorial](https://training.h2o.ai/products/tutorial-1c-machine-learning-interpretability-tutorial).
+3. Decision Tree Surrogate model
 
-3\. Decision Tree Surrogate model
+    The decision Tree Surrogate model displays the model's approximate flowchart of the complex Driverless AI model's decision-making. Higher and more frequent features are more important. Features above or below one-another can indicate an interaction. Finally, the thick yellow line is the most common decision path through the decison.
 
-The decision Tree Surrogate model displays the model's approximate flowchart of the complex Driverless AI model's decision making.Higher and more frequent features are more important. Features above or below one-another can indicate an interaction. Finally, the thickest edges are the most common decision paths through the tree that lead to a predicted numerical outcome.
+    - What is the most common decision path for the Titanic Training set?
 
-1. What is the most common decision path for the Titanic Training set?
+        ![decision-tree-task-8-answer](assets/decision-tree-task-8-answer.jpg)
 
-Solution:
+        Learn more about the **Decision Tree** graph on the next tutorial: [Machine Learning Interpretability Tutorial](https://training.h2o.ai/products/tutorial-1c-machine-learning-interpretability-tutorial).
 
-![decision-tree-task-8-answer](assets/decision-tree-task-8-answer.jpg)
+4. Partial Dependence and Individual Conditional Expectation (ICE) plots represent the model prediction for different original variables' values. It shows the average model behavior for important original variables.
 
-Learn more about Decision Trees with our [Machine Learning Interpretability Tutorial](https://training.h2o.ai/products/tutorial-1c-machine-learning-interpretability-tutorial).
+    The grey bar represents the standard deviation of predictions. The yellow dot represents the average predictions.
 
-4\. Partial Dependence and Individual Conditional Expectation (ICE) plot. This plot represents the model prediction for different values of the original variables. It shows the average model behavior for important original variables.
+    ![dashboard-partial-dependence-plot](assets/dashboard-partial-dependence-plot.jpg)
 
-The grey bar represents the standard deviation of predictions. The yellow dot represents the average predictions.
-
-![dashboard-partial-dependence-plot](assets/dashboard-partial-dependence-plot.jpg)
-
-1. Explore other average values for different variables and compare the results to your original observations. To change the variable, select **PDP Variable:** located at the top of the Partial Dependence plot.
+    - Explore other average values for different variables and compare the results to your original observations. To change the variable, select use the search bar on top of the **Feature Importance** chart. 
  
-Learn more about Partial Dependence Plots with our [Machine Learning Interpretability Tutorial](https://training.h2o.ai/products/tutorial-1c-machine-learning-interpretability-tutorial).
+        Learn more about the **Partial Dependence** plot on the next tutorial: [Machine Learning Interpretability Tutorial](https://training.h2o.ai/products/tutorial-1c-machine-learning-interpretability-tutorial).
 
-5\. Explanations 
+5. **Explanations** provide detailed, easy-to-read **Reason Codes** for the top Global/Local Attributions. To access the explanations, click on the EXPLANATIONS button located on the screen's top right corner(1).
 
-Explanations provide a detailed, easy-to-read **Reason Codes** for the top Global/Local Attributions.
-1. Click on Explanations
+    ![explanations-button](assets/explanations-button.jpg)
+    ![mli-dashboard-explanation](assets/mli-dashboard-explanation.jpg)
 
-![explanations-button](assets/explanations-button.jpg)
-
-![mli-dashboard-explanation](assets/mli-dashboard-explanation.jpg)
-
-2. Determine the top 2 global attributions associated with 'survived.'
-
-*Note:* 
-
-Driverless AI offers other plots located under Driverless AI Model and Surrogate Models, take a few minutes to explore these plots; they are all interactive. The **?** mark will provide an explanation of each plot.
-
-Driverless AI Model
-- Original Feature Importance
-- Transformed Feature Importance 
-- Original Shapley (Naive shapley)
-- Transformed shapley
-- Partial Dependence Plot
-- Disparate Impact Analysis
-- Sensitivity Analysis 
+     To test your understanding: determine the top 2 global attributions associated with 'survived.'
 
 
-Surrogate Models
-- KLime
-- Decision Tree
-- Random Forest
-    - Feature Importance
-    - Partial Dependency Plot
-    - LOCO
+**Note that every single graph, plot, or chart we observe the following is available: Each visual has a *?* icon, and this provides further information about the visual. It can be located at the top right corner of each visual.** 
 
 
 
 ### Deeper Dive and Resources
 
 - [Machine Learning, H2O.ai & Machine Learning  Interpretability | Interview with Patrick Hall](https://www.youtube.com/watch?v=TSmSBWnVSzc)
-
 - [H2O Driverless AI Machine Learning Interpretability walkthrough]( 
 https://www.youtube.com/watch?v=5jSU3CUReXY) (Oct 18)
-
 - [Practical Tips for Interpreting Machine Learning Models - Patrick Hall, H2O.ai Youtube Video](https://www.youtube.com/watch?v=vUqC8UPw9SU) (June 18)
-
 - [Practical Tips for Interpreting Machine Learning Models - Patrick Hall, H2O.ai Slideshare](https://www.slideshare.net/0xdata/practical-tips-for-interpreting-machine-learning-models-patrick-hall-h2oai)
-
 - [Building Explainable Machine Learning Systems: The Good, the Bad, and the Ugly](https://www.youtube.com/watch?v=Q8rTrmqUQsU) (May 18)
- 
 - [An Introduction to Machine Learning Interpretability Second Edition by Patrick Hall & Navdeep Gill](https://www.h2o.ai/wp-content/uploads/2019/08/An-Introduction-to-Machine-Learning-Interpretability-Second-Edition.pdf) 
-
 - [Testing Machine Learning Explanation Techniques by Patrick Hall, Navdeep Gill and Lingyao Meng](https://www.oreilly.com/ideas/testing-machine-learning-interpretability-techniques)
-
 - [Patrick Hall and H2O Github - Machine Learning with Python](https://github.com/jphall663/interpretable_machine_learning_with_python)
-
 - [Patrick Hall and H2O Github - Machine Learning Interpretability](https://github.com/jphall663/awesome-machine-learning-interpretability) 
 
 
