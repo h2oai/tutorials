@@ -266,7 +266,7 @@ The following will appear after the dataset is successfully imported:
     - File status
     - Date created
 
-Now that the dataset has been imported let's discover on the next task how Driverless AI allows users to further understand a selected dataset. 
+Now that the dataset has been imported let's discover on the next task how Driverless AI allows users to further understand a selected dataset. Doing so will allow us further explore the second step of the Driverless AI workflow: visualize data. 
 
 ### Deeper Dive and Resources
 
@@ -429,7 +429,7 @@ Exit out of the **Correlation Graph** view by clicking on the **X** at the graph
 - Missing Values Heatmap
 - Gaps Histogram
 
-Now in the next task, let's proceed to step 3 in our Driverless AI workflow: run an experiment. 
+Now in the next task, let's proceed to step 3 of our Driverless AI workflow: run an experiment. 
 
 ### References 
 
