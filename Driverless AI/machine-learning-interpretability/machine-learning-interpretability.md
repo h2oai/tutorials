@@ -1,4 +1,4 @@
-# Machine Learning Interpretability Tutorial
+# Machine Learning Interpretability
 
 ## Outline
 - [Objective](#objective)
@@ -16,19 +16,18 @@
 
 ## Objective 
 
-As Machine Learning (ML) continues to grow, more industries, from healthcare to banking, adopt machine learning models to generate predictions. These predictions are being used to justify the cost of healthcare and for loan approvals or denials. For regulated industries that are adopting machine learning, the **interpretability** of models is a requirement. In Machine Learning, **interpretability** can be defined as “the ability to explain or present in understandable terms to a human [being].”[1] 
+As Machine Learning grows, more industries, from healthcare to banking, adopt machine learning models to generate predictions. These predictions are being used to justify the cost of healthcare and for loan approvals or denials. For regulated industries that are adopting machine learning, the **interpretability** of models is a requirement. In Machine Learning, **interpretability** can be defined as “the ability to explain or present in understandable terms to a human [being].”[1] 
 
-Few of the motivations for interpretability are:
-
+A few of the motivations for interpretability are as follows:
 - Better human understanding of impactful technologies
 - Regulation compliance and General Data Protection Regulations (GDPRs) 
 - Check and balance against accidental or intentional discrimination
 - Hacking and adversarial attacks
 - Alignment with US FTC and OMB guidance on transparency and explainability
-- Prevent the building of excessive Machine Learning Technical Debt
+- Prevent the building of excessive Technical Debt in Machine Learning
 - More in-depth insight and understanding of your data 
 
-In this tutorial, we will build a machine learning model using the famous **Default of Credit Card Clients Dataset**. We will use the dataset to build a classification model that will predict the probability of default payment by credit card clients using the data provided. In contrast to previous tutorials, we will focus on the most leading methods and concepts for explaining and interpreting Machine Learning models. Therefore, we will not focus so much on the experiment itself. Instead, we would shift our attention to how we can use the following metrics that a model generates (or we can generate) to truly understand our built model: results, graphs, scores, and reason code values. In particular, we will explore the following graphs in Driverless AI: 
+This tutorial will build a machine learning model using the famous **Default of Credit Card Clients Dataset**. We will use the dataset to build a classification model that will predict the probability of clients defaulting on their next credit card payment. In contrast to previous tutorials, we will focus on the most leading methods and concepts for explaining and interpreting Machine Learning models. Therefore, we will not focus so much on the experiment itself. Instead, we would shift our attention to using the following metrics and graphs that Driverless AI generates to truly understand our built model: results, graphs, scores, and reason code values. In particular, we will explore the following graphs in Driverless AI: 
 
 - Global Shapley 
 - Local Shapley 
@@ -47,16 +46,10 @@ In this tutorial, we will build a machine learning model using the famous **Defa
 **Learn more about Interpretability**:
  
 - [Brief Perspective on Key Terms and Ideas in Responsible AI](https://www.h2o.ai/blog/brief-perspective-on-key-terms-and-ideas-in-responsible-ai-2/)
-
-
 - [“Towards a rigorous science of interpretable machine learning”](https://arxiv.org/pdf/1702.08608.pdf)
-
 - [FAT/ML](http://www.fatml.org/resources/principles-for-accountable-algorithms)
-
-- [XAI](https://www.darpa.mil/program/explainable-artificial-intelligence)
-
-
-[1] [“Towards a rigorous science of interpretable machine learning”](https://arxiv.org/pdf/1702.08608.pdf) 
+- [Explainable Artificial Intelligence (XAI)](https://www.darpa.mil/program/explainable-artificial-intelligence)
+- [1] [“Towards a rigorous science of interpretable machine learning”](https://arxiv.org/pdf/1702.08608.pdf) 
 
 ## Prerequisites
 
@@ -585,7 +578,7 @@ In the LOCO-variant method, each local feature importance is found by re-scoring
 
 Local Shapley Plots can generate variable contribution values for every row that the model predicts. In other words, we can generate for every person in our dataset the exact numeric contribution of each of the variables for each prediction of the model. For the **Local Shapley** plots, the yellow bars stay the same since they contribute to the global variable. However, the grey bars will change when a different row or person is selected from the dataset using the **row selection dialog box** or by clicking on an individual in the K-LIME plot.
 
-The grey bars or local numeric contributions can be used to generate reason codes. The reason codes should be suitable for regulated industries where modeling decisions need to be justified. For our dataset, we can select a person with a high default probability, select Shapley Local plot, and pick out the largest grey bars as the most significant contributors for the decision of denying a future loan.  
+The grey bars or local numeric contributions can be used to generate reason codes. The reason codes should be suitable for regulated industries where modeling decisions need to be justified. For our dataset, we can select a person with a high default probability, select Shapley Local plot, and pick out the largest grey bars as the most significant contributors to defaulting.  
 
 1\. Select a high probability default person on the K-LIME plot by clicking on one of the white points in the plot's top-right corner.
 
