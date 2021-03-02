@@ -68,26 +68,28 @@ You will need the following to be able to do this tutorial:
 
 ### About the Dataset
 
-This dataset contains information about credit card clients in Taiwan from April 2005 to September 2005. Features include demographic factors, repayment statuses, history of payment, bill statements, and default payments.
-
-
-The data set comes from the [UCI Machine Learning Repository Irvine, CA: University of California, School of Information and Computer Science](https://archive.ics.uci.edu/ml/datasets/default+of+credit+card+clients#)
-
-This dataset has a total of 25 Features(columns) and 30,000 Clients(rows).
+The dataset we will be using contains information about credit card clients in Taiwan from **April 2005** to **September 2005**. Features include demographic factors, repayment statuses, history of payment, bill statements, and default payments. The data set comes from the [UCI Machine Learning Repository: UCI_Credit_Card.csv](https://archive.ics.uci.edu/ml/datasets/default+of+credit+card+clients#) This dataset has a total of 25 Features(columns) and 30,000 Clients(rows).
 
 ### Download Dataset
 
-1\. Go to our S3 link [UCI_Credit_Card.csv](https://s3.amazonaws.com/data.h2o.ai/DAI-Tutorials/TestDrive-Datasets/UCI_Credit_Card.csv) and download the file(dataset) to your local drive.
+In the **DATASETS** page click **+ ADD DATASET(OR DRAG & DROP)** and select the **AMAZON S3** option: 
+
+![amazon-s3-option](assets/amazon-s3-option.jpg)
+
+In the search bar, paste the following to import the **UCI_Credit_Card.csv**: ```https://s3.amazonaws.com/data.h2o.ai/DAI-Tutorials/TestDrive-Datasets/UCI_Credit_Card.csv```(1):
+
+![s3-import-dataset](assets/s3-import-dataset.jpg)
+
+Select the **UCI_Credit_Card.csv** (2). Right after, **CLICK TO IMPORT SELECTION**(3). After it imports successfully, you will see the following CSV on the **DATASETS** page: **UCI_Credit_Card.csv**.
+
 
 ### Launch Experiment 
 
-1. Load the **UCI_Credit_Card.csv** to Driverless AI by clicking **Add Dataset (or Drag and Drop)** on the **Datasets overview** page.  
-
-2. Click on the **UCI_Credit_Card.csv** file then select **Details**.
+Click on the **UCI_Credit_Card.csv** then select **Details**:
 
 ![data-details](assets/data-details.jpg)
   
-2. Let’s have a look at the columns:
+Before we run our experiment, let’s have a look at the dataset columns:
 
 ![data-columns](assets/data-columns.jpg)
 
@@ -99,8 +101,7 @@ This dataset has a total of 25 Features(columns) and 30,000 Clients(rows).
 4. **EDUCATION**- Education (1 = graduate school; 2 = university; 3 = high school; 4 = others)
 5. **MARRIAGE** - Marital status (1 = married; 2 = single; 3 = others)
 6. **Age**
-7. **PAY0-PAY6**: History of past payment:
-
+7. **PAY_1 - PAY_6**: History of past payment:
     - -2: Paid in full
     - -1: Paid with another line of credit
     - 0: No consumption
@@ -108,40 +109,32 @@ This dataset has a total of 25 Features(columns) and 30,000 Clients(rows).
     - 2: 2 Months late
     - 3: 3 Months late
     - Up to 9 Months late
+    - **NOTE: IN THE DATASET,  COLUMN *PAY_0* WAS SUPPOSE TO BE NAME *PAY_1*. THIS COLUMN CAN BE RENAME THROUGH A DATARECIPE, BUT FOR THE TIME BEING, WE WILL KEEP IN MIND THAT *PAY_0* = *PAY_1*.** 
+- Continue scrolling the current page to see more columns.
+  -  **BILL_AMT1 - BILL_AMT6** - Amount of bill statement 
+  -  **PAY_AMT1 -PAY_AMT6** - Amount of previous payment 
+  -  **default.payment.next.month** - Default (1: Yes, 0: No)
 
-3\. Continue scrolling the current page to see more columns.
-
--  **BILL_AMT0 - BILL_AMT6** - Amount of bill statement 
--  **PAYAMT0-_PAY_AMT6** - Amount of previous payment 
--  **default.payment.next.month** -  Probability of Default (1: Yes, 0: No)
-
-4\. Return to the **Datasets** page.
-
-5\. Click on the **UCI_Credit_Card.csv** file, then select **Predict**.
-
-6\. Select **Not Now** on the "First time Driverless AI" box, a similar image should appear:
+Now, return to the **Datasets** page. Click on the **UCI_Credit_Card.csv**, then select **Predict**. Select **Not Now** on the "First-time Driverless AI" box, the following will appear:
 
 ![experiment-page](assets/experiment-page.jpg)
 
-7\. Select **Target Column**, then Select **default.payment.next.month** as the target column. As mentioned in the **Objective** section, we will be creating a classification model to predict whether someone will be defaulting on their next payment, in this case, on PAY7. We will be using part of the information in the dataset to train our model. 
+As you might have noticed in the dataset, we have a feature that can tell us whether a client defaulted on their next month's payment. In other words, **default.payment.next.month** tells us if PAY_7 defaulted(PAY_7 is not a column in our dataset). With that in mind, we are going to select as our **target column**:  **default.payment.next.month**. As mentioned in the **Objective** task, we will be creating a classification model to predict whether someone will be defaulting on their next payment, in this case, on PAY_7: 
 
 ![target-column](assets/target-column.jpg)
 
-
-8\. Adjust the settings to:
-
+For our **Training Settings**, adjust the settings to:
 -  **Accuracy:6**
 - **Time:4**
 - **Interpretability:6**
 
-After click on **Launch Experiment.** 
+After click on **Launch Experiment**:
 
 ![settings](assets/settings.jpg)
 
-9\. When your experiment finishes building, you should see the following dashboard:
+When your experiment finishes building, you should see the following dashboard:
 
 ![experiment-results](assets/experiment-results.jpg)
-
 
 *Things to note:*
 
