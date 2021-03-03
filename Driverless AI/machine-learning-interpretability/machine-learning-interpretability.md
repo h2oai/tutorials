@@ -72,15 +72,13 @@ The dataset we will be using contains information about credit card clients in T
 
 ### Download Dataset
 
-In the **DATASETS** page click **+ ADD DATASET(OR DRAG & DROP)** and select the **AMAZON S3** option: 
+When looking at the UCI_Credit_Card.csv, we can observe that column **PAY_0** was suppose to be named **PAY_1**. Accordingly, we will solve this problem using a data recipe that will change the column's name to **PAY_1**. The data recipe has already been written and can be found [here](https://s3.amazonaws.com/data.h2o.ai/DAI-Tutorials/MLI+Tutorials/uci_credit_card_recipe.py). Download the data recipe and name it ```uci_credit_card_recipe.py```. Make sure it's saved as a **.py** file. 
+ 
+Now upload the data recipe to the Driverless AI dataset's page. In the **DATASETS** page click **+ ADD DATASET(OR DRAG & DROP)** and select **UPLOAD DATA RECIPE**: 
 
-![amazon-s3-option](assets/amazon-s3-option.jpg)
+![upload-data-recipe](assets/upload-data-recipe.jpg)
 
-In the search bar, paste the following to import the **UCI_Credit_Card.csv**: ```https://s3.amazonaws.com/data.h2o.ai/DAI-Tutorials/TestDrive-Datasets/UCI_Credit_Card.csv```(1):
-
-![s3-import-dataset](assets/s3-import-dataset.jpg)
-
-Select the **UCI_Credit_Card.csv** (2). Right after, **CLICK TO IMPORT SELECTION**(3). After it imports successfully, you will see the following CSV on the **DATASETS** page: **UCI_Credit_Card.csv**.
+After it imports successfully, you will see the following CSV on the **DATASETS** page: **UCI_Credit_Card.csv**.
 
 
 ### Launch Experiment 
