@@ -3,7 +3,7 @@
 ## Outline
 - [Objective](#objective)
 - [Prerequisites](#prerequisites)
-- [Task 1: Launch Experiment and MLI](#task-1-launch-experiment-and-mli) 
+- [Task 1: Launch Experiment](#task-1-launch-experiment) 
 - [Task 2: Industry Context and ML Explainability Concepts](#task-2-industry-context-and-ml-explainability-concepts)
 - [Task 3: Global Shapley Values and Feature Importance](#task-3-global-shapley-values-and-feature-importance)
 - [Task 4: Partial Dependence Plot](#task-4-partial-dependence-plot)
@@ -29,15 +29,15 @@ A few of the motivations for interpretability are as follows:
 
 This tutorial will build a machine learning model using the famous **Default of Credit Card Clients Dataset**. We will use the dataset to build a classification model that will predict the probability of clients defaulting on their next credit card payment. In contrast to previous tutorials, we will focus on the most leading methods and concepts for explaining and interpreting Machine Learning models. Therefore, we will not focus so much on the experiment itself. Instead, we would shift our attention to using the following metrics and graphs that Driverless AI generates to understand our built model: **results, graphs, scores, and reason code values**. In particular, we will explore the following graphs in Driverless AI: 
 
-- Global Shapley 
-- Local Shapley 
-- Transformed Shapley 
-- Random Forest (RF) Feature Importance
-- Partial Dependence Plots 
-- Decision Tree Surrogate
-- K-Lime 
-- Leave-One-Covariate-Out (LOCO)
-- Individual Conditional Expectation (ICE)
+- Decision tree surrogate models 
+- Individual conditional expectation (ICE) plots 
+- K local interpretable model-agnostic explanations (K-LIME) 
+- Leave-one-covariate-out (LOCO) local feature importance  
+- Partial dependence plots 
+- Random forest feature importance 
+
+
+Before we explore these techniques in detail, we briefly introduce ourselves to fundamental concepts in machine learning interpretability (MLI). As well, we explore a global versus local analysis motif that will be crucial when interpretability models in Driverless AI. Furthermore, we will explore a general justification for MLI and a huge problem in the field: the multiplicity of good models. At lasts, we will explore each technique while explaining how they can be used to understand our use case: credit card defaulting. 
 
 **Note:** We recommend that you go over the entire tutorial first to review all the concepts; that way, you will be more familiar with the content once you start the experiment.
 
@@ -64,7 +64,7 @@ You will need the following to be able to do this tutorial:
 
 
 
-##  Task 1: Launch Experiment and MLI
+##  Task 1: Launch Experiment
 
 ### About the Dataset
 
@@ -72,7 +72,7 @@ The dataset we will be using contains information about credit card clients in T
 
 ### Download Dataset
 
-When looking at the UCI_Credit_Card.csv, we can observe that column **PAY_0** was suppose to be named **PAY_1**. Accordingly, we will solve this problem using a data recipe that will change the column's name to **PAY_1**. The data recipe has already been written and can be found [here](https://s3.amazonaws.com/data.h2o.ai/DAI-Tutorials/MLI+Tutorials/uci_credit_card_recipe.py). Download the data recipe and name it ```uci_credit_card_recipe.py```. Make sure it's saved as a **.py** file. 
+When looking at the **UCI_Credit_Card.csv**, we can observe that column **PAY_0** was suppose to be named **PAY_1**. Accordingly, we will solve this problem using a data recipe that will change the column's name to **PAY_1**. The data recipe has already been written and can be found [here](https://s3.amazonaws.com/data.h2o.ai/DAI-Tutorials/MLI+Tutorials/uci_credit_card_recipe.py). Download the data recipe and name it ```uci_credit_card_recipe.py```. Make sure it's saved as a **.py** file. 
  
 Now upload the data recipe to the Driverless AI dataset's page. In the **DATASETS** page click **+ ADD DATASET(OR DRAG & DROP)** and select **UPLOAD DATA RECIPE**: 
 
@@ -107,7 +107,6 @@ Before we run our experiment, let’s have a look at the dataset columns:
     - 2: 2 Months late
     - 3: 3 Months late
     - Up to 9 Months late
-    - **NOTE: IN THE DATASET,  COLUMN *PAY_0* WAS SUPPOSE TO BE NAME *PAY_1*. THIS COLUMN CAN BE RENAME THROUGH A DATARECIPE, BUT FOR THE TIME BEING, WE WILL KEEP IN MIND THAT *PAY_0* = *PAY_1*.** 
 - Continue scrolling the current page to see more columns.
   -  **BILL_AMT1 - BILL_AMT6** - Amount of bill statement 
   -  **PAY_AMT1 -PAY_AMT6** - Amount of previous payment 
@@ -122,151 +121,143 @@ As you might have noticed in the dataset, we have a feature that can tell us whe
 ![target-column](assets/target-column.jpg)
 
 For our **Training Settings**, adjust the settings to:
--  **Accuracy:6**
-- **Time:4**
-- **Interpretability:6**
+- Accuracy: **6**
+- Time: **4**
+- Interpretability: **7**
+- Scorer: **AUC**
 
 After click on **Launch Experiment**:
 
 ![settings](assets/settings.jpg)
 
-When your experiment finishes building, you should see the following dashboard:
-
-![experiment-results](assets/experiment-results.jpg)
-
 *Things to note:*
 
-1. **Interpretability** - The interpretability knob is adjustable. The higher the Interpretability, the simpler the features the main modeling routine will extract from the dataset. If the Interpretability is high enough, then a monotonically constrained model will be generated. 
+1. **Interpretability** -  The higher the interpretability, the simpler the features that Driverless AI will generate. If the interpretability is high enough, then Driverless AI will generate a monotonically constrained model. In other words, it will make the model more transparent and interpretable. In particular, it will make our metrics that we will generate easy to understand while eliminating perhaps features that will be a lot of work to understand from a perspective of interpretability. A monotonically constrained model can be enabled when **Interpretability >= 7.** This idea will further be explored in the following tasks. 
+2. **Variable Importance** - Here, we can see a variety of automatically generated engineered features. Features that we will use to understand our model and its decision-making process. 
 
-2. **Time** - This specifies the relative time for completing the experiment (i.e., higher settings take longer). Higher the time, the longer the wait since Driverless AI will work on engineering many features.
-
-3. **Accuracy** -  The complexity of the underlying models: High accuracy will build complex underlying models. 
-
-4. **Variable Importance** -  Here we can see a variety of automatically generated engineered features.
-
-10\. Select **Interpret this Model:** 
-
-![interpret](assets/interpret.jpg)
-
-11\. Once the **MLI Experiment is Finished** something similar to the below image should appear:
-
-![landing-page](assets/landing-page.jpg)
-
-12. If we click on the **Summary** tab, we can scroll through and learn the following:
-
-![summary-1](assets/summary-1.jpg)
-
-![summary-2](assets/summary-2.jpg)
-
-![summary-3](assets/summary-3.jpg)
-
-![summary-4](assets/summary-4.jpg)
-
-*Things to note:*
-
-1. Summary of some basic facts about the model
-2. Ranked variable importance in the space of the derived features (harder to understand)
-3. Accuracy of surrogate models, or simple models of complex models 
-4. Ranked variable importance in the space of the original features (easier to understand)
-
-Notice that some of the highly ranked variables of the original features (4) show up also as highly ranked variables of the derived features (2). The ranked original variable importance (4) can be used to reason through the more complex features in (2).
+While we wait for the experiment to finish, let's explore some crucial concepts that will help us achieve **interpretability** in our model.  
 
 ## Task 2: Industry Context and ML Explainability Concepts
 
-### Responsibility in AI and Machine Learning
+### Overivew
 
-Explainability and interpretability in the machine learning space have grown tremendously since we first developed Driverless AI. With that in mind, it is important to frame the larger context in which our interpretability toolkit falls. It is worth noting that since this first training was developed, the push towards regulation, oversight, and auditing of ML models has increased. As a result, **interpretability**  has become a critical requirement for firms looking to make artificial intelligence a part of their operations. There have been many recent developments globally, which we have linked below, but the consistent themes are fairness, transparency, explainability, interpretability, privacy, and security. 
+For decades, common sense has deemed the complex, intricate formulas created by training machine learning algorithms to be uninterpretable. While it is un- likely that nonlinear, non-monotonic, and even non-continuous machine-learned response functions will ever be as directly interpretable as more traditional linear models, great advances have been made in recent years [1]. H2O Driverless AI incorporates a number of contemporary approaches to increase the transparency and accountability of complex models and to enable users to debug models for accuracy and fairness including:
 
-As the field has evolved, many definitions and concepts have come into the mainstream; below, we outline H2O.ai’s respective definitions & understanding around the factors that make up Responsible Artificial Intelligence.
-
-![task-2-venn-diagram](assets/task-2-venn-diagram.jpg)
-
- - **Explainable AI (XAI)**: The ability to explain a model after it has been developed. 
-
- - **Interpretable Machine Learning**: Transparent model architectures and increasing how intuitive and understandable ML models can be.
-
- - **Ethical AI**: Sociological fairness in machine learning predictions (i.e., whether one category of person is being weighted unequally).
-
- - **Secure AI**: Debugging and deploying ML models with similar counter-measures against insider and cyber threats as seen in traditional software.
-
- - **Human-Centered ML**: User interactions with AI and ML systems.
-
- - **Compliance**: Whether that’s with GDPR, CCPA, FCRA, ECOA, or other regulations, as an additional and crucial aspect of responsible AI.
-
-
+- Decision tree surrogate models [2]
+- Individual conditional expectation (ICE) plots [3]
+- K local interpretable model-agnostic explanations (K-LIME) 
+- Leave-one-covariate-out (LOCO) local feature importance [4] 
+- Partial dependence plots [5]
+- Random forest feature importance [5]
 
 ### Machine Learning Interpretability Taxonomy
 
-In machine learning models and results, interpretability has been defined as the ability to explain or present in understandable terms to a human [7]. Interpretability and explanations are subjective and complicated subjects. Therefore, the previously defined taxonomy has proven useful for characterizing interpretability in greater detail for various explanatory techniques [1].
+
+In the context of machine learning models and results, interpretability has been defined as the ability to explain or to present in understandable terms to a human [7]. Of course, interpretability and explanations are subjective and complicated subjects, and a previously defined taxonomy has proven useful for characterizing interpretability in greater detail for various explanatory techniques [1]. Following Ideas on Interpreting Machine Learning, presented approaches will be described in terms of response function complexity, scope, application domain, understanding, and trust.
+
 
 ### Response Function Complexity 
 
 The more complex a function, the more difficult it is to explain. Simple functions can be used to explain more complex functions, and not all explanatory techniques are a good match for all types of models. Hence, it’s convenient to have a classification system for response function complexity.
-
-- **Linear, monotonic functions**: Response functions created by linear regression algorithms are probably the most popular, accountable, and transparent class of machine learning models. These models will be referred to here as linear and monotonic. They are transparent because changing any given input feature (or sometimes a combination or function of an input feature) changes the response function output at a defined rate, in only one direction. Monotonicity also enables accountability through intuitive and even automatic reasoning about predictions. 
-
-- **Nonlinear, monotonic response functions**: Although most ML response functions are nonlinear, some can be constrained to be monotonic for any given input feature. 
-
-- **Nonlinear, monotonic response functions** also enable accountability through the generation of both reason codes and feature importance measures. Moreover, nonlinear, monotonic response functions may even be suitable for use in regulated applications. Their output can change positively or negatively and at a varying rate for any change in an input feature. 
+- **Linear, monotonic functions**: Response functions created by linear regression algorithms are probably the most popular, accountable, and transparent class of machine learning models. These models will be referred to here as linear and monotonic. They are transparent because changing any given input feature (or sometimes a combination or function of an input feature) changes the response function output at a defined rate, in only one direction, and at a magnitude represented by a readily available coefficient. Monotonicity also enables accountability through intuitive, and even automatic, reasoning about predictions. For instance, if a lender rejects a credit card application, they can say exactly why because their probability of default model often assumes that credit scores, account balances, and the length of credit history are linearly and monotonically related to the ability to pay a credit card bill. When these explanations are created automatically and listed in plain English, they are typically called reason codes. In Driverless AI, linear and monotonic functions are fit to very complex machine learning models to generate reason codes using a technique known as K-LIME.
+- **Nonlinear, monotonic functions**: Although most machine learned response functions are nonlinear, some can be constrained to be monotonic with respect to any given input feature. While there is no single coefficient that represents the change in the response function induced by a change in a single input feature, nonlinear and monotonic functions are fairly transparent because their output always changes in one direction as a single input feature changes.Nonlinear, monotonic response functions also enable accountability through the generation of both reason codes and feature importance measures. Moreover, nonlinear, monotonic response functions may even be suitable for use in regulated applications. In Driverless AI, users may soon be able to train nonlinear, monotonic models for additional interpretability.
+- **Nonlinear, non-monotonic functions**: Most machine learning algorithms create nonlinear, non-monotonic response functions. This class of functions are typically the least transparent and accountable of the three classes of functions discussed here. Their output can change in a positive or negative direction and at a varying rate for any change in an input feature. Typically, the only standard transparency measure these functions provide are global feature importance measures. By default, Driverless AI trains nonlinear, non-monotonic functions.
 
 ### Scope 
 
-Traditional linear models are globally interpretable because they exhibit the same functional behavior throughout their entire domain and range. Machine learning models learn local patterns in training data and represent these patterns through complex behavior in learned response functions. Therefore, machine-learned response functions may not be globally interpretable, or global interpretations of machine-learned functions may be approximate. In many cases, local explanations for complex functions may be more accurate or simply more desirable due to their ability to describe single predictions. 
+Traditional linear models are globally interpretable because they exhibit the same functional behavior throughout their entire domain and range. Machine learning models learn local patterns in training data and represent these patterns through complex behavior in learned response functions. Therefore, machine-learned response functions may not be globally interpretable, or global interpretations of machine-learned functions may be approximate. In many cases, local expla- nations for complex functions may be more accurate or simply more desirable due to their ability to describe single predictions.
 
-**Global Interpretability**: Some of the presented techniques facilitate global transparency in machine learning algorithms, their results, or the machine-learned relationship between the inputs and the target feature. Global interpretations help us understand the entire relationship modeled by the trained response function, but global interpretations can be approximate or be based on averages. 
+**Global Interpretability**: Some of the presented techniques above will facilitate global transparency in machine learning algorithms, their results, or the machine-learned relationship between the inputs and the target feature. Global interpretations help us understand the entire relationship modeled by the trained response function, but global interpretations can be approximate or based on averages.
 
-**Local Interpretability**: Local interpretations promote understanding of small regions of the trained response function, such as clusters of input records and their corresponding predictions, deciles of predictions and their corresponding input observations, or even single predictions. 
+**Local Interpretability**: Local interpretations promote understanding of small regions of the trained response function, such as clusters of input records and their corresponding predictions, deciles of predictions and their corresponding input observations, or even single predictions. Because small sections of the response function are more likely to be linear, monotonic, or otherwise well- behaved, local explanations can be more accurate than global explanations.
 
-**Global Versus Local Analysis Motif**: Driverless AI provides both global and local explanations for complex, nonlinear, non-monotonic machine learning models. Reasoning about the accountability and trustworthiness of such complex functions can be difficult, but comparing global versus local behavior is often a productive starting point. 
+**Global Versus Local Analysis Motif**: Driverless AI provides both global and local explanations for complex, nonlinear, non-monotonic machine learning models. Reasoning about the accountability and trustworthiness of such complex functions can be difficult, but comparing global versus local behavior is often a productive starting point. A few examples of global versus local investigation include:
+
+- For observations with globally extreme predictions, determine if their local explanations justify their extreme predictions or probabilities.
+- For observations with local explanations that differ drastically from global explanations, determine if their local explanations are reasonable.
+- For observations with globally median predictions or probabilities, analyze whether their local behavior is similar to the model’s global behavior.
+
+
+
+
+
+
+
+
+
 
 ### Application Domain 
 
 Another important way to classify interpretability techniques is to determine whether they are model-agnostic or model-specific. 
 
 - **Model-agnostic:** Meaning they can be applied to different types of machine learning algorithms. 
-
 - **Model-specific:** Techniques that are only applicable for a single type of class of algorithms. 
 
-In Driverless AI, decision tree surrogate, ICE, K-LIME, and Partial Dependence are all model-agnostic techniques, whereas Shapley, LOCO, and Random Forest Feature Importance are model-specific techniques.
+In Driverless AI, decision tree surrogate, ICE, K-LIME, and partial dependence are all model- agnostic techniques, whereas LOCO and random forest feature importance are model-specific techniques.
+
 
 ### Understanding and Trust 
 
-Machine learning algorithms and the functions they create during training are sophisticated, intricate, and opaque. Humans who would like to use these models have basic, emotional needs to understand and trust them because we rely on them for our livelihoods or need them to make important decisions. The techniques in Driverless AI enhance understanding and transparency by providing specific insights into the mechanisms and results of the generated model and its predictions. The techniques described here enhance trust, accountability, and fairness by enabling users to compare model mechanisms and results to domain expertise or reasonable expectations by allowing users to observe or ensure the Driverless AI model's stability.
+Machine learning algorithms and the functions they create during training are sophisticated, intricate, and opaque. Humans who would like to use these models have basic, emotional needs to understand and trust them because we rely on them for our livelihoods or because we need them to make important decisions for us. The techniques in Driverless AI enhance understanding and transparency by providing specific insights into the mechanisms and results of the generated model and its predictions. The techniques described here enhance trust, accountability, and fairness by enabling users to compare model mechanisms and results to domain expertise or reasonable expectations and by allowing users to observe or ensure the stability of the Driverless AI model.
+
+
+### Why Machine Learning for Interpretability?
+
+Why consider machine learning approaches over linear models for explanatory or inferential purposes? In general, linear models focus on understanding and predicting average behavior, whereas machine-learned response functions can often make accurate, but more difficult to explain, predictions for subtler aspects of modeled phenomenon. In a sense, linear models are approximate but create very exact explanations, whereas machine learning can train more exact models but enables only approximate explanations. As illustrated in figures 1 and 2, it is quite possible that an approximate explanation of an exact model may have as much or more value and meaning than an exact interpretation of an approximate model. In practice, this amounts to use cases such as more accurate financial risk assessments or better medical diagnoses that retain explainability while leveraging sophisticated machine learning approaches.
+
+
+![linear-models](assets/linear-models.jpg)
+![machine-learning](assets/machine-learning.jpg)
+
+
+Moreover, the use of machine learning techniques for inferential or predictive purposes does not preclude using linear models for interpretation [8]. In fact, it is usually a heartening sign of stable and trustworthy results when two different predictive or inferential techniques produce similar results for the same problem.
 
 ### The Multiplicity of Good Models 
 
-It is well understood that complex machine learning algorithms can produce multiple accurate models for the same set of input features and prediction targets, but not the same internal architectures [6]. This alone is an obstacle to interpretation. This instability of not being able to reproduce internal architectures is a driving factor behind the presentation of multiple explanatory results in Driverless AI, enabling users to find explanatory information consistent across multiple modeling and interpretation techniques.
+It is well understood that for the same set of input features and prediction targets, complex machine learning algorithms can produce multiple accurate models with very similar, but not the same, internal architectures [6]. This alone is an obstacle to interpretation, but when using these types of algorithms as interpretation tools or with interpretation tools, it is important to remember that details of explanations can change across multiple accurate models. This instability of explanations is a driving factor behind the presentation of multiple explanatory results in Driverless AI, enabling users to find explanatory information that is consistent across multiple modeling and interpretation techniques.
+
+### From Explainable to Responsible AI
+
+AI and Machine Learning are front and center in the news daily. The initial reaction to "explaining" or understanding a created model has been centered around the concept of **explainable AI**, which is the technology to understand and trust a model with advanced techniques such as Lime, Shapley, Disparate Impact Analysis, and more.  
+
+H2O.ai has been innovating in the area of explainable AI for the last three years. However, it has become clear that **explainable AI** is not enough.  Companies, researchers, and regulators would agree that responsible AI encompasses not just the ability to understand and trust a model but includes the ability to address ethics in AI, regulation in AI, and the human side of how we move forward with AI; well, in a responsible way. 
+
+### Responsibility in AI and Machine Learning
+
+Explainability and interpretability in the machine learning space have grown tremendously since we first developed Driverless AI. With that in mind, it is important to frame the larger context in which our interpretability toolkit falls. It is worth noting that since H2O.ai developed this training, the push towards regulation, oversight, and ML model auditing has increased. As a result, **responsible AI** has become a critical requirement for firms looking to make artificial intelligence part of their operations. There have been many recent developments globally around responsible AI, and the following themes encompass such developments: fairness, transparency, explainability, interpretability, privacy, and security. As the field has evolved, many definitions and concepts have come into the mainstream; below, we outline H2O.ai's respective definitions and understanding around the factors that make up responsible AI:
+
+<p align="center"> 
+    <img src='assets/task-2-venn-diagram.jpg'></img>    
+</p>
+
+ - **Human-Centered ML**: user interactions with AI and ML systems.
+ - **Compliance**: whether that’s with GDPR, CCPA, FCRA, ECOA, or other regulations, as an additional and crucial aspect of responsible AI.
+ - **Ethical AI**: sociological fairness in machine learning predictions (i.e., whether one category of person is being weighted unequally).
+ - **Secure AI**: debugging and deploying ML models with similar counter-measures against insider and cyber threats as seen in traditional software.
+ - **Interpretable Machine Learning**: transparent model architectures and increasing how intuitive and understandable ML models can be.
+ - **Explainable AI (XAI)**: the ability to explain a model to someone after it has been developed. 
+
+
+ With this task in mind, let's explore what techniques are available when understanding and interpreting your mode. 
 
 ### References 
 
-[1] [Patrick Hall, Wen Phan, and Sri Satish Ambati. Ideas on interpreting machine learning. O’Reilly Ideas, 2017](https://www.oreilly.com/ideas/ideas-on-interpreting-machine-learning)
-
-[6] [Leo Breiman. Statistical modeling: The two cultures (with comments and a rejoinder by the author). Statistical Science, 16(3), 2001.](https://projecteuclid.org/euclid.ss/1009213726)
-
-[7] [Finale Doshi-Velez and Been Kim. Towards a rigorous science of interpretable machine learning. arXiV preprint, 2017](https://arxiv.org/abs/1702.08608)
+- [1] [Patrick Hall, Wen Phan, and Sri Satish Ambati. Ideas on interpreting machine learning. O’Reilly Ideas, 2017](https://www.oreilly.com/ideas/ideas-on-interpreting-machine-learning)
+- [6] [Leo Breiman. Statistical modeling: The two cultures (with comments and a rejoinder by the author). Statistical Science, 16(3), 2001.](https://projecteuclid.org/euclid.ss/1009213726)
+- [7] [Finale Doshi-Velez and Been Kim. Towards a rigorous science of interpretable machine learning. arXiV preprint, 2017](https://arxiv.org/abs/1702.08608)
 
 ### Deeper Dive and Resources
 
 - [Hall, P., Gill, N., Kurka, M., Phan, W. (Jan 2019). Machine Learning Interpretability with H2O Driverless AI.](http://docs.h2o.ai/driverless-ai/latest-stable/docs/booklets/MLIBooklet.pdf)
-
 - [On the Art and Science of Machine Learning Explanations](https://arxiv.org/abs/1810.02909)
-
 - [An Introduction to Machine Learning Interpretability](https://www.oreilly.com/library/view/an-introduction-to/9781492033158/)
-
 - [Testing machine learning explanation techniques](https://www.oreilly.com/ideas/testing-machine-learning-interpretability-techniques) 
-
 - [Awesome Machine Learning Interpretability](https://github.com/jphall663/awesome-machine-learning-interpretability)
-
 - [Concept References](https://www.h2o.ai/wp-content/uploads/2017/09/driverlessai/references.html)  
-
 - [Using Artificial Intelligence and Algorithms](https://www.ftc.gov/news-events/blogs/business-blog/2020/04/using-artificial-intelligence-algorithms)
-
 - [Artificial Intelligence (AI) in the Securities Industry1](https://www.finra.org/sites/default/files/2020-06/ai-report-061020.pdf)
-
 - [MEMORANDUM FOR THE HEADS OF EXECUTIVE DEPARTMENTS AND AGENCIES:Guidance for Regulation of Artificial Intelligence Applications](https://www.whitehouse.gov/wp-content/uploads/2020/01/Draft-OMB-Memo-on-Regulation-of-AI-1-7-19.pdf)
-
 - [MODEL ARTIFICIAL INTELLIGENCE GOVERNANCE FRAMEWORK SECOND EDITION](https://www.pdpc.gov.sg/-/media/files/pdpc/pdf-files/resource-for-organisation/ai/sgmodelaigovframework2.pdf)
-
 - [General Data Protection Regulation GDPR](https://gdpr-info.eu)
 
 
@@ -693,3 +684,46 @@ Check out the next tutorial: [Time Series Tutorial - Retail Sales Forecasting](h
     - Experiment results summary
     - Model interpretability
     - Analysis
+
+
+
+------------------
+
+When your experiment finishes building, you should see the following dashboard:
+
+![experiment-results](assets/experiment-results.jpg)
+
+To better understand our model we will generate an **MLI report**. Select **Interpret this Model**: 
+
+![interpret](assets/interpret.jpg)
+
+Once the **MLI report** is generated, the following will appear(you can know the report is ready when in the following button the value of **Running** and **Failed** equals 0: **x Running | x Failed | x Done**): 
+
+- **Note**: This section describes the various interpretations available from the Model Interpretation page (MLI) for non-time-series experiments.
+
+![landing-page](assets/landing-page.jpg)
+
+
+
+
+Let's begin our exploration by looking at the **Summary** tab. Click the **Summary** tab, and when we scroll down, we can learn the following: 
+
+- **Note**: The Summary tab provides an overview of the interpretation, including the dataset and Driverless AI experiment name (if available) that were used for the interpretation along with the feature space (original or transformed), target column, problem type, and k-Lime information. If the interpretation was created from a Driverless AI model, then a table with the Driverless AI model summary is also included along with the top variables for the model.
+
+
+![summary-1](assets/summary-1.jpg)
+
+![summary-2](assets/summary-2.jpg)
+
+![summary-3](assets/summary-3.jpg)
+
+![summary-4](assets/summary-4.jpg)
+
+*Things to note:*
+
+1. Summary of some basic facts about the model
+2. Ranked variable importance in the space of the derived features (harder to understand)
+3. Accuracy of surrogate models, or simple models of complex models 
+4. Ranked variable importance in the space of the original features (easier to understand)
+
+Notice that some of the highly ranked variables of the original features (4) show up also as highly ranked variables of the derived features (2). The ranked original variable importance (4) can be used to reason through the more complex features in (2).
