@@ -81,7 +81,7 @@ Now upload the data recipe to the Driverless AI dataset's page. In the **DATASET
 After it imports successfully, you will see the following CSV on the **DATASETS** page: **UCI_Credit_Card.csv**.
 
 
-### Launch Experiment 
+### Details and Launch Experiment 
 
 Click on the **UCI_Credit_Card.csv** then select **Details**:
 
@@ -132,7 +132,7 @@ After click on **Launch Experiment**:
 
 *Things to note:*
 
-1. **Interpretability** -  The higher the interpretability, the simpler the features that Driverless AI will generate. If the interpretability is high enough, then Driverless AI will generate a monotonically constrained model. In other words, it will make the model more transparent and interpretable. In particular, it will make our metrics that we will generate easy to understand while eliminating perhaps features that will be a lot of work to understand from a perspective of interpretability. A monotonically constrained model can be enabled when **Interpretability >= 7.** This idea will further be explored in the following tasks. 
+1. **Interpretability** -  The higher the interpretability, the simpler the features that Driverless AI will generate. If the interpretability is high enough, then Driverless AI will generate a monotonically constrained model. In other words, it will make the model more transparent and interpretable. In particular, it will make our metrics that we will generate easy to understand while eliminating perhaps features that will be a lot of work to understand from a perspective of interpretability. A monotonically constrained model can be enabled when **Interpretability >= 7.** 
 2. **Variable Importance** - Here, we can see a variety of automatically generated engineered features. Features that we will use to understand our model and its decision-making process. 
 
 While we wait for the experiment to finish, let's explore some crucial concepts that will help us achieve **interpretability** in our model.  
@@ -149,6 +149,9 @@ For decades, common sense has deemed the complex, intricate formulas created by 
 - Leave-one-covariate-out (LOCO) local feature importance [4] 
 - Partial dependence plots [5]
 - Random forest feature importance [5]
+
+**Note**: we will cover the above approaches, and we will explore various concepts around its primary functions. 
+
 
 ### Machine Learning Interpretability Taxonomy
 
@@ -177,21 +180,12 @@ Traditional linear models are globally interpretable because they exhibit the sa
 - For observations with local explanations that differ drastically from global explanations, determine if their local explanations are reasonable.
 - For observations with globally median predictions or probabilities, analyze whether their local behavior is similar to the model’s global behavior.
 
-
-
-
-
-
-
-
-
-
 ### Application Domain 
 
 Another important way to classify interpretability techniques is to determine whether they are model-agnostic or model-specific. 
 
-- **Model-agnostic:** Meaning they can be applied to different types of machine learning algorithms. 
-- **Model-specific:** Techniques that are only applicable for a single type of class of algorithms. 
+- **Model-agnostic:** meaning they can be applied to different types of machine learning algorithms. 
+- **Model-specific:** techniques that are only applicable for a single type of class of algorithms. 
 
 In Driverless AI, decision tree surrogate, ICE, K-LIME, and partial dependence are all model- agnostic techniques, whereas LOCO and random forest feature importance are model-specific techniques.
 
@@ -237,8 +231,8 @@ Explainability and interpretability in the machine learning space have grown tre
  - **Interpretable Machine Learning**: transparent model architectures and increasing how intuitive and understandable ML models can be.
  - **Explainable AI (XAI)**: the ability to explain a model to someone after it has been developed. 
 
+By now, your experiment should be completed (if not, give it a bit more time). Let's look at how we can generate an MLI report after our experiment is complete. This report will give us access to global and local explanations for our machine learning models.
 
- With this task in mind, let's explore what techniques are available when understanding and interpreting your mode. 
 
 ### References 
 
@@ -259,6 +253,330 @@ Explainability and interpretability in the machine learning space have grown tre
 - [MEMORANDUM FOR THE HEADS OF EXECUTIVE DEPARTMENTS AND AGENCIES:Guidance for Regulation of Artificial Intelligence Applications](https://www.whitehouse.gov/wp-content/uploads/2020/01/Draft-OMB-Memo-on-Regulation-of-AI-1-7-19.pdf)
 - [MODEL ARTIFICIAL INTELLIGENCE GOVERNANCE FRAMEWORK SECOND EDITION](https://www.pdpc.gov.sg/-/media/files/pdpc/pdf-files/resource-for-organisation/ai/sgmodelaigovframework2.pdf)
 - [General Data Protection Regulation GDPR](https://gdpr-info.eu)
+
+
+## Task 3: Model Interpretations 
+
+When your experiment finishes building, you should see the following dashboard:
+
+![experiment-results](assets/experiment-results.jpg)
+
+To generate the **MLI Report**, select the **Interpret this Model** option(in the complete status section):
+
+![interpret](assets/interpret.jpg)
+
+Once the **MLI report** is generated, the following will appear(you can know the report is ready when in the following button the value of **Running** and **Failed** equals 0: **x Running | x Failed | x Done**): 
+
+- **Note**: The **MLI Report** section describes the various interpretations available from the Model Interpretation page (MLI) for non-time-series experiments.
+
+![landing-page](assets/landing-page.jpg)
+
+
+With this task in mind, let's explore what techniques are available when understanding and interpreting your model. 
+
+## Task 4: K-LIME
+
+Let's begin our exploration by looking at the **Surrogate Models** tab. Click the **Surrogate Models** tab.
+
+### Interpretations using Surrogate Models (Surrogate Model Tab)
+
+A surrogate model is a data mining and engineering technique in which a generally simpler model is used to explain another, usually more complex, model or phenomenon. For example, the decision tree surrogate model is trained to predict the predictions of the more complex Driverless AI model using the original model inputs. The trained surrogate model enables a heuristic understanding (i.e., not a mathematically precise understanding) of the mechanisms of the highly complex and nonlinear Driverless AI model.
+
+The Surrogate Model tab is organized into tiles for each interpretation method. To view a specific plot, click the tile for the plot that you want to view. For binary classification and regression experiments, this tab includes K-LIME/LIME-SUP and Decision Tree plots as well as Feature Importance, Partial Dependence, and LOCO plots for the Random Forest surrogate model.
+
+The following is a list of the interpretation plots from Surrogate Models:
+
+- K-LIME and LIME-SUP
+- Random Forest Feature Importance
+- Random Forest Partial Dependence and Individual Conditional 
+- Expectation
+- Random Forest LOCO
+- Decision Tree
+- NLP Surrogate
+
+### K-LIME and LIME-SUP
+
+The **Surrogate Model Tab**  includes a K-LIME (K local interpretable model-agnostic explanations) or LIME-SUP (Locally Interpretable Models and Effects based on Supervised Partitioning) graph. A K-LIME graph is available by default when you interpret a model from the experiment page. When you create a new interpretation, you can instead choose to use LIME-SUP as the LIME method. Note that these graphs are essentially the same, but the K-LIME/LIME-SUP distinction provides insight into the LIME method that was used during model interpretation. For our use case, we will use the K-LIME graph only but click [here](https://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/interpret-understanding.html#the-lime-sup-technique) to learn more about the **LIME-SUP Technique**. 
+
+### The K-LIME Technique
+
+This plot is available for binary classification and regression models.
+
+K-LIME is a variant of the LIME technique proposed by Ribeiro at al (2016). K-LIME generates global and local explanations that increase the transparency of the Driverless AI model, and allow model behavior to be validated and debugged by analyzing the provided plots, and comparing global and local explanations to one-another, to known standards, to domain knowledge, and to reasonable expectations.
+
+K-LIME creates one global surrogate generalized linear model (GLM) on the entire training data and also creates numerous local surrogate GLMs on samples formed from k-means clusters in the training data. The features used for k-means are selected from the Random Forest surrogate model’s variable importance. The number of features used for k-means is the minimum of the top 25% of variables from the Random Forest surrogate model’s variable importance and the max number of variables that can be used for k-means.(Note, if the number of features in the dataset are less than or equal to 6, then all features are used for k-means clustering.) All penalized GLM surrogates are trained to model the predictions of the Driverless AI model. The number of clusters for local explanations is chosen by a grid search in which the 𝑅^2
+between the Driverless AI model predictions and all of the local K-LIME model predictions is maximized. The global and local linear model’s intercepts, coefficients, 𝑅^2 values, accuracy, and predictions can all be used to debug and develop explanations for the Driverless AI model’s behavior.
+
+The parameters of the global K-LIME model give an indication of overall linear feature importance and the overall average direction in which an input variable influences the Driverless AI model predictions. The global model is also used to generate explanations for very small clusters (𝑁<20) where fitting a local linear model is inappropriate.
+
+The in-cluster linear model parameters can be used to profile the local region, to give an average description of the important variables in the local region, and to understand the average direction in which an input variable affects the Driverless AI model predictions. For a point within a cluster, the sum of the local linear model intercept and the products of each coefficient with their respective input variable value are the K-LIME prediction. By disaggregating the K-LIME predictions into individual coefficient and input variable value products, the local linear impact of the variable can be determined. This product is sometimes referred to as a reason code and is used to create explanations for the Driverless AI model’s behavior.
+
+In the following example, reason codes are created by evaluating and disaggregating a local linear model.
+
+![input-data](assets/input-data.jpg)
+
+And the local linear model:
+
+![formula](assets/formula.jpg)
+
+It can be seen that the local linear contributions for each variable are:
+
+- debt_to_income_ratio: 0.01 * 30 = 0.3
+- credit_score: 0.0005 * 600 = 0.3
+- savings_acct_balance: 0.0002 * 1000 = 0.2
+
+
+Each local contribution is positive and thus contributes positively to the Driverless AI model’s prediction of 0.85 for H2OAI_predicted_default. By taking into consideration the value of each contribution, reason codes for the Driverless AI decision can be derived. debt_to_income_ratio and credit_score would be the two largest negative reason codes, followed by savings_acct_balance.
+
+The local linear model intercept and the products of each coefficient and corresponding value sum to the K-LIME prediction. Moreover it can be seen that these linear explanations are reasonably representative of the nonlinear model’s behavior for this individual because the K-LIME predictions are within 5.5% of the Driverless AI model prediction. This information is encoded into English language rules which can be viewed by clicking the Explanations button (we will explore in a bit how we can access this reason codes).
+
+Like all LIME explanations based on linear models, the local explanations are linear in nature and are offsets from the baseline prediction, or intercept, which represents the average of the penalized linear model residuals. Of course, linear approximations to complex non-linear response functions will not always create suitable explanations and users are urged to check the K-LIME plot, the local model 𝑅^2, and the accuracy of the K-LIME prediction to understand the validity of the K-LIME local explanations. When K-LIME accuracy for a given point or set of points is quite low, this can be an indication of extremely nonlinear behavior or the presence of strong or high-degree interactions in this local region of the Driverless AI response function. In cases where K-LIME linear models are not fitting the Driverless AI model well, nonlinear LOCO feature importance values may be a better explanatory tool for local model behavior. As K-LIME local explanations rely on the creation of k-means clusters, extremely wide input data or strong correlation between input variables may also degrade the quality of K-LIME local explanations.
+
+
+### The Global Interpretable Model Explanation Plot
+
+
+To access the **Global Interpretable Model Explanation Plot** click the **K-LIME** tile, the following will appear: 
+
+![global-interpretable-model-explnation-plot](assets/global-interpretable-model-explanation-plot.jpg)
+
+This plot shows Driverless AI model predictions and LIME model predictions in sorted order by the Driverless AI model predictions. This graph is interactive. Hover over the Model Prediction, LIME Model Prediction, or Actual Target radio buttons to magnify the selected predictions. Or click those radio buttons to disable the view in the graph. You can also hover over any point in the graph to view LIME reason codes for that value. By default, this plot shows information for the global LIME model, but you can change the plot view to show local results from a specific cluster. The LIME plot also provides a visual indication of the linearity of the Driverless AI model and the trustworthiness of the LIME explanations. The closer the local linear model approximates the Driverless AI model predictions, the more linear the Driverless AI model and the more accurate the explanation generated by the LIME local linear models. In a moment, we will use this plot for our use case. 
+
+
+### MLI Taxonomy: K-LIME
+
+- **Scope of Interpretability** - K-LIME provides several different scales of interpretability: (1) coefficients of the global GLM surrogate provide information about global, average trends, (2) coefficients of in-segment GLM surrogates display average trends in local regions, and (3) when evaluated for specific in-segment observations, K-LIME provides reason codes on a per-observation basis.
+- **Appropriate Response Function Complexity** - (1) K-LIME can create explanations for machine learning models of high complexity. (2) K- LIME accuracy can decrease when the Driverless AI model becomes too nonlinear.
+- **Understanding and Trust** - (1) K-LIME increases transparency by re-vealing important input features and their linear trends. (2) K-LIME enhances accountability by creating explanations for each observation in a dataset. (3) K-LIME bolsters trust and fairness when the important features and their linear trends around specific records conform to human domain knowledge and reasonable expectations.
+- **Application Domain** - K-LIME is model agnostic.
+
+
+### Use Case: Default 
+
+The K-LIME plot above shows the Driverless AI model predictions as a continuous curve starting on the lower left and ending in the upper right(1). The K-LIME model predictions are the discontinuous points around the Driverless AI model predictions(2).  
+
+![k-lime.jpg](assets/k-lime.jpg)
+
+The radio buttons(3) on the top middle part of the plot allow you to enable or disable the **Model Prediction**, **LIME Model Prediction**, and **Actual Target**. For example, if you click the **Model Prediciton** radio button, it will remove the yellow curve line: **the Driverless AI model predictions**. 
+
+Note that **Actual Target**(default.payment.next.month) refers to the two blue horizontal lines: (4) clients that defaulted on their next month payment(PAY_7): **1** and (5) clients that didn't default on their next month payment(PAY_7): **0**.
+
+- **Note**: default.payment.next.month - Default (1: Yes, 0: No)
+
+Considering the global explanations in the below image, we can also see that the K-LIME predictions generally follow the Driverless AI model’s predictions, and the global K-LIME model explains 93.37% of the variability in the Driverless AI model predictions, indicating that global explanations are approximate, but reasonably so. 
+
+- **Note** the low **RMSE**(root-mean-square deviation); this value of **0.053**. Therefore, we can say that the data points are not that far from the regression line. The data points are well concentrated around the line of best fit. 
+
+![global-reason-codes](assets/global-reason-codes.jpg)
+
+The below above presents global explanations for the Driverless AI mode. The explanations proved a linear understanding of input features and the outcome, *default.payment.next.month*, in plain English. According to the reason codes, **PAY_1** makes the largest global, linear contributions to the Driverless AI model. As well, **PAY_2** makes a large top negative global contribution. 
+
+- When **PAY_1 = 2**, this is associated with **"default.payment.next.month"** K-LIME prediction's increase by **0.38**(38%)
+- When **PAY_1 = 0**, this is associated with **"default.payment.next.month"** K-LIME prediction's decrease of **0.085**(8.5%)
+
+Now let's see if the global explanations still hold at the local level. Let's observe a particular discontinuous point around the Driverless AI model predictions. In your plot, click any high probability default point (top left corner). In our case, we have selected point **11427** and we  can observe the following: 
+
+![point-11427](assets/point-11427.jpg)
+
+We can see that the **LIME Prediction** is very similar to the **Model Prediction** while knowing that the **Actual Target** is 1. When looking at the reason codes, we can see that **PAY_1** was the leading feature for a high value among the LIME and Model prediction. Let's further understand these reasons codes; click on the explanations (top right corner of the tile). The following will appear: 
+
+![11427-reason-codes](assets/11427-reason-codes.jpg)
+
+
+When observing the reason codes for the data point **11427**, we can see that the **LIME Prediction Accuracy** is 98.8%; in other words, we can conclude that this prediction is relatively trustworthy. As well, we are also able to see that **PAY_1** was around the top three features contributing to a high default prediction. In particular, **PAY_1** is the top feature contributing to a high prediction of 38%. In this case, the global reason codes are validated by this local observation. Therefore, so far, it seems that being late two months on **PAY_1** leads to a 38% increase in most likely to default on PAY_7(default.payment.next.month).
+
+
+Using the global versus local analysis motif to reason about the example analysis results thus far, it could be seen as a sign of explanatory stability that several globally important features are also appearing as locally important.
+
+Now let's focus our attention on using certain **Feature Importance** charts to understand this global and local analysis motif. 
+
+
+## Task 5: Feature Importance 
+
+### Global Feature Importance vs Local Feature Importance
+
+Feature importance measures the effect that a feature has on the predictions of a model. Global feature importance measures the overall impact of an input feature on the Driverless AI model predictions while taking nonlinearity and interactions into consideration. Global feature importance values give an indication of the magnitude of a feature’s contribution to model predictions for all observations. Unlike regression parameters, they are often unsigned and typically not directly related to the numerical predictions of the model. Local feature importance describes how the combination of the learned model rules or parameters and an individual observation’s attributes affect a model’s prediction for that observation while taking nonlinearity and interactions into effect.
+
+
+### Random Forest Feature Importance
+
+You can access a **Random Forest(RF) Feature Importance** chart on the MLI report page. Click the **Surrogate Models** tab and click the tile with the following title: **RF Feature Importance**. When the chart appears, it will not have the grey bars(local features); it will only display the yellow bars (global features). To explain this chart effectively, enter the following number in the chart's search bar (top left of the tile): **11427**. This will allow for the grey bars to appear for a given observation(data point 11427). 
+
+![rf-feature-importance-11427](assets/rf-feature-importance-11427.jpg)
+
+The chart can be explained as follows: 
+
+Global feature importance (yellow) is a measure of the contribution of an input variable to the overall predictions of the Driverless AI model. Global feature importance is calculated by aggregating the improvement in splitting criterion caused by a single variable across all of the decision trees in the Driverless AI model.
+
+Local feature importance (grey) is a measure of the contribution of an input variable to a single prediction of the Driverless AI model. Local feature importance is calculated by removing the contribution of a variable from every decision tree in the Driverless AI model and measuring the difference between the prediction with and without the variable.
+
+Both global and local variable importance are scaled so that the largest contributor has a value of 1.
+
+
+
+### LOCO Feature Importance 
+
+You can access a **Random Forest(RF) leave-one-covariate-out**  chart on the MLI report page. Click the **Surrogate Models** tab and click the tile with the following title: **RF LOCO**. The following will appear:
+
+
+This plot is available for binary and multinomial classification models as well as regression models.
+
+Local feature importance describes how the combination of the learned model rules or parameters and an individual row’s attributes affect a model’s prediction for that row while taking nonlinearity and interactions into effect. Local feature importance values reported in this plot are based on a variant of the leave-one-covariate-out (LOCO) method (Lei et al, 2017).
+
+The LOCO-variant method for binary and regression models calculates each local feature importance by re-scoring the trained Driverless AI model for each feature in the row of interest, while removing the contribution to the model prediction of splitting rules that contain that feature throughout the ensemble. The original prediction is then subtracted from this modified prediction to find the raw, signed importance for the feature. All local feature importance values for the row are then scaled between 0 and 1 for direct comparison with global feature importance values.
+
+The LOCO-variant method for multinomial models differs slightly in that it calculates row-wise local feature importance values by re-scoring the trained supervised model and measuring the impact of setting each variable to missing. The sum of the absolute value of differences across classes is then calculated for each dropped or replaced column.
+
+### MLI Taxonomy: Feature Importance
+
+- **Scope of Interpretability** - (1) Random forest feature importance is a global interpretability measure. (2) LOCO feature importance is a local interpretability measure.
+- **Appropriate Response Function Complexity** - Both random forest and LOCO feature importance can be used to explain tree-based response functions of nearly any complexity.
+- **Understanding and Trust** - (1) Random forest feature importance in- creases transparency by reporting and ranking influential input features.(2) LOCO feature importance enhances accountability by creating ex- planations for each model prediction. (3) Both global and local feature importance enhance trust and fairness when reported values conform to human domain knowledge and reasonable expectations.
+- **Application Domain** - (1) Random forest feature importance is a model- specific explanatory technique. (2) LOCO is a model-agnostic concept, but its implementation in Driverless AI is model specific.
+
+### Use Case: Default 
+
+On the **RF Feature Importance** chart, click on the **Clear** button located on the tile's top right corner. That will clear the chart and will only display the global features (yellow). You should see the following: 
+
+![rf-feature-importance](assets/rf-feature-importance.jpg)
+
+
+The features with the greatest importance values in the Driverless AI model are **PAY_1**, **PAY_2**, and **PAY_3** as observed in the image above. Here, we can see **PAY_1** as the most influential predictor on whether someone will default. As we read down, we see that recent payments don't have a huge impact on prediction when compared to the first payment. If we consider that being late two months on your first payment is bad, we can conclude that this model's predictions solely in a matter of speaking depend heavily on this notion of being two months late on **PAY_0**. 
+
+The rf feature importance chart matches hypotheses created during data exploration to a large extent. Feature importance, however, does not explain the relationship between a feature and the Driverless AI model's predictions. This is where we can examine partial dependence plots. 
+
+
+
+## Task 6: Partial Dependence and Individual Conditional Expectation (ICE)
+
+A Partial Dependence and ICE plot is available for both Driverless AI and surrogate models.
+
+### Partial Dependece 
+
+The Partial Dependence Technique:
+
+Partial dependence is a measure of the average model prediction with respect to an input variable. Partial dependence plots display how machine-learned response functions change based on the values of an input variable of interest while taking nonlinearity into consideration and averaging out the effects of all other input variables. Partial dependence plots are described in the Elements of Statistical Learning (Hastie et al, 2001). Partial dependence plots enable increased transparency in Driverless AI models and the ability to validate and debug Driverless AI models by comparing a variable’s average predictions across its domain to known standards, domain knowledge, and reasonable expectations.
+
+
+### Individual Conditional Expectation (ICE)
+
+The ICE Technique:
+
+This plot is available for binary classification and regression models.
+
+A newer adaptation of partial dependence plots called Individual conditional expectation (ICE) plots can be used to create more localized explanations for a single individual by using the same basic ideas as partial dependence plots. ICE Plots were described by Goldstein et al (2015). ICE values are disaggregated partial dependence, but ICE is also a type of nonlinear sensitivity analysis in which the model predictions for a single row are measured while a variable of interest is varied over its domain. ICE plots enable a user to determine whether the model’s treatment of an individual row of data is outside one standard deviation from the average model behavior, whether the treatment of a specific row is valid in comparison to average model behavior, known standards, domain knowledge, and reasonable expectations, and how a model will behave in hypothetical situations where one variable in a selected row is varied across its domain.
+
+**Note**: Large differences in partial dependence and ICE are an indication that strong variable interactions may be present.
+
+### The Partial Dependence Plot
+
+This plot is available for binary classification and regression models.
+
+![rf-partial-dependence-plot](assets/rf-partial-dependence-plot.jpg)
+
+Overlaying ICE plots onto partial dependence plots allow the comparison of the Driverless AI model’s treatment of certain examples or individuals to the model’s average predictions over the domain of an input variable of interest.
+
+This plot shows the partial dependence when a variable is selected and the ICE values when a specific row is selected. Users may select a point on the graph to see the specific value at that point. Partial dependence (yellow) portrays the average prediction behavior of the Driverless AI model across the domain of an input variable along with +/- 1 standard deviation bands. ICE (grey) displays the prediction behavior for an individual row of data when an input variable is toggled across its domain. Currently, partial dependence and ICE plots are only available for the top ten most important original input variables. Categorical variables with 20 or more unique values are never included in these plots.
+
+### MLI Taxonomy: Partial Dependence and ICE
+
+- **Scope of Interpretability**: (1) Partial dependence is a global interpretability measure. (2) ICE is a local interpretability measure. 
+- **Appropriate Response Function Complexity** - Partial dependence and ICE can be used to explain response functions of nearly any complexity. 
+- **Understanding and Trust** - (1) Partial dependence and ICE increase understanding and by describing the nonlinear behavior of complex response functions. (2) Partial dependence and ICE enhance trust, accountability, and fairness by enabling the comparison of described nonlinear behavior to human domain knowledge and reasonable expectations. (3) ICE, as a type of sensitivity analysis, can also engender trust when model behavior on simulated data is acceptable. 
+- **Application Domain** - Partial dependence and ICE are model-agnostic. 
+
+
+### Use Case: Default
+
+In the **Surrogate Model** tab, click on the **RF Partial Dependence Plot** click the **Surrogate Model** tab. The following will appear: 
+
+![rf-partial-dependence-plot-2](assets/rf-partial-dependence-plot-2.jpg)
+
+The partial dependence plots show how different feature values affect the average prediction of the Driverless AI model. The image above displays the partial dependence plot for **PAY_1** and indicates that predicted **default(default.payment.next.month)** increases dramatically for clients two months late on **PAY_1**.
+
+------
+
+
+
+
+The recent tasks have focused on the model’s global behavior for the entire dataset, but how does the model behave for a single person? A great but complex tool for this is K-Lime.
+
+1\. Under **Surrogate Models** select **K-LIME**:
+
+![klime-1](assets/klime-1.jpg)
+
+2\. On the green highlighted area of the K-LIME Plot, click on **Model Prediction**, **LIME Model Prediction**, then **Actual Target**. The K-LIME plot should look similar to the image below:
+
+![empty-klime](assets/empty-klime.jpg)
+
+3\. On the green highlighted area of the K-LIME Plot, click on **Model Prediction**, **LIME Model Prediction**, then **Actual Target**. The K-LIME plot should look similar to the image below:
+
+![klime-low-and-high-predict](assets/klime-low-and-high-predict.jpg)
+
+*Things to note*:
+
+This plot is the predictions of the Driverless AI model from lowest to highest. The x-axis is the index of the rows that causes that ranking to occur from lowest to highest.
+
+4\. Add **Actual Target** by clicking on it, and the plot should look similar to the one below:
+
+![klime-targets](assets/klime-targets.jpg)
+
+*Things to Note:*
+
+1. People who did not pay their bills on time.
+2. People who paid their bills on time.
+
+Adding the **Actual Target** to the plot allows us to check if the model is not entirely wrong. The plot's density (2: bottom left) near the low ranked predictions show that many people made their payments on time while those in line (1: top left) had missed payments since the line is scattered. Towards the high ranked predictions, the density of line (1: top right) shows the high likelihood of missing payments while the sparseness of line (2: botto right) shows those who have stopped making payments. These observations are a good sanity check. 
+
+5\. Now, click on **LIME Model Prediction**:
+
+
+![klime-1](assets/klime-1.jpg)
+![global-interpretable](assets/global-interpretable.jpg)
+
+*Things to Note:*
+
+1. The global interpretable model explains 89.39% in default payment next month for the entire dataset with RMSE = 0.065. 
+
+This single linear model trained on the original input of the system to predict the original Driverless AI model's predictions shows that the original model predictions are highly linear. The plot above is an implementation of LIME or "Local Interpretable Model Agnostic Explanations," wherein we aim to fit a simple linear model to a more complex machine learning model.
+
+**K-LIME Advance Features**
+
+6\. On the K-LIME plot, change the Cluster to Cluster 13.
+
+7\. Select another high probability default person from this K-LIME cluster by clicking on one of the white points on the plot's top-right section.
+
+![klime-advance.jpg](assets/klime-advance.jpg)
+
+1. Change cluster to cluster 13 and note the R2 value is still very high.
+2. Pick a point on the top-right section of the plot and Examine the Reason Codes.
+
+The local model predictions (white points) can be used to reason through the Driverless AI model (yellow) in some local regions.
+
+8\. Review **Explanations** on the **K-LIME** plot:
+
+![reason-codes](assets/reason-codes.jpg)
+
+![reason-codes-cluster-13](assets/reason-codes-cluster-13.jpg)
+
+*Things to Note:*
+
+1. The reason codes show that the Driverless model prediction gave this person a .78 percent probability of default. LIME gave them a .82 percent probability of default, and in this case, we can say that LIME is 95.1% accurate. Based on this observation, it can be concluded that the local reason codes are fairly trustworthy. Suppose **Lime Prediction Accuracy** drops below 75%. In that case, we can say that the numbers are probably untrustworthy, and the Shapley plot or LOCO plot should be revisited since the Shapley values are always accurate, and LOCO accounts for nonlinearity and interactions.
+
+2. **PAY_0 = 2** months late is the top positive local attribute for this person and contributes .35 probability points to their prediction according to this linear model. 0.35 is the local linear model coefficient for level 3 of the categorical variable PAY_0.
+
+3. **Cluster 13** reason codes show the average linear trends in the data region around this person. 
+
+Note: Global reason codes show the average linear trends in the dataset as a whole.
+
+In conclusion, LIME values are an approximate estimate of the trend of how the model is behaving in a local region for a specific point. Further, reason codes help us describe why the model made its decision for this specific person. Reason codes are essential in highly regulated industries when regulators will want to see in simple terms “how did the model come to the conclusion it did.”
+
+### Deeper Dive and Resources
+
+- [H2O K-LIME](https://www.h2o.ai/wp-content/uploads/2017/09/driverlessai/interpreting.html?highlight=feature%20importance#k-lime) 
+
+- [H2O Viewing Explanations](https://www.h2o.ai/wp-content/uploads/2017/09/driverlessai/viewing-explanations.html) 
+
 
 
 ## Task 3: Global Shapley Values and Feature Importance
@@ -459,85 +777,7 @@ K-LIME is a variant of the LIME technique. K-LIME generates global and local exp
 
 - Application Domain: K-LIME is model agnostic.
 
-### K-LIME Plot
 
-The recent tasks have focused on the model’s global behavior for the entire dataset, but how does the model behave for a single person? A great but complex tool for this is K-Lime.
-
-1\. Under **Surrogate Models** select **K-LIME**:
-
-![klime-1](assets/klime-1.jpg)
-
-2\. On the green highlighted area of the K-LIME Plot, click on **Model Prediction**, **LIME Model Prediction**, then **Actual Target**. The K-LIME plot should look similar to the image below:
-
-![empty-klime](assets/empty-klime.jpg)
-
-3\. On the green highlighted area of the K-LIME Plot, click on **Model Prediction**, **LIME Model Prediction**, then **Actual Target**. The K-LIME plot should look similar to the image below:
-
-![klime-low-and-high-predict](assets/klime-low-and-high-predict.jpg)
-
-*Things to note*:
-
-This plot is the predictions of the Driverless AI model from lowest to highest. The x-axis is the index of the rows that causes that ranking to occur from lowest to highest.
-
-4\. Add **Actual Target** by clicking on it, and the plot should look similar to the one below:
-
-![klime-targets](assets/klime-targets.jpg)
-
-*Things to Note:*
-
-1. People who did not pay their bills on time.
-2. People who paid their bills on time.
-
-Adding the **Actual Target** to the plot allows us to check if the model is not entirely wrong. The plot's density (2: bottom left) near the low ranked predictions show that many people made their payments on time while those in line (1: top left) had missed payments since the line is scattered. Towards the high ranked predictions, the density of line (1: top right) shows the high likelihood of missing payments while the sparseness of line (2: botto right) shows those who have stopped making payments. These observations are a good sanity check. 
-
-5\. Now, click on **LIME Model Prediction**:
-
-
-![klime-1](assets/klime-1.jpg)
-![global-interpretable](assets/global-interpretable.jpg)
-
-*Things to Note:*
-
-1. The global interpretable model explains 89.39% in default payment next month for the entire dataset with RMSE = 0.065. 
-
-This single linear model trained on the original input of the system to predict the original Driverless AI model's predictions shows that the original model predictions are highly linear. The plot above is an implementation of LIME or "Local Interpretable Model Agnostic Explanations," wherein we aim to fit a simple linear model to a more complex machine learning model.
-
-**K-LIME Advance Features**
-
-6\. On the K-LIME plot, change the Cluster to Cluster 13.
-
-7\. Select another high probability default person from this K-LIME cluster by clicking on one of the white points on the plot's top-right section.
-
-![klime-advance.jpg](assets/klime-advance.jpg)
-
-1. Change cluster to cluster 13 and note the R2 value is still very high.
-2. Pick a point on the top-right section of the plot and Examine the Reason Codes.
-
-The local model predictions (white points) can be used to reason through the Driverless AI model (yellow) in some local regions.
-
-8\. Review **Explanations** on the **K-LIME** plot:
-
-![reason-codes](assets/reason-codes.jpg)
-
-![reason-codes-cluster-13](assets/reason-codes-cluster-13.jpg)
-
-*Things to Note:*
-
-1. The reason codes show that the Driverless model prediction gave this person a .78 percent probability of default. LIME gave them a .82 percent probability of default, and in this case, we can say that LIME is 95.1% accurate. Based on this observation, it can be concluded that the local reason codes are fairly trustworthy. Suppose **Lime Prediction Accuracy** drops below 75%. In that case, we can say that the numbers are probably untrustworthy, and the Shapley plot or LOCO plot should be revisited since the Shapley values are always accurate, and LOCO accounts for nonlinearity and interactions.
-
-2. **PAY_0 = 2** months late is the top positive local attribute for this person and contributes .35 probability points to their prediction according to this linear model. 0.35 is the local linear model coefficient for level 3 of the categorical variable PAY_0.
-
-3. **Cluster 13** reason codes show the average linear trends in the data region around this person. 
-
-Note: Global reason codes show the average linear trends in the dataset as a whole.
-
-In conclusion, LIME values are an approximate estimate of the trend of how the model is behaving in a local region for a specific point. Further, reason codes help us describe why the model made its decision for this specific person. Reason codes are essential in highly regulated industries when regulators will want to see in simple terms “how did the model come to the conclusion it did.”
-
-### Deeper Dive and Resources
-
-- [H2O K-LIME](https://www.h2o.ai/wp-content/uploads/2017/09/driverlessai/interpreting.html?highlight=feature%20importance#k-lime) 
-
-- [H2O Viewing Explanations](https://www.h2o.ai/wp-content/uploads/2017/09/driverlessai/viewing-explanations.html) 
 
 
 ## Task 7: Local Shapley and LOCO
@@ -689,24 +929,7 @@ Check out the next tutorial: [Time Series Tutorial - Retail Sales Forecasting](h
 
 ------------------
 
-When your experiment finishes building, you should see the following dashboard:
 
-![experiment-results](assets/experiment-results.jpg)
-
-To better understand our model we will generate an **MLI report**. Select **Interpret this Model**: 
-
-![interpret](assets/interpret.jpg)
-
-Once the **MLI report** is generated, the following will appear(you can know the report is ready when in the following button the value of **Running** and **Failed** equals 0: **x Running | x Failed | x Done**): 
-
-- **Note**: This section describes the various interpretations available from the Model Interpretation page (MLI) for non-time-series experiments.
-
-![landing-page](assets/landing-page.jpg)
-
-
-
-
-Let's begin our exploration by looking at the **Summary** tab. Click the **Summary** tab, and when we scroll down, we can learn the following: 
 
 - **Note**: The Summary tab provides an overview of the interpretation, including the dataset and Driverless AI experiment name (if available) that were used for the interpretation along with the feature space (original or transformed), target column, problem type, and k-Lime information. If the interpretation was created from a Driverless AI model, then a table with the Driverless AI model summary is also included along with the top variables for the model.
 
