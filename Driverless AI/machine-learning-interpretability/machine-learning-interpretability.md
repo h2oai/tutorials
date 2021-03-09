@@ -100,13 +100,12 @@ Before we run our experiment, let’s have a look at the dataset columns:
 5. **MARRIAGE** - Marital status (1 = married; 2 = single; 3 = others)
 6. **Age**
 7. **PAY_1 - PAY_6**: History of past payment:
-    - -2: Paid in full
-    - -1: Paid with another line of credit
-    - 0: No consumption
-    - 1: 1 Month late
-    - 2: 2 Months late
-    - 3: 3 Months late
-    - Up to 9 Months late
+    - -2: No consumption
+    - -1: Paid in full 
+    - 0: The use of revolving credit
+    - 1 = payment delay for one month
+    - 2 = payment delay for two months; . . .; 
+    - 6 = payment delay for six months
 - Continue scrolling the current page to see more columns.
   -  **BILL_AMT1 - BILL_AMT6** - Amount of bill statement 
   -  **PAY_AMT1 -PAY_AMT6** - Amount of previous payment 
@@ -129,11 +128,6 @@ For our **Training Settings**, adjust the settings to:
 After click on **Launch Experiment**:
 
 ![settings](assets/settings.jpg)
-
-*Things to note:*
-
-1. **Interpretability** -  The higher the interpretability, the simpler the features that Driverless AI will generate. If the interpretability is high enough, then Driverless AI will generate a monotonically constrained model. In other words, it will make the model more transparent and interpretable. In particular, it will make our metrics that we will generate easy to understand while eliminating perhaps features that will be a lot of work to understand from a perspective of interpretability. A monotonically constrained model can be enabled when **Interpretability >= 7.** 
-2. **Variable Importance** - Here, we can see a variety of automatically generated engineered features. Features that we will use to understand our model and its decision-making process. 
 
 While we wait for the experiment to finish, let's explore some crucial concepts that will help us achieve **interpretability** in our model.  
 
@@ -168,7 +162,7 @@ The more complex a function, the more difficult it is to explain. Simple functio
 
 ### Scope 
 
-Traditional linear models are globally interpretable because they exhibit the same functional behavior throughout their entire domain and range. Machine learning models learn local patterns in training data and represent these patterns through complex behavior in learned response functions. Therefore, machine-learned response functions may not be globally interpretable, or global interpretations of machine-learned functions may be approximate. In many cases, local expla- nations for complex functions may be more accurate or simply more desirable due to their ability to describe single predictions.
+Traditional linear models are globally interpretable because they exhibit the same functional behavior throughout their entire domain and range. Machine learning models learn local patterns in training data and represent these patterns through complex behavior in learned response functions. Therefore, machine-learned response functions may not be globally interpretable, or global interpretations of machine-learned functions may be approximate. In many cases, local explanations for complex functions may be more accurate or simply more desirable due to their ability to describe single predictions.
 
 **Global Interpretability**: Some of the presented techniques above will facilitate global transparency in machine learning algorithms, their results, or the machine-learned relationship between the inputs and the target feature. Global interpretations help us understand the entire relationship modeled by the trained response function, but global interpretations can be approximate or based on averages.
 
@@ -260,6 +254,12 @@ By now, your experiment should be completed (if not, give it a bit more time). L
 When your experiment finishes building, you should see the following dashboard:
 
 ![experiment-results](assets/experiment-results.jpg)
+
+*Things to note:*
+
+1. **Interpretability** -  The higher the interpretability, the simpler the features that Driverless AI will generate. If the interpretability is high enough, then Driverless AI will generate a monotonically constrained model. In other words, it will make the model more transparent and interpretable. In particular, it will make our metrics that we will generate easy to understand while eliminating perhaps features that will be a lot of work to understand from a perspective of interpretability. A monotonically constrained model can be enabled when **Interpretability >= 7.** 
+2. **Variable Importance** - Here, we can see a variety of automatically generated engineered features. Features that we will use to understand our model and its decision-making process. 
+
 
 To generate the **MLI Report**, select the **Interpret this Model** option(in the complete status section):
 
@@ -488,14 +488,117 @@ This plot shows the partial dependence when a variable is selected and the ICE v
 
 ### Use Case: Default
 
-In the **Surrogate Model** tab, click on the **RF Partial Dependence Plot** click the **Surrogate Model** tab. The following will appear: 
+In the **Surrogate Models** tab, click on the **RF Partial Dependence Plot**. The following will appear: 
 
 ![rf-partial-dependence-plot-2](assets/rf-partial-dependence-plot-2.jpg)
 
 The partial dependence plots show how different feature values affect the average prediction of the Driverless AI model. The image above displays the partial dependence plot for **PAY_1** and indicates that predicted **default(default.payment.next.month)** increases dramatically for clients two months late on **PAY_1**.
 
-------
+![rf-partial-dependence-plot-2](assets/rf-partial-dependence-plot-2.jpg)
 
+The partial dependence plots show how different feature values affect the average prediction of the Driverless AI model. The image above displays the partial dependence plot for **PAY_2** and indicates that predicted **default(default.payment.next.month)** increases for clients two months late on **PAY_2**. 
+
+The above results agree with previous findings in which **PAY_1**, follow by **PAY_2**, result in high default probabilities when its value is **2**. In particular, the partial dependence plots above reveal that these predictions are highly dependent on whether **PAY_1** equals **2**(months late). 
+
+To further understand the impact of **PAY_1** in the decision-making process, let's explore a **Decision Tree Surrogate Model**.
+
+## Task 7: Decision Tree Surrogate Model 
+
+### The Decision Tree Surrogate Model Technique
+
+The decision tree surrogate model increases the transparency of the Driverless AI model by displaying an approximate flow-chart of the complex Driverless AI model’s decision making process. It also displays the most important variables in the Driverless AI model and the most important interactions in the Driverless AI model. The decision tree surrogate model can be used for visualizing, validating, and debugging the Driverless AI model by comparing the displayed decision-process, important variables, and important interactions to known standards, domain knowledge, and reasonable expectations.
+
+
+### The Decision Tree Plot
+
+In the **Surrogate Models** tab, click on the **Decision Tree**. The following will appear:
+
+![surrogate-decison-tree](assets/surrogate-decision-tree.jpg)
+
+This plot is available for binary and multinomial classification models as well as regression models.
+
+In the Decision Tree plot, the highlighted row shows the path to the highest probability leaf node and indicates the globally important variables and interactions that influence the Driverless AI model prediction for that row.
+
+**Note**: 
+
+- Variables below one-another in the **Decision Tree Surrogate** may also have strong interactions in the Driverless AI model. 
+- Variables higher in the decision tree suggest higher importance in the decision-making process. 
+- Thick lines highlighting a particular path to a terminal node indicate a very common decision path. 
+- Thin lines indicate that this is a relatively rare decision path. 
+- The terminal nodes represent the different default probabilities.
+
+### MLI Taxonomy: Decision Tree Surrogate Models
+
+- **Scope of Interpretability** - (1) Generally, decision tree surrogates provide global interpretability. (2) The attributes of a decision tree are used to explain global attributes of a complex Driverless AI model such as important features, interactions, and decision processes.
+- **Appropriate Response Function Complexity** - Decision tree surrogate models can create explanations for models of nearly any complexity.
+- **Understanding and Trust** - (1) Decision tree surrogate models foster understanding and transparency because they provide insight into the internal mechanisms of complex models. (2) They enhance trust, accountability, and fairness when their important features, interactions, and decision paths are in line with human domain knowledge and reasonable expectations.
+- **Application Domain** - Decision tree surrogate models are model agnostic.
+
+### Use Case: Default
+
+In the image above, the RMSE(Root mean square error) of **0.000028** indicates the decision tree surrogate can approximate the Driverless AI model well.  Based on the low RMSE and the fairly high R2 (**0.87**), we can conclude that this is a somewhat trustworthy surrogate model. By following the decision paths down the decision tree surrogate, we can begin to see details in the Driverless AI model's decision processes. While keeping the discussion above, **PAY_1** appears as an import, if not the most crucial feature in the decision tree. **PAY_0**  is likely the most crucial feature due to its place in the initial split in the tree.
+
+To further understand how the decision tree can help us better understand our model, click on one of the terminal nodes. After clicking a terminal node, something similar should appear: 
+
+![decision-tree-red-line](assets/decision-tree-red-line.jpg)
+
+For explanation purposes, terminal node **0.479** has been selected. The selected terminal node is one of the somewhat low probabilities. We end up on terminal node **0.479** as follows: 
+
+IF **PAY_1**
+- IS >= **1.500** AND **PAY_6**
+- IS < **1.000** OR NA AND **PAY_2**
+-	IS < **-0.500**
+-	THEN ABERAGE VALUE OF TARGET IS **0.479**
+
+With the above in mind, we see the relevance and importance of **PAY_1**. According to the rules, if you are above one month late, you are automatically thrown to a side (right) of the tree where high default probabilities lay. As discussed above, being late two months on **PAY_1** often leads to high probabilities of default. The second level directs a particular client to terminal node **0.479** if **PAY_6** is late less than a month. At last, we end on terminal node **0.479** if the value of **PAY_2** = **the use of revolving credit**. 
+
+In terms of how often this path is, we can say that it is not based on the path's thinness. In contrast, the far left paths are most common given the thickness of the paths. And such thick lines happen to be the paths to the lowest default probabilities. As a sanity check, we can say that the surrogate decision tree reveals that the most common predictions are low-default-probabilities. In a way, it makes sense, given that not many people default. 
+
+
+### Local Explanations
+
+To conclude our journey on how we can better understand a generated Driverless AI model, we will look at the **Dashboard** feature. 
+
+The Dashboard button contains a dashboard with an overview of the interpretations (built using surrogate models). They are located in the upper-right corner.
+
+Click the Dashboard button to view the Dashboard page. The **Dashboard** button is located on the top right corner of the MLI report. For binary classification and regression experiments, the Dashboard page provides a single page with the following surrogate plots. Note that the PDP and Feature Importance plots on this page are based on the Random Forest surrogate model.
+
+- Global Interpretable Model Explanations
+- Feature Importance
+- Decision Tree
+- Partial Dependence
+
+You can also view explanations from this page by clicking the Explanations button located in the upper-right corner.
+
+**Note**: The Dashboard is not available for multiclass classification experiments.
+
+In the **Dashboard** in the search bar enter the following **ID**: **11427**. Right after, Click **Search**. The following will appear: 
+
+
+![11427-dashboard](assets/11427-dashboard.jpg)
+
+Following the global versus local analysis motif, local contributions to model predictions for a single client are also analyzed and compared to global explanations and reasonable expectations. The above image shows the local dashboard after selecting a single client. For this example use case, a client that actually defaulted is selected.
+
+The above image shows the selected individual's path highlighted in grey in the surrogate decision tree. This selected passenger falls into the node with the second most significant average model prediction for defaulting, which nicely aligns with the Driverless AI model's predicted probability for defaulting of 0.755. 
+
+When investigating observations locally, the feature importance has two bars per feature. The upper bar(yellow) represents the global feature importance, and the lower bar(grey) represents the local feature importance. In the image below, the two features **PAY_1** and **PAY_2** are the most important features both globally and locally for the selected individual. 
+
+The local dashboard also overlays ICE curves onto partial dependence plots. In the image above, the lower points for partial dependence remain unchanged from the image above (partial dependence plot) and show the average model prediction by **PAY_1**.  The upper points indicate how the selected client's prediction would change if their value for **PAY_1** changed, and the image above indicates the client's prediction for default will decrease dramatically if the value for **PAY_1** changed to **-1**(paid in full). 
+
+If we were to click on the **Explanations** button on the top right corner of the dashboard, it would tell us the following: 
+
+The local English language explanations, or reason codes, from the K-LIME model in the above image parsimoniously indicates that the Driverless AI model's prediction increased for the selected passenger due to the client's value for **PAY_1**. For the selected passenger, global and local explanations are reasonable when compared to one-another and logical expectations. In practice, explanations for several different types of clients, and especially for outliers and other anomalous observations, should be investigated and analyzed to enhance understanding and trust in the Driverless AI model. 
+
+
+**Note**: the **Dashboard** UI allows you to view global, cluster-specific, and local reason codes. You can also export the explanations to CSV.
+
+Before we conclude, the tutorial let's explore the other two tabs on the **Model Interpretation** page. 
+
+Before we conclude,  let's explore the other two tabs on the **Model Interpretation** page: Summary and DAI(Driverless AI) Model. 
+
+## Task 8: Summary and DAI(Driverless AI) Model
+
+-------
 
 
 
