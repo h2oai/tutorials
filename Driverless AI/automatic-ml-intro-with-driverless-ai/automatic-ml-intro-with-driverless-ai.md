@@ -12,7 +12,7 @@
 - [Task 5: Launch First Experiment](#task-5-launch-first-experiment)
 - [Task 6: Explore Feature Engineering](#task-6-explore-feature-engineering)
 - [Task 7: Explore Experiment Results](#task-7-explore-experiment-results)
-- [Task 8: MLI Report for Non-Time-Series](#task-8-mli-report-for-non-time-series)
+- [Task 8: Machine Learning Interpretability Report for Non-Time-Series Experiments](#task-8-machine-learning-interpretability-report-for-non-time-series-experiments)
 - [Task 9: Experiment Summary and Autoreport](#task-9-experiment-summary-and-autoreport)
 - [Next Steps](#next-steps)
 - [Appendix: Project Workspace](#appendix-project-workspace)
