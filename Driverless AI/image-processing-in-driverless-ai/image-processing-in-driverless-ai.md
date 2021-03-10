@@ -27,14 +27,12 @@ All things consider, let us start.
 ## Prerequisites 
 
 You will need the following to be able to do this tutorial:
-
 - Basic knowledge of Driverless AI 
 - Completion of the following two tutorials: 
     - [Tutorial 1A: Automatic Machine Learning Introduction with Driverless AI](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai#tab-product_tab_overview)
     - [Tutorial 1B: Machine Learning Experiment Scoring and Analysis - Financial Focus](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus#tab-product_tab_overview)
 - Understanding of Convolutional Neural Networks (CNNs)
 - Basic understanding of confusion matrices 
-
 - A **Two-Hour Test Drive session**: Test Drive is [H2O.ai's](https://www.h2o.ai) Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.
   - Need a **Two-Hour Test Drive** session? Follow the instructions on [this](https://training.h2o.ai/products/tutorial-0-getting-started-with-driverless-ai-test-drive#tab-product_tab_overview) quick tutorial to get a Test Drive session started.
 
@@ -43,7 +41,7 @@ You will need the following to be able to do this tutorial:
 
 ## Task 1: Launch Experiment One: Predict a Car's Price 
 
-As mentioned in the **objective** section, we will use three image models, but running each experiment takes time to run. For this reason, all experiments have been built for you and can be found in Driverless AI's **Experiments** section. 
+As mentioned in the **objective** section, we will use three image models, but running each experiment takes time to run. For this reason, all experiments have been built for you and can be found in Driverless AI's **Experiments** section: 
 
 ![image-processing-three-pre-built-experiments](assets/image-processing-three-pre-built-experiments.png)
 
@@ -292,9 +290,7 @@ First, let's briefly discuss the multiple methods **Driverless AI** supports for
 Now let's focus on the dataset used for the first experiment: 
 
 1. In the **Datasets** page click the **car_deals_train** dataset
-
 2. Click the **DETAILS** options 
-
 3. In the dataset details page, click the following button located at the top right corner of the page: **DATASET ROWS**
 
 The following should appear: 
@@ -426,7 +422,6 @@ Now that you know how to rerun the experiment with fine-tuning let's explore the
 To access the experiment summary page, consider the following steps: 
 
 1. Click the **EXPERIMENTS** option (located on the top right middle part of the screen) 
-
 2. Select the following experiment: **Embeddings-Transformer-With-Fine-Tuning**
 
 
@@ -522,11 +517,8 @@ Now that you know how to run the experiment using the **AutoML** model, let's ex
 As mentioned above, this second modeling approach only supports a **single** image column as an input. Therefore, let's see the dataset used for the Metastatic cancer experiment. 
 
 1. In the *Datasets* page, click the following dataset: histopathology_train.zip
-
 2. Select the **DETAILS** option 
-
 3. On the top right corner of the page, click **DATASET ROWS**
-
 4. The following will appear: 
 
 ![metastic-cancer-dataset-details](assets/metastic-cancer-dataset-details.png)
