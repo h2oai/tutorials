@@ -239,20 +239,21 @@ To further understand the data, please consider the table below:
 
 Now, navigate back to the H2O Driverless AI **Datasets** page. To add the dataset:
 
-1. Click on **Add a Dataset(or Drag and Drop)**  
-
-2. Select **FILE SYSTEM**:
-
 <p align="center">
 <img src="assets/add-dataset-file-system.jpg" width="320" height="460">
 </p>
 
+1. Click on **Add a Dataset(or Drag and Drop)**  
+2. Select **FILE SYSTEM**:
+
 
 Inside the **FILE SYSTEM**:
+
+![select-titanic-dataset](assets/select-titanic-dataset.jpg)
+
 1. Enter the following in the search bar:```/data/TestDrive/titanic.csv``` 
 2. Select the ```titanic.csv``` 
 3. **Click to Import Selection**:
-    ![select-titanic-dataset](assets/select-titanic-dataset.jpg)
 
 The following will appear after the dataset is successfully imported:
 
@@ -1119,14 +1120,13 @@ Let's explore what each project can contain: open the project  **Time Series Tut
 
 *Things to Note:*
 
-1. **Datasets** 
+1. **Datasets**:
     - **Selected Datasets Type**: Training, Testing or Validation
-    - Additional information on the dataset that was selected: Name, Rows, Columns
+    - Additional information on the dataset that was selected: Name, Rows, Columns:
         ![projects-page-time-series-datasets](assets/projects-page-time-series-datasets.jpg) 
     - **+ Link dataset** : Link an additional dataset (Training, Testing, or Validation) to the existing project
-2. **Experiments** 
+2. **Experiments**:
     ![projects-page-time-series-experiments](assets/projects-page-time-series-experiments.jpg)
-
     - **Select Scoring Dataset**: select a test dataset to score using the selected experiment
     - **Select Experiments**: select any experiment for this project
     - **Select Scorer for Test Score**: select a valid scorer for this experiment
