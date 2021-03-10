@@ -481,7 +481,6 @@ As mentioned above, this second modeling approach only supports a **single** ima
 - Select the **DETAILS** option 
 - On the top right corner of the page, click **DATASET ROWS**
 - The following will appear: 
-
 ![metastic-cancer-dataset-details](assets/metastic-cancer-dataset-details.png)
 
 As we can see, the images(id) have labels of bool storage type. In this case, True refers to a true case of metastatic cancer, and False refers to a false case of metastatic cancer. 
