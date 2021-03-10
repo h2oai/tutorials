@@ -646,7 +646,6 @@ On the Model Interpretation page, click the **DAI Model** tab, the following wil
 ![dai-model](assets/dai-model.jpg)
 
 
-
 The DAI Model tab is organized into tiles for each interpretation method. To view a specific plot, click the tile for the plot that you want to view.
 
 For binary classification and regression experiments, this tab includes Feature Importance and Shapley (not supported for RuleFit and TensorFlow models) plots for original and transformed features as well as Partial Dependence/ICE, Disparate Impact Analysis (DIA), Sensitivity Analysis, NLP Tokens and NLP LOCO (for text experiments), and Permutation Feature Importance (if the autodoc_include_permutation_feature_importance configuration option is enabled) plots. For multiclass classification experiments, this tab includes Feature Importance and Shapley plots for original and transformed features.
@@ -662,12 +661,9 @@ Here is a list of the interpretation plots from the Driverless AI Model:
 - Permutation Feature Importance
 
 
-The plots in the Driverless AI model tab allow you to understand the Driverless AI model. For example, in the tab, we can observe a transformed Shapley plot indicating top transformed features driving model behavior and whether top features positively or negatively impact the model's prediction. Note: these transformed features in the Shapley plot can be complicated to understand. That is why surrogate models offer approximate explanations into what drives the model behavior in the original feature space. Therefore, surrogate models are used to explain the complexity of the developed Driverless AI model.
+The plots in the Driverless AI model tab allow you to understand the Driverless AI model. For example, in the Driverless AI tab, we can observe a transformed Shapley plot indicating top transformed features driving model behavior and whether top features positively or negatively impact the model's prediction. Note: these transformed features in the Shapley plot can be complicated to understand. That is why surrogate models offer approximate explanations into what drives the model behavior in the original feature space. Therefore, surrogate models are used to explain the complexity of the developed Driverless AI model.
 
 To learn more about the Summary tab and each plot in the Driverless AI Models tab, click [here](https://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/interpret-understanding.html#understanding-the-model-interpretation-page). 
-
-
-
 
 ### Deeper Dive and Resources
 
