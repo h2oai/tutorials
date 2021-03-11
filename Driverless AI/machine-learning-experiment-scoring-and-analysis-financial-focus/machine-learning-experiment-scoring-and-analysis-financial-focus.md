@@ -1,4 +1,4 @@
-# Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus
+# Machine Learning Experiment Scoring and Analysis - Financial Focus
 
 ## Outline
 - [Objective](#objective)
@@ -19,7 +19,7 @@
 
 ## Objective
 
-Many tools, such as ROC and Precision-Recall Curves, are available to evaluate how good or bad a classification model predicts outcomes. In this tutorial, we will use a subset of the Freddie Mac Single-Family Loan-Level dataset to build a classification model and use it to predict if a loan will become delinquent. Through H2O’s Driverless AI Diagnostic tool, we will explore the financial impacts the false positive, and false negative predictions have while exploring tools like ROC Curve, Prec-Recall, Gain and Lift Charts, K-S Chart. Finally, we will explore a few metrics such as AUC, F-Scores, GINI, MCC, and Log Loss to evaluate the performance of the generated model.
+Many tools, such as ROC and Precision-Recall Curves, are available to evaluate how good or bad a classification model predicts outcomes. In this tutorial, we will use a subset of the Freddie Mac Single-Family Loan-Level dataset to build a classification model and use it to predict if a loan will become delinquent. Through H2O's Driverless AI Diagnostic tool, we will explore the financial impacts the false positive and false negative predictions have while exploring tools like ROC Curve, Prec-Recall, Gain Charts, Lift Charts, and K-S Chart. Finally, we will explore a few metrics such as AUC, F-Scores, GINI, MCC, and Log Loss to evaluate the generated model's performance.
 
 **Note:** We recommend that you go over the entire tutorial first to review all the concepts; that way, you will be more familiar with the content once you start the experiment.
   
@@ -30,34 +30,28 @@ You will need the following to be able to do this tutorial:
 - Basic knowledge of Machine Learning and Statistics
 - A Driverless AI environment
 - Basic knowledge of Driverless AI or doing the [Automatic Machine Learning Introduction with Drivereless AI Test Drive](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai)
-
 - A **Two-Hour Test Drive session**: Test Drive is H2O.ai's Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.
-  - Need a **Two-Hour Test Drive** session? Follow the instructions on [this quick tutorial](https://training.h2o.ai/products/tutorial-0-getting-started-with-driverless-ai-test-drive) to get a Test Drive session started. 
+  - Need a **Two-Hour Test Drive** session? Follow the instructions on [this quick tutorial](https://training.h2o.ai/products/tutorial-0-getting-started-with-driverless-ai-test-drive) to get a Test Drive session started.
 
-**Note:  Aquarium’s Driverless AI Test Drive lab has a license key built-in, so you don’t need to request one to use it. Each Driverless AI Test Drive instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore Driverless AI, you can always launch another Test Drive instance or reach out to our sales team via the [contact us form](https://www.h2o.ai/company/contact/).**
+**Note: Aquarium’s Driverless AI Test Drive lab has a license key built-in, so you don’t need to request one to use it. Each Driverless AI Test Drive instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore Driverless AI, you can always launch another Test Drive instance or reach out to our sales team via the [contact us form](https://www.h2o.ai/company/contact/).**
+
 ## Task 1: Launch Experiment
 
 ### About the Dataset
 
 This dataset contains information about “loan-level credit performance data on a portion of fully amortizing fixed-rate mortgages that Freddie Mac bought between 1999 to 2017. Features include demographic factors, monthly loan performance, credit performance including property disposition, voluntary prepayments, MI Recoveries, non-MI recoveries, expenses, current deferred UPB and due date of last paid installment.”[1]
 
-[1] Our dataset is a subset of the [Freddie Mac Single-Family Loan-Level Dataset. ](http://www.freddiemac.com/research/datasets/sf_loanlevel_dataset.html) It contains 500,000 rows and is about 80 MB.
-
-The subset of the dataset this tutorial uses has a total of 27 features (columns) and 500,137 loans (rows).
-
 ### Download the Dataset
 
-Download H2O’s subset of the Freddie Mac Single-Family Loan-Level dataset to your local drive and save it at as csv file.
-
-- [loan_level_500k.csv](https://s3.amazonaws.com/data.h2o.ai/DAI-Tutorials/loan_level_500k.csv)
+For our experiment, we will be using a subset of the Freddie Mac Single-Family loan-level dataset which contains 27 columns and 500,137 rows. Please download the H2O's subset [here.](https://s3.amazonaws.com/data.h2o.ai/DAI-Tutorials/loan_level_500k.csv)
 
 ### Launch Experiment
 
-Load the **loan_level_500K.csv** to Driverless AI.
+Load the **loan_level_500K.csv** to Driverless AI:
 
-1\. Click **Add Dataset (or Drag and Drop)** on the **Datasets overview** page.
+1\. Click **+Add Dataset (or Drag and Drop)** on the **Datasets overview** page.
 
-2\. Click on **Upload File**, then select **loan_level_500K.csv** file.
+2\. Click on **Upload File**, then select the **loan_level_500K.csv** file that you previously downloaded.
 
 3\. Once the file is uploaded, select **Details**.
 
@@ -134,6 +128,10 @@ These two columns are dropped because they are both clear indicators that the lo
 ![experiment-settings-1](assets/experiment-settings-1.png)    
 
 On task 2, we will explore and update the **Experiment Settings**.
+
+### References
+
+[1] [Freddie Mac Single-Family Loan-Level Dataset.](http://www.freddiemac.com/research/datasets/sf_loanlevel_dataset.html)
 
 ## Task 2: Explore Experiment Settings and Expert Settings
 
