@@ -96,7 +96,7 @@ Before we load the dataset for our experiment, let us review some introductory c
 ### Deeper Dive and Resources
 
 -  [Join the H2O community](https://www.h2o.ai/community/home). Post your questions, discuss use cases, give feedback, stay informed about the latest H2O.ai updates, and more.
-- Learn more are about H2O Driverless through the [H2O documentation](http://docs.h2o.ai/driverless-ai/latest-stable/docs/booklets/DriverlessAIBooklet.pdf).
+- Learn more about H2O Driverless through the [H2O documentation](http://docs.h2o.ai/driverless-ai/latest-stable/docs/booklets/DriverlessAIBooklet.pdf).
 - [Explore H2O Product Documentation](http://docs.h2o.ai/)
 - [Learn more H2O Driverless by reviewing the FAQs](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/faq.html) 
 
@@ -122,7 +122,7 @@ Supervised learning takes labeled examples and allows a model that is being trai
 
 A machine learning model is as good as the data that is used to train it. If you use garbage data to train your model, you will get a garbage model. With that said, before uploading a dataset into tools that will assist you with building your machine learning model, such as Driverless AI, ensure that the dataset has been cleaned and prepared for training. Transforming raw data into another format, which is more appropriate and valuable for analytics, is called data wrangling. 
 
-Data wrangling can include extractions, parsing, joining, standardizing, augmenting, cleansing, and consolidating until the missing data is fixed or removed. Data preparation includes the dataset being in the correct format for what you are trying to do; accordingly, duplicates are removed, missing data is fixed or removed, and finally, categorial values are transformed or encoded to a numerical type. Tools like [Python datatable](https://datatable.readthedocs.io/en/latest/?badge=latest), [Pandas](https://pandas.pydata.org/) and [R](https://www.r-project.org/) are great assets for data wrangling. 
+Data wrangling can include extractions, parsing, joining, standardizing, augmenting, cleansing, and consolidating until the missing data is fixed or removed. Data preparation includes the dataset being in the correct format for what you are trying to do; accordingly, duplicates are removed, missing data is fixed or removed, and finally, categorical values are transformed or encoded to a numerical type. Tools like [Python datatable](https://datatable.readthedocs.io/en/latest/?badge=latest), [Pandas](https://pandas.pydata.org/) and [R](https://www.r-project.org/) are great assets for data wrangling. 
 
  Data wrangling can be done in Driverless AI via a [data recipe](https://www.r-project.org/), the [JDBC connector](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/connectors-nd/jdbc.html?highlight=jdbc) or through [live code](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/datasets-describing.html?highlight=live%20code#modify-by-recipe) which will create a new dataset by modifying the existing one. 
 
@@ -160,7 +160,7 @@ One of the significant challenges in developing a single production-ready model 
 
 ### What is Automated Machine Learning, and why is it important?
 
-AutoML or Automated Machine Learning is the process of automating algorithm selection, feature generation, hyperparameter tuning, iterative modeling, and model assessment. AutoML tools such as H2O Driverless AI makes it easy to train and evaluate machine learning models. Automating the repetitive tasks around Machine Learning development allow individuals to focus on the data and the business problems they are trying to solve. 
+AutoML or Automated Machine Learning is the process of automating algorithm selection, feature generation, hyperparameter tuning, iterative modeling, and model assessment. AutoML tools such as H2O Driverless AI makes it easy to train and evaluate machine learning models. Automating the repetitive tasks around Machine Learning development allows individuals to focus on the data and the business problems they are trying to solve. 
 
 With this task in mind, let's explore and load the data that we will be using when predicting whether a passenger would've survived the titanic accident. 
 
@@ -267,7 +267,7 @@ The following will appear after the dataset is successfully imported:
     - File status
     - Date created
 
-Now that the dataset has been imported let's discover on the next task how Driverless AI allows users to further understand a selected dataset. Doing so will allow us further explore the second step of the Driverless AI workflow: visualize data. 
+Now that the dataset has been imported let's discover on the next task how Driverless AI allows users to further understand a selected dataset. Doing so will allow us to further explore the second step of the Driverless AI workflow: visualize data. 
 
 ### Deeper Dive and Resources
 
@@ -342,12 +342,12 @@ To continue learning about what details are available, click on the following bu
 
 1. Preview the dataset 
 2. View the remaining rows
-3. Dataset actions (same options as discuss earlier)
+3. Dataset actions (same options as discussed earlier)
 4. **Modify by Recipe** - Modify the dataset through a custom recipe or live code (manually enter custom recipe code to use to modify the dataset)
 5. Return to the **Dataset Overview** 
 6. Option to Exit and return to the H2O **Datasets** page
 
-Exit and return to **Datasets** page.
+Exit and return to the **Datasets** page.
 
 ### Split the Dataset
 
@@ -405,7 +405,7 @@ Let's explore the correlation between the **survived** variable and other variab
 - Take a minute to read about how Driverless AI constructed the correlation graph. Learn more about how variables are color-coded to show their correlations. 
 - Take the 'survived' variable and drag it slightly to look at the other variables correlated to the **survived** attribute. 
 
-What variables are strongly correlated with the 'survived' variable? Based on the correlational graph, we can see that no correlations were inferred to the **survived** attribute based on the *titanic_train* dataset. Although the graph inferred no correlation, that is not to say that we will not be able to predict whether someone will survive the titanic accident. Visualizing the dataset only gives us an idea/preview of what data will be used to train our model. As well, visualizing can allow for a deeper understanding while highlighting outliers. 
+What variables are strongly correlated with the 'survived' variable? Based on the correlation graph, we can see that no correlations were inferred to the **survived** attribute based on the *titanic_train* dataset. Although the graph inferred no correlation, that is not to say that we will not be able to predict whether someone will survive the titanic accident. Visualizing the dataset only gives us an idea/preview of what data will be used to train our model. As well, visualizing can allow for a deeper understanding while highlighting outliers. 
 
 ![train-set-correlation-graph](assets/train-set-correlation-graph.jpg)
 
@@ -479,9 +479,9 @@ The **Experiment preview page** will appear; this preview page displays all sett
 5. **Dropped Columns** - Drop column(s) from your Dataset that you don't want to use in the experiment. For more information, see the H2O.ai documentation [here](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#dropped-columns)
 6. **Validation Dataset** - Select the Dataset you want to validate. This set will be used to validate parameters like models, features, etc. For more information, see the H2O.ai documentation [here](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#validation-dataset)
 7. **Test Dataset** - The Dataset will test the model generated from the training dataset. It's not used during the model's training, and results are available at the end of the experiment. For more information, see the H2O.ai documentation [here](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#test-dataset)
-8. **Target Column** - The column that will be used to predict furthermore is the piece of data you want to understand. When selecting a target column, ask yourself what do you want to predict. 
+8. **Target Column** - The column that will be used to predict furthermore is the piece of data you want to understand. When selecting a target column, ask yourself what you want to predict. 
 9. **Fold Column** - The fold column is used to create the training and validation datasets so that all rows with the same fold value will be in the same Dataset. This column will be used if no validation dataset is provided and the model is trained using cross-validation. For more information, see the H2O.ai documentation [here](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#fold-column)
-10. **Weight Column** - Column that indicates the observation/isntance weight (a.k.a. sample or row weight), if applicable. For more information see the H2O.ai documentation [here](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#weight-column)
+10. **Weight Column** - Column that indicates the observation/instance weight (a.k.a. sample or row weight), if applicable. For more information see the H2O.ai documentation [here](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#weight-column)
 11. **Time Column**(OFF by default) - Provides a time order(timestamps for observations). When data has a high dependency on time (such as seasonality or trend), you want to treat this problem as a time series problem. For more information, see the H2O.ai documentation [here](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#time-column)
 
 Continuing with our experiment, name your experiment as follows: `Titanic Classification Tutorial`
@@ -508,7 +508,7 @@ Now select the **TARGET COLUMN**. In our case, the column will be **survived**. 
 
 ![train-set-drop-name-column](assets/train-set-drop-name-column.jpg)
 
-The *survived* attribute was selected because, as an insurance company, we want to know what attributes can contribute to passengers' survival. Knowing these attributes from the perspective of an insurance company can be beneficial because it can give the insurance company a good idea of how to manage the rate of insurances. Your experiment page should look similar to the one below; these are the system suggestions base on the data selected to train this model:
+The *survived* attribute was selected because, as an insurance company, we want to know what attributes can contribute to passengers' survival. Knowing these attributes from the perspective of an insurance company can be beneficial because it can give the insurance company a good idea of how to manage the rate of insurances. Your experiment page should look similar to the one below; these are the system suggestions based on the data selected to train this model:
 
 ![experiment-settings](assets/experiment-settings.jpg)
 
@@ -572,7 +572,7 @@ The **Experiment** page will look similar to the one below after **95%** of the 
     - **Notifications** inform you of different aspects of the experiment running(e.g., Shift in variable importance detected). Clicking on the Log button will present the experiment logs in real-time. You can download these logs by clicking on the Download Logs button in the upper right corner.
 6. **Iteration Data** and **Variable Importance**: 
     - The iteration data (internal validation) for each cross validation fold along with the specified scorer value. Click on a specific iteration or drag to view a range of iterations. Double click in the graph to reset the view. In this graph, each “column” represents one iteration of the experiment. During the iteration, Driverless AI will train 𝑛 models. (This is called individuals in the experiment preview.) So for any column, you may see the score value for those 𝑛 models for each iteration on the graph.
-    - Driverless AI performs automatic feature engineering as part of an experiment’s model building process. New features are created by doing transformations and/or interactions on the dataset columns. Feature creation and selection is evolutionary (based on variable importance of previous iteration) in nature and uses genetic algorithm to find the best set of feature transformations and model parameters for an experiment/dataset.
+    - Driverless AI performs automatic feature engineering as part of an experiment’s model building process. New features are created by doing transformations and/or interactions on the dataset columns. Feature creation and selection is evolutionary (based on variable importance of previous iteration) in nature and uses genetic algorithms to find the best set of feature transformations and model parameters for an experiment/dataset.
     - The variable importance values. To view variable importance for a specific iteration, just select that iteration in the Iteration Data graph. The Variable Importance list will automatically update to show variable importance information for that iteration. Hover over an entry to view more info.
 7. This section provides different graphs depending on the machine learning algorithm being used. The dashboard graphs are displayed for running and completed experiments. These graphs are interactive. Hover over a point on the graph for more details about the point. For example: 
     - For **Binary Classification experiments**, Driverless AI shows a ROC Curve, a Precision-Recall graph, a Lift chart, a Kolmogorov-Smirnov chart, and a Gains chart.
@@ -595,7 +595,7 @@ Once the experiment is complete, an **Experiment Summary** will appear:
         - Validation Set Predictions (available if a validation set was provided)
         - Test Set Predictions
     - Download Python Scoring Pipeline - A standalone Python Scoring pipeline that downloads a package containing an exported model and Python 3.6 source code examples for productionizing models built using H2O Driverless AI.
-    - Download MOJO Scoring Pipeline - A standalone scoring pipeline that converts experiments to MOJO's, which can be scored in realtime. It is available as either Java runtime or a C++ runtime (with Python and R wrappers).
+    - Download MOJO Scoring Pipeline - A standalone scoring pipeline that converts experiments to MOJO's, which can be scored in real time. It is available as either Java runtime or a C++ runtime (with Python and R wrappers).
     - Visualize Scoring Pipeline (Experimental) - A visualization of the scoring pipeline is available for each completed experiment.    
     ![visualize-scoring-pipeline-experimental](assets/visualize-scoring-pipeline-experimental.jpg)
     - Download Summary & Logs 
@@ -702,7 +702,7 @@ Let's explore the results of this classification experiment. You can find useful
 
 2. **ROC - Receiver Operating Characteristics**
 
-    This type of graph is called a **Receiver Operating Characteristic** curve (or ROC curve.) It is a plot of the true positive rate against the false-positive rate for the different possible cutpoints of a diagnostic test.
+    This type of graph is called a **Receiver Operating Characteristic** curve (or ROC curve.) It is a plot of the true positive rate against the false-positive rate for the different possible cut points of a diagnostic test.
 
     A ROC curve is a useful tool because it only focuses on how well the model was able to distinguish between classes with the help of the Area Under the Curve or AUC. “AUC’s can help represent the probability that the classifier will rank a randomly selected positive observation higher than a randomly selected negative observation”[1]. However, for models where one of the classes occurs rarely, a high AUC could provide a false sense that the model is correctly predicting the results. This is where the notion of precision and recall become essential.
 
@@ -720,7 +720,7 @@ Let's explore the results of this classification experiment. You can find useful
 
 3. **Prec-Recall: Precision-Recall Graph**
 
-    Prec-Recall is a complementary tool to ROC curves, especially when the dataset has a significant skew. The Prec-Recall curve plots the precision or positive predictive value (y-axis) versus sensitivity or true positive rate (x-axis) for every possible classification threshold. At a high level, we can think of precision as a measure of exactness or quality of the results while, recall as a measure of completeness or quantity of the results obtained by the model. Prec-Recall measures the relevance of the results obtained by the model.
+    Prec-Recall is a complementary tool to ROC curves, especially when the dataset has a significant skew. The Prec-Recall curve plots the precision or positive predictive value (y-axis) versus sensitivity or true positive rate (x-axis) for every possible classification threshold. At a high level, we can think of precision as a measure of exactness or quality of the results while recall as a measure of completeness or quantity of the results obtained by the model. Prec-Recall measures the relevance of the results obtained by the model.
 
     The Prec-Recall plot below shows the Precision-Recall curve on validation data along with the best Accuracy, MCC, and F1 values. The area under this curve is called AUCPR.
 
@@ -732,7 +732,7 @@ Let's explore the results of this classification experiment. You can find useful
 
     Similarly to the ROC curve, when we look at the area under the curve of the Prec-Recall Curve of AUCPR, we get a value of **.8230(accuracy of 82.30%)**. 
 
-    Learn more the Precision-Recall Graph on the next tutorial: [ Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus).
+    Learn more about the Precision-Recall Graph on the next tutorial: [ Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus).
 
 4. **Cumulative Lift Chart** 
 
@@ -780,7 +780,7 @@ Let's explore the results of this classification experiment. You can find useful
 
     If a test set was provided for the experiment, then click on the **Validation Metrics** button below the graph to view these stats on test data.
 
-    For the K-S chart above, if we look at the top **60%** of the data, the at-chance model (the dotted diagonal line) tells us that only **60%** of the data was successfully separate between positives and negatives (survived and did not survived). However, with the model, it was able to do **.452**, or about **~45.2%** of the cases were successfully separated between positives and negatives.
+    For the K-S chart above, if we look at the top **60%** of the data, the at-chance model (the dotted diagonal line) tells us that only **60%** of the data was successfully separated between positives and negatives (survived and did not survive). However, with the model, it was able to do **.452**, or about **~45.2%** of the cases were successfully separated between positives and negatives.
 
     Learn more about the Kolmogorov-Smirnov graph on the next tutorial: [Machine Learning Experiment Scoring and Analysis - Financial Focus](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus).
 
@@ -836,7 +836,7 @@ For binary classification and regression experiments, this tab includes Feature 
 
 1. **Sensitivity Analysis** (or "What if?") is a simple and powerful model debugging, explanation, fairness, and security tool. The idea behind Sensitivity Analysis is both direct and straightforward: Score your trained model on a single row, on multiple rows, or an entire dataset of potentially interesting simulated values and compare the model's new outcome to the predicted outcome on the original data.
 
-    Sensitivity analysis investigates whether model behavior and outputs remain stable when data is intentionally perturbed or other changes are simulated in the data. Machine learning models can make drastically differing predictions for only minor changes in input variable values. For example, when looking at predictions that determine financial decisions, SA can be used to help you understand the impact of changing the most important input variables and the impact of changing socially sensitive variables (such as Sex, Age, Race, etc.) in the model. If the model changes in reasonable and expected ways when important variable values are changed, this can enhance trust in the model. Similarly, if the model changes to sensitive variables have minimal impact on the model, then this is an indication of fairness in the model predictions. Learn more about [Sensitivity Analysis](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/interpret-non-ts.html#sensitivity-analysis). 
+    Sensitivity analysis investigates whether model behavior and outputs remain stable when data is intentionally perturbed or other changes are simulated in the data. Machine learning models can make dramatically different predictions for only minor changes in input variable values. For example, when looking at predictions that determine financial decisions, SA can be used to help you understand the impact of changing the most important input variables and the impact of changing socially sensitive variables (such as Sex, Age, Race, etc.) in the model. If the model changes in reasonable and expected ways when important variable values are changed, this can enhance trust in the model. Similarly, if the model changes to sensitive variables have minimal impact on the model, then this is an indication of fairness in the model predictions. Learn more about [Sensitivity Analysis](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/interpret-non-ts.html#sensitivity-analysis). 
     
     To access it consider the following steps: click on the **SA**(Sensitivity Analysis) tile: 
 
@@ -889,7 +889,7 @@ For binary classification and regression experiments, this tab includes Feature 
 
     This plot shows the partial dependence when a variable is selected and the ICE values when a specific row is selected. Users may select a point on the graph to see the specific value at that point. Partial dependence (yellow) portrays the average prediction behavior of the Driverless AI model across the domain of an input variable along with +/- 1 standard deviation bands. ICE (grey) displays the prediction behavior for an individual row of data when an input variable is toggled across its domain. Currently, partial dependence and ICE plots are only available for the top ten most important original input variables. Categorical variables with 20 or more unique values are never included in these plots.
 
-    To learn about the **The Partial Dependence and ICE Technique** go [here](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/interpret-understanding.html#partial-dependence-pdp-and-individual-conditional-expectation-ice). 
+    To learn about the **Partial Dependence and ICE Technique** go [here](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/interpret-understanding.html#partial-dependence-pdp-and-individual-conditional-expectation-ice). 
 
     To access it consider the following steps: click on the **DAI PD/ICE** tile:
 
@@ -940,14 +940,14 @@ The Surrogate Model tab is organized into tiles for each interpretation method. 
 
 ![dashboard](assets/dashboard.jpg)
 
-5\. The **Action** button on the MLI page ca be used to download the reason codes, scoring pipelines for productionization and MLI logs: 
+5\. The **Action** button on the MLI page can be used to download the reason codes, scoring pipelines for productionization and MLI logs: 
 
 <p align="center"> 
 <img src='assets/regression-and-classification-explanations-actions.jpg' width="535" height="450"></img>   
 </p>
 
 *Things to Note:*
-1. **Go to MLI Documentation**: View the Machine Learning Interpetability section of the Driverless AI documentation.
+1. **Go to MLI Documentation**: View the Machine Learning Interpretability section of the Driverless AI documentation.
 2. **Download MLI Logs**: Download a ZIP file of the logs that were generated during the interpretation.
 3. **Download Scoring Pipeline**: For binomial and regression experiments, download the Python scoring pipeline for the interpretation. This option is not available for multinomial experiments.
 4. **Download k-LIME MOJO Reason Code Pipeline**: Download the k-LIME MOJO Reason Code Pipeline. For more info, see Driverless AI k-LIME MOJO Reason Code Pipeline - Java Runtime.
@@ -990,11 +990,9 @@ This graph shows the essential features that drive the model behavior.
         - Learn more about the **Feature Importance** graph on the next tutorial:[ Machine Learning Interpretability - Financial Focus](https://training.h2o.ai/products/tutorial-1c-machine-learning-interpretability-tutorial).
 
 
-        
-
 3. Decision Tree Surrogate model
 
-    The decision Tree Surrogate model displays the model's approximate flowchart of the complex Driverless AI model's decision-making. Higher and more frequent features are more important. Features above or below one-another can indicate an interaction. Finally, the thick yellow line is the most common decision path through the decison.
+    The decision Tree Surrogate model displays the model's approximate flowchart of the complex Driverless AI model's decision-making. Higher and more frequent features are more important. Features above or below one-another can indicate an interaction. Finally, the thick yellow line is the most common decision path through the decision.
 
     - What is the most common decision path for the Titanic Training set?
         ![decision-tree-task-8-answer](assets/decision-tree-task-8-answer.jpg)
@@ -1071,7 +1069,7 @@ The **AutoDoc** feature is used to generate automated machine learning documenta
 ## Next Steps
 
 
-Before we conclude this tutorial, note that we haven't focus on the firth step of our Driverless AI workflow: deploy the scoring pipeline. Given the complexity of the step, we will be exploring the final step in the following tutorial: 
+Before we conclude this tutorial, note that we haven't focused on the fifth step of our Driverless AI workflow: deploy the scoring pipeline. Given the complexity of the step, we will be exploring the final step in the following tutorial: 
 
 - [Introduction to Machine Learning Model Deployment and Management](https://training.h2o.ai/products/tutorial-1a-intro-to-ml-model-deployment-and-management)
 
@@ -1097,7 +1095,7 @@ Select **Projects**, an image similar to the one below will appear(the projects 
 
 *Things to Note:*
 
-1. **Projects**: Projects Workspace for managing datasets and expirments 
+1. **Projects**: Projects Workspace for managing datasets and experiments 
 2. Pre-created **Project** which includes:
     - **Name** : project name 
     - **Description**: description of the project 
