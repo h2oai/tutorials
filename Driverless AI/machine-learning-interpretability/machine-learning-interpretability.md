@@ -164,8 +164,11 @@ For decades, common sense has deemed the complex, intricate formulas created by 
 - Partial dependence plots [6]
 - Random forest feature importance [6]
 
-**Note**: we will cover the above approaches, and we will explore various concepts around its primary functions. 
-
+**Note**: we will cover the above approaches, and we will explore various concepts around its primary functions. As well, for each approach, we will highlight the following points: 
+- Scope of Interpretability
+- Appropriate Response Function Complexity
+- Understanding and Trust
+- Application Domain 
 
 ### Machine Learning Interpretability Taxonomy
 
@@ -463,6 +466,7 @@ The LOCO-variant method for multinomial models differs slightly in that it calcu
 - **Understanding and Trust** - (1) Random forest feature importance in- creases transparency by reporting and ranking influential input features.(2) LOCO feature importance enhances accountability by creating ex- planations for each model prediction. (3) Both global and local feature importance enhance trust and fairness when reported values conform to human domain knowledge and reasonable expectations.
 - **Application Domain** - (1) Random forest feature importance is a model- specific explanatory technique. (2) LOCO is a model-agnostic concept, but its implementation in Driverless AI is model specific.
 
+
 ### Use Case: Default 
 
 On the **RF Feature Importance** chart, click on the **Clear** button located on the tile's top right corner. That will clear the chart and will only display the global features (yellow). You should see the following: 
@@ -721,6 +725,10 @@ Check out the next tutorial: [Time Series - Retail Sales Forecasting](https://tr
     - Experiment results summary
     - Model interpretability
     - Analysis
+
+To enhance your learning, you can consult the [AI Glossary](https://www.h2o.ai/community/top-links/ai-glossary-search): a glossary of analytics, machine learning, data science, and artificial intelligence (AI) terms for business and technical data professionals as well as students and those eager to learn.
+
+Whether you are just getting started with machine learning, need a refresher on the basics, or want to explore new concepts, this glossary offers a short and concise description of the terms along with pointers to additional assets.
 
 
 
