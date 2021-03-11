@@ -1,4 +1,4 @@
-# Disparate Impact Analysis Tutorial 
+# Disparate Impact Analysis  
 
 ## Outline
 - [Objective](#objective)
