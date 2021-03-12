@@ -13,18 +13,20 @@
 
 ## Objective
 
-This tutorial aims to start a set of tutorials that will explore the ins and outs of Driverless AI's newer two MLI functionalities. Such two new functionalities are as follows: 
+As firms use ML to help them around credit/loan-decisions, cross-sell promotions, and determine the next best action, they must know how certain customer features are being weighed into the ML models in production. Further, they are also required to understand whether the ML models are not negatively impacting protected classes of customers or unfairly weighting for these types of classes. A lack of understanding of an ML Model's ins of production can lead to legal and financial risks when discovering that the ML model in production discriminates (bias) against certain ethnicities, genders, etc.
 
- 1. Disparate Impact Analysis Tool 
- 2. Sensitivity/What-If Analysis Tool 
+Additionally, as firms have looked to leverage AI to make more and more decisions for the company, the discussion of Human-Centered Machine learning has become increasingly important. Data science practitioners and firms deploying AI in production want to 'get under the hood' of their models to see what impacts decisions. Hence, in this tutorial, we will build an AI model predicting whether someone will be defaulting on their next credit card payment. Right after, we will use the following two Driverless AI features to analyze and check for fairness. 
 
-As firms use AI to help them around credit/loan-decisions, cross-sell promotions, and determine the next best action, they must be aware of how certain customer features are being weighed into the AI models in production. Further, they are also required to understand whether the AI models are not negatively impacting protected classes of customers or unfairly weighting for these types of classes. A lack of understanding of the ins of an AI Model in production can lead to legal and financial risks when discovering that the AI model in production is discriminating (bias) against certain ethnicities, genders, etc.
+- Disparate Impact Analysis (DIA)
+- Sensitivity Analysis(SA)
 
-Therefore, AI practitioners must have tools that will aid them in trying to understand the ins and outs of their AI models. In this case, Driverless AI allows you to check your built AI model's ins and outs by using the Disparate Impact and Sensitivity/What-If Analysis tool. In particular, Disparate Impact is one of the most commonly discussed methodologies in responsible AI today to check for fairness. 
+As a matter of speaking, the above two features provide a solution to a common problem in ML: the multiplicity of good models.  It is well understood that for the same set of input features and prediction targets, complex machine learning algorithms can produce multiple accurate models with very similar, but not the same, internal architectures: the multiplicity of good models [1]. This alone is an obstacle to interpretation, but when using these types of tools as interpretation tools or with interpretation tools, it is important to remember that details of explanations can change across multiple accurate models. This instability of explanations is a driving factor behind the presentation of multiple explanatory results in Driverless AI, enabling users to find explanatory information that is consistent across multiple modeling and interpretation techniques. And such explanatory results can be accessed by the **Disparate Impact Analysis** and **Sensitivity Analysis(SA)** features/tools. 
 
-Additionally, as firms have looked to leverage AI to make more and more decisions for the company, the discussion of Human-Centered Machine learning has become increasingly important. Data science practitioners and firms deploying AI in production want to 'get under the hood' of their models to see what impacts decisions. 
+With the above in mind, let us discover how we can better understand our models. 
 
-Hence, in this tutorial, we will build an AI model predicting whether someone will be defaulting on their credit card. Right after, we will use the two tools to analyze and check for fairness. 
+### References 
+
+- [1] [Jerome Friedman, Trevor Hastie, and Robert Tibshirani. The Elements of Statistical Learning. Springer, New York, 2001.](https://web.stanford.edu/~hastie/ElemStatLearn/printings/ESLII_print12.pdf)
 
 
 ## Prerequisites
@@ -33,65 +35,71 @@ You will need the following to be able to do this tutorial:
 
 - Basic knowledge of Machine Learning and Statistics
 - Basic knowledge of Driverless AI or doing the [Automatic Machine Learning Introduction with Driverless AI](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai) 
-- Completion of the [Machine Learning Interpretability Tutorial](https://training.h2o.ai/products/tutorial-1c-machine-learning-interpretability-tutorial)
-
-- A **Two-Hour Test Drive session** : Test Drive is H2O.ai's Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.
-
+- Completion of the following tutorial: [Machine Learning Interpretability](https://training.h2o.ai/products/tutorial-1c-machine-learning-interpretability-tutorial)
+- A **Two-Hour Test Drive session**: Test Drive is H2O.ai's Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.
   - Need a **Two-Hour Test Drive** session?Follow the instructions on [this quick tutorial](https://training.h2o.ai/products/tutorial-0-getting-started-with-driverless-ai-test-drive) to get a Test Drive session started. 
 
 **Note:  Aquarium’s Driverless AI Test Drive lab has a license key built-in, so you don’t need to request one to use it. Each Driverless AI Test Drive instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore Driverless AI, you can always launch another Test Drive instance or reach out to our sales team via the [contact us form](https://www.h2o.ai/company/contact/).**
-
-
 
 ## Task 1: Launch Machine Learning Interpretability Experiment
 
 ### About the Dataset
 
-For this exercise, we will use the same credit card default prediction data set that we used in the first MLI tutorial.
-
-This dataset contains information about credit card clients in Taiwan from April 2005 to September 2005. Features include demographic factors, repayment statuses, history of payment, bill statements, and default payments.
-
-The data set comes from the [UCI Machine Learning Repository Irvine, CA: University of California, School of Information and Computer Science.](https://archive.ics.uci.edu/ml/datasets/default+of+credit+card+clients#)
-
-This dataset has a total 25 Features(columns) and 30,000 Clients(rows).
+For this exercise, we will use the same credit card default prediction dataset that we used in the first MLI tutorial. This dataset contains information about credit card clients in Taiwan from April 2005 to September 2005. Features include demographic factors, repayment statuses, history of payment, bill statements, and default payments. The data set comes from the [UCI Machine Learning Repository: UCI_Credit_Card.csv](https://archive.ics.uci.edu/ml/datasets/default+of+credit+card+clients#) And this dataset has a total of 25 Features(columns) and 30,000 clients(rows).
 
 ### Download Dataset
 
-1\. Go to our S3 link [UCI_Credit_Card.csv](https://s3.amazonaws.com/data.h2o.ai/DAI-Tutorials/TestDrive-Datasets/UCI_Credit_Card.csv) and download the file to your local drive.
+When looking at the **UCI_Credit_Card.csv**, we can observe that column **PAY_0** was suppose to be named **PAY_1**. Accordingly, we will solve this problem using a data recipe that will change the column's name to **PAY_1**. The data recipe has already been written and can be found [here](https://s3.amazonaws.com/data.h2o.ai/DAI-Tutorials/MLI+Tutorials/uci_credit_card_recipe.py). Download the data recipe and name it ```uci_credit_card_recipe.py```. Make sure it's saved as a **.py** file. 
+ 
+Now upload the data recipe to the Driverless AI dataset's page. In the **DATASETS** page click **+ ADD DATASET(OR DRAG & DROP)** and select **UPLOAD DATA RECIPE**: 
 
-2\. Load the ``UCI_Credit_Card.csv`` to Driverless AI by clicking **Add Dataset (or Drag and Drop)** on the Datasets overview page.
+![upload-data-recipe](assets/upload-data-recipe.jpg)
 
-![launch-experiment-add-data](assets/launch-experiment-add-data.jpg)
-
-3\. Click on the ``UCI_Credit_Card.csv`` file then select Details.
+After it imports successfully, you will see the following CSV on the **DATASETS** page: **UCI_Credit_Card.csv**. Click on the ``UCI_Credit_Card.csv`` file then select **Details**:
 
 ![launch-experiment-variable-details](assets/launch-experiment-variable-details.jpg)
 
-Review the columns in the data set and pay attention to the specific attributes we will want to keep an eye on, such as **SEX**, **EDUCATION**, **MARRIAGE**, and **AGE**. Note that these demographic factors in credit lending should not play any role in deciding whether someone will be approved for a credit. 
+Review the columns in the dataset and pay attention to the specific attributes we will want to keep an eye on, such as **SEX**, **EDUCATION**, **MARRIAGE**, and **AGE**. Note that these demographic factors in predicting default credit payments.
 
-*Note:* When we think about disparate impact, we want to analyze whether specific classes are being treated unfairly.
+- When we think about disparate impact, we want to analyze whether specific classes are being treated unfairly. For example, single/non-college educated clients.
 
-4\. Return to the Datasets page.
 
-5\. Click on the ``UCI_Credit_Card.csv`` file then select **Predict**.
+Recall the dataset metrics: 
 
-6\. Select Not Now on the "First time Driverless AI" box, a similar image should appear:
+- **ID** - Row identifier (which will not be used for this experiment)
+-  **LIMIT_BAL** - Amount of the given credit: it includes the individual consumer credit and family (supplementary) credit
+- **Sex** - Gender (1 =  male; 2 = female)
+- **EDUCATION**- Education (1 = graduate school; 2 = university; 3 = high school; 4 = others)
+- **MARRIAGE** - Marital status (1 = married; 2 = single; 3 = others)
+- **Age**
+- **PAY_1 - PAY_6**: History of past payment:
+  - -2: No consumption
+  - -1: Paid in full 
+  - 0: The use of revolving credit
+  - 1 = payment delay for one month
+  - 2 = payment delay for two months; . . .; 
+  - 6 = payment delay for six months
+-  **BILL_AMT1 - BILL_AMT6** - Amount of bill statement 
+-  **PAY_AMT1 -PAY_AMT6** - Amount of previous payment 
+-  **default.payment.next.month** - Default (1: Yes, 0: No)
 
-![launch-experiment-predict-setup](assets/launch-experiment-predict-setup.jpg)
+Return to the Datasets page.
 
-- Name your experiment *UCI_CC MLI Tutorial 2*
+Click on the ``UCI_Credit_Card.csv`` file then select **Predict**. Select Not Now on the "First time Driverless AI" dialog box.
+- Name your experiment: ```UCI_CC MLI```
+- Select the following feature as a Target Column: **default.payment.next.month**
 
-7\. Select Target Column, then **Select default.payment.next.month** as the target.
 
-![launch-experiment-set-target](assets/launch-experiment-set-target.jpg)
+At this point, your experiment preview page should look as follows:
 
-8\. Before we launch the experiment, let’s take a moment to drop some columns as we would in the real business case of fair lending. Navigate to the dropped columns section here:
+![experiment-pre-view-page](assets/experiment-pre-view-page.jpg)
 
-![launch-experiment-drop-columns](assets/launch-experiment-drop-columns.jpg)
 
-9\.  Let’s drop the following columns since, under fair lending regulations, we should not consider these demographic factors in how we treat and analyze a customer. Additionally, **Limit_Bal** has some adverse action considerations, and this variable is usually dictated internally, and therefore, we will also drop it. Click **Done**.
 
-![launch-experiment-drop-columns-2](assets/launch-experiment-drop-columns-2.jpg)
+Usually, when predicting default, we will drop attributes such as **SEX**, **EDUCATION**, **MARRIAGE**, **AGE**, and **LIMIT_BALL**. Such features are drop because they shouldn't be considered because of conscious and unconscious bias. Not using such features will prevent decisions from being based on uncontrollable features such as sex. But what if we had no idea a given feature had or could lead to bias and unfairness. How can we find out that using a given feature leads to bias? The answer can be found when analyzing predictions using the Disparate Impact Analysis and Sensitivity Analysis tools. Therefore, we will not drop any columns for now, and let's discover how Driverless AI can perhaps highlight bias features. Not dropping any columns will allow us to understand how we can conclude that a feature is biased when it's not clear that a feature will generate bias when used on an ML model. The idea here is that when we, later on, analyze a feature's level of impact on single or overall predictions, we can decide whether that given feature in question is generating unfair predictions. As a result, we can drop the features found to be biased and, at last, rebuilt a model that is bias-free. 
+
+Again, we will assume that we have no idea that features such as **SEX** can lead to possible unfair predictions when used on particular ML models.  
+
 
 10\. When you return, update the training settings as shown below:it is essential to make sure the **Interpretability** setting is at **7**. On the left-hand side, verify that **Monotonicity Constraints** is enabled. Enabling **Monotonicity Constraints** is important to Disparate Impact Analysis. If we use an unconstrained model and group fairness metrics, we risk creating group fairness metrics that appear to be reasonable. The consequence of creating group fairness metrics that appear to be reasonable is the illusion that individuals within that group may NOT be treated differently or unfairly. The local (individual) discrimination would likely not appear or be visible in that group metric.
 
@@ -456,3 +464,7 @@ Check out the next tutorial: Analyzing a Criminal Risk Scorer with DAI MLI (COMI
  - Residual Analysis 
  - False Positive Rate
  - True Positive Rate
+
+
+
+e demographic factors in how we treat and analyze a customer. Additionally, **Limit_Bal** has some adverse action considerations, and this variable is usually dictated internally, and therefore, we will also drop it. Click **Done**.
