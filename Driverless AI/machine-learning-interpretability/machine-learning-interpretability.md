@@ -671,7 +671,7 @@ To learn more about the Summary tab and each plot in the Driverless AI Models ta
 
 ### Deeper Dive and Resources
 
-**Learn more about Interpretability**:
+### Learn more about Interpretability
  
 - [Brief Perspective on Key Terms and Ideas in Responsible AI](https://www.h2o.ai/blog/brief-perspective-on-key-terms-and-ideas-in-responsible-ai-2/)
 - [“Towards a rigorous science of interpretable machine learning”](https://arxiv.org/pdf/1702.08608.pdf)
