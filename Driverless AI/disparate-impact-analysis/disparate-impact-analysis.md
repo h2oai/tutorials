@@ -100,39 +100,36 @@ Usually, when predicting default, we will drop attributes such as **SEX**, **EDU
 
 Again, we will assume that we have no idea that features such as **SEX** can lead to possible unfair predictions when used on particular ML models.  
 
-
-10\. When you return, update the training settings as shown below:it is essential to make sure the **Interpretability** setting is at **7**. On the left-hand side, verify that **Monotonicity Constraints** is enabled. Enabling **Monotonicity Constraints** is important to Disparate Impact Analysis. If we use an unconstrained model and group fairness metrics, we risk creating group fairness metrics that appear to be reasonable. The consequence of creating group fairness metrics that appear to be reasonable is the illusion that individuals within that group may NOT be treated differently or unfairly. The local (individual) discrimination would likely not appear or be visible in that group metric.
+In the **TRAINING SETTINGS** as shown below: it is essential to make sure the **Interpretability** setting is at **7**. On the left-hand side, verify that **Monotonicity Constraints** is enabled. Enabling **Monotonicity Constraints** is important to Disparate Impact Analysis. If we use an unconstrained model and group fairness metrics, we risk creating group fairness metrics that appear to be reasonable. The consequence of creating group fairness metrics that appear to be reasonable is the illusion that individuals within that group may NOT be treated differently or unfairly. The local (individual) discrimination would likely not appear or be visible in that group metric.
 
 ![launch-experiment-interpretability-settings](assets/launch-experiment-interpretability-settings.jpg)
 
-11\. Let's also jump to **EXPERT SETTINGS**, select the model tab, and adjust the settings to create a single *XGBoost GBM Model*. 
+Now we will adjust some settings to our experiment. We will make use of the **Expert Settings** feature to make these adjustments. As discussed in previous tutorials, Driverless AI provides various options in the Expert Settings that let you customize your experiment. Now, click on the **Expert Settings** option, located on the top right corner of the **TRAINING SETTINGS** option: 
 
- 1. Turn off all the models besides the **XGBoost GBM Models** setting.
+- In the **EXPERT SETTINGS**, select the model tab, and adjust the settings to create a single *XGBoost GBM Model*: 
+  - Turn off all the models besides the **XGBoost GBM Models** setting.
+    > XGBoost is a type of gradient boosting method that has been widely successful in recent years due to its good regularization techniques and high accuracy. This is set to Auto by default. If enabled, XGBoost models will become part of the experiment (for both the feature engineering part and the final model).
+  - Then scroll down and adjust the **Ensemble level for final modeling pipeline** setting to 0 for this exercise's interpretability purposes. 
+  - Click **Save** and return to the experiment preview page.
 
- 2. Then scroll down and adjust the *Ensemble level for final modeling pipeline* setting to 0 for this exercise's interpretability purposes. 
+  ![launch-experiment-model-settings](assets/launch-experiment-model-settings.jpg)
+  ![launch-experiment-ensemble-level](assets/launch-experiment-ensemble-level.jpg)
 
- 3. Click **Save** and return.
-
-![launch-experiment-model-settings](assets/launch-experiment-model-settings.jpg)
-
-![launch-experiment-ensemble-level](assets/launch-experiment-ensemble-level.jpg)
-
-12\. The last step here is to click **REPRODUCIBLE**, then run the experiment!
+The last step here is to click **REPRODUCIBLE**, then run the experiment:
 
 ![launch-experiment-reproducible](assets/launch-experiment-reproducible.jpg)
 
-13\. Since we are already familiar with this page let’s dive in. Select *INTERPRET THIS MODEL*. 
-
-![experiment-complete](assets/experiment-complete.jpg)
-
+While the experiment runs, let's go over a few concepts that will be crucial when conducting a **Disparate Impact** and **Sensitivity** analysis. 
 
 ## Task 2: Concepts
 
 ### Fairness & Bias
 
-Fairness in Machine Learning & AI has been a critical focus for many practitioners and industries. The goal at its core is quite simple: ensure your models are not treating one population or group worse than another. However, upon further review, this task becomes more complicated to verify because fairness is not a term with an agreed upon legal definition. Any data science practitioner should strive for their models to be as ‘fair’ as possible, not just from an ethics perspective, but from a risk and regulatory perspective. If the theory of fairness and ethics in AI interests you, we have listed some of our favorite resources below on the topic that dives much deeper.
+Fairness in Machine Learning & AI has been a critical focus for many practitioners and industries. The goal at its core is quite simple: ensure your models are not treating one population or group worse than another. However, upon further review, this task becomes more complicated to verify because fairness is not a term with an agreed-upon legal definition. Any data science practitioner should strive for their models to be as ‘fair’ as possible, not just from an ethics perspective but also risk and regulatory perspective. 
 
-One critically important note is the concept of “Bias”. In conversational terms, bias tends to imply that a person has a slightly incorrect or exaggerated opinion on a subject matter based on their own personal experience, whether or not that is representative of the truth. Oftentimes the term will be used this way in Machine Learning as well. However, it is important to understand bias in a statistical term with a different meaning as well. 
+**Note**: If the theory of fairness and ethics in AI interests you, we have listed some of our favorite resources below on the topic that dives much deeper.
+
+One critically important note is the concept of “Bias.” In colloquial terms, bias tends to imply that a person has a slightly incorrect or exaggerated opinion on a subject matter based on their personal experience, whether or not that represents the truth. Frequently the term will be used this way in Machine Learning as well. However, it is important to understand bias in a statistical term with a different meaning as well. 
 
 ‘In statistics, the **bias** (or **bias function**) of an estimator is the difference between this estimator's expected value and the true value of the parameter being estimated. An estimator or decision rule with zero bias is called **unbiased**. In statistics, "bias" is an **objective** property of an estimator.’[1]
 
@@ -142,7 +139,7 @@ More specifically, to Machine Learning, there is a concept called bias-variance 
 
 ![model-complexity](assets/model-complexity.jpg)
 
-The more you overfit your model, statistically, the less biased the model is. 
+**Note**: The more you overfit your model, statistically, the less biased the model is. 
 
 ### Disparate Impact Analysis
 
@@ -168,19 +165,13 @@ Sensitivity may then be measured by monitoring changes in the output, e.g. by [p
 
 ### References
 
-[1] [Bias of an estimator](https://en.wikipedia.org/wiki/Bias_of_an_estimator)
-
-[2] [Disparate impact](https://en.wikipedia.org/wiki/Disparate_impact)
-
-[3]  Saltelli, A. (2002). ["Sensitivity Analysis for Importance Assessment"](https://en.wikipedia.org/wiki/Sensitivity_analysis#cite_note-Risk_Analysis-1). Risk Analysis. 22 (3): 1–12. CiteSeerX 10.1.1.194.7359. doi:10.1111/0272-4332.00040. PMID 12088235.
-
-[4]  Saltelli, A.; Ratto, M.; Andres, T.; Campolongo, F.; Cariboni, J.; Gatelli, D.; Saisana, M.; Tarantola, S. (2008). [Global Sensitivity Analysis: The Primer. John Wiley & Sons](https://en.wikipedia.org/wiki/Sensitivity_analysis#cite_note-Primer-2).
-
-[5] [Sensitivity analysis](https://en.wikipedia.org/wiki/Sensitivity_analysis#cite_note-15)
-
-[6]  Leamer, Edward E. (1983). ["Let's Take the Con Out of Econometrics"](https://en.wikipedia.org/wiki/Sensitivity_analysis#cite_note-16). American Economic Review. 73 (1): 31–43. JSTOR 1803924.
-
-[7]  Leamer, Edward E. (1985). ["Sensitivity Analyses Would Help". American Economic Review](https://en.wikipedia.org/wiki/Sensitivity_analysis#cite_note-17). 75 (3): 308–313. JSTOR 1814801.
+- [1] [Bias of an estimator](https://en.wikipedia.org/wiki/Bias_of_an_estimator)
+- [2] [Disparate impact](https://en.wikipedia.org/wiki/Disparate_impact)
+- [3]  Saltelli, A. (2002). ["Sensitivity Analysis for Importance Assessment"](https://en.wikipedia.org/wiki/Sensitivity_analysis#cite_note-Risk_Analysis-1). Risk Analysis. 22 (3): 1–12. CiteSeerX 10.1.1.194.7359. doi:10.1111/0272-4332.00040. PMID 12088235.
+- [4]  Saltelli, A.; Ratto, M.; Andres, T.; Campolongo, F.; Cariboni, J.; Gatelli, D.; Saisana, M.; Tarantola, S. (2008). [Global Sensitivity Analysis: The Primer. John Wiley & Sons](https://en.wikipedia.org/wiki/Sensitivity_analysis#cite_note-Primer-2).
+- [5] [Sensitivity analysis](https://en.wikipedia.org/wiki/Sensitivity_analysis#cite_note-15)
+- [6]  Leamer, Edward E. (1983). ["Let's Take the Con Out of Econometrics"](https://en.wikipedia.org/wiki/Sensitivity_analysis#cite_note-16). American Economic Review. 73 (1): 31–43. JSTOR 1803924.
+- [7]  Leamer, Edward E. (1985). ["Sensitivity Analyses Would Help". American Economic Review](https://en.wikipedia.org/wiki/Sensitivity_analysis#cite_note-17). 75 (3): 308–313. JSTOR 1814801.
 
 ### Deeper Dive and Resources
 
@@ -200,6 +191,11 @@ Sensitivity may then be measured by monitoring changes in the output, e.g. by [p
 
 
 ## Task 3: Confusion Matrix
+
+
+By now your experiment should be done. Since we are already familiar with the experiment dashboard let’s move forward by selecting the **INTERPRET THIS MODEL** option. If you need to review the Driverless AI UI please refer back to this tutorial: [Automatic Machine Learning Introduction with Driverless AI.](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai) 
+
+![experiment-complete](assets/experiment-complete.jpg)
 
 
 After the model is interpreted, you will be taken to the "MLI: Regression and Classification Explanations" page. The *DAI Model* tab (not to be confused with the **DIA** Metrics: Disparate Impact Analysis Metrics) should already be selected for you thereafter, click on *Disparate Impact Analysis* located at the bottom left corner of the page. The following page should appear: 
