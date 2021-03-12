@@ -135,9 +135,16 @@ One critically important note is the concept of “Bias.” In colloquial terms,
 
 More specifically, to Machine Learning, there is a concept called bias-variance tradeoff that appears often:
 
-![bias-variance-tradeoff](assets/bias-variance-tradeoff.jpg)
 
-![model-complexity](assets/model-complexity.jpg)
+<p align="center"> 
+    <img src='assets/bias-variance-tradeoff.jpg' width="500"></img>    
+</p>
+
+<p align="center"> 
+    <img src='assets/model-complexity.jpg' width="500"></img>    
+</p>
+
+
 
 **Note**: The more you overfit your model, statistically, the less biased the model is. 
 
