@@ -5,7 +5,7 @@
 - [Prerequisites](#prerequisites)
 - [Task 1: Launch Machine Learning Interpretability Experiment](#task-1-launch-machine-learning-interpretability-experiment) 
 - [Task 2: Concepts](#task-2-concepts)
-- [Task 3: Confusion Matrix](#task-3-confusion-matrix)
+- [Task 3: Disparate Impact Analysis](#task-3-disparate-impact-analysis)
 - [Task 4: Disparate Impact Analysis](#task-4-disparate-impact-analysis)
 - [Task 5: Sensitivity Analysis Part 1: Checking for Bias](#task-5-sensitivity-analysis-part-1-checking-for-bias)
 - [Task 6: Sensitivity Analysis Part 2: Checking for Bias](#task-6-sensitivity-analysis-part-2-checking-for-bias)
@@ -125,11 +125,9 @@ While the experiment runs, let's go over a few concepts that will be crucial whe
 
 ### Fairness & Bias
 
-Fairness in Machine Learning & AI has been a critical focus for many practitioners and industries. The goal at its core is quite simple: ensure your models are not treating one population or group worse than another. However, upon further review, this task becomes more complicated to verify because fairness is not a term with an agreed-upon legal definition. Any data science practitioner should strive for their models to be as ‘fair’ as possible, not just from an ethics perspective but also risk and regulatory perspective. 
+Fairness in Machine Learning & AI has been a critical focus for many practitioners and industries. The goal at its core is quite simple: ensure your models are not treating one population or group worse than another. However, upon further review, this task becomes more complicated to verify because fairness is not a term with an agreed-upon legal definition. 
 
-**Note**: If the theory of fairness and ethics in AI interests you, we have listed some of our favorite resources below on the topic that dives much deeper.
-
-One critically important note is the concept of “Bias.” In colloquial terms, bias tends to imply that a person has a slightly incorrect or exaggerated opinion on a subject matter based on their personal experience, whether or not that represents the truth. Frequently the term will be used this way in Machine Learning as well. However, it is important to understand bias in a statistical term with a different meaning as well. 
+In colloquial terms, bias tends to imply that a person has a slightly incorrect or exaggerated opinion on a subject matter based on their personal experience, whether or not that represents the truth. Frequently the term will be used this way in Machine Learning as well. However, it is important to understand bias in a statistical term with a different meaning as well. 
 
 ‘In statistics, the **bias** (or **bias function**) of an estimator is the difference between this estimator's expected value and the true value of the parameter being estimated. An estimator or decision rule with zero bias is called **unbiased**. In statistics, "bias" is an **objective** property of an estimator.’[1]
 
@@ -144,13 +142,19 @@ More specifically, to Machine Learning, there is a concept called bias-variance 
     <img src='assets/model-complexity.jpg' width="500"></img>    
 </p>
 
+- Bias is the simplifying assumptions made by the model to make the target function easier to approximate.[2]
+- Variance is the amount that the estimate of the target function will change given different training data.[2]
+- The goal of any supervised machine learning algorithm is to achieve low bias and low variance. In turn the algorithm should achieve good prediction performance.[2]
+  - Linear machine learning algorithms often have a high bias but a low variance.[2]
+  - Nonlinear machine learning algorithms often have a low bias but a high variance.[2]
+- The parameterization of machine learning algorithms is often a battle to balance out bias and variance.The goal of any supervised machine learning algorithm is to achieve low bias and low variance. In turn the algorithm should achieve good prediction performance.[2]
+  - Therefore, trade-off is tension between the error introduced by the bias and the variance.[2]
 
-
-**Note**: The more you overfit your model, statistically, the less biased the model is. 
+**Note**: If the theory of fairness and ethics in AI interests you, we have listed some of our favorite resources below on the topic that dives much deeper.
 
 ### Disparate Impact Analysis
 
-'Disparate impact in the United States labor law refers to practices in employment, housing, and other areas that adversely affect one group of people of a protected characteristic more than another, even though rules applied by employers or landlords are formally neutral. Although the protected classes vary by statute, most federal civil rights laws protect based on race, color, religion, national origin, and sex as protected traits, and some laws include disability status and other traits as well.'[2] 
+In most law jurisdictions,  **Disparate Impact** refers to the conscious and unconscious practices adversely impacting one group of people of a protected characteristic more than another. Such characteristics constitute someone's race, color, religion, national origin, sex, and disability status.
 
 When the discussion of ‘fairness’ or ‘ethical AI’ comes up, one of the best possible methodologies for vetting fairness is Disparate Impact Analysis. Disparate Impact Analysis or DIA, which is sometimes called Adverse Impact Analysis, is a way to measure quantitatively the adverse treatment of protected classes, which leads to discrimination in hiring, housing, etc., or in general, any public policy decisions. The regulatory agencies will generally regard a selection rate for any group with less than four-fifths (4/5) or eighty percent of the rate for the group with the highest selection rate as constituting evidence of adverse impact.
 
@@ -162,7 +166,7 @@ Sensitivity analysis, sometimes called what-if analysis is a mainstay of model d
 
 A related practice is [uncertainty analysis](https://en.wikipedia.org/wiki/Uncertainty_analysis), which has a greater focus on [uncertainty quantification](https://en.wikipedia.org/wiki/Uncertainty_quantification) and [propagation of uncertainty](https://en.wikipedia.org/wiki/Propagation_of_uncertainty); ideally, uncertainty and sensitivity analysis should be run in tandem.
 
-One of the simplest and most common approaches is that of changing one-factor-at-a-time (OAT), to see what effect this produces on the output.[5] [6] [7] OAT customarily involves
+One of the simplest and most common approaches is that of changing one-factor-at-a-time (OAT), to see what effect this produces on the output.[5] [6] [7] OAT customarily involves:
 
 - Moving one input variable, keeping others at their baseline (nominal) values, then,
 - Returning the variable to its nominal value, then repeating for each of the other inputs in the same way.
@@ -170,34 +174,59 @@ One of the simplest and most common approaches is that of changing one-factor-at
 Sensitivity may then be measured by monitoring changes in the output, e.g. by [partial derivatives](https://en.wikipedia.org/wiki/Partial_derivatives) or [linear regression](https://en.wikipedia.org/wiki/Linear_regression). 
 
 
+### Confusion Matrices
+
+It is effortless to assume that the goal is accuracy when using machine learning: the percentage of your predictions being correct. While accuracy can be a useful metric of success, it is often dubious. Let’s build on a very relevant industry example: 
+
+Fraud (Anomaly Detection): Let’s assume we are dealing with a 100,000-row dataset where we know there is some small amount of fraud; let’s say 10. If accuracy is our benchmark, then your model will predict “Not-Fraud” every time, and the accuracy will be 99.99%, but you have failed to identify any instances of fraud. These cases focus on what in a confusion matrix is defined as True Positives (TP):
+
+
+<p align="center"> 
+    <img src='assets/confusion-matrices-1.jpg' width="500"></img>    
+</p>
+
+In the case of identifying fraud, you would almost always prefer a prediction table like this, to make sure you can correctly identify fraud instances as they occur:
+
+<p align="center"> 
+    <img src='assets/confusion-matrices-2.jpg' width="500"></img>    
+</p>
+
+
+Now every case is different, and often in business environments, there exist certain cost functions associated with false negatives and false positives, so it is essential to be aware that every case has many considerations. We want to provide a few of the key metrics associated with confusion matrices that come up in the industry, depending on the problem you are trying to solve.
+
+- **Sensitivity, Recall, Hit Rate, True Positive Rate**:
+  - True Positive Rate = True Positive / (True Positive + False Negative)
+- **Specificity, Selectivity, True Negative Rate**:
+  - True Negative Rate = True Negative / (True Negative + False Positive)
+- **Precision, Positive Predictive Value**:
+  - Precision = True Positives / (True Positive + False Positive)
+
+With this context in mind, let’s move forward and dive into the experiment!
+
+
 ### References
 
 - [1] [Bias of an estimator](https://en.wikipedia.org/wiki/Bias_of_an_estimator)
-- [2] [Disparate impact](https://en.wikipedia.org/wiki/Disparate_impact)
+- [2] Jason Brownlee PhD . ["Gentle Introduction to the Bias-Variance Trade-Off in Machine Learning"](https://machinelearningmastery.com/gentle-introduction-to-the-bias-variance-trade-off-in-machine-learning/). Machine Learning Mastery. October 25, 2019. 
 - [3]  Saltelli, A. (2002). ["Sensitivity Analysis for Importance Assessment"](https://en.wikipedia.org/wiki/Sensitivity_analysis#cite_note-Risk_Analysis-1). Risk Analysis. 22 (3): 1–12. CiteSeerX 10.1.1.194.7359. doi:10.1111/0272-4332.00040. PMID 12088235.
 - [4]  Saltelli, A.; Ratto, M.; Andres, T.; Campolongo, F.; Cariboni, J.; Gatelli, D.; Saisana, M.; Tarantola, S. (2008). [Global Sensitivity Analysis: The Primer. John Wiley & Sons](https://en.wikipedia.org/wiki/Sensitivity_analysis#cite_note-Primer-2).
 - [5] [Sensitivity analysis](https://en.wikipedia.org/wiki/Sensitivity_analysis#cite_note-15)
 - [6]  Leamer, Edward E. (1983). ["Let's Take the Con Out of Econometrics"](https://en.wikipedia.org/wiki/Sensitivity_analysis#cite_note-16). American Economic Review. 73 (1): 31–43. JSTOR 1803924.
 - [7]  Leamer, Edward E. (1985). ["Sensitivity Analyses Would Help". American Economic Review](https://en.wikipedia.org/wiki/Sensitivity_analysis#cite_note-17). 75 (3): 308–313. JSTOR 1814801.
 
+
 ### Deeper Dive and Resources
 
 - [Mitigating Bias in AI/ML Models with Disparate Impact Analysis …](https://medium.com/@kguruswamy_37814/mitigating-bias-in-ai-ml-models-with-disparate-impact-analysis-9920212ee01c)
-
 - [In Fair Housing Act Case, Supreme Court Backs 'Disparate Impact' Claims](https://www.npr.org/sections/thetwo-way/2015/06/25/417433460/in-fair-housing-act-case-supreme-court-backs-disparate-impact-claims)
-
 - [Fairness and machine learning](https://fairmlbook.org/)
-
 - [50 Years of Test (Un)fairness: Lessons for Machine Learning](https://arxiv.org/pdf/1811.10104.pdf)
-
 - [Biased Algorithms Are Easier to Fix Than Biased People](https://www.nytimes.com/2019/12/06/business/algorithm-bias-fix.html)
-
 - [Discrimination in the Age of Algorithms](https://arxiv.org/abs/1902.03731)
-
 - [Understanding and Reducing Bias in Machine Learning](https://towardsdatascience.com/understanding-and-reducing-bias-in-machine-learning-6565e23900ac)
 
 
-## Task 3: Confusion Matrix
+## Task 3: Disparate Impact Analysis
 
 
 By now your experiment should be done. Since we are already familiar with the experiment dashboard let’s move forward by selecting the **INTERPRET THIS MODEL** option. If you need to review the Driverless AI UI please refer back to this tutorial: [Automatic Machine Learning Introduction with Driverless AI.](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai) 
@@ -205,84 +234,120 @@ By now your experiment should be done. Since we are already familiar with the ex
 ![experiment-complete](assets/experiment-complete.jpg)
 
 
-After the model is interpreted, you will be taken to the "MLI: Regression and Classification Explanations" page. The *DAI Model* tab (not to be confused with the **DIA** Metrics: Disparate Impact Analysis Metrics) should already be selected for you thereafter, click on *Disparate Impact Analysis* located at the bottom left corner of the page. The following page should appear: 
+After the model is interpreted, you will be taken to the "MLI: Regression and Classification Explanations" page. The *DAI Model* tab (not to be confused with the **DIA** Metrics: Disparate Impact Analysis Metrics) should already be selected for you thereafter, click on *Disparate Impact Analysis* located at the bottom left corner of the page. The following will appear: 
 
 ![dia](assets/dia.jpg)
 
-Before we continue with the experiment, we need to cover one more  important concept: Confusion Matrices. 
+**Note**: This plot is available for binary classification and regression models.
 
-It is effortless to assume that the goal is accuracy when using machine learning: the percentage of your predictions being correct. While accuracy can be a useful metric of success, it is often dubious. Let’s build on a very relevant industry example: 
+DIA is a technique that is used to evaluate fairness. Bias can be introduced to models during the process of collecting, processing, and labeling data—as a result, it is important to determine whether a model is harming certain users by making a significant number of biased decisions.
 
-Fraud (Anomaly Detection): Let’s assume we are dealing with a 100,000-row data set where we know there is some small amount of fraud; let’s say 10. If accuracy is our benchmark, then your model will predict “Not-Fraud” every time, and the accuracy will be 99.99%, but you have failed to identify any instances of fraud. These cases focus on what in a confusion matrix is defined as True Positives (TP).
+DIA typically works by comparing aggregate measurements of unprivileged groups to a privileged group. For instance, the proportion of the unprivileged group that receives the potentially harmful outcome is divided by the proportion of the privileged group that receives the same outcome—the resulting proportion is then used to determine whether the model is biased. Refer to the Summary section to determine if a categorical level  is fair in comparison to the specified reference level and user-defined thresholds. Fairness All is a true or false value that is only true if every category is fair in comparison to the reference level.
 
-![confusion-matrices-1](assets/confusion-matrices-1.jpg)
+Disparate impact testing is best suited for use with constrained models in Driverless AI, such as linear models, monotonic GBMs, or RuleFit. The average group metrics reported in most cases by DIA may miss cases of local discrimination, especially with complex, unconstrained models that can treat individuals very differently based on small changes in their data attributes.
 
-In the case of identifying fraud, you would almost always prefer a prediction table like this, to make sure you can correctly identify fraud instances as they occur:
+- **Note**: We only enabled a XGBoost GBM Model and we constrained the model by setting the interpretability nob to >= 7. 
 
-![confusion-matrices-2](assets/confusion-matrices-2.jpg)
+DIA allows you to specify a disparate impact variable (the group variable that is analyzed), a reference level (the group level that other groups are compared to), and user-defined thresholds for disparity. Several tables are provided as part of the analysis:
 
-Now every case is different, and often in business environments, there exist certain cost functions associated with false negatives and false positives, so it is essential to be aware that every case has many considerations. We want to provide a few of the key metrics associated with confusion matrices that come up in the industry, depending on the problem you are trying to solve.
+- **Group metrics**: The aggregated metrics calculated per group. For example, true positive rates per group.
+- **Group disparity**: This is calculated by dividing the ```metric_for_group``` by the ``reference_group_metric``. Disparity is observed if this value falls outside of the user-defined thresholds.
+- **Group parity**: This builds on Group disparity by converting the above calculation to a true or false value by applying the user-defined thresholds to the disparity values.
 
-Sensitivity, Recall, Hit Rate, True Positive Rate:
+In accordance with the established four-fifths rule, user-defined thresholds are set to 0.8 and 1.25 by default. These thresholds will generally detect if the model is (on average) treating the non-reference group 20% more or less favorably than the reference group. Users are encouraged to set the user-defined thresholds to align with their organization’s guidance on fairness thresholds.
 
- - True Positive Rate = True Positive / (True Positive + False Negative)
+### Metrics - Binary Classification
 
-Specificity, Selectivity, True Negative Rate:
+The following are formulas for error metrics and parity checks utilized by binary DIA. Note that in the tables below:
 
-- True Negative Rate = True Negative / (True Negative + False Positive)
+ **tp**= true positive **|** **fp** = false positive **|** **tn** = true negative **|** **fn** = false negative
 
-Precision, Positive Predictive Value:
+<p align="center"> 
+    <img src='assets/parity-check-one.jpg' width="500"></img>    
+</p>
+<p align="center"> 
+    <img src='assets/parity-check-two.jpg' width="500"></img>    
+</p>
 
-- Precision = True Positives / (True Positive + False Positive)
+Recall that our current experiment is a classification model, and therefore, the above metrics will be generated by the Disparate Impact Analysis(DIA) tool. In contrast, if it were a regression problem, we will see different metrics. To learn about metrics DIA will generate for a regression experiment, click [here](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/interpret-understanding.html#metrics-regression).
 
-With this context in mind, let’s move forward and dive into the experiment!
+**Note**:
 
-1\. Observe the Global Confusion Matrix for our experiment:
+- Although the process of DIA is the same for both classification and regression experiments, the returned information is dependent on the type of experiment being interpreted. An analysis of a regression experiment returns an actual vs. predicted plot, while an analysis of a binary classification experiment returns confusion matrices.
+- Users are encouraged to consider the explanation dashboard to understand and augment results from disparate impact analysis. In addition to its established use as a fairness tool, users may want to consider disparate impact for broader model debugging purposes. For example, users can analyze the supplied confusion matrices and group metrics for important, non-demographic features in the Driverless AI model.
+
+With the above in mind, let's continue with our experiment analysis: 
+
+Observe the Global Confusion Matrix for our experiment:
 
 ![dia-2](assets/dia-2.jpg)
 
-2\. With the above in mind, you can look at the Global Confusion Metrix of our experiment and identify and calculate the *True Positive Rate* and *True Negative Rate*. In the following task we will see how *True Positive Rate* and *True Negative Rate* can be effective. 
-
-*Note:* In the next tutorial (COMING SOON), we will be exploring how we can use  *True Positive Rate* and *True Negative Rate* to determine the fairness of an AI model. Therefore, let us explore the two new MLI tools: 
-
- 1. Disparate Impact Analysis Tool 
-
- 2. Sensitivity/What-If Analysis Tool 
+With the above in mind, you can look at the Global Confusion Metrix of our experiment:
 
 
-## Task 4: Disparate Impact Analysis
+- The confusion matrix above is structure as follows: 
 
-1\. Continuing with the experiment on the top right corner, click on the *Disparate Impact Variable* button. Select the **SEX** variable. 
+  ![confusion-matrices-explanation](assets/confusion-matrices-explanation.jpg)
+
+  - **True Positive Rate** = 3091/(3091 + 3545) = 0.4657
+    - probability that an actual positive will test positive
+  - **True Negative Rate** = 21301/(21301 + 2063) = 0.911
+    - which is the probability that an actual negative will test negative
+  - **False Negatives** = 3545.0
+  - **False Positive** = 2063.0
+    - Below we will analyze whether members of a protective class are not unfairly labeled as false positives (wrong prediction of default)
+
+
+**Note**: The confusion matrix is base on the **MAXIMIZED METRIC** and **CUT OFF** value found on the summary section: 
+- Predictive models often produce probabilities, not decisions. So to make a decision with a model-generated predicted probability for any one client, we need a numeric cutoff which we say a client will default and below which we say they will not default. Cutoffs play a crucial role in DIA as they impact the underlying measurements used to calculate diparity. In fact, tuning cutoffs carefully is a potential remdiation tactic for any discovered disparity. There are many accepted ways to select a cutoff (besides simply using 0.5) and in this experiment Driverless AI has selected a balance between the model's recall (true positive rate) and it's precision using the **F1** statistic. Using precision and recall to select a cutoff is sometimes seen as more robust to imbalanced data than the standard ROC approach. Maximizing **F1** typically results in a good balance between sensitivity and precision. In this experiment, Driverless AI has decided that the best **CUT OFF** value is **0.56**, leading to a maximization of precision and recall. 
+- In other words, a Driverless AI model will return probabilities, not predicted classes. To convert probabilities to predicted classes, a cutoff needs to be defined. Driverless AI iterates over possible cutoffs to calculate a confusion matrix for each cutoff. It does this to find the maximum F metric value. Driverless AI’s goal is to continue increasing this maximum F metric.
+- The F1 score provides a measure for how well a binary classifier can classify positive cases (using a threshold value). The F1 score is calculated from the harmonic mean of the precision and recall. An F1 score of 1 means both precision and recall are perfect and the model correctly identified all the positive cases and didn’t mark a negative case as a positive case. If either precision or recall are very low it will be reflected with a F1 score closer to 0.
+  - F1 equation: F1 = 2((Precision)(Recall)/Precision + Recall)
+  - Where:
+    - **precision** is the positive observations (true positives) the model correctly identified from all the observations it labeled as positive (the true positives + the false positives).
+    - **recall** is the positive observations (true positives) the model correctly identified from all the actual positive cases (the true positives + the false negatives).
+
+In the following task, let's put the above matrics into perspective in terms, of whether unfairness is present. 
+
+## Task 4: Group Disparity and Parity
+
+To begin our analysis on each feature (column) and determine whether it holds a disparate impact, let's consider the above steps on how it could be determined using DIA. 
+
+### Feature: SEX
+
+First, let us observe the **SEX** feature: 
+
+On the top right corner, click on the **Disparate Impact Variable** button. Select the **SEX** variable: 
 
 ![disparate-impact-select](assets/disparate-impact-select.jpg)
 
-2\. Click on the *Reference Level* button and change the value from 2 to 1. 
+On the **Reference Level** button and change the value from **2(Female)** to **1(Male)**: 
 
 ![reference-level](assets/reference-level.jpg)
 
-3\. The following should appear: 
+The following will appear: 
 
-![dia-fairness](assets/dia-fairness.jpg)
+![dia-fairness-one](assets/dia-fairness-one.jpg)
+![dai-fairness-two](assets/dia-fairness-two.jpg)
 
-Make sure the Reference level is toggled to 1(Male). With DIA the reference level is somewhat ambiguous, but generally, we want to set it to the category or population we believe may be receiving better treatment compared to other classes. 
 
-After setting the reference level to *1* and the *Disparate impact* variable to **SEX** the following arises: 
 
-The model seems to be performing fairly across all categories, which is good. And such categories are *Adverse Impact*, *Accuracy*, *True Positive Rate*, and *Precision*. 
+Make sure the **Reference level** is toggled to 1(Male). With DIA the reference level is somewhat ambiguous, but generally, we want to set it to the category or population we believe may be receiving better treatment compared to other classes. 
 
-A reminder *Adverse Impact* refers to the following definition: 
 
- - Adverse impact is the negative effect an unfair and biased selection procedure has on a protected class. It occurs when a protected group is discriminated against during a selection process, like a hiring or promotion decision.[8]  
+From a general observation we can see that base on the **Summary** section: 
 
-  In the US, protected classes include race, sex, age (40 and over), religion, disability status, and veteran status.
+- It looks like the model didn't do well with respect to eliminating bias around Gender! The FAIRNESS 1 (Male) is True, FAIRNESS 2 (Female) is False, and the FAIRNESS ALL is False that tells us the model accuracy is only fair to males  — definitely breaking the four-fifth rule.
+  - **When conducting a DIA analysis, always refer to the Summary section to determine if a categorical level is fair in comparison to the specified reference level and user-defined thresholds. Fairness All is a true or false value that is only true if every category is fair in comparison to the reference level.**
+- If we had to break this down, The Disparate Impact Analysis basically took model prediction results which was from 11K males, 18k females and looked at various measures such as Accuracy, Adverse Impact, True Positive Rate, Precision, Recall, etc., across both binary classes and then found the ratios are not comparable across the two groups over the desired cutoff value. 
+  - A reminder *Adverse Impact* refers to the following definition: 
+    - Adverse impact is the negative effect an unfair and biased selection procedure has on a protected class. It occurs when a protected group is discriminated against during a selection process, like a hiring or promotion decision.[8]  
+      - In the US, protected classes include race, sex, age (40 and over), religion, disability status, and veteran status.
+- Further, *True Positive Rate* refers to the following definition: 
+  - In machine learning, the true positive rate, also referred to sensitivity or recall, is used to measure the percentage of actual positives which are correctly identified.[9]
+- Further we also see a slight population imbalance but not at a worrisome level yet. It will be a problem when the imbalance is huge because it will mean that the model will be learning (through examples) from a particular population or group. Though it could be the case, this slight population imbalance is causing unfairness, but further analysis is required to support that conclusion.  
 
-Further, *True Positive Rate* refers to the following definition: 
-
- - In machine learning, the true positive rate, also referred to sensitivity or recall, is used to measure the percentage of actual positives which are correctly identified.[9]
-
-Further we also see a slight population imbalance but not at a worrisome level yet. It will be a problem when the imbalance is huge because it will mean that the model will be learning (through examples) from a particular population or group. 
-
-4\. Scroll down and let's take a look at *Group Disparity*.
+Scroll down and let's take a look at *Group Disparity*.
 
 ![0.8-low-threshold](assets/0.8-low-threshold.jpg)
 
