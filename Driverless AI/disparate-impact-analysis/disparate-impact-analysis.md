@@ -385,9 +385,17 @@ To analyze the other features, you will only need to scroll back up and change t
 ![disparate-impact-variable-education-one](assets/disparate-impact-variable-education-one.jpg)
 
 
-If all demographic factors are dropped and a model is generated, we still need to check that a presumed fair model is not discriminating. Driverless AI allows you to pick the features not used on the Driverless AI experiment(drop columns). For example, you can still choose the **SEX** feature as the **Disparate Impact Variable** in an MLI report, even if it's the case that the **SEX** feature was drop before the experiment was launch. Such ability to pick features drop allows you to see if a model is eventually not generating disparity with and without a sensitive feature such as **SEX**. 
+If all demographic factors are dropped and a model is generated, we still need to check that a presumed fair model is not discriminating. Driverless AI allows you to pick the features not used on the Driverless AI experiment(drop columns). For example, you can still choose the **SEX** feature as the **Disparate Impact Variable** in a DIA report, even if it's the case that the **SEX** feature was dropped before the experiment was launch. Such ability to pick features dropped allows you to see if a model is eventually not generating disparity with and without a sensitive feature such as **SEX**. 
 
-Now let's focus our attention on the **Sensitivity Analysis** tool, and let's discover how it can help us better understand our model on the grounds of fairness. 
+To emphasize, let us imaged we ran an experiment, and we dropped all demographic features. Right after, we will be able to generate a DIA Analysis, but the predictions will be based only on the features used. In this scenario, we will like to assume that the model is fair given that it doesn't make use of sensitive features such as demographic factors. Though that might be the case, we can never assume; instead, we need to verify such an assumption. In that case, DIA allows us to select available demographic factors such as **SEX**. In that case, we can see whether the model is creating disparity for certain protective groups.  Therefore, DIA will allow us to see the general or overall impact the model has on protective groups, whether that impact is good or bad. 
+
+
+Going back to our first discovery, let us see at a local level how the **SEX** feature is playing a crucial role in individual predictions. The local analysis allows us to verify the impact of a given feature but can tell us how much certain feature values impact single predictions. Knowing this can be crucial when proceeding on the next iteration of the model, especially if the goal is to achieve low disparity values. 
+
+After several iterations, a Driverless AI experiment was run similar to the one running in task one. The only difference between the experiment in task one and the final experiment was that it dropped all democratic/sensitive features(columns). Despite dropping demographic features, disparity and bias somehow were introduced to the model. 
+The interesting part is that the columns used in the final model are not known to be biased. For example, **PAY_1** at an empirical observation will not make someone say that **PAY_1** has a bias or can lead to bias. A good way to identify what features lead to bias is by using the **Sensitivity Analysis** tool in conjunction with several surrogate models. 
+
+Now let's focus our attention on the **Sensitivity Analysis** tool, and let's discover how it can help us better understand our model on the grounds of fairness and local/single predictions/observations. 
 
 
 ### References
@@ -397,51 +405,65 @@ Now let's focus our attention on the **Sensitivity Analysis** tool, and let's di
 
 ## Task 5: Sensitivity Analysis Part 1: Checking for Bias
 
-1\. Let’s start up a new experiment with the same dataset as before. Keep the settings & target variable the same; however, this time, let’s keep all the columns in the dataset. 
+As of now, you should still be on the **Disparate Impact Analysis** page. Click the **X** icon located at the top right corner of the page.  That will take you to the **DAI Model** tab; in there, click the **SA (Sensitivity Analysis)** tile. The following will appear: 
 
-![new-experiment](assets/new-experiment.jpg)
+![preview-sa-ui](assets/preview-sa-ui.jpg)
 
-After the experiment is over:
+**Note**: Sensitivity Analysis (SA) is not available for multiclass experiments.
 
- - Click on *INTERPRET THIS MODEL*
+Sensitivity Analysis (or “What if?”) is a simple and powerful model debugging, explanation, fairness, and security tool. The idea behind SA is both direct and simple: Score your trained model on a single row, on multiple rows, or on an entire dataset of potentially interesting simulated values and compare the model’s new outcome to the predicted outcome on the original data.
 
- - After, in the *DAI Models* tab you should click on the Sensitivity Analysis option 
+Beyond traditional assessment practices, sensitivity analysis of machine learning model predictions is perhaps the most important validation technique for machine learning models. Sensitivity analysis investigates whether model behavior and outputs remain stable when data is intentionally perturbed or other changes are simulated in the data. Machine learning models can make drastically differing predictions for only minor changes in input variable values. For example, when looking at predictions that determine financial decisions, SA can be used to help you understand the impact of changing the most important input variables and the impact of changing socially sensitive variables (such as Sex, Age, Race, etc.) in the model. If the model changes in reasonable and expected ways when important variable values are changed, this can enhance trust in the model. Similarly, if the model changes to sensitive variables have minimal impact on the model, then this is an indication of fairness in the model predictions.
 
-After that, you should land on our Sensitivity Analysis Dashboard: 
+This page utilizes the [What If Tool](https://pair-code.github.io/what-if-tool/) for displaying the SA information.
+
+
+The top portion of this page includes:
+
+- A summary of the experiment
+- Predictions for a specified column. Change the column on the Y axis to view predictions for that column.
+- The current working score set. This updates each time you rescore.
+
+The bottom portion of this page includes:
+
+- A filter tool for filtering the analysis. Choose a different column, predictions, or residuals. Set the filter type (```<```, ```>```, etc.). Choose to filter by False Positive, False Negative, True Positive, or True Negative.
+- Scoring chart. Click the Rescore button after applying a filter to update the scoring chart. This chart also allows you to add or remove variables, toggle the main chart aggregation, reset the data, and delete the global history while resetting the data.
+- The current history of actions taken on this page. You can delete individual actions by selecting the action and then clicking the Delete button that appears.
 
 ![sa-ui](assets/sa-ui.jpg)
 
-Some things to notice:
+*Things to Note:*
 
- 1. In our *Summary* information for the dataset located on the left side of the dashboard, we, in particular, can see our chosen cutoff metric, and the number for that metric. 
+1. In the **Summary** section we can see the cut-off value. Our **CUT-OFF** is **0.557592920...** Anything below the **CUT-OFF** will mean the model predicts a client will not default, while anyone greater than or equal to the **CUT-OFF** will default:
 
-![sa-ui-summary](assets/sa-ui-summary.jpg)
+<p align="center"> 
+    <img src='assets/sa-ui-summary.jpg' width="400"></img>    
+</p>
 
- - In our *Summary* information for the dataset located on the left side of the dashboard, we, in particular, can see our chosen cutoff metric, and the number for that metric. Our *CUTOFF* is 0.2676... Anything below the *CUTOFF* will mean the model predicts a customer will not default, while anyone greater than or equal to the *CUTOFF* will default. 
 
-2\. This pink summary locator represents the “Average” customer in the dataset, i.e., the average of all computable variables.  
+2. This pink summary locator represents the “Average” client in the dataset, i.e., the average of all computable variables.  
 
-![sa-ui-threshold](assets/sa-ui-threshold.jpg)
+    ![sa-ui-threshold](assets/sa-ui-threshold.jpg)
 
-- The *Current Working Set Score* indicates that the mean score prediction is .24060 and that the most common prediction is False, which makes sense.
+    - The **F1 CUTOFF** indicates that the mean score prediction is **0.55759292** and that the most common prediction is **False(Negative)**(the pink circle being on the negative side indicates such conclusion).
 
-3\. Here we can choose to filter down on various portions of the confusion matrix and review each row and prediction.
+3. The values changed in this chart will lead to the graph above to change (when the chart is rescored):
 
-![sa-ui-cm-table](assets/sa-ui-cm-table.jpg)
+    ![sa-ui-cm-table](assets/sa-ui-cm-table.jpg)
 
-4\.  Now that we have familiarized ourselves with the UI let’s experiment! Reminder *Sensitivity Analysis* enables us to tinker with various settings in the data to see if certain features affect the outcome when we know that they should not. Let’s start by adjusting an entire feature.
+Now that we have familiarized ourselves with the UI let’s experiment! Reminder *Sensitivity Analysis* enables us to tinker with various settings in the data to see if certain features affect the outcome when we know that they should not. Let’s start by adjusting an entire feature.
 
- - If you remember from the previous exercise, the feature PAY_0 was extremely important; if not, you can jump back to *Transformed Shapley* and double-check. You can find the *Transformed Shapley*  in the *DAI MODEL* tab. 
+If you remember from the previous exercise, feature **PAY_1** was extremely important; if not, you can jump back to **RF Feature Importance** and double-check. You can find the **RF Feature Importance**  in the **Surrogate Models** tab. 
 
-![shapley](assets/shapley.jpg)
+![rf-feature-importance.jpg](assets/rf-feature-importance.jpg)
 
-5\. You can also check the *Partial Dependence Plot* and see the probability of defaulting increases when PAY_0 is two months late. 
+You can also check the **RF Partial Dependence Plot** and see the probability of defaulting increases when PAY_1 is two months late: 
 
-![partial-dependence-plot-of-pay_0](assets/partial-dependence-plot-of-pay_0.jpg)
+![rf-partial-dependence-plot](assets/rf-partial-dependence-plot.jpg)
 
-Now that we know that being two months late on PAY_0 is terrible and knowing that the average mean score prediction is *0.24060*, what will occur if we were to set all customers to have PAY_0=2? Will the average mean score prediction increase or decrease? 
+Now that we know that being two months late on PAY_1 is terrible and knowing that the average mean score prediction is **0.55759292**, what will occur if we were to set all clients to have **PAY_1 = 2**? Will the average mean score prediction increase or decrease? 
 
-To set all customers PAY_0 to 2, please consider the following steps: 
+To set all customers **PAY_1** to **2**, please consider the following steps: 
 
  1. Click on top of the PAY_0 variable. 
 
