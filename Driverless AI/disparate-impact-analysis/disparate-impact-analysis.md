@@ -15,7 +15,7 @@
 
 As firms use ML to help them around credit/loan-decisions, cross-sell promotions, and determine the next best action, they must know how certain customer features are being weighed into the ML models in production. Further, they are also required to understand whether the ML models are not negatively impacting protected classes of customers or unfairly weighting for these types of classes. A lack of understanding of an ML Model's ins of production can lead to legal and financial risks when discovering that the ML model in production discriminates (bias) against certain ethnicities, genders, etc.
 
-Additionally, as firms have looked to leverage AI to make more and more decisions for the company, the discussion of Human-Centered Machine learning has become increasingly important. Data science practitioners and firms deploying AI in production want to 'get under the hood' of their models to see what impacts decisions. Hence, in this tutorial, we will build an AI model predicting whether someone will be defaulting on their next credit card payment. Right after, we will use the following two Driverless AI features to analyze and check for fairness. 
+Additionally, as firms have looked to leverage AI to make more and more decisions for the company, the discussion of Human-Centered Machine learning has become increasingly important. Data science practitioners and firms deploying AI in production want to 'get under the hood' of their models to see what impacts decisions. Hence, in this tutorial, we will build an AI model predicting whether someone will be defaulting on their next credit card payment. Right after, we will use the following two Driverless AI tools to analyze and check for fairness. 
 
 - Disparate Impact Analysis (DIA)
 - Sensitivity Analysis(SA)
@@ -392,8 +392,14 @@ To emphasize, let us imaged we ran an experiment, and we dropped all demographic
 
 Going back to our first discovery, let us see at a local level how the **SEX** feature is playing a crucial role in individual predictions. The local analysis allows us to verify the impact of a given feature but can tell us how much certain feature values impact single predictions. Knowing this can be crucial when proceeding on the next iteration of the model, especially if the goal is to achieve low disparity values. 
 
-After several iterations, a Driverless AI experiment was run similar to the one running in task one. The only difference between the experiment in task one and the final experiment was that it dropped all democratic/sensitive features(columns). Despite dropping demographic features, disparity and bias somehow were introduced to the model. 
+
+After several iterations, a Driverless AI experiment was run similar to the one running in task one. The only difference between the experiment in task one and the final experiment was that it dropped all democratic/sensitive features(columns). Despite dropping demographic features, disparity and bias somehow were introduced to the model(e.g., as shown in the **EDUCATION** and **MARRIAGE** summaries). 
 The interesting part is that the columns used in the final model are not known to be biased. For example, **PAY_1** at an empirical observation will not make someone say that **PAY_1** has a bias or can lead to bias. A good way to identify what features lead to bias is by using the **Sensitivity Analysis** tool in conjunction with several surrogate models. 
+
+![education-disparate-impact-variable](assets/education-disparate-impact-variable.jpg)
+![marriage-disparate-impact-variable](assets/marriage-disparate-impact-variable.jpg)
+
+Note: In the final model iteration, we also dropped **Limit_Bal** because it has some adverse action considerations, this variable is usually dictated internally(by staff members), and therefore, we will also drop it.
 
 Now let's focus our attention on the **Sensitivity Analysis** tool, and let's discover how it can help us better understand our model on the grounds of fairness and local/single predictions/observations. 
 
@@ -408,6 +414,8 @@ Now let's focus our attention on the **Sensitivity Analysis** tool, and let's di
 As of now, you should still be on the **Disparate Impact Analysis** page. Click the **X** icon located at the top right corner of the page.  That will take you to the **DAI Model** tab; in there, click the **SA (Sensitivity Analysis)** tile. The following will appear: 
 
 ![preview-sa-ui](assets/preview-sa-ui.jpg)
+
+***Note*: The Sensitivity Analysis tool will base its results on our original experiment ran in task one, not from the final model mentioned at the end of the previous task.**
 
 **Note**: Sensitivity Analysis (SA) is not available for multiclass experiments.
 
@@ -440,12 +448,11 @@ The bottom portion of this page includes:
     <img src='assets/sa-ui-summary.jpg' width="400"></img>    
 </p>
 
-
 2. This pink summary locator represents the “Average” client in the dataset, i.e., the average of all computable variables.  
 
     ![sa-ui-threshold](assets/sa-ui-threshold.jpg)
 
-    - The **F1 CUTOFF** indicates that the mean score prediction is **0.55759292** and that the most common prediction is **False(Negative)**(the pink circle being on the negative side indicates such conclusion).
+    - The **F1 CUTOFF** indicates that the mean score prediction is **0.55759292**. The pink circle indicates that the most common prediction is **False(Negative)**(the pink circle being on the negative side indicates such a conclusion).   
 
 3. The values changed in this chart will lead to the graph above to change (when the chart is rescored):
 
@@ -463,106 +470,111 @@ You can also check the **RF Partial Dependence Plot** and see the probability of
 
 Now that we know that being two months late on PAY_1 is terrible and knowing that the average mean score prediction is **0.55759292**, what will occur if we were to set all clients to have **PAY_1 = 2**? Will the average mean score prediction increase or decrease? 
 
-To set all customers **PAY_1** to **2**, please consider the following steps: 
+To set all clients **PAY_1** equal to **2**(months late), please consider the following steps: 
 
- 1. Click on top of the PAY_0 variable. 
+ - Click on top of column name **PAY_1**: 
 
-![change-pay-0](assets/change-pay-0.jpg)
+    ![change-pay-1](assets/change-pay-1.jpg)
 
- 2. A box will appear to make sure the absolute radio button is selected. Set the *Absolute* to 2. After, click *Set*.
+ - A pop-up box will appear, displaying three different radio buttons. Make sure the **absolute** radio button is selected.  In the text box, enter the value **2** (this will represent two months late for all **PAY_1**). Right after, click **SET**:
+    - As a reference, the other two options let you change a given value through a relative or percentage value. For example, if the relative option is selected, you can change the value for a given row or all rows by a minus or a plus value. It can be the case that with the relative option, you can increase or decrease all the values for **PAY_1**(e.g., 1 (this will increase every single **PAY_1** by one)).  We will explore the percentage option in a moment. 
 
-![pay-0-equal-to-2](assets/pay-0-equal-to-2.jpg)
+    ![pay-1-equal-to-2](assets/pay-1-equal-to-2.jpg)
 
- 3. Click the *RESCORE* button. 
+ - Click the **RESCORE** button: 
 
-![rescore](assets/rescore.jpg)
+    ![rescore](assets/rescore.jpg)
 
-6\. We can check “Current Working Set Score” on the right to see a summation of what occurred. In this run, we see that by switching all to PAY_0=2 that we over doubled the average mean, implying that our model would reject significantly more of the credits because the perceived probability of default was much higher. Our current score is now *0.46028* from a prior score of *0.24060*. Consequently, the absolute change is of *0.21968* an increase of *91.31%* change.
+We can check the **Current Working Set Score** section on the right to see a summation of what occurred. In this run, we see that switching all the values for **PAY_1** to **2** led to the doubling of the average mean. As a result, **SA** is now implying that our model would predict more defaults because the perceived probability of default was much higher. Our current score is now *0.53650* from a prior score of **0.22111**. Consequently, the absolute change is **0.31538**, an increase of **142.63%** change. Note that the pink circle moved more to the right and now is closer to the Cutoff line. 
 
 ![delta](assets/delta.jpg)
 
 
-7\. Let's take this one step further and try another adjustment. Let's adjust PAY_AMT2 to 80% of what it originally was i.e., Let's see what happens to the model when we make our entire population only pay 80% of what they did. As you may notice, the variable *PAY_AMT2* is not on the table, but don't worry, we can add it by following these quick steps: 
+Let's take this one step further and try another adjustment. Let's adjust **PAY_AMT2** to **80%** of what it originally was i.e., let's see what happens to the model when we make our entire population only pay 80% of what they did. Based on the **RF Feature Importance**, **PAY_2** is the second most important feature for predicting if a particular client will default on their next credit card payment. Therefore, the hypothesis is what will happen if we make the payment for **PAY_AMT2** be only 80% (not fully paid). This will affect **PAY_2** given that if a client paid only 80%, the value for **PAY_2** would be marked as not paid fully. As you may notice, the variable **PAY_AMT2** is not on the table, but don't worry, we can add it by following these quick steps: 
 
- 1. Click on the *Plus* icon, and a box will appear. 
+- Click on the **Plus** icon, and a box will appear: 
 
-  ![add-option](assets/add-option.jpg)
+    ![add-option](assets/add-option.jpg)
 
- 2. Check the *PAY_AMT2* variable and click *SET*
+- Select the **PAY_AMT2** variable and click **SET**:
 
- 3. Right after, similar to how we change the value of *PAY_0*, we will click on the *PAY_AMT2* variable. 
+    ![pay-amt2](assets/pay-amt2.jpg)
 
- 4. Select the *Percentage* radio button and set the *Percentage* to 80. Click *SET*. 
+- Right after, similar to how we change the value of **PAY_1**, we will click on the **PAY_AMT2** variable. 
 
- ![pay2-80-percent](assets/pay2-80-percent.jpg)
+ - Select the **Percentage** radio button and set the **Percentage** to **80**(remember that **PAY_AMT1-6** refers= to the amount paid for a given payment #). Right after, click **SET**:
 
- 5. Click the *RESCORE* button. 
+    ![pay-amt-2-80-percent](assets/pay-amt-2-80-percent.jpg)
+ 
+- Click the **RESCORE** button: interestingly enough, when we finish rescoring and review results, we discover that this adjustment had virtually no effect whatsoever. In this case, the absolute change when modifying **PAY_AMT2** is **0.00176**, a **0.33%** increase. It is a crucial consideration in Machine Learning to be aware that there will be many situations where you might think a variable would be important where it is not and vice versa.
 
-    Interestingly enough, when we finish rescoring and review results, we discover that this adjustment had virtually no effect whatsoever. In this case, the absolute change when modifying *PAY_AMT2* is a *0.00074* increase. It is a crucial consideration in Machine Learning to be aware that there will be many situations where you might think a variable would be important where it is not and vice versa.
+  ![no-change](assets/no-change.jpg)
 
-![no-change](assets/no-change.jpg)
-
-6. Let's inspect this from a different angle, but before, let's restore the original *Sensitivity Analysis* results. Click the reset button located on the bottom right corner of the *Sensitivity Analysis* graph.  
+Let's inspect this graph from a different angle, but before, let's restore the original **Sensitivity Analysis** results. Click the reset button located on the bottom right corner of the **Sensitivity Analysis** graph. The reset button removes all edits done to the graph and resets the graph to its original results when it was open for the first time. 
 
 ![reset](assets/reset.jpg)
 
+So far, we have verified that **PAY_1**, as suggested by few surrogate models, is the top feature determining predictions.  From general empirical observation, we would say that it's acceptable to have a feature such as  **PAY_1** be among the top three drivers of predictions. Now let's see what exactly then is generating the bias in our model that made use of all columns under the assumption that we have no clue that certain features can lead to unfairness. Once again, we are doing this to see the process one can take to identify a feature as unfair when it is not obvious that a feature might lead to unfairness.  
+
 ## Task 6: Sensitivity Analysis Part 2: Checking for Bias
 
- For this subsequent analysis, we will tinker with an individual user and see what attribute changes might push them over or under the default/approval threshold. There are a few ways to do this, but since we know the cutoff is *0.26765209436416626*, we will try to find  a particular customer (blue or yellow circle) very close to the cutoff. Note, there are several ways we can filter to get close to a person close to the cutoff. In this case, I was able to find someone close to the cutoff line by filtering as follows: 
+ For this subsequent analysis, we will tinker with an individual user and see what feature changes might push them over or under the default/approval threshold. There are a few ways to do this, but since we know the cutoff is **0.55759292**, we will try to find a particular customer (blue or yellow circle) very close to the cutoff. Note, there are several ways we can filter to get close to a person close to the cutoff. In this case, I was able to find someone close to the cutoff line by filtering as follows: 
 
-On the left side of the table (at the bottom of the page), you will be able to locate the filter options. In my case, I selected the **ID** variable and filter by *ID < 4*. 
+- On the left side of the table (at the bottom of the page), you will be able to locate the filter options. In my case, I selected the **ID** variable and filtered it by **ID < 4**. You can click on top of the three text input lines and change a given variable, operator, and value. 
 
-![filter](assets/filter.jpg)
+<p align="center"> 
+    <img src='assets/filter.jpg' width="400"></img>    
+</p>
 
- Once you get a narrow range, you should see up close which customers are the closest predictions to the cutoff line, as shown above. In this case, we will experiment with a customer holding the *ID* number 3. 
+ Once you get a narrow range, you should see up close which customers are the closest predictions to the cutoff line, as shown above. In this case, we will experiment with a customer holding the **ID** number **3**: 
 
 ![before-values-change](assets/before-values-change.jpg)
 
-Now let’s see if we can independently adjust some of the demographic features and push customer three over the threshold from negative(not predicted as defaulting) to positive(predicted to default). Since we are discussing fairness and regulatory considerations, let’s select just the demographic variables to learn more. To choose the demographic variables such as **AGE**, **SEX**, **EDUCATION**, and **MARRIAGE** please follow the following steps: 
+Now let’s see if we can independently adjust some of the demographic features and push customer three over the threshold from negative(not predicted as defaulting) to positive(predicted to default). Since we are discussing fairness and regulatory considerations, let’s adjust the demographic variables to learn more. To choose the demographic variables such as **AGE**, **SEX**, **EDUCATION**, and **MARRIAGE** please consider the following steps: 
 
- 1. Click the plus icon 
+- Click the plus icon 
+- Select and make sure **EDUCATION**, **EDUCATION**, and **MARRIAGE** are selected 
+- Click **SET**
 
- 2. Check the radio buttons for **AGE**, **SEX**, **EDUCATION**, and **MARRIAGE** 
-
- 3. Click *SET*
-
-After following the above steps, scroll to the right to see the newly added columns name: **AGE**, **SEX**, **EDUCATION**, and **MARRIAGE**. 
+After following the above steps, scroll to the right to see the newly added columns: **SEX**, **SEX**, and **MARRIAGE**: 
 
 ![demographic-columns](assets/demographic-columns.jpg)
 
-Based on what our data dictionary tells us: this is a married college-educated female who was predicted to not default on this loan (got approved for the loan). Let’s try adjusting her education down and changing marital status to *single*. The assumption here is that in credit lending, single people without a college degree should not be denied credit or be predicted to default just because of this idea of being single and having an advanced education. 
+Based on what our data dictionary tells us: this is a married college-educated female who was predicted to not default (on next credit card payment). Let’s try adjusting her **education** down and changing marital status to **single**. The assumption here is that in default predictions, single people without a college degree should not be denied credit or be predicted to default just because of this idea of being single and not having a college education. 
 
-*Note:* 
+**Note:** 
 
-- Gender (1 = male; 2 = female)
- - Education (1 = graduate school; 2 = university; 3 = high school; 4 = others)
-- Marital status (1 = married; 2 = single; 3 = others) 
+- **Gender** (1 = male, 2 = female)
+- **Education** (1 = graduate school, 2 = university, 3 = high school, 4 = others)
+- **Marital status** (1 = married, 2 = single, 3 = others) 
 
-To change the **Education** and **Marital Status**, we will follow the same steps when we change *PAY_0* and *PAY_AMT2*.
+To change the **Education** and **Marital Status** values, we will follow the same steps used when we changed **PAY_1** and **PAY_AMT2**.
 
-After lowering the **Education** and setting the **Marital Status** to *Single (2)* and *rescoring* the table you should see something similar: 
+After lowering the **Education** and setting the **Marital Status** to **Single(2)**, the table displays the following:
 
 ![change-column-values](assets/change-column-values.jpg)
 
-After changing the values, what do you discover?
+Overall the **Sensitivity Analysis** page changes as follows: 
 
-As you will see, the prediction is not flipped, and this is good because a model in production should not have its prediction change because certain sensitive demographic variables have been modified. If it were the case that a prediction would change as a result of manipulating a specific demographic variable, this would tell us that bias has been introduced in our AI model that will result in legal consequences and penalties for your company or entity. As a result, if bias is present, developers of the AI model should use their technologies or common sense intuition to understand the ins of their model and fix the bias and as questions around; "does this seem ethical? Does this seem logical? These two questions are fundamental questions to ask yourself to provide fairness and avoid legal, ethical, and moral consequences. As well, these questions will guide you to decide on the definition of what is fair in your respective use case of the AI model.  
+![results-from-changing-education-and-marital-status](assets/results-from-changing-education-and-marital-status.jpg)
 
-You might be asking yourself now why then the prediction was not flipped; well, recall the *Partial Dependence Plot* as discussed above the *Partial Dependence Plot* concluded that *PAY_0* was the variable that most determine whether someone will default or not. In particular, we also discuss that someone increases its probability of defaulting when *PAY_0 = 2*.
+After changing the values(1), we discover the following: as you will see, the prediction is not flipped(2/3), and this is good because a model in production should not have its prediction change because certain sensitive demographic variables have been modified. If it were the case that a prediction would change as a result of manipulating a specific demographic variable, this would tell us that bias has been introduced in our AI model and that will result in legal consequences and penalties for your company or entity. As a result, if bias is present, developers of the AI model should use their technologies or common sense intuition to understand the ins of their model and fix the bias and as questions around; "does this seem ethical? Does this seem logical? These two questions are fundamental questions to ask yourself to provide fairness and avoid legal, ethical, and moral consequences. As well, these questions will guide you to decide on the definition of what is fair in your respective use case of the AI model.  
 
-*Note:* 
+You might be asking yourself now why then the prediction was not flipped; well, recall that **PAY_1** was the variable that most determine whether someone will default or not. In particular, we also discuss that someone increases its probability of defaulting when **PAY_1 = 2**(months late of payment 1). In other words, in this particular observation(local analysis), we don't see the demographic features creating the disparity observed on task four.
 
-This AI model that we develop at the start of task 5 made use of all columns and, therefore, took into consideration the demographic variables. In contrast, the first experiment we ran didn't use the demographic columns, so now the question is why we kept them? Isn't it illegal to make use of such demographic columns in production? And the answer to that question is yes, it's illegal. We kept them because we wanted to make use of sensitive columns and demonstrate how we would make use of DAI to check for sensitivity around certain variables if we were to use such demographic variables in our AI model in production. Note one should never make use of such columns in production. Furthermore,  if it were the case that we dropped the demographic columns at the start of task 5, we wouldn't have been able to see a potential bias in the model originating from the following columns: **AGE**, **SEX**, **EDUCATION**, and **MARRIAGE**.  Hence, a way to analyze for bias while dropping the demographic columns is by doing a residual analysis and looking at the constant global matrix. We would not cover this in this tutorial, but on the next one (COMING SOON), we will see how we can make use of a residual analysis and a constant global matrix to detect for unfair bias. 
+After several iterations, while modifying several demographic values for multiple rows, it was determined that all predictions were not flipped when only modifying demographic values. Therefore, this experiment's demographic features are not why disparity was introduced to the model. Note again: this AI model that we built in task 1 made use of all columns and, therefore, took into consideration the demographic variables. So now the question again is why we kept the demographic columns? Isn't it illegal to make use of such demographic columns in production? And the answer to the second question is "yes," it's illegal. We kept them because we wanted to use sensitive columns and demonstrate how we would use DAI to check for sensitivity around certain variables if we were to use such demographic variables in our AI model in production. Note one should never make use of such columns in production.
 
-A way we can flip the prediction for customer 3 is by changing *PAY_0 = 2*. If it's the case that the prediction changes, we will, at the same time, be confirming that being two months late on *PAY_0* will increase your chances of being predicted as *default*.  
+From the above, it seems that  **PAY_1** is the ultimate predictor of default and not demographic features; we can assume and perhaps conclude that the following is true: it seems that using **PAY_1** as a predictor leads to a certain level of unacceptable disparity. Let us see what will happen if we change **PAY_1** to be two months late for a client with ID 3: 
+
+You will change the value of **PAY_1** as demonstrated above; make sure it goes from **0** to **2**(instead of clicking on the **PAY_1** column name, you will click on the current value of **PAY_1** for row 3):  
 
 ![after-values-change](assets/after-values-change.jpg)
 
-We see that adjusting *PAY_0 = 2* sends the customer very deep into the rejection zone, showing pretty clear how this one feature can dramatically impact the model for a single customer!
+We see that adjusting **PAY_1 = 2** sends the customer very close to the cutoff line and super close to the default zone, showing pretty clear how this one feature can dramatically impact the model for a single client. 
 
-*Note:*
+For this particular dataset, the one variable that, for the most part, determines whether someone will default or not is **PAY_01**. In these cases, developing an AI Model is not necessary given that by just looking at **PAY_1**, one can predict in a manner of speaking whether someone will default or not. The question at that point will be whether it will be acceptable to predict default only using  **PAY_1** while generating a certain level of unacceptable disparity. And for the most part, this discussion will be base on what will count as an acceptable level of disparity. Hence, if we were to judge this model based on the fourth fifths rule, we will not use this model with and without demographic features being used. 
 
-For this particular dataset, the one variable that, for the most part, determines whether someone will default or not is *PAY_0*. In these cases, developing an AI Model is not necessary given that by just looking at *PAY_0* one can predict in a manner of speaking, whether someone will default or not. 
+Once again, we can use **SA** as a way to analyze several features at first, which might not seem like generators of disparity. In contrast, **DIA** can help us see whether disparity occurs at a global level in reference to confusion matrixes. And such a combination of **DIA** and **SA** can identify and generated better conversations when deciding whether a feature/column should be drop.  
 
 ### Conclusion
 
@@ -570,7 +582,7 @@ As mentioned at the beginning of this tutorial, the disparate impact analysis, a
 
 ## Next Steps
 
-Check out the next tutorial: Analyzing a Criminal Risk Scorer with DAI MLI (COMING SOON), where you will learn more about:
+Check out the next tutorial: [Risk Assessment Tools in the World of AI, the Social Sciences, and Humanities](https://training.h2o.ai/products/tutorial-5b-risk-assessment-tools-in-the-world-of-ai-the-social-sciences-and-humanities), where you will learn more about:
 
  - Disparate Impact Analysis 
  - Sensitivity Analysis 
@@ -580,5 +592,3 @@ Check out the next tutorial: Analyzing a Criminal Risk Scorer with DAI MLI (COMI
  - True Positive Rate
 
 
-
-e demographic factors in how we treat and analyze a customer. Additionally, **Limit_Bal** has some adverse action considerations, and this variable is usually dictated internally, and therefore, we will also drop it. Click **Done**.
