@@ -104,16 +104,20 @@ In the **TRAINING SETTINGS** as shown below: it is essential to make sure the **
 
 ![launch-experiment-interpretability-settings](assets/launch-experiment-interpretability-settings.jpg)
 
-Now we will adjust some settings to our experiment. We will make use of the **Expert Settings** feature to make these adjustments. As discussed in previous tutorials, Driverless AI provides various options in the Expert Settings that let you customize your experiment. Now, click on the **Expert Settings** option, located on the top right corner of the **TRAINING SETTINGS** option: 
+Now we will adjust some settings to our experiment. We will make use of the **Expert Settings** feature to make these adjustments. As discussed in previous tutorials, Driverless AI provides various options in the Expert Settings that let you customize your experiment. Now, click on the **Expert Settings** option, located on the top right corner of the **TRAINING SETTINGS**: 
 
 - In the **EXPERT SETTINGS**, select the model tab, and adjust the settings to create a single *XGBoost GBM Model*: 
   - Turn off all the models besides the **XGBoost GBM Models** setting.
     > XGBoost is a type of gradient boosting method that has been widely successful in recent years due to its good regularization techniques and high accuracy. This is set to Auto by default. If enabled, XGBoost models will become part of the experiment (for both the feature engineering part and the final model).
+  
+    ![launch-experiment-model-settings](assets/launch-experiment-model-settings.jpg)
   - Then scroll down and adjust the **Ensemble level for final modeling pipeline** setting to 0 for this exercise's interpretability purposes. 
+
+    ![launch-experiment-ensemble-level](assets/launch-experiment-ensemble-level.jpg)
   - Click **Save** and return to the experiment preview page.
 
-  ![launch-experiment-model-settings](assets/launch-experiment-model-settings.jpg)
-  ![launch-experiment-ensemble-level](assets/launch-experiment-ensemble-level.jpg)
+
+
 
 The last step here is to click **REPRODUCIBLE**, then run the experiment:
 
@@ -234,7 +238,7 @@ By now your experiment should be done. Since we are already familiar with the ex
 ![experiment-complete](assets/experiment-complete.jpg)
 
 
-After the model is interpreted, you will be taken to the "MLI: Regression and Classification Explanations" page. The *DAI Model* tab (not to be confused with the **DIA** Metrics: Disparate Impact Analysis Metrics) should already be selected for you thereafter, click on *Disparate Impact Analysis (the DIA tile)*. The following will appear: 
+After the model is interpreted, you will be taken to the "MLI: Regression and Classification Explanations" page. The *DAI Model* tab (not to be confused with **DIA**: Disparate Impact Analysis) should already be selected for you thereafter, click on *Disparate Impact Analysis (the DIA tile)*. The following will appear: 
 
 ![dia](assets/dia.jpg)
 
@@ -242,7 +246,7 @@ After the model is interpreted, you will be taken to the "MLI: Regression and Cl
 
 DIA is a technique that is used to evaluate fairness. Bias can be introduced to models during the process of collecting, processing, and labeling data—as a result, it is important to determine whether a model is harming certain users by making a significant number of biased decisions.
 
-DIA typically works by comparing aggregate measurements of unprivileged groups to a privileged group. For instance, the proportion of the unprivileged group that receives the potentially harmful outcome is divided by the proportion of the privileged group that receives the same outcome—the resulting proportion is then used to determine whether the model is biased. Refer to the Summary section to determine if a categorical level  is fair in comparison to the specified reference level and user-defined thresholds. Fairness All is a true or false value that is only true if every category is fair in comparison to the reference level.
+DIA typically works by comparing aggregate measurements of unprivileged groups to a privileged group. For instance, the proportion of the unprivileged group that receives the potentially harmful outcome is divided by the proportion of the privileged group that receives the same outcome—the resulting proportion is then used to determine whether the model is biased. Refer to the Summary section to determine if a categorical level  is fair in comparison to the specified reference level and user-defined thresholds(located in the image above). Fairness All is a true or false value that is only true if every category is fair in comparison to the reference level(located in the image above).
 
 Disparate impact testing is best suited for use with constrained models in Driverless AI, such as linear models, monotonic GBMs, or RuleFit. The average group metrics reported in most cases by DIA may miss cases of local discrimination, especially with complex, unconstrained models that can treat individuals very differently based on small changes in their data attributes.
 
@@ -279,13 +283,13 @@ With the above in mind, let's continue with our experiment analysis - observe th
 
 ![dia-2](assets/dia-2.jpg)
 
-With the above in mind, you can look at the Global Confusion Metrix of our experiment
+
 
 The confusion matrix above is structure as follows: 
 
   ![confusion-matrices-explanation](assets/confusion-matrices-explanation.jpg)
 
-- Let's put this matrix into perspective by calculating the following metrics: 
+- Let's put this matrix into perspective by calculating the following values: 
   - **True Positive Rate** = 3091/(3091 + 3545) = **0.4657(46.57%)**
     - probability that an actual positive will test positive
   - **True Negative Rate** = 21301/(21301 + 2063) = **0.911(91.1%)**
@@ -293,7 +297,7 @@ The confusion matrix above is structure as follows:
   - **False Negatives** = **3545.0**
   - **False Positive** = **2063.0**
 
-- From the above calculations, we can see that the probability of the prediction being an actual negative is 91.1%. In contrast, the probability of a prediction to be an actual positive is 46.57%, way smaller when compared to the negative probability. The difference between rates is 44.53%. In other words, this, to an extend, tells us that most predictions will be label negative: no default. We also see that the false positive value (wrong default predictions) is a bit high. We also see that the False Negative value(wrong default prediction) is also fairly high. While having False Negatives and False Positives is common, it will not be acceptable to have the False Positives be composed largely by a protective group/class. In particular, it will be wrong if our model is redirecting all False Positives to a given protected class base on a demographic feature. Below we will analyze whether members of a protective class are not unfairly been labeled as False Positives (wrong prediction of default). 
+- From the above calculations, we can see that the probability of the prediction being an actual negative is 91.1%. In contrast, the probability of a prediction to be an actual positive is 46.57%, way smaller when compared to the negative probability. The difference between rates is 44.53%. In other words, this, to an extend, tells us that most predictions will be label negative: no default. We also see that the false positive value (wrong default predictions) is a bit high. We also see that the False Negative value(wrong default prediction) is also fairly high. While having False Negatives and False Positives is common, it will not be acceptable to have the False Positives be composed largely by a protective group/class. In particular, it will be wrong if our model is redirecting all False Positives to a given protected class base on a demographic feature. Below we will analyze whether members of a protective class are not being mislabeled because of their unique background.
 
 
 **Note**: The confusion matrix is base on the **MAXIMIZED METRIC** and **CUT OFF** value found on the summary section: 
@@ -319,7 +323,7 @@ On the top right corner, click on the **Disparate Impact Variable** button. Sele
 
 ![disparate-impact-select](assets/disparate-impact-select.jpg)
 
-On the **Reference Level** button and change the value from **2(Female)** to **1(Male)**: 
+On the **Reference Level** button change the value from **2(Female)** to **1(Male)**: 
 
 ![reference-level](assets/reference-level.jpg)
 
@@ -329,12 +333,12 @@ The following will appear:
 
 *Things to Note*: 
 
-1. Make sure the **Reference level** is toggled to 1(Male). With DIA the reference level is somewhat ambiguous, but generally, we want to set it to the category or population we believe may be receiving better treatment compared to other classes. 
+1. Make sure the **Reference level** is toggled to 1(Male). With DIA the reference level is somewhat ambiguous, but generally, we want to set it to the category or population we believe may be receiving better treatment compared to other classes. In this case, the assumption is that **Males** received better treatment within the financial sector. 
 
 2. From a general observation we can see that base on the **Summary** section: 
   - It looks like the model didn't do well with respect to eliminating bias around **Gender!** The **FAIRNESS 1 (Male)** is **True**, **FAIRNESS 2 (Female)** is **False**, and the **FAIRNESS ALL** is **False** that tells us the model accuracy is only fair to males  — definitely breaking the four-fifth rule.
     - **When conducting a DIA analysis, always refer to the Summary section to determine if a categorical level is fair in comparison to the specified reference level and user-defined thresholds. Fairness All is a true or false value that is only true if every category is fair in comparison to the reference level.**
-3. If we had to break this down, The Disparate Impact Analysis basically took model prediction results which was from 11K males, 18k females and looked at various measures such as Accuracy, Adverse Impact, True Positive Rate, Precision, Recall, etc., across both binary classes and then found the ratios are not comparable across the two groups over the cutoff value. The results for the Female was not more than four-fifths of the reference class Male — which means adverse impact by its basic definition.
+3. If we had to break this down, the Disparate Impact Analysis basically took model prediction results which was from 11K males, 18k females and looked at various measures such as Accuracy, Adverse Impact, True Positive Rate, Precision, Recall, etc., across both binary classes and then found the ratios are not comparable across the two groups over the cutoff value. The results for the Female was not more than four-fifths of the reference class Male — which means adverse impact by its basic definition.
   - A reminder *Adverse Impact* refers to the following definition: 
     - Adverse impact is the negative effect an unfair and biased selection procedure has on a protected class. It occurs when a protected group is discriminated against during a selection process, like a hiring or promotion decision.[8]  
       - In the US, protected classes include race, sex, age (40 and over), religion, disability status, and veteran status.
@@ -346,7 +350,7 @@ Scroll down, and let's take a look at **Group Disparity**:
 
 ![0.8-low-threshold](assets/0.8-low-threshold.jpg)
 
-Every time you view the **Group Disparity** table, you will notice that a given row will have all its values equal to **1.00000**: this will be the reference level. In other words, the benchmark (1/Male) should be one as it provides the level to compare. As mentioned on task 3, following the established four-fifths rule, user-defined thresholds are set to 0.8 and 1.25 by default(1). These thresholds will generally detect if the model is (on average) treating the non-reference group 20% more or less favorably than the reference group. Users are encouraged to set the user-defined thresholds to align with their organization's guidance on fairness thresholds.
+Every time you view the **Group Disparity** table, you will notice that a given row will have all its values equal to **1.00000**: this will be the reference level. In other words, the benchmark (1/Male) should be one as it provides the level to compare. As mentioned on task 3, following the established four-fifths rule, user-defined thresholds are set to 0.8 and 1.25 by default(1). These thresholds will generally detect if the model is (on average) treating the non-reference group 20% more or less favorably than the reference group. Users are encouraged to set the user-defined thresholds to align with their organization's guidance on fair thresholds.
 
 
 As we observe, across the multiple metrics, we can see that the **False Positive Rate Disparity** is out of range of the **0.8** and **1.25** thresholds(2).  In particular, the **Female** class will be wrongly labeled as default  **0.75619**(~75%) as often as **Male's**. This value of ~75% is out of the acceptable range and will impact the **Male** class, given that it will give the **Male** class a higher **False Positive Rate** while leading to more **Males** being wrongly categorized in terms of default. 
@@ -358,7 +362,7 @@ Now let’s adjust the **low threshold** to **0.9** and see what happens:
 
 ![0.9-low-threshold](assets/0.9-low-threshold.jpg)
 
-We can see that if we adjust the low threshold(1), the **Adverse Impact Disparity**(2) and **False Positive Rate Disparity**(2) will become highlighted, saying that if **0.9** is the cutoff, this class (2/Female) will be treated unfairly by the model. The **Adverse Impact Disparity** column says that the model will label **Females** as defaulting **0.82966**(~82%)  as often as **Males** will. In this case, the disparity caluclations between both genders will not be within 10% of each other. Therefore, it seems that such difference has been driven by the **SEX** feature, remember we want the rate of default predictions to be identical for both groups, if not at least be between 10% or 20% from each other's default predictions rates.  
+We can see that if we adjust the low threshold(1), the **Adverse Impact Disparity**(2) and **False Positive Rate Disparity**(2) will become highlighted, saying that if **0.9** is the cutoff, this class (2/Female) will be treated unfairly by the model. The **Adverse Impact Disparity** column says that the model will label **Females** as defaulting **0.82966**(~82%)  as often as **Males** will. In this case, the disparity caluclations between both genders will not be within 10% of each other. Therefore, it seems that such difference has been driven by the **SEX** feature, remember we want the rate of default predictions to be identical for both groups, if not at least be between 10% or 20% from each other's default prediction rates.  
 
  In other words, **Females** in this model will have a lower probability of being label as default. This can benefit the **Female** class and create a disparity in terms of **Males** receiving a higher default prediction. It can also be a problem because the model will not be able to identify all true cases of default among the **Female** class. And as discussed earlier, the  **False Positive Rate Disparity** will be out of range when the low threshold is **0.8** and will also be out of range when the low threshold is **0.9**(3). 
 
@@ -373,7 +377,7 @@ Let’s scroll down and investigate the **Group Parity** table and check if all 
 
 Here we can see what we discover on the **Group Disparity** table. For example, when looking at the **False Positive Rate Disparity**, we see that it has been marked as **False**: no fairness. In particular, note the new row named **All**; this row is **True** or **False**. **True** if its column values are all **True** and **False** when one of the column's values is **False**. 
 
-With the above in mind, we can see that we will have different instances of disparity among the **Female** and **Male** classes when the thresholds reflect the fourth fifths rule or any other higher threshold approximating fairness(0% disparity). Therefore, next time the model is rebuilt with the above new insight, such instances of disparity observe above will not be present on the new model only if the identify warmful feature is removed. 
+With the above in mind, we can see that we will have different instances of disparity among the **Female** and **Male** classes when the thresholds reflect the fourth fifths rule or any other higher threshold approximating fairness(0% disparity). Therefore, next time the model is rebuilt with the above new insight, such instances of disparity observe above will not be present on the new model only if the identify warmful feature is removed(Though sometimes, it can be introduced in other forms, for example, through a different feature). 
 
 And what we have done with the **SEX** feature above can be done for every single attribute used on the model. Such a single analysis on each feature can make the process of rebuilding models easier. Easier, in terms 
 of approximating a model to fairness every time, we rebuilt the model while keeping in mind what has been learned in the previous iteration. And in this iteration, we have learned that Driverless AI should not use the **SEX** feature in the iteration. 
@@ -399,7 +403,7 @@ The interesting part is that the columns used in the final model are not known t
 ![education-disparate-impact-variable](assets/education-disparate-impact-variable.jpg)
 ![marriage-disparate-impact-variable](assets/marriage-disparate-impact-variable.jpg)
 
-Note: In the final model iteration, we also dropped **Limit_Bal** because it has some adverse action considerations, this variable is usually dictated internally(by staff members), and therefore, we will also drop it.
+Note: In the final model iteration, we also dropped **Limit_Bal** because it has some adverse action considerations, this variable is usually dictated internally(by staff members), and therefore, we will also dropped it.
 
 Now let's focus our attention on the **Sensitivity Analysis** tool, and let's discover how it can help us better understand our model on the grounds of fairness and local/single predictions/observations. 
 
@@ -448,11 +452,11 @@ The bottom portion of this page includes:
     <img src='assets/sa-ui-summary.jpg' width="400"></img>    
 </p>
 
-2. This pink summary locator represents the “Average” client in the dataset, i.e., the average of all computable variables.  
+2. The pink circle indicates that the most common prediction is **False(Negative)**(the pink circle being on the negative side indicates such a conclusion).   
 
     ![sa-ui-threshold](assets/sa-ui-threshold.jpg)
 
-    - The **F1 CUTOFF** indicates that the mean score prediction is **0.55759292**. The pink circle indicates that the most common prediction is **False(Negative)**(the pink circle being on the negative side indicates such a conclusion).   
+    - The **F1 CUTOFF** indicates that the mean score prediction is **0.55759292**. 
 
 3. The values changed in this chart will lead to the graph above to change (when the chart is rescored):
 
@@ -460,7 +464,7 @@ The bottom portion of this page includes:
 
 Now that we have familiarized ourselves with the UI let’s experiment! Reminder *Sensitivity Analysis* enables us to tinker with various settings in the data to see if certain features affect the outcome when we know that they should not. Let’s start by adjusting an entire feature.
 
-If you remember from the previous exercise, feature **PAY_1** was extremely important; if not, you can jump back to **RF Feature Importance** and double-check. You can find the **RF Feature Importance**  in the **Surrogate Models** tab. 
+If you remember from the first MLI tutorial, feature **PAY_1** was extremely important; if not, you can jump back to **RF Feature Importance** and double-check. You can find the **RF Feature Importance**  in the **Surrogate Models** tab. 
 
 ![rf-feature-importance.jpg](assets/rf-feature-importance.jpg)
 
@@ -485,7 +489,7 @@ To set all clients **PAY_1** equal to **2**(months late), please consider the fo
 
     ![rescore](assets/rescore.jpg)
 
-We can check the **Current Working Set Score** section on the right to see a summation of what occurred. In this run, we see that switching all the values for **PAY_1** to **2** led to the doubling of the average mean. As a result, **SA** is now implying that our model would predict more defaults because the perceived probability of default was much higher. Our current score is now *0.53650* from a prior score of **0.22111**. Consequently, the absolute change is **0.31538**, an increase of **142.63%** change. Note that the pink circle moved more to the right and now is closer to the Cutoff line. 
+We can check the **Current Working Set Score** section on the right to see a summation of what occurred. In this run, we see that switching all the values for **PAY_1** to **2** led to the doubling of the average mean. As a result, **SA** is now implying that our model would predict more defaults because the perceived probability of default was much higher. Our current score is now *0.53650* from a prior score of **0.22111**. Consequently, the absolute change is **0.31538**, an increase of **142.63%** change. Note that the pink circle moved more to the right and now is closer to the cutoff line. 
 
 ![delta](assets/delta.jpg)
 
@@ -502,7 +506,7 @@ Let's take this one step further and try another adjustment. Let's adjust **PAY_
 
 - Right after, similar to how we change the value of **PAY_1**, we will click on the **PAY_AMT2** variable. 
 
- - Select the **Percentage** radio button and set the **Percentage** to **80**(remember that **PAY_AMT1-6** refers= to the amount paid for a given payment #). Right after, click **SET**:
+ - Select the **Percentage** radio button and set the **Percentage** to **80**(remember that **PAY_AMT1-6** refers to the amount paid for a given payment #). Right after, click **SET**:
 
     ![pay-amt-2-80-percent](assets/pay-amt-2-80-percent.jpg)
  
@@ -514,7 +518,7 @@ Let's inspect this graph from a different angle, but before, let's restore the o
 
 ![reset](assets/reset.jpg)
 
-So far, we have verified that **PAY_1**, as suggested by few surrogate models, is the top feature determining predictions.  From general empirical observation, we would say that it's acceptable to have a feature such as  **PAY_1** be among the top three drivers of predictions. Now let's see what exactly then is generating the bias in our model that made use of all columns under the assumption that we have no clue that certain features can lead to unfairness. Once again, we are doing this to see the process one can take to identify a feature as unfair when it is not obvious that a feature might lead to unfairness.  
+So far, we have verified that **PAY_1**, as suggested by few surrogate models, is the top feature determining predictions.  From a general empirical observation, we would say that it's acceptable to have a feature such as  **PAY_1** be among the top three drivers of predictions. Now let's see what exactly then is generating the bias in our model that made use of all columns under the assumption that we have no clue that certain features can lead to unfairness. Once again, we are doing this to see the process one can take to identify a feature as unfair when it is not obvious that a feature might lead to unfairness.  
 
 ## Task 6: Sensitivity Analysis Part 2: Checking for Bias
 
@@ -533,10 +537,10 @@ So far, we have verified that **PAY_1**, as suggested by few surrogate models, i
 Now let’s see if we can independently adjust some of the demographic features and push customer three over the threshold from negative(not predicted as defaulting) to positive(predicted to default). Since we are discussing fairness and regulatory considerations, let’s adjust the demographic variables to learn more. To choose the demographic variables such as **AGE**, **SEX**, **EDUCATION**, and **MARRIAGE** please consider the following steps: 
 
 - Click the plus icon 
-- Select and make sure **EDUCATION**, **EDUCATION**, and **MARRIAGE** are selected 
+- Select and make sure **EDUCATION**, **AGE**, and **MARRIAGE** are selected 
 - Click **SET**
 
-After following the above steps, scroll to the right to see the newly added columns: **SEX**, **SEX**, and **MARRIAGE**: 
+After following the above steps, scroll to the right to see the newly added columns: **SEX**, **EDUCATION**, and **MARRIAGE**: 
 
 ![demographic-columns](assets/demographic-columns.jpg)
 
@@ -572,9 +576,9 @@ You will change the value of **PAY_1** as demonstrated above; make sure it goes 
 
 We see that adjusting **PAY_1 = 2** sends the customer very close to the cutoff line and super close to the default zone, showing pretty clear how this one feature can dramatically impact the model for a single client. 
 
-For this particular dataset, the one variable that, for the most part, determines whether someone will default or not is **PAY_01**. In these cases, developing an AI Model is not necessary given that by just looking at **PAY_1**, one can predict in a manner of speaking whether someone will default or not. The question at that point will be whether it will be acceptable to predict default only using  **PAY_1** while generating a certain level of unacceptable disparity. And for the most part, this discussion will be base on what will count as an acceptable level of disparity. Hence, if we were to judge this model based on the fourth fifths rule, we will not use this model with and without demographic features being used. 
+For this particular dataset, the one variable that, for the most part, determines whether someone will default or not is **PAY_1**. In these cases, developing an AI Model is not necessary given that by just looking at **PAY_1**, one can predict in a manner of speaking whether someone will default or not. The question at that point will be whether it will be acceptable to predict default only using  **PAY_1** while generating a certain level of unacceptable disparity. And for the most part, this discussion will be base on what will count as an acceptable level of disparity. Hence, if we were to judge this model based on the fourth fifths rule, we will not use this model with and without demographic features being used. 
 
-Once again, we can use **SA** as a way to analyze several features at first, which might not seem like generators of disparity. In contrast, **DIA** can help us see whether disparity occurs at a global level in reference to confusion matrixes. And such a combination of **DIA** and **SA** can identify and generated better conversations when deciding whether a feature/column should be drop.  
+Once again, we can use **SA** as a way to analyze several features at first, which might not seem like generators of disparity. In contrast, **DIA** can help us see whether disparity occurs at a general level in reference to confusion matrixes. And such a combination of **DIA** and **SA** can identify and generated better conversations when deciding whether a feature/column should be drop.  
 
 ### Conclusion
 
