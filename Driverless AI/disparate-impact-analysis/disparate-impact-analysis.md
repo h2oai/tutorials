@@ -13,7 +13,7 @@
 
 ## Objective
 
-As firms use ML to help them around credit/loan-decisions, cross-sell promotions, and determine the next best action, they must know how certain customer features are being weighed into the ML models in production. Further, they are also required to understand whether the ML models are not negatively impacting protected classes of customers or unfairly weighting for these types of classes. A lack of understanding of an ML Model's ins of production can lead to legal and financial risks when discovering that the ML model in production discriminates (bias) against certain ethnicities, genders, etc.
+As firms use Machine Learning(ML) to help them around credit/loan-decisions, cross-sell promotions, and determine the next best action, they must know how certain customer features are being weighed into the ML models in production. Further, they are also required to understand whether the ML models are not negatively impacting protected classes of customers or unfairly weighting for these types of classes. A lack of understanding of an ML Model's ins of production can lead to legal and financial risks when discovering that the ML model in production discriminates (bias) against certain ethnicities, genders, etc.
 
 Additionally, as firms have looked to leverage AI to make more and more decisions for the company, the discussion of Human-Centered Machine learning has become increasingly important. Data science practitioners and firms deploying AI in production want to 'get under the hood' of their models to see what impacts decisions. Hence, in this tutorial, we will build an AI model predicting whether someone will be defaulting on their next credit card payment. Right after, we will use the following two Driverless AI tools to analyze and check for fairness. 
 
@@ -59,7 +59,7 @@ After it imports successfully, you will see the following CSV on the **DATASETS*
 
 ![launch-experiment-variable-details](assets/launch-experiment-variable-details.jpg)
 
-Review the columns in the dataset and pay attention to the specific attributes we will want to keep an eye on, such as **SEX**, **EDUCATION**, **MARRIAGE**, and **AGE**. Note that these demographic factors in predicting default credit payments.
+Review the columns in the dataset and pay attention to the specific attributes we will want to keep an eye on, such as **SEX**, **EDUCATION**, **MARRIAGE**, and **AGE**. These demographic factors shouldn't be used when predicting default credit payments. 
 
 - When we think about disparate impact, we want to analyze whether specific classes are being treated unfairly. For example, single/non-college educated clients.
 
@@ -85,7 +85,7 @@ Recall the dataset metrics:
 
 Return to the Datasets page.
 
-Click on the ``UCI_Credit_Card.csv`` file then select **Predict**. Select Not Now on the "First time Driverless AI" dialog box.
+Click on the ``UCI_Credit_Card.csv`` file then select **Predict**. Select **Not Now** on the "First time Driverless AI" dialog box.
 - Name your experiment: ```UCI_CC MLI```
 - Select the following feature as a Target Column: **default.payment.next.month**
 
