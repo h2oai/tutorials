@@ -108,6 +108,7 @@ The concepts found in this task are meant to provide a high-level overview of Ma
 
 Machine learning is a subset of Artificial intelligence where the focus is to create machines that can simulate human intelligence. One critical distinction between artificial intelligence and machine learning is that machine learning models "learn" from the data the models get exposed to. Arthur Samuel, a machine learning pioneer back in 1959, defined machine learning as a " field of study that gives computers the ability to learn without being explicitly programmed" [1]. A machine learning algorithm trains on a dataset to make predictions. These predictions are, at times, used to optimize a system or assist with decision-making.
 
+
 ### Machine Learning Training
 
 Advances in technology have made it easier for data to be collected and made available. The available type of data will determine the kind of training that the machine learning model can undergo. There are two types of machine learning training, supervised and unsupervised learning. Supervised learning is when the dataset contains the output that you are trying to predict. For those cases where the predicting variable is not present, it's called unsupervised learning. Both types of training define the relationship between input and output variables.
@@ -236,6 +237,8 @@ To further understand the data, please consider the table below:
 |boat|Boat number| - |
 |body|Body number| - |
 |home.des|Home Destination| - |
+
+### Add the Dataset
 
 Now, navigate back to the H2O Driverless AI **Datasets** page. To add the dataset:
 
