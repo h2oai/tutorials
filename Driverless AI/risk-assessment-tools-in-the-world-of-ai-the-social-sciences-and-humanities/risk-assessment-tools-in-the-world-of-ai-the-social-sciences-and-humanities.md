@@ -23,14 +23,18 @@ With the above in mind, in this tutorial, and with the help of Driverless AI, we
 
 All things considered, it is the authors' hope that this tutorial inspires data scientists to consult the social sciences and humanities when creating ML models that can have a tremendous impact on multiple areas of our diverse society. It is also the hope to alert social scientists and members of the humanities to extend their social activism to ML model creation, which will have a considerable impact on their fields of study. In essence, this joint work between AI, the humanities, and the social sciences can lead us to a more equitable and fair integration of AI into our daily lives and society. 
 
+In part, this tutorial will explore how users of Driverless AI can use several features offered by Driverless AI to understand built models. 
+
+With the above in mind, let us begin. 
+
 ## Prerequisites
 
 You will need the following to be able to do this tutorial:
 
 - Basic knowledge of Confusion Matrices 
 - Basic knowledge of Driverless AI or doing the [Automatic Machine Learning Introduction with Driverless AI](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai) 
-- Completion of the [Machine Learning Interpretability Tutorial](https://training.h2o.ai/products/tutorial-1c-machine-learning-interpretability-tutorial)
-- Completion of the [Disparate Impact Analysis Tutorial](https://training.h2o.ai/products/tutorial-5a-disparate-impact-analysis-tutorial) 
+- Completion of the the following tutorial:[ Machine Learning Interpretability](https://training.h2o.ai/products/tutorial-1c-machine-learning-interpretability-tutorial)
+- Completion of the following tutorial:[ Disparate Impact Analysis](https://training.h2o.ai/products/tutorial-5a-disparate-impact-analysis-tutorial) 
 - Review the following two articles on ProPublica's investigations: 
   - [Machine Bias: There’s software used across the country to predict future criminals. And it’s biased against blacks.](https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing)
   - [How We Analyzed the COMPAS Recidivism Algorithm](https://www.propublica.org/article/how-we-analyzed-the-compas-recidivism-algorithm)
@@ -43,31 +47,31 @@ You will need the following to be able to do this tutorial:
 
 We will start the experiment first so that it can run in the background while we explore the history of criminal risk scores in the United States and COMPAS. In task 3, when the experiment is complete, we will discuss the dataset and different settings used in this task. 
 
-Download the data recipe for this experiment here: [COMPAS_DATA_RECIPE.py](https://s3.amazonaws.com/data.h2o.ai/DAI-Tutorials/MLI+Tutorials/COMPAS_DATA_RECIPE.py)
+Download the data recipe for this experiment here: [COMPAS_DATA_RECIPE.py](https://s3.amazonaws.com/data.h2o.ai/DAI-Tutorials/MLI+Tutorials/COMPAS_DATA_RECIPE.py). When you download the data recipe, make sure it's saved under the following filename: **COMPAS_DATA_RECIPE.py**. 
 
 **Launch Experiment**
 
-1\. On the top right corner, click on the button that says "+ ADD DATASET (OR DRAG & DROP)" 
+1\. On the top right corner of the **Datasets** page, click on the following button: **+ ADD DATASET (OR DRAG & DROP)**.  
 
-2\. Click on the "</> UPLOAD DATA RECIPE" option
+2\. Click on the following option: **</> UPLOAD DATA RECIPE**.
 
-3\. Upload the data recipe you downloaded 
+3\. Upload the data recipe you downloaded: 
 
 ![uploading-data-recipe](assets/uploading-data-recipe.jpg)
 
-4\. After uploading the data recipe, click on the "CORRECTED_compas_two_year.csv."
+4\. After uploading the data recipe, click on the **CORRECTED_compas_two_year.csv.**
 
-5\. Click "Predict"
+5\. Click **Predict**:
 
 ![predict-corrected-compas-two-year-csv.jpg](assets/predict-corrected-compas-two-year-csv.jpg)
 
-6\. Name the experiment: "Two_Year_Predict" 
+6\. Name the experiment: ```Two_Year_Predict``` 
 
-7\. Select as a Target Column: "two_year_recid"
+7\. Select as a Target Column: **two_year_recid**:
 
 ![name-experiment-and-select-two-year-recid.jpg](assets/name-experiment-and-select-two-year-recid.jpg)
 
-8\. Click on the dropped columns option and click the "check all" option. 
+8\. In the **DROPPED COLUMNS** setting click the **check all** option. 
 
 9\. Unselect the following columns because it will be the columns we will use: 
 
@@ -78,21 +82,21 @@ Download the data recipe for this experiment here: [COMPAS_DATA_RECIPE.py](https
    - juv_misd_count
    - juv_other_count
    - prior_count
-   - r_charge_degree
-   - r_charge_desc
+   - c_charge_degree
+   - c_charge_desc
 
-10\. After selecting the specified columns above, click “Done”.
+10\. After selecting the specified columns above, click **Done**:
 
 ![dropping-columns-1](assets/dropping-columns-1.jpg)
 ![dropping-columns-2](assets/dropping-columns-2.jpg)
 
-11\. Jump to the expert settings and click on the "Model" tab
+11\. Jump to the expert settings and click on the **Model** tab.
 
-12\. Turn off all models except for the "XGBoost GBM models," make sure it's on.
+12\. Turn off all models except for the **XGBoost GBM models** make sure it's on.
 
-13\. Scroll down in the model tab and set the "Ensemble level for final modeling pipeline" to 0. 
+13\. Scroll down in the model tab and set the **Ensemble level for final modeling pipeline** to **0**. 
 
-14\. Click "Save"
+14\. Click **Save**:
 
 ![model-selection-xgboost-gbm-models](assets/model-selection-xgboost-gbm-models.jpg)
 ![ensemble-level-to-find-modeling-pipeline](assets/ensemble-level-to-find-modeling-pipeline.jpg)
@@ -104,15 +108,15 @@ Download the data recipe for this experiment here: [COMPAS_DATA_RECIPE.py](https
   - **Interpretability**: 7
   - **Scorer**: AUC 
 
-16\. Click "REPRODUCIBLE," make sure it's turn on(yellow) 
+16\. Click **REPRODUCIBLE** make sure it's turn on(yellow):
 
   - The Reproducible button allows you to build an experiment with a random seed and get reproducible results.[0] 
 
-17\. Click "LAUNCH EXPERIMENT"
+17\. Click **LAUNCH EXPERIMENT**:
 
 ![training-settings](assets/training-settings.jpg)
 
-Let's have the experiment run in the background. Simultaneously, in task 2, let's discuss risk assessment tools in the United States, and to understand these tools better, let's explore a particular controversial risk tool name COMPAS. We will continue with the experiment when we debug and diagnose unwanted bias in our prediction system model. 
+Let's have the experiment run in the background. Simultaneously, in task 2, let's discuss risk assessment tools in the United States, and to understand these tools better, let's explore a particular controversial risk tool name COMPAS. When the experiment finishes, we will shift our attention to debugging and diagnosing unwanted bias in our prediction system model.
 
 ### References
 
@@ -122,28 +126,32 @@ Let's have the experiment run in the background. Simultaneously, in task 2, let'
 
 The United States has 5% of the world's population, and therefore, one cannot explain why it holds 25% of the world's prisoners. In other words, one out of four human beings with their hands-on bars is here in the land of the free. As a result, the United States now has the highest rate of incarceration in the world. Such striking statistics are, in part, the product of widespread use of AI models that quote-unquote predict the likelihood of someone to reoffend. Across the United States, "judges, probation, and parole officers are increasingly using algorithms to assess a criminal defendant's likelihood of becoming a recidivist - a term used to describe criminals who reoffend."[1] There are dozens of these risk assessment algorithms in use. Sadly and consequently, many of these risk assessment tools have not been checked for racial bias. As a result, in 2016, ProPublica, a nonprofit newsroom, investigated COMPAS (Correctional Offender Management Profiling for Alternative Sanctions), a commercial risk assessment tool made by Northpointe. ProPublica's investigation concluded that the commercial tool was biased towards African-Americans. In other words, ProPublica "found that Black defendants were far more likely than white defendants to be incorrectly judged to be at a higher risk of recidivism."[2] In contrast, white defendants were more likely than black defendants to be mistakenly flagged as low risk. Northpointe's COMPAS is one of the most widely utilized risk assessment tools/algorithms within the criminal justice system for guiding decisions such as setting bail. 
 
-![disparity](assets/disparity.jpg)
 
-COMPAS produces a risk score that predicts the probability of someone committing a crime in the next two years. The model's output is a score within 1 and 10 that maps too low, medium, or high. The scores are derived from 137 questions that are either answered by defendants themselves or by criminal records. NorthPointe has argued that race is not one of the questions or features they consider when deriving a score. 
+<p align="center">
+    <img src="assets/disparity.jpg" width="1300" height="480"> 
+    <p align="center">Figure 1: Machine Bias [3]</p>
+</p>
+
+COMPAS produces a risk score that predicts the probability of someone committing a crime in the next two years. The model's output is a score within 1 and 10 that correlates too low, medium, or high. The scores are derived from 137 questions that are either answered by defendants themselves or by criminal records. NorthPointe has argued that race is not one of the questions or features they consider when deriving a score. 
 
 ProPublica concluded that COMPAS was biased after obtaining the risk scores assigned to more than 7,000 people arrested in Broward County, Florida, in 2013 and 2014 and checked to see how many were charged with new crimes over the next two years. As stated above, the data collected for ProPublica's investigation revealed the racial bias in the COMPAS model. At the same time, this sparked a national conversation around AI models' effectiveness and fairness when trying to predict if someone will reoffend after a given arrest. 
 
 As often occurs, many risk assessment tools are adopted without any rigorous testing on whether it works. In particular, most don't evaluate racial disparities and parity that these models can generate when used at multiple levels of our judicial system. 
 With the above in mind, we can agree that we need to create fair AI models that can predict someone's likelihood of reoffending. In particular, the above argues that after creating an AI model, we need to check that the model is not biased. Why? Because such a model can have a profound impact on people's lives, and such an impact can be damaging when we discover that the model is unfair and wrong. As a result, when making decisions that have a large impact on people's lives, no level of unwanted bias is acceptable. 
 
-That is why we are in this tutorial, taking our new AI model and checking whether the model holds any racial bias.
+**That is why we are in this tutorial, taking our new AI model and checking whether the model holds any racial bias.**
 
 ### References
 
-[1] [How We Analyzed the COMPAS Recidivism Algorithm](https://www.courts.wa.gov/subsite/mjc/docs/2019/how-we-analyzed-the-compas-r.pdf)
-
-[2] [How We Analyzed the COMPAS Recidivism Algorithm](https://www.courts.wa.gov/subsite/mjc/docs/2019/how-we-analyzed-the-compas-r.pdf)
+- [1] [How We Analyzed the COMPAS Recidivism Algorithm](https://www.courts.wa.gov/subsite/mjc/docs/2019/how-we-analyzed-the-compas-r.pdf)
+- [2] [How We Analyzed the COMPAS Recidivism Algorithm](https://www.courts.wa.gov/subsite/mjc/docs/2019/how-we-analyzed-the-compas-r.pdf)
+- [3] Julia Angwin, Jeff Larson. “Machine Bias.” ProPublica, 23 May 2016, [www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing.](https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing) 
 
 ## Task 3: Understanding Task 1
 
 In contrast to other risk assessment tools, we are creating a model that can predict whether someone will reoffend within two years since a given arrest. The type of information we need our Driverless AI model to learn from is the defendant's past criminal history, age, the charge degree, and description for which the defendant was arrested for, and the piece of information that specifies whether the defendant reoffend within two years since the arrest. 
 
-Luckily for us, we weren't required to look far because we used part of the information ProPublica collected for their investigation. The dataset we used can be found [here](https://github.com/propublica/compas-analysis) in ProPublica's GitHub repo. The repo has several datasets; the one we used is under the following name: compas-scores-two-years.csv. 
+Luckily for us, we weren't required to look far because we used part of the information ProPublica collected for their investigation. The dataset we used can be found [here](https://github.com/propublica/compas-analysis) in ProPublica's GitHub repo. The repo has several datasets; the one we used is under the following name: **compas-scores-two-years.csv**. 
 
 The original COMPAS dataset (compas-scores-two-years.csv) contains the following data columns: 
 
@@ -165,9 +173,8 @@ In the data recipe (COMPAS_DATA_RECIPE.py) used in task one, the code that addre
 
 After correcting the dataset, we made use of the following columns: 
 
-- **sex**: sex of an individual 
+- **sex**: gender of an individual 
 - **age_cat**: age category of an individual, possible categories are as follows:  
-
   - 25 - 45
   - Greater than 45 
   - Less than 25
@@ -175,9 +182,9 @@ After correcting the dataset, we made use of the following columns:
 - **juv_misd_count**: an individual’s juvenile misdemeanor count
 - **juv_other_count**: an individual’s juvenile other crimes count 
 - **priors_count**: an individual’s prior criminal counts 
-- **c_charge_degree**: an individual’s charge degree at the moment of an arrest 
-- **c_charge_desc**: an individual's charge description at the moment of an arrest 
-- **two_year_recid**: the piece of information on whether an individual was arrested within two years since the last arrest (c_charge_degree and c_charge_desc), the two possible options for the two_year_recid column are 0 and 1 where 0 is false, and 1 is true
+- **c_charge_degree**: an individual’s charge degree at the moment of arrest 
+- **c_charge_desc**: an individual's charge description at the moment of arrest 
+- **two_year_recid**: the piece of information on whether an individual was arrested within two years since the last arrest (c_charge_degree and c_charge_desc), the two possible options for the two_year_recid column are **0** and **1** where **0** is **false/no-recidivism**, and **1** is **true/recidivism**. 
 
 We made use of the above columns because they can become good indicators of someone's recidivism probability. The above columns have traditionally been used in the social sciences and AI to predict recidivism probability. The 'two_year_recid' column holds the information on whether someone reoffended within the two-year mark since their last arrest. Since we want to predict whether someone will be arrested within two years since the last arrest, we made 'two_year_recid' our target column. 
 
@@ -185,19 +192,18 @@ We jumped into our currently running model's expert settings because we needed t
 
 We turned off all models except for the 'XGBoost GBM Models' because, by doing so, we strictly enforce monotonicity constraints, which in turn makes our model more interpretable. If you want to learn more about 'XGBoost GBM Models,' you can visit the Driverless AI 1.9 documentation on [XGBoost GBM Models](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/expert-settings.html?highlight=xgboost%20gbm%20models#xgboost-gbm-models). 
 
-As noted in task one, we set the interpretability setting to 7. Setting the interpretability to 7 enables monotonicity constraints, significant in our post-analysis. Setting interpretability >= 7 enables monotonicity constraints: simpler feature transformations. If we use an unconstrained model and group fairness metrics, we risk creating group fairness metrics that appear to be reasonable. In other words, monotonicity constraints will allow us to understand and see any instances of discrimination at the individual level. 
+As noted in task one, we set the interpretability setting to 7. Setting the interpretability to 7 enables monotonicity constraints, significant in our post-analysis. Setting interpretability >= 7 enables monotonicity constraints: **simpler feature transformations**. If we use an unconstrained model and group fairness metrics, we risk creating group fairness metrics that appear to be reasonable. In other words, monotonicity constraints will allow us to understand and see any instances of discrimination at the individual level. 
 
 By now, our experiment should be done. Let us explore our model now and see if it holds any racial bias.
 
 ### References 
 
-[3][ProPublica’s COMPAS Data Revisited](https://www.groundai.com/project/propublicas-compas-data-revisited/1)
-
-[4][ProPublica’s COMPAS Data Revisited](https://www.groundai.com/project/propublicas-compas-data-revisited/1)
+- [3][ProPublica’s COMPAS Data Revisited](https://www.groundai.com/project/propublicas-compas-data-revisited/1)
+- [4][ProPublica’s COMPAS Data Revisited](https://www.groundai.com/project/propublicas-compas-data-revisited/1)
 
 ## Task 4: A Global Versus Local Behavior Analysis Concept 
 
-Now that our experiment is done, we can generate an MLI report to conduct our global versus local behavior analysis. Click on the "INTERPRET THIS MODEL" option: 
+Now that our experiment is done, we can generate an MLI report to conduct our global versus local behavior analysis. Click on the **INTERPRET THIS MODEL** option: 
 
 ![interpret-this-model](assets/interpret-this-model.jpg)
 
@@ -209,37 +215,44 @@ To learn more about this idea of a global behavior versus a local behavior analy
 
 ## Task 5: Global Behavior Analysis
 
-At this point, several subcomponents of the MLI report should have already been generated. Your “MLI: Regression and Classification Explanations” page should look similar to this: 
+At this point, several subcomponents of the MLI report should have already been generated. Your **MLI: Regression and Classification Explanations** page should look similar to this: 
 
 ![dai-model](assets/dai-model.jpg)
 
-1\. In the 'DAI Model' tab, click the transformed Shapley visual. The following should appear: 
+1\. In the **DAI Model** tab, click the **Transformed Shapley** tile. The following should appear: 
 
 ![transformed-shapley](assets/transformed-shapley.jpg)
 
-When looking at the transformed Shapley, we can see that the **3_prios_count** is a feature created by Driverless AI that positively drives the model behavior. **3_prios_count**, being a positive feature, pushes the model's prediction higher on average. 
+When looking at the **Transformed Shapley**, we can see that the **3_prios_count** is a feature created by Driverless AI that positively drives the model behavior. **3_prios_count**, being a positive feature, pushes the model's prediction higher on average. 
 
-2\. If we click on the summary tab and scroll down where it says, "Most Important Variables for DAI...." we can see the transformed features. You will note that 3_priors_count: 3_priors_count appears at the top among all transformed features. 
+2\. If we click on the summary tab and scroll down where it says, **Most Important Variables for DAI...,** we can see the most important features for the DAI model in descending order of importance. You will note that **priors_count: priors_count (Original)** appears at the top among all features:  
 
 ![most-important-variable-for-dai-model](assets/most-important-variables-for-dai-model.jpg)
 
-At this point, we can see that prior_counts is at the global level driving the model behavior. To solidify this statement, let us see the random forest feature importance and see if prior_counts is at the global level a strong factor of whether someone will be predicted to be arrested within the two-year mark since a given arrest. 
+At this point, we can see that prior_counts is at the global level driving the model behavior. To solidify this statement, let us see the **Random Forest Feature Importance** chart and see if prior_counts is at the global level a strong factor of whether someone will be predicted to be arrested within the two-year mark since a given arrest. 
 
-3\. Click on the Surrogate Models tab and click on the "RF Feature Importance" visual.
+> Note: A surrogate model is a data mining and engineering technique in which a generally simpler model is used to explain another, usually more complex, model or phenomenon. For example, the decision tree surrogate model above is trained to predict the predictions of the more complex Driverless AI model using the original model inputs. The trained surrogate model enables a heuristic understanding (i.e., not a mathematically precise understanding) of the mechanisms of the highly complex and nonlinear Driverless AI model. In other words, surrogate models are important explanations and debugging tools. They can provide global and local insights both model predictions and into model residuals or errors. However, surrogate models are approximate.
+
+>In layman's terms, the surrogate models take the system's input and attempt to model the complex Driverless AI model predictions. Surrogate models tell us about a complex model in the original feature space.
+
+3\. Click on the **Surrogate Models** tab and click on the **RF Feature Importance** tile:
 
 ![rf-feature-importance](assets/rf-feature-importance.jpg)
 
-When looking at the RF Feature Importance horizontal graph, we can see that prior_count is at the top. With this in mind, we can see that the prior count feature is the top influencer in the model. To further solidify the pre-conclusion that prior_count is the top influencer in the model, let us see the decision tree in the surrogate models' tab.
+When looking at the RF Feature Importance, we can see that prior_count is at the top. With this in mind, we can see that the prior count feature is the top influencer in the model. To further solidify the pre-conclusion that prior_count is the top influencer in the model, let us see the **Decision Tree** in the **Surrogate Models** tab.
 
-4\. Click on the "x" mark at the top right corner of the RF Feature Importance horizontal graph. 
+4\. Click on the **X** icon at the top right corner of the **RF Feature Importance** chart. 
 
-5\. On the surrogate models' tab, click on the decision tree visual. 
+5\. On the **Surrogate Models** tab, click on the **Decision Tree** tile. 
 
 ![decision-tree](assets/decision-tree.jpg)
 
-The higher a feature appears in a decision tree, the more critical they are in the model prediction system. The frequency that a particular feature appears in a decision tree can also reveal its importance. Additionally, features connected by a branch can show, to an extent, a relationship between the features when making predictions in our model. Hence, when looking at our decision tree, we can note that prio_count appears four times and is the highest feature in the decision tree. Accordingly, it will be appropriate for us to conclude that indeed it seems that at the global level, prior_count is driving the predictions. 
+The higher a feature appears in a decision tree, the more critical they are in the model prediction system. The frequency that a particular feature appears in a decision tree can also reveal its importance. Additionally, features connected by a branch can show, to an extent, a relationship between the features when making predictions in our model. Hence, when looking at our decision tree, we can note that **prior_count** appears four times(solid green squares with curved edges) and is the highest feature in the decision tree. Accordingly, it will be appropriate for us to conclude that indeed it seems that at the global level, prior_count is driving the predictions. 
 
-Before moving forward, let's note that based on the transformed Shapley, RF Feature Importance, and decision tree, age is the second most influential feature in the model. And this can present a problem because we don't want age to be a factor when predicting two-year recidivism. 
+> **Note:** In the image above, we can see a path highlighted in red. The path highlighted in red reflects the most common path/prediction. When you click on one of the terminal nodes, you will see the reason codes on how someone can end on a given terminal node/prediction. When a terminal node is clicked on, it will highlight the path in red(on the image above, the most common terminal node was selected). 
+
+
+Before moving forward, let's note that based on the transformed Shapley, RF Feature Importance, and Decision Tree, **age**(age_cat) is the second most influential feature in the model. And this can present a problem because we don't want age to be a factor when predicting two-year recidivism. Most recidivism scores make use of **age**(age_cat), and using age in our model can reflect a bias that these scores generate when age is used.  
 
 Going back to our conversation around prior_count, for many, using prior_count in our model will seem like a no problem. Many will argue that using prior-count will make sense given that it tells whether someone has been breaking the law. But, when exploring prior_count in-depth, we discover that prior_count holds a tremendous racial bias.
 
@@ -259,41 +272,42 @@ The New York Times also reported the above last year. As well, the Washington Po
 
 - "[A 2008 analysis found](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.821.8079&rep=rep1&type=pdf) that black defendants with multiple prior convictions are 28 percent more likely to be charged as “habitual offenders” than white defendants with similar criminal records. The authors conclude that “assessments of dangerousness and culpability are linked to race and ethnicity, even after offense seriousness and prior record are controlled.”[7]
 
-We can see a cycle of unfair charges added to an African American's criminal record with the above in mind. Given these points, we can see that having priors_count at the global level be the most significant deciding factor of a prediction can present problems when we know that the value of priosr_count can result from our existing racist criminal justice system. 
+We can see a cycle of unfair charges added to an African American's criminal record with the above in mind. Given these points, we can see that having prior_count at the global level can present problems when the value of prior_count can result from our existing racist criminal justice system. 
 
-Generally speaking, we can say that our model's global behavior is biased, given how prior counts are derived in the United States (the dataset we are using holds information of people who were arrested in the United States). In a word, it seems that it will be wrong to make use of the priors_count feature in our model, knowing that it will disproportionately affect African Americans. If we were to look at the RF Partial Pependence plot in the surrogate model's tab, we would discover that as the count of priors_count increases, the probability of being predicted to be arrested within two years since the last arrest also increases. And knowing that African Americans might have high prior count values due to our existing racist criminal justice system, it will be appropriate and moral to drop the priors_count feature. If we were to eliminate priors_count, the age feature would become the most influential feature when predicting recidivism within a two-year mark since a given arrest. Sadly, that will bring a similar problem that will discriminate based on age. Imagine for a moment being predicted to be arrested within two years since the last arrest only because you are young, between 20 - 25 years old; that seems wrong. All things considered, it will also be appropriate to eliminate the age_cat feature as well. 
+Generally speaking, we can say that our model's global behavior is biased, given how prior counts are derived in the United States (the dataset we are using holds information of people who were arrested in the United States). In a word, it seems that it will be wrong to make use of the prior_count feature in our model, knowing that it could disproportionately affect African Americans. If we were to look at the RF Partial Pependence plot in the surrogate model's tab, we would discover that as the count of prior_count increases, the probability of being predicted to be arrested within two years since a given arrest also increases. And knowing that African Americans might have high prior count values due to our existing racist criminal justice system, it will be appropriate and moral to drop the prior_count feature. If we were to eliminate prior_count, the age feature would become the most influential feature when predicting recidivism within a two-year mark since a given arrest. Sadly, that will bring a similar problem that will discriminate based on age. Imagine for a moment being predicted to be arrested within two years since a given arrest only because you are young, between 20 - 25 years old; that seems wrong. All things considered, it will also be appropriate to eliminate the **age_cat**(age) feature(column) as well. 
 
-Now, the two questions that come to mind now are: 
+Now, the two questions that come to mind are: 
 
 1. What features will be correct to use in our prediction model? 
 2. Are the other features currently used in this model free from racial bias? 
 
-In our final analysis in task 8 will explore how the above two questions can be answered. 
+In our final analysis in task 8 we will explore how the above two questions can be answered. For now, in the next task, let's answer the following two questions: 
+
+1. What biases exist in my model?
+2. What levels of disparity exist between population groups? 
 
 ### References
 
-[5][RACE AND WRONGFUL CONVICTIONS IN THE UNITED TATES](http://www.law.umich.edu/special/exoneration/Documents/Race_and_Wrongful_Convictions.pdf)
-
-[6][There’s overwhelming evidence that the criminal justice system is racist. Here’s the proof.](https://www.washingtonpost.com/graphics/2020/opinions/systemic-racism-police-evidence-criminal-justice-system/)
-
-[7][There’s racial bias in our police systems. Here’s the proof.](https://www.washingtonpost.com/graphics/2020/opinions/systemic-racism-police-evidence-criminal-justice-system/)
+- [5][RACE AND WRONGFUL CONVICTIONS IN THE UNITED TATES](http://www.law.umich.edu/special/exoneration/Documents/Race_and_Wrongful_Convictions.pdf)
+- [6][There’s overwhelming evidence that the criminal justice system is racist. Here’s the proof.](https://www.washingtonpost.com/graphics/2020/opinions/systemic-racism-police-evidence-criminal-justice-system/)
+- [7][There’s racial bias in our police systems. Here’s the proof.](https://www.washingtonpost.com/graphics/2020/opinions/systemic-racism-police-evidence-criminal-justice-system/)
 
 ## Task 6: What Biases Exist in My Model? What Levels of Disparity Exist Between Population Groups? 
 
 Now that we know that the global model behavior is biased, let us answer the following two questions: 
 
-- What biases exist in my model?
-- What levels of disparity exist between population groups? 
+1. What biases exist in my model?
+2. What levels of disparity exist between population groups? 
 
-To answer both questions, we will use the disparate impact analysis tool located in the 'DAI Model' tab. In the 'DAI Model' tab, click on the disparate impact analysis visual. 
-
-1\. Click on the Disparate Impact Variable button and select the **race** option.
-
-2\. Click on the Reference Level button and change the reference level to **caucasian**. The following should appear: 
-
-*Note*: We want to analyze possible harmful disparities, and therefore, we are setting the reference level to the population we believe may be receiving better treatment than other groups. Based on the articles presented earlier in this tutorial, we will have Caucasians as the reference level.  
+To answer both questions, we will use the disparate impact analysis tool located in the **DAI Model** tab. In the **DAI Model** tab, click on the **Disparate Impact Analysis** tile: 
 
 ![disparate-impact-analysis-1](assets/disparate-impact-analysis-1.jpg)
+
+1\. Click on the **Disparate Impact Variable** button and select the **race** option.
+
+2\. Click on the **Reference Level** button and change the reference level to **caucasian**. The following should appear: 
+
+*Note*: We want to analyze possible harmful disparities, and therefore, we are setting the reference level to the population we believe may be receiving better treatment than other groups. Based on the articles presented earlier in this tutorial, we will have Caucasians as the reference level.  
 
 3\. In the summary tab, we can see African Americans, in a general sense, are not receiving fairness compared to Caucasians. The orange "False" label under the African American label indicates such wrongness. It appears that in this model, Caucasians and Latinos, in reference to African Americans, are not experiencing unfairness. The orange "True" label under the Caucasian and Hispanic label indicates such truth.
 
@@ -438,7 +452,7 @@ To address this problem, AI makers and law practitioners should discuss and work
 
 **Problem 2: Fair and unfair models will still be wrong in the legal field**
 
-Even if we were to build recidivism models that can accurately predict whether someone will be arrested within two years since the last arrest, that will still not exclude the model from being labeled as wrong. Image for one moment that you are in court, and you are given more time behind bars because you have been predicted to be arrested again by this perfect AI model. In a way, you will be punished by something that you haven't committed. According to the law, you can't be punished behind bars for something you haven't done. Will it be wrong to keep someone in jail because you know that person will soon commit another crime? Will it be wrong for you to let that person go because the offense hasn't been committed, but will be quickly committed in the near future? Hence, the argument that fair and unfair models will still be wrong in the legal field. The question now is whether this will be wrong or not. In a way, this is a moral problem the humanities and social sciences can answer and solve best. If it's the case that members of the social sciences and humanities conclude that it will be wrong, that will impact the AI world in a way that it will make their AI model creations unnecessary. Concerning us, this will affect the possible implementation of our built AI model.
+Even if we were to build recidivism models that can accurately predict whether someone will be arrested within two years since the last arrest, that will still not exclude the model from being labeled as wrong. Imagine for one moment that you are in court, and you are given more time behind bars because you have been predicted to be arrested again by this perfect AI model. In a way, you will be punished by something that you haven't committed. According to the law, you can't be punished behind bars for something you haven't done. Will it be wrong to keep someone in jail because you know that person will soon commit another crime? Will it be wrong for you to let that person go because the offense hasn't been committed, but will be quickly committed in the near future? Hence, the argument that fair and unfair models will still be wrong in the legal field. The question now is whether this will be wrong or not. In a way, this is a moral problem the humanities and social sciences can answer and solve best. If it's the case that members of the social sciences and humanities conclude that it will be wrong, that will impact the AI world in a way that it will make their AI model creations unnecessary. Concerning us, this will affect the possible implementation of our built AI model.
 
 **Problem 3: Unreachable perfect models**
 
