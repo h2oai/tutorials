@@ -120,7 +120,7 @@ Let's have the experiment run in the background. Simultaneously, in task 2, let'
 
 ### References
 
-[0] [What’s Happening in Driverless AI?](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-settings.html?highlight=reproducible#reproducible)
+- [0] [What’s Happening in Driverless AI?](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-settings.html?highlight=reproducible#reproducible)
 
 ## Task 2: Explore Criminal Risk Scorers in America and The COMPAS Dataset
 
@@ -283,7 +283,7 @@ Now, the two questions that come to mind are:
 
 In our final analysis in task 8 we will explore how the above two questions can be answered. For now, in the next task, let's answer the following two questions: 
 
-1. What biases exist in my model?
+1. What type of biases exist in my model?
 2. What levels of disparity exist between population groups? 
 
 ### References
@@ -292,26 +292,26 @@ In our final analysis in task 8 we will explore how the above two questions can 
 - [6][There’s overwhelming evidence that the criminal justice system is racist. Here’s the proof.](https://www.washingtonpost.com/graphics/2020/opinions/systemic-racism-police-evidence-criminal-justice-system/)
 - [7][There’s racial bias in our police systems. Here’s the proof.](https://www.washingtonpost.com/graphics/2020/opinions/systemic-racism-police-evidence-criminal-justice-system/)
 
-## Task 6: What Biases Exist in My Model? What Levels of Disparity Exist Between Population Groups? 
+## Task 6: What Type of Biases Exist in My Model? What Levels of Disparity Exist Between Population Groups? 
 
 Now that we know that the global model behavior is biased, let us answer the following two questions: 
 
-1. What biases exist in my model?
+1. What type of biases exist in my model?
 2. What levels of disparity exist between population groups? 
 
 To answer both questions, we will use the disparate impact analysis tool located in the **DAI Model** tab. In the **DAI Model** tab, click on the **Disparate Impact Analysis** tile: 
 
 ![disparate-impact-analysis-1](assets/disparate-impact-analysis-1.jpg)
 
-1\. Click on the **Disparate Impact Variable** button and select the **race** option.
+1. Click on the **Disparate Impact Variable** button and select the **race** option.
 
-2\. Click on the **Reference Level** button and change the reference level to **caucasian**. The following should appear: 
+2. Click on the **Reference Level** button and change the reference level to **caucasian**. The following should appear: 
 
-*Note*: We want to analyze possible harmful disparities, and therefore, we are setting the reference level to the population we believe may be receiving better treatment than other groups. Based on the articles presented earlier in this tutorial, we will have Caucasians as the reference level.  
+    **Note**: We want to analyze possible harmful disparities, and therefore, we are setting the reference level to the population we believe may be receiving better treatment than other groups. Based on the articles presented earlier in this tutorial, we will have Caucasians as the reference level.  
 
-3\. In the summary tab, we can see African Americans, in a general sense, are not receiving fairness compared to Caucasians. The orange "False" label under the African American label indicates such wrongness. It appears that in this model, Caucasians and Latinos, in reference to African Americans, are not experiencing unfairness. The orange "True" label under the Caucasian and Hispanic label indicates such truth.
+3. In the summary tab, we can see African Americans, in a general sense, are not receiving fairness compared to Caucasians. The orange "False" label under the African American label indicates such wrongness. It appears that in this model, Caucasians and Hispanics, in reference to African Americans, are not experiencing unfairness. The orange **True** label under the Caucasian and Hispanic label indicates such truth.
 
-4\. Before looking at the disparate impact graph bar, note the following: 
+4. Before looking at the disparate impact graph bar, note the following: 
 
    - **Blue**: African American
    - **Orange**: Asian
@@ -320,17 +320,17 @@ To answer both questions, we will use the disparate impact analysis tool located
    - **Green**: Native American 
    - **Yellow**: other
 
-When looking at the disparate impact graph bar, we can see that African Americans and Native Americans in this model are experiencing a high level of disparate impact compared to Caucasians. And this doesn't seem right and, by default, will make this model morally wrong because of its nature to adversely impact African Americans and Native Americans. In other words, the two_year_recid predictions of this model will adversely affect African Americans and Native Americans if used in production. 
+    When looking at the disparate impact graph bar, we can see that African Americans and Native Americans in this model are experiencing a high level of disparate impact compared to Caucasians. And this doesn't seem right and, by default, will make this model morally wrong because of its nature to adversely impact African Americans and Native Americans. In other words, the two_year_recid predictions of this model will adversely affect African Americans and Native Americans if used in production. 
 
-5\. When looking at the accuracy graph bar, we can see that African Americans have the lowest accuracy compared to other groups. This graph and the disparate impact graph would present a considerable social problem if the model were implemented in production. Given that accuracy is the percentage of classifying true cases of two_year_recid, one will expect accuracy to be the same for all groups. Having a low accuracy, in other words, is a red flag because it will mean that the model is not really able to identify true cases of two_year_recid, and that will mean that the model is now in a way no better than random guessing. 
+5. When looking at the accuracy graph bar, we can see that African Americans have the lowest accuracy compared to other groups. This graph and the disparate impact graph would present a considerable social problem if the model were implemented in production. Given that accuracy is the percentage of classifying true cases of two_year_recid, one will expect accuracy to be the same for all groups. Despite the model being **good** at predicting two-year recidivism(as shown by the scorer), that doesn't mean that such a fact will justify local and small discrimination levels. No discrimination on the grounds of race should be allowed. 
 
-In the graphs, scroll to the left to see the other graphs. The following should appear: 
+In the charts, scroll to the left to see the other charts. The following will appear: 
 
 ![disparate-impact-analysis-2](assets/disparate-impact-analysis-2.jpg)
 
-1. When looking at the false positive rate graph bar, we can see that African Americans have a high false-positive rate, a MAJOR red flag. By way of explanation, this is telling us that in this AI prediction model, African Americans, compared to all other groups, are wrongly being predicted to be arrested within two years since their last arrest. From an ethical, legal, and social perspective, this high false-positive rate will be seen as wrong and consequential to society and the legal system. If this model was to be used in production with no knowledge of its bias, it could lead to longer prison times. Why? Because this model would wrongly predict that someone will be arrested again within the two-year mark since the last arrest.
+1. When looking at the false positive rate chart, we can see that African Americans and Native Americans have a high false-positive rate, a MAJOR red flag. By way of explanation, this is telling us that in this ML prediction model, African Americans and Native Americans, compared to all other groups, are wrongly being predicted to be arrested within two years since their last arrest. From an ethical, legal, and social perspective, this high false-positive rate will be seen as wrong and consequential to society and the legal system. If this model was to be used in production with no knowledge of its bias, it could lead to longer prison times. Why? Because this model would wrongly predict that someone will be arrested again within the two-year mark since the last arrest(judges can use this information to justify their long or perhaps severe sentences).
 
-2. When looking at the false-negative rate graph bar, we can see that African Americans have the lowest false-negative rate compared to other groups with a high false-negative rate. These differences in rate can present a high-security issue and favor real criminals. If this model were in production, these high levels of false-negative rates would benefit true cases of two_year_recid.
+2. When looking at the false-negative rate chart, we can see that African Americans and Native Americans have the lowest false-negative rate compared to other groups. These differences in rate can present a high-security issue and favor real criminals. If this model were in production, these high levels of false-negative rates would benefit true cases of two_year_recid.
 
 Moving forward with our disparate impact analysis, let's look at the confusion matrices for the Caucasian and African American groups. Scroll down and open the confusion matrices section. The following should appear: 
 
@@ -340,90 +340,95 @@ The confusion matrices above are structure as follows:
 
 ![confusion-matrices-explanation](assets/confusion-matrices-explanation.jpg)
 
-When looking at the confusion matrices for both African Americans and Caucasians, we can see that the false-positive value differs tremendously between both groups. African Americans have a false positive value of 871, while Caucasians have a false positive value of 500. That's a 371 difference. This difference would harm the African American community if the model were to be used in production. 
+When looking at the confusion matrices for both African Americans and Caucasians, we can see that the false-positive value differs tremendously between both groups. African Americans have a false positive value of 140, while Caucasians have a false positive value of 48. That's a difference of 92 False Positives. This difference would harm the African American community if the ML model were to be used in production. 
 
 Moving forward with our disparate impact analysis, let's look at the group disparity and group parity metrics. Scroll down and open the disparity and group parity metrics section. The following should appear: 
 
-![disparate-impact-analysis-4](assets/disparate-impact-analysis-4.jpg)
+![disparate-impact-analysis-4A](assets/disparate-impact-analysis-4A.jpg)
+![disparate-impact-analysis-4B](assets/disparate-impact-analysis-4B.jpg)
 
-1\. Before moving forward with our analysis, let us recall the adverse impact analysis / four-fifths rule. According to the Prevue website, the four-fifths rule can be explained as follows: 
+1. Before moving forward with our analysis, let us recall the adverse impact analysis / four-fifths rule. According to the Prevue website, the four-fifths rule can be explained as follows: 
 
    - "Typically, adverse impact is determined by using the four-fifths or eighty percent rule. The four-fifths or 80% rule is described by the guidelines as "a selection rate for any race, sex, or ethnic group which is less than four-fifths (or 80%) of the rate for the group with the highest rate will generally be regarded by the Federal enforcement agencies as evidence of adverse impact, while a greater than four-fifths rate will generally not be regarded by Federal enforcement agencies as evidence of adverse impact.""[8]
 
-This rule is very up for debate on how this will develop going forward, but for now, we have set the low (unfairness) threshold to .8. But of course, when we are talking about making decisions on whether to send someone to prison, no difference in treatment should be allowed.  But in our efforts to analyze this model, let's see if the model can achieve fairness under a benchmark that will require the model not to treat 80% less favorably the non-white groups than the Caucasian group.
+    This rule is very up for debate on how this will develop going forward, but for now, we have set the low (unfairness) threshold to .8. But of course, when we are talking about making decisions on whether to send someone to prison, no difference in treatment should be allowed.  But in our efforts to analyze this model, let's see if the model can achieve fairness under a benchmark that will require the model to not treat 80% less favorably the non-white groups when compare to the Caucasian group.
 
-2\. In the group disparity section, note that in the Caucasian row, all column values are 1.00000. The reference level, in this case, will always be 1.00000. The 1.00000 number will be the acceptable and fair reference value we will desire to see among other racial groups in our model. 
+2. In the group disparity section, note that in the Caucasian row, all column values are 1.00000. The reference level, in this case, will always be 1.00000. The 1.00000 number will be the acceptable and fair reference value we will desire to see among other racial groups in our model. 
 
-3\. The adverse impact disparity value for African Americans in this built model is 1.46840. Compared to Caucasians, the difference is .46840. Note that the value is highlighted in orange, and that is because it is out of range. The range is between the high threshold of 1.25 and a low threshold of 0.8. The red flag here is having an increased adverse impact disparity value compared to the reference level or any other group. In other words, this difference is saying that a substantially high rate of wrong predictions exists, which works to the disadvantage of the African American group. 
+3. The adverse impact disparity value for African Americans in this built model is **2.84392**. Note that the value is highlighted in orange, and that is because it is out of range. The range is between the high threshold of 1.25 and a low threshold of 0.8(the fourth fifths rule). The red flag here is having an increased adverse impact disparity value compared to the reference level. In other words, this difference is saying that a substantially high rate of wrong predictions exists, which works to the disadvantage of the African American group. 
 
-4\. The false-positive rate disparity for African Americans is 1.48404, a .48404 addition to the reference level's false-positive rate disparity value. And this is perhaps the giant red flag because this model is mispredicting African Americans at a 1.48404 rate disparity: the highest rate disparity among all groups. 
+4. The false-positive rate disparity for African Americans is **2.48476**. And this is perhaps the giant red flag because this model is mispredicting African Americans at a **2.48476** rate disparity: the second highest false positive rate disparity among all groups. Note **Native Americans** are experiencing a substantial false positive rate disparity when the reference level is **Caucasians**. 
 
-5\. The false-negative rate disparity for African Americans is 0.49693. In comparison to Caucasians, that's a 0.50307 decrease. This difference results in problems because, in the Caucasian group, we will see a higher rate of false-negatives: a security problem. This difference also presents a wrong double standard wherein one hand; we have the model wrongly predicting more instances of  1 where 1 is a true two_year_recid  in the African American group. And on the other hand, we have the same model predicting higher false-negative instances in the Caucasian group. 
+5. The false-negative rate disparity for African Americans is **0.79618**. In comparison to Caucasians, that's a huge difference. This difference results in problems because, in the Caucasian group, we will see a higher rate of false-negatives: a security problem. This difference also presents a wrong double standard wherein one hand; we have the model wrongly predicting more instances of 1 where 1 is a true two_year_recid  in the African American group. And on the other hand, we have the same model predicting higher false-negative instances in the Caucasian group. 
 
-6\. In the group parity section, we see that no fairness is achieved across all categories except for the 'negative predicted value parity' column. 
+6. In the group parity section, we see that no fairness is achieved across all categories except for the 'negative predicted value parity' column. In the group parity section, we see that no fairness is achieved across multiple categories except for few columns. Important to note, the last column on the right (Overall Fairness) reveals a **False** value that means that overall no fairness is achieved across multiple categories and, therefore, is not a trusted model under the fourth fifths rule. 
 
-This model will fail the adverse impact analysis / four-fifths rule. If we were to change the rule to a rule where no disparity will be allowed, the model would reflect higher disparity rates across the categories observed above—a much more disturbing disparity. As a result, the appropriate and straightforward answer to the two questions at the beginning of this task will be that the model has a lot of bias, and huge disparities and injustices exist between racial groups, in particular, within the African American community. 
+    - This model will fail the adverse impact analysis / four-fifths rule. If we were to change the rule to a rule where no disparity will be allowed, the model would reflect higher disparity rates across the categories observed above—a much more disturbing disparity. As a result, the appropriate and straightforward answer to the two questions at the beginning of this task will be that the model has a lot of bias, and huge disparities and injustices exist between racial groups, in particular, within the African American and Native American community. 
+
+On the next task, let's extend our initiated local analysis. Let's see how disparity is being created at the local level. 
 
 ### References
 
-[8][Adverse Impact Analysis / Four-Fifths Rule.](https://www.prevuehr.com/resources/insights/adverse-impact-analysis-four-fifths-rule/)
+- [8][Adverse Impact Analysis / Four-Fifths Rule.](https://www.prevuehr.com/resources/insights/adverse-impact-analysis-four-fifths-rule/)
 
 ## Task 7: Local Behavior Analysis
 
 Now that we know that bias is introduced to an extent at the global level, let us explore how disparity and bias are generated in particular instances now that we know that huge disparities and injustices exist between racial groups. 
 
-In the 'DAI Model' tab, click on the sensitivity analysis visual, the following should appear: 
+In the **DAI Model** tab, click on the **Sensitivity Analysis** tile, something similar will appear: 
 
 ![sensitivity-analysis-1](assets/sensitivity-analysis-1.jpg)
 
-1\. Here we see that the cut-off is 0.38840827(dash line), anything below the cut-off will be predicted as a true two_year_recid. Anything above the cut-off will be predicted as a true two_year_recid. 
+1. Here we see that the cut-off is **0.62740525**(dash line), anything below the cut-off will be predicted as a false two_year_recid. Anything above the cut-off will be predicted as a true two_year_recid. 
 
-2\. Here the false two_year_recid's are to the left.
+2. Here the false two_year_recid's are to the left.
 
-3\. Here the true two_year_recid's are to the right. 
+3. Here the true two_year_recid's are to the right. 
 
-To understand the model's local behavior, let us analyze the false-positive instances in the African American community through what is called a  residual analysis. This analysis will allow us to look at multiple false-positive cases that are super close to the cut-off. And with that, we will modify specific column values of these cases, and we will observe for any changes in prediction. As of now, the table in the sensitivity analysis page doesn't have the race column. Why? Because it was not used during our experiment. We need the race column for our residual analysis because we need to know each case's race. To add the race column, click on the plus icon located at the top right corner of the sensitivity analysis table. In there, look for the race option and click on it as shown on the below image. After, click on the "SET" option. 
+To understand the model's local behavior, let us analyze the false-positive instances in the African American community through what is called a  residual analysis. This analysis will allow us to look at multiple false-positive cases that are super close to the cut-off. And with that, we will modify specific column values of these cases, and we will observe for any changes in prediction. As of now, the table in the sensitivity analysis page doesn't have the race column. Why? Because it was not used during our experiment. We need the race column for our residual analysis because we need to know each case's race. To add the race column, click on the plus icon located at the top right corner of the sensitivity analysis table. In there, look for the race option and click on it as shown on the below image. After, click on the **SET** option:
 
 ![sensitivity-analysis-2-race-column](assets/sensitivity-analysis-2-race-column.jpg)
 
-4\. Scroll to the left of the table, and you will be able to see the rest of the table and the new column added. On the left side, you will see the filter section of the sensitivity analysis page, and in there, filter with the following options: race == African-American. 
+Scroll to the left of the table, and you will be able to see the rest of the table and the new column added. On the left side, you will see the filter section of the sensitivity analysis page, and in there, filter with the following options: **race == African-American**. This will allow us only to see all the African American False Positive cases: 
 
 ![sensitivity-analysis-3-african-american](assets/sensitivity-analysis-3-african-american.jpg)
 
-5\. In the sensitivity analysis graph, change the [Target] option to [Residuals]. 
+In the sensitivity analysis graph, change the [Target] option to [Residuals]. You can change the Target to Residual in the option found next to the y-axis. When you click on it, the following appears in it select the **Residuals** option: 
 
 ![sensitivity-analysis-4-residuals](assets/sensitivity-analysis-4-residuals.jpg)
 
-6\. In the filter section, click on the FP option; this will select the African American group's false positives. After clicking the FP option, the graph should look similar to the image below, where the closer you are to the cut-off line, the closer you were in the model to being predicted as a false two_year_recid. 
+In the filter section, click on the **FP** option. This action will select all the False Positives in the African American group. After clicking the FP option, the graph will change while only rendering **False Positives**, where the closer you are to the cut-off line, the closer you are to being label as a true case of two_year_recid: 
 
 ![sensitivity-analysis-5-false-positive](assets/sensitivity-analysis-5-false-positive.jpg)
 
 Rather than looking at every instance of false positives in the African American group, let's look at the instances that are super close to the cut-off line and see if the priors_count column is truly driving the model behavior. Reminder: sensitivity analysis enables us to tinker with various data settings to see their weight in a prediction.  
 
-1. To get close to the instances that are close to the cut-off line, filtered [ID] < 5 (it might be the case that you will have to filter with other options to get close) 
-2. The table now represents the five instances that are close to the cut-off line.
-3. The graph will now reflect the above table's information showcasing the five instances close to the cut-off line.
-
-
 ![sensitivity-analysis-6-close-to-cut-off.jpg](assets/sensitivity-analysis-6-close-to-cut-off.jpg)
+
+1. To get close to the instances that are close to the cut-off line, filtered **[Predictions] < N** (a value above the cut-off line, but not too close and not too far from the cut-off line). It might be the case that you will have to filter with other options to get close. 
+2. Right after filtering, you will be able to see the False Positives close to the cut-off line. 
+3. The graph will now reflect the above table's information showcasing the several instances close to the cut-off line.
 
 ![sensitivity-analysis-7-id-4](assets/sensitivity-analysis-7-id-4.jpg)
 
-In prediction number 4 ([ID] 4), as highlighted in the image above, we see an African American that was never arrested within the two-year mark, but the model predicted the opposite: a wrong prediction. In this case, we see a male with four prior counts and in the greater than 45 age category. Let's see if having four prior counts was the deciding factor.  
+In prediction number 6 ([ID] 6), as highlighted in the image above, we see an African American that was never arrested within the two-year mark, but the model predicted the opposite: a wrong prediction. In this case, we see a male with five prior counts and in the less than 25 age category. Let's see if having five prior counts was the deciding factor.  
+
+Change the priors_count value from five to zero. Right after, click on the rescore option (on the top left corner where the table is located); something similar to the below image should appear. Here we see that the prediction has been flipped, and as well we come to realize that this person was judged based on his prior counts. It is worth noting that this person perhaps obtained such five prior counts because of racism in our judicial system and, therefore, was predicted by the model as a true two_year_recid. Given our biased judicial system, that’s not hard to believe. It's something to think for now. 
 
 ![sensitivity-analysis-8-change-prediction](assets/sensitivity-analysis-8-change-prediction.jpg)
 
-Change the priors_count value from four to zero. Right after, click on the rescore option (on the top left corner where the table is located); something similar to the above page should appear. Here we see that the prediction has been flipped, and as well we come to realize that this person was judged based on his prior counts. It is worth noting that this person perhaps obtained such four prior counts because of racism in our judicial system and, therefore, was predicted by the model as a true two_year_recid. Given our biased judicial system, that’s not hard to believe. It's something to think for now. 
+Now let's look if decreasing prior_count by one will change a prediction. In prediction number 6 ([ID] 6), let's decrease the prios_count by one. Remember it was 5 before we changed it to 0. Therefore, change it to 4. Immediately rescore the graph. Something similar to the image below will appear. Here we see that the prediction was not flipped but pushed the prediction super close to the cut-off line. For a moment, imagine that this person had his prediction flipped when decreasing prior_count by one. Remember Driverless AI predicted this person as a true case of two_year_recid. Now imagine that this person had one extra prior_count because of our current biased judicial system. In that case, we can see how prior_count can add bias to our ML model and wrongly predict/label someone while increasing False Positives among the African and Native American groups. 
+
 
 ![sensitivity-analysis-9-id-1-prior-count](assets/sensitivity-analysis-9-id-1-prior-count.jpg)
 
-Now let's look if decreasing a priors_count by one will change a prediction. Before moving forward, click the backtrack clock icon on the top right corner where the table is displayed. In prediction number 1 ([ID] 1), let's decrease the prios_count by one. Immediately rescore the graph. Something similar to the image above should appear. Here we see that the prediction was flipped and what is concerning is that the change is drastic. The prediction went from 0.45075 to 0.38016. Imagine that this model is being used, and this person is predicted to be true two_year_recid because of one extra prior count that was possibly wrongly added to the record. The just stated scenario is not hard to believe, given the judicial system's existing bias, especially when we arrest people on the streets.  
+As mentioned above, age was also another factor at the global level, and with that in mind, let's see if that's true for the local level. Still, in prediction ID 6, change the prior_count value back to 5. As well, change the age_cat value from **Less than 25** to **Greater than 45**, after, **Rescore** the graph. We see that the prediction is flip, which isn't good because we don't want age to determine a true or false two_year_recid. 
+Note that it was decided to add **age_cat**(age) in our model to highlight the problems that will arise if **age** is used, age should not be used because if so, it will lead to age discrimination. 
 
 ![sensitivity-analysis-10-age-cat](assets/sensitivity-analysis-10-age-cat.jpg)
 
-As mentioned above, age was also another factor at the global level, and with that in mind, let's see if that's true for the local level. Click on the backtrack clock icon and modify the age_cat value for prediction number one. Change the age_cat value from Less than 25 to Greater than 45, after, rescore the graph. We see that the prediction is also flipped, which isn't good because we don't want age to determine a true or false two_year_recid. 
 
-With the above, we can conclude that at the local level, we also have a bias in the form of priors_count where priors_count is not a true reflection of someone's true criminal record if we consider the racial bias within the judicial system. We also see that ageism (a type of bias) is introduced to the model when we see that age_cat can determine a true or false two_year_recid. In conclusion, bias exists at the local level.  
+With the above, we can conclude that at the local level, we also have a bias in the form of prior_count where prior_count is not a true reflection of someone's true criminal record if we consider the racial bias within the judicial system. We also see that ageism (a type of bias) is introduced to the model when we see that age_cat can determine a true or false two_year_recid. In conclusion, bias exists at the local level.  
 
 
 ## Task 8: The Reciprocal Impact That Should Exist Between AI, the Social Sciences, and Humanities
@@ -452,7 +457,7 @@ To address this problem, AI makers and law practitioners should discuss and work
 
 **Problem 2: Fair and unfair models will still be wrong in the legal field**
 
-Even if we were to build recidivism models that can accurately predict whether someone will be arrested within two years since the last arrest, that will still not exclude the model from being labeled as wrong. Imagine for one moment that you are in court, and you are given more time behind bars because you have been predicted to be arrested again by this perfect AI model. In a way, you will be punished by something that you haven't committed. According to the law, you can't be punished behind bars for something you haven't done. Will it be wrong to keep someone in jail because you know that person will soon commit another crime? Will it be wrong for you to let that person go because the offense hasn't been committed, but will be quickly committed in the near future? Hence, the argument that fair and unfair models will still be wrong in the legal field. The question now is whether this will be wrong or not. In a way, this is a moral problem the humanities and social sciences can answer and solve best. If it's the case that members of the social sciences and humanities conclude that it will be wrong, that will impact the AI world in a way that it will make their AI model creations unnecessary. Concerning us, this will affect the possible implementation of our built AI model.
+Even if we were to build recidivism models that can accurately predict whether someone will be arrested within two years since the last arrest, that will in the minds of few will still not exclude the model from being labeled as wrong. Imagine for one moment that you are in court, and you are given more time behind bars because you have been predicted to be arrested again by this perfect AI model. In a way, you will be punished by something that you haven't committed. According to the law, you can't be punished behind bars for something you haven't done. Will it be wrong to keep someone in jail because you know that person will soon commit another crime? Will it be wrong for you to let that person go because the offense hasn't been committed, but will be quickly committed in the near future? Hence, the argument that fair and unfair models will still be wrong in the legal field. The question now is whether this will be wrong or not. In a way, this is a moral problem the humanities and social sciences can answer and solve best. If it's the case that members of the social sciences and humanities conclude that it will be wrong, that will impact the AI world in a way that it will make their AI model creations unnecessary. Concerning us, this will affect the possible implementation of our built AI model.
 
 **Problem 3: Unreachable perfect models**
 
@@ -464,11 +469,11 @@ The AI world lacks a concrete moral definition of what will be considered an exc
 
 **Problem 5: Prior Criminal Counts**
 
-As discovered, it is clear that someone's prior criminal count can't be a clear reflection of true recidivism. Like prior counts, we also notice that age is another factor that shouldn't be considered when predicting recidivism. Correspondingly, we need to replace these traditionally used recidivism factors and explore for new unbiased features. Thus, we need joint work between AI, the social sciences, and the humanities if we hope to predict multiple recidivism types truly. 
+As discovered, it is clear that someone's prior criminal count can't be a clear reflection of true recidivism. Like prior counts, we also notice that age is another factor that shouldn't be considered when predicting recidivism. Correspondingly, we need to replace these traditionally used recidivism factors and explore for new unbiased features. Thus, we need joint work between AI, the social sciences, and the humanities if we hope to predict true cases of recidivism. 
 
 **Final Analysis**
 
-As a final analysis, the AI world is growing and changing our society. We need the social sciences and humanities to solve the problems AI is creating during its creation. This joint work can genuinely be the key to more acceptance of AI into our daily lives while leveraging AI's power. Most of the errors produced by AI models are impacting the most marginalized groups. This dislike needs to change, and the change starts when we work together to understand the several impacts these models can have on the most marginalized groups. Whether people are already integrating the social sciences and humanities to AI, we need to make sure that such integration is speedup because we currently have the wrong following titles in several news sources across the country: 
+As a final analysis, the AI world is growing and changing our society. We need the social sciences and humanities to solve the problems AI is creating during its creation. This joint work can genuinely be the key to more acceptance of AI into our daily lives while leveraging AI's power. Most of the errors produced by AI models are impacting the most marginalized groups. This unfairness needs to change, and the change starts when we work together to understand the several impacts these models can have on the most marginalized groups. Whether people are already integrating the social sciences and humanities to AI, we need to make sure that such integration is speedup because we currently have the wrong following titles in several news sources across the world: 
 
 - When AI in healthcare goes wrong, who is responsible?
 - Rise of the racist robots – how AI is learning all our worst impulses
@@ -480,30 +485,26 @@ And to further support the argument of how we need collaboration between AI, the
 
 ### References 
 
-[9][When a Computer Program Keeps You in Jail](https://www.nytimes.com/2017/06/13/opinion/how-computers-are-harming-criminal-justice.html)
-
-[10][Confrontation Clause - Wikipedia](https://en.wikipedia.org/wiki/Confrontation_Clause)
+- [9][When a Computer Program Keeps You in Jail](https://www.nytimes.com/2017/06/13/opinion/how-computers-are-harming-criminal-justice.html)
+- [10][Confrontation Clause - Wikipedia](https://en.wikipedia.org/wiki/Confrontation_Clause)
 
 ## Next Steps 
 
-Check out the next tutorial: *Image Classification* **(COMING SOON)**, where you will learn about: 
+- Check out the next tutorial: **[Image Processing in Driverless AI](https://github.com/h2oai/tutorials/blob/master/Driverless%20AI/image-processing-in-driverless-ai/image-processing-in-driverless-ai.md)**, where you will learn about: 
+  - How to use images to predict true cases of metastatic cancer 
+  - - How to use images to predict the price of a car 
+  - Pre-trained image transformers - transforming images into vectors 
+  - Automatic image model 
 
-- How to use images to predict the adoption rate of animals in an animal shelter 
-- Pre-trained image transformers - transforming images into vectors 
-- Automatic image model 
+- As well, you can watch the following webinar to learn more about Image Processing in Driverless AI: 
+  - **Webinar**: [More Use Cases and More Value with Automated Computer Vision Modeling](https://www.h2o.ai/webinars/?commid=427103)
+    - In this webinar, you will learn about: - Visual AI features in Driverless AI 1.9 - Image modeling use cases with images with other data types and with images stand-alone - The Visual AI roadmap for Driverless AI - How to deploy image models as low latency MOJOs 
+    - Presenters: Dan Darnell, VP of Product Marketing at H2O.ai Yauhen Babakhin, Kaggle Competitions Grandmaster and Data Scientist at H2O.ai
 
-In the meantime, you can watch the following webinar: 
-
-**Webinar**: [More Use Cases and More Value with Automated Computer Vision Modeling](https://www.h2o.ai/webinars/?commid=427103)
-
-In this webinar, you will learn about: - Visual AI features in Driverless AI 1.9 - Image modeling use cases with images with other data types and with images stand-alone - The Visual AI roadmap for Driverless AI - How to deploy image models as low latency MOJOs 
-
-Presenters: Dan Darnell, VP of Product Marketing at H2O.ai Yauhen Babakhin, Kaggle Competitions Grandmaster and Data Scientist at H2O.ai
-
-As well, you can read the following article discussing Automatic Image Recognition: [Exploring the Next Frontier of Automatic Machine Learning with H2O Driverless AI](https://www.h2o.ai/blog/exploring-the-next-frontier-of-automatic-machine-learning-with-h2o-driverless-ai/)
+- As well, you can read the following article discussing Automatic Image Recognition: [Exploring the Next Frontier of Automatic Machine Learning with H2O Driverless AI](https://www.h2o.ai/blog/exploring-the-next-frontier-of-automatic-machine-learning-with-h2o-driverless-ai/)
 
 ## Special Thanks 
 
-Thank you to everyone that took the time to make this tutorial possible.
+Thank you to everyone that took the time to make this tutorial possible:
 
-- [Patrick Hall: Data Scientist at H2O.ai](https://www.linkedin.com/in/jpatrickhall/)
+- Special thanks to [Patrick Hall]((https://www.linkedin.com/in/jpatrickhall/)), Data Scientist at H2O.ai. 
