@@ -212,7 +212,7 @@ Specify whether to use Character-level CNN TensorFlow models for NLP. This optio
 
 - **PyTorch Models for NLP**
 
-Specify whether to enable pre-trained PyTorch models and fine-tune them for NLP tasks. This is set to Auto by default. You need to set this to On if you want to use the PyTorch models like BERT for feature engineering or for modeling. We recommend that you use GPUs to speed up execution when this option is used. **Please note that for this lab, we are goomg to leave the setting in default mode**.
+Specify whether to enable pre-trained PyTorch models and fine-tune them for NLP tasks. This is set to Auto by default. You need to set this to On if you want to use the PyTorch models like BERT for feature engineering or for modeling. We recommend that you use GPUs to speed up execution when this option is used. **Please note that for this lab, we are going to leave the setting in AUTO mode**.
 
 ![nlp-expert-settings](assets/nlp-expert-settings.jpg)
 
