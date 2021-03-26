@@ -425,6 +425,8 @@ Once the features have been extracted, they can then be used for training a clas
 
 ## Task 4: Driverless AI NLP Recipe
 
+*Note: This section included all the current capabilities of Driverless AI's NLP module. Not all the settings have been demonstrated in the current sentiment analysis experiemnt.*
+
 Text data can contain critical information to inform better predictions. Driverless AI automatically converts text strings into features using powerful techniques like TFIDF, CNN, and GRU. Driverless AI now also includes state-of-the-art PyTorch BERT transformers that can be used for Feature Engineering or as Modeling Algorithms. With advanced NLP techniques, Driverless AI can process larger text blocks and build models using all available data and to solve business problems like sentiment analysis, document classification, and content tagging.
 
 The Driverless AI platform has the ability to support both standalone text and text with other columns as predictive features. In particular, the following NLP recipes are available for a given text column:
