@@ -426,7 +426,7 @@ Once the features have been extracted, they can then be used for training a clas
 
 ## Task 4: Driverless AI NLP Recipe
 
-Text data can contain critical information to inform better predictions. Driverless AI automatically converts text strings into features using powerful techniques like TFIDF, CNN, and GRU. Driverless AI now also includes state-of-the-art PyTorch BERT transformers. With advanced NLP techniques, Driverless AI can also process larger text blocks and build models using all available data and to solve business problems like sentiment analysis, document classification, and content tagging.
+Text data can contain critical information to inform better predictions. Driverless AI automatically converts text strings into features using powerful techniques like TFIDF, CNN, and GRU. Driverless AI now also includes state-of-the-art PyTorch BERT transformers that can be used for Feature Engineering or as Modeling Algorithms. With advanced NLP techniques, Driverless AI can process larger text blocks and build models using all available data and to solve business problems like sentiment analysis, document classification, and content tagging.
 
 The Driverless AI platform has the ability to support both standalone text and text with other columns as predictive features. In particular, the following NLP recipes are available for a given text column:
 
@@ -439,11 +439,13 @@ An n-gram is a continuous sequence of n items from a given sample of text or spe
 
 - **TFIDF of n-grams**
 
-Frequency-based features are multiplied with inverse document frequency to get TFIDF vectors.
-
+Frequency-based features can be multiplied with the inverse document frequency to get term frequency–inverse document frequency (TF-IDF) vectors. Doing so also gives importance to the rare terms that occur in the corpus, which may be helpful in certain classification tasks.
+![](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/_images/ngram_tfidf.png)
 - **Frequency of n-grams**
 
-Frequency-based features represent the count of each word in the given text in the form of vectors. Frequency-based features are created for different n-gram values[2]. The dimensions of the output vectors are quite high. Words/n-grams that occur more number of times will get higher weightage than the ones that occur less frequently.
+Frequency-based features represent the count of each word from a given text in the form of vectors. These are created for different n-gram values. For example, a one-gram is equivalent to a single word, a two-gram is equivalent to two consecutive words paired together, and so on.
+
+Words and n-grams that occur more often will receive a higher weightage. The ones that are rare will receive a lower weightage.
 
 - **Truncated SVD Features**
 
