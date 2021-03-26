@@ -378,9 +378,8 @@ Word embeddings can be passed as inputs to CNN models, and cross-validated predi
 
 RNNs like LSTM and GRU are state of the art algorithms for NLP problems. Simply, put a Bi-directional GRU model is putting two independent RNN models in one.
 
-For example, in the sentence "John is walking on the golf court", a unidirectional model would represent states with representing "golf" based on "John is walking" but not the "court". Using a bi-directional model, the representation would also account the later representations giving the model more predictive power.
-
-This makes it a more ‘natural' approach when dealing with textual data since the text is naturally sequential[6].
+For example, in the sentence "John is walking on the golf court", a unidirectional model would represent states with representing "golf" based on "John is walking" but not the "court". However, by using a bi-directional model, the representation would also account for the later representations giving the model more predictive power.
+ This makes it a more ‘natural' approach when dealing with textual data since the text is naturally sequential[6].
 
 ![rnn](assets/rnn.jpg)
 
