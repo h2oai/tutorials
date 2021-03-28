@@ -29,7 +29,7 @@ You will need the following to be able to do this tutorial:
 
 - Basic knowledge of Machine Learning and Statistics
 - A Driverless AI environment
-- Basic knowledge of Driverless AI or doing the [Automatic Machine Learning Introduction with Drivereless AI Test Drive](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai)
+- Basic knowledge of Driverless AI or doing the [Automatic Machine Learning Introduction with Driverless AI](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai)
 - A **Two-Hour Test Drive session**: Test Drive is H2O.ai's Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.
   - Need a **Two-Hour Test Drive** session? Follow the instructions on [this quick tutorial](https://training.h2o.ai/products/tutorial-0-getting-started-with-driverless-ai-test-drive) to get a Test Drive session started.
 
@@ -60,18 +60,19 @@ Load the **loan_level_500K.csv** to Driverless AI:
 4\. Let’s take a quick look at the columns:
 
 ![loan-level-details-page](assets/loan-level-details-page.png)
-*Things to Note:*
-- C1 - CREDIT_SCORE
-- C2 - FIRST_PAYMENT_DATE
-- C3 - FIRST_TIME_HOMEBUYER_FLAG
-- C4 - MATURITY_DATE
-- C5 - METROPOLITAN_STATISTICAL_AREA
-- C6 - MORTGAGE_INSURANCE_PERCENTAGE
-- C7 - NUMBER_OF_UNITS
+- *Things to Note:*</br>
+ **a.** CREDIT_SCORE</br>
+ **b.** FIRST_PAYMENT_DATE</br>
+ **c.** FIRST_TIME_HOMEBUYER_FLAG</br>
+ **d.** MATURITY_DATE</br>
+ **e.** METROPOLITAN_STATISTICAL_AREA</br>
+ **f.** MORTGAGE_INSURANCE_PERCENTAGE</br>
+ **g.** NUMBER_OF_UNITS</br>
+ **h.** OCCUPANCY_STATUS</br>
 
 5\. Continue scrolling through the current page if you want to see all the other columns.
 
-6\. Return to the **Datasets** overview page
+6\. Return to the **Datasets** overview page.
 
 7\. Click on the **loan_level_500k.csv** file then split.
 
@@ -80,20 +81,20 @@ Load the **loan_level_500K.csv** to Driverless AI:
 8\.  Split the data into two sets: **freddie_mac_500_train** and **freddie_mac_500_test**. Use the image below as a guide:
 
 ![loan-level-split-2](assets/loan-level-split-2.png)
-*Things to Note:*
 
-1. Type ```freddie_mac_500_train``` for OUTPUT NAME 1, this will serve as the training set
-2. Type ```freddie_mac_500_test``` for OUTPUT NAME 2, this will serve as the test set
-3. For Target Column select **Delinquent**
-4. You can set the Random Seed to any number you'd like, we chose 42, by choosing a random seed we will obtain a consistent split
-5. Change the split value to .75 by adjusting the slider to 75% or entering .75 in the section that says Train/Valid Split Ratio
-6. Save
+- *Things to Note:*</br>
+  **a.** Type ```freddie_mac_500_train``` for OUTPUT NAME 1, this will serve as the training set</br>
+  **b.** Type ```freddie_mac_500_test``` for OUTPUT NAME 2, this will serve as the test set</br>
+  **c.** For Target Column select **Delinquent**</br>
+  **d.** You can set the Random Seed to any number you'd like. We chose **42**; by choosing a random seed we will obtain a consistent split</br>
+  **e.** Change the split value to **.75** by adjusting the slider to **75%** or entering **.75** in the section that says Train/Valid Split Ratio</br>
+  **f.** **Save**
 
 The training set contains 375k rows, each row representing a loan, and 27 columns representing the attributes of each loan including the column that has the label we are trying to predict. 
 
  **Note:** the actual data in training and test split vary by user, as the data is split randomly. The Test set contains 125k rows, each row representing a loan, and 27 attribute columns representing attributes of each loan.
 
-9\. Verify that there are three datasets, **freddie_mac_500_test**, **freddie_mac_500_train** and **loan_level_500k.csv**:
+9\. Verify that there are three datasets, **freddie_mac_500_test**, **freddie_mac_500_train**, and **loan_level_500k.csv**:
 
 ![loan-level-three-datasets](assets/loan-level-three-datasets.png)
 
@@ -111,15 +112,15 @@ Name your experiment `Freddie Mac Classification Tutorial`
 - **PREPAID**
 - Select **Done**
 
-These two columns are dropped because they are both clear indicators that the loans will become delinquent and will cause data leakage. 
-
 ![train-set-drop-columns](assets/train-set-drop-columns.png)
 
-13\. Select **Target Column**, then select **Delinquent**
+**Note:** These two columns are dropped because they are both clear indicators that a loan will become delinquent and will cause data leakage.
+
+13\. Select **Target Column**, then select **Delinquent**:
 
 ![train-set-select-delinquent](assets/train-set-select-delinquent.png)
 
-14\. Select **Test Dataset**, then **freddie_mac_500_test**
+14\. Select **Test Dataset**, then **freddie_mac_500_test**:
 
 ![add-test-set](assets/add-test-set.png)
 
@@ -137,13 +138,13 @@ On task 2, we will explore and update the **Experiment Settings**.
 
 1\. Hover over to **Experiment Settings** and note the three knobs, **Accuracy**, **Time** and **Interpretability**.
 
-The **Experiment Settings** describe the Accuracy, Time, and Interpretability of your specific experiment. The knobs on the experiment settings are adjustable, as the values change the meaning of the settings on the left-bottom page change.
+The **Experiment Settings** describe the Accuracy, Time, and Interpretability of your specific experiment. The knobs on the experiment settings are adjustable, as the values change the meaning of the settings on the left-bottom page.
 
 Here is an overview of the Experiments settings: 
 
-- **Accuracy** - Relative accuracy – higher values, should lead to higher confidence in model performance (accuracy).
-- **Time** - Relative time for completing the experiment. Higher values will take longer for the experiment to complete.
-- **Interpretability**-  The ability to explain or to present in understandable terms to a human. The higher the interpretability the simpler the features that will be extracted.  
+- **Accuracy** - relative accuracy – higher values, should lead to higher confidence in model performance (accuracy).
+- **Time** - relative time for completing the experiment. Higher values will take longer for the experiment to complete.
+- **Interpretability** - the ability to explain or to present in understandable terms to a human. The higher the interpretability the simpler the features that will be extracted.  
 
 
 ### Accuracy
@@ -164,67 +165,53 @@ The interpretability knob is adjustable. The higher the interpretability, the si
 - **Interpretability: 4**
 - **Scorer: Logloss** 
 
-This configuration was selected to generate a model quickly with a sufficient level of accuracy in the H2O Driverless Test Drive environment.
+![experiment-settings-2](assets/experiment-settings-2.png)
 
-![experiment-settings-2](assets/experiment-settings-2.png)    
+This configuration was selected to generate a model quickly with a sufficient level of accuracy in the H2O Driverless Test Drive environment.
 
 ### Expert Settings
 
-3\. Hover over to **Expert Settings** and click on it. An image similar to the one below will appear:
+**Expert Settings** are options that are available for those who would like to set their settings manually. We will explore some of these settings below.
+
+3\. Hover over to **Expert Settings** and click on it:
+
+![expert-settings-0](assets/expert-settings-0.png)
+
+An image similar to the one below will appear:
 
 ![expert-settings-1](assets/expert-settings-1.png)
-*Things to Note:*
-1. **+ Upload Custom Recipe**
-2. **+ Load Custom Recipe From URL** 
-3. **Official Recipes (Open Source)**
-4. **Experiment**
-5. **Model**
-6. **Features**
-7. **Timeseries**
-8. **NLP**
-9. **Image**
-9. **Recipes**
-10. **System**
-11. **AutoDoc**
 
-**Expert Settings** are options that are available for those who would like to set their settings manually.  Explore the available expert settings by clicking in the tabs on top of the page.
+- *Things to Note:*</br>
+**a.** **+ Upload Custom Recipe**: Option to upload a custom recipe from personal environment</br>
+**b.** **+ Load Custom Recipe From URL**: Option to add a custom recipe using a URL</br> 
+**c.** **Official Recipes (Open Source)**: Link to the Official Recipes page on GitHub</br>
+**d.** **Experiment**: This section includes settings that can be used to customize the experiment like total runtime, reproducibility level, pipeline building, feature brain control, adding config.toml settings and more. Please check out the [Experiment Settings](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/expert_settings/experiment_settings.html#experiment-settings) section in our Documentation to learn more and to get a complete list of these settings.</br>
+**e.** **Model**: This section includes settings that can be changed to control the models you want to train and specific settings for models. Please check out the [Model Settings](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/expert_settings/model_settings.html#model-settings) section in our Documentation to learn more and to get a complete list of these settings.</br>
+**f.** **Features**: This section includes settings that can be changed to customize the way Driverless AI performs feature engineering. Please check out the [Feature Settings](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/expert_settings/features_settings.html#features-settings) section in our Documentation to learn more and to get a complete list of these settings.</br>
+**g.** **Timeseries**: This section includes settings that can be used to customize Time Series experiments. Please check out the [Time Series Settings](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/expert_settings/timeseries_settings.html#time-series-settings) section in our Documentation to learn more and to get a complete list of these settings.</br>
+**h.** **NLP**: This section includes settings that can be used to customize NLP experiments. Please check out the [NLP Settings](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/expert_settings/nlp_settings.html#nlp-settings) section in our Documentation to learn more and to get a complete list of these settings.</br>
+**i.** **Image**: This section includes settings that allow you to customize an image processing experiment. Please check out the [Image Settings](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/expert_settings/image_settings.html#image-settings) section in our documentation to learn more and to get a complete list of these settings.</br>
+**j.** **Recipes**: This section includes settings that allow you to specify different options for your custom transformers, models, and scorers. Please check out the [Recipes Settings](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/expert_settings/recipes_settings.html#recipes-settings) section in our Documentation to learn more and to get a complete list of these settings.</br>
+**k.** **System**: This section allows you to customize your environment and how you want to use your resources for your experiments. Please check out the [System Settings](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/expert_settings/system_settings.html) section in our Documentation to learn more and to get a complete list of these settings.</br>
+**l.** **AutoDoc**: This section includes settings that can be used to configure AutoDoc. Please check out the [AutoDoc Settings](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/expert_settings/autodoc_settings.html) section in our Documentation to learn more and to get a complete list of these settings.</br>
 
-**Expert settings include**:
-
-**Experiment Settings:** This section includes settings that can be used to customize the experiment like total runtime, reproducibility level, pipeline building, feature brain control, adding config.toml settings and more. Please check out the [Experiment Settings](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/expert_settings/experiment_settings.html#experiment-settings) section in our Documentation to learn more and to get a complete list of these settings.
-
-**Model Settings:** This section includes settings that can be changed to control the models you want to train and specific settings for models. Please check out the [Model Settings](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/expert_settings/model_settings.html#model-settings) section in our Documentation to learn more and to get a complete list of these settings.
-
-**Features Settings:** This section includes settings that can be changed to customize the way Driverless AI performs feature engineering. Please check out the [Feature Settings](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/expert_settings/features_settings.html#features-settings) section in our Documentation to learn more and to get a complete list of these settings.
-
-**Time Series Settings:** This section includes settings that can be used to customize Time Series experiments. Please check out the [Time Series Settings](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/expert_settings/timeseries_settings.html#time-series-settings) section in our Documentation to learn more and to get a complete list of these settings.
-
-**NLP Settings:** This section includes settings that can be used to customize NLP experiments. Please check out the [NLP Settings](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/expert_settings/nlp_settings.html#nlp-settings) section in our Documentation to learn more and to get a complete list of these settings.
-
-**Image Settings:** This section includes settings that allow you to customize an image processing experiment. Please check out the [Image Settings](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/expert_settings/image_settings.html#image-settings) section in our documentation to learn more and to get a complete list of these settings.
-
-**Recipes Settings:** This section includes settings that allow you to specify different options for your custom transformers, models, and scorers. Please check out the [Recipes Settings](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/expert_settings/recipes_settings.html#recipes-settings) section in our Documentation to learn more and to get a complete list of these settings.
-
-**System Settings:** This section allows you to customize your environment and how you want to use your resources for your experiments. Please check out the [System Settings]() section in our Documentation to learn more and to get a complete list of these settings.
-
-**AutoDoc Settings:** This section includes settings that can be used to configure AutoDoc. Please check out the [AutoDoc Settings]() section in our Documentation to learn more and to get a complete list of these settings.
-
-4\. For this experiment turn ON **RuleFit models**, under **Model** tab the select **Save**. 
+4\. For this experiment turn **ON RuleFit models**, under **Model** tab the select **Save**. 
 
 The RuleFit[2] algorithm creates an optimal set of decision rules by first fitting a tree model and then fitting a Lasso (L1-regularized) GLM model to create a linear model consisting of the most important tree leaves (rules). The RuleFit model helps with exceeding the accuracy of Random Forests while retaining explainability of decision trees.
 
 ![expert-settings-rulefit-on](assets/expert-settings-rulefit-on.png)
 
-Turning on the RuleFit model will be added to the list of algorithms that Driverless AI will consider for the experiment.  The selection of the algorithm depends on the data and the configuration selected.
+Turning on the RuleFit model will be added to the list of algorithms that Driverless AI will consider for the experiment. The selection of the algorithm depends on the data and the configuration selected.
 
-5\. Before selecting **Launch**, make sure your **Experiment** page looks similar to the one above, once ready, click on **Launch**. 
+5\. Before selecting **Launch**, make sure your **Experiment** page looks similar to the one below; once ready, click on **Launch**. 
+
+![review-experiment](assets/review-experiment.png)
 
 Learn more about what each setting means and how it can be updated from its default values by visiting H2O’s Documentation- [Expert Settings](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/expert-settings.html?highlight=expert%20settings)
 
 ### Resources
 
-[1] [Ensemble Learning](https://en.wikipedia.org/wiki/Ensemble_learning)
-
+[1] [Ensemble Learning](https://en.wikipedia.org/wiki/Ensemble_learning)</br>
 [2] [J. Friedman, B. Popescu. “Predictive Learning via Rule Ensembles”. 2005](http://statweb.stanford.edu/~jhf/ftp/RuleFit.pdf)
 
 ### Deeper Dive 
@@ -233,29 +220,27 @@ Learn more about what each setting means and how it can be updated from its defa
 
 ## Task 3: Experiment Scoring and Analysis Concepts
 
-As we learned in the [Automatic Machine Learning Introduction with Driverless AI](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai) it is essential that once a model has been generated that its performance is evaluated. These metrics are used to evaluate the quality of the model that was built and what model score threshold should be used to make predictions. There are multiple metrics for assessing a binary classification machine learning models such as Receiver Operating Characteristics or ROC curve, Precision and Recall or Prec-Recall, Lift, Gain and K-S Charts, to name a few. Each metric evaluates different aspects of the machine learning model. The concepts below are for metrics used in H2O’s Driverless AI to assess the performance of classification models that it generated. The concepts are covered at a very high level. To learn more in-depth about each metric covered here, we have included additional resources at the end of this task. 
+As we learned in the [Automatic Machine Learning Introduction with Driverless AI,](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai) it is essential to evaluate a model's performance when it is complete, especially before production. These metrics are used to evaluate the quality of the model that was built and what model score threshold should be used to make predictions. There are multiple metrics for assessing a binary classification machine learning models such as Receiver Operating Characteristics or ROC curve, Precision and Recall or Prec-Recall, Lift, Gain and K-S Charts, to name a few. Each metric evaluates different aspects of the machine learning model. The concepts below are for metrics used in H2O’s Driverless AI to assess the performance of classification models that it generated. The concepts are covered at a very high level. To learn more in-depth about each metric covered here, we have included additional resources at the end of this task. 
 
 
 ### Binary Classifier
 
-Let’s take a look at a binary classification model. A binary classification model predicts in what two categories(classes) the elements of a given set belong to. In the case of our example, the two categories(classes) are **defaulting** on your home loan and **not defaulting**. The generated model should be able to predict under which category each customer falls.
+Let’s take a look at a binary classification model. A binary classification model predicts in what two categories (classes) the elements of a given set belong to. In the case of our example, the two categories (classes) are **defaulting** on your home loan and **not defaulting**. The generated model should be able to predict under which category each customer falls.
 
 ![binary-output](assets/binary-output.png)
 
-However, two other possible outcomes need to be considered, the false negative and false positives. These are the cases when the model predicted that someone did not default on their bank loan and did. The other case is when the model predicted that someone defaulted on their mortgage, but in reality, they did not. The total outcomes are visualized through a confusion matrix, which is the  two by two table seen below:
+- **Note:** Our target column is `DELINQUENT`, which describes the state of a loan. However, we will be doing the analysis of a person **defaulting** on their loans. In other words, a **delinquent loan is equivalent to someone defaulting on their loans**.
+
+Two other possible outcomes need to be considered, the false negative and false positives. These are the cases when the model predicted that someone did not default on their bank loan and did. The other case is when the model predicted that someone defaulted on their mortgage, but in reality, they did not. The total outcomes are visualized through a confusion matrix, which is the  two by two table seen below:
 
 Binary classifications produce four outcomes: 
 
-**Predicticted as Positive**:
-
-True Positive = TP
-
+**Predicticted as Positive**:</br>
+True Positive = TP</br>
 False Positive = FP
 
-**Predicted as Negative**:
-
-True Negative = TN 
-
+**Predicted as Negative**:</br>
+True Negative = TN </br>
 False Negative = FN 
 
 ![binary-classifier-four-outcomes](assets/binary-classifier-four-outcomes.png)
@@ -294,8 +279,7 @@ The following image provides an illustration of the ratios for sensitivity, spec
 
 ![sensitivity-and-specificity](assets/sensitivity-and-specificity.png)
 
-**Recall** = **Sensitivity** = True Positive Rate = TP / (TP + FN)
-
+**Recall** = **Sensitivity** = True Positive Rate = TP / (TP + FN)</br>
 **Specificity** = True Negative Rate = TN / (FP + TN)
 
 ![false-positive-rate](assets/false-positive-rate.png)
@@ -340,7 +324,7 @@ Below are three types of ROC Curves in correlation to finding the perfect ROC th
 
 As noted above, the closer the ROC curve is to the left (the more significant the AUC percentage), the better the model is at separating classes. 
 
-*Note*: Before moving forward, it's essential to clarify that the smooth histograms plotted result from previous data. Such data has determined that apples with more than 50% (threshold) of their body being red will be considered red apples. Therefore, anything below 50% will be a green apple.
+**Note**: Before moving forward, it's essential to clarify that the smooth histograms plots resulted from a given dataset. Such data has determined that apples with more than 50% (threshold) of their body being red will be considered red apples. Therefore, anything below 50% will be a green apple.
 
 
 #### ROC One: 
@@ -351,7 +335,7 @@ In this case, the above smooth Histogram (1A) is telling us that the distributio
 
 The green bell curve represents green apples while the red bell curve represents the red apples, and the threshold will be at 50%. The x-axis represents the predicted probabilities, while the y-axis represents the count of observations.
 
-From general observations, we can see that the smooth Histogram shows that the current classifier can distinguish between red and green apples only 50% of the time, and such distinction is at the 0.5 thresholds. 
+From general observations, we can see that the smooth Histogram shows that the current classifier can distinguish between red and green apples 100% of the time.
 
 When we draw the ROC Curve (1B) for the smooth Histogram above, we will get the following results: 
 
@@ -387,7 +371,7 @@ Therefore, this ROC curve is not perfect at classifying red and green apples. Th
 
 #### Conclusion
 
-In this case, we will choose the first ROC Curve (with a great classifier) because it leads to an AUC of 1.0 (can separate the green apple class and red apple class (the two classes) with 100% accuracy). 
+In this case, we will choose the first ROC Curve (with a great classifier) because it leads to an AUC of 1.0 (can separate the green apple class and red apple class (the two classes) with 100% accuracy). As you can see, the ROC curve greatly help us to evaluate our model. Next, we will be looking at another plot that can be a compliment to the ROC curve.
 
 ### Prec-Recall
 
@@ -417,7 +401,7 @@ Similarly to the ROC curve, we can use the area under the curve or AUC to compar
 
 **Note:** The closer the Prec-Recall Curve is to the upper-right corner (the bigger the AUC percentage), the better the model predicts the true positives. 
 
-This Prec-Recall Curve in red below has an AUC of approximately 0.7 (in blue) with a relative baseline of 0.5:
+This Prec-Recall Curve in red below has an AUC of approximately 0.7 (in blue) with a baseline of 0.5:
 
 ![prec-recall-07](assets/prec-recall-07.png)
 
@@ -462,8 +446,7 @@ The recall will be calculated as follows:
 Recall = True Positive / (True Positive + False Negative) 
 
 * True Positive: Number of apples that were red that we correctly predicted as red.
-
-* False Negative: Number of apples that were red that we incorrectly predicted as green apples. 
+* False Negative: Number of apples that were red that we incorrectly predicted as green apples.
 
 Hence, the main difference between Precision and Recall is the denominator in the Precision and Recall fraction. In Re-call, false negatives are included, whereas, in Precision, false positives are considered.
 
@@ -487,7 +470,7 @@ It is important to note that after you calculate Recall and Precision values fro
 - The x-axis will show Recall while the y-axis will represent the Precision.
 - Therefore, Precision_Recall curves can clearly show the relationship and tradeoff of having a higher or lower threshold. 
 
-In conclusion, Precision-Recall curves allow for a more in-depth analysis of binary classification models. And when trying to distinguish between red and green apples.
+In conclusion, Precision-Recall curves allow for a more in-depth analysis of binary classification models. And when trying to distinguish between red and green apples. However, what if we do not have a balanced dataset? In the case of an imbalance dataset, we could use the metrics discussed next to evaluate our model.
 
 ### GINI, ACC, F1 F0.5, F2, MCC and Log Loss
 
@@ -519,7 +502,9 @@ Using the confusion matrix table, ACC can be calculated in the following manner:
 
 #### F-Score: F1, F0.5 and F2
 
-The F1 Score is another measurement of classification accuracy. It represents the harmonic average of the precision and recall. F1 is measured in the range of 0 to 1, where 0 means that there are no true positives, and 1 when there is neither false negatives nor false positives or perfect precision and recall [9].
+A Driverless AI model will return probabilities, not predicted classes. To convert probabilities to predicted classes, a threshold needs to be defined. Driverless AI iterates over possible thresholds to calculate a confusion matrix for each threshold. It does this to find the maximum F metric value. Driverless AI’s goal is to continue increasing this maximum F metric.
+
+The F1 Score is another measurement of classification accuracy which provides a measure for how well a binary classifier can classify positive cases (given a threshold value). It represents the harmonic average of the precision and recall. The F1 score is measured in the range of 0 to 1; an F1 score of 1 means both precision and recall are perfect and the model correctly identified all the positive cases and didn’t mark a negative case as a positive case. If either precision or recall are very low it will be reflected with a F1 score closer to 0. [9].
 
 Using the confusion matrix table, the F1 score can be calculated in the following manner:
 
@@ -528,6 +513,8 @@ Using the confusion matrix table, the F1 score can be calculated in the followin
 **F1** equation: 
 
 ![f1-score-equation](assets/f1-score-equation.png)
+
+The F0.5 score is the weighted harmonic mean of the precision and recall (given a threshold value). Unlike the F1 score, which gives equal weight to precision and recall, the F0.5 score gives more weight to precision than to recall. More weight should be given to precision for cases where False Positives are considered worse than False Negatives. For example, if your use case is to predict which products you will run out of, you may consider False Positives worse than False Negatives. In this case, you want your predictions to be very precise and only capture the products that will definitely run out. If you predict a product will need to be restocked when it actually doesn’t, you incur cost by having purchased more inventory than you actually need.
 
 **F0.5** equation:
 
@@ -553,6 +540,8 @@ Using the confusion matrix table MCC can be calculated in the following manner:
 **MCC** equation:
 
 ![mcc-equation](assets/mcc-equation.png)
+
+Unlike metrics like Accuracy, MCC is a good scorer to use when the target variable is imbalanced. In the case of imbalanced data, high Accuracy can be found by predicting the majority class. Metrics like Accuracy and F1 can be misleading, especially in the case of imbalanced data, because they do not consider the relative size of the four confusion matrix categories. MCC, on the other hand, takes the proportion of each class into account.
 
 #### Log Loss (Logloss)
  
@@ -621,7 +610,7 @@ We can start the lift chart with the base rate as seen below; recall that the ba
 
 ![lift-chart-base-rate](assets/lift-chart-base-rate.png)
 
-When looking at the cumulative lift for the top quantiles, X, means is that when we select, let's say 20% from the quantile from the total test cases based on the mode, we can expect X/20 times the total of the number of positive cases found by randomly selecting 20% from the random model.
+When looking at the cumulative lift for the top quantiles, X, and we select let's say 20% from the quantile from the total test cases based on the mode, we can expect X/20 times the total of the number of positive cases found by randomly selecting 20% from the random model.
 
 
 ![lift-chart](assets/lift-chart.png)
@@ -636,40 +625,23 @@ The KS statistic is the maximum difference between the cumulative percentage of 
 
 ### References
 
-[1] [Confusion Matrix definition“ A Dictionary of Psychology“](http://www.oxfordreference.com/view/10.1093/acref/9780199534067.001.0001/acref-9780199534067-e-1778)
-
-[2] [Towards Data Science - Understanding AUC- ROC Curve](https://towardsdatascience.com/understanding-auc-curve-68b2303cc9c5)
-
-[3] [Introduction to ROC](https://classeval.wordpress.com/introduction/introduction-to-the-roc-receiver-operating-characteristics-plot/)
-
-[4] [ROC Curves and Under the Curve (AUC) Explained](https://www.youtube.com/watch?v=OAl6eAyP-yo)
-
-[5] [Introduction to Precision-Recall](https://classeval.wordpress.com/introduction/introduction-to-the-precision-recall-plot/)
-
-[6] [Tharwat, Applied Computing and Informatics (2018)](https://doi.org/10.1016/j.aci.2018.08.003)
-
-[7] [Model Evaluation Classification](https://www.saedsayad.com/model_evaluation_c.htm)
-
-[8] [Wiki Accuracy](https://en.wikipedia.org/wiki/Accuracy_and_precision)
-
-[9] [Wiki F1 Score](https://en.wikipedia.org/wiki/F1_score)
-
-[10] [Wiki Matthew’s Correlation Coefficient](https://en.wikipedia.org/wiki/Matthews_correlation_coefficient)
-
-[11] [Wiki Log Loss](http://wiki.fast.ai/index.php/Log_Loss)
-
-[12] [H2O’s GINI Index](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/scorers/scorers_gini.html?highlight=gini) 
-
-[13] [H2O’s Kolmogorov-Smirnov](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-graphs.html?highlight=mcc)
-
-[14] [Model Evaluation- Classification](https://www.saedsayad.com/model_evaluation_c.htm)
-
-[15] [What is Information Gain in Machine Learning](https://www.quora.com/What-is-Information-gain-in-Machine-Learning)
-
-[16] [Lift Analysis Data Scientist Secret Weapon](https://www.kdnuggets.com/2016/03/lift-analysis-data-scientist-secret-weapon.html)
-
-[17] [Machine Learning Evaluation Metrics Classification Models](https://www.machinelearningplus.com/machine-learning/evaluation-metrics-classification-models-r/) 
-
+[1] [Confusion Matrix definition“ A Dictionary of Psychology“](http://www.oxfordreference.com/view/10.1093/acref/9780199534067.001.0001/acref-9780199534067-e-1778)</br>
+[2] [Towards Data Science - Understanding AUC- ROC Curve](https://towardsdatascience.com/understanding-auc-curve-68b2303cc9c5)</br>
+[3] [Introduction to ROC](https://classeval.wordpress.com/introduction/introduction-to-the-roc-receiver-operating-characteristics-plot/)</br>
+[4] [ROC Curves and Under the Curve (AUC) Explained](https://www.youtube.com/watch?v=OAl6eAyP-yo)</br>
+[5] [Introduction to Precision-Recall](https://classeval.wordpress.com/introduction/introduction-to-the-precision-recall-plot/)</br>
+[6] [Tharwat, Applied Computing and Informatics (2018)](https://doi.org/10.1016/j.aci.2018.08.003)</br>
+[7] [Model Evaluation Classification](https://www.saedsayad.com/model_evaluation_c.htm)</br>
+[8] [Wiki Accuracy](https://en.wikipedia.org/wiki/Accuracy_and_precision)</br>
+[9] [Wiki F1 Score](https://en.wikipedia.org/wiki/F1_score)</br>
+[10] [Wiki Matthew’s Correlation Coefficient](https://en.wikipedia.org/wiki/Matthews_correlation_coefficient)</br>
+[11] [Wiki Log Loss](http://wiki.fast.ai/index.php/Log_Loss)</br>
+[12] [H2O’s GINI Index](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/scorers/scorers_gini.html?highlight=gini) </br>
+[13] [H2O’s Kolmogorov-Smirnov](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-graphs.html?highlight=mcc)</br>
+[14] [Model Evaluation- Classification](https://www.saedsayad.com/model_evaluation_c.htm)</br>
+[15] [What is Information Gain in Machine Learning](https://www.quora.com/What-is-Information-gain-in-Machine-Learning)</br>
+[16] [Lift Analysis Data Scientist Secret Weapon](https://www.kdnuggets.com/2016/03/lift-analysis-data-scientist-secret-weapon.html)</br>
+[17] [Machine Learning Evaluation Metrics Classification Models](https://www.machinelearningplus.com/machine-learning/evaluation-metrics-classification-models-r/) </br>
 [18] [Scikit-Learn: Decision Tree Learning I - Entropy, GINI, and Information Gain](https://www.bogotobogo.com/python/scikit-learn/scikt_machine_learning_Decision_Tree_Learning_Informatioin_Gain_IG_Impurity_Entropy_Gini_Classification_Error.php)
 
 ### Deeper Dive and Resources
@@ -685,7 +657,7 @@ The KS statistic is the maximum difference between the cumulative percentage of 
 
 ## Task 4: Experiment Results Summary
 
-At the end of the experiment, a summary of the project will appear on the right-lower corner.  Also, note that the name of the experiment is at the top-left corner.  
+At the end of the experiment, a summary of the project will appear on the right-lower corner.  Also, note that the name of the experiment is at the top-left corner:
 
 ![experiment-results-summary](assets/experiment-results-summary.png)
 
@@ -727,7 +699,7 @@ Below are three questions to test your understanding of the experiment summary a
 	
 **Note:** If you are not sure what Log loss is, feel free to review the concepts section of this tutorial.
 
-3\. So what do the Log Loss values tell us?  The essential Log Loss value is the test score value. This value tells us how well the model generated did against the freddie_mac_500_test set based on the error rate. In case of experiment **Freddie Mac Classification Tutorial**, the **test score LogLoss = 0.119566 +/- 0** which is the log of the misclassification rate. The greater the Log loss value the more significant the misclassification. For this experiment, the Log Loss was relatively small meaning the error rate for misclassification was not as substantial. But what would a score like this mean for an institution like Freddie Mac?
+3\. So what do the Log Loss values tell us?  The essential Log Loss value is the test score value. This value tells us how well the generated model performed against the freddie_mac_500_test set based on the error rate. In case of experiment **Freddie Mac Classification Tutorial**, the **test score LogLoss = 0.119566 +/- 0** which is the log of the misclassification rate. The greater the Log loss value the more significant the misclassification. For this experiment, the Log Loss was relatively small meaning the error rate for misclassification was not as substantial. But what would a score like this mean for an institution like Freddie Mac?
 
 In the next few tasks we will explore the financial implications of misclassification by exploring the confusion matrix and plots derived from it. 
 
@@ -750,10 +722,11 @@ Now, we are going to run a model diagnostics on the freddie_mac_500_test set. Th
 
 ![diagnose-model](assets/diagnose-model.png)
 
-3\. In the **Create new model diagnostics** : 
-1. Click on Diagnosed Experiment then select the experiment that you completed in Task 4: **Freddie Mac Classification Tutorial**
-2. Click on Dataset then select the freddie_mac_500_test dataset
-3.  Initiate the diagnostics model by clicking on **Launch Diagnostics** 
+3\. In the **Create new model diagnostics**:
+
+**a.** Click on Diagnosed Experiment then select the experiment that you completed in Task 4: **Freddie Mac Classification Tutorial**</br>
+**b.** Click on Dataset then select the freddie_mac_500_test dataset</br>
+**c.**  Initiate the diagnostics model by clicking on **Launch Diagnostics**
 
 ![create-new-model-diagnostic](assets/create-new-model-diagnostic.png)
 
@@ -761,30 +734,27 @@ Now, we are going to run a model diagnostics on the freddie_mac_500_test set. Th
 
 ![new-model-diagnostics](assets/new-model-diagnostics.png) 
 
-*Things to Note:*
-
-1. Name of new diagnostics model
-2. **Model**: Name of ML model used for diagnostics
-3. **Dataset**: name of the dataset used for diagnostic
-4. **Message** : Message regarding new diagnostics model 
-5. **Status** : Status of new diagnostics model
-6. **Time** : Time it took for the  new diagnostics model to run
-7. Options for this model
+- *Things to Note:*</br>
+**a.** Name of new diagnostics model</br>
+**b.** **Model**: Name of ML model used for diagnostics</br>
+**c.** **Dataset**: name of the dataset used for diagnostic</br>
+**d.** **Message** : Message regarding new diagnostics model</br>
+**e.** **Status** : Status of new diagnostics model</br>
+**f.** **Time** : Time it took for the  new diagnostics model to run</br>
+**g.** Options for this model
 
 5\. Click on the new diagnostics model and a page similar to the one below will appear:
 
 ![diagnostics-model-results](assets/diagnostics-model-results.png)
 
-*Things to Note:*
+- *Things to Note:*
 
-1. **Info**: Information about the diagnostics model including the name of the test dataset, name of the experiment used and the target column used for the experiment
-2. **Scores**: Summary for the values for GINI, MCC, F05, F1, F2, Accuracy, Log loss, AUC and AUCPR in relation to how well the experiment model scored against a “new” dataset
+a. **Info**: Information about the diagnostics model including the name of the test dataset, name of the experiment used and the target column used for the experiment</br>
+b. **Scores**: Summary for the values for GINI, MCC, F05, F1, F2, Accuracy, Log loss, AUC and AUCPR in relation to how well the experiment model scored against a “new” dataset</br>
+  - **Note:** The new dataset must be the same format and with the same number of columns as the training dataset
 
-    -  **Note:** The new dataset must be the same format and with the same number of columns as the training dataset 
-
-3. **Metric Plots**: Metrics used to score the experiment model including ROC Curve, Pre-Recall Curve, Cumulative Gains, Lift Chart, Kolmogorov-Smirnov Chart, and Confusion Matrix
-
-4. **Download Predictions**: Download the diagnostics predictions
+c. **Metric Plots**: Metrics used to score the experiment model including ROC Curve, Pre-Recall Curve, Cumulative Gains, Lift Chart, Kolmogorov-Smirnov Chart, and Confusion Matrix</br>
+d. **Download Predictions**: Download the diagnostics predictions
  
 **Note:** The scores will be different for the train dataset and the validation dataset used during  the training of the model.
 
@@ -856,7 +826,7 @@ Looking at the **False Negatives**, we do the same and take the **2794** cases t
 
 The **misclassification rate** provides a summary of the **sum of** the **False Positives** and **False Negatives** **divided by** the **total cases in the test dataset**. The misclassification rate for this model was **0.0635**.  If this model were used to determine home loan approvals, the mortgage institutions would need to consider approximately **401 million dollars** in losses for misclassified loans that got approved and shouldn’t have. Also, **739 million dollars** on loans that were not approved since they were classified as defaulting.
 
-One way to look at these results is to ask the question: is missing out on approximately **739 million dollars** from loans that were not approved better than losing about **401 million dollars** from loans that were approved and then defaulted? There is no definite answer to this question, and the answer depends on the mortgage institution. 
+One way to look at these results is to ask the question: Is missing out on approximately **739 million dollars** from loans that were not approved better than losing about **401 million dollars** from loans that were approved and then defaulted? There is no definite answer to this question, and the answer depends on the mortgage institution. 
 
 ![diagnostics-confusion-matrix-4](assets/diagnostics-confusion-matrix-4.png)
 
@@ -952,17 +922,17 @@ Remember that for the **ROC** curve:
 
 ### New Experiment with Same Settings
 
-In case you were curious and wanted to know if you could improve the accuracy of the model, you could try changing the scorer from Logloss to Accuracy. A question to keep in mind after making this change, **Does changing the scorer from Logloss to Accuracy improve the model's accuracy?**
+In case you were curious and wanted to know if you could improve the accuracy of the model, you could try changing the scorer from Logloss to Accuracy. A question to keep in mind after making this change, **does changing the scorer from Logloss to Accuracy improve the model's accuracy?**
 
 1\. To do this, click on the **Experiments** page.
 
-2\. Click on the experiment you did for task 1 and select **New Experiment with Same Settings**
+2\. Click on the experiment you did for task 1 and select **New Experiment with Same Settings**:
 
 ![new-model-w-same-params](assets/new-model-w-same-params.png)
 
 An image similar to the one below will appear. Note that this page has the same settings as the setting in Task 1. The only difference is that on the **Scorer** section, we updated **Logloss** to **Accuracy**. Everything else should remain the same.
 
-3\. If you haven’t done so, select **Accuracy** on the scorer section then select **Launch Experiment**
+3\. If you haven’t done so, select **Accuracy** on the scorer section then select **Launch Experiment**:
 
 ![new-model-accuracy](assets/new-model-accuracy.png)
 
@@ -974,13 +944,13 @@ We are going to use this new experiment to run a new diagnostics test. You will 
 
 4\. Go to the **Diagnostics** tab.
 
-5\. Once in the **Diagnostics** page, select **+Diagnose Model**
+5\. Once in the **Diagnostics** page, select **+Diagnose Model**.
 
-6\. In the **Create new model diagnostics** : 
+6\. In the **Create new model diagnostics**:
 
-  1. Click on **Diagnosed Experiment**, then select the experiment that you completed in this Task. In this case, the experiment name is **1.Freddie Mac Classification Tutorial** 
-  2. Click on **Test Dataset** then select the **freddie_mac_500_test** dataset
-  3. Initiate the diagnostics model by clicking on **Launch Diagnostics** 
+  **a.** Click on **Diagnosed Experiment**, then select the experiment that you completed in this Task. In this case, the experiment name is **1.Freddie Mac Classification Tutorial**</br>
+  **b.** Click on **Test Dataset** then select the **freddie_mac_500_test** dataset</br>
+  **c.** Initiate the diagnostics model by clicking on **Launch Diagnostics**:</br>
 
 ![diagnostics-create-new-model-for-accuracy](assets/diagnostics-create-new-model-for-accuracy.png)
 
@@ -1009,8 +979,6 @@ The new model predicted:
 - TN = 120,428 cases predicted as not defaulting and did not default
 - FP = 109 cases predicted as defaulting and did not default
 - FN = 4,347 cases predicted not to default and defaulted
-
-
 
 The **threshold for best accuracy** changed from **0.4959 for the first diagnostics model** to **0.5201 for the new model**. This decrease in threshold impaired the accuracy of the number of correct predictions made as a ratio of all predictions made. Note, however, that while the number of FP's decreased, the number of FN's increased. We were able to reduce the number of cases that were predicted to falsy default, but in doing so, we increased the number of FN or cases that were predicted not to default and did.
 
@@ -1138,6 +1106,7 @@ A Lift chart is a visual aid for measuring model performance.
 1\. Hover over the various quantile points on the Lift chart to view the quantile percentage and cumulative lift values
 
 2\. What is the cumulative lift at 1%, 2%, 10% quantiles?
+
 ![diagnostics-lift-10-percent](assets/diagnostics-lift-10-percent.png)
 
 For this Lift Chart, all the predictions were sorted according to decreasing scores generated by the model. In other words, uncertainty increases as the quantile moves to the right. At the 10% quantile, our model predicted a cumulative lift of about 5.3%, meaning that there were five times more defaults among the top 10% of the cases.
@@ -1216,13 +1185,13 @@ This report provides insight into the training data and any detected shifts in d
 
 4\. Explore Feature Evolution and Feature Transformation, how is this summary different from the summary provided in the **Experiments Page**?
   
-    Answer:In the experiment page, you can set the name of your experiment, set up the dataset being used to create an experiment, view the total number of rows and columns of your dataset, drop columns, select a dataset to validate, etc. 
+  - Answer: In the experiment page, you can set the name of your experiment, set up the dataset being used to create an experiment, view the total number of rows and columns of your dataset, drop columns, select a dataset to validate, etc.
 
-    Different, the experiment summary report contains insight into the training data and any detected shifts in distribution, the validation schema, etc. In particular, when exploring the feature evolution and feature transformation in the summary report, we will encounter the following information: 
+    Different, the experiment summary report contains insight into the training data and any detected shifts in distribution, the validation schema, etc. In particular, when exploring the feature evolution and feature transformation in the summary report, we will encounter the following information:
 
-    Feature evolution: This summary will detail the algorithms used to create the experiment. 
+    **Feature evolution:** This summary will detail the algorithms used to create the experiment.
 
-    Feature transformation: The summary will provide information about automatically engineer new features with high-value features for a given dataset. 
+    **Feature transformation:** The summary will provide information about automatically engineer new features with high-value features for a given dataset.
 
 5\. Find the section titled **Final Model** on the report.docx and explore the following items:
 - Table titled **Performance of Final Model** and determine the **logloss** final test score
