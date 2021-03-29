@@ -462,7 +462,7 @@ Driverless AI NLP recipe makes use of the power of word embeddings where words o
 
 - **Bi-direction GRU models on Word Embeddings(TensorFlow)**
 
-A Bi-directional GRU model is like putting two independent RNN models in one. Taking note of accuracy as well as speed in our experiments, we have decided to take advantage of high speed and almost similar accuracies of GRU architecture compared to its counterpart LSTM.
+A Bi-directional GRU model is like putting two independent RNN models in one. GRU gives higher speed and almost similar accuracy when compared to its counterpart LSTM. 
 
 - **Convolution neural network models on:**
 
