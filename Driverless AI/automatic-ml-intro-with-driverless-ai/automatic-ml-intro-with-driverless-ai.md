@@ -337,7 +337,7 @@ Next, we are going to confirm that the dataset loaded correctly and that it has 
             ![feature-props-click-to-edit](assets/feature-props-click-to-edit.jpg)
     - Click **Feature Engineering Type(s):** 
             ![feature-props-auto-to-detect](assets/feature-props-auto-detect.jpg)
-    - Select column feature engineering types(2) (then click **done** at the bottom of page(3)) or start typing to filter out items(1):
+    - Select column feature engineering types(b) (then click **done** at the bottom of page(c)) or start typing to filter out items(a):
             ![logical-type-options](assets/logical-type-options.png)
 
 3\. To continue learning about what details are available, click on the following button: **Dataset Rows**. The following will appear: 
