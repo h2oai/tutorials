@@ -976,6 +976,7 @@ This section describes MLI functionality and features for regular experiments. F
     *Note:*
 
    1\. Go to ML documentation
+   
    - MLI Docs - Link to the "Machine Learning Interpretability with Driverless AI" booklet
 
    2\.Display MLI Java Logs
