@@ -204,21 +204,21 @@ Specify whether to use Word-based CNN TensorFlow models for NLP. This option is 
 
 - **Word-Based BiGRU TensorFlow Models for NLP**
 
-Specify whether to use Word-based BiG-RU TensorFlow models for NLP. This option is ignored if TensorFlow is disabled.For this experiment,we shall disable this setting.
+Specify whether to use Word-based BiG-RU TensorFlow models for NLP. This option is ignored if TensorFlow is disabled. We recommend that you disable this option on systems that do not use GPUs.
 
 - **Character-Based CNN TensorFlow Models for NLP**
 
 Specify whether to use Character-level CNN TensorFlow models for NLP. This option is ignored if TensorFlow is disabled. We recommend that you disable this option on systems that do not use GPUs.
 
-- **PyTorch Models for NLP**
+- **PyTorch Models for NLP (Experimental)**
 
-Specify whether to enable pre-trained PyTorch models and fine-tune them for NLP tasks. This is set to Auto by default. You need to set this to On if you want to use the PyTorch models like BERT for feature engineering or for modeling. We recommend that you use GPUs to speed up execution when this option is used. **Please note that for this lab, we are going to leave the setting in AUTO mode**.
+Specify whether to enable pre-trained PyTorch models and fine-tune them for NLP tasks. This is set to Auto by default. You need to set this to On if you want to use the PyTorch models like BERT for feature engineering or for modeling. We recommend that you use GPUs to speed up execution when this option is used.
 
 ![nlp-expert-settings](assets/nlp-expert-settings.jpg)
 
-- **Select Which Pretrained PyTorch NLP Models to Use(Optional)**
+- **Select Which Pretrained PyTorch NLP Models to Use**
 
-This setting is to be used if you enable the Pytorch Models. Click on the `Select Which Pretrained PyTorch NLP Models to Use` and specify one or more pretrained PyTorch NLP models to use from the following list:
+Click on the `Select Which Pretrained PyTorch NLP Models to Use` and specify one or more pretrained PyTorch NLP models to use from the following list:
 
 ![pytorch-pretrained-models](assets/pytorch-pretrained-models.jpg)
 
@@ -378,8 +378,9 @@ Word embeddings can be passed as inputs to CNN models, and cross-validated predi
 
 RNNs like LSTM and GRU are state of the art algorithms for NLP problems. Simply, put a Bi-directional GRU model is putting two independent RNN models in one.
 
-For example, in the sentence "John is walking on the golf court", a unidirectional model would represent states with representing "golf" based on "John is walking" but not the "court". However, by using a bi-directional model, the representation would also account for the later representations giving the model more predictive power.
- This makes it a more ‘natural' approach when dealing with textual data since the text is naturally sequential[6].
+For example, in the sentence "John is walking on the golf court", a unidirectional model would represent states with representing "golf" based on "John is walking" but not the "court". Using a bi-directional model, the representation would also account the later representations giving the model more predictive power.
+
+This makes it a more ‘natural' approach when dealing with textual data since the text is naturally sequential[6].
 
 ![rnn](assets/rnn.jpg)
 
@@ -425,11 +426,7 @@ Once the features have been extracted, they can then be used for training a clas
 
 ## Task 4: Driverless AI NLP Recipe
 
-*Note: This section includes all the current capabilities of Driverless AI's NLP module. Not all the settings have been enabled in the current sentiment analysis experiment.*
-
-Text data can contain critical information to inform better predictions. Driverless AI automatically converts text strings into features using powerful techniques like TFIDF, CNN, and GRU. Driverless AI now also includes state-of-the-art PyTorch BERT transformers that can be used for Feature Engineering or as Modeling Algorithms. With advanced NLP techniques, Driverless AI can process larger text blocks and build models using all available data and to solve business problems like sentiment analysis, document classification, and content tagging.
-
-The Driverless AI platform has the ability to support both standalone text and text with other columns as predictive features. In particular, the following NLP recipes are available for a given text column:
+Text data can contain critical information to inform better predictions. H2O Driverless AI automatically converts text strings into features using powerful techniques like TFIDF, CNN, and GRU. Driverless AI version 1.9 introduces support for PyTorch Transformer Architectures (for example, BERT) that can be used for Feature Engineering or as Modeling Algorithms. The Driverless AI platform has the ability to support both standalone text and text with other columns as predictive features. In particular, the following NLP recipes are available for a given text column:
 
 ![driverless-nlp-recipe](assets/driverless-nlp-recipe.jpg)
 
@@ -440,13 +437,11 @@ An n-gram is a continuous sequence of n items from a given sample of text or spe
 
 - **TFIDF of n-grams**
 
-Frequency-based features can be multiplied with the inverse document frequency to get term frequency–inverse document frequency (TF-IDF) vectors. Doing so also gives importance to the rare terms that occur in the corpus, which may be helpful in certain classification tasks.
-![](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/_images/ngram_tfidf.png)
+Frequency-based features are multiplied with inverse document frequency to get TFIDF vectors.
+
 - **Frequency of n-grams**
 
-Frequency-based features represent the count of each word from a given text in the form of vectors. These are created for different n-gram values. For example, a one-gram is equivalent to a single word, a two-gram is equivalent to two consecutive words paired together, and so on.
-
-Words and n-grams that occur more often will receive a higher weightage. The ones that are rare will receive a lower weightage.
+Frequency-based features represent the count of each word in the given text in the form of vectors. Frequency-based features are created for different n-gram values[2]. The dimensions of the output vectors are quite high. Words/n-grams that occur more number of times will get higher weightage than the ones that occur less frequently.
 
 - **Truncated SVD Features**
 
@@ -460,23 +455,23 @@ In our NLP recipe, we also have linear models on top of n-gram TFIDF / frequency
 
 Driverless AI NLP recipe makes use of the power of word embeddings where words or phrases from the vocabulary are mapped to vectors of real numbers.
 
-- **Bi-direction GRU models on Word Embeddings(TensorFlow)**
+- **Bi-direction GRU models on Word Embeddings**
 
-A Bi-directional GRU model is like putting two independent RNN models in one. GRU gives higher speed and almost similar accuracy when compared to its counterpart LSTM. 
+A Bi-directional GRU model is like putting two independent RNN models in one. Taking note of accuracy as well as speed in our experiments, we have decided to take advantage of high speed and almost similar accuracies of GRU architecture compared to its counterpart LSTM.
 
 - **Convolution neural network models on:**
 
-     - **Word embeddings followed by CNN model (TensorFlow)**
+     - **Word Embeddings**
 
      In Driverless AI, we pass word embeddings as input to CNN models, get cross-validated predictions from it and use them as a new set of features.
 
-     - **Character embeddings followed by CNN model (TensorFlow)**
+     - **Character embeddings**
 
      Natural language processing is complex as the language is hard to understand given small data and different languages. Targeting languages like Japanese, Chinese where characters play a major role, we have character level embeddings in our recipe as well.
 
      In character embeddings, each character gets represented in the form of vectors rather than words. Driverless AI uses character level embeddings as input to CNN models and later extracts class probabilities to feed as features for downstream models: this gives the ability to work in languages other than English. In languages like Japanese and Chinese, where there is no concept of words, character embeddings will be useful.
 
-- **BERT/DistilBERT based embeddings for Feature Engineering (PyTorch):**
+- **BERT/DistilBERT Models for Feature Engineering:**
 
 BERT and [DistilBERT](https://arxiv.org/abs/1910.01108) models can be used for generating embeddings for any text columns. These pre-trained models are used to get embeddings for the text followed by Linear/Logistic Regression to generate features that can then be used for any downstream models in Driverless AI.
 
@@ -593,7 +588,7 @@ There are also several plots adjacent to the summary tab that give insight into 
 
 ## Task 6: Custom Recipe to Improve Predictions
 
-The latest version of Driverless AI implements a key feature called BYOR[1], which stands for Bring Your Own Recipes and was introduced in with Driverless AI (1.7.0). This feature has been designed to enable Data Scientists or domain experts to influence and customize the machine learning optimization used by Driverless AI as per their business needs. This additional feature engineering technique is aimed towards improving the accuracy of the model.
+The latest version(1.9.0) of Driverless AI implements a key feature called BYOR[1], which stands for Bring Your Own Recipes and was introduced in with Driverless AI (1.7.0). This feature has been designed to enable Data Scientists or domain experts to influence and customize the machine learning optimization used by Driverless AI as per their business needs. This additional feature engineering technique is aimed towards improving the accuracy of the model.
 
 Recipes are customizations and extensions to the Driverless AI platform. TThey are nothing but Python code snippets uploaded into Driverless AI at runtime, like plugins. Recipes can be either one or a combination of the following:
 
@@ -621,7 +616,7 @@ H2O has built and open-sourced several recipes[2] which can be used as templates
 4\. Alternately, you can also upload a recipe via URL. Click on the LOAD CUSTOM RECIPE FROM URL tab and enter the raw Github URL of the recipe. Click save when done
     
 ```
-https://raw.githubusercontent.com/h2oai/driverlessai-recipes/rel-1.9.1/transformers/nlp/text_sentiment_transformer.py
+https://github.com/h2oai/driverlessai-recipes/blob/rel-1.9.0/transformers/nlp/text_sentiment_transformer.py
 ```
   
 ![uploading-recipe-from-url](assets/uploading-recipe-from-url.jpg)
