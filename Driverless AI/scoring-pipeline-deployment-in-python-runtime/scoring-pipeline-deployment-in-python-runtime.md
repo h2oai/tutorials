@@ -13,6 +13,7 @@
 - [Appendix A: Glossary](#appendix-a-glossary)
 
 ## Objective
+
 **Machine Learning Model Deployment** is the process of making your models available in production environments, so they can be used to make predictions for other software systems [1]. Before model deployment, **feature engineering** occurs in preparing data that will later be used to train a model [2]. Driverless AI **Automatic Machine Learning (AutoML)** combines the best feature engineering and one or more **machine learning models** into a scoring pipeline [3][4]. The **scoring pipeline** is used to score or predict data when given new test data [5]. The scoring pipeline comes in two flavors. The first scoring pipeline is a **Model Object, Optimized(MOJO) Scoring Pipeline,** which is a standalone, low-latency model object designed to be easily embeddable in production environments. The second scoring pipeline is a Python Scoring Pipeline, which has a heavy footprint that is all Python and uses the latest libraries of Driverless AI to allow for executing custom scoring recipes[6].
 
 For this tutorial, we will continue using the prebuilt experiment: **Model_deployment_HydraulicSystem.**  The Driverless AI  experiment is a classifier model that classifies whether the **cooling condition** of a **Hydraulic System Test Rig** is 3, 20, or 100. By looking at the **cooling condition,** we can predict whether the Hydraulic Cooler operates **close to total failure**, **reduced efficiency**, or **full efficiency**. 
@@ -37,22 +38,14 @@ By the end of this tutorial, you will predict the Hydraulic System Test Rig's co
 
 ### Resources
 
-[1] H2O.ai Community AI Glossary: [Machine Learning Model Deployment](https://www.h2o.ai/community/glossary/machine-learning-model-deployment-productionization-productionizing-machine-learning-models)
-
-[2] H2O.ai Community AI Glossary: [Feature Engineering](https://www.h2o.ai/community/glossary/feature-engineering-data-transformation)
-
-[3] H2O.ai Community AI Glossary: [Automatic Machine Learning (AutoML)](https://www.h2o.ai/community/glossary/automatic-machine-learning-automl)
-
-[4] H2O.ai Community AI Glossary: [Machine Learning Model](https://www.h2o.ai/community/glossary/machine-learning-model)
-
-[5] H2O.ai Community AI Glossary: [Scoring Pipeline](https://www.h2o.ai/community/glossary/scoring-pipeline)
-
-[6] H2O.ai Community AI Glossary: [Model Object, Optimized (MOJO) Scoring Pipeline](https://www.h2o.ai/community/glossary/model-object-optimized-mojo)
-
-[7] [UCI Machine Learning Repository - Condition Monitoring of Hydraulic Systems Data Set](https://archive.ics.uci.edu/ml/datasets/Condition+monitoring+of+hydraulic+systems#)
-
-[8] [SAVERY - HYDRAULIC TEST RIGS AND BENCHES](https://www.savery.co.uk/systems/test-benches)
-
+[1] H2O.ai Community AI Glossary: [Machine Learning Model Deployment](https://www.h2o.ai/community/glossary/machine-learning-model-deployment-productionization-productionizing-machine-learning-models)</br>
+[2] H2O.ai Community AI Glossary: [Feature Engineering](https://www.h2o.ai/community/glossary/feature-engineering-data-transformation)</br>
+[3] H2O.ai Community AI Glossary: [Automatic Machine Learning (AutoML)](https://www.h2o.ai/community/glossary/automatic-machine-learning-automl)</br>
+[4] H2O.ai Community AI Glossary: [Machine Learning Model](https://www.h2o.ai/community/glossary/machine-learning-model)</br>
+[5] H2O.ai Community AI Glossary: [Scoring Pipeline](https://www.h2o.ai/community/glossary/scoring-pipeline)</br>
+[6] H2O.ai Community AI Glossary: [Model Object, Optimized (MOJO) Scoring Pipeline](https://www.h2o.ai/community/glossary/model-object-optimized-mojo)</br>
+[7] [UCI Machine Learning Repository - Condition Monitoring of Hydraulic Systems Data Set](https://archive.ics.uci.edu/ml/datasets/Condition+monitoring+of+hydraulic+systems#)</br>
+[8] [SAVERY - HYDRAULIC TEST RIGS AND BENCHES](https://www.savery.co.uk/systems/test-benches)</br>
 [9] [HYDROTECHNIK - Flow and Temperature Testing Components](https://www.hydrotechnik.co.uk/flow-and-temperature-hydraulic-test-bed)
 
 ### Deeper Dive
@@ -308,11 +301,11 @@ deactivate
 ```bash
 botocore 1.19.19 requires urllib3<1.27,>=1.25.4; python_version != "3.4", but you'll have urllib3 1.24.3 which is incompatible.
 transformers 2.3.0 requires regex!=2019.12.17, but you'll have regex 2019.12.17 which is incompatible.
-h2oaicore 1.9.0 requires psutil==5.6.7, but you'll have psutil 5.7.3 which is incompatible.
-h2oaicore 1.9.0 requires six==1.12.0, but you'll have six 1.15.0 which is incompatible.
-h2oaicore 1.9.0 requires tabulate==0.8.2, but you'll have tabulate 0.8.7 which is incompatible.
-h2oaicore 1.9.0 requires urllib3==1.23, but you'll have urllib3 1.24.3 which is incompatible.
-h2oaicore 1.9.0 requires wheel==0.33.4, but you'll have wheel 0.35.1 which is incompatible.
+h2oaicore 1.x.x requires psutil==5.6.7, but you'll have psutil 5.7.3 which is incompatible.
+h2oaicore 1.x.x requires six==1.12.0, but you'll have six 1.15.0 which is incompatible.
+h2oaicore 1.x.x requires tabulate==0.8.2, but you'll have tabulate 0.8.7 which is incompatible.
+h2oaicore 1.x.x requires urllib3==1.23, but you'll have urllib3 1.24.3 which is incompatible.
+h2oaicore 1.x.x requires wheel==0.33.4, but you'll have wheel 0.35.1 which is incompatible.
 ```
 
 With the environment set up for the **Python Scoring Pipeline**, we are ready to classify the Hydraulic System cooling condition from the Hydraulic test data. Still, first, we will focus on learning the Python Scoring Pipeline concepts.
