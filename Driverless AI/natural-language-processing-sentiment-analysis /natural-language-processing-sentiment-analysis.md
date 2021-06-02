@@ -36,9 +36,9 @@ Here are some of the uses of Sentiment Analysis from a business perspective:
 - Drive proactive business solutions 
 - Measure the ROI of the marketing campaign
 
-In this tutorial, we will learn some core NLP concepts that will enable us to build and understand an NLP model capable of classifying fine food reviews from Amazon customers. In other words, we will conduct a **Sensitivity Analysis** on the various customer reviews. 
+In this self-paced course, we will learn some core NLP concepts that will enable us to build and understand an NLP model capable of classifying fine food reviews from Amazon customers. In other words, we will conduct a **Sensitivity Analysis** on the various customer reviews. 
 
-**Note**: It is highly recommended that you go over the entire tutorial before starting the experiment. 
+**Note**: It is highly recommended that you go over the entire self-paced course before starting the experiment. 
 
 ### References 
 
@@ -46,13 +46,13 @@ In this tutorial, we will learn some core NLP concepts that will enable us to bu
  
 ## Prerequisites
 
-You will need the following to be able to do this tutorial:
+You will need the following to be able to do this self-paced course:
 
 - Basic knowledge of Machine Learning and Statistics  
 - A hands on knowledge of the Driverless AI environment
-- Basic knowledge of Driverless AI or completion of the following tutorial: [Automatic Machine Learning Introduction with Drivereless AI](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai) 
+- Basic knowledge of Driverless AI or completion of the following self-paced course: [Automatic Machine Learning Introduction with Drivereless AI](https://training.h2o.ai/products/self-paced-course-1a-automatic-machine-learning-introduction-with-driverless-ai) 
 - A **Two-Hour Test Drive session** : Test Drive is H2O.ai's Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.
-  - Need a **Two-Hour Test Drive** session? Follow the instructions on [this quick tutorial](https://training.h2o.ai/products/tutorial-0-getting-started-with-driverless-ai-test-drive) to get a Test Drive session started. 
+  - Need a **Two-Hour Test Drive** session? Follow the instructions on [this quick self-paced course](https://training.h2o.ai/products/self-paced-course-0-getting-started-with-driverless-ai-test-drive) to get a Test Drive session started. 
   
 **Note:  Aquarium’s Driverless AI Test Drive lab has a license key built-in, so you don’t need to request one to use it. Each Driverless AI Test Drive instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore Driverless AI, you can always launch another Test Drive instance or reach out to our sales team via the [contact us form](https://www.h2o.ai/company/contact/).**
 
@@ -70,10 +70,10 @@ The data has been originally hosted by SNAP ([Stanford Large Network Dataset Col
  
 ### Dataset Overview
 
-In **Aquarium**, the **Driverless AI Test Drive** instance has the **Amazon fine food review** dataset already and has been split for this tutorial's experiment. The split resulted in a train and test dataset. The datasets can be located on the Datasets overview page. However, you can also upload the datasets externally. To learn more about how to add the dataset please consult [Appendix A: Add the Dataset](#appendix-a-add-the-datasets).
+In **Aquarium**, the **Driverless AI Test Drive** instance has the **Amazon fine food review** dataset already and has been split for this self-paced course's experiment. The split resulted in a train and test dataset. The datasets can be located on the Datasets overview page. However, you can also upload the datasets externally. To learn more about how to add the dataset please consult [Appendix A: Add the Dataset](#appendix-a-add-the-datasets).
 
 
-1\. In the **Datasets** overview page, observe the two datasets we will use for this tutorial:
+1\. In the **Datasets** overview page, observe the two datasets we will use for this self-paced course:
 
 ![datasets-overview](assets/datasets-overview.jpg)
 
@@ -491,7 +491,7 @@ If you decided to run the experiment constructed in tasks one and two, it most l
      - This option gives a brief summary of the entire experiment including:
           - The number of features tested and selected 
           - The models that Driverless AI trained for feature evolution 
-     - There are also several plots adjacent to the summary tab that give insight into the experiment. If you are interested in learning more about each plot and the metrics derived from those plots, check out the following tutorial: [Machine Learning Experiment Scoring and Analysis - Financial Focus](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus).
+     - There are also several plots adjacent to the summary tab that give insight into the experiment. If you are interested in learning more about each plot and the metrics derived from those plots, check out the following self-paced course: [Machine Learning Experiment Scoring and Analysis - Financial Focus](https://training.h2o.ai/products/self-paced-course-1b-machine-learning-experiment-scoring-and-analysis-financial-focus).
 
 If you would like to explore how custom recipes can improve predictions; in other words, how custom recipes could decrease the value of LOGLOSS (in our current observe experiment), please refer to [Appendix B](#appendix-b-custom-recipe-to-improve-predictions). 
 
@@ -507,7 +507,7 @@ If you would like to explore how custom recipes can improve predictions; in othe
 
 ### Deeper Dive and Resources
 
-- [Get Started and Consume Existing Recipes](https://h2oai.github.io/tutorials/get-started-and-consume-existing-recipes)
+- [Get Started with Open Source Custom Recipes](https://training.h2o.ai/products/self-paced-course-3a-get-started-with-open-source-custom-recipes)
 
 ##  Task 6: Challenge
 
@@ -584,7 +584,7 @@ H2O has built and open-sourced several recipes[2], which can be used as template
 
 **Please note that in this appendix, we will show you how to add the Sentiment transformer. However, we don't recommend that you run this on Aquarium, as Aquarium provides a small environment; the experiment might not finish on time or might not give you the expected results. If you are trying to see how recipes can help improve an NLP experiment, we recommend that you obtain a bigger machine with more resources to see improvements.** 
 
-1\. In the **Experiments** section, click on the three dots next to the tutorial: ```Sentiment Analysis```.  In it, select the following option: **New Experiment with Same Settings**. The following will appear: 
+1\. In the **Experiments** section, click on the three dots next to the experimet: ```Sentiment Analysis```.  In it, select the following option: **New Experiment with Same Settings**. The following will appear: 
 
 ![clickon-expert-settings](assets/clickon-expert-settings.jpg)
 
@@ -644,7 +644,7 @@ https://raw.githubusercontent.com/h2oai/driverlessai-recipes/rel-1.9.1/transform
 
 ## Next Steps
 
-Check out the following tutorial in the learning path:  [Get Started with Open Source Custom Recipes](https://training.h2o.ai/products/tutorial-3a-get-started-with-open-source-custom-recipes-tutorial). In it, you will learn the following: 
+Check out the following self-paced course in the learning path: [Get Started with Open Source Custom Recipes](https://training.h2o.ai/products/self-paced-course-3a-get-started-with-open-source-custom-recipes). In it, you will learn the following: 
 
 - What is Bring Your Own Recipe?
 - What is a recipe?
