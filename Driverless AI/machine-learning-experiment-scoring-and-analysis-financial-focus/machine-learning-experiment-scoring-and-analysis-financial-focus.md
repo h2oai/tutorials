@@ -19,19 +19,19 @@
 
 ## Objective
 
-Many tools, such as ROC and Precision-Recall Curves, are available to evaluate how good or bad a classification model predicts outcomes. In this tutorial, we will use a subset of the Freddie Mac Single-Family Loan-Level dataset to build a classification model and use it to predict if a loan will become delinquent. Through H2O's Driverless AI Diagnostic tool, we will explore the financial impacts the false positive and false negative predictions have while exploring tools like ROC Curve, Prec-Recall, Gain Charts, Lift Charts, and K-S Chart. Finally, we will explore a few metrics such as AUC, F-Scores, GINI, MCC, and Log Loss to evaluate the generated model's performance.
+Many tools, such as ROC and Precision-Recall Curves, are available to evaluate how good or bad a classification model predicts outcomes. In this self-paced course, we will use a subset of the Freddie Mac Single-Family Loan-Level dataset to build a classification model and use it to predict if a loan will become delinquent. Through H2O's Driverless AI Diagnostic tool, we will explore the financial impacts the false positive and false negative predictions have while exploring tools like ROC Curve, Prec-Recall, Gain Charts, Lift Charts, and K-S Chart. Finally, we will explore a few metrics such as AUC, F-Scores, GINI, MCC, and Log Loss to evaluate the generated model's performance.
 
-**Note:** We recommend that you go over the entire tutorial first to review all the concepts; that way, you will be more familiar with the content once you start the experiment.
+**Note:** We recommend that you go over the entire self-paced course first to review all the concepts; that way, you will be more familiar with the content once you start the experiment.
   
 ## Prerequisites
 
-You will need the following to be able to do this tutorial:
+You will need the following to be able to do this self-paced course:
 
 - Basic knowledge of Machine Learning and Statistics
 - A Driverless AI environment
-- Basic knowledge of Driverless AI or doing the [Automatic Machine Learning Introduction with Driverless AI](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai)
+- Basic knowledge of Driverless AI or doing the [Automatic Machine Learning Introduction with Driverless AI](https://training.h2o.ai/products/self-paced-course-1a-automatic-machine-learning-introduction-with-driverless-ai)
 - A **Two-Hour Test Drive session**: Test Drive is H2O.ai's Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.
-  - Need a **Two-Hour Test Drive** session? Follow the instructions on [this quick tutorial](https://training.h2o.ai/products/tutorial-0-getting-started-with-driverless-ai-test-drive) to get a Test Drive session started.
+  - Need a **Two-Hour Test Drive** session? Follow the instructions on [this quick self-paced course](https://training.h2o.ai/products/self-paced-course-0-getting-started-with-driverless-ai-test-drive) to get a Test Drive session started.
 
 **Note: Aquarium’s Driverless AI Test Drive lab has a license key built-in, so you don’t need to request one to use it. Each Driverless AI Test Drive instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore Driverless AI, you can always launch another Test Drive instance or reach out to our sales team via the [contact us form](https://www.h2o.ai/company/contact/).**
 
@@ -102,7 +102,7 @@ The training set contains 375k rows, each row representing a loan, and 27 column
 
 11\. Select **Not Now** on the **First time Driverless AI, Click Yes to get a tour!**. A similar image should appear:
 
-![loan-level-predict](assets/loan-level-predict.png)
+![loan-level-predict](assets/loan-level-predict.png)</br>
 
 Name your experiment `Freddie Mac Classification Tutorial`
 
@@ -159,7 +159,7 @@ Time specifies the relative time for completing the experiment (i.e., higher set
 
 The interpretability knob is adjustable. The higher the interpretability, the simpler the features the main modeling routine will extract from the dataset. If the interpretability is high enough, then a monotonically constrained model will be generated.
 
-2\.  For this tutorial update the following experiment settings so that they match the image below: 
+2\.  For this self-paced course update the following experiment settings so that they match the image below: 
 - **Accuracy : 4**
 - **Time: 3**
 - **Interpretability: 4**
@@ -220,7 +220,7 @@ Learn more about what each setting means and how it can be updated from its defa
 
 ## Task 3: Experiment Scoring and Analysis Concepts
 
-As we learned in the [Automatic Machine Learning Introduction with Driverless AI,](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai) it is essential to evaluate a model's performance when it is complete, especially before production. These metrics are used to evaluate the quality of the model that was built and what model score threshold should be used to make predictions. There are multiple metrics for assessing a binary classification machine learning models such as Receiver Operating Characteristics or ROC curve, Precision and Recall or Prec-Recall, Lift, Gain and K-S Charts, to name a few. Each metric evaluates different aspects of the machine learning model. The concepts below are for metrics used in H2O’s Driverless AI to assess the performance of classification models that it generated. The concepts are covered at a very high level. To learn more in-depth about each metric covered here, we have included additional resources at the end of this task. 
+As we learned in the [Automatic Machine Learning Introduction with Driverless AI,](https://training.h2o.ai/products/self-paced-course-1a-automatic-machine-learning-introduction-with-driverless-ai) it is essential to evaluate a model's performance when it is complete, especially before production. These metrics are used to evaluate the quality of the model that was built and what model score threshold should be used to make predictions. There are multiple metrics for assessing a binary classification machine learning models such as Receiver Operating Characteristics or ROC curve, Precision and Recall or Prec-Recall, Lift, Gain and K-S Charts, to name a few. Each metric evaluates different aspects of the machine learning model. The concepts below are for metrics used in H2O’s Driverless AI to assess the performance of classification models that it generated. The concepts are covered at a very high level. To learn more in-depth about each metric covered here, we have included additional resources at the end of this task. 
 
 
 ### Binary Classifier
@@ -697,7 +697,7 @@ Below are three questions to test your understanding of the experiment summary a
 
 2\.  Take a look at the validation Score for the final pipeline and compare that value to the test score. Based on those scores would you consider this model a good or bad model?
 	
-**Note:** If you are not sure what Log loss is, feel free to review the concepts section of this tutorial.
+**Note:** If you are not sure what Log loss is, feel free to review the concepts section of this self-paced course.
 
 3\. So what do the Log Loss values tell us?  The essential Log Loss value is the test score value. This value tells us how well the generated model performed against the freddie_mac_500_test set based on the error rate. In case of experiment **Freddie Mac Classification Tutorial**, the **test score LogLoss = 0.119566 +/- 0** which is the log of the misclassification rate. The greater the Log loss value the more significant the misclassification. For this experiment, the Log Loss was relatively small meaning the error rate for misclassification was not as substantial. But what would a score like this mean for an institution like Freddie Mac?
 
@@ -818,7 +818,7 @@ One way to look at the financial implications for Freddie Mac is to look at the 
 - Fixed interest rate
 - Loan term and monthly payments are both fixed
 
-For this tutorial, we will assume a 6% Annual Percent Rate (APR) over 30 years. APR is the amount one pays to borrow the funds. Additionally, we are going to assume an average home loan of $167,473 (this average was calculated by taking the sum of all the loans on the freddie_mac_500.csv dataset and dividing it by 30,001 which is the total number of mortgages on this dataset). For a mortgage of $167,473 the total interest paid after 30 years would be $143,739.01 [1]. 
+For this self-paced course, we will assume a 6% Annual Percent Rate (APR) over 30 years. APR is the amount one pays to borrow the funds. Additionally, we are going to assume an average home loan of $167,473 (this average was calculated by taking the sum of all the loans on the freddie_mac_500.csv dataset and dividing it by 30,001 which is the total number of mortgages on this dataset). For a mortgage of $167,473 the total interest paid after 30 years would be $143,739.01 [1]. 
 
 When looking at the **False Positives**, we can think about **5147** cases of people that the model predicted should not be granted a home loan because they were predicted to default on their mortgage. These **5147** loans translate to over **739 million dollars** in loss of potential income (**5147** * $143,739.01) in interest.
 
@@ -918,7 +918,7 @@ Remember that for the **ROC** curve:
 - F1 is measured in the range of 0 to 1, where 0 means that there are no true positives, and 1 when there is neither false negatives nor false positives or perfect precision and recall.
 - Accuracy is measured in the range of 0 to 1, where 1 is perfect accuracy or perfect classification, and 0 is poor accuracy or poor classification.
 
-**Note:** If you are not sure what AUC, MCC, F1, and Accuracy are or how they are calculated review the concepts section of this tutorial.
+**Note:** If you are not sure what AUC, MCC, F1, and Accuracy are or how they are calculated review the concepts section of this self-paced course.
 
 ### New Experiment with Same Settings
 
@@ -1030,7 +1030,7 @@ Remember that for the **P-R** curve :
 - F1 is measured in the range of 0 to 1, where 0 means that there are no true positives, and 1 when there is neither false negatives nor false positives or perfect precision and recall.
 - Accuracy is measured in the range of 0 to 1, where 1 is perfect accuracy or perfect classification, and 0 is poor accuracy or poor classification.
 
-**Note:** If you are not sure what AUC, MCC, F1, and Accuracy are or how they are calculated review the concepts section of this tutorial.
+**Note:** If you are not sure what AUC, MCC, F1, and Accuracy are or how they are calculated review the concepts section of this self-paced course.
 
 ### New Experiment with Same Settings
 
@@ -1078,7 +1078,7 @@ If we hover over to the top 10% of the data, the at-chance model (the dotted dia
 
 Remember that the perfect prediction model starts pretty steep, and as a rule of thumb, the steeper the curve, the higher the gain. The area between the baseline (white diagonal dashed line) and the gain curve (yellow curve), better known as the area under the curve, visually shows us how much better our model is than that of the random model. There is always room for improvement. The gain curve can be steeper.
 
-**Note:** If you are not sure what AUC or what the gain chart is, feel free to review the concepts section of this tutorial.
+**Note:** If you are not sure what AUC or what the gain chart is, feel free to review the concepts section of this self-paced course.
 
 4\. Exit out of the Gains chart by clicking on the **x** located at the top-right corner of the plot, next to the **Download** option
 
@@ -1206,7 +1206,7 @@ This report provides insight into the training data and any detected shifts in d
 
 ## Next Steps
 
-Check out the next tutorial : [Machine Learning Interpretability](https://training.h2o.ai/products/tutorial-1c-machine-learning-interpretability-tutorial) where you will learn how to:
+Check out the next self-paced course: [Machine Learning Interpretability](https://training.h2o.ai/products/self-paced-course-1c-machine-learning-interpretability) where you will learn how to:
 - Launch an experiment
 - Create ML interpretability report
 - Explore explainability concepts such as:
