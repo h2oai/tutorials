@@ -47,8 +47,8 @@ The Hydraulic System consists of a primary and secondary cooling filtration circ
 You will need the following to be able to do this self-paced course:
 
 - A **Two-Hour Test Drive session**: Test Drive is H2O.ai's Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.
-    - Need a **Two-Hour Test Drive** session? Follow the instructions on [this quick self-paced course](https://training.h2o.ai/products/self-paced-course-0-getting-started-with-driverless-ai-test-drive) to get a Test Drive session started.
-- Basic knowledge of Driverless AI or completion of the following self-paced course: [Automatic Machine Learning Introduction with Driverless AI Test Drive](https://training.h2o.ai/products/self-paced course-1a-automatic-machine-learning-introduction-with-driverless-ai).
+    - Need a **Two-Hour Test Drive** session? Follow the instructions on [this quick self-paced course](https://training.h2o.ai/products-self-paced-course-0-getting-started-with-driverless-ai-test-drive) to get a Test Drive session started.
+- Basic knowledge of Driverless AI or completion of the following self-paced course: [Automatic Machine Learning Introduction with Driverless AI Test Drive](https://training.h2o.ai/products/self-paced-course-1a-automatic-machine-learning-introduction-with-driverless-ai).
 - For Non-AWS Lambda Deployment, we will use a REST Server built into Driverless AI to show how a REST API / Micro service deployment works
 - Needed for AWS Lambda Deployment (Optional)
     - If you have an Amazon Admin, request access permissions for:
