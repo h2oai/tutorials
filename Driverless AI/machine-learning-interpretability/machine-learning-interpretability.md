@@ -14,7 +14,7 @@
 - [Next Steps](#next-steps)
 
 
-## Objective 
+## Objective
 
 As Machine Learning (ML) grows, more industries, from healthcare to banking, adopt machine learning models to generate predictions. These predictions are being used to justify the cost of healthcare and for loan approvals or denials. For regulated industries that are adopting machine learning, the **interpretability** of models is a requirement. In Machine Learning, **interpretability** can be defined as “the ability to explain or present in understandable terms to a human [being].”[1] 
 
@@ -27,7 +27,7 @@ A few of the motivations for interpretability are as follows:
 - Prevent the building of excessive Technical Debt in Machine Learning
 - More in-depth insight and understanding of your data 
 
-This tutorial will build a machine learning model using the famous **Default of Credit Card Clients Dataset**. We will use the dataset to build a classification model that will predict the probability of clients defaulting on their next credit card payment. In contrast to previous tutorials, we will focus on the most leading methods and concepts for explaining and interpreting Machine Learning models. Therefore, we will not focus so much on the experiment itself. Instead, we would shift our attention to using the following metrics and graphs that Driverless AI generates to understand our built model: **results, graphs, scores, and reason code values**. In particular, we will explore the following graphs in Driverless AI: 
+In this self-paced course, we will build a machine learning model using the famous **Default of Credit Card Clients Dataset**. We will use the dataset to build a classification model that will predict the probability of clients defaulting on their next credit card payment. In contrast to previous self-paced courses, we will focus on the most leading methods and concepts for explaining and interpreting Machine Learning models. Therefore, we will not focus so much on the experiment itself. Instead, we would shift our attention to using the following metrics and graphs that Driverless AI generates to understand our built model: **results, graphs, scores, and reason code values**. In particular, we will explore the following graphs in Driverless AI: 
 
 - Decision tree surrogate models 
 - Individual conditional expectation (ICE) plots 
@@ -65,12 +65,12 @@ Before we explore these techniques in detail, we will briefly introduce ourselve
 
 ## Prerequisites
 
-You will need the following to be able to do this tutorial:
+You will need the following to be able to do this self-paced course:
 
 - Basic knowledge of Machine Learning and Statistics
-- Basic knowledge of Driverless AI or doing the following tutorial: [Automatic Machine Learning Introduction with Driverless AI](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai) 
+- Basic knowledge of Driverless AI or doing the following self-paced course: [Automatic Machine Learning Introduction with Driverless AI](https://training.h2o.ai/products/self-paced-course-1a-automatic-machine-learning-introduction-with-driverless-ai) 
 - A **Two-Hour Test Drive session**: Test Drive is H2O.ai's Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.
-  - Need a **Two-Hour Test Drive** session? Follow the instructions on [this quick tutorial](https://training.h2o.ai/products/tutorial-0-getting-started-with-driverless-ai-test-drive) to get a Test Drive session started. 
+  - Need a **Two-Hour Test Drive** session? Follow the instructions on [this quick self-paced course](https://training.h2o.ai/products/self-paced-course-0-getting-started-with-driverless-ai-test-drive) to get a Test Drive session started. 
 
 **Note: Aquarium’s Driverless AI Test Drive lab has a license key built-in, so you don’t need to request one to use it. Each Driverless AI Test Drive instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore Driverless AI, you can always launch another Test Drive instance or reach out to our sales team via the [contact us form](https://www.h2o.ai/company/contact/).**
 
@@ -119,17 +119,17 @@ After it imports successfully, you will see the following CSV on the **DATASETS*
   **e.** **MARRIAGE** - Marital status (1 = married; 2 = single; 3 = others)</br>
   **f.** **Age**</br>
   **g.** **PAY_1 - PAY_6**: History of past payment:
-    - -2: No consumption
-    - -1: Paid in full 
-    - 0: The use of revolving credit
-    - 1 = payment delay for one month
-    - 2 = payment delay for two months; . . .; 
-    - 6 = payment delay for six months
+  - -2: No consumption
+  - -1: Paid in full 
+  - 0: The use of revolving credit
+  - 1 = payment delay for one month
+  - 2 = payment delay for two months; . . .; 
+  - 6 = payment delay for six months
 
   Continue scrolling the current page to see more columns.
-    -  **BILL_AMT1 - BILL_AMT6** - Amount of bill statement 
-    -  **PAY_AMT1 -PAY_AMT6** - Amount of previous payment 
-    -  **default.payment.next.month** - Default (1: Yes, 0: No)
+  -  **BILL_AMT1 - BILL_AMT6** - Amount of bill statement 
+  -  **PAY_AMT1 -PAY_AMT6** - Amount of previous payment 
+  -  **default.payment.next.month** - Default (1: Yes, 0: No)
 
 3\. Now, return to the **Datasets** page.
 
@@ -339,7 +339,7 @@ The following is a list of the interpretation plots from Surrogate Models:
 - Random Forest Partial Dependence and Individual Conditional Expectation
 - Random Forest LOCO
 - Decision Tree
-- NLP Surrogate (it will not be cover in this tutorial, but you can learn more about it [here](https://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/interpret-understanding.html#nlp-surrogate-models))
+- NLP Surrogate (it will not be cover in this self-paced course, but you can learn more about it [here](https://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/interpret-understanding.html#nlp-surrogate-models))
 
 ### K-LIME and LIME-SUP
 
@@ -747,7 +747,7 @@ To learn more about the Summary tab and each plot in the Driverless AI Models ta
 
 ## Next Steps
 
-Check out the next tutorial: [Time Series - Retail Sales Forecasting](https://training.h2o.ai/products/tutorial-2a-time-series-recipe-tutorial-retail-sales-forecasting), where you will learn more about:
+Check out the next self-paced course: [Time Series - Retail Sales Forecasting](https://training.h2o.ai/products/self-paced-course-2a-time-series-recipe-retail-sales-forecasting), where you will learn more about:
 
 - Time-series:
     - Time-series concepts
