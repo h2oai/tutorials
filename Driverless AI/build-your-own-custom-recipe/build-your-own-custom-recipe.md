@@ -16,7 +16,7 @@
 
 ## Objective
 
-In this tutorial, we will take a deeper dive into the process of custom recipe building to enhance Driverless AI. We will build three recipes using Visual Studio Code text editor. Each recipe will then be uploaded and tested using Driverless AI.
+In this self-paced course, we will take a deeper dive into the process of custom recipe building to enhance Driverless AI. We will build three recipes using Visual Studio Code text editor. Each recipe will then be uploaded and tested using Driverless AI.
 
 Recipes:
 - Transformer
@@ -28,17 +28,17 @@ Recipes:
 - Basic knowledge of Machine Learning and Statistics
 - Ability to write Python Code
 - A Two-Hour Test Drive session: Test Drive is H2O.ai's Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.
-  - Need a Two-Hour Test Drive session? Follow the instructions on [this quick tutorial](https://training.h2o.ai/products/tutorial-0-getting-started-with-driverless-ai-test-drive) to get a Test Drive session started.
-- Basic knowledge of Driverless AI or doing the following tutorials:
-  - [Automatic Machine Learning Introduction with Drivereless AI](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai)
-  - [Get Started with Open Source Custom Recipes](https://training.h2o.ai/products/tutorial-3a-get-started-with-open-source-custom-recipes-tutorial) 
+  - Need a Two-Hour Test Drive session? Follow the instructions on [this quick self-paced course](https://training.h2o.ai/products/self-paced-course-0-getting-started-with-driverless-ai-test-drive) to get a Test Drive session started.
+- Basic knowledge of Driverless AI or doing the following self-paced courses:
+  - [Automatic Machine Learning Introduction with Drivereless AI](https://training.h2o.ai/products/self-paced-course-1a-automatic-machine-learning-introduction-with-driverless-ai)
+  - [Get Started with Open Source Custom Recipes](https://training.h2o.ai/products/self-paced-course-3a-get-started-with-open-source-custom-recipes) 
 - A text editor or developer environment to create .py text files containing source code (Examples: PyCharm, Jupyter, Spider or a Text Editor like Atom or Visual Studio Code)
 
 **Note: Aquarium’s Driverless AI Test Drive lab has a license key built-in, so you don’t need to request one to use it. Each Driverless AI Test Drive instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore Driverless AI, you can always launch another Test Drive instance or reach out to our sales team via the [contact us form](https://www.h2o.ai/company/contact/).**
 
 ## Task 1: Driverless AI Bring Your Own Recipes
 
-In the **Get Started and with Open Source Custom Recipes** Tutorial we covered the following:
+In the **Get Started and with Open Source Custom Recipes** self-paced course we covered the following:
 
 - Bring Your Own Recipe (BYOR) for Driverless AI 1.9.1
 - What is a recipe?
@@ -46,7 +46,7 @@ In the **Get Started and with Open Source Custom Recipes** Tutorial we covered t
 - How to upload the recipes into Driverless AI using URL’s and .py files
 - Compare the final models of the experiments that were run with custom recipes to Driverless AI’s default settings experiment. 
 
-**Note:** If you have not done so, complete the [Get Started with Open Source Custom Recipes](https://training.h2o.ai/products/tutorial-3a-get-started-with-open-source-custom-recipes-tutorial), the material covered will be needed for the successful completion of this tutorial.
+**Note:** If you have not done so, complete the [Get Started with Open Source Custom Recipes](https://training.h2o.ai/products/self-paced-course-3a-get-started-with-open-source-custom-recipes), the material covered will be needed for the successful completion of this self-paced course.
 
 To recap, H2O Driverless AI is an artificial intelligence (AI) platform for automatic machine learning. Driverless AI automates some of the most tedious and challenging data science and machine learning tasks such as feature engineering, algorithm selection, model validation, model tuning, model selection, model explanation, model documentation, and model deployment. It aims to achieve the highest predictive accuracy, comparable to expert data scientists, but in a much shorter time thanks to end-to-end automation.
 
@@ -133,7 +133,7 @@ Recipes are meant to be built by people you trust, and each recipe should be cod
 
 We will be building three simple recipes, a transformer, a scorer, and a model in the following three tasks. It is assumed that you have downloaded the [Driverless AI Recipes Repository rel-1.9.1](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.9.1) and that you have access to the examples and recipe templates.
 
-**Note**: The recipes you will find in the "Driverless AI Recipes Repository rel 1.9.1" may be slightly different from those referenced in this tutorial. If you decide to build the recipes using the code from this tutorial or the code found on the repository, you should still be able to run the various experiments.
+**Note**: The recipes you will find in the "Driverless AI Recipes Repository rel 1.9.1" may be slightly different from those referenced in this self-paced course. If you decide to build the recipes using the code from this self-paced course or the code found on the repository, you should still be able to run the various experiments.
 
 ### Deeper Dive and Resources
 
@@ -437,14 +437,14 @@ class SumTransformer(CustomTransformer):
 
 ### Challenge
 
-The final step in building the custom transformer recipe is to upload the custom recipe to Driverless AI and check that it passes the **acceptance test**. If your recipe is not passing the Driverless AI’s acceptance test, see  [Task 5: Troubleshooting](https://training.h2o.ai/products/tutorial-3b-build-your-own-custom-recipe-tutorial).
+The final step in building the custom transformer recipe is to upload the custom recipe to Driverless AI and check that it passes the **acceptance test**. If your recipe is not passing the Driverless AI’s acceptance test, see  [Task 5: Troubleshooting](https://training.h2o.ai/products/self-paced-course-3b-build-your-own-custom-recipe).
 
 Take the new custom **SumTransformer** and test it in a dataset of your choice.
 
 **Note:** The dataset needs to have more than three quantitative columns that can be added together
 
 
-If you have questions on how to upload the transformer recipe to Driverless AI, see  [“Get Started with Open Source Custom Recipes Tutorial - Task 3: Recipe: Transformer”](https://training.h2o.ai/products/tutorial-3a-get-started-with-open-source-custom-recipes-tutorial).
+If you have questions on how to upload the transformer recipe to Driverless AI, see  [Get Started with Open Source Custom Recipes - Task 3: Recipe: Transformer](https://training.h2o.ai/products/self-paced-course-3a-get-started-with-open-source-custom-recipes).
 
 
 ### References
@@ -490,7 +490,7 @@ The custom **scorer** that we will build in this section is a **"False Discovery
             
 The **False Positive Rate** is the algorithm where all the elements that were incorrectly classified (False Positives) will be divided by the sum of all the elements that were correctly classified (True Positives) and incorrectly classified (False Positives).
 
-If you would like to review or learn more about binary classification in Driverless AI, view our [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus). 
+If you would like to review or learn more about binary classification in Driverless AI, view our [Machine Learning Experiment Scoring and Analysis - Financial Focus](https://training.h2o.ai/products/self-paced-course-1b-machine-learning-experiment-scoring-and-analysis-financial-focus).
 
 ### Essentials to Building a Scorer
 
@@ -734,13 +734,13 @@ class MyFDRScorer(CustomScorer):
 
 ### Challenge
 
-The final step in building the custom scorer recipe is to upload the custom recipe to Driverless and check that it passes the **acceptance test**. If your recipe is not passing the Driverless AI’s acceptance test, see  [Task 5: Troubleshooting](https://training.h2o.ai/products/tutorial-3b-build-your-own-custom-recipe-tutorial).
+The final step in building the custom scorer recipe is to upload the custom recipe to Driverless and check that it passes the **acceptance test**. If your recipe is not passing the Driverless AI’s acceptance test, see  [Task 5: Troubleshooting](https://training.h2o.ai/products/self-paced-course-3b-build-your-own-custom-recipe).
 
 Take the false_discovery_rate scorer and test it in a dataset of your choice.
 
 **Note:** The dataset needs to be for a binary classification problem
 
-If you have questions on how to upload the scorer recipe to Driverless AI, see  [“Get Started with Open Source Custom Recipes Tutorial - Task 4: Recipe: Scorer”](https://training.h2o.ai/products/tutorial-3a-get-started-with-open-source-custom-recipes-tutorial).
+If you have questions on how to upload the scorer recipe to Driverless AI, see  [“Get Started with Open Source Custom Recipes - Task 4: Recipe: Scorer”](https://training.h2o.ai/products/self-paced-course-3a-get-started-with-open-source-custom-recipes).
 
 ### Deeper Dive and Resources
 
@@ -775,7 +775,7 @@ Driverless AI has Model recipes for the following categories:
 
 ### Custom Model Recipe 
 
-Models are complex and harder to build; therefore, in this tutorial, we will build a high-level model to understand the general mechanics of building a model. <!--There will be additional information at the end of this task to help you learn more about custom model making and how to get started.--> 
+Models are complex and harder to build; therefore, in this self-paced course, we will build a high-level model to understand the general mechanics of building a model. <!--There will be additional information at the end of this task to help you learn more about custom model making and how to get started.--> 
 
 The custom model that we will build is sklearn’s **Extra Trees** or extremely randomized trees model from Sklearn. There is Extra Trees for classification `ExtraTreeClassifier`[1] and regression `ExtraTreeRegressor` [2].
 
@@ -1085,7 +1085,7 @@ class ExtraTreesModel(CustomModel):
 
 ### Challenge
 
-The final step in building the custom model recipe is to complete the parts that were left uncompleted. You will need to write a code to determine when to use the model. First, you need to specify if the model should work with a classification or regression case. You can also set a name and description for the model. Second, you need to determine the "n_estimators" and, lastly, set up test code for testing for null values or handling missing values, like the examples that were given in each section. Once those are set, you can upload the custom recipe to Driverless and check that it passes the acceptance test. If your recipe is not passing the Driverless AI's acceptance test, see [Task 5: Troubleshooting](https://training.h2o.ai/products/tutorial-3b-build-your-own-custom-recipe-tutorial).
+The final step in building the custom model recipe is to complete the parts that were left uncompleted. You will need to write a code to determine when to use the model. First, you need to specify if the model should work with a classification or regression case. You can also set a name and description for the model. Second, you need to determine the "n_estimators" and, lastly, set up test code for testing for null values or handling missing values, like the examples that were given in each section. Once those are set, you can upload the custom recipe to Driverless and check that it passes the acceptance test. If your recipe is not passing the Driverless AI's acceptance test, see **Task 5: Troubleshooting**.
 
 Here is a sample code that could be used to complete the first task of the challenge:
 
@@ -1125,7 +1125,7 @@ If you need to do parameter tuning after setting your default parameters, here i
 
 Take the extra_tress_model and test it using a dataset of your choice.
 
-If you have questions on how to upload the transformer recipe to Driverless AI, see  [“Get Started with Open Source Custom Recipes Tutorial - Task 5: Recipe: Model”](https://training.h2o.ai/products/tutorial-3a-get-started-with-open-source-custom-recipes-tutorial).
+If you have questions on how to upload the transformer recipe to Driverless AI, see  [“Get Started with Open Source Custom Recipes - Task 5: Recipe: Model”](https://training.h2o.ai/products/self-paced-course-3a-get-started-with-open-source-custom-recipes).
 
 ### References
 
@@ -1196,7 +1196,7 @@ Try to build your own recipe. Driverless AI has many datasets that you can use t
 
 H2O custom recipes reside in the [H2O Driverless AI Recipes GitHub repo](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.9.1). **There are multiple branches of Driverless AI recipes so make sure that you are using the same branch as the Driverless AI version you have.**
 
-For this tutorial, we are using **Driverless AI 1.9.1** and we will download the relevant custom recipes from that branch using the following shell commands.
+For this self-paced course, we are using **Driverless AI 1.9.1** and we will download the relevant custom recipes from that branch using the following shell commands.
 
 ~~~bash
 mkdir -p $HOME/recipes/{models/algorithms,scorers/classification/binary,transformers/numeric}
