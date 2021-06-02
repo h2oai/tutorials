@@ -19,17 +19,17 @@ At H2O.ai, we believe that every company can and should be an AI company. This c
 
 To make your own AI with an automated machine learning platform, the platform needs to be open and extensible. An open and extensible platform allows data scientists to influence the automatic machine learning optimization process and for the process to consider additional feature engineering, scorers metrics, and modeling algorithms. Data scientists can add their insights, customizations, and domain expertise to build the most accurate models for each use case. Driverless AI uses the concept of recipes to optimize the machine learning process, and with Driverless AI 1.7.0 and later versions, users can add and develop custom recipes.
 
-This tutorial will cover what a recipe is, the different types of recipes available, and how to upload existing recipes to Driverless AI through the URL option. The three types of custom recipes that we will cover are transformer, scorer, and model.
+This self-paced course will cover what a recipe is, the different types of recipes available, and how to upload existing recipes to Driverless AI through the URL option. The three types of custom recipes that we will cover are transformer, scorer, and model.
 
 ## Prerequisites
 
-You will need the following to be able to do this tutorial:
+You will need the following to be able to do this self-paced course:
 
 - Basic knowledge of Machine Learning and Statistics
 - A Driverless AI environment that is version 1.7.0 or newer
-- Basic knowledge of Driverless AI or doing the [Automatic Machine Learning Introduction with Driverless AI](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai) 
+- Basic knowledge of Driverless AI or doing the [Automatic Machine Learning Introduction with Driverless AI](https://training.h2o.ai/products/self-paced-course-1a-automatic-machine-learning-introduction-with-driverless-ai) 
 - A **Two-Hour Test Drive session** : Test Drive is H2O.ai's Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.
-  - Need a **Two-Hour Test Drive** session? Follow the instructions on [this quick tutorial](https://training.h2o.ai/products/tutorial-0-getting-started-with-driverless-ai-test-drive) to get a Test Drive session started.  
+  - Need a **Two-Hour Test Drive** session? Follow the instructions on [this quick self-paced course](https://training.h2o.ai/products/self-paced-course-0-getting-started-with-driverless-ai-test-drive) to get a Test Drive session started.  
 
 **Note: Aquarium’s Driverless AI Test Drive lab has a license key built-in, so you don’t need to request one to use it. Each Driverless AI Test Drive instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore Driverless AI, you can always launch another Test Drive instance or reach out to our sales team via the [contact us form](https://www.h2o.ai/company/contact/).**  
 
@@ -48,7 +48,7 @@ Existing recipes include templates for:
 - **Models**
 - **Data**
 
-In the tutorial's remaining tasks, we will be describing the various types of templates and how to use them. Please note that we will cover the **Data** recipes in another tutorial.
+In the self-paced course's remaining tasks, we will be describing the various types of templates and how to use them. Please note that we will cover the **Data** recipes in another self-paced course.
 
 ### How do recipes work in Driverless AI? 
 
@@ -90,7 +90,7 @@ Best Practices for Recipes:
 
 ### About the Dataset
 
-This tutorial will use the customer churn telco dataset from [Kaggle](https://www.kaggle.com/becksddf/churn-in-telecoms-dataset). The dataset has information about customers of a telecommunications company. Some of the features included are customer demographic location, length of the account, and customer call history. We will be predicting customer churn.
+This self-paced course will use the customer churn telco dataset from [Kaggle](https://www.kaggle.com/becksddf/churn-in-telecoms-dataset). The dataset has information about customers of a telecommunications company. Some of the features included are customer demographic location, length of the account, and customer call history. We will be predicting customer churn.
 
 [1] [Churn in Telcom’s dataset](https://www.kaggle.com/becksddf/churn-in-telecoms-dataset)  
 
@@ -99,7 +99,7 @@ This dataset set has 3333 customers(rows) and 21 columns representing each custo
 ### Add the Data
 
 
-1\. To add the dataset for this tutorial, please follow the following steps: 
+1\. To add the dataset for this self-paced course, please follow the following steps: 
 
 **a.** Click on **+ Add Dataset (or Drag and Drop)**
 
@@ -119,7 +119,7 @@ This dataset set has 3333 customers(rows) and 21 columns representing each custo
 
 ![churn-dataset-overview](assets/churn-dataset-overview.png)
 
-**Note:** you can ignore the other datasets as they are used in other tutorials. 
+**Note:** you can ignore the other datasets as they are used in other self-paced courses. 
 
 3\. Let’s take a quick look at the columns of the churn dataset. Click on the `churn.csv` dataset, and click on **Details.** A similar page should appear:
 
@@ -489,7 +489,7 @@ The rel-1.9.1 branch will be similar to the page below:
 
 2\. Recipes can be uploaded to Driverless AI by:
 - Uploading custom recipes from your local machine
-- Loading custom recipes from "URL" by copying and pasting the "URL", as shown in this tutorial
+- Loading custom recipes from "URL" by copying and pasting the "URL", as shown in this self-paced course
 - Go to the official recipes (external) repo and search for the recipe that you need and then copy the link to use in `+ Load Custom Recipe from URL`
 
 ![upload-recipes](assets/upload-recipes.png)
@@ -520,11 +520,11 @@ We are going to get the URL for the **Brier Loss** Scorer we used in Task 4 and 
 https://github.com/h2oai/driverlessai-recipes/blob/rel-1.9.1/scorers/classification/binary/brier_loss.py
 ~~~
 
-6\. See task 4 of this tutorial to follow the process of uploading a recipe via the raw URL.
+6\. See task 4 of this self-paced course to follow the process of uploading a recipe via the raw URL.
 
 ### Uploading Recipes from Local Machine 
 
-For this tutorial, we are using **Driverless AI 1.9.1**, so we will be working off the Driverless AI 1.9.1 branch.
+For this self-paced course, we are using **Driverless AI 1.9.1**, so we will be working off the Driverless AI 1.9.1 branch.
 
 1\. Open the link below on a separate tab. Make sure the branch is **rel-1.9.1**:
 
@@ -554,11 +554,11 @@ For this tutorial, we are using **Driverless AI 1.9.1**, so we will be working o
 
 ![dai-recipe-repo-brier-loss-file](assets/dai-recipe-repo-brier-loss-file.png)
 
-9\. After doing this last step, you can continue with the rest of the steps on task 4 of this tutorial.
+9\. After doing this last step, you can continue with the rest of the steps on task 4 of this self-paced course.
 
 ## Next Steps
 
-Check out Driverless AI's next tutorial: [Build Your Own Custom Recipe](https://training.h2o.ai/products/tutorial-3b-build-your-own-custom-recipe-tutorial)
+Check out Driverless AI's next self-paced course: [Build Your Own Custom Recipe](https://training.h2o.ai/products/self-paced-course-3b-build-your-own-custom-recipe)
 
 Where you will learn to build a:
   - Custom Transformer Recipe
