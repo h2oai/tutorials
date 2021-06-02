@@ -22,7 +22,7 @@
     <p align="center">Figure 1: Hydraulic System Cylinder Diagram</p>
 </p>
 
-By the end of this tutorial, you will predict the **cooling condition** for a **Hydraulic System Test Rig** by deploying a **MOJO Scoring Pipeline** into production using **Driverless AI's Production Ready Deployment Templates**. The Hydraulic System Test Rig data comes from the **[UCI Machine Learning Repository: Condition Monitoring of Hydraulic Systems Data Set](https://archive.ics.uci.edu/ml/datasets/Condition+monitoring+of+hydraulic+systems#)**. Hydraulic System Test Rigs are used to test components in Aircraft Equipment, Ministry of Defense, Automotive Applications, and more [7].
+By the end of this self-paced course, you will predict the **cooling condition** for a **Hydraulic System Test Rig** by deploying a **MOJO Scoring Pipeline** into production using **Driverless AI's Production Ready Deployment Templates**. The Hydraulic System Test Rig data comes from the **[UCI Machine Learning Repository: Condition Monitoring of Hydraulic Systems Data Set](https://archive.ics.uci.edu/ml/datasets/Condition+monitoring+of+hydraulic+systems#)**. Hydraulic System Test Rigs are used to test components in Aircraft Equipment, Ministry of Defense, Automotive Applications, and more [7].
 
 ### Deep Dive and Resources
 
@@ -36,10 +36,10 @@ By the end of this tutorial, you will predict the **cooling condition** for a **
 
 ## Prerequisites
 
-You will need the following to be able to do this tutorial:
+You will need the following to be able to do this self-paced course:
 
 - Skilled in Java Object Oriented Programming
-- **Driverless AI Environment** on **Aquarium** with **Prebuilt Experiment** from Tutorial 4A: Scoring Pipeline Deployment Introduction
+- **Driverless AI Environment** on **Aquarium** with **Prebuilt Experiment** from [Self-Paced Course 4A: Scoring Pipeline Deployment Introduction](https://training.h2o.ai/products/self-paced-course-4a-scoring-pipeline-deployment-introduction)
 - Driverless AI License
     - It is needed for using the MOJO2 Java Runtime API to deploy the MOJO Scoring Pipeline to a REST Server or Amazon Lambda
     - **21-day trial license** or if you need to **purchase a Driverless AI license**, reach out to our sales team via the [contact us form](https://www.h2o.ai/company/contact/).
@@ -50,9 +50,9 @@ You will need the following to be able to do this tutorial:
         - Amazon AWS with Amazon API Gateway Administrator
         - Amazon AWS with Usage Plans Enabled
     - Create an Amazon AWS IAM Access Key and Secret Key
-- Basic knowledge of Driverless AI or completion of the following tutorials:
-    - [Tutorial 1A: Automatic Machine Learning Introduction with Driverless AI](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai)
-    - [Tutorial 4A: Scoring Pipeline Deployment Introduction](https://training.h2o.ai/products/tutorial-4a-scoring-pipeline-deployment-introduction#tab-product_tab_overview)
+- Basic knowledge of Driverless AI or completion of the following self-paced courses:
+    - [Self-Paced Course 1A: Automatic Machine Learning Introduction with Driverless AI](https://training.h2o.ai/products/self-paced-course-1a-automatic-machine-learning-introduction-with-driverless-ai)
+    - [Self-Paced Course 4A: Scoring Pipeline Deployment Introduction](https://training.h2o.ai/products/self-paced-course-4a-scoring-pipeline-deployment-introduction#tab-product_tab_overview)
 
 ## Task 1: Set Up Environment
 
@@ -69,20 +69,17 @@ mkdir $HOME/dai-model-deployment/
 
 #### Download MOJO Scoring Pipeline
 
-1\. If you have not downloaded the MOJO Scoring Pipeline from the previous tutorial, consider the following steps:
+1\. If you have not downloaded the MOJO Scoring Pipeline from the previous self-paced course, consider the following steps:
 
 - Start a new Two-Hour Driverless AI Test Drive session in [Aquarium](https://aquarium.h2o.ai/login).
-
 - In your Driverless AI instance, click on the **Experiments** section.
-
 - In the **Experiments** section, click on the following experiment: **Model_deployment_HydraulicSystem**
-
 - On the STATUS: COMPLETE section on the experiment page, click **DOWNLOAD MOJO SCORING PIPELINE**
 
 ![download-mojo-scoring-pipeline](./assets/download-mojo-scoring-pipeline.png)</br>
 **Figure 2**: Driverless AI Experiment Hover on Download MOJO Scoring Pipeline
 
-**Note:** If you would like to build your own experiment, go to **[Tutorial 4A: Scoring Pipeline Deployment Introduction](https://training.h2o.ai/products/tutorial-4a-scoring-pipeline-deployment-introduction#tab-product_tab_overview)**, then jump to "Appendix A: Build Experiment" and follow the instructions.
+**Note:** If you would like to build your own experiment, go to **[Self-Paced Course 4A: Scoring Pipeline Deployment Introduction](https://training.h2o.ai/products/self-paced-course-4a-scoring-pipeline-deployment-introduction)**, then jump to "Appendix A: Build Experiment" and follow the instructions.
 
 
 2\. Select **Java** for Java Runtime. Click **Download MOJO Scoring Pipeline**.
@@ -187,7 +184,7 @@ An approach to executing the MOJO Scoring Pipeline or Python Scoring Pipeline is
 
 ### AWS Lambda for Machine Learning Predictions
 
-Another approach to executing the MOJO Scoring Pipeline is to run it on an AWS Lambda function. An AWS Lambda is a serverless compute service that runs code in response to events and automatically manages the underlying compute resources for us [15]. With AWS Lambda, we can upload our MOJO Scoring Pipeline execution code, and AWS Lambda takes care of everything required to run and scale our code with high availability [14]. With AWS Lambda, we are not required to provision or manage servers [14]. The AWS Lambda will automatically scale our application by running code in response to each trigger [14]. With the AWS Lambda, we are only charged for the compute time we consume [14]. So, we are charged for every 100ms our code executes and the number of times our code is triggered [14]. Thus, we are using the MOJO Scoring Pipeline to make predictions at a low operating cost. Appendix A of this tutorial will show you how to send HTTP requests to the AWS Lambda function to trigger it to automatically execute our MOJO Scoring Pipeline to do real-time scoring and batch scoring.
+Another approach to executing the MOJO Scoring Pipeline is to run it on an AWS Lambda function. An AWS Lambda is a serverless compute service that runs code in response to events and automatically manages the underlying compute resources for us [15]. With AWS Lambda, we can upload our MOJO Scoring Pipeline execution code, and AWS Lambda takes care of everything required to run and scale our code with high availability [14]. With AWS Lambda, we are not required to provision or manage servers [14]. The AWS Lambda will automatically scale our application by running code in response to each trigger [14]. With the AWS Lambda, we are only charged for the compute time we consume [14]. So, we are charged for every 100ms our code executes and the number of times our code is triggered [14]. Thus, we are using the MOJO Scoring Pipeline to make predictions at a low operating cost. Appendix A of this self-paced course will show you how to send HTTP requests to the AWS Lambda function to trigger it to automatically execute our MOJO Scoring Pipeline to do real-time scoring and batch scoring.
 
 ### AWS Lambda vs EC2
 
@@ -358,12 +355,12 @@ Alternatively, you could create a new Driverless AI Deployment Template to deplo
 
 ## Next Steps
 
-- Check out Driverless AI's next tutorials on embeddable Scoring Pipeline Deployment where you will learn to deploy **MOJO Scoring Pipelines** into production in **Java Runtime** and **C++ Runtime** using **Mojo2 Runtime API**:
-    - Tutorial: [Scoring Pipeline Deployment in Java Runtime](https://training.h2o.ai/products/tutorial-4c-scoring-pipeline-deployment-in-java-runtime#tab-product_tab_contents__9)
-    - Tutorial: [Scoring Pipeline Deployment in C++ Runtime](https://training.h2o.ai/products/tutorial-4d-scoring-pipeline-deployment-in-c-runtime#tab-product_tab_contents__8)
+- Check out Driverless AI's next self-paced courses on embeddable Scoring Pipeline Deployment where you will learn to deploy **MOJO Scoring Pipelines** into production in **Java Runtime** and **C++ Runtime** using **Mojo2 Runtime API**:
+    - [Self-Paced course 4C: Scoring Pipeline Deployment in Java Runtime](https://training.h2o.ai/products/self-paced-course-4c-scoring-pipeline-deployment-in-java-runtime)
+    - [Self-Paced course 4D: Scoring Pipeline Deployment in C++ Runtime](https://training.h2o.ai/products/self-paced-course-4d-scoring-pipeline-deployment-in-c-runtime)
 
-- Check out Driverless AI's next tutorial on embedable Scoring Pipeline Deployment where you will learn to deploy **Python Scoring Pipelines** into production in **Python Runtime** using **h2oai_scoring API**:
-    - Tutorial: [Scoring Pipeline Deployment in Python Runtime](https://training.h2o.ai/products/tutorial-4e-scoring-pipeline-deployment-in-python-runtime#tab-product_tab_contents__9)
+- Check out Driverless AI's next self-paced course on embedable Scoring Pipeline Deployment where you will learn to deploy **Python Scoring Pipelines** into production in **Python Runtime** using **h2oai_scoring API**:
+    - [Self-paced course 4E: Scoring Pipeline Deployment in Python Runtime](https://training.h2o.ai/products/self-paced-course-4e-scoring-pipeline-deployment-in-python-runtime)
 
 - Check out these webinars that dive into how to productionize H2O Driverless AI Models:
     - H2O.ai Webinar: [Accelerate Your Enterprise AI on Snowflake with H2O.ai (by Yves Laurent, Eric Gudgion, Chris Pouliot, Isaac Kunen)](https://www.brighttalk.com/service/player/en-US/theme/default/channel/16463/webcast/415599/play?showChannelList=true)
