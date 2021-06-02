@@ -19,18 +19,18 @@
 
 Time series forecasting is one of the most common and important tasks in business analytics. The goal of time series forecasting is to predict the future values of that series using historical data. Time series forecasting uses models to predict future values based on previously observed values, also known as extrapolation.
 
-Driverless AI has its own recipes for time series forecasting that combines advanced time series analysis and H2O’s own Kaggle Grand Masters’ time series recipes. In this tutorial, we will walk through creating a time series experiment and compare the results to a pre-loaded time series experiment based on the same dataset, just higher experiment settings.
+Driverless AI has its own recipes for time series forecasting that combines advanced time series analysis and H2O’s own Kaggle Grand Masters’ time series recipes. In this self-paced course, we will walk through creating a time series experiment and compare the results to a pre-loaded time series experiment based on the same dataset, just higher experiment settings.
 
-**Note:** We recommend that you go over the entire tutorial first to review all the concepts; that way, you will be more familiar with the content once you start the experiment.
+**Note:** We recommend that you go over the entire self-paced course first to review all the concepts; that way, you will be more familiar with the content once you start the experiment.
 
 ## Prerequisites
 
-You will need the following to be able to do this tutorial:
+You will need the following to be able to do this self-paced course:
 
 - Basic knowledge of Machine Learning and Statistics
-- Basic knowledge of Driverless AI or doing the [Automatic Machine Learning Introduction with Drivereless AI](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai)
+- Basic knowledge of Driverless AI or completion of [Automatic Machine Learning Introduction with Drivereless AI](https://training.h2o.ai/products/self-paced-course-1a-automatic-machine-learning-introduction-with-driverless-ai)
 - A **Two-Hour Test Drive session** : Test Drive is H2O.ai's Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.
-    - Need a **Two-Hour Test Drive** session? Follow the instructions on [this quick tutorial](https://training.h2o.ai/products/tutorial-0-getting-started-with-driverless-ai-test-drive) to get a Test Drive session started.
+    - Need a **Two-Hour Test Drive** session? Follow the instructions on [this quick self-paced course](https://training.h2o.ai/products/self-paced-course-0-getting-started-with-driverless-ai-test-drive) to get a Test Drive session started.
 
 **Note:  Aquarium’s Driverless AI Test Drive lab has a license key built-in, so you don’t need to request one to use it. Each Driverless AI Test Drive instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore Driverless AI, you can always launch another Test Drive instance or reach out to our sales team via the [contact us form](https://www.h2o.ai/company/contact/).**
 
@@ -39,7 +39,7 @@ You will need the following to be able to do this tutorial:
 
 ### About the Dataset
 
-The dataset we will use in this tutorial contains information about a global retail store. It includes historical data for 45 of its stores located in different regions of the United States from 02-05-2010 to 11-01-2012. Each numbered store contains a number of departments, stores-specific markdowns (promotional) events they have throughout the year, which typically happens before significant holidays such as the Superbowl, Labor Day, Thanksgiving, and Christmas. Additional information included is weekly sales, dates of those sales, the fuel price in the region, consumer price index, and unemployment rate. The dataset was used in a Kaggle in 2014 competition to help this retail store forecast sales of its stores[1].
+The dataset we will use in this self-paced course contains information about a global retail store. It includes historical data for 45 of its stores located in different regions of the United States from 02-05-2010 to 11-01-2012. Each numbered store contains a number of departments, stores-specific markdowns (promotional) events they have throughout the year, which typically happens before significant holidays such as the Superbowl, Labor Day, Thanksgiving, and Christmas. Additional information included is weekly sales, dates of those sales, the fuel price in the region, consumer price index, and unemployment rate. The dataset was used in a Kaggle in 2014 competition to help this retail store forecast sales of its stores[1].
 
 Our training dataset is a synthesis of the csv data sources provided for the Kaggle Store Sales Forecasting competition. The three datasets were:
 
@@ -49,11 +49,11 @@ Our training dataset is a synthesis of the csv data sources provided for the Kag
 
 The train.csv has the store number, department, date, weekly sales, and whether or not that day was a holiday. The stores.csv had the types of stores and their size while the features.csv had additional demographic information about the specific region the store was located.
 
-This tutorial's training dataset contains 73,165 rows and a total of 11 features (columns) and is about 5 MB. The test dataset contains about 16,000 rows and a total of 11 features (columns) and is about 1 MB.
+This self-paced course's training dataset contains 73,165 rows and a total of 11 features (columns) and is about 5 MB. The test dataset contains about 16,000 rows and a total of 11 features (columns) and is about 1 MB.
 
 ### Datasets Overview
 
-If you are using Aquarium as your environment, then the lab **Driverless AI Test Drive (x.x.x.x)** will have this tutorial training and test subsets of the Retail Store Forecasting dataset. You can find the datasets on the **Datasets Overview** page. You will also see a few more data sets, which you can ignore for now as they are used for another tutorial.
+If you are using Aquarium as your environment, then the lab **Driverless AI Test Drive (x.x.x.x)** will have this self-paced course training and test subsets of the Retail Store Forecasting dataset. You can find the datasets on the **Datasets Overview** page. You will also see a few more data sets, which you can ignore for now as they are used for another self-paced course.
 
 **NOTE:** To learn how to add the two datasets from the Driverless AI file system see [Appendix A: Add the Datasets](#appendix-a-add-the-datasets).
 
@@ -93,7 +93,7 @@ If you are using Aquarium as your environment, then the lab **Driverless AI Test
 
 ### Launch Experiment
 
-As mentioned in the objectives, this tutorial includes a pre-ran experiment that has been linked to the **Projects Workspace**.
+As mentioned in the objectives, this self-paced course includes a pre-ran experiment that has been linked to the **Projects Workspace**.
 
 **Projects** is a feature introduced in Driverless AI 1.7.0, and it is a workspace for managing datasets and experiments related to a specific business problem or use case. The **Projects** page allows for easy comparisons of performance and results and identifies the best solution for your problem.
 
@@ -107,7 +107,7 @@ See [Deeper Dive and Resources](#deeper-dive-and-resources) at the end of this t
 
     **a.** **Projects:** Projects menu option</br>
 
-    **b.** Pre-created Projects which includes the Time Series Tutorial:</br>
+    **b.** Pre-created Projects:</br>
     - **Name:** Project name (Time Series Tutorial)
     - **Description:** Optional (N/A)</br>
     - **Train. Datasets:** Number of train datasets (1)</br>
@@ -163,7 +163,7 @@ On task 2, we will explore and update the **Time Series Experiment Settings**.
 
 ## Task 2: Time Series Experiment Settings
 
-In this task, we are going to update the experiment settings. Unlike the other experiments covered in this tutorial series, the experiment settings layout for time series are slightly different, and there is an additional component, **time**. We will be adjusting the following experiment settings to run through the mechanics of running a time series experiment.
+In this task, we are going to update the experiment settings. Unlike the other experiments covered in these self-paced course series, the experiment settings layout for time series are slightly different, and there is an additional component, **time**. We will be adjusting the following experiment settings to run through the mechanics of running a time series experiment.
 
 **Experiment settings** that will need to be adjusted:
 
@@ -178,7 +178,7 @@ In this task, we are going to update the experiment settings. Unlike the other e
   - **Time**
   - **Interpretability**
 
-Below are high-level descriptions of the Driverless AI settings that we will update for this time series tutorial. To learn more about each scorer, see the **Deeper Dive and Resources** at the end of this task.
+Below are high-level descriptions of the Driverless AI settings that we will update for this time series self-paced course. To learn more about each scorer, see the **Deeper Dive and Resources** at the end of this task.
 
 **Test Dataset**
 
@@ -836,7 +836,7 @@ Learn more about Driverless AI’s Test Augmentation by visiting H2O’s documen
 
 ## Next Steps
 
-Check out Driverless AI next tutorial [Natural Language Processing - Sentiment Analysis](https://training.h2o.ai/products/tutorial-2b-natural-language-processing-tutorial-sentiment-analysis)
+Check out Driverless AI next self-paced course [Natural Language Processing - Sentiment Analysis](https://training.h2o.ai/products/self-paced-course-2b-natural-language-processing-sentiment-analysis)
 
 Where you will learn:
 
