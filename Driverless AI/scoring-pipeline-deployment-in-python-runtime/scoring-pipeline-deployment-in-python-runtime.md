@@ -16,7 +16,7 @@
 
 **Machine Learning Model Deployment** is the process of making your models available in production environments, so they can be used to make predictions for other software systems [1]. Before model deployment, **feature engineering** occurs in preparing data that will later be used to train a model [2]. Driverless AI **Automatic Machine Learning (AutoML)** combines the best feature engineering and one or more **machine learning models** into a scoring pipeline [3][4]. The **scoring pipeline** is used to score or predict data when given new test data [5]. The scoring pipeline comes in two flavors. The first scoring pipeline is a **Model Object, Optimized(MOJO) Scoring Pipeline,** which is a standalone, low-latency model object designed to be easily embeddable in production environments. The second scoring pipeline is a Python Scoring Pipeline, which has a heavy footprint that is all Python and uses the latest libraries of Driverless AI to allow for executing custom scoring recipes[6].
 
-For this tutorial, we will continue using the prebuilt experiment: **Model_deployment_HydraulicSystem.**  The Driverless AI  experiment is a classifier model that classifies whether the **cooling condition** of a **Hydraulic System Test Rig** is 3, 20, or 100. By looking at the **cooling condition,** we can predict whether the Hydraulic Cooler operates **close to total failure**, **reduced efficiency**, or **full efficiency**. 
+For this self-paced course, we will continue using the prebuilt experiment: **Model_deployment_HydraulicSystem.**  The Driverless AI  experiment is a classifier model that classifies whether the **cooling condition** of a **Hydraulic System Test Rig** is 3, 20, or 100. By looking at the **cooling condition,** we can predict whether the Hydraulic Cooler operates **close to total failure**, **reduced efficiency**, or **full efficiency**. 
 
 | Hydraulic Cooling Condition | Description |
 |:--:|:--:|
@@ -25,7 +25,7 @@ For this tutorial, we will continue using the prebuilt experiment: **Model_deplo
 | 100 | operates at full efficiency |
 
 
-The Hydraulic System Test Rig data for this tutorial comes from the **[UCI Machine Learning Repository: Condition Monitoring of Hydraulic Systems Data Set](https://archive.ics.uci.edu/ml/datasets/Condition+monitoring+of+hydraulic+systems#)**. The data set was experimentally obtained with a hydraulic test rig. This test rig consists of a primary working and a secondary cooling-filtration circuit connected via the oil tank [7]. The system cyclically repeats constant load cycles (duration 60 seconds) and measures process values such as pressures, volume flows, and temperatures. The condition of four hydraulic components (cooler, valve, pump, and accumulator) is quantitatively varied. The data set contains raw process sensor data (i.e., without feature extraction), structured as matrices (tab-delimited) with the rows representing the cycles and the columns the data points within a cycle.
+The Hydraulic System Test Rig data for this self-paced course comes from the **[UCI Machine Learning Repository: Condition Monitoring of Hydraulic Systems Data Set](https://archive.ics.uci.edu/ml/datasets/Condition+monitoring+of+hydraulic+systems#)**. The data set was experimentally obtained with a hydraulic test rig. This test rig consists of a primary working and a secondary cooling-filtration circuit connected via the oil tank [7]. The system cyclically repeats constant load cycles (duration 60 seconds) and measures process values such as pressures, volume flows, and temperatures. The condition of four hydraulic components (cooler, valve, pump, and accumulator) is quantitatively varied. The data set contains raw process sensor data (i.e., without feature extraction), structured as matrices (tab-delimited) with the rows representing the cycles and the columns the data points within a cycle.
 
 Hydraulic System Test Rigs are used to test Aircraft Equipment components, Automotive Applications, and more [8]. A Hydraulic Test Rig can test a range of flow rates that can achieve different pressures with the ability to heat and cool while simulating testing under different conditions [9]. Testing the pressure, the volume flow, and the temperature is possible by Hydraulic Test Rig sensors and a digital display. The display panel alerts the user when certain testing criteria are met while displaying either a green or red light [9]. Further, a filter blockage panel indicator is integrated into the panel to ensure the Hydraulic Test Rig's oil is maintained [9]. In the case of predicting cooling conditions for a Hydraulic System, when the cooling condition is low, our prediction will tell us that the cooling of the Hydraulic System is close to total failure, and we may need to look into replacing the cooling filtration solution soon. 
 
@@ -33,7 +33,7 @@ Hydraulic System Test Rigs are used to test Aircraft Equipment components, Autom
 
 **Figure 1:** Hydraulic System Cylinder Diagram
 
-By the end of this tutorial, you will predict the Hydraulic System Test Rig's cooling condition by deploying an embeddable Python Scoring Pipeline into Python Runtime using Python.
+By the end of this self-paced course, you will predict the Hydraulic System Test Rig's cooling condition by deploying an embeddable Python Scoring Pipeline into Python Runtime using Python.
 
 
 ### Resources
@@ -59,14 +59,14 @@ By the end of this tutorial, you will predict the Hydraulic System Test Rig's co
 - Driverless AI Environment
 - Driverless AI License
     - The license is needed to use the **Driverless AI Python Scoring Pipeline Runtime API** to execute the **Python Scoring Pipeline** for making predictions.
-    - If you don't have a license, you can obtain one through our [21-day trial license](https://www.h2o.ai/try-driverless-ai/) option. Through the [21-day trial license](https://www.h2o.ai/try-driverless-ai/) option, you will be able to obtain a temporary **Driverless AI License Key** necessary for this tutorial. 
+    - If you don't have a license, you can obtain one through our [21-day trial license](https://www.h2o.ai/try-driverless-ai/) option. Through the [21-day trial license](https://www.h2o.ai/try-driverless-ai/) option, you will be able to obtain a temporary **Driverless AI License Key** necessary for this self-paced course. 
     - If you need to purchase a Driverless AI license, reach out to our sales team via the [contact us form](https://www.h2o.ai/company/contact/).
 - AWS Account
 - Linux (Ubuntu 16.10+, IBM Power PC)
-- Basic knowledge of Driverless AI or completion of the following tutorials:
-    - [Tutorial 1A: Automatic Machine Learning Introduction with Driverless AI](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai#tab-product_tab_contents__15)
-    - [Tutorial 4A: Scoring Pipeline Deployment Introduction](https://training.h2o.ai/products/tutorial-4a-scoring-pipeline-deployment-introduction#tab-product_tab_contents__12)
-    - [Tutorial 4B: Scoring Pipeline Deployment Templates](https://training.h2o.ai/products/tutorial-4b-scoring-pipeline-deployment-templates#tab-product_tab_contents__11)
+- Basic knowledge of Driverless AI or completion of the following self-paced courses:
+    - [Self-Paced Course 1A: Automatic Machine Learning Introduction with Driverless AI](https://training.h2o.ai/products/self-paced-course-1a-automatic-machine-learning-introduction-with-driverless-ai)
+    - [Self-Paced Course 4A: Scoring Pipeline Deployment Introduction](https://training.h2o.ai/products/self-paced-course-4a-scoring-pipeline-deployment-introduction)
+    - [Self-Paced Course 4B: Scoring Pipeline Deployment Templates](https://training.h2o.ai/products/self-paced-course-4b-scoring-pipeline-deployment-templates)
 
 ## Task 1: Set Up Environment
 
@@ -217,7 +217,7 @@ Once you are done, you can exit the `thrift-0.10.0` directory.
 
 ### Create Environment Directory Structure in EC2 Instance
 
-Next, we recommend creating the following environment directory structure in your EC2 instance since it will make it easier to follow along with the rest of the deployment tutorials. If you already have it from the other tutorials, you can skip this step. To create the environment directory, run the following commands:
+Next, we recommend creating the following environment directory structure in your EC2 instance since it will make it easier to follow along with the rest of the deployment self-paced courses. If you already have it from the other self-paced courses, you can skip this step. To create the environment directory, run the following commands:
 
 ```bash
 # Create directory structure for model deployment projects (covers MOJO and Python)
@@ -247,7 +247,7 @@ Download MOJO Scoring Pipeline
 
 ![download-python-scoring-pipeline](assets/download-python-scoring-pipeline.png)
 
-When finished, come back to this tutorial.
+When finished, come back to this self-paced course.
 
 ### Move Local Python Scoring Pipeline to EC2 Instance
 The Python Scoring Pipeline scorer.zip was downloaded to the Downloads folder on the local machine. We need to move it to our EC2 instance. Open a new terminal on your local machine, then run the following command:
@@ -599,9 +599,8 @@ Another challenge could be to use the existing Python scoring pipeline we execut
 
 ## Next Steps
 
-- [Tutorial 4C: Scoring Pipeline Execution in Java Runtime](https://training.h2o.ai/products/tutorial-4c-scoring-pipeline-execution-in-java-runtime)
-- [Tutorial 4D: Scoring Pipeline Execution Runtime in C++](https://training.h2o.ai/products/tutorial-4d-scoring-pipeline-execution-runtime-in-c)
-- (COMING SOON) Tutorial 4F: Scoring Pipeline Deployment to Apache NIFI
+- [Self-Paced Course 4C: Scoring Pipeline Execution in Java Runtime](https://training.h2o.ai/products/self-paced-course-4c-scoring-pipeline-execution-in-java-runtime)
+- [Self-Paced Course 4D: Scoring Pipeline Execution Runtime in C++](https://training.h2o.ai/products/self-paced-course-4d-scoring-pipeline-deployment-in-c-runtime)
 
 ## Appendix A: Glossary
 Refer to [H2O.ai AI/ML Glossary](https://www.h2o.ai/community/top-links/ai-glossary-search?p=1) for relevant Model Deployment Terms
