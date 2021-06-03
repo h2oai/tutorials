@@ -20,32 +20,35 @@ Image processing techniques have become crucial for a diverse range of companies
 
 With this in mind, and with the hopes to democratize AI, H2O.ai has automated the processes of obtaining high-quality models capable of image processing. 
 
-This tutorial will explore the two different approaches to modeling images in Driverless AI: **Embeddings Transformer(Image Vectorizer)** and **Automatic Image Model**. To lay down the foundations for this tutorial, we will review transfer learning from pre-trained models. Right after, we will illustrate the first image modeling approach by analyzing a pre-built **image model** capable of predicting car prices. Directly after, we will better understand the second approach by analyzing a pre-built **image model** capable of predicting a true case of metastatic cancer. In the final analysis, we will compare and contrast each image modeling approach, and we will discuss several scenarios when a given approach will be better. In particular, and as a point of distinction,  we will discuss how the **Embeddings Transformer** approach only supports a MOJO Scoring Pipeline. Correspondingly, we will discuss how a user can only obtain details about the current best individual model through the **Automatic Image Model** approach. 
+This self-paced course will explore the two different approaches to modeling images in Driverless AI: **Embeddings Transformer(Image Vectorizer)** and **Automatic Image Model**. To lay down the foundations for this self-paced course, we will review transfer learning from pre-trained models. Right after, we will illustrate the first image modeling approach by analyzing a pre-built **image model** capable of predicting car prices. Directly after, we will better understand the second approach by analyzing a pre-built **image model** capable of predicting a true case of metastatic cancer. In the final analysis, we will compare and contrast each image modeling approach, and we will discuss several scenarios when a given approach will be better. In particular, and as a point of distinction,  we will discuss how the **Embeddings Transformer** approach only supports a MOJO Scoring Pipeline. Correspondingly, we will discuss how a user can only obtain details about the current best individual model through the **Automatic Image Model** approach. 
 
 All things consider, let us start. 
 
 ## Prerequisites 
 
-You will need the following to be able to do this tutorial:
-
+You will need the following to be able to do this self-paced course:
 - Basic knowledge of Driverless AI 
-- Completion of the following two tutorials: 
-    - [Tutorial 1A: Automatic Machine Learning Introduction with Driverless AI](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai#tab-product_tab_overview)
-    - [Tutorial 1B: Machine Learning Experiment Scoring and Analysis - Financial Focus](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus#tab-product_tab_overview)
+- Completion of the following two self-paced courses: 
+    - [Self-Paced Course 1A: Automatic Machine Learning Introduction with Driverless AI](https://training.h2o.ai/products/self-paced-course-1a-automatic-machine-learning-introduction-with-driverless-ai#tab-product_tab_overview)
+    - [Self-Paced Course 1B: Machine Learning Experiment Scoring and Analysis - Financial Focus](https://training.h2o.ai/products/self-paced-course-1b-machine-learning-experiment-scoring-and-analysis-financial-focus#tab-product_tab_overview)
 - Understanding of Convolutional Neural Networks (CNNs)
 - Basic understanding of confusion matrices 
-
 - A **Two-Hour Test Drive session**: Test Drive is [H2O.ai's](https://www.h2o.ai) Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.
-  - Need a **Two-Hour Test Drive** session? Follow the instructions on [this](https://training.h2o.ai/products/tutorial-0-getting-started-with-driverless-ai-test-drive#tab-product_tab_overview) quick tutorial to get a Test Drive session started.
+  - Need a **Two-Hour Test Drive** session? Follow the instructions on [this](https://training.h2o.ai/products/self-paced-course-0-getting-started-with-driverless-ai-test-drive#tab-product_tab_overview) quick self-paced course to get a Test Drive session started.
 
 **Note: Aquarium’s Driverless AI Test Drive lab has a license key built-in, so you don’t need to request one to use it. Each Driverless AI Test Drive instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to explore Driverless AI further, you can always launch another Test Drive instance or reach out to our sales team via the [contact us form](https://www.h2o.ai/company/contact/).**
 
 
 ## Task 1: Launch Experiment One: Predict a Car's Price 
 
-As mentioned in the **objective** section, we will use three image models, but running each experiment takes time to run. For this reason, all experiments have been built for you and can be found in Driverless AI's **Experiments** section. 
+As mentioned in the **objective** section, we will use three image models, but running each experiment takes time to run. For this reason, all experiments have been built for you and can be found in Driverless AI's **Experiments** section: 
 
 ![image-processing-three-pre-built-experiments](assets/image-processing-three-pre-built-experiments.png)
+
+
+1. **Model 1**: Embeddings-Transformer-Without-Fine-Tuning 
+2. **Model 2**: Embeddings-Transformer-With-Fine-Tuning
+3. **Model 3**: Metastatic Cancer - Automatic Image Model
 
 For understanding purposes, let's see how the first experiment was run. Right after, we will follow to understand the dataset and settings used in the first image model; doing so will allow us to understand **embeddings Transformer** (the first approach to image processing in Driverless AI).
 
@@ -55,77 +58,60 @@ If you were to run the experiment, you would take the following steps:
 
 On the *Datasets page*, import the *Kaggle-MyAutoData-dataset*:
 
-1. Click **+ ADD DATASET (OR DRAG & DROP)**
-
-2. Click the **AMAZON S3** option
-
-3. In the search bar, paste the following s3 URL: *s3://h2o-public-test-data/bigdata/server/ImageData/car_deals.zip*
-
+- Click **+ ADD DATASET (OR DRAG & DROP)**
+- Click the **AMAZON S3** option
+- In the search bar, paste the following s3 URL: *s3://h2o-public-test-data/bigdata/server/ImageData/car_deals.zip*
     - Before pasting clear anything that might be in the search bar
-
-4. Select the following option: **car_deals.zip [776.5MB]**
+- Select the following option: **car_deals.zip [776.5MB]**
 
 ![explore-s3](assets/explore-s3.png)
 
-5. **CLICK TO IMPORT SELECTION**
-
+- **CLICK TO IMPORT SELECTION**
     - After the dataset is imported successfully, the new dataset will be under the following name: *car_deals.zip*
 
 On the *Datasets page*: 
 
-6. Click the following dataset:  **car_deals.zip** 
-
-7. Click **SPLIT**
+- Click the following dataset:  **car_deals.zip** 
+- Click **SPLIT**
 
 Split the dataset into two sets:
 
-8. Name *OUTPUT NAME 1* as follows:  **car_deals_train**
-
-9. Name *OUTPUT NAME 2* as follows:  **car_deals_test**
-
-10. Change the split value to `.75` by adjusting the slider to 
+- Name *OUTPUT NAME 1* as follows:  **car_deals_train**
+- Name *OUTPUT NAME 2* as follows:  **car_deals_test**
+- Change the split value to `.75` by adjusting the slider to 
     `75%` or entering `.75` in the section that says *SELECT SPLIT RATIO(BY ROWS)*
-
-11. **SAVE**
+- **SAVE**
 
 ![dataset-splitter](assets/dataset-splitter.png)
 
 Now, you should see the following two new datasets in the *Datasets Page*: 
     
 - *car_deals_train*
-
 - *car_deals_test*
 
 On the *Datasets page*: 
 
-12. Click the following dataset: **car_deals_train**
+- Click the following dataset: **car_deals_train**
+- Click **PREDICT**
+- First time using Driverless AI? Click **Yes** to get a tour! Otherwise, click **No**
+- Name you experiment `Embeddings-Transformer-Without-Fine-Tuning`
+- For the *TEST DATASET* select the following dataset: **car_deals_test**
+- As a target column, select **Price**
 
-13. Click **PREDICT**
+Now let's drop few columns: 
 
-14. First time using Driverless AI? Click **Yes** to get a tour! Otherwise, click **No**
+![drop-columns](assets/drop-columns.png)
 
-15. Name you experiment `Embeddings-Transformer-Without-Fine-Tuning`
-
-16. For the *TEST DATASET* select the following dataset: **car_deals_test**
-
-17. As a target column, select **Price**
-
-18. Click the **DROPPED COLUMNS** option 
-
-    1. Click the **CHECK ALL** option
-    2. Deselect the following columns:
-        
+Click the **DROPPED COLUMNS** option: 
+1. Click the **CHECK ALL** option:
+    - Deselect the following columns:   
         - image_id
         - Color
         - InteriorColor
         - Leatherinterior
+2. Click **Done**
 
-    3. Click **Done**
-     
-
-    ![drop-columns](assets/drop-columns.png)
-
-19. **LAUNCH EXPERIMENT**
+**LAUNCH EXPERIMENT**:
 
 ![embeddings-transformer-a](assets/embeddings-transformer-a.png)
 
@@ -157,7 +143,7 @@ A typical CNN has two parts:
 
 2. A **Classifier** is formed by fully connected layers which classify the input image based on the convolutional base's features. The Classifier's goal is to classify the image based on the detected features. 
 
-The following image shows the architecture of a model based on CNNs. It is important to note that this illustration is a simplified version that fits this tutorial's purposes (the illustration doesn't capture the complexity of the model's architecture).  
+The following image shows the architecture of a model based on CNNs. It is important to note that this illustration is a simplified version that fits this self-paced course's purposes (the illustration doesn't capture the complexity of the model's architecture).  
 
 
 <p align="center"> 
@@ -280,7 +266,7 @@ With this task in mind, let us now understand the dataset and settings used in t
 
 In Driverless AI, there are several options in the **Expert Settings** panel that allow you to configure the Image Vectorizer **transformer**. While building the first experiment, note that we never configure the **Image Vectorizer transformer**. The reason being, when Driverless AI detected an image column in our dataset, certain default settings were used for our experiment. To bring the above into a clearer perspective, let us review how we ran our first experiment in task one while, understaing a bit more about **Embeddings Transformer** . 
 
-**Note**: we will only discuss the settings relevant to this tutorial. 
+**Note**: we will only discuss the settings relevant to this self-paced course. 
 
 First, let's briefly discuss the multiple methods **Driverless AI** supports for uploading image datasets:
 
@@ -291,11 +277,9 @@ First, let's briefly discuss the multiple methods **Driverless AI** supports for
 
 Now let's focus on the dataset used for the first experiment: 
 
-1. In the **Datasets** page click the **car_deals_train** dataset
-
-2. Click the **DETAILS** options 
-
-3. In the dataset details page, click the following button located at the top right corner of the page: **DATASET ROWS**
+- In the **Datasets** page click the **car_deals_train** dataset
+- Click the **DETAILS** options 
+- In the dataset details page, click the following button located at the top right corner of the page: **DATASET ROWS**
 
 The following should appear: 
 
@@ -314,9 +298,7 @@ Note that in the **Image** tab inside the **EXPERT SETTINGS** you can **Enable I
 
 To rephrase it, you can specify whether to use pre-trained deep learning models to process image data as part of the feature engineering pipeline. When this is enabled, a column of **Uniform Resources Identifiers (URIs)** to images is converted to a numeric representation using ImageNet pre-trained deep learning models. Again, the Image Transformer is enabled by default. 
 
-When the Image Transformer is enabled, Driverless AI defaults the **xception ImageNet Pretrained Architecture** for the Image Transformer. As mentioned in task 2, Driverless AI offers an array of supported **ImageNet pre-trained architectures** for **image transformer**.(One can find it in the **Expert Settings** under the **Image Tab** under the following settings: **Supported ImageNet pre-trained Architecture for Image Transformer** (as observed in the image below)
-
-
+When the Image Transformer is enabled, Driverless AI defaults the **xception ImageNet Pretrained Architecture** for the Image Transformer. As mentioned in task 2, Driverless AI offers an array of supported **ImageNet pre-trained architectures** for **image transformer**.(One can find it in the **Expert Settings** under the **Image Tab** under the following settings: **Supported ImageNet pre-trained Architecture for Image Transformer** (as observed in the image below):
 
 ![supported-imagenet-pretrained-architectures-for-image-transformer](assets/supported-imagenet-pretrained-architectures-for-image-transformer.png)
 
@@ -357,7 +339,7 @@ Driverless AI allows you to enable the dimensionality of the feature (embeddings
 
 **Note**: You can activate multiple transformers simultaneously to allow the selection of multiple options. 
 
-Other settings exist to configure the **Image Vectorizer transformer,** but we will not cover all of them for this tutorial. Though, we will discuss the other settings in future tutorials. For now, please refer to the Driverless AI documentation [here](https://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/expert_settings/image_settings.html#image-settings) for more details on the predefined settings used in our first experiment.
+Other settings exist to configure the **Image Vectorizer transformer,** but we will not cover all of them for this self-paced course. Though, we will discuss the other settings in future self-paced courses. For now, please refer to the Driverless AI documentation [here](https://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/expert_settings/image_settings.html#image-settings) for more details on the predefined settings used in our first experiment.
 
 On the point of how our model performed with the auto default settings for **Embeddings Transformer without Fine-tuning**, one can observe the following:
 
@@ -395,25 +377,17 @@ To showcase how fine-tuning was enabled for the first approach to image processi
 
 In the **Experiments** section:
 
-1. Click the **three vertical dots** (located on the right side of the experiment) of the following experiment: `Embeddings-Transformer-Without-Fine-Tuning`
-
+- Click the **three vertical dots** (located on the right side of the experiment) of the following experiment: `Embeddings-Transformer-Without-Fine-Tuning`
 ![exp2-new-experiment](assets/exp2-new-experiment.png)
-
-2. Click the following option: **NEW EXPERIMENT WITH SAME SETTINGS**
-
-3. Rename the experiment to `Embeddings-Transformer-With-Fine-Tuning`
-
-4. Under the **IMAGE** tab located in the **EXPERT SETTINGS** click the **DISABLED** button under the following setting: **Enable Fine-tuning of pre-trained models used for image Transformer** 
-
-    - This setting will change from **DISABLED** to **ENABLED** 
-
+- Click the following option: **NEW EXPERIMENT WITH SAME SETTINGS**
+- Rename the experiment to `Embeddings-Transformer-With-Fine-Tuning`
+- Under the **IMAGE** tab located in the **EXPERT SETTINGS** click the **DISABLED** button under the following setting: **Enable Fine-tuning of pre-trained models used for image Transformer** 
+    - This setting will change from **DISABLED** to **ENABLED**:
 ![enabled-fine-tuning](assets/enabled-fine-tuning.png)
-
-5. **LAUNCH EXPERIMENT**
-
+- **LAUNCH EXPERIMENT**:
 ![exp2-launch-experiment](assets/exp2-launch-experiment.png) 
 
-When fine-tuning is enable, Driverless AI provides a list of possible image augmentations to apply while fine-tuning the **ImageNet pre-trained models** used for the **Image Transformer**. By default, **HorizontalFlip** is enabled, and for purposes of this tutorial, it was not changed. This default setting can be found and change in the **IMAGE** tab inside the **EXPERT SETTINGS**. Please refer to the Driverless AI documentation right [here](https://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/expert_settings/image_settings.html#list-of-augmentations-for-fine-tuning-used-for-the-image-transformer) for a full list of all other augmentations. 
+When fine-tuning is enable, Driverless AI provides a list of possible image augmentations to apply while fine-tuning the **ImageNet pre-trained models** used for the **Image Transformer**. By default, **HorizontalFlip** is enabled, and for purposes of this self-paced course, it was not changed. This default setting can be found and change in the **IMAGE** tab inside the **EXPERT SETTINGS**. Please refer to the Driverless AI documentation right [here](https://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/expert_settings/image_settings.html#list-of-augmentations-for-fine-tuning-used-for-the-image-transformer) for a full list of all other augmentations. 
 
 ![list-of-augmentations-for-fine-tuning-used-for-image-transformer](assets/list-of-augmentations-for-fine-tuning-used-for-image-transformer.png)
 
@@ -425,10 +399,8 @@ Now that you know how to rerun the experiment with fine-tuning let's explore the
 
 To access the experiment summary page, consider the following steps: 
 
-1. Click the **EXPERIMENTS** option (located on the top right middle part of the screen) 
-
-2. Select the following experiment: **Embeddings-Transformer-With-Fine-Tuning**
-
+- Click the **EXPERIMENTS** option (located on the top right middle part of the screen) 
+- Select the following experiment: **Embeddings-Transformer-With-Fine-Tuning**
 
 The following should appear: 
 
@@ -480,55 +452,35 @@ To illustrate how we will use the second approach, let's explore the pre-built e
 
 In the **Datasets** page: 
 
-1. Import the dataset by selecting the **AMAZON S3** option 
-
-2. Paste the following in the search bar: `s3://h2o-public-test-data/bigdata/server/ImageData/histopathology_train.zip`
-
-3. Selet the followign option: **histopathology_train.zip [488.5MB]**
-4. **CLICK TO IMPORT SELECTION**
-
-5. The following dataset should appear on the **Datasets** page: **histopathology_train.zip**
-
-6. Click on the **histopathology_train.zip** and click the **PREDICT** option
-
-7. Name your experiment as follows: `Metastatic Cancer - Automatic Image Model`
-
-8. Select **label** as the **Target Column**  
-
-9. To enable the Automatic **Image** Model, navigate to the *Pipeline Building Recipe* expert setting and select the **image_model** option
-
-    - You can find the *Pipeline Building Recipe* inside the **EXPERIMENT** tab inside the **EXPERT SETTINGS**
-
+- Import the dataset by selecting the **AMAZON S3** option 
+- Paste the following in the search bar: `s3://h2o-public-test-data/bigdata/server/ImageData/histopathology_train.zip`
+- Selet the followign option: **histopathology_train.zip [488.5MB]**
+- **CLICK TO IMPORT SELECTION**
+- The following dataset should appear on the **Datasets** page: **histopathology_train.zip**
+- Click on the **histopathology_train.zip** and click the **PREDICT** option
+- Name your experiment as follows: `Metastatic Cancer - Automatic Image Model`
+- Select **label** as the **Target Column**  
+- To enable the Automatic **Image** Model, navigate to the *Pipeline Building Recipe* expert setting and select the **image_model** option
+    - You can find the *Pipeline Building Recipe* inside the **EXPERIMENT** tab inside the **EXPERT SETTINGS**:
     ![expert-settings-exp3](assets/expert-settings-exp3.png)
-
     ![image-model](assets/image-model.png)
-
     Right after, a *warning* dialog box will appear stating the following about selecting **image_model**:    
-
-    ![warning](assets/warning.png)
-    
-10. In terms of the **training settings**, don't change them; we will use the recommended settings. 
-
-11. **LAUNCH EXPERIMENT**
-
+    ![warning](assets/warning.png)  
+- In terms of the **training settings**, don't change them; we will use the recommended settings. 
+- **LAUNCH EXPERIMENT**:
 ![exp3-launch-experiment](assets/exp3-launch-experiment.png)
 
 Now that you know how to run the experiment using the **AutoML** model, let's explore the results and use **insights** to see images and information about the current best individual model for the **Automatic Image Model**. As mentioned, this experiment has been pre-built and can be found in the **Experiment** section.
 
-1. In the **Experiment** section, select the following experiment: **Metastatic Cancer - Automatic Image Model**. The following will appear:
-
+- In the **Experiment** section, select the following experiment: **Metastatic Cancer - Automatic Image Model**. The following will appear:
 ![metastatic-experiment-results](assets/metastatic-experiment-results.png)
 
 As mentioned above, this second modeling approach only supports a **single** image column as an input. Therefore, let's see the dataset used for the Metastatic cancer experiment. 
 
-1. In the *Datasets* page, click the following dataset: histopathology_train.zip
-
-2. Select the **DETAILS** option 
-
-3. On the top right corner of the page, click **DATASET ROWS**
-
-4. The following will appear: 
-
+- In the *Datasets* page, click the following dataset: histopathology_train.zip
+- Select the **DETAILS** option 
+- On the top right corner of the page, click **DATASET ROWS**
+- The following will appear: 
 ![metastic-cancer-dataset-details](assets/metastic-cancer-dataset-details.png)
 
 As we can see, the images(id) have labels of bool storage type. In this case, True refers to a true case of metastatic cancer, and False refers to a false case of metastatic cancer. 
@@ -561,46 +513,26 @@ Now let's look at the **Insights** of the current best individual model for the 
 The Insights page contains the following about the current best individual model: 
 
 - Best individual hyperparameters: 
-
     ![best-individual-hyperparameters](assets/best-individual-hyperparameters.png)
-
     - **Note**: The **resnet152** architecture (a residual CNN for Image Classification Tasks) is 152 layers deep. This pretrained model has been trained on more than a million images from the ImageNet database. 
-
 - Train and validation loss graph(by epoch): 
-
     ![train-and-validation-loss-graph(by epoch)](assets/train-and-validation-loss-graph-by-epoch.png)
-
-
 - Validation Scorer graph (by epoch): 
-
     ![validation-scorer-graph-by-epoch](assets/validation-scorer-graph-by-epoch.png)
-
 - Sample train and augmented train images: 
-
-    ![sample-train-and-augmented-train-images-one](assets/sample-train-and-augmented-train-images-one.png)
-
-    - **Note**: Zero (0) refers to False and One (1) refers to True  
-
+    ![sample-train-and-augmented-train-images-one](assets/sample-train-and-augmented-train-images-one.png)  
     ![sample-train-and-augmented-train-images-two](assets/sample-train-and-augmented-train-images-two.png)
-
+    - **Note**: Zero (0) refers to False and One (1) refers to True
     - **Note**: Image augmentation is a technique that can artificially expand the size of a training dataset by creating modified versions of images in the dataset. To make new images, you can change original images. For example, you can make a new image a little darker; you could cut a piece from the original image, etc. Therefore, you could create an infinite amount of new training samples. For example: 
-
         ![augmentation](assets/augmentation.png)
-
         <p align="center">
             Figure 9. Augmentation
         </p>
-
 - Sample validation error images: 
-
     ![sample-validation-error-images](assets/sample-validation-error-images.png)
-
      - The above **sample validation errors** display instances when the model predicted wrongly. For example, the top left corner sample shows the model predicting a True (1) case of metastatic cancer when **True** is 0(False). 
-
 - Sample Grad-CAM visualization: 
-
     ![sample-grad-cam-visualization](assets/sample-grad-cam-visualization.png)
-
     - The **Grad-CAM** visualization samples allow us to see where the model looked when generating a prediction and probability. In the two pair images on the middle left of the image, we see the images being label as part of the *True* class (1). In this sample, we see that the model observed the middle part of the image when predicting that this image belongs to the *True* class and that its probability is 1.000. 
 
 **Note**: For time series and Automatic Image Model experiments, you can view detailed insights while an experiment is running or after an experiment is complete by clicking on the **Insights** option.  
@@ -637,25 +569,25 @@ Though in the roadmap, Driverless AI will be able to support the following probl
 
 ## Next Steps 
 
-To understand more about the **C++ MOJO Scoring**, we recommend checking the following three tutorials in order: 
+To understand more about the **C++ MOJO Scoring**, we recommend checking the following three self-paced courses in order: 
 
-- [Tutorial 1A: Intro to ML Model Deployment and Management](https://training.h2o.ai/products/tutorial-4a-scoring-pipeline-deployment-introduction#tab-product_tab_overview)
-- [Tutorial 4B: Scoring Pipeline Deployment Templates](https://training.h2o.ai/products/tutorial-4b-scoring-pipeline-deployment-templates#tab-product_tab_overview)
-- [Tutorial 4D: Scoring Pipeline Deployment in C++ Runtime](https://training.h2o.ai/products/tutorial-4d-scoring-pipeline-deployment-in-c-runtime#tab-product_tab_overview)
+- [Self-Paced Course 1A: Intro to ML Model Deployment and Management](https://training.h2o.ai/products/self-paced-course-4a-scoring-pipeline-deployment-introduction#tab-product_tab_overview)
+- [Self-Paced Course 4B: Scoring Pipeline Deployment Templates](https://training.h2o.ai/products/self-paced-course-4b-scoring-pipeline-deployment-templates#tab-product_tab_overview)
+- [Self-Paced Course 4D: Scoring Pipeline Deployment in C++ Runtime](https://training.h2o.ai/products/self-paced-course-4d-scoring-pipeline-deployment-in-c-runtime#tab-product_tab_overview)
 
-To continue with the Driverless AI learning path, consider the next tutorial in the learning path: 
+To continue with the Driverless AI learning path, consider the next self-paced course in the learning path: 
 
-- [Tutorial 3A: Get Started with Open Source Custom Recipes](https://training.h2o.ai/products/tutorial-3a-get-started-with-open-source-custom-recipes-tutorial#tab-product_tab_overview)
+- [Self-Paced Course 3A: Get Started with Open Source Custom Recipes](https://training.h2o.ai/products/self-paced-course-3a-get-started-with-open-source-custom-recipes#tab-product_tab_overview)
 
 ## Special Thanks 
 
-Thank you to everyone that helped make this tutorial possible.
+Thank you to everyone that helped make this self-paced course possible:
 
 - **Yauhen Babakhin** -
 Data Scientist | Kaggle Grandmaster
 - **Jo-fai (Joe) Chow** - 
 Data Science + Community + #360Selfie
-- **Sanyam Bhutani** - Machine Learning Engineer and AI Content Creator at H2O.ai | Kaggle Master + x2 Expert (Ranked in Top 1%)
+
 
 
 
