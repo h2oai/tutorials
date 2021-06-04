@@ -569,15 +569,20 @@ Though in the roadmap, Driverless AI will be able to support the following probl
 
 ## Next Steps 
 
+Check out the following self-paced course in the learning path: [Get Started with Open Source Custom Recipes](https://training.h2o.ai/products/self-paced-course-3a-get-started-with-open-source-custom-recipes). In it, you will learn the following: 
+
+- What is Bring Your Own Recipe?
+- What is a recipe?
+- Types of Driverless AI open-source recipes available
+- How to upload the recipes into Driverless AI as raw **URL’s** and **.py** files
+- Analyze models that made use of custom recipes 
+
 To understand more about the **C++ MOJO Scoring**, we recommend checking the following three self-paced courses in order: 
 
 - [Self-Paced Course 1A: Intro to ML Model Deployment and Management](https://training.h2o.ai/products/self-paced-course-4a-scoring-pipeline-deployment-introduction#tab-product_tab_overview)
 - [Self-Paced Course 4B: Scoring Pipeline Deployment Templates](https://training.h2o.ai/products/self-paced-course-4b-scoring-pipeline-deployment-templates#tab-product_tab_overview)
 - [Self-Paced Course 4D: Scoring Pipeline Deployment in C++ Runtime](https://training.h2o.ai/products/self-paced-course-4d-scoring-pipeline-deployment-in-c-runtime#tab-product_tab_overview)
 
-To continue with the Driverless AI learning path, consider the next self-paced course in the learning path: 
-
-- [Self-Paced Course 3A: Get Started with Open Source Custom Recipes](https://training.h2o.ai/products/self-paced-course-3a-get-started-with-open-source-custom-recipes#tab-product_tab_overview)
 
 ## Special Thanks 
 
