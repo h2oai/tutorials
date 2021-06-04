@@ -644,13 +644,19 @@ https://raw.githubusercontent.com/h2oai/driverlessai-recipes/rel-1.9.1/transform
 
 ## Next Steps
 
-Check out the following self-paced course in the learning path: [Get Started with Open Source Custom Recipes](https://training.h2o.ai/products/self-paced-course-3a-get-started-with-open-source-custom-recipes). In it, you will learn the following: 
+- Check out the next self-paced course: **[Image Processing in Driverless AI](https://training.h2o.ai/products/self-paced-course-2c-image-processing-in-driverless-ai)**, where you will learn about: 
+  - How to use images to predict true cases of metastatic cancer 
+  - How to use images to predict the price of a car 
+  - Pre-trained image transformers - transforming images into vectors 
+  - Automatic image model 
 
-- What is Bring Your Own Recipe?
-- What is a recipe?
-- Types of Driverless AI open-source recipes available
-- How to upload the recipes into Driverless AI as raw **URL’s** and **.py** files
-- Analyze models that made use of custom recipes 
+- As well, you can watch the following webinar to learn more about Image Processing in Driverless AI: 
+  - **Webinar**: [More Use Cases and More Value with Automated Computer Vision Modeling](https://www.h2o.ai/webinars/?commid=427103)
+    - In this webinar, you will learn about: - Visual AI features in Driverless AI 1.9 - Image modeling use cases with images with other data types and with images stand-alone - The Visual AI roadmap for Driverless AI - How to deploy image models as low latency MOJOs 
+    - Presenters: Dan Darnell, VP of Product Marketing at H2O.ai Yauhen Babakhin, Kaggle Competitions Grandmaster and Data Scientist at H2O.ai
+
+- You can also read the following article discussing Automatic Image Recognition: [Exploring the Next Frontier of Automatic Machine Learning with H2O Driverless AI](https://www.h2o.ai/blog/exploring-the-next-frontier-of-automatic-machine-learning-with-h2o-driverless-ai/)
+
 
 
 
