@@ -16,32 +16,32 @@
 
 ## Objective 
 
-Image processing techniques have become crucial for a diverse range of companies despite their operations in the course of time. In other words, to compete in this global economy, image processing is becoming a requirement for any company hoping to become a credible competitor. Everyone can now see image processing in Agricultural Landscape, Disaster Management, and Biomedical and Other Healthcare Applications. 
+Image processing techniques have become crucial for a diverse range of companies despite their operations over time. In other words, to compete in this global economy, image processing is becoming a requirement for any company hoping to become a credible competitor. Everyone can now see image processing in Agricultural Landscape, Disaster Management, and Biomedical and other Healthcare Applications.
 
-With this in mind, and with the hopes to democratize AI, H2O.ai has automated the processes of obtaining high-quality models capable of image processing. 
+With this in mind, and with the hopes to democratize AI, H2O.ai has automated the processes of obtaining high-quality models capable of image processing.
 
-This self-paced course will explore the two different approaches to modeling images in Driverless AI: **Embeddings Transformer(Image Vectorizer)** and **Automatic Image Model**. To lay down the foundations for this self-paced course, we will review transfer learning from pre-trained models. Right after, we will illustrate the first image modeling approach by analyzing a pre-built **image model** capable of predicting car prices. Directly after, we will better understand the second approach by analyzing a pre-built **image model** capable of predicting a true case of metastatic cancer. In the final analysis, we will compare and contrast each image modeling approach, and we will discuss several scenarios when a given approach will be better. In particular, and as a point of distinction,  we will discuss how the **Embeddings Transformer** approach only supports a MOJO Scoring Pipeline. Correspondingly, we will discuss how a user can only obtain details about the current best individual model through the **Automatic Image Model** approach. 
+This self-paced course will explore the two different approaches to modeling images in Driverless AI: **Embeddings Transformer (Image Vectorizer)** and **Automatic Image Model**. To lay down the foundations for this self-paced course, we will review transfer learning from pre-trained models. Right after, we will illustrate the first image modeling approach by analyzing a pre-built **image model** capable of predicting car prices. Directly after, we will better understand the second approach by analyzing a pre-built **image model** capable of predicting a true case of metastatic cancer. In the final analysis, we will compare and contrast each image modeling approach, and we will discuss several scenarios when a given approach will be better. In particular, and as a point of distinction,  we will discuss how the **Embeddings Transformer** approach only supports a MOJO Scoring Pipeline. Correspondingly, we will discuss how a user can only obtain details about the current best individual model through the **Automatic Image Model** approach.
 
-All things consider, let us start. 
+All things consider, let us start.
 
 ## Prerequisites 
 
 You will need the following to be able to do this self-paced course:
-- Basic knowledge of Driverless AI 
-- Completion of the following two self-paced courses: 
+- Basic knowledge of Driverless AI
+- Completion of the following two self-paced courses:
     - [Self-Paced Course 1A: Automatic Machine Learning Introduction with Driverless AI](https://training.h2o.ai/products/self-paced-course-1a-automatic-machine-learning-introduction-with-driverless-ai#tab-product_tab_overview)
     - [Self-Paced Course 1B: Machine Learning Experiment Scoring and Analysis - Financial Focus](https://training.h2o.ai/products/self-paced-course-1b-machine-learning-experiment-scoring-and-analysis-financial-focus#tab-product_tab_overview)
 - Understanding of Convolutional Neural Networks (CNNs)
-- Basic understanding of confusion matrices 
+- Basic understanding of confusion matrices
 - A **Two-Hour Test Drive session**: Test Drive is [H2O.ai's](https://www.h2o.ai) Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.
   - Need a **Two-Hour Test Drive** session? Follow the instructions on [this](https://training.h2o.ai/products/self-paced-course-0-getting-started-with-driverless-ai-test-drive#tab-product_tab_overview) quick self-paced course to get a Test Drive session started.
 
 **Note: Aquarium’s Driverless AI Test Drive lab has a license key built-in, so you don’t need to request one to use it. Each Driverless AI Test Drive instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to explore Driverless AI further, you can always launch another Test Drive instance or reach out to our sales team via the [contact us form](https://www.h2o.ai/company/contact/).**
 
 
-## Task 1: Launch Experiment One: Predict a Car's Price 
+## Task 1: Launch Experiment One: Predict a Car's Price
 
-As mentioned in the **objective** section, we will use three image models, but running each experiment takes time to run. For this reason, all experiments have been built for you and can be found in Driverless AI's **Experiments** section: 
+As mentioned in the **objective** section, we will use three image models, but running each experiment takes time to run. For this reason, all experiments have been built for you and can be found in Driverless AI's **Experiments** section:
 
 ![image-processing-three-pre-built-experiments](assets/image-processing-three-pre-built-experiments.png)
 
@@ -52,7 +52,7 @@ As mentioned in the **objective** section, we will use three image models, but r
 
 For understanding purposes, let's see how the first experiment was run. Right after, we will follow to understand the dataset and settings used in the first image model; doing so will allow us to understand **embeddings Transformer** (the first approach to image processing in Driverless AI).
 
-Our first image model(experiment) predicts a car's price (again, we will explore the dataset and all settings for this model in a moment). 
+Our first image model (experiment) predicts a car's price (again, we will explore the dataset and all settings for this model in a moment). 
 
 If you were to run the experiment, you would take the following steps: 
 
@@ -94,7 +94,7 @@ On the *Datasets page*:
 - Click the following dataset: **car_deals_train**
 - Click **PREDICT**
 - First time using Driverless AI? Click **Yes** to get a tour! Otherwise, click **No**
-- Name you experiment `Embeddings-Transformer-Without-Fine-Tuning`
+- Name your experiment `Embeddings-Transformer-Without-Fine-Tuning`
 - For the *TEST DATASET* select the following dataset: **car_deals_test**
 - As a target column, select **Price**
 
@@ -115,13 +115,13 @@ Click the **DROPPED COLUMNS** option:
 
 ![embeddings-transformer-a](assets/embeddings-transformer-a.png)
 
-Before we further explore the dataset and settings used in the first image model, let's discuss **transfer learning** concepts from pre-trained models. Concepts that will help us understand **Embeddings Transformer(Image Vectorizer)**. 
+Before we further explore the dataset and settings used in the first image model, let's discuss **transfer learning** concepts from pre-trained models. Those concepts that will help us understand **Embeddings Transformer (Image Vectorizer)**. 
 
 ## Task 2: Concepts: Transfer learning from pre-trained models
 
 In image classification, the goal is to classify an image based on a set of possible categories. In general, classifying images is a bit hard, but such a difficulty can find ease in **transfer learning**. 
 
-**Transfer learning** allows anyone to build accurate models that make building image models less painful. Transfer Learning allows you to avoid relearning certain patterns again because you can use patterns others learned when solving a similar and different problem. Transfer Learning prevents many from starting from scratch. 
+**Transfer learning** allows anyone to build accurate models that make building image models less difficult. Transfer Learning allows you to avoid relearning certain patterns again because you can use patterns others learned when solving another problem. Transfer Learning prevents many from starting from scratch. 
 
 - ''In computer vision, transfer learning is usually expressed through the use of pre-trained models. A pre-trained model is a model that was trained on a large benchmark dataset to solve a problem similar to the one that we want to solve. Accordingly, due to the computational cost of training such models, it is common practice to import and use models from published literature (e.g. VGG, Inception, MobileNet)" (Pedro Marcelino).
 
@@ -171,7 +171,7 @@ Accordingly and from a practical perspective, the process of **transfer learning
 
 1. ***Select a pre-trained model*** 
 
-When it comes to selecting a pre-trained model - you pick one that looks suitable for your problem. Note, in Driverless AI; you have access to the following set of pre-trained ImageNet models: 
+When it comes to selecting a pre-trained model - you pick one that looks suitable for your problem. Note, in Driverless AI you have access to the following set of pre-trained ImageNet models: 
 
 - densenet121
 - efficientnetb0
@@ -264,7 +264,7 @@ With this task in mind, let us now understand the dataset and settings used in t
 - Transformer refers to the Driverless AI internal terms (e.g., like a target-encoding transformer for tabular data). To learn more about Driverless AI Transformations, please refer to [this](https://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/transformations.html?highlight=target%20encoding) documentation 
 - This modeling approach supports classification and regression experiments
 
-In Driverless AI, there are several options in the **Expert Settings** panel that allow you to configure the Image Vectorizer **transformer**. While building the first experiment, note that we never configure the **Image Vectorizer transformer**. The reason being, when Driverless AI detected an image column in our dataset, certain default settings were used for our experiment. To bring the above into a clearer perspective, let us review how we ran our first experiment in task one while, understaing a bit more about **Embeddings Transformer** . 
+In Driverless AI, there are several options in the **Expert Settings** panel that allow you to configure the Image Vectorizer **transformer**. While building the first experiment, note that we never configure the **Image Vectorizer transformer**. The reason being, when Driverless AI detected an image column in our dataset, certain default settings were used for our experiment. To bring the above into a clearer perspective, let us review how we ran our first experiment in task one while understaing a bit more about **Embeddings Transformer** . 
 
 **Note**: we will only discuss the settings relevant to this self-paced course. 
 
@@ -291,14 +291,14 @@ In the first column (image_id), you will see images. When we **predicted** on th
 
 ![imagetransformer-automatically-enabled-without-fine-tuning](assets/imagetransformer-automatically-enabled-without-fine-tuning.png)
 
-Note that in the **Image** tab inside the **EXPERT SETTINGS** you can **Enable Image Transformer for processing of image data**:
+Note that in the **Image** tab inside the **EXPERT SETTINGS**, you can **Enable Image Transformer for processing of image data**:
 
 ![image-tab](assets/image-tab.png)
 
 
 To rephrase it, you can specify whether to use pre-trained deep learning models to process image data as part of the feature engineering pipeline. When this is enabled, a column of **Uniform Resources Identifiers (URIs)** to images is converted to a numeric representation using ImageNet pre-trained deep learning models. Again, the Image Transformer is enabled by default. 
 
-When the Image Transformer is enabled, Driverless AI defaults the **xception ImageNet Pretrained Architecture** for the Image Transformer. As mentioned in task 2, Driverless AI offers an array of supported **ImageNet pre-trained architectures** for **image transformer**.(One can find it in the **Expert Settings** under the **Image Tab** under the following settings: **Supported ImageNet pre-trained Architecture for Image Transformer** (as observed in the image below):
+When the Image Transformer is enabled, Driverless AI defaults the **xception ImageNet Pretrained Architecture** for the Image Transformer. As mentioned in task 2, Driverless AI offers an array of supported **ImageNet pre-trained architectures** for **image transformer**. You can find it in the **Expert Settings** under the **Image Tab** under the following settings: **Supported ImageNet pre-trained Architecture for Image Transformer** (as observed in the image below):
 
 ![supported-imagenet-pretrained-architectures-for-image-transformer](assets/supported-imagenet-pretrained-architectures-for-image-transformer.png)
 
@@ -313,19 +313,19 @@ The **CNN Xception ImageNet Architecture** is an extension of the Inception Arch
 
 - Multiple transformes can be activated at the same time to allow the selection of multiple options. In this case, embeddings from the different architectures are concatenated together (in a single embedding). 
 
-In terms of which architecture to use, the answer is more complicated than one might think. There are a lot of CNN architectures out there, but how do we choose the best one for our problem? But exactly what is defined as the **best architecture**? Best can mean the simplest or perhaps the most efficient at producing accuracy while reducing computational complexity. Choosing a CNN architecture for your problem also depends on the problem you want to solve, and as of now is known that certain architectures are good and bad for certain problems.  As well, to find the best architecture for your problem, you have to run your problem with several architectures and see which one provides the best efficiency or perhaps the best accuracy while reducing computational complexity.Though I will say that if your dataset is similar to the dataset used to train the architecture, you will discover better results.
+In terms of which architecture to use, the answer is more complicated than one might think. There are a lot of CNN architectures out there, but how do we choose the best one for our problem? But exactly what is defined as the **best architecture**? Best can mean the simplest or perhaps the most efficient at producing accuracy while reducing computational complexity. Choosing a CNN architecture for your problem also depends on the problem you want to solve, and as of now is known that certain architectures are good and bad for certain problems. Also, to find the best architecture for your problem, you have to run your problem with several architectures and see which one provides the best efficiency or perhaps the best accuracy while reducing computational complexity. However, if your dataset is similar to the dataset used to train the architecture, you will discover better results.
 
-Besides being able to select the **ImageNet Pretrained architecture** for the **Image transformer**, you can also **Fine-Tune** the ImageNet Pretrained Models used for the Image Transformer. This is disabled by default, and therefore, the fine-tuning technique was not used in our first experiment in task one. In a bit, we will explore a pre-built rerun of the first experiment with fine-tuning enable, and we will see how it impacts our results. But before, let us quickly review what fine-tuning does. 
+Besides being able to select the **ImageNet Pretrained architecture** for the **Image transformer**, you can also **Fine-Tune** the ImageNet Pretrained Models used for the Image Transformer. This is disabled by default, and therefore, the fine-tuning technique was not used in our first experiment in Task 1. In a bit, we will explore a pre-built rerun of the first experiment with fine-tuning enable, and we will see how it impacts our results. But before, let us quickly review what fine-tuning does.
 
 As mentioned above, we can define a neural network architecture by choosing an existing ImageNet architecture, but how can we avoid the need to train our neural network from scratch? Usually, neural networks are initialized with random weights that reach a level of value that allows the network to classify the image input after a series of epochs are executed. With the just mentioned, the question that must be asked now is what if we could initialize those weights to certain values that we know beforehand are already good to classify a certain dataset. In our case, the car deals dataset. If the weights are predefined to correct values, we will not need to wait for a good number of epochs, and therefore, the weights will have it much more manageable. And this can be achieved with fine-tuning. 
 
-**Note**: In Driverless AI, we kind of counterpart transfer learning and fine-tuning. But transfer learning, in general, is the method of using pre-trained models on some new datasets. At the same time, fine-tuning is just one of the ways of applying transfer learning. Therefore, when we enabled fine-tuning, we specify a specific way to apply transfer learning. Accordingly, if our dataset is not similar to the ImageNet dataset or we want to improve the results of our model using ImageNet architectures, we can use fine-tuning. 
+**Note**: In Driverless AI, we counterpart transfer learning and fine-tuning. But transfer learning, in general, is the method of using pre-trained models on some new datasets. At the same time, fine-tuning is just one of the ways of applying transfer learning. Therefore, when we enabled fine-tuning, we specify a way to apply transfer learning. Accordingly, if our dataset is not similar to the ImageNet dataset or we want to improve the results of our model using ImageNet architectures, we can use fine-tuning. 
 
 When enabling fine-tuning, we are not limited to retrain only the classifier section of the CNN, but we are also able to retrain the feature extraction stage: the convolutional and pooling layers. 
 
 **Note**: In practice, networks are fine-tuned when trained on a large dataset like the ImageNet. In other words, with fine-tuning, we continue the training of the architecture with the large dataset we have imported. Fine-tuning will work better if the large dataset is not so different from the original dataset (ImageNet) our architecture was trained. (In practice, fine-tuning works for any dataset, no matter how large it differs from the ImageNet. And the reason for that is that pre-trained models in the early layers learned some simple representations like edges, strokes, etc. And these representations are always more useful than start training from the random weights). Once again, the pre-trained model will contain learned features relevant to our classification or regression problem. 
 
-Before we explore a rerun of the first experiment from task one, let us end this task by mentioning one more default setting that was enabled by default during the first experiment. 
+Before we explore a rerun of the first experiment from Task 1, let us end this task by mentioning one more default setting that was enabled by default during the first experiment. 
 
 Driverless AI allows you to enable the dimensionality of the feature (embeddings) space by Image Transformer. We take the embeddings vector from the last global average pooling layer of the pre-trained model. For different models, it has different dimensionalities (usually ranging from 512 to 2k). And in Driverless AI, we suppress these representations to a lower number to suppress the transformer's number of features. The following are options that you can choose from: 
 
@@ -341,7 +341,7 @@ Driverless AI allows you to enable the dimensionality of the feature (embeddings
 
 Other settings exist to configure the **Image Vectorizer transformer,** but we will not cover all of them for this self-paced course. Though, we will discuss the other settings in future self-paced courses. For now, please refer to the Driverless AI documentation [here](https://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/expert_settings/image_settings.html#image-settings) for more details on the predefined settings used in our first experiment.
 
-On the point of how our model performed with the auto default settings for **Embeddings Transformer without Fine-tuning**, one can observe the following:
+On the point of how our model performed with the auto default settings for **Embeddings Transformer without Fine-tuning**, you can observe the following:
 
 ![exp1-summary-page](assets/exp1-summary-page.png)
 
@@ -417,7 +417,7 @@ In our case, the Xception model has been trained on ~1.2 million training images
 
 So how else can we improve the RMSE for the first experiment? Well, if you recall task 2, the following is stated: 
 
- > **Quadrant 2**. "Large dataset and similar to the pre-trained model’s dataset. Here you’re in la-la land. Any option works. Probably, the most efficient option is Strategy 2. Since we have a large dataset, overfitting shouldn’t be an issue, so we can learn as much as we want. However, since the datasets are similar, we can save ourselves from a huge training effort by leveraging previous knowledge. Therefore, it should be enough to train the classifier and the top layers of the convolutional base"(Pedro Marcelino).
+- **Quadrant 2**. "Large dataset and similar to the pre-trained model’s dataset. Here you’re in la-la land. Any option works. Probably, the most efficient option is Strategy 2. Since we have a large dataset, overfitting shouldn’t be an issue, so we can learn as much as we want. However, since the datasets are similar, we can save ourselves from a huge training effort by leveraging previous knowledge. Therefore, it should be enough to train the classifier and the top layers of the convolutional base"(Pedro Marcelino).
 
 Note that in Driverless AI and when we enabled fine-tuning, we unfreeze the whole network.
 
@@ -483,7 +483,7 @@ As mentioned above, this second modeling approach only supports a **single** ima
 - The following will appear: 
 ![metastic-cancer-dataset-details](assets/metastic-cancer-dataset-details.png)
 
-As we can see, the images(id) have labels of bool storage type. In this case, True refers to a true case of metastatic cancer, and False refers to a false case of metastatic cancer. 
+As we can see, the images (id) have labels of bool storage type. In this case, True refers to a true case of metastatic cancer, and False refers to a false case of metastatic cancer. 
 
 To further see the difference between the first and second approach to Image processing, let's see how the automated selected settings generated a model to classify metastatic cancer cases (True or False). 
 
@@ -499,7 +499,7 @@ Before we determine whether the AUC (Area under the ROC Curve) is good or bad, c
 - An AUC value of **0.6 - 0.7** will be considered **Satisfactory**
 - An AUC value of **0.5 - 0.6** will be considered **Unsatisfactory**
 
-With the above in mind, our AUC of **0.9766** will mean that our model is **Excellent**. Note that this model was not tested with a training dataset, and therefore, it could be the case that our AUC can decrease, but for now, it's safe to say that our model is doing a great job at classifying metastatic cancer cases *(True or False)*. Also note, that the difference between the metastatic dataset and the ImageNet dataset didn't prevent good results for this model. 
+With the above in mind, our AUC of **0.9766** will mean that our model is **Excellent**. Note that this model was not tested with a test dataset, and therefore, it could be the case that our AUC can decrease, but for now, it's safe to say that our model is doing a great job at classifying metastatic cancer cases *(True or False)*. Also note, that the difference between the metastatic dataset and the ImageNet dataset didn't prevent good results for this model. 
 
 For this model, the confusion matrix looks as follows:
 
@@ -548,15 +548,16 @@ Now in the next task, let's compare and contrast each image modeling approach, a
 Under what circumstances a particular approach will be better? When answering this question, consider the following:
 
 - When your classification or regression problem is making use of a mixed data type, you can only use the Embeddings Transformer (Image Vectorizer) approach:
-    - When deciding whether to use it with or without fine-tuning, you can consider what was discussed in tasks 2 and 3. In general, if your dataset is not similar to the ImageNet dataset or we want to improve the results of our model using ImageNet architectures, we can use fine-tuning 
+    - When deciding whether to use it with or without fine-tuning, you can consider what was discussed in Tasks 2 and 3. In general, if your dataset is not similar to the ImageNet dataset or we want to improve the results of our model using ImageNet architectures, we can use fine-tuning 
         - **Without fine-tuning**: the experiment will usually finish faster but has the lowest performance 
-        - **With fine-tuning**: the experiment will slower, but should produce better results  
+        - **With fine-tuning**: the experiment will be slower with fine-tuning, but should produce better results  
         - **Automatic Image Model**: the slowest by far, but produces the best results 
 - When your dataset image column is crucial to your regression or classification problem, it is best to use the second approach: Automatic Image Model. Hence, if images are not playing a crucial role in your experiment, you can use the Embeddings Transformer
 - **Python scoring** and **C++ MOJO Scoring** are supported for the image transformer
 - Presently, only **Python scoring** is supported for **Automatic Image Model**
 
-With the above in mind, you are ready to generate your Image Models. Note: as of now, Driverless AI supports the following problem types: 
+With the above in mind, you are ready to generate your Image Models. 
+**Note:** As of now, Driverless AI supports the following problem types: 
 
 - Classification (single-label)
 - Regression 
@@ -575,7 +576,7 @@ Check out the following self-paced course in the learning path: [Get Started wit
 - What is a recipe?
 - Types of Driverless AI open-source recipes available
 - How to upload the recipes into Driverless AI as raw **URL’s** and **.py** files
-- Analyze models that made use of custom recipes 
+- Analyze models that made use of custom recipes
 
 To understand more about the **C++ MOJO Scoring**, we recommend checking the following three self-paced courses in order: 
 
