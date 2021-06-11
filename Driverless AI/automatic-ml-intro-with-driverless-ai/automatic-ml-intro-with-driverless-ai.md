@@ -46,7 +46,7 @@ H2O Driverless AI is an artificial intelligence(AI) platform for automatic machi
 
 Over the last several years, machine learning has become an integral part of many organizations’ decision-making process at various levels. With not enough data scientists to fill the increasing demand for data-driven business processes, H2O.ai offers Driverless AI, which automates several time consuming aspects of a typical data science workflow, including data visualization, feature engineering, predictive modeling, and model explanation. 
 
-H2O Driverless AI is a high-performance, GPU-enabled computing platform for automatic development and rapid deployment of state-of-the-art predictive analytics models. It reads tabular data from plain text sources, Hadoop, or S3 buckets and automates data visualization and building predictive models. Driverless AI targets business applications such as loss-given-default, probability of default, customer churn, campaign response, fraud detection, anti-money-laundering, demand forecasting, and predictive asset maintenance models. (Or in machine learning parlance: common regression, binomial classification, and multinomial classification problems.) 
+H2O Driverless AI is a high-performance, GPU-enabled computing platform for automatic development and rapid deployment of state-of-the-art predictive analytics models. It reads tabular data from plain text sources, Hadoop, or S3 buckets and automates data visualization and building predictive models. Driverless AI targets business applications such as loss-given-default, probability of default, customer churn, campaign response, fraud detection, anti-money-laundering, demand forecasting, and predictive asset maintenance models. (Or in machine learning parlance: common regression, binomial classification, and multinomial classification problems). 
 
 ### Tour
 
@@ -367,7 +367,7 @@ From the *Titanic.csv* dataset, we are going to create two datasets, *training* 
 
 ![titanic-set-split-2](assets/titanic-set-split-2.png)
 
-- *Things to Note:*
+- *Things to Note:*</br>
 
     **a.** For **OUTPUT NAME 1**: enter ```titanic_train``` (this will serve as the training set)</br>
     **b.** For **OUTPUT NAME 2**: enter ```titanic_test``` (this will serve as the test set)</br>
@@ -590,7 +590,7 @@ The *survived* attribute was selected because, as an insurance company, we want 
     - **Notifications** inform you of different aspects of the experiment running(e.g., Shift in variable importance detected). Clicking on the Log button will present the experiment logs in real-time. You can download these logs by clicking on the Download Logs button in the upper right corner.</br>
 
     **f.** **Iteration Data** and **Variable Importance**: 
-    - The iteration data (internal validation) for each cross validation fold along with the specified scorer value. Click on a specific iteration or drag to view a range of iterations. Double click in the graph to reset the view. In this graph, each “column” represents one iteration of the experiment. During the iteration, Driverless AI will train 𝑛 models. (This is called individuals in the experiment preview.) So for any column, you may see the score value for those 𝑛 models for each iteration on the graph.
+    - The iteration data (internal validation) for each cross validation fold along with the specified scorer value. Click on a specific iteration or drag to view a range of iterations. Double click in the graph to reset the view. In this graph, each “column” represents one iteration of the experiment. During the iteration, Driverless AI will train 𝑛 models. (This is called individuals in the experiment preview). So for any column, you may see the score value for those 𝑛 models for each iteration on the graph.
     - Driverless AI performs automatic feature engineering as part of an experiment’s model building process. New features are created by doing transformations and/or interactions on the dataset columns. Feature creation and selection is evolutionary (based on variable importance of previous iteration) in nature and uses genetic algorithms to find the best set of feature transformations and model parameters for an experiment/dataset.
     - The variable importance values. To view variable importance for a specific iteration, just select that iteration in the Iteration Data graph. The Variable Importance list will automatically update to show variable importance information for that iteration. Hover over an entry to view more info.
     
@@ -722,15 +722,15 @@ Let's explore the results of this classification experiment. You can find useful
     - **Validation Score**: Log loss score +/- machine epsilon for the final pipeline
     - **Test Score**: Log loss score +/- machine epsilon score for the final pipeline 
 
-        Most of the above information, along with additional details, can be found in the experiment **summary** zip. (Click the **Download Summary & Logs** button to download the **h2oai_experiment_summary_<experiment>.zip** file.)
+        Most of the above information, along with additional details, can be found in the experiment **summary** zip. (Click the **Download Summary & Logs** button to download the **h2oai_experiment_summary_<experiment>.zip** file).
 
         Some questions to consider when exploring this section:
 
         - What are the number of features that Driverless AI scored for your model and the total features that Driverless AI selected? 
         - Take a look at the validation Score for the final pipeline and compare that value to the test score. Based on those scores, would you consider this model a good or bad model?</br>
-    </br>
+    
     **b.** **ROC - Receiver Operating Characteristics** </br>
-    This type of graph is called a **Receiver Operating Characteristic** curve (or ROC curve.) It is a plot of the true positive rate against the false-positive rate for the different possible cut points of a diagnostic test.
+    This type of graph is called a **Receiver Operating Characteristic** curve (or ROC curve). It is a plot of the true positive rate against the false-positive rate for the different possible cut points of a diagnostic test.
 
     A ROC curve is a useful tool because it only focuses on how well the model was able to distinguish between classes with the help of the Area Under the Curve or AUC. “AUC’s can help represent the probability that the classifier will rank a randomly selected positive observation higher than a randomly selected negative observation”[1]. However, for models where one of the classes occurs rarely, a high AUC could provide a false sense that the model is correctly predicting the results. This is where the notion of precision and recall become essential.
 
@@ -859,18 +859,18 @@ For multiclass classification experiments, this tab includes Feature Importance 
 
     **a.** **Sensitivity Analysis** (or "What if?") is a simple and powerful model debugging, explanation, fairness, and security tool. The idea behind Sensitivity Analysis is both direct and straightforward: Score your trained model on a single row, on multiple rows, or an entire dataset of potentially interesting simulated values and compare the model's new outcome to the predicted outcome on the original data.
 
-    Sensitivity analysis investigates whether model behavior and outputs remain stable when data is intentionally perturbed or other changes are simulated in the data. Machine learning models can make dramatically different predictions for only minor changes in input variable values. For example, when looking at predictions that determine financial decisions, SA can be used to help you understand the impact of changing the most important input variables and the impact of changing socially sensitive variables (such as Sex, Age, Race, etc.) in the model. If the model changes in reasonable and expected ways when important variable values are changed, this can enhance trust in the model. Similarly, if the model changes to sensitive variables have minimal impact on the model, then this is an indication of fairness in the model predictions. Learn more about [Sensitivity Analysis](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/interpret-non-ts.html#sensitivity-analysis). 
+    Sensitivity analysis investigates whether model behavior and outputs remain stable when data is intentionally perturbed, or other changes are simulated in the data. Machine learning models can make dramatically different predictions for only minor changes in input variable values. For example, when looking at predictions that determine financial decisions, SA can help you understand the impact of changing the most important input variables and the impact of changing socially sensitive variables (such as Sex, Age, Race, etc.) in the model. If the model changes in reasonable and expected ways when important variable values are changed, this can enhance trust in the model. Similarly, if the model changes to sensitive variables have minimal impact on the model, this indicates fairness in the model predictions. Learn more about [Sensitivity Analysis](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/interpret-non-ts.html#sensitivity-analysis). 
         
     To access it consider the following steps: click on the **SA** (Sensitivity Analysis) tile: 
 
-    ![sensitivity-analysis](assets/sensitivity-analysis.jpg)
+    ![sensitivity-analysis](assets/sensitivity-analysis.jpg)</br>
     </br>
     **b.** **Disparate Impact Analysis:** Disparate Impact Analysis is a technique that is used to evaluate fairness. Bias can be introduced to models during the process of collecting, processing, and labeling data—as a result, it is essential to determine whether a model is harming certain users by making a significant number of biased decisions. Learn more about [Disparate Impact Analysis](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/interpret-non-ts.html#disparate-impact-analysis). 
 
     To access it consider the following steps: click on the **DIA** (Disparate Impact Analysis) tile:
 
     ![disparate-impact-analysis-1](assets/disparate-impact-analysis-1.jpg)
-    ![disparate-impact-analysis-2](assets/disparate-impact-analysis-2.jpg)
+    ![disparate-impact-analysis-2](assets/disparate-impact-analysis-2.jpg)</br>
     </br>
     **c.** The **Original Feature Importance** chart is available for all models for binary classification, multiclass classification, and regression experiments.
 
@@ -878,7 +878,7 @@ For multiclass classification experiments, this tab includes Feature Importance 
         
     To access it consider the following steps: click on the **Original Feature Importance** tile:
 
-    ![original-feature-importance](assets/original-feature-importance.jpg)
+    ![original-feature-importance](assets/original-feature-importance.jpg)</br>
     </br>
     **d.** The **Transformed Feature Importance** chart is available for all models for binary classification, multiclass classification, and regression experiments.
 
@@ -886,7 +886,7 @@ For multiclass classification experiments, this tab includes Feature Importance 
         
     To access it consider the following steps: click on the **Transformed Feature Importance** tile:
 
-    ![transformed-feature-importance](assets/transformed-feature-importance.jpg)
+    ![transformed-feature-importance](assets/transformed-feature-importance.jpg)</br>
     </br>
     **e.** **Transformed Shapley**
 
@@ -900,9 +900,9 @@ For multiclass classification experiments, this tab includes Feature Importance 
 
     To access it consider the following steps: click on the **Transformed Shapley** tile:
 
-    ![transformed-shapley](assets/transformed-shapley.jpg)
+    ![transformed-shapley](assets/transformed-shapley.jpg)</br>
     </br>
-    **f.** **DAI Data Zip Archive** - dia-explainer.zip
+    **f.** **DAI Data Zip Archive** - dia-explainer.zip</br>
     </br>
     **g.** **DAI PD/ICE**
 
@@ -916,13 +916,13 @@ For multiclass classification experiments, this tab includes Feature Importance 
 
     To access it consider the following steps: click on the **DAI PD/ICE** tile:
 
-    ![dai-pd-ice](assets/dai-pd-ice.jpg)
+    ![dai-pd-ice](assets/dai-pd-ice.jpg)</br>
     </br>
     **h.** **Naive Shapley**
 
     This plot is not available for RuleFit or TensorFlow models. For all other models, this plot is available for binary classification, multiclass classification, and regression experiments.
 
-    Shapley values for original features are approximated from the accompanying Shapley values for transformed features with the Naive Shapley method. For example, if the transformed feature 𝑓𝑒𝑎𝑡𝑢𝑟𝑒1_𝑓𝑒𝑎𝑡𝑢𝑟𝑒2 has a Shapley value of 0.5, then the Shapley value of the original features 𝑓𝑒𝑎𝑡𝑢𝑟𝑒1 and 𝑓𝑒𝑎𝑡𝑢𝑟𝑒2 will be 0.25 each. Shapley values for original features can also be calculated with the Kernel Explainer method, which uses a special weighted linear regression to compute the importance of each feature. This can be enabled by using the recipe Original Kernel Shap explainer. More information about Kernel SHAP is available [here](http://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions.pdf.)
+    Shapley values for original features are approximated from the accompanying Shapley values for transformed features with the Naive Shapley method. For example, if the transformed feature 𝑓𝑒𝑎𝑡𝑢𝑟𝑒1_𝑓𝑒𝑎𝑡𝑢𝑟𝑒2 has a Shapley value of 0.5, then the Shapley value of the original features 𝑓𝑒𝑎𝑡𝑢𝑟𝑒1 and 𝑓𝑒𝑎𝑡𝑢𝑟𝑒2 will be 0.25 each. Shapley values for original features can also be calculated with the Kernel Explainer method, which uses a special weighted linear regression to compute the importance of each feature. This can be enabled by using the recipe Original Kernel Shap explainer. More information about Kernel SHAP is available [here](http://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions.pdf).
 
     To access it consider the following steps: click on the **Naive Shapley** tile:
 
@@ -938,25 +938,25 @@ A **surrogate model** is a data mining and engineering technique in which a gene
 
     **a.** **K-Lime**(to access this, click on the plot tile): 
 
-    ![k-lime](assets/k-lime.jpg)
+    ![k-lime](assets/k-lime.jpg)</br>
     </br>
     **b.** **RF Feature Importance**(to access this, click on the chart tile): 
 
-    ![rf-feature-importance](assets/rf-feature-importance.jpg)
+    ![rf-feature-importance](assets/rf-feature-importance.jpg)</br>
     </br>
     **c.** **RF LOCO**(to access this, click on the chart tile):
 
-    ![rf-loco](assets/rf-loco.jpg)
+    ![rf-loco](assets/rf-loco.jpg)</br>
     </br>
     **d.** **RF Partial Dependence Plot**(to access this, click on the plot tile):
 
-    ![rf-partial-dependence-plot](assets/rf-partial-dependence-plot.jpg)
+    ![rf-partial-dependence-plot](assets/rf-partial-dependence-plot.jpg)</br>
     </br>
-    **e.** **Surrogate and Shapley Zip Archive**(to access this, click on the zip tile): surrogates-and-shapleys-explainer.zip
+    **e.** **Surrogate and Shapley Zip Archive** (to access this, click on the zip tile): surrogates-and-shapleys-explainer.zip</br>
     </br>
     **f.** **Decision Tree**(to access this, click on the graph tile):
 
-    ![decision-tree](assets/decision-tree.jpg)
+    ![decision-tree](assets/decision-tree.jpg)</br>
     </br>
     **g.** **Decision Tree Surrogate Rules Zip**(to access this, click on the zip tile): dt-surrogate-explainer.zip
 
@@ -1039,7 +1039,7 @@ Display MLI Python Logs: View MLI Python logs for the interpretation.</br>
     ![explanations-button](assets/explanations-button.png)
     ![mli-dashboard-explanation](assets/mli-dashboard-explanation.jpg)
 
-**Every single graph, plot, or chart we have observed has a *?* icon, and this provides further information about the visual. It can be located at the top right corner of each visual.** 
+**Every single graph, plot, or chart we have observed has a `?` icon, and this provides further information about the visual. It can be located at the top right corner of each visual.** 
 
 With the above in mind, we can say that the top three factors that contributed to a passenger surviving are as follows: sex, cabin, and class. From the perspective of an insurance company, knowing this information can drastically determine certain groups' insurance rates. 
 
@@ -1069,8 +1069,8 @@ Click on **Download Summary & Logs**: Driverless AI will download a zip file:
 
 When you open the zip file, Driverless AI will include the following files:
 
-- **preview.txt**: provides a preview of the experiment. (This is the same information that was included on the UI before starting the experiment.)
-- **summary**: provides the same summary that appears in the lower-right portion of the UI for the experiment. (Available in txt or json.)
+- **preview.txt**: provides a preview of the experiment. (This is the same information that was included on the UI before starting the experiment).
+- **summary**: provides the same summary that appears in the lower-right portion of the UI for the experiment. (Available in txt or json).
 - **config.json**: provides a list of the settings used in the experiment.
 - **config_overrides_toml_string.txt**: provides any overrides for this experiment that were made to the config.toml file.
 - **args_do_auto_dl.json**: the internal arguments used in the Driverless AI experiment based on the dataset and accuracy, time and interpretability settings.
