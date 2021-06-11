@@ -1,4 +1,4 @@
-# Build Your Own Custom Recipe Tutorial
+# Build Your Own Custom Recipe
 
 ## Outline
 
@@ -16,50 +16,41 @@
 
 ## Objective
 
-In this tutorial, we will take a deeper dive into the process of custom recipe building to enhance Driverless AI. We will build three recipes using Visual Studio Code text editor. Each recipe will then be uploaded and tested using Driverless AI.  
+In this self-paced course, we will take a deeper dive into the process of custom recipe building to enhance Driverless AI. We will build three recipes using Visual Studio Code text editor. Each recipe will then be uploaded and tested using Driverless AI.
 
 Recipes:
 - Transformer
 - Model
 - Scorer 
 
-
 ## Prerequisites
 
 - Basic knowledge of Machine Learning and Statistics
-
 - Ability to write Python Code
-
 - A Two-Hour Test Drive session: Test Drive is H2O.ai's Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.
-
-  - Need a Two-Hour Test Drive session? Follow the instructions on [this quick tutorial](https://training.h2o.ai/products/tutorial-0-getting-started-with-driverless-ai-test-drive) to get a Test Drive session started.
-
-
-- Basic knowledge of Driverless AI or doing the following tutorials:
-
-  - [Automatic Machine Learning Introduction with Drivereless AI](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai)
-  - [Get Started with Open Source Custom Recipes Tutorial](https://training.h2o.ai/products/tutorial-3a-get-started-with-open-source-custom-recipes-tutorial) 
-
+  - Need a Two-Hour Test Drive session? Follow the instructions on [this quick self-paced course](https://training.h2o.ai/products/self-paced-course-0-getting-started-with-driverless-ai-test-drive) to get a Test Drive session started.
+- Basic knowledge of Driverless AI or doing the following self-paced courses:
+  - [Automatic Machine Learning Introduction with Drivereless AI](https://training.h2o.ai/products/self-paced-course-1a-automatic-machine-learning-introduction-with-driverless-ai)
+  - [Get Started with Open Source Custom Recipes](https://training.h2o.ai/products/self-paced-course-3a-get-started-with-open-source-custom-recipes) 
 - A text editor or developer environment to create .py text files containing source code (Examples: PyCharm, Jupyter, Spider or a Text Editor like Atom or Visual Studio Code)
 
 **Note: Aquarium’s Driverless AI Test Drive lab has a license key built-in, so you don’t need to request one to use it. Each Driverless AI Test Drive instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore Driverless AI, you can always launch another Test Drive instance or reach out to our sales team via the [contact us form](https://www.h2o.ai/company/contact/).**
 
-
 ## Task 1: Driverless AI Bring Your Own Recipes
 
-In the **Get Started and Consume Existing Recipes** Tutorial we covered the following:
+In the **Get Started and with Open Source Custom Recipes** self-paced course we covered the following:
 
-- Bring Your Own Recipe (BYOR) for Driverless AI 1.9.0
+- Bring Your Own Recipe (BYOR) for Driverless AI 1.9.1
 - What is a recipe?
 - Types of Driverless AI open-source recipes available (Transformers, Scorers, and Models)
 - How to upload the recipes into Driverless AI using URL’s and .py files
 - Compare the final models of the experiments that were run with custom recipes to Driverless AI’s default settings experiment. 
 
-**Note:** If you have not done so, complete the [Get Started with Open Source Custom Recipes Tutorial](https://training.h2o.ai/products/tutorial-3a-get-started-with-open-source-custom-recipes-tutorial), the material covered will be needed for the successful completion of this tutorial.
+**Note:** If you have not done so, complete the [Get Started with Open Source Custom Recipes](https://training.h2o.ai/products/self-paced-course-3a-get-started-with-open-source-custom-recipes), the material covered will be needed for the successful completion of this self-paced course.
 
-Just to recap, H2O Driverless AI is an artificial intelligence (AI) platform for automatic machine learning. Driverless AI automates some of the most difficult and tedious data science and machine learning tasks such as feature engineering, algorithm selection, model validation, model tuning, model selection, model explanation, model documentation, and model deployment. It aims to achieve the highest predictive accuracy, comparable to expert data scientists, but in a much shorter time thanks to end-to-end automation.
+To recap, H2O Driverless AI is an artificial intelligence (AI) platform for automatic machine learning. Driverless AI automates some of the most tedious and challenging data science and machine learning tasks such as feature engineering, algorithm selection, model validation, model tuning, model selection, model explanation, model documentation, and model deployment. It aims to achieve the highest predictive accuracy, comparable to expert data scientists, but in a much shorter time thanks to end-to-end automation.
 
-Driverless AI, version 1.7.0 and newer, allows Domain Scientists to combine their subject matter expertise with the broadness of Driverless by giving Data Scientists the option to upload their own transformers, scorers, and custom datasets. Driverless AI’s Bring Your Own Recipe (BYOR) lets you apply your domain expertise and optimize your specific Driverless AI model(s) with just a few clicks. Driverless AI treats customer recipes as first-class citizens in the automatic machine learning workflow. 
+Driverless AI, version 1.7.0 and newer, allows Domain Scientists to combine their subject matter expertise with the broadness of Driverless by giving Data Scientists the option to upload their own transformers, scorers, and custom datasets. Driverless AI’s Bring Your Own Recipe (BYOR) lets you apply your domain expertise and optimize your specific Driverless AI model(s) with just a few clicks. Driverless AI treats customer recipes as first-class citizens in the automatic machine learning workflow.
 
 ### Driverless AI’s Automatic Machine Learning Workflow
 
@@ -67,7 +58,7 @@ Driverless AI’s Automatic Machine Learning workflow is represented in the imag
 
 ![dai-byor-how-it-works](assets/dai-byor-how-it-works.jpg)
 
-The workflow is as follows; first, we start with tabular data in the format of  X and Y, where X are the predictors and Y the value we want to predict. The data can be brought in from various connectors such as: 
+The workflow is as follows; first, we start with tabular data in X and Y format, where X are the predictors and Y the value we want to predict. You can bring in the data from various connectors such as: 
 
 - **HDFS**
 - **SQL**
@@ -82,11 +73,11 @@ The workflow is as follows; first, we start with tabular data in the format of  
 
 See **Deeper Dive and Resources** at the end of this task for more information about Enabling Data Connectors.
 
-Once the data has been loaded to Driverless AI, Driverless AI performs Automatic Visualizations of the data and outputs the available graphs for the dataset that is being used. This allows you to have a better understanding of your data. 
+Once the data has been loaded to Driverless AI, Driverless AI performs Automatic Visualizations of the data and outputs the available graphs for the data used. The graphs allow you to have a better understanding of your data. 
 
-The data is then sent through Driverless AI’s Automatic Model Optimization. The Automatic Model Optimization is a generic algorithm that learns over time what is working and what is not to make the best model for your data. This includes model recipes, advanced feature engineering, algorithms (such as Xgboost, TensorFlow, LightGBM), and model tuning. 
+The data is then sent through Driverless AI’s Automatic Model Optimization. The Automatic Model Optimization is a generic algorithm that learns over time what is working and what is not to make the best model for your data. This process includes model recipes, advanced feature engineering, algorithms (such as Xgboost, TensorFlow, LightGBM), and model tuning. 
 
-After the model has been finalized, Driverless AI then auto-generates model documentation that provides an explanation of everything that happened in the experiment. This model documentation also provides an explanation on how the model that was generated/created makes decisions. Additionally, there is Machine Learning Interpretability of the models generated to explain modeling results in a human-readable format. Once experiments have been completed, Driverless AI automatically generates both Python and Java scoring pipelines so that the model is ready to go for production.
+After the model has been finalized, Driverless AI then auto-generates model documentation that explains everything that happened in the experiment. This model documentation also describes how the model that was generated/created makes decisions. Additionally, the Machine Learning Interpretability of the models is generated to explain modeling results in a human-readable format. Once experiments have been completed, Driverless AI automatically generates both Python and Java scoring pipelines so that the model is ready to go for production.
 
 ### BYOR
 
@@ -96,7 +87,7 @@ After the model has been finalized, Driverless AI then auto-generates model docu
 
 ### Recipes
 
-Custom recipes are Python code snippets that can be uploaded into Driverless AI at runtime, like plugins. No need to restart Driverless AI. Custom recipes can be provided for transformers, models, and scorers. During the training of a supervised machine learning modeling pipeline (aka experiment), Driverless AI can then use these code snippets as building blocks, in combination with all built-in code pieces (or instead of). By providing your own custom recipes, you can gain control over the optimization choices that Driverless AI makes to best solve your machine learning problems.
+Custom recipes are Python code snippets that can be uploaded into Driverless AI at runtime, like plugins. No need to restart Driverless AI. You can provide custom recipes for transformers, models, and scorers. During the training of a supervised machine learning modeling pipeline (aka experiment), Driverless AI can then use these code snippets as building blocks, in combination with all built-in code pieces (or instead of). By providing your own custom recipes, you can gain control over the optimization choices that Driverless AI makes to best solve your machine learning problems.
 
 ### Python API 
 
@@ -110,7 +101,7 @@ For custom feature engineering or a transformer, you will have two main parts:
 
 **Transform** - the transform gets called when you run the model and get predictions. The transform will be inside the scoring pipeline. When used in production, the transform will be present and be used in the validation and test sets. The transform does not have access to Y, and it alters the data based on what happened on the fit_transform.
 
-For custom optimization functions or scorers, you can bring loss or gain functions. We can look further into precision and recall of a model through variations of the F metric. Driverless AI comes with F1, F2, and F0.5 scorers, where F1 is the harmonic mean of precision and recall, and the F2 score gives more weight to recall than precision. If you wanted to give precision higher weight, you could incorporate and F4 or F6 function as recipes for scorers.   
+For custom optimization functions or scorers, you can bring loss or gain functions. We can look further into precision and recall of a model through variations of the F metric. Driverless AI comes with F1, F2, and F0.5 scorers, where F1 is the harmonic mean of precision and recall, and the F2 score gives more weight to recall than precision. If you wanted to give precision higher weight, you could incorporate an F4 or F6 function as recipes for scorers.  
 
 Other things that can be done using scorers:
 - f(id, actual, predicted, weight)
@@ -120,12 +111,9 @@ Other things that can be done using scorers:
     - Cost/Reward
     - Any Business Metric
 
-
 For custom ML Algorithms, there are two functions that are needed:
-
 - `fit` - fits the model; this function will give you access to the ML ecosystem: H2O-3 sklearn, Keras, PyTorch, CatBoost, etc. 
-
-- `predict` - makes predictions
+- `predict` - makes predictions.
 
 ### Best Practices for Recipes
 
@@ -139,15 +127,13 @@ Recipes are meant to be built by people you trust, and each recipe should be cod
 
 **The Writing Recipes Process**
 
-1\. First, write and test your idea on sample data before wrapping as a recipe.
-
-2\. Download the Driverless AI Recipes Repository for easy access to examples.
-
+1\. First, write and test your idea on sample data before wrapping it as a recipe.</br>
+2\. Download the Driverless AI Recipes Repository for easy access to examples.</br>
 3\. Use the Recipe Templates to ensure you have all the required components. 
 
-In the next three tasks, we will be building three simple recipes, a transformer, a scorer, and a model. It is assumed that you have downloaded the [Driverless AI Recipes Repository rel-1.9.0](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.9.0) and that you have access to the examples and recipe templates.
+We will be building three simple recipes, a transformer, a scorer, and a model in the following three tasks. It is assumed that you have downloaded the [Driverless AI Recipes Repository rel-1.9.1](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.9.1) and that you have access to the examples and recipe templates.
 
-**Note**: The recipes that you will find in the "Driverless AI Recipes Repository rel 1.9.0," may  be slightly different to the ones being referenced in this tutorial. If you decide to build the recipes using the code from this tutorial or the code found on the repository you should be able to still run the various experiments.
+**Note**: The recipes you will find in the "Driverless AI Recipes Repository rel 1.9.1" may be slightly different from those referenced in this self-paced course. If you decide to build the recipes using the code from this self-paced course or the code found on the repository, you should still be able to run the various experiments.
 
 ### Deeper Dive and Resources
 
@@ -157,23 +143,17 @@ In the next three tasks, we will be building three simple recipes, a transformer
 
 ## Task 2: Build a Recipe: Transformer
 
-A **transformer** (or feature) recipe is a collection of programmatic steps, the same steps that a data scientist would write a code to build a column transformation. The recipe makes it possible to engineer the transformer in training and in production. The transformer recipe and recipes, in general, provides a data scientist the power to enhance the strengths of DriverlessAI with custom recipes. These custom recipes would bring in nuanced knowledge about certain domains - i.e. financial crimes, cybersecurity, anomaly detection. etc. It also provides the ability to extend DriverlessAI to solve custom solutions for time-series[1].
+A **transformer** (or feature) recipe is a collection of programmatic steps, the same steps that a data scientist would write a code to build a column transformation. The recipe makes it possible to engineer the transformer in training and production. The transformer recipe and recipes, in general, provides a data scientist the power to enhance the strengths of DriverlessAI with custom recipes. These custom recipes would bring in nuanced knowledge about certain domains - i.e., financial crimes, cybersecurity, anomaly detection, etc. It also provides the ability to extend DriverlessAI to solve custom solutions for time-series[1].
 
-### Where can Driverless AI Transformers be Used? 
+### Where can Driverless AI Transformers be Used?
 
 - **A retailer** could forecast annual sales based on seasonality, weather, and Ramadan holidays for its stores in Saudi Arabia. 
-
-- **A network analytics company** can improve its anti-IP-spoofing functionality by parsing IP addresses and checking if any of the properties look like a spam or a DoD attack.
-
-- **A financial services company** could calculate the historical volatility of markets in a configurable rolling time-window on time-series financial data.
-
-- Suppose you have a string column that has values like "A:B:10:5", "A:C:4:10", ... It might make sense to split these values by ":" and create four output columns, potentially all numeric, such as [0,1,10,5], [0,2,4,10], ... to encode the information more clearly for the algorithm to learn better from.
- 
-- Flair Embedding transformer powered by PyTorch for [text similarity analysis](https://github.com/h2oai/driverlessai-recipes/blob/rel-1.9.0/transformers/nlp/text_embedding_similarity_transformers.py), computes a similarity score for any given two text input columns using Sklearn metrics pairwise cosine similarity.
- 
-- ARIMA transformer that does [time-series forecasting](https://github.com/h2oai/driverlessai-recipes/blob/rel-1.9.0/transformers/timeseries/auto_arima_forecast.py) by predicting target using ARIMA models
- 
-- Data augmentation, such as replacing a zip code with demographic information, or replacing a date column with a [National holiday flag](https://github.com/h2oai/driverlessai-recipes/blob/rel-1.9.0/transformers/augmentation/singapore_public_holidays.py).
+- **A network analytics company** can improve its anti-IP-spoofing functionality by parsing IP addresses and checking if any of the properties look like spam or a DoD attack.
+- **A financial services company** could calculate markets' historical volatility in a configurable rolling time window on time-series financial data.
+- Suppose you have a string column that has values like "A:B:10:5", "A:C:4:10"... It might make sense to split these values by ":" and create four output columns, potentially all numeric, such as [0,1,10,5], [0,2,4,10], ... to encode the information more clearly for the algorithm to learn better from.
+- Flair Embedding transformer powered by PyTorch for [text similarity analysis](https://github.com/h2oai/driverlessai-recipes/blob/rel-1/transformers/nlp/text_embedding_similarity_transformers.py), computes a similarity score for any given two text input columns using Sklearn metrics pairwise cosine similarity.
+- ARIMA transformer that does [time-series forecasting](https://github.com/h2oai/driverlessai-recipes/blob/rel-1.9.1/transformers/timeseries/auto_arima_forecast.py) by predicting target using ARIMA models
+- Data augmentation, such as replacing a zip code with demographic information or replacing a date column with a [National holiday flag](https://github.com/h2oai/driverlessai-recipes/blob/rel-1.9.1/transformers/augmentation/singapore_public_holidays.py).
  
 **Driverless AI has transformer recipes for the following categories:**
 
@@ -201,7 +181,7 @@ See the **Deeper Dive and Resources** at the end of this task to learn more abou
 
 The custom transformer that we will build is the **Summation of multiple Columns**. Driverless AI comes with mathematical interactions between two columns. Mathematical interactions such as addition, subtraction, multiplication, and division. What if you wanted to do a mathematical interaction of 3 or more columns?
 
-This transformer recipe will add three or more numeric columns and give the sum. For instance, it would take the values of X1, X2, and X3 to add them and give the Sum which might be predictive in our model.
+This transformer recipe will add three or more numeric columns and give the sum. For instance, it would take the values of X1, X2, and X3 to add them and provide the Sum, which might be predictive in our model.
 
 | ID | X1| X2| X3| SUM|
 | --- | --- | --- | --- | --- |
@@ -214,13 +194,13 @@ This transformer recipe will add three or more numeric columns and give the sum.
 
 These are the main steps in building our transformer:
 
-1. Extending the Transformer Base Class
-2. Specifying whether our recipe is enabled
-3. Specifying whether to do acceptance tests 
-4. Select which columns can be used
-5. Transform the training data
-6. Transform the validation or testing data
-7. When to use the transformer
+**a.** Extending the Transformer Base Class</br>
+**b.** Specifying whether our recipe is enabled</br>
+**c.** Specifying whether to do acceptance tests</br>
+**d.** Select which columns can be used</br>
+**e.** Transform the training data</br>
+**f.** Transform the validation or testing data</br>
+**g.** When to use the transformer</br>
 
 If you want to see the **overall Sum Transformer code** for some guidance, look at the end of this task to verify your code is aligned correctly.
 
@@ -228,10 +208,8 @@ If you want to see the **overall Sum Transformer code** for some guidance, look 
 
 Let's start by creating a transformer recipe class in Python called **SumTransformer** that inherits from the **CustomTransformer** Base Class. This transformer will be responsible for computing the **Summation of multiple Columns**.
 
-1\. Open your text editor and create a new file.
-
-2\. Save the new file as **sum.py**
-
+1\. Open your text editor and create a new file.</br>
+2\. Save the new file as **sum.py**</br>
 3\. Copy and paste the following code into your .py file.
 
 The python code for **Extending the Transformer Base Class** is as follows:
@@ -245,7 +223,7 @@ import numpy as np
 class SumTransformer(CustomTransformer):
 ~~~
 
-The `SumTransformer` class inherits from the `CustomTransformer` Base Class. Prior to creating the `SumTransformer` class, we import the necessary modules:
+The `SumTransformer` class inherits from the `CustomTransformer` Base Class. Before creating the `SumTransformer` class, we import the necessary modules:
 
 - CustomTransformer Class - which is part of Driverless AI transformer_utils
 - numpy
@@ -270,7 +248,7 @@ def is_enabled():
     return True
 ~~~
 
-The `is_enabled` method returns that our recipe is enabled. If this method returns False, our recipe is disabled and the recipe will be completely ignored.
+The `is_enabled` method returns that our recipe is enabled. If this method returns False, our recipe is disabled, and the recipe will be completely ignored.
 
 ### Specifying Whether to do Acceptance Tests
 
@@ -286,7 +264,7 @@ def do_acceptance_test():
     return True
 ~~~
 
-The `do_acceptance_test` method returns that acceptance tests should be performed during the upload of our recipe. Acceptance tests perform a number of sanity checks on small data, and attempt to provide helpful instructions for how to fix any potential issues. If our recipe required specific data or did not work on random data, then this method should return False, so acceptance tests are not performed.
+The `do_acceptance_test` method returns that the acceptance tests should be performed during our recipe's upload. Acceptance tests perform a number of sanity checks on small data and attempt to provide helpful instructions for fixing any potential issues. If our recipe required specific data or did not work on random data, this method should return False, so acceptance tests are not performed.
 
 ### Select Which Columns to Use 
 
@@ -318,13 +296,13 @@ The table below shows the type of original column(s) that a transformer can acce
 | "text" | string column containing text (and hence not treated as categorical) |
 | "time_column" | the time column specified at the start of the experiment (unmodified) |
 
-After selecting the column type, we will select the minimum and the maximum number of columns. Since Driverless AI comes with a transformer that is able to sum two columns, we will set the minimum number of columns to `3` and the maximum number of columns to all for our transformer. This means that when Driverless AI runs our transformer, it will always choose between `3` and all columns. 
+After selecting the column type, we will select the minimum and the maximum number of columns. Since Driverless AI comes with a transformer that can sum two columns, we will set the minimum number of columns to `3` and the maximum number of columns to `all` for our transformer. This means that when Driverless AI runs our transformer, it will always choose between `3` and all columns. 
 
-The relative importance will be set to 1 for the most part; however, if you want your custom transformer to have higher importance, you can always increase the value of importance which will let Driverless AI know that your custom transformer should have a higher priority in the generic algorithm through `relative_importance`.
+The relative importance will be set to 1 for the most part; however, if you want your custom transformer to have higher importance, you can always increase its value. Setting the relative importance to 1 will let Driverless AI know that your custom transformer should have a higher priority in the generic algorithm through `relative_importance`.
 
 ### Transforming the Training Data
 
-We are going to fit the transformer on the training data and return a transformed frame with new features that have the same number of rows and any number of columns greater than or equal to 1.
+We will fit the transformer on the training data and return a transformed frame with new features that have the same number of rows and any number of columns greater than or equal to 1.
 
 7\. Copy and paste the following code below the `Select Which Columns to Use` section of code in your .py file.
 
@@ -335,14 +313,14 @@ def fit_transform(self, X: dt.Frame, y: np.array = None):
     return self.transform(X)					
 ~~~
 
-The `fit_transform` method fits the transformer on the training data `X`, which is a datatable of n rows and m columns between min_cols and max_cols specified in `get_default_properties` method, defaults the target column `y` parameter to None for API compatiblity and returns a transformed datatable frame with new features. This transformed frame will be passed onto the predictors.
+The `fit_transform` method fits the transformer on the training data `X`, which is a datatable of n rows and m columns between min_cols and max_cols specified in `get_default_properties` method, defaults the target column `y` parameter to None for API compatibility and returns a transformed datatable frame with new features. This transformed frame will be passed onto the predictors.
 
 - training data `X` is by default a datatable, but can be converted to pandas via `X.to_pandas()` or numpy via `X.to_numpy()`
-- the function can return datatable, pandas or numpy transformed frame because Driverless AI can automatically manage any of them.
+- the function can return datatable, pandas, or numpy transformed frames because Driverless AI can automatically manage any of them.
 
 **Note:** 
 
-The `fit_transform` method is always called before the `transform` method is called. The output can be different based on whether the `fit_transform` method is called on the entire frame or on a subset of rows. The output must be in the same order as the input data. 
+The `fit_transform` method is always called before the `transform` method is called. The output can be different based on whether the `fit_transform` method is called on the entire frame or a subset of rows. The output must be in the same order as the input data.
 
 ### Transforming the Validation or Testing Data
 
@@ -357,10 +335,10 @@ def transform(self, X: dt.Frame):
 	return X[:, dt.sum([dt.f[x] for x in range(X.ncols)])]
 ~~~
 
-The `transform` method selects all columns using [datatable f-expression](https://datatable.readthedocs.io/en/latest/manual/f-expressions.html) single-column selector in each row, performs the summation on each column in that row, performs this computation until the summation of all columns on each row has finished and returns the same number of rows as the original frame, but with one column in each row equalling the summation. The transformed frame will be passed onto the predictors.
+The `transform` method selects all columns using [datatable f-expression](https://datatable.readthedocs.io/en/latest/manual/f-expressions.html) single-column selector in each row. It performs the summation on each column in that row. It performs this computation until the summation of all columns on each row has finished and returns the same number of rows as the original frame, but with one column in each row equalling the summation. The transformed frame will be passed onto the predictors.
 
 - training data `X` is by default a datatable, but can be converted to pandas via `X.to_pandas()` or numpy via `X.to_numpy()`
-- the function can return datatable, pandas or numpy transformed frame because Driverless AI can automatically manage any of them.
+- the function can return datatable, pandas, or numpy transformed frames because Driverless AI can automatically manage any of them.
 
 **Note:** In a lot of cases, the `fit_transform` and `transform` function will be doing the exact same thing, they will not be using the y-value. If the “y” is needed, then the code for both functions might differ (ie. time series).
 
@@ -385,24 +363,21 @@ _testing_can_skip_failure = False  # ensure tested as if shouldn't fail
 
 When writing transformers, we need to ask ourselves the following types of questions:
 
-- What types of ML supervised problems are allowed for my custom transformer? There will be situations where it will not be appropriate to use this transformer, so we need to specify what types of ML problems are allowed for this transformer? For our Sum Transformer, the ML cases below are always applicable; therefore, we set the following variable values to True. 
-
+- What types of ML supervised problems are allowed for my custom transformer? There will be situations where it will not be appropriate to use this transformer, so we need to specify what types of ML problems are allowed for this transformer? For our Sum Transformer, the ML cases below are always applicable; therefore, we set the following variable values to True.
   - `_regression = True`
   - `_binary = True`
   - `_multiclass = True`
 
 - Does the transformer return a number? There are some models that can’t take strings as values, for example, GLM, so we need to be explicit about whether or not the output will be numeric or not. In our case, the output is always numeric; therefore, we set **Numeric Output** variable value to True.
-
   - `_numeric_output = True`
 
 - Is this function reproducible, Driverless AI has the ability to recreate models which you can run on the same hardware and get the exact same features, scores, etc. If the transformer is not reproducible, then we need to let Driverless AI know that the transformer is not reproducible so that users know not to expect that for this particular transformer is used in a model. In our case, this transformer is reproducible, and we set the **is_reproducible** variable to True.
-
-  - ```is_reproducible= True```
+  - `is_reproducible= True`
 
 - Are there models that need to be included or excluded? Maybe the transformer will not be able to work with TensorFlow, or it only works with TensorFlow. If there are models that are to be included or excluded, then we write the list as strings.
 In our case there are no models that we need to exclude so we set the value to None to the two variables below:
-  - ```_included_model_classes = None```
-  - ```_excluded _model_classes = None```
+  - `_included_model_classes = None`
+  - `_excluded _model_classes = None`
 
 - Can testing skip failure for this transformer? If you set this variable to True, then you are saying it is okay for the test to skip failure for when a transformer failed. For the case of our transformer, we set th **_testing_can_skip_failure** to False because we want to ensure that our tested transformer should not fail.
 
@@ -462,56 +437,45 @@ class SumTransformer(CustomTransformer):
 
 ### Challenge
 
-The final step in building the custom transformer recipe is to upload the custom recipe to Driverless AI and check that it passes the **acceptance test**. If your recipe is not passing the Driverless AI’s acceptance test, see  [Task 5: Troubleshooting](https://training.h2o.ai/products/tutorial-3b-build-your-own-custom-recipe-tutorial).
+The final step in building the custom transformer recipe is to upload the custom recipe to Driverless AI and check that it passes the **acceptance test**. If your recipe is not passing the Driverless AI’s acceptance test, see  [Task 5: Troubleshooting](https://training.h2o.ai/products/self-paced-course-3b-build-your-own-custom-recipe).
 
 Take the new custom **SumTransformer** and test it in a dataset of your choice.
 
 **Note:** The dataset needs to have more than three quantitative columns that can be added together
 
 
-If you have questions on how to upload the transformer recipe to Driverless AI, see  [“Get Started with Open Source Custom Recipes Tutorial - Task 3: Recipe: Transformer”](https://training.h2o.ai/products/tutorial-3a-get-started-with-open-source-custom-recipes-tutorial).
+If you have questions on how to upload the transformer recipe to Driverless AI, see  [Get Started with Open Source Custom Recipes - Task 3: Recipe: Transformer](https://training.h2o.ai/products/self-paced-course-3a-get-started-with-open-source-custom-recipes).
 
 
 ### References
 
-[1] [How to write a Transformer Recipe for Driverless AI by Ashrith Barthur](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.9.0/how_to_write_a_recipe)
+[1] [How to write a Transformer Recipe for Driverless AI by Ashrith Barthur](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.9.1/how_to_write_a_recipe)
 
 
 ### Deeper Dive and Resources
 
-- [Driverless AI Transformers Repo](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.9.0/transformers) 
-
-- [BYOR Transformer Template](https://github.com/h2oai/driverlessai-recipes/blob/rel-1.9.0/transformers/transformer_template.py) 
-
-- [How to Debug a Transformer](https://github.com/h2oai/driverlessai-recipes/blob/rel-1.9.0/transformers/how_to_debug_transformer.py)
-
-- [How to Test a Transformer from the PyClient](https://github.com/h2oai/driverlessai-recipes/blob/rel-1.9.0/transformers/how_to_test_from_py_client.py) 
-
+- [Driverless AI Transformers Repo](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.9.1/transformers) 
+- [BYOR Transformer Template](https://github.com/h2oai/driverlessai-recipes/blob/rel-1.9.1/transformers/transformer_template.py) 
+- [How to Debug a Transformer](https://github.com/h2oai/driverlessai-recipes/blob/rel-1.9.1/transformers/how_to_debug_transformer.py)
+- [How to Test a Transformer from the PyClient](https://github.com/h2oai/driverlessai-recipes/blob/rel-1.9.1/transformers/how_to_test_from_py_client.py) 
 - [Driverless AI Expert Settings - Transformers PDF](assets/PDF_Transformers.pdf)
-
 - [Flair NLP Framework](https://github.com/flairNLP/flair)
-
 - [PyTorch](https://pytorch.org/)
-
 - [Sklearn Metrics Pairwise Cosine Similarity](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.cosine_similarity.html)
 
 ## Task 3: Build a Recipe: Scorer
 
-A scorer recipe helps evaluate the performance of your model. There are many methods of evaluating performance and Driverless AI has many scorers available by default; however, if you want to test a different scorer for your particular model then **BYOR** is an excellent way of testing a particular scorer and then compare the model results through Driverless AI’s [Project Workspace](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/projects.html?highlight=projects) feature.
+A scorer recipe helps evaluate the performance of your model. There are many methods to evaluate performance, and Driverless AI has many scorers available by default. However, if you want to test a different scorer for your particular model, then **BYOR** is an excellent way of testing a particular scorer and then compare the model results through Driverless AI’s [Project Workspace](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/projects.html?highlight=projects) feature.
 
-**Note**: Driverless AI will compare the scorer you uploaded with the existing scorers and will select the best scorer fit for your dataset. If your scorer was not selected as the default scorer by Driverless AI in your experiment and you still would like to see how your dataset would perform with your scorer recipe, you can manually select your scorer in the **Experiments Page** under **Scorers**.
+**Note**: Driverless AI will compare the scorer you uploaded with the existing scorers and select the best scorer fit for your dataset. If your scorer was not selected as the default scorer by Driverless AI in your experiment and you still would like to see how your dataset would perform with your scorer recipe, you can manually select your scorer in the **Experiments Page** under **Scorers**.
 
 ### Where can scorers be used?
 
 - **An oil and gas company** could predict oil-well output by developing a time-series regression model and use the Mean Absolute Scaled Error recipe to measure the accuracy of the forecasted output.
-
 - **A transportation and logistics company** could use the precision-recall classification recipe to accurately predict the on-time delivery of perishable products by tweaking the threshold depending upon weather conditions.
-
 - **A marketing and lead-gen company** could improve the effectiveness of its products by accurately predicting its ROI for its customers, using the marketing campaign scorer recipe.
-
-- Maybe you want to use Median Absolute Error to optimize your predictions for the [top decile](https://github.com/h2oai/driverlessai-recipes/blob/rel-1.9.0/scorers/regression/top_decile.py) for a regression problem.
- 
-- Maybe you care about the weighted [false discovery rate](https://github.com/h2oai/driverlessai-recipes/blob/rel-1.9.0/scorers/classification/binary/false_discovery_rate.py) at threshold for optimal F1 score for a binary classification problem.
+- Maybe you want to use Median Absolute Error to optimize your predictions for the [top decile](https://github.com/h2oai/driverlessai-recipes/blob/rel-1.9.1/scorers/regression/top_decile.py) for a regression problem.
+- Maybe you care about the weighted [false discovery rate](https://github.com/h2oai/driverlessai-recipes/blob/rel-1.9.1/scorers/classification/binary/false_discovery_rate.py) at the threshold for optimal F1 score for a binary classification problem.
 
 Driverless AI has Scorer recipes for the following categories:
 
@@ -520,20 +484,20 @@ Driverless AI has Scorer recipes for the following categories:
 
 ### Custom Scorer Recipe
 
-The custom **scorer** that will be built in this section is a **"False Discovery Rate"** scorer. This scorer works in binary classification problems where a model will predict what two categories(classes) the elements of a given set belong to. The results of the model can be classified as **True** or **False**. However, there will be elements that will be classified as **True** even though they are actually **False**. Those elements are called Type I Errors (reverse precision) or **False Positives**.  Our **False Discovery Rate** scorer will use the **False Positive Rate** equation to obtain the percentage of False Positives out of all the elements that were classified as **Positive**:
+The custom **scorer** that we will build in this section is a **"False Discovery Rate"** scorer. This scorer works in binary classification problems where a model will predict what two categories(classes) the elements of a given set belong to. The results of the model can be classified as **True** or **False**. However, there will be elements classified as **True** even though they are **False**. Those elements are called Type I Errors (reverse precision) or **False Positives**.  Our **False Discovery Rate** scorer will use the **False Positive Rate** equation to obtain the percentage of False Positives out of all the elements that were classified as **Positive**:
 
 **False Positive Rate (FPR)** = False Positives/(False Positives + True Negatives) = FP/(FP + TN)
             
 The **False Positive Rate** is the algorithm where all the elements that were incorrectly classified (False Positives) will be divided by the sum of all the elements that were correctly classified (True Positives) and incorrectly classified (False Positives).
 
-If you would like to review or learn more about binary classification in Driverless AI, view our [Machine Learning Experiment Scoring and Analysis Tutorial - Financial Focus](https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus). 
+If you would like to review or learn more about binary classification in Driverless AI, view our [Machine Learning Experiment Scoring and Analysis - Financial Focus](https://training.h2o.ai/products/self-paced-course-1b-machine-learning-experiment-scoring-and-analysis-financial-focus).
 
 ### Essentials to Building a Scorer
 
-1. Extending the Scorer Base Class
-2. Specifying whether our recipe is enabled
-3. Implementing the Scoring Metric
-4. Optimizing a Scorer
+**a.** Extending the Scorer Base Class</br>
+**b.** Specifying whether our recipe is enabled</br>
+**c.** Implementing the Scoring Metric</br>
+**d.** Optimizing a Scorer
 
 If you want to see the **overall False Discovery Rate Scorer code** for some guidance, look at the end of this task to verify your code is aligned correctly.
 
@@ -541,10 +505,8 @@ If you want to see the **overall False Discovery Rate Scorer code** for some gui
 
 Let's start by creating a scorer recipe class in Python called **MyFDRScorer** that inherits from the **CustomScorer** base class. This scorer will be responsible for computing the **False Discovery Rate**.
 
-1\. Open your text editor and create a new file.
-
-2\. Save  the new file as `false_discovery_rate.py`
-
+1\. Open your text editor and create a new file.</br>
+2\. Save  the new file as `false_discovery_rate.py`.</br>
 3\. Copy and paste the code above into your .py file.
 
 The python code for **Extending the Scorer Base Class** is a follows:
@@ -652,13 +614,13 @@ The `score` method has four input arguments:
     - The sample_weight column is usually assigned by the user when setting up the Driverless AI experiment.
 4. **label**: a list of class labels that help with labeling data for classification problems .
 
-The `score` method starts by overwriting the `sample_weight` multidimensional array with a contiguous flattened 1D array if the sample_weight is not none. Then `prep_actual_predicted` method encodes the predicted data and behind the scenes it uses the `LabelEncoder` to encode the actual values from target column and the labeled data. The `LabelEncoder` helps label the data so that the values are 0 or 1 instead of being between 0 and 1. The False Discovery Rate needs values of 0 or 1; therefore, all the **actual**  and **predicted** values will be labeled 0 or 1. The `cm_weights` are assigned the sample_weight if the sample_weight is not none, else the `cm_weights` are assigned none.
+The `score` method starts by overwriting the `sample_weight` multidimensional array with a contiguous flattened 1D array if the sample_weight is not "none." Then `prep_actual_predicted` method encodes the predicted data, and behind the scenes, it uses the `LabelEncoder` to encode the actual values from the target column and the labeled data. The `LabelEncoder` helps label the data so that the values are 0 or 1 instead of between 0 and 1. The False Discovery Rate needs values of 0 or 1; therefore, all the **actual**  and **predicted** values will be labeled 0 or 1. The `cm_weights` are assigned the sample_weight if the sample_weight is not "none," else the `cm_weights` are assigned none.
 
-Then there is a check to account for if we are dealing with a multiclass classification problem. But since we are dealing with binary classification, we will skip explaining what happens if the check on `enc_predicted` array's column number is greater than 1 is true.
+Then there is a check to account for if we are dealing with a multiclass classification problem. But since we are dealing with binary classification, we will skip explaining what happens if the check on `enc_predicted` array's column number is greater than one is true.
 
 Next h2o4gpu's confusion matrices will be called `cms = daicx.confusion_matrices(enc_actual.ravel(), enc_predicted.ravel(), sample_weight=cm_weights)` to compute the confusion matrices for ROC analysis for all possible prediction thresholds. We will then get the rows for the optimal metric `f1`, which you will see in the next section is the optimizer defined by variable `_threshold_optimizer = f1`. Then we will use cms to get the true negatives(tn), false positives(fp), false negative(fn) and true positives(tp) from those rows.
 
-Afterward the prediction thresholds for `tp`, `fp`, `tn` and `fn` are passed from the `cms` confusion matrices to the `protected_metric` method inside the lambda function, which is then passed to the `_metric` method where the **False Positive Rate** of `fp/(fp + tp)` is computed as long as the sum of `fp + tp` does not equal `0`. If that sum does equal zero (meaning division by zero) then the `_metric` method returns a `1`.Thus, the `_metric` method returns the **False Positive Rate** to the `protected_metric` method, which returns it to the lambda function, which assigns it to `cms['metric']`.  
+Afterward, the prediction thresholds for `tp`, `fp`, `tn`, and `fn` are passed from the `cms` confusion matrices to the `protected_metric` method inside the lambda function, which is then passed to the `_metric` method where the **False Positive Rate** of `fp/(fp + tp)` is computed as long as the sum of `fp + tp` does not equal `0`. If that sum does equal zero (meaning division by zero), then the `_metric` method returns a `1`.Thus, the `_metric` method returns the **False Positive Rate** to the `protected_metric` method, which returns it to the lambda function, which assigns it to `cms['metric']`.  
 
 Finally, this `score` method will return the mean float score via `return cms['metric'].mean()`. This is the number we are trying to optimize, which can be a high or low value.
 
@@ -682,11 +644,11 @@ Here are some questions we are going answer based on our optimization variable v
 
 **What is the problem type this scorer applies to?**
 
-We set `_binary` to True, so that this scorer applies to binary classification problem types. Also, `_multiclass` is set to True, so this scorer can also handle multiclass classification problem types. We will be using scorer to work with binary classification problems.
+We set `_binary` to True so that this scorer applies to binary classification problem types. Also, `_multiclass` is set to True, so this scorer can also handle multiclass classification problem types. We will be using scorer to work with binary classification problems.
 
 **Is a higher or smaller score value better?**
 
-The perfect model for binary classification would have no false positives; for this reason, `_maximize` is set to False since we want the scorer to get as close as possible to zero. This will tell Driverless AI to stop working after it found a model that had a score of zero. Meaning that if Driverless AI was supposed to create 200 models, and on the 100th model, the score is zero, there is no need for Driverless AI to keep working to searching for more perfect models. This optimization helps save the CPU.
+The perfect binary classification model would have no false positives; for this reason, `_maximize` is set to False since we want the scorer to get as close as possible to zero. When we set this to false, we will tell Driverless AI to stop working after finding a model that had a score of zero. If Driverless AI was supposed to create 200 models, and on the 100th model, the score is zero, there is no need for Driverless AI to keep working to searching for more perfect models. This optimization helps save the CPU.
 
 **What is threshold optimizer for binary classification?**
 
@@ -772,22 +734,19 @@ class MyFDRScorer(CustomScorer):
 
 ### Challenge
 
-The final step in building the custom scorer recipe is to upload the custom recipe to Driverless and check that it passes the **acceptance test**. If your recipe is not passing the Driverless AI’s acceptance test, see  [Task 5: Troubleshooting](https://training.h2o.ai/products/tutorial-3b-build-your-own-custom-recipe-tutorial).
+The final step in building the custom scorer recipe is to upload the custom recipe to Driverless and check that it passes the **acceptance test**. If your recipe is not passing the Driverless AI’s acceptance test, see  [Task 5: Troubleshooting](https://training.h2o.ai/products/self-paced-course-3b-build-your-own-custom-recipe).
 
 Take the false_discovery_rate scorer and test it in a dataset of your choice.
 
 **Note:** The dataset needs to be for a binary classification problem
 
-If you have questions on how to upload the scorer recipe to Driverless AI, see  [“Get Started with Open Source Custom Recipes Tutorial - Task 4: Recipe: Scorer”](https://training.h2o.ai/products/tutorial-3a-get-started-with-open-source-custom-recipes-tutorial).
+If you have questions on how to upload the scorer recipe to Driverless AI, see  [“Get Started with Open Source Custom Recipes - Task 4: Recipe: Scorer”](https://training.h2o.ai/products/self-paced-course-3a-get-started-with-open-source-custom-recipes).
 
 ### Deeper Dive and Resources
 
-- [Driverless AI Scorers Repo](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.9.0/scorers)
-
-- [BYOR Scorer Template](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.9.0/scorers)
-
+- [Driverless AI Scorers Repo](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.9.1/scorers)
+- [BYOR Scorer Template](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.9.1/scorers)
 - [Driverless AI Project Workspace](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/projects.html?highlight=projects)
-
 - [Sklearn Preprocessing label_binarize](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.label_binarize.html)
 
 
@@ -795,23 +754,17 @@ If you have questions on how to upload the scorer recipe to Driverless AI, see  
 
 A model recipe is a recipe for a machine learning technique that can be used to build prediction models. Driverless AI has an extensive list of models by default; however, a new model can be loaded and be used to compare the Driverless AI models. Current Driverless models can be enhanced or slightly modified. Just like with the scorer’s recipes, you can compare the results of the model recipe you created with the model that Driverless AI selected for your dataset through  Driverless AI’s [Project Workspace](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/projects.html?highlight=projects) feature.
 
-**Note**: Driverless AI will compare the model you uploaded with the existing models and will select the best model fit for your dataset. If the model was not selected as the top model by Driverless AI and you still would like to see how your dataset would perform with your model recipe, you can turn off all default models in Driverless AI and only select your model. 
+**Note**: Driverless AI will compare the model you uploaded with the existing models and select the best model fit for your dataset. If the model was not selected as the top model by Driverless AI and you still would like to see how your dataset would perform with your model recipe, you can turn off all default models in Driverless AI and only select your model. 
 
 
 Where can models be used? 
 
 - An insurance provider could recommend the right insurance product to its customers by building a gradient boost model based on the CatBoost algorithm recipe.
-
- - A media television company could use the historic mean time-series recipe to smooth out the distribution graph of the number of viewers throughout a busy sports tournament by breaking the entire season in discrete time windows.
-
-- A sports and entertainment event broadcast company could do NLP for specific Twitter handles and hashtags, and classify sentiments of every event using the Intel DAAL models, enabling them to be smart about targeting demographics.
-
-- All H2O-3 Algorithms including H2O AutoML
-
+- A media television company could use the historic mean time-series recipe to smooth out the distribution graph of the number of viewers throughout a busy sports tournament by breaking the entire season into discrete time windows.
+- A sports and entertainment event broadcast company could do NLP for specific Twitter handles and hashtags and classify sentiments of every event using the Intel DAAL models, enabling them to be smart about targeting demographics.
+- All H2O-3 Algorithms, including H2O AutoML
 - Yandex CatBoost gradient boosting
- 
 - A custom loss function for LightGBM or XGBoost
-
 
 Driverless AI has Model recipes for the following categories:
 
@@ -822,7 +775,7 @@ Driverless AI has Model recipes for the following categories:
 
 ### Custom Model Recipe 
 
-Models are complex and harder to build; therefore, in this tutorial, we will build a high-level model to understand the general mechanics of building a model. <!--There will be additional information at the end of this task to help you learn more about custom model making and how to get started.--> 
+Models are complex and harder to build; therefore, in this self-paced course, we will build a high-level model to understand the general mechanics of building a model. <!--There will be additional information at the end of this task to help you learn more about custom model making and how to get started.--> 
 
 The custom model that we will build is sklearn’s **Extra Trees** or extremely randomized trees model from Sklearn. There is Extra Trees for classification `ExtraTreeClassifier`[1] and regression `ExtraTreeRegressor` [2].
 
@@ -839,10 +792,10 @@ This algorithm might give a slightly different prediction compared to other mode
 
 ### Essentials to building a Model
 
-1. Extending the Model Base Class
-2. Fit the model 
-3. Set details on fit model(set model parameters)
-4. Get predictions
+**a.** Extending the Model Base Class</br>
+**b.** Fit the model</br>
+**c.** Set details on fit model(set model parameters)</br>
+**d.** Get predictions
 
 If you want to see the **overall ExtraTrees Model code** for some guidance, look at the end of this task to verify your code is aligned correctly.
 
@@ -850,10 +803,8 @@ If you want to see the **overall ExtraTrees Model code** for some guidance, look
 
 Let's start by creating a model recipe class in Python called **ExtraTreesModel** that inherits from the **CustomModel** base class.
 
-1\. Open your text editor and create a new file
-
-2\. Save  the new file as `extra_trees.py`
-
+1\. Open your text editor and create a new file</br>
+2\. Save  the new file as `extra_trees.py`</br>
 3\. Copy and paste the following code into your .py file.
 
 The python code for **Extending the Model Base Class** is as  follows:
@@ -881,12 +832,12 @@ The `ExtraTreesModel` class inherits from the `CustomModel` Base Class. Prior to
 
 There are four types of Base Classes for a model:
 
-1. CustomModel(Genetic Model)
-2. CustomTimeSeriesModel
-3. CustomTensorFlowModel
-4. CustomTimeSeriesTensorFlowModel
+**a.** CustomModel(Genetic Model)</br>
+**b.** CustomTimeSeriesModel</br>
+**c.** CustomTensorFlowModel</br>
+**d.** CustomTimeSeriesTensorFlowModel
 
-As you can see in the code above, we will focus on the Genetic model (CustomModel). Just to note, CustomTimeSeriesModel’s have everything that will be covered in this task plus an update function because Time Series Model needs to know how to look at past data, especially when scoring takes place, and there is new data that needs to be used. If the model that you are working on requires TensorFlow or both TensorFlow and time-series, then the following models are available: CustomTensorFlowModel or CustomTimeSeriesTensorFlowMode. Both models will require their base class to be extended, and there will be additional options for each. 
+As you can see in the code above, we will focus on the Genetic model (CustomModel). To note, CustomTimeSeriesModel's has everything covered in this task plus an update function because Time Series Model needs to know how to look at past data, especially when scoring takes place, and there is new data that needs to be used. If the model you are working on requires TensorFlow or both TensorFlow and time-series, then the following models are available: CustomTensorFlowModel or CustomTimeSeriesTensorFlowMode. Both models will require their base class to be extended, and there will be additional options for each.
 
 ### Fit the model
 
@@ -918,15 +869,19 @@ The next part of the custom model is to fit the model. This is where the `X` and
 
 **The first part of this function is to save the names of all the predictors that came in `orig_cols`.**
 
-An **if-else** statement is then used to tell the function to work with both classification and regression problems; in other words, the extra tree’s model needs to work for every ML problem. The if-else statement states that if there are two or more classes (binary or multiclass), then use the `LabelEncoder` and call the `ExtraTreesClassifier`. If there are less than two classes, then the problem is a regression problem, and the  `ExtraTreesRegressor` is called. At this point, an object model has been created, sklearn’s extra trees, which is appropriate for this particular custom model.
+An **if-else** statement is then used to tell the function to work with both classification and regression problems; in other words, the extra tree’s model needs to work for every ML problem. The if-else statement states that if there are two or more classes (binary or multiclass). Then you can use the `LabelEncoder` and call the `ExtraTreesClassifier`. If there are less than two classes, then the problem is a regression problem, and the  `ExtraTreesRegressor` is called. At this point, an object model has been created, sklearn’s extra trees, which is appropriate for this particular custom model.
 
 After any algorithm-specific prep work has been done, the model can be fitted via `model.fit(X,y)`.
 
- **Things to note:**
+ *Things to note:*</br>
+ If the model you are working with is a model that can’t handle missing values, it needs to be accounted for on your code. Suggestions include:
+- Printing an error message.
+- Removing rows with missing values.
+- Imputing missing values(replace missing values with the median or mode).
 
-If the model you are working with is a model that can’t handle missing values, then that needs to be accounted for on your code. Suggestions include printing an error message, removing rows with missing values, or imputing missing values(replace missing values with the median or mode). **Driverless AI only accepts custom models that can handle missing values; therefore, for this task, you need to write your own section to handle missing values or see our recommendation at the end of the section**. 
+**Driverless AI only accepts custom models that can handle missing values; therefore, for this task, you need to write your own section to handle missing values or see our recommendation at the end of the section**. 
 
-Here is a some code that you could use to replace missing values with a value smaller than all observed values:
+Here is some code that you could use to replace missing values with a value smaller than all observed values:
 
 ```python
         self.min = dict()
@@ -961,12 +916,9 @@ self.set_model_properties(model=model,
 
 After the model has been fit, the next part is to set the model properties. There are four model properties that Driverless AI needs to know:
 
-- **model**: a model object that contains all large fitted objects related to the model, need it to make predictions later.
-
-- **features**: What features were used to create the model? In other words, the list of feature names fitted on. This is the reason that all the features were saved for `orig_cols = list(X.names)`.
-
-- **importance**: list of associated numerical importance of features. Driverless AI uses this list when building the model. See Driverless AI UI for feature importance where the most important features are highlighted. Extra Trees comes with a function feature_importances which takes care of populating this list for Driverless AI by returning that value. Driverless AI needs the list of importances populated, so keep that in mind ff the function that you are using does not return feature importances.
-
+- **model**: a model object that contains all large fitted objects related to the model needed to make predictions later.
+- **features**: What features were used to create the model? In other words, the list of feature names fitted on. This is why all the features were saved for `orig_cols = list(X.names)`.
+- **importance**: list of associated numerical importance of features. Driverless AI uses this list when building the model. See Driverless AI UI for feature importance where the most important features are highlighted. Extra Trees comes with a function feature_importances which takes care of populating this list for Driverless AI by returning that value. Driverless AI needs the list of importances populated, so keep that in mind ff the function you are using does not return feature importances.
 - **iterations**: number of iterations used to predict on or re-use for fitting on full training data(number of models build)
 
 ### Get Predictions
@@ -998,7 +950,11 @@ Since the model needs to handle both classification and regression scenarios, th
 
 **Things to note:**
 
-If the model you are working with is a model that can’t handle missing values, then that needs to be accounted for on your code. Suggestions include printing an error message, removing rows with missing values, or imputing missing values(replace missing values with the median or mode). **Driverless AI only accepts custom models that can handle missing values**. 
+If the model you are working with is a model that can’t handle missing values, it needs to be accounted for on your code. Suggestions include:
+- Printing an error message.
+- Removing rows with missing values.
+- Imputing missing values(replace missing values with the median or mode).</br>
+**Driverless AI only accepts custom models that can handle missing values**. 
 
 Here is a sample code for handling the missing values in the prediction section:
 
@@ -1129,7 +1085,7 @@ class ExtraTreesModel(CustomModel):
 
 ### Challenge
 
-The final step in building the custom model recipe is to complete the parts that were left uncompleted. You will need to write a code to determine when to use the model. First, you need to specify if the model should work with a classification or regression case. You can also set a name and description for the model. Second, you need to determine the "n_estimators" and lastly, set up test code for testing for null values or handling missing values, like the examples that were given in each section. Once those are set, then you can upload the custom recipe to Driverless and check that it passes the acceptance test. If your recipe is not passing the Driverless AI's acceptance test, see [Task 5: Troubleshooting](https://training.h2o.ai/products/tutorial-3b-build-your-own-custom-recipe-tutorial).
+The final step in building the custom model recipe is to complete the parts that were left uncompleted. You will need to write a code to determine when to use the model. First, you need to specify if the model should work with a classification or regression case. You can also set a name and description for the model. Second, you need to determine the "n_estimators" and, lastly, set up test code for testing for null values or handling missing values, like the examples that were given in each section. Once those are set, you can upload the custom recipe to Driverless and check that it passes the acceptance test. If your recipe is not passing the Driverless AI's acceptance test, see **Task 5: Troubleshooting**.
 
 Here is a sample code that could be used to complete the first task of the challenge:
 
@@ -1169,18 +1125,17 @@ If you need to do parameter tuning after setting your default parameters, here i
 
 Take the extra_tress_model and test it using a dataset of your choice.
 
-If you have questions on how to upload the transformer recipe to Driverless AI, see  [“Get Started with Open Source Custom Recipes Tutorial - Task 5: Recipe: Model”](https://training.h2o.ai/products/tutorial-3a-get-started-with-open-source-custom-recipes-tutorial).
+If you have questions on how to upload the transformer recipe to Driverless AI, see  [“Get Started with Open Source Custom Recipes - Task 5: Recipe: Model”](https://training.h2o.ai/products/self-paced-course-3a-get-started-with-open-source-custom-recipes).
 
 ### References
 
-[1] [sklearn Extra Trees Classifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.ExtraTreesClassifier.html)
-
+[1] [sklearn Extra Trees Classifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.ExtraTreesClassifier.html)</br>
 [2] [sklearn Extra Trees Regressor](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.ExtraTreesRegressor.html)
 
 ### Deeper Dive and Resources
 
-- [Driverless AI Models Repo](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.9.0/models) 
-- [BYOR Model Template](https://github.com/h2oai/driverlessai-recipes/blob/rel-1.9.0/models/model_template.py)  
+- [Driverless AI Models Repo](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.9.1/models) 
+- [BYOR Model Template](https://github.com/h2oai/driverlessai-recipes/blob/rel-1.9.1/models/model_template.py)  
 
 ## Task 5: Troubleshooting
 
@@ -1191,7 +1146,7 @@ When uploading a new recipe to Driverless AI, there are multiple things that can
 
 ###  Recipe did not Make the Cut 
 
-One of the biggest advantages when loading a recipe to Driverless AI is that Driverless AI will subject your recipe to its acceptance tests. If your recipe did not pass the acceptance, Driverless AI will let you know right away if your recipe made the cut. If your recipe did not make the cut you, then you will receive feedback from Driverless AI on how to improve it.  
+One of the most significant advantages when loading a recipe to Driverless AI is that Driverless AI will subject your recipe to its acceptance tests. If your recipe did not pass the acceptance, Driverless AI would let you know right away if your recipe made the cut. If your recipe does not make the cut, you will receive feedback from Driverless AI to improve it.
 
 Other tips:
 
@@ -1199,15 +1154,15 @@ Other tips:
 - If you can't figure out how to fix the recipe, we suggest you post your questions in the [Driverless AI community Slack channel](https://www.h2o.ai/slack-community/) 
 - You can also send us your experiment logs zip file, which will contain the recipe source files.
 
-How can I debug my recipe?
+**How can I debug my recipe?**
 
 - The easiest way (for now) is to keep uploading it to the expert settings in Driverless AI until the recipe is accepted.
-- Another way is to make minimal changes, as shown in [this debugging example](https://github.com/h2oai/driverlessai-recipes/blob/rel-1.9.0/transformers/how_to_debug_transformer.py) and use PyCharm or a similar Python debugger.
+- Another way is to make minimal changes, as shown in [this debugging example](https://github.com/h2oai/driverlessai-recipes/blob/rel-1.9.1/transformers/how_to_debug_transformer.py) and use PyCharm or a similar Python debugger.
 
 
 ### Recipe Made the Cut to Driverless AI and was not Used in the Experiment
 
-You were able to successfully load your recipe to Driverless AI; however, your recipe was not used by Driverless AI, now what? Driverless AI takes best-fit recipes for your dataset, so if you don’t see your recipe being used, you can manually select your recipe when setting up your Experiment. 
+You were able to load your recipe to Driverless AI successfully; however, your recipe was not used by Driverless AI; now what? Driverless AI takes best-fit recipes for your dataset, so if you don’t see your recipe being used, you can manually select your recipe when setting up your Experiment. 
 
 Other tips:
 
@@ -1225,7 +1180,7 @@ That's nothing to worry about. It's unlikely that your features have the stronge
 
 - [How do I collect logs? ](https://support.h2o.ai/support/solutions/articles/17000090847-how-do-i-collect-logs-)  
 - [Driverless AI community Slack channel](https://www.h2o.ai/slack-community/) 
-- [ Driverless AI Recipe Debugging Example](https://github.com/h2oai/driverlessai-recipes/blob/rel-1.9.0/transformers/how_to_debug_transformer.py) 
+- [ Driverless AI Recipe Debugging Example](https://github.com/h2oai/driverlessai-recipes/blob/rel-1.9.1/transformers/how_to_debug_transformer.py) 
  
 
 ## Task 6: Challenge: Write Your Own Recipe
@@ -1235,20 +1190,19 @@ Try to build your own recipe. Driverless AI has many datasets that you can use t
 ## Next Steps
 
 - Webinar : [How to Make a Recipe with H2O Driverless AI](https://www.h2o.ai/webinars/?commid=364997&utm_campaign=communication_reminder_starting_now_registrants&utm_medium=email&utm_source=brighttalk-transact&utm_content=button) 
-
 - Check out the GitHub [Catalog of Open Source Custom Recipes](http://catalog.h2o.ai/)
 
 ## Appendix A: Download Driverless AI Custom Recipes
 
-H2O custom recipes reside in the [H2O Driverless AI Recipes GitHub repo](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.9.0). **There are multiple branches of Driverless AI recipes so make sure that you are using the same branch as the Driverless AI version you have.**
+H2O custom recipes reside in the [H2O Driverless AI Recipes GitHub repo](https://github.com/h2oai/driverlessai-recipes/tree/rel-1.9.1). **There are multiple branches of Driverless AI recipes so make sure that you are using the same branch as the Driverless AI version you have.**
 
-For this tutorial, we are using **Driverless AI 1.9.0** and we will download the relevant custom recipes from that branch using the following shell commands.
+For this self-paced course, we are using **Driverless AI 1.9.1** and we will download the relevant custom recipes from that branch using the following shell commands.
 
 ~~~bash
 mkdir -p $HOME/recipes/{models/algorithms,scorers/classification/binary,transformers/numeric}
-wget https://raw.githubusercontent.com/h2oai/driverlessai-recipes/rel-1.9.0/transformers/numeric/sum.py -P $HOME/recipes/transformers/numeric/
-wget https://raw.githubusercontent.com/h2oai/driverlessai-recipes/rel-1.9.0/scorers/classification/binary/false_discovery_rate.py -P $HOME/recipes/scorers/classification/binary/
-wget https://raw.githubusercontent.com/h2oai/driverlessai-recipes/rel-1.9.0/models/algorithms/extra_trees.py -P $HOME/recipes/models/algorithms
+wget https://raw.githubusercontent.com/h2oai/driverlessai-recipes/rel-1.9.1/transformers/numeric/sum.py -P $HOME/recipes/transformers/numeric/
+wget https://raw.githubusercontent.com/h2oai/driverlessai-recipes/rel-1.9.1/scorers/classification/binary/false_discovery_rate.py -P $HOME/recipes/scorers/classification/binary/
+wget https://raw.githubusercontent.com/h2oai/driverlessai-recipes/rel-1.9.1/models/algorithms/extra_trees.py -P $HOME/recipes/models/algorithms
 ~~~
 
 Feel free to open the custom recipes in your favorite text editor or IDE.
