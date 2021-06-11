@@ -25,19 +25,19 @@ Check out the [**New H2O.ai Learning Center**](https://training.h2o.ai/) where y
 
 - [Build Your Own Recipe Tutorial](https://training.h2o.ai/products/tutorial-3b-build-your-own-custom-recipe-tutorial)
 
-- [NEW - Scoring Pipeline Deployment Introduction](https://training.h2o.ai/products/tutorial-4a-scoring-pipeline-deployment-introduction)
+- [Scoring Pipeline Deployment Introduction](https://training.h2o.ai/products/tutorial-4a-scoring-pipeline-deployment-introduction)
 
-- [NEW - Scoring Pipeline Deployment Templates](https://training.h2o.ai/products/tutorial-4b-scoring-pipeline-deployment-templates)
+- [Scoring Pipeline Deployment Templates](https://training.h2o.ai/products/tutorial-4b-scoring-pipeline-deployment-templates)
 
-- [NEW - Disparate Impact Analysis Tutorial](https://training.h2o.ai/products/tutorial-5a-disparate-impact-analysis-tutorial)
+- [Disparate Impact Analysis Tutorial](https://training.h2o.ai/products/tutorial-5a-disparate-impact-analysis-tutorial)
 
-- [NEW - Risk Assessment Tools in the World of AI, the Social Sciences, and Humanities](https://training.h2o.ai/products/tutorial-5b-risk-assessment-tools-in-the-world-of-ai-the-social-sciences-and-humanities)
+- [Risk Assessment Tools in the World of AI, the Social Sciences, and Humanities](https://training.h2o.ai/products/tutorial-5b-risk-assessment-tools-in-the-world-of-ai-the-social-sciences-and-humanities)
 
-- [NEW - Scoring Pipeline Deployment in Java Runtime](https://training.h2o.ai/products/tutorial-4c-scoring-pipeline-deployment-in-java-runtime)
+- [Scoring Pipeline Deployment in Java Runtime](https://training.h2o.ai/products/tutorial-4c-scoring-pipeline-deployment-in-java-runtime)
 
-- [NEW - Scoring Pipeline Deployment in C++ Runtime](https://training.h2o.ai/products/tutorial-4d-scoring-pipeline-deployment-in-c-runtime)
+- [Scoring Pipeline Deployment in C++ Runtime](https://training.h2o.ai/products/tutorial-4d-scoring-pipeline-deployment-in-c-runtime)
 
-- [NEW - Scoring Pipeline Deployment in Python Runtime](https://training.h2o.ai/products/tutorial-4e-scoring-pipeline-deployment-in-python-runtime)
+- [Scoring Pipeline Deployment in Python Runtime](https://training.h2o.ai/products/tutorial-4e-scoring-pipeline-deployment-in-python-runtime)
 
 - (COMING SOON) - Scoring Pipeline Deployment to Apache NiFi
 
