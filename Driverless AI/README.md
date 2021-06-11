@@ -6,7 +6,7 @@
 
 This repository has tutorials that focus on **Driverless AI version 1.8.4.1**.
 
-Check out the [**New H2O.ai Learning Center**](https://training.h2o.ai/) where you can earn **badges** for completing the Self-Paced Tutorials or Instructor-Led Courses. 
+Check out the [**New H2O.ai Learning Center**](https://training.h2o.ai/) where you can complete Self-Paced Tutorials or Instructor-Led Courses. 
 
 **Self-Paced Tutorials**:
 
