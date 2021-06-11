@@ -678,23 +678,15 @@
 <p>Using Test Time Augmentation to be able to continue using the same experiment over a longer period of time means there would be no need to repeat a model review process continually. The model may become out of date, however, and the MOJO scoring pipeline is not supported.</p>
 <p class="image-container"><img alt="test-time-augmentation-support-table" src="img/793e43b0f0579e9e.png"></p>
 <p>For different use cases, there may be clear advantages for retraining an experiment after each forecast horizon or for using Test Time Augmentation. In this notebook, we show how to perform both and compare the performance: <a href="https://github.com/h2oai/driverlessai-tutorials/blob/master/driverlessai_experiments/timeseries/walmart_timeseries_experiment/timeseries_model_rollingwindow.ipynb" target="_blank">Time Series Model Rolling Window</a>.</p>
-
-
-      </google-codelab-step>
-    
-      <google-codelab-step label="Triggering Test Time Augmentation" duration="0">
-        <p>To perform Test Time Augmentation, create your forecast data to include any data that occurred after the training data ended up to the dates you want a forecast for. The dates that you want Driverless AI to forecast should have missing values (NAs) where the target column is. Target values for the remaining dates must be filled in.</p>
+<h2 is-upgraded>Triggering Test Time Augmentation</h2>
+<p>To perform Test Time Augmentation, create your forecast data to include any data that occurred after the training data ended up to the dates you want a forecast for. The dates that you want Driverless AI to forecast should have missing values (NAs) where the target column is. Target values for the remaining dates must be filled in.</p>
 <p>The following is an example of forecasting for 2020-11-23 and 2020-11-30 with the remaining dates being used for TTA:</p>
 <p class="image-container"><img alt="forecasting-with-tta" src="img/cefeb2660285408e.png"></p>
 <p>Notes:</p>
 <p>Although TTA can span any length of time into the future, the dates that are being predicted cannot exceed the horizon.</p>
 <p>If the date being forecasted contains any non-missing value in the target column, then TTA is not triggered for that row.</p>
-
-
-      </google-codelab-step>
-    
-      <google-codelab-step label="Forecasting Future Dates" duration="0">
-        <p>To forecast or predict future dates, upload a dataset that contains the future dates of interest and provide additional information such as group IDs or features known in the future. The dataset can then be used to run and score your predictions.</p>
+<h2 is-upgraded>Forecasting Future Dates</h2>
+<p>To forecast or predict future dates, upload a dataset that contains the future dates of interest and provide additional information such as group IDs or features known in the future. The dataset can then be used to run and score your predictions.</p>
 <p>The following is an example of a model that was trained up to 2020-05-31:</p>
 <p class="image-container"><img alt="forecasting-future-dates-example" src="img/2da2cd710ed9ba50.png"></p>
 
