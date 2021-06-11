@@ -898,7 +898,7 @@ Using Test Time Augmentation to be able to continue using the same experiment ov
 
 For different use cases, there may be clear advantages for retraining an experiment after each forecast horizon or for using Test Time Augmentation. In this notebook, we show how to perform both and compare the performance: [Time Series Model Rolling Window](https://github.com/h2oai/driverlessai-tutorials/blob/master/driverlessai_experiments/timeseries/walmart_timeseries_experiment/timeseries_model_rollingwindow.ipynb).
 
-## Triggering Test Time Augmentation
+### Triggering Test Time Augmentation
 
 To perform Test Time Augmentation, create your forecast data to include any data that occurred after the training data ended up to the dates you want a forecast for. The dates that you want Driverless AI to forecast should have missing values (NAs) where the target column is. Target values for the remaining dates must be filled in.
 
@@ -912,7 +912,7 @@ Although TTA can span any length of time into the future, the dates that are bei
 
 If the date being forecasted contains any non-missing value in the target column, then TTA is not triggered for that row.
 
-## Forecasting Future Dates 
+### Forecasting Future Dates 
 
 To forecast or predict future dates, upload a dataset that contains the future dates of interest and provide additional information such as group IDs or features known in the future. The dataset can then be used to run and score your predictions.
 
