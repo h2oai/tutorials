@@ -14,7 +14,6 @@
 - [Appendix B: Forecasting Outside of the Forecast Horizon Tips](#appendix-b-forecasting-outside-of-the-forecast-horizon-tips)
 - [Appendix C: Time Series FAQ](#appendix-c-time-series-faq)
 
-
 ## Objective
 
 Time series forecasting is one of the most common and important tasks in business analytics. The goal of time series forecasting is to predict the future values of that series using historical data. Time series forecasting uses models to predict future values based on previously observed values, also known as extrapolation.
@@ -103,7 +102,7 @@ See [Deeper Dive and Resources](#deeper-dive-and-resources) at the end of this t
 
 ![projects-page](assets/projects-page.png)
 
- - *Things to Note:*
+ - *Things to Note:*</br>
 
     **a.** **Projects:** Projects menu option</br>
 
@@ -641,10 +640,9 @@ At the end of the experiment, a similar page will appear:
 
 ![mli-time-series-explanations-and-debugging-1](assets/mli-time-series-explanations-and-debugging-1.png)
 ![mli-time-series-explanations-and-debugging-2](assets/mli-time-series-explanations-and-debugging-2.png)
-
 ![mli-time-series-explanations-and-debugging-3](assets/mli-time-series-explanations-and-debugging-3.png)
 
--  *Things to Note:*
+-  *Things to Note:*</br>
 
     **a.** **MLI TS HELP** 
 
