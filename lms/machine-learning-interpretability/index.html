@@ -1,0 +1,593 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Machine Learning Interpretability</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <link rel="stylesheet" href="custom.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="machine-learning-interpretability"
+                  title="Machine Learning Interpretability"
+                  environment="web"
+                  feedback-link="">
+    
+      <google-codelab-step label="Objective" duration="0">
+        <p>As Machine Learning (ML) grows, more industries, from healthcare to banking, adopt machine learning models to generate predictions. These predictions are being used to justify the cost of healthcare and for loan approvals or denials. For regulated industries that are adopting machine learning, the <strong>interpretability</strong> of models is a requirement. In Machine Learning, <strong>interpretability</strong> can be defined as &#34;the ability to explain or present in understandable terms to a human [being].&#34;[1]</p>
+<p>A few of the motivations for interpretability are as follows:</p>
+<ul>
+<li>Better human understanding of impactful technologies</li>
+<li>Regulation compliance and General Data Protection Regulations (GDPRs)</li>
+<li>Check and balance against accidental or intentional discrimination</li>
+<li>Hacking and adversarial attacks</li>
+<li>Alignment with US FTC and OMB guidance on transparency and explainability</li>
+<li>Prevent the building of excessive Technical Debt in Machine Learning</li>
+<li>More in-depth insight and understanding of your data</li>
+</ul>
+<p>In this self-paced course, we will build a machine learning model using the famous <strong>Default of Credit Card Clients Dataset</strong>. We will use the dataset to build a classification model that will predict the probability of clients defaulting on their next credit card payment. In contrast to previous self-paced courses, we will focus on the most leading methods and concepts for explaining and interpreting Machine Learning models. Therefore, we will not focus so much on the experiment itself. Instead, we would shift our attention to using the following metrics and graphs that Driverless AI generates to understand our built model: <strong>results, graphs, scores, and reason code values</strong>. In particular, we will explore the following graphs in Driverless AI:</p>
+<ul>
+<li>Decision tree surrogate models</li>
+<li>Individual conditional expectation (ICE) plots</li>
+<li>K local interpretable model-agnostic explanations (K-LIME)</li>
+<li>Leave-one-covariate-out (LOCO) local feature importance<br></li>
+<li>Partial dependence plots</li>
+<li>Random forest feature importance</li>
+</ul>
+<p>Before we explore these techniques in detail, we will briefly introduce ourselves to the following fundamental concepts in machine learning interpretability (MLI):</p>
+<ul>
+<li>Machine Learning Interpretability Taxonomy</li>
+<li>Response Function Complexity  <ul>
+<li>Linear, monotonic functions</li>
+<li>Nonlinear, monotonic functions</li>
+<li>Nonlinear, non-monotonic functions</li>
+</ul>
+</li>
+<li>Scope  <ul>
+<li>Global Interpretability</li>
+<li>Local Interpretability:</li>
+<li>Global Versus Local Analysis Motif</li>
+</ul>
+</li>
+<li>Application Domain  <ul>
+<li>model-agnostic</li>
+<li>model-specific</li>
+</ul>
+</li>
+<li>Understanding and Trust</li>
+<li>Why Machine Learning for Interpretability?</li>
+<li>The Multiplicity of Good Models</li>
+<li>From Explainable to Responsible AI</li>
+<li>Responsibility in AI and Machine Learning</li>
+</ul>
+<p>Note, we will explore a global versus local analysis motif that will be crucial when interpreting models in Driverless AI. Furthermore, we will explore a general justification for MLI and a huge problem in the field: the multiplicity of good models. At last, we will explore each technique while explaining how they can be used to understand our use case: <strong>credit card defaulting</strong>.</p>
+<h2 is-upgraded>References</h2>
+<ul>
+<li>[1] <a href="https://arxiv.org/pdf/1702.08608.pdf" target="_blank">&#34;Towards a rigorous science of interpretable machine learning&#34;</a></li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Prerequisites" duration="0">
+        <p>You will need the following to be able to do this self-paced course:</p>
+<ul>
+<li>Basic knowledge of Machine Learning and Statistics</li>
+<li>Basic knowledge of Driverless AI or doing the following self-paced course: <a href="https://training.h2o.ai/products/self-paced-course-1a-automatic-machine-learning-introduction-with-driverless-ai" target="_blank">Automatic Machine Learning Introduction with Driverless AI</a></li>
+<li>A <strong>Two-Hour Test Drive session</strong>: Test Drive is H2O.ai&#39;s Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.  <ul>
+<li>Need a <strong>Two-Hour Test Drive</strong> session? Follow the instructions on <a href="https://training.h2o.ai/products/self-paced-course-0-getting-started-with-driverless-ai-test-drive" target="_blank">this quick self-paced course</a> to get a Test Drive session started.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Note: Aquarium&#39;s Driverless AI Test Drive lab has a license key built-in, so you don&#39;t need to request one to use it. Each Driverless AI Test Drive instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore Driverless AI, you can always launch another Test Drive instance or reach out to our sales team via the </strong><a href="https://www.h2o.ai/company/contact/" target="_blank"><strong>contact us form</strong></a><strong>.</strong></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Task 1: Launch Experiment" duration="0">
+        <h2 is-upgraded>About the Dataset</h2>
+<p>The dataset we will be using contains information about credit card clients in Taiwan from <strong>April 2005</strong> to <strong>September 2005</strong>. Features include demographic factors, repayment statuses, history of payment, bill statements, and default payments. The data set comes from the <a href="https://archive.ics.uci.edu/ml/datasets/default+of+credit+card+clients#" target="_blank">UCI Machine Learning Repository: UCI_Credit_Card.csv</a> This dataset has a total of 25 Features (columns) and 30,000 Clients (rows).</p>
+<h2 is-upgraded>Download Dataset</h2>
+<p>When looking at the <strong>UCI_Credit_Card.csv</strong>, we can observe that column <strong>PAY_0</strong> was suppose to be named <strong>PAY_1</strong>. Accordingly, we will solve this problem using a data recipe that will change the column&#39;s name to <strong>PAY_1</strong>. The data recipe has already been written and can be found <a href="https://s3.amazonaws.com/data.h2o.ai/DAI-Tutorials/MLI+Tutorials/uci_credit_card_recipe.py" target="_blank">here</a>. We will load the dataset and modify it using the recipe through the recipe URL.</p>
+<p>1. Click on <strong>+ Add Dataset (Or Drag &amp; Drop)</strong> and select <strong>&lt;/&gt; Data Recipe URL</strong>:</p>
+<p class="image-container"><img alt="upload-data-recipe" src="img/afb03ee0e2042b8c.png"></p>
+<p>2. Copy and paste the following link in the <strong>Data Recipe URL</strong> box and click <strong>Save</strong>:</p>
+<pre><code language="language-html" class="language-html">https://s3.amazonaws.com/data.h2o.ai/DAI-Tutorials/MLI+Tutorials/uci_credit_card_recipe.py
+</code></pre>
+<p class="image-container"><img alt="data-recipe-url" src="img/5cc828efeaa826c7.png"></p>
+<p>After it imports successfully, you will see the following CSV on the <strong>DATASETS</strong> page: <strong>UCI_Credit_Card.csv</strong>.</p>
+<h2 is-upgraded>Details and Launch Experiment</h2>
+<p>1. Click on the <strong>UCI_Credit_Card.csv</strong> then select <strong>Details</strong>:</p>
+<p class="image-container"><img alt="data-details" src="img/ae9f4b127e80eda.jpg"></p>
+<p>2. Before we run our experiment, let&#39;s have a look at the dataset columns:</p>
+<p class="image-container"><img alt="data-columns" src="img/ad1477b71c0d20df.png"></p>
+<ul>
+<li><em>Things to Note:</em></li>
+</ul>
+<p><strong>a. ID</strong> - Row identifier (which will not be used for this experiment)<br>   <strong>b. LIMIT_BAL</strong> - Amount of the given credit: it includes the individual consumer credit and family (supplementary) credit<br>   <strong>c. Sex</strong> - Gender (1 =  male; 2 = female)<br>   <strong>d. EDUCATION</strong>- Education (1 = graduate school; 2 = university; 3 = high school; 4 = others)<br>   <strong>e. MARRIAGE</strong> - Marital status (1 = married; 2 = single; 3 = others)<br>   <strong>f. Age<br>   g. PAY_1 - PAY_6</strong>: History of past payment:</p>
+<ul>
+<li>-2: No consumption</li>
+<li>-1: Paid in full</li>
+<li>0: The use of revolving credit</li>
+<li>1 = payment delay for one month</li>
+<li>2 = payment delay for two months; ...;</li>
+<li>6 = payment delay for six months</li>
+</ul>
+<p>Continue scrolling the current page to see more columns.</p>
+<ul>
+<li><strong>BILL_AMT1 - BILL_AMT6</strong> - Amount of bill statement</li>
+<li><strong>PAY_AMT1 -PAY_AMT6</strong> - Amount of previous payment</li>
+<li><strong>default.payment.next.month</strong> - Default (1: Yes, 0: No)</li>
+</ul>
+<p>3. Now, return to the <strong>Datasets</strong> page.</p>
+<p>4. Click on the <strong>UCI_Credit_Card.csv</strong>, then select <strong>Predict</strong>.</p>
+<p>5. Select <strong>Not Now</strong> on the &#34;First-time Driverless AI&#34; box, the following will appear:</p>
+<p class="image-container"><img alt="experiment-page" src="img/d0cbc24a9f9175d4.jpg"></p>
+<p>As you might have noticed in the dataset, we have a feature that can tell us whether a client defaulted on their next month&#39;s payment. In other words, <strong>default.payment.next.month</strong> tells us if PAY_7 defaulted (PAY_7 is not a column in our dataset). As mentioned in the <strong>Objective</strong> task, we will be creating a classification model to predict whether someone will be defaulting on their next payment, in this case, on PAY_7.</p>
+<p>6. Click on <strong>target column</strong> and select <strong>default.payment.next.month</strong>:</p>
+<p class="image-container"><img alt="target-column" src="img/7cd5a13fefda7dac.jpg"></p>
+<p>7. For our <strong>Training Settings</strong>, adjust the settings to:</p>
+<ul>
+<li>Accuracy: <strong>6</strong></li>
+<li>Time: <strong>4</strong></li>
+<li>Interpretability: <strong>7</strong></li>
+<li>Scorer: <strong>AUC</strong></li>
+</ul>
+<p class="image-container"><img alt="settings" src="img/cd39e2222fa1ec53.jpg"></p>
+<p>8. Once you have updated your experiment settings, click on <strong>Launch Experiment</strong>.</p>
+<p>While we wait for the experiment to finish, let&#39;s explore some crucial concepts that will help us achieve <strong>interpretability</strong> in our model.</p>
+<h2 is-upgraded>External URLs to the data:</h2>
+<ul>
+<li><a href="https://archive.ics.uci.edu/ml/datasets/default+of+credit+card+clients" target="_blank">Default of credit card clients Data Set</a></li>
+<li><a href="https://www.kaggle.com/uciml/default-of-credit-card-clients-dataset" target="_blank">Default of Credit Card Clients Dataset</a></li>
+<li><a href="https://rstudio-pubs-static.s3.amazonaws.com/281390_8a4ea1f1d23043479814ec4a38dbbfd9.html" target="_blank">Default Payments of Credit Card Clients in Taiwan from 2005</a></li>
+<li><a href="http://inseaddataanalytics.github.io/INSEADAnalytics/CourseSessions/ClassificationProcessCreditCardDefault.html" target="_blank">Classification for Credit Card Default</a></li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Task 2: Industry Context and ML Explainability Concepts" duration="0">
+        <h2 is-upgraded>Overivew</h2>
+<p>For decades, common sense has deemed the complex, intricate formulas created by training machine learning algorithms to be uninterpretable. While it is unlikely that nonlinear, non-monotonic, and even non-continuous machine-learned response functions will ever be as directly interpretable as more traditional linear models, great advances have been made in recent years [2]. H2O Driverless AI incorporates a number of contemporary approaches to increase the transparency and accountability of complex models and to enable users to debug models for accuracy and fairness including:</p>
+<ul>
+<li>Decision tree surrogate models [3]</li>
+<li>Individual conditional expectation (ICE) plots [4]</li>
+<li>K local interpretable model-agnostic explanations (K-LIME)</li>
+<li>Leave-one-covariate-out (LOCO) local feature importance [5]</li>
+<li>Partial dependence plots [6]</li>
+<li>Random forest feature importance [6]</li>
+</ul>
+<p><strong>Note</strong>: we will cover the above approaches, and we will explore various concepts around its primary functions. As well, for each approach, we will highlight the following points:</p>
+<ul>
+<li>Scope of Interpretability</li>
+<li>Appropriate Response Function Complexity</li>
+<li>Understanding and Trust</li>
+<li>Application Domain</li>
+</ul>
+<h2 is-upgraded>Machine Learning Interpretability Taxonomy</h2>
+<p>In the context of machine learning models and results, interpretability has been defined as the ability to explain or to present in understandable terms to a human [8]. Of course, interpretability and explanations are subjective and complicated subjects, and a previously defined taxonomy has proven useful for characterizing interpretability in greater detail for various explanatory techniques [2]. Following Ideas on Interpreting Machine Learning, presented approaches will be described in terms of response function complexity, scope, application domain, understanding, and trust.</p>
+<h2 is-upgraded>Response Function Complexity</h2>
+<p>The more complex a function, the more difficult it is to explain. Simple functions can be used to explain more complex functions, and not all explanatory techniques are a good match for all types of models. Hence, it&#39;s convenient to have a classification system for response function complexity.</p>
+<ul>
+<li><strong>Linear, monotonic functions</strong>: Response functions created by linear regression algorithms are probably the most popular, accountable, and transparent class of machine learning models. These models will be referred to here as linear and monotonic. They are transparent because changing any given input feature (or sometimes a combination or function of an input feature) changes the response function output at a defined rate, in only one direction, and at a magnitude represented by a readily available coefficient. Monotonicity also enables accountability through intuitive, and even automatic, reasoning about predictions. For instance, if a lender rejects a credit card application, they can say exactly why because their probability of default model often assumes that credit scores, account balances, and the length of credit history are linearly and monotonically related to the ability to pay a credit card bill. When these explanations are created automatically and listed in plain English, they are typically called reason codes. In Driverless AI, linear and monotonic functions are fit to very complex machine learning models to generate reason codes using a technique known as K-LIME.</li>
+<li><strong>Nonlinear, monotonic functions</strong>: Although most machine learned response functions are nonlinear, some can be constrained to be monotonic with respect to any given input feature. While there is no single coefficient that represents the change in the response function induced by a change in a single input feature, nonlinear and monotonic functions are fairly transparent because their output always changes in one direction as a single input feature changes.Nonlinear, monotonic response functions also enable accountability through the generation of both reason codes and feature importance measures. Moreover, nonlinear, monotonic response functions may even be suitable for use in regulated applications. In Driverless AI, users may soon be able to train nonlinear, monotonic models for additional interpretability.</li>
+<li><strong>Nonlinear, non-monotonic functions</strong>: Most machine learning algorithms create nonlinear, non-monotonic response functions. This class of functions are typically the least transparent and accountable of the three classes of functions discussed here. Their output can change in a positive or negative direction and at a varying rate for any change in an input feature. Typically, the only standard transparency measure these functions provide are global feature importance measures. By default, Driverless AI trains nonlinear, non-monotonic functions.</li>
+</ul>
+<h2 is-upgraded>Scope</h2>
+<p>Traditional linear models are globally interpretable because they exhibit the same functional behavior throughout their entire domain and range. Machine learning models learn local patterns in training data and represent these patterns through complex behavior in learned response functions. Therefore, machine-learned response functions may not be globally interpretable, or global interpretations of machine-learned functions may be approximate. In many cases, local explanations for complex functions may be more accurate or simply more desirable due to their ability to describe single predictions.</p>
+<p><strong>Global Interpretability</strong>: Some of the presented techniques above will facilitate global transparency in machine learning algorithms, their results, or the machine-learned relationship between the inputs and the target feature. Global interpretations help us understand the entire relationship modeled by the trained response function, but global interpretations can be approximate or based on averages.</p>
+<p><strong>Local Interpretability</strong>: Local interpretations promote understanding of small regions of the trained response function, such as clusters of input records and their corresponding predictions, deciles of predictions and their corresponding input observations, or even single predictions. Because small sections of the response function are more likely to be linear, monotonic, or otherwise well- behaved, local explanations can be more accurate than global explanations.</p>
+<p><strong>Global Versus Local Analysis Motif</strong>: Driverless AI provides both global and local explanations for complex, nonlinear, non-monotonic machine learning models. Reasoning about the accountability and trustworthiness of such complex functions can be difficult, but comparing global versus local behavior is often a productive starting point. A few examples of global versus local investigation include:</p>
+<ul>
+<li>For observations with globally extreme predictions, determine if their local explanations justify their extreme predictions or probabilities.</li>
+<li>For observations with local explanations that differ drastically from global explanations, determine if their local explanations are reasonable.</li>
+<li>For observations with globally median predictions or probabilities, analyze whether their local behavior is similar to the model&#39;s global behavior.</li>
+</ul>
+<h2 is-upgraded>Application Domain</h2>
+<p>Another important way to classify interpretability techniques is to determine whether they are model-agnostic or model-specific.</p>
+<ul>
+<li><strong>Model-agnostic:</strong> meaning they can be applied to different types of machine learning algorithms.</li>
+<li><strong>Model-specific:</strong> techniques that are only applicable for a single type of class of algorithms.</li>
+</ul>
+<p>In Driverless AI, decision tree surrogate, ICE, K-LIME, and partial dependence are all model- agnostic techniques, whereas LOCO and random forest feature importance are model-specific techniques.</p>
+<h2 is-upgraded>Understanding and Trust</h2>
+<p>Machine learning algorithms and the functions they create during training are sophisticated, intricate, and opaque. Humans who would like to use these models have basic, emotional needs to understand and trust them because we rely on them for our livelihoods or because we need them to make important decisions for us. The techniques in Driverless AI enhance understanding and transparency by providing specific insights into the mechanisms and results of the generated model and its predictions. The techniques described here enhance trust, accountability, and fairness by enabling users to compare model mechanisms and results to domain expertise or reasonable expectations and by allowing users to observe or ensure the stability of the Driverless AI model.</p>
+<h2 is-upgraded>Why Machine Learning for Interpretability?</h2>
+<p>Why consider machine learning approaches over linear models for explanatory or inferential purposes? In general, linear models focus on understanding and predicting average behavior, whereas machine-learned response functions can often make accurate, but more difficult to explain, predictions for subtler aspects of modeled phenomenon. In a sense, linear models are approximate but create very exact explanations, whereas machine learning can train more exact models but enables only approximate explanations. As illustrated in figures 1 and 2, it is quite possible that an approximate explanation of an exact model may have as much or more value and meaning than an exact interpretation of an approximate model. In practice, this amounts to use cases such as more accurate financial risk assessments or better medical diagnoses that retain explainability while leveraging sophisticated machine learning approaches.</p>
+<p class="image-container"><img alt="linear-models" src="img/145ba5b6ef33e9c9.jpg"><img alt="machine-learning" src="img/a5b508a87e97765e.jpg"></p>
+<p>Moreover, the use of machine learning techniques for inferential or predictive purposes does not preclude using linear models for interpretation [8]. In fact, it is usually a heartening sign of stable and trustworthy results when two different predictive or inferential techniques produce similar results for the same problem.</p>
+<h2 is-upgraded>The Multiplicity of Good Models</h2>
+<p>It is well understood that for the same set of input features and prediction targets, complex machine learning algorithms can produce multiple accurate models with very similar, but not the same, internal architectures [6]. This alone is an obstacle to interpretation, but when using these types of algorithms as interpretation tools or with interpretation tools, it is important to remember that details of explanations can change across multiple accurate models. This instability of explanations is a driving factor behind the presentation of multiple explanatory results in Driverless AI, enabling users to find explanatory information that is consistent across multiple modeling and interpretation techniques.</p>
+<h2 is-upgraded>From Explainable to Responsible AI</h2>
+<p>AI and Machine Learning are front and center in the news daily. The initial reaction to &#34;explaining&#34; or understanding a created model has been centered around the concept of <strong>explainable AI</strong>, which is the technology to understand and trust a model with advanced techniques such as Lime, Shapley, Disparate Impact Analysis, and more.</p>
+<p>H2O.ai has been innovating in the area of explainable AI for the last three years. However, it has become clear that <strong>explainable AI</strong> is not enough.  Companies, researchers, and regulators would agree that responsible AI encompasses not just the ability to understand and trust a model but includes the ability to address ethics in AI, regulation in AI, and the human side of how we move forward with AI; well, in a responsible way.</p>
+<h2 is-upgraded>Responsibility in AI and Machine Learning</h2>
+<p>Explainability and interpretability in the machine learning space have grown tremendously since we first developed Driverless AI. With that in mind, it is important to frame the larger context in which our interpretability toolkit falls. It is worth noting that since H2O.ai developed this training, the push towards regulation, oversight, and ML model auditing has increased. As a result, <strong>responsible AI</strong> has become a critical requirement for firms looking to make artificial intelligence part of their operations. There have been many recent developments globally around responsible AI, and the following themes encompass such developments: fairness, transparency, explainability, interpretability, privacy, and security. As the field has evolved, many definitions and concepts have come into the mainstream; below, we outline H2O.ai&#39;s respective definitions and understanding around the factors that make up responsible AI:</p>
+<p class="image-container"><img src="img/d4fa66f14f4f9ff7.jpg">     </p>
+<ul>
+<li><strong>Human-Centered ML</strong>: user interactions with AI and ML systems.</li>
+<li><strong>Compliance</strong>: whether that&#39;s with GDPR, CCPA, FCRA, ECOA, or other regulations, as an additional and crucial aspect of responsible AI.</li>
+<li><strong>Ethical AI</strong>: sociological fairness in machine learning predictions (i.e., whether one category of person is being weighted unequally).</li>
+<li><strong>Secure AI</strong>: debugging and deploying ML models with similar counter-measures against insider and cyber threats as seen in traditional software.</li>
+<li><strong>Interpretable Machine Learning</strong>: transparent model architectures and increasing how intuitive and understandable ML models can be.</li>
+<li><strong>Explainable AI (XAI)</strong>: the ability to explain a model to someone after it has been developed.</li>
+</ul>
+<p>By now, your experiment should be completed (if not, give it a bit more time). Let&#39;s look at how we can generate an MLI report after our experiment is complete. This report will give us access to global and local explanations for our machine learning models.</p>
+<h2 is-upgraded>References</h2>
+<ul>
+<li>[2] <a href="https://www.oreilly.com/ideas/ideas-on-interpreting-machine-learning" target="_blank">Patrick Hall, Wen Phan, and Sri Satish Ambati. Ideas on interpreting machine learning. O&#39;Reilly Ideas, 2017.</a></li>
+<li>[3] <a href="http://papers.nips.cc/paper/1152-extracting-tree-structured-representations-of-trained-networks.pdf" target="_blank">Mark W. Craven and Jude W. Shavlik. Extracting tree-structured repre- sentations of trained networks. Advances in Neural Information Process- ing Systems, 1996.</a></li>
+<li>[4] Alex Goldstein, Adam Kapelner, Justin Bleich, and Emil Pitkin. Peeking inside the black box: Visualizing statistical learning with plots of indi- vidual conditional expectation. Journal of Computational and Graphical Statistics, 24(1), 2015</li>
+<li>[5] <a href="http://www.stat.cmu.edu/~ryantibs/papers/conformal.pdf" target="_blank">Jing Lei, Max G&#39;Sell, Alessandro Rinaldo, Ryan J. Tibshirani, and Larry Wasserman. Distribution-free predictive inference for regression. Journal of the American Statistical Association just-accepted, 2017.</a></li>
+<li>[6] <a href="https://web.stanford.edu/~hastie/ElemStatLearn/printings/ESLII_print12.pdf" target="_blank">Jerome Friedman, Trevor Hastie, and Robert Tibshirani. The Elements of Statistical Learning. Springer, New York, 2001.</a></li>
+<li>[7] <a href="https://projecteuclid.org/euclid.ss/1009213726" target="_blank">Leo Breiman. Statistical modeling: The two cultures (with comments and a rejoinder by the author). Statistical Science, 16(3), 2001. URL</a></li>
+<li>[8] Finale Doshi-Velez and Been Kim. Towards a rigorous science of inter- pretable machine learning. arXiV preprint, 2017</li>
+</ul>
+<h2 is-upgraded>Deeper Dive and Resources</h2>
+<ul>
+<li><a href="http://docs.h2o.ai/driverless-ai/latest-stable/docs/booklets/MLIBooklet.pdf" target="_blank">Hall, P., Gill, N., Kurka, M., Phan, W. (Jan 2019). Machine Learning Interpretability with H2O Driverless AI.</a></li>
+<li><a href="https://arxiv.org/abs/1810.02909" target="_blank">On the Art and Science of Machine Learning Explanations</a></li>
+<li><a href="https://www.oreilly.com/library/view/an-introduction-to/9781492033158/" target="_blank">An Introduction to Machine Learning Interpretability</a></li>
+<li><a href="https://www.oreilly.com/ideas/testing-machine-learning-interpretability-techniques" target="_blank">Testing machine learning explanation techniques</a></li>
+<li><a href="https://github.com/jphall663/awesome-machine-learning-interpretability" target="_blank">Awesome Machine Learning Interpretability</a></li>
+<li><a href="https://www.h2o.ai/wp-content/uploads/2017/09/driverlessai/references.html" target="_blank">Concept References</a><br></li>
+<li><a href="https://www.ftc.gov/news-events/blogs/business-blog/2020/04/using-artificial-intelligence-algorithms" target="_blank">Using Artificial Intelligence and Algorithms</a></li>
+<li><a href="https://www.finra.org/sites/default/files/2020-06/ai-report-061020.pdf" target="_blank">Artificial Intelligence (AI) in the Securities Industry1</a></li>
+<li><a href="https://www.whitehouse.gov/wp-content/uploads/2020/01/Draft-OMB-Memo-on-Regulation-of-AI-1-7-19.pdf" target="_blank">MEMORANDUM FOR THE HEADS OF EXECUTIVE DEPARTMENTS AND AGENCIES:Guidance for Regulation of Artificial Intelligence Applications</a></li>
+<li><a href="https://www.pdpc.gov.sg/-/media/files/pdpc/pdf-files/resource-for-organisation/ai/sgmodelaigovframework2.pdf" target="_blank">MODEL ARTIFICIAL INTELLIGENCE GOVERNANCE FRAMEWORK SECOND EDITION</a></li>
+<li><a href="https://gdpr-info.eu" target="_blank">General Data Protection Regulation GDPR</a></li>
+<li><a href="https://www.oreilly.com/ideas/ideas-on-interpreting-machine-learning" target="_blank">Patrick Hall, Wen Phan, and Sri Satish Ambati. Ideas on interpreting machine learning. O&#39;Reilly Ideas, 2017</a></li>
+<li><a href="https://projecteuclid.org/euclid.ss/1009213726" target="_blank">Leo Breiman. Statistical modeling: The two cultures (with comments and a rejoinder by the author). Statistical Science, 16(3), 2001.</a></li>
+<li><a href="https://arxiv.org/abs/1702.08608" target="_blank">Finale Doshi-Velez and Been Kim. Towards a rigorous science of interpretable machine learning. arXiV preprint, 2017</a></li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Task 3: Model Interpretations" duration="0">
+        <p>When your experiment finishes building, you should see the following dashboard:</p>
+<p class="image-container"><img alt="experiment-results" src="img/4a17e8f434eb5b4e.png"></p>
+<ul>
+<li><em>Things to note:<br></em><strong>a. Interpretability</strong> -  The higher the interpretability, the simpler the features that Driverless AI will generate. If the interpretability is high enough, then Driverless AI will generate a monotonically constrained model. In other words, it will make the model more transparent and interpretable. In particular, it will make our metrics that we will generate easy to understand while eliminating perhaps features that will be a lot of work to understand from a perspective of interpretability. A monotonically constrained model can be enabled when <strong>Interpretability &gt;= 7.<br>b. Variable Importance</strong> - Here, we can see a variety of automatically generated engineered features. Features that we will use to understand our model and its decision-making process.</li>
+</ul>
+<p>1. To generate the <strong>MLI Report</strong>, select the <strong>Interpret this Model</strong> option (in the complete status section):</p>
+<p class="image-container"><img alt="interpret" src="img/eef19a86cd34ab72.jpg"></p>
+<p>Once the <strong>MLI report</strong> is generated, the following will appear. You will know the report is ready when in the following button the value of <strong>Running</strong> and <strong>Failed</strong> equals 0: <strong>x Running | x Failed | x Done</strong>:</p>
+<p class="image-container"><img alt="landing-page" src="img/14e0f8edb62b4a03.jpg"></p>
+<ul>
+<li><strong>Note</strong>: The Model Interpretation page (MLI) is available for non-time-series experiments.</li>
+</ul>
+<p>With this task in mind, let&#39;s explore what techniques are available when understanding and interpreting your model.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Task 4: K-LIME" duration="0">
+        <p>1. Let&#39;s begin our exploration by looking at the <strong>Surrogate Models</strong> tab. Click the <strong>Surrogate Models</strong> tab:</p>
+<p class="image-container"><img alt="surrogate-models-tab" src="img/b793798a3680839e.png"></p>
+<h2 is-upgraded>Interpretations using Surrogate Models (Surrogate Model Tab)</h2>
+<p>A surrogate model is a data mining and engineering technique in which a generally simpler model is used to explain another, usually more complex, model or phenomenon. For example, the decision tree surrogate model is trained to predict the predictions of the more complex Driverless AI model using the original model inputs. The trained surrogate model enables a heuristic understanding (i.e., not a mathematically precise understanding) of the mechanisms of the highly complex and nonlinear Driverless AI model. In other words, surrogate models are important explanations and debugging tools. They can provide global and local insights both model predictions and into model residuals or errors. However, surrogate models are approximate.</p>
+<p><strong>Note</strong>: The surrogate models take the system&#39;s input and attempt to model the complex Driverless AI model&#39;s predictions. Surrogate models tell us about a complex model in the original feature space.</p>
+<p>The Surrogate Model tab is organized into tiles for each interpretation method. To view a specific plot, click the tile for the plot that you want to view. For binary classification and regression experiments, this tab includes K-LIME/LIME-SUP and Decision Tree plots as well as Feature Importance, Partial Dependence, and LOCO plots for the Random Forest surrogate model.</p>
+<p>The following is a list of the interpretation plots from Surrogate Models:</p>
+<ul>
+<li>K-LIME and LIME-SUP</li>
+<li>Random Forest Feature Importance</li>
+<li>Random Forest Partial Dependence and Individual Conditional Expectation</li>
+<li>Random Forest LOCO</li>
+<li>Decision Tree</li>
+<li>NLP Surrogate (it will not be cover in this self-paced course, but you can learn more about it <a href="https://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/interpret-understanding.html#nlp-surrogate-models" target="_blank">here</a>)</li>
+</ul>
+<h2 is-upgraded>K-LIME and LIME-SUP</h2>
+<p>The <strong>Surrogate Model Tab</strong>  includes a K-LIME (K local interpretable model-agnostic explanations) or LIME-SUP (Locally Interpretable Models and Effects based on Supervised Partitioning) graph. A K-LIME graph is available by default when you interpret a model from the experiment page. When you create a new interpretation, you can instead choose to use LIME-SUP as the LIME method. Note that these graphs are essentially the same, but the K-LIME/LIME-SUP distinction provides insight into the LIME method that was used during model interpretation. For our use case, we will use the K-LIME graph only but click <a href="https://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/interpret-understanding.html#the-lime-sup-technique" target="_blank">here</a> to learn more about the <strong>LIME-SUP Technique</strong>.</p>
+<h2 is-upgraded>The K-LIME Technique</h2>
+<p>This plot is available for binary classification and regression models.</p>
+<p>K-LIME is a variant of the LIME technique proposed by Ribeiro at al (2016). K-LIME generates global and local explanations that increase the transparency of the Driverless AI model, and allow model behavior to be validated and debugged by analyzing the provided plots, and comparing global and local explanations to one-another, to known standards, to domain knowledge, and to reasonable expectations.</p>
+<p>K-LIME creates one global surrogate generalized linear model (GLM) on the entire training data and also creates numerous local surrogate GLMs on samples formed from k-means clusters in the training data. The features used for k-means are selected from the Random Forest surrogate model&#39;s variable importance. The number of features used for k-means is the minimum of the top 25% of variables from the Random Forest surrogate model&#39;s variable importance and the max number of variables that can be used for k-means. Note, if the number of features in the dataset are less than or equal to 6, then all features are used for k-means clustering. All penalized GLM surrogates are trained to model the predictions of the Driverless AI model. The number of clusters for local explanations is chosen by a grid search in which the 𝑅^2 between the Driverless AI model predictions and all of the local K-LIME model predictions is maximized. The global and local linear model&#39;s intercepts, coefficients, 𝑅^2 values, accuracy, and predictions can all be used to debug and develop explanations for the Driverless AI model&#39;s behavior.</p>
+<p>The parameters of the global K-LIME model give an indication of overall linear feature importance and the overall average direction in which an input variable influences the Driverless AI model predictions. The global model is also used to generate explanations for very small clusters (𝑁&lt;20) where fitting a local linear model is inappropriate.</p>
+<p>The in-cluster linear model parameters can be used to profile the local region, to give an average description of the important variables in the local region, and to understand the average direction in which an input variable affects the Driverless AI model predictions. For a point within a cluster, the sum of the local linear model intercept and the products of each coefficient with their respective input variable value are the K-LIME prediction. By disaggregating the K-LIME predictions into individual coefficient and input variable value products, the local linear impact of the variable can be determined. This product is sometimes referred to as a reason code and is used to create explanations for the Driverless AI model&#39;s behavior.</p>
+<p>In the following example, reason codes are created by evaluating and disaggregating a local linear model.</p>
+<p class="image-container"><img alt="input-data" src="img/a2f1a11f6877077d.jpg"></p>
+<p>And the local linear model:</p>
+<p class="image-container"><img alt="formula" src="img/12d3cf5f3f2fa55d.jpg"></p>
+<p>It can be seen that the local linear contributions for each variable are:</p>
+<ul>
+<li>debt_to_income_ratio: 0.01 * 30 = 0.3</li>
+<li>credit_score: 0.0005 * 600 = 0.3</li>
+<li>savings_acct_balance: 0.0002 * 1000 = 0.2</li>
+</ul>
+<p>Each local contribution is positive and thus contributes positively to the Driverless AI model&#39;s prediction of 0.85 for H2OAI_predicted_default. By taking into consideration the value of each contribution, reason codes for the Driverless AI decision can be derived. debt_to_income_ratio and credit_score would be the two largest negative reason codes, followed by savings_acct_balance.</p>
+<p>The local linear model intercept and the products of each coefficient and corresponding value sum to the K-LIME prediction. Moreover it can be seen that these linear explanations are reasonably representative of the nonlinear model&#39;s behavior for this individual because the K-LIME predictions are within 5.5% of the Driverless AI model prediction. This information is encoded into English language rules which can be viewed by clicking the Explanations button (we will explore in a bit how we can access this reason codes).</p>
+<p>Like all LIME explanations based on linear models, the local explanations are linear in nature and are offsets from the baseline prediction, or intercept, which represents the average of the penalized linear model residuals. Of course, linear approximations to complex non-linear response functions will not always create suitable explanations and users are urged to check the K-LIME plot, the local model 𝑅^2, and the accuracy of the K-LIME prediction to understand the validity of the K-LIME local explanations. When K-LIME accuracy for a given point or set of points is quite low, this can be an indication of extremely nonlinear behavior or the presence of strong or high-degree interactions in this local region of the Driverless AI response function. In cases where K-LIME linear models are not fitting the Driverless AI model well, nonlinear LOCO feature importance values may be a better explanatory tool for local model behavior. As K-LIME local explanations rely on the creation of k-means clusters, extremely wide input data or strong correlation between input variables may also degrade the quality of K-LIME local explanations.</p>
+<h2 is-upgraded>The Global Interpretable Model Explanation Plot</h2>
+<p>1. Now, let&#39;s take a look at the <strong>Global Interpretable Model Explanation Plot</strong>. Click the <strong>K-LIME</strong> tile, the following will appear:</p>
+<p class="image-container"><img alt="global-interpretable-model-explnation-plot" src="img/9e8b4d3d84df1801.jpg"></p>
+<p>This plot shows Driverless AI model predictions and LIME model predictions in sorted order by the Driverless AI model predictions. This graph is interactive. Hover over the Model Prediction, LIME Model Prediction, or Actual Target radio buttons to magnify the selected predictions. Or click those radio buttons to disable the view in the graph. You can also hover over any point in the graph to view LIME reason codes for that value.</p>
+<p>By default, this plot shows information for the global LIME model, but you can change the plot view to show local results from a specific cluster. The LIME plot also provides a visual indication of the linearity of the Driverless AI model and the trustworthiness of the LIME explanations. The closer the local linear model approximates the Driverless AI model predictions, the more linear the Driverless AI model and the more accurate the explanation generated by the LIME local linear models. In a moment, we will use this plot for our use case.</p>
+<h2 is-upgraded>MLI Taxonomy: K-LIME</h2>
+<ul>
+<li><strong>Scope of Interpretability</strong> - K-LIME provides several different scales of interpretability: (a) coefficients of the global GLM surrogate provide information about global, average trends, (b) coefficients of in-segment GLM surrogates display average trends in local regions, and (c) when evaluated for specific in-segment observations, K-LIME provides reason codes on a per-observation basis.</li>
+<li><strong>Appropriate Response Function Complexity</strong> - (a) K-LIME can create explanations for machine learning models of high complexity. (b) K- LIME accuracy can decrease when the Driverless AI model becomes too nonlinear.</li>
+<li><strong>Understanding and Trust</strong> - (a) K-LIME increases transparency by re-vealing important input features and their linear trends. (b) K-LIME enhances accountability by creating explanations for each observation in a dataset. (c) K-LIME bolsters trust and fairness when the important features and their linear trends around specific records conform to human domain knowledge and reasonable expectations.</li>
+<li><strong>Application Domain</strong> - K-LIME is model agnostic.</li>
+</ul>
+<h2 is-upgraded>Use Case: Default</h2>
+<p>1. The K-LIME plot below shows the Driverless AI model predictions as a continuous curve starting on the lower left and ending in the upper right (a). The K-LIME model predictions are the discontinuous points around the Driverless AI model predictions (b).</p>
+<p class="image-container"><img alt="k-lime.jpg" src="img/e65a96b47b85f87d.png"></p>
+<p>The radio buttons (c) on the top middle part of the plot allow you to enable or disable the <strong>Model Prediction</strong>, <strong>LIME Model Prediction</strong>, and <strong>Actual Target</strong>. For example, if you click the <strong>Model Prediciton</strong> radio button, it will remove the yellow curve line: <strong>the Driverless AI model predictions</strong>.</p>
+<p>Note that <strong>Actual Target</strong> (default.payment.next.month) refers to the two blue horizontal lines: (d) clients that defaulted on their next month payment (PAY_7): <strong>1</strong> and (e) clients that didn&#39;t default on their next month payment (PAY_7): <strong>0</strong>.</p>
+<ul>
+<li><strong>Note</strong>: default.payment.next.month - Default (1: Yes, 0: No)</li>
+</ul>
+<p>2. Now, click on <strong>Explanations</strong> (top right corner). The following will appear:</p>
+<p class="image-container"><img alt="global-reason-codes" src="img/13629d3a75abf263.jpg"></p>
+<p>Considering the global explanations in the image above, we can also see that the K-LIME predictions generally follow the Driverless AI model&#39;s predictions, and the global K-LIME model explains 93.37% of the variability in the Driverless AI model predictions, indicating that global explanations are approximate, but reasonably so.</p>
+<ul>
+<li><strong>Note</strong> the low <strong>RMSE</strong> (root-mean-square error), <strong>0.053</strong>. We can say that the data points are not that far from the regression line. The data points are well concentrated around the line of best fit.</li>
+</ul>
+<p>The image above presents global explanations for the Driverless AI model. The explanations proved a linear understanding of input features and the outcome, <em>default.payment.next.month</em>. According to the reason codes, <strong>PAY_1</strong> makes the largest global, linear contributions to the Driverless AI model. As well, <strong>PAY_4</strong> makes a large top negative global contribution.</p>
+<ul>
+<li>When <strong>PAY_1 = 2</strong>, this is associated with <strong>&#34;default.payment.next.month&#34;</strong> K-LIME prediction&#39;s increase by <strong>0.38</strong> (38%)</li>
+<li>When <strong>PAY_1 = 0</strong>, this is associated with <strong>&#34;default.payment.next.month&#34;</strong> K-LIME prediction&#39;s decrease of <strong>0.085</strong> (8.5%)</li>
+</ul>
+<p>When you are done observing the <strong>Reason Codes</strong>, you can go back to the <strong>K-Lime</strong> plot.</p>
+<p>3. Now, let&#39;s see if the global explanations still hold at the local level. Let&#39;s observe a particular discontinuous point around the Driverless AI model predictions. In your plot, click any high probability default point (top left corner). In our case, we have selected point <strong>11427</strong> and we  can observe the following:</p>
+<p class="image-container"><img alt="point-11427" src="img/dba781943e2fbdee.jpg"></p>
+<p>We can see that the <strong>LIME Prediction</strong> is very similar to the <strong>Model Prediction</strong> while knowing that the <strong>Actual Target</strong> is 1. When looking at the reason codes, we can see that <strong>PAY_1</strong> was the leading feature for a high value among the LIME and Model prediction.</p>
+<p>5. Let&#39;s further understand these reasons codes; click on the <strong>Explanations</strong> (top right corner of the tile). The following will appear:</p>
+<p class="image-container"><img alt="11427-reason-codes" src="img/6c3093429cded7e9.jpg"></p>
+<p>When observing the reason codes for the data point <strong>11427</strong>, we can see that the <strong>LIME Prediction Accuracy</strong> is 98.8%; in other words, we can conclude that this prediction is relatively trustworthy. We also see that <strong>PAY_1</strong> was around the top three features contributing to a high default prediction. In particular, <strong>PAY_1</strong> is the top feature contributing to a high prediction of 38%. In this case, the global reason codes are validated by this local observation. Therefore, so far, it seems that being late two months on <strong>PAY_1</strong> leads to a 38% increase in most likely to default on PAY_7 (default.payment.next.month).</p>
+<p>Using the global versus local analysis motif to reason about the example analysis results thus far, it could be seen as a sign of explanatory stability that several globally important features are also appearing as locally important.</p>
+<p>Now let&#39;s focus our attention on using certain <strong>Feature Importance</strong> charts to understand this global and local analysis motif.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Task 5: Feature Importance" duration="0">
+        <h2 is-upgraded>Global Feature Importance vs Local Feature Importance</h2>
+<p>Feature importance measures the effect that a feature has on the predictions of a model. Global feature importance measures the overall impact of an input feature on the Driverless AI model predictions while taking nonlinearity and interactions into consideration. Global feature importance values give an indication of the magnitude of a feature&#39;s contribution to model predictions for all observations. Unlike regression parameters, they are often unsigned and typically not directly related to the numerical predictions of the model. Local feature importance describes how the combination of the learned model rules or parameters and an individual observation&#39;s attributes affect a model&#39;s prediction for that observation while taking nonlinearity and interactions into effect.</p>
+<h2 is-upgraded>Random Forest Feature Importance</h2>
+<p>You can access a <strong>Random Forest (RF) Feature Importance</strong> chart on the MLI report page.</p>
+<p>1. Click the <strong>Surrogate Models</strong> tab and click the tile with the following title: <strong>RF Feature Importance</strong>.</p>
+<p>When the chart appears, it will not have the grey bars (local features); it will only display the yellow bars (global features). To explain this chart effectively, enter the following number in the chart&#39;s search bar (top left of the tile): <strong>11427</strong>. This will allow for the grey bars to appear for a given observation (data point 11427).</p>
+<p class="image-container"><img alt="rf-feature-importance-11427" src="img/e2b558ea16e1de7c.jpg"></p>
+<p>The chart can be explained as follows:</p>
+<p>Global feature importance (yellow) is a measure of the contribution of an input variable to the overall predictions of the Driverless AI model. Global feature importance is calculated by aggregating the improvement in splitting criterion caused by a single variable across all of the decision trees in the Driverless AI model.</p>
+<p>Local feature importance (grey) is a measure of the contribution of an input variable to a single prediction of the Driverless AI model. Local feature importance is calculated by removing the contribution of a variable from every decision tree in the Driverless AI model and measuring the difference between the prediction with and without the variable.</p>
+<p>Both global and local variable importance are scaled so that the largest contributor has a value of 1.</p>
+<h2 is-upgraded>LOCO Feature Importance</h2>
+<p>1. You can access a <strong>Random Forest (RF) leave-one-covariate-out</strong>  chart on the MLI report page. Click the <strong>Surrogate Models</strong> tab and click the tile with the following title: <strong>RF LOCO</strong>. The following will appear:</p>
+<p class="image-container"><img alt="rf-loco" src="img/cfd42b7345e176a0.png"></p>
+<p>This plot is available for binary and multinomial classification models as well as regression models.</p>
+<p>Local feature importance describes how the combination of the learned model rules or parameters and an individual row&#39;s attributes affect a model&#39;s prediction for that row while taking nonlinearity and interactions into effect. Local feature importance values reported in this plot are based on a variant of the leave-one-covariate-out (LOCO) method (Lei et al, 2017).</p>
+<p>The LOCO-variant method for binary and regression models calculates each local feature importance by re-scoring the trained Driverless AI model for each feature in the row of interest, while removing the contribution to the model prediction of splitting rules that contain that feature throughout the ensemble. The original prediction is then subtracted from this modified prediction to find the raw, signed importance for the feature. All local feature importance values for the row are then scaled between 0 and 1 for direct comparison with global feature importance values.</p>
+<p>The LOCO-variant method for multinomial models differs slightly in that it calculates row-wise local feature importance values by re-scoring the trained supervised model and measuring the impact of setting each variable to missing. The sum of the absolute value of differences across classes is then calculated for each dropped or replaced column.</p>
+<h2 is-upgraded>MLI Taxonomy: Feature Importance</h2>
+<ul>
+<li><strong>Scope of Interpretability</strong> - (a) Random forest feature importance is a global interpretability measure. (b) LOCO feature importance is a local interpretability measure.</li>
+<li><strong>Appropriate Response Function Complexity</strong> - Both random forest and LOCO feature importance can be used to explain tree-based response functions of nearly any complexity.</li>
+<li><strong>Understanding and Trust</strong> - (a) Random forest feature importance in- creases transparency by reporting and ranking influential input features. (b) LOCO feature importance enhances accountability by creating ex- planations for each model prediction. (c) Both global and local feature importance enhance trust and fairness when reported values conform to human domain knowledge and reasonable expectations.</li>
+<li><strong>Application Domain</strong> - (a) Random forest feature importance is a model- specific explanatory technique. (b) LOCO is a model-agnostic concept, but its implementation in Driverless AI is model specific.</li>
+</ul>
+<h2 is-upgraded>Use Case: Default</h2>
+<p>1. On the <strong>RF Feature Importance</strong> chart, click on the <strong>Clear</strong> button located on the tile&#39;s top right corner. That will clear the chart and will only display the global features (yellow). You should see the following:</p>
+<p class="image-container"><img alt="rf-feature-importance" src="img/eea09198d2357da2.jpg"></p>
+<p>The features with the greatest importance values in the Driverless AI model are <strong>PAY_1</strong>, <strong>PAY_2</strong>, and <strong>PAY_3</strong> as observed in the image above. Here, we can see <strong>PAY_1</strong> is the most influential predictor on whether someone will default. As we read down, we see that recent payments don&#39;t have a huge impact on prediction when compared to the first payment. If we consider that being late two months on your first payment is bad, we can conclude that this model&#39;s predictions solely in a matter of speaking depend heavily on this notion of being two months late on <strong>PAY_0</strong>.</p>
+<p>The RF feature importance chart matches the hypotheses created during data exploration to a large extent. Feature importance, however, does not explain the relationship between a feature and the Driverless AI model&#39;s predictions. This is where we can examine partial dependence plots.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Task 6: Partial Dependence and Individual Conditional Expectation (ICE)" duration="0">
+        <p>A Partial Dependence and ICE plot is available for both Driverless AI and surrogate models.</p>
+<h2 is-upgraded>Partial Dependece</h2>
+<p>The Partial Dependence Technique:</p>
+<p>Partial dependence is a measure of the average model prediction with respect to an input variable. Partial dependence plots display how machine-learned response functions change based on the values of an input variable of interest while taking nonlinearity into consideration and averaging out the effects of all other input variables. Partial dependence plots are described in the Elements of Statistical Learning (Hastie et al, 2001). Partial dependence plots enable increased transparency in Driverless AI models and the ability to validate and debug Driverless AI models by comparing a variable&#39;s average predictions across its domain to known standards, domain knowledge, and reasonable expectations.</p>
+<h2 is-upgraded>Individual Conditional Expectation (ICE)</h2>
+<p>The ICE Technique:</p>
+<p>This plot is available for binary classification and regression models.</p>
+<p>A newer adaptation of partial dependence plots called Individual conditional expectation (ICE) plots can be used to create more localized explanations for a single individual by using the same basic ideas as partial dependence plots. ICE Plots were described by Goldstein et al (2015). ICE values are disaggregated partial dependence, but ICE is also a type of nonlinear sensitivity analysis in which the model predictions for a single row are measured while a variable of interest is varied over its domain. ICE plots enable a user to determine whether the model&#39;s treatment of an individual row of data is outside one standard deviation from the average model behavior, whether the treatment of a specific row is valid in comparison to average model behavior, known standards, domain knowledge, and reasonable expectations, and how a model will behave in hypothetical situations where one variable in a selected row is varied across its domain.</p>
+<p><strong>Note</strong>: Large differences in partial dependence and ICE are an indication that strong variable interactions may be present.</p>
+<h2 is-upgraded>The Partial Dependence Plot</h2>
+<p>This plot is available for binary classification and regression models.</p>
+<p>1. In the <strong>Surrogate Models</strong> tab, click on the <strong>RF Partial Dependence Plot</strong>. The following will appear:</p>
+<p class="image-container"><img alt="rf-partial-dependence-plot" src="img/f431ac52d8976c25.jpg"></p>
+<p>Overlaying ICE plots onto partial dependence plots allow the comparison of the Driverless AI model&#39;s treatment of certain examples or individuals to the model&#39;s average predictions over the domain of an input variable of interest.</p>
+<p>This plot shows the partial dependence when a variable is selected and the ICE values when a specific row is selected. Users may select a point on the graph to see the specific value at that point. Partial dependence (yellow) portrays the average prediction behavior of the Driverless AI model across the domain of an input variable along with +/- 1 standard deviation bands. ICE (grey) displays the prediction behavior for an individual row of data when an input variable is toggled across its domain. Currently, partial dependence and ICE plots are only available for the top ten most important original input variables. Categorical variables with 20 or more unique values are never included in these plots.</p>
+<h2 is-upgraded>MLI Taxonomy: Partial Dependence and ICE</h2>
+<ul>
+<li><strong>Scope of Interpretability</strong>: (a) Partial dependence is a global interpretability measure. (b) ICE is a local interpretability measure.</li>
+<li><strong>Appropriate Response Function Complexity</strong> - Partial dependence and ICE can be used to explain response functions of nearly any complexity.</li>
+<li><strong>Understanding and Trust</strong> - (a) Partial dependence and ICE increase understanding and by describing the nonlinear behavior of complex response functions. (b) Partial dependence and ICE enhance trust, accountability, and fairness by enabling the comparison of described nonlinear behavior to human domain knowledge and reasonable expectations. (c) ICE, as a type of sensitivity analysis, can also engender trust when model behavior on simulated data is acceptable.</li>
+<li><strong>Application Domain</strong> - Partial dependence and ICE are model-agnostic.</li>
+</ul>
+<h2 is-upgraded>Use Case: Default</h2>
+<p>1. In the <strong>RF Partial Dependence Plot</strong>, hover over <code>PAY_1 = 2</code>. The following will appear:</p>
+<p class="image-container"><img alt="rf-partial-dependence-plot-2" src="img/64af01fa37a0e1ee.jpg"></p>
+<p>The partial dependence plots show how different feature values affect the average prediction of the Driverless AI model. The image above displays the partial dependence plot for <strong>PAY_1</strong> and indicates that predicted <strong>default (default.payment.next.month)</strong> increases dramatically for clients two months late on <strong>PAY_1</strong>.</p>
+<p>2. Change the <strong>PDP Variable</strong> from <code>PAY_1</code> to <code>PAY_2</code>. You should see a similar page:</p>
+<p class="image-container"><img alt="rf-partial-dependence-plot-2" src="img/c4ee35b535806f5c.png"></p>
+<p>The partial dependence plots show how different feature values affect the average prediction of the Driverless AI model. The image above displays the partial dependence plot for <strong>PAY_2</strong> and indicates that predicted <strong>default (default.payment.next.month)</strong> increases for clients two months late on <strong>PAY_2</strong>.</p>
+<p>The above results agree with previous findings in which <strong>PAY_1</strong>, follow by <strong>PAY_2</strong>, result in high default probabilities when its value is <strong>2</strong>. In particular, the partial dependence plots above reveal that these predictions are highly dependent on whether <strong>PAY_1</strong> equals <strong>2</strong> [months late].</p>
+<p>To further understand the impact of <strong>PAY_1</strong> in the decision-making process, let&#39;s explore a <strong>Decision Tree Surrogate Model</strong>.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Task 7: Decision Tree Surrogate Model" duration="0">
+        <h2 is-upgraded>The Decision Tree Surrogate Model Technique</h2>
+<p>The decision tree surrogate model increases the transparency of the Driverless AI model by displaying an approximate flow-chart of the complex Driverless AI model&#39;s decision making process. It also displays the most important variables in the Driverless AI model and the most important interactions in the Driverless AI model. The decision tree surrogate model can be used for visualizing, validating, and debugging the Driverless AI model by comparing the displayed decision-process, important variables, and important interactions to known standards, domain knowledge, and reasonable expectations.</p>
+<h2 is-upgraded>The Decision Tree Plot</h2>
+<p>1. In the <strong>Surrogate Models</strong> tab, click on the <strong>Decision Tree</strong>. The following will appear:</p>
+<p class="image-container"><img alt="surrogate-decison-tree" src="img/e30af3e78e3a4330.jpg"></p>
+<p>This plot is available for binary and multinomial classification models as well as regression models.</p>
+<p>In the Decision Tree plot, the highlighted row shows the path to the highest probability leaf node and indicates the globally important variables and interactions that influence the Driverless AI model prediction for that row.</p>
+<p><strong>Note</strong>:</p>
+<ul>
+<li>Variables below one-another in the <strong>Decision Tree Surrogate</strong> may also have strong interactions in the Driverless AI model.</li>
+<li>Variables higher in the decision tree suggest higher importance in the decision-making process.</li>
+<li>Thick lines highlighting a particular path to a terminal node indicate a very common decision path.</li>
+<li>Thin lines indicate that this is a relatively rare decision path.</li>
+<li>The terminal nodes represent the different default probabilities.</li>
+</ul>
+<h2 is-upgraded>MLI Taxonomy: Decision Tree Surrogate Models</h2>
+<ul>
+<li><strong>Scope of Interpretability</strong> - (a) Generally, decision tree surrogates provide global interpretability. (b) The attributes of a decision tree are used to explain global attributes of a complex Driverless AI model such as important features, interactions, and decision processes.</li>
+<li><strong>Appropriate Response Function Complexity</strong> - Decision tree surrogate models can create explanations for models of nearly any complexity.</li>
+<li><strong>Understanding and Trust</strong> - (a) Decision tree surrogate models foster understanding and transparency because they provide insight into the internal mechanisms of complex models. (b) They enhance trust, accountability, and fairness when their important features, interactions, and decision paths are in line with human domain knowledge and reasonable expectations.</li>
+<li><strong>Application Domain</strong> - Decision tree surrogate models are model agnostic.</li>
+</ul>
+<h2 is-upgraded>Use Case: Default</h2>
+<p>In the image above, the RMSE of <strong>0.000028</strong> indicates the decision tree surrogate can approximate the Driverless AI model well.  Based on the low RMSE and the fairly high R2 (<strong>0.87</strong>), we can conclude that this is a somewhat trustworthy surrogate model. By following the decision paths down the decision tree surrogate, we can begin to see details in the Driverless AI model&#39;s decision processes. While keeping the discussion above, <strong>PAY_1</strong> appears as an import, if not the most crucial feature in the decision tree. <strong>PAY_0</strong>  is likely the most crucial feature due to its place in the initial split in the tree.</p>
+<p>1. To further understand how the decision tree can help us better understand our model, click on one of the terminal nodes. After clicking a terminal node, something similar should appear:</p>
+<p class="image-container"><img alt="decision-tree-red-line" src="img/903373c91ce9388.jpg"></p>
+<p>For explanation purposes, terminal node <strong>0.479</strong> has been selected. The selected terminal node is one of the somewhat low probabilities. We end up on terminal node <strong>0.479</strong> as follows:</p>
+<p>IF <strong>PAY_1</strong></p>
+<ul>
+<li>IS &gt;= <strong>1.500</strong> AND <strong>PAY_6</strong></li>
+<li>IS &lt; <strong>1.000</strong> OR NA AND <strong>PAY_2</strong></li>
+<li>IS &lt; <strong>-0.500</strong></li>
+<li>THEN ABERAGE VALUE OF TARGET IS <strong>0.479</strong></li>
+</ul>
+<p>With the above in mind, we see the relevance and importance of <strong>PAY_1</strong>. According to the rules, if you are above one month late, you are automatically thrown to a side (right) of the tree where high default probabilities lay. As discussed above, being late two months on <strong>PAY_1</strong> often leads to high probabilities of default. The second level directs a particular client to terminal node <strong>0.479</strong> if <strong>PAY_6</strong> is late less than a month. At last, we end on terminal node <strong>0.479</strong> if the value of <strong>PAY_2</strong> = <strong>the use of revolving credit</strong>.</p>
+<p>In terms of how often this path is, we can say that it is not based on the path&#39;s thinness. In contrast, the far left paths are most common given the thickness of the paths. And such thick lines happen to be the paths to the lowest default probabilities. As a sanity check, we can say that the surrogate decision tree reveals that the most common predictions are low-default-probabilities. In a way, it makes sense, given that not many people default.</p>
+<h2 is-upgraded>Local Explanations</h2>
+<p>To conclude our journey on how we can better understand a generated Driverless AI model, we will look at the <strong>Dashboard</strong> feature. The Dashboard button contains a dashboard with an overview of the interpretations (built using surrogate models). They are located in the upper-right corner.</p>
+<p>1. Click the <strong>Dashboard</strong> button to view the <strong>MLI: Explanations</strong> page: <img alt="dashboard" src="img/f652d010dee03312.png"></p>
+<p>For binary classification and regression experiments, the Dashboard page provides a single page with the following surrogate plots. Note that the PDP and Feature Importance plots on this page are based on the Random Forest surrogate model.</p>
+<ul>
+<li>Global Interpretable Model Explanations</li>
+<li>Feature Importance</li>
+<li>Decision Tree</li>
+<li>Partial Dependence</li>
+</ul>
+<p>You can also view explanations from this page by clicking the Explanations button located in the upper-right corner.</p>
+<p><strong>Note</strong>: The Dashboard is not available for multiclass classification experiments.</p>
+<p>2. In the <strong>Dashboard</strong> in the search bar enter the following <strong>ID</strong>: <strong>11427</strong>. Right after, Click <strong>Search</strong>. The following will appear:</p>
+<p class="image-container"><img alt="11427-dashboard" src="img/4a8f4bb6fa7a9245.jpg"></p>
+<p>Following the global versus local analysis motif, local contributions to model predictions for a single client are also analyzed and compared to global explanations and reasonable expectations. The above image shows the local dashboard after selecting a single client. For this example use case, a client that actually defaulted is selected.</p>
+<p>The above image shows the selected individual&#39;s path highlighted in grey in the surrogate decision tree. This selected passenger falls into the node with the second most significant average model prediction for defaulting, which nicely aligns with the Driverless AI model&#39;s predicted probability for defaulting of <strong>0.755</strong>.</p>
+<p>When investigating observations locally, the feature importance has two bars per feature. The upper bar (yellow) represents the global feature importance, and the lower bar (grey) represents the local feature importance. In the image below, the two features <strong>PAY_1</strong> and <strong>PAY_2</strong> are the most important features both globally and locally for the selected individual.</p>
+<p>The local dashboard also overlays ICE curves onto partial dependence plots. In the image above, the lower points for partial dependence remain unchanged from the image above (partial dependence plot) and show the average model prediction by <strong>PAY_1</strong>.  The upper points indicate how the selected client&#39;s prediction would change if their value for <strong>PAY_1</strong> changed, and the image above indicates the client&#39;s prediction for default will decrease dramatically if the value for <strong>PAY_1</strong> changed to <strong>-1</strong> (paid in full).</p>
+<p>If we were to click on the <strong>Explanations</strong> button on the top right corner of the dashboard, it would tell us the following:</p>
+<p>The local English language explanations, or reason codes, from the K-LIME model in the above image parsimoniously indicates that the Driverless AI model&#39;s prediction increased for the selected passenger due to the client&#39;s value for <strong>PAY_1</strong>. For the selected passenger, global and local explanations are reasonable when compared to one-another and logical expectations. In practice, explanations for several different types of clients, and especially for outliers and other anomalous observations, should be investigated and analyzed to enhance understanding and trust in the Driverless AI model.</p>
+<p><strong>Note</strong>: the <strong>Dashboard</strong> UI allows you to view global, cluster-specific, and local reason codes. You can also export the explanations to CSV.</p>
+<p><strong>In general, we can conclude that base on all the observations we have made while using surrogate models to understand the complex Driverless AI model in the original feature space, </strong><strong><em>PAY_1</em></strong><strong> being two months late results in a high default probability for a given client.</strong></p>
+<p>Before we conclude,  let&#39;s explore the other two tabs on the <strong>Model Interpretation</strong> page: Summary and DAI (Driverless AI) Model.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Task 8: Summary and Driverless AI Model Tab" duration="0">
+        <h2 is-upgraded>Summary Tab</h2>
+<p>1. On the Model Interpretation page, click the <strong>Summary</strong> tab, the following will appear:</p>
+<p class="image-container"><img alt="summary-one" src="img/e7bd13a0684e1716.jpg"><img alt="summary-two" src="img/e9e00841509d0f7d.jpg"><img alt="summary-three" src="img/bdb6250bf5e69e8e.jpg"><img alt="summary-four" src="img/cf292d5be39fcf4f.jpg"></p>
+<p>The Summary tab provides an overview of the interpretation, including the dataset and Driverless AI experiment name (if available) that were used for the interpretation along with the feature space (original or transformed), target column, problem type, and k-Lime information. If the interpretation was created from a Driverless AI model, then a table with the Driverless AI model summary is also included along with the top variables for the model.</p>
+<h2 is-upgraded>DAI (Driverless AI) Model</h2>
+<p>1. On the Model Interpretation page, click the <strong>DAI Model</strong> tab, the following will appear:</p>
+<p class="image-container"><img alt="dai-model" src="img/dd7747836b47ea2d.jpg"></p>
+<p>The DAI Model tab is organized into tiles for each interpretation method. To view a specific plot, click the tile for the plot that you want to view.</p>
+<p>For binary classification and regression experiments, this tab includes Feature Importance and Shapley (not supported for RuleFit and TensorFlow models) plots for original and transformed features as well as Partial Dependence/ICE, Disparate Impact Analysis (DIA), Sensitivity Analysis, NLP Tokens and NLP LOCO (for text experiments), and Permutation Feature Importance (if the autodoc_include_permutation_feature_importance configuration option is enabled) plots. For multiclass classification experiments, this tab includes Feature Importance and Shapley plots for original and transformed features.</p>
+<p>Here is a list of the interpretation plots from the Driverless AI Model:</p>
+<ul>
+<li>Feature Importance (Original and Transformed Features)</li>
+<li>Shapley (Original and Transformed Features)</li>
+<li>Partial Dependence (PDP) and Individual - Conditional Expectation (ICE)</li>
+<li>Disparate Impact Analysis</li>
+<li>Sensitivity Analysis</li>
+<li>NLP LOCO</li>
+<li>Permutation Feature Importance</li>
+</ul>
+<p>The plots in the Driverless AI model tab allow you to understand the Driverless AI model. For example, in the Driverless AI tab, we can observe a transformed Shapley plot indicating top transformed features driving model behavior and whether top features positively or negatively impact the model&#39;s prediction. Note: these transformed features in the Shapley plot can be complicated to understand. That is why surrogate models offer approximate explanations into what drives the model behavior in the original feature space. Therefore, surrogate models are used to explain the complexity of the developed Driverless AI model.</p>
+<p>To learn more about the Summary tab and each plot in the Driverless AI Models tab, click <a href="https://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/interpret-understanding.html#understanding-the-model-interpretation-page" target="_blank">here</a>.</p>
+<h2 is-upgraded>Deeper Dive and Resources</h2>
+<h2 is-upgraded>Learn more about Interpretability</h2>
+<ul>
+<li><a href="https://www.h2o.ai/blog/brief-perspective-on-key-terms-and-ideas-in-responsible-ai-2/" target="_blank">Brief Perspective on Key Terms and Ideas in Responsible AI</a></li>
+<li><a href="https://arxiv.org/pdf/1702.08608.pdf" target="_blank">&#34;Towards a rigorous science of interpretable machine learning&#34;</a></li>
+<li><a href="http://www.fatml.org/resources/principles-for-accountable-algorithms" target="_blank">FAT/ML</a></li>
+<li><a href="https://www.darpa.mil/program/explainable-artificial-intelligence" target="_blank">Explainable Artificial Intelligence (XAI)</a></li>
+<li><a href="https://www.h2o.ai/wp-content/uploads/2017/09/driverlessai/interpreting.html?highlight=feature%20importance#k-lime" target="_blank">H2O K-LIME</a></li>
+<li><a href="https://www.h2o.ai/wp-content/uploads/2017/09/driverlessai/viewing-explanations.html" target="_blank">H2O Viewing Explanations</a></li>
+<li><a href="https://www.h2o.ai/wp-content/uploads/2017/09/driverlessai/interpreting.html#global-and-local-variable-importance" target="_blank">Global and Local Variable Importance</a></li>
+<li><a href="https://www.h2o.ai/wp-content/uploads/2017/09/driverlessai/interpreting.html?highlight=feature%20importance#partial-dependence-and-individual-conditional-expectation-ice" target="_blank">H2O Partial Dependency Plot</a></li>
+<li><a href="https://www.h2o.ai/wp-content/uploads/2017/09/driverlessai/interpreting.html?highlight=feature%20importance#decision-tree-surrogate-model" target="_blank">H2O Decision Tree Surrogate Model </a></li>
+<li><a href="https://arxiv.org/abs/1810.02909" target="_blank">On the Art and Science of Machine Learning Explanations</a></li>
+<li><a href="https://www.h2o.ai/wp-content/uploads/2017/09/driverlessai/interpreting.html?highlight=ice#partial-dependence-and-individual-conditional-expectation-ice" target="_blank">H2O ICE</a></li>
+</ul>
+<h2 is-upgraded>Resources and Videos</h2>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=5jSU3CUReXY" target="_blank">H2O Driverless AI Machine Learning Interpretability walkthrough (Oct 18)</a></li>
+<li><a href="https://www.youtube.com/watch?v=vUqC8UPw9SU" target="_blank">Practical Tips for Interpreting Machine Learning Models - Patrick Hall, H2O.ai  (June 18)</a></li>
+<li><a href="https://www.youtube.com/watch?v=Q8rTrmqUQsU" target="_blank">Building Explainable Machine Learning Systems: The Good, the Bad, and the Ugly (May 18)</a></li>
+<li><a href="https://www.youtube.com/watch?v=3uLegw5HhYk" target="_blank">Interpretable Machine Learning  (April, 17)</a></li>
+<li><a href="https://www.youtube.com/watch?v=axIqeaUhow0" target="_blank">Driverless AI Hands-On Focused on Machine Learning Interpretability - H2O.ai (Dec 17)</a></li>
+<li><a href="https://www.youtube.com/watch?v=RcUdUZf8_SU" target="_blank">MLI Meetup before Strata NYC 2018</a></li>
+<li><a href="https://www.oreilly.com/library/view/an-introduction-to/9781492033158/" target="_blank">An Introduction to Machine Learning Interpretability</a></li>
+<li><a href="https://www.oreilly.com/ideas/testing-machine-learning-interpretability-technique" target="_blank">Testing machine learning explanation techniques</a></li>
+<li><a href="https://conferences.oreilly.com/strata/strata-ca/public/schedule/detail/72421" target="_blank">Practical techniques for interpretable machine learning</a></li>
+<li><a href="https://github.com/jphall663/interpretable_machine_learning_with_python" target="_blank">Patrick Hall and H2O Github</a></li>
+<li><a href="https://github.com/jphall663/awesome-machine-learning-interpretability" target="_blank">Awesome-Machine-Learning-Interpretability</a></li>
+<li><a href="https://github.com/jphall663/jsm_2018_slides/blob/master/main.pdf" target="_blank">jsm_2018_slides</a></li>
+<li><a href="https://github.com/h2oai/mli-resources/" target="_blank">mli-resources</a></li>
+<li><a href="https://github.com/h2oai/mli-resources/blob/master/cheatsheet.png" target="_blank">mli-resources</a></li>
+</ul>
+<h2 is-upgraded>On the Art and Science of Machine Learning Explanations</h2>
+<ul>
+<li><a href="https://arxiv.org/abs/1810.02909" target="_blank">Towards A Rigorous Science of Interpretable Machine Learning</a></li>
+<li><a href="https://arxiv.org/pdf/1702.08608.pdf" target="_blank">Principles for Accountable Algorithms and a Social Impact Statement for Algorithms</a></li>
+<li><a href="http://www.fatml.org/resources/principles-for-accountable-algorithms" target="_blank">Explainable Artificial Intelligence (XAI)</a></li>
+<li><a href="https://www.darpa.mil/program/explainable-artificial-intelligence" target="_blank">Explainable Artificial Intelligence (XAI)</a></li>
+<li><a href="https://docs.google.com/viewer?url=https%3A%2F%2Fwww.darpa.mil%2Fattachments%2FXAIIndustryDay_Final.pptx" target="_blank">Explainable Artificial Intelligence (XAI)</a></li>
+<li><a href="https://www.darpa.mil/attachments/DARPA-BAA-16-53.pdf" target="_blank">Broad Agency Announcement Explainable Artificial Intelligence (XAI)</a></li>
+<li><a href="https://www.darpa.mil/attachments/XAIProgramUpdate.pdf" target="_blank">Explainable Artificial Intelligence (XAI)</a></li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Next Steps" duration="0">
+        <p>Check out the next self-paced course: <a href="https://training.h2o.ai/products/self-paced-course-2a-time-series-recipe-retail-sales-forecasting" target="_blank">Time Series - Retail Sales Forecasting</a>, where you will learn more about:</p>
+<ul>
+<li>Time-series:  <ul>
+<li>Time-series concepts</li>
+<li>Forecasting</li>
+<li>Experiment settings</li>
+<li>Experiment results summary</li>
+<li>Model interpretability</li>
+<li>Analysis</li>
+</ul>
+</li>
+</ul>
+<p>To enhance your learning, you can consult the <a href="https://www.h2o.ai/community/top-links/ai-glossary-search" target="_blank">AI Glossary</a>: a glossary of analytics, machine learning, data science, and artificial intelligence (AI) terms for business and technical data professionals as well as students and those eager to learn.</p>
+<p>Whether you are just getting started with machine learning, need a refresher on the basics, or want to explore new concepts, this glossary offers a short and concise description of the terms along with pointers to additional assets.</p>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>

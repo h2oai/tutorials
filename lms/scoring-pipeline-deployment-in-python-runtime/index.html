@@ -30,7 +30,7 @@
     
       <google-codelab-step label="Objective" duration="0">
         <p><strong>Machine Learning Model Deployment</strong> is the process of making your models available in production environments, so they can be used to make predictions for other software systems [1]. Before model deployment, <strong>feature engineering</strong> occurs in preparing data that will later be used to train a model [2]. Driverless AI <strong>Automatic Machine Learning (AutoML)</strong> combines the best feature engineering and one or more <strong>machine learning models</strong> into a scoring pipeline [3][4]. The <strong>scoring pipeline</strong> is used to score or predict data when given new test data [5]. The scoring pipeline comes in two flavors. The first scoring pipeline is a <strong>Model Object, Optimized(MOJO) Scoring Pipeline,</strong> which is a standalone, low-latency model object designed to be easily embeddable in production environments. The second scoring pipeline is a Python Scoring Pipeline, which has a heavy footprint that is all Python and uses the latest libraries of Driverless AI to allow for executing custom scoring recipes[6].</p>
-<p>For this tutorial, we will continue using the prebuilt experiment: <strong>Model_deployment_HydraulicSystem.</strong>  The Driverless AI  experiment is a classifier model that classifies whether the <strong>cooling condition</strong> of a <strong>Hydraulic System Test Rig</strong> is 3, 20, or 100. By looking at the <strong>cooling condition,</strong> we can predict whether the Hydraulic Cooler operates <strong>close to total failure</strong>, <strong>reduced efficiency</strong>, or <strong>full efficiency</strong>.</p>
+<p>For this self-paced course, we will continue using the prebuilt experiment: <strong>Model_deployment_HydraulicSystem.</strong>  The Driverless AI  experiment is a classifier model that classifies whether the <strong>cooling condition</strong> of a <strong>Hydraulic System Test Rig</strong> is 3, 20, or 100. By looking at the <strong>cooling condition,</strong> we can predict whether the Hydraulic Cooler operates <strong>close to total failure</strong>, <strong>reduced efficiency</strong>, or <strong>full efficiency</strong>.</p>
 <table>
 <tr><td colspan="1" rowspan="1"><p>Hydraulic Cooling Condition</p>
 </td><td colspan="1" rowspan="1"><p>Description</p>
@@ -45,21 +45,13 @@
 </td><td colspan="1" rowspan="1"><p>operates at full efficiency</p>
 </td></tr>
 </table>
-<p>The Hydraulic System Test Rig data for this tutorial comes from the <a href="https://archive.ics.uci.edu/ml/datasets/Condition+monitoring+of+hydraulic+systems#" target="_blank"><strong>UCI Machine Learning Repository: Condition Monitoring of Hydraulic Systems Data Set</strong></a>. The data set was experimentally obtained with a hydraulic test rig. This test rig consists of a primary working and a secondary cooling-filtration circuit connected via the oil tank [7]. The system cyclically repeats constant load cycles (duration 60 seconds) and measures process values such as pressures, volume flows, and temperatures. The condition of four hydraulic components (cooler, valve, pump, and accumulator) is quantitatively varied. The data set contains raw process sensor data (i.e., without feature extraction), structured as matrices (tab-delimited) with the rows representing the cycles and the columns the data points within a cycle.</p>
+<p>The Hydraulic System Test Rig data for this self-paced course comes from the <a href="https://archive.ics.uci.edu/ml/datasets/Condition+monitoring+of+hydraulic+systems#" target="_blank"><strong>UCI Machine Learning Repository: Condition Monitoring of Hydraulic Systems Data Set</strong></a>. The data set was experimentally obtained with a hydraulic test rig. This test rig consists of a primary working and a secondary cooling-filtration circuit connected via the oil tank [7]. The system cyclically repeats constant load cycles (duration 60 seconds) and measures process values such as pressures, volume flows, and temperatures. The condition of four hydraulic components (cooler, valve, pump, and accumulator) is quantitatively varied. The data set contains raw process sensor data (i.e., without feature extraction), structured as matrices (tab-delimited) with the rows representing the cycles and the columns the data points within a cycle.</p>
 <p>Hydraulic System Test Rigs are used to test Aircraft Equipment components, Automotive Applications, and more [8]. A Hydraulic Test Rig can test a range of flow rates that can achieve different pressures with the ability to heat and cool while simulating testing under different conditions [9]. Testing the pressure, the volume flow, and the temperature is possible by Hydraulic Test Rig sensors and a digital display. The display panel alerts the user when certain testing criteria are met while displaying either a green or red light [9]. Further, a filter blockage panel indicator is integrated into the panel to ensure the Hydraulic Test Rig&#39;s oil is maintained [9]. In the case of predicting cooling conditions for a Hydraulic System, when the cooling condition is low, our prediction will tell us that the cooling of the Hydraulic System is close to total failure, and we may need to look into replacing the cooling filtration solution soon.</p>
 <p class="image-container"><img alt="cylinder-diagram-1" src="img/a8b156e42a5fb1f0.png"></p>
 <p><strong>Figure 1:</strong> Hydraulic System Cylinder Diagram</p>
-<p>By the end of this tutorial, you will predict the Hydraulic System Test Rig&#39;s cooling condition by deploying an embeddable Python Scoring Pipeline into Python Runtime using Python.</p>
+<p>By the end of this self-paced course, you will predict the Hydraulic System Test Rig&#39;s cooling condition by deploying an embeddable Python Scoring Pipeline into Python Runtime using Python.</p>
 <h2 is-upgraded>Resources</h2>
-<p>[1] H2O.ai Community AI Glossary: <a href="https://www.h2o.ai/community/glossary/machine-learning-model-deployment-productionization-productionizing-machine-learning-models" target="_blank">Machine Learning Model Deployment</a></p>
-<p>[2] H2O.ai Community AI Glossary: <a href="https://www.h2o.ai/community/glossary/feature-engineering-data-transformation" target="_blank">Feature Engineering</a></p>
-<p>[3] H2O.ai Community AI Glossary: <a href="https://www.h2o.ai/community/glossary/automatic-machine-learning-automl" target="_blank">Automatic Machine Learning (AutoML)</a></p>
-<p>[4] H2O.ai Community AI Glossary: <a href="https://www.h2o.ai/community/glossary/machine-learning-model" target="_blank">Machine Learning Model</a></p>
-<p>[5] H2O.ai Community AI Glossary: <a href="https://www.h2o.ai/community/glossary/scoring-pipeline" target="_blank">Scoring Pipeline</a></p>
-<p>[6] H2O.ai Community AI Glossary: <a href="https://www.h2o.ai/community/glossary/model-object-optimized-mojo" target="_blank">Model Object, Optimized (MOJO) Scoring Pipeline</a></p>
-<p>[7] <a href="https://archive.ics.uci.edu/ml/datasets/Condition+monitoring+of+hydraulic+systems#" target="_blank">UCI Machine Learning Repository - Condition Monitoring of Hydraulic Systems Data Set</a></p>
-<p>[8] <a href="https://www.savery.co.uk/systems/test-benches" target="_blank">SAVERY - HYDRAULIC TEST RIGS AND BENCHES</a></p>
-<p>[9] <a href="https://www.hydrotechnik.co.uk/flow-and-temperature-hydraulic-test-bed" target="_blank">HYDROTECHNIK - Flow and Temperature Testing Components</a></p>
+<p>[1] H2O.ai Community AI Glossary: <a href="https://www.h2o.ai/community/glossary/machine-learning-model-deployment-productionization-productionizing-machine-learning-models" target="_blank">Machine Learning Model Deployment</a><br> [2] H2O.ai Community AI Glossary: <a href="https://www.h2o.ai/community/glossary/feature-engineering-data-transformation" target="_blank">Feature Engineering</a><br> [3] H2O.ai Community AI Glossary: <a href="https://www.h2o.ai/community/glossary/automatic-machine-learning-automl" target="_blank">Automatic Machine Learning (AutoML)</a><br> [4] H2O.ai Community AI Glossary: <a href="https://www.h2o.ai/community/glossary/machine-learning-model" target="_blank">Machine Learning Model</a><br> [5] H2O.ai Community AI Glossary: <a href="https://www.h2o.ai/community/glossary/scoring-pipeline" target="_blank">Scoring Pipeline</a><br> [6] H2O.ai Community AI Glossary: <a href="https://www.h2o.ai/community/glossary/model-object-optimized-mojo" target="_blank">Model Object, Optimized (MOJO) Scoring Pipeline</a><br> [7] <a href="https://archive.ics.uci.edu/ml/datasets/Condition+monitoring+of+hydraulic+systems#" target="_blank">UCI Machine Learning Repository - Condition Monitoring of Hydraulic Systems Data Set</a><br> [8] <a href="https://www.savery.co.uk/systems/test-benches" target="_blank">SAVERY - HYDRAULIC TEST RIGS AND BENCHES</a><br> [9] <a href="https://www.hydrotechnik.co.uk/flow-and-temperature-hydraulic-test-bed" target="_blank">HYDROTECHNIK - Flow and Temperature Testing Components</a></p>
 <h2 is-upgraded>Deeper Dive</h2>
 <ul>
 <li><a href="http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/scoring-standalone-python.html#quick-start-recommended-method" target="_blank">Driverless AI Python Scoring Pipeline Quick Start</a></li>
@@ -74,16 +66,16 @@
 <li>Driverless AI Environment</li>
 <li>Driverless AI License  <ul>
 <li>The license is needed to use the <strong>Driverless AI Python Scoring Pipeline Runtime API</strong> to execute the <strong>Python Scoring Pipeline</strong> for making predictions.</li>
-<li>If you don&#39;t have a license, you can obtain one through our <a href="https://www.h2o.ai/try-driverless-ai/" target="_blank">21-day trial license</a> option. Through the <a href="https://www.h2o.ai/try-driverless-ai/" target="_blank">21-day trial license</a> option, you will be able to obtain a temporary <strong>Driverless AI License Key</strong> necessary for this tutorial.</li>
+<li>If you don&#39;t have a license, you can obtain one through our <a href="https://www.h2o.ai/try-driverless-ai/" target="_blank">21-day trial license</a> option. Through the <a href="https://www.h2o.ai/try-driverless-ai/" target="_blank">21-day trial license</a> option, you will be able to obtain a temporary <strong>Driverless AI License Key</strong> necessary for this self-paced course.</li>
 <li>If you need to purchase a Driverless AI license, reach out to our sales team via the <a href="https://www.h2o.ai/company/contact/" target="_blank">contact us form</a>.</li>
 </ul>
 </li>
 <li>AWS Account</li>
 <li>Linux (Ubuntu 16.10+, IBM Power PC)</li>
-<li>Basic knowledge of Driverless AI or completion of the following tutorials:  <ul>
-<li><a href="https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai#tab-product_tab_contents__15" target="_blank">Tutorial 1A: Automatic Machine Learning Introduction with Driverless AI</a></li>
-<li><a href="https://training.h2o.ai/products/tutorial-4a-scoring-pipeline-deployment-introduction#tab-product_tab_contents__12" target="_blank">Tutorial 4A: Scoring Pipeline Deployment Introduction</a></li>
-<li><a href="https://training.h2o.ai/products/tutorial-4b-scoring-pipeline-deployment-templates#tab-product_tab_contents__11" target="_blank">Tutorial 4B: Scoring Pipeline Deployment Templates</a></li>
+<li>Basic knowledge of Driverless AI or completion of the following self-paced courses:  <ul>
+<li><a href="https://training.h2o.ai/products/self-paced-course-1a-automatic-machine-learning-introduction-with-driverless-ai" target="_blank">Self-Paced Course 1A: Automatic Machine Learning Introduction with Driverless AI</a></li>
+<li><a href="https://training.h2o.ai/products/self-paced-course-4a-scoring-pipeline-deployment-introduction" target="_blank">Self-Paced Course 4A: Scoring Pipeline Deployment Introduction</a></li>
+<li><a href="https://training.h2o.ai/products/self-paced-course-4b-scoring-pipeline-deployment-templates" target="_blank">Self-Paced Course 4B: Scoring Pipeline Deployment Templates</a></li>
 </ul>
 </li>
 </ul>
@@ -189,7 +181,7 @@ sudo ldconfig /usr/local/lib
 </code></pre>
 <p>Once you are done, you can exit the <code>thrift-0.10.0</code> directory.</p>
 <h2 is-upgraded>Create Environment Directory Structure in EC2 Instance</h2>
-<p>Next, we recommend creating the following environment directory structure in your EC2 instance since it will make it easier to follow along with the rest of the deployment tutorials. If you already have it from the other tutorials, you can skip this step. To create the environment directory, run the following commands:</p>
+<p>Next, we recommend creating the following environment directory structure in your EC2 instance since it will make it easier to follow along with the rest of the deployment self-paced courses. If you already have it from the other self-paced courses, you can skip this step. To create the environment directory, run the following commands:</p>
 <pre><code language="language-bash" class="language-bash"># Create directory structure for model deployment projects (covers MOJO and Python)
 mkdir -p $HOME/model-deployment/common/license
 mkdir -p $HOME/model-deployment/common/hydraulic/testData/{test-batch-data,test-real-time-data}
@@ -208,8 +200,8 @@ tree model-deployment
 <li>In the <strong>Experiments</strong> section, click on the following experiment: <strong>Model_deployment_HydraulicSystem</strong></li>
 <li>On the STATUS: COMPLETE section on the experiment page, click <strong>DOWNLOAD PYTHON SCORING PIPELINE</strong></li>
 </ul>
-<p class="image-container"><img alt="download-python-scoring-pipeline" src="img/d03dcb8ca826dc5d.png"></p>
-<p>When finished, come back to this tutorial.</p>
+<p class="image-container"><img alt="download-python-scoring-pipeline" src="img/e330efd3d8630d68.png"></p>
+<p>When finished, come back to this self-paced course.</p>
 <h2 is-upgraded>Move Local Python Scoring Pipeline to EC2 Instance</h2>
 <p>The Python Scoring Pipeline scorer.zip was downloaded to the Downloads folder on the local machine. We need to move it to our EC2 instance. Open a new terminal on your local machine, then run the following command:</p>
 <pre><code language="language-bash" class="language-bash"># Move Python Scoring Pipeline to EC2 instance
@@ -248,11 +240,11 @@ deactivate
 <p><strong>Note:</strong> You may see error messages related to h2o during the install process, this is normal, and the install will still be successful.</p>
 <pre><code language="language-bash" class="language-bash">botocore 1.19.19 requires urllib3&lt;1.27,&gt;=1.25.4; python_version != &#34;3.4&#34;, but you&#39;ll have urllib3 1.24.3 which is incompatible.
 transformers 2.3.0 requires regex!=2019.12.17, but you&#39;ll have regex 2019.12.17 which is incompatible.
-h2oaicore 1.9.0 requires psutil==5.6.7, but you&#39;ll have psutil 5.7.3 which is incompatible.
-h2oaicore 1.9.0 requires six==1.12.0, but you&#39;ll have six 1.15.0 which is incompatible.
-h2oaicore 1.9.0 requires tabulate==0.8.2, but you&#39;ll have tabulate 0.8.7 which is incompatible.
-h2oaicore 1.9.0 requires urllib3==1.23, but you&#39;ll have urllib3 1.24.3 which is incompatible.
-h2oaicore 1.9.0 requires wheel==0.33.4, but you&#39;ll have wheel 0.35.1 which is incompatible.
+h2oaicore 1.x.x requires psutil==5.6.7, but you&#39;ll have psutil 5.7.3 which is incompatible.
+h2oaicore 1.x.x requires six==1.12.0, but you&#39;ll have six 1.15.0 which is incompatible.
+h2oaicore 1.x.x requires tabulate==0.8.2, but you&#39;ll have tabulate 0.8.7 which is incompatible.
+h2oaicore 1.x.x requires urllib3==1.23, but you&#39;ll have urllib3 1.24.3 which is incompatible.
+h2oaicore 1.x.x requires wheel==0.33.4, but you&#39;ll have wheel 0.35.1 which is incompatible.
 </code></pre>
 <p>With the environment set up for the <strong>Python Scoring Pipeline</strong>, we are ready to classify the Hydraulic System cooling condition from the Hydraulic test data. Still, first, we will focus on learning the Python Scoring Pipeline concepts.</p>
 
@@ -359,7 +351,7 @@ EOF
 </code></pre>
 <p>The output should show the featured column names for an individual row.</p>
 <p class="image-container"><img alt="remote-http-client-get-scores-2" src="img/931c0d6cad912563.png"></p>
-<p>We will use the remote HTTP client to get the Shapley values (also known as per-feature prediction contributions) from an individual row. This call is the same as we did for getting a prediction on an individual row, but this time we include the parameter <code>"pred_contribs": true</code>. Run the following command from your local machine:</p>
+<p>We will use the remote HTTP client to get the Shapley values (also known as per-feature prediction contributions) from an individual row. This call is the same as we did for getting a prediction on an individual row, but this time we include the parameter <code>&#34;pred_contribs&#34;: true</code>. Run the following command from your local machine:</p>
 <pre><code language="language-bash" class="language-bash">curl http://$H2O_DAI_SCORING_INSTANCE:9090/rpc --header &#34;Content-Type: application/json&#34; --data @- &lt;&lt;EOF
 {
  &#34;id&#34;: 2,
@@ -481,9 +473,8 @@ python custom_tcp_client.py
     
       <google-codelab-step label="Next Steps" duration="0">
         <ul>
-<li><a href="https://training.h2o.ai/products/tutorial-4c-scoring-pipeline-execution-in-java-runtime" target="_blank">Tutorial 4C: Scoring Pipeline Execution in Java Runtime</a></li>
-<li><a href="https://training.h2o.ai/products/tutorial-4d-scoring-pipeline-execution-runtime-in-c" target="_blank">Tutorial 4D: Scoring Pipeline Execution Runtime in C++</a></li>
-<li>(COMING SOON) Tutorial 4F: Scoring Pipeline Deployment to Apache NIFI</li>
+<li><a href="https://training.h2o.ai/products/self-paced-course-4c-scoring-pipeline-execution-in-java-runtime" target="_blank">Self-Paced Course 4C: Scoring Pipeline Execution in Java Runtime</a></li>
+<li><a href="https://training.h2o.ai/products/self-paced-course-4d-scoring-pipeline-deployment-in-c-runtime" target="_blank">Self-Paced Course 4D: Scoring Pipeline Execution Runtime in C++</a></li>
 </ul>
 
 

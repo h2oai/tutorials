@@ -3,12 +3,12 @@
   "format": "html",
   "prefix": "https://storage.googleapis.com",
   "mainga": "UA-49880327-14",
-  "updated": "2020-12-06T21:39:46-08:00",
+  "updated": "2021-06-10T19:51:43-07:00",
   "id": "scoring-pipeline-deployment-in-java-runtime",
   "duration": 0,
   "title": "Scoring Pipeline Deployment in Java Runtime",
   "summary": "Check the list",
-  "source": "/Users/sperez/Desktop/scoring-pipeline-deployment-in-java-runtime/scoring-pipeline-deployment-in-java-runtime.md",
+  "source": "/Users/falvarenga/Desktop/md-to-html/scoring-pipeline-deployment-in-java-runtime/scoring-pipeline-deployment-in-java-runtime.md",
   "theme": "",
   "status": [
     "draft"

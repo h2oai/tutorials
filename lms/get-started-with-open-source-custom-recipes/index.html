@@ -1,0 +1,416 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Get Started with Open Source Custom Recipes</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <link rel="stylesheet" href="custom.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="get-started-with-open-source-custom-recipes"
+                  title="Get Started with Open Source Custom Recipes"
+                  environment="web"
+                  feedback-link="">
+    
+      <google-codelab-step label="Objective" duration="0">
+        <p>At H2O.ai, we believe that every company can and should be an AI company. This concept is fundamental for the future of every business and organization today. As you embark on this AI journey to make your own AI, we would like you to explore the key considerations and the technology that will make your own AI a possibility.</p>
+<p>To make your own AI with an automated machine learning platform, the platform needs to be open and extensible. An open and extensible platform allows data scientists to influence the automatic machine learning optimization process and for the process to consider additional feature engineering, scorers metrics, and modeling algorithms. Data scientists can add their insights, customizations, and domain expertise to build the most accurate models for each use case. Driverless AI uses the concept of recipes to optimize the machine learning process, and with Driverless AI 1.7.0 and later versions, users can add and develop custom recipes.</p>
+<p>This self-paced course will cover what a recipe is, the different types of recipes available, and how to upload existing recipes to Driverless AI through the URL option. The three types of custom recipes that we will cover are transformer, scorer, and model.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Prerequisites" duration="0">
+        <p>You will need the following to be able to do this self-paced course:</p>
+<ul>
+<li>Basic knowledge of Machine Learning and Statistics</li>
+<li>A Driverless AI environment that is version 1.7.0 or newer</li>
+<li>Basic knowledge of Driverless AI or doing the <a href="https://training.h2o.ai/products/self-paced-course-1a-automatic-machine-learning-introduction-with-driverless-ai" target="_blank">Automatic Machine Learning Introduction with Driverless AI</a></li>
+<li>A <strong>Two-Hour Test Drive session</strong> : Test Drive is H2O.ai&#39;s Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.  <ul>
+<li>Need a <strong>Two-Hour Test Drive</strong> session? Follow the instructions on <a href="https://training.h2o.ai/products/self-paced-course-0-getting-started-with-driverless-ai-test-drive" target="_blank">this quick self-paced course</a> to get a Test Drive session started.<br></li>
+</ul>
+</li>
+</ul>
+<p><strong>Note: Aquarium&#39;s Driverless AI Test Drive lab has a license key built-in, so you don&#39;t need to request one to use it. Each Driverless AI Test Drive instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore Driverless AI, you can always launch another Test Drive instance or reach out to our sales team via the </strong><a href="https://www.h2o.ai/company/contact/" target="_blank"><strong>contact us form</strong></a><strong>.</strong></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Task 1: Introduction to Driverless AI Bring Your Own Recipe" duration="0">
+        <p>H2O Driverless AI is an artificial intelligence (AI) platform for automatic machine learning. Driverless AI automates some of the most tedious and challenging data science and machine learning tasks such as feature engineering, algorithm selection, model validation, model tuning, model selection, model explanation, model documentation, and model deployment. It aims to achieve the highest predictive accuracy, comparable to expert data scientists, but in a much shorter time thanks to end-to-end automation. Driverless AI&#39;s current scope does not include extensive data manipulation or augmentation before starting an experiment; hence, most of the data preparation needs to be done before loading the data.</p>
+<p>Driverless AI uses an experiment to learn from your data and build an end-to-end scoring pipeline for productionalizing a model. The experiment process and the final pipeline are made up of building blocks or recipes. These recipes are Python code snippets. Recipes have the following types: ML algorithms, feature engineering (transformers), scorers, and data. In Driverless AI 1.7.0, we added support for BYOR (Bring Your Own Recipe). With BYOR, you can use your own recipes in combination with or instead of all built-in recipes. This allows you to further influence the Driverless AI Automatic ML pipeline in addition to out-of-the-box control over the optimization choices that Driverless AI makes.</p>
+<p>Recipes can be uploaded into Driverless AI at runtime without restarting the platform, just like a plugin. Data scientists at H2O have created and curated approximately 150 open-source recipes that can be used as-is or as templates and can also be expanded.</p>
+<p>Existing recipes include templates for:</p>
+<ul>
+<li><strong>Transformers</strong></li>
+<li><strong>Scorers</strong></li>
+<li><strong>Models</strong></li>
+<li><strong>Data</strong></li>
+</ul>
+<p>In the self-paced course&#39;s remaining tasks, we will be describing the various types of templates and how to use them. Please note that we will cover the <strong>Data</strong> recipes in another self-paced course.</p>
+<h2 is-upgraded>How do recipes work in Driverless AI?</h2>
+<p>During the training of a supervised machine learning modeling pipeline, Driverless AI can use the custom recipes or code snippets as building blocks, independent or in combination with all built-in recipes that come with Driverless AI. The custom recipes act the same as if they were written by H2O.ai. It&#39;s the same python template and backend, so there is no performance penalty.</p>
+<p>Below is a diagram of how recipes work in Driverless AI and how the Automatic Model Optimization process is extended:</p>
+<p class="image-container"><img alt="dai-byor-how-it-works" src="img/19c0e46d6cf96f0d.png"></p>
+<p>The image below is a deeper dive into the <strong>BYOR</strong> architecture for a multi-class problem:</p>
+<p class="image-container"><img alt="dai-byor-architecture-diagram-1" src="img/eed8ff3f17393b90.png"></p>
+<p>The diagram above focuses on the parts of Driverless AI that are relevant to the <strong>BYOR</strong> architecture.  The diagram is the architecture representing a multi-class problem. Binary classification and regression problems are also supported. Please note that Automatic Visualization and Machine Learning Interpretability are not covered in this diagram.</p>
+<h2 is-upgraded>What is the role of recipes in ML?</h2>
+<p><strong>BYOR</strong> allows Data Scientists to bring their own recipes or leverage the existing, open-source recipes to manipulate, augment, and optimize their data. In this way, the expertise of those creating and using the recipes is leveraged to focus on domain-specific functions to build customizations.</p>
+<h2 is-upgraded>Where can you find the H2O open-source recipes?</h2>
+<p>The curated open-source recipes currently reside in the following GitHub repository:</p>
+<p><a href="https://github.com/h2oai/driverlessai-recipes/tree/rel-1.9.1#sample-recipes" target="_blank">H2O Curated Recipes GitHub Repo</a></p>
+<h2 is-upgraded>Deeper Dive and Resources</h2>
+<p>Explore the recipe Library and recipe recommendations</p>
+<p>Best Practices for Recipes:</p>
+<ul>
+<li><a href="https://github.com/h2oai/driverlessai-recipes/tree/rel-1.9.1#security" target="_blank">Security</a></li>
+<li><a href="https://github.com/h2oai/driverlessai-recipes/tree/rel-1.9.1#safety" target="_blank">Safety</a></li>
+<li><a href="https://github.com/h2oai/driverlessai-recipes/tree/rel-1.9.1#performance" target="_blank">Performance</a></li>
+<li><a href="https://github.com/h2oai/driverlessai-recipes/blob/rel-1.9.1/FAQ.md" target="_blank">Frequently Asked Questions</a></li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Task 2: Launch an Experiment and Consume a Recipe" duration="0">
+        <h2 is-upgraded>About the Dataset</h2>
+<p>This self-paced course will use the customer churn telco dataset from <a href="https://www.kaggle.com/becksddf/churn-in-telecoms-dataset" target="_blank">Kaggle</a>. The dataset has information about customers of a telecommunications company. Some of the features included are customer demographic location, length of the account, and customer call history. We will be predicting customer churn.</p>
+<p>[1] <a href="https://www.kaggle.com/becksddf/churn-in-telecoms-dataset" target="_blank">Churn in Telcom&#39;s dataset</a></p>
+<p>This dataset set has 3333 customers(rows) and 21 columns representing each customer&#39;s telephone plan&#39;s attributes.</p>
+<h2 is-upgraded>Add the Data</h2>
+<p>1. To add the dataset for this self-paced course, please follow the following steps:</p>
+<p><strong>a.</strong> Click on <strong>+ Add Dataset (or Drag and Drop)</strong></p>
+<p><strong>b.</strong> Select <strong>FILE SYSTEM</strong></p>
+<p class="image-container"><img alt="add-dataset-file-system" src="img/bea6e34214bd721b.png"></p>
+<p><strong>c.</strong> Enter the following <code>/data/Splunk/churn</code> into the search bar.</p>
+<p><strong>d.</strong> Select <code>churn.csv</code></p>
+<p><strong>e. Click to Import Selection</strong></p>
+<p class="image-container"><img alt="import-churn-dataset" src="img/836620b8462e78f.png"></p>
+<p>2. If the file loaded successfully, then you should see an image similar to the one below:</p>
+<p class="image-container"><img alt="churn-dataset-overview" src="img/1562ac09ca2fffdd.png"></p>
+<p><strong>Note:</strong> you can ignore the other datasets as they are used in other self-paced courses.</p>
+<p>3. Let&#39;s take a quick look at the columns of the churn dataset. Click on the <code>churn.csv</code> dataset, and click on <strong>Details.</strong> A similar page should appear:</p>
+<p class="image-container"><img alt="customer-churn-detail-page" src="img/5339e9faacddf8d2.png"></p>
+<ul>
+<li><em>Things to Note:<br></em><strong>a. State<br>b. Account Length</strong> - in days<br><strong>c. Area Code<br>d. Phone</strong> - Phone Number<br><strong>e. Int&#39;l Plan</strong> - International Plan<br><strong>f. VMail Plan</strong> - Voicemail Plan<br><strong>g. VMail Messages</strong> - Number of voicemail Messages</li>
+</ul>
+<p>4. Continue scrolling the current page if you want to see more columns (image is not included).</p>
+<p>5.  Return to the <strong>Datasets</strong> Page.</p>
+<h2 is-upgraded>Launch Experiment</h2>
+<p>1. On the <strong>Datasets</strong> page click on the <code>churn.csv</code> dataset and select <strong>Predict</strong>:</p>
+<p class="image-container"><img alt="churn-predict" src="img/bb7d8aeb876a834.png"></p>
+<p>2.  Select <strong>Not Now</strong> on the <strong>First time Driverless AI</strong> box message. A similar image should appear:</p>
+<p class="image-container"><img alt="churn-experiment" src="img/5a6f9ca4ec42bcb.png"></p>
+<p>3. Select <strong>Target Column</strong>, then select <strong>Churn?</strong></p>
+<p class="image-container"><img alt="select-churn" src="img/7e2b43cfd1092c27.png"></p>
+<p>4. Name your experiment <code>Exp 1 - Baseline</code> and verify that the experiment looks similar to the one below, then select <strong>Launch Experiment</strong>:</p>
+<p><strong>Note:</strong> You might have to update the default settings to the ones shown below.</p>
+<p class="image-container"><img alt="exp1-settings" src="img/8ff382368e4da766.png"></p>
+<p>5. Once the experiment is completed, a similar page will appear with experiment results:</p>
+<p><strong>Experiment 1 Results:</strong></p>
+<p class="image-container"><img alt="exp1-summary" src="img/e0b209477f249501.png"></p>
+<p><strong>Experiment 1 - ROC Accuracy</strong></p>
+<p class="image-container"><img alt="exp1-accuracy" src="img/97538e2f257a66cb.png"></p>
+<p><em>Things to Note:</em></p>
+<p><strong>Under summary</strong>: The validation score is 0.9113 with the best accuracy of 0.9310 (click on ROC, then hover over Best ACC)</p>
+<p><strong>Variable Importance</strong>: The top variable that led to a customer churning according to this model was &#34;Day Charge.&#34; The other variable of most importance was &#34;CustServ Calls.&#34; Intuitively this makes sense because if a customer is overpaying for calls in the morning when they might be the most active and constantly calling Customer Service, it could have led to a dissatisfied customer.</p>
+<h2 is-upgraded>Deeper Dive and Resources</h2>
+<ul>
+<li><a href="https://www.kaggle.com/becksddf/churn-in-telecoms-dataset" target="_blank">Kaggle&#39;s Churn in Telcom&#39;s Dataset</a></li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Task 3: Recipe: Transformer" duration="0">
+        <p>In Task 2, we ran an experiment to build a model that would predict customer churn. The Driverless AI model generated in task 2 gave us the results below:</p>
+<p><strong>Summary of results</strong>:</p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>-</p>
+</td><td colspan="1" rowspan="1"><p>Experiment 1 (Base)</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>Experiment Settings</p>
+</td><td colspan="1" rowspan="1"><p>5-4-10</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>Scorer</p>
+</td><td colspan="1" rowspan="1"><p>AUC</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>Model</p>
+</td><td colspan="1" rowspan="1"><p>LIGHTGBM</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>Feature Importance</p>
+</td><td colspan="1" rowspan="1"><p>Day Charge, CustServ Calls, and Eve Charge</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>AUC Score</p>
+</td><td colspan="1" rowspan="1"><p>0.9113</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>Accuracy</p>
+</td><td colspan="1" rowspan="1"><p>0.9310</p>
+</td></tr>
+</table>
+<p>When a dataset is selected for an experiment, Driverless AI optimizes its settings by selecting the best Scorer, Model(s), and Transformers for the dataset. However, this does not mean we cannot import other scorers, models, or transformers to see if we can further optimize our model. In this task, we will be importing a transformer recipe to see how the features in the feature engineering change.</p>
+<p>Now we will import a recipe to add together related numeric features such as day minutes, evening minutes, and night minutes. Driverless AI doesn&#39;t add three or more columns automatically, so we will add a recipe that will do this for us. We will see if this new feature ends up in the top features used by our final Driverless AI model.</p>
+<h2 is-upgraded>Import a Transformer Recipe</h2>
+<p>The goal of importing the new transformer recipe is to see if we can further optimize our baseline model. To do this, we are going to take our baseline experiment and import the <a href="https://github.com/h2oai/driverlessai-recipes/blob/rel-1.9.1/transformers/numeric/sum.py" target="_blank">sum.py transformer</a></p>
+<p>1. Select <strong>Experiments</strong> located at the top of the <strong>Experiment</strong> page:</p>
+<p class="image-container"><img alt="exp2-select-experiments" src="img/ed203b34699f897a.png"></p>
+<p>2. Hover over <strong>Exp 1 - Baseline</strong>, then click on the three stacked small boxes located on the right side of <strong>Exp 1 - Baseline</strong> and select <strong>New Experiment with Same Settings;</strong> this will create a new experiment with the same parameters that you used for <strong>Exp 1 - Baseline</strong>:</p>
+<p class="image-container"><img alt="exp2-new-model-w-same-params" src="img/8260dfa1619f548.png"></p>
+<p>3. Select <strong>Not Now</strong> on the <strong>First Time Using Driverless AI Tour</strong>.</p>
+<p>4. Name your experiment <code>Exp 2 - Transformer</code> and select <strong>Expert Settings</strong>:</p>
+<p class="image-container"><img alt="exp2-expert-settings" src="img/a060c31ce8850585.png"></p>
+<p>5. Click on <strong>+Load Custom Recipe From URL</strong>:</p>
+<p class="image-container"><img alt="load-custom-recipe" src="img/108516b6dbb37d0.png"></p>
+<p>6. Copy and paste  the following URL for the SumTransformer into the <strong>Load Custom Recipe</strong> box then click on <strong>Save</strong>.</p>
+<pre><code language="language-html" class="language-html">https://github.com/h2oai/driverlessai-recipes/blob/rel-1.9.1/transformers/numeric/sum.py
+</code></pre>
+<p class="image-container"><img alt="exp2-load-custom-recipe-transformer-raw-url" src="img/871529b68c4a1d9c.png"></p>
+<p>7. There will be a message updating you on the status of loading the recipe; then, the Expert Experiment Settings page will re-appear.</p>
+<p>8. On the <strong>Expert Experiment Settings</strong> find <strong>Recipes</strong> and click on it:</p>
+<p class="image-container"><img alt="exp2-expert-settings-recipes" src="img/3ddd56547d725a28.png"></p>
+<p>9. Click on <strong>Select Values</strong> under <strong>Include Specific Transformer</strong>. We will verify that the transformer we loaded did indeed load.</p>
+<p class="image-container"><img alt="exp2-expert-settings-transformer-select-values" src="img/e91f6823426bf517.png"></p>
+<p>10. Type <code>SumTransformer</code> on the search bar. If the Transformer was loaded correctly, then it will appear as shown below, highlighted, meaning that Driverless AI will use it. Make sure your <strong>SumTransformer</strong> is checked, and click <strong>Done</strong>:</p>
+<p class="image-container"><img alt="exp2-sum-transformer" src="img/377774be5df11db8.png"></p>
+<p>11. Select <strong>Save</strong> on the <strong>Expert Experiment Settings</strong> page.</p>
+<p>12. Verify that the transformer is in the experiment; on the Experiments page, look under &#34;What do these settings mean?&#34; &gt; &#34;Interpretability,&#34; and you should see the custom transformer as <strong>Sum.</strong> Once you are ready, Select <strong>Launch Experiment</strong>:</p>
+<p class="image-container"><img alt="exp2-check-transformer" src="img/797013434b3bac50.png"></p>
+<p>13. When the experiment is completed, you will see a similar summary page:</p>
+<p class="image-container"><img alt="exp2-summary" src="img/c4a54f4635aab9af.png"></p>
+<p><strong>Note:</strong> In Variable Importance: You might see a few features starting with &#34;SUM;&#34; those are the features from the custom transformer. In our case, we got one feature starting with &#34;SUM.&#34;</p>
+<p>As you can see, the AUC slightly improved, and Driverless AI recognized the interaction among several features and added them together by using our custom transformer. Though sometimes, Driverless AI uses the transformer, it depends on the Data sampling it uses when running the experiment. If you want to see how the recipe will improve the AUC, you can go back to recipes and only select the transformer. We will further discuss the results at the end of task 6.</p>
+<h2 is-upgraded>Deeper Dive and Resources</h2>
+<ul>
+<li><a href="https://github.com/h2oai/driverlessai-recipes/blob/rel-1.9.1/transformers/numeric/sum.py" target="_blank">H2O&#39;s Driverless AI Recipes - Sum Transformer</a></li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Task 4: Recipe: Scorer" duration="0">
+        <p>In this task, we will be importing a Scorer recipe to optimize the modeling process for a metric that may be more important to our business than a standard statistical scorer.</p>
+<h2 is-upgraded>Import a Scorer Recipe</h2>
+<p>The model recipe used for this experiment is the Brier Loss Scorer; to learn more about the Brier Loss model, see the <strong>Deeper Dive and Resources</strong> at the end of this task.</p>
+<p>1. Select <strong>Experiments</strong> located at the top of the <strong>Experiment</strong> page. <br> 2. Hover over <strong>Exp 1 - Baseline</strong>, then click on the three stacked small boxes located on the right side of <strong>Exp 1 - Baseline</strong>, and select <strong>New Experiment with Same Settings</strong>; this will create a new experiment with the same parameters that you used for <strong>Exp 1 - Baseline</strong>:</p>
+<p class="image-container"><img alt="exp3-new-model-w-same-params" src="img/8074c04fc814da87.png"></p>
+<p>3. Name your experiment <code>Exp 3 - Scorer</code>, and select <strong>Expert Settings</strong>:</p>
+<p class="image-container"><img alt="exp3-expert-settings" src="img/72a1bcd6fd6cf79.png"></p>
+<p>4. Click on <strong>+Load Custom Recipe From URL</strong>:</p>
+<p class="image-container"><img alt="load-custom-recipe" src="img/108516b6dbb37d0.png"></p>
+<p>5. Copy and paste  the following URL for the Custom Brier Loss recipe into the <strong>Load Custom Recipe</strong> box then click on <strong>Save</strong>.</p>
+<pre><code language="language-html" class="language-html">https://github.com/h2oai/driverlessai-recipes/blob/rel-1.9.1/scorers/classification/binary/brier_loss.py
+</code></pre>
+<p class="image-container"><img alt="exp3-load-custom-recipe-scorer-raw-url" src="img/a7ded345e4915ef0.png"></p>
+<p>6. There will be a message updating you on the status of loading the recipe; then the Expert Experiment Settings page will re-appear.</p>
+<p>7. On the <strong>Expert Experiment Settings</strong> find <strong>Recipes</strong>, and click on it:</p>
+<p class="image-container"><img alt="exp2-expert-settings-recipes" src="img/3ddd56547d725a28.png"></p>
+<p>8. Click on <strong>Select Value</strong> under <strong>Include Specific Scorers</strong>; we are going to verify that the scorer we loaded did indeed load:</p>
+<p class="image-container"><img alt="exp3-expert-settings-scorer-select-values" src="img/c2a96e78e2983ca9.png"></p>
+<p>9. On the list of Scores that comes up look, for <code>BRIER</code>, if the Scorer loaded correctly, then it will appear as shown below, highlighted meaning that Driverless AI will use it:</p>
+<p class="image-container"><img alt="exp3-brier-scorer" src="img/7caa9a3a234e5ae.png"></p>
+<p>10. Select <strong>Save</strong> on the <strong>Expert Experiment Settings</strong> page.</p>
+<p>11. Once back on the <strong>Experiment</strong> page, click on the Scorer setting, which has an <strong>AUC</strong> as seen on the image below:</p>
+<p class="image-container"><img alt="exp3-scorer-update" src="img/dbfbc6681392845d.png"></p>
+<p>12. Select the <strong>Brier</strong> Scorer by clicking on it:</p>
+<p class="image-container"><img alt="exp3-select-brier" src="img/ba7e3abfdfd81a90.png"></p>
+<p>13. Your experiment page should look similar to the one below with <strong>Brier</strong> as your new scorer. Since we selected to create a new experiment from the baseline experiment, this experiment does not have the transformer we loaded on task 2. Once you have verified the settings, click on <strong>Launch Experiment</strong>:</p>
+<p class="image-container"><img alt="exp3-experiment-page-with-brier" src="img/d8ed742886ba55d2.png"></p>
+<p>14. When the Experiment is completed, you will see a summary page similar to the one below:</p>
+<p class="image-container"><img alt="exp3-summary" src="img/e40b736a201824f2.png"></p>
+<p><strong>Experiment 3 - ROC, Best Accuracy</strong></p>
+<p class="image-container"><img alt="exp3-accuracy" src="img/452bb07618c4e05e.png"></p>
+<p>The AUC for this experiment was 0.9060, and the best accuracy was 0.9286.</p>
+<h2 is-upgraded>Deeper Dive and Resources</h2>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Brier_score" target="_blank">Wikipedia Brier Score</a></li>
+<li><a href="https://github.com/h2oai/driverlessai-recipes/blob/rel-1.9.1/scorers/classification/binary/brier_loss.py" target="_blank">H2O&#39;s Driverless AI Recipes - Brier Loss</a></li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Task 5: Recipe: Model" duration="0">
+        <p>In this task, we will be importing a model recipe to see if this new custom model recipe will help improve our churn model.</p>
+<h2 is-upgraded>Import a Model Recipe</h2>
+<p>The model recipe that we will use for this experiment is <strong>ExtraTrees</strong>, which is an extremely randomized tree (ExtraTrees) from sklearn. To learn more about the <strong>Extra Trees</strong> model, see the <strong>Deeper Dive and Resources</strong> at the end of this task.</p>
+<p>1.Select <strong>Experiments</strong> located at the top of the <strong>Experiment</strong> page.<br> 2. Hover over <strong>Exp 1 - Baseline</strong>, then click on the three stacked small boxes located on the right side of <strong>Exp 1 - Baseline</strong>, and select <strong>New Experiment with Same Settings</strong>; this will create a new experiment with the same parameters that you used for <strong>Exp 1 - Baseline</strong>:</p>
+<p class="image-container"><img alt="exp4-new-model-w-same-params" src="img/971c382951b8f125.png"></p>
+<p>3. Name your experiment <code>Exp 4 - Model</code> and Select <strong>Expert Settings</strong>.</p>
+<p>4. Click on <strong>+Load Custom Recipe From URL</strong>.</p>
+<p>5. Copy and paste  the following URL into the <strong>Load Custom Recipe</strong> box, then click on <strong>Save</strong>:</p>
+<pre><code language="language-html" class="language-html">https://github.com/h2oai/driverlessai-recipes/blob/rel-1.9.1/models/algorithms/extra_trees.py
+</code></pre>
+<p class="image-container"><img alt="exp4-load-custom-recipe-model-raw-url" src="img/9ed161ad11fe41d4.png"></p>
+<p>6. There will be a message updating you on the status of the recipe; then, the <strong>Expert Experiment Settings</strong> page will re-appear.</p>
+<p>7. On the <strong>Expert Experiment Settings</strong> find <strong>Recipes</strong> and click on it.</p>
+<p>8. Click on <strong>Select Value</strong> under <strong>Include Specific Model</strong>; we will verify that the custom model we loaded did indeed load then we will only select the <strong>ExtraTress</strong> model to run on our new experiment:</p>
+<p class="image-container"><img alt="exp4-expert-settings-model-select-values" src="img/f791a8c0aea89726.png"></p>
+<p>9. Click on <strong>Uncheck all</strong>, then select the <strong>ExtraTreess</strong> model and click <strong>Done</strong>:</p>
+<p class="image-container"><img alt="exp4-custom-extratrees-model" src="img/8469b7d62f880544.png"></p>
+<p>10. Select <strong>Save</strong> on the <strong>Expert Experiment Settings</strong> page.</p>
+<p>11. Verify that the custom model is included in the experiment on the <strong>Experiments</strong> page by looking under &#34;What do these settings mean?&#34;, the settings have been updated to reflect the new ExtraTrees custom model. Once you have verified the settings, click on <strong>Launch Experiment</strong>:</p>
+<p class="image-container"><img alt="exp4-w-extratrees-model" src="img/30b77d7013116a02.png"></p>
+<p>12. Once the Experiment is completed, you will see a summary page similar to the one below:</p>
+<p class="image-container"><img alt="exp4-summary" src="img/84b287dadd31542e.png"></p>
+<p><strong>Experiment 3 - ROC, Best Accuracy</strong></p>
+<p class="image-container"><img alt="exp4-accuracy" src="img/3c0b7a94c89cb2c9.png"></p>
+<p>The AUC for this experiment was 0.9141, and the best accuracy was 0.9463.</p>
+<h2 is-upgraded>Deeper Dive and Resources</h2>
+<ul>
+<li><a href="https://github.com/h2oai/driverlessai-recipes/blob/rel-1.9.1/models/algorithms/extra_trees.py" target="_blank">H2O&#39;s Driverless AI Recipes - ExtraTrees Model </a></li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Task 6: Comparing Final Model Results" duration="0">
+        <p>So far, we ran four experiments, a baseline, and the baseline with three different types of recipes:</p>
+<ul>
+<li>Driverless AI Baseline Model</li>
+<li>Transformer</li>
+<li>Scorer</li>
+<li>Model</li>
+</ul>
+<p>We will compare the results of all the experiments through the <strong>Projects</strong> feature, which allows us to compare the final models for each experiment.</p>
+<p>1. Click on <strong>Projects</strong>:</p>
+<p class="image-container"><img alt="projects-select" src="img/8b96decf41e5d52.png"></p>
+<p>2. Select <strong>+New Project</strong>.</p>
+<p>3. Enter the following under:</p>
+<p><strong>Name</strong></p>
+<pre><code language="language-text" class="language-text">Customer Churn Recipe Comparison
+</code></pre>
+<p><strong>Description</strong></p>
+<pre><code language="language-text" class="language-text">Comparison of customer churn experiments using various recipes.
+</code></pre>
+<p>4. Select <strong>Create a New Project</strong>:</p>
+<p class="image-container"><img alt="create-project" src="img/5fcd7a5b67e4b9b4.png"></p>
+<p>5. Click on <strong>+Link Experiment</strong>:</p>
+<p class="image-container"><img alt="projects-link-experiment" src="img/6d63c66599fce241.png"></p>
+<p>6. Select <strong>Exp 1 - Baseline</strong> by clicking on the Model:</p>
+<p class="image-container"><img alt="project-select-exp1" src="img/e6da37d667f9e150.png"></p>
+<p>7. Repeat step 6 for the remaining models (2, 3, and 4). The <strong>Project</strong> page should look similar to the one below:</p>
+<p class="image-container"><img alt="projects-all-models-selected" src="img/72f9b9c63f785dad.png"></p>
+<p>8. Select Exp 1, 2, and 4 to compare by clicking on the select box to the left of each model, and then on <strong>Compare 3 Items</strong>:</p>
+<p class="image-container"><img alt="project-select-models-to-compare" src="img/7f1983f96f9ce0aa.png"></p>
+<p>9. A similar page will appear with the three model results:</p>
+<p class="image-container"><img alt="project-model-comparison1" src="img/2078f6373afcaca.png"></p>
+<p>Confusion Matrices for each of the selected models:</p>
+<p class="image-container"><img alt="project-model-comparison-matrix" src="img/6b351159bf9f52ed.png"></p>
+<p>From the confusion matrices shown above, we can understand how the models with the custom recipes improved. The Model recipe yielded a lower misclassification error of <strong>5.43%</strong> than the baseline misclassification error, <strong>7.56%</strong>.</p>
+<ul>
+<li>Formula: Misclassification (all <strong>incorrect</strong> / all) = (FP + FN) / (TP + TN + FP + FN)</li>
+<li>The misclassification percentage for the Model recipe is:</li>
+</ul>
+<p>Misclassification = (71 + 110) / (2779 + 373 + 71 + 110)</p>
+<p>Misclassification = 181 / 3,333 = 0.0543 = <strong>5.43%</strong></p>
+<ul>
+<li>The misclassification percentage for the Baseline is:</li>
+</ul>
+<p>Misclassification = (145 + 103) / (380 + 2705 + 145 + 103)</p>
+<p>Misclassification = 248 / 3,333 = 0.0744 = <strong>7.44%</strong></p>
+<p>However, since we are working with a slightly imbalanced dataset, we need to take a closer look at the confusion matrices. We see that by using the custom recipes, the models started predicting more <strong>False</strong> labels correctly; in other words, we see more <strong>True Negatives</strong>; thus, we have a smaller misclassification error for the <strong>False</strong> class. On the other hand, we can see that the models with the recipes slightly underperformed when predicting the True class. For that reason, we see that the misclassification error for the True label is slightly better for the baseline. In this case, if we care more about the overall misclassification error, then we can see that the Model recipes are our best option. However, if we wanted to get better results for our True class, we will need to try to run another experiment while combining our different recipes.</p>
+<p>ROC Curves for each model selected:</p>
+<p class="image-container"><img alt="project-model-comparison2" src="img/2e0c6eb41aa5e71f.png"></p>
+<p>We can see that when we used the Transformer recipe, the model had better AUC with an accuracy of <strong>0.9313</strong> compared to <code>Exp 1 - Baseline,</code> which had an accuracy of <strong>0.9310</strong>. In <code>Exp 4 - Model</code>, the AUC also improved, compared to the Baseline model, and had the best accuracy, <strong>0.9463</strong>, compared to the other models. When looking at the variable importance, we see that all three experiments had &#34;Day Charge&#34; as the most important variable. In Exp 1 and 2, we see that &#34;CustServ Calls&#34; was the second most important variable, while for Exp 4, the second most important variable was &#34;Day Mins.&#34; For Exp 2, the variable starting with &#34;SUM&#34; has a relative importance of 0.41; this value might not seem too high, but we can see that this variable is somewhat helping the model get a higher AUC than the other experiments.</p>
+<h2 is-upgraded>Deeper Dive and Resources</h2>
+<ul>
+<li><a href="http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/projects.html?highlight=project" target="_blank">H2O&#39;s Project Workspace</a></li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Appendix A: How to Access Driverless AI Custom Recipes" duration="0">
+        <p>H2O custom recipes reside in the H2O Driverless AI Recipes GitHub repo. <strong>There are multiple branches of Driverless AI recipes, so make sure that you are using the same branch as the Driverless AI version you have</strong>.</p>
+<p>1. Open the link below on a separate tab. Make sure the branch is <strong>rel-1.9.1</strong>:</p>
+<ul>
+<li><a href="https://github.com/h2oai/driverlessai-recipes/tree/rel-1.9.1" target="_blank">H2O Driverless AI Recipes GitHub Repo</a></li>
+</ul>
+<p>The rel-1.9.1 branch will be similar to the page below:</p>
+<p class="image-container"><img alt="dai-recipes-github-page" src="img/1609be4c6dcda2da.png"></p>
+<p>2. Recipes can be uploaded to Driverless AI by:</p>
+<ul>
+<li>Uploading custom recipes from your local machine</li>
+<li>Loading custom recipes from &#34;URL&#34; by copying and pasting the &#34;URL&#34;, as shown in this self-paced course</li>
+<li>Go to the official recipes (external) repo and search for the recipe that you need and then copy the link to use in <code>+ Load Custom Recipe from URL</code></li>
+</ul>
+<p class="image-container"><img alt="upload-recipes" src="img/538dc81b0185477f.png"></p>
+<h2 is-upgraded>Uploading Recipes via URL</h2>
+<p>We are going to get the URL for the <strong>Brier Loss</strong> Scorer we used in Task 4 and upload it to Driverless AI.</p>
+<p>1. Select the folder titled <strong>scorer</strong>:</p>
+<p class="image-container"><img alt="dai-scorers-folder" src="img/96a34b18caa3d579.png"></p>
+<p>2. Select the folder titled <strong>classification</strong> then the folder titled <strong>binary</strong>:</p>
+<p class="image-container"><img alt="dai-classification-folder" src="img/72ffc5da1d9b3997.png"></p>
+<p>3. Click on the binary folder and then click the <strong>brier_loss.py</strong> file:</p>
+<p class="image-container"><img alt="dai-brier-loss-file" src="img/7cf18c531dd324a4.png"></p>
+<p>4. Copy the URL located at the top of the page:</p>
+<p class="image-container"><img alt="dai-brier-loss-url" src="img/887cd7889aef4f62.png"></p>
+<p>5. The URL for this version of the recipe should be the one below. This URL is then pasted into Driverless AI:</p>
+<pre><code language="language-html" class="language-html">https://github.com/h2oai/driverlessai-recipes/blob/rel-1.9.1/scorers/classification/binary/brier_loss.py
+</code></pre>
+<p>6. See task 4 of this self-paced course to follow the process of uploading a recipe via the raw URL.</p>
+<h2 is-upgraded>Uploading Recipes from Local Machine</h2>
+<p>For this self-paced course, we are using <strong>Driverless AI 1.9.1</strong>, so we will be working off the Driverless AI 1.9.1 branch.</p>
+<p>1. Open the link below on a separate tab. Make sure the branch is <strong>rel-1.9.1</strong>:</p>
+<ul>
+<li><a href="https://github.com/h2oai/driverlessai-recipes/tree/rel-1.9.1" target="_blank">H2O Driverless AI Recipes GitHub Repo</a></li>
+</ul>
+<p>2. Make sure it is Branch rel-1.9.1, then click on <strong>Clone or Download</strong>, then on <strong>Download ZIP</strong>. Doing so will download the entire rel-1.9.1 repo to your desktop. If you prefer not to download the entire repo, then use the URL method.</p>
+<p class="image-container"><img alt="dai-recipes-repo-download" src="img/ba1c7985be6d1733.png"></p>
+<p>3. Unzip the driverless-recipes-rel-1.9.1 file and save it on your local machine.</p>
+<p>4. On Driverless AI, start an Experiment, then select Expert Settings. Now instead of selecting <strong>+Load Custom Recipe From URL</strong>, you will select <strong>+Upload Custom Recipe</strong>:</p>
+<p class="image-container"><img alt="dai-upload-custom-recipe" src="img/c860cde5e1cc76f2.png"></p>
+<p>5. After you click on <strong>Upload Custom Recipe</strong>, go to the directory where you saved the <strong>driverlessai-recipes-rel-1.9.1</strong> folder.</p>
+<p>6. Select the <strong>scorer</strong> folder:</p>
+<p class="image-container"><img alt="dai-recipe-repo-scorers-folder" src="img/adfe097948803380.png"></p>
+<p>7. Select the <strong>classification</strong> folder, then the <strong>binary</strong> folder:</p>
+<p class="image-container"><img alt="dai-recipe-repo-classification-folder" src="img/6e8a791f4bc9de1b.png"></p>
+<p>8. After, select the <strong>brier_loss.py</strong> file and then <strong>Open</strong>:</p>
+<p class="image-container"><img alt="dai-recipe-repo-brier-loss-file" src="img/fd19236d0c15566b.png"></p>
+<p>9. After doing this last step, you can continue with the rest of the steps on task 4 of this self-paced course.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Next Steps" duration="0">
+        <p>Check out Driverless AI&#39;s next self-paced course: <a href="https://training.h2o.ai/products/self-paced-course-3b-build-your-own-custom-recipe" target="_blank">Build Your Own Custom Recipe</a></p>
+<p>Where you will learn to build a:</p>
+<ul>
+<li>Custom Transformer Recipe</li>
+<li>Custom Scorer Recipe</li>
+<li>Custom Model Recipe</li>
+</ul>
+<p>Webinar: <a href="https://www.brighttalk.com/webcast/16463/360533" target="_blank">Extending the H2O Driverless AI Platform with Your Recipes by H2O&#39;s Arno Candel</a></p>
+<p>Blog: <a href="https://www.h2o.ai/blog/custom-machine-learning-recipes-the-ingredients-for-success/" target="_blank">Custom Machine Learning Recipes: The ingredients for success by H2O&#39;s Parul Pandey</a></p>
+<p>Catalog: <a href="http://catalog.h2o.ai/" target="_blank">Existing Open Source Custom Recipes</a></p>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2021-06-09T17:45:12-07:00",
+  "id": "natural-language-processing-sentiment-analysis",
+  "duration": 0,
+  "title": "Natural Language Processing - Sentiment Analysis",
+  "summary": "Check the list",
+  "source": "/Users/falvarenga/Desktop/md-to-html/natural-language-processing-sentiment-analysis/natural-language-processing-sentiment-analysis.md",
+  "theme": "",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "driverless"
+  ],
+  "tags": [
+    "driverless",
+    "nlp",
+    "sentiment-analysis"
+  ],
+  "url": "natural-language-processing-sentiment-analysis"
+}

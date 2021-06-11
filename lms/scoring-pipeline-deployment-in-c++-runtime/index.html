@@ -30,7 +30,7 @@
     
       <google-codelab-step label="Objective" duration="0">
         <p><strong>Machine Learning Model Deployment</strong> is the process of making your model available in production environments, so it can be used to make predictions for other software systems [1]. Before model deployment, <strong>feature engineering</strong> occurs in the form of preparing data that will later be used to train a model [2]. Driverless AI <strong>Automatic Machine Learning (AutoML)</strong> combines the best feature engineering and one or more <strong>machine learning models</strong> into a scoring pipeline [3][4]. The <strong>scoring pipeline</strong> is used to score or predict data when given new test data [5]. The scoring pipeline comes in two flavors. The first scoring pipeline is a <strong>Model Object, Optimized(MOJO) Scoring Pipeline</strong>, a standalone, low-latency model object designed to be easily embeddable in production environments. The second scoring pipeline is a Python Scoring Pipeline, which has a heavy footprint that is all Python and uses the latest libraries of Driverless AI to allow for executing custom scoring recipes[6].</p>
-<p>For this tutorial, we will continue making use of the prebuilt experiment: <strong>Model_deployment_HydraulicSystem.</strong>  The Driverless AI  experiment is a classifier model that classifies whether the <strong>cooling condition</strong> of a <strong>Hydraulic System Test Rig</strong> is 3, 20, or 100. By looking at the <strong>cooling condition,</strong> we can predict whether the Hydraulic Cooler operates <strong>close to total failure</strong>, <strong>reduced efficiency</strong>, or <strong>full efficiency</strong>.</p>
+<p>For this self-paced course, we will continue making use of the prebuilt experiment: <strong>Model_deployment_HydraulicSystem.</strong>  The Driverless AI  experiment is a classifier model that classifies whether the <strong>cooling condition</strong> of a <strong>Hydraulic System Test Rig</strong> is 3, 20, or 100. By looking at the <strong>cooling condition,</strong> we can predict whether the Hydraulic Cooler operates <strong>close to total failure</strong>, <strong>reduced efficiency</strong>, or <strong>full efficiency</strong>.</p>
 <table>
 <tr><td colspan="1" rowspan="1"><p>Hydraulic Cooling Condition</p>
 </td><td colspan="1" rowspan="1"><p>Description</p>
@@ -45,20 +45,12 @@
 </td><td colspan="1" rowspan="1"><p>operates at full efficiency</p>
 </td></tr>
 </table>
-<p>The Hydraulic System Test Rig data for this tutorial comes from the <a href="https://archive.ics.uci.edu/ml/datasets/Condition+monitoring+of+hydraulic+systems#" target="_blank"><strong>UCI Machine Learning Repository: Condition Monitoring of Hydraulic Systems Dataset</strong></a>. The dataset was experimentally obtained with a hydraulic test rig. This test rig consists of a primary working and a secondary cooling-filtration circuit connected via the oil tank [7]. The system cyclically repeats constant load cycles (duration 60 seconds) and measures process values such as pressures, volume flows, and temperatures. The condition of four hydraulic components (cooler, valve, pump, and accumulator) is quantitatively varied. The dataset contains raw process sensor data (i.e., without feature extraction), structured as matrices (tab-delimited) with the rows representing the cycles and the columns the data points within a cycle. Hydraulic System Test Rigs are used to test Aircraft Equipment components, Automotive Applications, and more [8]. A Hydraulic Test Rig can test a range of flow rates that can achieve different pressures with the ability to heat and cool while simulating testing under different conditions [9]. Testing the pressure, the volume flow, and the temperature is possible by Hydraulic Test Rig sensors and a digital display. The display panel alerts the user when certain testing criteria are met while displaying either a green or red light [9]. Further, a filter blockage panel indicator is integrated into the panel to ensure the Hydraulic Test Rig&#39;s oil is maintained [9]. In the case of predicting cooling conditions for a Hydraulic System, when the cooling condition is low, our prediction will tell us that the cooling of the Hydraulic System is close to total failure, and we may need to look into replacing the cooling filtration solution soon.</p>
+<p>The Hydraulic System Test Rig data for this self-paced course comes from the <a href="https://archive.ics.uci.edu/ml/datasets/Condition+monitoring+of+hydraulic+systems#" target="_blank"><strong>UCI Machine Learning Repository: Condition Monitoring of Hydraulic Systems Dataset</strong></a>. The dataset was experimentally obtained with a hydraulic test rig. This test rig consists of a primary working and a secondary cooling-filtration circuit connected via the oil tank [7]. The system cyclically repeats constant load cycles (duration 60 seconds) and measures process values such as pressures, volume flows, and temperatures. The condition of four hydraulic components (cooler, valve, pump, and accumulator) is quantitatively varied. The dataset contains raw process sensor data (i.e., without feature extraction), structured as matrices (tab-delimited) with the rows representing the cycles and the columns the data points within a cycle. Hydraulic System Test Rigs are used to test Aircraft Equipment components, Automotive Applications, and more [8]. A Hydraulic Test Rig can test a range of flow rates that can achieve different pressures with the ability to heat and cool while simulating testing under different conditions [9]. Testing the pressure, the volume flow, and the temperature is possible by Hydraulic Test Rig sensors and a digital display. The display panel alerts the user when certain testing criteria are met while displaying either a green or red light [9]. Further, a filter blockage panel indicator is integrated into the panel to ensure the Hydraulic Test Rig&#39;s oil is maintained [9]. In the case of predicting cooling conditions for a Hydraulic System, when the cooling condition is low, our prediction will tell us that the cooling of the Hydraulic System is close to total failure, and we may need to look into replacing the cooling filtration solution soon.</p>
 <p class="image-container"><img alt="cylinder-diagram-1" src="img/5818cceb8b33d6fc.png"></p>
 <p><strong>Figure 1:</strong> Hydraulic System Cylinder Diagram</p>
-<p>By the end of this tutorial, you will predict the <strong>cooling condition</strong> for a <strong>Hydraulic System Test Rig</strong> by deploying an <strong>embeddable MOJO Scoring Pipeline</strong> into C++ Runtime using <strong>Python</strong> and <strong>R</strong>.</p>
+<p>By the end of this self-paced course, you will predict the <strong>cooling condition</strong> for a <strong>Hydraulic System Test Rig</strong> by deploying an <strong>embeddable MOJO Scoring Pipeline</strong> into C++ Runtime using <strong>Python</strong> and <strong>R</strong>.</p>
 <h2 is-upgraded>Resources</h2>
-<p>[1] H2O.ai Community AI Glossary: <a href="https://www.h2o.ai/community/glossary/machine-learning-model-deployment-productionization-productionizing-machine-learning-models" target="_blank">Machine Learning Model Deployment</a></p>
-<p>[2] H2O.ai Community AI Glossary: <a href="https://www.h2o.ai/community/glossary/feature-engineering-data-transformation" target="_blank">Feature Engineering</a></p>
-<p>[3] H2O.ai Community AI Glossary: <a href="https://www.h2o.ai/community/glossary/automatic-machine-learning-automl" target="_blank">Automatic Machine Learning (AutoML)</a></p>
-<p>[4] H2O.ai Community AI Glossary: <a href="https://www.h2o.ai/community/glossary/machine-learning-model" target="_blank">Machine Learning Model</a></p>
-<p>[5] H2O.ai Community AI Glossary: <a href="https://www.h2o.ai/community/glossary/scoring-pipeline" target="_blank">Scoring Pipeline</a></p>
-<p>[6] H2O.ai Community AI Glossary: <a href="https://www.h2o.ai/community/glossary/model-object-optimized-mojo" target="_blank">Model Object, Optimized (MOJO) Scoring Pipeline</a></p>
-<p>[7] <a href="https://archive.ics.uci.edu/ml/datasets/Condition+monitoring+of+hydraulic+systems#" target="_blank">Condition monitoring of hydraulic systems Dataset </a></p>
-<p>[8] <a href="https://www.savery.co.uk/systems/test-benches" target="_blank">SAVERY - HYDRAULIC TEST RIGS AND BENCHES</a></p>
-<p>[9] <a href="https://www.hydrotechnik.co.uk/flow-and-temperature-hydraulic-test-bed" target="_blank">HYDROTECHNIK - Flow and Temperature Testing Components</a></p>
+<p>[1] H2O.ai Community AI Glossary: <a href="https://www.h2o.ai/community/glossary/machine-learning-model-deployment-productionization-productionizing-machine-learning-models" target="_blank">Machine Learning Model Deployment</a><br> [2] H2O.ai Community AI Glossary: <a href="https://www.h2o.ai/community/glossary/feature-engineering-data-transformation" target="_blank">Feature Engineering</a><br> [3] H2O.ai Community AI Glossary: <a href="https://www.h2o.ai/community/glossary/automatic-machine-learning-automl" target="_blank">Automatic Machine Learning (AutoML)</a><br> [4] H2O.ai Community AI Glossary: <a href="https://www.h2o.ai/community/glossary/machine-learning-model" target="_blank">Machine Learning Model</a><br> [5] H2O.ai Community AI Glossary: <a href="https://www.h2o.ai/community/glossary/scoring-pipeline" target="_blank">Scoring Pipeline</a><br> [6] H2O.ai Community AI Glossary: <a href="https://www.h2o.ai/community/glossary/model-object-optimized-mojo" target="_blank">Model Object, Optimized (MOJO) Scoring Pipeline</a><br> [7] <a href="https://archive.ics.uci.edu/ml/datasets/Condition+monitoring+of+hydraulic+systems#" target="_blank">Condition monitoring of hydraulic systems Dataset </a><br> [8] <a href="https://www.savery.co.uk/systems/test-benches" target="_blank">SAVERY - HYDRAULIC TEST RIGS AND BENCHES</a><br> [9] <a href="https://www.hydrotechnik.co.uk/flow-and-temperature-hydraulic-test-bed" target="_blank">HYDROTECHNIK - Flow and Temperature Testing Components</a><br></p>
 
 
       </google-codelab-step>
@@ -69,16 +61,16 @@
 <li>Driverless AI Environment</li>
 <li>Driverless AI License  <ul>
 <li>The license is needed to use the <strong>MOJO2 C++ Runtime Python Wrapper API</strong> and <strong>R Wrapper API</strong> to execute the <strong>MOJO Scoring Pipeline</strong> to make predictions</li>
-<li>If you don&#39;t have a license, you can obtain one through our <a href="https://www.h2o.ai/try-driverless-ai/" target="_blank">21 day trial license</a> option. Through the <a href="https://www.h2o.ai/try-driverless-ai/" target="_blank">21 day trial license</a> option, you will be able to obtain a temporary Driverless AI License Key necessary for this tutorial.</li>
+<li>If you don&#39;t have a license, you can obtain one through our <a href="https://www.h2o.ai/try-driverless-ai/" target="_blank">21 day trial license</a> option. Through the <a href="https://www.h2o.ai/try-driverless-ai/" target="_blank">21 day trial license</a> option, you will be able to obtain a temporary Driverless AI License Key necessary for this self-paced course.</li>
 <li>If you need to purchase a Driverless AI license, reach out to our sales team via the <a href="https://www.h2o.ai/company/contact/" target="_blank"><strong>contact us form</strong></a>.</li>
 </ul>
 </li>
 <li>Linux OS (x86 or IBM Power PC) or Mac OS X (10.9 or newer)</li>
 <li>Anaconda or Miniconda</li>
-<li>Basic knowledge of Driverless AI or completion of the following tutorials:  <ul>
-<li><a href="https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai" target="_blank">Tutorial 1A: Automatic Machine Learning Introduction with Driverless AI</a></li>
-<li><a href="https://training.h2o.ai/products/tutorial-4a-scoring-pipeline-deployment-introduction#tab-product_tab_contents__12" target="_blank">Tutorial 4A: Scoring Pipeline Deployment Introduction</a></li>
-<li><a href="https://training.h2o.ai/products/tutorial-4b-scoring-pipeline-deployment-templates" target="_blank">Tutorial 4B: Scoring Pipeline Deployment Templates</a></li>
+<li>Basic knowledge of Driverless AI or completion of the following self-paced courses:  <ul>
+<li><a href="https://training.h2o.ai/products/self-paced-course-1a-automatic-machine-learning-introduction-with-driverless-ai" target="_blank">Self-Paced Course 1A: Automatic Machine Learning Introduction with Driverless AI</a></li>
+<li><a href="https://training.h2o.ai/products/self-paced-course-4a-scoring-pipeline-deployment-introduction" target="_blank">Self-Paced Course 4A: Scoring Pipeline Deployment Introduction</a></li>
+<li><a href="https://training.h2o.ai/products/self-paced-course-4b-scoring-pipeline-deployment-templates" target="_blank">Self-Paced Course 4B: Scoring Pipeline Deployment Templates</a></li>
 </ul>
 </li>
 </ul>
@@ -101,7 +93,7 @@ mkdir $HOME/dai-mojo-cpp/
 <li>On the <strong>STATUS:COMPLETE</strong> section on the experiment page, click <strong>DOWNLOAD MOJO SCORING PIPELINE</strong></li>
 <li>In the <strong>Java</strong> tab, click <strong>DOWNLOAD MOJO SCORING PIPELINE</strong></li>
 </ul>
-<p>When finished, come back to this tutorial.</p>
+<p>When finished, come back to this self-paced course.</p>
 <p>2. Move the <strong>mojo.zip</strong> file to the <strong>dai-mojo-cpp</strong> folder and then extract it:</p>
 <pre><code language="language-bash" class="language-bash">cd $HOME/dai-mojo-cpp/
 # Depending on your OS, sometimes the mojo.zip is unzipped automatically and therefore, instead of mojo.zip, write mojo-pipeline for the first command. If it&#39;s mojo-pipeline no need to execute the unzip command.  
@@ -111,11 +103,11 @@ unzip mojo.zip
 <h3 is-upgraded>Download the MOJO2 Python and R Runtime</h3>
 <p>We can download the <strong>MOJO2 C++ Runtime Python Wrapper API and R Wrapper API</strong> in Driverless AI. There are two places where we can download the MOJO2 Python and R runtime.</p>
 <p>1. Similar to where we downloaded the <strong>MOJO SCORING PIPELINE</strong>, we will download the <strong>MOJO2 Py Runtime</strong>.   Instead of clicking on the <strong>Java</strong> tab, click on the <strong>Python</strong> tab. Right after, click on the <strong>Download the MOJO2 Py Runtime</strong> hyperlink. Select the type of download you want, depending on your OS.</p>
-<p class="image-container"><img alt="download-mojo2-py-runtime-1" src="img/40d48bf16b367c2d.png"></p>
+<p class="image-container"><img alt="download-mojo2-py-runtime-1" src="img/d4c60201b7e4c67a.png"></p>
 <p>Similar for the <strong>MOJO2 R runtime</strong>, click the <strong>R</strong> tab, then click the <strong>Download the MOJO2 R Runtime</strong> hyperlink. Select the type of download you want, depending on your OS.</p>
-<p class="image-container"><img alt="download-mojo2-r-runtime-2" src="img/26c4e5a7b967c122.png"></p>
+<p class="image-container"><img alt="download-mojo2-r-runtime-2" src="img/cb817e980535d6e1.png"></p>
 <p>2. The second place you can find these runtimes is under the <strong>Resources</strong> drop-down list.</p>
-<p class="image-container"><img alt="download-mojo2-py-r-runtime-3" src="img/c839efb0962085ef.png"></p>
+<p class="image-container"><img alt="download-mojo2-py-r-runtime-3" src="img/ab0ec0987b0702f5.png"></p>
 <p>Click <strong>MOJO2 Py Runtime</strong> and/or <strong>MOJO2 R Runtime</strong> to download the runtime.</p>
 <p>Now that you have downloaded the <strong>MOJO2 C++ Runtime Python Wrapper API and R Wrapper API</strong>, download and install Anaconda:</p>
 <pre><code language="language-bash" class="language-bash"># Download Anaconda (Note: the command is for a Linux environment)
@@ -187,7 +179,7 @@ conda install -y -c r r-data.table
 </code></pre>
 <h2 is-upgraded>Set Driverless AI License Key</h2>
 <p>Set the Driverless AI License Key as a temporary environment variable.</p>
-<p><strong>Note</strong>: If you don&#39;t have a license, you can obtain one through our <a href="https://www.h2o.ai/try-driverless-ai/" target="_blank">21-day trial license</a> option. Through the <a href="https://www.h2o.ai/try-driverless-ai/" target="_blank">21-day trial license</a> option, you will be able to obtain a temporary <strong>Driverless AI License Key</strong> necessary for this tutorial.</p>
+<p><strong>Note</strong>: If you don&#39;t have a license, you can obtain one through our <a href="https://www.h2o.ai/try-driverless-ai/" target="_blank">21-day trial license</a> option. Through the <a href="https://www.h2o.ai/try-driverless-ai/" target="_blank">21-day trial license</a> option, you will be able to obtain a temporary <strong>Driverless AI License Key</strong> necessary for this self-paced course.</p>
 <pre><code language="language-bash" class="language-bash"># Set Driverless AI License Key
 export DRIVERLESS_AI_LICENSE_KEY=&#34;{license-key}&#34;
 </code></pre>
@@ -199,7 +191,7 @@ export DRIVERLESS_AI_LICENSE_KEY=&#34;{license-key}&#34;
         <h2 is-upgraded>MOJO Scoring Pipeline Files</h2>
 <p>After downloading the MOJO scoring pipeline, the <strong>mojo-pipeline</strong> folder comes with many files needed to execute the MOJO scoring pipeline, including <strong>pipeline.mojo</strong> and <strong>example.csv</strong>. However, the <strong>mojo-pipeline</strong> folder does not come with the MOJO2 Py Runtime or MOJO2 R Runtime. These two MOJO2 APIs can be downloaded as separate assets from Driverless AI. The <strong>pipeline.mojo</strong> is the standalone scoring pipeline in MOJO format. This pipeline file contains the packaged feature engineering pipeline and the machine learning model. The <strong>daimojo-2.4.8-cp36-cp36m-{OS: mac, linux. IBM Power}.whl</strong> is the MOJO2 Python API. The <strong>daimojo</strong><strong><em>2.4.8</em></strong><strong>{OS: mac, linux, IBM Power}.tar.gz</strong> is the MOJO2 R API. The <strong>example.csv</strong> contains sample test data.</p>
 <h2 is-upgraded>Embed the MOJO in the C++ Runtime via Python or R Wrappers</h2>
-<p>If you have gone through the earlier scoring pipeline deployment tutorials, you have seen how we deploy the MOJO Scoring Pipeline to a server or serverless instance. Some clients interact with the server to trigger it to execute the MOJO to make predictions. An alternative way to deploy the MOJO Scoring Pipeline is to embed directly into the C++ Runtime, where your application is running. The MOJO C++ Runtime comes with Python and R wrappers called MOJO2 Py Runtime and MOJO2 R Runtime. Accordingly, suppose you are building a Python or R application using an <strong>Integrated Development Environment (IDE)</strong> or a text editor. In that case, you can import the MOJO2 Python API or MOJO2 R API. Then use it to load the MOJO, put your test data into a MOJO frame, then perform predictions on the data to obtain results.</p>
+<p>If you have gone through the earlier scoring pipeline deployment self-paced courses, you have seen how we deploy the MOJO Scoring Pipeline to a server or serverless instance. Some clients interact with the server to trigger it to execute the MOJO to make predictions. An alternative way to deploy the MOJO Scoring Pipeline is to embed directly into the C++ Runtime, where your application is running. The MOJO C++ Runtime comes with Python and R wrappers called MOJO2 Py Runtime and MOJO2 R Runtime. Accordingly, suppose you are building a Python or R application using an <strong>Integrated Development Environment (IDE)</strong> or a text editor. In that case, you can import the MOJO2 Python API or MOJO2 R API. Then use it to load the MOJO, put your test data into a MOJO frame, then perform predictions on the data to obtain results.</p>
 
 
       </google-codelab-step>
@@ -263,9 +255,9 @@ d &lt;- fread(path, colClasses=col_class, header=TRUE, sep=&#34;,&#34;)
 <p>R will ask you if you want to save the workspace image; feel free to save it if you wish.</p>
 <p>In conclusion, that is how you execute the MOJO scoring pipeline to do batch scoring for the Hydraulic System cooling condition using the R wrapper in the C++ Runtime.</p>
 <h2 is-upgraded>Batch Scoring through the Run Python Wrapper Program</h2>
-<p><strong>Note: This section of the tutorial will not work, given a recent </strong><strong><em>OpenSSL</em></strong><strong> update. In order to overcome this bug caused by the update, you will have to downgrade your OpenSSL to any version before </strong><strong><em>version 1.1.1</em></strong><strong> (We don&#39;t advise for this downgrade, but that is a possible solution).  We are currently working on this recent update to be once again compatible with the latest version of OpenSSL.</strong></p>
+<p><strong>Note: This section of the self-paced course will not work, given a recent </strong><strong><em>OpenSSL</em></strong><strong> update. In order to overcome this bug caused by the update, you will have to downgrade your OpenSSL to any version before </strong><strong><em>version 1.1.1</em></strong><strong> (We don&#39;t advise for this downgrade, but that is a possible solution).  We are currently working on this recent update to be once again compatible with the latest version of OpenSSL.</strong></p>
 <p>1. Enter <strong>python</strong> to enter Python&#39;s interactive terminal:</p>
-<p class="image-container"><img alt="batch-scoring-via-run-py-program-1" src="img/6e84ac20491760fb.png"></p>
+<p class="image-container"><img alt="batch-scoring-via-run-py-program-1" src="img/699d5980543aa2fb.png"></p>
 <p>2. Let&#39;s import the Driverless AI MOJO model package and load the MOJO scoring pipeline:</p>
 <pre><code language="language-bash" class="language-bash"># import the daimojo model package
 import os.path
@@ -349,9 +341,8 @@ res.to_list()
     
       <google-codelab-step label="Next Steps" duration="0">
         <ul>
-<li><a href="https://training.h2o.ai/products/tutorial-4c-scoring-pipeline-deployment-in-java-runtime#tab-product_tab_overview" target="_blank">Tutorial 4C: Scoring Pipeline Deployment in Java Runtime</a></li>
-<li><a href="https://training.h2o.ai/products/tutorial-4e-scoring-pipeline-deployment-in-python-runtime#tab-product_tab_overview" target="_blank">Tutorial 4E: Scoring Pipeline Deployment in Python Runtime</a></li>
-<li>(COMING SOON) Tutorial 4F: Scoring Pipeline Deployment to Apache NIFI</li>
+<li><a href="https://training.h2o.ai/products/self-paced-course-4c-scoring-pipeline-deployment-in-java-runtime#tab-product_tab_overview" target="_blank">Self-Paced Course 4C: Scoring Pipeline Deployment in Java Runtime</a></li>
+<li><a href="https://training.h2o.ai/products/self-paced-course-4e-scoring-pipeline-deployment-in-python-runtime#tab-product_tab_overview" target="_blank">Self-Paced Course 4E: Scoring Pipeline Deployment in Python Runtime</a></li>
 </ul>
 
 
