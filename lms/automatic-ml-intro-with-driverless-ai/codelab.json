@@ -1,14 +1,14 @@
 {
   "environment": "web",
-  "source": "/Users/acastro/Desktop/automatic-ml-intro-with-driverless-ai/automatic-ml-intro-with-driverless-ai.md",
   "format": "html",
-  "prefix": "../assets",
+  "prefix": "https://storage.googleapis.com",
   "mainga": "UA-49880327-14",
-  "updated": "2020-09-10T15:22:54-07:00",
+  "updated": "2021-06-08T19:31:25-07:00",
   "id": "automatic-ml-intro-with-driverless-ai",
   "duration": 0,
   "title": "Automatic Machine Learning Introduction with Driverless AI",
   "summary": "Check the list",
+  "source": "/Users/falvarenga/Desktop/md-to-html/automatic-ml-intro-with-driverless-ai/automatic-ml-intro-with-driverless-ai.md",
   "theme": "",
   "status": [
     "draft"
@@ -17,11 +17,11 @@
     "driverless"
   ],
   "tags": [
-    "aquarium",
+    "automaticml",
+    "automl",
     "driverless",
-    "mli",
-    "security",
-    "test-drive"
+    "ml",
+    "security"
   ],
   "url": "automatic-ml-intro-with-driverless-ai"
 }
