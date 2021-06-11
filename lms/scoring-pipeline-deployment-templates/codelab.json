@@ -1,14 +1,14 @@
 {
   "environment": "web",
-  "source": "/Users/acastro/Desktop/scoring-pipeline-deployment-templates/scoring-pipeline-deployment-templates.md",
   "format": "html",
-  "prefix": "../assets",
+  "prefix": "https://storage.googleapis.com",
   "mainga": "UA-49880327-14",
-  "updated": "2020-08-27T19:29:47-07:00",
+  "updated": "2021-06-10T19:45:14-07:00",
   "id": "scoring-pipeline-deployment-templates",
   "duration": 0,
   "title": "Scoring Pipeline Deployment Templates",
   "summary": "Check the list",
+  "source": "/Users/falvarenga/Desktop/md-to-html/scoring-pipeline-deployment-templates/scoring-pipeline-deployment-templates.md",
   "theme": "",
   "status": [
     "draft"
@@ -17,12 +17,9 @@
     "driverless"
   ],
   "tags": [
-    "automl",
-    "deployment",
     "driverless",
-    "mojo",
-    "scoring-pipeline",
-    "templates"
+    "mojo-scoring-pipeline-templates",
+    "scoring-pipeline-deployment"
   ],
   "url": "scoring-pipeline-deployment-templates"
 }

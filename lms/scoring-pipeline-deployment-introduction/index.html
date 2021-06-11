@@ -9,7 +9,7 @@
   <title>Scoring Pipeline Deployment Introduction</title>
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
   <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="../assets/codelab-elements/codelab-elements.css">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
   <link rel="stylesheet" href="custom.css">
   <style>
     .success {
@@ -22,40 +22,45 @@
 </head>
 <body>
   <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
-  <google-codelab title="Scoring Pipeline Deployment Introduction"
+  <google-codelab codelab-gaid=""
+                  id="scoring-pipeline-deployment-introduction"
+                  title="Scoring Pipeline Deployment Introduction"
                   environment="web"
                   feedback-link="">
     
       <google-codelab-step label="Objective" duration="0">
-        <p><strong>Machine Learning Model Deployment</strong> is the process of making your model available in production environments, so they can be used to make predictions for other software systems [1]. Before model deployment, <strong>feature engineering</strong> occurs in the form of preparing data that later on will be used to train a model [2]. Driverless AI <strong>Automatic Machine Learning (AutoML)</strong> combines the best feature engineering and one or more <strong>machine learning models</strong> into a scoring pipeline [3][4]. The <strong>scoring pipeline</strong> is used to score or predict data when given new test data [5]. The scoring pipeline comes in two flavors. The first scoring pipeline is a <strong>Model Object, Optimized(MOJO) Scoring Pipeline</strong>, which is a standalone, low-latency model object designed to be easily embeddable in production environments. The second scoring pipeline is a Python Scoring Pipeline, which has a heavy footprint that is all Python and uses the latest libraries of Driverless AI to allow for executing custom scoring recipes[6].</p>
-<p>By the end of this tutorial, you will predict the <strong>cooling condition</strong> for a <strong>Hydraulic System Test Rig</strong> by deploying a <strong>MOJO Scoring Pipeline</strong> into production using <strong>Driverless AI</strong>. The Hydraulic System Test Rig data comes from <a href="https://archive.ics.uci.edu/ml/datasets/Condition+monitoring+of+hydraulic+systems#" target="_blank"><strong>UCI Machine Learning Repository: Condition Monitoring of Hydraulic Systems Data Set</strong></a>. Hydraulic System Test Rigs are used to test components in Aircraft Equipment, Ministry of Defense, Automotive Applications, and more [7]. This Hydraulic Test Rig is capable of testing a range of flow rates that can achieve different pressures with the ability to heat and cool to simulate testing under different conditions [8]. Testing the pressure, volume flow and temperature is possible by Hydraulic Test Rig sensors and digital displays. The display panel alerts the user when certain testing criteria is met displaying either a green/red light [8]. A filter blockage panel indicator is integrated into the panel to ensure the Hydraulic Test Rig&#39;s oil is maintained [8]. The cooling filtration solution is designed to minimize power consumption and expand the life of the Hydraulic Test Rig. We are predicting cooling conditions for Hydraulic System Predictive Maintenance. When the cooling condition is low, our prediction tells us that the cooling of the Hydraulic System is close to total failure and we may need to look into replacing the cooling filtration solution soon.</p>
-<p><img alt="Hydraulic System Cylinder Diagram" src="img/a8b156e42a5fb1f0.jpg"></p>
-<p><strong>Figure 1:</strong> Hydraulic System Cylinder Diagram</p>
-<p>The Hydraulic System consists of a primary and secondary cooling filtration circuit with pumps that deliver flow and pressure to the oil tank. The oil tank box at the bottom. There is a pressure relief control valve for controlling the rising and falling flows. There is a pressure gauge for measuring the pressure.</p>
-<h2>Deeper Dive and Resources</h2>
-<p>[1] H2O.ai Community AI Glossary: <a href="https://www.h2o.ai/community/glossary/machine-learning-model-deployment-productionization-productionizing-machine-learning-models" target="_blank">Machine Learning Model Deployment</a></p>
-<p>[2] H2O.ai Community AI Glossary: <a href="https://www.h2o.ai/community/glossary/feature-engineering-data-transformation" target="_blank">Feature Engineering</a></p>
-<p>[3] H2O.ai Community AI Glossary: <a href="https://www.h2o.ai/community/glossary/automatic-machine-learning-automl" target="_blank">Automatic Machine Learning (AutoML)</a></p>
-<p>[4] H2O.ai Community AI Glossary: <a href="https://www.h2o.ai/community/glossary/machine-learning-model" target="_blank">Machine Learning Model</a></p>
-<p>[5] H2O.ai Community AI Glossary: <a href="https://www.h2o.ai/community/glossary/scoring-pipeline" target="_blank">Scoring Pipeline</a></p>
-<p>[6] H2O.ai Community AI Glossary: <a href="https://www.h2o.ai/community/glossary/model-object-optimized-mojo" target="_blank">Model Object, Optimized (MOJO) Scoring Pipeline</a></p>
-<p>[7] <a href="https://www.savery.co.uk/systems/test-benches" target="_blank">SAVERY - HYDRAULIC TEST RIGS AND BENCHES</a></p>
-<p>[8] <a href="https://www.hydrotechnik.co.uk/flow-and-temperature-hydraulic-test-bed" target="_blank">HYDROTECHNIK - Flow and Temperature Testing Components</a></p>
+        <p><strong>Machine Learning Model Deployment</strong> is the process of making your models available in production environments, so they can be used to make predictions for other software systems [1]. Before model deployment, <strong>feature engineering</strong> occurs in the form of data preparation that later on will be used to train a model [2]. Driverless AI <strong>Automatic Machine Learning (AutoML)</strong> combines the best feature engineering and one or more <strong>machine learning models</strong> into a scoring pipeline [3][4]. The <strong>scoring pipeline</strong> is used to score or predict data when given new test data [5]. The scoring pipeline comes in two flavors. The first scoring pipeline is a <strong>Model Object Optimized(MOJO) Scoring Pipeline</strong>, a standalone low-latency model object designed to be easily embeddable in production environments. The second scoring pipeline is a Python Scoring Pipeline, which has a heavy footprint that is all Python and uses the latest libraries of Driverless AI to allow for executing custom scoring recipes[6].</p>
+<p class="image-container"><img src="img/a8b156e42a5fb1f0.png">         </p>
+<p>Figure 1: Hydraulic System Cylinder Diagram</p>
+<p>By the end of this self-paced course, you will predict the <strong>cooling condition</strong> for a <strong>Hydraulic System Test Rig</strong> by deploying a <strong>MOJO Scoring Pipeline</strong> into production using <strong>Driverless AI</strong>. The Hydraulic System Test Rig data comes from the <a href="https://archive.ics.uci.edu/ml/datasets/Condition+monitoring+of+hydraulic+systems#" target="_blank"><strong>UCI Machine Learning Repository: Condition Monitoring of Hydraulic Systems Data Set</strong></a>. Hydraulic System Test Rigs are used to test components in Aircraft Equipment, Ministry of Defense, Automotive Applications, and more [7].</p>
+<p>This Hydraulic Test Rig can test a range of flow rates that can achieve different pressures with the ability to heat and cool to simulate testing under different conditions[8]. Testing the pressure, volume flow, and temperature is possible by Hydraulic Test Rig sensors and digital displays. The display panel alerts the user when certain testing criteria are met, displaying either a green/red light [8]. In addition, a filter blockage panel indicator is integrated into the panel to ensure the Hydraulic Test Rig&#39;s oil is maintained [8]. The cooling filtration solution is designed to minimize power consumption and expand the life of the Hydraulic Test Rig. For this self-paced course, we are predicting the cooling conditions for Hydraulic System Predictive Maintenance. When the cooling condition is low, our prediction (will) tells us that the cooling of the Hydraulic System is close to total failure, and we may need to look into replacing the cooling filtration solution soon.</p>
+<p>The Hydraulic System consists of a primary and secondary cooling filtration circuit with pumps that deliver flow and pressure to the oil tank. The oil tank box at the bottom. There is a pressure relief control valve for controlling the rising and falling flows. In addition, there is a pressure gauge for measuring the pressure.</p>
+<h2 is-upgraded>Deep Dive and Resources</h2>
+<ul>
+<li>[1] H2O.ai Community AI Glossary: <a href="https://www.h2o.ai/community/glossary/machine-learning-model-deployment-productionization-productionizing-machine-learning-models" target="_blank">Machine Learning Model Deployment</a></li>
+<li>[2] H2O.ai Community AI Glossary: <a href="https://www.h2o.ai/community/glossary/feature-engineering-data-transformation" target="_blank">Feature Engineering</a></li>
+<li>[3] H2O.ai Community AI Glossary: <a href="https://www.h2o.ai/community/glossary/automatic-machine-learning-automl" target="_blank">Automatic Machine Learning (AutoML)</a></li>
+<li>[4] H2O.ai Community AI Glossary: <a href="https://www.h2o.ai/community/glossary/machine-learning-model" target="_blank">Machine Learning Model</a></li>
+<li>[5] H2O.ai Community AI Glossary: <a href="https://www.h2o.ai/community/glossary/scoring-pipeline" target="_blank">Scoring Pipeline</a></li>
+<li>[6] H2O.ai Community AI Glossary: <a href="https://www.h2o.ai/community/glossary/model-object-optimized-mojo" target="_blank">Model Object, Optimized (MOJO) Scoring Pipeline</a></li>
+<li>[7] <a href="https://www.savery.co.uk/systems/test-benches" target="_blank">SAVERY - HYDRAULIC TEST RIGS AND BENCHES</a></li>
+<li>[8] <a href="https://www.hydrotechnik.co.uk/flow-and-temperature-hydraulic-test-bed" target="_blank">HYDROTECHNIK - Flow and Temperature Testing Components</a></li>
+</ul>
 
 
       </google-codelab-step>
     
       <google-codelab-step label="Prerequisites" duration="0">
-        <p>You will need the following to be able to do this tutorial:</p>
+        <p>You will need the following to be able to do this self-paced course:</p>
 <ul>
-<li>A <strong>Two-Hour Test Drive session</strong>: Test Drive is H2O.ai&#39;s Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.<ul>
-<li>Need a <strong>Two-Hour Test Drive</strong> session? Follow the instructions on <a href="https://training.h2o.ai/products/tutorial-0-getting-started-with-driverless-ai-test-drive" target="_blank">this quick tutorial</a> to get a Test Drive session started.</li>
+<li>A <strong>Two-Hour Test Drive session</strong>: Test Drive is H2O.ai&#39;s Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.  <ul>
+<li>Need a <strong>Two-Hour Test Drive</strong> session? Follow the instructions on <a href="https://training.h2o.ai/products-self-paced-course-0-getting-started-with-driverless-ai-test-drive" target="_blank">this quick self-paced course</a> to get a Test Drive session started.</li>
 </ul>
 </li>
-<li>Basic knowledge of Driverless AI or doing the <a href="https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai" target="_blank">Automatic Machine Learning Introduction with Driverless AI Test Drive Tutorial</a>.</li>
+<li>Basic knowledge of Driverless AI or completion of the following self-paced course: <a href="https://training.h2o.ai/products/self-paced-course-1a-automatic-machine-learning-introduction-with-driverless-ai" target="_blank">Automatic Machine Learning Introduction with Driverless AI Test Drive</a>.</li>
 <li>For Non-AWS Lambda Deployment, we will use a REST Server built into Driverless AI to show how a REST API / Micro service deployment works</li>
-<li>Needed for AWS Lambda Deployment<ul>
-<li>If you have an Amazon Admin, request access permissions for<br><br><ul>
+<li>Needed for AWS Lambda Deployment (Optional)  <ul>
+<li>If you have an Amazon Admin, request access permissions for:  <ul>
 <li>Amazon AWS with IAM Full Access</li>
 <li>Amazon AWS with AWS Lambda Full Access</li>
 <li>Amazon AWS with Amazon API Gateway Administrator</li>
@@ -72,11 +77,10 @@
       </google-codelab-step>
     
       <google-codelab-step label="Task 1: Tour of Prebuilt Experiment" duration="0">
-        <p>The Machine Learning experiment was built using <strong>Driverless AI version 1.9.0</strong> and Driverless AI <strong>MOJO Scoring Pipeline version 2.4.8</strong>. Let&#39;s discuss the different Driverless AI experiments you could build with the Hydraulic System data and each particular label, which include cooler condition, valve condition, pump leakage, accumulator gas leakage and stable flag [1]. For each experiment we could build, Driverless AI would choose a classification scorer because each of the labels has 2 or more categories.</p>
+        <p>Let&#39;s discuss the different Driverless AI experiments you could build with the Hydraulic System data and each particular label, which include cooler condition, valve condition, pump leakage, accumulator gas leakage, and stable flag [1]. For each experiment we could build, Driverless AI would choose a classification scorer because each label has 2 or more categories.</p>
 <p><strong>Experiment 1</strong>: Build an Experiment for Hydraulic Cooling Condition Classification</p>
-<p>If we build an experiment with the Hydraulic System data and the cooler condition label, Driverless AI will build a classification scorer and algorithm like logloss and lightGBM that classifies for the probability the cooler condition is 3, 20, or 100 [1]. From the cooler condition classification, we can predict the Hydraulic Cooler is operating close to total failure, reduced efficiency, or full efficiency [1].</p>
+<p>Suppose we chose to do an experiment with the Hydraulic System data and the cooler condition label. In that case, Driverless AI will build a classification experiment that classifies the probability of the cooler condition of 3, 20, or 100 [1]. As a result, we can predict the Hydraulic Cooler is operating close to total failure, reduced efficiency, or full efficiency [1].</p>
 <table>
-<tr></tr>
 <tr><td colspan="1" rowspan="1"><p>Hydraulic Cooling Condition</p>
 </td><td colspan="1" rowspan="1"><p>Description</p>
 </td></tr>
@@ -91,9 +95,8 @@
 </td></tr>
 </table>
 <p><strong>Experiment 2</strong>: Build an Experiment for Hydraulic Valve Condition Classification</p>
-<p>If we were to build an experiment using the Hydraulic System data with the valve condition label, we would be able to predict the Hydraulic valve condition is 100, 90, 80, or 73 [1]. The valve condition classification can tell us the valve is operating at optimal switching behavior, with a small lag, severe lag, or close to total failure [1].</p>
+<p>If we were to build an experiment using the Hydraulic System data with the valve condition label, we would be able to predict the Hydraulic valve condition is 100, 90, 80, or 73 [1]. The valve condition classification can tell us the valve operates at optimal switching behavior, with a small lag, severe lag, or close to total failure [1].</p>
 <table>
-<tr></tr>
 <tr><td colspan="1" rowspan="1"><p>Hydraulic Valve Condition</p>
 </td><td colspan="1" rowspan="1"><p>Description</p>
 </td></tr>
@@ -111,9 +114,8 @@
 </td></tr>
 </table>
 <p><strong>Experiment 3</strong>: Build an Experiment for Hydraulic Internal Pump Leakage Classification</p>
-<p>If we build an experiment using the Hydraulic System data with the internal pump leakage label, we would be able to predict the Hydraulic internal pump leakage is 0, 1, or 2 [1]. The internal pump leakage classification can tell us the internal pump has no leakage, weak leakage or severe leakage [1].</p>
+<p>If we build an experiment using the Hydraulic System data with the internal pump leakage label, we would predict if the Hydraulic internal pump leakage is 0, 1, or 2 [1]. Thus, the internal pump leakage classification can tell us the internal pump has no leakage, weak leakage, or severe leakage [1].</p>
 <table>
-<tr></tr>
 <tr><td colspan="1" rowspan="1"><p>Hydraulic Internal Pump Leakage</p>
 </td><td colspan="1" rowspan="1"><p>Description</p>
 </td></tr>
@@ -128,9 +130,8 @@
 </td></tr>
 </table>
 <p><strong>Experiment 4</strong>: Build an Experiment for Hydraulic Accumulator Gas Leakage Classification</p>
-<p>If we were to build an experiment with the Hydraulic System data with the Hydraulic accumulator label, we would be able to predict the accumulator is 130, 115, 100, or 90 [1]. This classification can tell us the Hydraulic accumulator functions at optimal pressure, slightly reduced pressure, severely reduced pressure or close to total failure [1].</p>
+<p>If we were to build an experiment with the Hydraulic System data with the Hydraulic accumulator label, we predict if the accumulator is 130, 115, 100, or 90 [1]. This classification can tell us the Hydraulic accumulator functions at optimal pressure, slightly reduced pressure, severely reduced pressure, or close to total failure [1].</p>
 <table>
-<tr></tr>
 <tr><td colspan="1" rowspan="1"><p>Hydraulic Accumulator Gas Leakage</p>
 </td><td colspan="1" rowspan="1"><p>Description</p>
 </td></tr>
@@ -150,7 +151,6 @@
 <p><strong>Experiment 5</strong>: Build an Experiment for Hydraulic Stable Flag Classification</p>
 <p>The final experiment we could build is with the Hydraulic System data and the stable flag label. We would be able to predict the Hydraulic stable flag is 0 or 1 [1]. So, our binomial classification can tell us the Hydraulic System conditions were stable or static conditions might not have been reached yet [1].</p>
 <table>
-<tr></tr>
 <tr><td colspan="1" rowspan="1"><p>Hydraulic Stable Flag</p>
 </td><td colspan="1" rowspan="1"><p>Description</p>
 </td></tr>
@@ -162,68 +162,69 @@
 </td></tr>
 </table>
 <p>1. In Driverless AI, click on the <strong>Experiments</strong> tab. Then click on experiment name <strong>Model_Deploy...</strong>:</p>
-<p><img alt="model-deployment-experiment" src="img/dddbd81386ff3bf2.jpg"></p>
+<p class="image-container"><img alt="model-deployment-experiment" src="img/1f4938a148b3b494.png"></p>
 <p><strong>Figure 2:</strong> Driverless AI Experiments</p>
 <p>2. View the <strong>Experiment Dashboard</strong> for Hydraulic Cooling Condition Classification</p>
-<p>In Appendix A: Build Driverless AI Experiment, there are steps that walk through how to build the experiment using the Hydraulic System data and the cooler condition label. What you will see is the dataset was split as follows:</p>
+<p>In <a href="#appendix-a-build-driverless-ai-experiment" target="_blank">Appendix A: Build Driverless AI Experiment</a>, you will find steps that will walk you through the process of how to build the experiment using the Hydraulic System data and the cooler condition label. What you will see is the dataset was split as follows:</p>
 <ul>
 <li>75% for training</li>
 <li>25% for testing data</li>
 </ul>
-<p>The scorer was trained using the training data with the cooling condition as the label. The testing data was used to evaluate the scorer. Once the experiment was built, the following Driverless AI experiment dashboard is available:</p>
+<p>The experiment was built using the training data with the cooling condition as the label. The testing data was used to evaluate the scorer.</p>
 <p>2. For Machine Learning Model Deployment, let&#39;s examine the <strong>status menu</strong> options, <strong>summary</strong>, <strong>loss function result</strong>, and <strong>variable importance</strong>.</p>
-<p><img alt="Experiment Dashboard" src="img/e4fcf221a903f485.jpg"></p>
+<p class="image-container"><img alt="Experiment Dashboard" src="img/72f1579c9870e87b.png"></p>
 <p><strong>Figure 3:</strong> Experiment Dashboard for Hydraulic System Cooling Condition</p>
-<p>To deploy the model, we can use Driverless AI&#39;s <strong>Deploy (Local &amp; Cloud)</strong>, <strong>Download Python Scoring Pipeline</strong>, or <strong>Download MOJO Scoring Pipeline</strong> features. The Deploy (Local &amp; Cloud) allows the user to auto-deploy their model to a REST server or an Amazon Lambda. The Download Python Scoring Pipeline or Download MOJO Scoring Pipeline is more hands-on and the user can choose to go with the embedded deployment approach or server deployment approach for the model. Since the Driverless AI MOJO Scoring Pipelines are small in size, they can be easily embedded on edge devices with a low memory footprint. However, for the Driverless AI Python Scoring Pipeline, they are bulkier in size, so they should be embedded on devices with a high memory footprint.</p>
-<p>If you want to practice batch scoring data right away with Driverless AI, you should use the built-in <strong>Score On Another Dataset</strong> feature. When you click on this button, you choose your test data and the label you are predicting, then Driverless AI will execute the Python Scoring Pipeline behind the scenes to do batch scoring. This is a great way to use the UI to test the model with different datasets interactively while the model is being built and results inspected by a data scientist, but in production a standalone scorer might be used, see our follow up tutorials on other scorers for example the database scorer.</p>
-<p>In the summary section, we can see our scorer&#39;s max memory usage, feature engineering, MOJO latency, etc. These metrics are areas we should consider when deploying our scorers to certain environments. For instance, does the environment support the scorer&#39;s memory usage? Does MOJO latency change much when we embed it on a low memory footprint device?</p>
-<p>After the experiment is built, the dashboard shows our model&#39;s loss function result for the validation score and test score. We can also see <strong>LightGBM</strong> is the classification model, which was trained based on <strong>16 features</strong> for predicting the hydraulic cooling condition. In the experiment dashboard, we can see Log Loss is the model&#39;s loss function. The <strong>validation score&#39;s logloss is 0.0058 (final pipeline)</strong>. Likewise, the <strong>test score&#39;s logloss is 0.0022 (final pipeline)</strong>. The logloss result tells us how good or bad the model makes predictions. Since our loss is very low near 0, our LightGBM model is very close to correctly assigning probabilities for each category it is classifying from the test data.</p>
-<p>The <strong>variable importance</strong> tells us which features were considered important when the model was being trained. We can see the list is ordered from most to least important. At the top is <strong>cool_pwr_pct</strong> and this feature is expected to be high in importance because the Hydraulic cooling condition needs power in order to function at full efficiency. It looks like <strong>tsc_temp</strong> and <strong>tsb_temp</strong> are also important for the Hydraulic cooling condition and that makes sense because the temperature can have a major impact on the Hydraulic cooler&#39;s efficiency. If the temperature is high, that could be a sign there is a problem with the Hydraulic cooler. The variable importance shows what variables are most crucial when the model is making the prediction for Hydraulic cooling conditions.</p>
+<p>We can use Driverless AI&#39;s <strong>Deploy (Local &amp; Cloud)</strong>, <strong>Download Python Scoring Pipeline</strong>, or <strong>Download MOJO Scoring Pipeline</strong> features to deploy the model. The Deploy (Local &amp; Cloud) allows users to auto-deploy their model to a REST server or an Amazon Lambda. On the other hand, the Download Python Scoring Pipeline or Download MOJO Scoring Pipeline is more hands-on. The user can choose to go with the embedded deployment approach or server deployment approach for the model. Since the Driverless AI MOJO Scoring Pipelines are small in size, they can be easily embedded on edge devices with a low memory footprint. However, the Driverless AI Python Scoring Pipelines are bulkier in size, so they should be embedded on devices with a high memory footprint.</p>
+<p>If you want to practice batch scoring data right away with Driverless AI, you should use the built-in <strong>Predict</strong> feature under <strong>Model Actions</strong>. When you click on this button, you can choose your test data and the label you are predicting; then, Driverless AI will execute the Python Scoring Pipeline behind the scenes to do batch scoring. This is a great way to use the UI to test the model with different datasets interactively while the model is being built and inspected by a data scientist. However, in production, a standalone model might be used; see our follow-up self-paced courses on model deployment to learn more.</p>
+<p>In the summary section, we can see our model&#39;s max memory usage, feature engineering, MOJO latency, etc. These metrics are areas we should consider when deploying our models to certain environments. For instance, does the environment support the scorer&#39;s memory usage? Does MOJO latency change much when we embed it on a low memory footprint device?</p>
+<p>After the experiment is built, the dashboard shows our model&#39;s loss function result for the validation and test scores. We can also see <strong>LightGBM</strong> is the classification model trained based on <strong>16 features</strong> for predicting the hydraulic cooling condition. In the experiment dashboard, we can see Log Loss is the model&#39;s loss function. The <strong>validation score&#39;s logloss is 0.0091 (final pipeline)</strong>. Likewise, the <strong>test score&#39;s logloss is 0.0025 (final pipeline)</strong>. The logloss result tells us how good or bad the model makes predictions. Since our loss is very low near 0, our LightGBM model is very close to correctly assigning probabilities for each category it is classifying from the test data.</p>
+<p>The <strong>variable importance</strong> tells us which features were considered important when the model was being trained. We can see the list is ordered from most to least important. At the top is <strong>cool_pwr_pct</strong>, and this feature is expected to be high in importance because the Hydraulic cooling condition needs the power to function at full efficiency. It looks like <strong>tsc_temp</strong> and <strong>tsb_temp</strong> are also important for the Hydraulic cooling condition, and that makes sense because the temperature can significantly impact the Hydraulic cooler&#39;s efficiency. If the temperature is high, that could be a sign there is a problem with the Hydraulic cooler. The variable importance shows what variables are most crucial when the model is predicting the Hydraulic cooling conditions.</p>
 <p>3. In the Driverless AI dashboard, let&#39;s change from the summary view to the <strong>P-R metrics view</strong>.</p>
-<p><img alt="DAI Exp PR Metrics Best" src="img/24f1e8873743a31d.jpg"></p>
+<p class="image-container"><img alt="DAI Exp PR Metrics Best" src="img/1c8eecf6af20fa5.png"></p>
 <p><strong>Figure 4:</strong> Experiment PR Metrics for Hydraulic System Cooling Condition</p>
 <p>These metrics are used to evaluate the quality of the multinomial classification model that was built. By clicking on the dot in the top right corner of the graph, we can see the following best values for our scorer:</p>
 <ul>
-<li><strong>Recall</strong> is 0.9994</li>
-<li><strong>Precision</strong> is 0.9970</li>
-<li><strong>F1</strong> is 0.9982</li>
-<li><strong>MCC</strong> is 0.9973</li>
+<li><strong>Recall</strong> is 0.9945</li>
+<li><strong>Precision</strong> is 1.0000</li>
+<li><strong>F1</strong> is 0.9973</li>
+<li><strong>MCC</strong> is 0.9959</li>
 </ul>
-<p><strong>Recall</strong> is a measure of completeness or quantity of the results obtained by the model [2]. It is the ratio of the number of predictions divided by all the actual labels [2]. For example, let&#39;s say the number of predictions for the hydraulic cooling condition operating at reduced efficiency occurs 30% of the time, but there are 40% actual labels, then the recall is ¾. In the Driverless AI dashboard, we see the <strong>recall is 99.94%</strong>, which means the quantity of the results obtained by the model is nearly complete.</p>
-<p><strong>Precision</strong> is a measure of exactness or quality of the results obtained by the model [2]. It is the ratio of the correct predictions divided by the total number of predictions. This ratio is measured from 0.0 to 1.0 with 0.0 being the worst and 1.0 being the best precision [2]. For example, let&#39;s say the number of predictions for hydraulic cooling condition operating at full efficiency with the actual labels matching is 40% of the time and the total number of predictions for hydraulic cooling condition is operating at full efficiency without the actual labels matching is 50% of the time, then the precision is ⅘. In the Driverless AI dashboard, we see the <strong>precision is 99.70%</strong>, which means the exactness and quality of the results obtained by the model has the best precision.</p>
-<p><strong>F1</strong> represents the <strong>Harmonic Average</strong> of the recall and precision [2]. F1 is measured in the range of 0 to 1 with 0 meaning there are no true positives and 1 meaning there is neither false negatives nor false positives [2]. In the Driverless AI dashboard, the <strong>F1 is 99.82%</strong>, which means our model is near perfect on precision and recall.</p>
-<p><strong>MCC</strong> stands for <strong>Matthew Correlation Coefficient</strong> and is a measure of the quality of the classifications [2]. MCC is measured in the range between -1 and +1 with +1 being perfect prediction and 0 being no better than a random prediction and -1 being all incorrect predictions [2]. In the Driverless AI dashboard, <strong>MCC is 99.73%</strong> meaning our model performs nearly perfect predictions.</p>
-<h2>Deeper Dive and Resources</h2>
-<p>[1] <a href="https://archive.ics.uci.edu/ml/datasets/Condition+monitoring+of+hydraulic+systems#" target="_blank">Condition monitoring of hydraulic systems Data Set</a></p>
-<p>[2] <a href="https://training.h2o.ai/products/tutorial-1b-machine-learning-experiment-scoring-and-analysis-tutorial-financial-focus" target="_blank">Machine Learning Experiment Scoring and Analysis Tutorial: Task 3 Concepts</a></p>
+<p><strong>Recall</strong> is a measure of completeness or quantity of the results obtained by the model [2]. It is the ratio of the number of predictions divided by all the actual labels [2]. For example, let&#39;s say the number of predictions for the hydraulic cooling condition operating at reduced efficiency occurs 30% of the time, but there are 40% actual labels, then the recall is ¾. In the Driverless AI dashboard, we see the <strong>recall is 99.45%</strong>, which means the quantity of the results obtained by the model is nearly complete.</p>
+<p><strong>Precision</strong> is a measure of exactness or quality of the results obtained by the model [2]. It is the ratio of the correct predictions divided by the total number of predictions. This ratio is measured from 0.0 to 1.0, with 0.0 being the worst and 1.0 being the best precision [2]. For example, let&#39;s say the number of predictions for hydraulic cooling condition operating at full efficiency with the actual labels matching is 40% of the time, and the total number of predictions for the hydraulic cooling condition is operating at full efficiency without the actual labels matching is 50% of the time, then the precision is ⅘. In the Driverless AI dashboard, we see the <strong>precision is 100.00%</strong>, which means the exactness and quality of the results obtained by the model has the best precision.</p>
+<p><strong>F1</strong> represents the <strong>Harmonic Average</strong> of the recall and precision [2]. F1 is measured in the range of 0 to 1, with 0 meaning there are no true positives and 1 meaning there are neither false negatives nor false positives [2]. The <strong>F1 is 99.73%</strong> in the Driverless AI dashboard, which means our model is near perfect on precision and recall.</p>
+<p><strong>MCC</strong> stands for <strong>Matthew Correlation Coefficient</strong> and is a measure of the quality of the classifications [2]. MCC is measured in the range between -1 and +1, with +1 being a perfect prediction and 0 being no better than a random prediction, and -1 being incorrect predictions [2]. The <strong>MCC is 99.59%</strong> in the Driverless AI dashboard, meaning our model performs nearly perfect predictions.</p>
+<h2 is-upgraded>Deep Dive and Resources</h2>
+<ul>
+<li>[1] <a href="https://archive.ics.uci.edu/ml/datasets/Condition+monitoring+of+hydraulic+systems#" target="_blank">Condition monitoring of hydraulic systems Data Set</a></li>
+<li>[2] <a href="https://training.h2o.ai/products/self-paced-course-1b-machine-learning-experiment-scoring-and-analysis-financial-focus" target="_blank">Machine Learning Experiment Scoring and Analysis: Task 3 Concepts</a></li>
+</ul>
 
 
       </google-codelab-step>
     
       <google-codelab-step label="Task 2: Scoring Pipeline Deployment Concepts" duration="0">
-        <h2>Machine Learning Workflow</h2>
-<p><img alt="Machine Learning Workflow" src="img/e8ba6547fc779c5a.jpg"></p>
+        <h2 is-upgraded>Machine Learning Workflow</h2>
+<p class="image-container"><img alt="Machine Learning Workflow" src="img/e8ba6547fc779c5a.png"></p>
 <p><strong>Figure 5:</strong> Machine Learning Workflow</p>
-<p>The <strong>Machine Learning Model Deployment</strong> workflow includes data preprocessing, model training, model deployment and model predicting. During data preprocessing, the training data is collected, explored and prepared for training the model.</p>
-<p>During <strong>Model Training</strong>, <strong>Machine Learning Algorithms</strong> are tuned via hyperparameters and features are used to train the Machine Learning Algorithm. A Machine Learning Algorithm is a programmed algorithm that receives and analyzes input data to predict output values within an acceptable range [1]. This trained Machine Learning Algorithm then gets saved as a <strong>Machine Learning Model</strong>. A Machine Learning Model is the output generated when you train your Machine Learning Algorithm with your training data [2]. Once the Model is saved, one typically evaluates their Model with a validation data set that comes from a small percentage of the training data. Model explanation and report explains why the Model Algorithm was chosen and provides some kind of error, such as <strong>root mean squared error (RMSE)</strong> to defend choosing the Model Algorithm for its high accuracy. A low RMSE means we have a good Model.</p>
-<p>During <strong>Model Deployment</strong>, <strong>Model Management &amp; Monitoring</strong> is used for <strong>model reproducibility</strong> and <strong>model versioning</strong>. When you notice the model does not perform the way you expect after monitoring it for some time, you will typically go back into the phase where we train the Machine Learning Algorithm and potentially even go back to the feature engineering. You will repeat this process: train the Machine Learning Algorithm and save the Machine Learning Model until you obtain the most accurate model. Model Engineering is the process we just described above. Now that we have engineered our model, we can deploy it into production on premise or in the cloud to make predictions on real world data.</p>
-<p>During <strong>Model Predicting</strong>, the model is running and we can pass real world data to them to make predictions for one or more labels. Some examples of what these models can be used for include credit risk scoring to personalize credit decisions, anti-money laundering to stop crime, anomaly detection to find network anomalies, predicting ICU transfers to save lives by catching patients before they crash and condition monitoring for hydraulic systems to predict points of failure in the system [3].</p>
-<h2>From Model Training to Production Deployment to Edge</h2>
-<p><img alt="Model Training Deploy Scoring" src="img/318301bae2d2c09a.jpg"></p>
+<p>The <strong>Machine Learning Model Deployment</strong> workflow includes data preprocessing, model training, model deployment, and model predicting. During data preprocessing, the training data is collected, explored, and prepared for training the model.</p>
+<p>During <strong>Model Training</strong>, <strong>Machine Learning Algorithms</strong> are tuned via hyperparameters, and features are used to train the Machine Learning Algorithm. A Machine Learning Algorithm is a programmed algorithm that receives and analyzes input data to predict output values within an acceptable range [1]. This trained Machine Learning Algorithm then gets saved as a <strong>Machine Learning Model</strong>. A Machine Learning Model is the output generated when you train your Machine Learning Algorithm with your training data [2]. Once the Model is saved, one typically evaluates their Model with a validation data set that comes from a small percentage of the training data. Model explanation and the model report explain why the Model Algorithm was chosen and provides a score, such as <strong>root mean squared error (RMSE)</strong> to defend choosing the Model Algorithm for its high accuracy. A low RMSE means we have a good Model.</p>
+<p>During <strong>Model Deployment</strong>, <strong>Model Management &amp; Monitoring</strong> is used for <strong>model reproducibility</strong> and <strong>model versioning</strong>. When you notice the model does not perform the way you expect after monitoring it for some time, you will typically go back into the phase where we train the Machine Learning Algorithm and potentially even go back to the feature engineering. You will repeat this process: train the Machine Learning Algorithm and save the Machine Learning Model until you obtain the most accurate model. Model Engineering is the process we just described above. Now that we have engineered our model, we can deploy it into production on-premise or in the cloud to make predictions on real-world data.</p>
+<p>During <strong>Model Predicting</strong>, the model is running, and we can pass real-world data to them to make predictions for one or more labels. Some examples of what these models can be used for include: credit risk scoring to personalize credit decisions, anti-money laundering to stop crime, anomaly detection to find network anomalies, predicting ICU transfers to save lives by catching patients before they crash, and condition monitoring for hydraulic systems to predict points of failure in the system [3].</p>
+<h2 is-upgraded>From Model Training to Production Deployment to Edge</h2>
+<p class="image-container"><img alt="Model Training Deploy Scoring" src="img/318301bae2d2c09a.png"></p>
 <p><strong>Figure 6:</strong> Model Training to Model Deployment to Scoring</p>
-<p>Productionizing a machine learning model involves <strong>model training</strong>, <strong>model deployment</strong> and <strong>scoring</strong>. During model training, data is loaded into the ML platform and then AutoML is executed to generate the winning machine learning model. In the case of H2O Driverless AI, AutoML generates a scoring pipeline, which consists of the feature engineering and winning machine learning model. During model deployment, the scoring pipeline is deployed on premise or in the cloud and machine learning management is executed to monitor the performance of the scoring pipeline. During scoring, the scoring pipeline&#39;s functions can be accessed from the edge and IoT devices directly or through remote procedure calls to make predictions on one or more labels.</p>
-<h2>Model Object, Optimized (MOJO)</h2>
-<p><img alt="MOJO" src="img/2c96d354a0e222b2.jpg"></p>
+<p>Productionizing a machine learning model involves <strong>model training</strong>, <strong>model deployment</strong>, and <strong>scoring</strong>. Data is loaded into the ML platform during model training, and then AutoML is executed to generate the winning machine learning model. In the case of H2O Driverless AI, AutoML generates a scoring pipeline, which consists of the feature engineering and winning machine learning model. During model deployment, the scoring pipeline is deployed on-premise or in the cloud, and machine learning management is executed to monitor the performance of the scoring pipeline. During scoring, the scoring pipeline&#39;s functions can be accessed from the edge and IoT devices directly or through remote procedure calls to make predictions on one or more labels.</p>
+<h2 is-upgraded>Model Object, Optimized (MOJO)</h2>
+<p class="image-container"><img alt="MOJO" src="img/2c96d354a0e222b2.png"></p>
 <p><strong>Figure 7:</strong> Driverless AI MOJO Diagram</p>
-<p>The <strong>MOJO (stands for Model Object Optimized)</strong> is small in size and very fast at computing real-time predictions as well as batch predictions. So, whether you are making predictions on the edge or all the way up in the cloud, the MOJO can run practically anywhere. When you build an experiment in Driverless AI, you have the option to download a MOJO scoring pipeline. The MOJO scoring pipeline is packaged with the winning feature engineering and machine learning model. This model could be XGBoost, LightGBM, GLM, Decision Tree, TensorFlow, FTRL and even other models. The Driverless AI MOJO can be executed in Java Runtime and C++ Runtime. In order to execute the Driverless AI MOJO scoring pipeline in either runtime, one must have a Driverless AI License Key.</p>
-<h2>MOJO and Python Scoring Pipelines</h2>
-<p>Scoring in machine learning is also called prediction. Scoring is the process of generating values (or scores, predictions) using a trained machine learning model [5]. A scoring pipeline is a unique technology that deploys all feature engineering and the winning machine learning model in a highly optimized, low-latency, production-ready Java code that can be deployed anywhere [6]. In Driverless AI, it has this focus on feature engineering and not just building a model. Driverless AI builds a feature engineering pipeline to create better features for the model to find signals from in your data. Executing the scoring pipeline is the practice of scoring data. In Driverless AI, there are two types of scoring pipelines: MOJO scoring pipelines and a Python scoring pipeline [7].</p>
-<p>The <strong>MOJO Scoring Pipeline</strong> is a lightweight and low-latency scoring engine that can be executed in any Java Runtime or C++ Runtime to score data in real time [8]. It is meant for real time use, you are able to give it one row at a time and make a prediction. It is very embeddable, you can wrap a service around it or you can embed it inside your application. For the Java runtime, Java, PySparkling and Sparkling Water are provided [8]. For the C++ runtime, both Python and R wrappers are provided [9].</p>
-<p>The <strong>Python Scoring Pipeline</strong> is a heavy footprint that is all Python and uses the latest libraries of Driverless AI including the Python H2O4GPU module [12]. It is a scoring engine that is available for experiments and/or interpreted models to score data [7]. It is good for batch applications. It is used as a reference application for testing that the MOJOs are giving the right answers [12]. Usually the Python Scoring Pipeline will have new features of Driverless AI before the MOJO since the majority of the packages pulled into the feature engineering product part of Driverless AI are implemented in Python [12]. Then the MOJO will work to implement those same features into the MOJO for their real time scoring applications [12].</p>
-<p>The <strong>MLI Python Scoring Pipeline</strong> contains an exported model and Python 3.6 source code examples for productionizing models built using Driverless AI <strong>Machine Learning Interpretability (MLI) tool</strong> [19]. <strong>MLI</strong> is used to explain machine learning model results in a human-readable form through different techniques and methodologies [20]. This scoring engine is only available for interpreted models [19]. This scoring pipeline allows you to obtain reason codes for a given row of data [19].</p>
-<h2>How To Choose a Scoring Pipeline Deployment</h2>
+<p>The <strong>MOJO (Model Object Optimized)</strong> is small in size and very fast at real-time computing predictions and batch predictions. So, whether you are making predictions on edge or up in the cloud, the MOJO can run practically anywhere. When you build an experiment in Driverless AI, you have the option to download a MOJO scoring pipeline. The MOJO scoring pipeline is packaged with the winning feature engineering and machine learning models such as XGBoost, LightGBM, GLM, Decision Tree, TensorFlow, FTRL, etc. The Driverless AI MOJO can be executed in Java Runtime and C++ Runtime. To execute the Driverless AI MOJO scoring pipeline in either runtime, one must have a Driverless AI License Key.</p>
+<h2 is-upgraded>MOJO and Python Scoring Pipelines</h2>
+<p>Scoring in machine learning is also called prediction or prediction. Scoring is the process of generating values (or scores, predictions) using a trained machine learning model [5]. A scoring pipeline is a unique technology that deploys all feature engineering and the winning machine learning model in a highly optimized, low-latency, production-ready Java code that can be deployed anywhere [6]. Driverless AI has this focus on feature engineering and not just building a model. Driverless AI builds a feature engineering pipeline to create better features for the model to find signals from in your data. Executing the scoring pipeline is the practice of scoring data. In Driverless AI, there are two types of scoring pipelines: MOJO scoring pipelines and a Python scoring pipeline [7].</p>
+<p>The <strong>MOJO Scoring Pipeline</strong> is a lightweight and low-latency scoring engine that can be executed in any Java Runtime or C++ Runtime to score data in real-time [8]. You can give it one row at a time and make a prediction. It is very embeddable; you can wrap a service around it or embed it inside your application. For the Java runtime, Java, PySparkling, and Sparkling Water are provided [8]. For the C++ runtime, both Python and R wrappers are provided [9].</p>
+<p>The <strong>Python Scoring Pipeline</strong> is a heavy footprint that is all Python and uses the latest libraries of Driverless AI, including the Python H2O4GPU module [12]. It is a scoring engine available for experiments and/or interpreted models to score data [7]. It is suitable for batch applications. In addition, it is used as a reference application for testing that the MOJOs are giving the right answers [12]. Usually, the Python Scoring Pipeline will have new features of Driverless AI before the MOJO since most packages pulled into the feature engineering product part of Driverless AI are implemented in Python [12]. Then the MOJO will work to implement those same features into the MOJO for their real-time scoring applications [12].</p>
+<p>The <strong>MLI Python Scoring Pipeline</strong> contains an exported model and Python 3.6 source code examples for productionizing models built using Driverless AI <strong>Machine Learning Interpretability (MLI) tool</strong> [19]. <strong>MLI</strong> is used to explain machine learning model results in a human-readable form through different techniques and methodologies [20]. This scoring engine is only available for interpreted models and allows you to obtain reason codes for a given row of data [19].</p>
+<h2 is-upgraded>How To Choose a Scoring Pipeline Deployment</h2>
 <table>
-<tr></tr>
 <tr><td colspan="1" rowspan="1"><p>Questions for Organization</p>
 </td><td colspan="1" rowspan="1"><p>Embedded Java MOJO Scoring Pipeline Deployment</p>
 </td><td colspan="1" rowspan="1"><p>Embedded C++ MOJO Scoring Pipeline Deployment</p>
@@ -285,92 +286,95 @@
 </td><td colspan="1" rowspan="1"><p>Web Service Call</p>
 </td></tr>
 </table>
-<h2>Productionizing Scoring Pipelines</h2>
-<p>There are various options for deploying scoring pipelines into production. One can think of deployment as a method of executing the scoring pipeline. For the MOJO Scoring Pipeline in Java Runtime, there is the Driverless AI GUI Deploy feature and Driverless AI Deployment Templates, which are methods to execute the scoring pipeline. For the Python Scoring Pipeline, there is the scoring service, which is a method to execute the scoring pipeline [10]. For the MOJO Scoring Pipeline in C++ Runtime, one would leverage the existing Driverless AI Deployment Templates and create their own deployment templates.</p>
-<p>The <strong>MOJO Scoring Pipeline in Java Runtime</strong> can be deployed into production using the Driverless AI GUI Deploy button or Driverless AI Deployment Templates. The GUI Deploy button makes it easy to execute the MOJO scoring pipeline onto a REST server powered by the Java SpringBoot framework and/or an Amazon Lambda function [11]. Alternatively, the Driverless AI Deployment Templates provides various templates for executing the MOJO scoring pipeline in different production environments including on a remote REST server powered by the Java SpringBoot framework, Amazon Lambda function, Google Cloud Run and SQL database [11]. The Driverless AI Deployment Templates local REST scorer and Amazon Lambda scorer are used as the basis for the deployment from Driverless AI. The actual practice of starting the scorer from Driverless AI is handled by Driverless AI as opposed to from the Driverless AI Deployment Templates where the user starts the scorer and has more control. Once the MOJO scoring pipeline is deployed, send a HTTP request to use the MOJO to score data.</p>
-<p>The <strong>MOJO Scoring Pipeline in C++ Runtime</strong> can be deployed into production using one&#39;s own custom deployment templates. One could reference the existing local REST scorer Driverless AI Deployment Template to build their own local REST scorer template in Python or R. Similarly, one could also reference the Python scoring service to build their own version using the Python or R wrapper. Both of these approaches are typically implemented as a client and server architecture.</p>
-<p>The <strong>Python Scoring Pipeline</strong> and the <strong>MLI Python Scoring Pipeline</strong> can be deployed into production using the scoring service [10]. The scoring service is typically implemented as a client and server architecture. The scoring service hosts the Python scoring module as an HTTP or TCP service [10]. As a result, all the functions of the scoring module are exposed through remote procedure calls (RPC). This mechanism allows you to invoke scoring functions from languages other than Python on the same computer or from another computer on a shared network or on the internet. The scoring service can be started in two ways in HTTP mode and TCP mode [10]. In HTTP mode, the scoring service provides JSON-RPC 2.0 calls served by Tornado and in TCP mode, the scoring service provides high-performance RPC calls served by Apache Thrift using binary wire protocol [10]. The TCP mode allows you to use the scoring service from any language supported by Thrift including C, C++, C#, Cocoa, D, Dart, Delphi, Go, Haxe, Java, Scala, Node.js, Lua, perl, Python, Ruby and Smalltalk. The HTTP model is usually less performant compared to Thrift, but has the advantage of being usable from any HTTP client library in your language of choice without dependency on Thrift. Once the scoring service is started, your Python scoring pipeline is deployed, you can score data using Python directly, the HTTP web client or the TCP thrift client. Alternatively, if you deployed the MLI scoring pipeline, you can obtain reason codes for a given row of data.</p>
-<h2>Challenges of Productionizing Scoring Pipelines</h2>
-<p>At this stage, the organization has already built their model(s) that deliver high accuracy and does not overfit. However, they have not obtained any economic value from the scoring pipeline because it is not used in production making decisions. For many organizations deploying the scoring pipeline into production is challenging because there are many paths and questions that must be considered. So in effort to help the organization find their path to model deployment, we have &#34;The Four Pillars of ML Model Deployment&#34;. These pillars include points to think about as we move toward deploying our scoring pipeline into production.</p>
-<p><img alt="Four Pillers Model Deployment" src="img/cfae92d75a6843ef.jpg"></p>
+<h2 is-upgraded>Productionizing Scoring Pipelines</h2>
+<p>There are various options for deploying scoring pipelines into production. You can think of deployment as a method of executing the scoring pipeline. For the MOJO Scoring Pipeline in Java Runtime, the Driverless AI GUI Deploy feature and Driverless AI Deployment Templates are methods to execute the scoring pipeline. There is the scoring service for the Python Scoring Pipeline, which is a method to execute the scoring pipeline [10]. For the MOJO Scoring Pipeline in C++ Runtime, you could leverage the existing Driverless AI Deployment Templates and create your own deployment templates.</p>
+<p>The <strong>MOJO Scoring Pipeline in Java Runtime</strong> can be deployed into production using the Driverless AI GUI Deploy button or Driverless AI Deployment Templates. The GUI Deploy button makes it easy to execute the MOJO scoring pipeline onto a REST server powered by the Java SpringBoot framework and/or an Amazon Lambda function [11]. Alternatively, the Driverless AI Deployment Templates provides various templates for executing the MOJO scoring pipeline in different production environments including on a remote REST server powered by the Java SpringBoot framework, Amazon Lambda function, Google Cloud Run, and SQL database [11]. The Driverless AI Deployment Templates local REST scorer and Amazon Lambda scorer are used as the basis for the deployment from Driverless AI. The actual practice of starting the scorer from Driverless AI is handled by Driverless AI instead of the Driverless AI Deployment Templates where the user starts the scorer and has more control. Once the MOJO scoring pipeline is deployed, send an HTTP request to use the MOJO to score data.</p>
+<p>The <strong>MOJO Scoring Pipeline in C++ Runtime</strong> can be deployed into production using your own custom deployment templates. For example, you could reference the existing local REST scorer Driverless AI Deployment Template to build your own local REST scorer template in Python or R. Similarly, you could also reference the Python scoring service to build your own version using the Python or R wrapper. Both of these approaches are typically implemented as a client and server architecture.</p>
+<p>The <strong>Python Scoring Pipeline</strong> and the <strong>MLI Python Scoring Pipeline</strong> can be deployed into production using the scoring service [10]. The scoring service is typically implemented as a client and server architecture. The scoring service hosts the Python scoring module as an HTTP or TCP service [10]. As a result, all the functions of the scoring module are exposed through remote procedure calls (RPC). This mechanism allows you to invoke scoring functions from languages other than Python on the same computer or another computer on a shared network or the internet. The scoring service can be started in two ways: HTTP mode and TCP mode [10]. In HTTP mode, the scoring service provides JSON-RPC 2.0 calls served by Tornado, and in TCP mode, the scoring service provides high-performance RPC calls served by Apache Thrift using binary wire protocol [10]. The TCP mode allows you to use the scoring service from any language supported by Thrift, including C, C++, C#, Cocoa, D, Dart, Delphi, Go, Haxe, Java, Scala, Node.js, Lua, Perl, Python, Ruby, and Smalltalk. The HTTP model is usually less performant than Thrift but has the advantage of being usable from any HTTP client library in your language of choice without dependency on Thrift. Once the scoring service is started, your Python scoring pipeline is deployed, you can score data using Python directly, the HTTP web client, or the TCP thrift client. Alternatively, you can obtain reason codes for a given row of data if you deployed the MLI scoring pipeline.</p>
+<h2 is-upgraded>Challenges of Productionizing Scoring Pipelines</h2>
+<p>At this stage, the organization has already built their model(s) that deliver high accuracy and does not overfit. However, they have not obtained any economic value from the scoring pipeline because it is not used in production making decisions. For many organizations, deploying the scoring pipeline into production is challenging because there are many paths and questions that must be considered. So to help the organization find their path to model deployment, we have &#34;The Four Pillars of ML Model Deployment.&#34; These pillars include points to think about as we move toward deploying our scoring pipeline into production.</p>
+<p class="image-container"><img alt="Four Pillers Model Deployment" src="img/cfae92d75a6843ef.png"></p>
 <p><strong>Figure 8:</strong> The Four Pillars of ML Model Deployment</p>
-<h3>Data Sources and Their Format</h3>
+<h3 is-upgraded>Data Sources and Their Format</h3>
 <p>This section will discuss the data sources and their format for the situation when the model is deployed into production.</p>
-<p><img alt="Data Sources Diagram" src="img/2095e658b2ef443a.jpg"></p>
+<p class="image-container"><img alt="Data Sources Diagram" src="img/2095e658b2ef443a.png"></p>
 <p><strong>Figure 9:</strong> Data Sources Diagram</p>
-<p>In production after the model calculates the predictions, will the same data with the same structure (also known as schema) be available [13]? <strong>No because the model will predict one or more labels from the real world data and return the predicted data.</strong> Considering supervised learning, if we think back to the training data, the training data had data and one or more labels, which we used to train, validate and test the model to predict the label(s). When the model is deployed into production, now it deals with real world data in which it must predict one or more labels that are not included. As a result, the prediction will include only the predicted labels. For example, with monitoring the condition of Hydraulic Systems, we are interested in using a model to predict the label for the cooling condition. When the model model makes the prediction, it returns the cooling condition and not the original test data.</p>
-<h3>How to Measure Success</h3>
-<p><img alt="Measure Success Diagram" src="img/b4eeb42d7fbc7c99.jpg"></p>
+<p>In production, after the model calculates the predictions, will the same data with the same structure (also known as schema) be available [13]? <strong>No, because the model will predict one or more labels from the real-world data and return the predicted data.</strong> Considering supervised learning, if we think back to the training data, the training data had data and one or more labels, which we used to train, validate and test the model to predict the label(s). When the model is deployed into production, it deals with real-world data in which it must predict one or more labels that are not included. As a result, the prediction will consist of only the predicted labels. For example, with monitoring the condition of Hydraulic Systems, we are interested in using a model to predict the label for the cooling condition. When the model makes the prediction, it returns the cooling condition and not the original test data.</p>
+<h3 is-upgraded>How to Measure Success</h3>
+<p class="image-container"><img alt="Measure Success Diagram" src="img/b4eeb42d7fbc7c99.png"></p>
 <p><strong>Figure 10:</strong> Measure Success Diagram</p>
-<p>In order to measure model success, one must be able to translate to a business, do model testing, address model decay, do model staging, do model monitoring and monitor the resource usage. For the economic value the models bring to the business, one must be able to tell the non-technical consumer that the models were built in a formalized way using standard metrics to meet their expectations [13]. For model testing, it is critical to choose the appropriate models and data set splits based on the discussion with the business, the nature of the data set and other inputs [13]. Once the model is in production, a number of key performance indicators (KPIs) must be met. For instance, IoT and edge devices will most likely require models to be small in size and predictions to be computationally inexpensive due to limited memory and possibly battery life [13].</p>
-<p>For addressing model decay, it is about being aware that our model will become obsolete and need to be replaced. So, there are questions to help us determine the answers, such as how fast do models decay and how much is the cost to retrain and redeploy the new model into production [13]? For model staging, it involves testing a model in a production like environment before being set live. So, we must test model quality in the testing phase as well as possible. Some of the tests in the staging area include passing automated user tests, integration tests, manual tests and acceptance user tests [13]. Then from the results of the testing, we can determine whether we have built a model efficient enough to replace the current one in production.</p>
-<p>For model monitoring, we do it to ensure the model keeps performing well in production. When monitoring the model, we should ask ourselves common questions, such as if the data patterns and data values change that were used to train the model, how does that impact the results inferred by the model? If other KPIs fall outside the expected range, then keep a back-up older model to fall back to or keep some backup system. When monitoring the model&#39;s resource usage, keep in mind it is extremely variable and use case specific [13]. Also if the model consumption increases, the operations team should be triggered to increase the resource pool. As a result, this increase in the resource pool prevents a performance drop due to the lack of resources.</p>
-<h3>Bringing The Model to Production</h3>
-<p><img alt="Model to Production" src="img/fb0590b00158f672.jpg"></p>
+<p>To measure model success, we must translate to a business, do model testing, address model decay, do model staging, model monitoring, and monitor the resource usage. For the economic value the models bring to the business, we must be able to tell the non-technical consumer that the models were built in a formalized way using standard metrics to meet their expectations [13]. For model testing, it is critical to choose the appropriate models and data set splits based on the discussion with the business, the nature of the data set, and other inputs [13]. Once the model is in production, several key performance indicators (KPIs) must be met. For instance, IoT and edge devices will most likely require models to be small in size and predictions to be computationally inexpensive due to limited memory and possibly battery life [13].</p>
+<p>For addressing model decay, it is about being aware that our model will become obsolete and need to be replaced. So, there are questions to help us determine the answers, such as how fast do models decay and how much is the cost to retrain and redeploy the new model into production [13]? For model staging, it involves testing a model in a production-like environment before being set live. So, we must test model quality in the testing phase as well as possible. Some of the tests in the staging area include passing automated user tests, integration tests, manual tests, and acceptance user tests [13]. Then from the results of the testing, we can determine whether we have built a model efficient enough to replace the current one in production.</p>
+<p>For model monitoring, we do it to ensure the model keeps performing well in production. When monitoring the model, we should ask ourselves common questions, such as if the data patterns and data values change that were used to train the model, how does that impact the results inferred by the model? If other KPIs fall outside the expected range, then keep a backup older model to fall back to or keep some backup system. When monitoring the model&#39;s resource usage, it is highly variable and use-case specific [13]. Also, if the model consumption increases, the operations team should act to increase the resource pool. As a result, this increase in the resource pool prevents a performance drop due to the lack of resources.</p>
+<h3 is-upgraded>Bringing The Model to Production</h3>
+<p class="image-container"><img alt="Model to Production" src="img/fb0590b00158f672.png"></p>
 <p><strong>Figure 11:</strong> Model to Production Diagram</p>
-<p>To bring the model into production, we must consider a multi-tenant environment, high availability, versioning and integration of the model. With a multi-tenant environment, enterprises serve multiple customers on a single software platform and infrastructure. While some customers may benefit from using a common scoring pipeline trained on a joined data set, others will obtain inaccurate results [13]. The scoring pipeline service needs to be available in a specified time. So, considering high availability of the scoring service with low latency is important. With high availability, there are a certain number of &#34;9&#39;s&#34; of availability from our scoring service deployment. For instance, five nines or 99.999% means 5 minutes 15 seconds or less of downtime in the year while four nines or 99.99% means 52 minutes 36 seconds of downtime per year [14]. If we look at the four nines example, you can do your service level agreement (SLA) for 8.65 seconds in a day even during peak traffic hours [14].<br>Next we must look at model versioning, which is keeping old models archived and versioned. This process involves documenting underlying logic at any moment in the past, storing the plain model along with the metadata for the parameters and structure of the model with production metrics and rolling back to the last correct version of the model if there was a flaw [13]. Finally, we must consider integration of the scoring pipeline, which involves being able to integrate the scoring pipeline into different production environments. One should do proper planning of the integration to prevent the productionization of the scoring pipeline from taking a long time [13]. One must make sure their scoring pipeline is agile to carry out a number of deployment options. The scoring pipeline must be independent of a particular server-like architecture meaning it should be self-contained, so that it is able to be used in a variety of production environments [13]. The scoring pipeline should have the flexibility of being deployed in the cloud or being embedded on premise.</p>
-<h3>External Limitations and Restrictions</h3>
-<p><img alt="External Limits Restrictions Diagram" src="img/f701c0c547a9a2d7.jpg"></p>
+<p>To bring the model into production, we must consider a multi-tenant environment, high availability, versioning, and integration of the model. With a multi-tenant environment, enterprises serve multiple customers on a single software platform and infrastructure. While some customers may benefit from using a common scoring pipeline trained on a joined data set, others will obtain inaccurate results [13]. In addition, the scoring pipeline service needs to be available at a specified time. So, considering the high availability of the scoring service with low latency is important. With high availability, there are a certain number of &#34;9&#39;s&#34; of availability from our scoring service deployment. For instance, five &#34;nines&#34; or &#34;99.999%&#34; means 5 minutes 15 seconds or less of downtime in the year, while four nines or 99.99% means 52 minutes 36 seconds of downtime per year [14]. If we look at the four nines example, you can do your service level agreement (SLA) for 8.65 seconds in a day, even during peak traffic hours [14].</p>
+<p>Next, we must look at model versioning, which is keeping old models archived and versioned. This process involves documenting underlying logic at any moment in the past, storing the plain model along with the metadata for the parameters and structure of the model with production metrics, and rolling back to the last correct version of the model if there was a flaw [13]. Finally, we must consider integrating the scoring pipeline, which involves integrating the scoring pipeline into different production environments. We should do proper planning of the integration to prevent the productionization of the scoring pipeline from taking a long time [13]. We must make sure their scoring pipeline is agile to carry out a number of deployment options. The scoring pipeline must be independent of a particular server-like architecture, meaning it should be self-contained to be used in a variety of production environments [13]. The scoring pipeline should have the flexibility of being deployed in the cloud or being embedded on-premise.</p>
+<h3 is-upgraded>External Limitations and Restrictions</h3>
+<p class="image-container"><img alt="External Limits Restrictions Diagram" src="img/f701c0c547a9a2d7.png"></p>
 <p><strong>Figure 12:</strong> External Limits Restrictions Diagram</p>
-<p>For external limitations and restrictions, we will look at how privileged access, hermetic environment and legal limitation impact our scoring pipeline deployment. An external limitation you may discover when running or setting up your scoring pipeline runtime is that privileged access is needed [13]. Potential problems that can occur include finding a solution takes too long or it is unsolvable. In the case we access sensitive data, it may require being in a closed hermetic environment without internet connection [13]. So, model deployment requiring an internet connection may not be available and deadlines may be missed trying to resolve the issue. Another problem that can come up is legal limitation. So, throughout the inception discussion, legal departments should be involved to mitigate risks of using ML methods that are not available due to regulatory reasons [13].</p>
-<h2>Making Decisions Based on a Good Model</h2>
-<p>The purpose of the model scorer&#39;s loss function is to calculate how good or bad the predicted probabilities are [15]. For bad predictions, the loss function returns high values [15]. For good predictions, the loss function returns low values [15]. In the tutorial, when you build the experiment using the Hydraulic System data with the cooling condition label, Driverless AI will most likely choose the log loss function for our scorer. The purpose of <strong>log loss</strong> is to measure the performance of a binomial or multinomial classification model [16] [17]. Log loss in H2O evaluates how close a model&#39;s predicted values are to the actual target value [17]. The goal of our model is to minimize the log loss value, so our predicted probability stays as close to the actual label as possible. With H2O algorithms, they don&#39;t just predict a category, they give a probability for the answer being each category [18]. In Driverless AI, after the experiment has launched, it displays the log loss value:</p>
-<p><img alt="Experiment Dashboard" src="img/534d004e1624af90.jpg"></p>
+<p>For external limitations and restrictions, we will look at how privileged access, hermetic environment and legal limitation impact our scoring pipeline deployment. An external limitation you may discover when running or setting up your scoring pipeline runtime is that privileged access is needed [13]. Potential problems to consider are finding a solution that takes too long, or it is unsolvable. In addition, if we access sensitive data, it may require being in a closed hermetic environment without an internet connection [13]. So, model deployment requiring an internet connection may not be available, and deadlines may be missed trying to resolve the issue. Another problem that can come up is a legal limitation. So, throughout the inception discussion, legal departments should be involved to mitigate risks of using ML methods that are not available due to regulatory reasons [13].</p>
+<h2 is-upgraded>Making Decisions Based on a Good Model</h2>
+<p>The purpose of the model scorer&#39;s loss function is to calculate how good or bad the predicted probabilities are [15]. For bad predictions, the loss function returns high values [15]. For good predictions, the loss function returns low values [15]. In the self-paced course, when you build the experiment using the Hydraulic System data with the cooling condition label, Driverless AI will most likely choose the log loss function for our scorer. The purpose of <strong>log loss</strong> is to measure the performance of a binomial or multinomial classification model [16] [17]. Log loss in H2O evaluates how close a model&#39;s predicted values are to the actual target value [17]. The goal of our model is to minimize the log loss value so our predicted probability stays as close to the actual label as possible. The H2O algorithms don&#39;t just predict a category; they give a probability for each category&#39;s answer [18]. In Driverless AI, after the experiment has launched, it displays the log loss value:</p>
+<p class="image-container"><img alt="Experiment Dashboard" src="img/395367bde5836c7a.png"></p>
 <p><strong>Figure 13:</strong> Log Loss for Hydraulic System Cooling Condition</p>
-<p>From the Driverless AI experiment dashboard, we can see log loss associated with validation and test scores. The <strong>validation score&#39;s log loss</strong> value for the final pipeline is <strong>0.0058</strong>, which means our LightGBM classification model is very close to correctly assigning probabilities for each category with the highest probability being the actual Hydraulic cooling condition label. The <strong>log loss value for the test score</strong> is slightly lower at <strong>0.0022</strong>, which tells us that our model performed better on the test data than the validation data for classifying the Hydraulic cooling condition. This is a great indicator that our model would do well with real world Hydraulic System data. Hydraulic cooling condition is just one of the many parameters to check in Hydraulic Predictive Maintenance.</p>
-<p>If we look at the Hydraulic System data and the labels for Hydraulic System Predictive Maintenance more closely, we can use our classification model to predict cooler condition, valve condition, internal pump leakage, hydraulic accumulator bar and the stable flag. Our predictions can help us decide earlier when to do maintenance on the hydraulic cooler, valve, pump or accumulator. In the tutorial, you will be classifying the probability that the hydraulic cooler condition is 3, 20 or 100 using the Log Loss scorer. If our scorer classifies the Hydraulic cooling condition to be 3, then that means our cooler is close to total failure. If the scorer classification is 20, then our Hydraulic cooler is operating at reduced efficiency. If the scorer classification is 100, then our Hydraulic cooler is operating at full efficiency. For example, let&#39;s say our actual Hydraulic Cooling Condition is 100, meaning our Hydraulic Cooler operates at full efficiency. Our scorer predicts the probability of our Hydraulic Cooling Condition being 3 is 0.0013, 20 is 0.0004 and 100 is 0.9982. Our <strong>Log Loss function being low for the test score</strong> at <strong>0.0022</strong> tells us that our scorer is nearly correct in assigning the probability of 99.82% for the Hydraulic Cooler to be 100.  Thus, our scorer&#39;s classification results can reliably help us anticipate when we will need to do maintenance on the Hydraulic cooler.</p>
-<h2>Deeper Dive and Resources</h2>
-<p>[1] <a href="https://www.sas.com/en_gb/insights/articles/analytics/machine-learning-algorithms.html" target="_blank">A guide to machine learning algorithms and their applications</a></p>
-<p>[2] <a href="https://www.quora.com/What-is-the-difference-between-machine-learning-model-and-ML-algorithm" target="_blank">What is the difference between machine learning model and ML algorithm?</a></p>
-<p>[3] <a href="https://www.h2o.ai/solutions/usecases/" target="_blank">H2O Use Cases: Using AI to Solve Today&#39;s Challenges</a></p>
-<p>[4] <a href="http://docs.h2o.ai/h2o/latest-stable/h2o-docs/productionizing.html" target="_blank">Productionizing H2O</a></p>
-<p>[5] <a href="https://docs.microsoft.com/en-us/azure/machine-learning/studio-module-reference/machine-learning-score" target="_blank">Machine Learning - Score</a></p>
-<p>[6] <a href="http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/key-features.html" target="_blank">Driverless AI: Key Features</a></p>
-<p>[7] <a href="http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/python-mojo-pipelines.html" target="_blank">Driverless AI: Scoring Pipelines Overview</a></p>
-<p>[8] <a href="http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/scoring-mojo-scoring-pipeline.html" target="_blank">Driverless AI MOJO Scoring Pipeline - Java Runtime</a></p>
-<p>[9] <a href="http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/scoring-pipeline-cpp.html" target="_blank">Driverless AI MOJO Scoring Pipeline - C++ Runtime with Python and R Wrappers</a></p>
-<p>[10] <a href="http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/scoring-standalone-python.html" target="_blank">Driverless AI Standalone Python Scoring Pipeline</a></p>
-<p>[11] <a href="https://github.com/h2oai/dai-deployment-templates" target="_blank">H2Oai GitHub: Driverless AI Deployment Templates</a></p>
-<p>[12] <a href="https://www.youtube.com/watch?v=zBXXsA1-LOQ" target="_blank">H2Oai YouTube: Lessons Learned from Driverless AI going to Production</a></p>
-<p>[13] <a href="https://www.h2o.ai/blog/deploying-models-to-maximise-the-impact-of-machine-learning-part-1/" target="_blank">Deploying Models to Maximize the Impact of Machine Learning</a></p>
-<p>[14] <a href="https://blog.hike.in/4-9s-b1fc497f3de2" target="_blank">Four Nines of Availability</a></p>
-<p>[15] <a href="https://towardsdatascience.com/understanding-binary-cross-entropy-log-loss-a-visual-explanation-a3ac6025181a" target="_blank">Understanding binary cross-entropy / log loss: a visual explanation</a></p>
-<p>[16] <a href="http://wiki.fast.ai/index.php/Log_Loss" target="_blank">Log Loss</a></p>
-<p>[17] <a href="https://docs.h2o.ai/h2o/latest-stable/h2o-docs/performance-and-prediction.html#logloss" target="_blank">H2O-3: Performance and Prediction: Classification Log Loss</a></p>
-<p>[18] <a href="https://learning.oreilly.com/library/view/practical-machine-learning/9781491964590/" target="_blank">Chapter 4. Common Model Parameters: Practical Machine Learning with H2O by Cook</a></p>
-<p>[19] <a href="http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/scoring-mli-standalone-python.html" target="_blank">Driverless AI MLI Standalone Python Scoring Package</a></p>
-<p>[20] <a href="http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/interpreting.html" target="_blank">MLI Overview</a></p>
+<p>We can see the log loss associated with validation and test scores from the Driverless AI experiment dashboard. The <strong>validation score&#39;s log loss</strong> value for the final pipeline is <strong>0.0091</strong>, which means our LightGBM classification model is very close to correctly assigning probabilities for each category, with the highest probability being the actual Hydraulic cooling condition label. The <strong>log loss value for the test score</strong> is lower at <strong>0.0025</strong>, which tells us that our model performed better on the test data than the validation data for classifying the Hydraulic cooling condition. This result is a great indicator that our model would do well with real-world Hydraulic System data. Hydraulic cooling condition is just one of the many parameters to check in Hydraulic Predictive Maintenance.</p>
+<p>By looking at the Hydraulic System data and the Hydraulic System Predictive Maintenance labels, we see that we can use our classification model to predict the cooler condition, valve condition, internal pump leakage, hydraulic accumulator bar, and the stable flag. Our predictions can help us decide earlier when to do maintenance on the hydraulic cooler, valve, pump, or accumulator. In the self-paced course, you will be classifying the probability that the hydraulic cooler condition is 3, 20, or 100 using the Log Loss scorer. If the classification is 3, it means the cooler is close to total failure. If it is 20, it means the Hydraulic cooler is operating at reduced efficiency. Lastly, if it is 100, it means the Hydraulic cooler is operating at full efficiency. For example, consider that the actual Hydraulic Cooling Condition is 100, meaning our Hydraulic Cooler operates at full efficiency. Our model predicts the probability of our Hydraulic Cooling Condition being 3 is 0.0013, 20 is 0.0004, and 100 is 0.9982. Our <strong>Log Loss function being low for the test score</strong> at <strong>0.0025</strong> tells us that our scorer is nearly correct in assigning the probability of 99.82% for the Hydraulic Cooler to be 100.  Thus, our scorer&#39;s classification results can reliably help us anticipate when we will need to do maintenance on the Hydraulic cooler.</p>
+<h2 is-upgraded>Deep Dive and Resources</h2>
+<ul>
+<li>[1] <a href="https://www.sas.com/en_gb/insights/articles/analytics/machine-learning-algorithms.html" target="_blank">A guide to machine learning algorithms and their applications</a></li>
+<li>[2] <a href="https://www.quora.com/What-is-the-difference-between-machine-learning-model-and-ML-algorithm" target="_blank">What is the difference between machine learning model and ML algorithm?</a></li>
+<li>[3] <a href="https://www.h2o.ai/solutions/usecases/" target="_blank">H2O Use Cases: Using AI to Solve Today&#39;s Challenges</a></li>
+<li>[4] <a href="http://docs.h2o.ai/h2o/latest-stable/h2o-docs/productionizing.html" target="_blank">Productionizing H2O</a></li>
+<li>[5] <a href="https://docs.microsoft.com/en-us/azure/machine-learning/studio-module-reference/machine-learning-score" target="_blank">Machine Learning - Score</a></li>
+<li>[6] <a href="http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/key-features.html" target="_blank">Driverless AI: Key Features</a></li>
+<li>[7] <a href="http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/python-mojo-pipelines.html" target="_blank">Driverless AI: Scoring Pipelines Overview</a></li>
+<li>[8] <a href="http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/scoring-mojo-scoring-pipeline.html" target="_blank">Driverless AI MOJO Scoring Pipeline - Java Runtime</a></li>
+<li>[9] <a href="http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/scoring-pipeline-cpp.html" target="_blank">Driverless AI MOJO Scoring Pipeline - C++ Runtime with Python and R Wrappers</a></li>
+<li>[10] <a href="http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/scoring-standalone-python.html" target="_blank">Driverless AI Standalone Python Scoring Pipeline</a></li>
+<li>[11] <a href="https://github.com/h2oai/dai-deployment-templates" target="_blank">H2Oai GitHub: Driverless AI Deployment Templates</a></li>
+<li>[12] <a href="https://www.youtube.com/watch?v=zBXXsA1-LOQ" target="_blank">H2Oai YouTube: Lessons Learned from Driverless AI going to Production</a></li>
+<li>[13] <a href="https://www.h2o.ai/blog/deploying-models-to-maximise-the-impact-of-machine-learning-part-1/" target="_blank">Deploying Models to Maximize the Impact of Machine Learning</a></li>
+<li>[14] <a href="https://blog.hike.in/4-9s-b1fc497f3de2" target="_blank">Four Nines of Availability</a></li>
+<li>[15] <a href="https://towardsdatascience.com/understanding-binary-cross-entropy-log-loss-a-visual-explanation-a3ac6025181a" target="_blank">Understanding binary cross-entropy / log loss: a visual explanation</a></li>
+<li>[16] <a href="http://wiki.fast.ai/index.php/Log_Loss" target="_blank">Log Loss</a></li>
+<li>[17] <a href="https://docs.h2o.ai/h2o/latest-stable/h2o-docs/performance-and-prediction.html#logloss" target="_blank">H2O-3: Performance and Prediction: Classification Log Loss</a></li>
+<li>[18] <a href="https://learning.oreilly.com/library/view/practical-machine-learning/9781491964590/" target="_blank">Chapter 4. Common Model Parameters: Practical Machine Learning with H2O by Cook</a></li>
+<li>[19] <a href="http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/scoring-mli-standalone-python.html" target="_blank">Driverless AI MLI Standalone Python Scoring Package</a></li>
+<li>[20] <a href="http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/interpreting.html" target="_blank">MLI Overview</a></li>
+</ul>
 
 
       </google-codelab-step>
     
       <google-codelab-step label="Task 3: Batch Scoring via Score Another Dataset" duration="0">
-        <p>Let&#39;s go through an example of using Driverless AI&#39;s Score on Another Dataset in which we will do batch scoring on the data. If you are in production, we don&#39;t recommend using Driverless AI&#39;s Score on Another Dataset, instead use a Driverless AI Deployment Template to do batch scoring.</p>
-<p>1. Click <strong>Score On Another Dataset</strong>.</p>
-<p><img alt="Score On Another Dataset" src="img/3152ccd8f58c8718.jpg"></p>
-<p><strong>Figure 14:</strong> Score On Another Dataset Button</p>
+        <p>Let&#39;s go through an example of using Driverless AI&#39;s <strong>Predict</strong> in which we will do batch scoring on the data. If you are in production, we don&#39;t recommend using Driverless AI&#39;s **Predict **feature; instead, use a Driverless AI Deployment Template to do batch scoring.</p>
+<p>1. Click <strong>Model Actions</strong> and then select <strong>Predict</strong>.</p>
+<p class="image-container"><img alt="Score On Another Dataset" src="img/8015d450b715c21b.png"></p>
+<p><strong>Figure 14:</strong> Predict Feature</p>
 <p>2. Select the dataset for scoring to be <strong>hydraulicTestData_coolCondY</strong>. Then select the test set column to include in the predictions frame to be <strong>cool_cond_y</strong>, then click Done.</p>
-<p><img alt="Select Test Set Col for Predictions" src="img/cbd4e7ce207e7a70.jpg"></p>
+<p class="image-container"><img alt="Select Test Set Col for Predictions" src="img/911a102b91613cce.png"></p>
 <p><strong>Figure 15:</strong> Select Test Set Column <strong>cool_cond_y</strong> for Predictions</p>
 <p>On the backend, the Python Scoring Pipeline is used to score the data.</p>
 <p>Driverless AI will show pending jobs while your Python Scoring Pipeline is making predictions:</p>
-<p><img alt="dai-scoring-pending-jobs" src="img/721eff74455765ee.jpg"></p>
-<p><strong>Figure 16:</strong> Score on Another Dataset Pending Job</p>
+<p class="image-container"><img alt="dai-scoring-pending-jobs" src="img/63f832e6d0320eb.png"></p>
+<p><strong>Figure 16:</strong> Predict Pending Job</p>
 <p>Once the pending job is completed, Driverless AI will show a check mark.</p>
-<p>3. Hover over the check mark, it will change to <strong>open</strong>.</p>
-<p>4. Click on the <strong>open</strong> to open the window to download predictions.</p>
-<p><img alt="open-download-predictions" src="img/bf50e035838a7368.jpg"></p>
+<p>3. Hover over the check mark; it will change to <strong>open</strong>.</p>
+<p>4. Click on <strong>open</strong> to go to the window where you can download the predictions.</p>
+<p class="image-container"><img alt="open-download-predictions" src="img/e7c7ab016e569222.png"></p>
 <p><strong>Figure 17:</strong> Open Download Predictions Page</p>
 <p>5. Once the scoring has finished, the predictions are ready, so click <strong>download predictions</strong>.</p>
-<p><img alt="Download Predictions" src="img/f8693419ab36609e.jpg"></p>
+<p class="image-container"><img alt="Download Predictions" src="img/db137e44331e6f24.png"></p>
 <p><strong>Figure 18:</strong> Download Predictions Button</p>
-<p>6. Import the predictions csv into your favorite spreadsheet. In this tutorial, we will use Google sheets. Click File, Import, Upload and Select a file from your device.</p>
+<p>6. Import the predictions csv into your favorite spreadsheet. In this self-paced course, we will use Google sheets. Click File, Import, Upload and Select a file from your device.</p>
 <p>7. To make scoring type clear, rename the sheet to <strong>Batch Scoring for Hydraulic Cooling Condition</strong>.</p>
-<p><img alt="Score on Hydraulic Test Set" src="img/2ce819a620751d17.jpg"></p>
+<p class="image-container"><img alt="Score on Hydraulic Test Set" src="img/7e62709a195fe2da.png"></p>
 <p><strong>Figure 19:</strong> Google Sheet with Classifications for Hydraulic Cooling Condition</p>
-<p>In the sheet above, we have the batch scores for Hydraulic Cooling Condition. In the first row, we see the actual label followed by the predicted labels. The actual Hydraulic Cooling Condition label is 3. <strong>3</strong> tells us the <strong>Hydraulic Cooler is operating at close to total failure</strong>. Our Python Scoring Pipeline predicts the probability of our Hydraulic Cooling Condition being <strong>3</strong> is <strong>0.7007</strong>, <strong>20</strong> is <strong>0.0161</strong> and <strong>100</strong> is <strong>0.2832</strong>. Therefore, our prediction results tell us the classification model believes there is a <strong>70.07%</strong> chance that the <strong>Hydraulic Cooling Condition is 3</strong>, which means we need to look at doing maintenance right now. Hopefully as long as we have been doing predictive maintenance up to this point, we already ordered the parts that are needed to replace the hydraulic cooler and we can make the replacement today.</p>
-<p>Now that you have practiced executing the Python Scoring Pipeline to score data, let&#39;s look at various options for deploying scoring pipelines into production and challenges.</p>
-<h2>Deeper Dive and Resources</h2>
+<p>In the sheet above, we have the batch scores for Hydraulic Cooling Condition. In the first row, we see the actual label followed by the predicted labels. The actual Hydraulic Cooling Condition label is 3. <strong>3</strong> tells us the <strong>Hydraulic Cooler is operating at close to total failure</strong>. Our Python Scoring Pipeline predicts the probability of our Hydraulic Cooling Condition being <strong>3</strong> is <strong>0.65774</strong>, <strong>20</strong> is <strong>0.00298</strong> and <strong>100</strong> is <strong>0.33928</strong>. Therefore, our prediction results tell us the classification model believes there is a <strong>65.774%</strong> chance that the <strong>Hydraulic Cooling Condition is 3</strong>, which means we need to look at doing maintenance right now. Hopefully, as long as we have been doing predictive maintenance up to this point, we already ordered the parts needed to replace the hydraulic cooler, and we can make the replacement today.</p>
+<p>Now that you have practiced executing the Python Scoring Pipeline to score data let&#39;s look at various options for deploying scoring pipelines into production and challenges.</p>
+<h2 is-upgraded>Deep Dive and Resources</h2>
 <ul>
 <li><a href="http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/scoring-standalone-python.html" target="_blank">Driverless AI Standalone Python Scoring Pipeline</a></li>
 <li><a href="http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/score-on-another-dataset.html" target="_blank">Driverless AI: Score on Another Dataset</a></li>
@@ -379,102 +383,53 @@
 
       </google-codelab-step>
     
-      <google-codelab-step label="Task 4: Interactive Scoring(REST and AWS Lambda) via Deployment Templates" duration="0">
-        <p>Now you have some background in scoring pipeline deployment. Let&#39;s deploy our MOJO Scoring Pipeline to the REST server and then to the AWS Lambda.</p>
-<h2>Deploy MOJO to REST Server</h2>
+      <google-codelab-step label="Task 4: Interactive Scoring (REST) via Deployment Templates" duration="0">
+        <p>Now that you have some background in scoring pipeline deployment, let&#39;s deploy our MOJO Scoring Pipeline to the REST server.</p>
+<h2 is-upgraded>Deploy MOJO to REST Server</h2>
 <p>1. Click <strong>Deploy (Local &amp; Cloud)</strong></p>
-<p><img alt="Deploy Local Cloud Button" src="img/37b9863ab902ca4c.jpg"></p>
+<p class="image-container"><img alt="Deploy Local Cloud Button" src="img/519f669efcaf6ffd.png"></p>
 <p><strong>Figure 20:</strong> Deploy (Local &amp; Cloud) button</p>
 <p>2. Select the <strong>REST server</strong>.</p>
-<p><img alt="Select Deploy Option REST Server" src="img/b8526d29863fd456.jpg"></p>
+<p class="image-container"><img alt="Select Deploy Option REST Server" src="img/80a4d0ff21e9201b.png"></p>
 <p><strong>Figure 21:</strong> Select Deploy Option</p>
 <p>3. Choose an open port number, so change the port number to <strong>9090</strong>.</p>
 <p>4. Click <strong>Deploy</strong>.</p>
-<p><img alt="Set Rest Server Port" src="img/1cb7ec20b97619a1.jpg"></p>
+<p class="image-container"><img alt="Set Rest Server Port" src="img/b53eaab08d8712fc.png"></p>
 <p><strong>Figure 22:</strong> Set Rest Server Port &amp; Deploy</p>
 <p><strong>Note</strong>: If you need to check which ports are open, you can ssh into your Driverless AI instance, then use netstat</p>
 <p>5. Your model will be deploying to the REST server.</p>
-<p><img alt="Deploying Rest Server" src="img/3b57224b90bba807.jpg"></p>
-<p><strong>Figure 23:</strong> Deploying  REST Server</p>
+<p class="image-container"><img alt="Deploying Rest Server" src="img/7d9a3a9153ad8b68.png"></p>
+<p><strong>Figure 23:</strong> Deploying REST Server</p>
 <p><strong>Note</strong>: Behind the scenes, Driverless AI uses the deployment template <strong>local-rest-scorer</strong> to execute the MOJO Scoring Pipeline on the REST server. The local-rest-scorer is powered by <strong>Java Spring Boot</strong> framework.</p>
 <p>Your model has been deployed to the REST server! Driverless AI provides us with a curl command to score data via a JSON request.</p>
 <p>6. Copy the curl command.</p>
-<p><img alt="Deployed Model to Rest Server" src="img/71b8d23947d5d56a.jpg"></p>
+<p class="image-container"><img alt="Deployed Model to Rest Server" src="img/71b8d23947d5d56a.png"></p>
 <p><strong>Figure 24:</strong> Deployed Model to Rest Server</p>
 <p>7. Paste the curl command into your text editor and make some modifications.</p>
-<p>Since the MOJO Scoring Pipeline has been deployed to a REST server on the Driverless AI instance running in the cloud, copy your instance&#39;s public domain name. For the machine used in this demo, the domain name was changed from http://localhost to http://ec2-54-71-146-178.us-west-2.compute.amazonaws.com/ as shown below:</p>
-<pre><code># Request REST Server MOJO do interactive scoring for hydraulic cooling condition
+<p>Since the MOJO Scoring Pipeline has been deployed to a REST server on the Driverless AI instance running in the cloud. Copy your instance&#39;s public domain name. For the machine used in this demo, the domain name was changed from http://localhost to http://ec2-52-13-123-150.us-west-2.compute.amazonaws.com as shown below:</p>
+<pre><code language="language-bash" class="language-bash"># Request REST Server MOJO do interactive scoring for hydraulic cooling condition
 curl \
-   -X POST \
-   -d &#39;{&#34;fields&#34;: [&#34;psa_bar&#34;, &#34;psb_bar&#34;, &#34;psc_bar&#34;, &#34;psd_bar&#34;, &#34;pse_bar&#34;, &#34;psf_bar&#34;, &#34;fsa_vol_flow&#34;, &#34;fsb_vol_flow&#34;, &#34;tsa_temp&#34;, &#34;tsb_temp&#34;, &#34;tsc_temp&#34;, &#34;tsd_temp&#34;, &#34;pump_eff&#34;, &#34;vs_vib&#34;, &#34;cool_pwr_pct&#34;, &#34;eff_fact_pct&#34;], &#34;rows&#34;: [[&#34;155.56646728515625&#34;, &#34;104.93318176269531&#34;, &#34;0.862698495388031&#34;, &#34;0.00021100000594742596&#34;, &#34;8.37287425994873&#34;, &#34;8.321526527404785&#34;, &#34;2.0819649696350098&#34;, &#34;8.871089935302734&#34;, &#34;35.355934143066406&#34;, &#34;40.99454879760742&#34;, &#34;38.31908416748047&#34;, &#34;30.47344970703125&#34;, &#34;2366.707275390625&#34;, &#34;0.5243666768074036&#34;, &#34;1.3755667209625244&#34;, &#34;19.58085060119629&#34;]]}&#39; \
-   http://ec2-54-71-146-178.us-west-2.compute.amazonaws.com:9090/model/score \
-   -H &#34;Content-Type: application/json&#34;
+	-X POST \
+	-d &#39;{&#34;fields&#34;: [&#34;psa_bar&#34;, &#34;psb_bar&#34;, &#34;psc_bar&#34;, &#34;psd_bar&#34;, &#34;pse_bar&#34;, &#34;psf_bar&#34;, &#34;fsa_vol_flow&#34;, &#34;fsb_vol_flow&#34;, &#34;tsa_temp&#34;, &#34;tsb_temp&#34;, &#34;tsc_temp&#34;, &#34;tsd_temp&#34;, &#34;pump_eff&#34;, &#34;vs_vib&#34;, &#34;cool_pwr_pct&#34;, &#34;eff_fact_pct&#34;], &#34;rows&#34;: [[&#34;155.63356018066406&#34;, &#34;104.73638916015625&#34;, &#34;1.0683131217956543&#34;, &#34;9.200000204145908e-05&#34;, &#34;8.365800857543945&#34;, &#34;8.322537422180176&#34;, &#34;2.063558340072632&#34;, &#34;8.871089935302734&#34;, &#34;35.319183349609375&#34;, &#34;40.97876739501953&#34;, &#34;38.31816482543945&#34;, &#34;30.479415893554688&#34;, &#34;2365.8671875&#34;, &#34;0.531166672706604&#34;, &#34;1.2421833276748657&#34;, &#34;18.2766170501709&#34;]]}&#39; \
+	http://ec2-52-13-123-150.us-west-2.compute.amazonaws.com:9090/model/score \
+	-H &#34;Content-Type: application/json&#34;
 </code></pre>
 <p>8. Copy and paste the modified curl command above to your command line prompt, then run it.</p>
-<p><img alt="Score Data Result via Rest Server" src="img/c776a0e8ed8f8da8.jpg"></p>
+<p class="image-container"><img alt="Score Data Result via Rest Server" src="img/88c8110a5f2705a0.png"></p>
 <p><strong>Figure 25:</strong> Result of Interactive Scoring for Hydraulic Cool Condition via Rest Server</p>
-<p>You should receive classification scores for cool_cond_y.3, cool_cond_y.20, cool_cond_y.100. After providing one row of Hydraulic Sensor Test data in the curl command, the Driverless AI MOJO Scoring Pipeline on the REST server computes a classification for <strong>cool_cond_y.3 = 0.2838</strong>, <strong>cool_cond_y.20 = 0.1479</strong>, <strong>cool_cond_y.100 = 0.5683</strong>.</p>
+<p>You should receive classification scores for cool_cond_y.3, cool_cond_y.20, cool_cond_y.100. After providing one row of Hydraulic Sensor Test data in the curl command, the Driverless AI MOJO Scoring Pipeline on the REST server computes a classification for <strong>cool_cond_y.3 = 0.3135</strong>, <strong>cool_cond_y.20 = 0.0225</strong>, <strong>cool_cond_y.100 = 0.6641</strong>.</p>
 <p>9. Exit the REST server deployment.</p>
 <p>10. Click the Close button. The experiment page appears.</p>
-<h2>Deploy MOJO to Amazon Lambda</h2>
-<p>1. Click <strong>Deploy (Local &amp; Cloud)</strong>.</p>
-<p>2. Select <strong>Amazon Lambda</strong>.</p>
-<p>3. Rename Deployment Name to be <strong>model-hydraulic-lambda</strong>.</p>
-<p>NOTE: S3 bucket names can only be lowercase and can&#39;t have underscores. <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-s3-bucket-naming-requirements.html" target="_blank">See the naming requirements for Amazon S3 buckets</a>.</p>
-<p>4. Add your <strong>IAM Access Key ID</strong>, <strong>AWS Secret Access Key</strong> and <strong>Region</strong>.</p>
-<p>5. Click <strong>Deploy</strong>.</p>
-<p><img alt="Set AWS Lambda Model Deployment Fields" src="img/ce3991d92faf960a.jpg"></p>
-<p><strong>Figure 26:</strong> Set AWS Lambda Model Deployment Fields</p>
-<p>Driverless AI will create an s3 bucket called <strong>model-hydraulic-lambda</strong>, save the MOJO Scoring Pipeline file in the s3 bucket, create an AWS Lambda function called <strong>h2oai-model-hydraulic-lambda</strong> in the us-west-1 region.</p>
-<p><strong>Note:</strong> To get your IAM access key and secret key, login to your AWS IAM account, go to your Identity and Access Management (IAM) service, go to Users, search for your particular user, click it, select Security Credentials and then create access key.</p>
-<p><img alt="AWS Create IAM Access Key" src="img/2398f6c561c7d611.jpg"></p>
-<p><strong>Figure 27:</strong> AWS Create IAM Access Key</p>
-<p>Your model will be deployed to the Amazon Lambda function.</p>
-<p><img alt="Deploying Model to AWS Lambda" src="img/10e02102ef162d32.jpg"></p>
-<p><strong>Figure 28:</strong> Deploying Model to AWS Lambda</p>
-<p><strong>Note:</strong> Behind the scenes, Driverless AI uses the deployment template <strong>aws-lambda-scorer</strong> to execute the MOJO Scoring Pipeline on the Amazon Lambda function. The aws-lambda-scorer is powered by AWS API Gateway with Lambda proxy integration and Terraform recipe.</p>
-<p>Your model has been deployed to the serverless Amazon Lambda function! Driverless AI provides us with a curl command to score data via a JSON request.</p>
-<p><img alt="Deployed Model to AWS Lambda" src="img/90e70353e5b612f0.jpg"></p>
-<p><strong>Figure 29:</strong> Deployed Model to AWS Lambda</p>
-<p>Notice the curl command for the Amazon Lambda has a <strong>test.json</strong> file as an argument. We do not have that file, so we need to create it.</p>
-<p>6. Let&#39;s leverage our one row of Hydraulic Sensor Test data from earlier and store it into our new <strong>test.json</strong> file. Save it.</p>
-<pre><code>{
-   &#34;fields&#34;: [&#34;psa_bar&#34;, &#34;psb_bar&#34;, &#34;psc_bar&#34;, &#34;psd_bar&#34;, &#34;pse_bar&#34;, &#34;psf_bar&#34;, &#34;fsa_vol_flow&#34;, &#34;fsb_vol_flow&#34;, &#34;tsa_temp&#34;, &#34;tsb_temp&#34;, &#34;tsc_temp&#34;, &#34;tsd_temp&#34;, &#34;pump_eff&#34;, &#34;vs_vib&#34;, &#34;cool_pwr_pct&#34;, &#34;eff_fact_pct&#34;],
-   &#34;rows&#34;: [[&#34;155.56646728515625&#34;, &#34;104.93318176269531&#34;, &#34;0.862698495388031&#34;, &#34;0.00021100000594742596&#34;, &#34;8.37287425994873&#34;, &#34;8.321526527404785&#34;, &#34;2.0819649696350098&#34;, &#34;8.871089935302734&#34;, &#34;35.355934143066406&#34;, &#34;40.99454879760742&#34;, &#34;38.31908416748047&#34;, &#34;30.47344970703125&#34;, &#34;2366.707275390625&#34;, &#34;0.5243666768074036&#34;, &#34;1.3755667209625244&#34;, &#34;19.58085060119629&#34;]]
-}
-</code></pre>
-<p>7. Copy and paste the Amazon Lambda curl command to your command line prompt, then run it.</p>
-<pre><code># Request AWS Lambda MOJO do interactive scoring for hydraulic cooling condition
-curl \
-   -X POST \
-   -d @test.json \
-   -H &#34;x-api-key: m4U7PcaQ9n4wZZqo3xmz69nEJf5BLPFm5F2OrZdV&#34; \
-   https://63lfbbts06.execute-api.us-west-1.amazonaws.com/test/score
-</code></pre>
-<p><img alt="Score Data Result via Lambda Function" src="img/806b339ea792c2b1.jpg"></p>
-<p><strong>Figure 30:</strong> Result of Interactive Scoring for Hydraulic Cool Condition via AWS Lambda</p>
-<p>You should receive classification scores for cool_cond_y.3, cool_cond_y.20, cool_cond_y.100. After providing one row of Hydraulic Sensor Test data in the curl command, the Driverless AI MOJO scoring pipeline on Amazon Lambda computes a classification for <strong>cool_cond_y.3 = 0.2838</strong>, <strong>cool_cond_y.20 = 0.1479</strong>, <strong>cool_cond_y.100 = 0.5683</strong>.</p>
-<p>8. Click the <strong>Close</strong> button. Then click <strong>X</strong>. The experiment page appears.</p>
-<h2>Delete Deployments</h2>
+<h2 is-upgraded>Delete Deployment</h2>
 <p>Navigate to <strong>Deployments</strong> page.</p>
-<h2>Delete REST Server MOJO Deployment</h2>
+<h2 is-upgraded>Delete REST Server MOJO Deployment</h2>
 <p>1. Click on the <strong>Delete</strong> button.</p>
-<p><img alt="delete-rest-server-deployment" src="img/cc4b6c31d4c7e85f.jpg"></p>
-<p><strong>Figure 31</strong>: Delete REST Server Deployment</p>
+<p class="image-container"><img alt="delete-rest-server-deployment" src="img/78811125b506bd12.png"></p>
+<p><strong>Figure 26</strong>: Delete REST Server Deployment</p>
 <p>2. Driverless AI will ask you again if you want to permanently delete the REST Server deployment. Click <strong>OK</strong>.</p>
-<p><img alt="delete-rest-server-deployment-2" src="img/647c6020aa67b888.jpg"></p>
-<p><strong>Figure 32</strong>: Confirm Delete REST Server Deployment</p>
-<h2>Delete Amazon Lambda MOJO Deployment</h2>
-<p>If you no longer need your MOJO deployed to Amazon Lambda and are concerned about cleaning up the remaining components on AWS, Driverless AI makes cleaning up very easy.</p>
-<p>We delete our MOJO deployment to Amazon Lambda in Driverless AI Deployments and Driverless AI will clean up any remaining components on AWS related to our deployment for us.</p>
-<p>1. Click on the <strong>Delete</strong> button.</p>
-<p><img alt="Delete AWS Lambda Model Deployment" src="img/fdebfa99bfac206f.jpg"></p>
-<p><strong>Figure 33:</strong> Open Menu to Delete AWS Lambda Model Deployment</p>
-<p>2. Driverless AI will ask you again if you want to permanently delete the Amazon Lambda deployment. Click <strong>OK</strong>.</p>
-<p><img alt="Confirm Delete AWS Lambda Model Deployment" src="img/994abb32651c1d27.jpg"></p>
-<p><strong>Figure 34:</strong> Confirm AWS Lambda Model Deployment for Deletion</p>
-<p>Driverless AI will quickly show the Amazon Lambda deployment being destroyed.</p>
-<h2>Deeper Dive and Resources</h2>
+<p class="image-container"><img alt="delete-rest-server-deployment-2" src="img/f025bdee6b767e5f.png"></p>
+<p><strong>Figure 27</strong>: Confirm Delete REST Server Deployment</p>
+<h2 is-upgraded>Deep Dive and Resources</h2>
 <ul>
 <li><a href="http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/deployment.html" target="_blank">Driverless AI: Deploying the MOJO Pipeline</a></li>
 </ul>
@@ -483,11 +438,11 @@ curl \
       </google-codelab-step>
     
       <google-codelab-step label="Task 5: Challenge" duration="0">
-        <h2>Deploy Scoring Pipeline for a New Dataset</h2>
-<p>There are various challenges one could do, you could do something that helps you in your daily life or job. Maybe there is a dataset you are working with, you could reproduce the steps we did above, but for your dataset, build a new experiment and deploy your MOJO scoring pipeline to a local REST server or Amazon Lambda.</p>
-<h2>Integrate Scoring Pipeline into Program</h2>
-<p>Another challenge could be to use the existing MOJO Scoring Pipeline we deployed and instead of using curl command to score data, integrate the scoring into a Java, Python, R, C++, etc program using an HTTP client.</p>
-<h2>Deploy Scoring Pipeline using Java Deployment Templates</h2>
+        <h2 is-upgraded>Deploy Scoring Pipeline for a New Dataset</h2>
+<p>There are various challenges you could take on. You could do something that helps you in your daily life or job. Maybe there is a dataset you are working with, you could reproduce the steps we did above, but for your dataset, build a new experiment and deploy your MOJO scoring pipeline to a local REST server or Amazon Lambda.</p>
+<h2 is-upgraded>Integrate Scoring Pipeline into Program</h2>
+<p>Another challenge could be to use the existing MOJO Scoring Pipeline we deployed and instead of using curl command to score data, integrate the scoring into a Java, Python, R, C++, etc,. program using an HTTP client.</p>
+<h2 is-upgraded>Deploy Scoring Pipeline using Java Deployment Templates</h2>
 <p>Alternatively, you could use the Driverless AI Java Deployment Templates to deploy the MOJO Scoring Pipeline to various production environments. Currently, there is support for MOJO deployment to a local REST server, Amazon Lambda, Amazon Sagemaker, Google Cloud Run, SQL database. Also if there is not a deployment template to the production environment that you need, you could create a new deployment template and contribute it back to the open source.</p>
 
 
@@ -495,20 +450,20 @@ curl \
     
       <google-codelab-step label="Next Steps" duration="0">
         <ul>
-<li>Check out Driverless AI&#39;s next Scoring Pipeline Deployment tutorial where you will learn how to deploy MOJO Scoring Pipelines using Production Ready Deployment Templates:<ul>
-<li>Tutorial: Scoring Pipeline Deployment Templates (coming soon...)</li>
+<li>Check out Driverless AI&#39;s next Scoring Pipeline Deployment self-paced course where you will learn how to deploy MOJO Scoring Pipelines using Production Ready Deployment Templates:  <ul>
+<li><a href="https://training.h2o.ai/products/self-paced-course-4b-scoring-pipeline-deployment-templates" target="_blank">Self-Paced Course 4B: Scoring Pipeline Deployment Templates</a></li>
 </ul>
 </li>
-<li>Check out these webinars that dive into how to productionize H2O Models:<ul>
+<li>Check out these webinars that dive into how to productionize H2O Models:  <ul>
 <li>H2O Webinar: <a href="https://www.h2o.ai/webinars/" target="_blank">Introduction to Sparkling Water: Productionizing H2O Models with Apache Spark by Edgar Orendain</a></li>
 <li>H2O Webinar: <a href="https://www.h2o.ai/webinars/" target="_blank">Productionizing H2O Driverless AI Models by Nicholas Png</a></li>
 </ul>
 </li>
-<li>Check out this article on deploying H2O Driverless AI Model to Alteryx<ul>
+<li>Check out this article on deploying H2O Driverless AI Model to Alteryx  <ul>
 <li>Alteryx Community: <a href="https://community.alteryx.com/t5/Data-Science-Blog/Deploy-H2O-Driverless-AI-MOJO-to-Alteryx-Promote/ba-p/489190" target="_blank">Deploy H2O Driverless AI MOJO to Alteryx Promote by Timothy Lam</a></li>
 </ul>
 </li>
-<li>Check out this article on a Solution Architect &amp; Business Data Scientist&#39;s perspective on using Driverless AI for Automatic Machine Learning:<ul>
+<li>Check out this article on a Solution Architect &amp; Business Data Scientist&#39;s perspective on using Driverless AI for Automatic Machine Learning:  <ul>
 <li>Medium: <a href="https://medium.com/@kguruswamy_37814/blink-data-to-ai-ml-production-pipeline-code-in-a-few-clicks-99a1a45440a9" target="_blank">Data to AI/ML Production Pipeline code in a few clicks! By Karthik Guruswamy</a></li>
 </ul>
 </li>
@@ -527,39 +482,39 @@ curl \
 </ul>
 <p>Feel free to follow along with Driverless AI aquarium instance or one of the Driverless AI instance you installed on one of the cloud services above.</p>
 <p>1. Open Driverless AI at <code>&lt;ec2-public-dns&gt;:12345/login</code></p>
-<p><img alt="driverless-ai-login" src="img/bdca1859d727798a.jpg"></p>
-<p><strong>Figure 35</strong>: Driverless AI Login</p>
-<p>Note: If you are running Driverless AI on Aquarium, you won&#39;t need to enter login.</p>
+<p class="image-container"><img alt="driverless-ai-login" src="img/bdca1859d727798a.png"></p>
+<p><strong>Figure 28</strong>: Driverless AI Login</p>
+<p><strong>Note:</strong> If you are running Driverless AI on Aquarium, you won&#39;t need to enter login credentials, or a license key.</p>
 <ul>
 <li>The login is username <code>h2oai</code> and password <code>&lt;InstanceID&gt;</code></li>
 </ul>
 <p>2. Enter your Driverless AI License Key that you purchased with Driverless AI.</p>
-<p><img alt="driverless-ai-enter-license-key" src="img/6b95467b1fdb4d20.jpg"></p>
-<p><strong>Figure 36</strong>: Enter Driverless AI License Key</p>
+<p class="image-container"><img alt="driverless-ai-enter-license-key" src="img/6b95467b1fdb4d20.png"></p>
+<p><strong>Figure 29</strong>: Enter Driverless AI License Key</p>
 <ul>
 <li>Once the License Key is entered, we can start using Driverless AI.</li>
 </ul>
 <p>3. Upload the Hydraulic System Condition Monitoring Dataset by using <strong>Data Recipe URL</strong></p>
-<p><img alt="Data Recipe URL" src="img/56a19548c2dc77e9.jpg"></p>
-<p><strong>Figure 37:</strong> Open Add Dataset Menu for Selecting Data Recipe URL</p>
-<p>Note: If you installed Driverless AI on cloud, you will notice more add dataset options than Driverless AI on aquarium.</p>
+<p class="image-container"><img alt="Data Recipe URL" src="img/76f47320d025edf4.png"></p>
+<p><strong>Figure 30:</strong> Open Add Dataset Menu for Selecting Data Recipe URL</p>
+<p><strong>Note:</strong> If you installed Driverless AI on cloud, you will notice more add dataset options than Driverless AI on aquarium.</p>
 <p>4. Copy and paste the following <strong>Data Recipe URL</strong>, then click <strong>save</strong>:</p>
-<pre><code># Data Recipe URL:
+<pre><code language="language-bash" class="language-bash"># Data Recipe URL:
 https://raw.githubusercontent.com/james94/driverlessai-recipes/master/data/hydraulic-data.py
 </code></pre>
-<p><img alt="Insert Data Recipe URL" src="img/aff8bbf06fa58710.jpg"></p>
-<p><strong>Figure 38:</strong> Insert Data Recipe URL</p>
+<p class="image-container"><img alt="Insert Data Recipe URL" src="img/c355f6ff0b3d7344.png"></p>
+<p><strong>Figure 31:</strong> Insert Data Recipe URL</p>
 <p>The <strong>Data Recipe Python script</strong> was called from the URL to preprocess the Hydraulic System Condition Monitoring data from the UCI source and import it into Driverless AI. You should see the <strong>hydCondMonitorData.csv</strong> available for use now.</p>
-<p><img alt="Imported Hydraulic Data via Data Recipe" src="img/5a5386ff3edb238d.jpg"></p>
-<p><strong>Figure 39:</strong> Imported Hydraulic System Data via Data Recipe</p>
+<p class="image-container"><img alt="Imported Hydraulic Data via Data Recipe" src="img/1ea29049037e215d.png"></p>
+<p><strong>Figure 32:</strong> Imported Hydraulic System Data via Data Recipe</p>
 <p>3. Split the data with <strong>75%</strong> for training called <strong>hydraulicTrainData_coolCondY</strong> and <strong>25%</strong> for testing called <strong>hydraulicTestData_coolCondY</strong>.</p>
 <p>4. Select target column <strong>cool_cond_y</strong>.</p>
 <p>5. Click <strong>save</strong>.</p>
-<p><img alt="Dataset Splitter for Hydraulic Data" src="img/e5d26e69cb9e5173.jpg"></p>
-<p><strong>Figure 40:</strong> Dataset Splitter for Hydraulic System Data</p>
+<p class="image-container"><img alt="Dataset Splitter for Hydraulic Data" src="img/bc2f984661427993.png"></p>
+<p><strong>Figure 33:</strong> Dataset Splitter for Hydraulic System Data</p>
 <p>The data set finished splitting into train and test data.</p>
-<p><img alt="Split Hydraulic Data" src="img/b0d8a199f239dde8.jpg"></p>
-<p><strong>Figure 41:</strong> Split Hydraulic Data into Training and Testing Set</p>
+<p class="image-container"><img alt="Split Hydraulic Data" src="img/cdc788b0e557ea3a.png"></p>
+<p><strong>Figure 34:</strong> Split Hydraulic Data into Training and Testing Set</p>
 <p>6. Click on the <strong>hydraulicTrainData_coolCondY</strong>, select <strong>Predict</strong>.</p>
 <p>7. Name the Experiment <strong>Model_Deployment_HydraulicSystem</strong>.</p>
 <p>8. Choose the target column <strong>cool_cond_y</strong> for scoring.</p>
@@ -570,19 +525,19 @@ https://raw.githubusercontent.com/james94/driverlessai-recipes/master/data/hydra
 <li>Max allowed feature shift (AUC) before dropping feature = 0.991</li>
 <li>Leakage detection dropping AUC/R2 threshold = 0.991</li>
 </ul>
-<p><img alt="expert-settings-set-auc" src="img/9da41f2a0a791644.jpg"></p>
-<p><strong>Figure 42:</strong> Configure AUC related features in Expert Settings</p>
-<p>12. Click <strong>Launch Experiment</strong>. It may take about <strong>1 hour 34 minutes</strong> or longer to complete.</p>
-<p><img alt="Configure Experiment Before Launch" src="img/e8f5ef476435a9b8.jpg"></p>
-<p><strong>Figure 43:</strong> Configure Experiment Before Launching</p>
+<p class="image-container"><img alt="expert-settings-set-auc" src="img/c6ae2b72d61086fb.png"></p>
+<p><strong>Figure 35:</strong> Configure AUC related features in Expert Settings</p>
+<p>12. Click <strong>Launch Experiment</strong>. It may take about <strong>1 hour 30 minutes</strong> or longer to complete.</p>
+<p class="image-container"><img alt="Configure Experiment Before Launch" src="img/19c00f170c3c458b.png"></p>
+<p><strong>Figure 36:</strong> Configure Experiment Before Launching</p>
 <p>As the experiment is building, you will notice notifications. Driverless AI notifies us that there is possible leakage in training data for certain features. Driverless AI recommends we should consider dropping leaky features. So, if we are not satisfied with the results after the build finishes, we could look at dropping some leaky features that have high AUC values close to 1, but keep results that are equal to or less than 0.991 and build a new experiment.</p>
-<p><img alt="Build Experiment Notifications" src="img/3425e004660eabca.jpg"></p>
-<p><strong>Figure 44</strong>: Configure Experiment Before Launching</p>
-<p>You&#39;ll notice Driverless AI chose <strong>Log Loss</strong> to be the winning <strong>scorer</strong> based on our training data. This is because we are dealing with a classification of what the hydraulic cooling condition could be 3, 20 or 100. If our scorer classifies our hydraulic system test data as a cooling condition 3, then that means our cooler is close to total failure. If the scorer classification is 20, then our cooler is operating at reduced efficiency. If the scorer classification is 100, then our cooler is operating at full efficiency.</p>
-<p><img alt="Launched Experiment" src="img/7f3deea814a98aae.jpg"></p>
-<p><strong>Figure 45:</strong> Launched Driverless AI Experiment</p>
-<p>What happened as a result of launching this new experiment related model deployment? In the <strong>iteration data - validation</strong> chart, you can see that the <strong>validation score for the final pipeline in this new experiment is at 0.0046</strong> and the <strong>validation score for the final pipeline in the prebuilt experiment was 0.0058</strong>. The lower the validation score, the better the model is at classifying for Hydraulic Cooling Condition.</p>
-<h2>Deeper Dive and Resources</h2>
+<p class="image-container"><img alt="Build Experiment Notifications" src="img/997b7d06c7626470.png"></p>
+<p><strong>Figure 37</strong>: Configure Experiment Before Launching</p>
+<p>You&#39;ll notice Driverless AI chose <strong>Log Loss</strong> to be the winning <strong>scorer</strong> based on our training data. This is because we are dealing with a classification of what the hydraulic cooling condition could be, which is 3, 20, or 100. If our scorer classifies our hydraulic system test data as a cooling condition 3, then that means our cooler is close to total failure. If the scorer classification is 20, then our cooler is operating at reduced efficiency. If the scorer classification is 100, then our cooler is operating at full efficiency.</p>
+<p class="image-container"><img alt="Launched Experiment" src="img/f12b87add8d3c10a.png"></p>
+<p><strong>Figure 38:</strong> Launched Driverless AI Experiment</p>
+<p>What happened as a result of launching this new experiment-related model deployment? In the <strong>iteration data - validation</strong> chart, you can see that the <strong>validation score for the final pipeline in this new experiment is at 0.0435</strong> while the <strong>validation score for the final pipeline in the prebuilt experiment was 0.0090</strong>. The lower the validation score, the better the model is at classifying for Hydraulic Cooling Condition.</p>
+<h2 is-upgraded>Deep Dive and Resources</h2>
 <ul>
 <li><a href="http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/running-experiment.html" target="_blank">Driverless AI Docs: Experiment</a></li>
 <li><a href="http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/projects.html" target="_blank">Driverless AI Docs: Project Workspace</a></li>
@@ -592,7 +547,62 @@ https://raw.githubusercontent.com/james94/driverlessai-recipes/master/data/hydra
 
       </google-codelab-step>
     
-      <google-codelab-step label="Appendix B: AI Glossary" duration="0">
+      <google-codelab-step label="Appendix B: Interactive Scoring (AWS Lambda) via Deployment Templates" duration="0">
+        <p><strong>Note:</strong> In this appendix, we will show you an example of how to do the Lambda deployment, but since you need several permissions, you won&#39;t be able to do it on Aquarium.</p>
+<h2 is-upgraded>Deploy MOJO to Amazon Lambda</h2>
+<p>1. Click <strong>Deploy (Local &amp; Cloud)</strong>.</p>
+<p>2. Select <strong>Amazon Lambda</strong>.</p>
+<p>3. Rename Deployment Name to be <strong>model-hydraulic-lambda</strong>.</p>
+<p><strong>Note</strong>: S3 bucket names can only be lowercase and can&#39;t have underscores. <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-s3-bucket-naming-requirements.html" target="_blank">See the naming requirements for Amazon S3 buckets</a>.</p>
+<p>4. Add your <strong>IAM Access Key ID</strong>, <strong>AWS Secret Access Key</strong>, and <strong>Region</strong>.</p>
+<p>5. Click <strong>Deploy</strong>.</p>
+<p class="image-container"><img alt="Set AWS Lambda Model Deployment Fields" src="img/ce3991d92faf960a.png"></p>
+<p><strong>Figure 39:</strong> Set AWS Lambda Model Deployment Fields</p>
+<p>Driverless AI will create an s3 bucket called <strong>model-hydraulic-lambda</strong>; save the MOJO Scoring Pipeline file in the s3 bucket, create an AWS Lambda function called <strong>h2oai-model-hydraulic-lambda</strong> in the us-west-1 region.</p>
+<p><strong>Note:</strong> To get your IAM access key and secret key, login to your AWS IAM account, go to your Identity and Access Management (IAM) service. Go to Users, search for your particular user, click it, and select Security Credentials; then, create an access key.</p>
+<p class="image-container"><img alt="AWS Create IAM Access Key" src="img/2398f6c561c7d611.png"></p>
+<p><strong>Figure 40:</strong> AWS Create IAM Access Key</p>
+<p>Your model will be deployed to the Amazon Lambda function.</p>
+<p class="image-container"><img alt="Deploying Model to AWS Lambda" src="img/10e02102ef162d32.png"></p>
+<p><strong>Figure 41:</strong> Deploying Model to AWS Lambda</p>
+<p><strong>Note:</strong> Behind the scenes, Driverless AI uses the deployment template <strong>aws-lambda-scorer</strong> to execute the MOJO Scoring Pipeline on the Amazon Lambda function. The aws-lambda-scorer is powered by AWS API Gateway with Lambda proxy integration and Terraform recipe.</p>
+<p>Your model has been deployed to the serverless Amazon Lambda function! Driverless AI provides us with a curl command to score data via a JSON request.</p>
+<p class="image-container"><img alt="Deployed Model to AWS Lambda" src="img/90e70353e5b612f0.png"></p>
+<p><strong>Figure 42:</strong> Deployed Model to AWS Lambda</p>
+<p>Notice the curl command for the Amazon Lambda has a <strong>test.json</strong> file as an argument. We do not have that file, so we need to create it.</p>
+<p>6. Let&#39;s leverage our one row of Hydraulic Sensor Test data from earlier and store it into our new <strong>test.json</strong> file. Save it.</p>
+<pre><code language="language-json" class="language-json">{
+   &#34;fields&#34;: [&#34;psa_bar&#34;, &#34;psb_bar&#34;, &#34;psc_bar&#34;, &#34;psd_bar&#34;, &#34;pse_bar&#34;, &#34;psf_bar&#34;, &#34;fsa_vol_flow&#34;, &#34;fsb_vol_flow&#34;, &#34;tsa_temp&#34;, &#34;tsb_temp&#34;, &#34;tsc_temp&#34;, &#34;tsd_temp&#34;, &#34;pump_eff&#34;, &#34;vs_vib&#34;, &#34;cool_pwr_pct&#34;, &#34;eff_fact_pct&#34;],
+   &#34;rows&#34;: [[&#34;155.56646728515625&#34;, &#34;104.93318176269531&#34;, &#34;0.862698495388031&#34;, &#34;0.00021100000594742596&#34;, &#34;8.37287425994873&#34;, &#34;8.321526527404785&#34;, &#34;2.0819649696350098&#34;, &#34;8.871089935302734&#34;, &#34;35.355934143066406&#34;, &#34;40.99454879760742&#34;, &#34;38.31908416748047&#34;, &#34;30.47344970703125&#34;, &#34;2366.707275390625&#34;, &#34;0.5243666768074036&#34;, &#34;1.3755667209625244&#34;, &#34;19.58085060119629&#34;]]
+}
+</code></pre>
+<p>7. Copy and paste the Amazon Lambda curl command to your command line prompt, then run it.</p>
+<pre><code language="language-bash" class="language-bash"># Request AWS Lambda MOJO do interactive scoring for hydraulic cooling condition
+curl \
+   -X POST \
+   -d @test.json \
+   -H &#34;x-api-key: m4U7PcaQ9n4wZZqo3xmz69nEJf5BLPFm5F2OrZdV&#34; \
+   https://63lfbbts06.execute-api.us-west-1.amazonaws.com/test/score
+</code></pre>
+<p class="image-container"><img alt="Score Data Result via Lambda Function" src="img/e7841bc3b86132a5.png"></p>
+<p><strong>Figure 43:</strong> Result of Interactive Scoring for Hydraulic Cool Condition via AWS Lambda</p>
+<p>You should receive classification scores for cool_cond_y.3, cool_cond_y.20, cool_cond_y.100. After providing one row of Hydraulic Sensor Test data in the curl command, the Driverless AI MOJO scoring pipeline on Amazon Lambda computes a classification for <strong>cool_cond_y.3 = 0.2838</strong>, <strong>cool_cond_y.20 = 0.1479</strong>, <strong>cool_cond_y.100 = 0.5683</strong>.</p>
+<p>8. Click the <strong>Close</strong> button. Then click <strong>X</strong>. The experiment page appears.</p>
+<h2 is-upgraded>Delete Amazon Lambda MOJO Deployment</h2>
+<p>If you no longer need your MOJO deployed to Amazon Lambda and are concerned about cleaning up the remaining components on AWS, Driverless AI makes cleaning up very easy.</p>
+<p>We delete our MOJO deployment to Amazon Lambda in Driverless AI Deployments and Driverless AI will clean up any remaining components on AWS related to our deployment for us.</p>
+<p>1. Click on the <strong>Delete</strong> button.</p>
+<p class="image-container"><img alt="Delete AWS Lambda Model Deployment" src="img/fdebfa99bfac206f.png"></p>
+<p><strong>Figure 44:</strong> Open Menu to Delete AWS Lambda Model Deployment</p>
+<p>2. Driverless AI will ask you again if you want to permanently delete the Amazon Lambda deployment. Click <strong>OK</strong>.</p>
+<p class="image-container"><img alt="Confirm Delete AWS Lambda Model Deployment" src="img/994abb32651c1d27.png"></p>
+<p><strong>Figure 45:</strong> Confirm AWS Lambda Model Deployment for Deletion</p>
+<p>Driverless AI will quickly show the Amazon Lambda deployment being destroyed.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Appendix C: AI Glossary" duration="0">
         <p>Refer to <a href="https://www.h2o.ai/community/browse/ai-glossary-search" target="_blank">H2O.ai Community AI Glossary</a> for relevant Model Deployment Terms.</p>
 
 
@@ -600,10 +610,11 @@ https://raw.githubusercontent.com/james94/driverlessai-recipes/master/data/hydra
     
   </google-codelab>
 
-  <script src="../assets/codelab-elements/native-shim.js"></script>
-  <script src="../assets/codelab-elements/custom-elements.min.js"></script>
-  <script src="../assets/codelab-elements/prettify.js"></script>
-  <script src="../assets/codelab-elements/codelab-elements.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
 
 </body>
 </html>

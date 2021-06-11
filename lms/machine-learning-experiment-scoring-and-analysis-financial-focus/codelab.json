@@ -1,0 +1,27 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2021-06-09T15:50:21-07:00",
+  "id": "machine-learning-experiment-scoring-and-analysis-financial-focus",
+  "duration": 0,
+  "title": "Machine Learning Experiment Scoring and Analysis - Financial Focus",
+  "summary": "Check the list",
+  "source": "/Users/falvarenga/Desktop/md-to-html/machine-learning-experiment-scoring-and-analysis-financial-focus/machine-learning-experiment-scoring-and-analysis-financial-focus.md",
+  "theme": "",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "driverless"
+  ],
+  "tags": [
+    "analytics",
+    "driverless",
+    "machine-learning",
+    "metrics",
+    "scoring"
+  ],
+  "url": "machine-learning-experiment-scoring-and-analysis-financial-focus"
+}

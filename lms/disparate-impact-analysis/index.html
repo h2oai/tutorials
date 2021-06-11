@@ -1,0 +1,479 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Disparate Impact Analysis</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <link rel="stylesheet" href="custom.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="disparate-impact-analysis"
+                  title="Disparate Impact Analysis"
+                  environment="web"
+                  feedback-link="">
+    
+      <google-codelab-step label="Objective" duration="0">
+        <p>As firms use Machine Learning(ML) to help them around credit/loan-decisions, cross-sell promotions, and determine the next best action, they must know how certain customer features are being weighed into the ML models in production. Further, they are also required to understand whether the ML models are not negatively impacting protected classes of customers or unfairly weighting for these types of classes. A lack of understanding of an ML Model&#39;s ins of production can lead to legal and financial risks when discovering that the ML model in production discriminates (bias) against certain ethnicities, genders, etc.</p>
+<p>Additionally, as firms have looked to leverage AI to make more and more decisions for the company, the discussion of Human-Centered Machine learning has become increasingly important. Data science practitioners and firms deploying AI in production want to ‘get under the hood&#39; of their models to see what impacts decisions. Hence, in this self-paced course, we will build an AI model predicting whether someone will be defaulting on their next credit card payment. Right after, we will use the following two Driverless AI tools to analyze and check for fairness.</p>
+<ul>
+<li>Disparate Impact Analysis (DIA)</li>
+<li>Sensitivity Analysis(SA)</li>
+</ul>
+<p>As a matter of speaking, the above two features provide a solution to a common problem in ML: the multiplicity of good models.  It is well understood that for the same set of input features and prediction targets, complex machine learning algorithms can produce multiple accurate models with very similar, but not the same, internal architectures: the multiplicity of good models [1]. This alone is an obstacle to interpretation, but when using these types of tools as interpretation tools or with interpretation tools, it is important to remember that details of explanations can change across multiple accurate models. This instability of explanations is a driving factor behind the presentation of multiple explanatory results in Driverless AI, enabling users to find explanatory information that is consistent across multiple modeling and interpretation techniques. And such explanatory results can be accessed by the <strong>Disparate Impact Analysis</strong> and <strong>Sensitivity Analysis(SA)</strong> features/tools.</p>
+<p>With the above in mind, let us discover how we can better understand our models.</p>
+<h2 is-upgraded>References</h2>
+<ul>
+<li>[1] <a href="https://web.stanford.edu/~hastie/ElemStatLearn/printings/ESLII_print12.pdf" target="_blank">Jerome Friedman, Trevor Hastie, and Robert Tibshirani. The Elements of Statistical Learning. Springer, New York, 2001.</a></li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Prerequisites" duration="0">
+        <p>You will need the following to be able to do this self-paced course:</p>
+<ul>
+<li>Basic knowledge of Machine Learning and Statistics</li>
+<li>Basic knowledge of Driverless AI or completion of <a href="https://training.h2o.ai/products/self-paced-course-1a-automatic-machine-learning-introduction-with-driverless-ai" target="_blank">Automatic Machine Learning Introduction with Driverless AI</a></li>
+<li>Completion of the following self-paced course: <a href="https://training.h2o.ai/products/self-paced-course-1c-machine-learning-interpretability" target="_blank">Machine Learning Interpretability</a></li>
+<li>A <strong>Two-Hour Test Drive session</strong>: Test Drive is H2O.ai&#39;s Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.  <ul>
+<li>Need a <strong>Two-Hour Test Drive</strong> session?Follow the instructions on <a href="https://training.h2o.ai/products/self-paced-course-0-getting-started-with-driverless-ai-test-drive" target="_blank">this quick self-paced course</a> to get a Test Drive session started.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Note:  Aquarium&#39;s Driverless AI Test Drive lab has a license key built-in, so you don&#39;t need to request one to use it. Each Driverless AI Test Drive instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore Driverless AI, you can always launch another Test Drive instance or reach out to our sales team via the </strong><a href="https://www.h2o.ai/company/contact/" target="_blank"><strong>contact us form</strong></a><strong>.</strong></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Task 1: Launch Machine Learning Interpretability Experiment" duration="0">
+        <h2 is-upgraded>About the Dataset</h2>
+<p>For this exercise, we will use the same credit card default prediction dataset that we used in the first MLI self-paced course. This dataset contains information about credit card clients in Taiwan from April 2005 to September 2005. Features include demographic factors, repayment statuses, history of payment, bill statements, and default payments. The data set comes from the <a href="https://archive.ics.uci.edu/ml/datasets/default+of+credit+card+clients#" target="_blank">UCI Machine Learning Repository: UCI_Credit_Card.csv</a> And this dataset has a total of 25 Features(columns) and 30,000 clients(rows).</p>
+<h2 is-upgraded>Download Dataset</h2>
+<p>When looking at the <strong>UCI_Credit_Card.csv</strong>, we can observe that column <strong>PAY_0</strong> was suppose to be named <strong>PAY_1</strong>. Accordingly, we will solve this problem using a data recipe that will change the column&#39;s name to <strong>PAY_1</strong>. The data recipe has already been written and can be found <a href="https://s3.amazonaws.com/data.h2o.ai/DAI-Tutorials/MLI+Tutorials/uci_credit_card_recipe.py" target="_blank">here</a>. Download the data recipe and name it <code>uci_credit_card_recipe.py</code>. Make sure it&#39;s saved as a <strong>.py</strong> file.</p>
+<p>Now upload the data recipe to the Driverless AI dataset&#39;s page. In the <strong>DATASETS</strong> page click <strong>+ ADD DATASET(OR DRAG &amp; DROP)</strong> and select <strong>UPLOAD DATA RECIPE</strong>:</p>
+<p class="image-container"><img alt="upload-data-recipe" src="img/82678b2ccf48d77e.jpg"></p>
+<p>After it imports successfully, you will see the following CSV on the <strong>DATASETS</strong> page: <strong>UCI_Credit_Card.csv</strong>. Click on the <code>UCI_Credit_Card.csv</code> file then select <strong>Details</strong>:</p>
+<p class="image-container"><img alt="launch-experiment-variable-details" src="img/ec1c478e508f05c5.jpg"></p>
+<p>Review the columns in the dataset and pay attention to the specific attributes we will want to keep an eye on, such as <strong>SEX</strong>, <strong>EDUCATION</strong>, <strong>MARRIAGE</strong>, and <strong>AGE</strong>. These demographic factors shouldn&#39;t be used when predicting default credit payments.</p>
+<ul>
+<li>When we think about disparate impact, we want to analyze whether specific classes are being treated unfairly. For example, single/non-college educated clients.</li>
+</ul>
+<p>Recall the dataset metrics:</p>
+<ul>
+<li><strong>ID</strong> - Row identifier (which will not be used for this experiment)</li>
+<li><strong>LIMIT_BAL</strong> - Amount of the given credit: it includes the individual consumer credit and family (supplementary) credit</li>
+<li><strong>Sex</strong> - Gender (1 =  male; 2 = female)</li>
+<li><strong>EDUCATION</strong>- Education (1 = graduate school; 2 = university; 3 = high school; 4 = others)</li>
+<li><strong>MARRIAGE</strong> - Marital status (1 = married; 2 = single; 3 = others)</li>
+<li><strong>Age</strong></li>
+<li><strong>PAY_1 - PAY_6</strong>: History of past payment:  <ul>
+<li>-2: No consumption</li>
+<li>-1: Paid in full</li>
+<li>0: The use of revolving credit</li>
+<li>1 = payment delay for one month</li>
+<li>2 = payment delay for two months; ...;</li>
+<li>6 = payment delay for six months</li>
+</ul>
+</li>
+<li><strong>BILL_AMT1 - BILL_AMT6</strong> - Amount of bill statement</li>
+<li><strong>PAY_AMT1 -PAY_AMT6</strong> - Amount of previous payment</li>
+<li><strong>default.payment.next.month</strong> - Default (1: Yes, 0: No)</li>
+</ul>
+<p>Return to the Datasets page.</p>
+<p>Click on the <code>UCI_Credit_Card.csv</code> file then select <strong>Predict</strong>. Select <strong>Not Now</strong> on the &#34;First time Driverless AI&#34; dialog box.</p>
+<ul>
+<li>Name your experiment: <code>UCI_CC MLI</code></li>
+<li>Select the following feature as a Target Column: <strong>default.payment.next.month</strong></li>
+</ul>
+<p>At this point, your experiment preview page should look as follows:</p>
+<p class="image-container"><img alt="experiment-pre-view-page" src="img/6783984030c005e5.jpg"></p>
+<p>Usually, when predicting default, we will drop attributes such as <strong>SEX</strong>, <strong>EDUCATION</strong>, <strong>MARRIAGE</strong>, <strong>AGE</strong>, and <strong>LIMIT_BALL</strong>. Such features are drop because they shouldn&#39;t be considered because of conscious and unconscious bias. Not using such features will prevent decisions from being based on uncontrollable features such as sex. But what if we had no idea a given feature had or could lead to bias and unfairness. How can we find out that using a given feature leads to bias? The answer can be found when analyzing predictions using the Disparate Impact Analysis and Sensitivity Analysis tools. Therefore, we will not drop any columns for now, and let&#39;s discover how Driverless AI can perhaps highlight bias features. Not dropping any columns will allow us to understand how we can conclude that a feature is biased when it&#39;s not clear that a feature will generate bias when used on an ML model. The idea here is that when we, later on, analyze a feature&#39;s level of impact on single or overall predictions, we can decide whether that given feature in question is generating unfair predictions. As a result, we can drop the features found to be biased and, at last, rebuilt a model that is bias-free.</p>
+<p>Again, we will assume that we have no idea that features such as <strong>SEX</strong> can lead to possible unfair predictions when used on particular ML models.</p>
+<p>In the <strong>TRAINING SETTINGS</strong> as shown below: it is essential to make sure the <strong>Interpretability</strong> setting is at <strong>7</strong>. On the left-hand side, verify that <strong>Monotonicity Constraints</strong> is enabled. Enabling <strong>Monotonicity Constraints</strong> is important to Disparate Impact Analysis. If we use an unconstrained model and group fairness metrics, we risk creating group fairness metrics that appear to be reasonable. The consequence of creating group fairness metrics that appear to be reasonable is the illusion that individuals within that group may NOT be treated differently or unfairly. The local (individual) discrimination would likely not appear or be visible in that group metric.</p>
+<p class="image-container"><img alt="launch-experiment-interpretability-settings" src="img/99945b3456b68e66.jpg"></p>
+<p>Now we will adjust some settings to our experiment. We will make use of the <strong>Expert Settings</strong> feature to make these adjustments. As discussed in previous self-paced courses, Driverless AI provides various options in the Expert Settings that let you customize your experiment. Now, click on the <strong>Expert Settings</strong> option, located on the top right corner of the <strong>TRAINING SETTINGS</strong>:</p>
+<ul>
+<li>In the <strong>EXPERT SETTINGS</strong>, select the model tab, and adjust the settings to create a single <em>XGBoost GBM Model</em>:  <ul>
+<li>Turn off all the models besides the <strong>XGBoost GBM Models</strong> setting. &gt; XGBoost is a type of gradient boosting method that has been widely successful in recent years due to its good regularization techniques and high accuracy. This is set to Auto by default. If enabled, XGBoost models will become part of the experiment (for both the feature engineering part and the final model).</li>
+</ul>
+  <img alt="launch-experiment-model-settings" src="img/a509e1f6fbf1b488.jpg">  <ul>
+<li>Then scroll down and adjust the <strong>Ensemble level for final modeling pipeline</strong> setting to 0 for this exercise&#39;s interpretability purposes.</li>
+</ul>
+  <img alt="launch-experiment-ensemble-level" src="img/937c5044c7a7fa14.jpg">  <ul>
+<li>Click <strong>Save</strong> and return to the experiment preview page.</li>
+</ul>
+</li>
+</ul>
+<p>The last step here is to click <strong>REPRODUCIBLE</strong>, then run the experiment:</p>
+<p class="image-container"><img alt="launch-experiment-reproducible" src="img/e58853afd6ce061e.jpg"></p>
+<p>While the experiment runs, let&#39;s go over a few concepts that will be crucial when conducting a <strong>Disparate Impact</strong> and <strong>Sensitivity</strong> analysis.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Task 2: Concepts" duration="0">
+        <h2 is-upgraded>Fairness &amp; Bias</h2>
+<p>Fairness in Machine Learning &amp; AI has been a critical focus for many practitioners and industries. The goal at its core is quite simple: ensure your models are not treating one population or group worse than another. However, upon further review, this task becomes more complicated to verify because fairness is not a term with an agreed-upon legal definition.</p>
+<p>In colloquial terms, bias tends to imply that a person has a slightly incorrect or exaggerated opinion on a subject matter based on their personal experience, whether or not that represents the truth. Frequently the term will be used this way in Machine Learning as well. However, it is important to understand bias in a statistical term with a different meaning as well.</p>
+<p>‘In statistics, the <strong>bias</strong> (or <strong>bias function</strong>) of an estimator is the difference between this estimator&#39;s expected value and the true value of the parameter being estimated. An estimator or decision rule with zero bias is called <strong>unbiased</strong>. In statistics, &#34;bias&#34; is an <strong>objective</strong> property of an estimator.&#39;[1]</p>
+<p>More specifically, to Machine Learning, there is a concept called bias-variance tradeoff that appears often:</p>
+<p class="image-container"><img style="width: 500.00px" src="img/52d5096d4cf9f017.jpg">     </p>
+<p class="image-container"><img style="width: 500.00px" src="img/7135d196aca536e2.jpg">     </p>
+<ul>
+<li>Bias is the simplifying assumptions made by the model to make the target function easier to approximate.[2]</li>
+<li>Variance is the amount that the estimate of the target function will change given different training data.[2]</li>
+<li>The goal of any supervised machine learning algorithm is to achieve low bias and low variance. In turn the algorithm should achieve good prediction performance.[2]  <ul>
+<li>Linear machine learning algorithms often have a high bias but a low variance.[2]</li>
+<li>Nonlinear machine learning algorithms often have a low bias but a high variance.[2]</li>
+</ul>
+</li>
+<li>The parameterization of machine learning algorithms is often a battle to balance out bias and variance.The goal of any supervised machine learning algorithm is to achieve low bias and low variance. In turn the algorithm should achieve good prediction performance.[2]  <ul>
+<li>Therefore, trade-off is tension between the error introduced by the bias and the variance.[2]</li>
+</ul>
+</li>
+</ul>
+<p><strong>Note</strong>: If the theory of fairness and ethics in AI interests you, we have listed some of our favorite resources below on the topic that dives much deeper.</p>
+<h2 is-upgraded>Disparate Impact Analysis</h2>
+<p>In most law jurisdictions,  <strong>Disparate Impact</strong> refers to the conscious and unconscious practices adversely impacting one group of people of a protected characteristic more than another. Such characteristics constitute someone&#39;s race, color, religion, national origin, sex, and disability status.</p>
+<p>When the discussion of ‘fairness&#39; or ‘ethical AI&#39; comes up, one of the best possible methodologies for vetting fairness is Disparate Impact Analysis. Disparate Impact Analysis or DIA, which is sometimes called Adverse Impact Analysis, is a way to measure quantitatively the adverse treatment of protected classes, which leads to discrimination in hiring, housing, etc., or in general, any public policy decisions. The regulatory agencies will generally regard a selection rate for any group with less than four-fifths (4⁄5) or eighty percent of the rate for the group with the highest selection rate as constituting evidence of adverse impact.</p>
+<h2 is-upgraded>Sensitivity Analysis/What-If Analysis</h2>
+<p>Sensitivity analysis, sometimes called what-if analysis is a mainstay of model debugging. It&#39;s a very simple and powerful idea: simulate data that you find interesting and see what a model predicts for that data. Because ML models can react in very surprising ways to data they&#39;ve never seen before, it&#39;s safest to test all of your ML models with sensitivity analysis.</p>
+<p><strong>Sensitivity analysis</strong> is the study of how the <a href="https://en.wikipedia.org/wiki/Uncertainty" target="_blank">uncertainty</a> in the output of a <a href="https://en.wikipedia.org/wiki/Mathematical_model" target="_blank">mathematical model</a> or system (numerical or otherwise) can be divided and allocated to different sources of uncertainty in its inputs.[3] [4]</p>
+<p>A related practice is <a href="https://en.wikipedia.org/wiki/Uncertainty_analysis" target="_blank">uncertainty analysis</a>, which has a greater focus on <a href="https://en.wikipedia.org/wiki/Uncertainty_quantification" target="_blank">uncertainty quantification</a> and <a href="https://en.wikipedia.org/wiki/Propagation_of_uncertainty" target="_blank">propagation of uncertainty</a>; ideally, uncertainty and sensitivity analysis should be run in tandem.</p>
+<p>One of the simplest and most common approaches is that of changing one-factor-at-a-time (OAT), to see what effect this produces on the output.[5] [6] [7] OAT customarily involves:</p>
+<ul>
+<li>Moving one input variable, keeping others at their baseline (nominal) values, then,</li>
+<li>Returning the variable to its nominal value, then repeating for each of the other inputs in the same way.</li>
+</ul>
+<p>Sensitivity may then be measured by monitoring changes in the output, e.g. by <a href="https://en.wikipedia.org/wiki/Partial_derivatives" target="_blank">partial derivatives</a> or <a href="https://en.wikipedia.org/wiki/Linear_regression" target="_blank">linear regression</a>.</p>
+<h2 is-upgraded>Confusion Matrices</h2>
+<p>It is effortless to assume that the goal is accuracy when using machine learning: the percentage of your predictions being correct. While accuracy can be a useful metric of success, it is often dubious. Let&#39;s build on a very relevant industry example:</p>
+<p>Fraud (Anomaly Detection): Let&#39;s assume we are dealing with a 100,000-row dataset where we know there is some small amount of fraud; let&#39;s say 10. If accuracy is our benchmark, then your model will predict &#34;Not-Fraud&#34; every time, and the accuracy will be 99.99%, but you have failed to identify any instances of fraud. These cases focus on what in a confusion matrix is defined as True Positives (TP):</p>
+<p class="image-container"><img style="width: 500.00px" src="img/d2bcbaa9d5da2727.jpg">     </p>
+<p>In the case of identifying fraud, you would almost always prefer a prediction table like this, to make sure you can correctly identify fraud instances as they occur:</p>
+<p class="image-container"><img style="width: 500.00px" src="img/3b2c35f4481f1ca6.jpg">     </p>
+<p>Now every case is different, and often in business environments, there exist certain cost functions associated with false negatives and false positives, so it is essential to be aware that every case has many considerations. We want to provide a few of the key metrics associated with confusion matrices that come up in the industry, depending on the problem you are trying to solve.</p>
+<ul>
+<li><strong>Sensitivity, Recall, Hit Rate, True Positive Rate</strong>:  <ul>
+<li>True Positive Rate = True Positive / (True Positive + False Negative)</li>
+</ul>
+</li>
+<li><strong>Specificity, Selectivity, True Negative Rate</strong>:  <ul>
+<li>True Negative Rate = True Negative / (True Negative + False Positive)</li>
+</ul>
+</li>
+<li><strong>Precision, Positive Predictive Value</strong>:  <ul>
+<li>Precision = True Positives / (True Positive + False Positive)</li>
+</ul>
+</li>
+</ul>
+<p>With this context in mind, let&#39;s move forward and dive into the experiment!</p>
+<h2 is-upgraded>References</h2>
+<ul>
+<li>[1] <a href="https://en.wikipedia.org/wiki/Bias_of_an_estimator" target="_blank">Bias of an estimator</a></li>
+<li>[2] Jason Brownlee PhD . <a href="https://machinelearningmastery.com/gentle-introduction-to-the-bias-variance-trade-off-in-machine-learning/" target="_blank">&#34;Gentle Introduction to the Bias-Variance Trade-Off in Machine Learning&#34;</a>. Machine Learning Mastery. October 25, 2019.</li>
+<li>[3]  Saltelli, A. (2002). <a href="https://en.wikipedia.org/wiki/Sensitivity_analysis#cite_note-Risk_Analysis-1" target="_blank">&#34;Sensitivity Analysis for Importance Assessment&#34;</a>. Risk Analysis. 22 (3): 1–12. CiteSeerX 10.1.1.194.7359. doi:10.1111⁄0272-4332.00040. PMID 12088235.</li>
+<li>[4]  Saltelli, A.; Ratto, M.; Andres, T.; Campolongo, F.; Cariboni, J.; Gatelli, D.; Saisana, M.; Tarantola, S. (2008). <a href="https://en.wikipedia.org/wiki/Sensitivity_analysis#cite_note-Primer-2" target="_blank">Global Sensitivity Analysis: The Primer. John Wiley &amp; Sons</a>.</li>
+<li>[5] <a href="https://en.wikipedia.org/wiki/Sensitivity_analysis#cite_note-15" target="_blank">Sensitivity analysis</a></li>
+<li>[6]  Leamer, Edward E. (1983). <a href="https://en.wikipedia.org/wiki/Sensitivity_analysis#cite_note-16" target="_blank">&#34;Let&#39;s Take the Con Out of Econometrics&#34;</a>. American Economic Review. 73 (1): 31–43. JSTOR 1803924.</li>
+<li>[7]  Leamer, Edward E. (1985). <a href="https://en.wikipedia.org/wiki/Sensitivity_analysis#cite_note-17" target="_blank">&#34;Sensitivity Analyses Would Help&#34;. American Economic Review</a>. 75 (3): 308–313. JSTOR 1814801.</li>
+</ul>
+<h2 is-upgraded>Deeper Dive and Resources</h2>
+<ul>
+<li><a href="https://medium.com/@kguruswamy_37814/mitigating-bias-in-ai-ml-models-with-disparate-impact-analysis-9920212ee01c" target="_blank">Mitigating Bias in AI/ML Models with Disparate Impact Analysis ...</a></li>
+<li><a href="https://www.npr.org/sections/thetwo-way/2015/06/25/417433460/in-fair-housing-act-case-supreme-court-backs-disparate-impact-claims" target="_blank">In Fair Housing Act Case, Supreme Court Backs ‘Disparate Impact&#39; Claims</a></li>
+<li><a href="https://fairmlbook.org/" target="_blank">Fairness and machine learning</a></li>
+<li><a href="https://arxiv.org/pdf/1811.10104.pdf" target="_blank">50 Years of Test (Un)fairness: Lessons for Machine Learning</a></li>
+<li><a href="https://www.nytimes.com/2019/12/06/business/algorithm-bias-fix.html" target="_blank">Biased Algorithms Are Easier to Fix Than Biased People</a></li>
+<li><a href="https://arxiv.org/abs/1902.03731" target="_blank">Discrimination in the Age of Algorithms</a></li>
+<li><a href="https://towardsdatascience.com/understanding-and-reducing-bias-in-machine-learning-6565e23900ac" target="_blank">Understanding and Reducing Bias in Machine Learning</a></li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Task 3: Disparate Impact Analysis" duration="0">
+        <p>By now your experiment should be done. Since we are already familiar with the experiment dashboard let&#39;s move forward by selecting the <strong>INTERPRET THIS MODEL</strong> option. If you need to review the Driverless AI UI please refer back to this self-paced course: <a href="https://training.h2o.ai/products/self-paced-course-1a-automatic-machine-learning-introduction-with-driverless-ai" target="_blank">Automatic Machine Learning Introduction with Driverless AI.</a></p>
+<p class="image-container"><img alt="experiment-complete" src="img/65603e88904a294b.jpg"></p>
+<p>After the model is interpreted, you will be taken to the &#34;MLI: Regression and Classification Explanations&#34; page. The <em>DAI Model</em> tab (not to be confused with <strong>DIA</strong>: Disparate Impact Analysis) should already be selected for you thereafter, click on <em>Disparate Impact Analysis (the DIA tile)</em>. The following will appear:</p>
+<p class="image-container"><img alt="dia" src="img/6208589af0318841.jpg"></p>
+<p><strong>Note</strong>: This plot is available for binary classification and regression models.</p>
+<p>DIA is a technique that is used to evaluate fairness. Bias can be introduced to models during the process of collecting, processing, and labeling data—as a result, it is important to determine whether a model is harming certain users by making a significant number of biased decisions.</p>
+<p>DIA typically works by comparing aggregate measurements of unprivileged groups to a privileged group. For instance, the proportion of the unprivileged group that receives the potentially harmful outcome is divided by the proportion of the privileged group that receives the same outcome—the resulting proportion is then used to determine whether the model is biased. Refer to the Summary section to determine if a categorical level  is fair in comparison to the specified reference level and user-defined thresholds(located in the image above). Fairness All is a true or false value that is only true if every category is fair in comparison to the reference level(located in the image above).</p>
+<p>Disparate impact testing is best suited for use with constrained models in Driverless AI, such as linear models, monotonic GBMs, or RuleFit. The average group metrics reported in most cases by DIA may miss cases of local discrimination, especially with complex, unconstrained models that can treat individuals very differently based on small changes in their data attributes.</p>
+<ul>
+<li><strong>Note</strong>: We only enabled a XGBoost GBM Model and we constrained the model by setting the interpretability nob to &gt;= 7.</li>
+</ul>
+<p>DIA allows you to specify a disparate impact variable (the group variable that is analyzed), a reference level (the group level that other groups are compared to), and user-defined thresholds for disparity. Several tables are provided as part of the analysis:</p>
+<ul>
+<li><strong>Group metrics</strong>: The aggregated metrics calculated per group. For example, true positive rates per group.</li>
+<li><strong>Group disparity</strong>: This is calculated by dividing the <code>metric_for_group</code> by the <code>reference_group_metric</code>. Disparity is observed if this value falls outside of the user-defined thresholds.</li>
+<li><strong>Group parity</strong>: This builds on Group disparity by converting the above calculation to a true or false value by applying the user-defined thresholds to the disparity values.</li>
+</ul>
+<p>In accordance with the established four-fifths rule, user-defined thresholds are set to 0.8 and 1.25 by default. These thresholds will generally detect if the model is (on average) treating the non-reference group 20% more or less favorably than the reference group. Users are encouraged to set the user-defined thresholds to align with their organization&#39;s guidance on fairness thresholds.</p>
+<h2 is-upgraded>Metrics - Binary Classification</h2>
+<p>The following are formulas for error metrics and parity checks utilized by binary Disparate Impact Analysis. Note that in the tables below:</p>
+<p class="image-container"><img style="width: 500.00px" src="img/b537970af454a16d.jpg">     </p>
+<p class="image-container"><img style="width: 500.00px" src="img/4e61b0e565f31ee6.jpg">     </p>
+<p>Recall that our current experiment is a classification model, and therefore, the above metrics will be generated by the Disparate Impact Analysis(DIA) tool. In contrast, if it were a regression problem, we will see different metrics. To learn about metrics DIA will generate for a regression experiment, click <a href="http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/interpret-understanding.html#metrics-regression" target="_blank">here</a>.</p>
+<p><strong>Note</strong>:</p>
+<ul>
+<li>Although the process of DIA is the same for both classification and regression experiments, the returned information is dependent on the type of experiment being interpreted. An analysis of a regression experiment returns an actual vs. predicted plot, while an analysis of a binary classification experiment returns confusion matrices.</li>
+<li>Users are encouraged to consider the explanation dashboard to understand and augment results from disparate impact analysis. In addition to its established use as a fairness tool, users may want to consider disparate impact for broader model debugging purposes. For example, users can analyze the supplied confusion matrices and group metrics for important, non-demographic features in the Driverless AI model.</li>
+</ul>
+<p>With the above in mind, let&#39;s continue with our experiment analysis - observe the Global Confusion Matrix for our experiment:</p>
+<p class="image-container"><img alt="dia-2" src="img/49b6aabb06fe84a9.jpg"></p>
+<p>The confusion matrix above is structure as follows:</p>
+<p class="image-container"><img alt="confusion-matrices-explanation" src="img/c4f00688178a7168.jpg"></p>
+<ul>
+<li>Let&#39;s put this matrix into perspective by calculating the following values:  <ul>
+<li><strong>True Positive Rate</strong> = 3091/(3091 + 3545) = <strong>0.4657(46.57%)</strong></li>
+<li>probability that an actual positive will test positive</li>
+<li><strong>True Negative Rate</strong> = 21301/(21301 + 2063) = <strong>0.911(91.1%)</strong></li>
+<li>the probability that an actual negative will test negative</li>
+<li><strong>False Negatives</strong> = <strong>3545.0</strong></li>
+<li><strong>False Positive</strong> = <strong>2063.0</strong></li>
+</ul>
+</li>
+<li>From the above calculations, we can see that the probability of the prediction being an actual negative is 91.1%. In contrast, the probability of a prediction to be an actual positive is 46.57%, way smaller when compared to the negative probability. The difference between rates is 44.53%. In other words, this, to an extend, tells us that most predictions will be label negative: no default. We also see that the false positive value (wrong default predictions) is a bit high. We also see that the False Negative value(wrong default prediction) is also fairly high. While having False Negatives and False Positives is common, it will not be acceptable to have the False Positives be composed largely by a protective group/class. In particular, it will be wrong if our model is redirecting all False Positives to a given protected class base on a demographic feature. Below we will analyze whether members of a protective class are not being mislabeled because of their unique background.</li>
+</ul>
+<p><strong>Note</strong>: The confusion matrix is base on the <strong>MAXIMIZED METRIC</strong> and <strong>CUT OFF</strong> value found on the summary section:</p>
+<ul>
+<li>Predictive models often produce probabilities, not decisions. So to make a decision with a model-generated predicted probability for any one client, we need a numeric cutoff which we say a client will default and below which we say they will not default. Cutoffs play a crucial role in DIA as they impact the underlying measurements used to calculate diparity. In fact, tuning cutoffs carefully is a potential remdiation tactic for any discovered disparity. There are many accepted ways to select a cutoff (besides simply using 0.5) and in this experiment Driverless AI has selected a balance between the model&#39;s recall (true positive rate) and it&#39;s precision using the <strong>F1</strong> statistic. Using precision and recall to select a cutoff is sometimes seen as more robust to imbalanced data than the standard ROC approach. Maximizing <strong>F1</strong> typically results in a good balance between sensitivity and precision. In this experiment, Driverless AI has decided that the best <strong>CUT OFF</strong> value is <strong>0.56</strong>, leading to a maximization of precision and recall.</li>
+<li>In other words, a Driverless AI model will return probabilities, not predicted classes. To convert probabilities to predicted classes, a cutoff needs to be defined. Driverless AI iterates over possible cutoffs to calculate a confusion matrix for each cutoff. It does this to find the maximum F metric value. Driverless AI&#39;s goal is to continue increasing this maximum F metric.</li>
+<li>The F1 score provides a measure for how well a binary classifier can classify positive cases (using a threshold value). The F1 score is calculated from the harmonic mean of the precision and recall. An F1 score of 1 means both precision and recall are perfect and the model correctly identified all the positive cases and didn&#39;t mark a negative case as a positive case. If either precision or recall are very low it will be reflected with a F1 score closer to 0.  <ul>
+<li>F1 equation: F1 = 2((Precision)(Recall)/Precision + Recall)</li>
+<li>Where:</li>
+<li><strong>precision</strong> is the positive observations (true positives) the model correctly identified from all the observations it labeled as positive (the true positives + the false positives).</li>
+<li><strong>recall</strong> is the positive observations (true positives) the model correctly identified from all the actual positive cases (the true positives + the false negatives).</li>
+</ul>
+</li>
+</ul>
+<p>In the following task, let&#39;s put the above confusion Matrix into perspective in terms, of whether unfairness is present.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Task 4: Group Disparity and Parity" duration="0">
+        <p>To begin our analysis on each feature (column) and determine whether it holds a disparate impact, let&#39;s consider the above steps on how it could be determined using DIA.</p>
+<h2 is-upgraded>Feature: SEX</h2>
+<p>First, let us observe the <strong>SEX</strong> feature:</p>
+<p>On the top right corner, click on the <strong>Disparate Impact Variable</strong> button. Select the <strong>SEX</strong> variable:</p>
+<p class="image-container"><img alt="disparate-impact-select" src="img/d5542204f4491225.jpg"></p>
+<p>On the <strong>Reference Level</strong> button change the value from <strong>2(Female)</strong> to <strong>1(Male)</strong>:</p>
+<p class="image-container"><img alt="reference-level" src="img/81f811e646971c5b.jpg"></p>
+<p>The following will appear:</p>
+<p class="image-container"><img alt="dia-fairness-one" src="img/13edce146c7950be.jpg"></p>
+<p><em>Things to Note</em>:</p>
+<ol type="1">
+<li>Make sure the <strong>Reference level</strong> is toggled to 1(Male). With DIA the reference level is somewhat ambiguous, but generally, we want to set it to the category or population we believe may be receiving better treatment compared to other classes. In this case, the assumption is that <strong>Males</strong> received better treatment within the financial sector.</li>
+<li>From a general observation we can see that base on the <strong>Summary</strong> section:  <ul>
+<li>It looks like the model didn&#39;t do well with respect to eliminating bias around <strong>Gender!</strong> The <strong>FAIRNESS 1 (Male)</strong> is <strong>True</strong>, <strong>FAIRNESS 2 (Female)</strong> is <strong>False</strong>, and the <strong>FAIRNESS ALL</strong> is <strong>False</strong> that tells us the model accuracy is only fair to males  — definitely breaking the four-fifth rule.</li>
+<li><strong>When conducting a DIA analysis, always refer to the Summary section to determine if a categorical level is fair in comparison to the specified reference level and user-defined thresholds. Fairness All is a true or false value that is only true if every category is fair in comparison to the reference level.</strong></li>
+</ul>
+</li>
+<li>If we had to break this down, the Disparate Impact Analysis basically took model prediction results which was from 11K males, 18k females and looked at various measures such as Accuracy, Adverse Impact, True Positive Rate, Precision, Recall, etc., across both binary classes and then found the ratios are not comparable across the two groups over the cutoff value. The results for the Female was not more than four-fifths of the reference class Male — which means adverse impact by its basic definition.  <ul>
+<li>A reminder <em>Adverse Impact</em> refers to the following definition:</li>
+<li>Adverse impact is the negative effect an unfair and biased selection procedure has on a protected class. It occurs when a protected group is discriminated against during a selection process, like a hiring or promotion decision.[8]<br>   <ul>
+<li>In the US, protected classes include race, sex, age (40 and over), religion, disability status, and veteran status.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>Further, <em>True Positive Rate</em> refers to the following definition:  <ul>
+<li>In machine learning, the true positive rate, also referred to sensitivity or recall, is used to measure the percentage of actual positives which are correctly identified.[9]</li>
+</ul>
+</li>
+</ul>
+<ol type="1">
+<li>Further we also see a slight population imbalance but not at a worrisome level yet. It will be a problem when the imbalance is huge because it will mean that the model will be learning (through examples) from a particular population or group. Though it could be the case, this slight population imbalance is causing unfairness, but further analysis is required to support such conclusion.<br></li>
+</ol>
+<p>Scroll down, and let&#39;s take a look at <strong>Group Disparity</strong>:</p>
+<p class="image-container"><img alt="0.8-low-threshold" src="img/4d445808304bcbd0.jpg"></p>
+<p>Every time you view the <strong>Group Disparity</strong> table, you will notice that a given row will have all its values equal to <strong>1.00000</strong>: this will be the reference level. In other words, the benchmark (1/Male) should be one as it provides the level to compare. As mentioned on task 3, following the established four-fifths rule, user-defined thresholds are set to 0.8 and 1.25 by default(1). These thresholds will generally detect if the model is (on average) treating the non-reference group 20% more or less favorably than the reference group. Users are encouraged to set the user-defined thresholds to align with their organization&#39;s guidance on fair thresholds.</p>
+<p>As we observe, across the multiple metrics, we can see that the <strong>False Positive Rate Disparity</strong> is out of range of the <strong>0.8</strong> and <strong>1.25</strong> thresholds(2).  In particular, the <strong>Female</strong> class will be wrongly labeled as default  <strong>0.75619</strong>(~75%) as often as <strong>Male&#39;s</strong>. This value of ~75% is out of the acceptable range and will impact the <strong>Male</strong> class, given that it will give the <strong>Male</strong> class a higher <strong>False Positive Rate</strong> while leading to more <strong>Males</strong> being wrongly categorized in terms of default.</p>
+<p>Keep in mind that the default thresholds (the fourth fifths rule) are not widely accepted but are acceptable as default thresholds. Few will argue that there should be 0% disparity rather than 20% and others claim it should be 10% (within 90%). Let&#39;s see what will happen if we set the thresholds to generally detect if the model is (on average) treating the non-reference group <strong>10%</strong> more or less favorably than the reference group</p>
+<p>Now let&#39;s adjust the <strong>low threshold</strong> to <strong>0.9</strong> and see what happens:</p>
+<p class="image-container"><img alt="0.9-low-threshold" src="img/62a3e7b4c7f216b4.jpg"></p>
+<p>We can see that if we adjust the low threshold(1), the <strong>Adverse Impact Disparity</strong>(2) and <strong>False Positive Rate Disparity</strong>(2) will become highlighted, saying that if <strong>0.9</strong> is the cutoff, this class (2/Female) will be treated unfairly by the model. The <strong>Adverse Impact Disparity</strong> column says that the model will label <strong>Females</strong> as defaulting <strong>0.82966</strong>(~82%)  as often as <strong>Males</strong> will. In this case, the disparity caluclations between both genders will not be within 10% of each other. Therefore, it seems that such difference has been driven by the <strong>SEX</strong> feature, remember we want the rate of default predictions to be identical for both groups, if not at least be between 10% or 20% from each other&#39;s default prediction rates.</p>
+<p>In other words, <strong>Females</strong> in this model will have a lower probability of being label as default. This can benefit the <strong>Female</strong> class and create a disparity in terms of <strong>Males</strong> receiving a higher default prediction. It can also be a problem because the model will not be able to identify all true cases of default among the <strong>Female</strong> class. And as discussed earlier, the  <strong>False Positive Rate Disparity</strong> will be out of range when the low threshold is <strong>0.8</strong> and will also be out of range when the low threshold is <strong>0.9</strong>(3).</p>
+<p>Now let&#39;s look at the <strong>Group Parity</strong> table, but before we do that, change the low threshold to <strong>0.8</strong> in the <strong>Group Disparity</strong> table.</p>
+<p>Let&#39;s scroll down and investigate the <strong>Group Parity</strong> table and check if all classes are being treated fairly by the model under the benchmark thresholds(Four-Fifths rule):</p>
+<p class="image-container"><img alt="group-parity" src="img/23154f48f3241852.jpg"></p>
+<ul>
+<li>**Remember the following: The <strong>Group Parity</strong> table is populated by the Group disparity values that are converted to a true or false value by applying the user-defined thresholds(in this case, the thresholds reflect the fourth fifths rule).**</li>
+</ul>
+<p>Here we can see what we discover on the <strong>Group Disparity</strong> table. For example, when looking at the <strong>False Positive Rate Disparity</strong>, we see that it has been marked as <strong>False</strong>: no fairness. In particular, note the new row named <strong>All</strong>; this row is <strong>True</strong> or <strong>False</strong>. <strong>True</strong> if its column values are all <strong>True</strong> and <strong>False</strong> when one of the column&#39;s values is <strong>False</strong>.</p>
+<p>With the above in mind, we can see that we will have different instances of disparity among the <strong>Female</strong> and <strong>Male</strong> classes when the thresholds reflect the fourth fifths rule or any other higher threshold approximating fairness(0% disparity). Therefore, next time the model is rebuilt with the above new insight, such instances of disparity observe above will not be present on the new model only if the identify warmful feature is removed(Though sometimes, it can be introduced in other forms, for example, through a different feature).</p>
+<p>And what we have done with the <strong>SEX</strong> feature above can be done for every single attribute used on the model. Such a single analysis on each feature can make the process of rebuilding models easier. Easier, in terms of approximating a model to fairness every time, we rebuilt the model while keeping in mind what has been learned in the previous iteration. And in this iteration, we have learned that Driverless AI should not use the <strong>SEX</strong> feature in the iteration.</p>
+<p>To analyze the other features, you will only need to scroll back up and change the <strong>Disparate Impact Variable</strong> and <strong>Reference Level</strong>. For example, when changing the <strong>Disparate Impact Variable</strong> to <strong>MARRIGE</strong> or <strong>EDUCATION</strong>, the following will appear:</p>
+<p class="image-container"><img alt="disparate-impact-variable-marriage-one" src="img/32f6cd9e50a27fbc.jpg"><img alt="disparate-impact-variable-education-one" src="img/89e9892286149733.jpg"></p>
+<p>If all demographic factors are dropped and a model is generated, we still need to check that a presumed fair model is not discriminating. Driverless AI allows you to pick the features not used on the Driverless AI experiment(drop columns). For example, you can still choose the <strong>SEX</strong> feature as the <strong>Disparate Impact Variable</strong> in a DIA report, even if it&#39;s the case that the <strong>SEX</strong> feature was dropped before the experiment was launch. Such ability to pick features dropped allows you to see if a model is eventually not generating disparity with and without a sensitive feature such as <strong>SEX</strong>.</p>
+<p>To emphasize, let us imaged we ran an experiment, and we dropped all demographic features. Right after, we will be able to generate a DIA Analysis, but the predictions will be based only on the features used. In this scenario, we will like to assume that the model is fair given that it doesn&#39;t make use of sensitive features such as demographic factors. Though that might be the case, we can never assume; instead, we need to verify such an assumption. In that case, DIA allows us to select available demographic factors such as <strong>SEX</strong>. In that case, we can see whether the model is creating disparity for certain protective groups.  Therefore, DIA will allow us to see the general or overall impact the model has on protective groups, whether that impact is good or bad.</p>
+<p>Going back to our first discovery, let us see at a local level how the <strong>SEX</strong> feature is playing a crucial role in individual predictions. The local analysis allows us to verify the impact of a given feature but can tell us how much certain feature values impact single predictions. Knowing this can be crucial when proceeding on the next iteration of the model, especially if the goal is to achieve low disparity values.</p>
+<p>After several iterations, a Driverless AI experiment was run similar to the one running in task one. The only difference between the experiment in task one and the final experiment was that it dropped all democratic/sensitive features(columns). Despite dropping demographic features, disparity and bias somehow were introduced to the model(e.g., as shown in the <strong>EDUCATION</strong> and <strong>MARRIAGE</strong> summaries). The interesting part is that the columns used in the final model are not known to be biased. For example, <strong>PAY_1</strong> at an empirical observation will not make someone say that <strong>PAY_1</strong> has a bias or can lead to bias. A good way to identify what features lead to bias is by using the <strong>Sensitivity Analysis</strong> tool in conjunction with several surrogate models.</p>
+<p class="image-container"><img alt="education-disparate-impact-variable" src="img/c716628f44bb6592.jpg"><img alt="marriage-disparate-impact-variable" src="img/ff1b7e09185beff2.jpg"></p>
+<p>Note: In the final model iteration, we also dropped <strong>Limit_Bal</strong> because it has some adverse action considerations, this variable is usually dictated internally(by staff members), and therefore, we will also dropped it.</p>
+<p>Now let&#39;s focus our attention on the <strong>Sensitivity Analysis</strong> tool, and let&#39;s discover how it can help us better understand our model on the grounds of fairness and local/single predictions/observations.</p>
+<h2 is-upgraded>References</h2>
+<ul>
+<li>[8] <a href="https://www.hirevue.com/blog/what-is-adverse-impact-and-why-measuring-it-matters" target="_blank">WHAT IS ADVERSE IMPACT? AND WHY MEASURING IT MATTERS</a></li>
+<li>[9] <a href="https://link.springer.com/referenceworkentry/10.1007%2F978-1-4419-9863-7_255" target="_blank">Encyclopedia of Systems Biology</a></li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Task 5: Sensitivity Analysis Part 1: Checking for Bias" duration="0">
+        <p>As of now, you should still be on the <strong>Disparate Impact Analysis</strong> page. Click the <strong>X</strong> icon located at the top right corner of the page.  That will take you to the <strong>DAI Model</strong> tab; in there, click the <strong>SA (Sensitivity Analysis)</strong> tile. The following will appear:</p>
+<p class="image-container"><img alt="preview-sa-ui" src="img/c20de032e6555d43.jpg"></p>
+<p>*<strong>Note*: The Sensitivity Analysis tool will base its results on our original experiment ran in task one, not from the final model mentioned at the end of the previous task.</strong></p>
+<p><strong>Note</strong>: Sensitivity Analysis (SA) is not available for multiclass experiments.</p>
+<p>Sensitivity Analysis (or &#34;What if?&#34;) is a simple and powerful model debugging, explanation, fairness, and security tool. The idea behind SA is both direct and simple: Score your trained model on a single row, on multiple rows, or on an entire dataset of potentially interesting simulated values and compare the model&#39;s new outcome to the predicted outcome on the original data.</p>
+<p>Beyond traditional assessment practices, sensitivity analysis of machine learning model predictions is perhaps the most important validation technique for machine learning models. Sensitivity analysis investigates whether model behavior and outputs remain stable when data is intentionally perturbed or other changes are simulated in the data. Machine learning models can make drastically differing predictions for only minor changes in input variable values. For example, when looking at predictions that determine financial decisions, SA can be used to help you understand the impact of changing the most important input variables and the impact of changing socially sensitive variables (such as Sex, Age, Race, etc.) in the model. If the model changes in reasonable and expected ways when important variable values are changed, this can enhance trust in the model. Similarly, if the model changes to sensitive variables have minimal impact on the model, then this is an indication of fairness in the model predictions.</p>
+<p>This page utilizes the <a href="https://pair-code.github.io/what-if-tool/" target="_blank">What If Tool</a> for displaying the SA information.</p>
+<p>The top portion of this page includes:</p>
+<ul>
+<li>A summary of the experiment</li>
+<li>Predictions for a specified column. Change the column on the Y axis to view predictions for that column.</li>
+<li>The current working score set. This updates each time you rescore.</li>
+</ul>
+<p>The bottom portion of this page includes:</p>
+<ul>
+<li>A filter tool for filtering the analysis. Choose a different column, predictions, or residuals. Set the filter type (<code>&lt;</code>, <code>&gt;</code>, etc.). Choose to filter by False Positive, False Negative, True Positive, or True Negative.</li>
+<li>Scoring chart. Click the Rescore button after applying a filter to update the scoring chart. This chart also allows you to add or remove variables, toggle the main chart aggregation, reset the data, and delete the global history while resetting the data.</li>
+<li>The current history of actions taken on this page. You can delete individual actions by selecting the action and then clicking the Delete button that appears.</li>
+</ul>
+<p class="image-container"><img alt="sa-ui" src="img/31e9bbe0920e8c27.jpg"></p>
+<p><em>Things to Note:</em></p>
+<ol type="1">
+<li>In the <strong>Summary</strong> section we can see the cut-off value. Our <strong>CUT-OFF</strong> is <strong>0.557592920...</strong> Anything below the <strong>CUT-OFF</strong> will mean the model predicts a client will not default, while anyone greater than or equal to the <strong>CUT-OFF</strong> will default:</li>
+</ol>
+<p class="image-container"><img style="width: 400.00px" src="img/dce70467d1dd3caa.jpg">     </p>
+<ol type="1">
+<li>The pink circle indicates that the most common prediction is <strong>False(Negative)</strong>(the pink circle being on the negative side indicates such a conclusion).  <img alt="sa-ui-threshold" src="img/b88474bad40210d7.jpg">  <ul>
+<li>The <strong>F1 CUTOFF</strong> indicates that the mean score prediction is <strong>0.55759292</strong>.</li>
+</ul>
+</li>
+<li>The values changed in this chart will lead to the graph above to change (when the chart is rescored):  <img alt="sa-ui-cm-table" src="img/ec80b7f1dcbc4b44.jpg"></li>
+</ol>
+<p>Now that we have familiarized ourselves with the UI let&#39;s experiment! Reminder <em>Sensitivity Analysis</em> enables us to tinker with various settings in the data to see if certain features affect the outcome when we know that they should not. Let&#39;s start by adjusting an entire feature.</p>
+<p>If you remember from the first MLI self-paced course, feature <strong>PAY_1</strong> was extremely important; if not, you can jump back to <strong>RF Feature Importance</strong> and double-check. You can find the <strong>RF Feature Importance</strong>  in the <strong>Surrogate Models</strong> tab.</p>
+<p class="image-container"><img alt="rf-feature-importance.jpg" src="img/b23bcb0bab07c6e7.jpg"></p>
+<p>You can also check the <strong>RF Partial Dependence Plot</strong> and see the probability of defaulting increases when PAY_1 is two months late:</p>
+<p class="image-container"><img alt="rf-partial-dependence-plot" src="img/fc942ad9ba051ee1.jpg"></p>
+<p>Now that we know that being two months late on PAY_1 is terrible and knowing that the average mean score prediction is <strong>0.55759292</strong>, what will occur if we were to set all clients to have <strong>PAY_1 = 2</strong>? Will the average mean score prediction increase or decrease?</p>
+<p>To set all clients <strong>PAY_1</strong> equal to <strong>2</strong>(months late), please consider the following steps:</p>
+<ul>
+<li>Click on top of column name <strong>PAY_1</strong>:  <img alt="change-pay-1" src="img/fd6cfc3b0f483ee6.jpg"></li>
+<li>A pop-up box will appear, displaying three different radio buttons. Make sure the <strong>absolute</strong> radio button is selected.  In the text box, enter the value <strong>2</strong> (this will represent two months late for all <strong>PAY_1</strong>). Right after, click <strong>SET</strong>:  <ul>
+<li>As a reference, the other two options let you change a given value through a relative or percentage value. For example, if the relative option is selected, you can change the value for a given row or all rows by a minus or a plus value. It can be the case that with the relative option, you can increase or decrease all the values for <strong>PAY_1</strong>(e.g., 1 (this will increase every single <strong>PAY_1</strong> by one)).  We will explore the percentage option in a moment.</li>
+</ul>
+  <img alt="pay-1-equal-to-2" src="img/e8dd724d1d8b20f3.jpg"></li>
+<li>Click the <strong>RESCORE</strong> button:  <img alt="rescore" src="img/8fd3492cb544d5da.jpg"></li>
+</ul>
+<p>We can check the <strong>Current Working Set Score</strong> section on the right to see a summation of what occurred. In this run, we see that switching all the values for <strong>PAY_1</strong> to <strong>2</strong> led to the doubling of the average mean. As a result, <strong>SA</strong> is now implying that our model would predict more defaults because the perceived probability of default was much higher. Our current score is now <em>0.53650</em> from a prior score of <strong>0.22111</strong>. Consequently, the absolute change is <strong>0.31538</strong>, an increase of <strong>142.63%</strong> change. Note that the pink circle moved more to the right and now is closer to the cutoff line.</p>
+<p class="image-container"><img alt="delta" src="img/9ccb1181dc007184.jpg"></p>
+<p>Let&#39;s take this one step further and try another adjustment. Let&#39;s adjust <strong>PAY_AMT2</strong> to <strong>80%</strong> of what it originally was i.e., let&#39;s see what happens to the model when we make our entire population only pay 80% of what they did. Based on the <strong>RF Feature Importance</strong>, <strong>PAY_2</strong> is the second most important feature for predicting if a particular client will default on their next credit card payment. Therefore, the hypothesis is what will happen if we make the payment for <strong>PAY_AMT2</strong> be only 80% (not fully paid). This will affect <strong>PAY_2</strong> given that if a client paid only 80%, the value for <strong>PAY_2</strong> would be marked as not paid fully. As you may notice, the variable <strong>PAY_AMT2</strong> is not on the table, but don&#39;t worry, we can add it by following these quick steps:</p>
+<ul>
+<li>Click on the <strong>Plus</strong> icon, and a box will appear:  <img alt="add-option" src="img/dbdb07eb39d28154.jpg"></li>
+<li>Select the <strong>PAY_AMT2</strong> variable and click <strong>SET</strong>:  <img alt="pay-amt2" src="img/38d759081f3008e8.jpg"></li>
+<li>Right after, similar to how we change the value of <strong>PAY_1</strong>, we will click on the <strong>PAY_AMT2</strong> variable.  <ul>
+<li>Select the <strong>Percentage</strong> radio button and set the <strong>Percentage</strong> to <strong>80</strong>(remember that <strong>PAY_AMT1-6</strong> refers to the amount paid for a given payment #). Right after, click <strong>SET</strong>:</li>
+</ul>
+  <img alt="pay-amt-2-80-percent" src="img/261787360d005fa7.jpg"></li>
+<li>Click the <strong>RESCORE</strong> button: interestingly enough, when we finish rescoring and review results, we discover that this adjustment had virtually no effect whatsoever. In this case, the absolute change when modifying <strong>PAY_AMT2</strong> is <strong>0.00176</strong>, a <strong>0.33%</strong> increase. It is a crucial consideration in Machine Learning to be aware that there will be many situations where you might think a variable would be important where it is not and vice versa.</li>
+</ul>
+<p class="image-container"><img alt="no-change" src="img/e2a9dc9780b7726f.jpg"></p>
+<p>Let&#39;s inspect this graph from a different angle, but before, let&#39;s restore the original <strong>Sensitivity Analysis</strong> results. Click the reset button located on the bottom right corner of the <strong>Sensitivity Analysis</strong> graph. The reset button removes all edits done to the graph and resets the graph to its original results when it was open for the first time.</p>
+<p class="image-container"><img alt="reset" src="img/fc22a3beafff76e1.jpg"></p>
+<p>So far, we have verified that <strong>PAY_1</strong>, as suggested by few surrogate models, is the top feature determining predictions.  From a general empirical observation, we would say that it&#39;s acceptable to have a feature such as  <strong>PAY_1</strong> be among the top three drivers of predictions. Now let&#39;s see what exactly then is generating the bias in our model that made use of all columns under the assumption that we have no clue that certain features can lead to unfairness. Once again, we are doing this to see the process one can take to identify a feature as unfair when it is not obvious that a feature might lead to unfairness.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Task 6: Sensitivity Analysis Part 2: Checking for Bias" duration="0">
+        <p>For this subsequent analysis, we will tinker with an individual user and see what feature changes might push them over or under the default/approval threshold. There are a few ways to do this, but since we know the cutoff is <strong>0.55759292</strong>, we will try to find a particular customer (blue or yellow circle) very close to the cutoff. Note, there are several ways we can filter to get close to a person close to the cutoff. In this case, I was able to find someone close to the cutoff line by filtering as follows:</p>
+<ul>
+<li>On the left side of the table (at the bottom of the page), you will be able to locate the filter options. In my case, I selected the <strong>ID</strong> variable and filtered it by <strong>ID &lt; 4</strong>. You can click on top of the three text input lines and change a given variable, operator, and value.</li>
+</ul>
+<p class="image-container"><img style="width: 400.00px" src="img/34b892828bdaa150.jpg">     </p>
+<p>Once you get a narrow range, you should see up close which customers are the closest predictions to the cutoff line, as shown above. In this case, we will experiment with a customer holding the <strong>ID</strong> number <strong>3</strong>:</p>
+<p class="image-container"><img alt="before-values-change" src="img/72477cbcb6860931.jpg"></p>
+<p>Now let&#39;s see if we can independently adjust some of the demographic features and push customer three over the threshold from negative(not predicted as defaulting) to positive(predicted to default). Since we are discussing fairness and regulatory considerations, let&#39;s adjust the demographic variables to learn more. To choose the demographic variables such as <strong>AGE</strong>, <strong>SEX</strong>, <strong>EDUCATION</strong>, and <strong>MARRIAGE</strong> please consider the following steps:</p>
+<ul>
+<li>Click the plus icon</li>
+<li>Select and make sure <strong>EDUCATION</strong>, <strong>AGE</strong>, and <strong>MARRIAGE</strong> are selected</li>
+<li>Click <strong>SET</strong></li>
+</ul>
+<p>After following the above steps, scroll to the right to see the newly added columns: <strong>SEX</strong>, <strong>EDUCATION</strong>, and <strong>MARRIAGE</strong>:</p>
+<p class="image-container"><img alt="demographic-columns" src="img/645ad5f1ca30c92c.jpg"></p>
+<p>Based on what our data dictionary tells us: this is a married college-educated female who was predicted to not default (on next credit card payment). Let&#39;s try adjusting her <strong>education</strong> down and changing marital status to <strong>single</strong>. The assumption here is that in default predictions, single people without a college degree should not be denied credit or be predicted to default just because of this idea of being single and not having a college education.</p>
+<p><strong>Note:</strong></p>
+<ul>
+<li><strong>Gender</strong> (1 = male, 2 = female)</li>
+<li><strong>Education</strong> (1 = graduate school, 2 = university, 3 = high school, 4 = others)</li>
+<li><strong>Marital status</strong> (1 = married, 2 = single, 3 = others)</li>
+</ul>
+<p>To change the <strong>Education</strong> and <strong>Marital Status</strong> values, we will follow the same steps used when we changed <strong>PAY_1</strong> and <strong>PAY_AMT2</strong>.</p>
+<p>After lowering the <strong>Education</strong> and setting the <strong>Marital Status</strong> to <strong>Single(2)</strong>, the table displays the following:</p>
+<p class="image-container"><img alt="change-column-values" src="img/9ebc562ca24e4669.jpg"></p>
+<p>Overall the <strong>Sensitivity Analysis</strong> page changes as follows:</p>
+<p class="image-container"><img alt="results-from-changing-education-and-marital-status" src="img/22c8d16fa51ad29f.jpg"></p>
+<p>After changing the values(1), we discover the following: as you will see, the prediction is not flipped(2⁄3), and this is good because a model in production should not have its prediction change because certain sensitive demographic variables have been modified. If it were the case that a prediction would change as a result of manipulating a specific demographic variable, this would tell us that bias has been introduced in our AI model and that will result in legal consequences and penalties for your company or entity. As a result, if bias is present, developers of the AI model should use their technologies or common sense intuition to understand the ins of their model and fix the bias and as questions around; &#34;does this seem ethical? Does this seem logical? These two questions are fundamental questions to ask yourself to provide fairness and avoid legal, ethical, and moral consequences. As well, these questions will guide you to decide on the definition of what is fair in your respective use case of the AI model.</p>
+<p>You might be asking yourself now why then the prediction was not flipped; well, recall that <strong>PAY_1</strong> was the variable that most determine whether someone will default or not. In particular, we also discuss that someone increases its probability of defaulting when <strong>PAY_1 = 2</strong>(months late of payment 1). In other words, in this particular observation(local analysis), we don&#39;t see the demographic features creating the disparity observed on task four.</p>
+<p>After several iterations, while modifying several demographic values for multiple rows, it was determined that all predictions were not flipped when only modifying demographic values. Therefore, this experiment&#39;s demographic features are not why disparity was introduced to the model. Note again: this AI model that we built in task 1 made use of all columns and, therefore, took into consideration the demographic variables. So now the question again is why we kept the demographic columns? Isn&#39;t it illegal to make use of such demographic columns in production? And the answer to the second question is &#34;yes,&#34; it&#39;s illegal. We kept them because we wanted to use sensitive columns and demonstrate how we would use DAI to check for sensitivity around certain variables if we were to use such demographic variables in our AI model in production. Note one should never make use of such columns in production.</p>
+<p>From the above, it seems that  <strong>PAY_1</strong> is the ultimate predictor of default and not demographic features; we can assume and perhaps conclude that the following is true: it seems that using <strong>PAY_1</strong> as a predictor leads to a certain level of unacceptable disparity. Let us see what will happen if we change <strong>PAY_1</strong> to be two months late for a client with ID 3:</p>
+<p>You will change the value of <strong>PAY_1</strong> as demonstrated above; make sure it goes from <strong>0</strong> to <strong>2</strong>(instead of clicking on the <strong>PAY_1</strong> column name, you will click on the current value of <strong>PAY_1</strong> for row 3):</p>
+<p class="image-container"><img alt="after-values-change" src="img/6fe2e37c66fd0cef.jpg"></p>
+<p>We see that adjusting <strong>PAY_1 = 2</strong> sends the customer very close to the cutoff line and super close to the default zone, showing pretty clear how this one feature can dramatically impact the model for a single client.</p>
+<p>For this particular dataset, the one variable that, for the most part, determines whether someone will default or not is <strong>PAY_1</strong>. In these cases, developing an AI Model is not necessary given that by just looking at <strong>PAY_1</strong>, one can predict in a manner of speaking whether someone will default or not. The question at that point will be whether it will be acceptable to predict default only using  <strong>PAY_1</strong> while generating a certain level of unacceptable disparity. And for the most part, this discussion will be base on what will count as an acceptable level of disparity. Hence, if we were to judge this model based on the fourth fifths rule, we will not use this model with and without demographic features being used.</p>
+<p>Once again, we can use <strong>SA</strong> as a way to analyze several features at first, which might not seem like generators of disparity. In contrast, <strong>DIA</strong> can help us see whether disparity occurs at a general level in reference to confusion matrixes. And such a combination of <strong>DIA</strong> and <strong>SA</strong> can identify and generated better conversations when deciding whether a feature/column should be drop.</p>
+<h2 is-upgraded>Conclusion</h2>
+<p>As mentioned at the beginning of this self-paced course, the disparate impact analysis, and sensitivity analysis tool can help you understand your model&#39;s inner workings. Due to regulatory pressures and the aggressive adoption of AI in the enterprise, you are now more often required to be able to review and explain the ins of your model. It is worth noting that being able to explain a model after being built is just one component of responsible AI practices.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Next Steps" duration="0">
+        <p>Check out the next self-paced course: <a href="https://training.h2o.ai/products/self-paced-course-5b-risk-assessment-tools-in-the-world-of-ai-the-social-sciences-and-humanities" target="_blank">Risk Assessment Tools in the World of AI, the Social Sciences, and Humanities</a>, where you will learn more about:</p>
+<ul>
+<li>Disparate Impact Analysis</li>
+<li>Sensitivity Analysis</li>
+<li>Confusion Matrix</li>
+<li>Residual Analysis</li>
+<li>False Positive Rate</li>
+<li>True Positive Rate</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>

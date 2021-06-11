@@ -1,14 +1,14 @@
 {
   "environment": "web",
-  "source": "/Users/acastro/Desktop/scoring-pipeline-deployment-introduction/scoring-pipeline-deployment-introduction.md",
   "format": "html",
-  "prefix": "../assets",
+  "prefix": "https://storage.googleapis.com",
   "mainga": "UA-49880327-14",
-  "updated": "2020-09-23T17:27:41-07:00",
+  "updated": "2021-06-10T19:39:13-07:00",
   "id": "scoring-pipeline-deployment-introduction",
   "duration": 0,
   "title": "Scoring Pipeline Deployment Introduction",
   "summary": "Check the list",
+  "source": "/Users/falvarenga/Desktop/md-to-html/scoring-pipeline-deployment-introduction/scoring-pipeline-deployment-introduction.md",
   "theme": "",
   "status": [
     "draft"
@@ -17,10 +17,9 @@
     "driverless"
   ],
   "tags": [
-    "deployment",
     "driverless",
-    "mojo",
-    "scoring-pipeline"
+    "mojo-scoring-pipeline",
+    "scoring-pipeline-deployment"
   ],
   "url": "scoring-pipeline-deployment-introduction"
 }

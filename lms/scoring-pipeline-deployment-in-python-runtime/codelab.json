@@ -3,12 +3,12 @@
   "format": "html",
   "prefix": "https://storage.googleapis.com",
   "mainga": "UA-49880327-14",
-  "updated": "2020-12-06T21:47:58-08:00",
+  "updated": "2021-06-10T20:03:27-07:00",
   "id": "scoring-pipeline-deployment-in-python-runtime",
   "duration": 0,
   "title": "Scoring Pipeline Deployment in Python Runtime",
   "summary": "Check the list",
-  "source": "/Users/sperez/Desktop/scoring-pipeline-deployment-in-python-runtime/scoring-pipeline-deployment-in-python-runtime.md",
+  "source": "/Users/falvarenga/Desktop/md-to-html/scoring-pipeline-deployment-in-python-runtime/scoring-pipeline-deployment-in-python-runtime.md",
   "theme": "",
   "status": [
     "draft"
@@ -17,6 +17,7 @@
     "driverless"
   ],
   "tags": [
+    "",
     "driverless",
     "embeddable-mojo-scoring-pipeline",
     "python",
