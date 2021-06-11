@@ -1,18 +1,16 @@
+---
+id: machine-learning-interpretability
+summary: Check the list
+categories: driverless
+tags: driverless, machine-learning, interpretability, responsibleai
+difficulty: 1
+status: draft
+feedback: https://github.com/h2oai/tutorials/issues
+ 
+---
+
+
 # Machine Learning Interpretability
-
-## Outline
-- [Objective](#objective)
-- [Prerequisites](#prerequisites)
-- [Task 1: Launch Experiment](#task-1-launch-experiment) 
-- [Task 2: Industry Context and ML Explainability Concepts](#task-2-industry-context-and-ml-explainability-concepts)
-- [Task 3: Model Interpretations](#task-3-model-interpretations)
-- [Task 4: K-LIME](#task-4-k-lime)
-- [Task 5: Feature Importance](#task-5-feature-importance)
-- [Task 6: Partial Dependence and Individual Conditional Expectation (ICE)](#task-6-partial-dependence-and-individual-conditional-expectation-ice)
-- [Task 7: Decision Tree Surrogate Model](#task-7-decision-tree-surrogate-model)
-- [Task 8: Summary and Driverless AI Model Tab](#task-8-summary-and-driverless-ai-model-tab) 
-- [Next Steps](#next-steps)
-
 
 ## Objective
 
