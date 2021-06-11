@@ -129,12 +129,12 @@ For the most part, pre-trained models used in transfer learning are based on lar
 
 ![](assets/cnn.png)
 <p align="center">
-    Figure 1. CNN Overview One
+    <p align="center">Figure 1. CNN Overview One</p>
 </p>
 
 ![](assets/cnn-2.png)
 <p align="center">
-    Figure 2. CNN Overview Two
+    <p align="center">Figure 2. CNN Overview Two</p>
 </p>
 
 A typical CNN has two parts:
@@ -306,7 +306,7 @@ The **CNN Xception ImageNet Architecture** is an extension of the Inception Arch
 
 ![xception](assets/xception.png)
 <p align="center">
-    Figure 8. Xception
+    <p align="center">Figure 8. Xception</p>
 </p>
 
 **Note**:
@@ -525,8 +525,7 @@ The Insights page contains the following about the current best individual model
     - **Note**: Zero (0) refers to False and One (1) refers to True
     - **Note**: Image augmentation is a technique that can artificially expand the size of a training dataset by creating modified versions of images in the dataset. To make new images, you can change original images. For example, you can make a new image a little darker; you could cut a piece from the original image, etc. Therefore, you could create an infinite amount of new training samples. For example: 
         ![augmentation](assets/augmentation.png)
-        <p align="center">
-            Figure 9. Augmentation
+        <p align="center">Figure 9. Augmentation</p>
         </p>
 - Sample validation error images: 
     ![sample-validation-error-images](assets/sample-validation-error-images.png)
