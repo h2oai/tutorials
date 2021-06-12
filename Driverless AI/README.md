@@ -21,6 +21,8 @@ Check out the [**H2O.ai Learning Center**](https://training.h2o.ai/) where you c
 
 - [Natural Language Processing Tutorial - Sentiment Analysis](https://training.h2o.ai/products/tutorial-2b-natural-language-processing-tutorial-sentiment-analysis)
 
+- [Image Processing in Driverless AI](https://training.h2o.ai/products/self-paced-course-2c-image-processing-in-driverless-ai#tab-product_tab_contents__10) 
+
 - [Get Started with Open Source Custom Recipes Tutorial](https://training.h2o.ai/products/tutorial-3a-get-started-with-open-source-custom-recipes-tutorial)
 
 - [Build Your Own Recipe Tutorial](https://training.h2o.ai/products/tutorial-3b-build-your-own-custom-recipe-tutorial)
