@@ -35,11 +35,11 @@ If you are new to Driverless AI, we highly recommend finishing this tutorial to 
 
 1\. Welcome to the Aquarium Login page!
 
-![test-drive-login-page](assets/test-drive-login-page.jpg)
+![test-drive-login-page](assets/test-drive-login-page.png)
 
 2\. Select **Create a new account**
 
-![test-drive-create-a-new-account](assets/test-drive-create-a-new-account.jpg)
+![test-drive-create-a-new-account](assets/test-drive-create-a-new-account.png)
 
 3\. Enter:
 
@@ -81,29 +81,29 @@ If the three steps above don’t work, please send us an email at training@h2o.a
 Note: If you are having issues logging in, click the **send us an email** hyperlink.
 
 
-![test-drive-login](assets/test-drive-login.jpg)
+![test-drive-login](assets/test-drive-login.png)
 
 ## Reset Password 
 
 1\. If you forgot your password, select **I forgot my password**.
 
-![resetting-password](assets/resetting-password.jpg)
+![resetting-password](assets/resetting-password.png)
 
 2\. Enter your email, verify that you are not a robot by checking the "I'm not a robot" box, then click on **Email temporary password**. Another password will be emailed to you.
 
-![reset-password](assets/reset-password.jpg)
+![reset-password](assets/reset-password.png)
 
 ## How to Start and End the Test Drive Lab Session
 
 After a successful login, select "Browse Labs" located on the top-left corner of the page, then select Lab 1- Driverless AI Test Drive (x.x.x.x)(1GPU).
 
-![select-lab-1-dai-test-drive](assets/select-lab-1-dai-test-drive.jpg)
+![select-lab-1-dai-test-drive](assets/select-lab-1-dai-test-drive.png)
 
 
 After the Driverless AI Test Drive Lab will appear:
 
-![driverless-ai-test-drive-page](assets/driverless-ai-test-drive-page.jpg)
-![driverless-ai-test-drive-page-2](assets/driverless-ai-test-drive-page-2.jpg)
+![driverless-ai-test-drive-page](assets/driverless-ai-test-drive-page.png)
+![driverless-ai-test-drive-page-2](assets/driverless-ai-test-drive-page-2.png)
 
 
 **Note**: 
@@ -119,11 +119,11 @@ After the Driverless AI Test Drive Lab will appear:
 
 1\. To start a Lab, click on **Start Lab**. You will see an image similar to the one below:
 
-![test-drive-start-lab](assets/test-drive-start-lab.jpg)
+![test-drive-start-lab](assets/test-drive-start-lab.png)
 
 2\. Aquarium will then start the Lab session for you (this will take a few minutes). After the lab session starts, a similar image should appear:
 
-![test-drive-session](assets/test-drive-session.jpg)
+![test-drive-session](assets/test-drive-session.png)
 
 **Note**:
 
@@ -133,14 +133,14 @@ After the Driverless AI Test Drive Lab will appear:
 
 3\. Once the Lab has started, a Driverless AI URL will appear at the of the page. Click on that URL; this will take you to the H2O.ai Driverless AI Datasets Page.
 
-![dai-datasets-page](assets/dai-datasets-page.jpg)
+![dai-datasets-page](assets/dai-datasets-page.png)
 
 
 ## Logout
 
 1\. To logout, click on the box on the top-right corner of the page and select logout.
 
-![test-drive-logout](assets/test-drive-logout.jpg) 
+![test-drive-logout](assets/test-drive-logout.png)
 
 ## Questions
 
