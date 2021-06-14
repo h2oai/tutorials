@@ -3,12 +3,12 @@
   "format": "html",
   "prefix": "https://storage.googleapis.com",
   "mainga": "UA-49880327-14",
-  "updated": "2020-11-30T10:44:27-08:00",
+  "updated": "2021-06-14T15:50:52-07:00",
   "id": "getting-started-with-driverless-ai-test-drive",
   "duration": 0,
   "title": "Getting Started with Driverless AI Test Drive",
   "summary": "Check the list",
-  "source": "/Users/sperez/Desktop/getting-started-with-driverless-ai-test-drive/test-drive.md",
+  "source": "/Users/falvarenga/Desktop/md-to-html/getting-started-with-driverless-ai-test-drive/getting-started-with-driverless-ai-test-drive.md",
   "theme": "",
   "status": [
     "draft"
@@ -20,7 +20,7 @@
     "aquarium",
     "driverless",
     "machine-learning",
-    "test-drive"
+    "test-dri3ve"
   ],
   "url": "getting-started-with-driverless-ai-test-drive"
 }
