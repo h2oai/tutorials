@@ -20,17 +20,17 @@
 
 ## Objective
 
-We will be using a subset of the Freddie Mac Single-Family dataset to try to predict whether or not a mortgage loan will be delinquent using H2O’s GLM, Random Forest, and GBM models. We will go over how to use these models for classification problems, and we will demonstrate how to use H2O’s grid search to tune the hyper-parameters of each model. This tutorial, as well as the next tutorials, will be done in Python and R. 
+We will be using a subset of the Freddie Mac Single-Family dataset to try to predict whether or not a mortgage loan will be delinquent using H2O’s GLM, Random Forest, and GBM models. We will go over how to use these models for classification problems, and we will demonstrate how to use H2O’s grid search to tune the hyper-parameters of each model. This self-paced course, as well as the next ones, will be done in Python and R. 
 
-**Note:** In this tutorial, we provide complimentary instructions on how to use H2O Flow, but keep in mind that the instructions will not be as detailed as the instructions for Python and R.
+**Note:** In this self-paced course, we provide complimentary instructions on how to use H2O Flow, but keep in mind that the instructions will not be as detailed as the instructions for Python and R.
 
 ## Prerequisites
  
-**Note:** We have completed this tutorial in our cloud environment and is intended to take about two hours, or less, to be completed. Therefore, if you decide to do this tutorial on your machine, you might not get the same results, or it might take you longer to complete the tutorial than the intended time.
+**Note:** We have completed this self-paced course in our cloud environment and is intended to take about two hours, or less, to be completed. Therefore, if you decide to do this self-paced course on your machine, you might not get the same results, or it might take you longer to complete the self-paced course than the intended time.
 
-For instructions on how to create an Aquarium account, and how to access the lab and tutorial files, please refer to **Appendix A: Getting Started with Aquarium**
+For instructions on how to create an Aquarium account, and how to access the lab and self-paced course files, please refer to **Appendix A: Getting Started with Aquarium**
 
-If you decide to install H2O-3 on your machine, we recommend creating an Anaconda Cloud environment, as shown in the installation guide, [Install on Anaconda Cloud,](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/downloading.html#install-on-anaconda-cloud) this would help you make sure that you have everything that you need to do this tutorial.
+If you decide to install H2O-3 on your machine, we recommend creating an Anaconda Cloud environment, as shown in the installation guide, [Install on Anaconda Cloud,](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/downloading.html#install-on-anaconda-cloud) this would help you make sure that you have everything that you need to do this self-paced course.
 
 
 ## Task 1: Initial Setup
@@ -38,12 +38,12 @@ If you decide to install H2O-3 on your machine, we recommend creating an Anacond
 ### Overview
 The data set we’re using comes from Freddie Mac and contains 20 years of mortgage history for each loan and contains information about "loan-level credit performance data on a portion of fully amortizing fixed-rate mortgages that Freddie Mac bought between 1999 to 2017. Features include demographic factors, monthly loan performance, credit performance including property disposition, voluntary prepayments, MI Recoveries, non-MI recoveries, expenses, current deferred UPB and due date of last paid installment."[1]
 
-We’re going to use machine learning with H2O to predict whether or not a loan holder will default. To do this, we are going to build three classification models: a Linear model, Random Forest, and a Gradient Boosting Machine model, to predict whether or not a loan will be delinquent. Complete this tutorial to see how we achieved those results.
+We’re going to use machine learning with H2O to predict whether or not a loan holder will default. To do this, we are going to build three classification models: a Linear model, Random Forest, and a Gradient Boosting Machine model, to predict whether or not a loan will be delinquent. Complete this self-paced course to see how we achieved those results.
 
 We will start by importing H2O, the estimators for the algorithms that we will use, and also the function to perform Grid Search on those algorithms.
 
 ~~~python
-#Import H2O and other libaries that will be used in this tutorial
+#Import H2O and other libaries
 import h2o
 from h2o.estimators import *
 from h2o.grid import *
@@ -101,7 +101,7 @@ Please note that we use the name H2O-3 to refer to our software, and when we say
 ### Overview
 The data set we’re using comes from Freddie Mac and contains 20 years of mortgage history for each loan and contains information about "loan-level credit performance data on a portion of fully amortizing fixed-rate mortgages that Freddie Mac bought between 1999 to 2017. Features include demographic factors, monthly loan performance, credit performance including property disposition, voluntary prepayments, MI Recoveries, non-MI recoveries, expenses, current deferred UPB and due date of last paid installment."[1]
 
-We’re going to use machine learning with H2O to predict whether or not a loan holder will default. To do this, we are going to build three classification models: a Linear model, Random Forest, and a Gradient Boosting Machine model, to predict whether or not a loan will be delinquent. Complete this tutorial to see how we achieved those results.
+We’re going to use machine learning with H2O to predict whether or not a loan holder will default. To do this, we are going to build three classification models: a Linear model, Random Forest, and a Gradient Boosting Machine model, to predict whether or not a loan will be delinquent. Complete this self-paced course to see how we achieved those results.
 
 We will start by importing the H2O library.
 
@@ -276,9 +276,9 @@ loan_level["DELINQUENT"].table()
 As you can see, we have a highly imbalanced dataset, as only 3.6% of the samples are TRUE labels, meaning that only 3.6% of the samples in the dataset have been labeled as `DELINQUENT.`
 
 
-**Please note that the main goal of this tutorial is to show the usage of some models for classification problems, as well as to tune some of the hyper-parameters of the models. For that reason, we will be skipping any data visualization and manipulation, as well as feature engineering. The aforementioned stages in machine learning are very important, and should always be done; however, they will be covered in later tutorials.**
+**Please note that the main goal of this self-paced course is to show the usage of some models for classification problems, as well as to tune some of the hyper-parameters of the models. For that reason, we will be skipping any data visualization and manipulation, as well as feature engineering. The aforementioned stages in machine learning are very important, and should always be done; however, they will be covered in later self-paced courses.**
 
-Since we have a large enough dataset, we will split our dataset into three sets, and we will call them **train, valid,** and **test.** We will treat the test set as if it were some unseen data in which we want to make predictions, and we will use the valid set for validation purposes and to tune all our models. We will not use the test set until the end of the tutorial to check the final scores of our models.
+Since we have a large enough dataset, we will split our dataset into three sets, and we will call them **train, valid,** and **test.** We will treat the test set as if it were some unseen data in which we want to make predictions, and we will use the valid set for validation purposes and to tune all our models. We will not use the test set until the end of the self-paced course to check the final scores of our models.
 
 We will use the `.split_frame()` function. Note that we can do this in one line of code. Inside the split function, we declare the ratio of the data that we want in our first set, in this case, the **train** set. We will assign 70% to the training set, and 15% for the validation, as well as for the test set. The random seed is set to 42 just for reproducibility purposes. You can choose any random seed that you want, but if you want to see consistent results, you will have to use the same random seed anytime you re-run your code.
 
@@ -301,7 +301,7 @@ Next, we need to choose our **predictors**, or **x variable**, and our **respons
 
 For our y variable, we will choose `DELINQUENT` because we want to predict whether or not a loan will default. For the x variable, we will choose all but four features. One is the feature that we will predict, and then `PREPAID and PREPAYMENT_PENALTY_MORTGAGE_FLAG` because they are clear indicators if a loan is or is not delinquent. As well, it makes sense to remove them, given that in a real case scenario, we will not have that information when deciding whether to give a loan or not. In machine learning terms, introducing these types of features is called leakage. And lastly, `PRODUCT_TYPE` because that’s a constant value for every row, meaning all samples have the same value; therefore, this feature will not have any predictive value.
 
-There are several ways to choose your predictors, but for this tutorial, we will subtract the list in the variable `ignore` from all the names in our training set.
+There are several ways to choose your predictors, but for this self-paced course, we will subtract the list in the variable `ignore` from all the names in our training set.
 
 ~~~python
 y = "DELINQUENT"
@@ -356,9 +356,9 @@ h2o.table(loan_level[, c("DELINQUENT")])
 
 As you can see, we have a highly imbalanced dataset, as only 3.6% of the samples are TRUE labels, meaning that only 3.6% of the samples in the dataset have been labeled as `DELINQUENT.`
 
-**Please note that the main goal of this tutorial is to show the usage of some models for classification problems, as well as to tune some of the hyper-parameters of the models. For that reason, we will be skipping any data visualization and manipulation, as well as feature engineering. The aforementioned stages in machine learning are very important, and should always be done; however, they will be covered in later tutorials.**
+**Please note that the main goal of this self-paced course is to show the usage of some models for classification problems, as well as to tune some of the hyper-parameters of the models. For that reason, we will be skipping any data visualization and manipulation, as well as feature engineering. The aforementioned stages in machine learning are very important, and should always be done; however, they will be covered in later self-paced courses.**
 
-Since we have a large enough dataset, we will split our dataset into three sets, and we will call them **train, valid,** and **test.** We will treat the test set as if it were some unseen data in which we want to make predictions, and we will use the valid set for validation purposes and to tune all our models. We will not use the test set until the end of the tutorial to check the final scores of our models.
+Since we have a large enough dataset, we will split our dataset into three sets, and we will call them **train, valid,** and **test.** We will treat the test set as if it were some unseen data in which we want to make predictions, and we will use the valid set for validation purposes and to tune all our models. We will not use the test set until the end of the self-paced course to check the final scores of our models.
 
 We will use the `h2o.splitFrame()` function. Inside the split function, we declare the ratio of the data that we want in our first set, in this case, the **train** set. We will assign 70% to the training set, and 15% for the validation, as well as for the test set. The random seed is set to 42 just for reproducibility purposes. You can choose any random seed that you want, but if you want to see consistent results, you will have to use the same random seed anytime you re-run your code.
 
@@ -396,7 +396,7 @@ Next, we need to choose our **predictors**, or **x variable**, and our **respons
 
 For our y variable, we will choose `DELINQUENT` because we want to predict whether or not a loan will default. For the x variable, we will choose all but four features. One is the feature that we will predict, and then `PREPAID and PREPAYMENT_PENALTY_MORTGAGE_FLAG` because they are clear indicators if a loan is or is not delinquent. As well, it makes sense to remove them, given that in a real case scenario, we will not have that information when deciding whether to give a loan or not. In machine learning terms, introducing these types of features is called leakage. And lastly, `PRODUCT_TYPE` because that’s a constant value for every row, meaning all samples have the same value; therefore, this feature will not have any predictive value.
 
-There are several ways to choose your predictors, but for this tutorial, we will ignore the list in the variable `ignore` from all the names in our training set. 
+There are several ways to choose your predictors, but for this self-paced course, we will ignore the list in the variable `ignore` from all the names in our training set. 
 
 ~~~r
 # Identify predictors and response
@@ -1731,7 +1731,7 @@ sorted_random_search.sorted_metric_table()
 ![gbm-random-grid](assets/gbm-random-grid.png)
 ![gbm-random-grid-2](assets/gbm-random-grid-2.png)
 
-With the quick random grid search that we just performed we were able to improve the AUC value to **0.8621**. Note that since the combination of possible models is so large, we could run the grid search for much longer to see if there are models that further improve the AUC. For the purpose of this tutorial, we will leave it at that, but feel free to modify the grid search, try to use a narrower range for the parameters based on the values we found, and run the grid search for a longer period of time and see if you can get a much better model than the one we just found.
+With the quick random grid search that we just performed we were able to improve the AUC value to **0.8621**. Note that since the combination of possible models is so large, we could run the grid search for much longer to see if there are models that further improve the AUC. For the purpose of this self-paced course, we will leave it at that, but feel free to modify the grid search, try to use a narrower range for the parameters based on the values we found, and run the grid search for a longer period of time and see if you can get a much better model than the one we just found.
 
 We will now print the AUC and F1 scores to see how the model performed:
 
@@ -1871,7 +1871,7 @@ as.data.frame(gbm_random_grid_auc@summary_table)
 
 2\. Next button to look at the other models trained in this grid search.
 
-With the quick random grid search that we just performed we were able to improve the AUC value to **0.8614**. Note that since the combination of possible models is so large, we could run the grid search for much longer to see if there are models that further improve the AUC. For the purpose of this tutorial, we will leave it at that, but feel free to modify the grid search, try to use a narrower range for the parameters based on the values we found, and run the grid search for a longer period of time and see if you can get a much better model than the one we just found.
+With the quick random grid search that we just performed we were able to improve the AUC value to **0.8614**. Note that since the combination of possible models is so large, we could run the grid search for much longer to see if there are models that further improve the AUC. For the purpose of this self-paced course, we will leave it at that, but feel free to modify the grid search, try to use a narrower range for the parameters based on the values we found, and run the grid search for a longer period of time and see if you can get a much better model than the one we just found.
 
 
 We will now retrieve the best model, save the model performance, and print the AUC and F1 scores to see how the model performed:
@@ -1928,7 +1928,7 @@ We will do the final test performance next.
 
 ## Task 10: Test Set Performance
 
-We are going to obtain the test performance of each of the best models. If you named your models the same as in this tutorial, then you should be able to just run the following code. Notice that we are just taking the best models and checking the model performance with the test set. 
+We are going to obtain the test performance of each of the best models. If you named your models the same as in this self-paced course, then you should be able to just run the following code. Notice that we are just taking the best models and checking the model performance with the test set. 
 
 ~~~python
 glm_test_per = tuned_glm.model_performance(test)
@@ -1987,7 +1987,7 @@ For this dataset, we obtained a good AUC for all three models. We obtained an ok
 
 **Task 10 - R Version**
 
-We are going to obtain the test performance of each of the best models. If you named your models the same as in this tutorial, then you should be able to just run the following code. Notice that we are just taking the best models and checking the model performance with the test set. 
+We are going to obtain the test performance of each of the best models. If you named your models the same as in this self-paced course, then you should be able to just run the following code. Notice that we are just taking the best models and checking the model performance with the test set. 
 
 ~~~R
 # Save test performance of each tuned model
@@ -2056,7 +2056,7 @@ All three F1 scores slightly improved compared to the default value, and are ver
 For this dataset, we obtained a good AUC for all three models. We obtained an okay F1 Score, given that our dataset is highly imbalanced, and we also obtained a good overall misclassification error, although due to the given imbalanced data, the error for the TRUE label was not so low. Overall, The best model trained on our dataset was the GBM, followed by the RF, and lastly, the GLM.
 
 ### Shut down Cluster
-Once you are done with the tutorial, remember to shut down the cluster, unless you want to try the challenge after this task, in which case you can shut it down after you are done with the challenge. 
+Once you are done with the self-paced course, remember to shut down the cluster, unless you want to try the challenge after this task, in which case you can shut it down after you are done with the challenge. 
 
 ~~~python
 h2o.shutdown()
@@ -2064,9 +2064,9 @@ h2o.shutdown()
 
 ## Task 11: Challenge
 
-After building three models, you are now familiar with the syntax of H2O-3 models. Now, try to build a Naive Bayes Classifier! You can do a 5 minutes grid search for `laplace,` `min_prob,` and `eps_prob.` Try it and see what’s the best training, validation, and test AUC that you can get with the Naive Bayes Classifier and compare it to the models that we built in this tutorial. Please keep in mind that the results might not improve by much, so do not spend too much time with this model. We just want you to feel more comfortable initializing models and doing grid searches. If you need more time with your lab, download your results, and restart the lab.
+After building three models, you are now familiar with the syntax of H2O-3 models. Now, try to build a Naive Bayes Classifier! You can do a 5 minutes grid search for `laplace,` `min_prob,` and `eps_prob.` Try it and see what’s the best training, validation, and test AUC that you can get with the Naive Bayes Classifier and compare it to the models that we built in this self-paced course. Please keep in mind that the results might not improve by much, so do not spend too much time with this model. We just want you to feel more comfortable initializing models and doing grid searches. If you need more time with your lab, download your results, and restart the lab.
 
-Remember to shut down the cluster if you have not done so, or end the lab if you are done with the tutorial.
+Remember to shut down the cluster if you have not done so, or end the lab if you are done with the self-paced course.
 
 ## Appendix A: Getting Started with Aquarium
 
@@ -2149,17 +2149,17 @@ http://aquarium.h2o.ai/login
 
 4\. Once the lab has started, you will see 3 links. The first link will be the **RStudio URL**, then the **H2O Flow URL**, and lastly, you will see the **Jupyter URL**.
 
-If you are working with the Python version of the tutorial, click on the **Jupyter URL,** and that will take you to the following screen.
+If you are working with the Python version of the self-paced course, click on the **Jupyter URL,** and that will take you to the following screen.
 
 ![jupyter-notebook](assets/jupyter-notebook.png)
 
-Next, click on the `tutorials` folder. In this folder, you will find all the tutorials from our learning path. For this tutorial, select the file `introduction-to-machine-learning-with-h2o-3-classification.ipynb` and follow along. If you are working on a different tutorial, just find the specific tutorial and click on it. The Jupyter Notebooks have the same name as the tutorials; that way, it can be easier to find them.  
+Next, click on the `tutorials` folder. In this folder, you will find all the files for the self-paced courses from our learning path. For this self-paced course, select the file `introduction-to-machine-learning-with-h2o-3-classification.ipynb` and follow along. If you are working on a different self-paced course, just find the specific self-paced course and click on it. The Jupyter Notebooks have the same name as the self-paced courses; that way, it can be easier to find them.  
 
-If you are working with the R version of the tutorial, click on the **RStudio URL** and it will take you to the RStudio sign in page. The username and password are `h2o` and `h2o.` Once you login to RStudio, you will see the following screen:
+If you are working with the R version of the self-paced course, click on the **RStudio URL** and it will take you to the RStudio sign in page. The username and password are `h2o` and `h2o.` Once you login to RStudio, you will see the following screen:
 
 ![rstudio](assets/rstudio.png)
 
-Click on the `tutorials` folder, and choose the tutorial you want. For the classification tutorial, select the file `introduction-to-machine-learning-with-h2o-3-classification.Rmd` and follow along.
+Click on the `tutorials` folder, and choose the self-paced course you want. For the classification self-paced course, select the file `introduction-to-machine-learning-with-h2o-3-classification.Rmd` and follow along.
 
 If you want to access your Flow instance, go back to your Aquarium Lab, and click on the **Flow URL.** 
 
@@ -2183,4 +2183,4 @@ If you do not have H2O-3, and you would like to install it on your personal mach
 
 ## Next Steps
 
-Please make sure you check our Regression tutorial - [Introduction to Machine Learning with H2O-3 - Regression](https://training.h2o.ai/products/introduction-to-machine-learning-with-h2o-regression). 
+Please make sure you check our Regression self-paced course - [Introduction to Machine Learning with H2O-3 - Regression](https://training.h2o.ai/products/introduction-to-machine-learning-with-h2o-regression). 
