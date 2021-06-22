@@ -2183,4 +2183,4 @@ If you do not have H2O-3, and you would like to install it on your personal mach
 
 ## Next Steps
 
-Please make sure you check our Regression self-paced course - [Introduction to Machine Learning with H2O-3 - Regression](https://training.h2o.ai/products/introduction-to-machine-learning-with-h2o-regression). 
+Please make sure you check our Regression self-paced course - [Introduction to Machine Learning with H2O-3 - Regression](https://training.h2o.ai/products/introduction-to-machine-learning-with-h2o-3-regression). 
