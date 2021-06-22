@@ -47,8 +47,8 @@
                   feedback-link="">
     
       <google-codelab-step label="Objective" duration="0">
-        <p>We will be using a subset of the Freddie Mac Single-Family dataset to try to predict whether or not a mortgage loan will be delinquent using H2O&#39;s GLM, Random Forest, and GBM models. We will go over how to use these models for classification problems, and we will demonstrate how to use H2O&#39;s grid search to tune the hyper-parameters of each model. This tutorial, as well as the next tutorials, will be done in Python and R.</p>
-<p><strong>Note:</strong> In this tutorial, we provide complimentary instructions on how to use H2O Flow, but keep in mind that the instructions will not be as detailed as the instructions for Python and R.</p>
+        <p>We will be using a subset of the Freddie Mac Single-Family dataset to try to predict whether or not a mortgage loan will be delinquent using H2O&#39;s GLM, Random Forest, and GBM models. We will go over how to use these models for classification problems, and we will demonstrate how to use H2O&#39;s grid search to tune the hyper-parameters of each model. This self-paced course, as well as the next self-paced courses, will be done in Python and R.</p>
+<p><strong>Note:</strong> In this self-paced course, we provide complimentary instructions on how to use H2O Flow, but keep in mind that the instructions will not be as detailed as the instructions for Python and R.</p>
 
 
       </google-codelab-step>
@@ -56,9 +56,9 @@
       <google-codelab-step label="Prerequisites" duration="0">
 
         
-        <p><strong>Note:</strong> We have completed this tutorial in our cloud environment and is intended to take about two hours, or less, to be completed. Therefore, if you decide to do this tutorial on your machine, you might not get the same results, or it might take you longer to complete the tutorial than the intended time.</p>
-<p>For instructions on how to create an Aquarium account, and how to access the lab and tutorial files, please refer to <strong>Appendix A: Getting Started with Aquarium</strong></p>
-<p>If you decide to install H2O-3 on your machine, we recommend creating an Anaconda Cloud environment, as shown in the installation guide, <a href="http://docs.h2o.ai/h2o/latest-stable/h2o-docs/downloading.html#install-on-anaconda-cloud" target="_blank">Install on Anaconda Cloud,</a> this would help you make sure that you have everything that you need to do this tutorial.</p>
+        <p><strong>Note:</strong> We have completed this self-paced course in our cloud environment and is intended to take about two hours, or less, to be completed. Therefore, if you decide to do this self-paced course on your machine, you might not get the same results, or it might take you longer to complete the self-paced course than the intended time.</p>
+<p>For instructions on how to create an Aquarium account, and how to access the lab and self-paced course files, please refer to <strong>Appendix A: Getting Started with Aquarium</strong></p>
+<p>If you decide to install H2O-3 on your machine, we recommend creating an Anaconda Cloud environment, as shown in the installation guide, <a href="http://docs.h2o.ai/h2o/latest-stable/h2o-docs/downloading.html#install-on-anaconda-cloud" target="_blank">Install on Anaconda Cloud,</a> this would help you make sure that you have everything that you need to do this self-paced course.</p>
 
 
       </google-codelab-step>
@@ -73,9 +73,9 @@
       
         <h2 is-upgraded>Overview</h2>
 <p>The data set we&#39;re using comes from Freddie Mac and contains 20 years of mortgage history for each loan and contains information about &#34;loan-level credit performance data on a portion of fully amortizing fixed-rate mortgages that Freddie Mac bought between 1999 to 2017. Features include demographic factors, monthly loan performance, credit performance including property disposition, voluntary prepayments, MI Recoveries, non-MI recoveries, expenses, current deferred UPB and due date of last paid installment.&#34;[1]</p>
-<p>We&#39;re going to use machine learning with H2O to predict whether or not a loan holder will default. To do this, we are going to build three classification models: a Linear model, Random Forest, and a Gradient Boosting Machine model, to predict whether or not a loan will be delinquent. Complete this tutorial to see how we achieved those results.</p>
+<p>We&#39;re going to use machine learning with H2O to predict whether or not a loan holder will default. To do this, we are going to build three classification models: a Linear model, Random Forest, and a Gradient Boosting Machine model, to predict whether or not a loan will be delinquent. Complete this self-paced course to see how we achieved those results.</p>
 <p>We will start by importing H2O, the estimators for the algorithms that we will use, and also the function to perform Grid Search on those algorithms.</p>
-<pre><code language="language-python" class="language-python">#Import H2O and other libaries that will be used in this tutorial
+<pre><code language="language-python" class="language-python">#Import H2O and other libaries that will be used in this self-paced course
 import h2o
 from h2o.estimators import *
 from h2o.grid import *
@@ -114,7 +114,7 @@ loan_level = h2o.import_file(&#34;https://s3.amazonaws.com/data.h2o.ai/DAI-Tutor
 <div id="R-task1" class="tabcontent">
 <h2 is-upgraded>Overview</h2>
 <p>The data set we&#39;re using comes from Freddie Mac and contains 20 years of mortgage history for each loan and contains information about &#34;loan-level credit performance data on a portion of fully amortizing fixed-rate mortgages that Freddie Mac bought between 1999 to 2017. Features include demographic factors, monthly loan performance, credit performance including property disposition, voluntary prepayments, MI Recoveries, non-MI recoveries, expenses, current deferred UPB and due date of last paid installment.&#34;[1]</p>
-<p>We&#39;re going to use machine learning with H2O to predict whether or not a loan holder will default. To do this, we are going to build three classification models: a Linear model, Random Forest, and a Gradient Boosting Machine model, to predict whether or not a loan will be delinquent. Complete this tutorial to see how we achieved those results.</p>
+<p>We&#39;re going to use machine learning with H2O to predict whether or not a loan holder will default. To do this, we are going to build three classification models: a Linear model, Random Forest, and a Gradient Boosting Machine model, to predict whether or not a loan will be delinquent. Complete this self-paced course to see how we achieved those results.</p>
 <p>We will start by importing the H2O library.</p>
 <pre><code language="language-r" class="language-r">#Import the H2O library
 library(h2o)
@@ -231,8 +231,8 @@ loan_level &lt;- h2o.importFile(path = &#34;https://s3.amazonaws.com/data.h2o.ai
 </code></pre>
 <p class="image-container"><img alt="response-distribution" src="img/69c8b44626693a8e.png"></p>
 <p>As you can see, we have a highly imbalanced dataset, as only 3.6% of the samples are TRUE labels, meaning that only 3.6% of the samples in the dataset have been labeled as <code>DELINQUENT.</code></p>
-<p><strong>Please note that the main goal of this tutorial is to show the usage of some models for classification problems, as well as to tune some of the hyper-parameters of the models. For that reason, we will be skipping any data visualization and manipulation, as well as feature engineering. The aforementioned stages in machine learning are very important, and should always be done; however, they will be covered in later tutorials.</strong></p>
-<p>Since we have a large enough dataset, we will split our dataset into three sets, and we will call them <strong>train, valid,</strong> and <strong>test.</strong> We will treat the test set as if it were some unseen data in which we want to make predictions, and we will use the valid set for validation purposes and to tune all our models. We will not use the test set until the end of the tutorial to check the final scores of our models.</p>
+<p><strong>Please note that the main goal of this self-paced course is to show the usage of some models for classification problems, as well as to tune some of the hyper-parameters of the models. For that reason, we will be skipping any data visualization and manipulation, as well as feature engineering. The aforementioned stages in machine learning are very important, and should always be done; however, they will be covered in later self-paced courses.</strong></p>
+<p>Since we have a large enough dataset, we will split our dataset into three sets, and we will call them <strong>train, valid,</strong> and <strong>test.</strong> We will treat the test set as if it were some unseen data in which we want to make predictions, and we will use the valid set for validation purposes and to tune all our models. We will not use the test set until the end of the self-paced course to check the final scores of our models.</p>
 <p>We will use the <code>.split_frame()</code> function. Note that we can do this in one line of code. Inside the split function, we declare the ratio of the data that we want in our first set, in this case, the <strong>train</strong> set. We will assign 70% to the training set, and 15% for the validation, as well as for the test set. The random seed is set to 42 just for reproducibility purposes. You can choose any random seed that you want, but if you want to see consistent results, you will have to use the same random seed anytime you re-run your code.</p>
 <pre><code language="language-python" class="language-python">train, valid, test = loan_level.split_frame([0.7, 0.15], seed=42)
 </code></pre>
@@ -244,7 +244,7 @@ loan_level &lt;- h2o.importFile(path = &#34;https://s3.amazonaws.com/data.h2o.ai
 </code></pre>
 <p>Next, we need to choose our <strong>predictors</strong>, or <strong>x variable</strong>, and our <strong>response</strong> or <strong>y variable</strong>. For the H2O-3 estimators, we do not use the actual data frame; instead, we use strings containing the name of the columns in our dataset.</p>
 <p>For our y variable, we will choose <code>DELINQUENT</code> because we want to predict whether or not a loan will default. For the x variable, we will choose all but four features. One is the feature that we will predict, and then <code>PREPAID and PREPAYMENT_PENALTY_MORTGAGE_FLAG</code> because they are clear indicators if a loan is or is not delinquent. As well, it makes sense to remove them, given that in a real case scenario, we will not have that information when deciding whether to give a loan or not. In machine learning terms, introducing these types of features is called leakage. And lastly, <code>PRODUCT_TYPE</code> because that&#39;s a constant value for every row, meaning all samples have the same value; therefore, this feature will not have any predictive value.</p>
-<p>There are several ways to choose your predictors, but for this tutorial, we will subtract the list in the variable <code>ignore</code> from all the names in our training set.</p>
+<p>There are several ways to choose your predictors, but for this self-paced course, we will subtract the list in the variable <code>ignore</code> from all the names in our training set.</p>
 <pre><code language="language-python" class="language-python">y = &#34;DELINQUENT&#34;
 
 ignore = [&#34;DELINQUENT&#34;, &#34;PREPAID&#34;, &#34;PREPAYMENT_PENALTY_MORTGAGE_FLAG&#34;, &#34;PRODUCT_TYPE&#34;] 
@@ -279,8 +279,8 @@ h2o.table(loan_level[, c(&#34;DELINQUENT&#34;)])
 </code></pre>
 <p class="image-container"><img alt="r-response-distribution" src="img/37ee75c6650fa3c8.png"></p>
 <p>As you can see, we have a highly imbalanced dataset, as only 3.6% of the samples are TRUE labels, meaning that only 3.6% of the samples in the dataset have been labeled as <code>DELINQUENT.</code></p>
-<p><strong>Please note that the main goal of this tutorial is to show the usage of some models for classification problems, as well as to tune some of the hyper-parameters of the models. For that reason, we will be skipping any data visualization and manipulation, as well as feature engineering. The aforementioned stages in machine learning are very important, and should always be done; however, they will be covered in later tutorials.</strong></p>
-<p>Since we have a large enough dataset, we will split our dataset into three sets, and we will call them <strong>train, valid,</strong> and <strong>test.</strong> We will treat the test set as if it were some unseen data in which we want to make predictions, and we will use the valid set for validation purposes and to tune all our models. We will not use the test set until the end of the tutorial to check the final scores of our models.</p>
+<p><strong>Please note that the main goal of this self-paced course is to show the usage of some models for classification problems, as well as to tune some of the hyper-parameters of the models. For that reason, we will be skipping any data visualization and manipulation, as well as feature engineering. The aforementioned stages in machine learning are very important, and should always be done; however, they will be covered in later self-paced courses.</strong></p>
+<p>Since we have a large enough dataset, we will split our dataset into three sets, and we will call them <strong>train, valid,</strong> and <strong>test.</strong> We will treat the test set as if it were some unseen data in which we want to make predictions, and we will use the valid set for validation purposes and to tune all our models. We will not use the test set until the end of the self-paced course to check the final scores of our models.</p>
 <p>We will use the <code>h2o.splitFrame()</code> function. Inside the split function, we declare the ratio of the data that we want in our first set, in this case, the <strong>train</strong> set. We will assign 70% to the training set, and 15% for the validation, as well as for the test set. The random seed is set to 42 just for reproducibility purposes. You can choose any random seed that you want, but if you want to see consistent results, you will have to use the same random seed anytime you re-run your code.</p>
 <pre><code language="language-r" class="language-r"># Split your data into 3 and save into variable &#34;splits&#34;
 splits &lt;- h2o.splitFrame(loan_level, c(0.7, 0.15), seed = 42)
@@ -304,7 +304,7 @@ nrow(test)
 </code></pre>
 <p>Next, we need to choose our <strong>predictors</strong>, or <strong>x variable</strong>, and our <strong>response</strong> or <strong>y variable</strong>. For the H2O-3 estimators, we do not use the actual data frame; instead, we use strings containing the name of the columns in our dataset.</p>
 <p>For our y variable, we will choose <code>DELINQUENT</code> because we want to predict whether or not a loan will default. For the x variable, we will choose all but four features. One is the feature that we will predict, and then <code>PREPAID and PREPAYMENT_PENALTY_MORTGAGE_FLAG</code> because they are clear indicators if a loan is or is not delinquent. As well, it makes sense to remove them, given that in a real case scenario, we will not have that information when deciding whether to give a loan or not. In machine learning terms, introducing these types of features is called leakage. And lastly, <code>PRODUCT_TYPE</code> because that&#39;s a constant value for every row, meaning all samples have the same value; therefore, this feature will not have any predictive value.</p>
-<p>There are several ways to choose your predictors, but for this tutorial, we will ignore the list in the variable <code>ignore</code> from all the names in our training set.</p>
+<p>There are several ways to choose your predictors, but for this self-paced course, we will ignore the list in the variable <code>ignore</code> from all the names in our training set.</p>
 <pre><code language="language-r" class="language-r"># Identify predictors and response
 
 # Columns not used for training
@@ -1204,7 +1204,7 @@ random_grid = H2OGridSearch(model = gbm, hyper_params = hyper_params_tune,
 sorted_random_search.sorted_metric_table()
 </code></pre>
 <p class="image-container"><img alt="gbm-random-grid" src="img/1b76928958c3a3c6.png"><img alt="gbm-random-grid-2" src="img/dfe7e789d22d028d.png"></p>
-<p>With the quick random grid search that we just performed we were able to improve the AUC value to <strong>0.8621</strong>. Note that since the combination of possible models is so large, we could run the grid search for much longer to see if there are models that further improve the AUC. For the purpose of this tutorial, we will leave it at that, but feel free to modify the grid search, try to use a narrower range for the parameters based on the values we found, and run the grid search for a longer period of time and see if you can get a much better model than the one we just found.</p>
+<p>With the quick random grid search that we just performed we were able to improve the AUC value to <strong>0.8621</strong>. Note that since the combination of possible models is so large, we could run the grid search for much longer to see if there are models that further improve the AUC. For the purpose of this self-paced course, we will leave it at that, but feel free to modify the grid search, try to use a narrower range for the parameters based on the values we found, and run the grid search for a longer period of time and see if you can get a much better model than the one we just found.</p>
 <p>We will now print the AUC and F1 scores to see how the model performed:</p>
 <pre><code language="language-python" class="language-python">tuned_gbm = sorted_random_search.models[0]
 </code></pre>
@@ -1302,7 +1302,7 @@ as.data.frame(gbm_random_grid_auc@summary_table)
 <p><em>Things to Note</em></p>
 <p>1. Check the other parameters tuned in this grid search.</p>
 <p>2. Next button to look at the other models trained in this grid search.</p>
-<p>With the quick random grid search that we just performed we were able to improve the AUC value to <strong>0.8614</strong>. Note that since the combination of possible models is so large, we could run the grid search for much longer to see if there are models that further improve the AUC. For the purpose of this tutorial, we will leave it at that, but feel free to modify the grid search, try to use a narrower range for the parameters based on the values we found, and run the grid search for a longer period of time and see if you can get a much better model than the one we just found.</p>
+<p>With the quick random grid search that we just performed we were able to improve the AUC value to <strong>0.8614</strong>. Note that since the combination of possible models is so large, we could run the grid search for much longer to see if there are models that further improve the AUC. For the purpose of this self-paced course, we will leave it at that, but feel free to modify the grid search, try to use a narrower range for the parameters based on the values we found, and run the grid search for a longer period of time and see if you can get a much better model than the one we just found.</p>
 <p>We will now retrieve the best model, save the model performance, and print the AUC and F1 scores to see how the model performed:</p>
 <pre><code language="language-r" class="language-r"># Retrieve the best model and print the results
 tuned_gbm &lt;- h2o.getModel(gbm_random_grid_auc@model_ids[[1]])
@@ -1352,7 +1352,7 @@ h2o.confusionMatrix(valid_gbm_perf)
 
         <div id="Python-task10" class="tabcontent" style = "display: block">
 
-        <p>We are going to obtain the test performance of each of the best models. If you named your models the same as in this tutorial, then you should be able to just run the following code. Notice that we are just taking the best models and checking the model performance with the test set.</p>
+        <p>We are going to obtain the test performance of each of the best models. If you named your models the same as in this self-paced course, then you should be able to just run the following code. Notice that we are just taking the best models and checking the model performance with the test set.</p>
 <pre><code language="language-python" class="language-python">glm_test_per = tuned_glm.model_performance(test)
 rf_test_per = tuned_rf.model_performance(test)
 gbm_test_per = tuned_gbm.model_performance(test)
@@ -1391,7 +1391,7 @@ print (&#34;GBM Confusion Matrix &#34;,  gbm_test_per.confusion_matrix())
         </div>
 
 <div id="R-task10" class="tabcontent">  
-  <p>We are going to obtain the test performance of each of the best models. If you named your models the same as in this tutorial, then you should be able to just run the following code. Notice that we are just taking the best models and checking the model performance with the test set.</p>
+  <p>We are going to obtain the test performance of each of the best models. If you named your models the same as in this self-paced course, then you should be able to just run the following code. Notice that we are just taking the best models and checking the model performance with the test set.</p>
 <pre><code language="language-R" class="language-R"># Save test performance of each tuned model
 tuned_glm_test_perf &lt;- h2o.performance(tuned_glm, test)
 tuned_rf_test_perf  &lt;- h2o.performance(tuned_rf, test)
@@ -1435,7 +1435,7 @@ h2o.F1(tuned_gbm_test_perf, thresholds = tuned_gbm_test_perf@metrics$max_criteri
 <p>All three F1 scores slightly improved compared to the default value, and are very close to the validation scores, which tell us that we can trust the validation set that we used to tune our models.</p>
 <p>For this dataset, we obtained a good AUC for all three models. We obtained an okay F1 Score, given that our dataset is highly imbalanced, and we also obtained a good overall misclassification error, although due to the given imbalanced data, the error for the TRUE label was not so low. Overall, The best model trained on our dataset was the GBM, followed by the RF, and lastly, the GLM.</p>
 <h2 is-upgraded>Shut down Cluster</h2>
-<p>Once you are done with the tutorial, remember to shut down the cluster, unless you want to try the challenge after this task, in which case you can shut it down after you are done with the challenge.</p>
+<p>Once you are done with the self-paced course, remember to shut down the cluster, unless you want to try the challenge after this task, in which case you can shut it down after you are done with the challenge.</p>
 <pre><code language="language-python" class="language-python">h2o.shutdown()
 </code></pre>
 
@@ -1443,8 +1443,8 @@ h2o.F1(tuned_gbm_test_perf, thresholds = tuned_gbm_test_perf@metrics$max_criteri
       </google-codelab-step>
     
       <google-codelab-step label="Task 11: Challenge" duration="0">
-        <p>After building three models, you are now familiar with the syntax of H2O-3 models. Now, try to build a Naive Bayes Classifier! You can do a 5 minutes grid search for <code>laplace,</code> <code>min_prob,</code> and <code>eps_prob.</code> Try it and see what&#39;s the best training, validation, and test AUC that you can get with the Naive Bayes Classifier and compare it to the models that we built in this tutorial. Please keep in mind that the results might not improve by much, so do not spend too much time with this model. We just want you to feel more comfortable initializing models and doing grid searches. If you need more time with your lab, download your results, and restart the lab.</p>
-<p>Remember to shut down the cluster if you have not done so, or end the lab if you are done with the tutorial.</p>
+        <p>After building three models, you are now familiar with the syntax of H2O-3 models. Now, try to build a Naive Bayes Classifier! You can do a 5 minutes grid search for <code>laplace,</code> <code>min_prob,</code> and <code>eps_prob.</code> Try it and see what&#39;s the best training, validation, and test AUC that you can get with the Naive Bayes Classifier and compare it to the models that we built in this self-paced course. Please keep in mind that the results might not improve by much, so do not spend too much time with this model. We just want you to feel more comfortable initializing models and doing grid searches. If you need more time with your lab, download your results, and restart the lab.</p>
+<p>Remember to shut down the cluster if you have not done so, or end the lab if you are done with the self-paced course.</p>
 
 
       </google-codelab-step>
@@ -1497,12 +1497,12 @@ h2o.F1(tuned_gbm_test_perf, thresholds = tuned_gbm_test_perf@metrics$max_criteri
 <li>Lab URLs</li>
 </ul>
 <p>4. Once the lab has started, you will see 3 links. The first link will be the <strong>RStudio URL</strong>, then the <strong>H2O Flow URL</strong>, and lastly, you will see the <strong>Jupyter URL</strong>.</p>
-<p>If you are working with the Python version of the tutorial, click on the <strong>Jupyter URL,</strong> and that will take you to the following screen.</p>
+<p>If you are working with the Python version of the self-paced course, click on the <strong>Jupyter URL,</strong> and that will take you to the following screen.</p>
 <p class="image-container"><img alt="jupyter-notebook" src="img/781d4e347a43dad3.png"></p>
-<p>Next, click on the <code>tutorials</code> folder. In this folder, you will find all the tutorials from our learning path. For this tutorial, select the file <code>introduction-to-machine-learning-with-h2o-3-classification.ipynb</code> and follow along. If you are working on a different tutorial, just find the specific tutorial and click on it. The Jupyter Notebooks have the same name as the tutorials; that way, it can be easier to find them.</p>
-<p>If you are working with the R version of the tutorial, click on the <strong>RStudio URL</strong> and it will take you to the RStudio sign in page. The username and password are <code>h2o</code> and <code>h2o.</code> Once you login to RStudio, you will see the following screen:</p>
+<p>Next, click on the <code>tutorials</code> folder. In this folder, you will find all the files for our self-paced courses from our learning path. For this self-paced course, select the file <code>introduction-to-machine-learning-with-h2o-3-classification.ipynb</code> and follow along. If you are working on a different self-paced course, just find the specific self-paced course and click on it. The Jupyter Notebooks have the same name as the self-paced courses; that way, it can be easier to find them.</p>
+<p>If you are working with the R version of the self-paced course, click on the <strong>RStudio URL</strong> and it will take you to the RStudio sign in page. The username and password are <code>h2o</code> and <code>h2o.</code> Once you login to RStudio, you will see the following screen:</p>
 <p class="image-container"><img alt="rstudio" src="img/6354922ecad0727c.png"></p>
-<p>Click on the <code>tutorials</code> folder, and choose the tutorial you want. For the classification tutorial, select the file <code>introduction-to-machine-learning-with-h2o-3-classification.Rmd</code> and follow along.</p>
+<p>Click on the <code>tutorials</code> folder, and choose the self-paced course you want. For the classification self-paced course, select the file <code>introduction-to-machine-learning-with-h2o-3-classification.Rmd</code> and follow along.</p>
 <p>If you want to access your Flow instance, go back to your Aquarium Lab, and click on the <strong>Flow URL.</strong></p>
 <p>Once you are done, you can download your Notebook with your results. Remember that after the two hours, all your progress will be lost.</p>
 <p>5. If you need end your lab, just click on <strong>End Lab.</strong> Please keep in mind that this will terminate your instance, and any work that you have previously done, will be deleted.</p>
@@ -1518,7 +1518,7 @@ h2o.F1(tuned_gbm_test_perf, thresholds = tuned_gbm_test_perf@metrics$max_criteri
       </google-codelab-step>
     
       <google-codelab-step label="Next Steps" duration="0">
-        <p>Please make sure you check our Regression tutorial - <a href="https://training.h2o.ai/products/introduction-to-machine-learning-with-h2o-regression" target="_blank">Introduction to Machine Learning with H2O-3 - Regression</a>.</p>
+        <p>Please make sure you check our Regression self-paced course - <a href="https://training.h2o.ai/products/introduction-to-machine-learning-with-h2o-regression" target="_blank">Introduction to Machine Learning with H2O-3 - Regression</a>.</p>
 
 
       </google-codelab-step>
