@@ -15,24 +15,24 @@
 - [Next Steps](#next-steps)
 
 ## Objective
-In this tutorial, we will use the subset of the loan-level dataset from Fannie Mae and Freddie Mac. Firstly, we will solve a binary classification problem (predicting if a loan is delinquent or not). Then, we will explore a regression use-case (predicting interest rates on the same dataset). We will try to do both use-cases using Automatic Machine Learning (AutoML), and we will do so using the H2O-3 Python module in a Jupyter Notebook and also in Flow. 
+In this self-paced course, we will use the subset of the loan-level dataset from Fannie Mae and Freddie Mac. Firstly, we will solve a binary classification problem (predicting if a loan is delinquent or not). Then, we will explore a regression use-case (predicting interest rates on the same dataset). We will try to do both use-cases using Automatic Machine Learning (AutoML), and we will do so using the H2O-3 Python module in a Jupyter Notebook and also in Flow. 
 
 ## Prerequisites 
-- Completion of tutorials [Introduction to Machine Learning with H2O-3 - Classification](https://training.h2o.ai/products/1a-introduction-to-machine-learning-with-h2o-3-classification) and [Introduction to Machine Learning with H2O-3 - Regression.](https://training.h2o.ai/products/1b-introduction-to-machine-learning-with-h2o-3-regression)
+- Completion of self-paced courses [Introduction to Machine Learning with H2O-3 - Classification](https://training.h2o.ai/products/1a-introduction-to-machine-learning-with-h2o-3-classification) and [Introduction to Machine Learning with H2O-3 - Regression.](https://training.h2o.ai/products/1b-introduction-to-machine-learning-with-h2o-3-regression)
 - Some basic knowledge of machine learning. 
 - Familiarity with Python or R.
 - An Aquarium account. If you do not have an Aquarium account, please refer to [Appendix A of Introduction to Machine Learning with H2O-3 - Classification](https://training.h2o.ai/products/1a-introduction-to-machine-learning-with-h2o-3-classification)
 
-**Note:** This tutorial was completed in a cloud environment. If you want to get the same results in a similar time manner, please follow this tutorial in Aquarium. Otherwise, you can use your own machine but you will get different results, for example, it might take you longer to train the models for the classification part, or for the regression part, you might not get the same nunmber of models.
+**Note:** This self-paced course was completed in a cloud environment. If you want to get the same results in a similar time manner, please follow this self-paced course in Aquarium. Otherwise, you can use your own machine but you will get different results, for example, it might take you longer to train the models for the classification part, or for the regression part, you might not get the same nunmber of models.
 
 ## Task 1: Initial Setup
-In this tutorial, we are using a smaller subset of the Freddie Mac Single-Family dataset compared to the past two tutorials. If you have not done so, complete [Introduction to Machine Learning with H2O-3 - Classification](https://training.h2o.ai/products/1a-introduction-to-machine-learning-with-h2o-3-classification) and [Introduction to Machine Learning with H2O-3 - Regression](https://training.h2o.ai/products/1b-introduction-to-machine-learning-with-h2o-3-regression) as this tutorial is a continuation of both of them. 
+In this self-paced course, we are using a smaller subset of the Freddie Mac Single-Family dataset compared to the past two self-paced courses. If you have not done so, complete [Introduction to Machine Learning with H2O-3 - Classification](https://training.h2o.ai/products/1a-introduction-to-machine-learning-with-h2o-3-classification) and [Introduction to Machine Learning with H2O-3 - Regression](https://training.h2o.ai/products/1b-introduction-to-machine-learning-with-h2o-3-regression) as this self-paced course is a continuation of both of them. 
 
-We will use H2O AutoML to make the same predictions as in the previous two tutorials:
+We will use H2O AutoML to make the same predictions as in the previous two self-paced courses:
 - Predict whether a mortgage loan will be delinquent or not 
 - Predict the interest rate for each loan 
 
-Complete this tutorial to see how we achieved those results. 
+Complete this self-paced course to see how we achieved those results. 
 
 We will start by importing the libraries that we will use, as well as the algorithm that we will be using.
 ~~~python
@@ -73,18 +73,18 @@ Let’s import the dataset.
 loan_level = h2o.import_file("https://s3.amazonaws.com/data.h2o.ai/H2O-3-Tutorials/loan_level_50k.csv")
 ~~~
 
-You will notice that instead of using a subset of the dataset with 500k rows, we are using a subset with 50k rows. We decided to use a smaller dataset to run AutoML for a shorter amount of time. If you would like, you can repeat this tutorial after you have completed it, and use the same subset that we used in the previous two tutorials; just keep in mind that you will need to run AutoML for a much longer time. 
-Before we continue, let’s explore some concepts about AutoML that will be useful in this tutorial.
+You will notice that instead of using a subset of the dataset with 500k rows, we are using a subset with 50k rows. We decided to use a smaller dataset to run AutoML for a shorter amount of time. If you would like, you can repeat this self-paced course after you have completed it, and use the same subset that we used in the previous two self-paced courses; just keep in mind that you will need to run AutoML for a much longer time. 
+Before we continue, let’s explore some concepts about AutoML that will be useful in this self-paced course.
 
 **Task 1 - R Version**
 
-In this tutorial, we are using a smaller subset of the Freddie Mac Single-Family dataset that we used for the past two tutorials. If you have not done so, complete [Introduction to Machine Learning with H2O-3 - Classification](https://training.h2o.ai/products/1a-introduction-to-machine-learning-with-h2o-3-classification) and [Introduction to Machine Learning with H2O-3 - Regression](https://training.h2o.ai/products/1b-introduction-to-machine-learning-with-h2o-3-regression) as this tutorial is a continuation of both of them. 
+In this self-paced course, we are using a smaller subset of the Freddie Mac Single-Family dataset that we used for the past two self-paced courses. If you have not done so, complete [Introduction to Machine Learning with H2O-3 - Classification](https://training.h2o.ai/products/1a-introduction-to-machine-learning-with-h2o-3-classification) and [Introduction to Machine Learning with H2O-3 - Regression](https://training.h2o.ai/products/1b-introduction-to-machine-learning-with-h2o-3-regression) as this self-paced course is a continuation of both of them. 
 
-We will use H2O AutoML to make the same predictions as in the previous two tutorials:
+We will use H2O AutoML to make the same predictions as in the previous two self-paced courses:
 - Predict whether a mortgage loan will be delinquent or not 
 - Predict the interest rate for each loan 
 
-Complete this tutorial to see how we achieved those results. 
+Complete this self-paced course to see how we achieved those results. 
 
 We will start by importing the H2O library that we will use:
 
@@ -119,9 +119,9 @@ Now, import the dataset
 loan_level <- h2o.importFile(path = "https://s3.amazonaws.com/data.h2o.ai/H2O-3-Tutorials/loan_level_50k.csv")
 ~~~
 
-You will notice that instead of using a subset of the dataset with 500k rows, we are using a subset with 50k rows. We decided to use a smaller dataset to run AutoML for a shorter amount of time. If you would like, you can repeat this tutorial after you have completed it, and use the same subset that we used in the previous two tutorials; just keep in mind that you will need to run AutoML for a much longer time
+You will notice that instead of using a subset of the dataset with 500k rows, we are using a subset with 50k rows. We decided to use a smaller dataset to run AutoML for a shorter amount of time. If you would like, you can repeat this self-paced course after you have completed it, and use the same subset that we used in the previous two self-paced courses; just keep in mind that you will need to run AutoML for a much longer time
 
-Before we continue, let’s explore some concepts about AutoML that will be useful in this tutorial.
+Before we continue, let’s explore some concepts about AutoML that will be useful in this self-paced course.
 
 ## Task 2: AutoML Concepts
 
@@ -159,7 +159,7 @@ loan_level["DELINQUENT"].table()
 
 ![delinquent-dist](assets/delinquent-dist.png)
 
-As we saw in the classification tutorial, the dataset is highly imbalanced, which is the same scenario in this case. 
+As we saw in the classification self-paced course, the dataset is highly imbalanced, which is the same scenario in this case. 
 
 Now, let’s take a quick look at the response for our regression use-case.
 
@@ -169,9 +169,9 @@ loan_level["ORIGINAL_INTEREST_RATE"].hist()
 
 ![rate-dist](assets/rate-dist.png)
 
-Again, we see that the average interest rate ranges from 7% to 8%, similar to what we saw in the previous tutorial.
+Again, we see that the average interest rate ranges from 7% to 8%, similar to what we saw in the previous self-paced course.
 
-Now that we have an idea of the distribution of the responses let’s split the dataset. For this tutorial, we will take a slightly different approach. Instead of splitting the dataset into three sets, we are just going to do 2, a train and test set. We will be using cross-validation to validate our models, as we need to use the k-fold cross-validation in order to get the stacked ensembles from the AutoML. 
+Now that we have an idea of the distribution of the responses let’s split the dataset. For this self-paced course, we will take a slightly different approach. Instead of splitting the dataset into three sets, we are just going to do 2, a train and test set. We will be using cross-validation to validate our models, as we need to use the k-fold cross-validation in order to get the stacked ensembles from the AutoML. 
 
 ~~~python
 train, test = loan_level.split_frame([0.8], seed=42)
@@ -211,7 +211,7 @@ h2o.table(loan_level[, c("DELINQUENT")])
 
 ![r-delinquent-dist](assets/r-delinquent-dist.png)
 
-As we saw in the classification tutorial, the dataset is highly imbalanced, which is the same scenario in this case. 
+As we saw in the classification self-paced course, the dataset is highly imbalanced, which is the same scenario in this case. 
 
 Now, let’s take a quick look at the response for our regression use-case.
 
@@ -222,9 +222,9 @@ h2o.hist(loan_level[, c("ORIGINAL_INTEREST_RATE")])
 
 ![r-rate-dist](assets/r-rate-dist.png)
 
-Again, we see that the average interest rate ranges from 7% to 8%, similar to what we saw in the previous tutorial.
+Again, we see that the average interest rate ranges from 7% to 8%, similar to what we saw in the previous self-paced course.
 
-Now that we have an idea of the distribution of the responses let’s split the dataset. For this tutorial, we will take a slightly different approach. Instead of splitting the dataset into three sets, we are just going to do 2, a train and test set. We will be using cross-validation to validate our models, as we need to use the k-fold cross-validation in order to get the stacked ensembles from the AutoML. 
+Now that we have an idea of the distribution of the responses let’s split the dataset. For this self-paced course, we will take a slightly different approach. Instead of splitting the dataset into three sets, we are just going to do 2, a train and test set. We will be using cross-validation to validate our models, as we need to use the k-fold cross-validation in order to get the stacked ensembles from the AutoML. 
 
 ~~~r
 # Split your data into 3 and save into variable "splits"
@@ -252,7 +252,7 @@ Since we will need two different responses and predictors, we will choose them i
 
 ## Task 4: H2O AutoML Classification
 
-We already have our train and test sets, so we just need to choose our response variable, as well as the predictors. We will do the same thing that we did for the first tutorial.
+We already have our train and test sets, so we just need to choose our response variable, as well as the predictors. We will do the same thing that we did for the first self-paced course.
 
 ~~~python
 y = "DELINQUENT"
@@ -305,7 +305,7 @@ Below is a list of optional parameters that the user could set for H2O’s AutoM
 - verbosity
 - export_checkpoints_dir
 
-To learn more about each of them, make sure to check the [AutoML Section](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/automl.html#optional-parameters) in the Documentation. We will be using some of them in the regression part of this tutorial. 
+To learn more about each of them, make sure to check the [AutoML Section](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/automl.html#optional-parameters) in the Documentation. We will be using some of them in the regression part of this self-paced course. 
 
 Once AutoML is finished, print the leaderboard, and check out the results.
 
@@ -338,7 +338,7 @@ aml.leader.model_performance(test_data=test)
 ![automl-cl-perf-1](assets/automl-cl-perf-1.png)
 ![automl-cl-perf-2](assets/automl-cl-perf-2.png)
 
-By looking at the results, we can see that in fifteen minutes, and with less data, AutoML obtained scores close to what we obtained in the first tutorial. The AUC that we obtained was **0.824.** Although this is could be a good AUC, because we have a very imbalanced dataset, we must also look at the misclassification errors for both classes. As you can see, our model is having a hard time classifying bad loans; this is mainly due because only about 3.6% of loans are labeled as bad loans. However, the model is doing very well when classifying good loans; although it is still far from being the best model, this gives us a solid starting point.
+By looking at the results, we can see that in fifteen minutes, and with less data, AutoML obtained scores close to what we obtained in the first self-paced course. The AUC that we obtained was **0.824.** Although this is could be a good AUC, because we have a very imbalanced dataset, we must also look at the misclassification errors for both classes. As you can see, our model is having a hard time classifying bad loans; this is mainly due because only about 3.6% of loans are labeled as bad loans. However, the model is doing very well when classifying good loans; although it is still far from being the best model, this gives us a solid starting point.
 
 We can also take a quick look at the ROC curve:
 
@@ -358,13 +358,13 @@ aml.predict(test)
 
 ![automl-cl-preds](assets/automl-cl-preds.png)
 
-As we mentioned in the first tutorial, the predictions we get are based on a probability. In the frame above, we have a probability for **FALSE,** and another one for **TRUE**. The prediction, **predict**, is based on the threshold that maximizes the F1 score. For example, the threshold that maximizes the F1 is about `0.1061`, meaning that if the probability of **TRUE** is greater than the threshold, the predicted label would be **TRUE.**
+As we mentioned in the first self-paced course, the predictions we get are based on a probability. In the frame above, we have a probability for **FALSE,** and another one for **TRUE**. The prediction, **predict**, is based on the threshold that maximizes the F1 score. For example, the threshold that maximizes the F1 is about `0.1061`, meaning that if the probability of **TRUE** is greater than the threshold, the predicted label would be **TRUE.**
 
 After exploring the results for our classification problem, let’s use AutoML to explore a regression use-case.
 
 **Task 4 - R Version**
 
-We already have our train and test sets, so we just need to choose our response variable, as well as the predictors. We will do the same thing that we did for the first tutorial.
+We already have our train and test sets, so we just need to choose our response variable, as well as the predictors. We will do the same thing that we did for the first self-paced course.
 
 ~~~r
 # Identify predictors and response for the classification use case
@@ -418,7 +418,7 @@ Below is a list of optional parameters that the user could set for H2O’s AutoM
 - verbosity
 - export_checkpoints_dir
 
-To learn more about each of them, make sure to check the [AutoML Section](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/automl.html#optional-parameters) in the Documentation. We will be using some of them in the regression part of this tutorial. 
+To learn more about each of them, make sure to check the [AutoML Section](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/automl.html#optional-parameters) in the Documentation. We will be using some of them in the regression part of this self-paced course. 
 
 Once AutoML is finished, print the leaderboard, and check out the results.
 
@@ -457,7 +457,7 @@ aml_cl_test_perf
 ![r-automl-cl-perf-1](assets/r-automl-cl-perf-1.png)
 ![r-automl-cl-perf-2](assets/r-automl-cl-perf-2.png)
 
-By looking at the results, we can see that in fifteen minutes, and with less data, AutoML obtained scores somewhat close to what we obtained in the first tutorial. The AUC that we obtained was **0.823.** Although this is a good AUC, because we have a very imbalanced dataset, we must also look at the misclassification errors for both classes. As you can see, our model is having a hard time classifying bad loans; this is mainly due because only about 3.6% of loans are labeled as bad loans. However, the model is doing very well when classifying good loans; although it is still far from being the best model, this gives us a solid starting point.
+By looking at the results, we can see that in fifteen minutes, and with less data, AutoML obtained scores somewhat close to what we obtained in the first self-paced course. The AUC that we obtained was **0.823.** Although this is a good AUC, because we have a very imbalanced dataset, we must also look at the misclassification errors for both classes. As you can see, our model is having a hard time classifying bad loans; this is mainly due because only about 3.6% of loans are labeled as bad loans. However, the model is doing very well when classifying good loans; although it is still far from being the best model, this gives us a solid starting point.
 
 We can also take a quick look at the ROC curve:
 
@@ -479,7 +479,7 @@ h2o.head(aml_cl_pred, n=10)
 
 ![r-automl-cl-preds](assets/r-automl-cl-preds.png)
 
-As we mentioned in the first tutorial, the predictions we get are based on a probability. In the frame above, we have a probability for **FALSE,** and another one for **TRUE**. The prediction, **predict**, is based on the threshold that maximizes the F1 score. For example, the threshold that maximizes the F1 is about `0.1116` (this value comes from the maximun metrics table) meaning that if the probability of **TRUE** is greater than the threshold, the predicted label would be **TRUE.**
+As we mentioned in the first self-paced course, the predictions we get are based on a probability. In the frame above, we have a probability for **FALSE,** and another one for **TRUE**. The prediction, **predict**, is based on the threshold that maximizes the F1 score. For example, the threshold that maximizes the F1 is about `0.1116` (this value comes from the maximun metrics table) meaning that if the probability of **TRUE** is greater than the threshold, the predicted label would be **TRUE.**
 
 After exploring the results for our classification problem, let’s use AutoML to explore a regression use-case.
 
@@ -507,7 +507,7 @@ x_reg = list(set(train.names) - set(ignore_reg))
 ~~~python
 print("y:", y_reg, "\nx:", x_reg)
 ~~~
-Now we are ready to start our second AutoML model and train it. This time we will use a time constrain, and set `max_runtime_secs` to 900 seconds, or 15 minutes. You will notice that we are specifying the stopping metric and also the sort metric. In the second tutorial, we focused on RMSE and MAE to check the performance of our model, and we noticed that the two values seemed very correlated. For that reason, we could use any of those metrics. We will use the RMSE for early stopping because it penalizes the error more than the MAE, and we will also use it to sort the leaderboard based on the best value.
+Now we are ready to start our second AutoML model and train it. This time we will use a time constrain, and set `max_runtime_secs` to 900 seconds, or 15 minutes. You will notice that we are specifying the stopping metric and also the sort metric. In the second self-paced course, we focused on RMSE and MAE to check the performance of our model, and we noticed that the two values seemed very correlated. For that reason, we could use any of those metrics. We will use the RMSE for early stopping because it penalizes the error more than the MAE, and we will also use it to sort the leaderboard based on the best value.
 
 ~~~python
 aml = H2OAutoML(max_runtime_secs = 900,
@@ -628,7 +628,7 @@ x_reg <- setdiff(colnames(train), ignore_reg)
 x_reg
 ~~~
 
-Now we are ready to start our second AutoML model and train it. This time we will only use a time constrain, and set `max_runtime_secs` to `900 seconds`, or fifteen minutes. You will notice that we are specifying the stopping metric and also the sort metric. In the second tutorial, we focused on RMSE and MAE to check the performance of our model, and we noticed that the two values seemed very correlated. For that reason, we could use any of those metrics. For this task, we will use the RMSE for early stopping because it penalizes the error more than the MAE, and we will also use it to sort the leaderboard based on the best value.
+Now we are ready to start our second AutoML model and train it. This time we will only use a time constrain, and set `max_runtime_secs` to `900 seconds`, or fifteen minutes. You will notice that we are specifying the stopping metric and also the sort metric. In the second self-paced course, we focused on RMSE and MAE to check the performance of our model, and we noticed that the two values seemed very correlated. For that reason, we could use any of those metrics. For this task, we will use the RMSE for early stopping because it penalizes the error more than the MAE, and we will also use it to sort the leaderboard based on the best value.
 
 ~~~r
 #Run AutoML for 15 minutes
@@ -759,7 +759,7 @@ Now, let’s try to do what we just did one more time, but this time in Flow.
 
 ## Task 6: H2O AutoML Classification in Flow
 
-Our dataset should already be in our Flow instance; go to your Flow instance, by either clicking the link we mentioned at the beginning of the tutorial or switching to the tab that you opened earlier. 
+Our dataset should already be in our Flow instance; go to your Flow instance, by either clicking the link we mentioned at the beginning of the self-paced course or switching to the tab that you opened earlier. 
 
 Your Flow instance should look similar to the one below: 
 
@@ -769,7 +769,7 @@ Click on `getFrames` in the **Assistance** panel on the left side. This will sho
 
 ![get-frames](assets/get-frames.png)
 
-Here you will be able to see all the “tables” that we have printed in our Jupyter Notebook, for example, you will see the outputs of the `.head()` function that we used earlier. Also, you will see a frame with the predictions and all the frames which we have worked with. Look for the `loan_level_50k.hex` frame, this is the dataset that we imported at the beginning of the tutorial. In the picture below, you will see three frames highlighted, the first one is the dataset we imported, and the other two are the train and test sets. 
+Here you will be able to see all the “tables” that we have printed in our Jupyter Notebook, for example, you will see the outputs of the `.head()` function that we used earlier. Also, you will see a frame with the predictions and all the frames which we have worked with. Look for the `loan_level_50k.hex` frame, this is the dataset that we imported at the beginning of the self-paced course. In the picture below, you will see three frames highlighted, the first one is the dataset we imported, and the other two are the train and test sets. 
 
 ![flow-frames](assets/flow-frames.png)
 
@@ -778,7 +778,7 @@ To import a file into Flow, you would just need to run the following command in 
 importFiles ["https://s3.amazonaws.com/data.h2o.ai/DAI-Tutorials/loan_level_50k.csv"]
 ~~~
 
-**Note:** For a more detailed guide on how to import a file into Flow, check out [Task 3 of Introduction to Machine Learning with H2O-3 - Part 1](https://training.h2o.ai/products/introduction-to-machine-learning-with-h2o-part-1).
+**Note:** For a more detailed guide on how to import a file into Flow, check out [Task 3 of Introduction to Machine Learning with H2O-3 - Classification](https://training.h2o.ai/products/1a-introduction-to-machine-learning-with-h2o-3-classification).
 
 Even though we already have the train and test set, let’s split the loan_level_50k.hex file, that way we can give a specific name to the train and test sets. Use the ratio 0.8 for train and 0.2 for test.
 
@@ -925,7 +925,7 @@ If you click on predictions, you will get a summary of another frame. Click on *
 
 Feel free to explore the results on your own. Are the first ten predictions similar to what we got in our Jupyter Notebook? Are the metrics from the test set close to those of the cross-validation? 
 
-Now that you can run AutoML in Flow and in the Jupyter Notebook, you can focus on a task and run it for a longer time; you can even run AutoML on the 500k subset of the dataset and see how the results compare to the results in this tutorial. 
+Now that you can run AutoML in Flow and in the Jupyter Notebook, you can focus on a task and run it for a longer time; you can even run AutoML on the 500k subset of the dataset and see how the results compare to the results in this self-paced course. 
 
 If you do not want to attempt the challenge, you can shut down your cluster; otherwise, check out the next task.
 
@@ -934,7 +934,7 @@ h2o.cluster().shutdown()
 ~~~
 
 ## Task 8: Challenge
-AutoML can help us find the best models faster, and narrow down our search for the parameters for those models. Since you learned to tune some of the most common models in H2O, try to further tune the GBM that we found when we did the regression use-case in our Jupyter Notebook and see how much you can improve the scores. Can you tune the GBM so that it performs better than the XGBoost that we tuned in the previous tutorial, using a smaller dataset? Give it a try and put your knowledge to practice. 
+AutoML can help us find the best models faster, and narrow down our search for the parameters for those models. Since you learned to tune some of the most common models in H2O, try to further tune the GBM that we found when we did the regression use-case in our Jupyter Notebook and see how much you can improve the scores. Can you tune the GBM so that it performs better than the XGBoost that we tuned in the previous self-paced course, using a smaller dataset? Give it a try and put your knowledge to practice. 
 
 ## Next Steps
 Introduction to machine learning with H2O-3 - Clustering (Unsupervised Learning) coming soon.  
