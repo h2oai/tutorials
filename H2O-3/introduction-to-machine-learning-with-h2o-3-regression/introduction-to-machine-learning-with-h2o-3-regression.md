@@ -15,27 +15,27 @@
 
 ## Objective
 
-In this tutorial, we will continue using the subset of the Freddie Mac Single-Family dataset to try to predict the interest rate for a loan using H2O’s XGBoost and Deep Learning models. We will explore how to use these models for a regression problem, and we will also demonstrate how to use H2O’s grid search to tune the hyper-parameters of both models. 
+In this self-paced course, we will continue using the subset of the Freddie Mac Single-Family dataset to try to predict the interest rate for a loan using H2O’s XGBoost and Deep Learning models. We will explore how to use these models for a regression problem, and we will also demonstrate how to use H2O’s grid search to tune the hyper-parameters of both models. 
 
 ## Prerequisites
 
-- Completion of the following tutorial: [Introduction to Machine Learning with H2O-3 - Classification](https://training.h2o.ai/products/1a-introduction-to-machine-learning-with-h2o-3-classification) tutorial. 
+- Completion of the following self-paced course: [Introduction to Machine Learning with H2O-3 - Classification](https://training.h2o.ai/products/1a-introduction-to-machine-learning-with-h2o-3-classification). 
 - Some basic knowledge of machine learning. 
 - Familiarity with Python. 
 - An Aquarium account. If you do not have an Aquarium account, please refer to [Appendix A of Introduction to Machine Learning with H2O-3 - Classification](https://training.h2o.ai/products/1a-introduction-to-machine-learning-with-h2o-3-classification)
 
-**Note:** We recommend that you follow along on Aquarium, our cloud instance, to get similar results to the ones shown in this tutorial. We also recommend that you go over the concepts section in Task 2 before starting your lab; that way, your instance is not running while you are going over the concepts. You can also use your personal machine with H2O-3, but keep in mind that you will see different results, as the machines have different results.
+**Note:** We recommend that you follow along on Aquarium, our cloud instance, to get similar results to the ones shown in this self-paced course. We also recommend that you go over the concepts section in Task 2 before starting your lab; that way, your instance is not running while you are going over the concepts. You can also use your personal machine with H2O-3, but keep in mind that you will see different results, as the machines have different results.
 
 ## Task 1: Initial Setup
 
 The data set we’re using comes from Freddie Mac and contains 20 years of mortgage history for each loan and contains information about “loan-level credit performance data on a portion of fully amortizing fixed-rate mortgages that Freddie Mac bought between 1999 to 2017. Features include demographic factors, monthly loan performance, credit performance including property disposition, voluntary prepayments, MI Recoveries, non-MI recoveries, expenses, current deferred UPB, and due date of last paid installment.” [1] 
 
-We’re going to use machine learning with H2O-3 to predict the interest rate for each loan. To do this, we will build two regression models: an XGBoost model and a Deep Learning model that will help us find the interest rate that a loan should be assigned. Complete this tutorial to see how we achieved those results.
+We’re going to use machine learning with H2O-3 to predict the interest rate for each loan. To do this, we will build two regression models: an XGBoost model and a Deep Learning model that will help us find the interest rate that a loan should be assigned. Complete this self-paced course to see how we achieved those results.
 
 We will start by importing H2O, the estimators for the algorithms that we will use, and the function to perform grid search.
 
 ~~~python
-#Import H2O and other libaries that will be used in this tutorial 
+#Import H2O and other libaries 
 import h2o
 from h2o.estimators import *
 from h2o.grid import *
@@ -83,7 +83,7 @@ Now that we have our dataset, we will explore some concepts and then do some exp
 
 The data set we’re using comes from Freddie Mac and contains 20 years of mortgage history for each loan and contains information about “loan-level credit performance data on a portion of fully amortizing fixed-rate mortgages that Freddie Mac bought between 1999 to 2017. Features include demographic factors, monthly loan performance, credit performance including property disposition, voluntary prepayments, MI Recoveries, non-MI recoveries, expenses, current deferred UPB, and due date of last paid installment.” [1] 
 
-We’re going to use machine learning with H2O-3 to predict the interest rate for each loan. To do this, we will build two regression models: an XGBoost model and a Deep Learning model that will help us find the interest rate that a loan should be assigned. Complete this tutorial to see how we achieved those results.
+We’re going to use machine learning with H2O-3 to predict the interest rate for each loan. To do this, we will build two regression models: an XGBoost model and a Deep Learning model that will help us find the interest rate that a loan should be assigned. Complete this self-paced course to see how we achieved those results.
 
 We will start by importing H2O, the estimators for the algorithms that we will use, and the function to perform grid search.
 
@@ -141,7 +141,7 @@ For regression use cases, H2O supports the following metrics:
 - Root Mean Squared Logarithmic Error (RMSLE)
 - Mean Absolute Error (MAE)
 
-In this tutorial, we’ll just focus on the **RMSE** and **MAE.**
+In this self-paced course, we’ll just focus on the **RMSE** and **MAE.**
 
 **MSE**
 
@@ -216,7 +216,7 @@ loan_level.head()
 
 ![dataset-head](assets/dataset-head.png)
 
-If you scroll to the right, you will see all the columns in the dataset that we are using for this tutorial. 
+If you scroll to the right, you will see all the columns in the dataset that we are using for this self-paced course. 
 
 Now, since we are going to try to predict the interest rate, let’s see some information about the `ORIGINAL_INTEREST_RATE` column.
 
@@ -236,7 +236,7 @@ loan_level["ORIGINAL_INTEREST_RATE"].hist()
 
 The histogram verifies that the interest rate around 7 and 7.5 is the most frequent one. Now that we have an idea of what our data and our response variable looks like, we can split the dataset.
 
-**Please note that the main goal of this tutorial is to show the usage of some models for regression problems, as well as to tune some of the hyper-parameters of the models. For that reason, we will be skipping any data visualization and manipulation, as well as feature engineering. The aforementioned stages in machine learning are very important, and should always be done; however, they will be covered in later tutorials.**
+**Please note that the main goal of this self-paced course is to show the usage of some models for regression problems, as well as to tune some of the hyper-parameters of the models. For that reason, we will be skipping any data visualization and manipulation, as well as feature engineering. The aforementioned stages in machine learning are very important, and should always be done; however, they will be covered in later self-paced courses.**
 
 We will split the dataset into three sets, training, validation, and test set. The reason for having validation and test sets is because we will use the validation set to tune our models, and we will treat the test set as some unseen data in which we will see how our models perform. We will assign 70% of our data to the training set, and 15% to both the validation and test sets. 
 Split the dataset and print the distribution of each set
@@ -282,7 +282,7 @@ h2o.head(loan_level, n = 10)
 
 ![r-dataset-head](assets/r-dataset-head.png)
 
-If you click the arrow in the top right corner, you will see the other columns in the dataset that we are using for this tutorial. 
+If you click the arrow in the top right corner, you will see the other columns in the dataset that we are using for this self-paced course. 
 
 Now, since we are going to try to predict the interest rate, let’s see some information about the `ORIGINAL_INTEREST_RATE` column.
 
@@ -304,7 +304,7 @@ h2o.hist(loan_level[, c("ORIGINAL_INTEREST_RATE")])
 
 The histogram verifies that the interest rate around 7 and 7.5 is the most frequent one. Now that we have an idea of what our data and our response variable looks like, we can split the dataset.
 
-**Please note that the main goal of this tutorial is to show the usage of some models for regression problems, as well as to tune some of the hyper-parameters of the models. For that reason, we will be skipping any data visualization and manipulation, as well as feature engineering. The aforementioned stages in machine learning are very important, and should always be done; however, they will be covered in later tutorials.**
+**Please note that the main goal of this self-paced course is to show the usage of some models for regression problems, as well as to tune some of the hyper-parameters of the models. For that reason, we will be skipping any data visualization and manipulation, as well as feature engineering. The aforementioned stages in machine learning are very important, and should always be done; however, they will be covered in later self-paced courses.**
 
 We will split the dataset into three sets, training, validation, and test set. The reason for having validation and test sets is because we will use the validation set to tune our models, and we will treat the test set as some unseen data in which we will see how our models perform. We will assign 70% of our data to the training set, and 15% to both the validation and test sets. 
 Split the dataset and print the distribution of each set
@@ -475,7 +475,7 @@ You will see a table like the one below
 
 ![r-default-xgb-predictions](assets/r-default-xgb-predictions.png)
 
-**Note:** We are printing the default number of rows for our predictions frame. However, if you want to see more rows, you can use the `.head()` function and adjust the value of `n` the same way we did when we printed the first ten rows of the dataset at the beginning of this tutorial.
+**Note:** We are printing the default number of rows for our predictions frame. However, if you want to see more rows, you can use the `.head()` function and adjust the value of `n` the same way we did when we printed the first ten rows of the dataset at the beginning of this self-paced course.
 
 In the first six predictions, we can see that they are somewhat close to the actual value, except for the first sample, which is more than 1.5% off. We can see that samples such as this one, might make the RMSE higher than the MAE, because of the penalty added in the RMSE calculation. 
 
@@ -491,7 +491,7 @@ We will now build our next model.
 
 **Task 4 - Flow Version**
 
-We can also build the XGBoost Model in Flow. In the first tutorial, we showed how to load a dataset into Flow and how to split it. However, the data frames that we have in our Jupyter Notebook and RStudio are also stored in Flow, and we will use it to build our XGBoost model in Flow. 
+We can also build the XGBoost Model in Flow. In the first self-paced course, we showed how to load a dataset into Flow and how to split it. However, the data frames that we have in our Jupyter Notebook and RStudio are also stored in Flow, and we will use it to build our XGBoost model in Flow. 
 
 In your Flow instance, go to the **Assistance** menu, and click on **getFrames** as shown below:
 
@@ -528,7 +528,7 @@ You should be able to see the model parameters, the scoring history, the variabl
 
 
 ## Task 5: Build a Deep Learning Model
-Deep learning models are not reproducible, meaning they won't yield the same result every time you run the same experiment. For that reason, please don't expect to get exactly the same results. However, for the H2O-3 Deep Learning model, you can set the parameter `reproducible=True` which will force reproducibility on small datasets. The disadvantage of this parameter is that in order to be reproducible, it only uses one thread and thus the model takes more time to be trained. We will use this parameter towards the end of this tutorial.
+Deep learning models are not reproducible, meaning they won't yield the same result every time you run the same experiment. For that reason, please don't expect to get exactly the same results. However, for the H2O-3 Deep Learning model, you can set the parameter `reproducible=True` which will force reproducibility on small datasets. The disadvantage of this parameter is that in order to be reproducible, it only uses one thread and thus the model takes more time to be trained. We will use this parameter towards the end of this self-paced course.
 
 As mentioned before, the deep learning estimator is fairly easy to use. For our default Deep Learning model, we do not need to define any parameters, but we will define the seed, model id, and we will also make sure that cross-validation is disabled, as we are already using a validation frame. 
 
@@ -585,7 +585,7 @@ default_dl_per = dl.model_performance(valid)
 
 **Task 5 - R Version**
 
-Deep learning models are not reproducible, meaning they won't yield the same result every time you run the same experiment. For that reason, please don't expect to get exactly the same results. However, for the H2O-3 Deep Learning model, you can set the parameter `reproducible=True` which will force reproducibility on small datasets. The disadvantage of this parameter is that in order to be reproducible, it only uses one thread and thus the model takes more time to be trained. We will use this parameter towards the end of this tutorial.
+Deep learning models are not reproducible, meaning they won't yield the same result every time you run the same experiment. For that reason, please don't expect to get exactly the same results. However, for the H2O-3 Deep Learning model, you can set the parameter `reproducible=True` which will force reproducibility on small datasets. The disadvantage of this parameter is that in order to be reproducible, it only uses one thread and thus the model takes more time to be trained. We will use this parameter towards the end of this self-paced course.
 
 As mentioned before, the deep learning estimator is fairly easy to use. For our default Deep Learning model, we do not need to define any parameters, but we will define the seed, model id, and we will also make sure that cross-validation is disabled, as we are already using a validation frame. 
 
@@ -717,7 +717,7 @@ sorted_xgb.sorted_metric_table()
 
 ![xgb-max-depth-grid](assets/xgb-max-depth-grid.png)
 
-We will use four values for `max_depth` based on the results from the previous grid search to try to tune the next parameters. We will set `ntrees=500` while using early stopping, the same way we did in the first tutorial and we will try to tune the following three parameters:
+We will use four values for `max_depth` based on the results from the previous grid search to try to tune the next parameters. We will set `ntrees=500` while using early stopping, the same way we did in the first self-paced course and we will try to tune the following three parameters:
 
 1\. **`sample_rate`:** Specifies the row sampling ratio of the training instance (x-axis). (Note that this method is sample without replacement.) For example, setting this value to 0.5 tells XGBoost to randomly collecte half of the data instances to grow trees. This value defaults to 1, and the range is 0.0 to 1.0. Higher values may improve training accuracy. Test accuracy improves when either columns or rows are sampled.
 
@@ -765,7 +765,7 @@ Please note that the results might not be exactly the same.
 
 ![xgb-top-model](assets/xgb-top-model.png)
 
-With the grid search that we just did, we were able to train a total of 18 models. The score slightly improved from what we obtained in the first grid search. If we were trying to find the best model, we would need to run the grid search for a longer period of time, that way more models can be trained. We could also do a local search with the values we just found and see if we could get better results, but for the purpose of this tutorial, we will stop here.
+With the grid search that we just did, we were able to train a total of 18 models. The score slightly improved from what we obtained in the first grid search. If we were trying to find the best model, we would need to run the grid search for a longer period of time, that way more models can be trained. We could also do a local search with the values we just found and see if we could get better results, but for the purpose of this self-paced course, we will stop here.
 
 Let’s retrieve the best model from the grid search and then compare the results from the default model to the tuned model. In order to do so, we also need to save the performance of the best model on the validation set.
 
@@ -843,7 +843,7 @@ as.data.frame(xgb_depth_grid_rmse@summary_table)
 
 ![r-xgb-max-depth-grid](assets/r-xgb-max-depth-grid.png)
 
-We will use four values for `max_depth` based on the results from the previous grid search to try to tune the next parameters. We will set `ntrees=500` while using early stopping, the same way we did in the first tutorial and we will try to tune the following three parameters:
+We will use four values for `max_depth` based on the results from the previous grid search to try to tune the next parameters. We will set `ntrees=500` while using early stopping, the same way we did in the first self-paced course and we will try to tune the following three parameters:
 
 1\. **`sample_rate`:** Specifies the row sampling ratio of the training instance (x-axis). (Note that this method is sample without replacement.) For example, setting this value to 0.5 tells XGBoost to randomly collecte half of the data instances to grow trees. This value defaults to 1, and the range is 0.0 to 1.0. Higher values may improve training accuracy. Test accuracy improves when either columns or rows are sampled.
 
@@ -1002,7 +1002,7 @@ We will try to tune our Deep Learning model and see if we can improve the scores
 
 Two of the most important parameters of a Deep Learning model are the number of neurons in the hidden layers and the number of epochs. The parameter for both hidden neurons and layers is **“hidden”**, and we can specify the hidden layer sizes. For example, to define a two-hidden-layer model, with 200 neurons in each layer, we would define it as [200, 200]. If you wanted to have three hidden layers with 300 neurons in the first layer, 200 in the second one, and 100 in the third one, we would do it as follows [300, 200, 100]. The **epochs** allows us to specify the number of times to iterate (stream) the dataset, and this value can be a fraction. We will try to find a good size for our hidden layer, and we will take care of the number of epochs with early stopping. 
 
-Since there are so many combinations for the size of hidden layers, the easiest thing to do is to just do a random search and use one of the models that you find. In this tutorial, we will try to find a good size for the hidden layer taking into consideration the time it takes to train, and then we will try to tune that model. We will explore models with up to two hidden layers for you to see, but for the purpose of this tutorial, we will not try to tune more complex DL models. 
+Since there are so many combinations for the size of hidden layers, the easiest thing to do is to just do a random search and use one of the models that you find. In this self-paced course, we will try to find a good size for the hidden layer taking into consideration the time it takes to train, and then we will try to tune that model. We will explore models with up to two hidden layers for you to see, but for the purpose of this self-paced course, we will not try to tune more complex DL models. 
 
 With the code shown below, you can do a random search to explore several sizes of hidden layers. The way we chose the number of neurons is selecting multiples of 165, which is the size of our input layer (although we do not have 165 predictors, we have predictors that have multiple categories, and they all add up to 165, and thus the number of neurons) and we also added two random sizes, 100 and 200, just to see how they perform. 
 
@@ -1048,7 +1048,7 @@ hidden_per.sorted_metric_table()
 
 ![dl-hidden-layers-grid](assets/dl-hidden-layers-grid.png)
 
-**Note:** your grid search results for the Deep Learning model might be different to ours, that is because the deep learning models are hard to reproduce. Although, if you use the values that we find, you should get similar results at the end. With that being said, you can use the values that we provide in the tutorial, or you could use the values that you get from your own grid search and compare the results at the end. 
+**Note:** your grid search results for the Deep Learning model might be different to ours, that is because the deep learning models are hard to reproduce. Although, if you use the values that we find, you should get similar results at the end. With that being said, you can use the values that we provide in the self-paced course, or you could use the values that you get from your own grid search and compare the results at the end. 
 
 From the results above, we can see that our simplest DL model has the best performance with almost no dropout, as the model with the best score has a `hidden_dropout_ratios` of **0.01.** so for the next grid search, we will use that value. 
 
@@ -1106,7 +1106,7 @@ dl_perf.sorted_metric_table()
 ![dl-grid-3](assets/dl-grid-3.png)
 
 
-As we can see, the RMSE value slightly improved with the grid search that we just did, compared to the first grid search. Although, when we compare it to the default model, our tuned model has improved, yielding a better score. If you recall, at the beginning of the tutorial, we mentioned that H2O’s DNN model allows you to do checkpointing. The checkpoint option allows you to specify a model key associated with a previously trained model. This will build a new model as a continuation of a previously generated model. Since we were training our model with only 10 epochs, let’s now train the same model with 200 epochs while using early stopping to see if we get better results. Also, set `reproducible=True,` this model will take longer to train, but it will yield similar results when you re-run it. 
+As we can see, the RMSE value slightly improved with the grid search that we just did, compared to the first grid search. Although, when we compare it to the default model, our tuned model has improved, yielding a better score. If you recall, at the beginning of the self-paced course, we mentioned that H2O’s DNN model allows you to do checkpointing. The checkpoint option allows you to specify a model key associated with a previously trained model. This will build a new model as a continuation of a previously generated model. Since we were training our model with only 10 epochs, let’s now train the same model with 200 epochs while using early stopping to see if we get better results. Also, set `reproducible=True,` this model will take longer to train, but it will yield similar results when you re-run it. 
 
 To be able to use checkpointing, we need to retrieve the model from the grid search that we just did, and then use the model id to continue training the same model. There are several parameters that can not be changed, and for that reason, we need to specify them one more time; however, this guarantees us that we are training the same model from the grid search. To learn more about checkpointing, please check the Documentation section on [Checkpoint](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/data-science/algo-params/checkpoint.html#checkpoint)
 
@@ -1183,7 +1183,7 @@ We will try to tune our Deep Learning model and see if we can improve the scores
 
 Two of the most important parameters of a Deep Learning model are the number of neurons in the hidden layers and the number of epochs. The parameter for both hidden neurons and layers is **“hidden”**, and we can specify the hidden layer sizes. For example, to define a two-hidden-layer model, with 200 neurons in each layer, we would define it as [200, 200]. If you wanted to have three hidden layers with 300 neurons in the first layer, 200 in the second one, and 100 in the third one, we would do it as follows [300, 200, 100]. The **epochs** allows us to specify the number of times to iterate (stream) the dataset, and this value can be a fraction. We will try to find a good size for our hidden layer, and we will take care of the number of epochs with early stopping. 
 
-Since there are so many combinations for the size of hidden layers, the easiest thing to do is to just do a random search and use one of the models that you find. In this tutorial, we will try to find a good size for the hidden layer taking into consideration the time it takes to train, and then we will try to tune that model. We will explore models with up to two hidden layers for you to see, but for the purpose of this tutorial, we will not try to tune more complex DL models. 
+Since there are so many combinations for the size of hidden layers, the easiest thing to do is to just do a random search and use one of the models that you find. In this self-paced course, we will try to find a good size for the hidden layer taking into consideration the time it takes to train, and then we will try to tune that model. We will explore models with up to two hidden layers for you to see, but for the purpose of this self-paced course, we will not try to tune more complex DL models. 
 
 With the code shown below, you can do a random search to explore several sizes of hidden layers. The way we chose the number of neurons is selecting multiples of 165, which is the size of our input layer (although we do not have 165 predictors, we have predictors that have multiple categories, and they all add up to 165, and thus the number of neurons) and we also added two random sizes, 100 and 200, just to see how they perform. 
 
@@ -1226,7 +1226,7 @@ as.data.frame(dl_hidden_grid_rmse@summary_table)
 
 ![r-dl-hidden-layers-grid](assets/r-dl-hidden-layers-grid.png)
 
-**Note:** your grid search results for the Deep Learning model might be different to ours, that is because the deep learning models are hard to reproduce. Although, if you use the values that we find, you should get similar results at the end. With that being said, you can use the values that we provide in the tutorial, or you could use the values that you get from your own grid search and compare the results at the end. 
+**Note:** your grid search results for the Deep Learning model might be different to ours, that is because the deep learning models are hard to reproduce. Although, if you use the values that we find, you should get similar results at the end. With that being said, you can use the values that we provide in the self-paced course, or you could use the values that you get from your own grid search and compare the results at the end. 
 
 From the results above, we can see that our simplest DL model has the best performance with almost no dropout, as the model with the best score has a `hidden_dropout_ratios` of **0.01.** so for the next grid search, we will use that value. 
 
@@ -1285,7 +1285,7 @@ as.data.frame(dl_random_grid_rmse@summary_table)
 ![r-dl-grid-2](assets/r-dl-grid-2.png) 
 
 
-As we can see, the RMSE value didn't improve with the grid search that we just did, compared to the first grid search. Although, by setting a different value for L2 and Max W2, we can increase the stability of our model, and it can also help with generalization. If you recall, at the beginning of the tutorial, we mentioned that H2O’s DNN model allows you to do checkpointing. The checkpoint option allows you to specify a model key associated with a previously trained model. This will build a new model as a continuation of a previously generated model. Since we were training our model with only 10 epochs, let’s now train the same model with 400 epochs while using early stopping to see if we get better results. Also, set `reproducible=True,` this model will take longer to train, but it will yield similar results when you re-run it. 
+As we can see, the RMSE value didn't improve with the grid search that we just did, compared to the first grid search. Although, by setting a different value for L2 and Max W2, we can increase the stability of our model, and it can also help with generalization. If you recall, at the beginning of the self-paced course, we mentioned that H2O’s DNN model allows you to do checkpointing. The checkpoint option allows you to specify a model key associated with a previously trained model. This will build a new model as a continuation of a previously generated model. Since we were training our model with only 10 epochs, let’s now train the same model with 400 epochs while using early stopping to see if we get better results. Also, set `reproducible=True,` this model will take longer to train, but it will yield similar results when you re-run it. 
 
 To be able to use checkpointing, we need to retrieve the model from the grid search that we just did, and then use the model id to continue training the same model. There are several parameters that can not be changed, and for that reason, we need to specify them one more time; however, this guarantees us that we are training the same model from the grid search. To learn more about checkpointing, please check the Documentation section on [Checkpoint](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/data-science/algo-params/checkpoint.html#checkpoint)
 
@@ -1426,7 +1426,7 @@ test_rate_pred.cbind(dl_tuned_pred)
 
 Please note that the `predict` column has the predictions for the XGBoost model, and the `predict0` column has the predictions for the Deep Learning model. As we can see in the image above, both predictions are close to the actual values. Although there might be some predictions that might be very off, the RMSE and MAE proved to us that both models make good predictions. 
 
-**Note:** You will **not** get the exact same results for the Deep Learning model. The values shown in this tutorial for that model are the final values that we obtained, and they should only be a reference for you. You should expect values similar to ours, but not the same.
+**Note:** You will **not** get the exact same results for the Deep Learning model. The values shown in this self-paced course for that model are the final values that we obtained, and they should only be a reference for you. You should expect values similar to ours, but not the same.
 
 If you do not want to attempt the challenge in the next task, feel free to shut down your cluster, or you can shut it down after you attempt the challenge.
 
@@ -1485,7 +1485,7 @@ h2o.cbind(test[, c("ORIGINAL_INTEREST_RATE")], tuned_xgb_pred, tuned_dl_pred)
 
 Please note that the `predict` column has the predictions for the XGBoost model, and the `predict0` column has the predictions for the Deep Learning model. As we can see in the image above, both predictions are close to the actual values. Although there might be some predictions that might be very off, the RMSE and MAE proved to us that both models make good predictions. 
 
-**Note:** You will **not** get the exact same results for the Deep Learning model. The values shown in this tutorial for that model are the final values that we obtained, and they should only be a reference for you. You should expect values similar to ours, but not the same.
+**Note:** You will **not** get the exact same results for the Deep Learning model. The values shown in this self-paced course for that model are the final values that we obtained, and they should only be a reference for you. You should expect values similar to ours, but not the same.
 
 If you do not want to attempt the challenge in the next task, feel free to shut down your cluster, or you can shut it down after you attempt the challenge.
 
@@ -1495,7 +1495,7 @@ h2o.shutdown()
 
 ## Task 9:  Challenge
 
-We tuned the Deep Learning model with two hidden layers with 100 neurons in each layer. Try to tune a Deep Learning model on your own with two layers, or more, and with the number of neurons that you want. You can follow the same procedures as before, but if you wanted to have models wiht three hidden layers you will have to use something like `[165,165, 165],` and for some parameters such as the dropout ratios, you will need to also have two values, such as `[0.01, 0.01, 0.01]`, and so on. If you attempt the challenge, you can download your Notebook with your work, and just restart the lab; that way, you have at least 2 hours to tune the new model. Once you’re done with the tutorial, shut down your cluster, or end the lab.
+We tuned the Deep Learning model with two hidden layers with 100 neurons in each layer. Try to tune a Deep Learning model on your own with two layers, or more, and with the number of neurons that you want. You can follow the same procedures as before, but if you wanted to have models wiht three hidden layers you will have to use something like `[165,165, 165],` and for some parameters such as the dropout ratios, you will need to also have two values, such as `[0.01, 0.01, 0.01]`, and so on. If you attempt the challenge, you can download your Notebook with your work, and just restart the lab; that way, you have at least 2 hours to tune the new model. Once you’re done with the self-paced course, shut down your cluster, or end the lab.
 
 ## Next steps
-Please make sure you check out our H2O AutoML Tutorial - [Introduction to Machine Learning with H2O-3 - AutoML](https://training.h2o.ai/products/1c-introduction-to-machine-learning-with-h2o-3-automl)
+Please make sure you check out our H2O AutoML self-paced course - [Introduction to Machine Learning with H2O-3 - AutoML](https://training.h2o.ai/products/1c-introduction-to-machine-learning-with-h2o-3-automl)
