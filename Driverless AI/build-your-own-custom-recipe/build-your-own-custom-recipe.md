@@ -12,7 +12,6 @@
 - [Task 6: Challenge: Write Your Own Recipe](#task-6-challenge-write-your-own-recipe)
 - [Next Steps](#next-steps)
 - [Appendix A: Download Driverless AI Custom Recipes](#appendix-a-download-driverless-ai-custom-recipes)
-- [Appendix B: AI Glossary](#appendix-b-ai-glossary)
 
 ## Objective
 
@@ -28,10 +27,10 @@ Recipes:
 - Basic knowledge of Machine Learning and Statistics
 - Ability to write Python Code
 - A Two-Hour Test Drive session: Test Drive is H2O.ai's Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.
-  - Need a Two-Hour Test Drive session? Follow the instructions on [this quick self-paced course](https://training.h2o.ai/products/self-paced-course-0-getting-started-with-driverless-ai-test-drive) to get a Test Drive session started.
+  - Need a Two-Hour Test Drive session? Follow the instructions on [this quick self-paced course](https://h2oai.github.io/tutorials/getting-started-with-driverless-ai-test-drive) to get a Test Drive session started.
 - Basic knowledge of Driverless AI or doing the following self-paced courses:
-  - [Automatic Machine Learning Introduction with Drivereless AI](https://training.h2o.ai/products/self-paced-course-1a-automatic-machine-learning-introduction-with-driverless-ai)
-  - [Get Started with Open Source Custom Recipes](https://training.h2o.ai/products/self-paced-course-3a-get-started-with-open-source-custom-recipes) 
+  - [Automatic Machine Learning Introduction with Drivereless AI](https://h2oai.github.io/tutorials/automatic-ml-intro-with-driverless-ai)
+  - [Get Started with Open Source Custom Recipes](https://h2oai.github.io/tutorials/get-started-with-open-source-custom-recipes)
 - A text editor or developer environment to create .py text files containing source code (Examples: PyCharm, Jupyter, Spider or a Text Editor like Atom or Visual Studio Code)
 
 **Note: Aquarium’s Driverless AI Test Drive lab has a license key built-in, so you don’t need to request one to use it. Each Driverless AI Test Drive instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore Driverless AI, you can always launch another Test Drive instance or reach out to our sales team via the [contact us form](https://www.h2o.ai/company/contact/).**
@@ -46,7 +45,7 @@ In the **Get Started and with Open Source Custom Recipes** self-paced course we 
 - How to upload the recipes into Driverless AI using URL’s and .py files
 - Compare the final models of the experiments that were run with custom recipes to Driverless AI’s default settings experiment. 
 
-**Note:** If you have not done so, complete the [Get Started with Open Source Custom Recipes](https://training.h2o.ai/products/self-paced-course-3a-get-started-with-open-source-custom-recipes), the material covered will be needed for the successful completion of this self-paced course.
+**Note:** If you have not done so, complete the [Get Started with Open Source Custom Recipes](https://h2oai.github.io/tutorials/get-started-with-open-source-custom-recipes), the material covered will be needed for the successful completion of this self-paced course.
 
 To recap, H2O Driverless AI is an artificial intelligence (AI) platform for automatic machine learning. Driverless AI automates some of the most tedious and challenging data science and machine learning tasks such as feature engineering, algorithm selection, model validation, model tuning, model selection, model explanation, model documentation, and model deployment. It aims to achieve the highest predictive accuracy, comparable to expert data scientists, but in a much shorter time thanks to end-to-end automation.
 
@@ -437,14 +436,14 @@ class SumTransformer(CustomTransformer):
 
 ### Challenge
 
-The final step in building the custom transformer recipe is to upload the custom recipe to Driverless AI and check that it passes the **acceptance test**. If your recipe is not passing the Driverless AI’s acceptance test, see  [Task 5: Troubleshooting](https://training.h2o.ai/products/self-paced-course-3b-build-your-own-custom-recipe).
+The final step in building the custom transformer recipe is to upload the custom recipe to Driverless AI and check that it passes the **acceptance test**. If your recipe is not passing the Driverless AI’s acceptance test, see  [Task 5: Troubleshooting](https://h2oai.github.io/tutorials/build-your-own-custom-recipe).
 
 Take the new custom **SumTransformer** and test it in a dataset of your choice.
 
 **Note:** The dataset needs to have more than three quantitative columns that can be added together
 
 
-If you have questions on how to upload the transformer recipe to Driverless AI, see  [Get Started with Open Source Custom Recipes - Task 3: Recipe: Transformer](https://training.h2o.ai/products/self-paced-course-3a-get-started-with-open-source-custom-recipes).
+If you have questions on how to upload the transformer recipe to Driverless AI, see  [Get Started with Open Source Custom Recipes - Task 3: Recipe: Transformer](https://h2oai.github.io/tutorials/get-started-with-open-source-custom-recipes).
 
 
 ### References
@@ -490,7 +489,7 @@ The custom **scorer** that we will build in this section is a **"False Discovery
             
 The **False Positive Rate** is the algorithm where all the elements that were incorrectly classified (False Positives) will be divided by the sum of all the elements that were correctly classified (True Positives) and incorrectly classified (False Positives).
 
-If you would like to review or learn more about binary classification in Driverless AI, view our [Machine Learning Experiment Scoring and Analysis - Financial Focus](https://training.h2o.ai/products/self-paced-course-1b-machine-learning-experiment-scoring-and-analysis-financial-focus).
+If you would like to review or learn more about binary classification in Driverless AI, view our [Machine Learning Experiment Scoring and Analysis - Financial Focus](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-financial-focus).
 
 ### Essentials to Building a Scorer
 
@@ -734,13 +733,13 @@ class MyFDRScorer(CustomScorer):
 
 ### Challenge
 
-The final step in building the custom scorer recipe is to upload the custom recipe to Driverless and check that it passes the **acceptance test**. If your recipe is not passing the Driverless AI’s acceptance test, see  [Task 5: Troubleshooting](https://training.h2o.ai/products/self-paced-course-3b-build-your-own-custom-recipe).
+The final step in building the custom scorer recipe is to upload the custom recipe to Driverless and check that it passes the **acceptance test**. If your recipe is not passing the Driverless AI’s acceptance test, see  [Task 5: Troubleshooting](https://h2oai.github.io/tutorials/build-your-own-custom-recipe).
 
 Take the false_discovery_rate scorer and test it in a dataset of your choice.
 
 **Note:** The dataset needs to be for a binary classification problem
 
-If you have questions on how to upload the scorer recipe to Driverless AI, see  [“Get Started with Open Source Custom Recipes - Task 4: Recipe: Scorer”](https://training.h2o.ai/products/self-paced-course-3a-get-started-with-open-source-custom-recipes).
+If you have questions on how to upload the scorer recipe to Driverless AI, see  [“Get Started with Open Source Custom Recipes - Task 4: Recipe: Scorer”](https://h2oai.github.io/tutorials/get-started-with-open-source-custom-recipes).
 
 ### Deeper Dive and Resources
 
@@ -1125,7 +1124,7 @@ If you need to do parameter tuning after setting your default parameters, here i
 
 Take the extra_tress_model and test it using a dataset of your choice.
 
-If you have questions on how to upload the transformer recipe to Driverless AI, see  [“Get Started with Open Source Custom Recipes - Task 5: Recipe: Model”](https://training.h2o.ai/products/self-paced-course-3a-get-started-with-open-source-custom-recipes).
+If you have questions on how to upload the transformer recipe to Driverless AI, see  [“Get Started with Open Source Custom Recipes - Task 5: Recipe: Model”](https://h2oai.github.io/tutorials/get-started-with-open-source-custom-recipes).
 
 ### References
 
@@ -1206,7 +1205,3 @@ wget https://raw.githubusercontent.com/h2oai/driverlessai-recipes/rel-1.9.1/mode
 ~~~
 
 Feel free to open the custom recipes in your favorite text editor or IDE.
-
-## Appendix B: AI Glossary
-
-Refer to [H2O.ai Community AI Glossary](https://www.h2o.ai/community/browse/ai-glossary-search) for relevant Custom Recipe Terms.

@@ -29,7 +29,7 @@ In part, this self-paced course will also be an overview of Driverless AI. You w
 
 - Basic knowledge of Machine Learning and Statistics
 - A **Two-Hour Test Drive session**: Test Drive is H2O.ai's Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.
-  - Need a **Two-Hour Test Drive** session? Follow the instructions [on this quick self-paced course](https://training.h2o.ai/products/self-paced-course-0-getting-started-with-driverless-ai-test-drive) to get a Test Drive session started. After the Driverless AI Test Drive session starts, continue reading the remaining prerequisites of this self-paced course, then start **Task 1: Product Tour**.
+  - Need a **Two-Hour Test Drive** session? Follow the instructions [on this quick self-paced course](https://h2oai.github.io/tutorials/getting-started-with-driverless-ai-test-drive) to get a Test Drive session started. After the Driverless AI Test Drive session starts, continue reading the remaining prerequisites of this self-paced course, then start **Task 1: Product Tour**.
   - Already have a **Two-Hour Test Drive** session? Proceed to **Task 1: Product Tour**.
 
 **Note:  Aquarium’s Driverless AI Test Drive lab has a license key built-in, so you don’t need to request one to use it. Each Driverless AI Test Drive instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore Driverless AI, you can always launch another Test Drive instance or reach out to our sales team via the [contact us form](https://www.h2o.ai/company/contact/).**
@@ -97,7 +97,6 @@ Before we load the dataset for our experiment, let us review some introductory c
 
 ### Deeper Dive and Resources
 
--  [Join the H2O community](https://www.h2o.ai/community/home). Post your questions, discuss use cases, give feedback, stay informed about the latest H2O.ai updates, and more.
 - Learn more about H2O Driverless through the [H2O documentation](http://docs.h2o.ai/driverless-ai/latest-stable/docs/booklets/DriverlessAIBooklet.pdf).
 - [Explore H2O Product Documentation](http://docs.h2o.ai/)
 - [Learn more H2O Driverless by reviewing the FAQs](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/faq.html) 
@@ -363,14 +362,14 @@ From the *Titanic.csv* dataset, we are going to create two datasets, *training* 
 
 ![titanic-set-split-1](assets/titanic-set-split-1.png)
 
-2\. Split the data into two sets: ```titanic_train``` and ```titanic_test```, then save the changes. Use the image below as a guide: 
+2\. Split the data into two sets: `titanic_train` and `titanic_test`, then save the changes. Use the image below as a guide: 
 
 ![titanic-set-split-2](assets/titanic-set-split-2.png)
 
 - *Things to Note:*</br>
 
-    **a.** For **OUTPUT NAME 1**: enter ```titanic_train``` (this will serve as the training set)</br>
-    **b.** For **OUTPUT NAME 2**: enter ```titanic_test``` (this will serve as the test set)</br>
+    **a.** For **OUTPUT NAME 1**: enter `titanic_train` (this will serve as the training set)</br>
+    **b.** For **OUTPUT NAME 2**: enter `titanic_test` (this will serve as the test set)</br>
     **c.** You can change the Random Seed; this will generate the same split every time</br>
     **d.** Change the split value to .75 by adjusting the slider to 75% or entering .75 in the section that says *SELECT SPLIT RATIO(BY ROWS)*</br>
     **e.** Save the changes you made 
@@ -539,7 +538,7 @@ The *survived* attribute was selected because, as an insurance company, we want 
 
     **c.** **Scorer** - Driverless AI selects the best scorer based on your dataset. Other scorers can be manually selected. 
     - For more information about **Scorers** see the H2O.ai documentation [here](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/scorers.html). 
-    - Explore more about scores in the next self-paced course: [Machine Learning Experiment Scoring and Analysis - Financial Focus](https://training.h2o.ai/products/self-paced-course-1b-machine-learning-experiment-scoring-and-analysis-financial-focus)</br>
+    - Explore more about scores in the next self-paced course: [Machine Learning Experiment Scoring and Analysis - Financial Focus](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-financial-focus)</br>
     
     **d.** **Classification/Regression** - Classification or Regression button; Driverless AI automatically determines the problem type based on the target column. Though not recommended, you can override this setting by clicking this button. 
     - For more information about **Classification/Regression** see the H2O.ai documentation [here](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#classification-regression-button).</br>
@@ -622,7 +621,7 @@ The *survived* attribute was selected because, as an insurance company, we want 
     - Download MOJO Scoring Pipeline - A standalone scoring pipeline that converts experiments to MOJO's, which can be scored in real time. It is available as either Java runtime or a C++ runtime (with Python and R wrappers).
     - Visualize Scoring Pipeline (Experimental) - A visualization of the scoring pipeline is available for each completed experiment.    
         ![visualize-scoring-pipeline-experimental](assets/visualize-scoring-pipeline-experimental.jpg)
-    - Download Summary & Logs 
+    - Download Summary & Logs
         - The files within the experiment summary zip provide textual explanations of the graphical representations that are shown on the Driverless AI UI. To learn more click [here](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-summary.html?highlight=download%20summary%20logs#experiment-summary).
     - Download Autodoc 
         - The AutoDoc feature is used to generate automated machine learning documentation for individual Driverless AI experiments. This editable document contains an overview of the experiment and includes other significant details like feature engineering and final model performance.
@@ -658,15 +657,15 @@ Driverless AI provides a number of transformers. The following transformers are 
 
 Below are just some of the transformers found in our experiment:
 
-1\. Look at some of the variables in the following section: **Variable Importance**. Note that some of the variables start with ```_CVTE```(_CVTargetEncode) followed by the dataset's column name. Other variables might also begin with ```_NumToCatTE``` or ```_WoE``` depending on the experiment you run. These are the new, high-value features for our training dataset.
+1\. Look at some of the variables in the following section: **Variable Importance**. Note that some of the variables start with `_CVTE`(_CVTargetEncode) followed by the dataset's column name. Other variables might also begin with `_NumToCatTE` or `_WoE` depending on the experiment you run. These are the new, high-value features for our training dataset.
 
 These transformations are created with the following transformers:
 
-- Cross Validation Target Encoding Transformer: ```_CVTE```
+- Cross Validation Target Encoding Transformer: `_CVTE`
     - The Cross Validation Target Encoding Transformer calculates the mean of the response column for each value in a categorical column and uses this as a new feature. Cross Validation is used to calculate mean response to prevent overfitting.
-- Weight of Evidence : ```_WoE```
+- Weight of Evidence : `_WoE`
     - The Weight of Evidence Transformer calculates Weight of Evidence for each value in categorical column(s). The Weight of Evidence is used as a new feature. Weight of Evidence measures the “strength” of a grouping for separating good and bad risk and is calculated by taking the log of the ratio of distributions for a binary response column. This only works with a binary target variable. The likelihood needs to be created within a stratified kfold if a fit_transform method is used.
-- Numeric to Categorical Target Encoding Transformer: ```_NumToCatTE```
+- Numeric to Categorical Target Encoding Transformer: `_NumToCatTE`
     - The Numeric to Categorical Target Encoding Transformer converts numeric columns to categoricals by binning and then calculates the mean of the response column for each group. The mean of the response for the bin is used as a new feature. Cross Validation is used to calculate mean response to prevent overfitting.
 
 
@@ -743,7 +742,7 @@ Let's explore the results of this classification experiment. You can find useful
 
     This ROC gives an Area Under the Curve or AUC of **.8535**. The AUC tells us that the model can separate the survivor class with an accuracy of **85.35**%.
 
-    Learn more about the ROC Curve on the next self-paced course:[ Machine Learning Experiment Scoring and Analysis - Financial Focus](https://training.h2o.ai/products/self-paced-course-1b-machine-learning-experiment-scoring-and-analysis-financial-focus).</br>
+    Learn more about the ROC Curve on the next self-paced course:[Machine Learning Experiment Scoring and Analysis - Financial Focus](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-financial-focus).</br>
     </br>
     
     **c.** **Prec-Recall: Precision-Recall Graph**</br>
@@ -757,7 +756,7 @@ Let's explore the results of this classification experiment. You can find useful
 
     Similarly to the ROC curve, when we look at the area under the curve of the Prec-Recall Curve of AUCPR, we get a value of **.8230(accuracy of 82.30%)**. 
 
-    Learn more about the Precision-Recall Graph on the next self-paced course: [ Machine Learning Experiment Scoring and Analysis - Financial Focus](https://training.h2o.ai/products/self-paced-course-1b-machine-learning-experiment-scoring-and-analysis-financial-focus).</br>
+    Learn more about the Precision-Recall Graph on the next self-paced course: [Machine Learning Experiment Scoring and Analysis - Financial Focus](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-financial-focus).</br>
 
     </br>
     **d.** **Cumulative Lift Chart** </br>
@@ -767,7 +766,7 @@ Let's explore the results of this classification experiment. You can find useful
     </p></br>
     If a test set was provided for the experiment, then click on the Validation Metrics button below the graph to view these stats on test data.
 
-    Learn more about the Cumulative Lift Chart on the next self-paced course: [Machine Learning Experiment Scoring and Analysis - Financial Focus](https://training.h2o.ai/products/self-paced-course-1b-machine-learning-experiment-scoring-and-analysis-financial-focus).</br>
+    Learn more about the Cumulative Lift Chart on the next self-paced course: [Machine Learning Experiment Scoring and Analysis - Financial Focus](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-financial-focus).</br>
 
     </br>
     **e.** **Cumulative Gains Chart**</br>
@@ -785,7 +784,7 @@ Let's explore the results of this classification experiment. You can find useful
 
     The Gains chart above tells us that when looking at the **20%** quantile, the model can positively identify **~45%** of the survivors compared to a random model(or no model), which would be able to positively identify about **~20%** of the survivors at the **20%** quantile.
 
-    Learn more about the Cumulative Gains Chart on the next self-paced course: [Machine Learning Experiment Scoring and Analysis - Financial Focus](https://training.h2o.ai/products/self-paced-course-1b-machine-learning-experiment-scoring-and-analysis-financial-focus).</br>
+    Learn more about the Cumulative Gains Chart on the next self-paced course: [Machine Learning Experiment Scoring and Analysis - Financial Focus](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-financial-focus).</br>
 
     </br>
     **f.** **Kolmogorov-Smirnov**</br>
@@ -801,7 +800,7 @@ Let's explore the results of this classification experiment. You can find useful
 
     For the K-S chart above, if we look at the top **60%** of the data, the at-chance model (the dotted diagonal line) tells us that only **60%** of the data was successfully separated between positives and negatives (survived and did not survive). However, with the model, it was able to do **.452**, or about **~45.2%** of the cases were successfully separated between positives and negatives.
 
-    Learn more about the Kolmogorov-Smirnov graph on the next self-paced course: [Machine Learning Experiment Scoring and Analysis - Financial Focus](https://training.h2o.ai/products/self-paced-course-1b-machine-learning-experiment-scoring-and-analysis-financial-focus).
+    Learn more about the Kolmogorov-Smirnov graph on the next self-paced course: [Machine Learning Experiment Scoring and Analysis - Financial Focus](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-financial-focus).
 
 ### References
  
@@ -849,7 +848,7 @@ Once the **MLI Experiment is finished** the following should appear:
 
 **b.** The DAI Model tab is organized into tiles for each interpretation method. To view a specific plot, click the tile for the plot that you want to view.
 
-For binary classification and regression experiments, this tab includes Feature Importance and Shapley (not supported for RuleFit and TensorFlow models) plots for original and transformed features as well as Partial Dependence/ICE, Disparate Impact Analysis (DIA), Sensitivity Analysis, NLP Tokens and NLP LOCO (for text experiments), and Permutation Feature Importance (if the ```autodoc_include_permutation_feature_importance``` configuration option is enabled) plots. 
+For binary classification and regression experiments, this tab includes Feature Importance and Shapley (not supported for RuleFit and TensorFlow models) plots for original and transformed features as well as Partial Dependence/ICE, Disparate Impact Analysis (DIA), Sensitivity Analysis, NLP Tokens and NLP LOCO (for text experiments), and Permutation Feature Importance (if the `autodoc_include_permutation_feature_importance` configuration option is enabled) plots. 
 
 For multiclass classification experiments, this tab includes Feature Importance and Shapley plots for original and transformed features:
 
@@ -1007,13 +1006,13 @@ Display MLI Python Logs: View MLI Python logs for the interpretation.</br>
     - Hover over any of the plot points and view the LIME reason codes for that value.
     - Select a point where *Actual value* is **1** and note the reason codes for that prediction value.
         ![dashboard-klime](assets/dashboard-klime.jpg)
-        - Learn more about the **K-Lime** graph on the next self-paced course: [Machine Learning Experiment Scoring and Analysis - Financial Focus](https://training.h2o.ai/products/self-paced-course-1b-machine-learning-experiment-scoring-and-analysis-financial-focus).
+        - Learn more about the **K-Lime** graph on the next self-paced course: [Machine Learning Experiment Scoring and Analysis - Financial Focus](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-financial-focus).
 
     **b.** Feature Importance - 
     This graph shows the essential features that drive the model behavior.
     - Which attribute/feature had the most importance?
         ![dashboard-feature-importance](assets/dashboard-feature-importance.jpg)
-        - Learn more about the **Feature Importance** graph on the next self-paced course:[ Machine Learning Interpretability - Financial Focus](https://training.h2o.ai/products/self-paced-course-1c-machine-learning-interpretability).
+        - Learn more about the **Feature Importance** graph on the next self-paced course:[Machine Learning Interpretability - Financial Focus](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-financial-focus).
 
 
     **c.** Decision Tree Surrogate model
@@ -1022,7 +1021,7 @@ Display MLI Python Logs: View MLI Python logs for the interpretation.</br>
 
     - What is the most common decision path for the Titanic Training set?
         ![decision-tree-task-8-answer](assets/decision-tree-task-8-answer.jpg)
-        - Learn more about the **Decision Tree** graph on the next self-paced course: [Machine Learning Interpretability](https://training.h2o.ai/products/self-paced-course-1c-machine-learning-interpretability).
+        - Learn more about the **Decision Tree** graph on the next self-paced course: [Machine Learning Interpretability](https://h2oai.github.io/tutorials/machine-learning-interpretability).
 
     **d.** Partial Dependence and Individual Conditional Expectation (ICE) plots represent the model prediction for different original variables' values. It shows the average model behavior for important original variables.
 
@@ -1032,7 +1031,7 @@ Display MLI Python Logs: View MLI Python logs for the interpretation.</br>
 
     - Explore other average values for different variables and compare the results to your original observations. To change the variable, select use the search bar on top of the **Feature Importance** chart. 
             
-        Learn more about the **Partial Dependence** plot on the next self-paced course: [Machine Learning Interpretability](https://training.h2o.ai/products/self-paced-course-1c-machine-learning-interpretability).
+        Learn more about the **Partial Dependence** plot on the next self-paced course: [Machine Learning Interpretability](https://h2oai.github.io/tutorials/machine-learning-interpretability).
 
     **e.** **Explanations** provide detailed, easy-to-read **Reason Codes** for the top Global/Local Attributions. To access the explanations, click on the EXPLANATIONS button located on the screen's top right corner(a).
 
@@ -1096,11 +1095,11 @@ The **AutoDoc** feature is used to generate automated machine learning documenta
 
 Before we conclude this self-paced course, note that we haven't focused on the fifth step of our Driverless AI workflow: deploy the scoring pipeline. Given the complexity of the step, we will be exploring the final step in the following self-paced course: 
 
-- [Introduction to Machine Learning Model Deployment and Management](https://training.h2o.ai/products/self-paced-course-1a-intro-to-ml-model-deployment-and-management)
+- [Introduction to Machine Learning Model Deployment and Management](https://h2oai.github.io/tutorials/intro-to-ml-model-deployment-and-management)
 
 Before moving forward to the above self-paced course, it is recommended to proceed to the next self-paced course in the learning path before exploring the final step of the Driverless AI workflow. The second self-paced course in the learning path will provide a deeper understanding of Driverless AI's UI and its functionalities. Once again, the second self-paced course is as follows: 
 
-- [Machine Learning Experiment Scoring and Analysis - Financial Focus](https://training.h2o.ai/products/self-paced-course-1b-machine-learning-experiment-scoring-and-analysis-financial-focus) 
+- [Machine Learning Experiment Scoring and Analysis - Financial Focus](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-financial-focus)
 
     > This self-paced course will be working with a subset of the Freddie Mac Single-Family Loan-Level Dataset to build a classification model. We will be exploring how to evaluate a DAI model through tools like ROC, Prec-Recall, Gain, Lift Charts, K-S Chart, and metrics such as AUC, F-Scores, GINI, MCC, and Log Loss.
 
@@ -1181,4 +1180,4 @@ You can link datasets and experiments from the Projects page, and you can run ne
 **e.** Click **Create Project**. This creates an empty Project page</br>
 
 - Learn more about projects in Driverless AI; check out the [Project Workspace Documentation](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/projects.html?highlight=projects%20workspace).
-- A more extensive application of **Project Workspace** can be explored in the following self-paced course: [Time Series - Retail Sales Forecasting](https://training.h2o.ai/products/tutorial-2a-time-series-recipe-retail-sales-forecasting). 
+- A more extensive application of **Project Workspace** can be explored in the following self-paced course: [Time Series - Retail Sales Forecasting](https://h2oai.github.io/tutorials/time-series-recipe-retail-sales-forecasting).

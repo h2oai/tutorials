@@ -111,11 +111,7 @@ After the Driverless AI Test Drive Lab will appear:
 
 2. Note that the lab automatically ends after two hours and can be taken multiple times
 
-3. [H2O.ai Learning Center](https://training.h2o.ai/): Build your Knowledge Base and Skills at your pace. Enter a place for knowledge-sharing, skills-enhancements, idea-sharing, and more!
-
-4. [H2O.ai Community(HaC)](https://www.h2o.ai/community/home): HaC is a community to share, learn, network, ask questions, provide answers, take the next step, and explore Artificial Intelligence, Machine Learning, and Data Science.  We are here to democratize AI. It will take a village to democratize AI.
-
-5. **Start** button starts the lab session
+3. **Start** button starts the lab session
 
 1\. To start a Lab, click on **Start Lab**. You will see an image similar to the one below:
 
@@ -146,7 +142,7 @@ After the Driverless AI Test Drive Lab will appear:
 
 Have any questions about Aquarium? Sign up for H2O.ai's Slack Community and post your questions under the **#cloud** channel. Members of the H2O.ai community will respond as soon as they are available.
 
-- [Chat and ask questions with H2O.ai makers and data scientist users in the H2O.ai Slack workspace](https://www.h2o.ai/community/home)
+- [Chat and ask questions with H2O.ai makers and data scientist users in the H2O.ai Slack workspace](https://www.h2o.ai/h2ousers/)
 
 
 

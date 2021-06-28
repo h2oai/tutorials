@@ -34,10 +34,10 @@ With the above in mind, let us discover how we can better understand our models.
 You will need the following to be able to do this self-paced course:
 
 - Basic knowledge of Machine Learning and Statistics
-- Basic knowledge of Driverless AI or completion of [Automatic Machine Learning Introduction with Driverless AI](https://training.h2o.ai/products/self-paced-course-1a-automatic-machine-learning-introduction-with-driverless-ai) 
-- Completion of the following self-paced course: [Machine Learning Interpretability](https://training.h2o.ai/products/self-paced-course-1c-machine-learning-interpretability)
+- Basic knowledge of Driverless AI or completion of [Automatic Machine Learning Introduction with Driverless AI](https://h2oai.github.io/tutorials/automatic-ml-intro-with-driverless-ai) 
+- Completion of the following self-paced course: [Machine Learning Interpretability](https://h2oai.github.io/tutorials/machine-learning-interpretability)
 - A **Two-Hour Test Drive session**: Test Drive is H2O.ai's Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.
-  - Need a **Two-Hour Test Drive** session?Follow the instructions on [this quick self-paced course](https://training.h2o.ai/products/self-paced-course-0-getting-started-with-driverless-ai-test-drive) to get a Test Drive session started. 
+  - Need a **Two-Hour Test Drive** session?Follow the instructions on [this quick self-paced course](https://h2oai.github.io/tutorials/getting-started-with-driverless-ai-test-drive) to get a Test Drive session started. 
 
 **Note:  Aquarium’s Driverless AI Test Drive lab has a license key built-in, so you don’t need to request one to use it. Each Driverless AI Test Drive instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore Driverless AI, you can always launch another Test Drive instance or reach out to our sales team via the [contact us form](https://www.h2o.ai/company/contact/).**
 
@@ -232,8 +232,7 @@ With this context in mind, let’s move forward and dive into the experiment!
 
 ## Task 3: Disparate Impact Analysis
 
-
-By now your experiment should be done. Since we are already familiar with the experiment dashboard let’s move forward by selecting the **INTERPRET THIS MODEL** option. If you need to review the Driverless AI UI please refer back to this self-paced course: [Automatic Machine Learning Introduction with Driverless AI.](https://training.h2o.ai/products/self-paced-course-1a-automatic-machine-learning-introduction-with-driverless-ai) 
+By now your experiment should be done. Since we are already familiar with the experiment dashboard let’s move forward by selecting the **INTERPRET THIS MODEL** option. If you need to review the Driverless AI UI please refer back to this self-paced course: [Automatic Machine Learning Introduction with Driverless AI.](https://h2oai.github.io/tutorials/automatic-ml-intro-with-driverless-ai) 
 
 ![experiment-complete](assets/experiment-complete.jpg)
 
@@ -586,7 +585,7 @@ As mentioned at the beginning of this self-paced course, the disparate impact an
 
 ## Next Steps
 
-Check out the next self-paced course: [Risk Assessment Tools in the World of AI, the Social Sciences, and Humanities](https://training.h2o.ai/products/self-paced-course-5b-risk-assessment-tools-in-the-world-of-ai-the-social-sciences-and-humanities), where you will learn more about:
+Check out the next self-paced course: [Risk Assessment Tools in the World of AI, the Social Sciences, and Humanities](https://h2oai.github.io/tutorials/risk-assessment-tools-in-the-world-of-ai-the-social-sciences-and-humanities), where you will learn more about:
 
  - Disparate Impact Analysis 
  - Sensitivity Analysis 

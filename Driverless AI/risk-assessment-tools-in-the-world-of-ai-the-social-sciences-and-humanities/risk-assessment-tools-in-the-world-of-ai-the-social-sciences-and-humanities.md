@@ -31,9 +31,9 @@ With the above in mind, let us begin.
 You will need the following to be able to do this self-paced course:
 
 - Basic knowledge of Confusion Matrices 
-- Basic knowledge of Driverless AI or completion of [Automatic Machine Learning Introduction with Driverless AI](https://training.h2o.ai/products/self-paced-course-1a-automatic-machine-learning-introduction-with-driverless-ai) 
-- Completion of the the following self-paced course:[ Machine Learning Interpretability](https://training.h2o.ai/products/self-paced-course-1c-machine-learning-interpretability)
-- Completion of the following self-paced course:[ Disparate Impact Analysis](https://training.h2o.ai/products/self-paced-course-5a-disparate-impact-analysis) 
+- Basic knowledge of Driverless AI or completion of [Automatic Machine Learning Introduction with Driverless AI](https://h2oai.github.io/tutorials/automatic-ml-intro-with-driverless-ai)
+- Completion of the the following self-paced course:[Machine Learning Interpretability](https://h2oai.github.io/tutorials/machine-learning-interpretability)
+- Completion of the following self-paced course:[Disparate Impact Analysis](https://h2oai.github.io/tutorials/disparate-impact-analysis)
 - Review the following two articles on ProPublica's investigations: 
   - [Machine Bias: There’s software used across the country to predict future criminals. And it’s biased against blacks.](https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing)
   - [How We Analyzed the COMPAS Recidivism Algorithm](https://www.propublica.org/article/how-we-analyzed-the-compas-recidivism-algorithm)

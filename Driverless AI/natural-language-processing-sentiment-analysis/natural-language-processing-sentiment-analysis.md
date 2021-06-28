@@ -50,9 +50,9 @@ You will need the following to be able to do this self-paced course:
 
 - Basic knowledge of Machine Learning and Statistics  
 - A hands on knowledge of the Driverless AI environment
-- Basic knowledge of Driverless AI or completion of the following self-paced course: [Automatic Machine Learning Introduction with Drivereless AI](https://training.h2o.ai/products/self-paced-course-1a-automatic-machine-learning-introduction-with-driverless-ai) 
+- Basic knowledge of Driverless AI or completion of the following self-paced course: [Automatic Machine Learning Introduction with Drivereless AI](https://h2oai.github.io/tutorials/automatic-ml-intro-with-driverless-ai) 
 - A **Two-Hour Test Drive session** : Test Drive is H2O.ai's Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.
-  - Need a **Two-Hour Test Drive** session? Follow the instructions on [this quick self-paced course](https://training.h2o.ai/products/self-paced-course-0-getting-started-with-driverless-ai-test-drive) to get a Test Drive session started. 
+  - Need a **Two-Hour Test Drive** session? Follow the instructions on [this quick self-paced course](https://h2oai.github.io/tutorials/getting-started-with-driverless-ai-test-drive) to get a Test Drive session started. 
   
 **Note:  Aquarium’s Driverless AI Test Drive lab has a license key built-in, so you don’t need to request one to use it. Each Driverless AI Test Drive instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore Driverless AI, you can always launch another Test Drive instance or reach out to our sales team via the [contact us form](https://www.h2o.ai/company/contact/).**
 
@@ -491,7 +491,7 @@ If you decided to run the experiment constructed in tasks one and two, it most l
      - This option gives a brief summary of the entire experiment including:
           - The number of features tested and selected 
           - The models that Driverless AI trained for feature evolution 
-     - There are also several plots adjacent to the summary tab that give insight into the experiment. If you are interested in learning more about each plot and the metrics derived from those plots, check out the following self-paced course: [Machine Learning Experiment Scoring and Analysis - Financial Focus](https://training.h2o.ai/products/self-paced-course-1b-machine-learning-experiment-scoring-and-analysis-financial-focus).
+     - There are also several plots adjacent to the summary tab that give insight into the experiment. If you are interested in learning more about each plot and the metrics derived from those plots, check out the following self-paced course: [Machine Learning Experiment Scoring and Analysis - Financial Focus](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-financial-focus).
 
 If you would like to explore how custom recipes can improve predictions; in other words, how custom recipes could decrease the value of LOGLOSS (in our current observe experiment), please refer to [Appendix B](#appendix-b-custom-recipe-to-improve-predictions). 
 
@@ -507,7 +507,7 @@ If you would like to explore how custom recipes can improve predictions; in othe
 
 ### Deeper Dive and Resources
 
-- [Get Started with Open Source Custom Recipes](https://training.h2o.ai/products/self-paced-course-3a-get-started-with-open-source-custom-recipes)
+- [Get Started with Open Source Custom Recipes](https://h2oai.github.io/tutorials/get-started-with-open-source-custom-recipes)
 
 ##  Task 6: Challenge
 
@@ -644,7 +644,7 @@ https://raw.githubusercontent.com/h2oai/driverlessai-recipes/rel-1.9.1/transform
 
 ## Next Steps
 
-- Check out the next self-paced course: **[Image Processing in Driverless AI](https://training.h2o.ai/products/self-paced-course-2c-image-processing-in-driverless-ai)**, where you will learn about: 
+- Check out the next self-paced course: **[Image Processing in Driverless AI](https://h2oai.github.io/tutorials/image-processing-in-driverless-ai)**, where you will learn about: 
   - How to use images to predict true cases of metastatic cancer 
   - How to use images to predict the price of a car 
   - Pre-trained image transformers - transforming images into vectors 

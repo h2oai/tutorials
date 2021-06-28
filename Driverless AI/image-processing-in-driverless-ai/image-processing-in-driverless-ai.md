@@ -29,12 +29,12 @@ All things consider, let us start.
 You will need the following to be able to do this self-paced course:
 - Basic knowledge of Driverless AI
 - Completion of the following two self-paced courses:
-    - [Self-Paced Course 1A: Automatic Machine Learning Introduction with Driverless AI](https://training.h2o.ai/products/self-paced-course-1a-automatic-machine-learning-introduction-with-driverless-ai#tab-product_tab_overview)
-    - [Self-Paced Course 1B: Machine Learning Experiment Scoring and Analysis - Financial Focus](https://training.h2o.ai/products/self-paced-course-1b-machine-learning-experiment-scoring-and-analysis-financial-focus#tab-product_tab_overview)
+    - [Self-Paced Course 1A: Automatic Machine Learning Introduction with Driverless AI](https://h2oai.github.io/tutorials/automatic-ml-intro-with-driverless-ai)
+    - [Self-Paced Course 1B: Machine Learning Experiment Scoring and Analysis - Financial Focus](https://h2oai.github.io/tutorials/machine-learning-experiment-scoring-and-analysis-financial-focus)
 - Understanding of Convolutional Neural Networks (CNNs)
 - Basic understanding of confusion matrices
 - A **Two-Hour Test Drive session**: Test Drive is [H2O.ai's](https://www.h2o.ai) Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.
-  - Need a **Two-Hour Test Drive** session? Follow the instructions on [this](https://training.h2o.ai/products/self-paced-course-0-getting-started-with-driverless-ai-test-drive#tab-product_tab_overview) quick self-paced course to get a Test Drive session started.
+  - Need a **Two-Hour Test Drive** session? Follow the instructions on [this](https://h2oai.github.io/tutorials/getting-started-with-driverless-ai-test-drive) quick self-paced course to get a Test Drive session started.
 
 **Note: Aquarium’s Driverless AI Test Drive lab has a license key built-in, so you don’t need to request one to use it. Each Driverless AI Test Drive instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to explore Driverless AI further, you can always launch another Test Drive instance or reach out to our sales team via the [contact us form](https://www.h2o.ai/company/contact/).**
 
@@ -569,7 +569,7 @@ Though in the roadmap, Driverless AI will be able to support the following probl
 
 ## Next Steps 
 
-Check out the following self-paced course in the learning path: [Get Started with Open Source Custom Recipes](https://training.h2o.ai/products/self-paced-course-3a-get-started-with-open-source-custom-recipes). In it, you will learn the following: 
+Check out the following self-paced course in the learning path: [Get Started with Open Source Custom Recipes](https://h2oai.github.io/tutorials/get-started-with-open-source-custom-recipes). In it, you will learn the following: 
 
 - What is Bring Your Own Recipe?
 - What is a recipe?
@@ -579,9 +579,9 @@ Check out the following self-paced course in the learning path: [Get Started wit
 
 To understand more about the **C++ MOJO Scoring**, we recommend checking the following three self-paced courses in order: 
 
-- [Self-Paced Course 1A: Intro to ML Model Deployment and Management](https://training.h2o.ai/products/self-paced-course-4a-scoring-pipeline-deployment-introduction#tab-product_tab_overview)
-- [Self-Paced Course 4B: Scoring Pipeline Deployment Templates](https://training.h2o.ai/products/self-paced-course-4b-scoring-pipeline-deployment-templates#tab-product_tab_overview)
-- [Self-Paced Course 4D: Scoring Pipeline Deployment in C++ Runtime](https://training.h2o.ai/products/self-paced-course-4d-scoring-pipeline-deployment-in-c-runtime#tab-product_tab_overview)
+- [Self-Paced Course 1A: Intro to ML Model Deployment and Management](https://h2oai.github.io/tutorials/intro-to-ml-model-deployment-and-management)
+- [Self-Paced Course 4B: Scoring Pipeline Deployment Templates](https://h2oai.github.io/tutorials/scoring-pipeline-deployment-templates)
+- [Self-Paced Course 4D: Scoring Pipeline Deployment in C++ Runtime](https://h2oai.github.io/tutorials/scoring-pipeline-deployment-in-c++-runtime)
 
 
 ## Special Thanks 
