@@ -151,7 +151,7 @@ Please note that we use the name H2O-3 to refer to our software, but when we usu
 ## Task 2: Machine Learning Concepts
 
 ### H2O
-[H2O](https://www.h2o.ai/community/glossary/h2o-h2o-3) or [H2O-3](https://www.h2o.ai/community/glossary/h2o-h2o-3) is an open-source, in-memory, distributed, fast, and scalable machine learning and predictive analytics platform that allows you to build machine learning models on big data and provides easy productionalization of those models in an enterprise environment.
+H2O, also knows as H2O-3, is an open-source, in-memory, distributed, fast, and scalable machine learning and predictive analytics platform that allows you to build machine learning models on big data and provides easy productionalization of those models in an enterprise environment.
 
 H2O's core code is written in Java. Inside H2O, a Distributed Key/Value store is used to access and reference data, models, objects, etc., cross all nodes and machines. The algorithms are implemented on top of H2O's distributed Map/Reduce framework and utilize the Java Fork/Join framework for multi-threading. The data is read in parallel and is distributed across the cluster and stored in memory in a columnar format in a compressed way. H2O.ai's data parser has built-in intelligence to guess the schema of the incoming dataset and supports data ingest from multiple sources in various formats.
 
@@ -159,7 +159,7 @@ The speed, quality, ease-of-use, and model-deployment for the various cutting ed
 
 ### Flow
 
-[H2O Flow](https://www.h2o.ai/community/glossary/h2o-flow) is an open-source user interface for H2O. It is a web-based interactive environment that allows you to combine code execution, text, mathematics, plots, and rich media in a single document.
+H2O Flow is an open-source user interface for H2O. It is a web-based interactive environment that allows you to combine code execution, text, mathematics, plots, and rich media in a single document.
 
 With H2O Flow, you can capture, rerun, annotate, present, and share your workflow. H2O Flow allows you to use H2O interactively to import files, build models, and iteratively improve them. Based on your models, you can make predictions and add rich text to create vignettes of your work - all within Flow’s browser-based environment.
 
@@ -168,10 +168,10 @@ Flow’s hybrid user interface seamlessly blends command-line computing with a m
 H2O Flow sends commands to H2O as a sequence of executable cells. The cells can be modified, rearranged, or saved to a library. Each cell contains an input field that allows you to enter commands, define functions, call other functions, and access other cells or objects on the page. When you execute the cell, the output is a graphical object, which can be inspected to view additional details.
 
 ### Supervised Learning 
-[Supervised learning](https://www.h2o.ai/community/glossary/supervised-learning) is when the dataset contains the output that you are trying to predict. Then, you use an algorithm to try to predict a function between your input and output, such as y=f(X). With supervised learning, you train your algorithms to try to approximate a function that will allow you to predict the variable y.
+Supervised learning is when the dataset contains the output that you are trying to predict. Then, you use an algorithm to try to predict a function between your input and output, such as y=f(X). With supervised learning, you train your algorithms to try to approximate a function that will allow you to predict the variable y.
 
 ### Binary Classifier
-A binary [classification](https://www.h2o.ai/community/glossary/classification) model predicts in what two categories(classes) the elements of a given set belong to. In the case of our example, the two categories(classes) are defaulting on your home loan and not defaulting.
+A binary classification model predicts in what two categories(classes) the elements of a given set belong to. In the case of our example, the two categories(classes) are defaulting on your home loan and not defaulting.
 
 Binary classifications produce four outcomes:
 
@@ -224,24 +224,16 @@ Accuracy = (TP + TN) / (TP + TN + FP + FN)
 The logarithmic loss metric can be used to evaluate the performance of a binomial or multinomial classifier. Unlike AUC, which looks at how well a model can classify a binary target, logloss evaluates how close a model’s predicted values (uncalibrated probability estimates) are to the actual target value. For example, does a model tend to assign a high predicted value like .80 for the positive class, or does it show a poor ability to recognize the positive class and assign a lower predicted value like .50? A model with a log loss of 0 would be the perfect classifier. When the model is unable to make correct predictions, the log loss increases, making the model a poor model[5].
 
 ### Cross-Validation
-[Cross-validation](https://www.h2o.ai/community/glossary/model-validation-hold-out-cross-validation) is a model validation technique in which you can check how well a statistical analysis or model, will perform on an independent dataset. We use cross-validation to see how our model will predict on unseen data. We will explore two cross-validation approaches. The first one is to take the training data and split it into training and validation set, which is similar to a test set. This approach is called **validation set cross-validation.** Also, there is **K-Fold** cross-validation, in which you do not need to split the data, but use the entire dataset. Depending on the number of *folds* that you choose during training, the data is divided into k groups; k-1 groups are trained, and then, the last group serves to evaluate. After every group has been used to evaluate the model, the average of all the scores is obtained; and thus, we obtain a validation score[6].
+Cross-validation is a model validation technique in which you can check how well a statistical analysis or model, will perform on an independent dataset. We use cross-validation to see how our model will predict on unseen data. We will explore two cross-validation approaches. The first one is to take the training data and split it into training and validation set, which is similar to a test set. This approach is called **validation set cross-validation.** Also, there is **K-Fold** cross-validation, in which you do not need to split the data, but use the entire dataset. Depending on the number of *folds* that you choose during training, the data is divided into k groups; k-1 groups are trained, and then, the last group serves to evaluate. After every group has been used to evaluate the model, the average of all the scores is obtained; and thus, we obtain a validation score[6].
 
 ### References
 
-[1] [Towards Data Science - Understanding AUC- ROC Curve](https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5)
- 
-[2] [ROC Curves and Under the Curve (AUC) Explained](https://www.youtube.com/watch?v=OAl6eAyP-yo)
- 
-[3] [Wiki F1 Score](https://en.wikipedia.org/wiki/F1_score)
- 
-[4] [Wiki Accuracy](https://en.wikipedia.org/wiki/Accuracy_and_precision)
- 
-[5] [Wiki Log Loss](http://wiki.fast.ai/index.php/Log_Loss)
- 
+[1] [Towards Data Science - Understanding AUC- ROC Curve](https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5)</br> 
+[2] [ROC Curves and Under the Curve (AUC) Explained](https://www.youtube.com/watch?v=OAl6eAyP-yo)</br> 
+[3] [Wiki F1 Score](https://en.wikipedia.org/wiki/F1_score)</br> 
+[4] [Wiki Accuracy](https://en.wikipedia.org/wiki/Accuracy_and_precision)</br> 
+[5] [Wiki Log Loss](http://wiki.fast.ai/index.php/Log_Loss)</br> 
 [6] [Towards Data Science - Cross-Validation](https://towardsdatascience.com/cross-validation-70289113a072)
-
-### Resources
-[H2O.ai Community AI Glossary](https://www.h2o.ai/community/top-links/ai-glossary-search?cs=Glossary)
 
 
 ## Task 3: Start Experiment
@@ -2183,4 +2175,4 @@ If you do not have H2O-3, and you would like to install it on your personal mach
 
 ## Next Steps
 
-Please make sure you check our Regression self-paced course - [Introduction to Machine Learning with H2O-3 - Regression](https://training.h2o.ai/products/introduction-to-machine-learning-with-h2o-3-regression). 
+Please make sure you check our Regression self-paced course - [Introduction to Machine Learning with H2O-3 - Regression](https://h2oai.github.io/tutorials/introduction-to-machine-learning-with-h2o-3-regression). 

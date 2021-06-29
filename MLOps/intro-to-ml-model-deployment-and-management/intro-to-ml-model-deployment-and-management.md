@@ -11,20 +11,19 @@
 - [Task 5: Interactive and Batch Scoring via MLOps Model Deployment](#task-5-interactive-and-batch-scoring-via-mlops-model-deployment)
 - [Task 6: Challenge](#task-6-challenge)
 - [Next Steps](#next-steps)
-- [Appendix A: AI Glossary](#appendix-a-ai-glossary)
 
 ## Objective
 
 **MLOps(Machine Learning Operations)** is responsible for putting Machine Learning models into production environments. Before having these technologies that make it easier to deploy models into production, operation teams had to manually go through the process of production deployment, which required talent, time, and trust. To help make this effort easier for operations teams, H2O.ai developed **H2O MLOps**. **H2O MLOps** has the following capabilities: production model deployment, production model monitoring, production lifecycle management, and production model governance. Such capabilities can enable operation teams to scale their model deployments to **50**, **500**, **1,000**, and more models in a timely manner. 
 
-In this tutorial, you will predict the **cooling condition** for a **Hydraulic System Test Rig** by deploying a **Driverless AI MOJO Scoring Pipeline** into a test development environment (similar to production) using **H2O MLOps**. After going through this tutorial, you will be able to recognize several features of the MLOps UI, particularly how to deploy and monitor a hydraulic model. As well, this tutorial will cover several concepts around Machine Learning Operations. 
+In this self-paced course, you will predict the **cooling condition** for a **Hydraulic System Test Rig** by deploying a **Driverless AI MOJO Scoring Pipeline** into a test development environment (similar to production) using **H2O MLOps**. After going through this self-paced course, you will be able to recognize several features of the MLOps UI, particularly how to deploy and monitor a hydraulic model. We will also cover several concepts around Machine Learning Operations.
 
 ## Prerequisites
 
 - A **Two-Hour MLOps Test Drive**: Test Drive is H2O.ai's Driverless AI and MLOps on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform and MLOps.
-    - Need a **Two-Hour MLOps Test Drive**? Follow the instructions on this tutorial:[Getting Started with MLOps Test Drive](https://training.h2o.ai/products/tutorial-0-getting-started-with-mlops-test-drive).
+    - Need a **Two-Hour MLOps Test Drive**? Follow the instructions on this self-paced course:[Getting Started with MLOps Test Drive](https://h2oai.github.io/tutorials/getting-started-with-mlops-test-drive).
 - A general understanding of Driverless AI 
-    - For a general overview of Driverless AI, you can follow this tutorial: [Tutorial 1A: Automatic Machine Learning Introduction with Driverless AI](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai)
+    - For a general overview of Driverless AI, you can follow this: [Self-Paced Course 1A: Automatic Machine Learning Introduction with Driverless AI](https://h2oai.github.io/tutorials/automatic-ml-intro-with-driverless-ai)
 
 **Note: Aquarium’s MLOps Test Drive lab has a license key built-in, so you don’t need to request one to use it. Each MLOps Test Drive instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore H2O.ai MLOps, you can always launch another Test Drive instance or reach out to our sales team via the [contact us form](https://www.h2o.ai/company/contact/).**
 
@@ -58,7 +57,7 @@ H2O.ai MLOps ties into Driverless AI and allows you to export your Driverless AI
 
 ## Task 2: Driverless AI Project in MLOps 
 
-For this tutorial, we will be using a prebuilt experiment linked to a project titled **hydraulic system**. The MLOps dashboard already has the Driverless AI **hydraulic system** project for this tutorial; it was shared with MLOps when the project was created.  If you want to access the project, you need to access Driverless AI from the **H2O.ai Platform Studio Splash Page**. The prebuilt project was built under the following credentials: `ds1/ds1`. Accordingly, you will need to access Driverless AI with such credentials to see the project. 
+For this self-paced course, we will be using a prebuilt experiment linked to a project titled **hydraulic system**. The MLOps dashboard already has the Driverless AI **hydraulic system** project for this self-paced course; it was shared with MLOps when the project was created.  If you want to access the project, you need to access Driverless AI from the **H2O.ai Platform Studio Splash Page**. The prebuilt project was built under the following credentials: `ds1/ds1`. Accordingly, you will need to access Driverless AI with such credentials to see the project. 
 
 The Driverless AI  experiment is a classifier model that classifies whether the **cooling condition** of a **Hydraulic System Test Rig** is 3, 20, or 100. By looking at the **cooling condition,** we can predict whether the Hydraulic Cooler operates **close to total failure**, **reduced efficiency**, or **full efficiency**. 
 
@@ -68,7 +67,7 @@ The Driverless AI  experiment is a classifier model that classifies whether the 
 | 20 | operates at reduced efficiency |
 | 100 | operates at full efficiency |
 
-The Hydraulic System Test Rig data for this tutorial comes from the **[UCI Machine Learning Repository: Condition Monitoring of Hydraulic Systems Data Set](https://archive.ics.uci.edu/ml/datasets/Condition+monitoring+of+hydraulic+systems#)**. The data set was experimentally obtained with a hydraulic test rig. This test rig consists of a primary working and a secondary cooling-filtration circuit connected via the oil tank [1], [2]. The system cyclically repeats constant load cycles (duration 60 seconds) and measures process values such as pressures, volume flows, and temperatures. The condition of four hydraulic components (cooler, valve, pump, and accumulator) is quantitatively varied. The data set contains raw process sensor data (i.e., without feature extraction), structured as matrices (tab-delimited) with the rows representing the cycles and the columns the data points within a cycle.
+The Hydraulic System Test Rig data for this self-paced course comes from the **[UCI Machine Learning Repository: Condition Monitoring of Hydraulic Systems Data Set](https://archive.ics.uci.edu/ml/datasets/Condition+monitoring+of+hydraulic+systems#)**. The data set was experimentally obtained with a hydraulic test rig. This test rig consists of a primary working and a secondary cooling-filtration circuit connected via the oil tank [1], [2]. The system cyclically repeats constant load cycles (duration 60 seconds) and measures process values such as pressures, volume flows, and temperatures. The condition of four hydraulic components (cooler, valve, pump, and accumulator) is quantitatively varied. The data set contains raw process sensor data (i.e., without feature extraction), structured as matrices (tab-delimited) with the rows representing the cycles and the columns the data points within a cycle.
 
 
 Hydraulic System Test Rigs are used to test Aircraft Equipment components, Automotive Applications, and more [1]. A Hydraulic Test Rig can test a range of flow rates that can achieve different pressures with the ability to heat and cool while simulating testing under different conditions [2]. Testing the pressure, the volume flow, and the temperature is possible by Hydraulic Test Rig sensors and a digital display. The display panel alerts the user when certain testing criteria are met while displaying either a green or red light [2]. Further, a filter blockage panel indicator is integrated into the panel to ensure the Hydraulic Test Rig's oil is maintained [2]. In the case of predicting cooling conditions for a Hydraulic System, when the cooling condition is low, our prediction will tell us that the cooling of the Hydraulic System is close to total failure, and we may need to look into replacing the cooling filtration solution soon. In our case, the shared project classifies the probability of the cooler condition is 3, 20, or 100.  
@@ -98,7 +97,7 @@ If you have not launched MLOps from the H2O.ai Platform Studio Splash page, proc
 
 Note: if you already logged into Driverless AI, you won't have to enter login credentials for MLOps.
 
-Regard the **hydraulic system** project on the **My Projects** page. Disregard the other project, as it will not be used in this tutorial.
+Regard the **hydraulic system** project on the **My Projects** page. Disregard the other project, as it will not be used in this self-paced course.
 
 ### Login to MLOps as a `ds2` user from a separate browser tab
 
@@ -307,44 +306,6 @@ The data scientists will build Driverless AI experiments, which use AutoML behin
 
 From model storage, the ML Engineer uses MLOps, a Model Manager, to access a Driverless AI project saved in model storage. Then, they will either deploy the model to a development environment that simulates the conditions of the production environment or deploy the model to a production environment. MLOps deploys Driverless AI's MOJO scoring pipeline. As the model is deployed into a development or production environment, it is deployed on Kubernetes. The end-user can make scoring requests to the model REST service, so the model performs predictions and returns the scoring results. As the predictions are being made, predicted data is being saved in influx DB and used by Grafana dashboard to generate visualizations. If it were running, we would see the Grafana dashboard in Model Manager for monitoring the model's activity as it makes predictions.
 
-
-
-### Deep Dive and Resources
-
-- [1] [1:22 - 3:07 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, AI Lifecycle, Speaker: Dan Darnell](https://training.h2o.ai/products/module-7-machine-learning-operations)
-
-- [2] [3:06 - 4:03 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, NVP Survey Quote, Speaker: Dan Darnell](https://training.h2o.ai/products/module-7-machine-learning-operations)
-
-- [3] [4:04 - 6:20 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, Barriers for AI Adoption at Scale, Deployment, Speaker: Dan Darnell](https://training.h2o.ai/products/module-7-machine-learning-operations)
-
-- [4] [6:21 - 7:18 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, Barriers for AI Adoption at Scale, Monitoring, Speaker: Dan Darnell](https://training.h2o.ai/products/module-7-machine-learning-operations)
-
-- [5] [7:19 - 8:09 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, Barriers for AI Adoption at Scale, Lifecycle Management, Speaker: Dan Darnell](https://training.h2o.ai/products/module-7-machine-learning-operations)
-
-- [6] [8:10 - 8:47 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, Barriers for AI Adoption at Scale, Governance, Speaker: Dan Darnell](https://training.h2o.ai/products/module-7-machine-learning-operations)
-
-- [7] [8:48 - 14:09 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, What "Success" Looks Like Today, Speaker: Dan Darnell](https://training.h2o.ai/products/module-7-machine-learning-operations)
-
-- [8] [Hidden Technical Debt in Machine Learning Systems](https://papers.nips.cc/paper/5656-hidden-technical-debt-in-machine-learning-systems.pdf)
-
-- [9] [14:10 - 15:51 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, The Solution MLOps, Speaker: Dan Darnell](https://training.h2o.ai/products/module-7-machine-learning-operations)
-
-- [10] [15:52 - 17:39 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, MLOps Key Capabilities, Speaker: Dan Darnell](https://training.h2o.ai/products/module-7-machine-learning-operations)
-
-- [11] [17:40 - 22:05 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, Model Deployment, Speaker: Dan Darnell](https://training.h2o.ai/products/module-7-machine-learning-operations)
-
-- [12] [22:06 - 27:20 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, Monitoring for Machine Learning Models, Speaker: Dan Darnell](https://training.h2o.ai/products/module-7-machine-learning-operations)
-
-- [13] [29:00 - 38:52 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, Typical Model Lifecycle Flow, Speaker: Dan Darnell](https://training.h2o.ai/products/module-7-machine-learning-operations)
-
-- [14] [41:40 - 45:32 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, Production Model Governance, Speaker: Dan Darnell](https://training.h2o.ai/products/module-7-machine-learning-operations)
-
-- [15] [45:33 - 48:12 | AI Foundations Course, Module 7: Machine Learning Operations, Session 1: MLOps Overview, MLOps Impact, Speaker: Dan Darnell](https://training.h2o.ai/products/module-7-machine-learning-operations)
-
-- [Diagram: What is a MOJO?](https://www.h2o.ai/community/glossary/model-object-optimized-mojo)
-
-- [Diagram: What is a Scoring Pipeline?](https://www.h2o.ai/community/glossary/scoring-pipeline)
-
 ## Task 4: Tour of MLOps UI
 
 ### Projects Dashboard Tour
@@ -393,19 +354,19 @@ Click on **hydraulic system** in my projects table.
 - **+ Add project**
 - Projects
 - hydraulic system: current open project
-    - Alerts: show information about the current state of a deployed model and provide alerts for drift, anomalies, and residuals in the data.
-    - Deployments: shows all deployments for a hydraulic system project
-    - Models: shows all models that have been exported from Driverless AI into the hydraulic system project.
-    - Events: provides a list of all events that have occurred in the project, such as the project creation and tagging/untagging of deployments.
+    - Alerts - show information about the current state of a deployed model and provide alerts for drift, anomalies, and residuals in the data.
+    - Deployments - shows all deployments for a hydraulic system project
+    - Models - shows all models that have been exported from Driverless AI into the hydraulic system project.
+    - Events - provides a list of all events that have occurred in the project, such as the project creation and tagging/untagging of deployments.
 
 - Summary
-    - Name: name of this project
-    - Project ID: ID of this project
-    - Created on: date and time this project was created on
-    - Models: number of models in this project
-    - Deployments: number of models deployed in this project
-    - Alerts: provides alerts for drift, anomalies, and residuals in the data as red, orange, or green alerts
-    - Owner: username of the user who created this project
+    - Name - name of this project
+    - Project ID - ID of this project
+    - Created on - date and time this project was created on
+    - Models - number of models in this project
+    - Deployments - number of models deployed in this project
+    - Alerts - provides alerts for drift, anomalies, and residuals in the data as red, orange, or green alerts
+    - Owner - username of the user who created this project
 
 - (A) Share Project: with a different user, such as ds2 user
 
@@ -413,18 +374,17 @@ Click on **hydraulic system** in my projects table.
     - No deployments available.
 
 - Models
-    - Model name: name of a model in this project
-    - Model ID: ID of a model in this project
-    - Created on: date and time a model was created in this project
-    - Scorer: scorer metric used by a model in this project
-    - Score: validation score from a model in this project
-    - Owner: username of the user who created a model in this project
-    - Environment: status of what type of environment a model was deployed for this project
-    - Tag: tag name and value to associate with a model in this project
-    - (C) Actions: actions that can be performed on this model: deploy it to dev/prod, create a challenger, download an autoreport, etc
+    - Model name - name of a model in this project
+    - Model ID - ID of a model in this project
+    - Created on - date and time a model was created in this project
+    - Scorer - scorer metric used by a model in this project
+    - Score - validation score from a model in this project
+    - Owner - username of the user who created a model in this project
+    - Environment - status of what type of environment a model was deployed for this project
+    - Tag - tag name and value to associate with a model in this project
+    - (C) Actions - actions that can be performed on this model: deploy it to dev/prod, create a challenger, download an autoreport, etc
 
 - A/B Test: allows you to compare the performance of two or more models
-
 
 
 A\. To see how to **Share project** with another user in MLOps, refer to section [A: Share Project from ds1 user with ds2 user](#a-share-project-from-ds1-user-with-ds2-user)
@@ -605,14 +565,14 @@ You should see the **Environment** for **hydraulic_model_1** deployed to the **D
 **Figure 35:** Project deployed **Hydraulic Model to Dev Environment**
 
 - Deployments: a table of deployed models for this project
-    - Model: name of a model that is deployed
-    - Deployment type: type of deployment
+    - Model - name of a model that is deployed
+    - Deployment type - type of deployment
     - Top model
-    - Environment: the environment the model was deployed to either dev or prod
-    - Deployed: the date and time that this model was deployed at
-    - State: the condition of this model
-    - Alerts: info, warning, errors, or other alerts associated with this model deployment
-    - Actions: the supported actions that can be performed on this model deployment
+    - Environment - the environment the model was deployed to either dev or prod
+    - Deployed - the date and time that this model was deployed at
+    - State - the condition of this model
+    - Alerts - info, warning, errors, or other alerts associated with this model deployment
+    - Actions - the supported actions that can be performed on this model deployment
 
 3\. In the **Deployments** table, click on **Actions** for **hydraulic_model_1**, then click on **More details**.
 
@@ -632,24 +592,24 @@ You should see the **Environment** for **hydraulic_model_1** deployed to the **D
 
 - Deployment
 - Summary
-    - Endpoint: the URL that this model is running on and that you would send a score request to, so this model can make predictions
-    - Status: the condition of this model
+    - Endpoint - the URL that this model is running on and that you would send a score request to, so this model can make predictions
+    - Status - the condition of this model
     - Created on: date and time this model deployment was performed
-    - Top model: UUID of this model deployment
+    - Top model - UUID of this model deployment
 - Monitor: redirect to Grafana dashboard for monitoring deployed model
 - Delete: remove this model deployment
 - Model selections
-    - Target type: single model, champion/challenger, and A/B test
-    - Project: name of the project this model deployment is associated with
-    - Environment: type of environment the model was deployed (to either dev or prod)
-    - Model name: name of the model that was deployed
-    - Model ID: ID of the model that was deployed
-    - Created on: date and time this model was created
-    - Scorer: scorer metric used for this model
-    - Score: validation score being used in this model
-    - Owner: the user who deployed this model
-    - Environment: current environment this model is deployed to
-    - Tag: tag name and value associated with this model deployment
+    - Target type - single model, champion/challenger, and A/B test
+    - Project - name of the project this model deployment is associated with
+    - Environment - type of environment the model was deployed (to either dev or prod)
+    - Model name - name of the model that was deployed
+    - Model ID - ID of the model that was deployed
+    - Created on - date and time this model was created
+    - Scorer - scorer metric used for this model
+    - Score - validation score being used in this model
+    - Owner - the user who deployed this model
+    - Environment - current environment this model is deployed to
+    - Tag - tag name and value associated with this model deployment
 - Save and deploy
 
 4\. Press the **X** button in the top right corner to exit that **Deployment** page for **hydraulic_model_1**.
@@ -708,7 +668,6 @@ By default, the **Monitoring** page shows:
 
 ### Deep Dive and Resources 
 
-- [Diagram: What is Scoring?](https://www.h2o.ai/community/glossary/scoring-making-predictions-inferencing)
 - [Monitoring Deployments](https://docs.h2o.ai/mlops-release/latest-stable/docs/userguide/using.html?highlight=monitoring#monitoring-deployments)
 
 ## Task 6: Challenge
@@ -726,11 +685,8 @@ So far, we have covered making score requests in the command line with curl and 
 - Check out these webinars that dive into how to productionize Driverless AI models using MLOps:
     - H2O.ai Webinar: [Getting the Most Out of Your Machine Learning with Model Ops](https://www.brighttalk.com/service/player/en-US/theme/default/channel/16463/webcast/418711/play?showChannelList=true)
 
-- Check out these tutorials on Driverless AI model deployment:
-    - [Tutorial 4A: Scoring Pipeline Deployment Introduction](https://training.h2o.ai/products/tutorial-4a-scoring-pipeline-deployment-introduction)
-    - [Tutorial 4B: Scoring Pipeline Deployment Templates](https://training.h2o.ai/products/tutorial-4b-scoring-pipeline-deployment-templates)
+- Check out these self-paced courses on Driverless AI model deployment:
+    - [Self-Paced Course 4A: Scoring Pipeline Deployment Introduction](https://h2oai.github.io/tutorials/scoring-pipeline-deployment-introduction)
+    - [Self-Paced Course 4B: Scoring Pipeline Deployment Templates](https://h2oai.github.io/tutorials/scoring-pipeline-deployment-templates)
 
-## Appendix A: AI Glossary
-
-Refer to the [H2O.ai AI/ML Glossary](https://www.h2o.ai/community/top-links/ai-glossary-search) for relevant MLOps Terms
 

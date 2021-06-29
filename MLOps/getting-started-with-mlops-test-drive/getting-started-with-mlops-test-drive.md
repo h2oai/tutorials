@@ -16,7 +16,7 @@
 
 **MLOps Test Drive** is a two-hour lab session that exists in H2O's Aquarium. Aquarium is the H2O.ai cloud environment providing software access for workshops, conferences, and training.
 
-If you are new to **MLOps**, we highly recommend finishing this tutorial to set up your MLOps Test Drive
+If you are new to **MLOps**, we highly recommend finishing this short self-paced course to set up your MLOps Test Drive
 
 **All MLOps Test Drive Lab sessions will terminate after two-hours. No work will be saved!**. However, you can retake the lab multiple times.
 
@@ -96,11 +96,11 @@ Note: If you are having issues logging in, click the **send us an email** hyperl
 
 After a successful login, select "Browse Labs" located on the top-left corner of the page, then select Lab 3 - MLOps Test Drive (1GPU).
 
-![select-lab-3-mlops-test-drive](assets/select-lab-3-mlops-test-drive.jpg)
+![select-lab-3-mlops-test-drive](assets/select-lab-3-mlops-test-drive.png)
 
 After the **MLOps Test Drive lab** appears:
 
-![mlops-test-drive-page](assets/mlops-test-drive-page.jpg)
+![mlops-test-drive-page](assets/mlops-test-drive-page.png)
 
 **Note**: 
 
@@ -108,19 +108,15 @@ After the **MLOps Test Drive lab** appears:
 
 2. Note that the lab automatically ends after two hours and can be taken multiple times
 
-3. [H2O.ai Learning Center](https://training.h2o.ai/): Build your knowledge base and skills at your pace. Enter a place for knowledge-sharing, skills-enhancements, idea-sharing, and more!
-
-4. [H2O.ai Community(HaC)](https://www.h2o.ai/community/home): HaC is a community to share, learn, network, ask questions, provide answers, take the next step, and explore Artificial Intelligence, Machine Learning, and Data Science.  We are here to democratize AI. It will take a village to democratize AI.
-
-5. **Start** button starts the lab session
+3. **Start** button starts the lab session
 
 1\. To start a lab click on **Start Lab**. You will see an image similar to the one below:
 
-![mlops-test-drive-start-lab](assets/mlops-test-drive-start-lab.jpg)
+![mlops-test-drive-start-lab](assets/mlops-test-drive-start-lab.png)
 
 2\. Aquarium will then start the lab session for you (this will take a few minutes). After the lab session starts, a similar image should appear:
 
-![mlops-test-drive-session](assets/mlops-test-drive-session.jpg)
+![mlops-test-drive-session](assets/mlops-test-drive-session.png)
 
 **Note**:
 
@@ -142,7 +138,7 @@ After the **MLOps Test Drive lab** appears:
 
 Have any questions about Aquarium? Sign up for H2O.ai's Slack Community and post your questions under the **#cloud** channel. Members of the H2O.ai community will respond as soon as they are available.
 
-- [Chat and ask questions with H2O.ai makers and data scientist users in the H2O.ai Slack workspace](https://www.h2o.ai/community/home)
+- [Chat and ask questions with H2O.ai makers and data scientist users in the H2O.ai Slack workspace](https://www.h2o.ai/h2ousers/)
 
 
 

@@ -10,12 +10,12 @@
 - [Task 4: Real-Time Scoring](#task-4-real-time-scoring)
 - [Task 5: Challenge](#task-5-challenge)
 - [Next Steps](#next-steps)
-- [Appendix A: Glossary](#appendix-a-glossary)
 
 ## Objective
-**Machine Learning Model Deployment** is the process of making your model available in production environments, so they can be used to make predictions for other software systems [1]. Before model deployment, **feature engineering** occurs in the form of preparing data that later on will be used to train a model [2]. Driverless AI **Automatic Machine Learning (AutoML)** combines the best feature engineering and one or more **machine learning models** into a scoring pipeline [3][4]. The scoring pipeline is used to score or predict data when given new test data [5]. The **scoring pipeline** comes in two flavors. The first scoring pipeline is a **Model Object, Optimized (MOJO) Scoring Pipeline**, which is a standalone, low-latency model object designed to be easily embeddable in production environments. The second scoring pipeline is a Python Scoring Pipeline, which has a heavy footprint that is all Python and uses the latest libraries of Driverless AI to allow for executing custom scoring recipes[6].
 
-By the end of this tutorial, you will predict the **cooling condition** for a Hydraulic System Test Rig by deploying an **embeddable MOJO Scoring Pipeline** to **Apache NiFi**. The Hydraulic System Test Rig data comes from the [UCI Machine Learning Repository: Condition Monitoring of Hydraulic Systems Data Set](https://archive.ics.uci.edu/ml/datasets/Condition+monitoring+of+hydraulic+systems#). Hydraulic System Test Rigs are used to test components in Aircraft Equipment, Ministry of Defense, Automotive Applications, and more [7]. This Hydraulic Test Rig is capable of testing a range of flow rates that can achieve different pressures with the ability to heat and cool to simulate testing under different conditions [8]. Testing the pressure, volume flow, and the temperature is possible by Hydraulic Test Rig sensors and digital displays.. The display panel alerts the user when certain testing criteria is met displaying either a green/red light [8]. A filter blockage panel indicator is integrated into the panel to ensure the Hydraulic Test Rig’s oil is maintained [8]. The cooling filtration solution is designed to minimize power consumption and expand the life of the Hydraulic Test Rig. We are predicting cooling conditions for Hydraulic System Predictive Maintenance. When the cooling condition is low, our prediction tells us that the cooling of the Hydraulic System is close to total failure and we may need to look into replacing the cooling filtration solution soon.
+**Machine Learning Model Deployment** is the process of making your model available in production environments, so they can be used to make predictions for other software systems. Before model deployment, **feature engineering** occurs in the form of preparing data that later on will be used to train a model. Driverless AI **Automatic Machine Learning (AutoML)** combines the best feature engineering and one or more **machine learning models** into a scoring pipeline. The scoring pipeline is used to score or predict data when given new test data. The **scoring pipeline** comes in two flavors. The first scoring pipeline is a **Model Object, Optimized (MOJO) Scoring Pipeline**, which is a standalone, low-latency model object designed to be easily embeddable in production environments. The second scoring pipeline is a Python Scoring Pipeline, which has a heavy footprint that is all Python and uses the latest libraries of Driverless AI to allow for executing custom scoring recipes.
+
+By the end of this tutorial, you will predict the **cooling condition** for a Hydraulic System Test Rig by deploying an **embeddable MOJO Scoring Pipeline** to **Apache NiFi**. The Hydraulic System Test Rig data comes from the [UCI Machine Learning Repository: Condition Monitoring of Hydraulic Systems Data Set](https://archive.ics.uci.edu/ml/datasets/Condition+monitoring+of+hydraulic+systems#). Hydraulic System Test Rigs are used to test components in Aircraft Equipment, Ministry of Defense, Automotive Applications, and more [1]. This Hydraulic Test Rig is capable of testing a range of flow rates that can achieve different pressures with the ability to heat and cool to simulate testing under different conditions [2]. Testing the pressure, volume flow, and the temperature is possible by Hydraulic Test Rig sensors and digital displays.. The display panel alerts the user when certain testing criteria is met displaying either a green/red light [2]. A filter blockage panel indicator is integrated into the panel to ensure the Hydraulic Test Rig’s oil is maintained [2]. The cooling filtration solution is designed to minimize power consumption and expand the life of the Hydraulic Test Rig. We are predicting cooling conditions for Hydraulic System Predictive Maintenance. When the cooling condition is low, our prediction tells us that the cooling of the Hydraulic System is close to total failure and we may need to look into replacing the cooling filtration solution soon.
 
 ![cylinder-diagram-1](assets/cylinder-diagram-1.jpg)
 
@@ -25,21 +25,8 @@ The Hydraulic Test Rig consists of a primary and secondary cooling filtration ci
 
 ### Resources
 
-[1] H2O.ai Community AI Glossary: [Machine Learning Model Deployment](https://www.h2o.ai/community/glossary/machine-learning-model-deployment-productionization-productionizing-machine-learning-models)
-
-[2] H2O.ai Community AI Glossary: [Feature Engineering](https://www.h2o.ai/community/glossary/feature-engineering-data-transformation)
-
-[3] H2O.ai Community AI Glossary: [Automatic Machine Learning (AutoML)](https://www.h2o.ai/community/glossary/automatic-machine-learning-automl)
-
-[4] H2O.ai Community AI Glossary: [Machine Learning Model](https://www.h2o.ai/community/glossary/machine-learning-model)
-
-[5] H2O.ai Community AI Glossary: [Scoring Pipeline](https://www.h2o.ai/community/glossary/scoring-pipeline)
-
-[6] H2O.ai Community AI Glossary: [Model Object, Optimized (MOJO) Scoring Pipeline](https://www.h2o.ai/community/glossary/model-object-optimized-mojo)
-
-[7] [SAVERY - HYDRAULIC TEST RIGS AND BENCHES](https://www.savery.co.uk/systems/test-benches)
-
-[8] [HYDROTECHNIK - Flow and Temperature Testing Components](https://www.hydrotechnik.co.uk/flow-and-temperature-hydraulic-test-bed)
+[1] [SAVERY - HYDRAULIC TEST RIGS AND BENCHES](https://www.savery.co.uk/systems/test-benches)</br>
+[2] [HYDROTECHNIK - Flow and Temperature Testing Components](https://www.hydrotechnik.co.uk/flow-and-temperature-hydraulic-test-bed)
 
 ## Prerequisites
 
@@ -50,10 +37,10 @@ The Hydraulic Test Rig consists of a primary and secondary cooling filtration ci
     - [21 day trial license](https://www.h2o.ai/try-driverless-ai/)
     - If you need to purchase a Driverless AI license, reach out to our sales team via the [contact us form](https://www.h2o.ai/company/contact/).
 - Basic knowledge of Driverless AI or completion of the following tutorials:
-    - [Tutorial 1A: Automatic Machine Learning Introduction with Driverless AI Test Drive](https://training.h2o.ai/products/tutorial-1a-automatic-machine-learning-introduction-with-driverless-ai)
-    - [Tutorial 4A: Scoring Pipeline Deployment Introduction](https://training.h2o.ai/products/tutorial-4a-scoring-pipeline-deployment-introduction#tab-product_tab_overview)
-    - [Tutorial 4B: Scoring Pipeline Deployment Templates](https://training.h2o.ai/products/tutorial-4b-scoring-pipeline-deployment-templates)
-    - [Tutorial 4C: Scoring Pipeline Deployment in Java Runtime](https://training.h2o.ai/products/tutorial-4c-scoring-pipeline-execution-in-java-runtime)
+    - [Tutorial 1A: Automatic Machine Learning Introduction with Driverless AI Test Drive](https://h2oai.github.io/tutorials/automatic-ml-intro-with-driverless-ai)
+    - [Tutorial 4A: Scoring Pipeline Deployment Introduction](https://h2oai.github.io/tutorials/scoring-pipeline-deployment-introduction)
+    - [Tutorial 4B: Scoring Pipeline Deployment Templates](https://h2oai.github.io/tutorials/scoring-pipeline-deployment-templates)
+    - [Tutorial 4C: Scoring Pipeline Deployment in Java Runtime](https://h2oai.github.io/tutorials/scoring-pipeline-deployment-in-java-runtime)
 - Downloaded the Driverless AI Deployment Repo to your local machine since we will be using the NiFi Data Flow xml templates that come with mojo-nifi/ folder.
 
 ```bash
@@ -78,7 +65,7 @@ mkdir -p $HOME/dai-mojo-nifi/testData/{test-batch-data,test-real-time-data}
 
 #### Download MOJO Scoring Pipeline
 
-1\. If you have not downloaded the MOJO Scoring Pipeline, go to [Tutorial 4B: Scoring Pipeline Deployment Templates](https://training.h2o.ai/products/tutorial-4b-scoring-pipeline-deployment-templates), then go to **Task 1: Set Up Environment**, and then go to **Download MOJO Scoring Pipeline** to download it. When finished, come back to this tutorial.
+1\. If you have not downloaded the MOJO Scoring Pipeline, go to [Tutorial 4B: Scoring Pipeline Deployment Templates](https://h2oai.github.io/tutorials/scoring-pipeline-deployment-templates), then go to **Task 1: Set Up Environment**, and then go to **Download MOJO Scoring Pipeline** to download it. When finished, come back to this tutorial.
 
 2\. Move the **mojo.zip** file to `dai-mojo-nifi/` folder and then extract it:
 
@@ -357,11 +344,8 @@ Another challenge could be to use the existing MOJO scoring pipeline in another 
 ## Next Steps 
 Check out our other deployment tutorials, if you have not done so:
 
-- [Tutorial 4D: Scoring Pipeline Execution Runtime in C++](https://training.h2o.ai/products/tutorial-4d-scoring-pipeline-execution-runtime-in-c)
+- [Tutorial 4D: Scoring Pipeline Execution Runtime in C++](https://h2oai.github.io/tutorials/scoring-pipeline-deployment-in-c++-runtime)
 
-- [Tutorial 4E: Scoring Pipeline Deployment in Python Runtime](https://training.h2o.ai/products/tutorial-4e-scoring-pipeline-deployment-in-python-runtime)
+- [Tutorial 4E: Scoring Pipeline Deployment in Python Runtime](https://h2oai.github.io/tutorials/scoring-pipeline-deployment-in-python-runtime)
 
-- Scoring Pipeline Deployment to Flink (Coming soon...)
 
-## Appendix A: Glossary
-Refer to [H2O.ai AI/ML Glossary](https://www.h2o.ai/community/top-links/ai-glossary-search?p=1) for relevant Model Deployment Terms

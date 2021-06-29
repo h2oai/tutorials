@@ -18,15 +18,16 @@
 In this self-paced course, we will use the subset of the loan-level dataset from Fannie Mae and Freddie Mac. Firstly, we will solve a binary classification problem (predicting if a loan is delinquent or not). Then, we will explore a regression use-case (predicting interest rates on the same dataset). We will try to do both use-cases using Automatic Machine Learning (AutoML), and we will do so using the H2O-3 Python module in a Jupyter Notebook and also in Flow. 
 
 ## Prerequisites 
-- Completion of self-paced courses [Introduction to Machine Learning with H2O-3 - Classification](https://training.h2o.ai/products/1a-introduction-to-machine-learning-with-h2o-3-classification) and [Introduction to Machine Learning with H2O-3 - Regression.](https://training.h2o.ai/products/1b-introduction-to-machine-learning-with-h2o-3-regression)
+- Completion of self-paced courses [Introduction to Machine Learning with H2O-3 - Classification](https://h2oai.github.io/tutorials/introduction-to-machine-learning-with-h2o-3-classification) and [Introduction to Machine Learning with H2O-3 - Regression.](https://h2oai.github.io/tutorials/introduction-to-machine-learning-with-h2o-3-regression)
 - Some basic knowledge of machine learning. 
 - Familiarity with Python or R.
-- An Aquarium account. If you do not have an Aquarium account, please refer to [Appendix A of Introduction to Machine Learning with H2O-3 - Classification](https://training.h2o.ai/products/1a-introduction-to-machine-learning-with-h2o-3-classification)
+- An Aquarium account. If you do not have an Aquarium account, please refer to [Appendix A of Introduction to Machine Learning with H2O-3 - Classification](https://h2oai.github.io/tutorials/introduction-to-machine-learning-with-h2o-3-classification)
 
 **Note:** This self-paced course was completed in a cloud environment. If you want to get the same results in a similar time manner, please follow this self-paced course in Aquarium. Otherwise, you can use your own machine but you will get different results, for example, it might take you longer to train the models for the classification part, or for the regression part, you might not get the same nunmber of models.
 
 ## Task 1: Initial Setup
-In this self-paced course, we are using a smaller subset of the Freddie Mac Single-Family dataset compared to the past two self-paced courses. If you have not done so, complete [Introduction to Machine Learning with H2O-3 - Classification](https://training.h2o.ai/products/1a-introduction-to-machine-learning-with-h2o-3-classification) and [Introduction to Machine Learning with H2O-3 - Regression](https://training.h2o.ai/products/1b-introduction-to-machine-learning-with-h2o-3-regression) as this self-paced course is a continuation of both of them. 
+
+In this self-paced course, we are using a smaller subset of the Freddie Mac Single-Family dataset compared to the past two self-paced courses. If you have not done so, complete [Introduction to Machine Learning with H2O-3 - Classification](https://h2oai.github.io/tutorials/introduction-to-machine-learning-with-h2o-3-classification) and [Introduction to Machine Learning with H2O-3 - Regression](https://h2oai.github.io/tutorials/introduction-to-machine-learning-with-h2o-3-regression) as this self-paced course is a continuation of both of them. 
 
 We will use H2O AutoML to make the same predictions as in the previous two self-paced courses:
 - Predict whether a mortgage loan will be delinquent or not 
@@ -78,7 +79,7 @@ Before we continue, let’s explore some concepts about AutoML that will be usef
 
 **Task 1 - R Version**
 
-In this self-paced course, we are using a smaller subset of the Freddie Mac Single-Family dataset that we used for the past two self-paced courses. If you have not done so, complete [Introduction to Machine Learning with H2O-3 - Classification](https://training.h2o.ai/products/1a-introduction-to-machine-learning-with-h2o-3-classification) and [Introduction to Machine Learning with H2O-3 - Regression](https://training.h2o.ai/products/1b-introduction-to-machine-learning-with-h2o-3-regression) as this self-paced course is a continuation of both of them. 
+In this self-paced course, we are using a smaller subset of the Freddie Mac Single-Family dataset that we used for the past two self-paced courses. If you have not done so, complete [Introduction to Machine Learning with H2O-3 - Classification](https://h2oai.github.io/tutorials/introduction-to-machine-learning-with-h2o-3-classification) and [Introduction to Machine Learning with H2O-3 - Regression](https://h2oai.github.io/tutorials/introduction-to-machine-learning-with-h2o-3-regression) as this self-paced course is a continuation of both of them.
 
 We will use H2O AutoML to make the same predictions as in the previous two self-paced courses:
 - Predict whether a mortgage loan will be delinquent or not 
@@ -125,7 +126,7 @@ Before we continue, let’s explore some concepts about AutoML that will be usef
 
 ## Task 2: AutoML Concepts
 
-### [AutoML](https://www.h2o.ai/community/glossary/automatic-machine-learning-automl)
+### AutoML
 Choosing the best machine learning models and tuning them can be time consuming and exhaustive. Often, it requires levels of expertise to know what parameters to tune. The field of AutoML focuses on solving this issue. AutoML is useful both for experts, by automating the process of choosing and tuning a model; and for non-experts as well, by helping them to create high performing models in a short time frame. Some of the aspects of machine learning that can be automated include data preparation, which can include imputation, one-hot encoding, feature selection/extraction, and also feature engineering. Another aspect that can be automated is the model generation, which includes training a model and tuning it with cartesian or random grid search. Lastly, a third aspect that could be using ensembles, as they usually outperform individual models.
 
 H2O AutoML is an automated algorithm for automating the machine learning workflow, which includes some light data preparation such as imputing missing data, standardization of numeric features, and one-hot encoding categorical features. It also provides automatic training, hyper-parameter optimization, model search, and selection under time, space, and resource constraints. H2O's AutoML further optimizes model performance by stacking an ensemble of models. H2O AutoML trains one stacked ensemble based on all previously trained models and another one on the best model of each family. 
@@ -778,7 +779,7 @@ To import a file into Flow, you would just need to run the following command in 
 importFiles ["https://s3.amazonaws.com/data.h2o.ai/DAI-Tutorials/loan_level_50k.csv"]
 ~~~
 
-**Note:** For a more detailed guide on how to import a file into Flow, check out [Task 3 of Introduction to Machine Learning with H2O-3 - Classification](https://training.h2o.ai/products/1a-introduction-to-machine-learning-with-h2o-3-classification).
+**Note:** For a more detailed guide on how to import a file into Flow, check out [Task 3 of Introduction to Machine Learning with H2O-3 - Classification](https://h2oai.github.io/tutorials/introduction-to-machine-learning-with-h2o-3-classification).
 
 Even though we already have the train and test set, let’s split the loan_level_50k.hex file, that way we can give a specific name to the train and test sets. Use the ratio 0.8 for train and 0.2 for test.
 

@@ -19,10 +19,10 @@ In this self-paced course, we will continue using the subset of the Freddie Mac 
 
 ## Prerequisites
 
-- Completion of the following self-paced course: [Introduction to Machine Learning with H2O-3 - Classification](https://training.h2o.ai/products/1a-introduction-to-machine-learning-with-h2o-3-classification). 
+- Completion of the following self-paced course: [Introduction to Machine Learning with H2O-3 - Classification](https://h2oai.github.io/tutorials/introduction-to-machine-learning-with-h2o-3-classification). 
 - Some basic knowledge of machine learning. 
 - Familiarity with Python. 
-- An Aquarium account. If you do not have an Aquarium account, please refer to [Appendix A of Introduction to Machine Learning with H2O-3 - Classification](https://training.h2o.ai/products/1a-introduction-to-machine-learning-with-h2o-3-classification)
+- An Aquarium account. If you do not have an Aquarium account, please refer to [Appendix A of Introduction to Machine Learning with H2O-3 - Classification](https://h2oai.github.io/tutorials/introduction-to-machine-learning-with-h2o-3-classification)
 
 **Note:** We recommend that you follow along on Aquarium, our cloud instance, to get similar results to the ones shown in this self-paced course. We also recommend that you go over the concepts section in Task 2 before starting your lab; that way, your instance is not running while you are going over the concepts. You can also use your personal machine with H2O-3, but keep in mind that you will see different results, as the machines have different results.
 
@@ -127,7 +127,7 @@ Now that we have our dataset, we will explore some concepts and then do some exp
 
 ## Task 2: Regression Concepts
 
-### [Regression Analysis/Regressor Model](https://www.h2o.ai/community/glossary/regression-analysis-regressor-model)
+### Regression Analysis/Regressor Model
 
 Regression tries to predict a continuous number (as opposed to classification, which only categorizes). With a regressor model, you try to predict the exact number from your response column. In our case, we will try to predict the interest rate (a continuous value). You will see later on that some samples might have a 7.5% interest rate, and our regression model will try to predict that number.
 
@@ -502,7 +502,7 @@ Now, you should see a list of data frames, with all your data frames from the Ju
 
 ![frame-build-model](assets/frame-build-model.png)
 
-**Note:** If you need to import your dataset into your Flow instance, please refer to **Task 3** of [Introduction to Machine Learning with H2O-3 - Classification](https://training.h2o.ai/products/1a-introduction-to-machine-learning-with-h2o-3-classification#tab-product_tab_contents__17) and click on the **Flow** tab for instructions on how to import your dataset and how to split it.
+**Note:** If you need to import your dataset into your Flow instance, please refer to **Task 3** of [Introduction to Machine Learning with H2O-3 - Classification](https://h2oai.github.io/tutorials/introduction-to-machine-learning-with-h2o-3-classification) and click on the **Flow** tab for instructions on how to import your dataset and how to split it.
 
 Once you click on **Build Model** in your data frame, you should see the following: 
 
@@ -681,7 +681,7 @@ You can leave everything else as-is, and click on **Build Model.** Wait for it t
 
 We will use H2O GridSearch to find the best parameters for our XGBoost.
 
-**Note:** If you are not sure what H2O GridSearch is, or how it works, please refer to Task 7 of [Introduction to Machine Learning with H2O-3 - Classification](https://training.h2o.ai/products/introduction-to-machine-learning-with-h2o-classification), or go to [Grid Search Section](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/grid-search.html#grid-hyperparameter-search) of the H2O documentation.
+**Note:** If you are not sure what H2O GridSearch is, or how it works, please refer to Task 7 of [Introduction to Machine Learning with H2O-3 - Classification](https://h2oai.github.io/tutorials/introduction-to-machine-learning-with-h2o-3-classification), or go to [Grid Search Section](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/grid-search.html#grid-hyperparameter-search) of the H2O documentation.
 
 We will first try to find the `max_depth` for our XGBoost, as this is one of the most important parameters for an XGBoost model. 
 
@@ -808,7 +808,7 @@ In the case of an interest rate decision, an MAE of 0.30 is good enough as it te
 
 We will use H2O GridSearch to find the best parameters for our XGBoost.
 
-**Note:** If you are not sure what H2O GridSearch is, or how it works, please refer to Task 7 of [Introduction to Machine Learning with H2O-3 - Classification](https://training.h2o.ai/products/introduction-to-machine-learning-with-h2o-classification), or go to [Grid Search Section](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/grid-search.html#grid-hyperparameter-search) of the H2O documentation.
+**Note:** If you are not sure what H2O GridSearch is, or how it works, please refer to Task 7 of [Introduction to Machine Learning with H2O-3 - Classification](https://h2oai.github.io/tutorials/introduction-to-machine-learning-with-h2o-3-classification), or go to [Grid Search Section](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/grid-search.html#grid-hyperparameter-search) of the H2O documentation.
 
 We will first try to find the `max_depth` for our XGBoost, as this is one of the most important parameters for an XGBoost model. 
 
@@ -1498,4 +1498,4 @@ h2o.shutdown()
 We tuned the Deep Learning model with two hidden layers with 100 neurons in each layer. Try to tune a Deep Learning model on your own with two layers, or more, and with the number of neurons that you want. You can follow the same procedures as before, but if you wanted to have models wiht three hidden layers you will have to use something like `[165,165, 165],` and for some parameters such as the dropout ratios, you will need to also have two values, such as `[0.01, 0.01, 0.01]`, and so on. If you attempt the challenge, you can download your Notebook with your work, and just restart the lab; that way, you have at least 2 hours to tune the new model. Once you’re done with the self-paced course, shut down your cluster, or end the lab.
 
 ## Next steps
-Please make sure you check out our H2O AutoML self-paced course - [Introduction to Machine Learning with H2O-3 - AutoML](https://training.h2o.ai/products/1c-introduction-to-machine-learning-with-h2o-3-automl)
+Please make sure you check out our H2O AutoML self-paced course - [Introduction to Machine Learning with H2O-3 - AutoML](https://h2oai.github.io/tutorials/introduction-to-machine-learning-with-h2o-3-automl)

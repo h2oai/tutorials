@@ -27,9 +27,9 @@ Driverless AI has its own recipes for time series forecasting that combines adva
 You will need the following to be able to do this self-paced course:
 
 - Basic knowledge of Machine Learning and Statistics
-- Basic knowledge of Driverless AI or completion of [Automatic Machine Learning Introduction with Drivereless AI](https://training.h2o.ai/products/self-paced-course-1a-automatic-machine-learning-introduction-with-driverless-ai)
+- Basic knowledge of Driverless AI or completion of [Automatic Machine Learning Introduction with Drivereless AI](https://h2oai.github.io/tutorials/automatic-ml-intro-with-driverless-ai)
 - A **Two-Hour Test Drive session** : Test Drive is H2O.ai's Driverless AI on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform.
-    - Need a **Two-Hour Test Drive** session? Follow the instructions on [this quick self-paced course](https://training.h2o.ai/products/self-paced-course-0-getting-started-with-driverless-ai-test-drive) to get a Test Drive session started.
+    - Need a **Two-Hour Test Drive** session? Follow the instructions on [this quick self-paced course](https://h2oai.github.io/tutorials/getting-started-with-driverless-ai-test-drive) to get a Test Drive session started.
 
 **Note:  Aquarium’s Driverless AI Test Drive lab has a license key built-in, so you don’t need to request one to use it. Each Driverless AI Test Drive instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore Driverless AI, you can always launch another Test Drive instance or reach out to our sales team via the [contact us form](https://www.h2o.ai/company/contact/).**
 
@@ -834,7 +834,7 @@ Learn more about Driverless AI’s Test Augmentation by visiting H2O’s documen
 
 ## Next Steps
 
-Check out Driverless AI next self-paced course [Natural Language Processing - Sentiment Analysis](https://training.h2o.ai/products/self-paced-course-2b-natural-language-processing-sentiment-analysis)
+Check out Driverless AI next self-paced course [Natural Language Processing - Sentiment Analysis](https://h2oai.github.io/tutorials/natural-language-processing-sentiment-analysis)
 
 Where you will learn:
 

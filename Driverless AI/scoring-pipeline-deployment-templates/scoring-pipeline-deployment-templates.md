@@ -11,35 +11,28 @@
 - [Next Steps](#next-steps)
 - [Appendix A: Interactive Scoring (AWS Lambda) via Deployment Templates](#appendix-a-interactive-scoring-aws-lambda-via-deployment-templates)
 - [Appendix B: Troubleshooting Deployment](#appendix-b-troubleshooting-deployment)
-- [Appendix C: AI Glossary](#appendix-c-ai-glossary)
 
 ## Objective
 
-**Machine Learning Model Deployment** is the process of making your models available in production environments, so they can be used to make predictions for other software systems [1]. Before model deployment, **feature engineering** occurs in the form of data preparation that later on will be used to train a model [2]. Driverless AI **Automatic Machine Learning (AutoML)** combines the best feature engineering and one or more **machine learning models** into a scoring pipeline [3, 4]. The **scoring pipeline** is used to score or predict data when given new test data [5]. The scoring pipeline comes in two flavors. The first scoring pipeline is a **Model Object Optimized (MOJO) Scoring Pipeline**, a standalone low-latency model object designed to be easily embeddable in production environments. The second scoring pipeline is a Python Scoring Pipeline, which has a heavy footprint that is all Python and uses the latest libraries of Driverless AI to allow for executing custom scoring recipes [6].
+**Machine Learning Model Deployment** is the process of making your models available in production environments, so they can be used to make predictions for other software systems. Before model deployment, **feature engineering** occurs in the form of data preparation that later on will be used to train a model. Driverless AI **Automatic Machine Learning (AutoML)** combines the best feature engineering and one or more **machine learning models** into a scoring pipeline. The **scoring pipeline** is used to score or predict data when given new test data. The scoring pipeline comes in two flavors. The first scoring pipeline is a **Model Object Optimized (MOJO) Scoring Pipeline**, a standalone low-latency model object designed to be easily embeddable in production environments. The second scoring pipeline is a Python Scoring Pipeline, which has a heavy footprint that is all Python and uses the latest libraries of Driverless AI to allow for executing custom scoring recipes.
 
 <p align="center"> 
     <img src='assets/Cylinder-Diagram-1.jpg'></img>    
     <p align="center">Figure 1: Hydraulic System Cylinder Diagram</p>
 </p>
 
-By the end of this self-paced course, you will predict the **cooling condition** for a **Hydraulic System Test Rig** by deploying a **MOJO Scoring Pipeline** into production using **Driverless AI's Production Ready Deployment Templates**. The Hydraulic System Test Rig data comes from the **[UCI Machine Learning Repository: Condition Monitoring of Hydraulic Systems Data Set](https://archive.ics.uci.edu/ml/datasets/Condition+monitoring+of+hydraulic+systems#)**. Hydraulic System Test Rigs are used to test components in Aircraft Equipment, Ministry of Defense, Automotive Applications, and more [7].
+By the end of this self-paced course, you will predict the **cooling condition** for a **Hydraulic System Test Rig** by deploying a **MOJO Scoring Pipeline** into production using **Driverless AI's Production Ready Deployment Templates**. The Hydraulic System Test Rig data comes from the **[UCI Machine Learning Repository: Condition Monitoring of Hydraulic Systems Data Set](https://archive.ics.uci.edu/ml/datasets/Condition+monitoring+of+hydraulic+systems#)**. Hydraulic System Test Rigs are used to test components in Aircraft Equipment, Ministry of Defense, Automotive Applications, and more [1].
 
 ### Deep Dive and Resources
 
-[1] H2O.ai Community AI Glossary: [Machine Learning Model Deployment](https://www.h2o.ai/community/glossary/machine-learning-model-deployment-productionization-productionizing-machine-learning-models)</br>
-[2] H2O.ai Community AI Glossary: [Feature Engineering](https://www.h2o.ai/community/glossary/feature-engineering-data-transformation)</br>
-[3] H2O.ai Community AI Glossary: [Automatic Machine Learning (AutoML)](https://www.h2o.ai/community/glossary/automatic-machine-learning-automl)</br>
-[4] H2O.ai Community AI Glossary: [Machine Learning Model](https://www.h2o.ai/community/glossary/machine-learning-model)</br>
-[5] H2O.ai Community AI Glossary: [Scoring Pipeline](https://www.h2o.ai/community/glossary/scoring-pipeline)</br>
-[6] H2O.ai Community AI Glossary: [Model Object, Optimized (MOJO) Scoring Pipeline](https://www.h2o.ai/community/glossary/model-object-optimized-mojo)</br>
-[7] [SAVERY - HYDRAULIC TEST RIGS AND BENCHES](https://www.savery.co.uk/systems/test-benches)</br>
+[1] [SAVERY - HYDRAULIC TEST RIGS AND BENCHES](https://www.savery.co.uk/systems/test-benches)</br>
 
 ## Prerequisites
 
 You will need the following to be able to do this self-paced course:
 
 - Skilled in Java Object Oriented Programming
-- **Driverless AI Environment** on **Aquarium** with **Prebuilt Experiment** from [Self-Paced Course 4A: Scoring Pipeline Deployment Introduction](https://training.h2o.ai/products/self-paced-course-4a-scoring-pipeline-deployment-introduction)
+- **Driverless AI Environment** on **Aquarium** with **Prebuilt Experiment** from [Self-Paced Course 4A: Scoring Pipeline Deployment Introduction](https://h2oai.github.io/tutorials/scoring-pipeline-deployment-introduction)
 - Driverless AI License
     - It is needed for using the MOJO2 Java Runtime API to deploy the MOJO Scoring Pipeline to a REST Server or Amazon Lambda
     - **21-day trial license** or if you need to **purchase a Driverless AI license**, reach out to our sales team via the [contact us form](https://www.h2o.ai/company/contact/).
@@ -51,8 +44,8 @@ You will need the following to be able to do this self-paced course:
         - Amazon AWS with Usage Plans Enabled
     - Create an Amazon AWS IAM Access Key and Secret Key
 - Basic knowledge of Driverless AI or completion of the following self-paced courses:
-    - [Self-Paced Course 1A: Automatic Machine Learning Introduction with Driverless AI](https://training.h2o.ai/products/self-paced-course-1a-automatic-machine-learning-introduction-with-driverless-ai)
-    - [Self-Paced Course 4A: Scoring Pipeline Deployment Introduction](https://training.h2o.ai/products/self-paced-course-4a-scoring-pipeline-deployment-introduction#tab-product_tab_overview)
+    - [Self-Paced Course 1A: Automatic Machine Learning Introduction with Driverless AI](https://h2oai.github.io/tutorials/automatic-ml-intro-with-driverless-ai)
+    - [Self-Paced Course 4A: Scoring Pipeline Deployment Introduction](https://h2oai.github.io/tutorials/scoring-pipeline-deployment-introduction)
 
 ## Task 1: Set Up Environment
 
@@ -79,7 +72,7 @@ mkdir $HOME/dai-model-deployment/
 ![download-mojo-scoring-pipeline](./assets/download-mojo-scoring-pipeline.png)</br>
 **Figure 2**: Driverless AI Experiment Hover on Download MOJO Scoring Pipeline
 
-**Note:** If you would like to build your own experiment, go to **[Self-Paced Course 4A: Scoring Pipeline Deployment Introduction](https://training.h2o.ai/products/self-paced-course-4a-scoring-pipeline-deployment-introduction)**, then jump to "Appendix A: Build Experiment" and follow the instructions.
+**Note:** If you would like to build your own experiment, go to **[Self-Paced Course 4A: Scoring Pipeline Deployment Introduction](https://h2oai.github.io/tutorials/scoring-pipeline-deployment-introduction)**, then jump to "Appendix A: Build Experiment" and follow the instructions.
 
 
 2\. Select **Java** for Java Runtime. Click **Download MOJO Scoring Pipeline**.
@@ -356,11 +349,11 @@ Alternatively, you could create a new Driverless AI Deployment Template to deplo
 ## Next Steps
 
 - Check out Driverless AI's next self-paced courses on embeddable Scoring Pipeline Deployment where you will learn to deploy **MOJO Scoring Pipelines** into production in **Java Runtime** and **C++ Runtime** using **Mojo2 Runtime API**:
-    - [Self-Paced course 4C: Scoring Pipeline Deployment in Java Runtime](https://training.h2o.ai/products/self-paced-course-4c-scoring-pipeline-deployment-in-java-runtime)
-    - [Self-Paced course 4D: Scoring Pipeline Deployment in C++ Runtime](https://training.h2o.ai/products/self-paced-course-4d-scoring-pipeline-deployment-in-c-runtime)
+    - [Self-Paced course 4C: Scoring Pipeline Deployment in Java Runtime](https://h2oai.github.io/tutorials/scoring-pipeline-deployment-in-java-runtime)
+    - [Self-Paced course 4D: Scoring Pipeline Deployment in C++ Runtime](https://h2oai.github.io/tutorials/scoring-pipeline-deployment-in-c++-runtime)
 
 - Check out Driverless AI's next self-paced course on embedable Scoring Pipeline Deployment where you will learn to deploy **Python Scoring Pipelines** into production in **Python Runtime** using **h2oai_scoring API**:
-    - [Self-paced course 4E: Scoring Pipeline Deployment in Python Runtime](https://training.h2o.ai/products/self-paced-course-4e-scoring-pipeline-deployment-in-python-runtime)
+    - [Self-paced course 4E: Scoring Pipeline Deployment in Python Runtime](https://h2oai.github.io/tutorials/scoring-pipeline-deployment-in-python-runtime)
 
 - Check out these webinars that dive into how to productionize H2O Driverless AI Models:
     - H2O.ai Webinar: [Accelerate Your Enterprise AI on Snowflake with H2O.ai (by Yves Laurent, Eric Gudgion, Chris Pouliot, Isaac Kunen)](https://www.brighttalk.com/service/player/en-US/theme/default/channel/16463/webcast/415599/play?showChannelList=true)
@@ -559,7 +552,3 @@ With this update applied, terraform will obtain the file hashing results from bo
 ### Resources
 
 - [hashicorp/terraform GitHub: 0.12-rc1 file function fails due to UTF-8 error](https://github.com/hashicorp/terraform/issues/21260)
-
-## Appendix C: AI Glossary
-
-Refer to [H2O.ai Community AI Glossary](https://www.h2o.ai/community/top-links/ai-glossary-search) for relevant Model Deployment Terms
