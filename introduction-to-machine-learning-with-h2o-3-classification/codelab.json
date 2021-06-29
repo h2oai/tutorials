@@ -1,0 +1,23 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2021-01-25T13:01:51-08:00",
+  "id": "introduction-to-machine-learning-with-h2o-3-classification",
+  "duration": 0,
+  "title": "Introduction to Machine Learning with H2O-3 - Classification",
+  "summary": "Introduction To Machine Learning With H2O-3 Classification",
+  "source": "/Users/falvarenga/Desktop/md-to-html/introduction-to-machine-learning-with-h2o-3-classification/introduction-to-machine-learning-with-h2o-3-classification.md",
+  "theme": "",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "h2o-3"
+  ],
+  "tags": [
+    "test"
+  ],
+  "url": "introduction-to-machine-learning-with-h2o-3-classification"
+}

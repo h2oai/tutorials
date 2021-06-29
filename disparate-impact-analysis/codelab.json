@@ -1,0 +1,25 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2021-06-25T17:19:01-07:00",
+  "id": "disparate-impact-analysis",
+  "duration": 0,
+  "title": "Disparate Impact Analysis",
+  "summary": "Check the list",
+  "source": "/Users/falvarenga/Desktop/md-to-html/disparate-impact-analysis/disparate-impact-analysis.md",
+  "theme": "",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "driverless"
+  ],
+  "tags": [
+    "disparate-impact-analysis",
+    "driverless",
+    "mli"
+  ],
+  "url": "disparate-impact-analysis"
+}

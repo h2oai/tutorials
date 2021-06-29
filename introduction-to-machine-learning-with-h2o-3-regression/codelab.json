@@ -1,0 +1,23 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2021-01-25T13:39:45-08:00",
+  "id": "introduction-to-machine-learning-with-h2o-3-regression",
+  "duration": 0,
+  "title": "Introduction to Machine Learning with H2O-3 - Regression",
+  "summary": "Introduction To Machine Learning With H2O-3 Regression",
+  "source": "/Users/falvarenga/Desktop/md-to-html/introduction-to-machine-learning-with-h2o-3-regression/introduction-to-machine-learning-with-h2o-3-regression.md",
+  "theme": "",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "h2o-3"
+  ],
+  "tags": [
+    "test"
+  ],
+  "url": "introduction-to-machine-learning-with-h2o-3-regression"
+}

@@ -6,11 +6,10 @@
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
   <meta name="theme-color" content="#4F7DC9">
   <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="0;url=https://training.h2o.ai/products/tutorial-0-getting-started-with-driverless-ai-test-drive">
-  <link rel="canonical" href="https://training.h2o.ai/products/tutorial-0-getting-started-with-driverless-ai-test-drive">
   <title>Getting Started with Driverless AI Test Drive</title>
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
   <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
   <link rel="stylesheet" href="../assets/codelab-elements/codelab-elements.css">
   <style>
     .success {
@@ -23,47 +22,34 @@
 </head>
 <body>
   <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
-  <google-codelab title="Getting Started with Driverless AI Test Drive"
+  <google-codelab codelab-gaid=""
+                  id="getting-started-with-driverless-ai-test-drive"
+                  title="Getting Started with Driverless AI Test Drive"
                   environment="web"
                   feedback-link="">
     
-      <google-codelab-step label="Outline" duration="0">
-        <ul>
-<li>Driverless AI Test Drive</li>
-<li>How to Obtain a Two Hour Test Drive Session</li>
-<li>How to Create an Aquarium Account</li>
-<li>How to Login</li>
-<li>Reset Password </li>
-<li>How to Start and End the Test Drive Lab Session</li>
-<li>Logout</li>
-<li>Questions</li>
-</ul>
-
-
-      </google-codelab-step>
-    
       <google-codelab-step label="Driverless AI Test Drive" duration="0">
-        <p><strong>Driverless AI Test Drive</strong> is a two-hour lab session that exists in H2O&#39;s Aquarium. Aquarium is the H2O cloud environment providing software access for workshops, conferences, and training.</p>
-<p>All Aquarium labs have a specific <strong>Lab Duration</strong>* to complete the lab. <strong>All Driverless AI Test Drive Lab sessions will terminate after two-hours. No work will be saved!</strong>. However, you can retake the lab multiple times.</p>
-<p>If you are new to Driverless AI we highly recommend you start with the <strong>Test Drive</strong>!</p>
+        <p><strong>Driverless AI Test Drive</strong> is a two-hour lab session that exists in H2O&#39;s Aquarium. Aquarium is the H2O.ai cloud environment providing software access for workshops, conferences, and training.</p>
+<p>If you are new to Driverless AI, we highly recommend finishing this tutorial to set up your <strong>Driverless AI Test Drive!</strong></p>
+<p><strong>All Driverless AI Test Drive Lab sessions will terminate after two-hours. No work will be saved!</strong>. However, you can retake the lab multiple times.</p>
 <p><strong>Note</strong>: <strong>Aquarium&#39;s Driverless AI Test Drive lab has a license key built-in, so you don&#39;t need to request one to use it</strong>.</p>
 
 
       </google-codelab-step>
     
       <google-codelab-step label="How to Obtain a Two Hour Test Drive Session" duration="0">
-        <p>1. Go to the Aquarium site by copying and pasting the URL below to a browser of your choice or simply click on <a href="http://aquarium.h2o.ai/login" target="_blank">Aquarium</a>.</p>
+        <p>1. Go to the Aquarium site by pasting the URL below to your chosen browser or click on <a href="http://aquarium.h2o.ai/login" target="_blank">Aquarium</a>.</p>
 <p><code>http://aquarium.h2o.ai/login</code></p>
-<p>2. This will take you to the Aquarium login page where you need to create an account.</p>
+<p>2. The URL will take you to the Aquarium login page, where you need to create an account.</p>
 
 
       </google-codelab-step>
     
       <google-codelab-step label="How to Create an Aquarium Account" duration="0">
         <p>1. Welcome to the Aquarium Login page!</p>
-<p><img alt="test-drive-login-page" src="img/1628337459485ebc.jpg"></p>
+<p class="image-container"><img alt="test-drive-login-page" src="img/ea5ffe6c96b609f4.png"></p>
 <p>2. Select <strong>Create a new account</strong></p>
-<p><img alt="test-drive-create-a-new-account" src="img/7c2af561fc730bd7.jpg"></p>
+<p class="image-container"><img alt="test-drive-create-a-new-account" src="img/45c113a6be963874.png"></p>
 <p>3. Enter:</p>
 <ul>
 <li>First Name</li>
@@ -72,9 +58,17 @@
 <li>Country</li>
 <li>Email</li>
 </ul>
-<p>4. Click on <strong>Create account and email temporary password</strong> at the bottom of the page.</p>
+<p>4. Through the reCAPTCHA test, verify that you are not a robot by checking the &#34;I&#39;m not a robot&#34; box.</p>
 <p><strong>Note</strong>: A password will be sent to your email within minutes.</p>
-<p>5. Check your email for the password.</p>
+<p>5. Click on <strong>Create account and email temporary password</strong> at the bottom of the page.</p>
+<p><strong>If you are having issues receiving a temporary password, try the following:</strong></p>
+<ul>
+<li>Force-reload on the Aquarium page</li>
+<li>Try a different browser</li>
+<li>Check corporate settings in your machine</li>
+</ul>
+<p>If the three steps above don&#39;t work, please send us an email at training@h2o.ai and include the email you used to create the Aquarium account, type of browser you are using, country, and if you can see the reCAPTCHA test on the Aquarium Login page.</p>
+<p>6. Check your email for the password.</p>
 
 
       </google-codelab-step>
@@ -82,56 +76,53 @@
       <google-codelab-step label="How to Login" duration="0">
         <p>1. Enter the email you used to create the Aquarium password.</p>
 <p>2. Enter the password you received over email from Aquarium.</p>
-<p>3. Click on <strong>Login</strong>.</p>
-<p><img alt="test-drive-login" src="img/831fe9adf4b88621.jpg"></p>
+<p>3. Verify that you are not a robot by checking the &#34;I&#39;m not a robot&#34; box.</p>
+<p>4. Click on <strong>Login</strong>.</p>
+<p>Note: If you are having issues logging in, click the <strong>send us an email</strong> hyperlink.</p>
+<p class="image-container"><img alt="test-drive-login" src="img/71684005d5d8314e.png"></p>
 
 
       </google-codelab-step>
     
       <google-codelab-step label="Reset Password" duration="0">
         <p>1. If you forgot your password, select <strong>I forgot my password</strong>.</p>
-<p><img alt="resetting-password" src="img/997b67770397b569.jpg"></p>
-<p>2. Enter your email, and another password will be emailed to you.</p>
-<p><img alt="reset-password" src="img/7aa562b820b8d75a.jpg"></p>
+<p class="image-container"><img alt="resetting-password" src="img/95649aba0a17caab.png"></p>
+<p>2. Enter your email, verify that you are not a robot by checking the &#34;I&#39;m not a robot&#34; box, then click on <strong>Email temporary password</strong>. Another password will be emailed to you.</p>
+<p class="image-container"><img alt="reset-password" src="img/5f0e17ad3c9ee12e.png"></p>
 
 
       </google-codelab-step>
     
       <google-codelab-step label="How to Start and End the Test Drive Lab Session" duration="0">
-        <p>After a successful login, select &#34;Browse Labs&#34; located on the top-left corner of the page, then select Lab 1- Driverless AI Test Drive (x.x.x.x LTS) (1GPU).</p>
-<p>Click on the &#34;View Details&#34; button on lab one, as shown in the image below.</p>
-<p><img alt="selecting Lab-1 Driverless AI Test Drive" src="img/28ed970c635dbd5b.jpg"></p>
+        <p>After a successful login, select &#34;Browse Labs&#34; located on the top-left corner of the page, then select Lab 1- Driverless AI Test Drive (x.x.x.x)(1GPU).</p>
+<p class="image-container"><img alt="select-lab-1-dai-test-drive" src="img/67ba6df7143d299d.png"></p>
 <p>After the Driverless AI Test Drive Lab will appear:</p>
-<p><img alt="driverless-ai-test-drive-page" src="img/b87db9cbf85bc9dd.jpg"></p>
+<p class="image-container"><img alt="driverless-ai-test-drive-page" src="img/e46a5c417eee35e3.png"><img alt="driverless-ai-test-drive-page-2" src="img/5126904b7f528740.png"></p>
 <p><strong>Note</strong>:</p>
 <ol type="1">
-<li>Lab duration is 120 minutes, after that the session will terminate</li>
+<li>Lab duration is 120 minutes; after that, the session will terminate</li>
 <li>Note that the lab automatically ends after two hours and can be taken multiple times</li>
-<li><a href="https://training.h2o.ai/" target="_blank">H2O.ai Learning Center</a>: Build your Knowledge Base and Skills at your pace. Enter a place for knowledge-sharing, skills-enhancements, idea-sharing and more!<ol type="1">
-<li><a href="https://www.h2o.ai/community/home" target="_blank">H2O.ai Community(HaC)</a>  HaC is a community to share, learn, network, ask questions, provide answers, take the next step, and explore Artificial Intelligence, Machine Learning, and Data Science.  We are here to democratize AI. It will take a village to democratize AI.</li>
-</ol>
-</li>
 <li><strong>Start</strong> button starts the lab session</li>
 </ol>
-<p>1. To start a Lab click on <strong>Start Lab</strong>. You will see an image similar to the one below:</p>
-<p><img alt="test-drive-start-lab" src="img/6be7aa1dfddee7c4.jpg"></p>
-<p>2. Aquarium will then start the Lab session for you (this will take a few minutes). After the lab session starts a similar image should appear:</p>
-<p><img alt="test-drive-session" src="img/4e151c85d5805a1f.jpg"></p>
+<p>1. To start a Lab, click on <strong>Start Lab</strong>. You will see an image similar to the one below:</p>
+<p class="image-container"><img alt="test-drive-start-lab" src="img/5958cb4960a1a6f5.png"></p>
+<p>2. Aquarium will then start the Lab session for you (this will take a few minutes). After the lab session starts, a similar image should appear:</p>
+<p class="image-container"><img alt="test-drive-session" src="img/68727c24060a9eae.png"></p>
 <p><strong>Note</strong>:</p>
 <ul>
-<li>The time remaining for the instance use</li>
+<li>The time remaining for the instance</li>
 <li>Driverless AI URL</li>
 <li>End Lab</li>
 </ul>
-<p>3. Once the Lab has started, a Driverless AI URL will appear at the of the page. Click on that URL. This will take you to the H2O.ai Driverless AI Datasets Page.</p>
-<p><img alt="dai-datasets-page" src="img/1add647f6fe0a8da.jpg"></p>
+<p>3. Once the Lab has started, a Driverless AI URL will appear at the of the page. Click on that URL; this will take you to the H2O.ai Driverless AI Datasets Page.</p>
+<p class="image-container"><img alt="dai-datasets-page" src="img/6133dab689466fc4.png"></p>
 
 
       </google-codelab-step>
     
       <google-codelab-step label="Logout" duration="0">
         <p>1. To logout, click on the box on the top-right corner of the page and select logout.</p>
-<p><img alt="test-drive-logout" src="img/56cf244102489056.jpg"></p>
+<p class="image-container"><img alt="test-drive-logout" src="img/5d4b8074aa722d37.png"></p>
 
 
       </google-codelab-step>
@@ -139,7 +130,7 @@
       <google-codelab-step label="Questions" duration="0">
         <p>Have any questions about Aquarium? Sign up for H2O.ai&#39;s Slack Community and post your questions under the <strong>#cloud</strong> channel. Members of the H2O.ai community will respond as soon as they are available.</p>
 <ul>
-<li><a href="https://www.h2o.ai/community/home" target="_blank">Chat and ask questions with H2O.ai makers and data scientist users in the H2O.ai Slack workspace</a></li>
+<li><a href="https://www.h2o.ai/h2ousers/" target="_blank">Chat and ask questions with H2O.ai makers and data scientist users in the H2O.ai Slack workspace</a></li>
 </ul>
 
 
@@ -147,10 +138,11 @@
     
   </google-codelab>
 
-  <script src="../assets/codelab-elements/native-shim.js"></script>
-  <script src="../assets/codelab-elements/custom-elements.min.js"></script>
-  <script src="../assets/codelab-elements/prettify.js"></script>
-  <script src="../assets/codelab-elements/codelab-elements.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
 
 </body>
 </html>

@@ -1,0 +1,29 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2021-06-25T17:15:43-07:00",
+  "id": "get-started-with-open-source-custom-recipes",
+  "duration": 0,
+  "title": "Get Started with Open Source Custom Recipes",
+  "summary": "Check the list",
+  "source": "/Users/falvarenga/Desktop/md-to-html/get-started-with-open-source-custom-recipes/get-started-with-open-source-custom-recipes.md",
+  "theme": "",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "driverless"
+  ],
+  "tags": [
+    "custom",
+    "driverless",
+    "machine-learning",
+    "models",
+    "recipes",
+    "scores",
+    "transformer"
+  ],
+  "url": "get-started-with-open-source-custom-recipes"
+}
