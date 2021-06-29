@@ -1,0 +1,29 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2021-06-25T17:16:04-07:00",
+  "id": "build-your-own-custom-recipe",
+  "duration": 0,
+  "title": "Build Your Own Custom Recipe",
+  "summary": "Check the list",
+  "source": "/Users/falvarenga/Desktop/md-to-html/build-your-own-custom-recipe/build-your-own-custom-recipe.md",
+  "theme": "",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "driverless"
+  ],
+  "tags": [
+    "custom",
+    "driverless",
+    "machine-learning",
+    "models",
+    "recipes",
+    "scores",
+    "transformer"
+  ],
+  "url": "build-your-own-custom-recipe"
+}

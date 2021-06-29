@@ -1,0 +1,28 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2021-06-28T14:44:29-07:00",
+  "id": "intro-to-ml-model-deployment-and-management",
+  "duration": 0,
+  "title": "Intro to ML Model Deployment and Management",
+  "summary": "Check the list",
+  "source": "/Users/falvarenga/Desktop/md-to-html/intro-to-ml-model-deployment-and-management/intro-to-ml-model-deployment-and-management.md",
+  "theme": "",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "mlops"
+  ],
+  "tags": [
+    "aquarium",
+    "machine-learning",
+    "management",
+    "mlops",
+    "model-deployment",
+    "test-drive"
+  ],
+  "url": "intro-to-ml-model-deployment-and-management"
+}

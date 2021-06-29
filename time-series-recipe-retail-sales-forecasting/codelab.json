@@ -1,0 +1,26 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2021-06-25T17:13:21-07:00",
+  "id": "time-series-recipe-retail-sales-forecasting",
+  "duration": 0,
+  "title": "Time Series Recipe - Retail Sales Forecasting",
+  "summary": "Check the list",
+  "source": "/Users/falvarenga/Desktop/md-to-html/time-series-recipe-retail-sales-forecasting/time-series-recipe-retail-sales-forecasting.md",
+  "theme": "",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "driverless"
+  ],
+  "tags": [
+    "driverless",
+    "forecasting",
+    "machine-learning",
+    "time-series"
+  ],
+  "url": "time-series-recipe-retail-sales-forecasting"
+}

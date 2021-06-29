@@ -1,0 +1,25 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2021-06-28T12:39:02-07:00",
+  "id": "getting-started-with-mlops-test-drive",
+  "duration": 0,
+  "title": "Getting Started with MLOps Test Drive",
+  "summary": "Check the list",
+  "source": "/Users/falvarenga/Desktop/md-to-html/getting-started-with-mlops-test-drive/getting-started-with-mlops-test-drive.md",
+  "theme": "",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "mlops"
+  ],
+  "tags": [
+    "deployment",
+    "mlops",
+    "testdrive"
+  ],
+  "url": "getting-started-with-mlops-test-drive"
+}

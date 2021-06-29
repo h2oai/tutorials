@@ -1,0 +1,27 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2021-06-25T17:15:00-07:00",
+  "id": "image-processing-in-driverless-ai",
+  "duration": 0,
+  "title": "Image Processing in Driverless AI",
+  "summary": "Check the list",
+  "source": "/Users/falvarenga/Desktop/md-to-html/image-processing-in-driverless-ai/image-processing-in-driverless-ai.md",
+  "theme": "",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "driverless"
+  ],
+  "tags": [
+    "deeplearning",
+    "driverless",
+    "image-classification",
+    "image-processing",
+    "machine-learning"
+  ],
+  "url": "image-processing-in-driverless-ai"
+}

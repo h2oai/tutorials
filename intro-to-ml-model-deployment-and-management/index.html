@@ -1,0 +1,536 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Intro to ML Model Deployment and Management</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <link rel="stylesheet" href="../assets/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="intro-to-ml-model-deployment-and-management"
+                  title="Intro to ML Model Deployment and Management"
+                  environment="web"
+                  feedback-link="">
+    
+      <google-codelab-step label="Prerequisites" duration="0">
+        <ul>
+<li>A <strong>Two-Hour MLOps Test Drive</strong>: Test Drive is H2O.ai&#39;s Driverless AI and MLOps on the AWS Cloud. No need to download software. Explore all the features and benefits of the H2O Automatic Learning Platform and MLOps.  <ul>
+<li>Need a <strong>Two-Hour MLOps Test Drive</strong>? Follow the instructions on this self-paced course:<a href="https://h2oai.github.io/tutorials/getting-started-with-mlops-test-drive" target="_blank">Getting Started with MLOps Test Drive</a>.</li>
+</ul>
+</li>
+<li>A general understanding of Driverless AI  <ul>
+<li>For a general overview of Driverless AI, you can follow this: <a href="https://h2oai.github.io/tutorials/automatic-ml-intro-with-driverless-ai" target="_blank">Self-Paced Course 1A: Automatic Machine Learning Introduction with Driverless AI</a></li>
+</ul>
+</li>
+</ul>
+<p><strong>Note: Aquarium&#39;s MLOps Test Drive lab has a license key built-in, so you don&#39;t need to request one to use it. Each MLOps Test Drive instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore H2O.ai MLOps, you can always launch another Test Drive instance or reach out to our sales team via the </strong><a href="https://www.h2o.ai/company/contact/" target="_blank"><strong>contact us form</strong></a><strong>.</strong></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Task 1: Explore the H2O.ai Platform Studio" duration="0">
+        <p><strong>MLOps 0.31.1</strong> and <strong>Driverless AI 1.9.0.3</strong> can be launched from the H2O.ai Platform Studio.</p>
+<p>To launch <strong>Driverless AI</strong>, click the <strong>Launch</strong> button located in the <strong>Driverless AI</strong> section, a new tab will open.</p>
+<ul>
+<li>Agree to the Terms</li>
+<li>Click <strong>Login with OpenID</strong></li>
+<li>For <strong>Log In</strong>, you can enter <code>ds1/ds1</code> or <code>ds2/ds2</code></li>
+</ul>
+<p><strong>EX</strong>:</p>
+<p class="image-container"><img alt="h2oai-platform-studio" src="img/8d1cb4a73d3f3a02.gif"></p>
+<p>To launch MLOps, click the Launch button located in the MLOPs section, a new tab will open.</p>
+<p>Note: If you already login to Driverless AI using either credential, you will not be required to log in when trying to access MLOps. The Studio will sign you into both platforms when you login into one platform (with ds1/ds1 or ds2/ds2: each credential is its own account (profile) with Driverless AI and MLOps).</p>
+<ul>
+<li>Click <strong>Login with OpenID Connect</strong></li>
+<li>For <strong>Log In</strong>, you can enter <code>ds1/ds1</code> or <code>ds2/ds2</code></li>
+</ul>
+<p><strong>EX</strong>:</p>
+<p class="image-container"><img alt="h2oai-platform-studio-MLOps" src="img/b1fc24a73bdb62cd.gif"></p>
+<p>H2O.ai MLOps ties into Driverless AI and allows you to export your Driverless AI experiments into an MLOps project that can be viewed and shared from a single site. It also allows you to import, view, and share regression and classification models from H2O-3. H2O MLOps is a complete system for the deployment, management, and governance of models in production with seamless integration to H2O Driverless AI and H2O open source for model experimentation and training.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Task 2: Driverless AI Project in MLOps" duration="0">
+        <p>For this self-paced course, we will be using a prebuilt experiment linked to a project titled <strong>hydraulic system</strong>. The MLOps dashboard already has the Driverless AI <strong>hydraulic system</strong> project for this self-paced course; it was shared with MLOps when the project was created.  If you want to access the project, you need to access Driverless AI from the <strong>H2O.ai Platform Studio Splash Page</strong>. The prebuilt project was built under the following credentials: <code>ds1/ds1</code>. Accordingly, you will need to access Driverless AI with such credentials to see the project.</p>
+<p>The Driverless AI  experiment is a classifier model that classifies whether the <strong>cooling condition</strong> of a <strong>Hydraulic System Test Rig</strong> is 3, 20, or 100. By looking at the <strong>cooling condition,</strong> we can predict whether the Hydraulic Cooler operates <strong>close to total failure</strong>, <strong>reduced efficiency</strong>, or <strong>full efficiency</strong>.</p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Hydraulic Cooling Condition</p>
+</td><td colspan="1" rowspan="1"><p>Description</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>3</p>
+</td><td colspan="1" rowspan="1"><p>operates at close to total failure</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>20</p>
+</td><td colspan="1" rowspan="1"><p>operates at reduced efficiency</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>100</p>
+</td><td colspan="1" rowspan="1"><p>operates at full efficiency</p>
+</td></tr>
+</table>
+<p>The Hydraulic System Test Rig data for this self-paced course comes from the <a href="https://archive.ics.uci.edu/ml/datasets/Condition+monitoring+of+hydraulic+systems#" target="_blank"><strong>UCI Machine Learning Repository: Condition Monitoring of Hydraulic Systems Data Set</strong></a>. The data set was experimentally obtained with a hydraulic test rig. This test rig consists of a primary working and a secondary cooling-filtration circuit connected via the oil tank [1], [2]. The system cyclically repeats constant load cycles (duration 60 seconds) and measures process values such as pressures, volume flows, and temperatures. The condition of four hydraulic components (cooler, valve, pump, and accumulator) is quantitatively varied. The data set contains raw process sensor data (i.e., without feature extraction), structured as matrices (tab-delimited) with the rows representing the cycles and the columns the data points within a cycle.</p>
+<p>Hydraulic System Test Rigs are used to test Aircraft Equipment components, Automotive Applications, and more [1]. A Hydraulic Test Rig can test a range of flow rates that can achieve different pressures with the ability to heat and cool while simulating testing under different conditions [2]. Testing the pressure, the volume flow, and the temperature is possible by Hydraulic Test Rig sensors and a digital display. The display panel alerts the user when certain testing criteria are met while displaying either a green or red light [2]. Further, a filter blockage panel indicator is integrated into the panel to ensure the Hydraulic Test Rig&#39;s oil is maintained [2]. In the case of predicting cooling conditions for a Hydraulic System, when the cooling condition is low, our prediction will tell us that the cooling of the Hydraulic System is close to total failure, and we may need to look into replacing the cooling filtration solution soon. In our case, the shared project classifies the probability of the cooler condition is 3, 20, or 100.</p>
+<p class="image-container"><img alt="cylinder-diagram-1" src="img/5818cceb8b33d6fc.jpg"></p>
+<p><strong>Figure 1:</strong> Hydraulic System Cylinder Diagram</p>
+<p>From a general pespective, a Hydraulic Test Rig consists of the following:</p>
+<ul>
+<li>A primary and secondary cooling filtration circuit with pumps that deliver flow and pressure to the oil tank (the box at the bottom)</li>
+<li>A pressure relief control valve for controlling the rising and falling flows</li>
+<li>A pressure gauge</li>
+</ul>
+<h2 is-upgraded>Open MLOps to See Project</h2>
+<p class="image-container"><img alt="open-mlops-see-project" src="img/cf8e03c909285dc.gif"></p>
+<p><strong>Figure 10:</strong> Open MLOps to See Driverless AI Project</p>
+<p>If you have not launched MLOps from the H2O.ai Platform Studio Splash page, proceed to the following instructions:</p>
+<p>1. Click the <strong>Launch</strong> button located in the MLOps section of the studio</p>
+<p>2. Click <strong>Log in with OpenID Connect</strong></p>
+<p>3. For <strong>Log In</strong>, enter <code>ds1/ds1</code></p>
+<p>Note: if you already logged into Driverless AI, you won&#39;t have to enter login credentials for MLOps.</p>
+<p>Regard the <strong>hydraulic system</strong> project on the <strong>My Projects</strong> page. Disregard the other project, as it will not be used in this self-paced course.</p>
+<h2 is-upgraded>Login to MLOps as a <code>ds2</code> user from a separate browser tab</h2>
+<p class="image-container"><img alt="open-mlops-as-ds2-user" src="img/c66eef0d95d38910.gif"></p>
+<p><strong>Figure 11:</strong> Open MLOps as ds2 user</p>
+<p>As you can see in the gif above, in the MLOps dashboard for ds2 user, no Driverless AI projects have been shared with that user yet.</p>
+<p>If you need help following along with the gif above, follow the instructions below to login to MLOps as <strong>ds2</strong>.</p>
+<p>1. If earlier you launched MLOps in google chrome, then open a new Chrome incognito window or a different browser like Firefox.</p>
+<p>2. Go to the <strong>H2O.ai Platform Studio Splash Page</strong></p>
+<p>3. <strong>Launch</strong> MLOps</p>
+<p>4. Click <strong>Login with OpenID Connect</strong></p>
+<p>5. For <strong>Log In</strong>, enter <code>ds2/ds2</code></p>
+<p>Later we will explore the MLOps UI, share a project from ds1 user to ds2 user, deploy the hydraulic model, and monitor the model. Before that, let&#39;s become familiar with Machine Learning Operations concepts.</p>
+<h2 is-upgraded>Deep Dive and Resources</h2>
+<p>[1] <a href="https://www.savery.co.uk/systems/test-benches" target="_blank">SAVERY - HYDRAULIC TEST RIGS AND BENCHES</a></p>
+<p>[2] <a href="https://www.hydrotechnik.co.uk/flow-and-temperature-hydraulic-test-bed" target="_blank">HYDROTECHNIK - Flow and Temperature Testing Components</a></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Task 3: Machine Learning Operations Concepts" duration="0">
+        <p>If you look through various analyst firms and research organizations, you will find varying percentages of companies that have deployed AI into production. However, depending on the type of organization and where they are in their AI journey, you will find universally that most companies have not broadly deployed AI &amp; Machine Learning in their companies. According to a New Vantage Partners Survey, only 15% have some AI deployed in production because various challenges come into play when producing Machine Learning models [2]. Only 15% have deployed AI broadly into production - because that is where people and process issues come into play.</p>
+<h2 is-upgraded>AI Lifecycle with H2O.ai Products</h2>
+<p class="image-container"><img alt="ai-lifecycle-with-h2oai-products" src="img/1a54fc4bdc65ad35.jpg"></p>
+<p><strong>Figure 12:</strong> AI Lifecycle with H2O.ai Products</p>
+<p>In the above AI lifecycle with H2O.ai Products (H2O AI Platform), business users can solve or improve productivity issues, customer experience issues, and other arrays of problems. Business users will engage teams of data engineers and data scientists to build models. Data engineers can use H2O.ai Wave (Apps) for data exploration, while data scientists can use Driverless AI for model training. Once the data scientists feel they have a high-quality model base on their experimentation and exploration, those models are typically validated by a data science team. Through the H2O AI Platform, data scientists can use Driverless AI for model testing and validation. Once you have a model where it looks like it performs well and does what you expect, it will be handed over to a production team. That is what you see on the lower right-hand side of the diagram. That production team will be responsible for deploying that model into a production environment and ensuring that the model is serving business applications&#39; needs. DevOps Engineers and ModelOps Engineers can use MLOps for Driverless AI model production testing, deployment, and lifecycle management. From there, once you have a model that works, you will typically integrate that model into those business applications. Application Developers can use the H2O.ai Wave SDK to incorporate the MLOps deployed model into the AI application to bring the end-user predictions. Hence, a downstream service can be created in the H2O AI Platform to make sure you can meet the service-level agreement or an array of other desires.</p>
+<h2 is-upgraded>Barriers for AI Adoption at Scale</h2>
+<p class="image-container"><img alt="barriers-for-ai-adoption-at-scale" src="img/31d512124c18e110.jpg"></p>
+<p><strong>Figure 13:</strong> Barriers for AI Adoption at Scale</p>
+<p><strong>The Challenge of Model Deployment</strong></p>
+<p>With Machine Learning Operations, it is about getting that initial machine learning model into a production environment. That might seem straightforward if you think that the model that came from the data science team is ready for production use. However, you will often find that the model that comes from the data science team kind of gets thrown over the wall to the production team. As a result, production teams are required to look at this model object, which is written in Python or R. And for the most part, production teams do not have the tools on the IT side of the house to deal with Python or R. [3]</p>
+<p>Often, there is a mismatch between the types of tools and languages that the data science team and the IT team use that will cause a huge disconnect, preventing the model from being deployed. Not only that, these two teams are very different in their approach. To image this difference, a data science team will say, &#34;there was a business challenge; we were asked to build a model that could predict the outcome, and we have done that.&#34; The data science team will then say, &#34;our model predicts very well, and it is very accurate.&#34; Next, the data science team will hand the model over to the IT team, and the IT team will have an entirely different set of criteria to evaluate that model. The IT team will look for things like does it perform? Is it fast? Can we scale this model out into production so that it will be responsive? Can we put it into a system like Kubernetes so that it will be resilient? In general, the IT team has a different set of criteria they are looking for compared to the data science team, so that mismatch can cause a lot of models never to be deployed into production. [3]</p>
+<p><strong>The Challenge of Model Monitoring</strong></p>
+<p>Once you have a model up and running, a lot of times, people will realize that they need a partially different kind of model monitoring to make sure that the model is healthy in production. They have existing software tools that allow them to monitor things like the service and whether the service is up and running and responding to requests. But what they do not have is specific Machine Learning monitoring tools that would allow them to see if the model is still accurate. In some cases, not having monitoring can make some people very uncomfortable because they do not know how the model is behaving. They may not be willing to deploy that model into production because they are unsure about how it will behave. So, they may not be willing to take that risk. [4]</p>
+<p><strong>The Challenge of Model Lifecycle Management</strong></p>
+<p>For Machine Learning models to maintain their accuracy in production, they will sometimes need frequent updates. Those updates need to be done seamlessly not to disrupt the services to those downstream applications. Often, companies will find that they do not have a plan for how they are going to update the model and how they are going to retrain it. Additionally, they do not have a way to roll this model out into production seamlessly. So, they can not even deploy it out in the first place because they do not have a plan for managing it.[5]</p>
+<p><strong>The Challenge of Model Governance</strong></p>
+<p>For regulated industries, you will find that if they do not have a plan for how they will govern their deployed models, they might not be able to deploy the models in the first place. Governance means you have a plan for how you will control access and have a plan for how to capture information about the models being deployed into production, which you can use for legal and regulatory compliance. So, you will find if you do not have a plan for these things, especially if you are in a regulated industry, you might not be able to deploy the model in the first place. [6]</p>
+<h2 is-upgraded>How &#34;Success&#34; Looks Like Today</h2>
+<p class="image-container"><img alt="ml-code-small-fraction-rw-ml-system" src="img/a42b928f34eeb2c9.jpg"></p>
+<p><strong>Figure: 14</strong> A small fraction of a real-world ML system is of ML code [8]</p>
+<p>As you can imagine, those challenges we discussed earlier create some significant barriers, but people are still successfully running and deploying models in production today. This diagram above is pulled from the <strong>Hidden Technical Debt in Machine Learning Systems publication</strong>, written by folks at Google. This publication discusses how deploying Machine Learning in production; specifically, the model itself, is a relatively small part of the overall codebase when deploying into production. You can see this small orange box in the middle of the diagram, the Machine Learning code. These other large boxes are the other things you need to do to ensure that the machine learning model is running properly.  Only a small fraction of real-work ML systems are composed of the ML code, as shown by the middle small orange box. The required surrounding infrastructure is vast and complex. Henceforward, &#34;success&#34; today, to an extend, looks like the diagram above where the larger boxes are working properly, and the machine learning model is running. [7]</p>
+<p><strong>How Does Success Look Like Today With Companies Trying to Deploy Machine Learning Models in a Very Manual Way or by Themselves?</strong></p>
+<p>Each time we want to deploy a new model into production, data science and production teams have to perform an intense and manual effort. They have to get the model up and running, which means writing a lot of custom code, wrapping that model in the code, and deploying it to production. That code tends to be brittle because it is all custom-written, and when it breaks, there is a mad scramble to fix things. It turns out that many people do not have a plan for what they are going to do when something breaks or when the model stops working well. So, when something stops working properly, it is all hands on deck. The data science team has to stop what they are working on, and the IT team mobilizes their resources, and suddenly, you have this entire team trying to figure out what is wrong with this model. Meanwhile, we talked about that service you set up earlier in AI Lifecycle; supplying results to a downstream application is offline because there was not a plan for what not to do with this service should there be a problem.[7]</p>
+<p>In many cases, models are deployed into production, but there is no monitoring for the Machine Learning part of the code. That service could be responding to the request, but it may not be accurate anymore. You can imagine that even the ongoing management of such a system with a lot of custom code requires a team of people. So one of the most significant symptoms here is that leaders in these organizations will say their data scientists are embroiled in these projects. They spend 60% to 80% of the time just managing these production projects and are not doing new data science projects. We have heard that people will say they want their data scientists to be doing data science, not production. However, once you get a few Machine Learning projects up and running in production with the effort of a team of people constantly keeping these projects up and running, business leaders want more than just one or two projects. Business leaders want more of these projects running because they typically see increased efficiency by, say, 10%, and they see a generated increase in revenue by around 2 million dollars. Therefore, now business leaders want to deploy those technologies across various use cases in the business. So once you have a little success even with manual means, your business is going to want to scale from not just two to four, but two to twenty or two to fifty Machine Learning models in production. So that is what many organizations want and what they consider success, which is a very challenging situation. [7]</p>
+<h2 is-upgraded>What is MLOps?</h2>
+<p>MLOps is known as Model Operations. In MLOps, we talk about how do we put Machine Learning models into production environments. MLOps is a new set of technologies and practices that you need to have in your organization to make sure that you can successfully deploy and manage models in production. MLOps is communication between data scientists and the operations or production team. It&#39;s deeply collaborative, designed to eliminate waste, automate as much as possible, and produce more prosperous, more consistent insights with machine learning. In this system, you want to have the right people doing the right things to have your data scientists only focus on producing models for the production team. If there is ever an issue, the production team can go back to the data science team and share the right information with them, and they can work together to fix a problem or rebuild a model, etc. In the end, MLOps allows you to scale your adoption of Machine Learning. If you do not have this technology in place or collaboration, there are no ways you can scale to 20, 50, or 100 models, much less 10,000 models in production, which is where a lot of us are heading. [9]</p>
+<h2 is-upgraded>What are the Key Components of MLOps?</h2>
+<p class="image-container"><img alt="mlops-key-capabilities" src="img/404f4923432b292c.jpg"></p>
+<p><strong>Figure 15:</strong> MLOps Key Capabilities</p>
+<p>The key areas of MLOps are as follows:</p>
+<p>Production Model Deployment</p>
+<ul>
+<li>With MLOps, we want to automate as much of the process of deploying model artifacts into production and facilitating that collaboration between teams to get the artifacts over into production and get them up and running. [10]</li>
+</ul>
+<p>Production Model Monitoring</p>
+<ul>
+<li>A lot of systems are not designed with Machine Learning in mind. So, for MLOps, we want to monitor service levels, data drift, etc. In the case of data drift, we want to know whether the data we trained on is similar to the data we see in production. We also want to monitor things like accuracy, where we can see if the model is continuing to provide reliable and accurate results. [10]</li>
+</ul>
+<p>Production Lifecycle Management</p>
+<ul>
+<li>For production lifecycle management, we want to provide the ability to troubleshoot, test, and seamlessly upgrade models in production and even rollback models. We want to have other options if we have a problem in production. [10]</li>
+</ul>
+<p>Production Model Governance</p>
+<ul>
+<li>We want to ensure that models are safe and compliant with our legal and regulatory standards with things like access control, audit trails, and model lineage for production model governance. [10]</li>
+</ul>
+<h2 is-upgraded>Model Deployment</h2>
+<p class="image-container"><img alt="model-deployment-1" src="img/7374ff980bdf4bde.jpg"></p>
+<p><strong>Figure 16:</strong> Model Code, Runner, Container, Container Management</p>
+<p>Earlier in our AI Lifecycle flow diagram, we saw that we built a model, and now we are outputting that model from our data science system. So, we end up with some code that can receive a request with certain data and respond with a prediction in the right environment. If you are running this model within a vendor infrastructure, what you will find is that you can deploy this model out to a given vendor&#39;s infrastructure. This deployment will allow you to do things like make a rest request to that model and get a response. That is because the vendor has done a lot of work behind the scenes to deploy that model into production. [11]</p>
+<p>So, what steps must one go through to make a rest request and get a scored response? The <strong>first step</strong> requires having a runner to deploy this code. This runner code itself can&#39;t respond to your request; it is just a bunch of code. The <strong>second step</strong> requires having something with all the information for the rest interface and dependencies or libraries for that specific model type to respond to a request. So if it is a Python model, you will probably need the libraries to run that Python model. There is a bunch of code that you will need to make this model accessible and do the scoring. The <strong>third piece</strong> requires having a container. You will need to wrap the model with all of its dependencies and everything you need to do the scoring. Then you are dropping this wrapped model into a container, which allows you to put this model into a container management system. This container management system will allow you to replicate this model for scaling and supporting high-performance environments and more. Kubernetes is the most well-known container management system.</p>
+<p>Similarly, Docker is the most common container environment. So, typically you will Dockerize your model and put it into a Docker container. Then you will deploy one or more containers out into Kubernetes. [11]</p>
+<p class="image-container"><img alt="model-deployment-2" src="img/ee7c255f2e86a451.jpg"></p>
+<p><strong>Figure 17:</strong> Load Balancer, Request, Response</p>
+<p>The diagram above shows the Kubernetes container management system is going to deploy these model containers behind a load balancer. Depending on how many replicas you tell Kubernetes to set up, it will replicate your model code, it will replicate your scoring code, and it will manage the load balancing across those different nodes. So the beauty of Kubernetes is it will automatically replicate your model code. It will manage the request/response, and if one of those pods stops responding, it will route the request to another pod and spin up additional pods. So, you can see why Kubernetes has become very popular for this type of deployment. [11]</p>
+<p>This is a rudimentary look at deployment, but it gives you an idea of the kind of tasks your production team needs to handle. If you are trying to do it manually, it gives you a look at the kind of code that you will have to write to support each model deployment. [11]</p>
+<h2 is-upgraded>Monitoring for Machine Learning Models</h2>
+<p class="image-container"><img alt="monitoring-for-ml-models" src="img/323904a9f9fb3463.jpg"></p>
+<p><strong>Figure 18:</strong> Levels of Monitoring for Machine Learning Models</p>
+<p>In MLOps, there are different levels of monitoring. <strong>Level 1 is service monitoring</strong>. You can get service monitoring from various software monitoring tools, but you may be surprised how many people still do not have this. They do not even know if a specific model responds in a timely fashion in their production environment. The first thing you want to make sure you have is some service-level monitoring. Is the service up and running? Is it responding within a reasonable timeframe to meet service level agreement (SLA) with downstream applications? Another thing you want to monitor is whether the service is using appropriate resource levels. If your model service starts to consume more resources than what is expected, that could affect the model and other models that are potentially sharing resources with that model. Service level monitoring is critical so that you have a level of comfort knowing that the service is responding and that you are delivering results to the downstream application that you are supporting with that model. [12]</p>
+<p><strong>Level 2 is drift monitoring</strong>. Drift monitoring is probably the most important monitoring element within Machine Learning operations. In drift monitoring, what you are looking at is the data in production and whether it is similar to the data used to train the model. Therefore, drift monitoring can tell us if our model is still accurate and whether our model&#39;s significant features are starting to have a considerable drift in production. It is a pretty good assumption that the model may not be responding in a way that it did in training. Another area of drift is the general context of the problem. We saw this a lot with COVID-19, where models would be trained, and not only was the data changing but the definition of the problem we were trying to predict. Monitoring will allow us to understand if the data and the features of the model are changing and whether the distribution of the target variable is changing. If the drift is detected, then there is a pretty good chance that the model is not doing a good job making predictions in production. [12]</p>
+<p><strong>Level 3 is accuracy monitoring</strong>. We want to track the predicted values that the model had and compare them with our applications&#39; actual values. Accuracy Monitoring could be in real-time or batch. You may be thinking, why would one not do accuracy monitoring first? The truth is accuracy monitoring is notoriously difficult to do in production. If you are making a loan prediction to determine if someone is likely to repay a loan, then you will not know if they default on that loan until months or years into the future. So you can not track back the accuracy of that prediction for many of those predictions until years later. Also, the accuracy and the actuals are being tracked in some other system. You can imagine that even if you were doing this in eCommerce and this was about clicks on your website, you still need to get that click data from your website back to your monitoring system. So, there is an IT project that needs to happen to get that actual data back into a system and compare it with the predictions.</p>
+<p>As you can see, accuracy monitoring may not be as easy as one might think. It may not actually work in a production situation, which leaves you with the first two levels of monitoring tools, especially level two as a set of pretty good monitoring tools. If you have those two levels of monitoring tools, you can be reasonably certain that your model is up and running and performing. [12]</p>
+<h2 is-upgraded>Typical Model Lifecycle Flow for Production Lifecycle Management</h2>
+<p class="image-container"><img alt="typical-model-lifecycle-flow" src="img/4c36c276ec222215.jpg"></p>
+<p><strong>Figure 19:</strong> Typical Model Lifecycle Flow</p>
+<p>We already discussed monitoring, and now we will focus on lifecycle management. <strong>This is a deeper dive into the AI Lifecycle flow we looked at earlier, but with more details.</strong> [13]</p>
+<p><strong>In the experimentation process, we collect the data, prepare the data, engineer our features, pick the right algorithm, tune our model, and end up creating that model artifact.</strong> Now, the first question is whether the model artifact is ready for production. It would be best if you were very suspicious of any artifact that comes out of a hand-built process. You want to make sure that the model is robust. Many approve models by data science teams will break because no further evaluation is conducted on the model; it is just taken as good because it was done by a data science team, a huge mistake.</p>
+<p>That is why that model artifact typically needs to go through a validation &amp; back-testing process. That testing process should be done by a team other than the team that built that model artifact. If you are in a regulated industry, you will have a validation team to validate whether the model does what it&#39;s supposed to do. And such testing will focus on the accuracy of the model under a variety of conditions. [13]</p>
+<p><strong>What happens next is we ask whether the model is a good quality model or not?</strong> If the model is of good quality, we can push that model over to the production team, and that team can set that model up in a test environment where they can do what is called <strong>warm-up</strong>. The production team can see how that model performs when running in the production environment. If it is not good, what do you do? You will need to rebuild that model for production. If you have a model that predicts well, but it is not architected in a way that would be efficient to run in production, you will have to take that model and rebuild it to work in production. Such a rebuilding process should be done hand in hand with the data science team because, ultimately, you will have to rebuild that model again and again in production.</p>
+<p>On another point, you do not want to take a built-in model Python, recode it in Java, assuming that it will run for two years in production. It may be a week from now that you need a new version of that model, and you do not want to be recoding it every time. So, you want to make sure that this rebuilding process is also scalable. Also, if you rebuild that model, it will have to go back through validation to make sure that it is thoroughly tested and works. Once you have a good model and it works well, you can start to warm it up in a production environment. That means you will package this up with Docker and deploy it out to Kubernetes; it will be in a test environment, and it may not be the actual production environment, but you are going to run it through its paces. You are going to put a load on it and see how it responds. [13]</p>
+<p><strong>Then the question we ask is whether this model is ready for production?</strong> If <strong>yes</strong>, now we can promote that model up to a scoring status. Now we can put that model up as a service, and we can say this model is good and performs well. We are going to promote it to production. We have gone from development to test to production, and we have a model in production that is exposed as a service and can be integrated into our downstream applications. So, now as a production team, we support that model and support that service as part of our IT infrastructure. However, what if the model does not work in production? What if we tested the model on this production environment, and we found that it does not perform as well as it needs to meet the SLA of our downstream apps. Well, we must rebuild the model. Now we need to take that information and go back and say this model is not performing fast enough or say it is not doing what we need it to do in production, and we are going to have to make those changes. The other thing you may find is the model is not resilient enough. We may find out that it did not deal with certain edge conditions that we have in production that we did not see in training, and so now we have to fix that. We might also need to add some additional code to the model to better respond to those conditions in production. In any case, the model will go back to the process again; anytime we rebuild the model, we need to make sure it will work; we need to warm it up and make sure that works. If it is production-ready, we can promote it for scoring. Once we have a service that is ready for scoring, now we have to monitor that service.[13]</p>
+<p><strong>So once we deploy our model, we will set up our monitoring around it and try to determine if the model is still good, accurate, and responsive.</strong> So we will run our monitoring suite on that model now and see if that model works or not, and if it is still working well, then we will keep monitoring it. What happens if the model is not working well? You will trigger an alert, and that alert will inform the operations team and potentially even the data scientists depending on the type of alert a problem has been detected. If the model is not working well, we will failover the model since our model is not working. <strong>So what do we do next?</strong> Ideally, we will not just leave that model that fails up and running; we have some process that says we have some other model we can go to, or we know how this system should respond for the next 24 hours while we fix the model. So, there is some process you will go through, so you can troubleshoot the model and understand what is happening and replace it in production. The most logical thing you can do is retrain that model on new data, which some hear as refitting. We say refit because we do not mean to completely re-tune the model; we mean refit on a new window of data, maybe more current data is a common fix, and then we will need to test that refitted model and make sure that it is working properly. We did not route that arrow from <strong>refit model on new data</strong> (Figure 19) up to <strong>validation &amp; back-testing</strong> (Figure 19) because even in banks, you are not rebuilding if you are refitting. You often will not have to go back through validation. So you can refit on a new window of data, make sure you did not introduce some production issue into the model, and you should be ready to go and replace that model in production with a new version. [13]</p>
+<p><strong>So, hopefully, this overview workflow gives you an idea of what is going on in lifecycle management, and you can see that it is a pretty complex area.</strong> This box in the bottom part of the workflow diagram is production operations(Figure 19). They need to be able to have environments for things like development, test, and production.  It is really important to understand that while this experimentation and training phase may take weeks or months, once we come down to the operations phase, that model you built-in data science could be running for months to even years in production. As a result,  this production operations phase is really important for your business. Now that cool model becomes part of your business and becomes mission-critical to your business. That model gets embedded in your business, and you need a robust process for managing that model and making sure it is continuing to function correctly. [13]</p>
+<h2 is-upgraded>Production Model Governance</h2>
+<p class="image-container"><img alt="production-model-governance" src="img/d7322edb78791f39.jpg"></p>
+<p><strong>Figure 20:</strong> Production Model Governance</p>
+<p>Production Model Governance must be taken seriously for a variety of reasons. When we put code into production, we need to make sure that code is safe and that it is going to do what we expect as a business. So, production model governance ensures that the right people have access to that code, not the wrong people and that we can prove that. Additionally, production model governance is about ensuring that the service is doing what we expect and proving that. [14]</p>
+<p><strong>A lot of what we are doing in governance is tracking what is going on, and we are controlling access to make sure that the right people are using our service and doing what we expect.</strong> So, the first thing you want to look for is, do we have access control? If we build a system by hand, maybe everybody who has access to our git repo then has access to our model, and anybody who has access to that model could deploy a service and get it up and running. That is probably not how you want to run your production operations. When running your production operations, if you&#39;re going to have any code that will be moved to production, you should have regulated access and control to prevent accidental and detrimental edits in your code.  You should also make sure you have control over the code itself, and you have control over the production environments where you are running that code. IT will probably have tight control over those production environments, but make sure that the right people have access to the code and the right people have access to production environments. [14]</p>
+<p><strong>You also want to make sure you have access to an audit trail. So within your production systems, you need to make sure you are tracking what is going on.</strong> So if you replace a model in production or you make changes to that model, you want to make sure you know when that happened, who did it, and ideally, you want to have some annotations there. These annotations would be notes to tell you why that change was made. Later on, as you are auditing either for legal needs or regulatory needs or even just troubleshooting, you can see what was going on. [14]</p>
+<p><strong>Next up for production governance is version control and rollback.</strong> Earlier, we discussed rollback, but you could think of it this way from a regulatory requirements perspective. You may have a lawsuit six months after the prediction was made that alleges that the prediction was biased. What are you going to do about it? You will need to go back in time and find the version of the model. You can do that through an audit trail. You may even have to reproduce that result from 6 months ago. As well, you will need a full version history of the models and all of the data used, and even the training data used to generate those models. [14]</p>
+<p><strong>Finally, for production governance, you will need controls in place to manage risk and comply with regulations for your industry.</strong> If you are in the banking sector, earlier we talked about the audit trails. You will probably have compliance reports that you will need to build and make sure that your controls are in place to do everything needed for compliance. So, there may be regulations that say you will need to write out a report on a particular model&#39;s performance, bias, etc. You need to make sure you have the right controls and systems in place to meet any requirements for your industry. [14]</p>
+<h2 is-upgraded>MLOps Impact</h2>
+<p class="image-container"><img alt="mlops-impact" src="img/5ac6aa7c104cf9f7.jpg"></p>
+<p><strong>Figure 21:</strong> MLOps Impact: Cost Savings, Stay out of jail, Increase profit</p>
+<p><strong>What Happens When We Use Technology for Machine Learning Operations Versus Manually Doing This? What Would You Expect to Happen?</strong></p>
+<p>The first thing that can happen is we save money as long as we have people effectively collaborating and working together. That means our data scientists are doing data science, our IT operations team is doing operations, and both teams are working together when appropriate for model deployment and management. Simultaneously, many people are not wasting time and are not hand-coding a bunch of brittle things. So, if you use a system like MLOps, you can hopefully yield cost savings and efficiency for your business. [15]</p>
+<p>The second thing with MLOps is we need to maintain control of these systems. We need to manage the risk of deploying these models into production and having a repeatable, controlled, managed, and governed process to help us stay out of jail ultimately. So, maintaining control is a significant impact on Machine Learning operations. [15]</p>
+<p>Finally, Machine Learning operations allows us to scale Machine Learning in production. So, we will be able to solve more problems for our business with the same resources. We do not need to hire many people because now we have technology in place and processes that will allow us to scale up our use of Machine Learning, deploy more models, and build more model services. Thus having this technology will enable us to increase revenues, profits, etc. So, the impact of MLOps varies. We can save money, control the risk to our business, control the risk to ourselves, and we can increase revenues and profits by scaling up Machine Learning across our business. [15]</p>
+<h2 is-upgraded>MLOps Architecture</h2>
+<p class="image-container"><img alt="mlops-architecture" src="img/6c04037ec5875678.jpg"></p>
+<p><strong>Figure 22:</strong> MLOps Architecture</p>
+<p><strong>In the MlOps Architecture Diagram Above, There Are Two Personas, Which Are the Data Scientists Working With Driverless AI and the Machine Learning (ML) Engineers Working With MlOps (a Model Manager).</strong></p>
+<p>The data scientists will build Driverless AI experiments, which use AutoML behind the scenes to do model training and develop the Driverless AI model. A Driverless AI model is a scoring pipeline. Driverless AI has two scoring pipelines: a Python scoring pipeline and a MOJO scoring pipeline. Once they have their model built in a Driverless AI experiment, the data scientist will link one or more experiments to a Driverless AI project. That Driverless AI project is then saved in the model storage.</p>
+<p>From model storage, the ML Engineer uses MLOps, a Model Manager, to access a Driverless AI project saved in model storage. Then, they will either deploy the model to a development environment that simulates the conditions of the production environment or deploy the model to a production environment. MLOps deploys Driverless AI&#39;s MOJO scoring pipeline. As the model is deployed into a development or production environment, it is deployed on Kubernetes. The end-user can make scoring requests to the model REST service, so the model performs predictions and returns the scoring results. As the predictions are being made, predicted data is being saved in influx DB and used by Grafana dashboard to generate visualizations. If it were running, we would see the Grafana dashboard in Model Manager for monitoring the model&#39;s activity as it makes predictions.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Task 4: Tour of MLOps UI" duration="0">
+        <h2 is-upgraded>Projects Dashboard Tour</h2>
+<p class="image-container"><img alt="mlops-has-dai-hydraulic-system-project" src="img/2ed85bc1f9a15a4d.jpg"></p>
+<p><strong>Figure 23:</strong> MLOps <strong>Projects</strong> Dashboard</p>
+<p>In the MLOps dashboard for <code>ds1</code> user, observe the following:</p>
+<ul>
+<li>Projects: MLOps projects page shows Driverless AI projects shared with MLOps</li>
+<li>Logged in as ds1</li>
+<li>Logout: logs one out of MLOps</li>
+<li>3 Bar Menu: by default, it has the left sidebar open to see <strong>+Add project</strong> and <strong>Projects</strong>. If you click the <strong>3 bar menu</strong>, it will close the left sidebar.</li>
+<li><strong>+ Add project</strong></li>
+<li>Projects: list of Driverless AI projects shared with MLOps  <ul>
+<li>Type to filter: type keywords to filter for certain content from projects</li>
+<li>hydraulic system: specific Driverless AI project shared with MLOps</li>
+</ul>
+</li>
+<li>My projects: table of rows that contain the projects shared with MLOps  <ul>
+<li>Name: Driverless AI project name</li>
+<li>Created time: date and time the Driverless AI project was created</li>
+<li>Models count: number of models associated with that Driverless AI project</li>
+</ul>
+</li>
+<li>Version: the version of MLOps</li>
+</ul>
+<p>Click on <strong>hydraulic system</strong> in my projects table.</p>
+<h2 is-upgraded>Hydraulic System Project Dashboard Tour</h2>
+<p class="image-container"><img alt="hydraulic-system-project-dashboard" src="img/2deff4f1d6ecd9a8.jpg"></p>
+<p><strong>Figure 24:</strong> MLOps <strong>Hydraulic System</strong> Project</p>
+<ul>
+<li>hydraulic system: is the current project</li>
+<li>Projects &gt; hydraulic system</li>
+<li>3 Bar Menu: by default, it has the left sidebar open to see <strong>+Add project</strong> and <strong>Projects</strong>. If you click the <strong>3 bar menu</strong>, it will close the left sidebar.</li>
+<li><strong>+ Add project</strong></li>
+<li>Projects</li>
+<li>hydraulic system: current open project  <ul>
+<li>Alerts - show information about the current state of a deployed model and provide alerts for drift, anomalies, and residuals in the data.</li>
+<li>Deployments - shows all deployments for a hydraulic system project</li>
+<li>Models - shows all models that have been exported from Driverless AI into the hydraulic system project.</li>
+<li>Events - provides a list of all events that have occurred in the project, such as the project creation and tagging/untagging of deployments.</li>
+</ul>
+</li>
+<li>Summary  <ul>
+<li>Name - name of this project</li>
+<li>Project ID - ID of this project</li>
+<li>Created on - date and time this project was created on</li>
+<li>Models - number of models in this project</li>
+<li>Deployments - number of models deployed in this project</li>
+<li>Alerts - provides alerts for drift, anomalies, and residuals in the data as red, orange, or green alerts</li>
+<li>Owner - username of the user who created this project</li>
+</ul>
+</li>
+<li>(A) Share Project: with a different user, such as ds2 user</li>
+<li>Deployments: current models deployed in this project  <ul>
+<li>No deployments available.</li>
+</ul>
+</li>
+<li>Models  <ul>
+<li>Model name - name of a model in this project</li>
+<li>Model ID - ID of a model in this project</li>
+<li>Created on - date and time a model was created in this project</li>
+<li>Scorer - scorer metric used by a model in this project</li>
+<li>Score - validation score from a model in this project</li>
+<li>Owner - username of the user who created a model in this project</li>
+<li>Environment - status of what type of environment a model was deployed for this project</li>
+<li>Tag - tag name and value to associate with a model in this project</li>
+<li>© Actions - actions that can be performed on this model: deploy it to dev/prod, create a challenger, download an autoreport, etc</li>
+</ul>
+</li>
+<li>A/B Test: allows you to compare the performance of two or more models</li>
+</ul>
+<p>A. To see how to <strong>Share project</strong> with another user in MLOps, refer to section <a href="#a-share-project-from-ds1-user-with-ds2-user" target="_blank">A: Share Project from ds1 user with ds2 user</a></p>
+<p>B. To see <strong>More experiments</strong> in this project, refer to section <a href="#b-hydraulic-system-models-dashboard" target="_blank">B: Hydraulic System Models Dashboard</a></p>
+<p>C. To see a tour of the <strong>actions</strong> that can be performed on this model (<strong>hydraulic_model_1</strong>), refer to section <a href="#c-hydraulic-system-projects-models-actions-tour" target="_blank">C: Hydraulic System Projects Models Actions Tour</a></p>
+<p>D. To see the <strong>events</strong> in this project, refer to section <a href="#d-hydraulic-system-events-tour" target="_blank">D: Hydraulic System Events Tour</a></p>
+<p>For the next task, we are going to deploy the <strong>hydraulic_mode_1</strong> to a <strong>DEV environment</strong>.</p>
+<h2 is-upgraded>A: Share Project from ds1 user with ds2 user</h2>
+<p class="image-container"><img alt="share-ds1-project-with-ds2" src="img/8e9034acfda7a1e3.gif"></p>
+<p><strong>Figure 25:</strong> Share ds1 user project with ds2 user in MLOps</p>
+<p>1. Click <strong>Share Project</strong></p>
+<p>2. <strong>Enter username: ds2</strong></p>
+<p>3. Click <strong>Share with ds2</strong></p>
+<p>4. Click the <strong>Close</strong> button at the bottom of the <strong>Share project</strong> modal.</p>
+<p>5. <strong>ds2</strong> user should now have the project (you can login as ds2 and see for yourself)</p>
+<p>So now, multiple people in the ML Operations team can collaborate on the same ML project.</p>
+<h2 is-upgraded>B: Hydraulic System Models Dashboard</h2>
+<p class="image-container"><img alt="see-more-experiment-models" src="img/b5b3b4e8e3028c63.gif"></p>
+<p><strong>Figure 26:</strong> See More Experiment Models</p>
+<p>1. Click on <strong>More experiments...</strong></p>
+<p>2. On the top left corner, click on <strong>Projects</strong> &gt; <strong>hydraulic system</strong> to return back to hydraulic system project dashboard.</p>
+<h2 is-upgraded>C: Hydraulic System Projects Models Actions Tour</h2>
+<p class="image-container"><img alt="mlops-models-actions" src="img/e4aa7b9fbcac160b.jpg"></p>
+<p><strong>Figure 27:</strong> project <strong>hydraulic system model actions dropdown menu</strong></p>
+<ul>
+<li>Deploy to DEV: deploy this model to a development environment, which is a test production environment that simulates the conditions of a production environment</li>
+<li>Deploy to PROD: deploy this model to a production environment</li>
+<li>Challenger for ...: allows you to continuously compare your chosen best model (Champion) to a Challenger model</li>
+<li>Download Autoreport: downloads the same autoreport from Driverless AI</li>
+<li>More details: in depth details on this model</li>
+</ul>
+<p>1. Click on <strong>More details</strong>.</p>
+<h2 is-upgraded>Hydraulic Model More Details Tour</h2>
+<p class="image-container"><img alt="hydraulic-model-more-details" src="img/efb34cb97b950e64.jpg"></p>
+<p><strong>Figure 28:</strong> project <strong>hydraulic system model comments</strong></p>
+<ul>
+<li>hydraulic_model_1: the particular model being looked at</li>
+<li>Projects &gt; hydraulic system &gt; Models &gt; hydraulic_model_1</li>
+<li><strong>+ Add project</strong></li>
+<li>Projects</li>
+<li>hydraulic system  <ul>
+<li>Alerts</li>
+<li>Deployments</li>
+<li><strong>Models</strong>: we were just at the models page and now we are looking at a particular model in this project</li>
+<li>Events</li>
+</ul>
+</li>
+<li>Summary  <ul>
+<li>Name: name of this model</li>
+<li>Experiment ID: ID of the experiment in which this model was built</li>
+<li>Created at: date and time this model was created at</li>
+<li>Deployments: indicates if this model has been deployed and to which environment dev or prod</li>
+<li>Owner: the user who created this model for this project</li>
+<li>Training duration: time that it took for this model to be trained</li>
+</ul>
+</li>
+<li>Comments  <ul>
+<li>Add new comment: text body for adding a new comment message. This can be helpful for the current user and other users who are working on this project to see an important message about this model  <ul>
+<li>Add comment: button for adding a new comment to this model</li>
+</ul>
+</li>
+<li>Previous comments: history of comments from users who are working on this model for this project</li>
+</ul>
+</li>
+<li>Parameters</li>
+<li>Metadata</li>
+</ul>
+<p>1. Proceed to the next section to learn how to <strong>add a comment</strong>.</p>
+<h2 is-upgraded>Add Comment as ds1 User for Hydraulic Model</h2>
+<p class="image-container"><img alt="add-comment-hydraulic-model" src="img/6d2bf55a884e16d.gif"></p>
+<p><strong>Figure 29:</strong> Add Comment to Hydraulic Model</p>
+<p>1. Enter the following text <code>This is a good model for predicting hydraulic cooling condition</code> in the <strong>Add new comment</strong> body.</p>
+<p>2. Click <strong>Add comment</strong>.</p>
+<p>3. Proceed to the next section to see the <strong>Parameters</strong> tab.</p>
+<h2 is-upgraded>Hydraulic Model More Details - Parameters Tour</h2>
+<p class="image-container"><img alt="see-parameters-of-hydraulic-model" src="img/6116c122c98e9466.gif"></p>
+<p><strong>Figure 30:</strong> See Parameters of Hydraulic Model</p>
+<p>1. Click on the <strong>Parameters</strong> tab.</p>
+<ul>
+<li>Parameters  <ul>
+<li>Parameter: target column is the column we are trying to predict using this model</li>
+<li>Value: cool_cond_y is the value we are trying to predict using this model</li>
+</ul>
+</li>
+</ul>
+<p>2. Proceed to the next section to see the <strong>Metadata</strong> tab.</p>
+<h2 is-upgraded>Hydraulic Model More Details - Metadata Tour</h2>
+<p class="image-container"><img alt="see-metadata-of-hydraulic-model" src="img/69d81d1cbef271cb.gif"></p>
+<p><strong>Figure 31:</strong> See Metadata of Hydraulic Model</p>
+<p>1. Click on the <strong>Metadata</strong> tab.</p>
+<p>2. As you scroll down the page, you will see <strong>dai/labels</strong>, <strong>dai/score, dai/scorer, dai/summary</strong> and more metadata.</p>
+<p>3. Click on Projects &gt; <strong>hydraulic system</strong> to return back to the hydraulic system project dashboard.</p>
+<h2 is-upgraded>D: Hydraulic System Events Tour</h2>
+<p><strong>Events</strong> shows what has happened in this project:</p>
+<p class="image-container"><img alt="hydraulic-system-events-table" src="img/7bbbeb0e15de25a6.jpg"></p>
+<p><strong>Figure 32:</strong> project <strong>hydraulic system events</strong></p>
+<p>From the list of events, we can see a <strong>hydraulic_model_1</strong> deployed by ds1 at a particular date and time.</p>
+<p>What else does the list of events tell you has happened in this <strong>hydraulic system</strong> project?</p>
+<p>Does your list of events look different than the image above? If yes, that is expected since different events may have happened in your version of the <strong>hydraulic system</strong> project.</p>
+<p>1. Click on Projects &gt; <strong>hydraulic system</strong> to return back to the hydraulic system project dashboard. Next, we will deploy the ML model to a dev environment.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Task 5: Interactive and Batch Scoring via MLOps Model Deployment" duration="0">
+        <p>1. In the <strong>Models</strong> table, click on <strong>Actions (3 dots icon)</strong> for <strong>hydraulic_model_1</strong>, then click <strong>Deploy to DEV</strong>.</p>
+<p class="image-container"><img alt="deploy-hydraulic-model-to-dev" src="img/c6f253716ac014c.jpg"></p>
+<p><strong>Figure 33:</strong> Project <strong>Deploy Hydraulic System Model to Dev Environment</strong></p>
+<p>2. A <strong>Please confirm</strong> modal will appear, click on <strong>Confirm</strong>.</p>
+<p class="image-container"><img alt="confirm-dev-model-deployment" src="img/e653b927d3dce6e6.jpg"></p>
+<p><strong>Figure 34:</strong> Confirm you would like Model Deployed to Dev Environment</p>
+<p>You should see the <strong>Environment</strong> for <strong>hydraulic_model_1</strong> deployed to the <strong>DEV environment</strong>. The <strong>Deployments</strong> table will also update with this model deployed to <strong>DEV</strong> environment. The model&#39;s deployment <strong>state</strong> will go from &#34;Deployment data not found, Preparing, Launching to Healthy.&#34; As you may have read in the concepts section, deploying the ML model to a development environment, especially a production environment is very difficult to do for many people and organizations. You just did it in about 3 clicks! Congratulations!</p>
+<p class="image-container"><img alt="model-deployed-to-dev" src="img/6510822adf0e0d4.jpg"></p>
+<p><strong>Figure 35:</strong> Project deployed <strong>Hydraulic Model to Dev Environment</strong></p>
+<ul>
+<li>Deployments: a table of deployed models for this project  <ul>
+<li>Model - name of a model that is deployed</li>
+<li>Deployment type - type of deployment</li>
+<li>Top model</li>
+<li>Environment - the environment the model was deployed to either dev or prod</li>
+<li>Deployed - the date and time that this model was deployed at</li>
+<li>State - the condition of this model</li>
+<li>Alerts - info, warning, errors, or other alerts associated with this model deployment</li>
+<li>Actions - the supported actions that can be performed on this model deployment</li>
+</ul>
+</li>
+</ul>
+<p>3. In the <strong>Deployments</strong> table, click on <strong>Actions</strong> for <strong>hydraulic_model_1</strong>, then click on <strong>More details</strong>.</p>
+<p class="image-container"><img alt="model-deployment-actions" src="img/5fa0e30d77d5674c.jpg"></p>
+<p><strong>Figure 36:</strong> Project <strong>Hydraulic System Model Deployment Actions</strong></p>
+<ul>
+<li>Actions  <ul>
+<li>More details: in depth details on this deployed model</li>
+<li>Monitoring: visualizations to represent the predictions the model is performing on new data</li>
+<li>Show sample request: curl sample scoring request to have the model perform a prediction on sample data</li>
+<li>Copy endpoint URL: the URL that this model is running on and that you would send a score request to, so this model can make predictions</li>
+</ul>
+</li>
+</ul>
+<p class="image-container"><img alt="model-deployment-more-details" src="img/df3aed39fd51a19.jpg"></p>
+<p><strong>Figure 37:</strong> Project: <strong>More Details on the Hydraulic System Model Deploy</strong></p>
+<ul>
+<li>Deployment</li>
+<li>Summary  <ul>
+<li>Endpoint - the URL that this model is running on and that you would send a score request to, so this model can make predictions</li>
+<li>Status - the condition of this model</li>
+<li>Created on: date and time this model deployment was performed</li>
+<li>Top model - UUID of this model deployment</li>
+</ul>
+</li>
+<li>Monitor: redirect to Grafana dashboard for monitoring deployed model</li>
+<li>Delete: remove this model deployment</li>
+<li>Model selections  <ul>
+<li>Target type - single model, champion/challenger, and A/B test</li>
+<li>Project - name of the project this model deployment is associated with</li>
+<li>Environment - type of environment the model was deployed (to either dev or prod)</li>
+<li>Model name - name of the model that was deployed</li>
+<li>Model ID - ID of the model that was deployed</li>
+<li>Created on - date and time this model was created</li>
+<li>Scorer - scorer metric used for this model</li>
+<li>Score - validation score being used in this model</li>
+<li>Owner - the user who deployed this model</li>
+<li>Environment - current environment this model is deployed to</li>
+<li>Tag - tag name and value associated with this model deployment</li>
+</ul>
+</li>
+<li>Save and deploy</li>
+</ul>
+<p>4. Press the <strong>X</strong> button in the top right corner to exit that <strong>Deployment</strong> page for <strong>hydraulic_model_1</strong>.</p>
+<h2 is-upgraded>Interactive Scoring via Dev Deployment Environment</h2>
+<p>1. Click on <strong>Actions</strong> for <strong>hydraulic_model_1</strong>, then click <strong>Show sample request</strong>.</p>
+<p>2. Click <strong>Copy request</strong></p>
+<p>3. Click <strong>Close</strong></p>
+<p class="image-container"><img alt="model-deployment-show-sample-request" src="img/36a6e86d070ff956.jpg"></p>
+<p><strong>Figure 38: Hydraulic System Model Deployment Copy Sample Request</strong></p>
+<p>Paste <strong>Sample Request</strong> into your terminal and press enter:</p>
+<p class="image-container"><img alt="sample-request-result" src="img/8d25f5b1f1dc7e71.jpg"></p>
+<p><strong>Figure 39:</strong> Result after <strong>Executing Hydraulic System Model Sample Request</strong></p>
+<p>The results are a classification for the hydraulic cooling condition.</p>
+<p>Once again, the Driverless AI  experiment is a classifier model that classifies whether the <strong>cooling condition</strong> of a <strong>Hydraulic System Test Rig</strong> is 3, 20, or 100. By looking at the <strong>cooling condition,</strong> we can predict whether the Hydraulic Cooler operates <strong>close to total failure</strong>, <strong>reduced efficiency</strong>, or <strong>full efficiency</strong>.</p>
+<p>According to our results, the classification model believes an 85.66% chance that the <strong>Hydraulic Cooling Condition</strong> is operating <strong>close to total failure(cool_cond_y.3).</strong>  As a result, we will need to do maintenance to ensure the <strong>Hydraulic Cooling Condition</strong> operates at full efficiency.</p>
+<p>The results will give you a probability (a decimal value) for cool_cond_y.3, cool_cond_y.20, and cool_cond_y.100. After converting each decimal value to a percentage, we discover that the highest percentage is for cool_cond_y.3.</p>
+<ul>
+<li><strong>3</strong> &gt; 0.8566 &gt; 85.66%</li>
+<li><strong>20</strong> &gt; 0.13736 &gt; 13.736%</li>
+<li><strong>100</strong> &gt; 0.0060 &gt; 0.6%</li>
+</ul>
+<h2 is-upgraded>Monitoring Deployments</h2>
+<p>Driverless AI + MLOps can monitor models for drift, anomalies, and residuals, providing more traceability and governance of models. The alerts provided on the dashboard can help you determine whether to re-tune or re-train models.</p>
+<p>In the Deployment section, click on <strong>Actions</strong> &gt; <strong>Copy endpoint URL</strong>. Right after, return to the <strong>H2O.ai Platform Studio</strong> and click <strong>Demo</strong> located at the top right corner of the page. Click the following option: <strong>Hydraulic System demo data pump</strong> &gt; paste the <strong>end point URL</strong> we just copied &gt; click <strong>submit</strong> &gt; click <strong>OK</strong>.</p>
+<p class="image-container"><img alt="start-hydraulic-systems-demo-data-pump" src="img/74de1b59faee3e99.gif"></p>
+<p>In the Deployments section, click on <strong>Actions</strong> &gt; <strong>Monitoring</strong> to open a <a href="https://grafana.com" target="_blank">Grafana</a> dashboard and view metrics for the deployment. (Refer to the <a href="https://grafana.com/docs/" target="_blank">Grafana documentation</a> for more information.)</p>
+<p class="image-container"><img alt="mlops-monitoring" src="img/28cc8fed252cdfb9.jpg"></p>
+<p>By default, the <strong>Monitoring</strong> page shows:</p>
+<ul>
+<li>Alerts</li>
+<li>Column types</li>
+<li>Drift detection</li>
+<li>Scoring latency (Populated only after the scoring service is started)</li>
+<li>Scatterplots, histograms, and heatmaps for input columns and output columns</li>
+</ul>
+<p class="image-container"><img alt="monitoring-start-hydraulic-systems-demo-data-pump" src="img/5480233ed7506ac0.gif"></p>
+<h2 is-upgraded>Deep Dive and Resources</h2>
+<ul>
+<li><a href="https://docs.h2o.ai/mlops-release/latest-stable/docs/userguide/using.html?highlight=monitoring#monitoring-deployments" target="_blank">Monitoring Deployments</a></li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Task 6: Challenge" duration="0">
+        <h2 is-upgraded>Deploy New Driverless AI Model using MLOps</h2>
+<p>You just learned how to deploy a Driverless AI model that predicts hydraulic cooling conditions. Now, try deploying a new Driverless AI model from a different Driverless AI project using MLOps. Try using Driverless AI and MLOps to solve a current problem you are trying to solve and see if Driverless AI and MLOps are the keys to solving your problem.</p>
+<h2 is-upgraded>Perform Predictions via Programmatic Score Requests</h2>
+<p>So far, we have covered making score requests in the command line with curl and through a live code data recipe in Python, but maybe you have an application you want to perform the predictions. Suppose there is an application that you have built. In that case, you could create a Driverless AI model using the dataset, then make score requests utilizing the programming language your application was written in: Java, Python, C++, etc.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Next Steps" duration="0">
+        <ul>
+<li>Check out these webinars that dive into how to productionize Driverless AI models using MLOps:  <ul>
+<li>H2O.ai Webinar: <a href="https://www.brighttalk.com/service/player/en-US/theme/default/channel/16463/webcast/418711/play?showChannelList=true" target="_blank">Getting the Most Out of Your Machine Learning with Model Ops</a></li>
+</ul>
+</li>
+<li>Check out these self-paced courses on Driverless AI model deployment:  <ul>
+<li><a href="https://h2oai.github.io/tutorials/scoring-pipeline-deployment-introduction" target="_blank">Self-Paced Course 4A: Scoring Pipeline Deployment Introduction</a></li>
+<li><a href="https://h2oai.github.io/tutorials/scoring-pipeline-deployment-templates" target="_blank">Self-Paced Course 4B: Scoring Pipeline Deployment Templates</a></li>
+</ul>
+</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>

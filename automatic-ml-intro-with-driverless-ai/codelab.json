@@ -1,0 +1,27 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2021-06-25T17:11:37-07:00",
+  "id": "automatic-ml-intro-with-driverless-ai",
+  "duration": 0,
+  "title": "Automatic Machine Learning Introduction with Driverless AI",
+  "summary": "Check the list",
+  "source": "/Users/falvarenga/Desktop/md-to-html/automatic-ml-intro-with-driverless-ai/automatic-ml-intro-with-driverless-ai.md",
+  "theme": "",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "driverless"
+  ],
+  "tags": [
+    "automaticml",
+    "automl",
+    "driverless",
+    "ml",
+    "security"
+  ],
+  "url": "automatic-ml-intro-with-driverless-ai"
+}

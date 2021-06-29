@@ -1,0 +1,402 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Scoring Pipeline Deployment Templates</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <link rel="stylesheet" href="../assets/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="scoring-pipeline-deployment-templates"
+                  title="Scoring Pipeline Deployment Templates"
+                  environment="web"
+                  feedback-link="">
+    
+      <google-codelab-step label="Objective" duration="0">
+        <p><strong>Machine Learning Model Deployment</strong> is the process of making your models available in production environments, so they can be used to make predictions for other software systems. Before model deployment, <strong>feature engineering</strong> occurs in the form of data preparation that later on will be used to train a model. Driverless AI <strong>Automatic Machine Learning (AutoML)</strong> combines the best feature engineering and one or more <strong>machine learning models</strong> into a scoring pipeline. The <strong>scoring pipeline</strong> is used to score or predict data when given new test data. The scoring pipeline comes in two flavors. The first scoring pipeline is a <strong>Model Object Optimized (MOJO) Scoring Pipeline</strong>, a standalone low-latency model object designed to be easily embeddable in production environments. The second scoring pipeline is a Python Scoring Pipeline, which has a heavy footprint that is all Python and uses the latest libraries of Driverless AI to allow for executing custom scoring recipes.</p>
+<p class="image-container"><img src="img/a8b156e42a5fb1f0.jpg">         </p>
+<p>Figure 1: Hydraulic System Cylinder Diagram</p>
+<p>By the end of this self-paced course, you will predict the <strong>cooling condition</strong> for a <strong>Hydraulic System Test Rig</strong> by deploying a <strong>MOJO Scoring Pipeline</strong> into production using <strong>Driverless AI&#39;s Production Ready Deployment Templates</strong>. The Hydraulic System Test Rig data comes from the <a href="https://archive.ics.uci.edu/ml/datasets/Condition+monitoring+of+hydraulic+systems#" target="_blank"><strong>UCI Machine Learning Repository: Condition Monitoring of Hydraulic Systems Data Set</strong></a>. Hydraulic System Test Rigs are used to test components in Aircraft Equipment, Ministry of Defense, Automotive Applications, and more [1].</p>
+<h2 is-upgraded>Deep Dive and Resources</h2>
+<p>[1] <a href="https://www.savery.co.uk/systems/test-benches" target="_blank">SAVERY - HYDRAULIC TEST RIGS AND BENCHES</a><br></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Prerequisites" duration="0">
+        <p>You will need the following to be able to do this self-paced course:</p>
+<ul>
+<li>Skilled in Java Object Oriented Programming</li>
+<li><strong>Driverless AI Environment</strong> on <strong>Aquarium</strong> with <strong>Prebuilt Experiment</strong> from <a href="https://h2oai.github.io/tutorials/scoring-pipeline-deployment-introduction" target="_blank">Self-Paced Course 4A: Scoring Pipeline Deployment Introduction</a></li>
+<li>Driverless AI License  <ul>
+<li>It is needed for using the MOJO2 Java Runtime API to deploy the MOJO Scoring Pipeline to a REST Server or Amazon Lambda</li>
+<li><strong>21-day trial license</strong> or if you need to <strong>purchase a Driverless AI license</strong>, reach out to our sales team via the <a href="https://www.h2o.ai/company/contact/" target="_blank">contact us form</a>.</li>
+</ul>
+</li>
+<li>Needed for AWS Lambda Deployment (Optional)  <ul>
+<li>If you have an Amazon Admin, request access permissions for  <ul>
+<li>Amazon AWS with IAM Full Access</li>
+<li>Amazon AWS with AWS Lambda Full Access</li>
+<li>Amazon AWS with Amazon API Gateway Administrator</li>
+<li>Amazon AWS with Usage Plans Enabled</li>
+</ul>
+</li>
+<li>Create an Amazon AWS IAM Access Key and Secret Key</li>
+</ul>
+</li>
+<li>Basic knowledge of Driverless AI or completion of the following self-paced courses:  <ul>
+<li><a href="https://h2oai.github.io/tutorials/automatic-ml-intro-with-driverless-ai" target="_blank">Self-Paced Course 1A: Automatic Machine Learning Introduction with Driverless AI</a></li>
+<li><a href="https://h2oai.github.io/tutorials/scoring-pipeline-deployment-introduction" target="_blank">Self-Paced Course 4A: Scoring Pipeline Deployment Introduction</a></li>
+</ul>
+</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Task 1: Set Up Environment" duration="0">
+        <h2 is-upgraded>Create Environment Directory Structure</h2>
+<pre><code language="language-bash" class="language-bash"># Create directory structure for Driverless AI Model Deployment Projects
+
+# Create directory where the mojo-pipeline/ folder will be stored
+mkdir $HOME/dai-model-deployment/
+</code></pre>
+<h2 is-upgraded>Set Up Driverless AI MOJO Requirements</h2>
+<h3 is-upgraded>Download MOJO Scoring Pipeline</h3>
+<p>1. If you have not downloaded the MOJO Scoring Pipeline from the previous self-paced course, consider the following steps:</p>
+<ul>
+<li>Start a new Two-Hour Driverless AI Test Drive session in <a href="https://aquarium.h2o.ai/login" target="_blank">Aquarium</a>.</li>
+<li>In your Driverless AI instance, click on the <strong>Experiments</strong> section.</li>
+<li>In the <strong>Experiments</strong> section, click on the following experiment: <strong>Model_deployment_HydraulicSystem</strong></li>
+<li>On the STATUS: COMPLETE section on the experiment page, click <strong>DOWNLOAD MOJO SCORING PIPELINE</strong></li>
+</ul>
+<p><img alt="download-mojo-scoring-pipeline" src="img/b21b97ebfb4464c1.png"><br><strong>Figure 2</strong>: Driverless AI Experiment Hover on Download MOJO Scoring Pipeline</p>
+<p><strong>Note:</strong> If you would like to build your own experiment, go to <a href="https://h2oai.github.io/tutorials/scoring-pipeline-deployment-introduction" target="_blank"><strong>Self-Paced Course 4A: Scoring Pipeline Deployment Introduction</strong></a>, then jump to &#34;Appendix A: Build Experiment&#34; and follow the instructions.</p>
+<p>2. Select <strong>Java</strong> for Java Runtime. Click <strong>Download MOJO Scoring Pipeline</strong>.</p>
+<p><img alt="Driverless AI Download Java MOJO" src="img/4bfdf10c374ad8f8.png"><br><strong>Figure 3</strong>: Download Driverless AI Download MOJO Scoring Pipeline</p>
+<p>3. Let&#39;s copy the <strong>mojo.zip</strong> file to the <strong>dai-model-deployment/</strong> folder and then extract the zip file:</p>
+<pre><code language="language-bash" class="language-bash">cd $HOME/dai-model-deployment/
+cp $HOME/Downloads/mojo.zip .
+unzip mojo.zip
+rm -rf mojo.zip
+</code></pre>
+<p>You will see a <strong>mojo-pipeline</strong> folder after the zip file is extracted.</p>
+<h3 is-upgraded>Install MOJO REST Server &amp; AWS Lambda Deployment Dependencies</h3>
+<p>4. Download and install Anaconda</p>
+<pre><code language="language-bash" class="language-bash"># Download Anaconda
+wget https://repo.anaconda.com/archive/Anaconda3-2020.02-Linux-x86_64.sh
+
+# Install Anaconda
+bash Anaconda3-2020.02-Linux-x86_64.sh
+</code></pre>
+<p>Close your terminal and reopen it to activate conda.</p>
+<p>5. Create virtual environment and install required packages</p>
+<pre><code language="language-bash" class="language-bash">conda create -y -n model-deployment python=3.6
+conda activate model-deployment
+
+conda install -y -c conda-forge openjdk=8.0.192
+conda install -y -c conda-forge maven
+conda install -c conda-forge terraform
+</code></pre>
+<h2 is-upgraded>Specify Driverless AI License via Environment Variable</h2>
+<p>1. Move your Driverless AI License file to <strong>dai-model-deployment/</strong> folder:</p>
+<pre><code language="language-bash" class="language-bash">cp $HOME/path/to/license.sig $HOME/dai-model-deployment/
+</code></pre>
+<p>2. Set the file path to the Driverless AI License file as a permanent environment variable by placing it inside <code>$HOME/.bash_profile</code> or <code>$HOME/.profile</code> file:</p>
+<pre><code language="language-bash" class="language-bash">echo &#34;export DRIVERLESS_AI_LICENSE_FILE=&#39;$HOME/dai-model-deployment/license.sig&#39;&#34; | tee -a $HOME/.bash_profile
+</code></pre>
+<p><strong>Note</strong>: If you purchased Driverless AI, it came with a license key and you will need it for this step.</p>
+<h2 is-upgraded>Deep Dive and Resources</h2>
+<ul>
+<li>Driverless AI MOJO Scoring Pipeline - Java Runtime: http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/scoring-mojo-scoring-pipeline.html</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Task 2: Scoring Pipeline Deployment Concepts" duration="0">
+        <p>Driverless AI Deployment Templates are production-ready deployment templates used by Driverless AI to execute Scoring Pipelines in production environments. For example, there are deployment templates for deploying MOJO scoring pipelines to local SpringBoot REST server, Amazon Lambda, Amazon Sagemaker, Google Cloud Run, and SQL database [1]. If there is no deployment template option for your needs, you can build your own template and contribute it back to the <a href="https://github.com/h2oai/dai-deployment-templates" target="_blank">Driverless AI Deployment Templates GitHub repository</a>. The repository&#39;s build system is Gradle. So, you can use a build system that is compatible with Gradle.</p>
+<h2 is-upgraded>Gradle Build System</h2>
+<p><a href="https://docs.gradle.org/current/userguide/getting_started.html" target="_blank">Gradle</a> is the main build automation tool used for building the Driverless AI Deployment Templates. Driverless AI leverages the deployment templates from this GitHub repository to deploy scoring pipelines into production [1]. The current deployment templates are written in Java and built for deploying MOJO Scoring Pipelines into the Java Runtime Environment [1]. However, Gradle is capable of building anything [2]. So, for deploying the MOJO Scoring Pipeline into the C++ Runtime Environment, which has Python and R wrappers, you can write a deployment template in either language and use the <a href="https://github.com/linkedin/pygradle/blob/master/docs/getting-started.md" target="_blank">Python Gradle Plugin</a> and/or <a href="https://github.com/arekbee/gradle-R-plugin" target="_blank">R Gradle Plugin</a> to build their template [3, 4]. Likewise, you can build a deployment template for the MOJO Scoring Pipeline in C++ Runtime calling functions from the MOJO C API. You can also build a deployment template in Python for the Python Scoring Pipeline. If you want to contribute your MOJO deployment template to H2O.ai, the recommendation would be to use Gradle or a build system compatible with the current Gradle build system, such as Apache Maven.</p>
+<p><img alt="Gradle Logo" src="img/fbb40000911c56fe.png"><br><strong>Figure 4</strong>: Gradle Logo. Image: https://github.com/gradle/gradle</p>
+<h2 is-upgraded>Jenkins</h2>
+<p>Jenkins is an open-source automation server that we use with Gradle to reliably build, test and deploy the Driverless AI Deployment Templates [5]. The Jenkins pipeline is written in groovy to perform multiple stages that initialize, test, build and publish the production deployment templates as Docker Images to cloud production environments (includes S3, Harbor, and DockerHub). [6]</p>
+<p><img alt="Jenkins Logo" src="img/a1c16c1bcc1f28a6.png"><br><strong>Figure 5</strong>: Jenkins Logo. Image: https://github.com/jenkinsci/jenkins</p>
+<h2 is-upgraded>Java Spring Boot Framework</h2>
+<p>Java Spring Boot framework is used for creating microservices [7]. Many of the deployment templates leverage Java Spring Boot framework as a REST Server [1]. This server is where the MOJO Scoring Pipeline is executed and ready to make predictions on incoming data coming from a client. Currently, the Spring Boot Server and MOJO are used in the following templates: REST Scorer, Google Cloud Run, Amazon Sagemaker, and REST SQL Scorer [8, 10, 11, 12].</p>
+<p><img alt="Spring Framework Logo" src="img/2e88fb2cafd9975a.png"><br><strong>Figure 6</strong>: Spring Framework Logo. Image: https://github.com/spring-projects/spring-framework</p>
+<h2 is-upgraded>Terraform to Automate AWS Lambda MOJO Deployment</h2>
+<p>Terraform is the tool we use to build an Amazon Lambda function by providing AWS a Lambda template that includes our MOJO scoring pipeline [9]. First, we set Terraform variables using permanent or temporary environment variables to instruct Terraform on what to do in AWS. These tasks for Terraform include accessing our AWS IAM account using access key credentials, then choosing an existing s3 bucket in a certain region to store the MOJO [9]. After the non-optional Terraform variables are set, we tell Terraform to publish our Lambda template to Amazon Lambda [9].</p>
+<p><img alt="Terraform Logo" src="img/193dd9773f22feb5.svg"><br><strong>Figure 7</strong>: Terraform Logo. Image: https://github.com/hashicorp/terraform</p>
+<h2 is-upgraded>REST Server and Client for Machine Learning Predictions</h2>
+<p>An approach to executing the MOJO Scoring Pipeline or Python Scoring Pipeline is to run it on a REST server. With many Driverless AI Deployment Templates, the MOJO Scoring Pipeline is executed on a Java Spring Boot REST server. When the MOJO is running, we can use it to score data. A client will make an HTTP request using the curl command to trigger the REST server&#39;s MOJO to do scoring on his new input data. Once the MOJO has scored the new input data, the REST server will respond to the client&#39;s request with the prediction result. If the user passes individual rows of new input data to the REST server, the MOJO will perform real-time scoring. Alternatively, the MOJO will perform batch scoring if the user passes multiple rows of new input data to the REST server.</p>
+<p><img alt="REST Server Client Scoring Request Arch" src="img/358043783d9c6cdc.jpg"><br><strong>Figure 8</strong>: Server and Client Scoring Request Architecture. Images: https://freesvg.org/</p>
+<h2 is-upgraded>AWS Lambda for Machine Learning Predictions</h2>
+<p>Another approach to executing the MOJO Scoring Pipeline is to run it on an AWS Lambda function. An AWS Lambda is a serverless compute service that runs code in response to events and automatically manages the underlying compute resources for us [15]. With AWS Lambda, we can upload our MOJO Scoring Pipeline execution code, and AWS Lambda takes care of everything required to run and scale our code with high availability [14]. With AWS Lambda, we are not required to provision or manage servers [14]. The AWS Lambda will automatically scale our application by running code in response to each trigger [14]. With the AWS Lambda, we are only charged for the compute time we consume [14]. So, we are charged for every 100ms our code executes and the number of times our code is triggered [14]. Thus, we are using the MOJO Scoring Pipeline to make predictions at a low operating cost. Appendix A of this self-paced course will show you how to send HTTP requests to the AWS Lambda function to trigger it to automatically execute our MOJO Scoring Pipeline to do real-time scoring and batch scoring.</p>
+<h2 is-upgraded>AWS Lambda vs EC2</h2>
+<h3 is-upgraded>Setup &amp; Manage Environment</h3>
+<p>With an AWS Lambda Driverless AI MOJO scoring pipeline deployment, scaling is fully automated, meaning that you do not need to spin up or provision containers or make them available for your applications [18]. So, you do not need to do much work to set up one or more environments. We need to apply a terraform from our local machine to deploy a Driverless AI MOJO scoring pipeline to an AWS Lambda. On the other hand, with a Driverless AI MOJO scoring pipeline deployment to a REST server running on an AWS EC2 instance, setting up the environment includes logging into the instance via SSH, installing the dependencies for the REST server and MOJO, and doing a git clone on the Driverless AI deployment templates GitHub repository [18]. On the EC2, ideally, you would have it done in a manner that is fully automated and reproducible for this setup process.</p>
+<h3 is-upgraded>Security</h3>
+<p>AWS Lambda abstracts away the patching and OS manual work, but you need to consider how to secure communication inside and outside your application to avoid surface attacks [18]. Since the number of functions tends to increase, monitoring them becomes a challenge and can result in decaying functions [18]. Vulnerability breaches happening and malicious agents growing over time is likely not to happen due to the stateless characteristic of the functions [18].</p>
+<p>With AWS EC2, you must consider the security layer at the instance level, which includes deciding and controlling the traffic allowed to communicate with each instance and dictating the allowed inbound traffic through certain protocols [18]. With AWS EC2, some of these protocols include TCP, UDP, ICMP. Creating policies with correct permissions, especially for a growing team, is a work of trial and error and is tiresome [18]. Similarly, handling permissions for each business needs mean changing policies often and results in unwanted granularity [18]. However, with AWS Lambda, creating policies, handling permissions, working on OS patches, and system maintenance is entirely taken care of by AWS [18].</p>
+<h3 is-upgraded>Performance</h3>
+<p>Various performance factors can be looked at when comparing AWS Lambda and EC2, including timeout, dependencies, scalability, availability, and latency. First, let&#39;s dive into the timeout performance. For AWS Lambda, long-running functions and complex tasks aren&#39;t a good fit because the lambda has a timeout of 300 seconds [18]. With AWS Lambda, some timeouts don&#39;t come from the 300 seconds limit; some happen due to bugs introduced to the program or when dealing with communication over external servers take too much time [18]. With AWS EC2, it has pretty flexible options, so you can work with long-running tasks since instances are available for different types of requirements with different configurations [18]. However, the AWS EC2 option is not error-free since it does suffer from connection timeout because of overlapping security group rules and unidentified user key by the server, and potentially other timeout issues [18]. So, if your performance factor involves dealing with long-running tasks performing complex processing, which could introduce timeouts, then you should go with AWS EC2 over AWS Lambda since Lambda lags [18].</p>
+<h3 is-upgraded>Cost Comparison</h3>
+<p>Both AWS Lambda and EC2 offer free tier versions, so they are free. Let&#39;s look at the cost comparison for one use case: low/infrequent traffic on a website/app [18]. If we look at the following specifications for the use case regarding the AWS Lambda, let&#39;s say we receive 10,000 hits per day over 24 hours and 200ms per hit at 512 GB for execution time [18]. Then, this results in 432,000 requests per month with 2,160 GB-sec of computing per month, and the total cost will be $0.31 per month for the AWS Lambda [18]. On the other hand, the smallest EC2 nano instance will cost ten times more since it runs for 24 hours, causing the cost to be multiplied by 24 [18].</p>
+<h2 is-upgraded>AWS Lambda Cold-Start in Real-Time Request Latency</h2>
+<p>If you decide to go with AWS Lambda for Driverless AI MOJO scoring pipeline deployment, there are a few factors you should consider with real-time scoring request latency. A low latency network connection results in small delay times, while a high latency suffers from long delays. Low latency for real-time scoring requests would be ideal because it is immediate. Cold starts equal higher latency [16, jarmod]. If you are using multiple layers in AWS for Lambda MOJO deployments like CloudFront, API Gateway, and Lambda, then real-time scoring requests will result in a higher latency [16, jarmod]. The programming language for your Lambda MOJO deployment could impact scoring requests latency, such as using Java will result in the highest cold-start latency. In contrast, Go will result in the lowest cold-start latency [16, jarmod]. Finally, your Lambda environment size impacts the scoring requests latency, such as an environment with more RAM and more CPU will result in faster response time [16, jarmod].</p>
+<p>When choosing AWS Lambda for MOJO deployment, cold-start will cause high latency for the scoring request, so applying a pre-warming strategy to your Lambda may be a potential solution to ensuring that your Lambda responds to scoring request results in low latency [16, jarmod]. One issue that may cause the Lambdas not to stay warm is that they are not receiving enough requests per day [16, Quentin Hayot]. For example, if you have a time-critical application in which a user is on the phone and waiting for text-to-speech to answer, it may suffer from the Lambda&#39;s high latency response time. One approach to ensuring that the lambdas stay warm is to call them enough using NPM&#39;s Serverless WarmUp Plugin so that they don&#39;t get cold[16, Quentin Hayot][17].</p>
+<h2 is-upgraded>Deep Dive and Resources</h2>
+<p>[1] <a href="https://github.com/h2oai/dai-deployment-templates" target="_blank">H2O.ai GitHub Repository: Driverless AI Deployment Templates</a><br> [2] <a href="https://gradle.org/" target="_blank">Gradle Build Tool</a><br> [3] <a href="https://github.com/linkedin/pygradle" target="_blank">LinkedIn GitHub Repository: PyGradle</a><br> [4] <a href="https://github.com/arekbee/gradle-R-plugin" target="_blank">arekbee GitHub Repository: Gradle R Plugin</a><br> [5] <a href="https://jenkins.io/" target="_blank">Jenkins</a><br> [6] <a href="https://github.com/h2oai/dai-deployment-templates/blob/master/Jenkinsfile" target="_blank">H2O.ai GitHub Repository: Driverless AI Deployment Templates - Jenkinsfile</a><br> [7] <a href="https://www.tutorialspoint.com/spring_boot/spring_boot_introduction.htm" target="_blank">Spring Boot - Introduction</a><br> [8] <a href="https://github.com/h2oai/dai-deployment-templates/tree/master/local-rest-scorer" target="_blank">Driverless AI Deployment Template for Local SpringBoot Scorer</a><br> [9] <a href="https://github.com/h2oai/dai-deployment-templates/tree/master/aws-lambda-scorer" target="_blank">Driverless AI Deployment Template for AWS Lambda</a><br> [10] <a href="https://github.com/h2oai/dai-deployment-templates/tree/master/gcp-cloud-run" target="_blank">Driverless AI Deployment Template for Google Cloud Run</a><br> [11] <a href="https://github.com/h2oai/dai-deployment-templates/tree/master/aws-sagemaker-hosted-scorer" target="_blank">Driverless AI Deployment Template for Sagemaker Hosted Scorer</a><br> [12] <a href="https://github.com/h2oai/dai-deployment-templates/tree/master/sql-jdbc-scorer" target="_blank">Driverless AI Deployment Template for Local Rest SQL Scorer</a><br> [13] <a href="https://www.terraform.io/intro/index.html" target="_blank">Introduction to Terraform</a><br> [14] <a href="https://aws.amazon.com/lambda/" target="_blank">AWS Lambda Overview</a><br> [15] <a href="https://aws.amazon.com/lambda/features/" target="_blank">AWS Lambda Features</a><br> [16] <a href="https://stackoverflow.com/questions/52059561/is-aws-lambda-good-for-real-time-api-rest" target="_blank">Stackoverflow: Is AWS Lambda good for real-time API Rest?</a><br> [17] <a href="https://www.npmjs.com/package/serverless-plugin-warmup" target="_blank">NPM: Serverless WarmUp Plugin</a><br> [18] <a href="https://www.simform.com/aws-lambda-vs-ec2/#:~:text=AWS%20Lambda%20is%20an%20on,%2Da%2Dservice%20by%20AWS.&text=The%20main%20difference%20between%20AWS,cases%20to%20name%20a%20few." target="_blank">AWS Lambda vs EC2: Comparison of AWS Compute Resources</a><br></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Task 3: Interactive Scoring (REST) via Deployment Templates" duration="0">
+        <p>Now that you have some background in scoring pipeline deployment templates let&#39;s download the Driverless AI Deployment Template GitHub repo, build the templates using Gradle, and deploy our MOJO scoring pipeline locally and to the cloud.</p>
+<h2 is-upgraded>Download Driverless AI Deployment Templates</h2>
+<p>1. Go to GitHub repository hyperlink https://github.com/h2oai/dai-deployment-templates</p>
+<p><img alt="Driverless AI Deployment Templates Repo" src="img/3dc5b57e74c7229d.jpg"><br><strong>Figure 9</strong>: Driverless AI Deployment Templates GitHub</p>
+<p>2. Download the <strong>dai-deployment-templates</strong> to your computer&#39;s <code>$HOME</code> folder.</p>
+<pre><code language="language-bash" class="language-bash">cd $HOME
+git clone https://github.com/h2oai/dai-deployment-templates
+cd dai-deployment-templates
+</code></pre>
+<p>3. Build the templates using the Gradle build automation tool.</p>
+<pre><code language="language-bash" class="language-bash">./gradlew distributionZip
+</code></pre>
+<p>You should receive a message that the build completed successfully.</p>
+<h2 is-upgraded>Deep Dive and Resources</h2>
+<ul>
+<li><a href="https://github.com/h2oai/dai-deployment-templates" target="_blank">Driverless AI Deployment Templates</a></li>
+</ul>
+<h2 is-upgraded>Deploy Driverless AI MOJO Scoring Pipeline to REST Server</h2>
+<p>We just built the local REST scorer template. Now we can run the local scorer. Let&#39;s use the direct executable jar approach. The documentation tells us that the local scorer run command needs the path to the pipeline.mojo file. This file resides in the mojo-pipeline folder.</p>
+<p>1. Let&#39;s provide the path to the <strong>pipeline.mojo</strong> using a permanent environment variable by adding the <strong>export MOJO_PIPELINE_FILE</strong> to the <code>$HOME/.bash_profile</code> or <code>$HOME/.profile</code> file.</p>
+<pre><code language="language-bash" class="language-bash">export MOJO_PIPELINE_FILE=&#34;$HOME/dai-model-deployment/mojo-pipeline/pipeline.mojo&#34;
+</code></pre>
+<p>2. Then start the rest scorer.</p>
+<pre><code language="language-bash" class="language-bash">cd local-rest-scorer
+java -Dmojo.path=$MOJO_PIPELINE_FILE -jar build/libs/local-rest-scorer-{version}-SNAPSHOT-boot.jar
+</code></pre>
+<p>You should see the Java SpringBoot server application launching.</p>
+<p><img alt="SpringBoot Server Launching" src="img/b232ed07592bad9a.jpg"><br><strong>Figure 10</strong>: Launched SpringBoot Application and Loaded Driverless AI MOJO Scoring Pipeline</p>
+<p>The Java SpringBoot server application finished launching. So, now our MOJO scoring pipeline has been loaded on the REST server. It is ready to be sent scoring requests.</p>
+<p>3. Create a <strong>test.json</strong> file with our scoring request payload.</p>
+<pre><code language="language-bash" class="language-bash">tee -a test.json &lt;&lt; EOF
+{
+   &#34;fields&#34;: [&#34;psa_bar&#34;, &#34;psb_bar&#34;, &#34;psc_bar&#34;, &#34;psd_bar&#34;, &#34;pse_bar&#34;, &#34;psf_bar&#34;, &#34;fsa_vol_flow&#34;, &#34;fsb_vol_flow&#34;, &#34;tsa_temp&#34;, &#34;tsb_temp&#34;, &#34;tsc_temp&#34;, &#34;tsd_temp&#34;, &#34;pump_eff&#34;, &#34;vs_vib&#34;, &#34;cool_pwr_pct&#34;, &#34;eff_fact_pct&#34;],
+   &#34;rows&#34;: [[&#34;155.56646728515625&#34;, &#34;104.93318176269531&#34;, &#34;0.862698495388031&#34;, &#34;0.00021100000594742596&#34;, &#34;8.37287425994873&#34;, &#34;8.321526527404785&#34;, &#34;2.0819649696350098&#34;, &#34;8.871089935302734&#34;, &#34;35.355934143066406&#34;, &#34;40.99454879760742&#34;, &#34;38.31908416748047&#34;, &#34;30.47344970703125&#34;, &#34;2366.707275390625&#34;, &#34;0.5243666768074036&#34;, &#34;1.3755667209625244&#34;, &#34;19.58085060119629&#34;]]
+}
+EOF
+</code></pre>
+<p><strong>Note:</strong> the data in the json scoring request payload comes from one row of Hydraulic System data in the <code>$HOME/dai-model-deployment/mojo-pipeline/example.csv</code></p>
+<p>4. Copy and paste the curl command into your terminal, then run it to request that the REST server&#39;s MOJO scoring pipeline computes a prediction for hydraulic cooling condition:</p>
+<pre><code language="language-bash" class="language-bash"># Request REST Server MOJO do interactive scoring for hydraulic cooling condition
+curl \
+   -X POST \
+   -H &#34;Content-Type: application/json&#34; \
+   -d @test.json http://localhost:8080/model/score
+</code></pre>
+<p>You should see the following prediction output for Hydraulic Cooling Condition:</p>
+<p><img alt="Rest Server Score Result" src="img/1a2d66e7f11d8ac6.jpg"><br><strong>Figure 11</strong>: Hydraulic Cooling Condition Classification Results</p>
+<ul>
+<li><strong>cool_cond_y.3 = operates at close to total failure</strong></li>
+<li><strong>cool_cond_y.20 = operates at reduced efficiency</strong></li>
+<li><strong>cool_cond_y.100 = operates at full efficiency</strong></li>
+</ul>
+<p>From looking at the classification probabilities in the image above, we can infer whether the Hydraulic Cooler is operating at <strong>close to total failure</strong>, <strong>reduced efficiency</strong> or <strong>full efficiency</strong>.</p>
+<p>5. Stop the local REST server by pressing <strong>control + C</strong>.</p>
+<p><img alt="SpringBoot Server Stopping" src="img/e71e84007fdc6781.jpg"><br><strong>Figure 12</strong>: Shutting Down SpringBoot Application</p>
+<p>6. Go back to the <strong>dai-deployment-templates/</strong> folder</p>
+<pre><code language="language-bash" class="language-bash">cd $HOME/dai-deployment-templates/
+</code></pre>
+<h2 is-upgraded>Deep Dive and Resources</h2>
+<ul>
+<li><a href="https://github.com/h2oai/dai-deployment-templates/tree/master/local-rest-scorer" target="_blank">Driverless AI Deployment Template for Local SpringBoot Scorer</a></li>
+<li><a href="https://spring.io/guides/gs/spring-boot/" target="_blank">Building an Application with Spring Boot</a></li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Task 4: Challenge" duration="0">
+        <h2 is-upgraded>Deploy Scoring Pipeline for a New Dataset</h2>
+<p>There are various challenges you could do; you could do something that helps you in your daily life or job. For example, if there is a dataset you are working with, you could reproduce the steps we did above, build a new experiment and deploy your MOJO scoring pipeline to a REST server or Amazon Lambda.</p>
+<h2 is-upgraded>Integrate Scoring Pipeline into Program</h2>
+<p>Another challenge could be to use the existing MOJO scoring pipeline we deployed. But, instead of using the curl command to score data, integrate the scoring into a Java, Python, R, C++, etc., program using an HTTP client.</p>
+<h2 is-upgraded>Create New Deployment Template to Deploy Scoring Pipeline</h2>
+<p>Alternatively, you could create a new Driverless AI Deployment Template to deploy the MOJO scoring pipeline to a production environment not yet supported. Currently, there is support for MOJO deployment to a local REST server, Amazon Lambda, Amazon Sagemaker, Google Cloud Run, SQL database. Once you&#39;ve tested your deployment template, you can contribute it back to the open-source. Or you could try one of the already existing deployment templates we did not cover and deploy the MOJO to that production environment.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Next Steps" duration="0">
+        <ul>
+<li>Check out Driverless AI&#39;s next self-paced courses on embeddable Scoring Pipeline Deployment where you will learn to deploy <strong>MOJO Scoring Pipelines</strong> into production in <strong>Java Runtime</strong> and <strong>C++ Runtime</strong> using <strong>Mojo2 Runtime API</strong>:  <ul>
+<li><a href="https://h2oai.github.io/tutorials/scoring-pipeline-deployment-in-java-runtime" target="_blank">Self-Paced course 4C: Scoring Pipeline Deployment in Java Runtime</a></li>
+<li><a href="https://h2oai.github.io/tutorials/scoring-pipeline-deployment-in-c++-runtime" target="_blank">Self-Paced course 4D: Scoring Pipeline Deployment in C++ Runtime</a></li>
+</ul>
+</li>
+<li>Check out Driverless AI&#39;s next self-paced course on embedable Scoring Pipeline Deployment where you will learn to deploy <strong>Python Scoring Pipelines</strong> into production in <strong>Python Runtime</strong> using <strong>h2oai_scoring API</strong>:  <ul>
+<li><a href="https://h2oai.github.io/tutorials/scoring-pipeline-deployment-in-python-runtime" target="_blank">Self-paced course 4E: Scoring Pipeline Deployment in Python Runtime</a></li>
+</ul>
+</li>
+<li>Check out these webinars that dive into how to productionize H2O Driverless AI Models:  <ul>
+<li>H2O.ai Webinar: <a href="https://www.brighttalk.com/service/player/en-US/theme/default/channel/16463/webcast/415599/play?showChannelList=true" target="_blank">Accelerate Your Enterprise AI on Snowflake with H2O.ai (by Yves Laurent, Eric Gudgion, Chris Pouliot, Isaac Kunen)</a></li>
+<li>H2O.ai Webinar: <a href="https://www.brighttalk.com/service/player/en-US/theme/default/channel/16463/webcast/367565/play?showChannelList=true" target="_blank">Learn How to Easily Use AI Against Your Production Database by Eric G</a></li>
+</ul>
+</li>
+<li>Check out these articles on deploying H2O Driverless AI on VMware:  <ul>
+<li>VMware Blog: <a href="https://blogs.vmware.com/apps/2019/03/deploying-a-machine-learning-model-into-production-on-vmware-with-h20-apache-spark-and-gpus.html" target="_blank">Deploying a Machine Learning Model into Production on VMware with H2O, Apache Spark and GPUs</a></li>
+<li>VMware Blog: <a href="https://blogs.vmware.com/apps/2019/06/machine-learning-on-vmware-training-a-model-with-h2o-ai-tools-inference-using-a-rest-server-and-kubernetes.html" target="_blank">Machine Learning on Vmware: Training a Model with H2O.ai Tools, Inference using a REST Server and Kubernetes by Justin Murray</a></li>
+</ul>
+</li>
+<li>Check out this article on deploying H2O Driverless AI to Oracle Cloud Infrastructure using Terraform templates:  <ul>
+<li>Oracle Blog: <a href="https://blogs.oracle.com/cloud-infrastructure/machine-learning-with-h2oai-and-oracle-erp" target="_blank">Machine Learning with H2O.ai and Oracle ERP by Ben Lackey</a></li>
+</ul>
+</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Appendix A: Interactive Scoring (AWS Lambda) via Deployment Templates" duration="0">
+        <p><strong>Note:</strong> In this Appendix, we will show you how to deploy the Driverless AI MOJO Scoring Pipeline to Amazon Lambda using a Driverless AI Deployment Template. However, you need your own AWS account to follow along.</p>
+<p>We will use the Driverless AI Deployment Template <strong>aws-lambda-scorer</strong> to deploy the MOJO Scoring Pipeline to Amazon Lambda. This template is powered by AWS API Gateway with Lambda proxy integration and Terraform recipe.</p>
+<p>1. Create a new s3 bucket in AWS with default settings and name it <code>h2oai-model-hydraulic-lambda</code>, then click <strong>Create</strong>.</p>
+<p><img alt="create-s3-bucket" src="img/513aabbaaaa3aa9c.jpg"><br><strong>Figure 13</strong>: Create s3 Bucket for AWS Lambda Deployment</p>
+<p>2. Go to the aws-lambda-scorer/ folder.</p>
+<pre><code language="language-bash" class="language-bash">cd aws-lambda-scorer
+</code></pre>
+<p>3. Initialize terraform in the terraform-recipe folder to download all necessary Terraform plugins including the AWS one.</p>
+<pre><code language="language-bash" class="language-bash">cd terraform-recipe
+terraform init
+</code></pre>
+<p><img alt="Terraform Initialized" src="img/b08f7ca12d6ac300.jpg"><br><strong>Figure 14</strong>: Initialize Terraform</p>
+<p>4. In your terminal, set the terraform variables using temporary environment variables.</p>
+<pre><code language="language-bash" class="language-bash">export TF_VAR_access_key={AWS IAM access key}
+export TF_VAR_secret_key={AWS IAM secret access key}
+export TF_VAR_region={AWS region; ex: us-west-1}
+export TF_VAR_lambda_id=h2oai_model-hydraulic-lambda
+export TF_VAR_mojo_path=$MOJO_PIPELINE_FILE
+export TF_VAR_license_key={Driverless AI License Key}
+export TF_VAR_bucket_name=h2oai-model-hydraulic-lambda
+</code></pre>
+<p>5. Let&#39;s launch our Amazon Lambda function and also load our MOJO scoring pipeline on it. Terraform will ask you for confirmation, enter <code>yes</code>.</p>
+<pre><code language="language-bash" class="language-bash">terraform apply
+</code></pre>
+<p><img alt="Terraform Apply" src="img/412615788f713bab.jpg"><br><strong>Figure 15</strong>: Apply Terraform to Launch AWS Lambda and Load MOJO Scoring Pipeline</p>
+<p>Note: if you run into an error when executing terraform apply, check out <a href="#appendix-a-troubleshooting-deployment" target="_blank">Appendix A: Troubleshooting Deployment</a></p>
+<p>Now that our Amazon Lambda function has been launched and our MOJO scoring pipeline has loaded on it, terraform provides us with the <strong>api_key</strong> and <strong>base_url</strong>, which we can use for sending score requests.</p>
+<p>6. Create a <strong>test.json</strong> file with our scoring request payload.</p>
+<pre><code language="language-bash" class="language-bash">tee -a test.json &lt;&lt; EOF
+{
+   &#34;fields&#34;: [&#34;psa_bar&#34;, &#34;psb_bar&#34;, &#34;psc_bar&#34;, &#34;psd_bar&#34;, &#34;pse_bar&#34;, &#34;psf_bar&#34;, &#34;fsa_vol_flow&#34;, &#34;fsb_vol_flow&#34;, &#34;tsa_temp&#34;, &#34;tsb_temp&#34;, &#34;tsc_temp&#34;, &#34;tsd_temp&#34;, &#34;pump_eff&#34;, &#34;vs_vib&#34;, &#34;cool_pwr_pct&#34;, &#34;eff_fact_pct&#34;],
+   &#34;rows&#34;: [[&#34;155.56646728515625&#34;, &#34;104.93318176269531&#34;, &#34;0.862698495388031&#34;, &#34;0.00021100000594742596&#34;, &#34;8.37287425994873&#34;, &#34;8.321526527404785&#34;, &#34;2.0819649696350098&#34;, &#34;8.871089935302734&#34;, &#34;35.355934143066406&#34;, &#34;40.99454879760742&#34;, &#34;38.31908416748047&#34;, &#34;30.47344970703125&#34;, &#34;2366.707275390625&#34;, &#34;0.5243666768074036&#34;, &#34;1.3755667209625244&#34;, &#34;19.58085060119629&#34;]]
+}
+EOF
+</code></pre>
+<p>7. Copy and paste the curl command into your terminal, then run it to request that the Amazon Lambda&#39;s MOJO scoring pipeline computes a prediction for hydraulic cooling condition:</p>
+<pre><code language="language-bash" class="language-bash"># Request AWS Lambda MOJO do interactive scoring for hydraulic cooling condition
+curl \
+   -X POST \
+   -d @test.json \
+   -H &#34;x-api-key: {api-key-returned-by-terraform}&#34; \
+   {base-url-returned-by-terraform}/score
+</code></pre>
+<p><img alt="AWS Lambda Score Result" src="img/8e6f8be8cf0ca9d1.jpg"><br><strong>Figure 16</strong>: Hydraulic Cooling Condition Classification Results</p>
+<ul>
+<li><strong>cool_cond_y.3 = operates at close to total failure</strong></li>
+<li><strong>cool_cond_y.20 = operates at reduced efficiency</strong></li>
+<li><strong>cool_cond_y.100 = operates at full efficiency</strong></li>
+</ul>
+<p>From looking at the classification probabilities in the image above, we can infer whether the Hydraulic Cooler is operating at <strong>close to total failure</strong>, <strong>reduced efficiency</strong> or <strong>full efficiency</strong>.</p>
+<h2 is-upgraded>Delete Amazon Lambda MOJO Deployment</h2>
+<p>If you no longer need your Amazon Lambda Driverless AI MOJO Scoring Pipeline deployment, we will walk you through manually cleaning up the remaining components in AWS.</p>
+<p>1. Login to your <a href="https://signin.aws.amazon.com/signin?redirect_uri=https%3A%2F%2Faws.amazon.com%2Fmarketplace%2Fmanagement%2Fsignin%3Fstate%3DhashArgs%2523%26isauthcode%3Dtrue&client_id=arn%3Aaws%3Aiam%3A%3A015428540659%3Auser%2Faws-mp-seller-management-portal&forceMobileApp=0" target="_blank">AWS IAM account</a>. Let&#39;s go to the s3 bucket service.</p>
+<p>2. Go to s3 bucket <strong>h2oai-model-hydraulic-lambda</strong>, then click it. Click <strong>Delete</strong>.</p>
+<p><img alt="Delete Lambda s3 Bucket" src="img/e1f3c80a62d5bf4b.jpg"><br><strong>Figure 17</strong>: Delete s3 Bucket from AWS Lambda Deployment</p>
+<p>3. Type the name of the bucket for <strong>h2oai-model-hydraulic-lambda</strong> to confirm deletion. Then click <strong>Confirm</strong>.</p>
+<p><img alt="Confirm Deletion of Lambda s3 Bucket" src="img/6dba5751b5a117cb.jpg"><br><strong>Figure 18</strong>: Confirm s3 Bucket Deletion</p>
+<p>4. Next let&#39;s go to the Amazon Lambda functions. Search for your Lambda function, <strong>h2oai_h2oai_model-hydraulic-lambda</strong>. Click on the <strong>circle</strong> to select it.</p>
+<p>5. Click on <strong>Actions</strong>. Click <strong>Delete</strong>.</p>
+<p><img alt="Delete Amazon Lambda" src="img/192cf90bf2ff71f4.jpg"><br><strong>Figure 19</strong>: Delete Amazon Lambda Function</p>
+<p>6. Next go to API Gateway service. Search for your Gateway API, <strong>h2oai_h2oai_model-hydraulic-lambda</strong>. Click on the <strong>circle</strong> to select it.</p>
+<p>7. Click <strong>Actions</strong>, then <strong>Delete</strong>.</p>
+<p><img alt="delete-api-gateway" src="img/df8c6d64623edc10.jpg"><br><strong>Figure 20</strong>: Delete API Gateway</p>
+<p>8. Confirm you want to Delete API Gateway. Click <strong>Delete</strong>.</p>
+<p><img alt="delete-api-gateway-2" src="img/f3441c92ca470646.jpg"><br><strong>Figure 21</strong>: Confirm Delete API Gateway</p>
+<p>9. Go to IAM service and <strong>delete</strong> the IAM Policy related to our Amazon Lambda.</p>
+<p><img alt="delete-iam-policy" src="img/d461975d3680933c.jpg"><br><strong>Figure 22</strong>: Delete IAM Policy</p>
+<p>10. Confirm you want to delete IAM Policy. Click Delete.</p>
+<p><img alt="delete-iam-policy-2" src="img/465840361e9a8d6f.jpg"><br><strong>Figure 23</strong>: Confirm Delete IAM Policy</p>
+<p>11. Go to IAM Roles, search for the IAM Role <strong>h2oai_h2oai_model-hydraulic-lambda</strong>. Click the <strong>checkbox</strong>. Then click <strong>Delete role</strong>.</p>
+<p>12. Confirm you want to delete IAM Role. Click <strong>Yes, delete</strong>.</p>
+<p><img alt="delete-iam-role" src="img/122b27a0765f6bff.jpg"><br><strong>Figure 24</strong>: Delete IAM Role</p>
+<p>In our Amazon AWS IAM account, we just deleted the components related to the Amazon Lambda MOJO deployment. The components that we deleted include the Amazon Lambda function, IAM Policy, IAM Role, API Gateway and s3 bucket. The components that should remain are the IAM access key and IAM secret access key.</p>
+<h2 is-upgraded>Deep Dive and Resources</h2>
+<ul>
+<li><a href="https://github.com/h2oai/dai-deployment-templates/tree/master/aws-lambda-scorer" target="_blank">Driverless AI Deployment Template for AWS Lambda</a></li>
+<li><a href="https://aws.amazon.com/serverless/build-a-web-app/" target="_blank">Build Your First Serverless Web Application with AWS Lambda</a></li>
+<li><a href="https://aws.amazon.com/getting-started/hands-on/build-serverless-web-app-lambda-apigateway-s3-dynamodb-cognito/" target="_blank">Build a Serverless Web Application with AWS Lambda, Amazon API Gateway, AWS Amplify, Amazon DynamoDB, and Amazon Cognito</a></li>
+<li><a href="http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/deployment.html" target="_blank">Driverless AI: Deploying the MOJO Pipeline</a></li>
+<li><a href="https://github.com/h2oai/dai-deployment-templates/tree/master/local-rest-scorer" target="_blank">Driverless AI Deployment Template for Local SpringBoot Scorer</a></li>
+<li><a href="https://github.com/h2oai/dai-deployment-templates/tree/master/aws-lambda-scorer" target="_blank">Driverless AI Deployment Template for AWS Lambda</a></li>
+<li><a href="https://www.tutorialspoint.com/spring_boot/spring_boot_introduction.htm" target="_blank">Spring Boot - Introduction</a></li>
+<li><a href="https://www.terraform.io/intro/index.html" target="_blank">Introduction to Terraform</a></li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Appendix B: Troubleshooting Deployment" duration="0">
+        <h2 is-upgraded>Amazon Labmda</h2>
+<p>If you receive the following error related to the function call:</p>
+<p><img alt="terraform-maints-error-file-function" src="img/68c67e2a9bf56485.jpg"><br><strong>Figure 25</strong>: Terraform Error in <strong>file</strong> function call due to invalid UTF-8</p>
+<p>With the recent update from Terraform 0.11 to 0.12, <strong>file</strong> does not accept any file that is not a valid <strong>UTF-8</strong>. This issue occurs because <strong>pipeline.mojo</strong> is not a valid <strong>UTF-8</strong>.</p>
+<p>Another error you may run into relates to the file hashing result not being the same for both files:</p>
+<p><img alt="terraform-maints-error-hash-result-different" src="img/3b5fe160ad5572ad.jpg"><br><strong>Figure 26</strong>: Terraform Error from hash result of both files being inconsistent</p>
+<p>The reason this error occurs is after the hash result for both files is compared, they are different.</p>
+<p>So, refer to the file <code>/Users/jmedel/dai-deployment-templates/aws-lambda-scorer/terraform-recipe/main.tf</code> and on line 42, update it to</p>
+<pre><code>etag = &#34;${filemd5(var.mojo_path)}&#34;
+</code></pre>
+<p>Similarly, on line 51, update it to</p>
+<pre><code>source_code_hash = &#34;${filesha256(var.lambda_zip_path)}&#34;
+</code></pre>
+<p>If line 42 and 51 have already been updated, then you can ignore the above suggestions.</p>
+<p>With this update applied, terraform will obtain the file hashing results from both files without requiring UTF-8 to be valid. Also when the hashing result from both files is compared, they should both be equal.</p>
+<h2 is-upgraded>Resources</h2>
+<ul>
+<li><a href="https://github.com/hashicorp/terraform/issues/21260" target="_blank">hashicorp/terraform GitHub: 0.12-rc1 file function fails due to UTF-8 error</a></li>
+</ul>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>
