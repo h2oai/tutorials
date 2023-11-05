@@ -126,7 +126,7 @@ After H2O LLM Studio Lab will appear:
  - LLM Studio URL
  - End Lab 
 
-3\. Once the Lab has started, an LLM Studio URL will appear at the bottom of the page. Click on that URL; this will take you to the H2O.ai Driverless AI Datasets Page.
+3\. Once the Lab has started, an LLM Studio URL will appear at the bottom of the page. Click on that URL; this will take you to the H2O.ai LLM Studio Home Page.
 
 ![llm-studio-home-page](assets/llm-studio-home-page.jpg)
 
