@@ -206,7 +206,16 @@ For pushing the LLM Model into Hugging Face:
 
 ![push-to-hugginface-hub](assets/push-to-hugginface-hub.jpg)
 
+Note: If you don't have don’t have a Hugging Face API Toke, follow these steps:
 
+To access the fine-tuned LLM model you will create, you will need a write Hugging Face API token.
+
+Instructions to get your Hugging Face API Token
+
+1. [Register or Login](https://huggingface.co/login)
+2. [Get a User Access or API token in your Hugging Face profile settings.](https://huggingface.co/settings/tokens?new_token=true)
+3. Please create an Access Token with the Role of “write” for use in the lab. You should see a token ```hf_xxxxx``` (old tokens are ```api_XXXXXhttps://huggingface.co/joinXXX``` or ```api_org_XXXXXXX``` ).
+   
 If you choose to download the Model, H2O LLM Studio will automatically create model documentation (e.g., model card) that describes how to use this model further. 
 
 
