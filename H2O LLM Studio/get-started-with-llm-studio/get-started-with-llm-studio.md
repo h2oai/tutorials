@@ -13,11 +13,11 @@
 
 ## Objective
 
-For this tutorial, we will walk through how to get started with [H2O LLM Studio](https:https://h2o.ai/platform/ai-cloud/make/llm-studio/) using historical Linkedn posts from influencers on the platform. 
+For this tutorial, we will walk through how to get started with [H2O LLM Studio](https:https://h2o.ai/platform/ai-cloud/make/llm-studio/) using historical LinkedIn posts from influencers on the platform. 
 
 In this overview of LLM Studio, you will become familiar with the concepts and configurations in LLM Studio using a small data set and model as a motivation example. 
 
-You will learn how to set up import data, configure the prompt column, answer column, view dataset, create an experiment and fine tune a large language model. 
+You will learn how to set up import data, configure the prompt column, answer column, view the dataset, create an experiment, and fine-tune a large language model. 
 
 ## Prerequisites
 
@@ -29,12 +29,12 @@ You will learn how to set up import data, configure the prompt column, answer co
 
   - Already have an **LLM Studio Lab** session? Continue reading the remaining prerequisites of this tutorial, then start Task 1.
 
-**Note:  Aquarium’s LLM Studio lab has a license key built-in, so you don’t need to request one to use it. Each LLM Studio instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to further explore LLM Studio, you can always launch another LLM Studio instance or reach out to our sales team via the [contact us form](https://h2o.ai/platform/ai-cloud/make/llm-studio/).**
+**Note:  Aquarium’s LLM Studio lab has a license key built-in, so you don’t need to request one to use it. Each LLM Studio instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to explore LLM Studio further, you can always launch another LLM Studio instance or reach out to our sales team via the [contact us form](https://h2o.ai/platform/ai-cloud/make/llm-studio/).**
 
 
 ## Task 1: Load and Configure Dataset
 
-Welcome to the LLM Studio **Home** page! This aquarium lab leverages an instance in AWS with a Tesla T4 and 15GB of RAM. In reality, this is an extremely low amount of computing resources to undertake fine tuning of large language models. The idea is to become familiar with the concepts and configurations using a small toy data set and model as a motivational example. Let’s begin.
+Welcome to the LLM Studio **Home** page! This aquarium lab leverages an instance in AWS with a Tesla T4 and 15GB of RAM. In reality, this is an extremely low amount of computing resources to undertake fine-tuning of large language models. The idea is to become familiar with the concepts and configurations using a small toy data set and model as a motivational example. Let’s begin.
 
 ![llm-studio-home-page](assets/llm-studio-home-page.jpg)
 
@@ -75,7 +75,7 @@ Start by selecting **Import Datasets**
 
 ```influencers_data_prepared.csv```
 
-Note: For this lab we will ignore **AWS acess key** and **AWS secret key**
+Note: For this lab, we will ignore **AWS access key** and **AWS secret key**
 
 5. Select **Continue** 
 
@@ -83,7 +83,7 @@ Note: For this lab we will ignore **AWS acess key** and **AWS secret key**
 
 ### Configuring the Dataset
 
-In this section we will update two sections, the **Prompt Column** and **Answer Column**.
+In this section, we will update two sections, the **Prompt Column** and **Answer Column**.
 
 Under **Prompt Column**:
 
@@ -108,7 +108,7 @@ If the import was successful, you should see some example data points to visuali
 
 ### View the Dataset
 
-Once imported, the data set will show up it the **View datasets** tab.
+Once imported, the data set will appear in the **View datasets** tab.
 
 10. Select **View datasets**
 11. Click on the name of the data set ```influencers_data_prepared```
@@ -117,7 +117,7 @@ Once imported, the data set will show up it the **View datasets** tab.
 
 12. Review the data set
 
-13. Click on **Create experiment** at the bottom of the screen to begin fine tuning a large language model on this dataset
+13. Click on **Create experiment** at the bottom of the screen to begin fine-tuning a large language model on this dataset
 
 ![llm-studio-review-dataset](assets/llm-studio-review-dataset.jpg)
 
@@ -125,12 +125,12 @@ Once imported, the data set will show up it the **View datasets** tab.
 
 On the experiment page, various experiment settings are available. For now, we will simply adjust the LLM backbone.
 
-For this lab, we will use the smallest available model, ```facebook/opt-125m```, as this will enable the experiment to finish quickest.
+For this lab, we will use the smallest available model, ```facebook/opt-125m```, as this will enable the experiment to finish the quickest.
 
 Under the **Experiments** Section: 
 
 1. Go to **LLM Backbone**
-2. Click on the dropdwn 
+2. Click on the dropdown 
 3. Select ```facebook/opt-125m```
 4. Click on **Run experiment** 
 
@@ -138,22 +138,20 @@ Under the **Experiments** Section:
 
 Once launched, the experiment will run until completion, routinely updating an estimated time to completion. You should see an image similar to the one below:
 
-Note: This will take less than 5 minutes. You can click on **Refresh** to get a progress udpate 
-
-![llm-studio-experiment-updating](assets/llm-studio-experiment-updating.jpg)
-
-Once the experiment is complete the status will turn green and change to “finished”.
+Note: This will take less than 5 minutes. You can click on **Refresh** to get a progress update 
 
 5. Click on **Refresh** to get the progress of the experiment 
 
 ![llm-studio-experiment-updating](assets/llm-studio-experiment-updating.jpg)
 
+Once the experiment is complete, the status will turn green and change to “finished”.
+
 ## Task 3: Explore Finished Experiment  
  
-Now we will explore the results of the finished experiment.
+Now, we will explore the results of the finished experiment.
 
 **Under View experiments**:
-Note: Make sure the experiment has the ```finshed``` status in green 
+Note: Make sure the experiment has the ```finished``` status in green 
 
 1. Click on the experiment **name** to see the results 
 
@@ -199,7 +197,7 @@ You can download the fine-tuned model weights by clicking ```Download model```, 
 
 ![llm-studio-download-llm-model](assets/llm-studio-download-llm-model.jpg)
 
-For pushing LLM Model into Hugging Face:
+For pushing the LLM Model into Hugging Face:
 
 1. Click on ```Push checkpoint to huggingface```
 2. Enter your account name
@@ -209,6 +207,6 @@ For pushing LLM Model into Hugging Face:
 ![push-to-hugginface-hub](assets/push-to-hugginface-hub.jpg)
 
 
-If you choose to download the Model, H2O LLM Studio will automatically create model documentation (e.g. model card) that describes how to use this model further. 
+If you choose to download the Model, H2O LLM Studio will automatically create model documentation (e.g., model card) that describes how to use this model further. 
 
 
