@@ -29,7 +29,7 @@ You will learn how to set up import data, configure the prompt column, answer co
 
   - Already have an **LLM Studio Lab** session? Continue reading the remaining prerequisites of this tutorial, then start Task 1.
 
-**Note:  Aquarium’s LLM Studio lab has a license key built-in, so you don’t need to request one to use it. Each LLM Studio instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to explore LLM Studio further, you can always launch another LLM Studio instance or reach out to our sales team via the [contact us form](https://h2o.ai/platform/ai-cloud/make/llm-studio/).**
+**Note: Each LLM Studio instance will be available to you for two hours, after which it will terminate. No work will be saved. If you need more time to explore LLM Studio further, you can always launch another LLM Studio instance**
 
 
 ## Task 1: Load and Configure Dataset
