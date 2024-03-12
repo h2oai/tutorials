@@ -1,0 +1,14 @@
+{
+    "name": "new-makersaurus-project",
+    "version": "0.0.0",
+    "scripts": {
+      "start": "makersaurus start",
+      "build": "makersaurus build",
+      "serve": "makersaurus serve",
+      "scaffold": "makersaurus scaffold",
+      "deploy": "makersaurus deploy"
+    },
+    "dependencies": {
+      "@h2oai/makersaurus": "^0.8.3"
+    }
+  }
