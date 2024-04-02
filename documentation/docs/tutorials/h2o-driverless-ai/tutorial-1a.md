@@ -423,3 +423,66 @@ If you would like to take a quick tour of the **Experiments** page, select **YES
 
 3. The **Experiment preview page** will appear; this preview page displays all settings that Driverless AI will use before launching an experiment:
 ![Experiment preview page](experiment.png)
+
+:::info note
+**a. Assistant** - Interactive tour for first-time users.
+> Click on ASSISTANT to enable it. Yellow circles will appear around sections of the experiment setup page; you can hover over any of them to get more information on each section: ![help](help.png)
+ To disable ASSISTANT, click on assistant again.
+
+**b. Display Name** - Optional: Specify a display name for the new experiment. There are no character or length restrictions for naming. If this field is left blank, Driverless AI will automatically generate a name for the experiment.
+
+**c. Training Dataset** - The name of the Dataset being used to create an experiment
+
+**d. Rows** - Total number of rows
+
+**e. Columns** - Total number of columns
+
+**f. Dropped Columns** - Drop column(s) from your Dataset that you don't want to use in the experiment. For more information, see the H2O.ai documentation [here](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#dropped-columns)
+
+**g. Validation Dataset** - Select the Dataset you want to validate. This set will be used to validate parameters like models, features, etc. For more information, see the H2O.ai documentation [here](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#validation-dataset)
+
+**h. Test Dataset** - The Dataset will test the model generated from the training dataset. It's not used during the model's training, and results are available at the end of the experiment. For more information, see the H2O.ai documentation [here](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#test-dataset)
+
+**i. Target Column** - The column that will be used to predict furthermore is the piece of data you want to understand. When selecting a target column, ask yourself what you want to predict
+
+**j. Fold Column** - The fold column is used to create the training and validation datasets so that all rows with the same fold value will be in the same Dataset. This column will be used if no validation dataset is provided and the model is trained using cross-validation. For more information, see the H2O.ai documentation [here](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#fold-column)
+
+**k. Weight Column** - Column that indicates the observation/instance weight (a.k.a. sample or row weight), if applicable. For more information see the H2O.ai documentation [here](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#weight-column)
+
+**l. Time Column**(OFF by default) - Provides a time order(timestamps for observations). When data has a high dependency on time (such as seasonality or trend), you want to treat this problem as a time series problem. For more information, see the H2O.ai documentation [here](http://docs.h2o.ai/driverless-ai/1-8-lts/docs/userguide/experiment-settings.html?highlight=accuracy#time-column)
+:::
+
+4. Continuing with our experiment, name your experiment as follows: `Titanic Classification Tutorial`
+
+5. Click **Dropped Columns**, drop the following columns, then select **Done**:
+
+- **Passenger_Id**
+- **name_with_salutations**
+- **name_without_salutations**
+- **boat**
+- **body**
+- **home.dest**
+
+![Dropped Columns](dropped.png)
+
+We removed these attributes (columns) to create a cleaner dataset. Attributes such as **boat** and **body** are excluded because they are clear indicators that a passenger survived and can lead to data leakage. A clean dataset is essential for the creation of a good predictive model. The process of data cleansing needs to be done with all datasets to rid the set of any unwanted observations, structural errors, unwanted outliers, or missing data.
+
+6. For our experiment, we will be using a test dataset. To select the test dataset, select **TEST DATASET** and select the **titanic_test**:
+![titanic test](titanic_test.png)
+
+7. Now, select the TARGET COLUMN. In our case, the column will be survived. We want to know who will be surviving base on the information the model will be trained on (e.g., age): ![target column](target_column.png)
+
+The *survived* attribute was selected because, as an insurance company, we want to know what attributes can contribute to passengers' survival. Knowing these attributes from the perspective of an insurance company can be beneficial because it can give the insurance company a good idea of how to manage the rate of insurances.
+
+8. Your experiment page should look similar to the one below; these are the system suggestions based on the data selected to train this model: ![experiment page](experiment_page.png)
+
+:::info note
+- 
+    **a.** **Training Settings** - Describes your specific experiment's Accuracy, Time, and Interpretability. The knobs on the experiment settings are adjustable as values change the settings' meaning on the left-bottom page change.
+    - **Accuracy** - As accuracy increases, Driverless AI gradually adjusts the method for performing the evolution and ensemble. At low accuracy, Driverless AI varies features and models, but they all compete evenly against each other. At higher accuracy, each independent main model will evolve independently and be part of the final ensemble as an ensemble over different main models. At higher accuracies, Driverless AI will evolve+ensemble feature types like Target Encoding on and off that evolve independently. Finally, at highest accuracies, Driverless AI performs both model and feature tracking and ensembles all those variations. Changing this value affects the feature evolution and final pipeline.
+        * **Note:** A check for a shift in the distribution between train and test is done for accuracy >= 5.
+        * **Feature evolution:** This represents the algorithms used to create the experiment. If a test set is provided without a validation set, then Driverless AI will perform a 1/3 validation split during the experiment. If a validation set is provided, then the experiment will perform external validation.
+        * **Final pipeline**: This represents the number of models and the validation method used in the final pipeline. For ensemble modeling, information about how models are combined is also shown here
+        * For more information about Accuracy see the H2O.ai documentation [here](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/experiment-settings.html?highlight=accuracy%20setting#accuracy).
+
+:::
