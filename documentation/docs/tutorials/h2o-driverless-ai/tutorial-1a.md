@@ -376,4 +376,50 @@ What variables are strongly correlated with the ‘survived' variable? Based on 
 **b.** The Help button explains the Correlation Graph. This feature is available for all graphs.
 :::
 
-4. Exit out of the **Correlation Graph** view by clicking on the X at the graph's top-right corner.
+4. Exit out of the **Correlation Graph** view by clicking on the **X** at the graph's top-right corner.
+
+5. After you are done exploring the other graphs, go back to the **Datasets page**. While exploring, keep in mind that Driverless AI shows graphs that represent "relevant" aspects of the data. The following are the type of graphs available:
+
+- Correlated Scatterplots
+- Spikey Histograms
+- Skewed Histograms
+- Varying Boxplots
+- Heteroscedastic Boxplots
+- Biplots
+- Outliers
+- Correlation Graph
+- Parallel Coordinates Plot
+- Radar Plot
+- Data Heatmap
+- Missing Values Heatmap
+- Gaps Histogram
+
+In the next task, we will proceed to step 3 of our Driverless AI workflow: run an experiment.
+
+### References
+Figure 1. RMS Titanic
+
+### Deeper Dive and Resources
+- [Learn more about Automatic Visualization from the H2O Driverless AIdocs](http://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/datasets.html#visualizing-datasets)
+- [Learn more about Automatic Visualization from the architect Leland Wilkinson, Chief Scientist, H2O.ai from session at H2O World 2017 Youtube Video](https://www.youtube.com/watch?v=bas3-Ue2qxc)
+- [H2O.ai Automatic Visualization by Leland Wikinson (SlideShare)](https://www.slideshare.net/0xdata/automatic-visualization)
+
+## Task 5: Launch First Experiment
+
+We are going to launch our first experiment. An experiment means that we are going to generate a prediction using a dataset of our choice. In this case, we will use the **titanic_train** dataset.
+
+1. Return to the **Datasets Overview** page and click on the **titanic_train** dataset, then select **Predict**: ![Prediction](predict.png)
+
+If this is your first time launching an experiment, the following prompt will appear, asking if you want to take a tour:
+![Take a Tour](tour.jpg)
+
+If you would like to take a quick tour of the **Experiments** page, select **YES**; the short tour will cover the following items:
+
+- Selecting a training dataset
+- Selecting a target column that you want Driverless AI to predict
+- Selecting if it is a Time Series problem or not [Time Series ON or OFF]
+
+2. For the time being, select **Not Now** you can go back later and take a tour. For the most part, this self-paced course will cover what's mentioned during the tour.
+
+3. The **Experiment preview page** will appear; this preview page displays all settings that Driverless AI will use before launching an experiment:
+![Experiment preview page](experiment.png)
