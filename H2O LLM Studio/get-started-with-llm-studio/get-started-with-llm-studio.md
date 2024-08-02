@@ -56,7 +56,7 @@ The typical LLM Studio workflow is to:
 ### Import the Data 
 
 We will import the influencer data directly from a public bucket on AWS S3. 
- 
+
 Start by selecting **Import Datasets**
 
 ![llm-studio-import-dataset](assets/llm-studio-import-dataset.jpg)
@@ -125,14 +125,16 @@ Once imported, the data set will appear in the **View datasets** tab.
 
 On the experiment page, various experiment settings are available. For now, we will simply adjust the LLM backbone.
 
-For this lab, we will use the smallest available model, ```facebook/opt-125m```, as this will enable the experiment to finish the quickest.
+For this lab, we will use the smallest available model, ```h2oai/h2o-danube2-1.8b-chat```, as this will enable the experiment to finish the quickest.
 
 Under the **Experiments** Section: 
 
 1. Go to **LLM Backbone**
-2. Click on the dropdown 
-3. Select ```facebook/opt-125m```
-4. Click on **Run experiment** 
+   1. Click on the dropdown 
+   2. **Select ```h2oai/h2o-danube2-1.8b-chat ```**
+
+2. Got **Data Sample** and select `0.2` 
+3. Click on **Run experiment** 
 
 ![llm-studio-create-experiment](assets/llm-studio-create-experiment.jpg)
 
@@ -147,7 +149,7 @@ Note: This will take less than 5 minutes. You can click on **Refresh** to get a 
 Once the experiment is complete, the status will turn green and change to “finished”.
 
 ## Task 3: Explore Finished Experiment  
- 
+
 Now, we will explore the results of the finished experiment.
 
 **Under View experiments**:
@@ -216,6 +218,6 @@ Instructions to get your Hugging Face API Token
 2. [Get a User Access or API token in your Hugging Face profile settings.](https://huggingface.co/settings/tokens?new_token=true)
 3. Please create an Access Token with the Role of “write” for use in the lab. You should see a token ```hf_xxxxx``` (old tokens are ```api_XXXXXhttps://huggingface.co/joinXXX``` or ```api_org_XXXXXXX``` ).
    
-If you choose to download the Model, H2O LLM Studio will automatically create model documentation (e.g., model card) that describes how to use this model further. 
 
+If you choose to download the Model, H2O LLM Studio will automatically create model documentation (e.g., model card) that describes how to use this model further. 
 
